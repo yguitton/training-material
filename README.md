@@ -1,2 +1,32 @@
 # Github_Tutorial_Beginner
-Github tutorial for working with github for the first time. 
+Github tutorial for working with github for the first time.
+
+---
+### Let's Start!
+
+1. First go to [Github.com](https://github.com) and sign up for GitHub or sign in if you already have an account.
+2. Click on the (![New_Repository](https://user-images.githubusercontent.com/42538229/137142260-0070134d-99f3-4ab9-a5df-3a3d799abeca.png)
+ in the repository menu in the top left. 
+3.	Now Create the repository by using the following settings:<br>
+- Repository name = Github_Tutorial_Beginner
+- Description = Github tutorial for working with github for the first time.
+- Set to Private (so it is only viewable for you, this is changed later)
+- Select “Add a README file”
+- Press the “Create repository” button 
+
+Now your almost empty repository is made. The only information inside is the README.md file. This file contains the main information about your study/review/game/tool/or whatever you want in your github. Now it looks something like this:<br>
+![Preview_Empty-Repository](https://user-images.githubusercontent.com/42538229/137144572-0ea43459-897c-4beb-a271-67d9ee80582f.png)
+
+4. Now click on the :pencil2: icon to add the README file.
+5. To line 3 add the following: Whoohoo, I'm working in Github for the first time! :grin: <br>
+At the bottom in the Commit changes section add the discription: Added my first line! <br>
+Now use the Commit changes to change the file.
+
+>These descriptions can help to remember what you've done at a later stage.<br>
+
+Now we can see that our senteance isn't separated by an enter.
+![image](https://user-images.githubusercontent.com/42538229/137146991-808769f3-808f-479d-b21e-59aae2fbdf39.png)
+So we're going to change the file again!
+
+6. To change this we can add an extra enter, so line 3 becomes an empty line or we can place a <'br> (without ') at the end of the senteance. <br>
+For now we will use the extra enter on line 3
