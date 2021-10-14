@@ -167,4 +167,4 @@ Multiple branches can exist at the same time.<br>
 By clicking the branch icon you can see an overview of all branches and are able to remove them as well.
 
 
-Now we want to upload a workflow we've made in a new folder. 
+## Now we continue with [tutorial Part 2](!
