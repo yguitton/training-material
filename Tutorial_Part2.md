@@ -13,3 +13,8 @@ For this you can use your own made galaxy workflow + screenshot or you can use t
             - Add the file link under the explanation<br>
             - Add the picture underneath and make sure it is shown in the README file<br>
 
+> _HINT: You can also link to the files in the example folder of this repository, so you don't have to download anything_
+
+Then you'll get something like this:<br>
+![image](https://user-images.githubusercontent.com/42538229/137340643-be4fb3f6-8fcd-472a-ade5-418e6132a85e.png)
+
