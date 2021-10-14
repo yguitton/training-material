@@ -1,5 +1,6 @@
 # Github_Tutorial_Beginner
 Github tutorial for working with github for the first time.
+![Avans](https://www.avans.nl/images/XL-Logo.svg)
 
 ---
 ### Let's Start!
@@ -18,6 +19,7 @@ Github tutorial for working with github for the first time.
 
 Now your almost empty repository is made. The only information inside is the README.md file. This file contains the main information about your study/review/game/tool/or whatever you want in your github. Now it looks something like this:<br>
 ![Preview_Empty-Repository](https://user-images.githubusercontent.com/42538229/137144572-0ea43459-897c-4beb-a271-67d9ee80582f.png)
+
 ---
 
 4. Now click on the :pencil2: icon to add the README file.
@@ -44,6 +46,7 @@ Markdown is a language that can be converted into for example HTML, but is a lot
 The markdown syntax is easy to use and you can find a lot of cheatsheets of it online like this:
 [Cheat Sheet](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
 
+
 **Text Styles**
 
 \**Bold **<br>
@@ -62,6 +65,7 @@ control e or command e
 [Link Avans](https://www.avans.nl/)<br>
 control k or command k
 
+---
 
 **Headers:**<br>
 \# Header1 <br>
@@ -70,6 +74,8 @@ control k or command k
 ## Header 2
 \### Header3 <br>
 ### Header3
+
+---
 
 **Tables:**<br>
 First Header | Second Header<br>
@@ -82,6 +88,7 @@ First Header | Second Header
 Content cell 1 | Content cell 2
 Content column 1 | Content column 2
 
+---
 
 **(Python) Code Blocks**<br>
 
@@ -94,3 +101,6 @@ print(num)<br>
 num = 1+1
 print(num)
 ```
+
+---
+
