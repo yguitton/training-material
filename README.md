@@ -5,6 +5,9 @@ Github tutorial for working with github for the first time.
 ---
 ### Let's Start!
 
+Open the Tutorial_Part1.md file: [Tutorial Part1](./Tutorial_Part1.md)
+
+
 1. First go to [Github.com](https://github.com) and sign up for GitHub or sign in if you already have an account.
 2. Click on the (![New_Repository](https://user-images.githubusercontent.com/42538229/137142260-0070134d-99f3-4ab9-a5df-3a3d799abeca.png)
  in the repository menu in the top left. 
