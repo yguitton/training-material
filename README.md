@@ -11,3 +11,5 @@ Show how to see all edits in your github repository.
 ## Let's Start!
 
 ### 1. Go to the Tutorial Part1: [Tutorial Part1](./Tutorial_Part1.md)
+### 2. Go to the Tutorial Part2: [Tutorial Part2](./Tutorial_Part2.md)
+
