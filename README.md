@@ -44,6 +44,25 @@ Markdown is a language that can be converted into for example HTML, but is a lot
 The markdown syntax is easy to use and you can find a lot of cheatsheets of it online like this:
 [Cheat Sheet](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
 
+**Text Styles**
+
+\**Bold **<br>
+**Bold** <br>
+control b or command b
+
+\_Italic_ <br>
+_Italic _<br>
+control i or command i
+
+\`Code\` <br>
+`Code` <br>
+control e or command e
+
+\[Link Avans](https://www.avans.nl/) <br>
+[Link Avans](https://www.avans.nl/)<br>
+control k or command k
+
+
 **Headers:**<br>
 \# Header1 <br>
 # Header1
@@ -62,4 +81,16 @@ First Header | Second Header
 ------------ | -------------
 Content cell 1 | Content cell 2
 Content column 1 | Content column 2
----
+
+
+**(Python) Code Blocks**<br>
+
+\`\`\`Python<br>
+num = 1+1<br>
+print(num)<br>
+\`\`\`<br>
+
+```python
+num = 1+1
+print(num)
+```
