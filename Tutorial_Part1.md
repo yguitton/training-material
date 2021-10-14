@@ -99,3 +99,68 @@ print(num)
 
 ---
 
+7. Now you are going to make a table which shows 4 different syntaxes inside.<br>
+With a header3 saying Syntax table<br>
+Something like this:<br>
+
+### Syntax Table
+
+Syntax | Preview
+---------- | ----------
+Bold  | **Bold**
+Italic | _Italic_
+Strikethrough | ~~Crossed out~~
+Inline code | `inline code`
+
+8. In the bottom part where the Commit changes are select:<br>
+Create a new branch for this commit and start a pull request<br>
+Change name to [username]-syntax-table and press "Propose changes"
+
+9. Under write add a discription and click "Create pull request"
+
+---
+
+If you now go back to your main repository folder (by clicking on the Github_Tutorial name in the top left.<br>
+You'll see nothing is changed in the README.md file.<br>
+![image](https://user-images.githubusercontent.com/42538229/137311987-43219157-3e70-4bfb-9427-69a6e296b106.png)
+
+But you can see you've added a new branch:<br>
+![image](https://user-images.githubusercontent.com/42538229/137312097-4aedf009-8498-4c26-b294-e90642ebd527.png)
+
+---
+
+10. Now change the branch to your recently made branch.
+![image](https://user-images.githubusercontent.com/42538229/137312217-8e468622-83b1-4fe0-90fa-6893995646bd.png)
+
+---
+
+Here you can see that your recently added table is added to the README file:<br>
+![image](https://user-images.githubusercontent.com/42538229/137312339-365a45c3-a617-4304-814f-87874161868d.png)
+
+To merge these we go to the tab Pull Requests ![image](https://user-images.githubusercontent.com/42538229/137312419-1677328a-704c-448c-b7fe-9936756ec032.png)
+
+---
+
+11. Now click on the Update README.md
+![image](https://user-images.githubusercontent.com/42538229/137312503-585a82f5-9929-48fc-871f-7953db04c90e.png)
+
+
+Here you'll find 4 Tabs.<br>
+- Conversations --> Here you can discuss with other colaborators about this pull request (PR) and give comments.
+- Commits --> Check what was changed in the file and by whom. (if you click the blue numbers you can see what was changed in each update)
+- Checks --> This is an advanced option, where an costum script can be used to check PR's. 
+- Files changed --> Here you can easily see what is changed in the files. (Red and - is removed / Green and + is added)
+
+A pull request can also be initiated by other members in a shared repository. <br>
+If you agree with the changes in this PR, you can merge the pull request. <br>
+_For more information about the merging of pull request check: [Information Pull Requests](https://docs.github.com/en/github/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/about-pull-request-merges)
+
+---
+
+12. In the Conversation Tab click the Merge and pull request button and press the green button again.
+
+--- 
+
+Now you can see that both branches are now the same.<br>
+With these branches you can work on your repository without changing the main branch.<br>
+Multiple branches can exist at the same time. 
