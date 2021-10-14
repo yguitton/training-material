@@ -153,7 +153,7 @@ Here you'll find 4 Tabs.<br>
 
 A pull request can also be initiated by other members in a shared repository. <br>
 If you agree with the changes in this PR, you can merge the pull request. <br>
-_For more information about the merging of pull request check: [Information Pull Requests](https://docs.github.com/en/github/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/about-pull-request-merges)
+_For more information about the merging of pull request check:_ [Information Pull Requests](https://docs.github.com/en/github/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/about-pull-request-merges)
 
 ---
 
