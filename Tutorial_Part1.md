@@ -163,4 +163,8 @@ _For more information about the merging of pull request check: [Information Pull
 
 Now you can see that both branches are now the same.<br>
 With these branches you can work on your repository without changing the main branch.<br>
-Multiple branches can exist at the same time. 
+Multiple branches can exist at the same time.<br>
+By clicking the branch icon you can see an overview of all branches and are able to remove them as well.
+
+
+Now we want to upload a workflow we've made in a new folder. 
