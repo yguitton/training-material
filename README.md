@@ -29,4 +29,5 @@ Now we can see that our senteance isn't separated by an enter.
 So we're going to change the file again!
 
 6. To change this we can add an extra enter, so line 3 becomes an empty line or we can place a <'br> (without ') at the end of the senteance. <br>
-For now we will use the extra enter on line 3
+*For now we will use the extra enter on line 3*
+7.
