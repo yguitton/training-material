@@ -3,7 +3,7 @@
 1. First go to [Github.com](https://github.com) and sign up for GitHub or sign in if you already have an account.
 2. Click on the (![New_Repository](https://user-images.githubusercontent.com/42538229/137142260-0070134d-99f3-4ab9-a5df-3a3d799abeca.png)
  in the repository menu in the top left. 
-3.	Now Create the repository by using the following settings:
+3.	Create the repository by using the following settings:
    * Repository name = Github_Tutorial_Beginner
    * Description = Github tutorial for working with github for the first time.
    * Set to Private (so it is only viewable for you, this is changed later)
@@ -12,20 +12,20 @@
 
 ---
 
-Now your almost empty repository is made. The only information inside is the README.md file. This file contains the main information about your study/review/game/tool/or whatever you want in your github. Now it looks something like this:<br>
+Your almost empty repository is made. The only information inside is the README.md file. This file contains the main information about your study/review/game/tool/or whatever you want in your github. Now it looks something like this:<br>
 ![Preview_Empty-Repository](https://user-images.githubusercontent.com/42538229/137144572-0ea43459-897c-4beb-a271-67d9ee80582f.png)
 
 ---
 
-4. Now click on the :pencil2: icon to add the README file.
+4. Click on the :pencil2: icon to add the README file.
 5. To line 3 add the following: Whoohoo, I'm working in Github for the first time! :grin: <br>
 At the bottom in the Commit changes section add the discription: Added my first line! <br>
-Now use the Commit changes to change the file.
+Use the Commit changes to change the file.
 
 >These descriptions can help to remember what you've done at a later stage.<br>
 ---
 
-Now we can see that our senteance isn't separated by an enter.
+We can see that our senteance isn't separated by an enter.<br>
 ![image](https://user-images.githubusercontent.com/42538229/137146991-808769f3-808f-479d-b21e-59aae2fbdf39.png)
 So we're going to change the file again!
 
@@ -36,7 +36,7 @@ So we're going to change the file again!
 
 ---
 
-Now we're going to check out some of the Markdown syntax. <br> 
+We're going to check out some of the Markdown syntax. <br> 
 Markdown is a language that can be converted into for example HTML, but is a lot easier to write and read. <br>
 The markdown syntax is easy to use and you can find a lot of cheatsheets of it online like this:
 [Cheat Sheet](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
