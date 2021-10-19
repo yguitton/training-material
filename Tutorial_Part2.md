@@ -25,7 +25,7 @@ Then you'll get something like this:<br>
 ![image](https://user-images.githubusercontent.com/42538229/137859398-9fbe45ae-9f5e-4749-844d-396ca6ea8aec.png)
 
 Now you'll have to do the same thing, without the picture, to get something like this:<br> 
-![image](https://user-images.githubusercontent.com/42538229/137862606-9d4e4453-55f4-432e-94ee-91c6036b1a26.png)
+![image](https://user-images.githubusercontent.com/42538229/137875081-a74a49c0-e161-49d0-89f9-41568cec5050.png)
 
 4. Now add the new folder + README + python script (make sure you can make the script public) and add it all to a new branch.<br>
 In the README in the python folder, use the python code syntax to add your python code to the README file.<br>
