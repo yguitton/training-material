@@ -28,6 +28,7 @@ Now you'll have to do the same thing, without the picture, to get something like
 ![image](https://user-images.githubusercontent.com/42538229/137862606-9d4e4453-55f4-432e-94ee-91c6036b1a26.png)
 
 4. Now add the new folder + README + python script (make sure you can make the script public) and add it all to a new branch.<br>
+In the README in the python folder, use the python code syntax to add your python code to the README file.<br>
 Only when finished with the whole folder, use the pull request to merge them. 
 
 5. Add the link to the python_scripts folder to the main README file. (use: ./python_scripts)
