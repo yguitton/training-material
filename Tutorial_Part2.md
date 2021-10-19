@@ -1,7 +1,7 @@
 # Welcome to Part 2 of the tutorial!! 
 
 Now we start by adding 2 headers in the README file, so it's clear what was in the first and second tutorial.
-1. Add 2 /## headers with Part1 and Part2. 
+1. Add 2 ## headers with Part1 and Part2. 
 
 Next, we're adding a new folder with it's own README file, which will include a galaxy workflow (file + picture)<br>
 For this you can use your own made galaxy workflow + screenshot or you can use the one from the example
