@@ -170,4 +170,4 @@ By clicking the branch icon you can see an overview of all branches and are able
 
 
 
-## Now we continue with [PART 2](./Tutorial_Part2.md)
+## And continue with [PART 2](./Tutorial_Part2.md)
