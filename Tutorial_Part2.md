@@ -16,13 +16,20 @@ For this you can use your own made galaxy workflow + screenshot or you can use t
             - Add the file link under the explanation<br>
             - Add the picture underneath and make sure it is shown in the README file<br>
             - Now commit<br>
-
-> _HINT: You can also link to the files in the example folder of this repository, so you don't have to download anything_
+            - Now add the file to the folder
 
 Then you'll get something like this:<br>
 ![image](https://user-images.githubusercontent.com/42538229/137340643-be4fb3f6-8fcd-472a-ade5-418e6132a85e.png)
 
-3. Now create a link to the workflow folder in the main README file, using: ./Workflows as link.
+3. Now create a link to the workflow folder in the main README file, using: ./Workflows as link.<br>
 ![image](https://user-images.githubusercontent.com/42538229/137859398-9fbe45ae-9f5e-4749-844d-396ca6ea8aec.png)
 
-Now we are doing almost the same with a python script. 
+Now you'll have to do the same thing, without the picture, to get something like this:<br> 
+![image](https://user-images.githubusercontent.com/42538229/137862606-9d4e4453-55f4-432e-94ee-91c6036b1a26.png)
+
+4. Now add the new folder + README + python script (make sure you can make the script public) and add it all to a new branch.<br>
+Only when finished with the whole folder, use the pull request to merge them. 
+
+5. Add the link to the python_scripts folder to the main README file. (use: ./python_scripts)
+
+By using ./python_scripts you are softcoding the link. By doing this someone else can also copy your repository, with working links connecting to their repository. If you hardcode it your links will connect you to the original repository.
