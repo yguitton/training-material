@@ -166,6 +166,8 @@ With these branches you can work on your repository without changing the main br
 Multiple branches can exist at the same time.<br>
 By clicking the branch icon you can see an overview of all branches and are able to remove them as well.
 
-### Now we take a 10 minute break.
+### Let's take a 10 minute break.
+
+
 
 ## Now we continue with [PART 2](./Tutorial_Part2.md)
