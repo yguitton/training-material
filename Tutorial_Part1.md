@@ -168,4 +168,4 @@ By clicking the branch icon you can see an overview of all branches and are able
 
 ### Now we take a 10 minute break.
 
-## Now we continue with [tutorial Part 2](!
+## Now we continue with [PART 2](../Tutorial_Part2.md)
