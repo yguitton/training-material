@@ -37,4 +37,6 @@ By using ./python_scripts you are softcoding the link. By doing this someone els
 
 --- 
 
-Finally we're going
+Finally we're going to check the history/commits to our repository. 
+
+6. By clicking the ![image](https://user-images.githubusercontent.com/42538229/137876400-908ccb4c-6b0f-461e-b939-24702cdccc05.png) icon 
