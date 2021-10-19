@@ -32,4 +32,4 @@ Only when finished with the whole folder, use the pull request to merge them.
 
 5. Add the link to the python_scripts folder to the main README file. (use: ./python_scripts)
 
-By using ./python_scripts you are softcoding the link. By doing this someone else can also copy your repository, with working links connecting to their repository. If you hardcode it your links will connect you to the original repository.
+By using ./python_scripts you are softcoding the link. By doing this someone else can also copy your repository, with working links connecting to their copied repository. If you hardcode it your links will connect you to the original repository.
