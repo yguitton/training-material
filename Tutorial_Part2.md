@@ -41,3 +41,5 @@ Finally we're going to check the history/commits to our repository.
 
 6. By clicking the ![image](https://user-images.githubusercontent.com/42538229/137876400-908ccb4c-6b0f-461e-b939-24702cdccc05.png) or ![image](https://user-images.githubusercontent.com/42538229/137876517-c841cd6e-4f34-4529-bce8-4a88f8a672fc.png) icon you can see each modification of your repository/folder/file.<br>
 This can be very helpful to see what other people contributed to the repository or to seek errors in code or tools. 
+
+Now you should know enough to create your own repository and do the general modification in github. 
