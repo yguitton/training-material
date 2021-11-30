@@ -10,8 +10,8 @@ VCS is a source-code editor made by Microsoft and can run on Windos, Linux and m
 ### Contents
 
 - Installations
-- Overview of VCS
 - Extensions
+- Overview
 - Creating a github
 - forking, pulling, clone and commiting
 - Creating Python codes
@@ -25,6 +25,30 @@ Like the most softwares, can it be easily installed by using internet. click [he
 ![image](LINK NOG TOEVOEGEN!)
 <br>
 
+
+
+
+### Extensions
+
+Before we start we a total tutorial about how VCS works. Lets install a few extensions.
+Extensions are little software packages who can install new features of make some quality of life changes.
+
+The extension button is located on the left bar with the following button ![image](LINK NOG TOEVOEGEN!). 
+
+Search for the following extensions
+- Github Pull Requests and Issues
+- Github Repositories
+- Python
+
+![image](Foto dingen installeren!)
+
+There are many more extensions out there so dont be scared to go some shopping for features you would look handy.
+For example there are also features which makes writing in markdown easier or even spellcheck it for you.
+
 ### Overview of VCS
 
-Visual code study contains alot of awesome features but can be quite overwhelming in the start. 
+Visual code study contains alot of awesome features but can be quite overwhelming in the start. Luckly we already installed some extensions for quality of life.
+But now is the real work.
+
+
+
