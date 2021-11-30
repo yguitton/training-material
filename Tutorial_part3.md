@@ -1,4 +1,4 @@
-## Welcome to part 3 of the tutorial
+# Welcome to part 3 of the tutorial
 
 <br>
 
@@ -7,7 +7,7 @@ everybody likes some quality of life to make work a little better. For working w
 
 VCS is a source-code editor made by Microsoft and can run on Windos, Linux and macOS. It features debugging, syntax highlighting, snippets, coderefractoring and is even embedded in git. Thereby are there alot of extensions available online to customise VCS to your needs. In this tutorial the installation to creating and using git will be explained.
 
-### Contents
+# Contents
 
 - Installations
 - Extensions
@@ -18,7 +18,7 @@ VCS is a source-code editor made by Microsoft and can run on Windos, Linux and m
 
 
 
-### Installation
+## Installation
 
 Like the most softwares, can it be easily installed by using internet. click [here](https://code.visualstudio.com/) for a link to download VCS.
 
@@ -43,9 +43,9 @@ Search for the following extensions
 ![image](Foto dingen installeren!)
 
 There are many more extensions out there so dont be scared to go some shopping for features you would look handy.
-For example there are also features which makes writing in markdown easier or even spellcheck it for you.
+For example there are also features which makes writing in markdown easier or even spellcheck it for you.<br><br><br>
 
-### Overview of VCS
+## Overview of VCS
 
 Visual code study contains alot of awesome features but can be quite overwhelming in the start. Luckly we already installed some extensions for quality of life.
 But now is the real work.
@@ -63,7 +63,19 @@ But now is the real work.
 
 On the top bar of VCS are various functions. Files to generate files. Edit to easily edits files. It also possible to openup an terminal and run various codes
 
-but enough talking, lets get into some action
+On the bottom of the windo is the workspace and branch you are working in.
+![image](Foto van onderste balk!)
 
-## Creating a github repository
 
+but enough talking, lets get into some action<br><br><br>
+
+
+
+## Getting access to a github repository
+
+Remember the repository you made. lets open it up.
+click on the green box in the left under box. ![image](Foto van onderste balk, knopje die groen is!)
+
+This will open a small terminal above and click on "open remote repository". In this window you fill in the URL of the github repository you created earlier.
+
+When you have imported multiple github repositories. you can click on the left Remote explorer button to find previous repositories and open them to 
