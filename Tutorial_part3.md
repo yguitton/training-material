@@ -10,11 +10,21 @@ VCS is a source-code editor made by Microsoft and can run on Windos, Linux and m
 ### Contents
 
 - Installations
+- Overview of VCS
 - Extensions
 - Creating a github
 - forking, pulling, clone and commiting
+- Creating Python codes
+
 
 
 ### Installation
 
 Like the most softwares, can it be easily installed by using internet. click [here](https://code.visualstudio.com/) for a link to download VCS.
+
+![image](LINK NOG TOEVOEGEN!)
+<br>
+
+### Overview of VCS
+
+Visual code study contains alot of awesome features but can be quite overwhelming in the start. 
