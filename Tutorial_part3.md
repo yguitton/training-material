@@ -131,7 +131,7 @@ Remember to give the pull request a meaningfull name (fixing typo's in github_tu
 ![image](images/pull_request.png)
 
 
-## reviewing a pull request
+## Reviewing a pull request
 So you have created your first pull request. but that doesnt mean that all changes are directly onto the main branch. Commonly do other Github maintainers of the page review your new branch. Even in VCS can you get an message that someone created a pull request for an Github repository you own or are admin of.<br> This can be incredible usefull when working together on a group project.
 
 You can find these in the Github tab and gives the following overview.
