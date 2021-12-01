@@ -12,7 +12,7 @@ VCS is a source-code editor made by Microsoft and can run on Windos, Linux and m
 - Installations
 - Extensions
 - Overview
-- Creating a github
+- accesing a github
 - forking, pulling, clone and commiting
 - Creating Python codes
 
@@ -84,8 +84,14 @@ This will open a small terminal above and click on "open remote repository".
 ![image](images/open_repository_2.png)
 
 
-Every time you have added a github repository. you dont have to search the url again. when clicking the remote repository you will find a overview off all repository you have worked in. you also see if you need to update a repository locally in VCS. 
+Every time you have added a github repository. you dont have to search the url again. when clicking the remote repository you will find a overview off all repository you have worked in. you also see if you need to update a repository locally in VCS. In this is it also possible to look up pull requests and access pulled repositories. When you have done this. is it possible to view and edit all files in the explorer tab.
 
 ![image](images/all_repositories.png)
 
 
+## Challange
+
+Fork the ATGM-github repository of this tutorial. <br> 
+````
+https://github.com/Avans-ATGM/Github_Tutorial
+````
