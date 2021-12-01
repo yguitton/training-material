@@ -12,4 +12,4 @@ Show how to see all edits in your github repository.
 
 ### 1. Go to the Tutorial Part1: [Tutorial Part1](./Tutorial_Part1.md)
 ### 2. Go to the Tutorial Part2: [Tutorial Part2](./Tutorial_Part2.md)
-### 2. Go to the Tutorial Part3: [Tutorial Part3](./Tutorial_Part3.md)
+### 3. Go to the Tutorial Part3: [Tutorial Part3](./Tutorial_Part3.md)
