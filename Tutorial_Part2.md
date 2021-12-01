@@ -43,3 +43,6 @@ Finally we're going to check the history/commits to our repository.
 This can be very helpful to see what other people contributed to the repository or to seek errors in code or tools. 
 
 Now you should know enough to create your own repository and do the general modification in github. 
+
+### Go to the Tutorial Part3: [Tutorial Part3](./Tutorial_Part3.md)
+
