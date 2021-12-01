@@ -1,74 +1,76 @@
 # Welcome to part 3 of the tutorial
 
 <br>
-
-### Introduction
-everybody likes some quality of life to make work a little better. For working with Github alot is the internet webpage not optimal. Luckly are there various tools to help us, one of these tools is Visual Code Studio (VCS).
-
-VCS is a source-code editor made by Microsoft and can run on Windos, Linux and macOS. It features debugging, syntax highlighting, snippets, coderefractoring and is even embedded in git. Thereby are there alot of extensions available online to customise VCS to your needs. In this tutorial the installation to creating and using git will be explained.
+Everybody likes some quality of life to make work a little better. <br>For working with Github alot, is the internet webpage not optimal.<br> Luckly are there various tools to help us, one of these tools is Visual Code Studio (VCS).
+<br><br>
+VCS is a source-code editor made by Microsoft and can run on Windos, Linux and macOS. It features debugging, syntax highlighting, snippets, codere fractoring and is even embedded in git. <br>Thereby are there alot of extensions available online to customise VCS to your needs.<br> In this tutorial the installation to creating and using git will be explained.<br> It is also possible to run various commands in the terminal or even python scripts.<br><br>
 
 # Contents
 
 - Installations
 - Extensions
 - Overview
-- accesing a github
-- forking, pulling, clone and commiting
-- Creating Python codes
+- Accesing a github
+- Making branches and adjust codes
+- Pull requests
+- Reviewing
+- Final note
 
-
+<br><br>
 
 ## Installation
 
-Like the most softwares, can it be easily installed by using internet. click [here](https://code.visualstudio.com/) for a link to download VCS.
+Like the most programs, can it be easily installed by using internet.<br> click [here](https://code.visualstudio.com/) for a link to download VCS. <br>
+Complete the installation by using default settings.
 
 ![image](images/Download.png)
 
-<br>
+<br><br><br>
 
 
 
 
-### Extensions
+## Extensions
 
-Before we start we a total tutorial about how VCS works. Lets install a few extensions.
-Extensions are little software packages who can install new features of make some quality of life changes.
+Before we start the whole tutorial lets hook you up with some upgrades, lets install a few extensions.<br>
+Extensions are little software packages who can install new features of make some quality of life changes.<br>
 
-The extension button is located on the left bar with the following button ![image](images/Extension.png). 
+This can be an Interprentor for a piece of code (R, C++, python, Java), a proofreader or an extension who makes markdown easier for you. <br> It is worth it to look online which are avaialble and suit your needs.<br>
 
-Search for the following extensions
-- Github Pull Requests and Issues
-- Github Repositories
-- Python
+Search for the following extensions by clicking on the extension button in the left bar. ![image](images/Extension.png)
+- Github Pull Requests and Issues.
+- Github Repositories.
+- Python.
 
 ![image](images/install_extension.png)
-
-There are many more extensions out there so dont be scared to go some shopping for features you would look handy.
-For example there are also features which makes writing in markdown easier or even spellcheck it for you.<br><br><br>
+<br>
+<br>
 
 ## Overview of VCS
 
-Visual code study contains alot of awesome features but can be quite overwhelming in the start. Luckly we already installed some extensions for quality of life.
-But now is the real work.
+VCS contains alot of awesome features but can be quite overwhelming in the start.<br> Luckly we already installed some extensions for quality of life.<br>
+The following gives a small overview of all functions of the tabs in VCS.<br>
+
+
+- Explorer. In this  tab are all files of the current github repository.<br> This is currently still empty. but not for long!
+- Search, a search function for in your github repository.
+- Source controll, if you edited and saved a file from a github, is here your change to make an pull request or to commit it directly.<br>
+- Run and debug, is for running files, for example "hello_world.py".
+- Extensions, a place where you can go shopping for new plugins.
+- Remote exporer, an overview of previous githubs where you have been.
+- Github, here is the real magic. Every github repository you own or are admin for will notification be sended to this tab. when a person makes a pull request, issue, review etc. you will get an automated message here. With this you can easily keep an eye on all your (team)projects.
 
 ![image](images/layout.png)
 
-- Explorer. In this  tab are all files of the current github repository. This is currently still empty. but not for long!
-- Search, a search function for in your github repository
-- Source controll. If you edited and saved a file from a github, is here your change to make an pull request or to commit it directly
-.<br> pull request = sending the owner a nice message about what you would like to change
-- run and debug, is for running files, for exammple hello_world.py
-- extensions, a place where you can go shopping for new plugins
-- Remote exporer. an overview of previous githubs where you have been
-- github, here is the real magic. Every github repository you own or are admin for will be sended to this. when a person makes a pull or fork request you will get an automated message here. 
+On the top bar of VCS are various functions.<br>
+Files to generate files. Edit to easily edits files.<br>
+It also possible to openup a terminal and run various codes.
 
-On the top bar of VCS are various functions. Files to generate files. Edit to easily edits files. It also possible to openup an terminal and run various codes
-
-On the bottom of the windo is the workspace and branch you are working in.
+On the bottom of the window is the workspace and branch you are working in.
 ![image](images/onderste_balk.png)
 
 
-but enough talking, lets get into some action<br><br><br>
+But enough talking, lets get into some action!<br><br><br>
 
 
 
