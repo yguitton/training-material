@@ -89,9 +89,35 @@ Every time you have added a github repository. you dont have to search the url a
 ![image](images/all_repositories.png)
 
 
-## Challange
+## excersices
 
-Fork the ATGM-github repository of this tutorial. <br> 
+- open the repository of this github tutorial
 ````
 https://github.com/Avans-ATGM/Github_Tutorial
 ````
+- Create a new branch to work in and give it a usefull name.<br>
+A new branch can be opend by clicking on this button below ![image](images/branch_button.png) <br> and click on ``` + Create new branch ``` <br>
+since we are testing, lets call it 
+````
+test_[your_username]
+````
+
+So now we have a copy from the mainbranch. in this we can code and give adjustment. <br> After we edited or created some new files we can merge it back into main by creating a pull request
+<br>
+In the Examples directory is the file "Nucleotide_Counter.py"  lets improve that one.
+
+Here we see a for loop to count all the nucleotides. Since we are pretty good Python coders we can improve it. ![image](images/nucleotide_counter.py.png)
+
+Lets make it a dictionary loop to reduce the number of lines.<br> It should look like something like this.
+
+![image](images/Nucleotide_counter_edited.png)
+
+Safe all your work by clicking on file and then safe, or close the window and a message will pop up
+## pull request
+
+We have edited the pythoncode to be more efficient and lesses lines. 
+Lets make a pull request to merge it back to the main branch.
+
+- Go to Source controll and click on the top bar on create pull request. <br> 
+When you click on your files you get a neat overview about your edits. <br>
+The person who will be checking your pull request will also be able to view this (and he should since you are making edits to the main branch).
