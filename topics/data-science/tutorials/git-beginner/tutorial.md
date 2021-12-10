@@ -175,6 +175,17 @@ The markdown syntax is easy to use and you can [find a lot of cheatsheets of it 
 > {: .code-out}
 {: .code-2col}
 
+> > ### {% icon code-in %} Input: Markdown
+> > ```
+> > ![A textual description of the image, in case the image does not load](../../images/github/new-repo.png)
+> > ```
+> {: .code-in}
+>
+> > ### {% icon code-out %} Rendered
+> > ![A duplicate of the new repository button screenshot from earlier](../../images/github/new-repo.png)
+> {: .code-out}
+{: .code-2col}
+
 ## Editing a File
 
 > ### {% icon hands_on %} Editing a File
@@ -204,14 +215,17 @@ We can see that our senteance isn't separated by a newline, this is because Mark
 
 Then it looks correct! You can see the space between the two lines in your Readme file.
 
+## Creating a Pull Request
+
+Let's add a syntax table to our readme to help us remember the various formats that are available to us. And instead of committing directly to the `main` branch, we'll create something called a *Pull Request*.
+
+> ### {% icon tip %} What is a Pull Request?
+> There are multiple ways to collaborate with Git: by committing directly to the repository (the 'shared repository model') or creating pull requests to request your changes be included (the 'fork and pull model') which are [documented in GitHub's Help pages.](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models)
+> A Pull Request is a way for you to ask the owner of a repository to integrate your suggested changes. They can review your suggestions and choose whether or not to *merge* the suggested changes into their repository.
+> You can read more about [Pull Requests on GitHub's Help.](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+{: .tip}
+
 > ### {% icon hands_on %} Creating a Pull Request
-> Let's add a syntax table to our readme to help us remember the various formats that are available to us. And instead of committing directly to the `main` branch, we'll create something called a *Pull Request*.
->
-> > ### {% icon tip %} What is a Pull Request?
-> > There are multiple ways to collaborate with Git: by committing directly to the repository (the 'shared repository model') or creating pull requests to request your changes be included (the 'fork and pull model') which are [documented in GitHub's Help pages.](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models)
-> > A Pull Request is a way for you to ask the owner of a repository to integrate your suggested changes. They can review your suggestions and choose whether or not to *merge* the suggested changes into their repository.
-> > You can read more about [Pull Requests on GitHub's Help.](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-> {: .tip}
 >
 > 1. Edit the readme again
 > 2. Add the following content to the end of your readme.
@@ -299,27 +313,48 @@ By clicking the branch icon you can see an overview of all branches and are able
 
 ## Adding Images
 
+Next, we'll add a new folder with it's own README file, which will include an image of a Galaxy Workflow.
 
-Now we start by adding 2 headers in the README file, so it's clear what was in the first and second tutorial.
-1. Add 2 ## headers with Part1 and Part2.
+> ### {% icon hands_on %} Creating a Folder
+>
+> Git does not actually know what a folder is, it only knows about files. If you have an empty folder in git, it will forget it exists. Conversely that means we also don't need to create a folder, we can simply create a file in a directory, and the directory will appear.
+>
+> First we are going to make the the new folder and README.md file
+>
+> 1. Download these two files: [the workflow](./Examples/my-workflow.ga) and [the image](./Examples/my-workflow.png), you will need them shortly.
+> 1. Click on the "Add file" button at the top right of the repository and select "Create new file"
+>     - After the Github_Tutorial_Beginner/ in the *"Name Your File"* area, write `Workflows/README.md`
+>     - This will add the folder Workflows and the file README at once.
+>     - In this file:
+>         - Start with a header
+>         - Write an explanation what is in the folder
+>         - Drag and drop both files that you downloaded, onto the editor.
+>         - **Commit this**
+>
+>    > ### {% icon solution %} Solution
+>    > Your new `README.md` file should look something like this:
+>    > ```
+>    > # Overview of all workflows
+>    >
+>    > Here all workflows are shown with a preview per workflow
+>    >
+>    > [Here is my workflow](my-workflow.ga), it's super cool and definitely the best assembly workflow ever.
+>    >
+>    > ![Screenshot](my-workflow.png)
+>    > ```
+>    {: .solution}
+>
+>
+{: .hands_on}
 
-Next, we're adding a new folder with it's own README file, which will include a galaxy workflow (file + picture)
-For this you can use your own made galaxy workflow + screenshot or you can use the one from the example
-
-2. First we are going to make the the new folder and README.md file
-    - Click on the "Add file" and select "Create new file"
-    - After the Github_Tutorial/ add: `Workflows/README.md`
-    - (This will add the folder Workflows and the file README at once)
-    - In this file:
-            - Start with a header
-            - Write an explanation what is in the folder
-            - Add the file link under the explanation
-            - Add the picture underneath and make sure it is shown in the README file
-            - Now commit
-            - Now add the file to the folder
+<!--
+> 2. After you've committed, you will be in the `Workflows` folder that you created.
+>     - Download these two files: [the workflow](./Examples/my-workflow.ga) and [the image](./Examples/my-workflow.png)
+>     - And upload those to that folder using the **Add File** menu.
 
 Then you'll get something like this:
 ![image](https://user-images.githubusercontent.com/42538229/137340643-be4fb3f6-8fcd-472a-ade5-418e6132a85e.png)
+-->
 
 3. Now create a link to the workflow folder in the main README file, using: ./Workflows as link.
 ![image](https://user-images.githubusercontent.com/42538229/137859398-9fbe45ae-9f5e-4749-844d-396ca6ea8aec.png)
