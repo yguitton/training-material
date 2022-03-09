@@ -83,7 +83,13 @@ jobs:
       - name: Build Videos
         run: |
           npm list
+          # I don't know what's going wrong
+          rm -rf $(npm bin)/decktape
+          rm -rf $(npm bin)/../decktape
+          npm i decktape@3.2.0
+          # REMOVE THIS LATER
           sed -i "s|page.waitForNavigation({ waitUntil: 'load', timeout: 20000 });|page.waitForNavigation({ waitUntil: 'load', timeout: 60000 });|" $(npm bin)/decktape
+          # This one's ok tho
           xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" bundle exec bash bin/ari-make.sh
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_POLLY_ACCESS_KEY_ID }}
