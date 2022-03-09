@@ -40,9 +40,6 @@ jobs:
             vendor/bundle
             ~/.npm
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}-node-
-            ${{ runner.os }}-gems-
       - name: Install dependencies
         run: |
           gem install bundler
