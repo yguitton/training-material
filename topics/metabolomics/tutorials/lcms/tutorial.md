@@ -141,7 +141,7 @@ This first step is only meant to read your `mzXML` file and generate an object u
 
 > ### {% icon hands_on %} Hands-on: MSnbase readMSData
 >
-> 1. **MSnbase readMSData** {% icon tool %} with the following parameters:
+> 1. {% tool [MSnbase readMSData](toolshed.g2.bx.psu.edu/repos/lecorguille/msnbase_readmsdata/msnbase_readmsdata/2.16.1) %} with the following parameters:
 >    - *"File(s) from your history containing your chromatograms"*: the `sacurine` dataset collection
 >
 >    {% snippet faqs/galaxy/tools_select_collection.md %}
