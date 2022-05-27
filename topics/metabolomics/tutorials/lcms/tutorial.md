@@ -141,7 +141,7 @@ This first step is only meant to read your `mzXML` file and generate an object u
 
 > ### {% icon hands_on %} Hands-on: MSnbase readMSData
 >
-> 1. **MSnbase readMSData** {% icon tool %} with the following parameters:
+> 1. {% tool [MSnbase readMSData](toolshed.g2.bx.psu.edu/repos/lecorguille/msnbase_readmsdata/msnbase_readmsdata/2.16.1+galaxy0) %} with the following parameters:
 >    - *"File(s) from your history containing your chromatograms"*: the `sacurine` dataset collection
 >
 >    {% snippet faqs/galaxy/tools_select_collection.md %}
@@ -198,7 +198,7 @@ Note that you can either:
 >
 > > ### {% icon hands_on %} Hands-on: xcms get a sampleMetadata file
 > >
-> > 1. **xcms get a sampleMetadata file** {% icon tool %} with the following parameters:
+> > 1. {% tool [xcms get a sampleMetadata file](toolshed.g2.bx.psu.edu/repos/lecorguille/xcms_export_samplemetadata/xcms_export_samplemetadata/3.12.0+galaxy0) %} with the following parameters:
 > >    - {% icon param-collection %} *"RData file"*: the `sacurine.raw.RData` collection output from **MSnbase readMSData** {% icon tool %}
 > >
 > {: .hands_on}
@@ -349,7 +349,7 @@ Note that you can also check the chromatograms at any moment during the workflow
 
 > ### {% icon hands_on %} Hands-on: xcms plot chromatogram
 >
-> 1. **xcms plot chromatogram** {% icon tool %} with the following parameters:
+> 1. {% tool [xcms plot chromatogram](toolshed.g2.bx.psu.edu/repos/lecorguille/xcms_plot_chromatogram/xcms_plot_chromatogram/3.12.0+galaxy0) %} with the following parameters:
 >    - *"RData file"*: `sacurine.raw.RData` (collection)
 >    - *"Sample metadata file"*: `sampleMetadata_completed.tsv` you uploaded previously
 >
