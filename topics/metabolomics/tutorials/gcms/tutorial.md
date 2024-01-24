@@ -24,11 +24,12 @@ requirements :
       - lcms
 contributors : 
     - jsaintvanne
+    - yguitton
 
 --- 
 
 
-A lot of packages are available for the analysis of GC-MS or LC-MS data. Typically, hardware vendors provide software that is optimized for the instrument and allow a direct interaction of the lab scientist with the data. Some other open-source alternatives such as **XCMS** are also able to be integrated easily in web interfaces, allowing large numbers of files to be processed simultaneously. Because of the generality of packages like **XCMS**, several other packages have been developed to use the functionality of **XCMS** for optimal performance in a particular context. Package **metaMS** does so for the field of untargeted metabolomics, focuses on the GC-MS analysis during this tutorial. One of the goals **metaMS** was to set up a simple system with few user-settable parameters, capable of handling the vast majority of untargeted metabolomics experiments. 
+A lot of packages are available for the analysis of GC-MS or LC-MS data. Typically, hardware vendors provide software that is optimized for the instrument and allow a direct interaction of the lab scientist with the data. Some other open-source alternatives such as **XCMS** ({% cite Smith2006 %})are also able to be integrated easily in web interfaces, allowing large numbers of files to be processed simultaneously. Because of the generality of packages like **XCMS**, several other packages have been developed to use the functionality of **XCMS** for optimal performance in a particular context. Package **metaMS** ({% cite Wehrens2014 %})does so for the field of untargeted metabolomics, focuses on the GC-MS analysis during this tutorial. One of the goals **metaMS** was to set up a simple system with few user-settable parameters, capable of handling the vast majority of untargeted metabolomics experiments. 
 
 During this tutorial, we will learn how to process easily a test dataset from raw files to the annotation using W4M Galaxy. Datas are from {% cite Dittami2012 %} and have been used as test dataset for the development of the Galaxy wrappers. 
 
@@ -57,7 +58,7 @@ This software is based on different algorithms that have been published, and is 
 **MSnbase readMSData** {% icon tool %} function, prior to **XCMS**, is able to read files with open format as `mzXML`, `mzML`, `mzData` and `netCDF`, which are independent of the constructors' formats. The **XCMS** package itself is composed of R functions able to extract, filter, align and fill gap, with the possibility to annotate isotopes, adducts and fragments (using the R package CAMERA, {% cite CAMERA %}). This set of functions gives modularity, and thus is particularly well adapted to define workflows, one of the key points of Galaxy.
 {: .text-justify}
 
-First step of this tutorial is to download the data test. As describe in the introduction, we will use datas from {% cite Dittami2012 %}. We will only process on a subset of their data. 
+First step of this tutorial is to download the GC-MS data test. As describe in the introduction, we will use datas from {% cite Dittami2012 %}. We will only process on a subset of their data. 
 So, you can **import your files directly in Galaxy from Zenodo (see hands-on below)** or download files into your computer using the following link then upload them on Galaxy: 
 {: .text-justify}
 
@@ -66,8 +67,8 @@ So, you can **import your files directly in Galaxy from Zenodo (see hands-on bel
 
 Then, to be able to pre-process our GC-MS data, we need to **start with the peakpicking of MS data**. 
 One Galaxy Training material already explains how to act with MS data. We encourage you to **follow this link and complete the corresponding tutorial**: [Mass spectrometry: LC-MS preprocessing with XCMS]({% link topics/metabolomics/tutorials/lcms-preprocessing/tutorial.md %}). 
-For GC-MS analysis you **don't really need to follow all of this previous tutorial** but for a better understanding of your data, it is recommanded to try it with their test dataset.
-Concerning the current GC-MS tutorial, you **just have to compute the following steps and specific parameters** described in the hands-on part below (please follow parameters values to have the same results during the training).
+For GC-MS analysis you **don't really need to follow all of this previous tutorial** but for a better understanding of your data, it is recommanded to try it with their respectives test dataset.
+Concerning the current GC-MS tutorial, you **just have to compute the following steps with the specified parameters** described in the hands-on part below (please during the training keep the parameters values, this will guarantee the reproducibility of the results).
 {: .text-justify}
 
 ## 1 - Import the data into Galaxy 
@@ -101,7 +102,7 @@ Concerning the current GC-MS tutorial, you **just have to compute the following 
 >    {% snippet faqs/galaxy/collections_build_list.md %}
 >
 > 4. Import the following 2 files from Zenodo or from a shared data library (ask your instructor). 
-> Beware: these files must not be in a collection. 
+> Beware: these files must be added as regular files not as a collection. 
 >
 >    ```
 >    https://zenodo.org/record/3631074/files/sampleMetadata.tsv
@@ -202,14 +203,14 @@ The outputs of this strategy are similar to the ones discribed in the LC-MS tuto
 
 # Stopover : Verify your data after the XCMS pre-processing
 
-When you have processed **all or only needed** steps described before, you can continue with the MS/MS processing part with **msPurity** package. 
+When you have processed **all or only needed** steps described before, you can continue with the statistical processing part with other Galaxy modules available. 
 Don't forget to always check your files format! For the next step you need to have this file `xset.merged.groupChromPeaks.*.RData` where * is the name of **optionnal** steps you could do during the pre-processing. 
 For our example, your file should be named `xset.merged.groupchromPeaks.RData`. 
 {: .text-justify}
 
 > <comment-title></comment-title>
 > 
-> The pre-processing part of this analysis can be **quite time-consuming**, and already corresponds to quite a few number of steps, depending of your analysis. We highly recommend, at this step of the MS/MS workflow, to split your analysis by beginning a new Galaxy history with **only the files you need** (final xset Rdata file and your data collection of mzML). This will help you in limiting selecting the wrong dataset in further analysis, and bring a little **tidiness** for future review of your MS/MS analysis process. You should also be able to make a better peakpicking in the future in the same history and it will not be polluated by MS/MS part of your process.
+> The pre-processing part of this analysis can be **quite time-consuming**, and already corresponds to quite a few number of steps, depending of your analysis. We highly recommend, at this step of the workflow, to split your analysis by beginning a new Galaxy history with **only the files you need** (final xset Rdata file and your data collection of mzML). This will help you in limiting selecting the wrong dataset in further analysis, and bring a little **tidiness** for future review of your  analysis process. You should also be able to make a better peakpicking in the future in the same history and it will not be polluated by unnecessary part of your process.
 > {: .text-justify}
 > 
 > > <tip-title>Copy dataset to a new history</tip-title>
@@ -230,10 +231,10 @@ For our example, your file should be named `xset.merged.groupchromPeaks.RData`.
 >
 {: .comment}
 
-Before the next step with msPurity package on MS/MS datas, here are some questions to be able to verify if your file is ready and if you have the same results as us. Please check these questions : 
+Before the next step with statistics, here are some questions to be able to verify if your file is ready and if you have the same results as us. Please check these questions : 
 {: .text-justify}
 
-> <question-title>before MS/MS steps</question-title>
+> <question-title>before statistics steps</question-title>
 > 
 >  **1** - What are the steps of XCMS you made before your final file ?
 > > <solution-title></solution-title>
