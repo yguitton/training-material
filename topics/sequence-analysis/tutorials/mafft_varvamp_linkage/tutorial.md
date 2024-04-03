@@ -24,18 +24,18 @@ requirements:
     type: "internal"
     topic_name: galaxy-interface
     tutorials:
-        - collections
+        - 
 contributors:
-- eliberg
+- elischberg
 - wm75
 tags:
 - virology
 ---
 
 
-For studying viruses it is necessary to have the option to sequence and reproduce the viral genomes in specific parts or as a whole. Multiple alignment sequencing makes it possible to search for relation of viral genomes in datasets of samples and helps to isolate single families. In order to multiply these related gene sequences, a new tool named VarVAMP, assists in designing primers for further sequencing, such as PCR or Next Generation Sequencing.
+For studying viruses it is necessary to have the option to sequence and reproduce the viral genomes in specific parts or as a whole. Multiple alignment sequencing makes it possible to search for relation of viral genomes in datasets of samples and helps to isolate single families. In order to multiply these related gene sequences, a new tool named VarVAMP, assists in designing primers with high reproducibilty for further sequencing, such as PCR or Next Generation Sequencing.
 
-This training shows the application and understanding of {the tools MAFFT, a multifunctional alignement tool for nucleic and amino acid sequences, and VarVAMP, a primer design tool for viruses with a broad functionality in terms of tool adjustements or different types of output generation. The combination of these two provides a automation of finding related virus sequences in data with producing fitting primers for amplification.
+This training shows the application and understanding of the tools MAFFT, a multifunctional alignment tool for nucleic and amino acid sequences, and VarVAMP, a primer design tool for viruses with a broad functionality in terms of tool adjustements or different types of output generation. The combination of these two provides a automation of finding related virus sequences in data with producing fitting primers for amplification. The data we use for this tutorial are Polio 1-3 genomes, provided by [Jonas Fuchs](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main). We'll control our soon designed primers with the primer schemes on this Website, to show the reproducibility of varvamp, as one of its strongest points.
 
 
 {% raw %} `{% cite Batut2018 %}`{% endraw %}.
@@ -94,7 +94,7 @@ Any analysis should get its own Galaxy history. So let's start by creating a new
 {: .comment}
 
 ## Hands-on Sections
-In the following part, we'll download our data which we want to analyze or upload your own virus genomes. Since we first want to make an alignment before we determine the primers, we need sequenced genomes in fasta format. Our sample data are a fasta file with Polio 1 virus genomes.
+In the following part, we'll download our data which we want to analyze or upload your own virus genomes. Since we first want to make an alignment before we determine the primers, we need sequenced genomes in fasta format. Our sample data is a fasta file with Polio 1 virus genomes.
 
 
 > <hands-on-title> Data Upload Part 1 </hands-on-title>
@@ -107,9 +107,9 @@ In the following part, we'll download our data which we want to analyze or uploa
 >
 >       The URLs for our example data are these:
 >
->       ```
+>       ``
 >       https://zenodo.org/
->       ```
+>       ``
 >
 >   2. Rename the datasets
 >   3. Check that the datatype is fasta
@@ -193,7 +193,7 @@ Now its your turn. Insert the parameter like in the following section.
 > <hands-on-title> Task description </hands-on-title>
 >
 > 1. {% tool [MAFFT](toolshed.g2.bx.psu.edu/repos/rnateam/mafft/rbc_mafft/7.508+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Sequences to align"*: `Polio1_genomes.fasta` (Input Polio 1 dataset)
+>    - {% icon param-file %} *"Sequences to align"*:Congratulations! `Polio1_genomes.fasta` (Input Polio 1 dataset)
 >    - *"Type of sequences"*: `auto-detect` or `Nucleic acids`
 >    - *"Configure gap costs"*: `Use default values`
 >    - *"MAFFT flavour"*: `FFT-NS-2 (fast, progressive method)`
@@ -313,11 +313,10 @@ In our case we want to create primers for quantitative Polymerase Chain Reaction
 > 1. {% tool [varVAMP](toolshed.g2.bx.psu.edu/repos/iuc/varvamp/varvamp/1.1.1+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Multiple alignment of viral sequences"*: `outputAlignment` (output of **MAFFT** {% icon tool %})
 >    - *"What kind of primers would you like to design? (varvamp mode)"*: `qPCR primers (qpcr)`
->        - *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify max ambiguous nts, estimate suitable threshold`
+>        - *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify values for both`
+>        - *"Threshold for consensus nucleotides*": `0.93`
 >        - *"Maximum number of ambiguous nucleotides per primer to be tolerated (default: 2)"*: `2`
 >        - *"Maximum number of ambiguous nucleotides per qPCR probe to be tolerated"*: `1`
->        - *"Top n qPCR amplicons to test"*: `50`
->        - *"Minimum free energy (kcal/mol/K) cutoff*: `-3`
 >
 {: .hands_on}
 
@@ -326,48 +325,71 @@ Now we got our first VarVAMP outputs and an idea, how the tool is working. Check
 
 > <comment-title> Output control </comment-title>
 >
-> Control your output files with the example files of the [VarVAMP-QPCR-output github page for Polio 1 virus](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_qpcr/polio1). There you can check, if you have created the same primers. Attention, the files are named differently.
+> Control your output files with the example files of the [VarVAMP-qPCR-output github page for Polio 1 virus](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_qpcr/polio1). There you can check, if you have created the same primers. Attention, the files are named differently. You can find the primers in the file "primers.tsv".
 {: .comment}
 
-For practicing further options, we'll create Polio 1 virus genome primers for another use case with the *TILED* flavor. These primers are suitable for Oxford Nanopore or Illumina based full-genome sequencing.
+For practicing further options, we'll now get Polio 1-3 genome data and create virus genome primers for another use case with the *TILED* flavor. These primers are suitable for Oxford Nanopore or Illumina based full-genome sequencing.
 
 But first of all, we have some questions for you prepared:
 
 > <question-title></question-title>
 >
 > 1. What makes VarVAMP so useful?
-> 2. For which types of amplification techniques can VarVAMP produce primers?
-> 3. As mentioned earlier, VarVAMP can produce different kind of outputs. In the Analysis log, wh
+> 2. When you checked the primers on the website, differ these primers with your designed ones?
+> 3. As mentioned earlier, VarVAMP can produce different kind of outputs. What is the position of the first amplicon?
 >
 > > <solution-title></solution-title>
 > >
 > > 1. VarVAMP can produces highly personalized primers for a large number of viruses.
-> > 2. PCR, NGS, qPCR
-> > 3. 
+> > 2. No, there are likely the same. Only the position differs slightly.
+> > 3. You can find the answer in the amplicons.bed file. The first amplicon starts at 466 and ends at 608.
 > {: .solution}
 >
 {: .question}
 
 
 ## Settings for the second primer design
-In order to be able to compare the results, we'll take the same aligned Polio 1 virus genomes as before. As mentioned, we'll prepare primers for Next Generation Sequencing instead of qPCR. This will be done by VarVAMP with the *TILED* flavor. As we have no more probe to generate there a certain parameter, which are different from the *QPCR* flavor. For example is it now possible to adjust the optimal or maximum length of the amplicon and the minimal number of nucleotides overlapping. Two important settings, expect the advanced settings, you can find in every flavor of VarVAMP is n_ambig, the number of ambigious nucleotides in your primer, and the threshold of consensus nucleotides to ensure the specifity of your design.
+In order to be able to compare the results and prove the reproducibilty, we'll can find the control primers on the [Viral Primer Schemes github page of Jonas Fuchs](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_tiled/Polio) as before. As mentioned, we'll prepare primers for Next Generation Sequencing instead of qPCR with the aligned genome data of Polio 1-3. 
+
+### Get the aligned genome sequences of Polio virus 1-3
+For time reasons we skip the multiple alignment part with MAFFT and provide you the aligned fasta file through Zenodo.
+
+> <hands-on-title> Data Upload Part 2 </hands-on-title>
+>
+> - **Zenodo-Upload** - Upload Polio 1-3 aligned virus genomes
+>
+>   1. Make a new history and rename it
+>   2. Import the files from [Zenodo]({{ page.zenodo_link }}) 
+>
+>      {% snippet faqs/galaxy/datasets_import_via_link.md %}
+>
+>      ``
+>      https://zenodo.org/
+>      ``
+>   
+>   3. Rename the datasets
+>   4. Check that the datatype is fasta
+>
+{: .hands_on}
+
+In the next go-through with VarVAMP, we will get to know the *TILED* flavor. As we have no more probe to generate there a certain parameter, which are different from the *QPCR* flavor. For example is it now possible to adjust the optimal or maximum length of the amplicon and the minimal number of nucleotides overlapping. Two important settings, which you can find in every flavor of VarVAMP is n_ambig, the number of ambigious nucleotides in your primer, and the threshold of consensus nucleotides to ensure the specifity of your design.
 
 > <hands-on-title> Tool settings for TILED-Primers </hands-on-title>
 >
 > 1. {% tool [varVAMP](toolshed.g2.bx.psu.edu/repos/iuc/varvamp/varvamp/1.1.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Multiple alignment of viral sequences"*: `outputAlignment` (output of **MAFFT** {% icon tool %})
+>    - {% icon param-file %} *"Multiple alignment of viral sequences"*: `polio1-3_fftns.fasta`
 >    - *"What kind of primers would you like to design? (varvamp mode)"*: `Tiled primer scheme for whole-genome sequencing (tiled)`
 >        - *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify values for both`
->        - *"Threshold for consensus nucleotides"*: `0.8`
->        - *"Maximum number of ambiguous nucleotides per primer to be tolerated (default: 2)"*: `2`
+>        - *"Threshold for consensus nucleotides"*: `0.91`
+>        - *"Maximum number of ambiguous nucleotides per primer to be tolerated (default: 2)"*: `4`
 >        - *"Optimal length of the amplicons"*: `1000`
->        - *"Maximal length of the amplicons"*: `1500`
+>        - *"Maximal length of the amplicons"*: `1400`
 >        - *"Minimal required overlap between tiled amplicons*: `100`
 >
 {: .hands_on}
 
 ### Output
-As you can see in the output on the right side, you'll have succesfully created primers for further amplification of your viral sequences.
+As you can see in the output on the right side, you'll have succesfully created primers for further amplification of your viral sequences. Compare your results with the "primers.tsv" on the [Viral Schemes Website](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_tiled/Polio).
 
 Again, we have some questions for you prepared:
 
@@ -381,7 +403,7 @@ Again, we have some questions for you prepared:
 > >
 > > 1. In TILED over 1000 nucleotides long and in qPCR around 180 length.
 > > 2. The qpcr flavor reports back small amplicons with an optimized internal probe. The TILED flavor overlapping amplicons for Oxford Nanopore or Whole Genome Sequencing.
-> > 3. Increase of length of amplicon, minimal required overlap and threshold or decrease of maximum number of ambiguous nucleotides per primer
+> > 3. Increase of length of amplicon, minimal required overlap and threshold or decrease of maximum number of ambiguous nucleotides per primer.
 > >
 > {: .solution}
 >
@@ -391,26 +413,6 @@ Again, we have some questions for you prepared:
 In out last step, imagine we have a sample to examine, which was taken from virus infected human tissue. We want to be sure, that we are not amplifing any human genes with our viral gene material. How do we get rid of the human parts of our sample?
 
 
-### Get the aligned genome sequences of Polio virus 1-3
-For the third VarVAMP run, we'll skip the multiple alignment part with MAFFT for time reasons and provide you the aligned fasta file through Zenodo.
-
-> <hands-on-title> Data Upload Part 2 </hands-on-title>
->
-> - **Zenodo-Upload** - Upload Polio 1-3 aligned virus genomes
->
->   1. Make a new history and rename it
->   2. Import the files from [Zenodo]({{ page.zenodo_link }}) 
->
->      {% snippet faqs/galaxy/datasets_import_via_link.md %}
->
->      ```
->      https://zenodo.org/
->      ```
->   
->   3. Rename the datasets
->   4. Check that the datatype is fasta
->
-{: .hands_on}
 
 
 With VarVAMP, it is possible to insert a BLAST database as an off-target reference. We can use the NCBI tool makeblastdb to create a BLAST database of the human genome and use it as a reference. Now we can compare it with the sample and avoid designing primers for human genetic material. An application example would be primer design for NGS to identify related viral genomes in a human sample.
@@ -429,14 +431,14 @@ The following steps are:
 >   - *"Molecule type of input"*: `nucleotide`
 >       - {% icon param-repeat %} **Insert Select Input**
 >           - *"Input is a"*: `Genome on Server`
->           - *"Installed genome"*: `xxx`
+>           - *"Installed genome"*: `Human Dec. 2013 (GRCh38/hg38) (hg38)`
 >   - *"Title for BLAST database"*: "Human Genome"
 >   - ignore the containing masking data file upload panel
 >
 > 2. {% tool [varVAMP](toolshed.g2.bx.psu.edu/repos/iuc/varvamp/varvamp/1.1.1+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Multiple alignment of viral sequences"*: new uploaded aligned Polio 1-3 genomes 
 >    - *"What kind of primers would you like to design? (varvamp mode)"*: `Tiled primer scheme for whole-genome sequencing (tiled)`
->        - *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify max ambiguous nts, estimate suitable threshold`
+>        - *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify values of both`
 >        - *"Avoid amplicons with off-target primer products?"*: `Yes`
 >           - *"BLAST database"*: the output of **NCBI makeblastdb** `Human Genome`
 >           - *"Customize BLAST Settings?"*: `No, use VarVAMP default settings`
@@ -454,16 +456,14 @@ Now we have generated our primers for the different polio viruses and we can be 
 Last but not least, we have some questions for you prepared:
 
 > <question-title></question-title>
->
-> 1. What's the difference between the two TILED Designs?
-> 2. Whats the meaning of the n-ambig parameter?
-> 3. What was the goal of the analysis with the additional BLAST database?
+> 
+> 1. Whats the meaning of the n-ambig parameter?
+> 2. What was the goal of the analysis with the additional BLAST database?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. Parameter n_ambig in the third design is at 3.
-> > 2. N_ambig describes the potential variable nucleotides in one primer. Means the larger the more unspecific.
-> > 3. To eliminate human genome from the sample.
+> > 1. N_ambig describes the potential variable nucleotides in one primer. Means the larger the more unspecific.
+> > 2. To eliminate human genome from the sample.
 > >
 > {: .solution}
 >
