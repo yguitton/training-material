@@ -3,7 +3,6 @@ layout: tutorial_hands_on
 
 title: Primer and primer scheme design for pan-specific detection and sequencing of viral pathogens across genotypes
 level: Introductory
-zenodo_link: ''
 questions:
 - What are pan-specific primers and primer schemes and why are they important?
 - How do you capture viral species diversity in the form of a multiple sequence alignment?
@@ -68,24 +67,35 @@ Any analysis should get its own Galaxy history. So let's start by creating a new
 
 ## Get viral reference sequences
 
-> <hands-on-title>Get the data</hands-on-title>
+> <hands-on-title>Get the data - Upload Polio 1 virus genomes</hands-on-title>
 >
-> - **Option 1:** Zenodo - Upload Polio 1 virus genomes
->
->   1. Import the files from [Zenodo]({{ page.zenodo_link }}) 
->
->      {% snippet faqs/galaxy/datasets_import_via_link.md %}
->
->       The URLs for our example data are these:
+>    1. Import the alignment from the [ViralPrimerSchemes](https://github.com/jonas-fuchs/ViralPrimerSchemes) repository 
 >
 >       ```
->       https://zenodo.org/
+>       https://raw.githubusercontent.com/jonas-fuchs/ViralPrimerSchemes/main/input_alignments/polio1.aln
 >       ```
 >
->   2. Rename the datasets
->   3. Check that the datatype is fasta
+>    2. {% tool [Upload](upload1) %} the aligned sequences to your history via the link above and make sure the dataset format is set to `fasta`.
 >
->      {% snippet faqs/galaxy/datasets_change_datatype.md datatype="fasta" %}
+>       {% snippet faqs/galaxy/datasets_import_via_link.md format="fasta" %}
+>    3. Rename the dataset (optional)
+>
+>       {% snippet faqs/galaxy/datasets_rename.md name="Polio 1 alignment" %}
+>
+{: .hands_on}
+
+## Transform aligned sequences into unaligned fasta file format
+To effectively utilize MAFFT, a powerful tool for multiple sequence alignment, it's crucial to provide an unaligned fasta sequence file as input. This raw format allows MAFFT to flexibly align sequences based on their similarity, adjusting gaps and mismatches to optimize alignment quality. Furthermore its a the transformation of the file a helpful exercise to deepen the knowledge about the variety and diversity of different tools existing on the Galaxy website.
+
+> <hands-on-title>Degap the Polio1-genomes</hands-on-title>
+>
+>    1. {% tool [degapseq](toolshed.g2.bx.psu.edu/repos/devteam/emboss_5/EMBOSS: degapseq20/5.0.0) %} with the following parameter:
+>     - {% icon param-file %} *"On query"*: `Polio 1 alignment` (Input Polio 1 dataset)
+>     - *"Output sequence file format"*: `FASTA (m)`
+>
+>    2. Rename the dataset (optional)
+>
+>       {% snippet faqs/galaxy/datasets_rename.md name="Polio 1 unaligned" %}
 >
 {: .hands_on}
 
@@ -153,7 +163,7 @@ When multiple files are added, MAFFT will run for each of these, so it is necess
 > <hands-on-title>Generate multiple sequence alignment</hands-on-title>
 >
 > 1. {% tool [MAFFT](toolshed.g2.bx.psu.edu/repos/rnateam/mafft/rbc_mafft/7.508+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Sequences to align"*: `Polio1_genomes.fasta` (Input Polio 1 dataset)
+>    - {% icon param-file %} *"Sequences to align"*: `Polio 1 unaligned` (Input Polio 1 dataset from history)
 >    - *"Type of sequences"*: `auto-detect` or `Nucleic acids`
 >    - *"Configure gap costs"*: `Use default values`
 >    - *"MAFFT flavour"*: `FFT-NS-2 (fast, progressive method)`
@@ -161,7 +171,7 @@ When multiple files are added, MAFFT will run for each of these, so it is necess
 >
 >    > <comment-title> Different flavor, different time and accuracy </comment-title>
 >    >
->    > The alignment will be quite fast with the FFT-NS-2 flavor. You can try it out with G-INS-I for example, then you'll see the time and accuracy difference of the algorithms, which MAFFT can offer.
+>    > The alignment will be quite fast with the FFT-NS-2 flavor. You can try it out with G-INS-I for example, then you'll see the time and accuracy difference of the algorithms, which MAFFT can offer. It will take a while, so please don't wait for the result before you continue with the training. When it finished, check the first aligned sequence file with the second to evaluate the differences of the alignment methods.
 >    {: .comment}
 >
 {: .hands_on}
@@ -190,11 +200,13 @@ With this alignment we prepared our input Poliovirus 1 genomes for VarVAMP and a
 >
 > 1. What does MAFFT?
 > 2. What kind of alignment method is recommended for our kind of data and why?
+> 3. Compare the uplodaded alignment with the alignment created by MAFFT! What's the difference?
 >
 > > <solution-title></solution-title>
 > >
 > > 1. Creates an alignment file, which shows parts of similar sequences.
 > > 2. The speed-oriented methods, because there are too many sequences (>200) and it would take too long.
+> > 3. There is none. The files are identical.
 > >
 > {: .solution}
 >
