@@ -200,7 +200,7 @@ With this alignment we prepared our input Poliovirus 1 genomes for VarVAMP and a
 >
 > 1. What does MAFFT?
 > 2. What kind of alignment method is recommended for our kind of data and why?
-> 3. Compare the uplodaded alignment with the alignment created by MAFFT! What's the difference?
+> 3. Compare the uploaded alignment with the alignment created by MAFFT! What's the difference?
 >
 > > <solution-title></solution-title>
 > >
@@ -325,16 +325,16 @@ To focus on the primer scheme design we will skip the multiple sequence alignmen
 
 > <hands-on-title>Get Polio 1-3 sequence alignment</hands-on-title>
 >
-> 1. Import the alignment from the [ViralPrimerSchemes](https://github.com/jonas-fuchs/ViralPrimerSchemes) repository 
+>    1. Import the alignment from the [ViralPrimerSchemes](https://github.com/jonas-fuchs/ViralPrimerSchemes) repository 
 >
->    ```
->    https://raw.githubusercontent.com/jonas-fuchs/ViralPrimerSchemes/main/input_alignments/polio1-3.aln
->    ```
+>       ```
+>       https://raw.githubusercontent.com/jonas-fuchs/ViralPrimerSchemes/main/input_alignments/polio1-3.aln
+>       ```
 >
->    1. {% tool [Upload](upload1) %} the aligned sequences to your history via the link above and make sure the dataset format is set to `fasta`.
+>    2. {% tool [Upload](upload1) %} the aligned sequences to your history via the link above and make sure the dataset format is set to `fasta`.
 >
 >       {% snippet faqs/galaxy/datasets_import_via_link.md format="fasta" %}
->    2. Rename the dataset (optional)
+>    3. Rename the dataset (optional)
 >
 >       {% snippet faqs/galaxy/datasets_rename.md name="Polio 1-3 alignment" %}
 >
@@ -347,17 +347,13 @@ In the next go-through with VarVAMP, we will get to know the *TILED* flavor. As 
 > 1. {% tool [varVAMP](toolshed.g2.bx.psu.edu/repos/iuc/varvamp/varvamp/1.1.2+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Multiple alignment of viral sequences"*: the `Polio 1-3 alignment` just uploaded
 >    - *"What kind of primers would you like to design? (varvamp mode)"*: `Tiled primer scheme for whole-genome sequencing (tiled)`
->        - *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify values for both`
->        - *"Threshold for consensus nucleotides"*: `0.91`
->        - *"Maximum number of ambiguous nucleotides per primer to be tolerated (default: 2)"*: `4`
->        - *"Optimal length of the amplicons"*: `1000`
->        - *"Maximal length of the amplicons"*: `1400`
->        - *"Minimal required overlap between tiled amplicons*: `100`
+>        - *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify max ambiguous nts, estimate suitable threshold`
+>        - *"Maximum number of ambiguous nucleotides per primer to be tolerated (default: 2)"*: `2`
 >
 {: .hands_on}
 
 As you can see in the output on the right side, you'll have succesfully created primers for further amplification of your viral sequences.
-You can compare your results with the "primers.tsv" on the [Viral Schemes Website](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_tiled/Polio).
+You can compare your results with the "primers.bed" on the [Viral Schemes Website](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_tiled/Polio).
 
 Again, we have some questions for you prepared:
 
@@ -365,13 +361,15 @@ Again, we have some questions for you prepared:
 >
 > 1. What is the longest amplicon of the flavors TILED and qPCR respectively?
 > 2. What's the difference of the functionality 2 flavors qPCR and TILED?
-> 3. If you want to have a more accurate product, which option do you have to manipulate?
+> 3. When you've done the comparison of the bed files from github and your created ones, where there differences? If yes, what could be the reason?
+> 4. If you want to have a more accurate product, which option do you have to manipulate?
 >
 > > <solution-title></solution-title>
 > >
 > > 1. In TILED over 1000 nucleotides long and in qPCR around 180 length.
 > > 2. The qpcr flavor reports back small amplicons with an optimized internal probe. The TILED flavor overlapping amplicons for Oxford Nanopore or Whole Genome Sequencing.
-> > 3. Increase of length of amplicon, minimal required overlap and threshold or decrease of maximum number of ambiguous nucleotides per primer
+> > 3. Yes, there are differences. It's a different set of primers. The reason for this very different result are the settings of the parameters. In the last run, we let VarVamp run with the default settings for the tiled flavor. Check out the analysis/varvamp log file of both, the one on the github and your own produced.
+> > 4. Increase of length of amplicon, minimal required overlap and threshold or decrease of maximum number of ambiguous nucleotides per primer.
 > >
 > {: .solution}
 >
