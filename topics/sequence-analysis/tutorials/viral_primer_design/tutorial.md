@@ -279,7 +279,8 @@ The tool VarVAMP offers a wide range of different outputs in the variuos modes. 
 > 1. {% tool [varVAMP](toolshed.g2.bx.psu.edu/repos/iuc/varvamp/varvamp/1.1.2+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Multiple alignment of viral sequences"*: `outputAlignment` (output of **MAFFT** {% icon tool %})
 >    - *"What kind of primers would you like to design? (varvamp mode)"*: `qPCR primers (qpcr)`
->        - *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify max ambiguous nts, estimate suitable threshold`
+>        - *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify values for both`
+>        - *"Threshold for consensus nucleotides"*: `0.93`
 >        - *"Maximum number of ambiguous nucleotides per primer to be tolerated (default: 2)"*: `2`
 >        - *"Maximum number of ambiguous nucleotides per qPCR probe to be tolerated"*: `1`
 >        - *"Top n qPCR amplicons to test"*: `50`
@@ -291,7 +292,7 @@ Now we got our first VarVAMP outputs and an idea, how the tool is working. Check
 
 > <comment-title>Output control</comment-title>
 >
-> Control your output files with the example files of the [VarVAMP-qPCR-output github page for Polio 1 virus](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_qpcr/polio1). There you can check, if you have created the same primers. You can find the primers in the file "primers.tsv".
+> Control your output files with the example files of the [VarVAMP-qPCR-output github page for Polio 1 virus](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_qpcr/polio1). There you can check, if you have created the same primers. You can find the primer locations in the bed file "primers.bed".
 {: .comment}
 
 For practicing further options, we'll now get Polio 1-3 genome data and create primers for another use case with the *TILED* flavor. These primers are suitable for Oxford Nanopore or Illumina based full-genome sequencing.
@@ -301,14 +302,16 @@ But first of all, we have some questions for you prepared:
 > <question-title></question-title>
 >
 > 1. What makes VarVAMP so useful?
-> 2. When you checked the primers on the website, differ these primers with your designed ones?
+> 2. When you checked the primers on the website, differ these primers with your designed ones in regard of the position?
 > 3. As mentioned earlier, VarVAMP can produce different kind of outputs. What is the position of the first amplicon?
+> 4. How is it possible to increase the reproducibility and decrease the computing time of further analysis of VarVAMP?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. VarVAMP can produces highly personalized primers for a large number of viruses.
-> > 2. No, there are likely the same. Only the position differs slightly.
-> > 3. You can find the answer in the amplicons.bed file. The first amplicon starts at 466 and ends at 608.
+> > 1. VarVAMP can produces highly personalized pan-specific primers for a large number of viruses.
+> > 2. No, there are likely the same. This means the result can be reproduced.
+> > 3. You can find the answer in the amplicons.bed file. The first amplicon starts at 1742 and ends at 1835.
+> > 4. The solution lies in the per default contributed log file. It contains the parameter configuration of your latest VarVAMP run. If you save and use the values of the threshold and n_ambig for further runs, VarVAMP will not start it's automatic calculation of these and thus results in lower computing time and higher reproducibility.
 > {: .solution}
 >
 {: .question}
