@@ -85,13 +85,13 @@ Any analysis should get its own Galaxy history. So let's start by creating a new
 {: .hands_on}
 
 ## Transform aligned sequences into unaligned fasta file format
-To effectively utilize MAFFT, a powerful tool for multiple sequence alignment, it's crucial to provide an unaligned fasta sequence file as input. This raw format allows MAFFT to flexibly align sequences based on their similarity, adjusting gaps and mismatches to optimize alignment quality. Furthermore its a the transformation of the file a helpful exercise to deepen the knowledge about the variety and diversity of different tools existing on the Galaxy website.
+To effectively utilize MAFFT, a powerful tool for multiple sequence alignment, it's crucial to provide an unaligned fasta sequence file as input. This raw format allows MAFFT to flexibly align sequences based on their similarity, adjusting gaps and mismatches to optimize alignment quality. Furthermore is the transformation of the aligned file a helpful exercise to deepen the knowledge about the variety and diversity of different tools existing on the Galaxy website.
 
 > <hands-on-title>Degap the Polio1-genomes</hands-on-title>
 >
 >    1. {% tool [degapseq](toolshed.g2.bx.psu.edu/repos/devteam/emboss_5/EMBOSS: degapseq20/5.0.0) %} with the following parameter:
->     - {% icon param-file %} *"On query"*: `Polio 1 alignment` (Input Polio 1 dataset)
->     - *"Output sequence file format"*: `FASTA (m)`
+>       - {% icon param-file %} *"On query"*: `Polio 1 alignment` (Input Polio 1 dataset)
+>       - *"Output sequence file format"*: `FASTA (m)`
 >
 >    2. Rename the dataset (optional)
 >
@@ -165,7 +165,6 @@ When multiple files are added, MAFFT will run for each of these, so it is necess
 > 1. {% tool [MAFFT](toolshed.g2.bx.psu.edu/repos/rnateam/mafft/rbc_mafft/7.508+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"Sequences to align"*: `Polio 1 unaligned` (Input Polio 1 dataset from history)
 >    - *"Type of sequences"*: `auto-detect` or `Nucleic acids`
->    - *"Configure gap costs"*: `Use default values`
 >    - *"MAFFT flavour"*: `FFT-NS-2 (fast, progressive method)`
 >    - *"Output format"*: `FASTA`
 >
@@ -180,7 +179,6 @@ The aligned polio genome is ready for further use. Before we continue with the p
 
 > <hands-on-title>Visualize the multiple-sequence alignment</hands-on-title>
 >
-> 1. Visualize the multiple-sequence alignment
 >    1. Click on the MAFFT output to expand this dataset
 >    2. Click on {% icon galaxy-barchart %} **Visualize**
 >    3. Maximize the browser window (the visualization we are about to launch will not rescale properly if you do this later!)
@@ -232,7 +230,7 @@ The tool VarVAMP offers a wide range of different outputs in the variuos modes. 
 
 > <details-title>Output of VarVAMP</details-title>
 >
-> VarVAMP has a lot of different outputs, which you can select. Here you can find a short summery:
+> VarVAMP has many different outputs, which you can select. Here you can find a short summery:
 >
 > **Primer scheme outputs:**
 >   - *Sequences of designed oligos:*
@@ -340,7 +338,7 @@ To focus on the primer scheme design we will skip the multiple sequence alignmen
 >
 {: .hands_on}
 
-In the next go-through with VarVAMP, we will get to know the *TILED* flavor. As we have no more probe to generate there a certain parameter, which are different from the *QPCR* flavor. For example is it now possible to adjust the optimal or maximum length of the amplicon and the minimal number of nucleotides overlapping. Two important settings, which you can find in every flavor of VarVAMP is n_ambig, the number of ambigious nucleotides in your primer, and the threshold of consensus nucleotides to ensure the specifity of your design.
+In the next go-through with VarVAMP, we will get to know the *TILED* flavor. We don't generate a probe for quantasizing our pcr-product anymore, but therefore we need to specify the size of our overlapping region of the amplicons for the tiling function. Another adjustment which can be done is the optimal or maximum length determination of the amplicon. Two important settings, which you can find in every flavor of VarVAMP is n_ambig, the number of ambigious nucleotides in your primer, and the threshold of consensus nucleotides to ensure the specifity of your design.
 
 > <hands-on-title>Tool settings for TILED-Primers</hands-on-title>
 >
@@ -389,11 +387,11 @@ The following steps are:
 > <hands-on-title>BLAST human genome database and primer design of all Polio viruses (1-3)</hands-on-title>
 >
 > 1. {% tool [NCBI BLAST+ makeblastdb](toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/2.14.1+galaxy2) %} with the following parameters:
->   - *"Molecule type of input"*: `nucleotide`
->     - {% icon param-repeat %} **Select Input**
->       - *"Input is a"*: `Genome on Server`
->       - *"Installed genome"*: `Human Dec. 2013 (GRCh38/hg38) (hg38)`
->   - *"Title for BLAST database"*: "Human Genome"
+>    - *"Molecule type of input"*: `nucleotide`
+>        - {% icon param-repeat %} **Select Input**
+>            - *"Input is a"*: `Genome on Server`
+>            - *"Installed genome"*: `Human Dec. 2013 (GRCh38/hg38) (hg38)`
+>    - *"Title for BLAST database"*: `Human Genome`
 >
 > 2. {% tool [varVAMP](toolshed.g2.bx.psu.edu/repos/iuc/varvamp/varvamp/1.1.2+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Multiple alignment of viral sequences"*: the `Polio 1-3 alignment` uploaded before
