@@ -72,7 +72,7 @@ Any analysis should get its own Galaxy history. So let's start by creating a new
 >    1. Import the alignment from the [ViralPrimerSchemes](https://github.com/jonas-fuchs/ViralPrimerSchemes) repository 
 >
 >       ```
->       https://raw.githubusercontent.com/jonas-fuchs/ViralPrimerSchemes/main/input_alignments/polio1.aln
+>       https://github.com/jonas-fuchs/ViralPrimerSchemes/blob/79db0cc128079d770f2282b68a6e28142fd77473/input_alignments/polio1.aln
 >       ```
 >
 >    2. {% tool [Upload](upload1) %} the aligned sequences to your history via the link above and make sure the dataset format is set to `fasta`.
@@ -326,7 +326,7 @@ To focus on the primer scheme design we will skip the multiple sequence alignmen
 >    1. Import the alignment from the [ViralPrimerSchemes](https://github.com/jonas-fuchs/ViralPrimerSchemes) repository 
 >
 >       ```
->       https://raw.githubusercontent.com/jonas-fuchs/ViralPrimerSchemes/main/input_alignments/polio1-3.aln
+>       https://github.com/jonas-fuchs/ViralPrimerSchemes/blob/9b54b17246abdff1b39c6cdd362fff67eb2945c3/input_alignments/polio1-3.aln
 >       ```
 >
 >    2. {% tool [Upload](upload1) %} the aligned sequences to your history via the link above and make sure the dataset format is set to `fasta`.
@@ -374,7 +374,7 @@ Again, we have some questions for you prepared:
 {: .question}
 
 ## Advanced approach considering off-target sites
-In out last step, imagine we have a sample to examine, which was taken from virus infected human tissue. We want to be sure, that we are not amplifing any human genes with our viral gene material. How do we get rid of the human parts of our sample?
+In out last step, imagine we have a sample to examine, which was taken from virus infected human tissue. We want to be sure, that we are not amplifing any human genes with our viral gene material. How do we get to be sure, we don't build primers for human sequences instead of our viral genomes?
 
 With VarVAMP, it is possible to insert a BLAST database as an off-target reference. We can use the NCBI tool makeblastdb to create a BLAST database of the human genome and use it as a reference. Now we can compare it with the sample and avoid designing primers for human genetic material. An application example would be primer design for NGS to identify related viral genomes in a human sample.
 
@@ -401,9 +401,9 @@ The following steps are:
 >           - *"BLAST database"*: the output of **NCBI makeblastdb** `Human Genome`
 >           - *"Customize BLAST Settings?"*: `No, use VarVAMP default settings`
 >
->    > <comment-title> Outputs reminder </comment-title>
+>    > <comment-title>Time warning</comment-title>
 >    >
->    > Look up the different outputs you can get from this tool. Maybe some of them are more useful than other for your further analysis.
+>    > This step will take around 35-45 min. In this time you can answer already the first two questions or take a pause.
 >    {: .comment}
 >
 {: .hands_on}
@@ -414,14 +414,15 @@ Last but not least, we have some questions for you prepared:
 
 > <question-title></question-title>
 > 
-> 1. Whats the meaning of the n-ambig parameter?
-> 2. What was the goal of the analysis with the additional BLAST database?
+> 1. What was the goal of the analysis with the additional BLAST database?
+> 2. Consider other use cases for a blast database as off-target elimination!
+> 3.
 >
 > > <solution-title></solution-title>
 > >
-> > 1. N_ambig describes the potential variable nucleotides in one primer. Means the larger the more unspecific.
-> > 2. To eliminate human genome from the sample.
-> >
+> > 1. To eliminate possible off-target human genome sequences.
+> > 2. 
+> > 3.
 > {: .solution}
 >
 {: .question}
