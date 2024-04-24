@@ -67,25 +67,24 @@ Any analysis should get its own Galaxy history. So let's start by creating a new
 
 ## Get viral reference sequences
 
-> <hands-on-title>Get the data - Upload Polio 1 virus genomes</hands-on-title>
+> <hands-on-title>Get the Polio 1 sequence alignment</hands-on-title>
 >
->    1. Import the alignment from the [ViralPrimerSchemes](https://github.com/jonas-fuchs/ViralPrimerSchemes) repository 
+>    1. Get the Polio 1 sequence alignment from
 >
 >       ```
->       https://github.com/jonas-fuchs/ViralPrimerSchemes/blob/79db0cc128079d770f2282b68a6e28142fd77473/input_alignments/polio1.aln
+>       https://raw.githubusercontent.com/jonas-fuchs/ViralPrimerSchemes/79db0cc128079d770f2282b68a6e28142fd77473/input_alignments/polio1.aln
 >       ```
->
->    2. {% tool [Upload](upload1) %} the aligned sequences to your history via the link above and make sure the dataset format is set to `fasta`.
+>       and upload it to your history via the link above and make sure the dataset format is set to `fasta`.
 >
 >       {% snippet faqs/galaxy/datasets_import_via_link.md format="fasta" %}
->    3. Rename the dataset (optional)
+>    2. Rename the dataset
 >
 >       {% snippet faqs/galaxy/datasets_rename.md name="Polio 1 alignment" %}
 >
 {: .hands_on}
 
 ## Transform aligned sequences into unaligned fasta file format
-To effectively utilize MAFFT({% cite Katoh2013 %}), a powerful tool for multiple sequence alignment, it's crucial to provide an unaligned fasta sequence file as input. This raw format allows MAFFT to flexibly align sequences based on their similarity, adjusting gaps and mismatches to optimize alignment quality. Furthermore is the transformation of the aligned file a helpful exercise to deepen the knowledge about the variety and diversity of different tools existing on the Galaxy website.
+To effectively utilize **MAFFT**({% cite Katoh2013 %}), a powerful tool for multiple sequence alignment, it's crucial to provide an unaligned fasta sequence file as input. This raw format allows MAFFT to flexibly align sequences based on their similarity, adjusting gaps and mismatches to optimize alignment quality. Furthermore is the transformation of the aligned file a helpful exercise to deepen the knowledge about the variety and diversity of different tools existing on the Galaxy website.
 
 > <hands-on-title>Degap the Polio1-genomes</hands-on-title>
 >
@@ -93,7 +92,7 @@ To effectively utilize MAFFT({% cite Katoh2013 %}), a powerful tool for multiple
 >       - {% icon param-file %} *"On query"*: `Polio 1 alignment` (Input Polio 1 dataset)
 >       - *"Output sequence file format"*: `FASTA (m)`
 >
->    2. Rename the dataset (optional)
+>    2. Rename the dataset
 >
 >       {% snippet faqs/galaxy/datasets_rename.md name="Polio 1 unaligned" %}
 >
@@ -103,7 +102,7 @@ To effectively utilize MAFFT({% cite Katoh2013 %}), a powerful tool for multiple
 
 ## Multiple alignment of reference sequences
 
-Multiple sequence alignment (MSA) plays an important role in evolutionary analyses of biological sequences. In this part of the tutorial, we want to align the genome datasets to get knowledge about similarity and evolutionary relationship between the sequences. MAFFT is a multiple sequence alignment program, which enables the analysis of a file with several sequences with different alignment algorithms.
+*Multiple sequence alignment (MSA)* plays an important role in evolutionary analyses of biological sequences. In this part of the tutorial, we want to align the genome datasets to get knowledge about similarity and evolutionary relationship between the sequences. **MAFFT** is a multiple sequence alignment program, which enables the analysis of a file with several sequences with different alignment algorithms.
 
 When multiple files are added, MAFFT will run for each of these, so it is necessary to have every sequence, which you want to have aligned, in one file. For that there is in the tool MAFFT on Galaxy a concatenate option implemented. For further information look in details below:
 
@@ -118,7 +117,7 @@ When multiple files are added, MAFFT will run for each of these, so it is necess
 >
 > **Option 2:**
 >
->   - Concatenate simply every fasta in a row, if in the same dataset section or in different section. means 1. dataset section has two files and 2. section three files resulting in one endfile with thesequence order of the files: 1, 2, 3, 4, 5.
+>   - Concatenate simply every fasta in a row, if in the same dataset section or in different section. means 1. dataset section has two files and 2. section three files resulting in one endfile with the sequence order of the files: 1, 2, 3, 4, 5.
 >
 {: .details}
 
@@ -156,14 +155,14 @@ When multiple files are added, MAFFT will run for each of these, so it is necess
 >
 > - Costum setting:
 >
->   There is a wide range of personal adjustements offered by MAFFT. Each of these falvours can be set independently on your own. For more information about the algorithms and parameters: [Visit the official MAFFT-website](https://mafft.cbrc.jp/alignment/software/algorithms/algorithms.html)
+>   There is a wide range of personal adjustements offered by MAFFT. Each of these flavours can be set independently on your own. For more information about the algorithms and parameters: [Visit the official MAFFT-website](https://mafft.cbrc.jp/alignment/software/algorithms/algorithms.html)
 >
 {: .details}
 
 > <hands-on-title>Generate multiple sequence alignment</hands-on-title>
 >
 > 1. {% tool [MAFFT](toolshed.g2.bx.psu.edu/repos/rnateam/mafft/rbc_mafft/7.508+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Sequences to align"*: `Polio 1 unaligned` (Input Polio 1 dataset from history)
+>    - {% icon param-file %} *"Sequences to align"*: `Polio 1 unaligned` (Input degapped Polio 1 dataset from history)
 >    - *"Type of sequences"*: `auto-detect` or `Nucleic acids`
 >    - *"MAFFT flavour"*: `FFT-NS-2 (fast, progressive method)`
 >    - *"Output format"*: `FASTA`
@@ -175,7 +174,7 @@ When multiple files are added, MAFFT will run for each of these, so it is necess
 >
 {: .hands_on}
 
-The aligned polio genome is ready for further use. Before we continue with the primer design, we'll have a look at our output. First, giving the output a proper name will help handling numberous data in future. Secondly, sometimes it is helpfull to visualize the whole alignment or specific region of interests. If you want a visualization of the sequences, Galaxy has an interactive build-in function, which we are going to discover in the next Hands-on-box.
+The aligned polio genome is ready for further use. Before we continue with the primer design, we'll have a look at our output. First, giving the output a proper name will help handling numberous data in future. Secondly, sometimes it is helpfull to visualize the whole alignment or specific region of interests. If you want a visualization of the MSA, Galaxy has an interactive build-in function, which we are going to discover in the next Hands-on-box.
 
 > <hands-on-title>Visualize the multiple-sequence alignment</hands-on-title>
 >
@@ -198,7 +197,7 @@ With this alignment we prepared our input Poliovirus 1 genomes for VarVAMP and a
 >
 > 1. What does MAFFT?
 > 2. What kind of alignment method is recommended for our kind of data and why?
-> 3. Compare the uploaded alignment with the alignment created by MAFFT! What's the difference?
+> 3. Compare the first uploaded Polio 1 alignment with the alignment created by MAFFT! What's the difference?
 >
 > > <solution-title></solution-title>
 > >
@@ -212,7 +211,7 @@ With this alignment we prepared our input Poliovirus 1 genomes for VarVAMP and a
 
 ## One-step primer and probe design
 
-Properly designed primers contribute to the specificity, efficiency, and accuracy of techniques like PCR and DNA sequencing, ultimately influencing the reliability and validity of biological research outcomes. Variable VirusAMPlicons (varVAMP) is a tool to design primers for highly diverse viruses. The input is an alignment of your viral (full-genome) sequences.
+Properly designed primers contribute to the specificity, efficiency, and accuracy of techniques like PCR and DNA sequencing, ultimately influencing the reliability and validity of biological research outcomes. *Variable VirusAMPlicons* (*varVAMP*) is a tool to design primers for highly diverse viruses. The input is an alignment of your viral (full-genome) sequences.
 
 > <details-title>Functionality of VarVAMP</details-title>
 >
@@ -226,7 +225,7 @@ Properly designed primers contribute to the specificity, efficiency, and accurac
 >
 {: .details}
 
-The tool VarVAMP offers a wide range of different outputs in the variuos modes. For example it is possible to get the location of the designed primers or the amplicon graphical or in bed file format, gain information about the region or other potential primers. You will find further information in the next detail box. The VarVAMP Analysis log file gives information about the settings and procedures of the tool and will always be distributed.
+The tool VarVAMP offers a wide range of different outputs in the various modes. For example is it possible to get the location of the designed primers, the amplicon or in bed file format or in a graphical pdf format, to gain information about the region or other potential primers. You will find further information in the next detail box. The VarVAMP Analysis log file gives information about the settings and procedures of the tool and will always be distributed.
 
 > <details-title>Output of VarVAMP</details-title>
 >
@@ -323,16 +322,15 @@ To focus on the primer scheme design we will skip the multiple sequence alignmen
 
 > <hands-on-title>Get Polio 1-3 sequence alignment</hands-on-title>
 >
->    1. Import the alignment from the [ViralPrimerSchemes](https://github.com/jonas-fuchs/ViralPrimerSchemes) repository 
+>    1. Get the Polio 1-3 sequence alignment from
 >
 >       ```
->       https://github.com/jonas-fuchs/ViralPrimerSchemes/blob/9b54b17246abdff1b39c6cdd362fff67eb2945c3/input_alignments/polio1-3.aln
+>       https://raw.githubusercontent.com/jonas-fuchs/ViralPrimerSchemes/9b54b17246abdff1b39c6cdd362fff67eb2945c3/input_alignments/polio1-3.aln
 >       ```
->
->    2. {% tool [Upload](upload1) %} the aligned sequences to your history via the link above and make sure the dataset format is set to `fasta`.
+>       and upload it to your history via the link above and make sure the dataset format is set to `fasta`.
 >
 >       {% snippet faqs/galaxy/datasets_import_via_link.md format="fasta" %}
->    3. Rename the dataset (optional)
+>    2. Rename the dataset
 >
 >       {% snippet faqs/galaxy/datasets_rename.md name="Polio 1-3 alignment" %}
 >
@@ -376,7 +374,7 @@ Again, we have some questions for you prepared:
 ## Advanced approach considering off-target sites
 In out last step, imagine we have a sample to examine, which was taken from virus infected human tissue. We want to be sure, that we are not amplifing any other related enterovirus genome sequences with our polio gene material in our analysis. How do we get to be sure, we specificly build primers for our viral genome of interest?
 
-With VarVAMP, it is possible to insert a BLAST database as an off-target reference. We can use the NCBI tool makeblastdb ({% cite Cock2015 %}) to create a BLAST database of other whole genomes of entereroviruses and use it as a reference. Now we can compare it with the MSA and avoid designing primers for possible similar genome regions of other organisms. An application example would be primer design for NGS to identify related viral genomes in a human sample.
+With VarVAMP, it is possible to insert a BLAST database as an off-target reference. We can use the *NCBI BLAST makeblastdb* ({% cite Cock2015 %}) to create a BLAST database of other whole genomes of entereroviruses and use it as a reference. Now we can compare it with the MSA and avoid designing primers for possible similar genome regions of other organisms. An application example would be primer design for NGS to identify related viral genomes in a human sample.
 
 The following steps are:
 
