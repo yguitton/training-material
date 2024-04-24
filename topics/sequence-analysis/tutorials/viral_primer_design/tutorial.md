@@ -405,7 +405,7 @@ The following steps are:
 
 Now that we got our data, we can start the analysis by providing the data to NCBI makeblastdb to create a database. This will give us the possibility to detect off-target hits with varVAMP.
 
-> <hands-on-title>BLAST human genome database and primer design of all Polio viruses (1-3)</hands-on-title>
+> <hands-on-title>BLAST enterovirus genome database and primer design of all Polio viruses (1-3)</hands-on-title>
 >
 > 1. {% tool [NCBI BLAST+ makeblastdb](toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/2.14.1+galaxy2) %} with the following parameters:
 >    - *"Molecule type of input"*: `nucleotide`
