@@ -172,6 +172,10 @@ When multiple files are added, MAFFT will run for each of these, so it is necess
 >    > The alignment will be quite fast with the FFT-NS-2 flavor. You can try it out with G-INS-I for example, then you'll see the time and accuracy difference of the algorithms, which MAFFT can offer. It will take a while, so please don't wait for the result before you continue with the training. When it finished, check the first aligned sequence file with the second to evaluate the differences of the alignment methods.
 >    {: .comment}
 >
+> 2. Rename the dataset
+>      
+>    {% snippet faqs/galaxy/datasets_rename.md name="Polio 1 MSA" %}
+>
 {: .hands_on}
 
 The aligned polio genome is ready for further use. Before we continue with the primer design, we'll have a look at our output. First, giving the output a proper name will help handling numberous data in future. Secondly, sometimes it is helpfull to visualize the whole alignment or specific region of interests. If you want a visualization of the MSA, Galaxy has an interactive build-in function, which we are going to discover in the next Hands-on-box.
@@ -209,7 +213,7 @@ With this alignment we prepared our input Poliovirus 1 genomes for VarVAMP and a
 >
 {: .question}
 
-## One-step primer and probe design
+## One-step primer and probe design without consideration of off-target sites
 
 Properly designed primers contribute to the specificity, efficiency, and accuracy of techniques like PCR and DNA sequencing, ultimately influencing the reliability and validity of biological research outcomes. *Variable VirusAMPlicons* (*varVAMP*) is a tool to design primers for highly diverse viruses. The input is an alignment of your viral (full-genome) sequences.
 
@@ -274,7 +278,7 @@ The tool VarVAMP offers a wide range of different outputs in the various modes. 
 > <hands-on-title>Generate qPCR primer/probe set</hands-on-title>
 >
 > 1. {% tool [varVAMP](toolshed.g2.bx.psu.edu/repos/iuc/varvamp/varvamp/1.1.2+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Multiple alignment of viral sequences"*: `outputAlignment` (output of **MAFFT** {% icon tool %})
+>    - {% icon param-file %} *"Multiple alignment of viral sequences"*: `Polio 1 MSA` (output of **MAFFT** {% icon tool %})
 >    - *"What kind of primers would you like to design? (varvamp mode)"*: `qPCR primers (qpcr)`
 >        - *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify values for both`
 >        - *"Threshold for consensus nucleotides"*: `0.93`
@@ -292,7 +296,7 @@ Now we got our first VarVAMP outputs and an idea, how the tool is working. Check
 > Control your output files with the example files of the [VarVAMP-qPCR-output github page for Polio 1 virus](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_qpcr/polio1). There you can check, if you have created the same primers. You can find the primer locations in the bed file "primers.bed".
 {: .comment}
 
-For practicing further options, we'll now get Polio 1-3 genome data and create primers for another use case with the *TILED* flavor. These primers are suitable for Oxford Nanopore or Illumina based full-genome sequencing.
+In addition to be certain, that these primers are coding only for Polio 1 viral genomes instead of human or other viral genome sequences, it is possible to use a BLAST database as reference for possible off-targets. We'll get to this feature in the next section.
 
 But first of all, we have some questions for you prepared:
 
@@ -313,10 +317,134 @@ But first of all, we have some questions for you prepared:
 >
 {: .question}
 
+## Advanced approach considering off-target sites for the output,
+In our next step, imagine we have a sample to examine, which was taken from virus infected human tissue. We want to be sure, that we are not amplifing any other related enterovirus genome sequences with our polio gene material in our analysis. How do we get to be sure, we specificly build primers for our viral genome of interest?
+
+With varVAMP, it is possible to insert a BLAST database as an off-target reference. We can use the *NCBI BLAST makeblastdb* ({% cite Cock2015 %}) to create a BLAST database of other whole genomes of entereroviruses and use it as a reference. The found primers will be compared with the reference and each hit is given a high penalty. In order to choose the best fitting primer scheme, varVAMP sorts the possible primers by their penalty score and hence avoids designing primers for possible similar genome regions of other organisms. An application example afterwards would be real-time detection of polio 1 viral genomes in a human sample for pandemic surveillance.
+
+The following steps are:
+
+1. Upload the enterovirus genome data into Galaxy.
+
+2. Create a enterovirus genome database with ncbi makeblastdb.
+
+3. Use the builded BLAST database with VarVAMP to check amplicon primer candidates against.
+
+> <hands-on-title>Get the whole genome sequences of enterovirus</hands-on-title>
+> 1. Get the genome sequence fasta files from
+>
+>    ```
+>    
+>    ```
+>    and upload it to Galaxy as a dataset of type `fasta`.
+>
+>    {% snippet faqs/galaxy/datasets_import_via_link.md format="fasta" %}
+>
+> 3. Rename the dataset (optional)
+>
+>    {% snippet faqs/galaxy/datasets_rename.md name="Enterovirus genome sequences" %}
+>
+{: .hands_on}
+
+Now that we got our data, we can start the analysis by providing the data to NCBI makeblastdb to create a database. This will give us the possibility to detect off-target hits with varVAMP.
+
+> <hands-on-title>BLAST enterovirus genome database and primer design of Polio virus</hands-on-title>
+>
+> 1. {% tool [NCBI BLAST+ makeblastdb](toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/2.14.1+galaxy2) %} with the following parameters:
+>    - *"Molecule type of input"*: `nucleotide`
+>        - {% icon param-repeat %} **Select Input**
+>            - *"Input is a"*: `Dataset in history`
+>            - *"FASTA input"*: `Enterovirus genome sequences`
+>    - *"Title for BLAST database"*: `Enterovirus genome db`
+>
+> 2. Rename the dataset
+>      
+>    {% snippet faqs/galaxy/datasets_rename.md name="Enterovirus genome db" %}
+> 3. {% tool [varVAMP](toolshed.g2.bx.psu.edu/repos/iuc/varvamp/varvamp/1.1.2+galaxy0) %} with the following parameters:
+>    - {% icon param-file %} *"Multiple alignment of viral sequences"*: `Polio 1 MSA`
+>    - *"What kind of primers would you like to design? (varvamp mode)"*: `qPCR primers (qpcr)`
+>        - *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify values for both`
+>           - *"Threshold for consensus nucleotides"*: `0.93`
+>           - *"Maximum number of ambiguous nucleotides per primer to be tolerated (default: 2)"*: `2`
+>           - *"Maximum number of ambiguous nucleotides per qPCR probe to be tolerated"*: `1`
+>        - *"Top n qPCR amplicons to test"*: `50`
+>        - *"Minimum free energy (kcal/mol/K) cutoff*: `-3`
+>        - *"Avoid amplicons with off-target primer products?"*: `Yes`
+>           - *"BLAST database"*: the output of **NCBI makeblastdb** `Enterovirus genome db`
+>           - *"Customize BLAST Settings?"*: `No, use VarVAMP default settings`
+>
+{: .hands_on}
+
+We produced 3 possible primer schemes with our current settings for further qPCR. How can we check, if these are appropriate primer designs which exclude maybe off-targets?
+There is a bed file output of the qpcr setting of varVAMP, which is called *"Amplicon locations"*. As the name says, it gives information about the start and the end position of the amplicons and, very important, the penalty score. Look it up and compare it to the amplicon location bed file of the last varVAMP run.
+
+Please try to answer the following questions.
+
+> <question-title></question-title>
+> 
+> 1. Whats the difference between the scores of the 2 bed files?
+> 2. What does the difference mean?
+> 3. Why did varVAMP choose these primers anyway?
+> 4. What can be modified in our settings, to get more possible primers?
+>
+> > <solution-title></solution-title>
+> >
+> > 1. The second amplicon locations file has the same number of penalty but with 50 points in addition.
+> > 2. Because of the enterovirus BLAST db reference, the same primer schemes of the first varVAMP run were found as off-targets and got additional penalty.
+> > 3. There were only these 3. VarVAMP didn't have much more choice.
+> > 4. Our threshold for consensus sequences with 0.93 is quite high. With a lower threshold, we will get more potential primer schemes.
+> {: .solution}
+>
+{: .question}
+
+Now let's try it out with a lower threshold, to get a primer scheme which is not penalized by the detection as off-target through the BLAST database. With a lower threshold value, the specificy minimizes as well, but values above 0.7 are acceptable and it depends on the use case. The default value is 0.8, so let's give it a try.
+
+> <hands-on-title>Primer design of Polio 1 virus with BLAST db and lower threshold</hands-on-title>
+>
+> 1. {% tool [varVAMP](toolshed.g2.bx.psu.edu/repos/iuc/varvamp/varvamp/1.1.2+galaxy0) %} with the following parameters:
+>    - {% icon param-file %} *"Multiple alignment of viral sequences"*: `Polio 1 MSA`
+>    - *"What kind of primers would you like to design? (varvamp mode)"*: `qPCR primers (qpcr)`
+>        - *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify values for both`
+>           - *"Threshold for consensus nucleotides"*: `0.8`
+>           - *"Maximum number of ambiguous nucleotides per primer to be tolerated (default: 2)"*: `2`
+>           - *"Maximum number of ambiguous nucleotides per qPCR probe to be tolerated"*: `1`
+>        - *"Top n qPCR amplicons to test"*: `50`
+>        - *"Minimum free energy (kcal/mol/K) cutoff*: `-3`
+>        - *"Avoid amplicons with off-target primer products?"*: `Yes`
+>           - *"BLAST database"*: the output of **NCBI makeblastdb** `Enterovirus genome db`
+>           - *"Customize BLAST Settings?"*: `No, use VarVAMP default settings`
+>
+>       > <comment-title>Threshold control</comment-title>
+>       >
+>       >Try out the automatic set for values like the threshold by varVAMP. If you choose on the website for *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify max ambiguous nts, estimate suitable threshold`, the tool will choose a value on its own. You can look up the value in the "Analysis log" file.
+>       {: .comment}
+>
+{: .hands_on}
+
+The newly designed primer schemes can be checked again with the "Amplicon locations" file. We got some questions for you prepared:
+
+> <question-title></question-title>
+> 
+> 1. What is the difference of the lower threshold? Did you get a useful primer scheme?
+> 2. What was the goal of the analysis with the additional BLAST database?
+> 3. Consider other use cases for a blast database as off-target elimination!
+> 4. What is the advantage of our result?
+>
+> > <solution-title></solution-title>
+> > 1. We got more potential primer schemes. Yes, we got 3 primer schemes, which aren't penalized as off-targets by varVAMP.
+> > 2. To eliminate possible off-targets in sequences, which we can find in the BLAST database.
+> > 3. If you want to prepare primers to amplify specific viral genome sequences of samples of various origins e.g. wastewater or animal blood samples for surveillance. Another application could be the qPCR primer design for real-time detection of polio genome sequences in blood samples.
+> > 4. Now we can be certain, if we get to analyze e.g. a wastewater sample, to amplify only Polio 1 viral genome sequences with these designed primers.
+> {: .solution}
+>
+{: .question}
+
+For practicing further options, we'll now get Polio 1-3 genome data and create primers for another use case with the *TILED* flavor. These primers are suitable for Oxford Nanopore or Illumina based full-genome sequencing.
+
+
 # Designing a complete pan-specific primer scheme for tiled-amplicon sequencing
 
-## Naive approach without consideration of off-target sites
-As mentioned, we'll prepare primers for Next Generation Sequencing instead of qPCR with the aligned genome data of Polio 1-3. 
+As mentioned, we'll prepare primers for Next Generation Sequencing instead of qPCR with the aligned genome data of Polio 1-3. The main goal is to reproduce the whole genome of our input sequences.
 
 To focus on the primer scheme design we will skip the multiple sequence alignment step this time and start from the pre-aligned Polio 1-3 sequences available as part of the [ViralPrimerScheme](https://github.com/jonas-fuchs/ViralPrimerSchemes) repository.
 
@@ -336,7 +464,7 @@ To focus on the primer scheme design we will skip the multiple sequence alignmen
 >
 {: .hands_on}
 
-In the next go-through with VarVAMP, we will get to know the *TILED* flavor. We don't generate a probe for quantasizing our pcr-product anymore, but therefore we need to specify the size of our overlapping region of the amplicons for the tiling function. Another adjustment which can be done is the optimal or maximum length determination of the amplicon. Two important settings, which you can find in every flavor of VarVAMP is n_ambig, the number of ambigious nucleotides in your primer, and the threshold of consensus nucleotides to ensure the specifity of your design.
+In the next go-through with VarVAMP, we will get to know the *TILED* flavor. We don't generate a probe for quantasizing our pcr-product anymore, but therefore we need to specify the size of our overlapping region of the amplicons for the tiling function. Another adjustment which can be done is the optimal or maximum length determination of the amplicon. Two important settings, whixh you already know and can find in every flavor of VarVAMP is n_ambig, the number of ambigious nucleotides in your primer, and the threshold of consensus nucleotides to ensure the specifity of your design.
 
 > <hands-on-title>Tool settings for TILED-Primers</hands-on-title>
 >
@@ -367,81 +495,6 @@ Again, we have some questions for you prepared:
 > > 3. Yes, there are differences. It's a different set of primers. The reason for this very different result are the settings of the parameters. In the last run, we let VarVamp run with the default settings for the tiled flavor. Check out the analysis/varvamp log file of both, the one on the github website and your own produced.
 > > 4. Increase of length of amplicon, minimal required overlap and threshold or decrease of maximum number of ambiguous nucleotides per primer.
 > >
-> {: .solution}
->
-{: .question}
-
-## Advanced approach considering off-target sites
-In out last step, imagine we have a sample to examine, which was taken from virus infected human tissue. We want to be sure, that we are not amplifing any other related enterovirus genome sequences with our polio gene material in our analysis. How do we get to be sure, we specificly build primers for our viral genome of interest?
-
-With VarVAMP, it is possible to insert a BLAST database as an off-target reference. We can use the *NCBI BLAST makeblastdb* ({% cite Cock2015 %}) to create a BLAST database of other whole genomes of entereroviruses and use it as a reference. Now we can compare it with the MSA and avoid designing primers for possible similar genome regions of other organisms. An application example would be primer design for NGS to identify related viral genomes in a human sample.
-
-The following steps are:
-
-1. Upload the enterovirus genome data into Galaxy.
-
-2. Create a enterovirus genome database with ncbi makeblastdb.
-
-3. Use the builded BLAST database with VarVAMP to check amplicon primer candidates against.
-
-> <hands-on-title>Get the whole genome sequences of enterovirus</hands-on-title>
-> 1. Get the genome sequence fasta files from
->
->    ```
->    
->    ```
->
-> 2. Upload it to Galaxy as a dataset of type `fasta`.
->
->    {% snippet faqs/galaxy/datasets_import_via_link.md format="fasta" %}
->
-> 3. Rename the dataset (optional)
->
->    {% snippet faqs/galaxy/datasets_rename.md name="Enterovirus genome sequences" %}
->
-{: .hands_on}
-
-Now that we got our data, we can start the analysis by providing the data to NCBI makeblastdb to create a database. This will give us the possibility to detect off-target hits with varVAMP.
-
-> <hands-on-title>BLAST enterovirus genome database and primer design of all Polio viruses (1-3)</hands-on-title>
->
-> 1. {% tool [NCBI BLAST+ makeblastdb](toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_makeblastdb/2.14.1+galaxy2) %} with the following parameters:
->    - *"Molecule type of input"*: `nucleotide`
->        - {% icon param-repeat %} **Select Input**
->            - *"Input is a"*: `Dataset in history`
->            - *"FASTA input"*: `Enterovirus genome sequences`
->    - *"Title for BLAST database"*: `Enterovirus genome db`
->
-> 3. Rename the dataset
->      
->    {% snippet faqs/galaxy/datasets_rename.md name="Enterovirus genome db" %}
-> 2. {% tool [varVAMP](toolshed.g2.bx.psu.edu/repos/iuc/varvamp/varvamp/1.1.2+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Multiple alignment of viral sequences"*: the `Polio 1-3 alignment` uploaded before
->    - *"What kind of primers would you like to design? (varvamp mode)"*: `Tiled primer scheme for whole-genome sequencing (tiled)`
->        - *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify values of both`
->        - *"Avoid amplicons with off-target primer products?"*: `Yes`
->           - *"BLAST database"*: the output of **NCBI makeblastdb** `Enterovirus genome db`
->           - *"Customize BLAST Settings?"*: `No, use VarVAMP default settings`
->
-{: .hands_on}
-
-We have generated primers for the three polio viruses and we can be certain, that these are able to amplify amplicons, which are different to the provided viral genome sequences we used as a reference.
-
-Last but not least, we have some questions for you prepared:
-
-> <question-title></question-title>
-> 
-> 1. What was the goal of the analysis with the additional BLAST database?
-> 2. Consider other use cases for a blast database as off-target elimination!
-> 3. Differ the results in comparison to the first tiled primer design?
-> 4. What is the advantage of our result?
->
-> > <solution-title></solution-title>
-> >
-> > 1. To eliminate possible off-targets in sequences, which we can find in the BLAST database.
-> > 2. If you want to prepare primers to amplify specific viral genome sequences of samples of various origins e.g. wastewater or animal blood samples for surveillance. Another application could be the qPCR primer design for real-time detection of polio genome sequences in blood samples.
-> > 3. The fourth primer differs. It now codes for a slight smaller amplicon. Additionally to the primer details output, you can look up the amplicons in a nice graphical view in the output called *Amplicon design overview plot*.
-> > 4. Now we can be certain, if we get to analyze e.g. a wastewater sample, to amplify only Polio 1-3 viral genome sequences with these designed primers.
 > {: .solution}
 >
 {: .question}
