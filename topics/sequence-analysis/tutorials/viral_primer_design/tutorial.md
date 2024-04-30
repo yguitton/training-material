@@ -292,9 +292,9 @@ The tool VarVAMP offers a wide range of different outputs in the various modes. 
 >       >In the next step, we'll create a dataset collection, because the numberous output data will soon make the history look unorganized and it will make it easier for you to distinguish between the results. Wait for the outputs of varVAMP to get green and then go on to the next step and create a dataset.
 >       {: .comment}
 >
-> 2. Creating a dataset collection (for the snippet: name="varVAMP Polio1 qpcr threshold 0.93")
+> 2. Creating a dataset collection 
 >
->    {% snippet  faqs/galaxy/collections_build_list.md %}
+>    {% snippet  faqs/galaxy/collections_build_list.md name="varVAMP Polio1 qpcr threshold 0.93" %}
 {: .hands_on}
 
 Now we got our first VarVAMP outputs and an idea, how the tool is working. Wee have put them together in a dataset to keep an organized overview. Check the different kind of outputs and get familiar with the results.
@@ -381,9 +381,9 @@ Now that we got our data, we can start the analysis by providing the data to NCB
 >           - *"BLAST database"*: the output of **NCBI makeblastdb** `Enterovirus genome db`
 >           - *"Customize BLAST Settings?"*: `No, use VarVAMP default settings`
 >
-> 4. Creating a dataset collection (for the snippet: name="varVAMP Polio1 qpcr threshold 0.93 + BLAST")
+> 4. Creating a dataset collection
 >
->    {% snippet  faqs/galaxy/collections_build_list.md %}
+>    {% snippet  faqs/galaxy/collections_build_list.md name="varVAMP Polio1 qpcr threshold 0.93 + BLAST" %}
 {: .hands_on}
 
 We produced 3 possible primer schemes with our current settings for further qPCR. How do we check, if these are appropriate primer designs which exclude maybe off-targets?
@@ -430,9 +430,9 @@ Now let's try it out with a lower threshold, to get a primer scheme which is not
 >       >Try out the automatic set for values like the threshold by varVAMP. If you choose on the website for *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify max ambiguous nts, estimate suitable threshold`, the tool will choose a value on its own. You can look up the value in the "Analysis log" file after you run it.
 >       {: .comment}
 >
-> 2. Creating a dataset collection (for the snippet: name="varVAMP Polio1 qpcr threshold 0.8 + BLAST")
+> 2. Creating a dataset collection
 >
->    {% snippet  faqs/galaxy/collections_build_list.md %}
+>    {% snippet  faqs/galaxy/collections_build_list.md name="varVAMP Polio1 qpcr threshold 0.8 + BLAST" %}
 {: .hands_on}
 
 The newly designed primer schemes can be checked again with the "Amplicon locations" file. We got some questions for you prepared:
@@ -487,9 +487,9 @@ In the next go-through with VarVAMP, we will get to know the *TILED* flavor. We 
 >        - *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify max ambiguous nts, estimate suitable threshold`
 >        - *"Maximum number of ambiguous nucleotides per primer to be tolerated (default: 2)"*: `2`
 >
-> 2. Creating a dataset collection (for the snippet: name="varVAMP Polio1 tiled")
+> 2. Creating a dataset collection
 >
->    {% snippet  faqs/galaxy/collections_build_list.md %}
+>    {% snippet  faqs/galaxy/collections_build_list.md name="varVAMP Polio1-3 tiled" %}
 {: .hands_on}
 
 As you can see in the output on the right side, you'll have succesfully created primers for further amplification of your viral sequences.
