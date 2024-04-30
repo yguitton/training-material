@@ -104,7 +104,7 @@ To effectively utilize **MAFFT**({% cite Katoh2013 %}), a powerful tool for mult
 
 *Multiple sequence alignment (MSA)* plays an important role in evolutionary analyses of biological sequences. In this part of the tutorial, we want to align the genome datasets to get knowledge about similarity and evolutionary relationship between the sequences. **MAFFT** is a multiple sequence alignment program, which enables the analysis of a file with several sequences with different alignment algorithms.
 
-When multiple files are added, MAFFT will run for each of these, so it is necessary to have every sequence, which you want to have aligned, in one file. For that there is in the tool MAFFT on Galaxy a concatenate option implemented. For further information look in details below:
+When multiple files are added, MAFFT will run for each of these, so it is necessary to have every sequence, which you want to have aligned, in one file. Therefore there is a concatenate option in MAFFT on Galaxy implemented. For further information look in details below:
 
 > <details-title> MAFFT - 2 Concatenate options </details-title>
 >
@@ -112,7 +112,7 @@ When multiple files are added, MAFFT will run for each of these, so it is necess
 >
 > **Option 1:**
 >
->   - Upload several fasta files in different dataset upload sections and cross concatenate following the rule, first file of 1. section with first file of 2. section ect. You can add as many dataset section as you want.
+>   - Upload several fasta files in different dataset upload sections and cross concatenate following the rule, first file of 1. section with first file of 2. section ect. You can add as many dataset sections as you want.
 >   - If you want to make multiple alignments of many files seperately, upload them in the first dataset section and don't add a 2. datasets section.
 >
 > **Option 2:**
@@ -293,10 +293,10 @@ Now we got our first VarVAMP outputs and an idea, how the tool is working. Check
 
 > <comment-title>Output control</comment-title>
 >
-> Control your output files with the example files of the [VarVAMP-qPCR-output github page for Polio 1 virus](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_qpcr/polio1). There you can check, if you have created the same primers. You can find the primer locations in the bed file "primers.bed".
+> Control your output files with the example files of the [VarVAMP-qPCR-output github page for Polio 1 virus](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_qpcr/polio1). There you can check, if you created the same primers. You can find the primer locations in the bed file "primers.bed".
 {: .comment}
 
-In addition to be certain, that these primers are coding only for Polio 1 viral genomes instead of human or other viral genome sequences, it is possible to use a BLAST database as reference for possible off-targets. We'll get to this feature in the next section.
+In addition to be certain, that these primers are coding only for Polio 1 viral genomes instead of human or other viral genome sequences, it is possible to use a BLAST database as reference for detection of off-target binding sites. We'll get to this feature in the next section.
 
 But first of all, we have some questions for you prepared:
 
@@ -311,7 +311,7 @@ But first of all, we have some questions for you prepared:
 > >
 > > 1. VarVAMP can produces highly personalized pan-specific primers for a large number of viruses.
 > > 2. No, there are likely the same. This means the result can be reproduced.
-> > 3. You can find the answer in the amplicons.bed file. The first amplicon starts at 1742 and ends at 1835.
+> > 3. You can find the answer in the *"Amplicon locations"* file. The first amplicon starts at 1742 and ends at 1835.
 > > 4. The solution lies in the per default contributed log file. It contains the parameter configuration of your latest VarVAMP run. If you save and use the values of the threshold and n_ambig for further runs, VarVAMP will not start it's automatic calculation of these and thus results in lower computing time and higher reproducibility.
 > {: .solution}
 >
@@ -340,7 +340,7 @@ The following steps are:
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md format="fasta" %}
 >
-> 3. Rename the dataset (optional)
+> 2. Rename the dataset (optional)
 >
 >    {% snippet faqs/galaxy/datasets_rename.md name="Enterovirus genome sequences" %}
 >
@@ -375,8 +375,8 @@ Now that we got our data, we can start the analysis by providing the data to NCB
 >
 {: .hands_on}
 
-We produced 3 possible primer schemes with our current settings for further qPCR. How can we check, if these are appropriate primer designs which exclude maybe off-targets?
-There is a bed file output of the qpcr setting of varVAMP, which is called *"Amplicon locations"*. As the name says, it gives information about the start and the end position of the amplicons and, very important, the penalty score. Look it up and compare it to the amplicon location bed file of the last varVAMP run.
+We produced 3 possible primer schemes with our current settings for further qPCR. How do we check, if these are appropriate primer designs which exclude maybe off-targets?
+You know already, that there is a certain bed file output of the qpcr setting of varVAMP, which is called *"Amplicon locations"*. As the name says, it gives information about the start and the end position of the amplicons and, very important, the penalty score. Look it up and compare it to the amplicon location bed file of the first varVAMP run.
 
 Please try to answer the following questions.
 
@@ -397,7 +397,7 @@ Please try to answer the following questions.
 >
 {: .question}
 
-Now let's try it out with a lower threshold, to get a primer scheme which is not penalized by the detection as off-target through the BLAST database. With a lower threshold value, the specificy minimizes as well, but values above 0.7 are acceptable and it depends on the use case. The default value is 0.8, so let's give it a try.
+Now let's try it out with a lower threshold, to get a primer scheme which is not penalized by the detection as off-target through the BLAST database. With a lower threshold value, the specificy minimizes as well, but values above 0.7 are acceptable and it depends hardly on the use case. The default value is 0.8, so let's get going with this value.
 
 > <hands-on-title>Primer design of Polio 1 virus with BLAST db and lower threshold</hands-on-title>
 >
@@ -416,7 +416,7 @@ Now let's try it out with a lower threshold, to get a primer scheme which is not
 >
 >       > <comment-title>Threshold control</comment-title>
 >       >
->       >Try out the automatic set for values like the threshold by varVAMP. If you choose on the website for *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify max ambiguous nts, estimate suitable threshold`, the tool will choose a value on its own. You can look up the value in the "Analysis log" file.
+>       >Try out the automatic set for values like the threshold by varVAMP. If you choose on the website for *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify max ambiguous nts, estimate suitable threshold`, the tool will choose a value on its own. You can look up the value in the "Analysis log" file after you run it.
 >       {: .comment}
 >
 {: .hands_on}
@@ -432,15 +432,14 @@ The newly designed primer schemes can be checked again with the "Amplicon locati
 >
 > > <solution-title></solution-title>
 > > 1. We got more potential primer schemes. Yes, we got 3 primer schemes, which aren't penalized as off-targets by varVAMP.
-> > 2. To eliminate possible off-targets in sequences, which we can find in the BLAST database.
-> > 3. If you want to prepare primers to amplify specific viral genome sequences of samples of various origins e.g. wastewater or animal blood samples for surveillance. Another application could be the qPCR primer design for real-time detection of polio genome sequences in blood samples.
-> > 4. Now we can be certain, if we get to analyze e.g. a wastewater sample, to amplify only Polio 1 viral genome sequences with these designed primers.
+> > 2. To eliminate possible off-targets in sequences by giving them a high penalty.
+> > 3. If you want to prepare primers to amplify specific viral genome sequences of samples of various origins e.g. wastewater or animal blood samples for real-time surveillance through the fluorescence-based detection.
+> > 4. Now we can be certain, if we get to analyze e.g. a wastewater sample, to amplify only Polio 1 viral genome sequences with these specificly designed primers.
 > {: .solution}
 >
 {: .question}
 
 For practicing further options, we'll now get Polio 1-3 genome data and create primers for another use case with the *TILED* flavor. These primers are suitable for Oxford Nanopore or Illumina based full-genome sequencing.
-
 
 # Designing a complete pan-specific primer scheme for tiled-amplicon sequencing
 
@@ -464,9 +463,9 @@ To focus on the primer scheme design we will skip the multiple sequence alignmen
 >
 {: .hands_on}
 
-In the next go-through with VarVAMP, we will get to know the *TILED* flavor. We don't generate a probe for quantasizing our pcr-product anymore, but therefore we need to specify the size of our overlapping region of the amplicons for the tiling function. Another adjustment which can be done is the optimal or maximum length determination of the amplicon. Two important settings, whixh you already know and can find in every flavor of VarVAMP is n_ambig, the number of ambigious nucleotides in your primer, and the threshold of consensus nucleotides to ensure the specifity of your design.
+In the next go-through with VarVAMP, we will get to know the *TILED* flavor. We don't generate a probe for quantasizing our pcr-product anymore, but therefore we need to specify the size of our overlapping region of the amplicons for the tiling function. Another adjustment which can be done is the optimal or maximum length determination of the amplicon. Two important settings, which you already know and can find in every flavor of VarVAMP is n_ambig, the number of ambigious nucleotides in your primer, and the threshold of consensus nucleotides to ensure the specifity of your design.
 
-> <hands-on-title>Tool settings for TILED-Primers</hands-on-title>
+> <hands-on-title>Primer design with the TILED-flavour for whole genome amplification</hands-on-title>
 >
 > 1. {% tool [varVAMP](toolshed.g2.bx.psu.edu/repos/iuc/varvamp/varvamp/1.1.2+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Multiple alignment of viral sequences"*: the `Polio 1-3 alignment` just uploaded
