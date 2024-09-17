@@ -4,49 +4,36 @@ layout: tutorial_hands_on
 title: Molecular formula assignment and recalibration with MFAssignR package
 zenodo_link: https://zenodo.org/records/13768009
 questions:
-- Which biological questions are addressed by the tutorial?
-- Which bioinformatics techniques are important to know for this type of data?
+- What are the main steps of untargeted metabolomics LC-MS data pre-processing?
+- How to analyze complex mixture samples using the MFAssignR package?
 objectives:
-- The learning objectives are the goals of the tutorial
-- They will be informed by your audience and will communicate to them and to yourself
-  what you should focus on during the course
-- They are single sentences describing what a learner should be able to do once they
-  have completed the tutorial
-- You can use Bloom's Taxonomy to write effective learning objectives
+- To learn about the main steps in the pre-processing of untargeted metabolomics LC-MS data.
+- To try on-hands analysis using the model data.
+
 time_estimation: 3H
 key_points:
 - The take-home messages
 - They will appear at the end of the tutorial
 contributors:
-- contributor1
-- contributor2
+- Kristina Gomoryova
+- hechth
 
 ---
 
+This training covers the multi-element molecular formula (MF) assignment using the MFAssignR tool. It was originally developed by {% cite Schum2020 %} and contains several functions including noise assessment, isotope filtering, internal mass recalibration and formula assignment. 
 
+MFAssignR workflow is composed of several steps:
 
-General introduction about the topic and then an introduction of the
-tutorial (the questions and the objectives). It is nice also to have a
-scheme to sum up the pipeline used during the tutorial. The idea is to
-give to trainees insight into the content of the tutorial and the (theoretical
-and technical) key concepts they will learn.
+1. Run KMDNoise() to determine the noise level for the data.
+2. Check effectiveness of S/N threshold using SNplot().
+3. Use IsoFiltR() to identify potential 13C and 34S isotope masses.
+4. Using the S/N threshold, and the two data frames output from IsoFiltR(), run MFAssignCHO() to assign MF with C, H, and O to assess the mass accuracy.
+5. Use RecalList() to generate a list of the potential recalibrant series.
+6. After choosing recalibrant series, use Recal() to recalibrate the mass lists.
+7. Assign MF to the recalibrated mass list using MFAssign().
+8. Check the output plots from MFAssign() to evaluate the quality of the assignments.
 
-You may want to cite some publications; this can be done by adding citations to the
-bibliography file (`tutorial.bib` file next to your `tutorial.md` file). These citations
-must be in bibtex format. If you have the DOI for the paper you wish to cite, you can
-get the corresponding bibtex entry using [doi2bib.org](https://doi2bib.org).
-
-With the example you will find in the `tutorial.bib` file, you can add a citation to
-this article here in your tutorial like this:
-{% raw %} `{% cite Batut2018 %}`{% endraw %}.
-This will be rendered like this: {% cite Batut2018 %}, and links to a
-[bibliography section](#bibliography) which will automatically be created at the end of the
-tutorial.
-
-<!-- This is a comment. -->
-
-**Please follow our
-[tutorial to learn how to fill the Markdown]({{ site.baseurl }}/topics/contributing/tutorials/create-new-tutorial-content/tutorial.html)**
+Let's dive now into the individual steps and explain all the inputs, parameter settings and outputs.
 
 > <agenda-title></agenda-title>
 >
@@ -57,77 +44,40 @@ tutorial.
 >
 {: .agenda}
 
-# Title for your first section
+# Data import
 
-Give some background about what the trainees will be doing in the section.
-Remember that many people reading your materials will likely be novices,
-so make sure to explain all the relevant concepts.
+At the very beginning, we need to import the dataset we will be using. MFAssignR requires an input data, which have as the first column mass, in the second column there is intensity and optionally, the third column can contain retention time. In our case, we will start with a raw mass list, which was measured in a negative ESI mode.
 
-## Title for a subsection
-Section and subsection titles will be displayed in the tutorial index on the left side of
-the page, so try to make them informative and concise!
-
-# Hands-on Sections
-Below are a series of hand-on boxes, one for each tool in your workflow file.
-Often you may wish to combine several boxes into one or make other adjustments such
-as breaking the tutorial into sections, we encourage you to make such changes as you
-see fit, this is just a starting point :)
-
-Anywhere you find the word "***TODO***", there is something that needs to be changed
-depending on the specifics of your tutorial.
-
-have fun!
-
-## Get data
-
-> <hands-on-title> Data Upload </hands-on-title>
+> <hands-on-title> Upload data </hands-on-title>
 >
-> 1. Create a new history for this tutorial
-> 2. Import the files from [Zenodo]({{ page.zenodo_link }}) or from
->    the shared data library (`GTN - Material` -> `{{ page.topic_name }}`
->     -> `{{ page.title }}`):
+> 1. Create a new history for this tutorial and give it a name.
+>
+>    {% snippet faqs/galaxy/histories_create_new.md %}
+>
+> 2. Import the files from [Zenodo]({{ https://zenodo.org/records/13768009 }}):
 >
 >    ```
 >    https://zenodo.org/api/records/13768009/files/mfassignr_input.txt/content
 >    ```
->    ***TODO***: *Add the files by the ones on Zenodo here (if not added)*
->
->    ***TODO***: *Remove the useless files (if added)*
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
 >    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
 >
-> 3. Rename the datasets
-> 4. Check that the datatype
+> 3. Set the format of the dataset to 'tabular'. 
 >
->    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
+>    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
 >
-> 5. Add to each database a tag corresponding to ...
+> 4. We can now view our dataset, and ensure, that it has a correct input format.
 >
->    {% snippet faqs/galaxy/datasets_add_tag.md %}
 >
 {: .hands_on}
 
-# Title of the section usually corresponding to a big step in the analysis
+# Noise assessment
 
-It comes first a description of the step: some background and some theory.
-Some image can be added there to support the theory explanation:
+Having our input data in the workspace, we can now start with the analysis!
 
-![Alternative text](../../images/image_name "Legend of the image")
-
-The idea is to keep the theory description before quite simple to focus more on the practical part.
-
-***TODO***: *Consider adding a detail box to expand the theory*
-
-> <details-title> More details about the theory </details-title>
->
-> But to describe more details, it is possible to use the detail boxes which are expandable
->
-{: .details}
-
-A big step can have several subsections or sub steps:
-
+The first step is the noise assessment, which allows us to avoid both false positives (if noise is underestimated) and false negatives (if noise is overestimated). For this purpose, we will be using two functions: MFAssignR HistNoise and MFAssignR KMDNoise, and we can additionally visualize the result using the MFAssignR SNplot function. The main goal is to find a signal-to-noise (S/N) threshold, which we will use later on. 
 
 ## Sub-step with **MFAssignR KMDNoise**
 
