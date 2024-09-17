@@ -9,8 +9,14 @@ questions:
 objectives:
 - To learn about the main steps in the pre-processing of untargeted metabolomics LC-MS data.
 - To try on-hands analysis using the model data.
-
-time_estimation: 3H
+requirements:
+  -
+    type: "internal"
+    topic_name: metabolomics
+    tutorials:
+      - introduction
+      - lcms-dataprocessing
+time_estimation: 2H
 key_points:
 - The take-home messages
 - They will appear at the end of the tutorial
@@ -32,6 +38,10 @@ MFAssignR workflow is composed of several steps:
 6. After choosing recalibrant series, use Recal() to recalibrate the mass lists.
 7. Assign MF to the recalibrated mass list using MFAssign().
 8. Check the output plots from MFAssign() to evaluate the quality of the assignments.
+
+We can illustrate the workflow also on the following scheme:
+
+![workflow_graphical](images/mfassignr_scheme.png)
 
 Let's dive now into the individual steps and explain all the inputs, parameter settings and outputs.
 
@@ -79,11 +89,11 @@ Having our input data in the workspace, we can now start with the analysis!
 
 The first step is the noise assessment, which allows us to avoid both false positives (if noise is underestimated) and false negatives (if noise is overestimated). For this purpose, we will be using two functions: **MFAssignR HistNoise** and **MFAssignR KMDNoise** and we can additionally visualize the result using the **MFAssignR SNplot** function. The main goal is to find a signal-to-noise (S/N) threshold, which we will use later on. 
 
-## MFAssignR HistNoise
+## HistNoise
 
 We will firstly assess the noise using the HistNoise function. This function attempts to find a point where noise peaks give way to analyte signal using a histogram of the natural log intensities in the measured raw mass spectrum. 
 
-> <hands-on-title> Run MFAssignR HistNoise </hands-on-title>
+> <hands-on-title> Noise assessment using HistNoise </hands-on-title>
 >
 > 1. {% tool [MFAssignR HistNoise](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_histnoise/mfassignr_histnoise/1.1.1+galaxy0) %} with the following parameters:
 >
@@ -113,13 +123,13 @@ On the output, we can see we got a **noise level** and a **histogram**, where by
 >
 {: .question}
 
-## MFAssignR KMDNoise
+## KMDNoise
 
 When the KMD (Kendrick Mass Defect) is calculated for all peaks in the mass spectrum, there will be clear separation of more intense analyte peaks, and low intense noise peaks. To isolate the noise region, we can use the KMD limits of chemically feasible molecular formulas in conjunction with the calculation of slope of a KMD plot using a linear equation y = 0,1132x + b, where y is the KMD value, x the measured ion mass and b an y-intercept. To provide more accurate assessment, two lines are with different y-intercepts are selected (we will set this lower and upper y-limit below). Once the noise region is isolated, a noise level will be estimated as average intensity of peaks within that region.
 
 When running the function, we can stick with the default values: upper limit for the y intercept is set to 0.2, so that it does not interact with any potentially double-charged peaks, lower limit of the y-intercept value is set to 0.05 to ensure no analyte peaks are incorporated into the noise estimation. Both upper and lower x intercept limits are optional and will be set to minimum and maximum mass in the spectrum if not specified. 
 
-> <hands-on-title> Run MFAssignR KMDNoise </hands-on-title>
+> <hands-on-title> Noise assessment using KMDNoise </hands-on-title>
 >
 > 1. {% tool [MFAssignR KMDNoise](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_histnoise/mfassignr_kmdnoise/1.1.1+galaxy0) %} with the following parameters:
 >
@@ -147,7 +157,7 @@ The function outputs a **KMD plot**, where the noise area is separated in betwee
 >
 {: .question}
 
-## MFAssignR SNplot
+## SNplot
 
 We can now check the effectiveness of the S/N threshold using SNplot, which plots the mass spectrum with the masses below and above the chosen threshold, where the noise is indicated by red.
 
@@ -171,7 +181,7 @@ The *cut* parameter can be computed as estimated noise level * user defined S/N 
 Based on the SNplot, we can see that the noise - indicated in red - is effectively separated by the horizontal line, meaning we can further use the 346 value as the S/N threshold.
 
 
-# MFAssignR IsoFiltR
+# Isotope filtering
 
 Next step is identification of probable isotopic ion masses containing 1-2 13C or 34S from monoisotopic massed in order to prevent incorrect interpretation of molecular composition. For this, we will use the IsoFiltR function.
 
@@ -179,7 +189,7 @@ After performing isotopic filtering, two tables are outputted, one containing th
 
 We will change only the S/N ratio parameter, otherwise we can follow with the default settings.
 
-> <hands-on-title> Isotope filtering </hands-on-title>
+> <hands-on-title> Isotope filtering using IsoFiltR </hands-on-title>
 >
 > 1. {% tool [MFAssignR IsoFiltR](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_isofiltr/mfassignr_isofiltr/1.1.1+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input Peak Data"*: `mfassignr-input.txt` (Input dataset)
@@ -192,13 +202,13 @@ We will change only the S/N ratio parameter, otherwise we can follow with the de
 >
 {: .hands_on}
 
-# MFAssignR MFAssignCHO
+# Preliminary molecular formula assignment
 
 Once we have denoised data and we have identified the potential 13C and 34S masses, we can start with the preliminary MF assignment, using the **MFAssignCHO** function. This function assigns MF only with CHO elements to assess the mass accuracy, and therefore it's much quicker than the main MFAssign function. 
 
 Let's use the MFAssignCHO function. On the input, we will need the output of IsoFiltR function, a dataframe of monoisotopic masses, and also the dataframe containing isotopic masses. Furthermore, we select in which ion mode we measured the data (positive or negative) and we set the signal-to-noise threshold - based on the noise estimate we obtained from the KMDNoise or HistNoise functions multiplied by a specific value - recommended is 3, 6 or 9. Finally, based on the acquisition range, we set the lowMW and highMW, and also the allowed ppm error. Other parameters we can leave in default settings. 
 
-> <hands-on-title> Preliminary molecular formula assignment </hands-on-title>
+> <hands-on-title> Preliminary MF assignment with MFAssignCHO </hands-on-title>
 >
 >
 > 1. {% tool [MFAssignR MFAssignCHO](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_mfassigncho/mfassignr_mfassignCHO/1.1.1+galaxy0) %} with the following parameters:
@@ -224,7 +234,7 @@ On the output, we get several dataframes: unambiguous assignments, ambiguous ass
 # Recalibration
 The next step is recalibration, for which we will use three consecutive functions, RecalList, FindRecalSeries and Recal. 
 
-## MFAssignR RecalList
+## RecalList
 
 Firstly, we will generate a table containing potential recalibrant CH2 homologous series using the RecalList function. 
 As in input, we will use the Unambig1 dataframe which we generated in the MFAssignCHO function:
@@ -255,7 +265,7 @@ Currently, it is up to user to choose the most suitable recalibrant series which
 
 The series can be chosen either visually by the user, or using the **FindRecalSeries** function, which we will describe in the next section.
 
-## MFAssignR FindRecalSeries
+## FindRecalSeries
 
 This function attempts to help with selecting the most appropriate recalibration series. The input to FindRecalSeries() is the output of RecalList, so all series without particular order. 
 
@@ -287,7 +297,6 @@ To tackle this problem, we introduced the **fill_series** parameter. By default 
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
 
 > <question-title></question-title>
 >
@@ -303,7 +312,7 @@ To tackle this problem, we introduced the **fill_series** parameter. By default 
 >
 {: .question}
 
-## MFAssignR Recal
+## Recal
 
 The Recal function is used for the internal mass recalibration. It takes the output from MFAssignCHO and outputs from IsoFiltrR, the Mono and Iso dataframes. Finally, it takes the series for recalibration, either chosen by the user or selected by FindRecalSeries function. 
 
@@ -328,11 +337,11 @@ A very common error points to increasing the MzRange parameter, which sets the r
 >
 {: .hands_on}
 
-## MFAssignR MFAssign
+# Molecular formula assignment
 
 The last step of the workflow is the actual assignment of molecular formulas with 12C, 1H and 16O and variety of heteroatoms and isotopes, including 2H, 13C, 14N, 15N, 31P, 32S, 34S, 35Cl, 37Cl, 19F, 79Br, 81Br, and 126I. It can also assign Na+ adducts, which are common in positive ion mode.
 
-> <hands-on-title> Task description </hands-on-title>
+> <hands-on-title> MF assignment using MFAssign </hands-on-title>
 >
 > 1. {% tool [MFAssignR MFAssign](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_mfassign/mfassignr_mfassign/1.1.1+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Data frame of monoisotopic masses"*: `Mono` (output of **MFAssignR Recal** {% icon tool %})
@@ -350,5 +359,6 @@ Finally, we obtain assigned formulas on rearranged data. Similarly to MFAssignCH
 
 # Conclusion
 
-Sum up the tutorial and the key takeaways here. We encourage adding an overview image of the
-pipeline used.
+In this tutorial we showed how we can assign the molecular formulas using MFAssignR package. We learnt that there are several key steps, including noise evaluation, isotope filtering, recalibration and finally the formula assignment. We described how parameters of individual functions are used and how they should be adjusted if needed. 
+
+![workflow overview](images/workflow_overview.png)
