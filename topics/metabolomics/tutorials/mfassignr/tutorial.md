@@ -171,128 +171,119 @@ The *cut* parameter can be computed as estimated noise level * user defined S/N 
 Based on the SNplot, we can see that the noise - indicated in red - is effectively separated by the horizontal line, meaning we can further use the 346 value as the S/N threshold.
 
 
-## Sub-step with **MFAssignR IsoFiltR**
+# MFAssignR IsoFiltR
 
-> <hands-on-title> Task description </hands-on-title>
+Next step is identification of probable isotopic ion masses containing 1-2 13C or 34S from monoisotopic massed in order to prevent incorrect interpretation of molecular composition. For this, we will use the IsoFiltR function.
+
+After performing isotopic filtering, two tables are outputted, one containing the isotopic masses and one containing the monoisotopic and all masses that did not have a matching isotopic mass. In complex mixtures, a mass can be classified as both monoisotopic and isotopic; in those cases it is included in both output tables and classified after the MF assignment.
+
+We will change only the S/N ratio parameter, otherwise we can follow with the default settings.
+
+> <hands-on-title> Isotope filtering </hands-on-title>
 >
 > 1. {% tool [MFAssignR IsoFiltR](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_isofiltr/mfassignr_isofiltr/1.1.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input Peak Data"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Input Peak Data"*: `mfassignr-input.txt` (Input dataset)
 >    - *"Signal-to-Noise Ratio"*: `346.0`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
+>    > <comment-title> SN ratio </comment-title>
 >    >
->    > A comment about the tool or something else. This box can also be in the main text
+>    > How about the noise multiplier?
 >    {: .comment}
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
+# MFAssignR MFAssignCHO
 
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
+Once we have denoised data and we have identified the potential 13C and 34S masses, we can start with the preliminary MF assignment, using the **MFAssignCHO** function. This function assigns MF only with CHO elements to assess the mass accuracy, and therefore it's much quicker than the main MFAssign function. 
 
-## Sub-step with **MFAssignR MFAssignCHO**
+Let's use the MFAssignCHO function. On the input, we will need the output of IsoFiltR function, a dataframe of monoisotopic masses, and also the dataframe containing isotopic masses. Furthermore, we select in which ion mode we measured the data (positive or negative) and we set the signal-to-noise threshold - based on the noise estimate we obtained from the KMDNoise or HistNoise functions multiplied by a specific value - recommended is 3, 6 or 9. Finally, based on the acquisition range, we set the lowMW and highMW, and also the allowed ppm error. Other parameters we can leave in default settings. 
 
-> <hands-on-title> Task description </hands-on-title>
+> <hands-on-title> Preliminary molecular formula assignment </hands-on-title>
+>
 >
 > 1. {% tool [MFAssignR MFAssignCHO](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_mfassigncho/mfassignr_mfassignCHO/1.1.1+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Data frame of monoisotopic masses"*: `mono_out` (output of **MFAssignR IsoFiltR** {% icon tool %})
 >    - {% icon param-file %} *"Data frame of isotopic masses"*: `iso_out` (output of **MFAssignR IsoFiltR** {% icon tool %})
+>    - *"ppm_err"*: `3`
 >    - *"Ion mode"*: `negative`
+>    - *"SN ratio"*: `6`
 >    - *"Estimated noise"*: `346.0`
 >    - *"Lower limit of molecular mass to be assigned"*: `50.0`
+>    - *"Upper limit of molecular mass to be assigned"*: `1000.0`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
+On the output, we get several dataframes: unambiguous assignments, ambiguous assignments and a dataframe containing unassigned masses. Additionally, several plots are available, such as MSAssign showing a mass spectrum highlighting assigned and unassigned masses, errorMZ showing the relationship between absolute error (in ppm) and ion mass, van Krevelen plot and a mass spectrum colored by molecular group.
 
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
+![errorMZ](images/errorMZ.png)
+![Van Krevelen plot](images/vankrevelen.png)
+![MS groups](images/MSgroups.png)
+![msassign](images/msassign.png)
 
-## Sub-step with **MFAssignR RecalList**
+# Recalibration
+The next step is recalibration, for which we will use three consecutive functions, RecalList, FindRecalSeries and Recal. 
 
-> <hands-on-title> Task description </hands-on-title>
+## MFAssignR RecalList
+
+Firstly, we will generate a table containing potential recalibrant CH2 homologous series using the RecalList function. 
+As in input, we will use the Unambig1 dataframe which we generated in the MFAssignCHO function:
+
+> <hands-on-title> Finding recalibrant series </hands-on-title>
 >
 > 1. {% tool [MFAssignR RecalList](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_recallist/mfassignr_recallist/1.1.1+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input data"*: `Unambig` (output of **MFAssignR MFAssignCHO** {% icon tool %})
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
+On the output, we get a dataframe containing CH2 homologous series that contain more than 3 members. Let's dive more into what metrics are available:
 
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
+- Series - reports the homologous series according to class, adduct, and DBE. The format is "class_adduct_DBE", for example a homologous series with class = "O6, adduct of Na+, and DBE = 4" would be "O6_Na_4"
+- Number Observed - reports the number of members of each homologous series.
+- Series Index - represents the order of the series when ordered by length of homologous series.
+- Mass Range - reports the minimum and maximum mass for the compounds within a homologous series.
+- Tall Peak - reports the mass of the most abundant peak in each series.
+- Abundance Score - reports the percentage difference between the mean abundance of a homologous series and the median abundance within the mass range the "Tall Peak" falls in (for example m/z 200-300). A higher score is generally better.
+- Peak Score - This column compares the intensity of the tallest peak in a given series to the second tallest peak in the series. This comparison is calculated by log10(Max Peak Intensity/Second Peak Intensity). The closer to 0 this value is the better, in general.
+- Peak Distance - This column shows the number of CH2 units between the tallest and second tallest peak in each series. In general, it is better for the value to be as close to 1 as possible.
+- Series Score - This column compares the number of actual observations in each series to the theoretical maximum number based on the CH2 homologous series. The closer to one this value is, the better.
 
-## Sub-step with **MFAssignR FindRecalSeries**
+Combined, these series should cover the full mass spectral range to provide the best overall recalibration. The best series to choose are generally long and combined have a “Tall Peak” at least every 100 m/z.
 
-> <hands-on-title> Task description </hands-on-title>
+Currently, it is up to user to choose the most suitable recalibrant series which will be used for the recalibration in the next Recal step. It is possible to choose up to 10 series and they should indeed span over whole range of m/z - often an error is thrown to add more series in case there would be gaps, or the chosen series would have a good scores but would be way too alike. 
+
+The series can be chosen either visually by the user, or using the **FindRecalSeries** function, which we will describe in the next section.
+
+## MFAssignR FindRecalSeries
+
+This function attempts to help with selecting the most appropriate recalibration series. The input to FindRecalSeries() is the output of RecalList, so all series without particular order. 
+
+The number of series provided by **RecalList** is quite extensive: using the model data, we get 225 series. Because computing all 10-element combinations out of 225 series would be very computationally expensive (we are at 7.480909295 E+16 possible combinations!), we firstly do pre-filtering:
+
+- We keep only the series with **Abundance.Score** > 0 - we want this parameter to be as high as possible, so we can very well get rid of negative values,
+- **Peak.Distance** < 2. Here, we want this parameter as close to 1 as possible, and although majority of series do have it indeed very close to 1, there are also some clear outliers around 4 which we can confidently filter out.
+
+Now we get out of 225 series to 94, and if we further restrict the Abundance.Score to 100, we end up with 33 series, where computing any combination is much easier.
+
+On the input, we need except for the RecalSeries output from RecalList also **global_min** and **global_max**, which correspond to the detection limit of instrument and are important for computing the coverage. Furthermore, we set the **abundance_score threshold**, **peak_distance_threshold** and **coverage_threshold**, which we already described above.
+
+Another two important parameters are **number_of_combinations** and **fill_series**. Number_of_combinations sets how many combinations we want to compute and for which we will get the scoring. Default value is 5, which is a nice "price-performance ratio". Keep in mind, that the more combinations you set, the longer computing time is expected, growing exponentially.
+
+To tackle this problem, we introduced the **fill_series** parameter. By default it is set to FALSE, meaning that only number of series corresponding to the number_of_combinations are returned. If we thus set the number_of_combinations to 5, only the 5-altogether best combination of series is returned. If we set this parameter to TRUE, the series will be filled up to 10, which can be taken by the Recal function, by sorting all series according to the final score, and taking the 10 best scoring unique series. This provides a more precise approach for the recalibration and also better coverage, while still keeping the computing time as low as possible.
+
+> <hands-on-title> Selecting most suitable series </hands-on-title>
 >
 > 1. {% tool [MFAssignR FindRecalSeries](mfassignr_findRecalSeries) %} with the following parameters:
 >    - {% icon param-file %} *"Input data"*: `recal_series` (output of **MFAssignR RecalList** {% icon tool %})
+>    - *"Global min"*: `100`
+>    - *"Global max"*: `800`
+>    - *"number_of_combinations"*: `5`
+>    - *"abundance_score_threshold"*: `100`
+>    - *"peak_distance_threshold"*: `2`
+>    - *"coverage_threshold"*: `80`
+>    - *"fill_series"*: `FALSE`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
 >
 {: .hands_on}
 
@@ -300,13 +291,13 @@ Based on the SNplot, we can see that the noise - indicated in red - is effective
 
 > <question-title></question-title>
 >
-> 1. Question1?
-> 2. Question2?
+> 1. How many series are returned when parameter `fill_series = FALSE` and when `TRUE`?
+> 2. I set the fill_series = TRUE and only 7 series were returned. How is it possible?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. Answer for question1
-> > 2. Answer for question2
+> > 1. When `fill_series = FALSE`, only number of series corresponding to the number of combinations computed is returned, so in our case 5 series will be returned. If we set `fill_series = TRUE`, series will automatically get filled up to 10 series.
+> > 2. The number of series passing all additional thresholds was too low, so 7 unique series were the only one, which got into the selection.
 > >
 > {: .solution}
 >
