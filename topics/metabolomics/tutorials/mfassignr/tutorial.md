@@ -292,7 +292,7 @@ To tackle this problem, we introduced the **fill_series** parameter. By default 
 > <question-title></question-title>
 >
 > 1. How many series are returned when parameter `fill_series = FALSE` and when `TRUE`?
-> 2. I set the fill_series = TRUE and only 7 series were returned. How is it possible?
+> 2. I set the `fill_series = TRUE` and only 7 series were returned. How is it possible?
 >
 > > <solution-title></solution-title>
 > >
@@ -303,9 +303,13 @@ To tackle this problem, we introduced the **fill_series** parameter. By default 
 >
 {: .question}
 
-## Sub-step with **MFAssignR Recal**
+## MFAssignR Recal
 
-> <hands-on-title> Task description </hands-on-title>
+The Recal function is used for the internal mass recalibration. It takes the output from MFAssignCHO and outputs from IsoFiltrR, the Mono and Iso dataframes. Finally, it takes the series for recalibration, either chosen by the user or selected by FindRecalSeries function. 
+
+A very common error points to increasing the MzRange parameter, which sets the recalibration segment length and has a default value of 30 - sometimes it is needed to increase it to even values as 80. Other parameters we can left to their defaults.
+
+> <hands-on-title> Internal mass recalibration </hands-on-title>
 >
 > 1. {% tool [MFAssignR Recal](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_recal/mfassignr_recal/1.1.1+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input data (Output from MFAssign)"*: `Unambig` (output of **MFAssignR MFAssignCHO** {% icon tool %})
@@ -313,12 +317,9 @@ To tackle this problem, we introduced the **fill_series** parameter. By default 
 >    - {% icon param-file %} *"Peaks dataframe (Mono from IsoFiltR)"*: `mono_out` (output of **MFAssignR IsoFiltR** {% icon tool %})
 >    - {% icon param-file %} *"Isopeaks dataframe (Iso from IsoFiltR)"*: `iso_out` (output of **MFAssignR IsoFiltR** {% icon tool %})
 >    - *"Ion mode"*: `negative`
+>    - *"SN ratio"*: `6`
 >    - *"Estimated noise"*: `346.0`
 >    - *"Mass windows used for the segmented recalibration"*: `50.0`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
 >
 >    > <comment-title> short description </comment-title>
 >    >
@@ -327,23 +328,9 @@ To tackle this problem, we introduced the **fill_series** parameter. By default 
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
+## MFAssignR MFAssign
 
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **MFAssignR MFAssign**
+The last step of the workflow is the actual assignment of molecular formulas with 12C, 1H and 16O and variety of heteroatoms and isotopes, including 2H, 13C, 14N, 15N, 31P, 32S, 34S, 35Cl, 37Cl, 19F, 79Br, 81Br, and 126I. It can also assign Na+ adducts, which are common in positive ion mode.
 
 > <hands-on-title> Task description </hands-on-title>
 >
@@ -351,43 +338,15 @@ To tackle this problem, we introduced the **fill_series** parameter. By default 
 >    - {% icon param-file %} *"Data frame of monoisotopic masses"*: `Mono` (output of **MFAssignR Recal** {% icon tool %})
 >    - {% icon param-file %} *"Data frame of isotopic masses"*: `Iso` (output of **MFAssignR Recal** {% icon tool %})
 >    - *"Ion mode"*: `negative`
+>    - *"SN ratio"*: `6`
 >    - *"Estimated noise"*: `346.0`
 >    - *"Lower limit of molecular mass to be assigned"*: `50.0`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
+>    - *"Upper limit of molecular mass to be assigned"*: `1000.0`
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
+Finally, we obtain assigned formulas on rearranged data. Similarly to MFAssignCHO function, dataframes of unassigned masses, ambiguous assignmens and unambigous assignments are provided.
 
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-
-## Re-arrange
-
-To create the template, each step of the workflow had its own subsection.
-
-***TODO***: *Re-arrange the generated subsections into sections or other subsections.
-Consider merging some hands-on boxes to have a meaningful flow of the analyses*
 
 # Conclusion
 
