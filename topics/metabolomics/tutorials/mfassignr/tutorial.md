@@ -23,6 +23,7 @@ key_points:
 contributors:
 - Kristina Gomoryova
 - hechth
+- skschum
 
 ---
 
@@ -183,7 +184,7 @@ The *cut* parameter can be computed as estimated noise level * user defined S/N 
 >    - *"mass"*: `301.0`
 >    - *"window.x"*: `50.0`
 >
-{: .hands_on}
+{: .hands_on}4
 
 ![SNplot](images/SNplot.png)
 
