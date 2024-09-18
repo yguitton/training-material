@@ -56,7 +56,13 @@ Let's dive now into the individual steps and explain all the inputs, parameter s
 
 # Data import
 
-At the very beginning, we need to import the dataset we will be using. MFAssignR requires an input data, which have as the first column mass, in the second column there is intensity and optionally, the third column can contain retention time. In our case, we will start with a raw mass list, which was measured in a negative ESI mode.
+At the very beginning, we need to import the dataset we will be using. MFAssignR requires on input a table in tabular **format**, where:
+
+- first column is mass,
+- second column is intensity,
+- optional third column is retention time.
+
+In our case, we will use the model data from MFAssignR package, which represent the negative ions from acetonitrile extract of wildfire influenced atmospheric organic aerosol, collected at the Pacific Northwest National Laboratory. The detection m/z range of instrument was 100-800 and the ions were analyzed by electrospray ionization on Orbitrap Elite MS and recorded as Xcalibur.raw files. In the MFAssignR package, this dataset is named Raw_Neg_ML in .rds format, which we saved as a tabular file and we will use this file as our input.
 
 > <hands-on-title> Upload data </hands-on-title>
 >
@@ -87,45 +93,50 @@ At the very beginning, we need to import the dataset we will be using. MFAssignR
 
 Having our input data in the workspace, we can now start with the analysis!
 
-The first step is the noise assessment, which allows us to avoid both false positives (if noise is underestimated) and false negatives (if noise is overestimated). For this purpose, we will be using two functions: **MFAssignR HistNoise** and **MFAssignR KMDNoise** and we can additionally visualize the result using the **MFAssignR SNplot** function. The main goal is to find a signal-to-noise (S/N) threshold, which we will use later on. 
-
-## HistNoise
-
-We will firstly assess the noise using the HistNoise function. This function attempts to find a point where noise peaks give way to analyte signal using a histogram of the natural log intensities in the measured raw mass spectrum. 
-
-> <hands-on-title> Noise assessment using HistNoise </hands-on-title>
->
-> 1. {% tool [MFAssignR HistNoise](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_histnoise/mfassignr_histnoise/1.1.1+galaxy0) %} with the following parameters:
->
-> - {% icon param-file %}  *"Input data"*: `mfassignr_input.txt` (Input dataset)
-> - {% icon param-file %} *"SNthreshold"*: `0`
-> - {% icon param-file %} *"Binwidth of histogram"*: `0.01`
->
->
->    > <warning-title>Important!</warning-title>
->    >
->    > Always run the HistNoise on the raw data itself and not on already denoised data, in that case it will not work.
->    {: .warning}
->
-{: .hands_on}
-
-On the output, we can see we got a **noise level** and a **histogram**, where by red a noise is depicted in red, and signal is depicted in blue. HistNoise can fail to separate the distributions if the analyte signal tapers into the noise. In that case, it is better to use the KMDNoise function.
-
-> <question-title></question-title>
->
-> 1. What is the noise level estimated by HistNoise function?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Using our model data, the estimated noise is 317.3483.
-> >
-> {: .solution}
->
-{: .question}
+The first step is the noise assessment, which allows us to avoid both false positives (if noise is underestimated) and false negatives (if noise is overestimated). For this purpose, we will be using the **MFAssignR KMDNoise** function, and visualize the result using **SNplot** function. MFAssignR provides an additional function, **HistNoise**, but often the data distribution prerequisities are not fulfilled and especially when the analyte signal tapers into the noise, HistNoise fails to separate the distributions. Therefore, using KMDNoise is strongly preferred.
 
 ## KMDNoise
 
-When the KMD (Kendrick Mass Defect) is calculated for all peaks in the mass spectrum, there will be clear separation of more intense analyte peaks, and low intense noise peaks. To isolate the noise region, we can use the KMD limits of chemically feasible molecular formulas in conjunction with the calculation of slope of a KMD plot using a linear equation y = 0,1132x + b, where y is the KMD value, x the measured ion mass and b an y-intercept. To provide more accurate assessment, two lines are with different y-intercepts are selected (we will set this lower and upper y-limit below). Once the noise region is isolated, a noise level will be estimated as average intensity of peaks within that region.
+KMDNoise function takes advantage of the calculation of **Kendrick Mass Defect (KMD)**.
+
+> <details-title>Kendrick Mass Defect</details-title>
+>
+>**Kendrick mass (KM)** was developed to simplify classification and
+>identification of repeating units in molecules, typically 
+>homologous CH2 series, which differ only by the number of base 
+>units. It sets the mass of the molecular fragment to integer value
+>in atomic mass units (amu).
+>
+>KM is derived by normalization of the exact mass of a 
+>compound to a known reference unit. A common reference is the CH2  
+>group, which has an exact mass of 14.00000 Da, and IUPAC mass 
+>14.01565.
+>
+>It can be computed by following equation:
+>$$\text{KM} = \text{IUPAC Mass} \times \frac{\text
+>{Nominal Mass of Reference Unit}}{\text{Exact Mass of Reference 
+>Unit}}$$
+>
+>
+>Therefore, the equation can also be written as:
+>$$\text{KM} = \text{IUPAC Mass} \times \frac{\text
+>{14.00000}}{\text{14.01565}}$$
+>
+>
+>**Kendrick Mass Defect (KMD)** is then defined as the difference 
+>between rounded KM values and KM.
+>$$\text{KMD} = \text{nominal KM} - {\text{KM}}$$
+>
+>Homologous series, meaning compounds differing only in the number of 
+>repeating units, will have always the same KMD - e.g. alkylation 
+>series, differing only in the number of CH2 groups have the same KMD.
+>
+{: .details}
+
+
+When the **KMD (Kendrick Mass Defect)** is calculated for all peaks in the mass spectrum, there will be clear separation of more intense analyte peaks, and low intense noise peaks. To isolate the noise region, we can use the KMD limits of chemically feasible molecular formulas in conjunction with the calculation of slope of a KMD plot using a linear equation $$y = 0,1132x + b$$, where *y* is the KMD value, *x* the measured ion mass and *b* an y-intercept. To provide more accurate assessment, two lines are with different y-intercepts are selected (we will set this lower and upper y-limit below). Once the noise region is isolated, a noise level will be estimated as average intensity of peaks within that region.
+
+![KMD plot](images/KMDplot_explained.png)
 
 When running the function, we can stick with the default values: upper limit for the y intercept is set to 0.2, so that it does not interact with any potentially double-charged peaks, lower limit of the y-intercept value is set to 0.05 to ensure no analyte peaks are incorporated into the noise estimation. Both upper and lower x intercept limits are optional and will be set to minimum and maximum mass in the spectrum if not specified. 
 
@@ -140,9 +151,7 @@ When running the function, we can stick with the default values: upper limit for
 >
 {: .hands_on}
 
-The function outputs a **KMD plot**, where the noise area is separated in between red lines, and a **noise estimate**. The noise estimate we can then multiply with a user-defined signal-to-noise ratio, typically 3-10 in order to remove low intensity m/z values.
-
-![KMD plot](images/KMDplot.png)
+The function outputs a **KMD plot**, where the noise area is separated in between red lines, and a **noise estimate**. The noise estimate we can then multiply with a multiplier, typically value between 3 and 10 in order to remove low intensity m/z values. Multiplication with 10 means we will be very stringent and the signal-to-noise ratio will be high, multiplication with 3 means the signal-to-noise ratio will be low. Optimal is therefore to start with e.g. 6 and check the results using SNplot, as we will do further.
 
 > <question-title></question-title>
 >
@@ -150,7 +159,7 @@ The function outputs a **KMD plot**, where the noise area is separated in betwee
 >
 > > <solution-title></solution-title>
 > >
-> > 1. Using our model data, the estimated noise is 346.0706.
+> > 1. Using our model data, the estimated noise is **346.0706**.
 > >
 > >
 > {: .solution}
@@ -161,7 +170,7 @@ The function outputs a **KMD plot**, where the noise area is separated in betwee
 
 We can now check the effectiveness of the S/N threshold using SNplot, which plots the mass spectrum with the masses below and above the chosen threshold, where the noise is indicated by red.
 
-The *cut* parameter can be computed as estimated noise level * user defined S/N threshold, so if we got 346.0706 as a noise level from KMDnoise, we can multiply it by 6, which gives us 2076.
+The *cut* parameter can be computed as estimated noise level * user defined S/N threshold, so if we get 346.0706 as a noise level from KMDnoise, we can multiply it by 6, which gives us 2076.
 *Mass* parameter defines a centerpoint to look at the mass spectrum.
 *Parameter window.x* sets the +/- range around the mass centerpoint, default is 0.5
 *Parameter window.y* sets the y-axis for the plot, when cut is multiplied by this value.
@@ -178,7 +187,7 @@ The *cut* parameter can be computed as estimated noise level * user defined S/N 
 
 ![SNplot](images/SNplot.png)
 
-Based on the SNplot, we can see that the noise - indicated in red - is effectively separated by the horizontal line, meaning we can further use the 346 value as the S/N threshold.
+Based on the SNplot, we can see that the noise forms - indicated in red - forms an uniform background and is effectively separated by the horizontal line, meaning we can further use the 346 value as the S/N threshold.
 
 
 # Isotope filtering
