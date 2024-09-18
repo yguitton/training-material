@@ -171,7 +171,7 @@ The function outputs a **KMD plot**, where the noise area is separated in betwee
 
 We can now check the effectiveness of the S/N threshold using SNplot, which plots the mass spectrum with the masses below and above the chosen threshold, where the noise is indicated by red.
 
-The *cut* parameter can be computed as estimated noise level * user defined S/N threshold, so if we get 346.0706 as a noise level from KMDnoise, we can multiply it by 6, which gives us 2076.
+The *cut* parameter can be computed as estimated noise level * multiplier, so if we get 346.0706 as a noise level from KMDnoise, we can multiply it by 6, which gives us 2076.
 *Mass* parameter defines a centerpoint to look at the mass spectrum.
 *Parameter window.x* sets the +/- range around the mass centerpoint, default is 0.5
 *Parameter window.y* sets the y-axis for the plot, when cut is multiplied by this value.
@@ -188,14 +188,21 @@ The *cut* parameter can be computed as estimated noise level * user defined S/N 
 
 ![SNplot](images/SNplot.png)
 
-Based on the SNplot, we can see that the noise forms - indicated in red - forms an uniform background and is effectively separated by the horizontal line, meaning we can further use the 346 value as the S/N threshold.
+Based on the SNplot, we can see that the noise - indicated in red - forms a uniform background and is effectively separated by the horizontal line (indicating the S/N threshold), meaning we can further use the multiplication of 346 and 6. If the noise was higher than the S/N threshold, it would mean we need to increase the value of the multiplier.
 
 
 # Isotope filtering
 
-Next step is identification of probable isotopic ion masses containing 1-2 13C or 34S from monoisotopic massed in order to prevent incorrect interpretation of molecular composition. For this, we will use the IsoFiltR function.
+Next step is identification of probable isotopic ion masses containing 1-2 13C or 34S from monoisotopic masses in order to prevent incorrect interpretation of molecular composition. For this, we will use the **IsoFiltR** function.
 
-After performing isotopic filtering, two tables are outputted, one containing the isotopic masses and one containing the monoisotopic and all masses that did not have a matching isotopic mass. In complex mixtures, a mass can be classified as both monoisotopic and isotopic; in those cases it is included in both output tables and classified after the MF assignment.
+Isotope filtering has 4 steps:
+
+1. Firstly, the mass list is transformed to pairs of ions, which have a mass difference of 1.003355 Da for 13C and 1.995797 Da for 34S with some flexibility for a user-defined error tolerance (by default 5 ppm).
+2. For specific isotopes, KMD values are calculated using the mass difference between 12C and 13C (1.003355 Da) and mass difference between 32S and 34S (1.995797 Da).
+3. Isotope pairs are further refined using *Resolution Enhanced KMD* adapted from {% cite Zheng2019 %}, in which the Kendrick base is adjusted by an experimentally derived integer in order to obtain desired separation.
+4. Finally, abundance ratios are evaluated, where the abundance ratio for 13C should be < 0.6 and abundance ratio for 34S should be < 0.3.
+
+After performing isotopic filtering, two tables are outputted, one containing the isotopic masses and one containing the monoisotopic masses and all masses that did not have a matching isotopic mass. In complex mixtures, a mass can be classified as both monoisotopic and isotopic; in those cases it is included in both output tables and classified after the MF assignment.
 
 We will change only the S/N ratio parameter, otherwise we can follow with the default settings.
 
