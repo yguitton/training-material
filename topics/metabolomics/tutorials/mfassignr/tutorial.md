@@ -8,7 +8,7 @@ questions:
 - How to analyze complex mixture samples using the MFAssignR package?
 objectives:
 - To learn about the main steps in the pre-processing of untargeted metabolomics LC-MS data.
-- To try on-hands analysis using the model data.
+- To try on-hands analysis using the real biological data.
 requirements:
   -
     type: "internal"
@@ -27,7 +27,7 @@ contributors:
 
 ---
 
-This training covers the multi-element molecular formula (MF) assignment using the MFAssignR tool. It was originally developed by {% cite Schum2020 %} and contains several functions including noise assessment, isotope filtering, internal mass recalibration and formula assignment. 
+This training covers the multi-element molecular formula (MF) assignment using the MFAssignR tool. It was originally developed by {% cite Schum2020 %} for the analysis of untargeted mass spectrometry data coming from complex environmental mixtures. The package contains several functions including noise assessment, isotope filtering, internal mass recalibration and formula assignment. 
 
 MFAssignR workflow is composed of several steps:
 
@@ -41,7 +41,6 @@ MFAssignR workflow is composed of several steps:
 8. Check the output plots from MFAssign() to evaluate the quality of the assignments.
 
 We can illustrate the workflow also on the following scheme:
-
 ![workflow_graphical](images/mfassignr_scheme.png)
 
 Let's dive now into the individual steps and explain all the inputs, parameter settings and outputs.
@@ -57,7 +56,7 @@ Let's dive now into the individual steps and explain all the inputs, parameter s
 
 # Data import
 
-At the very beginning, we need to import the dataset we will be using. MFAssignR requires on input a table in tabular **format**, where:
+At the very beginning, we need to import the dataset we will be using. MFAssignR requires on input a table in **tabular format**, where:
 
 - first column is mass,
 - second column is intensity,
@@ -94,7 +93,7 @@ In our case, we will use the model data from MFAssignR package, which represent 
 
 Having our input data in the workspace, we can now start with the analysis!
 
-The first step is the noise assessment, which allows us to avoid both false positives (if noise is underestimated) and false negatives (if noise is overestimated). For this purpose, we will be using the **MFAssignR KMDNoise** function, and visualize the result using **SNplot** function. MFAssignR provides an additional function, **HistNoise**, but often the data distribution prerequisities are not fulfilled and especially when the analyte signal tapers into the noise, HistNoise fails to separate the distributions. Therefore, using KMDNoise is strongly preferred.
+The first step is the noise assessment, which allows us to avoid both false positives (if noise is underestimated) and false negatives (if noise is overestimated). For this purpose, we will be using the **KMDNoise** function, and visualize the result using **SNplot** function. MFAssignR provides an additional function, **HistNoise**, but often the data distribution prerequisities are not fulfilled and especially when the analyte signal tapers into the noise, HistNoise fails to separate the distributions. Therefore, using KMDNoise is strongly preferred.
 
 ## KMDNoise
 
@@ -171,10 +170,10 @@ The function outputs a **KMD plot**, where the noise area is separated in betwee
 
 We can now check the effectiveness of the S/N threshold using SNplot, which plots the mass spectrum with the masses below and above the chosen threshold, where the noise is indicated by red.
 
-The *cut* parameter can be computed as estimated noise level * multiplier, so if we get 346.0706 as a noise level from KMDnoise, we can multiply it by 6, which gives us 2076.
-*Mass* parameter defines a centerpoint to look at the mass spectrum.
-*Parameter window.x* sets the +/- range around the mass centerpoint, default is 0.5
-*Parameter window.y* sets the y-axis for the plot, when cut is multiplied by this value.
+The `cut` parameter can be computed as estimated noise level * multiplier, so if we get 346.0706 as a noise level from KMDnoise, we can multiply it by 6, which gives us 2076.
+`Mass` parameter defines a centerpoint to look at the mass spectrum.
+`Parameter window.x` sets the +/- range around the mass centerpoint, default is 0.5
+`Parameter window.y` sets the y-axis for the plot, when cut is multiplied by this value.
 
 > <hands-on-title> Plot the SNplot </hands-on-title>
 >
@@ -184,7 +183,7 @@ The *cut* parameter can be computed as estimated noise level * multiplier, so if
 >    - *"mass"*: `301.0`
 >    - *"window.x"*: `50.0`
 >
-{: .hands_on}4
+{: .hands_on}
 
 ![SNplot](images/SNplot.png)
 
@@ -210,7 +209,7 @@ We will change only the S/N ratio parameter, otherwise we can follow with the de
 >
 > 1. {% tool [MFAssignR IsoFiltR](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_isofiltr/mfassignr_isofiltr/1.1.1+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input Peak Data"*: `mfassignr-input.txt` (Input dataset)
->    - *"Signal-to-Noise Ratio"*: `346.0`
+>    - *"Signal-to-Noise Ratio"*: `2076`
 >
 >
 {: .hands_on}
@@ -325,7 +324,7 @@ The number of series provided by **RecalList** is quite extensive: using the mod
 
 Now we get out of 225 series to 94, and if we further restrict the Abundance.Score to 100, we end up with 33 series, where computing any combination is much easier.
 
-On the input, we need except for the RecalSeries output from RecalList also **global_min** and **global_max**, which correspond to the detection limit of instrument and are important for computing the coverage. Furthermore, we set the **abundance_score threshold**, **peak_distance_threshold** and **coverage_threshold**, which we already described above.
+On the input, we need except for the RecalSeries output from RecalList also **global_min** and **global_max**, which correspond to the detection limit of instrument (in our case, it is 100-800 m/z) and are important for computing the coverage. Furthermore, we set the **abundance_score threshold**, **peak_distance_threshold** and **coverage_threshold**, which we already described above.
 
 Another two important parameters are **number_of_combinations** and **fill_series**. `Number_of_combinations` sets how many combinations we want to compute and for which we will get the scoring. Default value is 5, which is a nice "price-to-performance ratio". Keep in mind, that the more combinations you set, the longer computing time is expected, growing exponentially.
 
