@@ -217,9 +217,11 @@ We will change only the S/N ratio parameter, otherwise we can follow with the de
 
 # Preliminary molecular formula assignment
 
-Once we have denoised data and we have identified the potential 13C and 34S masses, we can start with the preliminary MF assignment, using the **MFAssignCHO** function. This function assigns MF only with C, H and O elements to assess the mass accuracy, and therefore it's much quicker than the main MFAssign function. It is based on the CHOFIT algorithm developed by 
+Once we have denoised data and we have identified the potential 13C and 34S masses, we can start with the preliminary MF assignment, using the **MFAssignCHO** function. This function assigns MF only with C, H and O elements to assess the mass accuracy, and therefore it's much quicker than the main MFAssign function. It is based on the CHOFIT algorithm developed by {% cite Green2015 %}.
 
-Let's use the MFAssignCHO function. On the input, we will need the output of IsoFiltR function, a dataframe of monoisotopic masses, and also the dataframe containing isotopic masses. Furthermore, we select in which ion mode we measured the data (positive or negative) and we set the signal-to-noise threshold - based on the noise estimate we obtained from the KMDNoise or HistNoise functions multiplied by a specific value - recommended is 3, 6 or 9. Finally, based on the acquisition range, we set the lowMW and highMW, and also the allowed ppm error. Other parameters we can leave in default settings. 
+Firstly, initial formula assignment with the CHOFIT algorithm is performed along with the quality checks. Then, KMD and z* values are calculated for all masses with the CH2 Kendrick base and masses are sorted into CH2 homologous series. Subsequently, 1-3 members of each CH2 homologous series below the user-defined threshold are selected and assigned a MF. The ambiguous MFs are returned within the Unassigned list, whereas the unambigous MF are further re-assigned using CH2, O, H2, H2O and CH2O extensions. 
+
+Let's use the MFAssignCHO function. On the input, we will need the output of IsoFiltR function, a dataframe of monoisotopic masses, and also (optionally) the dataframe containing isotopic masses. Furthermore, we select in which ion mode we measured the data (positive or negative) and we set the signal-to-noise threshold - based on the noise estimate we obtained from the KMDNoise or HistNoise functions multiplied by the multiplier. Finally, based on the acquisition range, we set the lowMW and highMW, and also the allowed ppm error. Other parameters we can leave in default settings. 
 
 Because with the increasing numberer of possible elements and increasing molecular weight, also the number of chemically reasonable MF increases, there are two dataframes, `Ambiguous` and `Unambigous` provided.
 
@@ -242,7 +244,21 @@ Because with the increasing numberer of possible elements and increasing molecul
 On the output, we get several dataframes: unambiguous assignments, ambiguous assignments and a dataframe containing unassigned masses. Additionally, several plots are available, such as MSAssign showing a mass spectrum highlighting assigned and unassigned masses, errorMZ showing the relationship between absolute error (in ppm) and ion mass, van Krevelen plot and a mass spectrum colored by molecular group.
 
 ![errorMZ](images/errorMZ.png)
+This plot shows us the absolute error, which increases with the increasing mass as expected. Actually, it is good to see a trend here, meaning there is a systematic error which will be corrected during recalibration, a problem would be if there was a random error which we can't correct for.
+
 ![Van Krevelen plot](images/vankrevelen.png)
+
+> <details-title>Van Krevelen plot</details-title>
+>Van Krevelen plot was originally introduced in 1950 {% cite krevelen1950graphical %} to illustrate 
+>the coal formation processes. It typically depicts the atomic ratios of hydrogen-to-carbon (H/C) 
+>ratio on y-axis and oxygen-to-carbon (O/C) on x-axis. Certain molecules occupy different regions of
+>the van Krevelen plot, e.g. alkanes usually have high H/C and low O/C ratios, aromatic compounds have
+>lower H/C ratios and carbohydrates usually have high O/C and moderate H/C ratios.
+>
+{: .details}
+
+Van Krevelen plot visualizes the chemical composition of complex chemical mixtures and it characterizes the data quality and how the data is distributed. Compounds with similar structures and functional groups will cluster together on the plot.
+
 ![MS groups](images/MSgroups.png)
 ![msassign](images/msassign.png)
 
@@ -369,7 +385,7 @@ A very common error points to increasing the `MzRange` parameter, which sets the
 
 # Molecular formula assignment
 
-The last step of the workflow is the actual assignment of molecular formulas with 12C, 1H and 16O and variety of heteroatoms and isotopes, including 2H, 13C, 14N, 15N, 31P, 32S, 34S, 35Cl, 37Cl, 19F, 79Br, 81Br, and 126I. It can also assign Na+ adducts, which are common in positive ion mode. 
+The last step of the workflow is the actual assignment of molecular formulas with 12C, 1H and 16O and variety of heteroatoms and isotopes, including 2H, 13C, 14N, 15N, 31P, 32S, 34S, 35Cl, 37Cl, 19F, 79Br, 81Br, and 126I. It can also assign Na+ adducts, which are common in positive ion mode. We have already described the principles of the MFAssignCHO function, which works the very same way as MFAssign (only being limited to C, H and O elements), so let's directly use the MFAssign function for the formula assignment.
 
 > <hands-on-title> MF assignment using MFAssign </hands-on-title>
 >
