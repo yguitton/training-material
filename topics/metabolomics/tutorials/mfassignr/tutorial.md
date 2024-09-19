@@ -212,18 +212,16 @@ We will change only the S/N ratio parameter, otherwise we can follow with the de
 >    - {% icon param-file %} *"Input Peak Data"*: `mfassignr-input.txt` (Input dataset)
 >    - *"Signal-to-Noise Ratio"*: `346.0`
 >
->    > <comment-title> SN ratio </comment-title>
->    >
->    > How about the noise multiplier?
->    {: .comment}
 >
 {: .hands_on}
 
 # Preliminary molecular formula assignment
 
-Once we have denoised data and we have identified the potential 13C and 34S masses, we can start with the preliminary MF assignment, using the **MFAssignCHO** function. This function assigns MF only with CHO elements to assess the mass accuracy, and therefore it's much quicker than the main MFAssign function. 
+Once we have denoised data and we have identified the potential 13C and 34S masses, we can start with the preliminary MF assignment, using the **MFAssignCHO** function. This function assigns MF only with C, H and O elements to assess the mass accuracy, and therefore it's much quicker than the main MFAssign function. It is based on the CHOFIT algorithm developed by 
 
 Let's use the MFAssignCHO function. On the input, we will need the output of IsoFiltR function, a dataframe of monoisotopic masses, and also the dataframe containing isotopic masses. Furthermore, we select in which ion mode we measured the data (positive or negative) and we set the signal-to-noise threshold - based on the noise estimate we obtained from the KMDNoise or HistNoise functions multiplied by a specific value - recommended is 3, 6 or 9. Finally, based on the acquisition range, we set the lowMW and highMW, and also the allowed ppm error. Other parameters we can leave in default settings. 
+
+Because with the increasing numberer of possible elements and increasing molecular weight, also the number of chemically reasonable MF increases, there are two dataframes, `Ambiguous` and `Unambigous` provided.
 
 > <hands-on-title> Preliminary MF assignment with MFAssignCHO </hands-on-title>
 >
@@ -249,7 +247,9 @@ On the output, we get several dataframes: unambiguous assignments, ambiguous ass
 ![msassign](images/msassign.png)
 
 # Recalibration
-The next step is recalibration, for which we will use three consecutive functions, RecalList, FindRecalSeries and Recal. 
+The next step is recalibration, which ensures that we will have an accurate mass list prior to formula assignment and any systemic bias is removed. In MFAssignR, recalibration was adapted from {% cite Savory2011 %} and {% cite Kozhinov2013 %}.
+
+There are three consecutive functions, RecalList, FindRecalSeries and Recal, which we will use. 
 
 ## RecalList
 
@@ -264,21 +264,34 @@ As in input, we will use the Unambig1 dataframe which we generated in the MFAssi
 >
 {: .hands_on}
 
+> <question-title></question-title>
+>
+> 1. How many series were returned?
+>
+> > <solution-title></solution-title>
+> >
+> > 1. When we click on the results ('Recalibration series by MFAssignR RecalList on data 10'), we can
+> >see there are 226 lines (1 of them being the column names), meaning 225 series which we can select from for the recalibration.
+> >
+> {: .solution}
+>
+{: .question}
+
 On the output, we get a dataframe containing CH2 homologous series that contain more than 3 members. Let's dive more into what metrics are available:
 
-- Series - reports the homologous series according to class, adduct, and DBE. The format is "class_adduct_DBE", for example a homologous series with class = "O6, adduct of Na+, and DBE = 4" would be "O6_Na_4"
-- Number Observed - reports the number of members of each homologous series.
-- Series Index - represents the order of the series when ordered by length of homologous series.
-- Mass Range - reports the minimum and maximum mass for the compounds within a homologous series.
-- Tall Peak - reports the mass of the most abundant peak in each series.
-- Abundance Score - reports the percentage difference between the mean abundance of a homologous series and the median abundance within the mass range the "Tall Peak" falls in (for example m/z 200-300). A higher score is generally better.
-- Peak Score - This column compares the intensity of the tallest peak in a given series to the second tallest peak in the series. This comparison is calculated by log10(Max Peak Intensity/Second Peak Intensity). The closer to 0 this value is the better, in general.
-- Peak Distance - This column shows the number of CH2 units between the tallest and second tallest peak in each series. In general, it is better for the value to be as close to 1 as possible.
-- Series Score - This column compares the number of actual observations in each series to the theoretical maximum number based on the CH2 homologous series. The closer to one this value is, the better.
+- **Series** - reports the homologous series according to class, adduct, and DBE. The format is "class_adduct_DBE", for example a homologous series with class = "O6, adduct of Na+, and DBE = 4" would be "O6_Na_4".
+- **Number Observed** - reports the number of members of each homologous series.
+- **Series Index** - represents the order of the series when ordered by length of homologous series.
+- **Mass Range** - reports the minimum and maximum mass for the compounds within a homologous series.
+- **Tall Peak** - reports the mass of the most abundant peak in each series.
+- **Abundance Score** - reports the percentage difference between the mean abundance of a homologous series and the median abundance within the mass range the "Tall Peak" falls in (for example m/z 200-300). A higher score is generally better.
+- **Peak Score** - This column compares the intensity of the tallest peak in a given series to the second tallest peak in the series. This comparison is calculated by log10(Max Peak Intensity/Second Peak Intensity). The closer to 0 this value is the better, in general.
+- **Peak Distance** - This column shows the number of CH2 units between the tallest and second tallest peak in each series. In general, it is better for the value to be as close to 1 as possible.
+- **Series Score** - This column compares the number of actual observations in each series to the theoretical maximum number based on the CH2 homologous series. The closer to one this value is, the better.
 
 Combined, these series should cover the full mass spectral range to provide the best overall recalibration. The best series to choose are generally long and combined have a “Tall Peak” at least every 100 m/z.
 
-Currently, it is up to user to choose the most suitable recalibrant series which will be used for the recalibration in the next Recal step. It is possible to choose up to 10 series and they should indeed span over whole range of m/z - often an error is thrown to add more series in case there would be gaps, or the chosen series would have a good scores but would be way too alike. 
+Currently, it is up to user to choose the most suitable recalibrant series which will be used for the recalibration in the Recal step. It is possible to choose up to 10 series and they should indeed span over whole range of m/z - often an error is thrown to add more series in case there would be gaps, or the chosen series would have a good scores but would be way too alike. 
 
 The series can be chosen either visually by the user, or using the **FindRecalSeries** function, which we will describe in the next section.
 
@@ -295,9 +308,9 @@ Now we get out of 225 series to 94, and if we further restrict the Abundance.Sco
 
 On the input, we need except for the RecalSeries output from RecalList also **global_min** and **global_max**, which correspond to the detection limit of instrument and are important for computing the coverage. Furthermore, we set the **abundance_score threshold**, **peak_distance_threshold** and **coverage_threshold**, which we already described above.
 
-Another two important parameters are **number_of_combinations** and **fill_series**. Number_of_combinations sets how many combinations we want to compute and for which we will get the scoring. Default value is 5, which is a nice "price-performance ratio". Keep in mind, that the more combinations you set, the longer computing time is expected, growing exponentially.
+Another two important parameters are **number_of_combinations** and **fill_series**. `Number_of_combinations` sets how many combinations we want to compute and for which we will get the scoring. Default value is 5, which is a nice "price-to-performance ratio". Keep in mind, that the more combinations you set, the longer computing time is expected, growing exponentially.
 
-To tackle this problem, we introduced the **fill_series** parameter. By default it is set to FALSE, meaning that only number of series corresponding to the number_of_combinations are returned. If we thus set the number_of_combinations to 5, only the 5-altogether best combination of series is returned. If we set this parameter to TRUE, the series will be filled up to 10, which can be taken by the Recal function, by sorting all series according to the final score, and taking the 10 best scoring unique series. This provides a more precise approach for the recalibration and also better coverage, while still keeping the computing time as low as possible.
+To tackle this problem, we introduced the **fill_series** parameter. By default it is set to FALSE, meaning that only the number of series corresponding to the `number_of_combinations` are returned. If we thus set the `number_of_combinations` to 5, only the 5-altogether best combination of series is returned. If we set this parameter to TRUE, the series are ordered in descending manner based on the summary scores, and 10 best scoring unique series are returned. This provides a more precise approach for the recalibration and also better coverage, while still keeping the computing time as low as possible.
 
 > <hands-on-title> Selecting most suitable series </hands-on-title>
 >
@@ -323,7 +336,7 @@ To tackle this problem, we introduced the **fill_series** parameter. By default 
 > > <solution-title></solution-title>
 > >
 > > 1. When `fill_series = FALSE`, only number of series corresponding to the number of combinations computed is returned, so in our case 5 series will be returned. If we set `fill_series = TRUE`, series will automatically get filled up to 10 series.
-> > 2. The number of series passing all additional thresholds was too low, so 7 unique series were the only one, which got into the selection.
+> > 2. The number of series passing all additional thresholds was too low, so 7 unique series were the only ones, which got into the selection.
 > >
 > {: .solution}
 >
@@ -331,9 +344,9 @@ To tackle this problem, we introduced the **fill_series** parameter. By default 
 
 ## Recal
 
-The Recal function is used for the internal mass recalibration. It takes the output from MFAssignCHO and outputs from IsoFiltrR, the Mono and Iso dataframes. Finally, it takes the series for recalibration, either chosen by the user or selected by FindRecalSeries function. 
+The Recal function is used for the internal mass recalibration. It takes the output from MFAssignCHO and outputs from IsoFiltrR, the `Mono` and `Iso` dataframes. Finally, it takes the series for recalibration, either chosen by the user or selected by FindRecalSeries function. 
 
-A very common error points to increasing the MzRange parameter, which sets the recalibration segment length and has a default value of 30 - sometimes it is needed to increase it to even values as 80. Other parameters we can left to their defaults.
+A very common error points to increasing the `MzRange` parameter, which sets the recalibration segment length and has a default value of 30 - sometimes it is needed to increase it to even values as 80. Other parameters we can left to their defaults.
 
 > <hands-on-title> Internal mass recalibration </hands-on-title>
 >
@@ -356,7 +369,7 @@ A very common error points to increasing the MzRange parameter, which sets the r
 
 # Molecular formula assignment
 
-The last step of the workflow is the actual assignment of molecular formulas with 12C, 1H and 16O and variety of heteroatoms and isotopes, including 2H, 13C, 14N, 15N, 31P, 32S, 34S, 35Cl, 37Cl, 19F, 79Br, 81Br, and 126I. It can also assign Na+ adducts, which are common in positive ion mode.
+The last step of the workflow is the actual assignment of molecular formulas with 12C, 1H and 16O and variety of heteroatoms and isotopes, including 2H, 13C, 14N, 15N, 31P, 32S, 34S, 35Cl, 37Cl, 19F, 79Br, 81Br, and 126I. It can also assign Na+ adducts, which are common in positive ion mode. 
 
 > <hands-on-title> MF assignment using MFAssign </hands-on-title>
 >
