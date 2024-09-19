@@ -260,7 +260,10 @@ This plot shows us the absolute error, which increases with the increasing mass 
 Van Krevelen plot visualizes the chemical composition of complex chemical mixtures and it characterizes the data quality and how the data is distributed. Compounds with similar structures and functional groups will cluster together on the plot.
 
 ![MS groups](images/MSgroups.png)
+MSgroups plot shows the abundance distribution of unambiguous assignments. 
+
 ![msassign](images/msassign.png)
+Assignment mass spectrum then shows what was actually assigned: green are the assigned compounds, red are unassigned ones (eventually, if applicable, isotopes are in blue color). It is useful to check whether there are any gaps around particular m/z, which would mean there is a problem with the assignment.
 
 # Recalibration
 The next step is recalibration, which ensures that we will have an accurate mass list prior to formula assignment and any systemic bias is removed. In MFAssignR, recalibration was adapted from {% cite Savory2011 %} and {% cite Kozhinov2013 %}.
@@ -343,7 +346,6 @@ To tackle this problem, we introduced the **fill_series** parameter. By default 
 >
 {: .hands_on}
 
-
 > <question-title></question-title>
 >
 > 1. How many series are returned when parameter `fill_series = FALSE` and when `TRUE`?
@@ -400,7 +402,7 @@ The last step of the workflow is the actual assignment of molecular formulas wit
 >
 {: .hands_on}
 
-Finally, we obtain assigned formulas on rearranged data. Similarly to MFAssignCHO function, dataframes of unassigned masses, ambiguous assignmens and unambigous assignments are provided.
+Finally, we obtain assigned formulas on rearranged data. Similarly to MFAssignCHO function, dataframes of unassigned masses, ambiguous assignmens and unambigous assignments are provided, as well as quality check plots. 
 
 
 # Conclusion
