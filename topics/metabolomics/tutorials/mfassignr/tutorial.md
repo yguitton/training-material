@@ -8,7 +8,7 @@ questions:
 - How to analyze complex mixture samples using the MFAssignR package?
 objectives:
 - To learn about the main steps in the pre-processing of untargeted metabolomics LC-MS data.
-- To try on-hands analysis using the real biological data.
+- To try hands-on analysis using the real biological data.
 requirements:
   -
     type: "internal"
@@ -29,16 +29,17 @@ contributors:
 
 This training covers the multi-element molecular formula (MF) assignment using the MFAssignR tool. It was originally developed by {% cite Schum2020 %} for the analysis of untargeted mass spectrometry data coming from complex environmental mixtures. The package contains several functions including noise assessment, isotope filtering, internal mass recalibration and formula assignment. 
 
-MFAssignR workflow is composed of several steps:
+**MFAssignR workflow** is composed of several steps:
 
-1. Run KMDNoise() to determine the noise level for the data.
-2. Check effectiveness of S/N threshold using SNplot().
-3. Use IsoFiltR() to identify potential 13C and 34S isotope masses.
-4. Using the S/N threshold, and the two data frames output from IsoFiltR(), run MFAssignCHO() to assign MF with C, H, and O to assess the mass accuracy.
-5. Use RecalList() to generate a list of the potential recalibrant series.
-6. After choosing recalibrant series, use Recal() to recalibrate the mass lists.
-7. Assign MF to the recalibrated mass list using MFAssign().
-8. Check the output plots from MFAssign() to evaluate the quality of the assignments.
+1. Run **KMDNoise()** to determine the noise level for the data.
+2. Check effectiveness of S/N threshold using **SNplot()**.
+3. Use **IsoFiltR()** to identify potential 13C and 34S isotope masses.
+4. Using the signal-to-noise (S/N) threshold, and the two data frames output from IsoFiltR(), run **MFAssignCHO()** to assign MF with C, H, and O to assess the mass accuracy.
+5. Use **RecalList()** to generate a list of the potential recalibrant series.
+6. Select the most suitable recalibrant series using **FindRecalSeries()**.
+7. After choosing recalibrant series, use **Recal()** to recalibrate the mass lists.
+8. Assign MF to the recalibrated mass list using **MFAssign()**.
+9. Check the output plots from MFAssign() to evaluate the quality of the assignments.
 
 We can illustrate the workflow also on the following scheme:
 ![workflow_graphical](images/mfassignr_scheme.png)
@@ -56,13 +57,13 @@ Let's dive now into the individual steps and explain all the inputs, parameter s
 
 # Data import
 
-At the very beginning, we need to import the dataset we will be using. MFAssignR requires on input a table in **tabular format**, where:
+At the very beginning, we need to import the dataset we will be using. MFAssignR requires on input a table in a **tabular format**, where:
 
 - first column is mass,
 - second column is intensity,
 - optional third column is retention time.
 
-In our case, we will use the model data from MFAssignR package, which represent the negative ions from acetonitrile extract of wildfire influenced atmospheric organic aerosol, collected at the Pacific Northwest National Laboratory. The detection m/z range of instrument was 100-800 and the ions were analyzed by electrospray ionization on Orbitrap Elite MS and recorded as Xcalibur.raw files. In the MFAssignR package, this dataset is named Raw_Neg_ML in .rds format, which we saved as a tabular file and we will use this file as our input.
+In our case, we will use the model data from MFAssignR package, which contain the negative ions from acetonitrile extract of wildfire influenced atmospheric organic aerosol, collected at the Pacific Northwest National Laboratory. The detection m/z range of instrument was 100-800 and the ions were analyzed by electrospray ionization on Orbitrap Elite MS and recorded as Xcalibur.raw files. In the MFAssignR package, this dataset is named Raw_Neg_ML in .rds format, which we saved as a tabular file and we will use this file as our input.
 
 > <hands-on-title> Upload data </hands-on-title>
 >
@@ -104,8 +105,8 @@ KMDNoise function takes advantage of the calculation of **Kendrick Mass Defect (
 >**Kendrick mass (KM)** was developed to simplify classification and
 >identification of repeating units in molecules, typically 
 >homologous CH2 series, which differ only by the number of base 
->units. It sets the mass of the molecular fragment to integer value
->in atomic mass units (amu).
+>units (-CH2 groups in this case). It sets the mass of the molecular fragment to 
+>integer value in atomic mass units (amu).
 >
 >KM is derived by normalization of the exact mass of a 
 >compound to a known reference unit. A common reference is the CH2  
@@ -128,17 +129,16 @@ KMDNoise function takes advantage of the calculation of **Kendrick Mass Defect (
 >$$\text{KMD} = \text{nominal KM} - {\text{KM}}$$
 >
 >Homologous series, meaning compounds differing only in the number of 
->repeating units, will have always the same KMD - e.g. alkylation 
->series, differing only in the number of CH2 groups have the same KMD.
+>repeating units (e.g. alkylation series), will have always the same KMD.
 >
 {: .details}
 
 
-When the **KMD (Kendrick Mass Defect)** is calculated for all peaks in the mass spectrum, there will be clear separation of more intense analyte peaks, and low intense noise peaks. To isolate the noise region, we can use the KMD limits of chemically feasible molecular formulas in conjunction with the calculation of slope of a KMD plot using a linear equation $$y = 0,1132x + b$$, where *y* is the KMD value, *x* the measured ion mass and *b* an y-intercept. To provide more accurate assessment, two lines are with different y-intercepts are selected (we will set this lower and upper y-limit below). Once the noise region is isolated, a noise level will be estimated as average intensity of peaks within that region.
+When the KMD is calculated for all peaks in the mass spectrum, there will be clear separation of more intense analyte peaks, and low intense noise peaks. To isolate the noise region, we can use the KMD limits of chemically feasible molecular formulas in conjunction with the calculation of slope of a KMD plot using a linear equation $$y = 0,1132x + b$$, where *y* is the KMD value, *0,1132* was an empirically derived integer, *x* the measured ion mass and *b* an y-intercept. To provide more accurate assessment, two lines with different y-intercepts are selected (we will set this lower and upper y-limit below). Once the noise region is isolated, a noise level will be estimated as average intensity of peaks within that region.
 
 ![KMD plot](images/KMDplot_explained.png)
 
-When running the function, we can stick with the default values: upper limit for the y intercept is set to 0.2, so that it does not interact with any potentially double-charged peaks, lower limit of the y-intercept value is set to 0.05 to ensure no analyte peaks are incorporated into the noise estimation. Both upper and lower x intercept limits are optional and will be set to minimum and maximum mass in the spectrum if not specified. 
+When running the function, we can stick with the default values: upper limit for the y intercept is set to 0.2, so that it does not interact with any potentially double-charged peaks, lower limit of the y-intercept value is set to 0.05 to ensure no analyte peaks are incorporated into the noise estimation. Both upper and lower x intercept limits are optional and will be set to minimum and maximum mass in the data if not specified. 
 
 > <hands-on-title> Noise assessment using KMDNoise </hands-on-title>
 >
@@ -151,7 +151,7 @@ When running the function, we can stick with the default values: upper limit for
 >
 {: .hands_on}
 
-The function outputs a **KMD plot**, where the noise area is separated in between red lines, and a **noise estimate**. The noise estimate we can then multiply with a multiplier, typically value between 3 and 10 in order to remove low intensity m/z values. Multiplication with 10 means we will be very stringent and the signal-to-noise ratio will be high, multiplication with 3 means the signal-to-noise ratio will be low. Optimal is therefore to start with e.g. 6 and check the results using SNplot, as we will do further.
+The function outputs a **KMD plot**, where the noise area is separated in between red lines, and a **noise estimate**. The noise estimate we can then multiply with a multiplier, typically value between 3 and 10 in order to remove low intensity m/z values. Multiplication with 10 means we will be very stringent, the signal-to-noise ratio will be high and close to the limit of quantitation (LOQ), whereas multiplication with 3 means the signal-to-noise ratio will be low and we are close to the limit of detection (LOD). Optimal is therefore to start with e.g. 6 and check the results using SNplot, as we will do further.
 
 > <question-title></question-title>
 >
@@ -171,9 +171,10 @@ The function outputs a **KMD plot**, where the noise area is separated in betwee
 We can now check the effectiveness of the S/N threshold using SNplot, which plots the mass spectrum with the masses below and above the chosen threshold, where the noise is indicated by red.
 
 The `cut` parameter can be computed as estimated noise level * multiplier, so if we get 346.0706 as a noise level from KMDnoise, we can multiply it by 6, which gives us 2076.
-`Mass` parameter defines a centerpoint to look at the mass spectrum.
-`Parameter window.x` sets the +/- range around the mass centerpoint, default is 0.5
-`Parameter window.y` sets the y-axis for the plot, when cut is multiplied by this value.
+
+- `Mass` - parameter defines a centerpoint to look at the mass spectrum.
+- `Parameter window.x` - sets the +/- range around the mass centerpoint, default is 0.5.
+- `Parameter window.y` - is used for setting the limit of y-axis in the plot. Parameter window.y multiplied the `cut` parameter value, and the multiplication result is used as the y-axis limit. Default is 10.
 
 > <hands-on-title> Plot the SNplot </hands-on-title>
 >
@@ -182,7 +183,7 @@ The `cut` parameter can be computed as estimated noise level * multiplier, so if
 >    - *"cut"*: `2076.0`
 >    - *"mass"*: `301.0`
 >    - *"window.x"*: `50.0`
->
+>    - *"window.y"*: `10.0`
 {: .hands_on}
 
 ![SNplot](images/SNplot.png)
@@ -267,7 +268,7 @@ Assignment mass spectrum then shows what was actually assigned: green are the as
 # Recalibration
 The next step is recalibration, which ensures that we will have an accurate mass list prior to formula assignment and any systemic bias is removed. In MFAssignR, recalibration was adapted from {% cite Savory2011 %} and {% cite Kozhinov2013 %}.
 
-There are three consecutive functions, RecalList, FindRecalSeries and Recal, which we will use. 
+There are three consecutive functions, **RecalList**, **FindRecalSeries** and **Recal**, which we will use. 
 
 ## RecalList
 
@@ -303,7 +304,7 @@ On the output, we get a dataframe containing CH2 homologous series that contain 
 - **Mass Range** - reports the minimum and maximum mass for the compounds within a homologous series.
 - **Tall Peak** - reports the mass of the most abundant peak in each series.
 - **Abundance Score** - reports the percentage difference between the mean abundance of a homologous series and the median abundance within the mass range the "Tall Peak" falls in (for example m/z 200-300). A higher score is generally better.
-- **Peak Score** - This column compares the intensity of the tallest peak in a given series to the second tallest peak in the series. This comparison is calculated by log10(Max Peak Intensity/Second Peak Intensity). The closer to 0 this value is the better, in general.
+- **Peak Score** - This column compares the intensity of the tallest peak in a given series to the second tallest peak in the series. This comparison is calculated by $$\text{log10} \times \frac{\text{Max Peak Intensity}}{\text{Second Peak Intensity}}$$ The closer to 0 this value is the better, in general.
 - **Peak Distance** - This column shows the number of CH2 units between the tallest and second tallest peak in each series. In general, it is better for the value to be as close to 1 as possible.
 - **Series Score** - This column compares the number of actual observations in each series to the theoretical maximum number based on the CH2 homologous series. The closer to one this value is, the better.
 
