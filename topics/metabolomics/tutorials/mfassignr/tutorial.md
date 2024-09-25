@@ -18,8 +18,7 @@ requirements:
       - lcms-dataprocessing
 time_estimation: 2H
 key_points:
-- The take-home messages
-- They will appear at the end of the tutorial
+- MFAssignR can be used to process the untargeted LC-MS metabolomics data, including complex environmental mixture samples
 contributors:
 - Kristina Gomoryova
 - hechth
@@ -199,7 +198,7 @@ Isotope filtering has 4 steps:
 
 1. Firstly, the mass list is transformed to pairs of ions, which have a mass difference of 1.003355 Da for 13C and 1.995797 Da for 34S with some flexibility for a user-defined error tolerance (by default 5 ppm).
 2. For specific isotopes, KMD values are calculated using the mass difference between 12C and 13C (1.003355 Da) and mass difference between 32S and 34S (1.995797 Da).
-3. Isotope pairs are further refined using *Resolution Enhanced KMD* adapted from {% cite Zheng2019 %}, in which the Kendrick base is adjusted by an experimentally derived integer in order to obtain desired separation.
+3. Isotope pairs are further refined using *Resolution Enhanced KMD* adapted from {% cite Zheng2019 %}, in which the Kendrick base is adjusted by an experimentally derived integer (For 34S, the integer is 12 (determined by trial and error) and for 13C the integer is 21 based on {% cite Zheng2019 %}) in order to obtain desired separation.
 4. Finally, abundance ratios are evaluated, where the abundance ratio for 13C should be < 0.6 and abundance ratio for 34S should be < 0.3.
 
 After performing isotopic filtering, two tables are outputted, one containing the isotopic masses and one containing the monoisotopic masses and all masses that did not have a matching isotopic mass. In complex mixtures, a mass can be classified as both monoisotopic and isotopic; in those cases it is included in both output tables and classified after the MF assignment.
@@ -223,7 +222,7 @@ Firstly, initial formula assignment with the CHOFIT algorithm is performed along
 
 Let's use the MFAssignCHO function. On the input, we will need the output of IsoFiltR function, a dataframe of monoisotopic masses, and also (optionally) the dataframe containing isotopic masses. Furthermore, we select in which ion mode we measured the data (positive or negative) and we set the signal-to-noise threshold - based on the noise estimate we obtained from the KMDNoise or HistNoise functions multiplied by the multiplier. Finally, based on the acquisition range, we set the lowMW and highMW, and also the allowed ppm error. Other parameters we can leave in default settings. 
 
-Because with the increasing numberer of possible elements and increasing molecular weight, also the number of chemically reasonable MF increases, there are two dataframes, `Ambiguous` and `Unambigous` provided.
+On the output, there are two dataframes, `Ambiguous` and `Unambigous` provided.
 
 > <hands-on-title> Preliminary MF assignment with MFAssignCHO </hands-on-title>
 >
@@ -273,7 +272,7 @@ There are three consecutive functions, **RecalList**, **FindRecalSeries** and **
 ## RecalList
 
 Firstly, we will generate a table containing potential recalibrant CH2 homologous series using the RecalList function. 
-As in input, we will use the Unambig1 dataframe which we generated in the MFAssignCHO function:
+As in input, we will use the Unambig dataframe which we generated in the MFAssignCHO function:
 
 > <hands-on-title> Finding recalibrant series </hands-on-title>
 >
@@ -312,7 +311,7 @@ Combined, these series should cover the full mass spectral range to provide the 
 
 Currently, it is up to user to choose the most suitable recalibrant series which will be used for the recalibration in the Recal step. It is possible to choose up to 10 series and they should indeed span over whole range of m/z - often an error is thrown to add more series in case there would be gaps, or the chosen series would have a good scores but would be way too alike. 
 
-The series can be chosen either visually by the user, or using the **FindRecalSeries** function, which we will describe in the next section.
+The series can be chosen either manually by the user, or using the **FindRecalSeries** function, which we will describe in the next section.
 
 ## FindRecalSeries
 
@@ -325,7 +324,7 @@ The number of series provided by **RecalList** is quite extensive: using the mod
 
 Now we get out of 225 series to 94, and if we further restrict the Abundance.Score to 100, we end up with 33 series, where computing any combination is much easier.
 
-On the input, we need except for the RecalSeries output from RecalList also **global_min** and **global_max**, which correspond to the detection limit of instrument (in our case, it is 100-800 m/z) and are important for computing the coverage. Furthermore, we set the **abundance_score threshold**, **peak_distance_threshold** and **coverage_threshold**, which we already described above.
+On the input, we need except for the RecalSeries output from RecalList also **global_min** and **global_max**, which correspond to the acquisition range of instrument (in our case, it is 100-800 m/z) and are important for computing the coverage. Furthermore, we set the **abundance_score threshold**, **peak_distance_threshold** and **coverage_threshold**, which we already described above.
 
 Another two important parameters are **number_of_combinations** and **fill_series**. `Number_of_combinations` sets how many combinations we want to compute and for which we will get the scoring. Default value is 5, which is a nice "price-to-performance ratio". Keep in mind, that the more combinations you set, the longer computing time is expected, growing exponentially.
 
@@ -364,7 +363,7 @@ To tackle this problem, we introduced the **fill_series** parameter. By default 
 
 The Recal function is used for the internal mass recalibration. It takes the output from MFAssignCHO and outputs from IsoFiltrR, the `Mono` and `Iso` dataframes. Finally, it takes the series for recalibration, either chosen by the user or selected by FindRecalSeries function. 
 
-A very common error points to increasing the `MzRange` parameter, which sets the recalibration segment length and has a default value of 30 - sometimes it is needed to increase it to even values as 80. Other parameters we can left to their defaults.
+A very common error points to increasing the `MzRange` parameter, which sets the recalibration segment length and has a default value of 30 - sometimes it is needed to increase it to even values as 80. Other parameters can be left to their defaults.
 
 > <hands-on-title> Internal mass recalibration </hands-on-title>
 >
@@ -407,6 +406,6 @@ Finally, we obtain assigned formulas on rearranged data. Similarly to MFAssignCH
 
 # Conclusion
 
-In this tutorial we showed how we can assign the molecular formulas using MFAssignR package. We learnt that there are several key steps, including noise evaluation, isotope filtering, recalibration and finally the formula assignment. We described how parameters of individual functions are used and how they should be adjusted if needed. 
+In this tutorial we showed how we can assign the molecular formulas using MFAssignR package. We learnt that there are several key steps, including noise estimation, isotope filtering, recalibration and finally the formula assignment. We described how parameters of individual functions are used and how they should be adjusted if needed. 
 
 ![workflow overview](images/workflow_overview.png)
