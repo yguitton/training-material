@@ -3,6 +3,7 @@ layout: tutorial_hands_on
 
 title: Molecular formula assignment and recalibration with MFAssignR package
 zenodo_link: https://zenodo.org/records/13768009
+level: Intermediate
 questions:
 - What are the main steps of untargeted metabolomics LC-MS data pre-processing?
 - How to analyze complex mixture samples using the MFAssignR package?
@@ -323,6 +324,10 @@ The number of series provided by **RecalList** is quite extensive: using the mod
 - **Peak.Distance** < 2. Here, we want this parameter as close to 1 as possible, and although majority of series do have it indeed very close to 1, there are also some clear outliers around 4 which we can confidently filter out.
 
 Now we get out of 225 series to 94, and if we further restrict the Abundance.Score to 100, we end up with 33 series, where computing any combination is much easier.
+
+**How the series are actually selected?** We are computing scores for the individual parameters, described below, for each combination of series (of the size of number_of_combinations) and them summing them together, computing a summary score. This way, we can then sort the series from the highest summary score to lowest and return the highest scoring ones. 
+
+Computing scores is not always that straightforward - in case of Abundance or Series.Length, where the higher value the better, we can simply consider summing up the original values. However, in case of Peak.Score and Peak.Distance.Proximity, it gets more complicated. Peak.Score we want as low as possible, therefore we compute (and do the sum of) inverted values (meaning 1/ Peak.Score). Similarly, we want the Peak.Distance.Proximity as close to 1 as possible, therefore we compute the difference (peak.distance - 1) and then we sum up the inverted values.
 
 On the input, we need except for the RecalSeries output from RecalList also **global_min** and **global_max**, which correspond to the acquisition range of instrument (in our case, it is 100-800 m/z) and are important for computing the coverage. Furthermore, we set the **abundance_score threshold**, **peak_distance_threshold** and **coverage_threshold**, which we already described above.
 
