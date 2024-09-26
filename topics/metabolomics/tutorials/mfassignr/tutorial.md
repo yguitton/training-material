@@ -325,7 +325,7 @@ The number of series provided by **RecalList** is quite extensive: using the mod
 
 Now we get out of 225 series to 94, and if we further restrict the Abundance.Score to 100, we end up with 33 series, where computing any combination is much easier.
 
-**How the series are actually selected?** We are computing scores for the individual parameters, described below, for each combination of series (of the size of number_of_combinations) and them summing them together, computing a summary score. This way, we can then sort the series from the highest summary score to lowest and return the highest scoring ones. 
+**How the series are actually selected?** We are computing scores for the individual parameters, described below, for each series within the combination and them summing them together, computing a summary score. This way, we can then sort the series from the highest summary score to lowest and return the highest scoring ones. Of note, summary score characterizes a particular *combination* of series, meaning all series within the combination will have the same summary score.
 
 Computing scores is not always that straightforward - in case of Abundance or Series.Length, where the higher value the better, we can simply consider summing up the original values. However, in case of Peak.Score and Peak.Distance.Proximity, it gets more complicated. Peak.Score we want as low as possible, therefore we compute (and do the sum of) inverted values (meaning 1/ Peak.Score). Similarly, we want the Peak.Distance.Proximity as close to 1 as possible, therefore we compute the difference (peak.distance - 1) and then we sum up the inverted values.
 
@@ -333,7 +333,11 @@ On the input, we need except for the RecalSeries output from RecalList also **gl
 
 Another two important parameters are **number_of_combinations** and **fill_series**. `Number_of_combinations` sets how many combinations we want to compute and for which we will get the scoring. Default value is 5, which is a nice "price-to-performance ratio". Keep in mind, that the more combinations you set, the longer computing time is expected, growing exponentially.
 
-To tackle this problem, we introduced the **fill_series** parameter. By default it is set to FALSE, meaning that only the number of series corresponding to the `number_of_combinations` are returned. If we thus set the `number_of_combinations` to 5, only the 5-altogether best combination of series is returned. If we set this parameter to TRUE, the series are ordered in descending manner based on the summary scores, and 10 best scoring unique series are returned. This provides a more precise approach for the recalibration and also better coverage, while still keeping the computing time as low as possible.
+To tackle this problem, we introduced the **fill_series** parameter. Fill_series parameter influences how many series will be returned. In the final step, all combinations of series are ordered based on their summary score: meaning we can have an order list as: (series1, series4, series8: score 1000); (series1, series2, series5: score 900); (series2, series3, series8: score 800), etc. As we already explained, all series within the particular combination will have the same score, so in our case, within the first combination, series1, series4 and series8 would all have a score of 1000.
+
+If we set the value of `fill_series` to FALSE, the best scoring combination of series is returned. Using the example above, series1, series4 and series8 would get returned.
+
+If we set `fill_series` to TRUE, best scoring combination of series is returned firstly, and then, based on the summary score ordering, the list is filled up to 10 series. However, naturally we would have the same series as a part of different combinations. Therefore, we fill them with unique entries based on descending score. Using the example above again, we would return series1, series4, series8 (best scoring combination), series2, series5, (as series1 has been already reported) series3 (as series2 and series8 have been already reported). This provides a more precise approach for the recalibration and also better coverage, while still keeping the computing time as low as possible.
 
 > <hands-on-title> Selecting most suitable series </hands-on-title>
 >
