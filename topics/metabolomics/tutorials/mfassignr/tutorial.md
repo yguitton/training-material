@@ -108,20 +108,10 @@ KMDNoise function takes advantage of the calculation of **Kendrick Mass Defect (
 >units (-CH2 groups in this case). It sets the mass of the molecular fragment to 
 >integer value in atomic mass units (amu).
 >
->KM is derived by normalization of the exact mass of a 
->compound to a known reference unit. A common reference is the CH2  
->group, which has an exact mass of 14.00000 Da, and IUPAC mass 
->14.01565.
+>KM of a compound can be therefore calculated as known m/z of the compound >multiplied by ratio (rounded
+>(CH2_mass)/exact(CH2_mass)), which is (14/14.01565) = 0.9988834.
 >
->It can be computed by following equation:
->$$\text{KM} = \text{IUPAC Mass} \times \frac{\text
->{Nominal Mass of Reference Unit}}{\text{Exact Mass of Reference 
->Unit}}$$
->
->
->Therefore, the equation can also be written as:
->$$\text{KM} = \text{IUPAC Mass} \times \frac{\text
->{14.00000}}{\text{14.01565}}$$
+>$$\text{KM} = \text{m/z} \times \frac{\text{14.00000}}{\text{14.01565}}$$
 >
 >
 >**Kendrick Mass Defect (KMD)** is then defined as the difference 
@@ -131,6 +121,7 @@ KMDNoise function takes advantage of the calculation of **Kendrick Mass Defect (
 >Homologous series, meaning compounds differing only in the number of 
 >repeating units (e.g. alkylation series), will have always the same KMD.
 >
+>{% cite kendrickmass_mzmine %}
 {: .details}
 
 
