@@ -121,7 +121,7 @@ KMDNoise function takes advantage of the calculation of **Kendrick Mass Defect (
 >Homologous series, meaning compounds differing only in the number of 
 >repeating units (e.g. alkylation series), will have always the same KMD.
 >
->{% cite kendrickmass_mzmine %}
+>{% cite kendrickmass_mzmine %} {% cite kendrickmass_wiki %}
 {: .details}
 
 
