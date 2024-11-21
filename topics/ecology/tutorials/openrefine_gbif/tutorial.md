@@ -279,27 +279,11 @@ connection is required.
 > 6. Under "higherClassification" follow the route `Edit column > Split into several columns…`, leave the initial settings.
 > 7. Now you know how to obtain the taxonomic categories of a given taxon if this is available in the GBIF API. Column names can be edited in `Edit column > Rename this column`.
 > 8. For the purpose of the workshop, the columns created in this exercise (Higher taxonomy) must be deleted. Under All , which is the first column, go to `Edit columns > Re-order / remove columns…`. Remove columns "Api_name", "higherClassification1", "higherClassification2", "higherClassification3", "higherClassification4" and "higherClassification5".
->
->    > ### {% icon comment %} Comment
->    >
->    > comment1
->    {: .comment}
->
+> 9. You can finally export your cleaned data file through "Export" / "Custom tabular exporter" / "Download" and click on the "Donwload" button to save resulting file in tsv format.
+> 
 {: .hands_on}
 
-> ### {% icon question %} Questions
->
-> 1. Question1?
-> 2. Question2?
->
-> > ### {% icon solution %} Solution
-> >
-> > 1. Answer1
-> > 2. Answer2
-> >
-> {: .solution}
->
-{: .question}
+
 
 # Conclusion
 {:.no_toc}
