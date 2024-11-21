@@ -33,7 +33,7 @@ contributors:
 
 In this tutorial we will use OpenRefine tool to clean occurence records retrieved from GBIF.
 
-This tutorial is based on the GBIF {% cite gbiftuto2021 %} "Biodiversity data mobilization course" accessible [here](https://docs.gbif.org/course-data-mobilization/en/) on Use case 1 ["Herbarium Specimens"](https://docs.gbif.org/course-data-mobilization/en/exercise-3a-c.html).
+This tutorial is based on the GBIF {% cite gbiftuto2021 %} "Biodiversity data mobilization course" accessible [here](https://docs.gbif.org/course-data-mobilization/en/) on Use case 1 ["Herbarium Specimens"](https://docs.gbif.org/course-data-mobilization/en/exercise-3a-c.html) using file from Exercice 3C, at the bottom of the page, reachable through this direct [URL](https://docs.gbif.org/course-data-mobilization/exercise-data/UC1-3c-open-refine.csv).
 
 > ### Agenda
 >
