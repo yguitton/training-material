@@ -58,7 +58,7 @@ This tutorial is based on the GBIF {% cite gbiftuto2021 %} "Biodiversity data mo
 > {% snippet faqs/galaxy/histories_create_new.md %}
 > 3. Deploy an OpenRefine instance clicking Execute on the {% tool [OpenRefine tool](interactive_tool_openrefine) %}  without specifying any input dataset for now
 > 4. Import content of the file directly on OpenRefine using "Clipboard" on "Create Project" space. Open the file locally, with notepad++ or any other software allowing reading raw content of text files, and then copy the content, and paste it on the "OpenRefine Clipboard" dedicated space.
-> 5. You can then edit input content parsing options (here noting to change normaly as averything is automagically detected), specify a project name (for example "GBIF tutorial"),  and finally click "Create project".
+> 5. You can then edit input content parsing options (here noting to change normaly as everything is automagically detected), specify a project name (for example "GBIF tutorial"),  and finally click "Create project".
 ![Openrefine parsing options](../../images/openrefine/openrefine_parsinginput.PNG)
 > 7. You will now have your project with first 10 lines of your file displayed
 ![Openrefine project start](../../images/openrefine/openrefine_start.PNG)
