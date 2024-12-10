@@ -22,7 +22,7 @@ layout: base
             <div class="col-md-3">
                 {{ cta.description | markdownify }}
                 <a href="{{ cta.link }}" class="btn {% if forloop.first %} btn-primary {% else %} btn-secondary {% endif %} ">
-                   {% icon_var cta.icon %} {{ cta.link_text }}
+                   {% icon_var cta.icon %} &nbsp; {{ cta.link_text }}
                 </a>
             </div>
             {% endfor %}
