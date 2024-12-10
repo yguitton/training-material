@@ -15,7 +15,8 @@ GTN_HOME = Pathname.new(__dir__).parent.to_s
 
 # A custom module to properly format reviewdog json output
 module ReviewDogEmitter
-  @CODE_URL = 'https://github.com/galaxyproject/training-material/wiki/Error-Codes'
+  @CODE_URL = 'https://training.galaxyproject.org/training-material/gtn_rdoc/GtnLinter.html'
+
   def self.delete_text(path: '', idx: 0, text: '', message: 'No message', code: 'GTN000', full_line: '', fn: '')
     error(
       path: path,
@@ -93,9 +94,11 @@ module ReviewDogEmitter
     }
     if !code.nil?
       res['code'] = {
-        'value' => code,
-        'url' => "#{@CODE_URL}##{code.gsub(/:/, '').downcase}",
+        'value' => code
       }
+      if !fn.nil?
+        res['code']['url'] = "#{@CODE_URL}#method-c-#{fn}"
+      end
     end
     if !replacement.nil?
       res['suggestions'] = [{
