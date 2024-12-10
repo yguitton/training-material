@@ -646,7 +646,7 @@ _plugins/api.rb
 bin/google-form-faq.rb
 faqs/galaxy/importing-data-from-sierra-lims.md
 faqs/galaxy/request-galaxy-tools-on-a-specific-server.md
-faqs/gtn/using-answer-key-histories.md
+faqs/gtn/gtn-example_histories.md
 topics/admin/faqs/galaxy-jobs-in-containers.md
 topics/admin/faqs/why-isnt-my-history-updating.md
 GTN_GTN:1730275288

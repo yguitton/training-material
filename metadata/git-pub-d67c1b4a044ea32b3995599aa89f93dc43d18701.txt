@@ -146,7 +146,7 @@ GTN_GTN:1730285098
 
 A	faqs/galaxy/importing-data-from-sierra-lims.md
 A	faqs/galaxy/request-galaxy-tools-on-a-specific-server.md
-A	faqs/gtn/using-answer-key-histories.md
+A	faqs/gtn/gtn-example_histories.md
 A	topics/admin/faqs/galaxy-jobs-in-containers.md
 A	topics/admin/faqs/why-isnt-my-history-updating.md
 GTN_GTN:1730118463
