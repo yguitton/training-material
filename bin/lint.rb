@@ -16,7 +16,7 @@ GTN_HOME = Pathname.new(__dir__).parent.to_s
 # A custom module to properly format reviewdog json output
 module ReviewDogEmitter
   @CODE_URL = 'https://github.com/galaxyproject/training-material/wiki/Error-Codes'
-  def self.delete_text(path: '', idx: 0, text: '', message: 'No message', code: 'GTN000', full_line: '')
+  def self.delete_text(path: '', idx: 0, text: '', message: 'No message', code: 'GTN000', full_line: '', fn: '')
     error(
       path: path,
       idx: idx,
@@ -25,11 +25,12 @@ module ReviewDogEmitter
       replacement: '',
       message: message,
       code: code,
-      full_line: full_line
+      full_line: full_line,
+      fn: fn,
     )
   end
 
-  def self.file_error(path: '', message: 'None', code: 'GTN:000')
+  def self.file_error(path: '', message: 'None', code: 'GTN:000', fn: '')
     error(
       path: path,
       idx: 0,
@@ -38,12 +39,13 @@ module ReviewDogEmitter
       replacement: nil,
       message: message,
       code: code,
-      full_line: ''
+      full_line: '',
+      fn: fn
     )
   end
 
   def self.warning(path: '', idx: 0, match_start: 0, match_end: 1,
-                   replacement: nil, message: 'No message', code: 'GTN000', full_line: '')
+                   replacement: nil, message: 'No message', code: 'GTN000', full_line: '', fn: '')
     self.message(
       path: path,
       idx: idx,
@@ -53,12 +55,13 @@ module ReviewDogEmitter
       message: message,
       level: 'WARNING',
       code: code,
-      full_line: full_line
+      full_line: full_line,
+      fn: fn,
     )
   end
 
   def self.error(path: '', idx: 0, match_start: 0, match_end: 1, replacement: nil, message: 'No message',
-                 code: 'GTN000', full_line: '')
+                 code: 'GTN000', full_line: '', fn: '')
     self.message(
       path: path,
       idx: idx,
@@ -68,12 +71,12 @@ module ReviewDogEmitter
       message: message,
       level: 'ERROR',
       code: code,
-      full_line: full_line
+      full_line: full_line,
+      fn: fn,
     )
   end
 
-  def self.message(path: '', idx: 0, match_start: 0, match_end: 1, replacement: nil, message: 'No message',
-                   level: 'WARNING', code: 'GTN000', full_line: '')
+  def self.message(path: '', idx: 0, match_start: 0, match_end: 1, replacement: nil, message: 'No message',level: 'WARNING', code: 'GTN000', full_line: '', fn: '')
     end_area = { 'line' => idx + 1, 'column' => match_end }
     end_area = { 'line' => idx + 2, 'column' => 1 } if match_end == full_line.length
 
