@@ -5,8 +5,15 @@ require 'yaml'
 require './_plugins/gtn'
 require 'securerandom'
 
-# The main GTN module to parse tutorials and topics into useful lists of things that can bes shown on topic pages
+# The main GTN module to parse tutorial.md and slides.html and topics into useful lists of things that can be shown on topic pages, i.e. "materials" (a possible combination of tutorial + slides)
+#
+# This is by far the most complicated module and the least
+# disaggregated/modular part of the GTN infrastructure.
+# TopicFilter.resolve_material is probably the single most important function
+# in the entire suite.
 module TopicFilter
+
+
   ##
   # This function returns a list of all the topics that are available.
   # Params:
@@ -233,19 +240,20 @@ module TopicFilter
   # Annotation of a path with topic and tutorial information
   # Params:
   # +path+:: The path to annotate
+  # +layout+:: The page layout if known
   # Returns:
   # +Hash+:: The annotation
   #
   # Example:
-  #  /topics/assembly/tutorials/velvet-assembly/tutorial.md
-  #  => {
-  #    "topic" => "assembly",
-  #    "topic_name" => "assembly",
-  #    "material" => "assembly/velvet-assembly",
-  #    "tutorial_name" => "velvet-assembly",
-  #    "dir" => "topics/assembly/tutorials/velvet-assembly"
-  #    "type" => "tutorial"
-  #  }
+  #   TopicFilter.annotate_path("topics/assembly/tutorials/velvet-assembly/tutorial.md", nil)
+  #   => {
+  #   "topic"=>"assembly",
+  #   "topic_name"=>"assembly",
+  #   "material"=>"assembly/velvet-assembly",
+  #   "tutorial_name"=>"velvet-assembly",
+  #   "dir"=>"topics/assembly/tutorials/velvet-assembly",
+  #   "type"=>"tutorial"}
+
   def self.annotate_path(path, layout)
     parts = path.split('/')
     parts.shift if parts[0] == '.'
@@ -459,6 +467,15 @@ module TopicFilter
     "flowchart TD\n" + statements.map { |q| "  #{q}" }.join("\n")
   end
 
+  ##
+  # Build a DOT graph for a given tutorial file.
+  #
+  # TODO: extract into own module along with mermaid.
+  #
+  # Params:
+  # +wf+:: The Galaxy Workflow JSON representation
+  # Returns:
+  # +String+:: A DOT graph of the workflow.
   def self.graph_dot(wf)
     # We're converting it to Mermaid
     # flowchart TD
