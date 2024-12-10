@@ -28,13 +28,23 @@ answer_histories:
   - label: "EBI SCXA retrieval tool (UseGalaxy.eu)"
     history: https://singlecell.usegalaxy.eu/u/j.jakiela/h/ebi-scxa---anndata-scanpy-or-seurat-object-1
     date: 2024-01-10
+  - label: "EBI SCXA retrieval tool (UseGalaxy.eu)-ARCHIVED"
+    history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/ebi-scxa---anndata-scanpy-or-seurat-object
+    date: 2024-12-10
   - label: "HCA Downloader (UseGalaxy.eu)"
     history: https://singlecell.usegalaxy.eu/u/j.jakiela/h/hca-downloader---example-files-1
     date: 2024-09-08
+  - label: "HCA Downloader (UseGalaxy.eu)-ARCHIVED"
+    history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/hca-downloader---example-files
+    date: 2024-12-10
 
 input_histories:
   - label: "UseGalaxy.eu"
     history: https://singlecell.usegalaxy.eu/u/j.jakiela/h/input-history-ebi-scxa---anndata-scanpy-or-seurat-object
+  - label: "UseGalaxy.eu-ARCHIVED"
+    history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/input-history-ebi-scxa---anndata-scanpy-or-seurat-object
+    date: 2024-12-10
+
 
 requirements:
   -
@@ -66,7 +76,7 @@ tags:
 
 # Introduction
 
-Public single cell datasets seem to accumulate by the second. Well annotated, quality datasets are slightly trickier to find, which is why projects like the [Single Cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/home) (SCXA) exist - to curate datasets for public use. Here, we will guide you through transforming data imported from the SCXA repository into the input file required for the [Filter, Plot, Explore tutorial]({% link topics/single-cell/tutorials/scrna-case_basic-pipeline/tutorial.md %}) and we will also show how to use the public atlases for your own research. 
+Public single cell datasets seem to accumulate by the second. Well annotated, quality datasets are slightly trickier to find, which is why projects like the [Single Cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/home) (SCXA) exist - to curate datasets for public use. Here, we will guide you through transforming data imported from the SCXA repository into the input file required for the [Filter, Plot, Explore tutorial]({% link topics/single-cell/tutorials/scrna-case_basic-pipeline/tutorial.md %}) and we will also show how to use the public atlases for your own research.
 
 > <agenda-title></agenda-title>
 >
@@ -88,7 +98,7 @@ Galaxy has a specific tool for importing data from the SCXA ({% cite Moreno2020.
 > ![Arrow pointing to the website URL where you can find experiment ID.](../../images/scrna-data/exp_id.jpg "Where to find experiment ID on the EBI Single Cell Expression Atlas website.")
 >
 > Once you know the experiment ID, you can use EBI SCXA Data Retrieval tool in Galaxy!
-> 
+>
 {: .details}
 
 
@@ -298,7 +308,7 @@ Even though this tutorial was designed specifically to modify the AnnData object
 > 3. Rename {% icon galaxy-pencil %} output `Seurat object`
 >
 > You can also choose if you want to create Seurat object, Loom or Single Cell Experiment by selecting your option in *"Choose the format of the output"*.
-> 
+>
 {: .hands_on}
 
 ## Conclusion
@@ -309,12 +319,12 @@ And you're there! You now have a usable Seurat object for analysis with Seurat t
 
 <!---
 HCA doesn't work well for other datasets for now...
-https://github.com/galaxyproject/training-material/issues/4567 
+https://github.com/galaxyproject/training-material/issues/4567
 -->
 
 # Human Cell Atlas Matrix Downloader
 
-Another public atlas that you can use to access the datasets is [Human Cell Atlas data portal](https://data.humancellatlas.org/). We will show you the tool in Galaxy which allows to retrieve expression matrices and metadata for any public experiment available in that repository. 
+Another public atlas that you can use to access the datasets is [Human Cell Atlas data portal](https://data.humancellatlas.org/). We will show you the tool in Galaxy which allows to retrieve expression matrices and metadata for any public experiment available in that repository.
 
 To use it, simply set the project title, project label or project UUID, which can be found at the [HCA data browser](https://data.humancellatlas.org/explore/projects), and select the desired matrix format (Matrix Market or Loom).
 
@@ -322,7 +332,7 @@ To use it, simply set the project title, project label or project UUID, which ca
 
 For projects that have more than one organism, one needs to be specified. Otherwise, there is no need to set the species.
 
-Let's use the suggested example of the project *Single cell transcriptome analysis of human pancreas*. If you check this project in HCA, you'll find out that it's actually its label. But it should work well if you enter the title or UUID! 
+Let's use the suggested example of the project *Single cell transcriptome analysis of human pancreas*. If you check this project in HCA, you'll find out that it's actually its label. But it should work well if you enter the title or UUID!
 
 > <hands-on-title>Create AnnData object</hands-on-title>
 >
@@ -334,7 +344,7 @@ Let's use the suggested example of the project *Single cell transcriptome analys
 > <warning-title>Errors that you might encounter</warning-title>
 >  If your dataset turns red, there might be several reasons for that, for example:
 >    - "There are too many connected users" - please be patient and re-run the step later, as it is advised
->    - "Project identifier was not found in the database" - double check the spelling, try entering project title, project label or project UUID. 
+>    - "Project identifier was not found in the database" - double check the spelling, try entering project title, project label or project UUID.
 >
 {: .warning}
 
@@ -351,7 +361,7 @@ Let's use the suggested example of the project *Single cell transcriptome analys
 >
 {: .details}
 
-If you chose **Loom** format and you need to convert your file to other datatype, you can use {% tool [SCEasy](toolshed.g2.bx.psu.edu/repos/iuc/sceasy_convert/sceasy_convert/0.0.7+galaxy1) %} (more details in the next section). If you chose **Matrix Market** format, you can then transform the output to AnnData or Seurat, as shown in the EBI SCXA example above. Below, you will find an example of transforming the output to AnnData object. 
+If you chose **Loom** format and you need to convert your file to other datatype, you can use {% tool [SCEasy](toolshed.g2.bx.psu.edu/repos/iuc/sceasy_convert/sceasy_convert/0.0.7+galaxy1) %} (more details in the next section). If you chose **Matrix Market** format, you can then transform the output to AnnData or Seurat, as shown in the EBI SCXA example above. Below, you will find an example of transforming the output to AnnData object.
 
 
 > <hands-on-title>Create AnnData object</hands-on-title>
@@ -375,4 +385,4 @@ If you chose **Loom** format and you need to convert your file to other datatype
 > - Including a dash is important to identify mitochondrial genes (eg. **MT-**)
 {: .tip}
 
-You can have a look at the [answer history](https://singlecell.usegalaxy.eu/u/j.jakiela/h/hca-downloader---example-files-1) of performing those three quick steps. 
+You can have a look at the [answer history](https://singlecell.usegalaxy.eu/u/j.jakiela/h/hca-downloader---example-files-1) of performing those three quick steps.
