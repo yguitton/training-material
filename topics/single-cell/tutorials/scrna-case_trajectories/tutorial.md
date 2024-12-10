@@ -12,6 +12,9 @@ answer_histories:
   - label: "UseGalaxy.eu"
     history: https://humancellatlas.usegalaxy.eu/u/marisa_jl/h/inferring-trajectories-using-scanpy---example-history
     date: 2023-12-14
+  - label: "UseGalaxy.eu-ARCHIVED"
+    history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/inferring-trajectories-using-scanpy---example-history
+    date: 2024-10-12
 
 input_histories:
   - label: "UseGalaxy.eu"
