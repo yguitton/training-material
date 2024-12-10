@@ -47,10 +47,17 @@ answer_histories:
     - label: "usegalaxy.eu"
       history: https://usegalaxy.eu/u/camila-goclowski/h/seurattool-based-fpe
       date: 2024-06-03
+    - label: "usegalaxy.eu - ARCHIVED"
+      history: https://usegalaxy.eu/u/wendi.bacon.training/h/tool-based-fpe
+      date: 2024-12-10
 
 input_histories:
     - label: "usegalaxy.eu"
       history: https://usegalaxy.eu/u/camila-goclowski/h/tool-based-seurat-fpe-input-data
+    - label: "usegalaxy.eu-ARCHIVED"
+      history: https://usegalaxy.eu/u/wendi.bacon.training/h/tool-based-seurat-fpe-input-data
+      date: 2024-12-10
+
 
 ---
 
@@ -803,4 +810,3 @@ If we look at the differences between genotypes alone (so the pseudo-bulk), we c
 Ultimately, there are quite a lot ways to analyse your single-cell data, both within the confines of this tutorial (the many parameters that could be changed throughout) and outside of it (batch correction, sub-clustering, cell-cycle scoring, inferred trajectories, etc.) Most analyses will still yield the same general output, though: there are fewer knockout cells in the mature T-cell population, suggesting some sort of abberant development of T-cells in the Igf2-p0 hets.
 
 {% icon congratulations %} Congratulations! You have interpreted your plots in several important ways! You might want to consult your results with this [control history](https://singlecell.usegalaxy.eu/u/camila-goclowski/h/seurattool-based-fpe), and check out the [workflow](./workflows/) for this tutorial.
-
