@@ -809,7 +809,7 @@ module GtnLinter
   end
 
   ##
-  # 
+  # GTN:020 - Please do not bold random lines, use a heading properly.
   def self.check_looks_like_heading(contents)
     # TODO: we should remove this someday, but, we need to have a good solution
     # and we're still a ways from that.
@@ -827,7 +827,8 @@ module GtnLinter
         replacement: "### #{selected[1]}",
         message: "This looks like a heading, but isn't. Please use proper semantic headings where possible. " \
                  'You should check the heading level of this suggestion, rather than accepting the change as-is.',
-        code: 'GTN:020'
+        code: 'GTN:020',
+        fn: __method__.to_s,
       )
     end
   end
@@ -851,6 +852,8 @@ module GtnLinter
     'raw', 'endraw'
   ].freeze
 
+  ##
+  # GTN:021 - We are not sure this tag is correct, there is a very limited set of Jekyll/liquid tags that are used in GTN tutorials, and this checks for surprises.
   def self.check_bad_tag(contents)
     find_matching_texts(contents, /{%\s*(?<tag>[a-z]+)/)
       .reject { |_idx, _text, selected| @KNOWN_TAGS.include? selected[:tag] }
@@ -862,7 +865,8 @@ module GtnLinter
         match_end: selected.end(1) + 1,
         replacement: nil,
         message: "We're not sure this tag is correct (#{selected[:tag]}), it isn't one of the known tags.",
-        code: 'GTN:021'
+        code: 'GTN:021',
+        fn: __method__.to_s,
       )
     end
   end
@@ -882,6 +886,18 @@ module GtnLinter
     warning
   ].freeze
 
+  ##
+  # GTN:022 - Please do not prefix your boxes of a type with the box name.
+  #
+  # Do not do:
+  #
+  #   > <question-title>Question: Some question!</question-title>
+  #
+  # Instead:
+  #
+  #   > <question-title>Some question!</question-title>
+  #
+  # As the Question: prefix will be added automatically when necessary. This goes also for tip/comment/etc.
   def self.check_useless_box_prefix(contents)
     find_matching_texts(contents, /<(?<tag>[a-z_-]+)-title>(?<fw>[a-zA-Z_-]+:?\s*)/)
       .select do |_idx, _text, selected|
