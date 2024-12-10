@@ -43,7 +43,7 @@ The goal is to present an accessible and reproductible workflow for data submiss
 >
 {: .agenda}
 
-# Prepare raw data with the Data Submission Workflow
+# Prepare raw data
 
 > <hands-on-title> Data Upload </hands-on-title>
 > 1. **Create a new history** for this tutorial
@@ -79,12 +79,9 @@ The goal is to present an accessible and reproductible workflow for data submiss
 {: .hands_on}
 
 
-> <hands-on-title> Run "Prepare Data Submission" Workflow steps </hands-on-title>
->
-> This workflow takes as input ab1 sequences fles and produce filtered FastQ and Fasta files so sequences passing the quality checks are compared to NCBI nucleotidic database using Blastn operation.
-{: .hands_on}
-
 ## Tools used in the "Prepare Data submission" Workflow
+
+Following steps take as input ab1 sequences files and produce filtered FastQ and Fasta files so sequences passing the quality checks are compared to NCBI nucleotidic database using Blastn operation.
 
 ### Converting Ab1 files to FASTQ
 
