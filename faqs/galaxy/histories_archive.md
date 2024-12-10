@@ -6,9 +6,6 @@ box_type: tip
 layout: faq
 contributors: [nomadscientist]
 ---
-There 3 ways to copy datasets between histories
-
-From the original history
 
     1. Select {% icon galaxy-history-options %} **History Options** which is on the top of the list of datasets in the history panel
     2. Select {% icon galaxy-history-archive %} **Archive History**
