@@ -606,6 +606,19 @@ module TopicFilter
   # complicated", or, maybe not. But either way, this is what is required to display a full 'learning material'
   # on the GTN, and all of the metadata that goes into it.
   #
+  # Some of the highlights are:
+  # - learning resource metadata (taken from tutorial if it exists, otherwise, from the slides)
+  # - short ID
+  # - topic information (topic name/ topic_id)
+  # - any javascript requirements
+  # - All associated workflows, and metadata about those workflows (tests, features used, associated test results, mermaid and dot graphs, associated tools, inputs and outputs.)
+  # - +ref+, +ref_tutorials+, +ref_slides+ that point to the actual Jekyll pages, in case you need those.
+  # - api URL
+  # - tools (discovered from the tutorial text + workflows)
+  # - a list of supported servers for easy display (exact and inexact matches)
+  # - a matrix of which servers support which versions of those tools, for a full compatibility table (used on maintainer page.)
+  # - requisite metdata for an admin to install these tools
+  #
   #    resource = TopicFilter.collate_materials(site, site.pages)['proteomics/database-handling']
   #    material = TopicFilter.resolve_material(site, resource)
   #    material # =>
