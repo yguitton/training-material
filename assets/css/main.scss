@@ -1639,6 +1639,11 @@ $btn-pink: var(--keypoints-color);
 	border-color: var(--brand-color);
 	color: var(--brand-color-contrast);
 }
+.btn-secondary {
+	background-color: var(--secondary-color);
+	border-color: var(--secondary-color);
+	color: var(--secondary-color-text);
+}
 .btn-success {
 	background-color: #1d7531; // AA
 	border-color: #1d7531; // AA
