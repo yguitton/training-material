@@ -940,6 +940,10 @@ module Jekyll
       # Tools
       uses_tools = false
       (actual_material['tools'] || []).each do |tool|
+        if site.data['tool-meta'].nil?
+          next
+        end
+
         toolmeta = site.data['tool-meta'][tool]
         if toolmeta.nil?
           next
