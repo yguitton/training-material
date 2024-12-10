@@ -50,8 +50,6 @@ contributions:
 ---
 
 
-# Introduction
-
 You've done all the hard work of preparing a single-cell matrix, processing it, plotting it, interpreting it, and finding lots of lovely genes. Now you want to infer trajectories, or relationships between cells... you can do that here, using the Galaxy interface, or head over to the [Jupyter notebook version of this tutorial]({% link topics/single-cell/tutorials/scrna-case_JUPYTER-trajectories/tutorial.md %}) to learn how to perform the same analysis using Python.
 
 Traditionally, we thought that differentiating or changing cells jumped between discrete states, so 'Cell A' became 'Cell B' as part of its maturation. However, most data shows otherwise. Generally, there is a spectrum (a 'trajectory', if you will...) of small, subtle changes along a pathway of that differentiation. Trying to analyse cells every 10 seconds can be pretty tricky, so 'pseudotime' analysis takes a single sample and assumes that those cells are all on slightly different points along a path of differentiation. Some cells might be slightly more mature and others slightly less, all captured at the same 'time'.  These cells are sorted accordingly along these pseudotime paths of differentiation to build a continuum of cells from one state to the next.  We therefore 'assume' or 'infer' relationships from this continuum of cells.
