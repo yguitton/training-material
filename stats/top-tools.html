@@ -13,6 +13,7 @@ redirect_from:
 	</thead>
 	<tbody>
 	{% for group in groups %}
+	{% unless group[0][0] == '{' %}
 	<tr>
 		<td><a href="{{ site.baseurl }}/by-tool/{{group[0]}}.html">{{ group[0] }}</a></td>
 		<td>
@@ -28,6 +29,7 @@ redirect_from:
 			</ul>
 		</td>
 	</tr>
+	{% endunless %}
 	{% endfor %}
 	</tbody>
 
