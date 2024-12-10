@@ -38,12 +38,14 @@ module TopicFilter
     list_topics_h(site).values
   end
 
+  ##
+  # Setup the local cache via +Jekyll::Cache+
   def self.cache
     @@cache ||= Jekyll::Cache.new('JekyllTopicFilter')
   end
 
   ##
-  # Fill the cache with all the topics
+  # Fill the cache with all the topics if it hasn't been done already. Safe to be called multiple times.
   # Params:
   # +site+:: The +Jekyll::Site+ object
   # Returns:
@@ -95,17 +97,17 @@ module TopicFilter
   #     "materials" => [.. ]
   #   }
   #  ]
+  # This method is built with the idea to replace the "topic_filter" command,
+  # and instead of returning semi-structured data, we will immediately return
+  # fully structured data for a specific "topic_name" query, like, "admin"
+  #
+  # Instead of returning a flat list of tutorials, instead we'll structure
+  # them properly in subtopics (if they exist) or return the flat list
+  # otherwise.
+  #
+  # This will let us generate new "views" into the tutorial lists, having
+  # them arranged in new and exciting ways.
   def self.list_materials_structured(site, topic_name)
-    # This method is built with the idea to replace the "topic_filter" command,
-    # and instead of returning semi-structured data, we will immediately return
-    # fully structured data for a specific "topic_name" query, like, "admin"
-    #
-    # Instead of returning a flat list of tutorials, instead we'll structure
-    # them properly in subtopics (if they exist) or return the flat list
-    # otherwise.
-    #
-    # This will let us generate new "views" into the tutorial lists, having
-    # them arranged in new and exciting ways.
 
     fill_cache(site)
 
@@ -225,7 +227,7 @@ module TopicFilter
   ##
   # Extract the list of tools used in a workflow
   # Params:
-  # +data+:: The workflow data
+  # +data+:: The Galaxy Workflow JSON data, parsed
   # Returns:
   # +Array+:: The list of tool IDs
   def self.extract_workflow_tool_list(data)
@@ -245,14 +247,16 @@ module TopicFilter
   # +Hash+:: The annotation
   #
   # Example:
-  #   TopicFilter.annotate_path("topics/assembly/tutorials/velvet-assembly/tutorial.md", nil)
-  #   => {
-  #   "topic"=>"assembly",
-  #   "topic_name"=>"assembly",
-  #   "material"=>"assembly/velvet-assembly",
-  #   "tutorial_name"=>"velvet-assembly",
-  #   "dir"=>"topics/assembly/tutorials/velvet-assembly",
-  #   "type"=>"tutorial"}
+  #
+  #   h = TopicFilter.annotate_path("topics/assembly/tutorials/velvet-assembly/tutorial.md", nil)
+  #   h # => {
+  #     #  "topic"=>"assembly",
+  #     #  "topic_name"=>"assembly",
+  #     #  "material"=>"assembly/velvet-assembly",
+  #     #  "tutorial_name"=>"velvet-assembly",
+  #     #  "dir"=>"topics/assembly/tutorials/velvet-assembly",
+  #     #  "type"=>"tutorial"
+  #     # }
 
   def self.annotate_path(path, layout)
     parts = path.split('/')
@@ -334,29 +338,29 @@ module TopicFilter
   # +Hash+:: The collated materials
   #
   # Example:
-  # collate_materials(site, pages)
-  # => {
-  # "assembly/velvet-assembly" => {
-  #  "topic" => "assembly",
-  #  "topic_name" => "assembly",
-  #  "material" => "assembly/velvet-assembly",
-  #  "tutorial_name" => "velvet-assembly",
-  #  "dir" => "topics/assembly/tutorials/velvet-assembly",
-  #  "resources" => [
-  #    {
-  #    "type" => "slides",
-  #    "url" => "/topics/assembly/tutorials/velvet-assembly/slides.html",
-  #    "title" => "Slides",
-  #    "priority" => 1
-  #    },
-  #    {
-  #    "type" => "tutorial",
-  #    "url" => "/topics/assembly/tutorials/velvet-assembly/tutorial.html",
-  #    "title" => "Tutorial",
-  #    "priority" => 2
-  #    }
-  #   ]
-  #  }
+  #   h = collate_materials(site, pages)
+  #   h # => {
+  #     # "assembly/velvet-assembly" => {
+  #     #  "topic" => "assembly",
+  #     #  "topic_name" => "assembly",
+  #     #  "material" => "assembly/velvet-assembly",
+  #     #  "tutorial_name" => "velvet-assembly",
+  #     #  "dir" => "topics/assembly/tutorials/velvet-assembly",
+  #     #  "resources" => [
+  #     #    {
+  #     #    "type" => "slides",
+  #     #    "url" => "/topics/assembly/tutorials/velvet-assembly/slides.html",
+  #     #    "title" => "Slides",
+  #     #    "priority" => 1
+  #     #    },
+  #     #    {
+  #     #    "type" => "tutorial",
+  #     #    "url" => "/topics/assembly/tutorials/velvet-assembly/tutorial.html",
+  #     #    "title" => "Tutorial",
+  #     #    "priority" => 2
+  #     #    }
+  #     #   ]
+  #     #  }
   def self.collate_materials(site, pages)
     # In order to speed up queries later, we'll store a set of "interesting"
     # pages (i.e. things that are under `topic_name`)
@@ -395,6 +399,8 @@ module TopicFilter
     interesting
   end
 
+  ##
+  # Make a label safe for use in mermaid (without ()[]"')
   def self.mermaid_safe_label(label)
     (label || '')
       .gsub('(', '').gsub(')', '')
@@ -403,6 +409,15 @@ module TopicFilter
       .gsub("'", '’')
   end
 
+  ##
+  # Build a Mermaid.js compatible graph of a given Galaxy Workflow
+  #
+  # TODO: extract into own module along with DOT>
+  #
+  # Params:
+  # +wf+:: The Galaxy Workflow JSON representation
+  # Returns:
+  # +String+:: A Mermaid.js compatible graph of the workflow.
   def self.mermaid(wf)
     # We're converting it to Mermaid.js
     # flowchart TD
@@ -477,15 +492,7 @@ module TopicFilter
   # Returns:
   # +String+:: A DOT graph of the workflow.
   def self.graph_dot(wf)
-    # We're converting it to Mermaid
-    # flowchart TD
-    #     A[Start] --> B{Is it?}
-    #     B -- Yes --> C[OK]
-    #     C --> D[Rethink]
-    #     D --> B
-    #     B -- No ----> E[End]
     # digraph test {
-    #
     #   0[shape=box,style=filled,color=lightblue,label="ℹ️ Input Dataset\nBionano_dataset"]
     #   1[shape=box,style=filled,color=lightblue,label="ℹ️ Input Dataset\nHi-C_dataset_R"]
     #   3 -> 6 [label="output"]
@@ -542,6 +549,13 @@ module TopicFilter
     "digraph main {\n" + statements.map { |q| "  #{q}" }.join("\n") + "\n}"
   end
 
+  ##
+  # (PRODUCTION ONLY) Extract a log of commits (hash, timestamp, message) for commits to a specific path
+  #
+  # Params:
+  # +wf_path+:: Path to a file
+  # Returns:
+  # +Array+:: An array of {'hash' => ..., 'unix' => 1230, 'message' => 'I did something', 'short_hash' => ... }
   def self.git_log(wf_path)
     if Jekyll.env != 'production'
       return []
@@ -561,6 +575,193 @@ module TopicFilter
       end
     end
   end
+
+  ##
+  # Resolve a material from a given collated material. What does that entail? A LOT.
+  #
+  # Given a collated material, e.g.
+  #
+  #    material = TopicFilter.collate_materials(site, site.pages)['proteomics/database-handling']
+  #    material # =>
+  #        # {"topic"=>"proteomics",
+  #        #  "topic_name"=>"proteomics",
+  #        #  "material"=>"proteomics/database-handling",
+  #        #  "tutorial_name"=>"database-handling",
+  #        #  "dir"=>"topics/proteomics/tutorials/database-handling",
+  #        #  "resources"=>
+  #        #   [["workflow", #<Jekyll::Page @relative_path="topics/proteomics/tutorials/database-handling/workflows/index.md">],
+  #        #    ["tour", #<Jekyll::Page @relative_path="topics/proteomics/tutorials/database-handling/tours/proteomics-database-handling-mycroplasma.yaml">],
+  #        #    ["tour", #<Jekyll::Page @relative_path="topics/proteomics/tutorials/database-handling/tours/proteomics-database-handling.yaml">],
+  #        #    ["tutorial", #<Jekyll::Page @relative_path="topics/proteomics/tutorials/database-handling/tutorial.md">],
+  #        #    ["recordings", #<Jekyll::PageWithoutAFile @relative_path="topics/proteomics/tutorials/database-handling/recordings/index.html">],
+  #        #    ["workflow", #<Jekyll::PageWithoutAFile @relative_path="topics/proteomics/tutorials/database-handling/workflows/wf_database-handling.html">],
+  #        #    ["workflow", #<Jekyll::PageWithoutAFile @relative_path="topics/proteomics/tutorials/database-handling/workflows/wf_database-handling_mycoplasma.html">]]}
+  #
+  # We can then choose to 'resolve' that material, i.e. collect all of the
+  # relevant information that is needed for it to really be useful. This
+  # includes things like tools, workflows, etc. Everything is packed into a
+  # highly annotated 'material' Hash.
+  #
+  # You might look below and say "Wow that is ridiculously unnecessarily
+  # complicated", or, maybe not. But either way, this is what is required to display a full 'learning material'
+  # on the GTN, and all of the metadata that goes into it.
+  #
+  #    resource = TopicFilter.collate_materials(site, site.pages)['proteomics/database-handling']
+  #    material = TopicFilter.resolve_material(site, resource)
+  #    material # =>
+  #    {"layout"=>"tutorial_hands_on",
+  #     "title"=>"Protein FASTA Database Handling",
+  #     "edam_ontology"=>["topic_0121"],
+  #     "zenodo_link"=>"",
+  #     "level"=>"Introductory",
+  #     "questions"=>["How to download protein FASTA databases of a certain organism?", "How to download a contaminant database?", "How to create a decoy database?", "How to combine databases?"],
+  #     "objectives"=>["Creation of a protein FASTA database ready for use with database search algorithms."],
+  #     "time_estimation"=>"30m",
+  #     "key_points"=>
+  #      ["There are several types of Uniprot databases.",
+  #       "Search databases should always include possible contaminants.",
+  #       "For analyzing cell culture or organic samples, search databases should include mycoplasma databases.",
+  #       "Some peptide search engines depend on decoys to calculate the FDR."],
+  #     "contributors"=>["stortebecker", "bgruening"],
+  #     "subtopic"=>"id-quant",
+  #     "tags"=>["DDA"],
+  #     "js_requirements"=>{"mathjax"=>nil, "mermaid"=>false},
+  #     "short_id"=>"T00214",
+  #     "symlink"=>nil,
+  #     "url"=>"/topics/proteomics/tutorials/database-handling/tutorial.html",
+  #     "topic_name"=>"proteomics",
+  #     "tutorial_name"=>"database-handling",
+  #     "dir"=>"topics/proteomics/tutorials/database-handling",
+  #     "redirect_from"=>["/short/proteomics/database-handling", "/short/T00214"],
+  #     "id"=>"proteomics/database-handling",
+  #     "ref"=>#<Jekyll::Page @relative_path="topics/proteomics/tutorials/database-handling/tutorial.md">,
+  #     "ref_tutorials"=>[#<Jekyll::Page @relative_path="topics/proteomics/tutorials/database-handling/tutorial.md">],                                                                                                    "ref_slides"=>[],                                                                                                                                                                                                 "hands_on"=>true,                                                                                                                                                                                                 "slides"=>false,                                                                                                                                                                                                  "mod_date"=>2023-11-09 09:55:09 +0100,
+  #     "pub_date"=>2017-02-14 13:20:30 +0100,
+  #     "version"=>29,
+  #     "workflows"=>
+  #     "workflows"=>
+  #      [{"workflow"=>"wf_database-handling.ga",
+  #        "tests"=>false,
+  #        "url"=>"https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/database-handling/workflows/wf_database-handling.ga",
+  #        "url_html"=>"https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/database-handling/workflows/wf_database-handling.html",
+  #        "path"=>"topics/proteomics/tutorials/database-handling/workflows/wf_database-handling.ga",
+  #        "wfid"=>"proteomics-database-handling",
+  #        "wfname"=>"wf-database-handling",
+  #        "trs_endpoint"=>"https://training.galaxyproject.org/training-material/api/ga4gh/trs/v2/tools/proteomics-database-handling/versions/wf-database-handling",
+  #        "license"=>nil,
+  #        "parent_id"=>"proteomics/database-handling",
+  #        "topic_id"=>"proteomics",
+  #        "tutorial_id"=>"database-handling",
+  #        "creators"=>[],
+  #        "name"=>"Proteomics: database handling",
+  #        "title"=>"Proteomics: database handling",
+  #        "version"=>5,
+  #        "description"=>"Protein FASTA Database Handling",
+  #        "tags"=>["proteomics"],
+  #        "features"=>{"report"=>nil, "subworkflows"=>false, "comments"=>false, "parameters"=>false},
+  #        "workflowhub_id"=>"1204",
+  #        "history"=>[],
+  #        "test_results"=>nil,
+  #        "modified"=>2024-03-18 12:38:44.394831189 +0100,
+  #        "mermaid"=>
+  #         "flowchart TD\n  0[\"Protein Database Downloader\"];\n  1[\"Protein Database Downloader\"];\n  2[\"FASTA-to-Tabular\"];\n  0 -->|output_database| 2;\n  3[\"Add column\"];\n  2 -->|output| 3;\n  4[\"Tabular
+  #    -to-FASTA\"];\n  3 -->|out_file1| 4;\n  5[\"FASTA Merge Files and Filter Unique Sequences\"];\n  4 -->|output| 5;\n  1 -->|output_database| 5;\n  6[\"DecoyDatabase\"];\n  5 -->|output| 6;",
+  #        "graph_dot"=>
+  #         "digraph main {\n  node [fontname=\"Atkinson Hyperlegible\", shape=box, color=white,style=filled,color=peachpuff,margin=\"0.2,0.2\"];\n  edge [fontname=\"Atkinson Hyperlegible\"];\n  0[label=\"Protein Data
+  #    base Downloader\"]\n  1[label=\"Protein Database Downloader\"]\n  2[label=\"FASTA-to-Tabular\"]\n  0 -> 2 [label=\"output_database\"]\n  3[label=\"Add column\"]\n  2 -> 3 [label=\"output\"]\n  4[label=\"Tabular
+  #    -to-FASTA\"]\n  3 -> 4 [label=\"out_file1\"]\n  5[label=\"FASTA Merge Files and Filter Unique Sequences\"]\n  4 -> 5 [label=\"output\"]\n  1 -> 5 [label=\"output_database\"]\n  6[label=\"DecoyDatabase\"]\n  5 -
+  #    > 6 [label=\"output\"]\n}",
+  #        "workflow_tools"=>
+  #         ["addValue",
+  #          "toolshed.g2.bx.psu.edu/repos/devteam/fasta_to_tabular/fasta2tab/1.1.1",
+  #          "toolshed.g2.bx.psu.edu/repos/devteam/tabular_to_fasta/tab2fasta/1.1.1",
+  #          "toolshed.g2.bx.psu.edu/repos/galaxyp/dbbuilder/dbbuilder/0.3.1",
+  #          "toolshed.g2.bx.psu.edu/repos/galaxyp/fasta_merge_files_and_filter_unique_sequences/fasta_merge_files_and_filter_unique_sequences/1.2.0",
+  #          "toolshed.g2.bx.psu.edu/repos/galaxyp/openms_decoydatabase/DecoyDatabase/2.6+galaxy0"],
+  #        "inputs"=>[],
+  #        "outputs"=>
+  #         [{"annotation"=>"",
+  #           "content_id"=>"toolshed.g2.bx.psu.edu/repos/galaxyp/dbbuilder/dbbuilder/0.3.1",
+  #           "errors"=>nil,
+  #           "id"=>0,
+  #           "input_connections"=>{},
+  #           "inputs"=>[],
+  #           "label"=>nil,
+  #           "name"=>"Protein Database Downloader",
+  #           "outputs"=>[{"name"=>"output_database", "type"=>"fasta"}],
+  #           "position"=>{"bottom"=>380.6000061035156, "height"=>102.60000610351562, "left"=>-110, "right"=>90, "top"=>278, "width"=>200, "x"=>-110, "y"=>278},
+  #           "post_job_actions"=>{},
+  #           "tool_id"=>"toolshed.g2.bx.psu.edu/repos/galaxyp/dbbuilder/dbbuilder/0.3.1",
+  #           "tool_shed_repository"=>{"changeset_revision"=>"c1b437242fee", "name"=>"dbbuilder", "owner"=>"galaxyp", "tool_shed"=>"toolshed.g2.bx.psu.edu"},
+  #           "tool_state"=>
+  #            "{\"__input_ext\": \"data\", \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"source\": {\"from\": \"cRAP\", \"__current_case__\": 1}, \"__page__\": null, \"__rerun_remap_job_id__\":
+  #    null}",
+  #           "tool_version"=>"0.3.1",
+  #           "type"=>"tool",
+  #           "uuid"=>"6613b72c-2bab-423c-88fc-05edfe9ea8ec",
+  #           "workflow_outputs"=>[{"label"=>nil, "output_name"=>"output_database", "uuid"=>"2d289b03-c396-46a2-a725-987b6c75ada9"}]},
+  #          ...
+  #     "api"=>"https://training.galaxyproject.org/training-material/api/topics/proteomics/tutorials/database-handling/tutorial.json",
+  #     "tools"=>
+  #      ["addValue",
+  #       "toolshed.g2.bx.psu.edu/repos/devteam/fasta_to_tabular/fasta2tab/1.1.1",
+  #       "toolshed.g2.bx.psu.edu/repos/devteam/tabular_to_fasta/tab2fasta/1.1.1",
+  #       "toolshed.g2.bx.psu.edu/repos/galaxyp/dbbuilder/dbbuilder/0.3.1",
+  #       "toolshed.g2.bx.psu.edu/repos/galaxyp/fasta_merge_files_and_filter_unique_sequences/fasta_merge_files_and_filter_unique_sequences/1.2.0",
+  #       "toolshed.g2.bx.psu.edu/repos/galaxyp/openms_decoydatabase/DecoyDatabase/2.6+galaxy0"],
+  #     "supported_servers"=>
+  #      {"exact"=>[{"url"=>"https://usegalaxy.eu", "name"=>"UseGalaxy.eu", "usegalaxy"=>true}, {"url"=>"https://usegalaxy.org.au", "name"=>"UseGalaxy.org.au", "usegalaxy"=>true}],
+  #       "inexact"=>[{"url"=>"https://usegalaxy.no/", "name"=>"UseGalaxy.no", "usegalaxy"=>false}]},
+  #     "supported_servers_matrix"=>
+  #      {"servers"=>
+  #        [{"url"=>"http://aspendb.uga.edu:8085/", "name"=>"AGEseq @ AspenDB"},
+  #         {"url"=>"http://motherbox.chemeng.ntua.gr/anastasia_dev/", "name"=>"ANASTASIA"},
+  #          ...
+  #       "tools"=>
+  #        [{"id"=>"addValue",
+  #          "servers"=>
+  #           [{"state"=>"local", "server"=>"http://aspendb.uga.edu:8085/"},
+  #            {"state"=>"missing", "server"=>"http://motherbox.chemeng.ntua.gr/anastasia_dev/"},
+  #            {"state"=>"local", "server"=>"http://apostl.moffitt.org/"},
+  #            {"state"=>"local", "server"=>"http://smile.hku.hk/SARGs"},
+  #            {"state"=>"local", "server"=>"http://bf2i-galaxy.insa-lyon.fr:8080/"},
+  #            {"state"=>"local", "server"=>"http://143.169.238.104/galaxy/"},
+  #            {"state"=>"missing", "server"=>"https://iris.angers.inra.fr/galaxypub-cfbp"},
+  #            {"state"=>"local", "server"=>"https://cpt.tamu.edu/galaxy-public/"},
+  #            {"state"=>"missing", "server"=>"https://vm-chemflow-francegrille.eu/"},
+  #            {"state"=>"local", "server"=>"https://hyperbrowser.uio.no/coloc-stats"},
+  #            {"state"=>"local", "server"=>"http://corgat.cloud.ba.infn.it/galaxy"},
+  #            {"state"=>"local", "server"=>"http://cropgalaxy.excellenceinbreeding.org/"},
+  #            {"state"=>"local", "server"=>"http://dintor.eurac.edu/"},
+  #            {"state"=>"missing", "server"=>"http://www.freebioinfo.org/"},
+  #            {"state"=>"local", "server"=>"http://igg.cloud.ba.infn.it/galaxy"},
+  #     "topic_name_human"=>"Proteomics",
+  #     "admin_install"=>
+  #      {"install_tool_dependencies"=>true,
+  #       "install_repository_dependencies"=>true,
+  #       "install_resolver_dependencies"=>true,
+  #       "tools"=>
+  #        [{"name"=>"fasta_to_tabular", "owner"=>"devteam", "revisions"=>"e7ed3c310b74", "tool_panel_section_label"=>"FASTA/FASTQ", "tool_shed_url"=>"https://toolshed.g2.bx.psu.edu/"},
+  #         {"name"=>"tabular_to_fasta", "owner"=>"devteam", "revisions"=>"0a7799698fe5", "tool_panel_section_label"=>"FASTA/FASTQ", "tool_shed_url"=>"https://toolshed.g2.bx.psu.edu/"},
+  #         {"name"=>"dbbuilder", "owner"=>"galaxyp", "revisions"=>"c1b437242fee", "tool_panel_section_label"=>"Get Data", "tool_shed_url"=>"https://toolshed.g2.bx.psu.edu/"},
+  #         {"name"=>"fasta_merge_files_and_filter_unique_sequences", "owner"=>"galaxyp", "revisions"=>"f546e7278f04", "tool_panel_section_label"=>"FASTA/FASTQ", "tool_shed_url"=>"https://toolshed.g2.bx.psu.edu/"},
+  #         {"name"=>"openms_decoydatabase", "owner"=>"galaxyp", "revisions"=>"370141bc0da3", "tool_panel_section_label"=>"Proteomics", "tool_shed_url"=>"https://toolshed.g2.bx.psu.edu/"}]},
+  #     "admin_install_yaml"=>
+  #      "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: fasta_to_tabular\n  owner: devteam\n  revisions: e7ed3c310b74\n  tool_panel_s
+  #    ection_label: FASTA/FASTQ\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: tabular_to_fasta\n  owner: devteam\n  revisions: 0a7799698fe5\n  tool_panel_section_label: FASTA/FASTQ\n  tool_shed_url: http
+  #    s://toolshed.g2.bx.psu.edu/\n- name: dbbuilder\n  owner: galaxyp\n  revisions: c1b437242fee\n  tool_panel_section_label: Get Data\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: fasta_merge_files_and
+  #    _filter_unique_sequences\n  owner: galaxyp\n  revisions: f546e7278f04\n  tool_panel_section_label: FASTA/FASTQ\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: openms_decoydatabase\n  owner: galaxyp\n
+  #      revisions: 370141bc0da3\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+  #     "tours"=>false,
+  #     "video"=>false,
+  #     "slides_recordings"=>false,
+  #     "translations"=>{"tutorial"=>[], "slides"=>[], "video"=>false},
+  #     "license"=>"CC-BY-4.0",
+  #     "type"=>"tutorial"}
+
+
+
+
 
   def self.resolve_material(site, material)
     # We've already
