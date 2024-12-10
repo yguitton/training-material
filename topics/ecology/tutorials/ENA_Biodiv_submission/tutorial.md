@@ -6,7 +6,7 @@ questions:
 - How to prepare sequences for submission to ENA?
 - How to upload raw sequences to ENA?
 objectives:
-- Manage sequencing files (AB1, FASTQ, FASTA, FASTQ.GZ)
+- Manage sequencing files (ab1, FASTQ, FASTA, FASTQ.GZ)
 - Clean sequences in an automated and reproducible manner
 - Perform alignments for each sequence
 - Have the necessary sequence format to submit to ENA
@@ -28,7 +28,7 @@ contributions:
 ---
 
 
-This tutorial will guide you through the necessary steps to manage and prepare sequencing files (AB1, FASTQ, FASTA) for submission to the genomic database ENA.
+This tutorial will guide you through the necessary steps to manage and prepare sequencing files (ab1, FASTQ, FASTA) for submission to the genomic database ENA.
 This workflow will take you from raw sequences in AB1 format through all the necessary steps to integrate these sequences into the ENA genomic database. We will convert the files into FASTQ and FASTA formats after performing quality control.
 Additionally, we will perform alignments with the NCBI database to ensure the accuracy of your sequences.You will then need to fill a metadata Excel template to use the ENA upload Tool.
 The worklow is made of 17 Galaxy tools, we will  present them and explain what they do.
@@ -149,7 +149,7 @@ Cutadapt enables the removal of adapters, polyA tails, and other artifacts from 
 >    > We do a second quality control similar to the first one to check the quality of the sequences after cleaning them.
 >    {: .comment}
 
-## Quality Control with FASTQC and MultiQC
+## Quality Control with FastQC and MultiQC
 
 > <hands-on-title> FastQC </hands-on-title>
 >
