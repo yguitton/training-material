@@ -21,6 +21,7 @@ key_points:
 - By passing a BLAST database of off-target sequences to varVAMP you can reduce the risk of designing primers binding to these sequences
 contributions:
   authorship:
+  - VerenaMoo
   - elischberg
   - wm75
   funding:
