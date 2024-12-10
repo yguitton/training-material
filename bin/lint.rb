@@ -119,6 +119,10 @@ module GtnLinter
     end.select { |_idx, _text, selected| selected }
   end
 
+  ##
+  # Setting no_toc is discouraged as headers are useful for learners to link to and to jump to. Setting no_toc removes it from the table of contents which is generally inadvisable.
+  #
+  # Remediation: remove {: .no_toc}
   def self.fix_notoc(contents)
     find_matching_texts(contents, /{:\s*.no_toc\s*}/)
       .map do |idx, text, _selected|
@@ -128,12 +132,22 @@ module GtnLinter
         text: text,
         message: 'Setting no_toc is discouraged, these headings provide useful places for readers to jump to.',
         code: 'GTN:001',
-        full_line: text
+        full_line: text,
+        fn: __method__.to_s,
       )
     end
   end
 
-  # GTN:002 youtube discouraged
+  ##
+  # GTN:002 - YouTube links are discouraged. Please consider using our include for it:
+  #
+  # E.g, instead of
+  #
+  #   <iframe ... youtube.../>
+  #
+  # Consider:
+  #
+  #   {% include _includes/youtube.html id="e0vj-0imOLw" title="Difference between climate and weather" %}
   def self.youtube_bad(contents)
     find_matching_texts(contents, %r{<iframe.*youtu.?be.*</iframe>})
       .map do |idx, _text, selected|
@@ -146,7 +160,8 @@ module GtnLinter
         message: 'Instead of embedding IFrames to YouTube contents, consider adding this video to the ' \
                  'GTN tutorial "recordings" metadata where it will ' \
                  'be more visible for others.',
-        code: 'GTN:002'
+        code: 'GTN:002',
+        fn: __method__.to_s,
       )
     end
   end
