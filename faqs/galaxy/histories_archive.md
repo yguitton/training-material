@@ -14,4 +14,4 @@ From the original history
     2. Select {% icon galaxy-history-archive %} **Archive History**
     3. Select the **Archive history** button
 
-Your history is now archived! To find it again, you will need to go to **Data** | **Histories** | **Archived Histories**.
+Your history is now archived! To find it again, you will need to go to **Data** → **Histories** → **Archived Histories**.
