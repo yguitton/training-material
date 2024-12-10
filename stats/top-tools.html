@@ -13,7 +13,8 @@ redirect_from:
 	</thead>
 	<tbody>
 	{% for group in groups %}
-	{% unless group[0][0] == '{' %}
+	{% assign match = group[0] | matches: '{{' %}
+	{% unless match %}
 	<tr>
 		<td><a href="{{ site.baseurl }}/by-tool/{{group[0]}}.html">{{ group[0] }}</a></td>
 		<td>
