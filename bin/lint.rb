@@ -937,7 +937,7 @@ module GtnLinter
     bad_depth.map{|k|
       ReviewDogEmitter.error(
         path: @path,
-        idx: k.options[:location],
+        idx: k.options[:location] - 1,
         match_start: 0,
         match_end: k.options[:raw_text].length + k.options[:level] + 1,
         replacement: '#' * (k.options[:level] - 1),
@@ -949,6 +949,8 @@ module GtnLinter
     }
   end
 
+  ##
+  # GTN:029 - Please do not bold headings
   def self.check_bolded_heading(contents)
     find_matching_texts(contents, /^#+ (?<title>\*\*.*\*\*)$/)
       .map do |idx, _text, selected|
@@ -960,11 +962,16 @@ module GtnLinter
         replacement: selected[:title][2..-3],
         message: 'Please do not bold headings, it is unncessary ' \
                  'and will potentially cause screen readers to shout them.',
-        code: 'GTN:029'
+        code: 'GTN:029',
+        fn: __method__.to_s,
       )
     end
   end
 
+  ##
+  # GTN:032 - zenodo.org/api links are invalid in the GTN, please use the zenodo.org/records/id/files/<filename> format instead. This ensures that when users download files from zenodo into Galaxy, they appear correctly, with a useful filename.
+  #
+  # Seems to be a duplicate of GtnLinter.bad_zenodo_links
   def self.zenodo_api(contents)
     find_matching_texts(contents, %r{(zenodo\.org/api/files/)})
       .map do |idx, _text, selected|
@@ -980,6 +987,25 @@ module GtnLinter
     end
   end
 
+  ##
+  # GTN:035 - This is a non-semantic list which is bad for accessibility and screenreaders.
+  #
+  # Do not do:
+  #
+  #   * Step 1. Some text
+  #   * Step 2. some other thing
+  #
+  # Do not do:
+  #
+  #   Step 1. Some text
+  #   Step 2. some other thing
+  #
+  # Instead:
+  #
+  #   1. some text
+  #   2. some other
+  #
+  # That is a proper semantic list.
   def self.nonsemantic_list(contents)
     find_matching_texts(contents, />\s*(\*\*\s*[Ss]tep)/)
       .map do |idx, _text, selected|
@@ -991,11 +1017,14 @@ module GtnLinter
         replacement: nil,
         message: 'This is a non-semantic list which is bad for accessibility and bad for screenreaders. ' \
                  'It results in poorly structured HTML and as a result is not allowed.',
-        code: 'GTN:035'
+        code: 'GTN:035',
+        fn: __method__.to_s,
       )
     end
   end
 
+  ##
+  # GTN:041, GTN:042, GTN:043, GTN:044, GTN:045 - This checks for a myriad variety of CYOA issues. Please see the error message for help resolving them.
   def self.cyoa_branches(contents)
     joined_contents = contents.join("\n")
     cyoa_branches = joined_contents.scan(/_includes\/cyoa-choices[^%]*%}/m)
@@ -1041,7 +1070,8 @@ module GtnLinter
         match_end: 1,
         replacement: nil,
         message: 'You have non-unique options in your Choose Your Own Adventure. Please ensure that each option is unique in its text. Unfortunately we do not currently support re-using the same option text across differently disambiguated CYOA branches, so, please inform us if this is a requirement for you.' + msg,
-        code: 'GTN:041'
+        code: 'GTN:041',
+        fn: __method__.to_s,
       )
     end
 
@@ -1055,7 +1085,8 @@ module GtnLinter
           match_end: 1,
           replacement: nil,
           message: 'We recommend specifying a default for every branch',
-          code: 'GTN:042'
+          code: 'GTN:042',
+          fn: __method__.to_s,
         )
       end
 
@@ -1070,7 +1101,8 @@ module GtnLinter
             match_end: 1,
             replacement: nil,
             message: "We did not see a corresponding option# for the default: «#{branch['default']}», but this could have been written before we automatically slugified the options. If you like, please consider making your default option match the option text exactly.",
-            code: 'GTN:043'
+            code: 'GTN:043',
+            fn: __method__.to_s,
           )
         else
           errors << ReviewDogEmitter.warning(
@@ -1080,7 +1112,8 @@ module GtnLinter
             match_end: 1,
             replacement: nil,
             message: "We did not see a corresponding option# for the default: «#{branch['default']}», please ensure the text matches one of the branches.",
-            code: 'GTN:044'
+            code: 'GTN:044',
+            fn: __method__.to_s,
           )
         end
       end
@@ -1103,13 +1136,12 @@ module GtnLinter
             match_end: 1,
             replacement: nil,
             message: "We did not see a branch for #{option} (#{slug_option}) in the file. Please consider ensuring that all options are used.",
-            code: 'GTN:045'
+            code: 'GTN:045',
+            fn: __method__.to_s,
           )
         end
       end
     end
-    
-
 
     # find_matching_texts(contents, />\s*(\*\*\s*[Ss]tep)/) .map do |idx, _text, selected|
     #   ReviewDogEmitter.error(
@@ -1126,6 +1158,8 @@ module GtnLinter
     errors
   end
 
+  ##
+  # GTN:046 - Please do not add an # Introduction section, as it is unnecessary, please start directly into an abstract or hook for your tutorial that will get the learner interested in the material.
   def self.useless_intro(contents)
     joined_contents = contents.join("\n")
     joined_contents.scan(/\n---\n+# Introduction/m)
@@ -1137,7 +1171,8 @@ module GtnLinter
         match_end: 0,
         replacement: '',
         message: 'Please do not include an # Introduction section, it is unnecessary here, just start directly into your text. The first paragraph that is seen by our infrastructure will automatically be shown in a few places as an abstract.',
-        code: 'GTN:046'
+        code: 'GTN:046',
+        fn: __method__.to_s,
       )
     end
   end
@@ -1204,6 +1239,9 @@ module GtnLinter
     results
   end
 
+  ##
+  # GTN:015, GTN:016, GTN:025, GTN:026, others.
+  # These error messages indicate something is amiss with your workflow. Please consult the error message to correct it.
   def self.fix_ga_wf(contents)
     results = []
     if !contents.key?('tags') or contents['tags'].empty?
@@ -1286,6 +1324,9 @@ module GtnLinter
     results
   end
 
+  ##
+  # GTN:012 - Your bibliography is missing mandatory fields (either a URL or DOI).
+  # GTN:031 - Your bibliography unnecessarily fills the DOI field with https://doi.org, you can just directly specify the DOI.
   def self.fix_bib(contents, bib)
     bad_keys = bib_missing_mandatory_fields(bib)
     results = []
@@ -1299,7 +1340,8 @@ module GtnLinter
           match_end: text.length,
           replacement: nil,
           message: reason,
-          code: 'GTN:012'
+          code: 'GTN:012',
+          fn: __method__.to_s,
         )
       end
     end
@@ -1573,6 +1615,10 @@ module GtnLinter
     enumerate_type(/.*/)
   end
 
+  ##
+  # GTN:014 - please do not use : colon in your filename.
+  # GTN:013 - Please fix this symlink
+  # GTN:023 - data libraries must be named data-library.yaml
   def self.run_linter_global
     enumerate_type(/:/).each do |path|
       format_reviewdog_output(
