@@ -6,6 +6,8 @@ require 'pathname'
 require 'find'
 require 'bibtex'
 require 'json'
+require 'kramdown'
+require 'kramdown-parser-gfm'
 require 'citeproc/ruby'
 require 'csl/styles'
 require './_plugins/util'
@@ -912,39 +914,39 @@ module GtnLinter
         replacement: '',
         message: "It is no longer necessary to prefix your #{selected[:tag]} box titles with " \
                  "#{selected[:tag].capitalize}, this is done automatically.",
-        code: 'GTN:022'
+        code: 'GTN:022',
+        fn: __method__.to_s,
       )
     end
   end
 
+  ##
+  # GTN:028 - Your headings are out of order. Please check it properly, that you do not skip levels.
   def self.check_bad_heading_order(contents)
-    depth = 1
-    headings = find_matching_texts(contents, /^(?<level>#+)\s?(?<title>.*)/)
-               .map do |idx, text, selected|
-      new_depth = selected[:level].length
-      depth_change = new_depth - depth
-      depth = new_depth
-      [idx, text, selected, depth_change, new_depth]
-    end
+    doc = Kramdown::Document.new(contents.join("\n"), input: 'GFM')
+    headers = doc.root.children.select{|k| k.type == :header}
 
-    all_headings = headings.map do |_idx, _text, selected, _depth_change, _new_depth|
-      "#{selected[:level]} #{selected[:title]}"
-    end
+    bad_depth = headers
+      .each_cons(2) # Two items at a time
+      .select{|k1, k2| k2.options[:level] - k1.options[:level] > 1} # All that have a >1 shift in heading depth
+      .map{|_,b | b} # Only the second, failing one.
 
-    headings.select do |_idx, _text, _selected, depth_change, _new_depth|
-      depth_change > 1
-    end.map do |idx, _text, selected, depth_change, new_depth|
+    all_headings = headers
+      .map{|k| "#" * k.options[:level] + " "+ k.options[:raw_text] }
+
+    bad_depth.map{|k|
       ReviewDogEmitter.error(
         path: @path,
-        idx: idx,
-        match_start: selected.begin(1),
-        match_end: selected.end(1) + 1,
-        replacement: '#' * (new_depth - depth_change + 1),
+        idx: k.options[:location],
+        match_start: 0,
+        match_end: k.options[:raw_text].length + k.options[:level] + 1,
+        replacement: '#' * (k.options[:level] - 1),
         message: "You have skipped a heading level, please correct this.\n<details>" \
                  "<summary>Listing of Heading Levels</summary>\n\n```\n#{all_headings.join("\n")}\n```\n</details>",
-        code: 'GTN:028'
+        code: 'GTN:028',
+        fn: __method__.to_s,
       )
-    end
+    }
   end
 
   def self.check_bolded_heading(contents)
