@@ -88,7 +88,12 @@ The goal is to present an accessible and reproductible workflow for data submiss
 
 ### Converting Ab1 files to FASTQ
 
-We use **Ab1 to Fastq converter** to convert the sequences from AB1 format to FASTQ format.
+> <hands-on-title> ab1 to FASTQ converter </hands-on-title>
+> 1. {% tool [ab1 to FASTQ converter](toolshed.g2.bx.psu.edu/repos/ecology/ab1_fastq_converter/ab1_fastq_converter/1.20.0) %} on the ab1 files:
+>
+>
+{: .hands_on}
+
 
 ### Quality Control
 
