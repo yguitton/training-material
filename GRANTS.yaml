@@ -233,5 +233,14 @@ skills4eosc:
     url: https://www.skills4eosc.eu/
     github: false
 
+dfg:
+    name:  Deutsche Forschungsgemeinschaft
+    short_name: "DFG"
+    github: false
+    joined: 2024-12
+    funding_id: 501864659
+    url: https://www.dfg.de/de
+    avatar: "/training-material/shared/images/DFG_grant.png"
+
 
 
