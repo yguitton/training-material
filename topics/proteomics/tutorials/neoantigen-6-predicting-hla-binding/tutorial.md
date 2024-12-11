@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 
 title: "Neoantigen 6: Predicting HLA Binding"
-zenodo_link: ''
+zenodo_link: 'https://zenodo.org/records/14375917'
 questions:
 - How can we predict the neoantigens presented by tumor cells?
 - How does the HLA genotype affect the immune response to cancer?
@@ -97,7 +97,9 @@ This structured workflow enables a streamlined approach for accurate HLA typing 
 >     -> `{{ page.title }}`):
 >
 >    ```
->    
+>    https://zenodo.org/records/14375917/files/RNA-Seq_Reads_1.fastqsanger.gz
+>    https://zenodo.org/records/14375917/files/RNA-Seq_Reads_2.fastqsanger.gz
+>   
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
@@ -115,6 +117,24 @@ This structured workflow enables a streamlined approach for accurate HLA typing 
 >
 {: .hands_on}
 
+# Import Workflow
+
+
+> <hands-on-title>Running the Workflow</hands-on-title>
+>
+> 1. **Import the workflow** into Galaxy:
+>
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-6-predicting-hla-binding/workflows/main_workflow.ga" title="HLA Binding Prediction of Verified Candidates" %}
+>
+>
+> 2. Run **Workflow** {% icon workflow %} using the following parameters:
+>    - *"Send results to a new history"*: `No`
+>    - {% icon param-file %} *"RNA-Seq_Reads_1 (forward strand)"*: `RNA-Seq_Reads_1.fastqsanger.gz`
+>    - {% icon param-file %} *"RNA-Seq_Reads_2 (reverse strand)"*: `RNA-Seq_Reads_2.fastqsanger.gz`
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
 
 ## HLA typing with **OptiType**
 
