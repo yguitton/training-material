@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 
 title: "Neoantigen 5: Variant Annotation"
-zenodo_link: ''
+zenodo_link: 'https://zenodo.org/records/14375693'
 questions:
 - How can neoantigens be identified in cancer genomes?
 - What role do neoantigens play in personalized immunotherapy?
@@ -96,7 +96,10 @@ In this step, we prepare the peptide sequences in FASTA format to be used with a
 >     -> `{{ page.title }}`):
 >
 >    ```
->    
+>    https://zenodo.org/records/14375693/files/Novel_Peptides_from_PepQuery.tabular
+>    https://zenodo.org/records/14375693/files/Fragpipe-Peptide-Report.tabular
+>    https://zenodo.org/records/14375693/files/GffCompare_Annotated_GTF_to_BED.bed
+>    https://zenodo.org/records/14375693/files/Homo_sapiens.GRCh38_canon.106.gtf
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
@@ -114,6 +117,26 @@ In this step, we prepare the peptide sequences in FASTA format to be used with a
 >
 {: .hands_on}
 
+# Import Workflow
+
+
+> <hands-on-title>Running the Workflow</hands-on-title>
+>
+> 1. **Import the workflow** into Galaxy:
+>
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-5-variant-annotation/workflows/main_workflow.ga" title="peppointer Annotation" %}
+>
+>
+> 2. Run **Workflow** {% icon workflow %} using the following parameters:
+>    - *"Send results to a new history"*: `No`
+>    - {% icon param-file %} *"Novel Peptides from PepQuery"*: `Novel_Peptides_from_PepQuery.tabular`
+>    - {% icon param-file %} *"Fragpipe Peptide Report"*: `Fragpipe-Peptide-Report.tabular`
+>    - {% icon param-file %} *"Annotated-GffCompared-GTFtoBED"*: `GffCompare_Annotated_GTF_to_BED.bed`
+>    - {% icon param-file %} *"Human Reference Genome Annotation"*: `Homo_sapiens.GRCh38_canon.106.gtf`
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
 
 ## Mutation to Peptide Mapping with Query Tabular
 
