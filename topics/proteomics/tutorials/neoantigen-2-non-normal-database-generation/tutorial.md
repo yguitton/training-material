@@ -121,8 +121,8 @@ The workflow concludes with applying regex adjustments and other formatting func
 >    - *"Send results to a new history"*: `No`
 >    - {% icon param-file %} *"Human Reference Genome Annotation"*: `Homo_sapiens.GRCh38_canon.106.gtf`
 >    - {% icon param-file %} *"Human Uniprot (with isoforms) and cRAP Database"*: `HUMAN_CRAP.fasta`
->    - {% icon param-file %} *"RNA-Seq Reads (forward strand)"*: `RNA-Seq_Reads_1.fastqsanger.gz`
->    - {% icon param-file %} *"RNA-Seq Reads (reverse strand)"*: `RNA-Seq_Reads_2.fastqsanger.gz`
+>    - {% icon param-file %} *"RNA-Seq_Reads_1 (forward strand)"*: `RNA-Seq_Reads_1.fastqsanger.gz`
+>    - {% icon param-file %} *"RNA-Seq_Reads_2 (reverse strand)"*: `RNA-Seq_Reads_2.fastqsanger.gz`
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
