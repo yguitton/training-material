@@ -5,7 +5,7 @@ title: Building the LORIS LLR6 PanCancer Model Using PyCaret
 zenodo_link: https://zenodo.org/records/13885908
 questions:
 - How can the LORIS LLR6 model published by Chang et al., 2024 be reproduced?
-- Which tools can I use in Galaxy to obtain a logistic regression model?
+- Which tools can be used in Galaxy to obtain a logistic regression model?
 - How can I evaluate the model to confirm its performance?
 objectives:
 - Use a large dataset of immune checkpoint blockade (ICB)-treated and non-ICB-treated patients across 18 solid tumor types, encompassing a wide range of clinical, pathologic and genomic features to build a Machine Learning Model.
