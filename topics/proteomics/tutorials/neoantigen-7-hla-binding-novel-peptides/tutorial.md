@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 
 title: "Neoantigen 7: IEDB binding PepQuery Validated Neopeptides"
-zenodo_link: ''
+zenodo_link: 'https://zenodo.org/records/14377365'
 questions:
 - What are neoantigens, and why are they significant in cancer immunotherapy?
 - How can binding predictions and validation help distinguish strong and weak binders?
@@ -87,7 +87,8 @@ In this step, the peptides that have been confidently validated by PepQuery2 are
 >     -> `{{ page.title }}`):
 >
 >    ```
->    
+>    https://zenodo.org/records/14377365/files/FASTA-IEDB.fasta
+>    https://zenodo.org/records/14377365/files/IEDB-Optitype-seq2HLA-alleles.tabular
 >    ```
 >
 >
@@ -106,7 +107,24 @@ In this step, the peptides that have been confidently validated by PepQuery2 are
 >
 {: .hands_on}
 
+# Import Workflow
 
+
+> <hands-on-title>Running the Workflow</hands-on-title>
+>
+> 1. **Import the workflow** into Galaxy:
+>
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-7-hla-binding-novel-peptides/workflows/main_workflow.ga" title="HLA Binding for Novel Peptides" %}
+>
+>
+> 2. Run **Workflow** {% icon workflow %} using the following parameters:
+>    - *"Send results to a new history"*: `No`
+>    - {% icon param-file %} *"Distinct HLA alleles (can be from OptiType and seq2HLA)"*: `IEDB-Optitype-seq2HLA-alleles.tabular`
+>    - {% icon param-file %} *"FASTA file of peptides to test for HLA binding (can be from Arriba)"*: `FASTA-IEDB.fasta`
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
 
 ## Predicting MHC Binding with IEDB
 In this step of the workflow, the IEDB (Immune Epitope Database) tool is used to predict peptide binding to MHC-I molecules, which is crucial for identifying potential neoantigens. This is accomplished by using the netmhcpan_el prediction method to analyze peptide sequences and their binding affinity to specific MHC alleles. The netmhcpan_el method is a state-of-the-art tool that predicts how likely a peptide sequence is to bind to a given MHC-I allele. The alleles to be tested against are selected from a history file, ensuring that the analysis is tailored to specific genetic variations. Peptides that are predicted to bind MHC-I molecules are provided in a FASTA format, which is the standard for representing protein sequences.
