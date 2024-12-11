@@ -61,8 +61,11 @@ To achieve this, we will follow three essential steps: (i) upload the patient da
 >
 {:  .comment}
 
-# Dataset composition to train the model 
+# Dataset composition (features) to train the model 
+
 Before we begin the hands-on session, here’s a brief explanation of the features we’ll be using. These features were selected based on the findings of Chang et al. (2024), who identified them as the most important for training the model.
+
+It's important to note that other features were tested in different combinations and model architectures. However, the authors concluded that the six features selected are the most valuable for achieving the best model performance.
 
 ## TMB (Tumor mutation burden)
 Tumor mutation burden (TMB) is defined as the total number of somatic mutations within a specified region of the tumor genome. It has been recognized as a biomarker for predicting the efficacy of immune checkpoint blockade (ICB) in solid tumors. The FDA has approved a threshold of 10 mutations per megabase (mut/Mb) as a biomarker for response to ICB treatment.
@@ -92,6 +95,14 @@ However, there are limits to how predictive age might be, particularly for extre
 
 ## Response
 The Response feature is a categorical target variable indicating whether patients benefited from immune checkpoint blockade (ICB) therapy, classified as 0 (no benefit) or 1 (benefit). The model is trained using all previous features to predict patient outcomes when ICB is chosen as the treatment.
+
+# Model Architecture Selection Process
+
+In the article ({% cite Chang2024 %}), the model was trained using different architectures, including Decision Tree, Random Forest, Logistic Regression, and XGBoost, using the scikit-learn framework (full code is available here: [Chang et al., github repo](https://github.com/rootchang/LORIS/tree/main/code). In the end, the best model architecture was a Logistic LASSO (Least Absolute Shrinkage and Selection Operator) Regression model, fitting the six features discussed above. This model was named LLR6.
+
+It is important to note that PyCaret has the capability of training different model architectures, just as was done by Chang et al., 2024, but automatically. At the end of the run, a tabular list ranked by decreasing model performance is output.
+
+When setting up the PyCaret Model Comparison tool, one option, `Only Select Classification Models if you don't want to compare all models,` can be used to select specific architectures to be tested during training. Since the purpose of this tutorial is to replicate what was done, this option won't be used, and therefore, all possible models will be trained. Thus, we expect to obtain the same results as Chang et al., where the Logistic Regression Model has the best performance among all other models.
 
 # Prepare environment and get the data 
 > <comment-title>Preprocessing the raw data</comment-title>
@@ -199,7 +210,7 @@ Below is a brief explanation of the content in each tab of the report.
 
 # LORIS PanCancer LLR6 Model Robustness:
 
-Understanding the objective of this analysis is essential. Since we aim to build a model comparable to the one published by {% cite Chang2024 %}, we will use the metrics from that paper as a benchmark to assess the performance of the model we develop through Galaxy-PyCaret.
+Understanding the objective of this analysis is essential. Since we aim to build a model comparable to the one published by {% cite Chang2024 %}, and we indeed obtained the same Logistic Regression model architecture, this allows us to use the metrics from that paper as a benchmark to assess the performance of the model we develop through Galaxy-PyCaret.
 
 > <tip-title>Robustness definition </tip-title>
 >
