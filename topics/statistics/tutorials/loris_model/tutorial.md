@@ -65,7 +65,7 @@ To achieve this, we will follow three essential steps: (i) upload the patient da
 Before we begin the hands-on session, here’s a brief explanation of the features we’ll be using. These features were selected based on the findings of Chang et al. (2024), who identified them as the most important for training the model.
 
 ## TMB (Tumor mutation burden)
-Tumor mutation burden (TMB) is defined as the total number of somatic mutations within a specified region of the tumor genome. It has been recognized as a biomarker for predicting the efficacy of immune checkpoint blockade (ICB) in solid tumors. The FDA has approved a threshold of 10 mutations per megabase (mut/Mb) as a biomarker for response to ICB treatment.
+Tumor mutation burden (TMB) is defined as the total number of somatic mutations within a specified region of the tumor genome. It has been recognized as a biomarker for predicting the efficacy of immune checkpoint blockade (ICB) in solid tumors. The [U.S. Food and Drug Administration](https://www.fda.gov/) (FDA) has approved a threshold of 10 mutations per megabase (mut/Mb) as a biomarker for response to ICB treatment.
 
 In this dataset, TMB values range from 0 to over 368 mutations per megabase, with some extreme values, such as 368.6 and 93.5. To mitigate the influence of these outliers, TMB values will be truncated at 50 mut/Mb, meaning any value exceeding 50 will be capped at 50. This is crucial because extreme TMB values can disproportionately skew the model’s learning process, leading to unreliable predictions.
 
