@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 
 title: "Neoantigen 2: Non-normal-Database-Generation"
-zenodo_link: ""
+zenodo_link: "https://zenodo.org/records/14372521"
 questions:
 - Why must we generate a customized fusion database for Proteogenomics research?
 objectives:
@@ -86,7 +86,10 @@ The workflow concludes with applying regex adjustments and other formatting func
 >     -> `{{ page.title }}`):
 >
 >    ```
->    
+>    https://zenodo.org/records/14372521/files/Homo_sapiens.GRCh38_canon.106.gtf
+>    https://zenodo.org/records/14372521/files/HUMAN_CRAP.fasta
+>    https://zenodo.org/records/14372521/files/RNA-Seq_Reads_1.fastqsanger.gz
+>    https://zenodo.org/records/14372521/files/RNA-Seq_Reads_2.fastqsanger.gz
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
@@ -104,6 +107,26 @@ The workflow concludes with applying regex adjustments and other formatting func
 >
 {: .hands_on}
 
+# Import Workflow
+
+
+> <hands-on-title>Running the Workflow</hands-on-title>
+>
+> 1. **Import the workflow** into Galaxy:
+>
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-2-non-normal-database-generation/workflows/main_workflow.ga" title="Neoantigen Non-Normal Database Generation" %}
+>
+>
+> 2. Run **Workflow** {% icon workflow %} using the following parameters:
+>    - *"Send results to a new history"*: `No`
+>    - {% icon param-file %} *"Human Reference Genome Annotation"*: `Homo_sapiens.GRCh38_canon.106.gtf`
+>    - {% icon param-file %} *"Human Uniprot (with isoforms) and cRAP Database"*: `HUMAN_CRAP.fasta`
+>    - {% icon param-file %} *"RNA-Seq Reads (forward strand)"*: `RNA-Seq_Reads_1.fastqsanger.gz`
+>    - {% icon param-file %} *"RNA-Seq Reads (reverse strand)"*: `RNA-Seq_Reads_2.fastqsanger.gz`
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
 
 ## Convert compressed file to uncompressed
 
