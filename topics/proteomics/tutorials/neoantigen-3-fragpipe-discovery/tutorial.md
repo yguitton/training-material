@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 
 title: "Neoantigen 3: Database merge and FragPipe discovery"
-zenodo_link: ''
+zenodo_link: 'https://zenodo.org/records/14374118'
 questions:
 - What are the key features and unique sequences in protein datasets that contribute to neoantigen discovery?
 - How can we identify neoantigens from proteomic data?
@@ -93,7 +93,10 @@ In the final step, tabular results from the analysis are queried using SQL-like 
 >     -> `{{ page.title }}`):
 >
 >    ```
->    
+>    https://zenodo.org/records/14374118/files/Experimental-Design-Fragpipe.tabular
+>    https://zenodo.org/records/14374118/files/Arriba-Fusion-Database.fasta
+>    https://zenodo.org/records/14374118/files/Human_cRAP_Non_normal_transcripts_dB.fasta
+>    https://zenodo.org/records/14374118/files/STS_26T_2_Eclipse_02102024.raw
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
@@ -110,6 +113,28 @@ In the final step, tabular results from the analysis are queried using SQL-like 
 >    {% snippet faqs/galaxy/datasets_add_tag.md %}
 >
 {: .hands_on}
+
+# Import Workflow
+
+
+> <hands-on-title>Running the Workflow</hands-on-title>
+>
+> 1. **Import the workflow** into Galaxy:
+>
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-3-fragpipe-discovery/workflows/main_workflow.ga" title="Fragpipe Discovery" %}
+>
+>
+> 2. Run **Workflow** {% icon workflow %} using the following parameters:
+>    - *"Send results to a new history"*: `No`
+>    - {% icon param-file %} *"Non-Normal protein database"*: `Human_cRAP_Non_normal_transcripts_dB.fasta`
+>    - {% icon param-file %} *"Fusion protein database"*: `Arriba-Fusion-Database.fasta`
+>    - {% icon param-file %} *"Input raw file"*: `STS_26T_2_Eclipse_02102024.raw`
+>    - {% icon param-file %} *"Experimental design file for Fragpipe"*: `Experimental-Design-Fragpipe.tabular`
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
+
 
 ## Merging FASTA Files and Filtering for Unique Sequences
 
