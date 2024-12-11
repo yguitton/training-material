@@ -124,8 +124,8 @@ This workflow provides a structured approach to preparing fusion neoantigen data
 >
 > 2. Run **Workflow** {% icon workflow %} using the following parameters:
 >    - *"Send results to a new history"*: `No`
->    - {% icon param-file %} *"RNA-Seq Reads (forward strand)"*: `RNA-Seq_Reads_1.fastqsanger.gz`
->    - {% icon param-file %} *"RNA-Seq Reads (reverse strand)"*: `RNA-Seq_Reads_2.fastqsanger.gz`
+>    - {% icon param-file %} *"RNA-Seq_Reads_1 (forward strand)"*: `RNA-Seq_Reads_1.fastqsanger.gz`
+>    - {% icon param-file %} *"RNA-Seq_Reads_2 (reverse strand)"*: `RNA-Seq_Reads_2.fastqsanger.gz`
 >    - {% icon param-file %} *"Human Reference Genome Annotation"*: `human_reference_genome_annotation.gtf`
 >    - {% icon param-file %} *"Human Reference Genome"*: `human_reference_genome.fasta`
 >
