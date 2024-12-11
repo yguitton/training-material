@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 level: Intermediate
-title: Building the LORIS LLR6 PanCancer Model Using Galaxy-PyCaret Tool
+title: Building the LORIS LLR6 PanCancer Model Using PyCaret
 zenodo_link: https://zenodo.org/records/13885908
 questions:
 - How can I reproduce the LORIS LLR6 model published by Chang et al., 2024?
