@@ -67,8 +67,8 @@ Our data was extracted from the publication titled _"Elevated Calprotectin and A
 Pseudobulk analysis is an advanced method in single-cell data analysis. For this tutorial, we assume familiarity with common single-cell data formats, such as AnnData or Seurat objects, and experience analyzing single-cell data, including clustering and annotating cell types.
 
 If you're new to these concepts, we recommend exploring our other tutorials before going for pseudobulk:
-- [Clustering 3K PBMCs with Scanpy](https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scrna-scanpy-pbmc3k/tutorial.html): Learn how to cluster and annotate cells in Galaxy using our single-cell tools.
-- [Combining single cell datasets after pre-processing](https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scrna-case_alevin-combine-datasets/tutorial.html): Understand how to combine multiple datasets into one AnnData object and add metadata from single-cell experiments.
+- [Clustering 3K PBMCs with Scanpy]({% link topics/single-cell/tutorials/scrna-scanpy-pbmc3k/tutorial.md %}): Learn how to cluster and annotate cells in Galaxy using our single-cell tools.
+- [Combining single cell datasets after pre-processing]({% link topics/single-cell/tutorials/scrna-case_alevin-combine-datasets/tutorial.md %}): Understand how to combine multiple datasets into one AnnData object and add metadata from single-cell experiments.
 
 The data object, which you will import from Zenodo into Galaxy via the provided link, has been preprocessed, analysed, and annotated. It includes the following key observations:
 - **cell_type**: The type of cell identified.
@@ -82,7 +82,7 @@ The data object, which you will import from Zenodo into Galaxy via the provided 
 > 2. Import the AnnData file from [Zenodo](https://zenodo.org/records/13929549):
 >
 >    ```
->    https://zenodo.org/api/records/13929549/files/Source_AnnData_file.h5ad
+>    https://zenodo.org/api/records/13929549/files/Source_AnnData_file
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
@@ -344,7 +344,7 @@ This file will be use as the contrast input file in the edgeR tool.
 
 ## Sanitation Steps - Part 2
 
-After performing the differential expression analysis with edgeR, we will clean the data to prepare it for visualization. This involves extracting collection elements, removing unnecessary columns, standardizing text, and splitting the file if needed. We will use the {% tool [Extract element identifiers](toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2) %}, [Remove columns](toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0) %}, {% tool [Replace Text](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.3+galaxy1) %}, {% tool [Split file](toolshed.g2.bx.psu.edu/repos/bgruening/split_file_to_collection/split_file_to_collection/0.5.2) %}, and {% tool [Parse parameter value](param_value_from_file) %}
+After performing the differential expression analysis with edgeR, we will clean the data to prepare it for visualization. This involves extracting collection elements, removing unnecessary columns, standardizing text, and splitting the file if needed. We will use the {% tool [Extract element identifiers](toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2) %}, {[Remove columns](toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0) %}, {% tool [Replace Text](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.3+galaxy1) %}, {% tool [Split file](toolshed.g2.bx.psu.edu/repos/bgruening/split_file_to_collection/split_file_to_collection/0.5.2) %}, and {% tool [Parse parameter value](param_value_from_file) %}
 
 **Extract element identifiers** will allow us to processes the **edgeR** output, which is a collection of datasets, to extract individual elements (like the first table from our collection) for further analysis. 
 
@@ -465,7 +465,7 @@ But what if we refine our approach? For instance, instead of analyzing all cell 
 
 > <hands-on-title> Cut Columns on Decoupler Pseudobulk Count Matrix </hands-on-title>
 >
-> 1. Use the {% tool [Cut](https://usegalaxy.eu/root?tool_id=Cut1) %} tool with the following parameters:
+> 1. Use the {% tool [Cut](toolshed.g2.bx.psu.edu/repos/iuc/cut/cut/1.0.2) %} tool with the following parameters:
 >    - *"Cut columns"*: `c1,c9,c10,c11,c12,c13,c14,c15`
 >        - *"Delimited by"*: `Tab`
 >        - *"From"*: `Decoupler pseudo-bulk on data 1: Count Matrix`
