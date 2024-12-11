@@ -216,13 +216,6 @@ ncbi:
     avatar: "/training-material/shared/images/ncbi.png"
     ror: "02meqm098"
 
-nfdi4plants:
-    short_name: DataPLANT
-    name: DataPLANT (NFDI4Plants)
-    joined: 2024-07
-    url:  https://nfdi4plants.org
-    avatar: "/training-material/shared/images/logo-dataplant.svg"
-
 NIH:
     name: National Institutes of Health
     short_name: "NIH"
