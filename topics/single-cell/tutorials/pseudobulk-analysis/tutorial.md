@@ -409,7 +409,7 @@ After performing the differential expression analysis with edgeR, we will clean 
 
 # Volcano Plot
 
-In this step, we will use the sanitized output from the previous steps to create a **Volcano Plot**. This plot helps visualize the relationship between statistical significance (P-value) and fold change (LogFC) for differentially expressed genes (DEG).
+In this step, we will use the sanitized output from the previous steps to generate a Volcano Plot, which visualizes the relationship between statistical significance (P-value) and fold change (LogFC) for differentially expressed genes (DEGs). The input file for the Volcano Plot must include four essential columns: _FDR (adjusted P-value), P-value (raw), Log Fold Change, and Gene Symbols (Labels)._ As long as these columns are present, the Volcano Plot can be generated successfully.
 
 > <hands-on-title> Create a Volcano Plot of the DEG </hands-on-title>
 >
@@ -428,7 +428,7 @@ In this step, we will use the sanitized output from the previous steps to create
 >
 >    > <tip-title> What does the Volcano Plot show? </tip-title>
 >    >
->    > The Volcano Plot highlights genes with statistical significance (low P-values) and large fold changes. Genes meeting the significance thresholds are typically colored and labeled for easier identification.
+>    > The Volcano Plot highlights genes with statistical significance (low P-values) and large fold changes. Genes meeting the significance thresholds are typically colored and labeled for easier identification. 
 >    {: .tip}
 >
 {: .hands_on}
@@ -436,19 +436,20 @@ In this step, we will use the sanitized output from the previous steps to create
 ## What are the results of the Volcano Plot?
 
 Lets take a moment to interpret the Volcano Plot:
+![Volcano Plot](path_to_image_placeholder)
 - Which genes are most significant?
 - How does the fold change correlate with the P-values?
 - Are there any unexpected patterns?
 
 > <question-title> Reflect on the Volcano Plot </question-title>
 >
-> 1. What is the significance of genes located at the extremes of the plot (e.g., high LogFC and low P-value)?
+> 1. What is the significance of genes located at the extremes of the plot (e.g., high LogFC and low P-value)? 
 > 2. How many genes meet the significance threshold in this analysis?
 >
 > > <solution-title> Solution </solution-title>
 > >
-> > 1. Genes at the extremes are highly significant and show strong differential expression.
-> > 2. You can count these genes from the labels or dataset used to generate the plot.
+> > 1. Genes at the extremes of the Volcano plot are highly significant and exhibit strong differential expression. Consider exploring the biological significance of these genes to gain deeper insights into their roles.
+> > 2. In our current analysis, we identified only one downregulated gene, MTND1P23, with a logFC of -3.1956, in normal conditions compared to COVID-19 patients.
 > >
 > {: .solution}
 >
@@ -458,9 +459,33 @@ Lets take a moment to interpret the Volcano Plot:
 
 In our previous analysis, we found that only one gene, **MTND1P23**, was identified as downregulated in our contrast. This result was obtained by "bulking" **all** cell types from our dataset and performing a differential expression analysis comparing normal vs. COVID-19 samples.
 
-But what if we refine our approach? For instance, instead of analyzing all cell types together, what happens if we focus on a specific cluster, such as **T cells**, and perform the same comparison—normal vs. COVID-19? Would the results remain the same, or would this more targeted approach reveal additional insights?
+But what if we refine our approach? For instance, instead of analyzing all cell types together, what happens if we focus on a specific cluster, such as **T cells**, and perform the same comparison: normal vs. COVID-19? Would the results remain the same, or would this more targeted approach reveal additional insights?
 
-Let's perform this analysis step-by-step
+## Let's perform this analysis step-by-step
+
+> <hands-on-title> Cut Columns on Decoupler Pseudobulk Count Matrix </hands-on-title>
+>
+> 1. Use the {% tool [Cut](https://usegalaxy.eu/root?tool_id=Cut1) %} tool with the following parameters:
+>    - *"Cut columns"*: `c1,c9,c10,c11,c12,c13,c14,c15`
+>        - *"Delimited by"*: `Tab`
+>        - *"From"*: `Decoupler pseudo-bulk on data 1: Count Matrix`
+>
+{: .hands_on}
+
+> <question-title> T Cell Count Matrix </question-title>
+>
+> 1. What data is included in our new pseudobulk count matrix, and how is it organized? 
+> 2. How many samples are included in the current dataset, and are all of them derived exclusively from T cells?
+>
+> > <solution-title> Solution </solution-title>
+> >
+> > 1. Our new count matrix consists of the original 1,430 rows, representing all genes with their gene labels in the first column. Additionally, it includes seven other columns corresponding to individual samples, like _Control#1Tcell_ or _SARSCoV2posSevere#1Tcell_.
+> > 2. Our dataset now includes a total of seven samples: three controls and four COVID-19 positive samples.
+> >
+> {: .solution}
+>
+{: .question}
+
 
 # Key Takeaways and Recommendations
 
