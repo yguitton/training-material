@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 
 title: "Neoantigen 1: Fusion-Database-Generation"
-zenodo_link: ""
+zenodo_link: "https://zenodo.org/records/14365542"
 questions:
 - Why do we need to generate a customized fusion database for proteogenomics research?
 objectives:
@@ -91,11 +91,11 @@ This workflow provides a structured approach to preparing fusion neoantigen data
 >     -> `{{ page.title }}`):
 >
 >    ```
->    
+>    https://zenodo.org/records/14365542/files/human_reference_genome.fasta
+>    https://zenodo.org/records/14365542/files/human_reference_genome_annotation.gtf
+>    https://zenodo.org/records/14365542/files/RNA-Seq_Reads_1.fastqsanger.gz
+>    https://zenodo.org/records/14365542/files/RNA-Seq_Reads_2.fastqsanger.gz
 >    ```
->    ***TODO***: *Add the files by the ones on Zenodo here (if not added)*
->
->    ***TODO***: *Remove the useless files (if added)*
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
@@ -111,6 +111,28 @@ This workflow provides a structured approach to preparing fusion neoantigen data
 >    {% snippet faqs/galaxy/datasets_add_tag.md %}
 >
 {: .hands_on}
+
+# Import Workflow
+
+
+> <hands-on-title>Running the Workflow</hands-on-title>
+>
+> 1. **Import the workflow** into Galaxy:
+>
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-1-fusion-database-generation/workflows/main_workflow.ga" title="Neoantigen Fusion Database Generation" %}
+>
+>
+> 2. Run **Workflow** {% icon workflow %} using the following parameters:
+>    - *"Send results to a new history"*: `No`
+>    - {% icon param-file %} *"RNA-Seq Reads (forward strand)"*: `RNA-Seq_Reads_1.fastqsanger.gz`
+>    - {% icon param-file %} *"RNA-Seq Reads (reverse strand)"*: `RNA-Seq_Reads_2.fastqsanger.gz`
+>    - {% icon param-file %} *"Human Reference Genome Annotation"*: `human_reference_genome_annotation.gtf`
+>    - {% icon param-file %} *"Human Reference Genome"*: `human_reference_genome.fasta`
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
+
 
 # Data preparation
 
