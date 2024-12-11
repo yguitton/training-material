@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 
 title: "Neoantigen 4: PepQuery2 Verification"
-zenodo_link: ''
+zenodo_link: 'https://zenodo.org/records/14375467'
 questions:
 - How can neoantigens be verified using bioinformatics tools?
 - What is the role of mass spectrometry and peptide sequence databases in neoantigen discovery?
@@ -96,7 +96,10 @@ The final step involves summarizing the results, which include the validated and
 >     -> `{{ page.title }}`):
 >
 >    ```
->    
+>    https://zenodo.org/records/14375467/files/Human-TaxID.txt
+>    https://zenodo.org/records/14375467/files/HUMAN_CRAP.fasta
+>    https://zenodo.org/records/14375467/files/NeoAntigen-Candidates.tabular
+>    https://zenodo.org/records/14375467/files/STS_26T_2_Eclipse_02102024.raw
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
@@ -114,6 +117,26 @@ The final step involves summarizing the results, which include the validated and
 >
 {: .hands_on}
 
+# Import Workflow
+
+
+> <hands-on-title>Running the Workflow</hands-on-title>
+>
+> 1. **Import the workflow** into Galaxy:
+>
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-4-peptide-verification/workflows/main_workflow.ga" title="PepQuery2 Verification" %}
+>
+>
+> 2. Run **Workflow** {% icon workflow %} using the following parameters:
+>    - *"Send results to a new history"*: `No`
+>    - {% icon param-file %} *"Candidate_Neoantigens"*: `NeoAntigen-Candidates.tabular`
+>    - {% icon param-file %} *"Human Uniprot (with isoforms) and CRAP Database"*: `HUMAN_CRAP.fasta`
+>    - {% icon param-file %} *"Input raw file(s)"*: `STS_26T_2_Eclipse_02102024.raw`
+>    - {% icon param-file %} *"Human Taxonomy ID"*: `Human-TaxID.txt`
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
 
 # A: Performing validation of peptides using PepQuery
 
