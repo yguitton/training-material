@@ -133,7 +133,10 @@ When setting up the PyCaret Model Comparison tool, one option, `Only Select Clas
 >    https://zenodo.org/records/13885908/files/Chowell_train_Response.tsv
 >    https://zenodo.org/records/13885908/files/Chowell_test_Response.tsv
 >    ```
->
+>>   <tip-title>Data Type</tip-title>
+>>   Leave the `Type` field as `Auto-Detect` when uploading (it's the default).
+>>
+>    {: .tip}
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
 > 3. Check that the data format assigned for the file is **tsv**.
