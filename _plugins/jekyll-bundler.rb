@@ -45,6 +45,12 @@ end
 module Jekyll
   # The main GTN function library
   module JsBundle
+    ##
+    # Setup the local cache via +Jekyll::Cache+
+    def cache
+      @@cache ||= Jekyll::Cache.new('JekyllTopicFilter')
+    end
+
     # Return the preloads for the bundles, when in production
     # +test+:: ignore this
     # Returns the HTML to load the bundle
@@ -82,10 +88,12 @@ module Jekyll
     # Example:
     # {{ 'main' | load_bundle }}
     def load_bundle(name)
-      if Jekyll.env == 'production'
-        load_bundle_production(name)
-      else
-        load_bundle_dev(name)
+      cache.getset("#{Jekyll.env}-#{name}") do
+        if Jekyll.env == 'production'
+          load_bundle_production(name)
+        else
+          load_bundle_dev(name)
+        end
       end
     end
 

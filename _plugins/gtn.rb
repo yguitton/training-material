@@ -713,7 +713,8 @@ module Jekyll
     # +Array+:: List of events
     #
     # Example:
-    #  {{ site | get_upcoming_events }}
+    #
+    #   {{ site | get_upcoming_events }}
     def get_upcoming_events_for_this(site, material)
       if material.nil?
         []
@@ -722,6 +723,80 @@ module Jekyll
           .select { |_p, materials| materials.include? material['id'] }
           .map { |p, _materials| p }
       end
+    end
+
+    ##
+    # Get the list of all videos for the site (the automated + manual.)
+    # Params:
+    # +site+:: The site object
+    # Returns:
+    # +Array+:: List of [topic_id, topic_name, automated_videos, manual_videos]
+    #
+    # Example:
+    #
+    #   {{ site | get_videos_for_videos_page }}
+    def get_videos_for_videos_page(site)
+      res = {}
+      TopicFilter.list_all_materials(site).each do |material|
+        next unless material['video'] || material['recordings'] || material['slides_recordings']
+
+        if ! res.key? material['topic_name']
+          res[material['topic_name']] = {
+            'topic_id' => material['topic_name'],
+            'topic_name' => site.data[material['topic_name']]['title'],
+            'automated_videos' => [],
+            'manual_videos' => []
+          }
+        end
+
+        # Automated recording
+        if material['video']
+          vid = "#{material['topic_name']}/tutorials/#{material['tutorial_name']}/slides"
+          res[material['topic_name']]['automated_videos'].push({
+            'title' => material['title'],
+            'vid' => vid,
+            'type' => 'internal',
+            'speakers' => ['awspolly'],
+            'captioners' => Gtn::Contributors.get_authors(material),
+            'cover' => "https://training.galaxyproject.org/videos/topics/#{vid}.mp4.png"
+          })
+        end
+
+        if material['slides_recordings']
+          rec = material['slides_recordings'].max_by { |x| x['date'] }
+          res[material['topic_name']]['manual_videos'].push({
+            'title' => material['title'],
+            'vid' => rec['youtube_id'],
+            'type' => 'youtube',
+            'speakers' => rec['speakers'],
+            'captioners' => rec['captioners'],
+            'cover' => "https://img.youtube.com/vi/#{rec['youtube_id']}/sddefault.jpg"
+          })
+        end
+
+        if material['recordings']
+          rec = material['recordings'].max_by { |x| x['date'] }
+          res[material['topic_name']]['manual_videos'].push({
+            'title' => material['title'],
+            'vid' => rec['youtube_id'],
+            'type' => 'youtube',
+            'speakers' => rec['speakers'],
+            'captioners' => rec['captioners'],
+            'cover' => "https://img.youtube.com/vi/#{rec['youtube_id']}/sddefault.jpg"
+          })
+        end
+      end
+
+      res.each do |k, v|
+        if v['automated_videos'].empty?
+          v.delete('automated_videos')
+        end
+        if v['manual_videos'].empty?
+          v.delete('manual_videos')
+        end
+      end
+
+      res
     end
 
     def shuffle(array)

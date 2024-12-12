@@ -1047,7 +1047,7 @@ module TopicFilter
   end
 
   ##
-  # This is a helper function to get all the materials in a site.
+  # This is a helper function to get materials with automated videos.
   def self.list_videos(site)
     materials = process_pages(site, site.pages)
     materials.select { |x| x['video'] == true }
@@ -1400,6 +1400,8 @@ module Jekyll
       TopicFilter.identify_funders_and_grants(materials, site)
     end
 
+    ##
+    # Just used for stats page.
     def list_videos(site)
       TopicFilter.list_all_materials(site)
         .select { |k, _v| k['recordings'] || k['slides_recordings'] }
@@ -1415,6 +1417,8 @@ module Jekyll
       end
     end
 
+    ##
+    # Just used for stats page.
     def list_videos_total_time(site)
       vids = list_videos(site)
       vids.map { |v| findDuration(v['length']) }.sum / 3600.0
