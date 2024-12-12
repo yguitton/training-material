@@ -75,7 +75,7 @@ Total    | 73    | 6062  | 831    | 96       | 5135 | 0
 
 ### Consequences
 
-* Good, because it works well for us and has scaled sufficiently to an incredible number of output pages (~3k) with acceptable build times.
+* Good, because it works well for us and has scaled sufficiently to an incredible number of output pages (~7k html/22k files in a full GTN production deployment.) with acceptable build times (<5 minutes in prod, most of the action execution is taken up by contacting other servers, dependencies, and uploading the results.)
 * Good, because it has a well supported ecosystem of plugins we can leverage for common tasks
 * Good, because we can easily write our own plugins for many tasks.
 * Bad, because we it remains difficult to install
