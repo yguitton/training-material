@@ -6,6 +6,8 @@ layout: faq
 contributors: [hexylena, shiltemann, bebatut]
 ---
 
+[FAQ: What is an ADR?]({% link topics/contributing/faqs/gtn-adr.md %})
+
 ## Context and Problem Statement
 
 We needed a static site generator for the GTN, one had to be chosen. We chose Jekyll because of it's good integration with GitHub and GitHub Pages. Over time our requirements have changed but we still need one SSG.

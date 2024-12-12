@@ -6,6 +6,8 @@ layout: faq
 contributors: [hexylena, shiltemann, bebatut]
 ---
 
+[FAQ: What is an ADR?]({% link topics/contributing/faqs/gtn-adr.md %})
+
 ## Context and Problem Statement
 
 Contributors to the GTN have image and occasionally datasets they wish to include in the GTN. These datasets are generally quite small (kilobytes) but, are necessary for the understanding of a tutorial.
