@@ -1085,6 +1085,10 @@ Jekyll::Hooks.register :site, :post_read do |site|
   end
 end
 
+Jekyll::Hooks.register :site, :post_write do |site|
+  Gtn::Shortlinks.fix_missing_redirs(site)
+end
+
 if $PROGRAM_NAME == __FILE__
   result = Gtn::ModificationTimes.obtain_time(ARGV[0].gsub(%r{^/}, ''))
   puts "Modification time of #{ARGV[0].gsub(%r{^/}, '')} is #{result}"
