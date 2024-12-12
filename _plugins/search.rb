@@ -41,7 +41,7 @@ module Jekyll
             'tags' => getlist(tutorial, 'tags').map do |tag|
               href = "#{site.baseurl}/search?query=#{tag}"
               title = "Show all tutorials tagged #{tag}"
-              style = ColourTag.colour_tag tag
+              style = Gtn::ColourTag.colour_tag tag
               %(<a class="label label-default" title="#{title}" href="#{href}" style="#{style}">#{tag}</a>)
             end,
             'url' => site.baseurl + tutorial['url'],
