@@ -2,15 +2,15 @@
   job:
     annotation.txt:
       class: File
-      path: test-data/annotation.txt.tabular
+      location: https://zenodo.org/records/3386291/files/annotation.txt
       filetype: tabular
     counts.txt:
       class: File
-      path: test-data/counts.txt.tabular
+      location: https://zenodo.org/records/3386291/files/counts.txt
       filetype: tabular
     mt_controls.txt:
       class: File
-      path: test-data/mt_controls.txt.txt
+      location: https://zenodo.org/records/3386291/files/mt_controls.txt
       filetype: txt
   outputs:
     lib_qc_plot:
