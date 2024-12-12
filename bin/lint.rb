@@ -17,7 +17,7 @@ GTN_HOME = Pathname.new(__dir__).parent.to_s
 
 # A custom module to properly format reviewdog json output
 module ReviewDogEmitter
-  @CODE_URL = 'https://training.galaxyproject.org/training-material/gtn_rdoc/GtnLinter.html'
+  @CODE_URL = 'https://training.galaxyproject.org/training-material/gtn_rdoc/Gtn/Linter.html'
 
   def self.delete_text(path: '', idx: 0, text: '', message: 'No message', code: 'GTN000', full_line: '', fn: '')
     error(
@@ -116,7 +116,7 @@ module ReviewDogEmitter
 end
 
 # Linting functions for the GTN
-module GtnLinter
+module Gtn::Linter
   @BAD_TOOL_LINK = /{% tool (\[[^\]]*\])\(\s*https?.*tool_id=([^)]*)\)\s*%}/i
   @BAD_TOOL_LINK2 = %r{{% tool (\[[^\]]*\])\(\s*https://toolshed.g2([^)]*)\)\s*%}}i
   @MAYBE_OK_TOOL_LINK = /{% tool (\[[^\]]*\])\(([^)]*)\)\s*%}/i
@@ -248,7 +248,7 @@ module GtnLinter
   ##
   # GTN:004 - Instead of linking directly to a DOI and citing it yourself, consider obtaining the BibTeX formatted citation and adding it to a tutorial.bib (or slides.bib) file. Then we can generate a full set of references for the citations and give proper credit.
   #
-  # Companion function to GtnLinter.check_pmids
+  # Companion function to Gtn::Linter.check_pmids
   def self.check_dois(contents)
     find_matching_texts(contents, %r{(\[[^\]]*\]\(https?://doi.org/[^)]*\))})
       .reject { |_idx, _text, selected| selected[0].match(%r{10.5281/zenodo}) } # Ignoring zenodo
@@ -271,7 +271,7 @@ module GtnLinter
   ##
   # GTN:004 - Instead of linking directly to a PMID URL and citing it yourself, consider obtaining the BibTeX formatted citation and adding it to a tutorial.bib (or slides.bib) file. Then we can generate a full set of references for the citations and give proper credit.
   #
-  # Companion function to GtnLinter.check_dois
+  # Companion function to Gtn::Linter.check_dois
   def self.check_pmids(contents)
     # https://www.ncbi.nlm.nih.gov/pubmed/24678044
     find_matching_texts(contents,
@@ -602,7 +602,7 @@ module GtnLinter
   ].freeze
 
   ##
-  # GTN:009 - See GtnLinter.bad_tool_links
+  # GTN:009 - See Gtn::Linter.bad_tool_links
   def self.check_tool_link(contents)
     find_matching_texts(contents, /{%\s*tool \[([^\]]*)\]\(([^)]*)\)\s*%}/)
       .map do |idx, _text, selected|
@@ -691,7 +691,7 @@ module GtnLinter
   end
 
   ##
-  # GTN:010 - See GtnLinter.new_more_accessible_boxes_agenda
+  # GTN:010 - See Gtn::Linter.new_more_accessible_boxes_agenda
   def self.new_more_accessible_boxes_agenda(contents)
     #  \#\#\#
     find_matching_texts(contents, /> (###\s+Agenda\s*)/)
@@ -971,7 +971,7 @@ module GtnLinter
   ##
   # GTN:032 - zenodo.org/api links are invalid in the GTN, please use the zenodo.org/records/id/files/<filename> format instead. This ensures that when users download files from zenodo into Galaxy, they appear correctly, with a useful filename.
   #
-  # Seems to be a duplicate of GtnLinter.bad_zenodo_links
+  # Seems to be a duplicate of Gtn::Linter.bad_zenodo_links
   def self.zenodo_api(contents)
     find_matching_texts(contents, %r{(zenodo\.org/api/files/)})
       .map do |idx, _text, selected|
@@ -1657,7 +1657,7 @@ module GtnLinter
 end
 
 if $PROGRAM_NAME == __FILE__
-  linter = GtnLinter
+  linter = Gtn::Linter
 
   require 'optparse'
   require 'ostruct'
