@@ -23,11 +23,10 @@ Jekyll.logger.info "[GTN] You are running #{RUBY_VERSION} released on #{RUBY_REL
 version_parts = RUBY_VERSION.split('.')
 Jekyll.logger.warn '[GTN] WARNING: This Ruby is pretty old, you might want to update.' if version_parts[0].to_i < 3
 
-##
-# This module contains functions that are used in the GTN, our internal functions that is.
 
 module Jekyll
-  # The main GTN function library
+  ##
+  # This module contains functions that are used in the GTN, our internal functions that is.
   module GtnFunctions
     # rubocop:disable Naming/PredicateName
 
