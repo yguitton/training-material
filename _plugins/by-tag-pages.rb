@@ -12,6 +12,12 @@ module Jekyll
       # Params
       # +site+:: The site object
       def generate(site)
+        if Jekyll.env == 'production'
+          _generate(site)
+        end
+      end
+
+      def _generate(site)
         Jekyll.logger.info '[GTN/SyntheticTopics] Generating By-Tag Indexes'
         Gtn::TopicFilter.list_all_tags(site).map do |tag|
           site.data["by_tag_#{tag}"] = {
