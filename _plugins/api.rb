@@ -343,7 +343,9 @@ module Jekyll
 end
 
 Jekyll::Hooks.register :site, :post_read do |site|
-  Gtn::Hooks.by_tool(site)
+  if Jekyll.env == 'production'
+    Gtn::Hooks.by_tool(site)
+  end
 end
 
 # Basically like `PageWithoutAFile`, we just write out the ones we'd created earlier.

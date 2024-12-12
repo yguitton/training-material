@@ -1091,7 +1091,9 @@ Jekyll::Hooks.register :site, :post_read do |site|
 end
 
 Jekyll::Hooks.register :site, :post_write do |site|
-  Gtn::Shortlinks.fix_missing_redirs(site)
+  if Jekyll.env == 'production'
+    Gtn::Shortlinks.fix_missing_redirs(site)
+  end
 end
 
 if $PROGRAM_NAME == __FILE__
