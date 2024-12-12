@@ -48,7 +48,7 @@ module Jekyll
     ##
     # Setup the local cache via +Jekyll::Cache+
     def cache
-      @@cache ||= Jekyll::Cache.new('JekyllTopicFilter')
+      @@cache ||= Jekyll::Cache.new('GtnJsBundle')
     end
 
     # Return the preloads for the bundles, when in production

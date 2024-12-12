@@ -205,10 +205,10 @@ module Jekyll
 
       # Trigger the topic cache to generate if it hasn't already
       Jekyll.logger.debug '[GTN/API] Tutorials'
-      TopicFilter.topic_filter(site, 'does-not-matter')
-      TopicFilter.list_topics(site).map do |topic|
+      Gtn::TopicFilter.topic_filter(site, 'does-not-matter')
+      Gtn::TopicFilter.list_topics(site).map do |topic|
         out = site.data[topic].dup
-        out['materials'] = TopicFilter.topic_filter(site, topic).map do |x|
+        out['materials'] = Gtn::TopicFilter.topic_filter(site, topic).map do |x|
           q = x.dup
           q['contributors'] = Gtn::Contributors.get_contributors(q).dup.map do |c|
             mapContributor(site, c)
@@ -271,7 +271,7 @@ module Jekyll
       # },
 
       page2 = PageWithoutAFile.new(site, '', 'api/', 'videos.json')
-      page2.content = JSON.pretty_generate(TopicFilter.list_videos(site).map do |m|
+      page2.content = JSON.pretty_generate(Gtn::TopicFilter.list_videos(site).map do |m|
         {
           id: "#{m['topic_name']}/tutorials/#{m['tutorial_name']}/slides",
           topic: m['topic_name_human'],
@@ -298,13 +298,13 @@ module Jekyll
       # Top Tools
       Jekyll.logger.debug '[GTN/API] Top Tools'
       page2 = PageWithoutAFile.new(site, '', 'api/', 'top-tools.json')
-      page2.content = JSON.pretty_generate(TopicFilter.list_materials_by_tool(site))
+      page2.content = JSON.pretty_generate(Gtn::TopicFilter.list_materials_by_tool(site))
       page2.data['layout'] = nil
       site.pages << page2
 
       # GA4GH TRS Endpoint
       # Please note that this is all a fun hack
-      TopicFilter.list_all_materials(site).select { |m| m['workflows'] }.each do |material|
+      Gtn::TopicFilter.list_all_materials(site).select { |m| m['workflows'] }.each do |material|
         material['workflows'].each do |workflow|
           wfid = workflow['wfid']
           wfname = workflow['wfname']
@@ -369,7 +369,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
       Jekyll.logger.debug '[GTN/API/PSL] PSL Dataset not available, are you in a CI environment?'
     end
 
-    TopicFilter.list_all_materials(site).each do |material|
+    Gtn::TopicFilter.list_all_materials(site).each do |material|
       directory = material['dir']
 
       if material['slides']
@@ -413,7 +413,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
     # ro-crate-metadata.json
     crate_start = Time.now
     count = 0
-    TopicFilter.list_all_materials(site).select { |m| m['workflows'] }.each do |material|
+    Gtn::TopicFilter.list_all_materials(site).select { |m| m['workflows'] }.each do |material|
       material['workflows'].each do |workflow|
         Gtn::RoCrate.write(site, dir, material, workflow, site.config['url'], site.config['baseurl'])
         count += 1

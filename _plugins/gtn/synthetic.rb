@@ -9,7 +9,7 @@ module Jekyll
       # Full Bibliography
       Jekyll.logger.info '[GTN/SyntheticTopics] Generating Indexes'
 
-      TopicFilter.list_topics(site).select { |t| site.data[t]['tag_based'] }.each do |topic|
+      Gtn::TopicFilter.list_topics(site).select { |t| site.data[t]['tag_based'] }.each do |topic|
         Jekyll.logger.debug "[GTN/SyntheticTopics] Creating #{topic} topic"
 
         topic_index = PageWithoutAFile.new(site, '', "topics/#{topic}", 'index.md')

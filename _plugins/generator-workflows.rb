@@ -14,7 +14,7 @@ module Jekyll
     # +site+:: The site object
     def generate(site)
       Jekyll.logger.info "[GTN/Workflows] Generating workflow pages"
-      materials = TopicFilter
+      materials = Gtn::TopicFilter
         .list_all_materials(site)
 
       # [{"workflow"=>"Calling_variants_in_non-diploid_systems.ga",

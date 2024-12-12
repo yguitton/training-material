@@ -223,7 +223,7 @@ end
 
 def all_date_sorted_materials(site)
   events = site.pages.select { |x| x['layout'] == 'event' || x['layout'] == 'event-external' }
-  materials = TopicFilter.list_all_materials(site).reject { |k, _v| k['draft'] }
+  materials = Gtn::TopicFilter.list_all_materials(site).reject { |k, _v| k['draft'] }
   news = site.posts.select { |x| x['layout'] == 'news' }
   faqs = site.pages.select { |x| x['layout'] == 'faq' }
   pathways = site.pages.select { |x| x['layout'] == 'learning-pathway' }
@@ -747,7 +747,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
 
     opml['GTN Topics'] = []
     opml['GTN Topics - Digests'] = []
-    TopicFilter.list_topics(site).each do |topic|
+    Gtn::TopicFilter.list_topics(site).each do |topic|
       generate_topic_feeds(site, topic, bucket)
       opml['GTN Topics'] <<
         {title: "#{topic} all changes", url: "#{site.config['url']}#{site.baseurl}/topic/feed.xml"}

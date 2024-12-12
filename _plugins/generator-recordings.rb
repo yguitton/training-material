@@ -14,7 +14,7 @@ module Jekyll
     # +site+:: The site object
     def generate(site)
       Jekyll.logger.info "[GTN/Videos] Generating recording pages"
-      materials = TopicFilter
+      materials = Gtn::TopicFilter
         .list_all_materials(site)
 
       with_video = materials

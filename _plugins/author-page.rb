@@ -140,7 +140,7 @@ module Jekyll
         page2.data['videos_count'] = videos_by_author[contributor].length
         page2.data['faqs_count'] = faqs_by_author[contributor].length
 
-        page2.data['editors'] = TopicFilter.enumerate_topics(site).select do |t|
+        page2.data['editors'] = Gtn::TopicFilter.enumerate_topics(site).select do |t|
           t.fetch('editorial_board', []).include?(contributor)
         end
         # Also their learning pathways

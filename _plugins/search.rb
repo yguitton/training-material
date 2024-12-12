@@ -25,7 +25,7 @@ module Jekyll
       Jekyll.logger.info '[GTN/Search]'
 
       site = context.registers[:site]
-      topics = TopicFilter.list_topics_h(site)
+      topics = Gtn::TopicFilter.list_topics_h(site)
 
       results = {}
       topics.each do |k, topic|

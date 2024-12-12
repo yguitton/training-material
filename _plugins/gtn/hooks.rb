@@ -15,7 +15,7 @@ module Gtn
       init_count = site.pages.size
       start_time = Time.now
 
-      tools = TopicFilter.list_materials_by_tool(site)
+      tools = Gtn::TopicFilter.list_materials_by_tool(site)
       tools.reject!{|tool, _| tool.include?('{{')}
 
       tools.each do |tool, tutorials|

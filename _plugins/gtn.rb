@@ -355,7 +355,7 @@ module Jekyll
 
       materials.map do |m|
         if m.key?('name') && m.key?('topic')
-          found = TopicFilter.fetch_tutorial_material(site, m['topic'], m['name'])
+          found = Gtn::TopicFilter.fetch_tutorial_material(site, m['topic'], m['name'])
           Jekyll.logger.warn "Could not find material #{m['topic']}/#{m['name']} in the site data" if found.nil?
 
           if m.key?('time')
@@ -549,7 +549,7 @@ module Jekyll
 
     def tutorials_over_time_bar_chart(site)
       graph = Hash.new(0)
-      TopicFilter.list_all_materials(site).each do |material|
+      Gtn::TopicFilter.list_all_materials(site).each do |material|
         if material['pub_date']
           yymm = material['pub_date'].strftime('%Y-%m')
           graph[yymm] += 1
@@ -737,7 +737,7 @@ module Jekyll
     #   {{ site | get_videos_for_videos_page }}
     def get_videos_for_videos_page(site)
       res = {}
-      TopicFilter.list_all_materials(site).each do |material|
+      Gtn::TopicFilter.list_all_materials(site).each do |material|
         next unless material['video'] || material['recordings'] || material['slides_recordings']
 
         if ! res.key? material['topic_name']

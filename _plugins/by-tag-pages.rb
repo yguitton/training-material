@@ -12,7 +12,7 @@ module Jekyll
     # +site+:: The site object
     def generate(site)
       Jekyll.logger.info '[GTN/SyntheticTopics] Generating By-Tag Indexes'
-      TopicFilter.list_all_tags(site).map do |tag|
+      Gtn::TopicFilter.list_all_tags(site).map do |tag|
         site.data["by_tag_#{tag}"] = {
           'name' => "by_tag_#{tag}",
           'type' => 'use',
@@ -32,7 +32,7 @@ module Jekyll
       end
 
       Jekyll.logger.info '[GTN/SyntheticTopics] Generating By-Tag Embeds'
-      TopicFilter.list_all_tags(site).map do |tag|
+      Gtn::TopicFilter.list_all_tags(site).map do |tag|
         topic_index = PageWithoutAFile.new(site, '', "tags/#{Jekyll::Utils.slugify(tag)}", 'embed.html')
         topic_index.content = ''
         topic_index.data['layout'] = 'topic-embed'

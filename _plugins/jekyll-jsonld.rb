@@ -293,7 +293,7 @@ module Jekyll
               next
             end
 
-            material = TopicFilter.fetch_tutorial_material(site, tutorial['topic'], tutorial['name'])
+            material = Gtn::TopicFilter.fetch_tutorial_material(site, tutorial['topic'], tutorial['name'])
             materials.push(material)
           end
         end
@@ -489,7 +489,7 @@ module Jekyll
             next
           end
 
-          material = TopicFilter.fetch_tutorial_material(site, tutorial['topic'], tutorial['name'])
+          material = Gtn::TopicFilter.fetch_tutorial_material(site, tutorial['topic'], tutorial['name'])
           materials.push(material)
         end
       end
@@ -822,7 +822,7 @@ module Jekyll
 
       data.update(A11Y)
 
-      actual_material = TopicFilter.fetch_tutorial_material(site, material['topic_name'], material['tutorial_name'])
+      actual_material = Gtn::TopicFilter.fetch_tutorial_material(site, material['topic_name'], material['tutorial_name'])
 
       # info depending if tutorial, hands-on or slide level
       # parts = []
