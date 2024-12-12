@@ -4,12 +4,32 @@ require './_plugins/gtn'
 
 module Jekyll
   ##
-  # Generators are Jekyll's way to let you generate files at runtime, without needing them to exist on disk.
+  # {Jekyll Generators}[https://jekyllrb.com/docs/plugins/generators/] are a way to let you generate files at runtime, without needing them to exist on disk.
   #
   # We use generators for lots of purposes, e.g.
   #
-  # +Jekyll::Generators::WorkflowPageGenerator+ emits a webpage for every workflow in the GTN
-  # +Jekyll::Generators::AuthorPageGenerator+ emits a hall-of-fame entry for every contributor, organisation, and grant listed in our site metadata.
+  # Real Generators, the way Jekyll intended:
+  #
+  # - Jekyll::Generators::APIGenerator - outputs our API
+  # - Jekyll::Generators::PlaintextSlidesGenerator - turns slides.html into plain text non-JS versions.
+  # - Jekyll::Generators::RecordingPageGenerator - emits a webpage for every tutorial that has recordings, in the GTN
+  # - Jekyll::Generators::WorkflowPageGenerator - emits a webpage for every workflow in the GTN
+  # - Jekyll::Generators::AuthorPageGenerator - emits a hall-of-fame entry for every contributor, organisation, and grant listed in our site metadata.
+  # - Jekyll::Generators::RmarkdownGenerator - outputs the RMarkdown notebooks for tutorials that want them.
+  # - Jekyll::Generators::SitemapGenerator2 - alternative for the jekyll-sitemap plugin that's a bit faster.
+  # - Jekyll::Generators::SyntheticTopicGenerator - our synthetic tag based topics
+  # - Jekyll::Generators::TagPageGenerator - topic page for every tag
+  # - Jekyll::Generators::WorkflowPageGenerator
+  #
+  # Muck with page contents generators (probably should be hooks):
+  #
+  # - Jekyll::Generators::Abbreviate - turns +{something}+ into an abbreviation tag
+  # - Jekyll::Generators::Figurify - handles our modified markdown for images
+  # - Jekyll::Generators::Boxify - turns +<box-title>blah</box-title> ... {: .box}+ into GTN boxes.
+  #
+  # Other generators (also probably should be hooks):
+  #
+  # - Jekyll::Generators::EnvironmentVariablesGenerator - adds git revision, tags, and other environment variables to the site object
   module Generators
 
     ##

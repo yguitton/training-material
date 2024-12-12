@@ -1,6 +1,22 @@
 # frozen_string_literal: true
 
 module Jekyll
+  ##
+  # Tags are useful in liquid to process data and access internal functions. Ruby functions are *always* faster than liquid templates, so, when possible, consider writing a custom Ruby filter or tag.
+  #
+  # 
+  # - Jekyll::Tags::BibTag - {% bibliography %}
+  # - Jekyll::Tags::CiteTag - {% cite hiltemann2023galaxy, %}
+  # - Jekyll::Tags::CiteUrlTag - {% cite_url Batut2018 %}
+  # - Jekyll::Tags::ColorPickerTag - {% color_picker #ff0000 %}
+  # - Jekyll::Tags::CustomLinkTag - {% link file.md %}
+  # - Jekyll::Tags::DumpSearchDataTag - {% dump_search_view testing %}
+  # - Jekyll::Tags::FileExistsTag - {% file_exists path.md %}
+  # - Jekyll::Tags::IconTag - {% icon email %}
+  # - Jekyll::Tags::IconTagVar - {% icon var1 %}
+  # - Jekyll::Tags::SnippetIncludeTag - {% snippet %}
+  # - Jekyll::Tags::ToolTag - {% tool [My Tool](Grouping1) %}
+  # - Jekyll::Tags::WorkflowTag - unused?
   module Tags
 
     # The tool tag which allows us to do fancy tool links

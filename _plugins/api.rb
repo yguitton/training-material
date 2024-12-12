@@ -67,6 +67,7 @@ module Jekyll
   module Generators
     ##
     # This class generates the GTN's "api" by writing out a folder full of JSON files.
+    # TODO: could be a post-write hook.
     class APIGenerator < Generator
 
       ##

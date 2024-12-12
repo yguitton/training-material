@@ -5,6 +5,7 @@ require 'jekyll'
 module Jekyll
   module Generators
     # Our modifications to the markdown renderer to process images with figure captions
+    # TODO: probably could be a hook post_read.
     class Figurify < Jekyll::Generator
       safe true
 

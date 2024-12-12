@@ -23,7 +23,13 @@ Jekyll.logger.info "[GTN] You are running #{RUBY_VERSION} released on #{RUBY_REL
 version_parts = RUBY_VERSION.split('.')
 Jekyll.logger.warn '[GTN] WARNING: This Ruby is pretty old, you might want to update.' if version_parts[0].to_i < 3
 
-
+##
+# We have several sub-areas of Jekyll namespaced things that are useful to know about.
+#
+# - Jekyll::Filters - Liquid Filters that are useful in rendering your HTML
+# - Jekyll::Tags - Liquid Tags can be used to access certain internals in HTML
+# - Jekyll::Generators - Generators emit files at runtime, e.g. the hall of fame pages.
+# - Jekyll::GtnFunctions - Generally miscellaneous Liquid Functions, could be refactored into Jekyll::Filters and Jekyll::Tags
 module Jekyll
   ##
   # This module contains functions that are used in the GTN, our internal functions that is.

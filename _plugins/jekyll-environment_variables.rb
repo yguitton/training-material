@@ -9,6 +9,7 @@ require './_plugins/gtn/git'
 module Jekyll
   module Generators
     # This module contains a generator for adding environment variables to the `site` object in Liquid templates
+    # TODO: definitely could be a hook instead of a generator
     class EnvironmentVariablesGenerator < Generator
       ##
       # Environment variables are added to the `site` object in Liquid templates.
