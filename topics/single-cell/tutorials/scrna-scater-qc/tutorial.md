@@ -37,10 +37,11 @@ key_points:
 - Single-cell RNA-seq data is often noisy
 - scater can be used to apply the visualise-filter-visualise paradigm of quality control
 contributors:
-- ethering
-- nsoranzo
-testing:
-- pavanvidem
+  authorship:
+    - ethering
+    - nsoranzo
+  testing:
+    - pavanvidem
 
 gitter: Galaxy-Training-Network/galaxy-single-cell
 
