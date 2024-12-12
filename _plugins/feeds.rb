@@ -6,6 +6,12 @@ require './_plugins/util'
 require 'json'
 
 class DateTime
+  ##
+  # Convert a given DateTime stamp roughly to an African/European lunch time
+  #
+  # Why that time? It is when the majority of our users are online and wanting to read the news.
+  #
+  # This is really only available in the feeds plugin, should not be assumed to be available elsewhere.
   def to_euro_lunch
     self.to_date.to_datetime + 0.6
   end
