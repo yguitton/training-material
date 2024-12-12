@@ -10,7 +10,6 @@ module Jekyll
   #
   # Real Generators, the way Jekyll intended:
   #
-  # - Jekyll::Generators::APIGenerator - outputs our API
   # - Jekyll::Generators::PlaintextSlidesGenerator - turns slides.html into plain text non-JS versions.
   # - Jekyll::Generators::RecordingPageGenerator - emits a webpage for every tutorial that has recordings, in the GTN
   # - Jekyll::Generators::WorkflowPageGenerator - emits a webpage for every workflow in the GTN

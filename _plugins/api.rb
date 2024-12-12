@@ -68,7 +68,7 @@ module Jekyll
     ##
     # This class generates the GTN's "api" by writing out a folder full of JSON files.
     # TODO: could be a post-write hook.
-    class APIGenerator < Generator
+    class APIGenerator
 
       ##
       # Generates /api/configuration.json
@@ -342,7 +342,6 @@ module Jekyll
   end
 end
 
-
 Jekyll::Hooks.register :site, :post_read do |site|
   Gtn::Hooks.by_tool(site)
 end
@@ -351,6 +350,8 @@ end
 Jekyll::Hooks.register :site, :post_write do |site|
   # No need to run this except in prod.
   if Jekyll.env == 'production'
+    # Our API
+    Jekyll::Generators::APIGenerator.generate(site)
 
     # Public tool listing: reorganised
     if site.data['public-server-tools'] && site.data['public-server-tools']['tools']
