@@ -1233,224 +1233,226 @@ end
 
 module Jekyll
   # The "implementation" of the topic filter as liquid accessible filters
-  module ImplTopicFilter
-    ##
-    # List the most recent contributors to the GTN.
-    # Parameters:
-    # +contributors+:: A hash of contributors
-    # +count+:: The number of contributors to return
-    # Returns:
-    # +Hash+:: A hash of contributors
-    #
-    # Example:
-    # most_recent_contributors(contributors, 5)
-    # => {
-    #  "hexylena" => {
-    #  "name" => "Hexylena",
-    #  "avatar" => "https://avatars.githubusercontent.com/u/458683?v=3",
-    #  ...
-    #  }
-    # }
-    def most_recent_contributors(contributors, count)
-      # Remove non-hof
-      hof = contributors.reject { |_k, v| v.fetch('halloffame', 'yes') == 'no' }
-      # Get keys + sort by joined date
-      hof_k = hof.keys.sort do |x, y|
-        hof[y].fetch('joined', '2016-01') <=> hof[x].fetch('joined', '2016-01')
+  module Filters
+    module TopicFilter
+      ##
+      # List the most recent contributors to the GTN.
+      # Parameters:
+      # +contributors+:: A hash of contributors
+      # +count+:: The number of contributors to return
+      # Returns:
+      # +Hash+:: A hash of contributors
+      #
+      # Example:
+      # most_recent_contributors(contributors, 5)
+      # => {
+      #  "hexylena" => {
+      #  "name" => "Hexylena",
+      #  "avatar" => "https://avatars.githubusercontent.com/u/458683?v=3",
+      #  ...
+      #  }
+      # }
+      def most_recent_contributors(contributors, count)
+        # Remove non-hof
+        hof = contributors.reject { |_k, v| v.fetch('halloffame', 'yes') == 'no' }
+        # Get keys + sort by joined date
+        hof_k = hof.keys.sort do |x, y|
+          hof[y].fetch('joined', '2016-01') <=> hof[x].fetch('joined', '2016-01')
+        end
+
+        # Transform back into hash
+        hof_k.slice(0, count).to_h { |k| [k, hof[k]] }
       end
 
-      # Transform back into hash
-      hof_k.slice(0, count).to_h { |k| [k, hof[k]] }
-    end
+      ##
+      # Find the most recently modified tutorials
+      # Parameters:
+      # +site+:: The +Jekyll::Site+ object, used to get the list of pages.
+      # +exclude_recently_published+:: Do not include ones that were recently
+      #                                published in the slice, to make it look a bit nicer.
+      # Returns:
+      # +Array+:: An array of the 10 most recently modified pages
+      # Example:
+      #  {% assign latest_tutorials = site | recently_modified_tutorials %}
+      def recently_modified_tutorials(site, exclude_recently_published: true)
+        tutorials = site.pages.select { |page| page.data['layout'] == 'tutorial_hands_on' }
 
-    ##
-    # Find the most recently modified tutorials
-    # Parameters:
-    # +site+:: The +Jekyll::Site+ object, used to get the list of pages.
-    # +exclude_recently_published+:: Do not include ones that were recently
-    #                                published in the slice, to make it look a bit nicer.
-    # Returns:
-    # +Array+:: An array of the 10 most recently modified pages
-    # Example:
-    #  {% assign latest_tutorials = site | recently_modified_tutorials %}
-    def recently_modified_tutorials(site, exclude_recently_published: true)
-      tutorials = site.pages.select { |page| page.data['layout'] == 'tutorial_hands_on' }
+        latest = tutorials.sort do |x, y|
+          Gtn::ModificationTimes.obtain_time(y.path) <=> Gtn::ModificationTimes.obtain_time(x.path)
+        end
 
-      latest = tutorials.sort do |x, y|
-        Gtn::ModificationTimes.obtain_time(y.path) <=> Gtn::ModificationTimes.obtain_time(x.path)
+        latest_published = recently_published_tutorials(site)
+        latest = latest.reject { |x| latest_published.include?(x) } if exclude_recently_published
+
+        latest.slice(0, 10)
       end
 
-      latest_published = recently_published_tutorials(site)
-      latest = latest.reject { |x| latest_published.include?(x) } if exclude_recently_published
+      ##
+      # Find the most recently published tutorials
+      # Parameters:
+      # +site+:: The +Jekyll::Site+ object, used to get the list of pages.
+      # Returns:
+      # +Array+:: An array of the 10 most recently published modified pages
+      # Example:
+      #  {% assign latest_tutorials = site | recently_modified_tutorials %}
+      def recently_published_tutorials(site)
+        tutorials = site.pages.select { |page| page.data['layout'] == 'tutorial_hands_on' }
 
-      latest.slice(0, 10)
-    end
+        latest = tutorials.sort do |x, y|
+          Gtn::PublicationTimes.obtain_time(y.path) <=> Gtn::PublicationTimes.obtain_time(x.path)
+        end
 
-    ##
-    # Find the most recently published tutorials
-    # Parameters:
-    # +site+:: The +Jekyll::Site+ object, used to get the list of pages.
-    # Returns:
-    # +Array+:: An array of the 10 most recently published modified pages
-    # Example:
-    #  {% assign latest_tutorials = site | recently_modified_tutorials %}
-    def recently_published_tutorials(site)
-      tutorials = site.pages.select { |page| page.data['layout'] == 'tutorial_hands_on' }
-
-      latest = tutorials.sort do |x, y|
-        Gtn::PublicationTimes.obtain_time(y.path) <=> Gtn::PublicationTimes.obtain_time(x.path)
+        latest.slice(0, 10)
       end
 
-      latest.slice(0, 10)
-    end
-
-    def topic_count(resources)
-      # Count lines in the table except introduction slides
-      resources.length
-    end
-
-    ##
-    # Fetch a tutorial material's metadata
-    # Parameters:
-    # +site+:: The +Jekyll::Site+ object, used to get the list of pages.
-    # +topic_name+:: The name of the topic
-    # +page_name+:: The name of the page
-    # Returns:
-    # +Hash+:: The metadata for the tutorial material
-    #
-    # Example:
-    #  {% assign material = site | fetch_tutorial_material:page.topic_name,page.tutorial_name%}
-    def fetch_tutorial_material(site, topic_name, page_name)
-      Gtn::TopicFilter.fetch_tutorial_material(site, topic_name, page_name)
-    end
-
-    def fetch_tutorial_material_by_id(site, id)
-      Gtn::TopicFilter.fetch_tutorial_material(site, id.split('/')[0], id.split('/')[1])
-    end
-
-    def list_topics_ids(site)
-      ['introduction'] + Gtn::TopicFilter.list_topics(site).filter { |k| k != 'introduction' }
-    end
-
-    def list_topics_h(site)
-      Gtn::TopicFilter.list_topics(site)
-    end
-
-    def list_topics_by_category(site, category)
-      q = Gtn::TopicFilter.list_topics(site).map do |k|
-        [k, site.data[k]]
+      def topic_count(resources)
+        # Count lines in the table except introduction slides
+        resources.length
       end
 
-      # Alllow filtering by a category, or return "all" otherwise.
-      if category == 'non-tag'
-        q = q.select { |_k, v| v['tag_based'].nil? }
-      elsif category == 'science'
-        q = q.select { |_k, v| %w[use basics].include? v['type'] }
-      elsif category == 'technical'
-        q = q.select { |_k, v| %w[admin-dev data-science instructors].include? v['type'] }
-      elsif category == 'science-technical'
-        q = q.select { |_k, v| %w[use basics admin-dev data-science instructors].include? v['type'] }
-      elsif category != 'all'
-        q = q.select { |_k, v| v['type'] == category }
+      ##
+      # Fetch a tutorial material's metadata
+      # Parameters:
+      # +site+:: The +Jekyll::Site+ object, used to get the list of pages.
+      # +topic_name+:: The name of the topic
+      # +page_name+:: The name of the page
+      # Returns:
+      # +Hash+:: The metadata for the tutorial material
+      #
+      # Example:
+      #  {% assign material = site | fetch_tutorial_material:page.topic_name,page.tutorial_name%}
+      def fetch_tutorial_material(site, topic_name, page_name)
+        Gtn::TopicFilter.fetch_tutorial_material(site, topic_name, page_name)
       end
 
-      # Sort alphabetically by titles
-      q.sort { |a, b| a[1]['title'] <=> b[1]['title'] }
-    end
-
-    def to_keys(arr)
-      arr.map { |k| k[0] }
-    end
-
-    def to_vals(arr)
-      arr.map { |k| k[1] }
-    end
-
-    def list_materials_by_tool(site)
-      Gtn::TopicFilter.list_materials_by_tool(site)
-    end
-
-    def list_materials_structured(site, topic_name)
-      Gtn::TopicFilter.list_materials_structured(site, topic_name)
-    end
-
-    def list_materials_flat(site, topic_name)
-      Gtn::TopicFilter
-        .list_materials_structured(site, topic_name)
-        .map { |k, v| v['materials'] }
-        .flatten
-        .uniq { |x| x['id'] }
-    end
-
-    def list_all_tags(site)
-      Gtn::TopicFilter.list_all_tags(site)
-    end
-
-    def topic_filter(site, topic_name)
-      Gtn::TopicFilter.topic_filter(site, topic_name)
-    end
-
-    def topic_filter_tutorial_count(site, topic_name)
-      Gtn::TopicFilter.topic_filter(site, topic_name).length
-    end
-
-    def identify_contributors(materials, site)
-      Gtn::TopicFilter.identify_contributors(materials, site)
-    end
-
-    def identify_funders(materials, site)
-      Gtn::TopicFilter.identify_funders_and_grants(materials, site)
-    end
-
-    ##
-    # Just used for stats page.
-    def list_videos(site)
-      Gtn::TopicFilter.list_all_materials(site)
-        .select { |k, _v| k['recordings'] || k['slides_recordings'] }
-        .map { |k, _v| (k['recordings'] || []) + (k['slides_recordings'] || []) }
-        .flatten
-    end
-
-    def findDuration(duration)
-      if ! duration.nil?
-        eval(duration.gsub(/H/, ' * 3600 + ').gsub(/M/, ' * 60 + ').gsub(/S/, ' + ') + " 0")
-      else
-        0
+      def fetch_tutorial_material_by_id(site, id)
+        Gtn::TopicFilter.fetch_tutorial_material(site, id.split('/')[0], id.split('/')[1])
       end
-    end
 
-    ##
-    # Just used for stats page.
-    def list_videos_total_time(site)
-      vids = list_videos(site)
-      vids.map { |v| findDuration(v['length']) }.sum / 3600.0
-    end
+      def list_topics_ids(site)
+        ['introduction'] + Gtn::TopicFilter.list_topics(site).filter { |k| k != 'introduction' }
+      end
 
-    def list_draft_materials(site)
-      Gtn::TopicFilter.list_all_materials(site).select { |k, _v| k['draft'] }
-    end
+      def list_topics_h(site)
+        Gtn::TopicFilter.list_topics(site)
+      end
 
-    def to_material(site, page)
-      topic = page['path'].split('/')[1]
-      material = page['path'].split('/')[3]
-      ret = Gtn::TopicFilter.fetch_tutorial_material(site, topic, material)
-      Jekyll.logger.warn "Could not find material #{topic} #{material}" if ret.nil?
-      ret
-    end
+      def list_topics_by_category(site, category)
+        q = Gtn::TopicFilter.list_topics(site).map do |k|
+          [k, site.data[k]]
+        end
 
-    def get_workflow(site, page, workflow)
-      mat = to_material(site, page)
-      mat['workflows'].select { |w| w['workflow'] == workflow }[0]
-    end
+        # Alllow filtering by a category, or return "all" otherwise.
+        if category == 'non-tag'
+          q = q.select { |_k, v| v['tag_based'].nil? }
+        elsif category == 'science'
+          q = q.select { |_k, v| %w[use basics].include? v['type'] }
+        elsif category == 'technical'
+          q = q.select { |_k, v| %w[admin-dev data-science instructors].include? v['type'] }
+        elsif category == 'science-technical'
+          q = q.select { |_k, v| %w[use basics admin-dev data-science instructors].include? v['type'] }
+        elsif category != 'all'
+          q = q.select { |_k, v| v['type'] == category }
+        end
 
-    def tool_version_support(site, tool)
-      Gtn::Supported.calculate(site.data['public-server-tools'], [tool])
-    end
+        # Sort alphabetically by titles
+        q.sort { |a, b| a[1]['title'] <=> b[1]['title'] }
+      end
 
-    def edamify(term, site)
-      site.data['EDAM'].select{|row| row['Class ID'] == "http://edamontology.org/#{term}"}.first.to_h
+      def to_keys(arr)
+        arr.map { |k| k[0] }
+      end
+
+      def to_vals(arr)
+        arr.map { |k| k[1] }
+      end
+
+      def list_materials_by_tool(site)
+        Gtn::TopicFilter.list_materials_by_tool(site)
+      end
+
+      def list_materials_structured(site, topic_name)
+        Gtn::TopicFilter.list_materials_structured(site, topic_name)
+      end
+
+      def list_materials_flat(site, topic_name)
+        Gtn::TopicFilter
+          .list_materials_structured(site, topic_name)
+          .map { |k, v| v['materials'] }
+          .flatten
+          .uniq { |x| x['id'] }
+      end
+
+      def list_all_tags(site)
+        Gtn::TopicFilter.list_all_tags(site)
+      end
+
+      def topic_filter(site, topic_name)
+        Gtn::TopicFilter.topic_filter(site, topic_name)
+      end
+
+      def topic_filter_tutorial_count(site, topic_name)
+        Gtn::TopicFilter.topic_filter(site, topic_name).length
+      end
+
+      def identify_contributors(materials, site)
+        Gtn::TopicFilter.identify_contributors(materials, site)
+      end
+
+      def identify_funders(materials, site)
+        Gtn::TopicFilter.identify_funders_and_grants(materials, site)
+      end
+
+      ##
+      # Just used for stats page.
+      def list_videos(site)
+        Gtn::TopicFilter.list_all_materials(site)
+          .select { |k, _v| k['recordings'] || k['slides_recordings'] }
+          .map { |k, _v| (k['recordings'] || []) + (k['slides_recordings'] || []) }
+          .flatten
+      end
+
+      def findDuration(duration)
+        if ! duration.nil?
+          eval(duration.gsub(/H/, ' * 3600 + ').gsub(/M/, ' * 60 + ').gsub(/S/, ' + ') + " 0")
+        else
+          0
+        end
+      end
+
+      ##
+      # Just used for stats page.
+      def list_videos_total_time(site)
+        vids = list_videos(site)
+        vids.map { |v| findDuration(v['length']) }.sum / 3600.0
+      end
+
+      def list_draft_materials(site)
+        Gtn::TopicFilter.list_all_materials(site).select { |k, _v| k['draft'] }
+      end
+
+      def to_material(site, page)
+        topic = page['path'].split('/')[1]
+        material = page['path'].split('/')[3]
+        ret = Gtn::TopicFilter.fetch_tutorial_material(site, topic, material)
+        Jekyll.logger.warn "Could not find material #{topic} #{material}" if ret.nil?
+        ret
+      end
+
+      def get_workflow(site, page, workflow)
+        mat = to_material(site, page)
+        mat['workflows'].select { |w| w['workflow'] == workflow }[0]
+      end
+
+      def tool_version_support(site, tool)
+        Gtn::Supported.calculate(site.data['public-server-tools'], [tool])
+      end
+
+      def edamify(term, site)
+        site.data['EDAM'].select{|row| row['Class ID'] == "http://edamontology.org/#{term}"}.first.to_h
+      end
     end
   end
 end
 
-Liquid::Template.register_filter(Jekyll::ImplTopicFilter)
+Liquid::Template.register_filter(Jekyll::Filters::TopicFilter)

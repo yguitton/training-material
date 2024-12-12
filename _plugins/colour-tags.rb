@@ -6,7 +6,7 @@ require './_plugins/gtn/hsluv'
 # Our automatic colour tag generator
 # It makes tags colourful in a reproducible way
 module Gtn
-  module ColourTag
+  module HashedColours
     ##
     # This function generates the CSS for a colour tag
     # Params
@@ -16,7 +16,7 @@ module Gtn
     # +String+:: The CSS for the tag
     #
     # Example
-    #  ColourTag.colour_tag("test") => "--color-primary: #f799ff; --color-darker: #f571ff; --color-dimmed: #f686ff;"
+    #  HashedColours.colour_tag("test") => "--color-primary: #f799ff; --color-darker: #f571ff; --color-dimmed: #f686ff;"
     def self.colour_tag(contents)
       d = (Digest::SHA256.hexdigest contents).to_i(16)
 
@@ -37,18 +37,26 @@ module Gtn
 end
 
 module Jekyll # :nodoc:
-  # The jekyll implementation of the colour tag
-  module ImplColourTag
-    def cache
-      @@cache ||= Jekyll::Cache.new('ColorTags')
-    end
+  module Filters
+    # The jekyll implementation of the colour tag
+    module HashedColours
+      def cache
+        @@cache ||= Jekyll::Cache.new('ColorTags')
+      end
 
-    def colour_tag(contents)
-      cache.getset(contents) do
-        Gtn::ColourTag.colour_tag(contents)
+      ##
+      # colour_tag will turn some contents into a set of CSS variables for use in CSS.
+      #
+      # Examples:
+      #
+      #   <span class="label label-default tutorial_tag" style="{{ tag | colour_tag }}">{{ tag }}</span>
+      def colour_tag(contents)
+        cache.getset(contents) do
+          Gtn::HashedColours.colour_tag(contents)
+        end
       end
     end
   end
 end
 
-Liquid::Template.register_filter(Jekyll::ImplColourTag)
+Liquid::Template.register_filter(Jekyll::Filters::HashedColours)
