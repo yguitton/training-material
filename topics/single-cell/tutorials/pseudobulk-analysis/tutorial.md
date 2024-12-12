@@ -274,10 +274,13 @@ This file will be use as the contrast input file in the edgeR tool.
 {: .question}
 
 
-# Differential Gene Expression Analysis (DGE) with **edgeR**
+# Differential Expression Analysis (DE) with edgeR
 
+The tool **edgeR** is commonly used for differential expression (DE) analysis of pseudobulk aggregates in single-cell RNA-seq studies (citation). It calculates gene dispersions based on the total counts for each gene and adjusts these estimates using an approach called empirical Bayes. This method improves reliability by pooling information across all genes in the dataset to stabilize dispersion estimates, particularly for genes with low counts or limited data. By "borrowing strength" from the behavior of other genes, empirical Bayes reduces the risk of overestimating or underestimating variability, ensuring more robust and accurate results (citation). Differential expression is then evaluated using an exact test for the negative binomial distribution, which is similar to Fisher’s exact test but modified to handle the variability typically seen in RNA-seq data (citation). 
 
+In addition to exact tests, edgeR employs generalized linear models (GLMs), which allow for the analysis of more complex experimental designs. GLMs model gene counts as a function of experimental conditions (e.g., treatment groups or time points) and estimate how these conditions influence gene expression. Likelihood-based methods, such as quasi-likelihood (QL) approaches, are central to this framework. Standard likelihood methods evaluate the fit of the model to the data, while quasi-likelihood methods add an extra layer by explicitly accounting for biological and technical variability, improving the reliability of DE results. These models allow edgeR to identify subtle expression differences while controlling for overdispersion in the data (citation).
 
+Several plots can be generated to assist in understanding the data and the results of the analysis, including MDS, BCV, QL, and MD plots. These visualizations provide insights into sample relationships, variability, and differential expression, and will be explained further in the tutorial. With these concepts in mind, lets now perform our DE analysis using our edgeR tool in Galaxy!
 
 > <hands-on-title> Run a DGE Analysis with edgeR </hands-on-title>
 >
