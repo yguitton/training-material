@@ -1,5 +1,9 @@
 require 'yaml'
 
+# This module specifically avoids having any dependencies. If you have a method
+# that needs to be used in many places, even those without initialisation, it
+# should go here.
+
 ALLOWED_SHORT_IDS = [
   'ChangeCase',
   'Convert characters1',
