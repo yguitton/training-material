@@ -12,57 +12,67 @@ class Hash
 end
 
 # Generate Notebooks from Markdown
-module GTNNotebooks
-  COLORS = {
-    'overview' => '#8A9AD0',
-    'agenda' => '#86D486',
-    'keypoints' => '#FFA1A1',
-    'tip' => '#FFE19E',
-    'warning' => '#de8875',
-    'comment' => '#ffecc1',
-    'hands_on' => '#dfe5f9',
-    'question' => '#8A9AD0',
-    'solution' => '#B8C3EA',
-    'details' => '#ddd',
-    'feedback' => '#86D486',
-    'code-in' => '#86D486',
-    'code-out' => '#fb99d0',
-  }.freeze
-  COLORS_EXTRA = {
-    'agenda' => 'display: none',
-  }.freeze
+module Gtn
+  ##
+  # Notebook generation module, this converts markdown into Jupyter and RMarkdown/Quarto notebooks
+  module Notebooks
 
-  ICONS = {
-    'tip' => '💡',
-    'code-in' => '⌨️',
-    'code-out' => '🖥',
-    'question' => '❓',
-    'solution' => '👁',
-    'warning' => '⚠️',
-    'comment' => '💬',
-    'feedback' => '⁉️',
-    'details' => '💬',
-    'hands_on' => '✏️',
-  }.freeze
+    # Colors for the various boxes, based on our 2024 CSS
+    COLORS = {
+      'overview' => '#8A9AD0',
+      'agenda' => '#86D486',
+      'keypoints' => '#FFA1A1',
+      'tip' => '#FFE19E',
+      'warning' => '#de8875',
+      'comment' => '#ffecc1',
+      'hands_on' => '#dfe5f9',
+      'question' => '#8A9AD0',
+      'solution' => '#B8C3EA',
+      'details' => '#ddd',
+      'feedback' => '#86D486',
+      'code-in' => '#86D486',
+      'code-out' => '#fb99d0',
+    }.freeze
 
-  ICONS_FA = {
-    'far fa-keyboard' => 'code-in',
-    'fas fa-laptop-code' => 'code-out',
-    'far fa-comment-dots' => 'comment',
-    'fas fa-info-circle' => 'details',
-    'far fa-comments' => 'feedback',
-    'fas fa-pencil-alt' => 'hands_on',
-    'far fa-question-circle' => 'question',
-    'far fa-eye' => 'solution',
-    'far fa-lightbulb' => 'tip',
-    'fas fa-exclamation-triangle' => 'warning',
-  }.freeze
+    # +COLORS+ but hide the agenda box.
+    COLORS_EXTRA = {
+      'agenda' => 'display: none',
+    }.freeze
 
-  def self.generate_css
-    COLORS.map do |key, val|
-      ".#{key} { padding: 0 1em; margin: 1em 0.2em; border: 2px solid #{val} }"
-    end.join("\n")
-  end
+    # Emoji icons for the various boxes
+    ICONS = {
+      'tip' => '💡',
+      'code-in' => '⌨️',
+      'code-out' => '🖥',
+      'question' => '❓',
+      'solution' => '👁',
+      'warning' => '⚠️',
+      'comment' => '💬',
+      'feedback' => '⁉️',
+      'details' => '💬',
+      'hands_on' => '✏️',
+    }.freeze
+
+    # Font-awesome equivalents of the icons we use for our boxes
+    ICONS_FA = {
+      'far fa-keyboard' => 'code-in',
+      'fas fa-laptop-code' => 'code-out',
+      'far fa-comment-dots' => 'comment',
+      'fas fa-info-circle' => 'details',
+      'far fa-comments' => 'feedback',
+      'fas fa-pencil-alt' => 'hands_on',
+      'far fa-question-circle' => 'question',
+      'far fa-eye' => 'solution',
+      'far fa-lightbulb' => 'tip',
+      'fas fa-exclamation-triangle' => 'warning',
+    }.freeze
+
+    # Generate the CSS to be included, by mapping our colors to appropriate classes.
+    def self.generate_css
+      COLORS.map do |key, val|
+        ".#{key} { padding: 0 1em; margin: 1em 0.2em; border: 2px solid #{val} }"
+      end.join("\n")
+    end
 
   def self.convert_notebook_markdown(content, accepted_languages)
     out = []
