@@ -574,35 +574,6 @@ module Gtn
       res
     end
 
-    ALLOWED_SHORT_IDS = [
-      'ChangeCase',
-      'Convert characters1',
-      'Count1',
-      'Cut1',
-      'Extract_features1',
-      'Filter1',
-      'Grep1',
-      'Grouping1',
-      'Paste1',
-      'Remove beginning1',
-      'Show beginning1',
-      'Summary_Statistics1',
-      'addValue',
-      'cat1',
-      'comp1',
-      'gene2exon1',
-      'gff2bed1',
-      'intermine',
-      'join1',
-      'param_value_from_file',
-      'random_lines1',
-      'sort1',
-      # 'ucsc_table_direct1', # This does not work, surprisingly.
-      'upload1',
-      'wc_gnu',
-      'wig_to_bigWig'
-    ].freeze
-
     ##
     # GTN:009 - See Gtn::Linter.bad_tool_links
     def self.check_tool_link(contents)
