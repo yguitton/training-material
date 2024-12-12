@@ -157,7 +157,7 @@ end
 if __FILE__ == $PROGRAM_NAME
   require 'test/unit'
     # Testing for the class
-  class IntersectionTest < Test::Unit::TestCase
+  class Gtn::Test::IntersectionTest < Test::Unit::TestCase
     def test_bad_versions
       # toolshed.g2.bx.psu.edu/repos/wolma/mimodd_main/mimodd_info/0.1.8_1
       assert_equal(fix_version("0.1.8_1"), "0.1.8galaxy1")
