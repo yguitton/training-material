@@ -860,12 +860,9 @@ module Gtn
         quizzes = ymls.map { |a| a.split('/')[-1] }
         page_obj['quiz'] = quizzes.map do |q|
           quiz_data = YAML.load_file("#{folder}/quiz/#{q}")
-          {
-            'id' => q,
-            'path' => "#{folder}/quiz/#{q}",
-            'title' => quiz_data['title'],
-            'contributors' => quiz_data['contributors'],
-          }
+          quiz_data['id'] = q
+          quiz_data['path'] = "#{folder}/quiz/#{q}"
+          quiz_data
         end
       end
 
