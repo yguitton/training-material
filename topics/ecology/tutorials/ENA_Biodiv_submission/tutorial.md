@@ -25,6 +25,7 @@ contributions:
     funding:
         - pndb
 
+subtopic: ecologymetadatamgt
 ---
 
 
@@ -104,7 +105,7 @@ We are doing a first Quality control on the raw files using FastQC and MultiQC.
 >        - {% icon param-repeat %} *"Insert Results"*
 >            - *"Which tool was used generate logs?"*: `FastQC`
 >
->    ***TODO***: *Check on the HTML files the general quality statistics of your sequences*
+> 3. *Check on the HTML files the general quality statistics of your sequences*
 >
 {: .hands_on}
 
@@ -307,7 +308,12 @@ Contains filtered sequences.
 
 ## Adding ENA "Webin" credentials to your Galaxy user information
 
-***TODO***: *Having an ENA Submission Account: Make sure you have a submission account with the European Nucleotide Archive (ENA). You will need the identifier and the password, available through https://www.ebi.ac.uk/ena/submit/webin/login.*
+> <comment-title> Having an ENA Submission Account </comment-title>
+>
+>  Make sure you have a submission account with the European Nucleotide Archive (ENA). You will need the identifier and the password, available through https://www.ebi.ac.uk/ena/submit/webin/login.
+>
+{: .comment}
+
 
 >  <hands-on-title> Add your "WEBIN" credentials to your Galaxy account </hands-on-title>
 >  **Instructions:**
