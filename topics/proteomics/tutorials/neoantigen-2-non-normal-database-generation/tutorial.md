@@ -156,7 +156,7 @@ HISAT2 is a fast and efficient tool used in bioinformatics workflows to align se
 In this workflow, HISAT2 serves the critical role of mapping raw sequencing data (reads) to a reference genome. This step is a foundation for understanding genetic variation and gene expression in the sample. By aligning the reads to a reference, HISAT2 provides a structured output that can be further analyzed in various bioinformatics applications.
 
 
-> <hands-on-title> HISAT2 </hands-on-title>
+> <hands-on-title> **HISAT2** </hands-on-title>
 >
 > 1. {% tool [HISAT2](toolshed.g2.bx.psu.edu/repos/iuc/hisat2/hisat2/2.2.1+galaxy1) %} with the following parameters:
 >    - *"Source for the reference genome"*: `Use a built-in genome`
@@ -198,7 +198,7 @@ FreeBayes is a variant calling tool used in bioinformatics to identify genetic v
 
 In this workflow, FreeBayes performs the essential function of variant calling, which is critical for identifying genetic differences that could be associated with diseases, traits, or other biological characteristics. The output from FreeBayes can then be used for downstream analyses such as functional annotation or association studies.
 
-> <hands-on-title> FreeBayes </hands-on-title>
+> <hands-on-title> **FreeBayes** </hands-on-title>
 >
 > 1. {% tool [FreeBayes](toolshed.g2.bx.psu.edu/repos/devteam/freebayes/freebayes/1.3.6+galaxy0) %} with the following parameters:
 >    - *"Choose the source for the reference genome"*: `Locally cached`
@@ -231,7 +231,7 @@ CustomProDB is a bioinformatics tool used to generate custom protein databases t
 
 In this workflow, CustomProDB plays a critical role in translating genetic variants identified by FreeBayes into custom protein sequences. This variant-specific database is valuable for applications in proteomics, as it allows for the detection of variant-specific peptides in mass spectrometry data. The generated outputs, including a variant FASTA file and mapping files, support downstream analyses, such as studying how genetic variations may affect protein function or abundance.
 
-> <hands-on-title> CustomProDB </hands-on-title>
+> <hands-on-title> **CustomProDB** </hands-on-title>
 > 
 >
 > 1. {% tool [CustomProDB](toolshed.g2.bx.psu.edu/repos/galaxyp/custom_pro_db/custom_pro_db/1.22.0) %} with the following parameters:
@@ -405,7 +405,7 @@ In this workflow, Tabular-to-FASTA converts the formatted tabular data back into
 > 2. Rename as 
 {: .hands_on}
 
-> <hands-on-title> **SNV-Tabular-to-FASTA**  </hands-on-title>
+> <hands-on-title> **SNV-Tabular-to-FASTA** </hands-on-title>
 >
 > 1. {% tool [Tabular-to-FASTA](toolshed.g2.bx.psu.edu/repos/devteam/tabular_to_fasta/tab2fasta/1.1.1) %} with the following parameters:
 >    - {% icon param-file %} *"Tab-delimited file"*: `out_file1` (output of **Column Regex Find And Replace** {% icon tool %})
@@ -415,7 +415,7 @@ In this workflow, Tabular-to-FASTA converts the formatted tabular data back into
 >
 {: .hands_on}
 
-> <hands-on-title> **RPKM-Tabular-to-FASTA**  </hands-on-title>
+> <hands-on-title> **RPKM-Tabular-to-FASTA** </hands-on-title>
 >
 > 1. {% tool [Tabular-to-FASTA](toolshed.g2.bx.psu.edu/repos/devteam/tabular_to_fasta/tab2fasta/1.1.1) %} with the following parameters:
 >    - {% icon param-file %} *"Tab-delimited file"*: `out_file1` (output of **Column Regex Find And Replace** {% icon tool %})
@@ -482,7 +482,7 @@ StringTie is a tool used for assembling RNA-Seq alignments into potential transc
 
 In this workflow, StringTie is responsible for reconstructing transcript structures based on RNA-Seq alignments. By using a reference file to guide the assembly, StringTie improves the accuracy of the transcript annotations, which is valuable for comparing expression levels across conditions or identifying novel transcript variants. This step provides a foundation for gene expression quantification and other transcriptome analyses.
 
-> <hands-on-title> StringTie</hands-on-title>
+> <hands-on-title> **StringTie**</hands-on-title>
 >
 > 1. {% tool [StringTie](toolshed.g2.bx.psu.edu/repos/iuc/stringtie/stringtie/2.2.3+galaxy0) %} with the following parameters:
 >    - *"Input options"*: `Short reads`
@@ -579,7 +579,7 @@ Translate BED transcripts is a tool that translates BED files containing transcr
 
 In this workflow, translating BED files to FASTA sequences is essential for obtaining the actual nucleotide sequences of the annotated transcripts. This step enables the user to analyze the sequences further, for example, by identifying functional regions, and sequence motifs, or conducting downstream analysis like mutation detection or variant calling.
 
-> <hands-on-title> Translate BED transcripts </hands-on-title>
+> <hands-on-title> **Translate BED transcripts** </hands-on-title>
 >
 > 1. {% tool [Translate BED transcripts](toolshed.g2.bx.psu.edu/repos/galaxyp/translate_bed/translate_bed/0.1.0) %} with the following parameters:
 >    - {% icon param-file %} *"A BED file with 12 columns"*: `output` (output of **Convert gffCompare annotated GTF to BED** {% icon tool %})
@@ -610,7 +610,7 @@ The bed to protein map tool translates the genomic coordinates in a BED file int
 
 This tool is important for converting the genomic annotations (in BED format) that correspond to protein-coding regions into actual protein sequences. This step is critical for downstream protein analysis, such as protein function prediction, domain identification, or understanding the consequences of genetic mutations at the protein level.
 
-> <hands-on-title> bed to protein map </hands-on-title>
+> <hands-on-title> **bed to protein map** </hands-on-title>
 >
 > 1. {% tool [bed to protein map](toolshed.g2.bx.psu.edu/repos/galaxyp/bed_to_protein_map/bed_to_protein_map/0.2.0) %} with the following parameters:
 >    - {% icon param-file %} *"A BED file with 12 columns, thickStart and thickEnd define protein coding region"*: `translation_bed` (output of **Translate BED transcripts** {% icon tool %})
