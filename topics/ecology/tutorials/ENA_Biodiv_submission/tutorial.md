@@ -87,7 +87,10 @@ Following steps take as input ab1 sequences files and produce filtered FastQ and
 ### Converting Ab1 files to FASTQ
 
 > <hands-on-title> ab1 to FASTQ converter </hands-on-title>
-> 1. {% tool [ab1 to FASTQ converter](toolshed.g2.bx.psu.edu/repos/ecology/ab1_fastq_converter/ab1_fastq_converter/1.20.0) %} on the ab1 files:
+> 1. {% tool [ab1 to FASTQ converter](toolshed.g2.bx.psu.edu/repos/ecology/ab1_fastq_converter/ab1_fastq_converter/1.20.0) %} with the following parameters:
+>    - {% icon param-file %} *"Input ab1 file"*: `A2_RC_8F2_B.pl_HCOI.ab1`
+> 2. Repeat this step for the file `A12_RC_9G4_B.md_HCOI.ab1`
+>
 >
 >
 {: .hands_on}
