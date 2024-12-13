@@ -135,7 +135,7 @@ Uncompressing data is a crucial first step in many bioinformatics workflows beca
 > <hands-on-title> Converting compressed to uncompressed </hands-on-title>
 >
 > 1. {% tool [Convert compressed file to uncompressed.](CONVERTER_gz_to_uncompressed) %} with the following parameters:
->    - {% icon param-file %} *"Choose compressed file"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Choose compressed file"*: `RNA-Seq_Reads_1.fastqsanger.gz` (Input dataset)
 >
 >
 {: .hands_on}
@@ -143,7 +143,7 @@ Uncompressing data is a crucial first step in many bioinformatics workflows beca
 > <hands-on-title> Task description </hands-on-title>
 >
 > 1. {% tool [Convert compressed file to uncompressed.](CONVERTER_gz_to_uncompressed) %} with the following parameters:
->    - {% icon param-file %} *"Choose compressed file"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Choose compressed file"*: `RNA-Seq_Reads_2.fastqsanger.gz` (Input dataset)
 >
 >
 {: .hands_on}
@@ -151,7 +151,7 @@ Uncompressing data is a crucial first step in many bioinformatics workflows beca
 # Extracting Single amino acid variants with HISAT and Freebayes
 ![A:Generating variant protein sequence database]({% link topics/proteomics/images/neoantigen/Non-Normal_Protein_Database_2.PNG %})
 ## Aligning to the reference genome with HISAT2
-HISAT2 is a fast and efficient tool used in bioinformatics workflows for aligning sequence reads to a reference genome. In this task, HISAT2 is being utilized to align paired-end reads against the human genome version GRCh38 (hg38). This alignment is essential for downstream analyses such as variant calling or transcript quantification. HISAT2 is configured to use default alignment and scoring options to ensure simplicity and speed, which is often suitable for general-purpose analyses.
+HISAT2 is a fast and efficient tool used in bioinformatics workflows to align sequence reads to a reference genome. In this task, HISAT2 is used to align paired-end reads against the human genome version GRCh38 (hg38). This alignment is essential for downstream analyses such as variant calling or transcript quantification. HISAT2 is configured to use default alignment and scoring options to ensure simplicity and speed, which is often suitable for general-purpose analyses.
 
 In this workflow, HISAT2 serves the critical role of mapping raw sequencing data (reads) to a reference genome. This step is a foundation for understanding genetic variation and gene expression in the sample. By aligning the reads to a reference, HISAT2 provides a structured output that can be further analyzed in various bioinformatics applications.
 
@@ -162,8 +162,8 @@ In this workflow, HISAT2 serves the critical role of mapping raw sequencing data
 >    - *"Source for the reference genome"*: `Use a built-in genome`
 >        - *"Select a reference genome"*: `Human Dec. 2013 (GRCh38/hg38) (hg38)`
 >    - *"Is this a single or paired library"*: `Paired-end`
->        - {% icon param-file %} *"FASTA/Q file #1"*: `output1` (output of **Convert compressed file to uncompressed.** {% icon tool %})
->        - {% icon param-file %} *"FASTA/Q file #2"*: `output1` (output of **Convert compressed file to uncompressed.** {% icon tool %})
+>        - {% icon param-file %} *"FASTA/Q file #1"*: `RNA-Seq_Reads_1.fastqsanger` (output of **Convert compressed file to uncompressed.** {% icon tool %})
+>        - {% icon param-file %} *"FASTA/Q file #2"*: `RNA-Seq_Reads_2.fastqsanger` (output of **Convert compressed file to uncompressed.** {% icon tool %})
 >        - *"Paired-end options"*: `Use default values`
 >    - In *"Advanced Options"*:
 >        - *"Input options"*: `Use default values`
@@ -241,7 +241,7 @@ In this workflow, CustomProDB plays a critical role in translating genetic varia
 >        - {% icon param-file %} *"VCF file"*: `output_vcf` (output of **FreeBayes** {% icon tool %})
 >    - *"Create a variant FASTA for short insertions and deletions"*: `Yes`
 >    - *"Create SQLite files for mapping proteins to genome and summarizing variant proteins"*: `Yes`
->    - *"Create RData file of variant protein coding sequences"*: `Yes`
+>    - *"Create RData file of variant protein-coding sequences"*: `Yes`
 >
 >
 {: .hands_on}
@@ -266,7 +266,7 @@ FASTA-to-Tabular is a tool that converts FASTA-formatted sequence files into tab
 In this workflow, FASTA-to-Tabular enables the conversion of variant protein sequences into a structured tabular format, which is helpful for subsequent data processing and analysis. This format allows researchers to efficiently filter, sort, or query specific sequence information and simplifies integration with other data analysis tools or databases. We do this for the indels, single nucleotide variants and rpkm databases.
 
 > <hands-on-title> INDEL - FASTA-to-Tabular </hands-on-title>
->
+> 
 > 1. {% tool [FASTA-to-Tabular](toolshed.g2.bx.psu.edu/repos/devteam/fasta_to_tabular/fasta2tab/1.1.1) %} with the following parameters:
 >    - {% icon param-file %} *"Convert these sequences"*: `output_indel` (output of **CustomProDB** {% icon tool %})
 >
@@ -402,7 +402,7 @@ In this workflow, Tabular-to-FASTA converts the formatted tabular data back into
 >    - *"Title column(s)"*: `c['1']`
 >    - *"Sequence column"*: `c2`
 >
->
+> 2. Rename as 
 {: .hands_on}
 
 > <hands-on-title> SNV-Tabular-to-FASTA  </hands-on-title>
@@ -440,7 +440,7 @@ In this workflow, Tabular-to-FASTA converts the formatted tabular data back into
 {: .question}
 
 ## Merging Single amino acid variant databases with FASTA Merge Files and Filter Unique Sequences
-FASTA Merge Files and Filter Unique Sequences is a tool that combines multiple FASTA files into a single file and removes any duplicate sequences, keeping only unique entries. In this task, the tool takes the FASTA file generated from the Tabular-to-FASTA step and merges it with any other FASTA files in the input list. The tool then filters the sequences to ensure that only unique sequences are retained in the final output, which is important for reducing redundancy in the dataset.
+FASTA Merge Files and Filter Unique Sequences is a tool that combines multiple FASTA files into a single file and removes any duplicate sequences, keeping unique entries. In this task, the tool takes the FASTA file generated from the Tabular-to-FASTA step and merges it with any other FASTA files in the input list. The tool then filters the sequences to ensure that unique sequences are retained in the final output, which is important for reducing redundancy in the dataset.
 
 In this workflow, FASTA Merge Files and Filter Unique Sequences consolidate all sequence data into a single, non-redundant FASTA file. This step is essential for removing duplicate sequences, which helps streamline the dataset for further analysis. A unique sequence file reduces computational load and minimizes potential biases in downstream applications that could be affected by redundant data. We are merging the indel, snv, and rpkm databases in this step.
 
@@ -451,9 +451,14 @@ In this workflow, FASTA Merge Files and Filter Unique Sequences consolidate all 
 >    - *"Run in batch mode?"*: `Merge individual FASTAs (output collection if the input is a collection)`
 >        - In *"Input FASTA File(s)"*:
 >            - {% icon param-repeat %} *"Insert Input FASTA File(s)"*
->                - {% icon param-file %} *"FASTA File"*: `output` (output of **Tabular-to-FASTA** {% icon tool %})
->
->
+>                - {% icon param-file %} *"FASTA File"*: `SNV` (output of **Tabular-to-FASTA** {% icon tool %})
+>        - In *"Input FASTA File(s)"*:
+>            - {% icon param-repeat %} *"Insert Input FASTA File(s)"*
+>                - {% icon param-file %} *"FASTA File"*: `INDEL` (output of **Tabular-to-FASTA** {% icon tool %})
+>        - In *"Input FASTA File(s)"*:
+>            - {% icon param-repeat %} *"Insert Input FASTA File(s)"*
+>                - {% icon param-file %} *"FASTA File"*: `RPKM` (output of **Tabular-to-FASTA** {% icon tool %})>
+> 2. Rename as `Non-normal_CustomProDB_FASTA`
 {: .hands_on}
 
 > <question-title></question-title>
@@ -484,7 +489,7 @@ In this workflow, StringTie is responsible for reconstructing transcript structu
 >        - {% icon param-file %} *"Input short mapped reads"*: `output_alignments` (output of **HISAT2** {% icon tool %})
 >    - *"Use a reference file to guide assembly?"*: `Use reference GTF/GFF3`
 >        - *"Reference file"*: `Use a file from history`
->            - {% icon param-file %} *"GTF/GFF3 dataset to guide assembly"*: `output` (Input dataset)
+>            - {% icon param-file %} *"GTF/GFF3 dataset to guide assembly"*: `Homo_sapiens.GRCh38_canon.106.gtf` (Input dataset)
 >        - *"Output files for differential expression?"*: `No additional output`
 >
 >
@@ -517,7 +522,7 @@ In this workflow, GffCompare assesses the quality of the transcript assembly pro
 >    - {% icon param-file %} *"GTF inputs for comparison"*: `output_gtf` (output of **StringTie** {% icon tool %})
 >    - *"Use reference annotation"*: `Yes`
 >        - *"Choose the source for the reference annotation"*: `History`
->            - {% icon param-file %} *"Reference annotation"*: `output` (Input dataset)
+>            - {% icon param-file %} *"Reference annotation"*: `Homo_sapiens.GRCh38_canon.106.gtf` (Input dataset)
 >    - *"Use sequence data"*: `No`
 >
 >
@@ -572,7 +577,7 @@ In this workflow, converting GffCompare's annotated GTF output to BED format all
 ## Translating BED to FASTA sequences with Translate BED transcripts
 Translate BED transcripts is a tool that translates BED files containing transcript annotations into FASTA sequences. This tool uses a reference genomic sequence (in this case, a 2bit file) to extract the nucleotide sequences corresponding to the regions defined in the BED file. The output is a FASTA file, which contains the translated sequences of the annotated transcripts, allowing further analysis of their sequence composition.
 
-In this workflow, translating BED files to FASTA sequences is essential for obtaining the actual nucleotide sequences of the annotated transcripts. This step enables the user to analyze the sequences further, for example, by identifying functional regions, sequence motifs, or conducting downstream analysis like mutation detection or variant calling.
+In this workflow, translating BED files to FASTA sequences is essential for obtaining the actual nucleotide sequences of the annotated transcripts. This step enables the user to analyze the sequences further, for example, by identifying functional regions, and sequence motifs, or conducting downstream analysis like mutation detection or variant calling.
 
 > <hands-on-title> Translate BED transcripts </hands-on-title>
 >
@@ -615,13 +620,13 @@ This tool is important for converting the genomic annotations (in BED format) th
 
 > <question-title></question-title>
 >
-> 1. What does the "thickStart" and "thickEnd" field in the BED file represent in the context of protein mapping?
+> 1. What do the "thickStart" and "thickEnd" fields in the BED file represent in the context of protein mapping?
 > 2. Why is it important to ensure that the BED file contains the correct "protein-coding regions" for this tool to function properly?
 >
 > > <solution-title></solution-title>
 > >
 > > 1. The "thickStart" and "thickEnd" fields in the BED file specify the start and end coordinates of the protein-coding regions within the genome. These fields define the portion of the transcript that will be used for translating nucleotide sequences into protein sequences.
-> > 2. The accuracy of the protein sequences produced by the bed to protein map tool depends on correctly identifying protein-coding regions in the BED file. If the file includes non-coding regions or incorrectly defined coordinates, the resulting protein sequences may not be accurate, which could lead to erroneous conclusions in downstream analyses.
+> > 2. The accuracy of the protein sequences produced by the bed-to-protein map tool depends on correctly identifying protein-coding regions in the BED file. If the file includes non-coding regions or incorrectly defined coordinates, the resulting protein sequences may not be accurate, which could lead to erroneous conclusions in downstream analyses.
 > >
 > {: .solution}
 >
@@ -640,7 +645,13 @@ Merging non-normal databases with the known human protein sequence involves inte
 > <hands-on-title> FASTA Merge Files and Filter Unique Sequences </hands-on-title>
 >
 > 1. {% tool [FASTA Merge Files and Filter Unique Sequences](toolshed.g2.bx.psu.edu/repos/galaxyp/fasta_merge_files_and_filter_unique_sequences/fasta_merge_files_and_filter_unique_sequences/1.2.0) %} with the following parameters:
->    - *"Run in batch mode?"*: `Merge individual FASTAs (output collection if input is collection)`
+>    - *"Run in batch mode?"*: `Merge individual FASTAs (output collection if the input is a collection)`
+>        - In *"Input FASTA File(s)"*:
+>            - {% icon param-repeat %} *"Insert Input FASTA File(s)"*
+>                - {% icon param-file %} *"FASTA File"*: `HUMAN_CRAP.fasta` (Input FASTA database)
+>        - In *"Input FASTA File(s)"*:
+>            - {% icon param-repeat %} *"Insert Input FASTA File(s)"*
+>                - {% icon param-file %} *"FASTA File"*: `Non-normal_CustomProDB_FASTA` (output of **FASTA merge of 3 CustomProDB databases** {% icon tool %})
 >        - In *"Input FASTA File(s)"*:
 >            - {% icon param-repeat %} *"Insert Input FASTA File(s)"*
 >                - {% icon param-file %} *"FASTA File"*: `translation_fasta` (output of **Translate BED transcripts** {% icon tool %})
@@ -652,8 +663,8 @@ Merging non-normal databases with the known human protein sequence involves inte
 
 In this workflow, we demonstrated a comprehensive process for merging non-normal protein sequence data with known human protein sequences, ensuring compatibility and consistency at each step. 
 
-Starting with data preparation, we converted sequence data into appropriate formats making it suitable for downstream analysis. Next, we merged non-normal sequences with known human proteins using tools such as FASTA Merge Files, ensuring the datasets aligned based on common identifiers. The subsequent steps, involving Translate BED transcripts and bed to protein map, translated genomic coordinates into protein sequences, further enriching our dataset. This workflow effectively integrates variant/non-normal proteins with established references, offering a robust resource for further analysis in bioinformatics applications like functional annotation and differential expression studies. By combining multiple bioinformatics tools, this process is adaptable to various research needs, making it invaluable for genomic and proteomic analysis. The output from this workflow will be now used for the neoantigen database searching.
+Starting with data preparation, we converted sequence data into appropriate formats making it suitable for downstream analysis. Next, we merged non-normal sequences with known human proteins using tools such as FASTA Merge Files, ensuring the datasets aligned based on common identifiers. The subsequent steps, involving Translating BED transcripts and bed to protein map, translated genomic coordinates into protein sequences, further enriching our dataset. This workflow effectively integrates variant/non-normal proteins with established references, offering a robust resource for further analysis in bioinformatics applications like functional annotation and differential expression studies. By combining multiple bioinformatics tools, this process is adaptable to various research needs, making it invaluable for genomic and proteomic analysis. The output from this workflow will be now used for the neoantigen database searching.
 
 # Disclaimer 
 
-Please note that all the software tools used in this workflow are subject to version updates and changes. As a result, the parameters, functionalities, and outcomes may differ with each new version. Additionally, if the protein sequences are downloaded at different times, the number of sequences may also vary due to updates in the reference databases or tool modifications. We recommend the users to verify the specific versions of software tools used to ensure the reproducibility and accuracy of results.
+Please note that all the software tools used in this workflow are subject to version updates and changes. As a result, the parameters, functionalities, and outcomes may differ with each new version. Additionally, if the protein sequences are downloaded at different times, the number of sequences may also vary due to updates in the reference databases or tool modifications. We recommend that users verify the specific versions of software tools used to ensure the reproducibility and accuracy of results.
