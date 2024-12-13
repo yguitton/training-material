@@ -5,97 +5,23 @@
       path: https://zenodo.org/record/7053673/files/Mito-counted_AnnData
       filetype: h5ad
   outputs:
-    obs (Step 2):
-      path: test-data/obs (Step 2).tabular
-    Genes-filtered Object:
-      path: test-data/Genes-filtered Object.h5ad
-    Scatter - genes x UMIs:
-      path: test-data/Scatter - genes x UMIs.png
-    Scatter - mito x genes:
-      path: test-data/Scatter - mito x genes.png
-    Violin - genotype - log:
-      path: test-data/Violin - genotype - log.png
-    Violin - batch - log:
-      path: test-data/Violin - batch - log.png
-    var (Step 8):
-      path: test-data/var (Step 8).tabular
-    general (Step 10):
-      path: test-data/general (Step 10).txt
-    Violin - Filterbygenes:
-      path: test-data/Violin - Filterbygenes.png
-    General - Filterbygenes:
-      path: test-data/General - Filterbygenes.txt
-    Mito-filtered Object:
-      path: test-data/Mito-filtered Object.h5ad
-    General - Filterbymito:
-      path: test-data/General - Filterbymito.txt
-    Violin - Filterbymito:
-      path: test-data/Violin - Filterbymito.png
-    output_h5ad (Step 22):
-      path: test-data/output_h5ad (Step 22).h5ad
-    output_h5ad (Step 24):
-      path: test-data/output_h5ad (Step 24).h5ad
-    PCA Variance:
-      path: test-data/PCA Variance.png
-    output_h5ad (Step 28):
-      path: test-data/output_h5ad (Step 28).h5ad
-    output_embed (Step 28):
-      path: test-data/output_embed (Step 28).tabular
-    output_txt (Step 30):
-      path: test-data/output_txt (Step 30).tsv
-    output_h5ad (Step 30):
-      path: test-data/output_h5ad (Step 30).h5ad
-    Markers - genotype:
-      path: test-data/Markers - genotype.tabular
-    output_png (Step 34):
-      path: test-data/output_png (Step 34).png
-    output_png (Step 36):
-      path: test-data/output_png (Step 36).png
-    output_h5ad (Step 38):
-      path: test-data/output_h5ad (Step 38).h5ad
-    out_file1 (Step 40):
-      path: test-data/out_file1 (Step 40).tabular
-    Markers - cluster - named:
-      path: test-data/Markers - cluster - named.tabular
-    output_png (Step 44):
-      path: test-data/output_png (Step 44).png
-    Scatter - mito x UMIs:
-      path: test-data/Scatter - mito x UMIs.png
-    Violin - sex - log:
-      path: test-data/Violin - sex - log.png
-    Counts-filtered Object:
-      path: test-data/Counts-filtered Object.h5ad
-    General - Filterbycounts:
-      path: test-data/General - Filterbycounts.txt
-    Violin - Filterbycounts:
-      path: test-data/Violin - Filterbycounts.png
-    Filtered Object:
-      path: test-data/Filtered Object.h5ad
-    General - Filtered object:
-      path: test-data/General - Filtered object.txt
-    output_h5ad (Step 23):
-      path: test-data/output_h5ad (Step 23).h5ad
-    output_h5ad (Step 25):
-      path: test-data/output_h5ad (Step 25).h5ad
-    output_h5ad (Step 27):
-      path: test-data/output_h5ad (Step 27).h5ad
-    output_embed (Step 29):
-      path: test-data/output_embed (Step 29).tabular
-    output_h5ad (Step 29):
-      path: test-data/output_h5ad (Step 29).h5ad
-    Markers - cluster:
-      path: test-data/Markers - cluster.tabular
-    Final object:
-      path: test-data/Final object.h5ad
-    output_png (Step 33):
-      path: test-data/output_png (Step 33).png
-    anndata (Step 35):
-      path: test-data/anndata (Step 35).h5ad
-    var (Step 37):
-      path: test-data/var (Step 37).tabular
-    out_file1 (Step 39):
-      path: test-data/out_file1 (Step 39).tabular
     Final cell annotated object:
-      path: test-data/Final cell annotated object.h5ad
+      asserts:
+        has_h5_keys:
+            keys: "obs/cell_type"
+            keys: "obs/genotype"
+            keys: "var/dispersions"
+            keys: "uns/louvain"
+            keys: "uns/umap"
     Markers - genotype - named:
-      path: test-data/Markers - genotype - named.tabular
+      asserts:
+        has_n_lines:
+          value: 101
+        has_n_columns:
+          value: 9
+    Markers - cluster - named:
+      asserts:
+        has_n_lines:
+          value: 401
+        has_n_columns:
+          value: 9
