@@ -8,8 +8,8 @@ redirect_from:
 zenodo_link: 'https://zenodo.org/record/1511582'
 answer_histories:
   - label: "UseGalaxy.eu"
-    history: https://usegalaxy.eu/u/videmp/h/downstream-single-cell-rna-analysis-with-raceid
-    date: 2024-12-12
+    history: https://singlecell.usegalaxy.eu/u/videmp/h/downstream-single-cell-rna-analysis-with-raceid
+    date: 2024-12-13
 tags:
 questions:
   - What is normalisation and why is it necessary?
