@@ -2,13 +2,23 @@
     "a_galaxy_workflow": "true",
     "annotation": "Downstream Single-cell RNA analysis with RaceID",
     "comments": [],
+    "creator": [
+        {
+            "class": "Person",
+            "identifier": "0000-0002-4181-2676",
+            "name": "Mehmet Tekman"
+        },
+        {
+            "class": "Person",
+            "identifier": "0000-0002-7901-7109",
+            "name": "Alex Ostrovsky"
+        }
+    ],
     "format-version": "0.1",
+    "license": "CC-BY-4.0",
     "name": "RaceID Workflow",
-    "source_metadata": {
-        "trs_server": "",
-        "trs_tool_id": "single-cell-scrna-raceid",
-        "trs_url": "https://training.galaxyproject.org/training-material/api/ga4gh/trs/v2/tools/single-cell-scrna-raceid/versions/main-workflow",
-        "trs_version_id": "main-workflow"
+    "report": {
+        "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
     },
     "steps": {
         "0": {
@@ -27,7 +37,7 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 0.0,
+                "left": 0,
                 "top": 2.5
             },
             "tool_id": null,
@@ -36,17 +46,11 @@
             "type": "data_input",
             "uuid": "ba3fe014-c728-486e-8ce4-55be24df0682",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "0c858705-5e28-44e0-8023-46aec4a01725"
-                }
-            ]
+            "workflow_outputs": []
         },
         "1": {
             "annotation": "",
-            "content_id": "raceid_filtnormconf",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/raceid_filtnormconf/raceid_filtnormconf/0.2.3+galaxy0",
             "errors": null,
             "id": 1,
             "input_connections": {
@@ -81,7 +85,7 @@
                 "top": 1.25
             },
             "post_job_actions": {},
-            "tool_id": "raceid_filtnormconf",
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/raceid_filtnormconf/raceid_filtnormconf/0.2.3+galaxy0",
             "tool_shed_repository": {
                 "changeset_revision": "43c146e25a43",
                 "name": "raceid_filtnormconf",
@@ -96,11 +100,6 @@
             "workflow_outputs": [
                 {
                     "label": null,
-                    "output_name": "outtable",
-                    "uuid": "d9293468-efef-4a10-89a6-0064a1740afd"
-                },
-                {
-                    "label": null,
                     "output_name": "outpdf",
                     "uuid": "358ddb8a-a6ca-4162-8d53-354902f905cf"
                 },
@@ -113,12 +112,17 @@
                     "label": null,
                     "output_name": "outlog",
                     "uuid": "35505252-c65a-4572-9d66-b0e69893c01b"
+                },
+                {
+                    "label": null,
+                    "output_name": "outtable",
+                    "uuid": "d9293468-efef-4a10-89a6-0064a1740afd"
                 }
             ]
         },
         "2": {
             "annotation": "",
-            "content_id": "raceid_clustering",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/raceid_clustering/raceid_clustering/0.2.3+galaxy0",
             "errors": null,
             "id": 2,
             "input_connections": {
@@ -154,10 +158,10 @@
             ],
             "position": {
                 "left": 481.25,
-                "top": 0.0
+                "top": 0
             },
             "post_job_actions": {},
-            "tool_id": "raceid_clustering",
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/raceid_clustering/raceid_clustering/0.2.3+galaxy0",
             "tool_shed_repository": {
                 "changeset_revision": "a4b734cd253b",
                 "name": "raceid_clustering",
@@ -199,7 +203,7 @@
         },
         "3": {
             "annotation": "",
-            "content_id": "raceid_trajectory",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/raceid_trajectory/raceid_trajectory/0.2.3+galaxy0",
             "errors": null,
             "id": 3,
             "input_connections": {
@@ -222,11 +226,11 @@
                 }
             ],
             "position": {
-                "left": 740.0,
+                "left": 740,
                 "top": 2.5
             },
             "post_job_actions": {},
-            "tool_id": "raceid_trajectory",
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/raceid_trajectory/raceid_trajectory/0.2.3+galaxy0",
             "tool_shed_repository": {
                 "changeset_revision": "72979cac22b2",
                 "name": "raceid_trajectory",
@@ -253,7 +257,7 @@
         },
         "4": {
             "annotation": "",
-            "content_id": "raceid_inspectclusters",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/raceid_inspectclusters/raceid_inspectclusters/0.2.3+galaxy0",
             "errors": null,
             "id": 4,
             "input_connections": {
@@ -276,11 +280,11 @@
                 }
             ],
             "position": {
-                "left": 735.0,
-                "top": 250.0
+                "left": 735,
+                "top": 250
             },
             "post_job_actions": {},
-            "tool_id": "raceid_inspectclusters",
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/raceid_inspectclusters/raceid_inspectclusters/0.2.3+galaxy0",
             "tool_shed_repository": {
                 "changeset_revision": "41f34e925bd5",
                 "name": "raceid_inspectclusters",
@@ -295,19 +299,19 @@
             "workflow_outputs": [
                 {
                     "label": null,
-                    "output_name": "outpdf",
-                    "uuid": "051cbdaa-6513-4239-91b6-e22004f6469f"
+                    "output_name": "outlog",
+                    "uuid": "bf324238-9739-4960-90c0-2935d225bd42"
                 },
                 {
                     "label": null,
-                    "output_name": "outlog",
-                    "uuid": "bf324238-9739-4960-90c0-2935d225bd42"
+                    "output_name": "outpdf",
+                    "uuid": "051cbdaa-6513-4239-91b6-e22004f6469f"
                 }
             ]
         },
         "5": {
             "annotation": "",
-            "content_id": "raceid_inspectclusters",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/raceid_inspectclusters/raceid_inspectclusters/0.2.3+galaxy0",
             "errors": null,
             "id": 5,
             "input_connections": {
@@ -330,11 +334,11 @@
                 }
             ],
             "position": {
-                "left": 735.0,
-                "top": 450.0
+                "left": 735,
+                "top": 450
             },
             "post_job_actions": {},
-            "tool_id": "raceid_inspectclusters",
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/raceid_inspectclusters/raceid_inspectclusters/0.2.3+galaxy0",
             "tool_shed_repository": {
                 "changeset_revision": "41f34e925bd5",
                 "name": "raceid_inspectclusters",
@@ -349,19 +353,19 @@
             "workflow_outputs": [
                 {
                     "label": null,
-                    "output_name": "outpdf",
-                    "uuid": "344cd8bc-01a1-4614-8def-806815a615af"
+                    "output_name": "outlog",
+                    "uuid": "3268d277-37a0-4081-ae95-8c7a83efb903"
                 },
                 {
                     "label": null,
-                    "output_name": "outlog",
-                    "uuid": "3268d277-37a0-4081-ae95-8c7a83efb903"
+                    "output_name": "outpdf",
+                    "uuid": "344cd8bc-01a1-4614-8def-806815a615af"
                 }
             ]
         },
         "6": {
             "annotation": "",
-            "content_id": "raceid_inspectclusters",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/raceid_inspectclusters/raceid_inspectclusters/0.2.3+galaxy0",
             "errors": null,
             "id": 6,
             "input_connections": {
@@ -388,7 +392,7 @@
                 "top": 564.9999618530273
             },
             "post_job_actions": {},
-            "tool_id": "raceid_inspectclusters",
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/raceid_inspectclusters/raceid_inspectclusters/0.2.3+galaxy0",
             "tool_shed_repository": {
                 "changeset_revision": "41f34e925bd5",
                 "name": "raceid_inspectclusters",
@@ -403,19 +407,19 @@
             "workflow_outputs": [
                 {
                     "label": null,
-                    "output_name": "outpdf",
-                    "uuid": "d028c3e8-3acb-44ba-968a-74b1cdfb4bb1"
+                    "output_name": "outlog",
+                    "uuid": "8f9f3e29-3c56-4fcf-af0a-f2bea2c10234"
                 },
                 {
                     "label": null,
-                    "output_name": "outlog",
-                    "uuid": "8f9f3e29-3c56-4fcf-af0a-f2bea2c10234"
+                    "output_name": "outpdf",
+                    "uuid": "d028c3e8-3acb-44ba-968a-74b1cdfb4bb1"
                 }
             ]
         },
         "7": {
             "annotation": "",
-            "content_id": "raceid_inspecttrajectory",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/raceid_inspecttrajectory/raceid_inspecttrajectory/0.2.3+galaxy0",
             "errors": null,
             "id": 7,
             "input_connections": {
@@ -446,7 +450,7 @@
                 "top": 3.75
             },
             "post_job_actions": {},
-            "tool_id": "raceid_inspecttrajectory",
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/raceid_inspecttrajectory/raceid_inspecttrajectory/0.2.3+galaxy0",
             "tool_shed_repository": {
                 "changeset_revision": "c8434a623268",
                 "name": "raceid_inspecttrajectory",
@@ -461,11 +465,6 @@
             "workflow_outputs": [
                 {
                     "label": null,
-                    "output_name": "outpdf",
-                    "uuid": "1e19e4d3-802d-4713-b920-ba8264bce2d0"
-                },
-                {
-                    "label": null,
                     "output_name": "outdiffgenes",
                     "uuid": "814ac5ce-500d-4ea2-bbc7-ab8c4f5d2962"
                 },
@@ -473,12 +472,17 @@
                     "label": null,
                     "output_name": "outlog",
                     "uuid": "4404cdf2-ee33-4e08-8fed-83b52bbfad88"
+                },
+                {
+                    "label": null,
+                    "output_name": "outpdf",
+                    "uuid": "1e19e4d3-802d-4713-b920-ba8264bce2d0"
                 }
             ]
         },
         "8": {
             "annotation": "",
-            "content_id": "raceid_inspecttrajectory",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/raceid_inspecttrajectory/raceid_inspecttrajectory/0.2.3+galaxy0",
             "errors": null,
             "id": 8,
             "input_connections": {
@@ -502,10 +506,10 @@
             ],
             "position": {
                 "left": 1001.25,
-                "top": 330.0
+                "top": 330
             },
             "post_job_actions": {},
-            "tool_id": "raceid_inspecttrajectory",
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/raceid_inspecttrajectory/raceid_inspecttrajectory/0.2.3+galaxy0",
             "tool_shed_repository": {
                 "changeset_revision": "c8434a623268",
                 "name": "raceid_inspecttrajectory",
@@ -520,13 +524,13 @@
             "workflow_outputs": [
                 {
                     "label": null,
-                    "output_name": "outpdf",
-                    "uuid": "8ef7bad4-ff15-42d2-acc4-6c5bc5de89e4"
+                    "output_name": "outlog",
+                    "uuid": "23f0fab3-0128-443a-a26a-a3e40cee4578"
                 },
                 {
                     "label": null,
-                    "output_name": "outlog",
-                    "uuid": "23f0fab3-0128-443a-a26a-a3e40cee4578"
+                    "output_name": "outpdf",
+                    "uuid": "8ef7bad4-ff15-42d2-acc4-6c5bc5de89e4"
                 }
             ]
         }
@@ -535,6 +539,6 @@
         "transcriptomics",
         "single-cell"
     ],
-    "uuid": "48285e72-0fb6-4cd6-a329-73d0e28effea",
-    "version": 0
+    "uuid": "f969d2cd-a16a-4a8e-b553-5d697b3ea961",
+    "version": 1
 }
