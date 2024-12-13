@@ -177,7 +177,7 @@ Cutadapt enables the removal of adapters, polyA tails, and other artifacts from 
 > 1. {% tool [Filter empty datasets](__FILTER_EMPTY_DATASETS__) %} on the Cutadapt resulting data collection
 >
 >
-> 2. {% tool [FASTQ Groomer](https://ecology.usegalaxy.eu/root?tool_id=toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.1.5+galaxy2) %} on the Filtered data collection, using default parameters.
+> 2. {% tool [FASTQ Groomer](toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.1.5+galaxy2) %} on the Filtered data collection, using default parameters.
 >
 > This step is notably there to produce "standardized" fastqsanger sequences files si we can then use other tools accepting only such data format.
 >
@@ -367,7 +367,7 @@ For this tutorial we will use the ENA default sample checklist.
 >    {: .comment}
 >
 >    > <warning-title> Danger: Submit to ENA test server! </warning-title>
->    > We suggest you first submit to the test server before making a public submission! The test server is reachable [here](https://wwwdev.ebi.ac.uk/ena/submit/webin/) and submission can be seen in `Dashboard/Study Report`
+>    > We suggest you first submit to the [ENA test server](https://wwwdev.ebi.ac.uk/ena/submit/webin/) before making a public submission! Submission can be seen in `Dashboard/Study Report`
 >    {: .warning}
 >
 > ![ENA Upload tool](./images/image3.png)
