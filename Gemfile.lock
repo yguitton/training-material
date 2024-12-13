@@ -96,6 +96,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rexml (3.3.9)
+    rorvswild_theme_rdoc (0.2)
     rouge (4.1.3)
     rubyzip (2.3.2)
     safe_yaml (1.0.5)
@@ -131,6 +132,7 @@ DEPENDENCIES
   kwalify
   nokogiri (>= 1.10.4)
   pkg-config
+  rorvswild_theme_rdoc
   rubyzip (~> 2.3.0)
   webrick
 

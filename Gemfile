@@ -27,3 +27,5 @@ gem 'commander'
 
 # RO-Crates
 gem 'rubyzip', '~> 2.3.0'
+
+gem 'rorvswild_theme_rdoc'

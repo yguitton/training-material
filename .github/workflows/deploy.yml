@@ -73,7 +73,7 @@ jobs:
           curl -L https://edamontology.org/EDAM.csv > metadata/EDAM.csv
           make rebuild-search-index ACTIVATE_ENV=pwd
           cat metadata/swagger.yaml | python bin/yaml2json.py > api/swagger.json
-          rdoc bin _plugins/ --output gtn_rdoc
+          rdoc bin _plugins/ --output gtn_rdoc --template rorvswild
 
       - name: Build Site
         run: |
