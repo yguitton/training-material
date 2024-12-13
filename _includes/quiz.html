@@ -51,7 +51,7 @@
 	</form>
 {% endfor %}
 
-<div class="quiz-results">
+<div class="quiz-results" aria-live="polite" role="status">
 </div>
 
 <button type="submit" class="btn btn-primary" id="check-answers"  onclick="checkQuiz('{{ quiz.id | slugify}}')">Check Answers</button>
