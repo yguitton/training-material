@@ -217,7 +217,7 @@ The output includes a list of fusion candidates with key information like fusion
 >    - *"Genome assembly fasta (that was used for STAR alignment)"*: `From your history`
 >        - {% icon param-file %} *"Genome assembly fasta"*: `human_reference_genome.fasta` (Input dataset)
 >    - *"Genome GTF annotation source"*: `From your history`
->        - {% icon param-file %} *"Gene annotation in GTF format"*: `output` (Input dataset)
+>        - {% icon param-file %} *"Gene annotation in GTF format"*: `human_reference_genome_annotation.gtf` (Input dataset)
 >    - {% icon param-file %} *"File containing blacklisted ranges."*: `blacklist` (output of **Arriba Get Filters** {% icon tool %})
 >    - {% icon param-file %} *"File containing protein domains"*: `protein_domains` (output of **Arriba Get Filters** {% icon tool %})
 >    - {% icon param-file %} *"File containing known fusions"*: `known_fusions` (output of **Arriba Get Filters** {% icon tool %})
