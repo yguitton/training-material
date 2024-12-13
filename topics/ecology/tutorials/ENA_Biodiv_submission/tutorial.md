@@ -47,6 +47,7 @@ The goal is to present an accessible and reproductible workflow for data submiss
 # Prepare raw data
 
 > <hands-on-title> Data Upload </hands-on-title>
+>
 > 1. **Create a new history** for this tutorial
 >
 >    {% snippet faqs/galaxy/histories_create_new.md %}
@@ -58,8 +59,6 @@ The goal is to present an accessible and reproductible workflow for data submiss
 >    https://data.indores.fr/api/access/datafile/3609
 >    ```
 >
-> 
-> 
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
 > 3. **Rename** {% icon galaxy-pencil %} your datafiles
@@ -87,8 +86,9 @@ Following steps take as input ab1 sequences files and produce filtered FastQ and
 ### Converting Ab1 files to FASTQ
 
 > <hands-on-title> ab1 to FASTQ converter </hands-on-title>
+>
 > 1. {% tool [ab1 to FASTQ converter](toolshed.g2.bx.psu.edu/repos/ecology/ab1_fastq_converter/ab1_fastq_converter/1.20.0) %} with the following parameters:
->    - {% icon param-file %} *"Input ab1 file"*: `ab1` data collection created at the previous step
+>    - {% icon param-collection %} *"Input ab1 file"*: `ab1` data collection created at the previous step
 >
 {: .hands_on}
 
@@ -100,7 +100,8 @@ We are doing a first Quality control on the raw files using FastQC and MultiQC.
 > <hands-on-title> FastQC </hands-on-title>
 > 1. {% tool [FastQC](toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.74+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Raw read data from your current history"*: `ab1.fastq` data collection created at the previous step
-> 2. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy1) %} with the following parameters: 
+>
+> 2. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy1) %} with the following parameters:
 >    - In *"Results"*:
 >        - {% icon param-repeat %} *"Insert Results"*
 >            - *"Which tool was used generate logs?"*: `FastQC`
@@ -129,12 +130,13 @@ We are doing a first Quality control on the raw files using FastQC and MultiQC.
 # Cleaning the Data
 
 ## Cutadapt
+
 Cutadapt enables the removal of adapters, polyA tails, and other artifacts from sequences. The tool also filters reads based on quality.
 
 > <hands-on-title> Cutadapt </hands-on-title>
 >
 > 1. {% tool [Cutadapt](toolshed.g2.bx.psu.edu/repos/lparsons/cutadapt/cutadapt/4.8+galaxy0) %} with the following parameters:
->
+>     - {% icon param-collection %} *"FASTQ/A file"*: the collection with your data (output of {% icon tool %} **ab1 to FastQ converter**)
 >     - **"Single-end or Paired-end reads?"**: `Single-end`
 >     - In **"Other Read Trimming Options"**:
 >         - **"Quality cutoff(s) (R1)"**: `30`
@@ -147,23 +149,24 @@ Cutadapt enables the removal of adapters, polyA tails, and other artifacts from 
 >
 {: .hands_on}
 
->    > <comment-title> Quality Control </comment-title>
->    >
->    > We do a second quality control similar to the first one to check the quality of the sequences after cleaning them.
->    {: .comment}
+> <comment-title> Quality Control </comment-title>
+>
+> We do a second quality control similar to the first one to check the quality of the sequences after cleaning them.
+{: .comment}
+
 
 ## Quality Control with FastQC and MultiQC
 
 > <hands-on-title> FastQC </hands-on-title>
 >
-> 1. {% tool [FastQC](toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.74+galaxy0) %} on the cutadapt output files>
->
+> 1. {% tool [FastQC](toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.74+galaxy0) %} with the following parameters:
+>    - {% icon param-collection %} *"Raw read data from your current history"*: output from {% icon tool%} **Cutadapt**
 >
 > 2. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy1) %} with the following parameters:
 >    - In *"Results"*:
->        - {% icon param-repeat %} *"Insert Results"*
->            - *"Which tool was used generate logs?"*: `FastQC`
->
+>        - *"Which tool was used generate logs?"*: `FastQC`
+>        - {% icon param-repeat %} *"Insert FastQC output"*
+>          - {%  icon param-collection %} *"FastQC output"*: the `raw` output from {% icon tool %} **FastQC**
 >
 >    > <comment-title> Comment </comment-title>
 >    >
@@ -174,16 +177,19 @@ Cutadapt enables the removal of adapters, polyA tails, and other artifacts from 
 
 ## Filtering the collection
 
+
 > <hands-on-title> Filter empty datasets </hands-on-title>
 >
-> 1. {% tool [Filter empty datasets](__FILTER_EMPTY_DATASETS__) %} on the Cutadapt resulting data collection
+> 1. {% tool [Filter empty datasets](__FILTER_EMPTY_DATASETS__) %} with the following parameters
+>    - {% icon param-collection %} *"Input Collection"*: output collection from Cutadapt step
 >
+> 2. {% tool [FASTQ Groomer](toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.1.5+galaxy2) %} with the following parameters:
+>    - {% icon param-collection %} *"File to groom"* : output collection from the {% icon tool %} **Filter empty datasets**
 >
-> 2. {% tool [FASTQ Groomer](toolshed.g2.bx.psu.edu/repos/devteam/fastq_groomer/fastq_groomer/1.1.5+galaxy2) %} on the Filtered data collection, using default parameters.
->
-> This step is notably there to produce "standardized" fastqsanger sequences files si we can then use other tools accepting only such data format.
+>    This step is notably there to produce "standardized" fastqsanger sequences files so we can then use other tools accepting only such data format.
 >
 > 3. {% tool [Filter FASTQ](toolshed.g2.bx.psu.edu/repos/devteam/fastq_filter/fastq_filter/1.1.5) %} with the following parameters:
+>    - *"FASTQ File"*: output collecton from  {% icon tool %} **FastQ Groomer**
 >    - *"Minimum size"*: `300`
 >
 >    > <comment-title> Comment </comment-title>
@@ -193,13 +199,16 @@ Cutadapt enables the removal of adapters, polyA tails, and other artifacts from 
 >
 {: .hands_on}
 
+
 ### Changing files names
 
 > <hands-on-title>Extract element identifiers and remove extensions</hands-on-title>
 >
 > 1. {% tool [Extract element identifiers](toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2) %}
+>    - {% icon param-collection %} *"Dataset collection"*: output from the previous step
 >
 > 2. {% tool [Regex Find And Replace](toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regex1/1.0.3) %} with the following parameters:
+>    - *"Select lines from"*: output of the previous step
 >    - In *"Check"*:
 >      - {% icon param-repeat %} *"Insert Check"*
 >        - *"Find Regex"*: `.ab1`
@@ -210,13 +219,10 @@ Cutadapt enables the removal of adapters, polyA tails, and other artifacts from 
 >    > This is to ensure that all your files names end with .fastq.gz
 >    {: .comment}
 >
-> 3. {% tool [Paste](Paste1) %}
->    - In *"Paste"*:
->      - Select the file from {% tool [Extract element identifiers](toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2) %}
->    - In *"and"*:
->      - Select the file from {% tool [Regex Find And Replace](toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regex1/1.0.3) %}
->    - *"Delimited by"*:
->      - Tab
+> 3. {% tool [Paste](Paste1) %} with the following parameters:
+>    - {% icon param-file %} *"Paste"*: the file from {% icon tool %} **Extract element identifiers**
+>    - {% icon param-file %} *"and"*: the file from {% icon tool %} **Regex Find And Replace**
+>    - {% icon param-select %} *"Delimited by"*: Tab
 >
 > 4. **Check the datatype**
 >    - should be 'tabular'. If not, change it now.
@@ -230,18 +236,21 @@ Cutadapt enables the removal of adapters, polyA tails, and other artifacts from 
 > <hands-on-title> Relabel identifiers </hands-on-title>
 >
 > 1. {% tool [Relabel identifiers](__RELABEL_FROM_FILE__) %} with the following parameters:
->     - *"How should the new labels be specified?"*: `Map original identifiers to new ones using a two column table.`
+>    - {% icon param-collection %} *"Input Collection"*: output from {% icon tool %} **Filter FastQ**
+>    - *"How should the new labels be specified?"*: `Map original identifiers to new ones using a two column table.`
 >
 {: .hands_on}
 
-## Alignments on NCBI database
 
+## Alignments on NCBI database
 
 > <hands-on-title> NCBI BLAST alignment </hands-on-title>
 >
 > 1. {% tool [FASTQ to FASTA](toolshed.g2.bx.psu.edu/repos/devteam/fastqtofasta/fastq_to_fasta_python/1.1.5) %} with the following parameters:
+>    - {% icon param-collection %} *"Input FASTQ File"*: output collection from {% icon tool %} **Relabel Identifiers**
 >
 > 2. {% tool [NCBI BLAST+ blastn](toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/2.14.1+galaxy2) %} with the following parameters:
+>    - {% icon param-collection %} Nucleotide query sequence(s): output from the previous step
 >    - *"Subject database/sequences"*: `Locally installed BLAST database`
 >        - *"Nucleotide BLAST database"*: `NCBI NT (01 Sep 2023)`
 >    - *"Output format"*: `Tabular (extended 25 columns)`
@@ -252,6 +261,7 @@ Cutadapt enables the removal of adapters, polyA tails, and other artifacts from 
 > <hands-on-title> Extracting best hits </hands-on-title>
 >
 > 1. {% tool [Unique](toolshed.g2.bx.psu.edu/repos/bgruening/unique/bg_uniq/0.3) %} with the following parameters:
+>    - {% icon param-collection %} *"File to scan for unique values"*: output from the previous step
 >    - *"Advanced Options"*: `Show Advanced Options`
 >        - *"Column start"*: `c1`
 >        - *"Column end"*: `c1`
