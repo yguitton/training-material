@@ -144,7 +144,7 @@ Uncompressing data is a crucial first step in many bioinformatics workflows beca
 > <hands-on-title> Converting compressed to uncompressed </hands-on-title>
 >
 > 1. {% tool [Convert compressed file to uncompressed.](CONVERTER_gz_to_uncompressed) %} with the following parameters:
->    - {% icon param-file %} *"Choose compressed file"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Choose compressed file"*: `RNA-Seq_Reads_1.fastqsanger.gz` (Input dataset)
 >
 >
 {: .hands_on}
@@ -152,7 +152,7 @@ Uncompressing data is a crucial first step in many bioinformatics workflows beca
 > <hands-on-title> Task description </hands-on-title>
 >
 > 1. {% tool [Convert compressed file to uncompressed.](CONVERTER_gz_to_uncompressed) %} with the following parameters:
->    - {% icon param-file %} *"Choose compressed file"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Choose compressed file"*: `RNA-Seq_Reads_2.fastqsanger.gz` (Input dataset)
 >
 >
 {: .hands_on}
@@ -166,12 +166,12 @@ Uncompressing data is a crucial first step in many bioinformatics workflows beca
 >
 > 1. {% tool [RNA STAR](toolshed.g2.bx.psu.edu/repos/iuc/rgrnastar/rna_star/2.7.10b+galaxy4) %} with the following parameters:
 >    - *"Single-end or paired-end reads"*: `Paired-end (as individual datasets)`
->        - {% icon param-file %} *"RNA-Seq FASTQ/FASTA file, forward reads"*: `output1` (output of **Convert compressed file to uncompressed.** {% icon tool %})
->        - {% icon param-file %} *"RNA-Seq FASTQ/FASTA file, reverse reads"*: `output1` (output of **Convert compressed file to uncompressed.** {% icon tool %})
+>        - {% icon param-file %} *"RNA-Seq FASTQ/FASTA file, forward reads"*: `RNA-Seq_Reads_1.fastqsanger` (output of **Convert compressed file to uncompressed.** {% icon tool %})
+>        - {% icon param-file %} *"RNA-Seq FASTQ/FASTA file, reverse reads"*: `RNA-Seq_Reads_2.fastqsanger` (output of **Convert compressed file to uncompressed.** {% icon tool %})
 >    - *"Custom or built-in reference genome"*: `Use a built-in index`
 >        - *"Reference genome with or without an annotation"*: `use genome reference without builtin gene-model but provide a gtf`
 >            - *"Select reference genome"*: `Human Dec. 2013 (GRCh38/hg38) (hg38)`
->            - {% icon param-file %} *"Gene model (gff3,gtf) file for splice junctions"*: `output` (Input dataset)
+>            - {% icon param-file %} *"Gene model (gff3,gtf) file for splice junctions"*: `human_reference_genome_annotation.gtf` (Input dataset)
 >            - *"Per gene/transcript output"*: `No per gene or transcript output`
 >    - *"Use 2-pass mapping for more sensitive novel splice junction discovery"*: `Yes, perform single-sample 2-pass mapping of all reads`
 >    - *"Report chimeric alignments?"*: `Within the BAM output (together with regular alignments; WithinBAM SoftClip) soft-clipping in the CIGAR for supplemental chimeric alignments`
@@ -215,7 +215,7 @@ The output includes a list of fusion candidates with key information like fusion
 > 1. {% tool [Arriba](toolshed.g2.bx.psu.edu/repos/iuc/arriba/arriba/2.4.0+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"STAR Aligned.out.sam"*: `mapped_reads` (output of **RNA STAR** {% icon tool %})
 >    - *"Genome assembly fasta (that was used for STAR alignment)"*: `From your history`
->        - {% icon param-file %} *"Genome assembly fasta"*: `output` (Input dataset)
+>        - {% icon param-file %} *"Genome assembly fasta"*: `human_reference_genome.fasta` (Input dataset)
 >    - *"Genome GTF annotation source"*: `From your history`
 >        - {% icon param-file %} *"Gene annotation in GTF format"*: `output` (Input dataset)
 >    - {% icon param-file %} *"File containing blacklisted ranges."*: `blacklist` (output of **Arriba Get Filters** {% icon tool %})
@@ -371,7 +371,7 @@ Using regex (regular expressions) for find and replace is a powerful technique f
 >            - *"Find Regex"*: `>(\b\w+\S+)(.*$)`
 >            - *"Replacement"*: `>generic|fusion_\1|\2`
 >
->
+> 2. Rename the output FASTA as `Arriba-Fusion-Database.fasta`
 {: .hands_on}
 
 
