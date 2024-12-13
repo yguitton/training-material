@@ -265,7 +265,7 @@ FASTA-to-Tabular is a tool that converts FASTA-formatted sequence files into tab
 
 In this workflow, FASTA-to-Tabular enables the conversion of variant protein sequences into a structured tabular format, which is helpful for subsequent data processing and analysis. This format allows researchers to efficiently filter, sort, or query specific sequence information and simplifies integration with other data analysis tools or databases. We do this for the indels, single nucleotide variants and rpkm databases.
 
-> <hands-on-title> INDEL - FASTA-to-Tabular </hands-on-title>
+> <hands-on-title> **INDEL - FASTA-to-Tabular** </hands-on-title>
 > 
 > 1. {% tool [FASTA-to-Tabular](toolshed.g2.bx.psu.edu/repos/devteam/fasta_to_tabular/fasta2tab/1.1.1) %} with the following parameters:
 >    - {% icon param-file %} *"Convert these sequences"*: `output_indel` (output of **CustomProDB** {% icon tool %})
@@ -273,7 +273,7 @@ In this workflow, FASTA-to-Tabular enables the conversion of variant protein seq
 >
 {: .hands_on}
 
-> <hands-on-title> SNV - FASTA-to-Tabular </hands-on-title>
+> <hands-on-title> **SNV - FASTA-to-Tabular** </hands-on-title>
 >
 > 1. {% tool [FASTA-to-Tabular](toolshed.g2.bx.psu.edu/repos/devteam/fasta_to_tabular/fasta2tab/1.1.1) %} with the following parameters:
 >    - {% icon param-file %} *"Convert these sequences"*: `output_snv` (output of **CustomProDB** {% icon tool %})
@@ -281,7 +281,7 @@ In this workflow, FASTA-to-Tabular enables the conversion of variant protein seq
 >
 {: .hands_on}
 
-> <hands-on-title> RPKM - FASTA-to-Tabular </hands-on-title>
+> <hands-on-title> **RPKM - FASTA-to-Tabular** </hands-on-title>
 >
 > 1. {% tool [FASTA-to-Tabular](toolshed.g2.bx.psu.edu/repos/devteam/fasta_to_tabular/fasta2tab/1.1.1) %} with the following parameters:
 >    - {% icon param-file %} *"Convert these sequences"*: `output_rpkm` (output of **CustomProDB** {% icon tool %})
@@ -310,7 +310,7 @@ Column Regex Find And Replace is a tool that applies regular expression (regex) 
 In this workflow, Column Regex Find And Replace cleans and formats the data in a way that makes identifiers or variant descriptions consistent. This is important for data compatibility, especially when the data needs to be used across different tools or integrated into larger datasets. It ensures that all sequence labels or variant annotations follow a uniform format, which reduces errors in downstream analyses.
 
 
-> <hands-on-title> INDEL-Column Regex Find And Replace </hands-on-title>
+> <hands-on-title> **INDEL-Column Regex Find And Replace** </hands-on-title>
 >
 > 1. {% tool [Column Regex Find And Replace](toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regexColumn1/1.0.3) %} with the following parameters:
 >    - {% icon param-file %} *"Select cells from"*: `output` (output of **FASTA-to-Tabular** {% icon tool %})
@@ -332,7 +332,7 @@ In this workflow, Column Regex Find And Replace cleans and formats the data in a
 >
 {: .hands_on}
 
-> <hands-on-title> SNV-Column Regex Find And Replace </hands-on-title>
+> <hands-on-title> **SNV-Column Regex Find And Replace** </hands-on-title>
 >
 > 1. {% tool [Column Regex Find And Replace](toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regexColumn1/1.0.3) %} with the following parameters:
 >    - {% icon param-file %} *"Select cells from"*: `output` (output of **FASTA-to-Tabular** {% icon tool %})
@@ -354,7 +354,7 @@ In this workflow, Column Regex Find And Replace cleans and formats the data in a
 >
 {: .hands_on}
 
-> <hands-on-title> RPKM -Column Regex Find And Replace </hands-on-title>
+> <hands-on-title> **RPKM -Column Regex Find And Replace** </hands-on-title>
 >
 > 1. {% tool [Column Regex Find And Replace](toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regexColumn1/1.0.3) %} with the following parameters:
 >    - {% icon param-file %} *"Select cells from"*: `output` (output of **FASTA-to-Tabular** {% icon tool %})
@@ -395,7 +395,7 @@ Tabular-to-FASTA is a tool that converts tabular data back into FASTA format, wh
 
 In this workflow, Tabular-to-FASTA converts the formatted tabular data back into a FASTA file, making it compatible with tools that require FASTA input for further analysis. This step enables the standardized, cleaned sequences from previous steps to be utilized in additional bioinformatics workflows or databases, maintaining the variant-specific information in a commonly used format. We do this for all the tabular files (SNV, INDEL, and RPKM).
 
-> <hands-on-title> INDEL-Tabular-to-FASTA </hands-on-title>
+> <hands-on-title> **INDEL-Tabular-to-FASTA** </hands-on-title>
 >
 > 1. {% tool [Tabular-to-FASTA](toolshed.g2.bx.psu.edu/repos/devteam/tabular_to_fasta/tab2fasta/1.1.1) %} with the following parameters:
 >    - {% icon param-file %} *"Tab-delimited file"*: `out_file1` (output of **Column Regex Find And Replace** {% icon tool %})
@@ -405,7 +405,7 @@ In this workflow, Tabular-to-FASTA converts the formatted tabular data back into
 > 2. Rename as 
 {: .hands_on}
 
-> <hands-on-title> SNV-Tabular-to-FASTA  </hands-on-title>
+> <hands-on-title> **SNV-Tabular-to-FASTA**  </hands-on-title>
 >
 > 1. {% tool [Tabular-to-FASTA](toolshed.g2.bx.psu.edu/repos/devteam/tabular_to_fasta/tab2fasta/1.1.1) %} with the following parameters:
 >    - {% icon param-file %} *"Tab-delimited file"*: `out_file1` (output of **Column Regex Find And Replace** {% icon tool %})
@@ -415,7 +415,7 @@ In this workflow, Tabular-to-FASTA converts the formatted tabular data back into
 >
 {: .hands_on}
 
-> <hands-on-title> RPKM-Tabular-to-FASTA  </hands-on-title>
+> <hands-on-title> **RPKM-Tabular-to-FASTA**  </hands-on-title>
 >
 > 1. {% tool [Tabular-to-FASTA](toolshed.g2.bx.psu.edu/repos/devteam/tabular_to_fasta/tab2fasta/1.1.1) %} with the following parameters:
 >    - {% icon param-file %} *"Tab-delimited file"*: `out_file1` (output of **Column Regex Find And Replace** {% icon tool %})
