@@ -73,7 +73,7 @@ The goal is to present an accessible and reproductible workflow for data submiss
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md %}
 >
-> 5. **Build a Collection** containing these two files
+> 5. **Build a Collection** containing these two files, you can ame i "ab1" for example
 >
 >    {% snippet faqs/galaxy/collections_build_list.md %}
 >
@@ -88,10 +88,7 @@ Following steps take as input ab1 sequences files and produce filtered FastQ and
 
 > <hands-on-title> ab1 to FASTQ converter </hands-on-title>
 > 1. {% tool [ab1 to FASTQ converter](toolshed.g2.bx.psu.edu/repos/ecology/ab1_fastq_converter/ab1_fastq_converter/1.20.0) %} with the following parameters:
->    - {% icon param-file %} *"Input ab1 file"*: `A2_RC_8F2_B.pl_HCOI.ab1`
-> 2. Repeat this step for the file `A12_RC_9G4_B.md_HCOI.ab1`
->
->
+>    - {% icon param-file %} *"Input ab1 file"*: `ab1` data collection created at the previous step
 >
 {: .hands_on}
 
@@ -101,12 +98,14 @@ Following steps take as input ab1 sequences files and produce filtered FastQ and
 We are doing a first Quality control on the raw files using FastQC and MultiQC.
 
 > <hands-on-title> FastQC </hands-on-title>
-> 1. {% tool [FastQC](toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.74+galaxy0) %} on the Fastq files:
->
-> 2. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy1) %} with the following parameters:
+> 1. {% tool [FastQC](toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.74+galaxy0) %} with the following parameters:
+>    - {% icon param-file %} *"Raw read data from your current history"*: `ab1.fastq` data collection created at the previous step
+> 2. {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy1) %} with the following parameters: 
 >    - In *"Results"*:
 >        - {% icon param-repeat %} *"Insert Results"*
 >            - *"Which tool was used generate logs?"*: `FastQC`
+>    - In *"FastQC output"*:
+>         - {% icon param-file %} *"RawData FastQC output"*: `FastQC on collection X:` data collection created at the previous step
 >
 > 3. *Check on the HTML files the general quality statistics of your sequences*
 >
