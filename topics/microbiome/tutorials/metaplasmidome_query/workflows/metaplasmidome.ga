@@ -38,7 +38,7 @@
             "outputs": [],
             "position": {
                 "left": 0,
-                "top": 223
+                "top": 296.94122404660857
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": null}",
@@ -65,7 +65,7 @@
             "outputs": [],
             "position": {
                 "left": 0,
-                "top": 346
+                "top": 419.94122404660857
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": null}",
@@ -92,7 +92,7 @@
             "outputs": [],
             "position": {
                 "left": 2520.084604995301,
-                "top": 430
+                "top": 503.94122404660857
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": null}",
@@ -119,7 +119,7 @@
             "outputs": [],
             "position": {
                 "left": 4760.159856005782,
-                "top": 146
+                "top": 219.94122404660857
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": null}",
@@ -146,7 +146,7 @@
             "outputs": [],
             "position": {
                 "left": 5320.178657115849,
-                "top": 301
+                "top": 374.94122404660857
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": null}",
@@ -191,9 +191,15 @@
             ],
             "position": {
                 "left": 280.00940055503344,
-                "top": 206
+                "top": 279.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionalignment_output": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "alignment_output"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/minimap2/minimap2/2.28+galaxy0",
             "tool_shed_repository": {
                 "changeset_revision": "5cc34c3f440d",
@@ -230,9 +236,15 @@
             ],
             "position": {
                 "left": 280.00940055503344,
-                "top": 521
+                "top": 594.9412240466086
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "output"
+                }
+            },
             "tool_id": "CONVERTER_fasta_to_tabular",
             "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.1",
@@ -263,9 +275,15 @@
             ],
             "position": {
                 "left": 2800.0940055503347,
-                "top": 446
+                "top": 519.9412240466086
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "output"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/count_gff_features/count_gff_features/0.2",
             "tool_shed_repository": {
                 "changeset_revision": "188392a0d0a8",
@@ -301,10 +319,16 @@
                 }
             ],
             "position": {
-                "left": 560.0188011100669,
-                "top": 116
+                "left": 560.0166625976562,
+                "top": 189.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Cut1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"columnList\": \"c1-c12\", \"delimiter\": \"T\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.2",
@@ -335,9 +359,15 @@
             ],
             "position": {
                 "left": 560.0188011100669,
-                "top": 251
+                "top": 324.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Cut1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"columnList\": \"c12\", \"delimiter\": \"T\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.2",
@@ -368,9 +398,15 @@
             ],
             "position": {
                 "left": 840.0282016651004,
-                "top": 116
+                "top": 189.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/column_maker/Add_a_column1/2.1",
             "tool_shed_repository": {
                 "changeset_revision": "aff5135563c6",
@@ -407,9 +443,15 @@
             ],
             "position": {
                 "left": 840.0282016651004,
-                "top": 250
+                "top": 323.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionoutput1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "output1"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_histogram/ggplot2_histogram/3.4.0+galaxy0",
             "tool_shed_repository": {
                 "changeset_revision": "b0d96516e6a5",
@@ -446,9 +488,15 @@
             ],
             "position": {
                 "left": 1120.0376022201337,
-                "top": 1
+                "top": 74.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Cut1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"columnList\": \"c13\", \"delimiter\": \"T\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.2",
@@ -479,7 +527,7 @@
             ],
             "position": {
                 "left": 1120.0376022201337,
-                "top": 135
+                "top": 208.94122404660857
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/histogram/histogram_rpy/1.0.4",
@@ -518,9 +566,15 @@
             ],
             "position": {
                 "left": 1120.0376022201337,
-                "top": 269
+                "top": 342.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Filter1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"cond\": \"c13>=0.8\", \"header_lines\": \"0\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.1.1",
@@ -550,7 +604,7 @@
                 }
             ],
             "position": {
-                "left": 1400.0470027751671,
+                "left": 1413.6394515545703,
                 "top": 0
             },
             "post_job_actions": {},
@@ -590,9 +644,15 @@
             ],
             "position": {
                 "left": 1400.0470027751671,
-                "top": 269
+                "top": 342.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Filter1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"cond\": \"c12>=40\", \"header_lines\": \"0\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.1.1",
@@ -623,9 +683,15 @@
             ],
             "position": {
                 "left": 1400.0470027751671,
-                "top": 404
+                "top": 477.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Cut1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"columnList\": \"c12\", \"delimiter\": \"T\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.2",
@@ -656,9 +722,15 @@
             ],
             "position": {
                 "left": 1680.0564033302005,
-                "top": 269
+                "top": 342.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Cut1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"columnList\": \"c1,c6\", \"delimiter\": \"T\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.2",
@@ -688,10 +760,16 @@
                 }
             ],
             "position": {
-                "left": 1680.0564033302005,
-                "top": 403
+                "left": 1680.047227633093,
+                "top": 476.9450002240956
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionoutput1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "output1"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_histogram/ggplot2_histogram/3.4.0+galaxy0",
             "tool_shed_repository": {
                 "changeset_revision": "b0d96516e6a5",
@@ -732,9 +810,15 @@
             ],
             "position": {
                 "left": 1960.065803885234,
-                "top": 271
+                "top": 344.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "join1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"field1\": \"1\", \"field2\": \"1\", \"fill_empty_columns\": {\"fill_empty_columns_switch\": \"no_fill\", \"__current_case__\": 0}, \"header\": \"\", \"input1\": {\"__class__\": \"ConnectedValue\"}, \"input2\": {\"__class__\": \"ConnectedValue\"}, \"partial\": \"\", \"unmatched\": \"\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "2.1.3",
@@ -765,9 +849,15 @@
             ],
             "position": {
                 "left": 2240.0752044402675,
-                "top": 296
+                "top": 369.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Cut1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"columnList\": \"c2,c1,c4\", \"delimiter\": \"T\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.2",
@@ -798,9 +888,15 @@
             ],
             "position": {
                 "left": 2240.0752044402675,
-                "top": 610
+                "top": 683.9412240466086
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Cut1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"columnList\": \"c1,c4\", \"delimiter\": \"T\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.2",
@@ -820,12 +916,7 @@
                     "output_name": "out_file1"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Add Header",
-                    "name": "datatable"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "Add Header",
             "outputs": [
@@ -835,10 +926,18 @@
                 }
             ],
             "position": {
-                "left": 2553.666126225509,
-                "top": 163.23657970823393
+                "left": 2553.662374965172,
+                "top": 237.18001003407176
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "RenameDatasetActionData Table": {
+                    "action_arguments": {
+                        "newname": "Metagenomes identified as plasmids"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "Data Table"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/estrain/add_column_headers/add_column_headers/0.1.3",
             "tool_shed_repository": {
                 "changeset_revision": "ff2acdb98a74",
@@ -846,7 +945,7 @@
                 "owner": "estrain",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"datatable\": {\"__class__\": \"RuntimeValue\"}, \"header\": \"Metaplasmidome database sequence name,Metagenomic sequence name,Metagenomic sequence\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"datatable\": {\"__class__\": \"ConnectedValue\"}, \"header\": \"Metaplasmidome database sequence name,Metagenomic sequence name,Metagenomic sequence\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.1.3",
             "type": "tool",
             "uuid": "82d46177-4eab-4399-b328-baab91477429",
@@ -881,9 +980,15 @@
             ],
             "position": {
                 "left": 2520.084604995301,
-                "top": 610
+                "top": 683.9412240466086
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "sort1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"column\": \"1\", \"column_set\": [], \"header_lines\": \"0\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"order\": \"DESC\", \"style\": \"alpha\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.2.0",
@@ -918,9 +1023,15 @@
             ],
             "position": {
                 "left": 2800.0940055503347,
-                "top": 261
+                "top": 334.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "join1",
             "tool_state": "{\"__input_ext\": \"gff3\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"field1\": \"1\", \"field2\": \"1\", \"fill_empty_columns\": {\"fill_empty_columns_switch\": \"no_fill\", \"__current_case__\": 0}, \"header\": \"\", \"input1\": {\"__class__\": \"ConnectedValue\"}, \"input2\": {\"__class__\": \"ConnectedValue\"}, \"partial\": \"\", \"unmatched\": \"\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "2.1.3",
@@ -951,9 +1062,15 @@
             ],
             "position": {
                 "left": 2800.0940055503347,
-                "top": 600
+                "top": 673.9412240466086
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionoutfile": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "outfile"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sorted_uniq/9.3+galaxy1",
             "tool_shed_repository": {
                 "changeset_revision": "86755160afbf",
@@ -989,10 +1106,16 @@
                 }
             ],
             "position": {
-                "left": 3080.1034061053683,
-                "top": 286
+                "left": 3078.6761300637186,
+                "top": 355.6441194223201
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Cut1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"columnList\": \"c11,c3,c9\", \"delimiter\": \"T\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.2",
@@ -1022,10 +1145,18 @@
                 }
             ],
             "position": {
-                "left": 3080.089664180655,
-                "top": 622.006917580278
+                "left": 3080.086245631013,
+                "top": 695.9318338936986
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "RenameDatasetActionoutput": {
+                    "action_arguments": {
+                        "newname": "Metagenome sequences identified as plasmids"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "output"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/tabular_to_fasta/tab2fasta/1.1.1",
             "tool_shed_repository": {
                 "changeset_revision": "0a7799698fe5",
@@ -1067,10 +1198,16 @@
                 }
             ],
             "position": {
-                "left": 3360.112829945508,
-                "top": 152
+                "left": 3360.1180413272446,
+                "top": 225.9298554256009
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Grouping1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"groupcol\": \"2\", \"ignorecase\": false, \"ignorelines\": null, \"input1\": {\"__class__\": \"ConnectedValue\"}, \"operations\": [{\"__index__\": 0, \"optype\": \"length\", \"opcol\": \"3\", \"opround\": \"no\", \"opdefault\": null}], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "2.1.4",
@@ -1100,10 +1237,16 @@
                 }
             ],
             "position": {
-                "left": 3360.112829945508,
-                "top": 286
+                "left": 3360.1180413272446,
+                "top": 359.9464161550109
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Filter1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"cond\": \"c2=='CDS'\", \"header_lines\": \"0\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.1.1",
@@ -1134,9 +1277,15 @@
             ],
             "position": {
                 "left": 3640.122253785648,
-                "top": 286
+                "top": 359.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Cut1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"columnList\": \"c1,c3\", \"delimiter\": \"T\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.2",
@@ -1171,7 +1320,7 @@
             ],
             "position": {
                 "left": 3920.1316543406815,
-                "top": 241
+                "top": 314.94122404660857
             },
             "post_job_actions": {
                 "ChangeDatatypeActiondiscarded_lines": {
@@ -1186,6 +1335,16 @@
                         "newtype": "tabular"
                     },
                     "action_type": "ChangeDatatypeAction",
+                    "output_name": "kept_lines"
+                },
+                "HideDatasetActiondiscarded_lines": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "discarded_lines"
+                },
+                "HideDatasetActionkept_lines": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
                     "output_name": "kept_lines"
                 }
             },
@@ -1224,10 +1383,16 @@
                 }
             ],
             "position": {
-                "left": 4200.141054895715,
-                "top": 321
+                "left": 4200.141478385132,
+                "top": 394.9384208278514
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionoutfile": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "outfile"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_column/9.3+galaxy1",
             "tool_shed_repository": {
                 "changeset_revision": "86755160afbf",
@@ -1264,9 +1429,15 @@
             ],
             "position": {
                 "left": 4480.150455450748,
-                "top": 187
+                "top": 260.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionoutfile": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "outfile"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_column/9.3+galaxy1",
             "tool_shed_repository": {
                 "changeset_revision": "86755160afbf",
@@ -1302,10 +1473,16 @@
                 }
             ],
             "position": {
-                "left": 4480.150455450748,
-                "top": 321
+                "left": 4480.149290737761,
+                "top": 394.9384208278514
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionData Table": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "Data Table"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/estrain/add_column_headers/add_column_headers/0.1.3",
             "tool_shed_repository": {
                 "changeset_revision": "ff2acdb98a74",
@@ -1346,9 +1523,17 @@
             ],
             "position": {
                 "left": 4760.159856005782,
-                "top": 269
+                "top": 342.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "RenameDatasetActionout_file1": {
+                    "action_arguments": {
+                        "newname": "CDS in metagenomes identified as plasmids"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "cat1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"input1\": {\"__class__\": \"ConnectedValue\"}, \"queries\": [{\"__index__\": 0, \"input2\": {\"__class__\": \"ConnectedValue\"}}], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.0",
@@ -1389,9 +1574,15 @@
             ],
             "position": {
                 "left": 5040.1692565608155,
-                "top": 142
+                "top": 215.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "join1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"field1\": \"2\", \"field2\": \"2\", \"fill_empty_columns\": {\"fill_empty_columns_switch\": \"no_fill\", \"__current_case__\": 0}, \"header\": \"\", \"input1\": {\"__class__\": \"ConnectedValue\"}, \"input2\": {\"__class__\": \"ConnectedValue\"}, \"partial\": \"\", \"unmatched\": \"-u\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "2.1.3",
@@ -1422,9 +1613,15 @@
             ],
             "position": {
                 "left": 5320.178657115849,
-                "top": 167
+                "top": 240.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Cut1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"columnList\": \"c1-c4,c7,c11\", \"delimiter\": \"T\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.2",
@@ -1459,9 +1656,15 @@
             ],
             "position": {
                 "left": 5600.188057670883,
-                "top": 169
+                "top": 242.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "join1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"field1\": \"2\", \"field2\": \"1\", \"fill_empty_columns\": {\"fill_empty_columns_switch\": \"no_fill\", \"__current_case__\": 0}, \"header\": \"\", \"input1\": {\"__class__\": \"ConnectedValue\"}, \"input2\": {\"__class__\": \"ConnectedValue\"}, \"partial\": \"\", \"unmatched\": \"-u\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "2.1.3",
@@ -1492,9 +1695,15 @@
             ],
             "position": {
                 "left": 5880.197458225916,
-                "top": 194
+                "top": 267.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Cut1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"columnList\": \"c1-c6,c9,c10,c25\", \"delimiter\": \"T\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.2",
@@ -1525,9 +1734,15 @@
             ],
             "position": {
                 "left": 6160.20685878095,
-                "top": 194
+                "top": 267.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionoutfile": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "outfile"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_tail_tool/9.3+galaxy1",
             "tool_shed_repository": {
                 "changeset_revision": "86755160afbf",
@@ -1564,9 +1779,17 @@
             ],
             "position": {
                 "left": 6440.2171365860595,
-                "top": 194.01120085549044
+                "top": 267.952424902099
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "RenameDatasetActionData Table": {
+                    "action_arguments": {
+                        "newname": "CDS in metagenomes identified as plasmids + KO + PFAM"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "Data Table"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/estrain/add_column_headers/add_column_headers/0.1.3",
             "tool_shed_repository": {
                 "changeset_revision": "ff2acdb98a74",
@@ -1608,10 +1831,16 @@
                 }
             ],
             "position": {
-                "left": 6720.225659891017,
-                "top": 60
+                "left": 6720.23564160672,
+                "top": 133.9324190446071
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Filter1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"cond\": \"c8!='.'\", \"header_lines\": \"0\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.1.1",
@@ -1642,9 +1871,15 @@
             ],
             "position": {
                 "left": 6720.225659891017,
-                "top": 194
+                "top": 267.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Filter1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"cond\": \"c5!='.'\", \"header_lines\": \"0\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.1.1",
@@ -1675,9 +1910,15 @@
             ],
             "position": {
                 "left": 6720.225659891017,
-                "top": 328
+                "top": 401.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Grouping1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"groupcol\": \"1\", \"ignorecase\": false, \"ignorelines\": null, \"input1\": {\"__class__\": \"ConnectedValue\"}, \"operations\": [{\"__index__\": 0, \"optype\": \"unique\", \"opcol\": \"2\", \"opround\": \"no\", \"opdefault\": null}, {\"__index__\": 1, \"optype\": \"unique\", \"opcol\": \"3\", \"opround\": \"no\", \"opdefault\": null}, {\"__index__\": 2, \"optype\": \"unique\", \"opcol\": \"5\", \"opround\": \"no\", \"opdefault\": null}, {\"__index__\": 3, \"optype\": \"unique\", \"opcol\": \"8\", \"opround\": \"no\", \"opdefault\": null}], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "2.1.4",
@@ -1708,9 +1949,15 @@
             ],
             "position": {
                 "left": 7000.235060446051,
-                "top": 60
+                "top": 133.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Grouping1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"groupcol\": \"8\", \"ignorecase\": false, \"ignorelines\": null, \"input1\": {\"__class__\": \"ConnectedValue\"}, \"operations\": [{\"__index__\": 0, \"optype\": \"length\", \"opcol\": \"8\", \"opround\": \"no\", \"opdefault\": null}], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "2.1.4",
@@ -1740,10 +1987,16 @@
                 }
             ],
             "position": {
-                "left": 7000.235060446051,
-                "top": 194
+                "left": 7000.243410194123,
+                "top": 267.94897977401706
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "out_file1"
+                }
+            },
             "tool_id": "Grouping1",
             "tool_state": "{\"__input_ext\": \"tabular\", \"chromInfo\": \"/shared/ifbstor1/galaxy/mutable-config/tool-data/shared/ucsc/chrom/?.len\", \"groupcol\": \"5\", \"ignorecase\": false, \"ignorelines\": null, \"input1\": {\"__class__\": \"ConnectedValue\"}, \"operations\": [{\"__index__\": 0, \"optype\": \"length\", \"opcol\": \"5\", \"opround\": \"no\", \"opdefault\": null}], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "2.1.4",
@@ -1774,9 +2027,15 @@
             ],
             "position": {
                 "left": 7000.235060446051,
-                "top": 328
+                "top": 401.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "HideDatasetActionoutfile": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "outfile"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_tail_tool/9.3+galaxy1",
             "tool_shed_repository": {
                 "changeset_revision": "86755160afbf",
@@ -1813,7 +2072,7 @@
             ],
             "position": {
                 "left": 7280.244461001084,
-                "top": 79
+                "top": 152.94122404660857
             },
             "post_job_actions": {},
             "tool_id": "sort1",
@@ -1846,7 +2105,7 @@
             ],
             "position": {
                 "left": 7280.244461001084,
-                "top": 213
+                "top": 286.94122404660857
             },
             "post_job_actions": {},
             "tool_id": "sort1",
@@ -1879,9 +2138,17 @@
             ],
             "position": {
                 "left": 7280.244461001084,
-                "top": 347
+                "top": 420.94122404660857
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "RenameDatasetActionData Table": {
+                    "action_arguments": {
+                        "newname": "CDS annotation overview per metagenomic sequences"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "Data Table"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/estrain/add_column_headers/add_column_headers/0.1.3",
             "tool_shed_repository": {
                 "changeset_revision": "ff2acdb98a74",
@@ -1908,6 +2175,6 @@
         "metaplasmidome",
         "name:microGalaxy"
     ],
-    "uuid": "bd8d874c-b94f-48d7-ba97-bba57c0f9a70",
-    "version": 11
+    "uuid": "8fc35d7e-0cf4-4365-b57a-75d247588f7e",
+    "version": 13
 }
