@@ -353,7 +353,8 @@ Jekyll::Hooks.register :site, :post_write do |site|
   # No need to run this except in prod.
   if Jekyll.env == 'production'
     # Our API
-    Jekyll::Generators::APIGenerator.generate(site)
+    api = Jekyll::Generators::APIGenerator.new
+    api.generate(site)
 
     # Public tool listing: reorganised
     if site.data['public-server-tools'] && site.data['public-server-tools']['tools']
