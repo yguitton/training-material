@@ -320,12 +320,6 @@ mapping:
                 type: str
                 description: |
                   Custom markdown formatted text to display. Note that Jekyll things like `{% snippet %}` or `{% include %}` will not work here.
-          no_galaxy:
-            type: bool
-            description: |
-              Set to `true` to disable the automatic "register for a galaxy account" card.
-
-              Helena has deprecated this and set this to automatically hide the card if event.infrastructures.servers is empty, which makes sense? It is weird to say "register an account" without saying where to do that?
     tags:
         type: seq
         sequence:
