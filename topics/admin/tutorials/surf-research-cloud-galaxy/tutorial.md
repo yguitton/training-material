@@ -19,7 +19,7 @@ requirements:
   - type: "none"
     title: Have a basic understanding of how Galaxy works 
 time_estimation: "30m"
-level: "beginner"
+level: Introductory
 contributions:
   authorship:
   - mirelaminkova
