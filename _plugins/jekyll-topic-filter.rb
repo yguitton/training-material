@@ -1189,13 +1189,23 @@ module Gtn
 
     ##
     # List materials by tool
+    #
     # Parameters:
     # +site+:: The +Jekyll::Site+ object, used to get the list of pages.
     # Returns:
-    # +Hash+:: A hash of tool_id => {
-    #   "tool_id" => [tool_id, version],
-    #   "tutorials" => [tutorial_id, tutorial_title, topic_title, tutorial_url]
-    # }
+    # +Hash+:: A hash as below:
+    #
+    #   {
+    #     tool_id => {
+    #       "tool_id" => [tool_id, version],
+    #       "tutorials" => [tutorial_id, tutorial_title, topic_title, tutorial_url]
+    #     }, ...
+    #   }
+    #
+    # *Nota Bene!!!*: Galaxy depends on the structure of this response, please
+    # do not change it, add a new API instead if you need to modify it
+    # significantly.
+    #
     def self.list_materials_by_tool(site)
       tool_map = {}
 
@@ -1364,6 +1374,9 @@ module Jekyll
         arr.map { |k| k[1] }
       end
 
+      ##
+      # Galaxy depends on the structure of this response, please do not change
+      # it, add a new API instead if you need to modify it significantly.
       def list_materials_by_tool(site)
         Gtn::TopicFilter.list_materials_by_tool(site)
       end
