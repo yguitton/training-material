@@ -40,10 +40,10 @@
         <tr>
           {% assign hidetime = material.async | default: async%}
           {% if page.layout == 'event' and hidetimes != true %}
-          <td><b>{{material.time | markdownify }}</b>
+          <td>{{material.time | markdownify }}
 
               <div class="duplicate" style="display: none;">
-              <div>{{material.title}}</div>
+              <b>{{material.title}}</b>
               <div class="btn-group" role="group" aria-label="Supporting materials for this resource">
               {% include _includes/resource-slides.html material=material topic=topic.name %}
               {% include _includes/resource-handson.html material=material topic=topic.name %}
