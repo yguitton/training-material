@@ -173,7 +173,7 @@ layout: base
     <p>Follow the steps below to get set up with everything you need to participate in the course!</p>
 
     <!-- Galaxy setup -->
-    {% unless event.infrastructure.no_galaxy %}
+    {% if event.infrastructure.servers %}
     <div class="card setup-card">
 	  <div class="row no-gutters">
 		<div class="col-sm-3">
@@ -181,7 +181,6 @@ layout: base
 		</div>
 		<div class="col-sm-9">
 
-		{% if event.infrastructure.servers %}
 		  <div class="card-body">
 			<h5 class="card-title">Create a Galaxy Account</h5>
 			<p class="card-text">
@@ -199,11 +198,10 @@ layout: base
               Note: If you already have a Galaxy account you can skip this step and just log in to your existing account.
             </p>
 		  </div>
-		  {% endif %}
 		</div>
 	  </div>
 	</div>
-	{% endunless %}
+	{% endif %}
 
     <!-- TIaaS setup -->
     {% if event.infrastructure.tiaas %}
