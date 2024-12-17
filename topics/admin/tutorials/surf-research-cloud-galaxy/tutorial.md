@@ -12,17 +12,32 @@ objectives:
   - Understand how to work with a Galaxy on-demand instance in SURF Research Cloud
   - Be able to attach a Pulsar node to Galaxy and use interactive tools
 requirements:
-  - Access to the SURF Research Cloud
-  - SRAM authentication
-  - An SSH key connected to your account
-  - Have a basic understanding of how Galaxy works 
+  - type: "none"
+    title: Access to the SURF Research Cloud
+  - type: "none"
+    title: SRAM authentication
+  - type: "none"
+    title: An SSH key connected to your account
+  - type: "none"
+    title: Have a basic understanding of how Galaxy works 
 time_estimation: "30m"
 level: "beginner"
 contributions:
   authorship:
-  - hexylena
   - mirelaminkova
+  - hexylena
   - dometto
+
+edam_ontology:
+- topic_3489 # Database Management
+- topic_0605 # Informatics
+- topic_3071 # Data Management
+
+abbreviations:
+  SRC: SURF Research Cloud
+  GDPR: General Data Protection Regulations
+  SRAM: SURF Research Access Management
+  CO: Collaborative Organisation
 ---
 
 # Overview 
