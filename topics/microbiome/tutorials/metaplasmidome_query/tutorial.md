@@ -41,7 +41,7 @@ The *metaplasmidome* refers to the collection of all plasmids present within a g
 
 A common step in metaplasmidome analysis is searching sequencing reads against known plasmid databases to detect plasmid sequences within a metagenome, allowing researchers to map the diversity and abundance of plasmids in various environments. 
 
-In this tutorial, we use a metaplasmidome database built from public air metagenomes and query it with other air metagenome data that has been assembled. But a similar approach can be used for other mobile genetic elements.
+In this tutorial, we use a metaplasmidome database built from public air metagenomes and query it with assembled air metagenome data. A similar approach can be used for other mobile genetic elements.
 
 > <details-title>How was built the air metaplasmidome database?</details-title>
 >
@@ -66,7 +66,7 @@ In this tutorial, we use a metaplasmidome database built from public air metagen
 
 # Galaxy and data preparation
 
-Any analysis should get its own Galaxy history. So let's start by creating a new one and get the data (plasmidome database and query metagenomes) into it.
+Any analysis should get its own Galaxy history. So let's start by creating a new history and import the data (plasmidome database and query metagenomes) into it.
 
 > <hands-on-title>Prepare Galaxy and data</hands-on-title>
 >
@@ -93,7 +93,7 @@ Any analysis should get its own Galaxy history. So let's start by creating a new
 >
 >    {% snippet faqs/galaxy/datasets_rename.md %}
 >
-> 5. Import the reads to query against reference database from [Zenodo]({{ page.zenodo_link }}) or from
+> 5. Import the reads to query against the reference database from [Zenodo]({{ page.zenodo_link }}) or from
 >    the shared data library
 >
 >    ```
@@ -155,8 +155,8 @@ PAF is the default output format of minimap2. It is TAB-delimited with each line
 > > <solution-title></solution-title>
 > >
 > > 1. 29,796 lines
-> > 2. There are 16,637 query sequences. Several query sequences are found several times in the file: SRR17300492_75807 is found 16 times. It means they have been mapped to several location or sequences in the target.
-> > 3. The first alignment (SRR17300492_75807 mapping on SRR17300667-707) has a score of 60, the highest Phred score. The third alignment has a score of 0, so not really good.
+> > 2. There are 16,637 query sequences. Several query sequences are found several times in the file: SRR17300492_75807 is found 16 times. It means they have been mapped to several locations or sequences in the target.
+> > 3. The first alignment (SRR17300492_75807 mapping on SRR17300667-707) has a score of 60, the highest Phred score. The third alignment has a score of 0, so not good.
 > >
 > {: .solution}
 >
@@ -238,12 +238,12 @@ A new column has been added (column 13) with the plasmid coverage. Let's now plo
 
 > <question-title></question-title>
 >
-> 1. How is the distribution of the plasmid coverage?
+> 1. What is the distribution of the plasmid coverage?
 > 2. What could be a good threshold to filter?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. There are 2 pics: one around 0 (i.e. no plasmid coverage) and that slowly decrease until 0.8 and a pic at 1 (full plasmid coverage)
+> > 1. There are 2 pics: one around 0 (i.e. no plasmid coverage) that slowly decreases until 0.8 and a pic at 1 (full plasmid coverage)
 > > 2. 0.8 seems to be a breaking point and could be a good value to filter.
 > >
 > {: .solution}
@@ -252,7 +252,7 @@ A new column has been added (column 13) with the plasmid coverage. Let's now plo
 
 # Filtering
 
-We will now filter the alignment to keep only the ones with a plasmid coverage (column 13) of at least 0.8, i.e. a read mapping to a plasmid cover at least 80% of the plasmid.
+We will now filter the alignment to keep only the ones with a plasmid coverage (column 13) of at least 0.8, i.e. a read mapping to a plasmid covering at least 80% of the plasmid.
 
 > <hands-on-title>Filter alignments based on plasmid coverage</hands-on-title>
 >
@@ -267,7 +267,7 @@ We will now filter the alignment to keep only the ones with a plasmid coverage (
 >
 > 1. How many lines have been kept?
 > 2. Which percentage of lines does that correspond to?
-> 3. How does the distribution of the mapping score looks like for these alignments?
+> 3. What does the distribution of the mapping score look like for these alignments?
 > 4. Is there any extra filter we should do on the data?
 >
 > > <solution-title></solution-title>
@@ -325,7 +325,7 @@ After filtering on the plasmid coverage, we also add a filter on the score to be
 
 Let's now extract the sequences mapping to plasmids (coverage higher than 80%).
 
-First, we need to extract the names of the reads (in `air metagenomes`) mapping to plasmids in the metaplasmidome database. For that we need to extract the columns 1 (query names, i.e. names of reads in `Air metagenomes`) and 6 (reference names, i.e. names of sequences in `Air plasmidome database`).
+First, we need to extract the names of the reads (in `air metagenomes`) mapping to plasmids in the metaplasmidome database. For that, we need to extract column 1 (query names, i.e. names of reads in `Air metagenomes`) and 6 (reference names, i.e. names of sequences in `Air plasmidome database`).
 
 > <hands-on-title>Get sequences matching to plasmids</hands-on-title>
 >
@@ -450,7 +450,7 @@ We will import the GFF generated by Prokka.
 > 2. Inspect it.
 {: .hands_on}
 
-This file is a GFF: it describes genes and other features of DNA, RNA and protein sequences. It is a tab delimited file with 9 fields per line:
+This file is a GFF: it describes genes and other features of DNA, RNA and protein sequences. It is a tab-delimited file with 9 fields per line:
 
 1. **seqid**: The name of the sequence where the feature is located. 
 2. **source**: The algorithm or procedure that generated the feature. 
@@ -462,7 +462,8 @@ This file is a GFF: it describes genes and other features of DNA, RNA and protei
 8. **phase**: Phase of CDS features.
 9. **attributes**: A list of tag-value pairs separated by a semicolon with additional information about the feature. 
 
-The **seqid** corresponds here to the ID of the sequences in the metaplasmidome reference database. So to filter, we need to compare `Metaplasmidome database sequence name` in `Air metagenomes identified as plasmids` to **seqid** by joining the 2 datasets on the column 1.
+The **seqid** corresponds here to the ID of the sequences in the metaplasmidome reference database. So to filter, we need to compare `Metaplasmidome database sequence name` in `Air metagenomes identified as plasmids`
+to **seqid** by joining the 2 datasets on column 1.
 
 The file has with ~85 Million lines but many are comments (lines starting with `##`).
 
@@ -501,7 +502,7 @@ For that, we join the GFF on the SeqID column (column 1) with the `Air metagenom
 > 1. How many lines have been kept?
 > 2. Why is there more lines than in the `Air metagenomes identified as plasmids` file?
 > 2. What are the columns? 
-> 3. Which columns shoud we keep if we want to keep the Metagenomic sequence name, the feature and the attributes?
+> 3. Which columns should we keep if we want to keep the Metagenomic sequence name, the feature and the attributes?
 >
 > > <solution-title></solution-title>
 > >
@@ -552,7 +553,8 @@ Let's filter to keep only the CDS and extract the gene names.
 > 2. Inspect the generated file
 {: .hands_on}
 
-We have now a file with 26,329 lines. The 2nd column is not useful so we will remove it. The column 3 (**atributes** in GFF) lists tag-value pairs separated by a semicolon with additional information about the feature. The first lines seems to be hypothetical proteins. If we scroll down, we can find some annotated genes (with `gene` keyword).
+We have now a file with 26,329 lines. The 2nd column is not useful so we will remove it. Column 3 (**atributes** in GFF) lists tag-value pairs separated by a semicolon with additional information about the feature.
+The first lines seems to be hypothetical proteins. If we scroll down, we can find some annotated genes (with `gene` keyword).
 
 It would be good to create a tabular file with:
 1. Metagenomic sequence name
@@ -582,7 +584,7 @@ As not all genes are annotated (with `gene` keyword), we first need to split the
 
 > <question-title></question-title>
 >
-> 1. How many lines have been kept (non hypothetical proteins) and how many have been discarded (hypothetical proteins)?
+> 1. How many lines have been kept (non-hypothetical proteins) and how many have been discarded (hypothetical proteins)?
 > 2. Which information do we have for the 2nd identified gene?
 >
 > > <solution-title></solution-title>
@@ -616,7 +618,7 @@ Let's extract gene ID, gene name and the product in different columns from the a
 >
 > 3. {% tool [Add Header](toolshed.g2.bx.psu.edu/repos/estrain/add_column_headers/add_column_headers/0.1.3) %} with the following parameters:
 >    - *"List of Column headers"*: `Metagenomic sequence name,Gene ID,Gene name,Gene product`
->    - {% icon param-file %} *"Data File (tab-delimted)"*: output of **Replace Text** {% icon tool %}
+>    - {% icon param-file %} *"Data File (tab-delimited)"*: output of **Replace Text** {% icon tool %}
 >
 {: .hands_on}
 
@@ -649,7 +651,8 @@ We can now merge both files.
 
 ## Add KO and PFAM annotation
 
-Let's expand annotation with **[KO](https://www.genome.jp/kegg/ko.html) (KEGG Orthology)** ({% cite kanehisa2016kegg%}), a database of molecular functions represented in terms of functional orthologs, and **[PFAM](http://pfam.xfam.org/)** ({% cite mistry2021pfam %}), a large collection of protein families. The files are 
+Let's expand annotation with **[KO](https://www.genome.jp/kegg/ko.html) (KEGG Orthology)** ({% cite kanehisa2016kegg%}), a database of molecular functions
+represented in terms of functional orthologs, and **[PFAM](http://pfam.xfam.org/)** ({% cite mistry2021pfam %}), a large collection of protein families. The files are 
 
 > <hands-on-title>Import KO and PFAM annotations</hands-on-title>
 >
@@ -701,7 +704,7 @@ Let's now join the files with `Annotated genes in air metagenomes sequences iden
 >
 > 8. {% tool [Add Header](toolshed.g2.bx.psu.edu/repos/estrain/add_column_headers/add_column_headers/0.1.3) %} with the following parameters:
 >    - *"List of Column headers"*: `Metagenomic sequence name,Gene ID,Gene name,Gene product,KO ID,KO annotation,PFAM name,PFAM ID,PFAM annotation`
->    - {% icon param-file %} *"Data File (tab-delimted)"*: output of **Cut** {% icon tool %}
+>    - {% icon param-file %} *"Data File (tab-delimited)"*: output of **Cut** {% icon tool %}
 >
 > 9. Rename `CDS in metagenomes identified as plasmids + KO + PFAM`
 {: .hands_on}
@@ -730,7 +733,7 @@ Let's look at the KO and PFAM statistics.
 >
 {: .question}
 
-Let's extract an overview of the annotations per metagenomic sequence by grouping on the 1st column and counting the number of distinct value on gene ID, gene name, KO ID, PFAM ID.
+Let's extract an overview of the annotations per metagenomic sequence by grouping on the 1st column and counting the number of distinct values on gene ID, gene name, KO ID, PFAM ID.
 
 > <hands-on-title>Annotation per metagenomic sequences</hands-on-title>
 >
@@ -758,7 +761,7 @@ Let's extract an overview of the annotations per metagenomic sequence by groupin
 >
 > 3. {% tool [Add Header](toolshed.g2.bx.psu.edu/repos/estrain/add_column_headers/add_column_headers/0.1.3) %} with the following parameters:
 >    - *"List of Column headers"*: `Metagenomic sequence name,Number of CDS,Number of annotated CDS,Number of associated KO,Number of associated PFAM`
->    - {% icon param-file %} *"Data File (tab-delimted)"*: output of **Select last** {% icon tool %}
+>    - {% icon param-file %} *"Data File (tab-delimited)"*: output of **Select last** {% icon tool %}
 >
 > 4. Rename `CDS annotation overview per metagenomic sequences`
 {: .hands_on}
