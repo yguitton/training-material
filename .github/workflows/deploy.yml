@@ -94,6 +94,10 @@ jobs:
           jupyter lite build --contents /tmp/notebook
           mv _output _site/training-material/jupyter/
 
+      - name: Mandatory pre-deploy checks
+        run: |
+          bundle exec ruby bin/lint-deploy.rb
+
       - name: Deploy 🚀
         uses: peaceiris/actions-gh-pages@v3
         with:
