@@ -1,8 +1,17 @@
 openapi: 3.0.1
 info:
   title: Galaxy Training Network API
-  description: A collection of tutorials generated and maintained by Galaxy Community
-    Members across the world
+  description: |
+    A collection of e-learning materials produced and maintained by GTN Members
+    across the world.
+
+    IMPORTANT! IF you build anything based off of this API, you must contact us
+    to let us know. This API is UNSTABLE and subject to CHANGE WITHOUT WARNING.
+    When you contact us, if we are interested in supporting the project, then
+    we can advise you to the best APIs that are useful for your use case, or
+    help build new ones that are more useful to you and do not impose
+    unnecessary load on the GTN. Additionally we will consider providing
+    additional stability guarantees for those specific routes you rely on.
   license:
     name: MIT & CC-BY 4.0
     url: https://github.com/galaxyproject/training-material/blob/main/LICENSE.md
