@@ -67,52 +67,36 @@ module Jekyll
   module Generators
     ##
     # This class generates the GTN's "api" by writing out a folder full of JSON files.
-    # TODO: could be a post-write hook.
-    class APIGenerator < Generator
+    class APIGenerator
 
-      ##
-      # Generates /api/configuration.json
-      # Params:
-      # +site+:: +Jekyll::Site+ object
-      # Returns:
-      # nil
-      def generateConfiguration(site)
-        page2 = PageWithoutAFile.new(site, '', 'api/', 'configuration.json')
-        site.config.update(Gtn::Git.discover)
-        # Remove every key that starts with "cached_"
-        conf = site.config.reject { |k, _v| k.to_s.start_with?('cached_') }
-        page2.content = JSON.pretty_generate(conf)
-        page2.data['layout'] = nil
-        site.pages << page2
+      def copy(site, source, dest)
+        # It isn't unusual that some of these might not exist in dev envs.
+        if File.exist?(site.in_source_dir(source))
+          if ! Dir.exist?(File.dirname(site.in_dest_dir(dest)))
+            FileUtils.mkdir_p(File.dirname(site.in_dest_dir(dest)))
+          end
+
+          FileUtils.cp(site.in_source_dir(source), site.in_dest_dir(dest))
+        end
       end
 
-      ##
-      # Generates /api/version.json
-      # Params:
-      # +site+:: +Jekyll::Site+ object
-      # Returns:
-      # nil
-      def generateVersion(site)
-        page2 = PageWithoutAFile.new(site, '', 'api/', 'version.json')
-        page2.content = JSON.pretty_generate(Gtn::Git.discover)
-        page2.data['layout'] = nil
-        site.pages << page2
-      end
+      def write(site, dest, data, json: true, pretty: true)
+        # Since we're doing this ourselves, need to be responsible for ensuring
+        # the directory exists.
+        if ! Dir.exist?(File.dirname(site.in_dest_dir(dest)))
+          FileUtils.mkdir_p(File.dirname(site.in_dest_dir(dest)))
+        end
 
-      ##
-      # Generates /api/data-library.yaml
-      # Params:
-      # +site+:: +Jekyll::Site+ object
-      # Returns:
-      # nil
-      def generateLibrary(site)
-        Jekyll.logger.info '[GTN/API] Data Library'
-        page2 = PageWithoutAFile.new(site, '', 'api/', 'data-library.yaml')
-        data_libraries = Dir.glob('topics/**/data-library.yaml')
-        data_libraries.map! { |x| YAML.load_file(x) }
-        page2.content = JSON.pretty_generate(Gtn::Git.discover)
-        page2.data['layout'] = nil
-        site.pages << page2
+        if json
+          if pretty
+            File.write(site.in_dest_dir(dest), JSON.pretty_generate(data))
+          else
+            File.write(site.in_dest_dir(dest), JSON.generate(data))
+          end
+        else
+          # Pretty isn't relevant.
+          File.write(site.in_dest_dir(dest), data)
+        end
       end
 
       ##
@@ -120,90 +104,65 @@ module Jekyll
       # Params:
       # +site+:: +Jekyll::Site+ object
       def generate(site)
-        generateConfiguration(site)
-        # For some reason the templating isn't working right here.
-        # generateVersion(site)
-        # TODO:
-        # generateLibrary(site)
-
         Jekyll.logger.info '[GTN/API] Generating API'
+
+        write(site, 'api/configuration.json', site.config.reject { |k, _v| k.to_s.start_with?('cached_') })
+        write(site, 'api/swagger.json', site.data['swagger'])
+        write(site, 'api/version.json', Gtn::Git.discover)
+
         # Full Bibliography
-        Gtn::Scholar.load_bib(site)
         Jekyll.logger.debug '[GTN/API] Bibliography'
-        page3 = PageWithoutAFile.new(site, '', 'api/', 'gtn.bib')
-        page3.content = site.config['cached_global_bib'].to_s
-        page3.data['layout'] = nil
-        site.pages << page3
+        write(site, 'api/gtn.bib', site.config['cached_global_bib'].to_s, json: false)
 
         # Metrics endpoint, /metrics
-        page2 = PageWithoutAFile.new(site, '', '', 'metrics')
-        page2.content = "{% raw %}\n#{Gtn::Metrics.generate_metrics(site)}{% endraw %}"
-        page2.data['layout'] = nil
-        site.pages << page2
+        write(site, 'api/metrics', Gtn::Metrics.generate_metrics(site), json: false)
 
         # Public tool listing
-        page2 = PageWithoutAFile.new(site, '', 'api/', 'psl.json')
-        page2.content = JSON.generate(site.data['public-server-tools'])
-        page2.data['layout'] = nil
-        site.pages << page2
+        write(site, 'api/psl.json', site.data['public-server-tools'], pretty: false)
 
         # Tool Categories
-        page2 = PageWithoutAFile.new(site, '', 'api/', 'toolcats.json')
-        page2.content = JSON.generate(site.data['toolcats'])
-        page2.data['layout'] = nil
-        site.pages << page2
+        write(site, 'api/toolcats.json', site.data['toolcats'], pretty: false)
 
         # Tool Categories
-        page2 = PageWithoutAFile.new(site, '', 'api/', 'toolshed-revisions.json')
-        page2.content = JSON.generate(site.data['toolshed-revisions'])
-        page2.data['layout'] = nil
-        site.pages << page2
+        write(site, 'api/toolshed-revisions.json', site.data['toolshed-revisions'], pretty: false)
 
         # Feedback Data
-        page2 = PageWithoutAFile.new(site, '', 'api/', 'feedback2.json')
-        page2.content = JSON.generate(site.data['feedback2'])
-        page2.data['layout'] = nil
-        site.pages << page2
+        write(site, 'api/feedback2.json', site.data['feedback2'], pretty: false)
+        copy(site, 'metadata/feedback.csv', 'api/feedback.csv')
+        copy(site, 'metadata/feedback2.yaml', 'api/feedback2.yaml')
 
         # Contributors
         Jekyll.logger.debug '[GTN/API] Contributors, Funders, Organisations'
         %w[contributors grants organisations].each do |type|
-          page2 = PageWithoutAFile.new(site, '', 'api/', "#{type}.json")
-          page2.content = JSON.pretty_generate(site.data[type].map { |c, _| mapContributor(site, c) })
-          page2.data['layout'] = nil
-          site.pages << page2
+          pfo = site.data[type].map { |c, _| mapContributor(site, c) }
+          write(site, "api/#{type}.json", pfo, pretty: false)
+
           site.data['contributors'].each do |c, _|
-            page4 = PageWithoutAFile.new(site, '', 'api/', "#{type}s/#{c}.json")
-            page4.content = JSON.pretty_generate(mapContributor(site, c))
-            page4.data['layout'] = nil
-            site.pages << page4
+            write(site, "api/#{type}/#{c}.json", mapContributor(site, c))
           end
         end
 
-        page2 = PageWithoutAFile.new(site, '', 'api/', 'contributors.geojson')
-        page2.content = JSON.pretty_generate(
-          {
-            'type' => 'FeatureCollection',
-            'features' => site.data['contributors']
-              .select { |_k, v| v.key? 'location' }
-              .map do |k, v|
-                {
-                  'type' => 'Feature',
-                  'geometry' => { 'type' => 'Point', 'coordinates' => [v['location']['lon'], v['location']['lat']] },
-                  'properties' => {
-                    'name' => v.fetch('name', k),
-                    'url' => "https://training.galaxyproject.org/training-material/hall-of-fame/#{k}/",
-                    'joined' => v['joined'],
-                    'orcid' => v['orcid'],
-                    'id' => k,
-                    'contact_for_training' => v.fetch('contact_for_training', false),
-                  }
+        geojson = {
+          'type' => 'FeatureCollection',
+          'features' => site.data['contributors']
+            .select { |_k, v| v.key? 'location' }
+            .map do |k, v|
+              {
+                'type' => 'Feature',
+                'geometry' => { 'type' => 'Point', 'coordinates' => [v['location']['lon'], v['location']['lat']] },
+                'properties' => {
+                  'name' => v.fetch('name', k),
+                  'url' => "https://training.galaxyproject.org/training-material/hall-of-fame/#{k}/",
+                  'joined' => v['joined'],
+                  'orcid' => v['orcid'],
+                  'id' => k,
+                  'contact_for_training' => v.fetch('contact_for_training', false),
                 }
-              end
-          }
-        )
-        page2.data['layout'] = nil
-        site.pages << page2
+              }
+            end
+        }
+        write(site, "api/contributors.geojson", geojson)
+
 
         # Trigger the topic cache to generate if it hasn't already
         Jekyll.logger.debug '[GTN/API] Tutorials'
@@ -227,14 +186,11 @@ module Jekyll
             end
 
             # Write out the individual page
-            page6 = PageWithoutAFile.new(site, '', 'api/topics/', "#{q['url'][7..-6]}.json")
             # Delete the ref to avoid including it by accident
             q.delete('ref')
             q.delete('ref_tutorials')
             q.delete('ref_slides')
-            page6.content = JSON.pretty_generate(q)
-            page6.data['layout'] = nil
-            site.pages << page6
+            write(site, "api/topics/#{q['url'][7..-6]}.json", q)
 
             q
           end
@@ -242,11 +198,7 @@ module Jekyll
             mapContributor(site, c)
           end
 
-          page2 = PageWithoutAFile.new(site, '', 'api/topics/',
-                                       "#{topic}.json")
-          page2.content = JSON.pretty_generate(out)
-          page2.data['layout'] = nil
-          site.pages << page2
+          write(site, "api/topics/#{topic}.json", out)
         end
 
         topics = {}
@@ -272,37 +224,27 @@ module Jekyll
         # "title": "Whole transcriptome analysis of Arabidopsis thaliana"
         # },
 
-        page2 = PageWithoutAFile.new(site, '', 'api/', 'videos.json')
-        page2.content = JSON.pretty_generate(Gtn::TopicFilter.list_videos(site).map do |m|
+        videos = Gtn::TopicFilter.list_videos(site).map do |m|
           {
             id: "#{m['topic_name']}/tutorials/#{m['tutorial_name']}/slides",
             topic: m['topic_name_human'],
             title: m['title']
           }
-        end)
-        page2.data['layout'] = nil
-        site.pages << page2
+        end
+        write(site, "api/videos.json", videos)
+
 
         # Overall topic index
-        page2 = PageWithoutAFile.new(site, '', 'api/', 'topics.json')
-        page2.content = JSON.pretty_generate(topics)
-        page2.data['layout'] = nil
-        site.pages << page2
+        write(site, "api/topics.json", topics)
 
         Jekyll.logger.debug '[GTN/API] Tutorial and Slide pages'
 
         # Deploy the feedback file as well
-        page2 = PageWithoutAFile.new(site, '', 'api/', 'feedback.json')
-        page2.content = JSON.pretty_generate(site.data['feedback'])
-        page2.data['layout'] = nil
-        site.pages << page2
+        write(site, "api/feedback.json", site.data['feedback'])
 
         # Top Tools
         Jekyll.logger.debug '[GTN/API] Top Tools'
-        page2 = PageWithoutAFile.new(site, '', 'api/', 'top-tools.json')
-        page2.content = JSON.pretty_generate(Gtn::TopicFilter.list_materials_by_tool(site))
-        page2.data['layout'] = nil
-        site.pages << page2
+        write(site, "api/top-tools.json", Gtn::TopicFilter.list_materials_by_tool(site))
 
         # GA4GH TRS Endpoint
         # Please note that this is all a fun hack
@@ -311,30 +253,23 @@ module Jekyll
             wfid = workflow['wfid']
             wfname = workflow['wfname']
 
-            page2 = PageWithoutAFile.new(site, '', "api/ga4gh/trs/v2/tools/#{wfid}/versions/", "#{wfname}.json")
-            page2.content = JSON.pretty_generate(
-              {
-                'id' => wfname,
-                'url' => site.config['url'] + site.config['baseurl'] + material['url'],
-                'name' => 'v1',
-                'author' => [],
-                'descriptor_type' => ['GALAXY'],
-              }
-            )
-            page2.data['layout'] = nil
-            site.pages << page2
+            ga4gh_blob =  {
+              'id' => wfname,
+              'url' => site.config['url'] + site.config['baseurl'] + material['url'],
+              'name' => 'v1',
+              'author' => [],
+              'descriptor_type' => ['GALAXY'],
+            }
+            write(site, "api/ga4gh/trs/v2/tools/#{wfid}/versions/#{wfname}.json", ga4gh_blob)
 
-            page2 = PageWithoutAFile.new(site, '', "api/ga4gh/trs/v2/tools/#{wfid}/versions/#{wfname}/GALAXY",
-                                         'descriptor.json')
-            page2.content = JSON.pretty_generate(
-              {
-                'content' => File.read("#{material['dir']}/workflows/#{workflow['workflow']}"),
-                'checksum' => [],
-                'url' => nil,
-              }
-            )
-            page2.data['layout'] = nil
-            site.pages << page2
+
+
+            descriptor = {
+              'content' => File.read("#{material['dir']}/workflows/#{workflow['workflow']}"),
+              'checksum' => [],
+              'url' => nil,
+            }
+            write(site, "api/ga4gh/trs/v2/tools/#{wfid}/versions/#{wfname}/GALAXY/descriptor.json", descriptor)
           end
         end
       end
