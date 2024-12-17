@@ -27,6 +27,8 @@ contributions:
   - mirelaminkova
   - hexylena
   - dometto
+  funding:
+  - surf
 
 edam_ontology:
 - topic_3489 # Database Management
@@ -40,22 +42,32 @@ abbreviations:
   CO: Collaborative Organisation
 ---
 
-# Overview 
-Using Galaxy via the SURF Research Cloud (SRC) allows researchers to start Galaxy instances on-demand and analyze their data in a secure environment following the General Data Protection Regulations (GDPR). The instance provides secure authentication, where users must have a SURF Research account prior to this tutorial, have set the SRAM authentication method, and connect an SSH key to their accounts. In case you are not familiar with SRC and need help in setting up your accounts, please follow the instructions on the [SURF Knowledge Base](https://servicedesk.surf.nl/wiki/display/WIKI/SURF+Research+Cloud)
+Using Galaxy via the {SRC} allows researchers to start Galaxy instances on-demand and analyze their data in a secure environment following the {GDPR}. The instance provides secure authentication, where users must have a SURF Research account prior to this tutorial, have set the {SRAM} authentication method, and connect an SSH key to their accounts. In case you are not familiar with {SRC} and need help in setting up your accounts, please follow the instructions on the [SURF Knowledge Base](https://servicedesk.surf.nl/wiki/display/WIKI/SURF+Research+Cloud)
 
 In this training the aim is to focus on:
 
-- Understanding how to start Galaxy on SRC
+- Understanding how to start Galaxy on {SRC}
 - Connecting the instance to the Pulsar catalog item
 - Attaching external volumes for storage
 
-Galaxy instances can be started and stopped on demand, depending on personal cases and requirements. Inside the SRC members should have access to all publically available catalog items. If you are not able to create a catalog item, please contact SURF servicedesk, servicedesk@surf.nl. 
+Galaxy instances can be started and stopped on demand, depending on personal cases and requirements. Inside the SRC members should have access to all publicly available catalog items. If you are not able to create a catalog item, please [contact SURF servicedesk](mailto:servicedesk@surf.nl).
 
-# Prerequisites 
-This tutorial assumes you are member of a collaboration in SRAM that has access to SRC and a wallet with budget in SRC with enough sources to create Galaxy and Pulsar catalog items. (For more information please refer to the [SURF Knowledge Base](https://servicedesk.surf.nl/wiki/display/WIKI/Budgets%2C+wallets%2C+contracts) You must have previous experience working with data inside Galaxy.
+> <agenda-title></agenda-title>
+>
+> 1. TOC
+> {:toc}
+>
+{: .agenda}
+
+
+# Prerequisites
+
+This tutorial assumes you are member of a {CO} in {SRAM} that has access to SRC and a wallet with budget in SRC with enough sources to create Galaxy and Pulsar catalog items. (For more information please refer to the [SURF Knowledge Base](https://servicedesk.surf.nl/wiki/display/WIKI/Budgets%2C+wallets%2C+contracts) You must have previous experience working with data inside Galaxy.
 
 # Starting a Galaxy instance inside SCR step-by-step
+
 ## Access the SRC
+
 The first and most important step is to have access to the SURF Research Cloud. Once you login to the [portal](https://portal.live.surfresearchcloud.nl). 
 <img width="1472" alt="Screenshot 2024-12-11 at 08 51 59" src="https://github.com/user-attachments/assets/6207275f-9a25-41ca-89b6-4b7f3d043ae8" />
 <img width="1479" alt="Screenshot 2024-12-10 at 16 14 45" src="https://github.com/user-attachments/assets/1e8dcd44-4001-4451-9ee9-8d5957714ac5" />
