@@ -72,7 +72,6 @@ jobs:
           curl -L https://hexylena.github.io/toolshed-version-database/tool-meta.json > metadata/tool-meta.json
           curl -L https://edamontology.org/EDAM.csv > metadata/EDAM.csv
           make rebuild-search-index ACTIVATE_ENV=pwd
-          cat metadata/swagger.yaml | python bin/yaml2json.py > api/swagger.json
           bundle exec rdoc bin _plugins/ --output gtn_rdoc --template rorvswild
 
       - name: Build Site
