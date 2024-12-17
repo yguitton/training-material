@@ -37,6 +37,12 @@ abbreviations:
   GDPR: General Data Protection Regulations
   SRAM: SURF Research Access Management
   CO: Collaborative Organisation
+
+follow_up_training:
+  - type: "internal"
+    topic_name: admin
+    tutorials:
+      - surf-research-cloud-pulsar
 ---
 
 Using Galaxy via the {SRC} allows researchers to start Galaxy instances on-demand and analyze their data in a secure environment following the {GDPR}. The instance provides secure authentication, where users must have a SURF Research account prior to this tutorial, have set the {SRAM} authentication method, and connect an SSH key to their accounts. In case you are not familiar with {SRC} and need help in setting up your accounts, please follow the instructions on the [SURF Knowledge Base](https://servicedesk.surf.nl/wiki/display/WIKI/SURF+Research+Cloud)

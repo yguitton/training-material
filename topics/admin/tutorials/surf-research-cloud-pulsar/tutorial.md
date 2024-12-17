@@ -35,6 +35,12 @@ abbreviations:
   GDPR: General Data Protection Regulations
   SRAM: SURF Research Access Management
   CO: Collaborative Organisation
+
+follow_up_training:
+  - type: "internal"
+    topic_name: admin
+    tutorials:
+      - surf-research-cloud-galaxy
 ---
 
 
