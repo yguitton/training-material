@@ -28,7 +28,9 @@ tags:
 - name: internal
   description: Internal APIs that aren't much use outside.
 - name: galaxy
-  description: API's with higher reliability guarantee because they are being used inside Galaxy
+  description: APIs being used inside Galaxy
+- name: stable
+  description: APIs with higher reliability guarantees
 
 paths:
   /feedback.csv:
@@ -92,6 +94,7 @@ paths:
     get:
       tags:
       - galaxy
+      - stable
       summary: List available tutorials by tool
       responses:
         200:
