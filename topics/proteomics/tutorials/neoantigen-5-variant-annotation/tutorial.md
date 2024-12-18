@@ -148,9 +148,9 @@ This step extracts information about novel peptides from Frapipe, which primaril
 > 1. {% tool [Query Tabular](toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.3.2) %} with the following parameters:
 >    - In *"Database Table"*:
 >        - {% icon param-repeat %} *"Insert Database Table"*
->            - {% icon param-file %} *"Tabular Dataset for Table"*: `output` (Input dataset)
+>            - {% icon param-file %} *"Tabular Dataset for Table"*: `Novel_Peptides_from_PepQuery.tabular` (Input dataset)
 >        - {% icon param-repeat %} *"Insert Database Table"*
->            - {% icon param-file %} *"Tabular Dataset for Table"*: `output` (Input dataset)
+>            - {% icon param-file %} *"Tabular Dataset for Table"*: `Fragpipe-Peptide-Report.tabular` (Input dataset)
 >    - *"SQL Query to generate tabular output"*:
 > ``` sql
 > SELECT t1.c1,t2.c13,t2.c5,t2.c6
@@ -239,7 +239,7 @@ In this step, we will use the Query Tabular tool to extract specific information
 >        - {% icon param-repeat %} *"Insert Database Table"*
 >            - {% icon param-file %} *"Tabular Dataset for Table"*: `out_file1` (output of **Convert** {% icon tool %})
 >        - {% icon param-repeat %} *"Insert Database Table"*
->            - {% icon param-file %} *"Tabular Dataset for Table"*: `output` (Input dataset)
+>            - {% icon param-file %} *"Tabular Dataset for Table"*: `Fragpipe-Peptide-Report.tabular` (Input dataset)
 >    - *"SQL Query to generate tabular output"*:
 > ``` sql
 > SELECT t1.c1,t1.c8,t1.c9,t1.c11,t1.c12,t2.c5,t2.c6,t1.c7
@@ -363,7 +363,7 @@ PepPointer is a tool designed to map peptide sequences to their respective genom
 >
 > 1. {% tool [PepPointer](toolshed.g2.bx.psu.edu/repos/galaxyp/pep_pointer/pep_pointer/0.1.3+galaxy1) %} with the following parameters:
 >    - *"Choose the source of the GTF file"*: `From history`
->        - {% icon param-file %} *"GTF file with the genome of interest"*: `output` (Input dataset)
+>        - {% icon param-file %} *"GTF file with the genome of interest"*: `Homo_sapiens.GRCh38_canon.106.gtf` (Input dataset)
 >    - {% icon param-file %} *"BED file with chromosomal coordinates of peptide"*: `output` (output of **Query Tabular** {% icon tool %})
 >
 >
