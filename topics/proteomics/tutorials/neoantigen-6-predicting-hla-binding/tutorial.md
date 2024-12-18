@@ -144,8 +144,8 @@ OptiType is a bioinformatics tool designed specifically for HLA class I typing u
 >
 > 1. {% tool [OptiType](toolshed.g2.bx.psu.edu/repos/iuc/optitype/optitype/1.3.5+galaxy0) %} with the following parameters:
 >    - *"Single or Paired-end reads"*: `Paired`
->        - {% icon param-file %} *"Select first set of reads"*: `output` (Input dataset)
->        - {% icon param-file %} *"Select second set of reads"*: `output` (Input dataset)
+>        - {% icon param-file %} *"Select first set of reads"*: `RNA-Seq_Reads_1.fastqsanger` (Input dataset)
+>        - {% icon param-file %} *"Select second set of reads"*: `RNA-Seq_Reads_2.fastqsanger` (Input dataset)
 >    - *"Enumerations"*: `3`
 >
 >
@@ -175,8 +175,8 @@ seq2HLA is a computational tool for identifying HLA types from RNA-Seq or DNA-Se
 > 1. {% tool [seq2HLA](toolshed.g2.bx.psu.edu/repos/iuc/seq2hla/seq2hla/2.3+galaxy0) %} with the following parameters:
 >    - *"Name prefix for this analysis"*: `STS26TGen`
 >    - *"Paired-end reads"*: `Paired`
->        - {% icon param-file %} *"Select first set of reads"*: `output` (Input dataset)
->        - {% icon param-file %} *"Select second set of reads"*: `output` (Input dataset)
+>        - {% icon param-file %} *"Select first set of reads"*: `RNA-Seq_Reads_1.fastqsanger` (Input dataset)
+>        - {% icon param-file %} *"Select second set of reads"*: `RNA-Seq_Reads_2.fastqsanger` (Input dataset)
 >
 >
 {: .hands_on}
