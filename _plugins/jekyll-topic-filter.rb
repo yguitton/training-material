@@ -1537,6 +1537,19 @@ module Jekyll
           .uniq { |x| x['id'] }
       end
 
+      def list_topic_materials_yearly(site, topic_name)
+        flat_mats = list_materials_flat(site, topic_name)
+        years = flat_mats.map{|x| x['pub_date'].year} + flat_mats.map{|x| x['mod_date'].year}
+        topic_contribs = identify_contributors({'topic' => {'materials' => flat_mats}}, site)
+
+        # Should cache this really.
+        Gtn::TopicFilter.all_date_sorted_resources(site)
+          .select{|x| (x[3].include? 'single-cell') || (x[1] == 'contributors' && topic_contribs.include?(x[2].title[1..]))}
+          .group_by{|x| x[0].year}
+          .map{|k, v| [k, v.group_by{|z| z[1]}]}
+          .to_h
+      end
+
       def list_all_tags(site)
         Gtn::TopicFilter.list_all_tags(site)
       end
@@ -1604,6 +1617,10 @@ module Jekyll
 
       def edamify(term, site)
         site.data['EDAM'].select{|row| row['Class ID'] == "http://edamontology.org/#{term}"}.first.to_h
+      end
+
+      def titlecase(term)
+        term.split(' ').map(&:capitalize).join(' ')
       end
     end
   end
