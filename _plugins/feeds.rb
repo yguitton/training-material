@@ -43,30 +43,6 @@ def track(url)
   end
 end
 
-def objectify(attrs, url, path)
-  obj = attrs.clone
-  obj['__path'] = path
-  obj['__url'] = url
-
-  def obj.data
-    self
-  end
-
-  def obj.path
-    self['__path']
-  end
-
-  def obj.url
-    self['__url']
-  end
-
-  def obj.content
-    self.fetch('content', 'NO CONTENT AVAILABLE')
-  end
-
-  obj
-end
-
 FEED_WIDGET_XSLT = Nokogiri::XSLT(File.read('feed-widget.xslt.xml'))
 
 def serialise(site, feed_path, builder)
