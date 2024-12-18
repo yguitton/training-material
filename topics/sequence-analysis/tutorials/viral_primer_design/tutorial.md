@@ -200,15 +200,15 @@ With this alignment we prepared our input Poliovirus 1 genomes for VarVAMP and a
 
 > <question-title></question-title>
 >
-> 1. What does MAFFT?
+> 1. How many sequences were aligned and how long are they?
 > 2. What kind of alignment method is recommended for our kind of data and why?
-> 3. Compare the first uploaded Polio 1 alignment with the alignment created by MAFFT! What's the difference?
+> 3. What does the height of the bars in the top row above the position of the bases indicate?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. Creates an alignment file, which shows parts of similar sequences.
+> > 1. In total 241 sequences were aligned with up to 7498 bases.
 > > 2. The speed-oriented methods, because there are too many sequences (>200) and it would take too long.
-> > 3. There is none. The files are identical.
+> > 3. The height of the bars indicates the degree of sigitmilarity of the bases at this position.
 > >
 > {: .solution}
 >
