@@ -42,6 +42,8 @@ follow_up_training:
     tutorials:
       - surf-research-cloud-galaxy
 subtopic: cloud
+tags:
+ - deploying
 ---
 
 
@@ -95,7 +97,7 @@ You should have previous experience working with data inside Galaxy.
 >
 >    ![workspace creation screen, choose the cloud provider is locked to SURF HPC, flavour is locked to 22.04, and the size options are available from 1GB/8CPU to 60C/750GB Hi-mem](images/surf5.png)
 >
-> 6. Pick a name, it can be anything, it does not matter. Check the expiration date to ensure it is just enough time for your computation and no more. 
+> 6. Pick a name, it can be anything, it does not matter. Check the expiration date to ensure it is just enough time for your computation and no more.
 >
 >    > <tip-title>Expiration Date</tip-title>
 >    > The standard life-time of the VM is 5 days. If you need it for longer, this option can be changed once the machine is running.
@@ -117,13 +119,13 @@ Once done, the workspace will be created for you. You'll need to wait ~5 minutes
 ## Using Pulsar on SRC
 
 > <hands-on-title>Access the Information Page</hands-on-title>
-> 
+>
 > 1. Once the workspace is up, you'll see an **Access** link:
-> 
+>
 >    ![A small plus button is hovered over which says Add. Below galaxy-test is shown running with a yellow Access button](images/surf3.png)
-> 
+>
 > 2. Click that will show you a Pulsar information page. This page is running on your pulsar node itself, and is restricted to ensure only authorised members can access the contents. It includes some configuration you will need to copy to your Galaxy node in order to make use of the Pulsar node.
-> 
+>
 >    ![pulsar configuration information page showing an about with admins and metadata like workspace fqdn. Configuration for galaxy is shown below including XML changes](images/surf8.png)
 {: .hands_on}
 
@@ -131,16 +133,16 @@ This information page should have more than enough information to connect this P
 
 > <hands-on-title>Configuring Galaxy to use SRC Pulsar</hands-on-title>
 > 1. Collect the requirements for accessing the Galaxy machine. You will need:
-> 
+>
 >    - your username from the first step
 >    - your SSH key that is associated with your SRAM account
-> 
+>
 > 2. SSH into your *Galaxy* machine (not pulsar!).
-> 
+>
 >    ```
 >    ssh -i path/to/your/sram-ssh-key username@galaxy.src-winter-school.src.surf-hosted.nl
 >    ```
-> 
+>
 > 3. You will need to `sudo su` to do anything useful. Do that now.
 > 4. `cd /srv/galaxy/` to move into the directory Galaxy configuration is stored.
 > 5. The configuration is discussed fully in the Pulsar information, but it will be briefly covered here as well. Generally there are a few steps that must be followed:
@@ -150,8 +152,8 @@ This information page should have more than enough information to connect this P
 >    - Some tools should be redirected to this Pulsar
 >
 >    Here is an example of what those changes *might* look like in your Galaxy node.  In this example our pulsar node was called `p20` but that will be different for you.
-> 
->    {% snippet topics/admin/faqs/diffs.md %} 
+>
+>    {% snippet topics/admin/faqs/diffs.md %}
 >
 >
 >    ```diff
@@ -212,9 +214,9 @@ You can find the tool ID from the dropdown at the top right, just to the left of
 ![url bar and tool interface for the Cut1 tool](./images/id2.png)
 
 > <tip-title>An Easy Configuration Option: Send Every Job to Pulsar</tip-title>
-> 
+>
 > If you are running jobs for a limited period of time, you might consider making this pulsar node the default destination. Remember to use the `remote_...` name of your pulsar node, based on what you copied. Not `remote_p20`.
-> 
+>
 > ```diff
 >  execution:
 > -  default: docker_dispatch
