@@ -1,5 +1,5 @@
 ---
-title: "Give us feedback and your availability for the GTA 2025"
+title: "Organizing GTA2025: Give us feedback and your availability!"
 contributions:
   authorship: [teresa-m]
 tags: [gtn, event]
