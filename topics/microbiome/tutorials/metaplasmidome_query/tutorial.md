@@ -200,7 +200,7 @@ Let's look at the distribution of the mapping score (column 12)
 >
 {: .question}
 
-We should remove alignments with a score below. Before that, let's look at the plasmid coverage. We first need to compute it, i.e. the ratio between the number of matching bases in the mapping (Column 10) and plasmid length (target sequence length - Column 7).
+We should remove alignments with a score below 40. Before that, let's look at the plasmid coverage. We first need to compute it, i.e. the ratio between the number of matching bases in the mapping (Column 10) and plasmid length (target sequence length - Column 7).
 
 > <hands-on-title>Compute plasmid coverage</hands-on-title>
 > 1. {% tool [Cut columns from a table](Cut1) %} with:
@@ -243,7 +243,7 @@ A new column has been added (column 13) with the plasmid coverage. Let's now plo
 >
 > > <solution-title></solution-title>
 > >
-> > 1. There are 2 pics: one around 0 (i.e. no plasmid coverage) that slowly decreases until 0.8 and a pic at 1 (full plasmid coverage)
+> > 1. There are 2 peaks: one around 0 (i.e. no plasmid coverage) that slowly decreases until 0.8 and a pic at 1 (full plasmid coverage)
 > > 2. 0.8 seems to be a breaking point and could be a good value to filter.
 > >
 > {: .solution}
