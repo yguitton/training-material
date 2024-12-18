@@ -146,7 +146,10 @@ Next, we will merge the FASTA files, ensuring that any redundant sequences are r
 >    - *"Run in batch mode?"*: `Merge individual FASTAs (output collection if input is collection)`
 >        - In *"Input FASTA File(s)"*:
 >            - {% icon param-repeat %} *"Insert Input FASTA File(s)"*
->                - {% icon param-file %} *"FASTA File"*: `output` (Input dataset)
+>                - {% icon param-file %} *"FASTA File"*: `Human_cRAP_Non_normal_transcripts_dB.fasta` (Input dataset)
+>        - In *"Input FASTA File(s)"*:
+>            - {% icon param-repeat %} *"Insert Input FASTA File(s)"*
+>                - {% icon param-file %} *"FASTA File"*: `Arriba-Fusion-Database.fasta` (Input dataset)
 >
 >
 {: .hands_on}
@@ -189,8 +192,8 @@ In this workflow, FragPipe is used after FASTA database validation to ensure tha
 >
 > 1. {% tool [FragPipe -  Academic Research and Education User License (Non-Commercial)](toolshed.g2.bx.psu.edu/repos/galaxyp/fragpipe/fragpipe/20.0+galaxy2) %} with the following parameters:
 >    - *"I understand that these tools, including MSFragger, IonQuant, Bruker, and Thermo Raw File Reader, are available freely for academic research and educational purposes only, and agree to the following terms."*: `Yes`
->    - {% icon param-file %} *"Proteomics Spectrum files"*: `output` (Input dataset)
->    - {% icon param-file %} *"Manifest file"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Proteomics Spectrum files"*: `STS_26T_2_Eclipse_02102024.raw` (Input dataset)
+>    - {% icon param-file %} *"Manifest file"*: `Experimental-Design-Fragpipe.tabular` (Input dataset)
 >    - {% icon param-file %} *"Proteomics Search Database in FASTA format"*: `goodFastaOut` (output of **Validate FASTA Database** {% icon tool %})
 >    - *"Split database"*: `200`
 >    - *"Workflow"*: `Nonspecific-HLA`
