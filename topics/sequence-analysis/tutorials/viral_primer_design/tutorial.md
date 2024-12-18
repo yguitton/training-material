@@ -500,17 +500,19 @@ Again, we have some questions for you prepared:
 
 > <question-title></question-title>
 >
-> 1. What is the longest amplicon of the flavors TILED and qPCR respectively?
-> 2. What's the difference of the functionality 2 flavors qPCR and TILED?
-> 3. When you've done the comparison of the bed files from github and your created ones, where there differences? If yes, what could be the reason?
-> 4. If you want to have a more accurate product, which option do you have to manipulate?
+> 1. How many primers are used to cover the whole Polio genome?
+> 2. What is encoded in the column named "score" in the file *"Amplicon locations"*.
+> 3. How long are the amplicons for the tiled primer scheme and for qPCR?
+> 4. What's the difference of the functionality of the 2 modi qPCR and TILED?
+> 5. If you want to have a more accurate product, which option do you have to manipulate?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. In TILED over 1000 nucleotides long and in qPCR around 180 length.
-> > 2. The qpcr flavor reports back small amplicons with an optimized internal probe. The TILED flavor overlapping amplicons for Oxford Nanopore or Whole Genome Sequencing.
-> > 3. Yes, there are differences. It's a different set of primers. The reason for this very different result are the settings of the parameters. In the last run, we let VarVamp run with the default settings for the tiled flavor. Check out the analysis/varvamp log file of both, the one on the github website and your own produced.
-> > 4. Increase of length of amplicon, minimal required overlap and threshold or decrease of maximum number of ambiguous nucleotides per primer.
+> > 1. VarVAMP creates 12 primers to amplify the whole Polio gnome, if you use VarVAMP version 1.2.1.
+> > 2. The score indicates wheather the primer pair for this amplicon belongs to pool 1 or 2.
+> > 3. For the tiled primer scheme the amplicons are around 1400 bases long and for qPCR around 100.
+> > 4. The qpcr mode reports back small amplicons with an optimized internal probe. The TILED mode provides overlapping amplicons for Oxford Nanopore or Whole Genome Sequencing.
+> > 5. You can increase the length of the amplicons, the minimal required overlap and the threshold or decrease the maximum number of ambiguous nucleotides per primer.
 > >
 > {: .solution}
 >
