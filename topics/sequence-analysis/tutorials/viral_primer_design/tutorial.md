@@ -319,7 +319,7 @@ But first of all, we have some questions for you prepared:
 > > <solution-title></solution-title>
 > >
 > > 1. The first amlicon has a length of 93 bases, the second 142 bases and the third is 77 bases long, as you can see in the file *"qPCR amplicon details"*.
-> > 2. VarVAMP shows the best 3 primer pairs to choose from for qPCR.
+> > 2. VarVAMP shows all primer pairs that fulfill the specified conditions like threshold or amplicon length. In our case 3 primer pairs fulfill all conditions.
 > > 3. Regarding the penalty score the amplicon starting at position 2513 has the highest value with 9.1 and should be used.
 > > 4. The solution lies in the per default contributed log file. It contains the parameter configuration of your latest VarVAMP run. If you save and use the values of the threshold and n_ambig for further runs, VarVAMP will not start it's automatic calculation of these and thus results in lower computing time and higher reproducibility.
 > {: .solution}
