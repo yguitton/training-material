@@ -104,7 +104,7 @@ The purpose of the storage is to attach it to your workspace, where you will sav
 >
 >    ![form to provide name and preview what will be created.](./images/6.png)
 >
-> 7. You will be redirected to a the main page, where you will be able to track the status of the storage creation. 
+> 7. You will be redirected to the main page, where you will be able to track the status of the storage creation. 
 >
 >    ![bottom half of home page showing the Storage tab, and a resource named storage-galaxy in state creating.](./images/7.png)
 {: .hands_on}
