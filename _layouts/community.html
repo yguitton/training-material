@@ -1,0 +1,82 @@
+---
+layout: base
+---
+
+{% assign topic = site.data[page.topic_name] | default: page.topic %}
+{% assign topic_material = site | list_materials_structured:topic.name %}
+{% assign topic_material_flat = site | list_materials_flat:topic.name %}
+
+<h1>{{ topic.title }} Community Home</h1>
+
+This is a new, experimental "Community Home" for a given topic. It is intended to highlight community contributions over the years to a topic!
+
+{% assign prio = "news events learning-pathways tutorials slides recordings faqs workflows grants organisations" | split:" " %}
+
+{% assign topic_material_by_years = site | list_topic_materials_yearly:topic.name %}
+
+{% for year in topic_material_by_years %}
+<div class="row">
+	<div class="col-md-2">
+	<h2>{{ year[0] }}</h2>
+	<p>New community members!</p>
+	{% for c in year[1]['contributors'] %}
+	{% assign cid = c[2].title | regex_replace_once: '@', '' %}
+	{% include _includes/contributor-badge-inline.html id=cid %}
+	{% endfor %}
+
+	</div>
+	<div class="col-md-10">
+		<div class="row">
+		{% for p in prio %}
+			{% if year[1][p] %}
+			{% assign group = year[1][p] %}
+			<div class="col-sm-3 col-md-3">
+				<div class="stat-box" style="background:hsl({{ forloop.index | times: 40 }}, 100%, 80%)">
+					{% assign group_len = group | size %}
+					<div class="title">
+					{{ group_len }}
+					</div>
+					<div class="subtitle">
+					{{ p | regex_replace: '-', ' ' | titlecase }}
+					</div>
+				</div>
+			</div>
+			{% endif %}
+		{% endfor %}
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+
+			{% for p in prio %}
+				{% if year[1][p] %}
+				{% assign group = year[1][p] %}
+			
+				<h3>{{ p | titlecase }}</h3>
+				<ul>
+				{% for resource in group %}
+				<li><a href="{{ resource[2].url }}">{{ resource[2].title }}</a></li>
+				{% endfor %}
+				</ul>
+				{% endif %}
+			{% endfor %}
+			</div>
+		</div>
+		
+	</div>
+
+</div>
+
+{% endfor %}
+
+<style>
+.stat-box {
+	text-align: center;
+	border: 1px solid var(--border);
+	margin: 0.25em;
+	padding: 0.5em;
+}
+.stat-box .title {
+	font-size: 250%;
+}
+</style>
