@@ -330,7 +330,7 @@ Now that our beacon is running, we need to get data from Galaxy to the Beacon
 >    ```diff
 >    --- a/templates/nginx/galaxy.j2
 >    +++ b/templates/nginx/galaxy.j2
->    @@ -115,4 +115,14 @@ server {
+>    @@ -117,4 +117,14 @@ server {
 >     
 >     	{{ tiaas_nginx_routes }}
 >     
