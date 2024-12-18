@@ -17,12 +17,12 @@ requirements:
   - type: "none"
     title: An SSH key connected to your account
   - type: "none"
-    title: Have a basic understanding of how Galaxy works 
+    title: Have a basic understanding of how Galaxy works
 time_estimation: "30m"
 level: Introductory
 key_points:
-  - With SRC you can start your own Galaxy on-demand instance in a secure environment 
-  - You can log in and use Galaxy via the SRC with your university credentials 
+  - With SRC you can start your own Galaxy on-demand instance in a secure environment
+  - You can log in and use Galaxy via the SRC with your university credentials
 contributions:
   authorship:
   - mirelaminkova
@@ -46,8 +46,11 @@ follow_up_training:
     topic_name: admin
     tutorials:
       - surf-research-cloud-pulsar
+
+subtopic: cloud
 tags:
  - deploying
+
 ---
 
 Using Galaxy via the {SRC} allows researchers to start Galaxy instances on-demand and analyze their data in a secure environment following the {GDPR}. The instance provides secure authentication, where users must have a SURF Research account prior to this tutorial, have set the {SRAM} authentication method, and connect an SSH key to their accounts. In case you are not familiar with {SRC} and need help in setting up your accounts, please follow the instructions on the [SURF Knowledge Base](https://servicedesk.surf.nl/wiki/display/WIKI/SURF+Research+Cloud)
@@ -76,7 +79,7 @@ You must have previous experience working with data inside Galaxy.
 # Starting a Galaxy instance inside SRC step-by-step
 
 > <hands-on-title>Access the SRC</hands-on-title>
-> 1. The first and most important step is to have access to the SURF Research Cloud. 
+> 1. The first and most important step is to have access to the SURF Research Cloud.
 > 2. You will need to login to the [portal](https://portal.live.surfresearchcloud.nl).
 >    ![login screen for SURF research cloud](./images/1.png)
 >
@@ -94,7 +97,7 @@ The purpose of the storage is to attach it to your workspace, where you will sav
 
 
 > <hands-on-title>Create a Storage Volume</hands-on-title>
-> 1. Locate the "Create new storage" option 
+> 1. Locate the "Create new storage" option
 >    ![top half of the SRC dashboard showing options like create new workspace, storage, or request a new wallet.](./images/4.png)
 > 2. Click on "Create new".
 > 3. Select the collaborative organisation you want the storage to be part of.
@@ -104,12 +107,12 @@ The purpose of the storage is to attach it to your workspace, where you will sav
 >    {: .tip}
 >
 >    ![create your storage dashboard showing a selection of providers like surf and aws and azure, and then a selection of storage sizes below ranging from 5GB to 1.5TB](./images/5.png)
-> 
+>
 > 6. Name your storage however you like and press on submit.
 >
 >    ![form to provide name and preview what will be created.](./images/6.png)
 >
-> 7. You will be redirected to the main page, where you will be able to track the status of the storage creation. 
+> 7. You will be redirected to the main page, where you will be able to track the status of the storage creation.
 >
 >    ![bottom half of home page showing the Storage tab, and a resource named storage-galaxy in state creating.](./images/7.png)
 {: .hands_on}
@@ -130,24 +133,24 @@ Depending on user’s rights, you can create a new workspace for your collaborat
 > 1. On the right side under the "Workspaces" click on the "Add" button.
 >
 >    ![dashboard of workspaces showing a single running workspace titled galaxy test tim, and on the right a button to add a new workspace.](./images/8.png)
-> 
-> 2. Then, you will be redirected to a new page, where you must first choose the collaborative organisation in which you want to create your workspace (in case you are a member of multiple organisations). Once chosen, you a new page will be loaded, where you will have access to all available catalog items. 
+>
+> 2. Then, you will be redirected to a new page, where you must first choose the collaborative organisation in which you want to create your workspace (in case you are a member of multiple organisations). Once chosen, you a new page will be loaded, where you will have access to all available catalog items.
 >
 >    ![Create your workspace screen showing 9 catalog items on the first page with pages more. Visible are Galaxy Pulsar node amongst some docker and ubuntu options.](./images/9.png)
-> 
+>
 > 3. Use the magnifying glass on the right side of the panel and search for Galaxy. Two catalog items will appear - the Galaxy instance designed for SURF and a Galaxy Pulsar node that can be connected to the instance. Select "Galaxy at SURF".
 >
 >    ![similar to previous image, but the items described above](./images/10.png)
-> 
-> 4. SURF Research Cloud allows researchers to host their catalog items on different cloud providers. The Galaxy catalog item is currently supported only on the HPC Cloud and for Ubuntu 22.04. On this page, users can select the number of cores and RAM that they want on their machine. More sizes can be added in the future, and on request. Choose wisely and in case you are not certain contact your administrator! 
+>
+> 4. SURF Research Cloud allows researchers to host their catalog items on different cloud providers. The Galaxy catalog item is currently supported only on the HPC Cloud and for Ubuntu 22.04. On this page, users can select the number of cores and RAM that they want on their machine. More sizes can be added in the future, and on request. Choose wisely and in case you are not certain contact your administrator!
 >
 >    ![workspace creation screen, choose the cloud provider is locked to SURF HPC, flavour is locked to 22.04, and the size options are available from 1GB/8CPU to 60C/750GB Hi-mem](./images/11.png)
-> 
-> 5. Select the storage you have created earlier so it is attached to the new workspace. 
+>
+> 5. Select the storage you have created earlier so it is attached to the new workspace.
 >
 >    ![create your workspace screen, storage only lists one option named storage-galaxy](./images/12.png)
-> 
-> 6. Lastly, before the workspace is deployed, you need to choose for how long the machine will run. 
+>
+> 6. Lastly, before the workspace is deployed, you need to choose for how long the machine will run.
 >
 >    > <tip-title>Expiration Date</tip-title>
 >    > The standard life-time of the VM is 5 days. If you need it for longer, this option can be changed once the machine is running.
@@ -155,7 +158,7 @@ Depending on user’s rights, you can create a new workspace for your collaborat
 >    >
 >    > This is an incredibly useful feature as it saves you from forgetting to destroy a VM. Especially for GPU nodes it can help you ensure that they disappear after your computation is complete.
 >    {:.tip}
-> 
+>
 > 7. In this form, you can also select how to name your workspace, add a description (if you want) and specify the hostname. Then, scroll down and submit the workspace creation.
 >    ![almost there, some final details reads the heading. an expiration date is set and galaxy at surf is provided in the name. the hostname is set to galaxyatsurf and the description is blank](./images/13.png)
 {: .hands_on}
