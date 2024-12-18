@@ -148,7 +148,10 @@ This information page should have more than enough information to connect this P
 >    - A destination/environment must be added with the pulsar details
 >    - Some tools should be redirected to this Pulsar
 >
->    Here is an example of what those changes *might* look like in your Galaxy node. ([FAQ: how to read a diff]({% link topics/admin/faqs/diffs.md %})). In this example our pulsar node was called `p20` but that will be different for you.
+>    Here is an example of what those changes *might* look like in your Galaxy node.  In this example our pulsar node was called `p20` but that will be different for you.
+> 
+>    {% snippet topics/admin/faqs/diffs.md %} 
+>
 >
 >    ```diff
 >     runners:
