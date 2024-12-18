@@ -103,17 +103,16 @@ The reports application is included with the Galaxy codebase and this tutorial a
 >    ```diff
 >    --- a/templates/nginx/galaxy.j2
 >    +++ b/templates/nginx/galaxy.j2
->    @@ -103,4 +103,9 @@ server {
+>    @@ -103,4 +103,10 @@ server {
 >     		proxy_set_header Upgrade $http_upgrade;
 >     		proxy_set_header Connection "upgrade";
 >     	}
 >    +
 >    +	location /reports/ {
 >    +		proxy_pass http://{{ galaxy_config.gravity.reports.bind }}:/;
->    +      proxy_set_header X-Forwarded-Host $host;
->    +      proxy_set_header X-Forwarded-Proto $scheme;
+>    +		proxy_set_header X-Forwarded-Host $host;
+>    +		proxy_set_header X-Forwarded-Proto $scheme;
 >    +	}
->    +
 >     }
 >    {% endraw %}
 >    ```
