@@ -41,6 +41,7 @@ follow_up_training:
     topic_name: admin
     tutorials:
       - surf-research-cloud-galaxy
+subtopic: cloud
 ---
 
 
