@@ -148,7 +148,7 @@ msconvert is a tool used to preprocess raw mass spectrometry (MS) data files by 
 > <hands-on-title> msconvert</hands-on-title>
 >
 > 1. {% tool [msconvert](toolshed.g2.bx.psu.edu/repos/galaxyp/msconvert/msconvert/3.0.20287.2) %} with the following parameters:
->    - {% icon param-file %} *"Input unrefined MS data"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Input unrefined MS data"*: `STS_26T_2_Eclipse_02102024.raw` (Input dataset)
 >    - *"Do you agree to the vendor licenses?"*: `Yes`
 >    - *"Output Type"*: `mgf`
 >    - In *"Data Processing Filters"*:
@@ -186,9 +186,9 @@ PepQuery2 is a tool used to validate novel peptides and proteins by searching ma
 >    - In *"Input Data"*:
 >        - *"Input Type"*: `peptide`
 >            - *"Peptides?"*: `Peptide list from your history`
->                - {% icon param-file %} *"Peptide Sequences (.txt)"*: `output` (Input dataset)
+>                - {% icon param-file %} *"Peptide Sequences (.txt)"*: `NeoAntigen-Candidates.tabular` (Input dataset)
 >        - *"Protein Reference Database from"*: `history`
->            - {% icon param-file %} *"Protein Reference Database File"*: `output` (Input dataset)
+>            - {% icon param-file %} *"Protein Reference Database File"*: `HUMAN_CRAP.fasta` (Input dataset)
 >        - *"MS/MS dataset to search"*: ` Spectrum Datasets from history`
 >            - {% icon param-file %} *"Spectrum File"*: `output` (output of **msconvert** {% icon tool %})
 >        - *"Report Spectrum Scan as"*: `spectrum title in MGF`
@@ -322,7 +322,7 @@ In this step, the NCBI BLAST+ blastp tool is used for performing protein sequenc
 >        - *"Minimum score to add a word to the BLAST lookup table."*: `16`
 >        - *"Composition-based statistics"*: `0: No composition-based statistics`
 >        - *"Restrict search of database to a given set of ID's"*: `Taxonomy identifiers (TaxId's)`
->            - {% icon param-file %} *"Restrict search of database to list of TaxId's"*: `output` (Input dataset)
+>            - {% icon param-file %} *"Restrict search of database to list of TaxId's"*: `Human-TaxID.txt` (Input dataset)
 >
 >
 {: .hands_on}
