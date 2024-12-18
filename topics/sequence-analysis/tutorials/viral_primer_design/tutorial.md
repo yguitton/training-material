@@ -311,16 +311,16 @@ But first of all, we have some questions for you prepared:
 
 > <question-title></question-title>
 >
-> 1. What makes VarVAMP so useful?
-> 2. When you checked the primers on the website, differ these primers with your designed ones in regard of the position?
-> 3. As mentioned earlier, VarVAMP can produce different kind of outputs. What is the position of the first amplicon?
+> 1. How long are the 3 different amplicons?
+> 2. Why are there primers for 3 different amplicons and not just one?
+> 3. Regarding the penalty score of the different amplicons, which one should be used for qPCR?
 > 4. How is it possible to increase the reproducibility and decrease the computing time of further analysis of VarVAMP?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. VarVAMP can produces highly personalized pan-specific primers for a large number of viruses.
-> > 2. No, there are likely the same. This means the result can be reproduced.
-> > 3. You can find the answer in the *"Amplicon locations"* file. The first amplicon starts at 1742 and ends at 1835.
+> > 1. The first amlicon has a length of 93 bases, the second 142 bases and the third is 77 bases long, as you can see in the file *"qPCR amplicon details"*.
+> > 2. VarVAMP shows the best 3 primer pairs to choose from for qPCR.
+> > 3. Regarding the penalty score the amplicon starting at position 2513 has the highest value with 9.1 and should be used.
 > > 4. The solution lies in the per default contributed log file. It contains the parameter configuration of your latest VarVAMP run. If you save and use the values of the threshold and n_ambig for further runs, VarVAMP will not start it's automatic calculation of these and thus results in lower computing time and higher reproducibility.
 > {: .solution}
 >
