@@ -696,35 +696,35 @@ These concepts will be used in the filtering expressions we write in Galaxy. Let
 >
 > For example, if we want to:
 >
-> - Find all athletes born in December, assuming the birth date could be in either "day-month" or "month-day" format.
+> - Find all athletes born in December or September, assuming the birth date could be in either "day-month" or "month-day" format.
 >
 > > <question-title></question-title>
 > >
-> > 1. How would you filter rows where the 5th column contains "December"?
+> > 1. How would you filter rows where the 5th column contains "December" or "September"?Hint: Both months contain three `e` letters.
 > >
 > > > <solution-title>Answers</solution-title>
 > > >
-> > > 1. `c5.count('December') == 1`
+> > > 1. `c5.count('e') == 3`
 > > >
 > > {: .solution}
 > {: .question}
 >
-> Ok, great, now that you've got the hang of writing expressions for this tool, let's filter the file to find all athletes born in December:
+> Ok, great, now that you've got the hang of writing expressions for this tool, let's filter the file to find all athletes born in December or September:
 >
 > 1. {% tool [**Filter** data on any column using simple expressions]({{version_filter}}) %} with the following parameters:
 >    - {% icon param-file %} *"Filter"*: `olympics.tsv`
->    - {% icon param-text %} *"With the following condition"*: `c5.count('December') == 1`
+>    - {% icon param-text %} *"With the following condition"*: `c5.count('e') == 3`
 >    - {% icon param-text %} *"Number of header lines to skip"*: `1`
 >
 > 2. {% icon galaxy-eye %} **View** the filtered file.
 >
 >    > <question-title></question-title>
 >    >
->    > 1. How many rows contained the string "December" in column 5? (Hint: expand the dataset in your history or use {% tool [Line/Word/Character count]({{version_wc}}) %} )
+>    > 1. How many rows contained the string "December" or "September" in column 5? (Hint: expand the dataset in your history or use {% tool [Line/Word/Character count]({{version_wc}}) %} )
 >    >
 >    > > <solution-title>Answers</solution-title>
 >    > >
->    > > 1. `18009` (this is including the header line)
+>    > > 1. `36690` (this is including the header line)
 >    > >
 >    > {: .solution}
 >    {: .question}
