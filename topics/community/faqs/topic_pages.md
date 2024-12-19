@@ -13,7 +13,7 @@ You can find your **Community Home** and **Maintainer Home** by scrolling down o
 >    ```
 >     https://training.galaxyproject.org/training-material/topics/<your topic here>
 >    ```
-> 2. Add a #community to the end of the url.
+> 2. Add a #community to the end of the URL (or scroll to the bottom of the topic page and hit the "Community Home" button)
 >    ```
 >     https://training.galaxyproject.org/training-material/topics/<your topic here>#community
 >    ```
