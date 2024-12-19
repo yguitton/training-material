@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 
 title: "Neoantigen 1: Fusion-Database-Generation"
-zenodo_link: ""
+zenodo_link: "https://zenodo.org/records/14365542"
 questions:
 - Why do we need to generate a customized fusion database for proteogenomics research?
 objectives:
@@ -30,15 +30,12 @@ follow_up_training:
         type: "internal"
         topic_name: proteomics
         tutorials:
-            - neoantigen-2-non-normal-database
+            - neoantigen-2-non-normal-database-generation
 tags: [label-free]
 redirect_from:
 - /topics/proteomics/tutorials/neoantigen-1-fusion-database-generation/tutorial
 
 ---
-
-
-# Introduction
 
 
 A neoantigen is a novel peptide (protein fragment) that is produced by cancer cells due to mutations, including gene fusions, that alter the DNA sequence in a way that generates unique proteins not found in normal cells. Because these mutated proteins are unique to the tumor, they are recognized as "foreign" by the immune system. Neoantigens are valuable in immunotherapy because they can serve as specific targets for the immune system, allowing treatments to selectively attack cancer cells while sparing normal tissue. By stimulating an immune response specifically against these neoantigens, therapies like cancer vaccines or T-cell-based treatments can be developed to enhance the body’s natural defense mechanisms, making neoantigens a promising avenue for personalized cancer treatment.
@@ -59,7 +56,7 @@ To generate the fusion database, RNA star and Arriba tools are used in this work
 >
 {: .agenda}
 
-# Neoantigen database generation
+# Neoantigen Fusion Database Generation
 
 ## Overview of Fusion Neoantigen Database Workflow
 
@@ -94,11 +91,11 @@ This workflow provides a structured approach to preparing fusion neoantigen data
 >     -> `{{ page.title }}`):
 >
 >    ```
->    
+>    https://zenodo.org/records/14365542/files/human_reference_genome.fasta
+>    https://zenodo.org/records/14365542/files/human_reference_genome_annotation.gtf
+>    https://zenodo.org/records/14365542/files/RNA-Seq_Reads_1.fastqsanger.gz
+>    https://zenodo.org/records/14365542/files/RNA-Seq_Reads_2.fastqsanger.gz
 >    ```
->    ***TODO***: *Add the files by the ones on Zenodo here (if not added)*
->
->    ***TODO***: *Remove the useless files (if added)*
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
@@ -115,17 +112,39 @@ This workflow provides a structured approach to preparing fusion neoantigen data
 >
 {: .hands_on}
 
+# Import Workflow
+
+
+> <hands-on-title>Running the Workflow</hands-on-title>
+>
+> 1. **Import the workflow** into Galaxy:
+>
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-1-fusion-database-generation/workflows/main_workflow.ga" title="Neoantigen Fusion Database Generation" %}
+>
+>
+> 2. Run **Workflow** {% icon workflow %} using the following parameters:
+>    - *"Send results to a new history"*: `No`
+>    - {% icon param-file %} *"RNA-Seq_Reads_1 (forward strand)"*: `RNA-Seq_Reads_1.fastqsanger.gz`
+>    - {% icon param-file %} *"RNA-Seq_Reads_2 (reverse strand)"*: `RNA-Seq_Reads_2.fastqsanger.gz`
+>    - {% icon param-file %} *"Human Reference Genome Annotation"*: `human_reference_genome_annotation.gtf`
+>    - {% icon param-file %} *"Human Reference Genome"*: `human_reference_genome.fasta`
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
+
+
 # Data preparation
 
 
-## **Convert compressed file to uncompressed.**
+## Convert compressed file to uncompressed
 
 Uncompressing data is a crucial first step in many bioinformatics workflows because raw sequencing data files, especially from high-throughput sequencing, are often stored in compressed formats (such as `.gz` or `.zip`) to save storage space and facilitate faster data transfer. Compressed files need to be uncompressed to make the data readable and accessible for analysis tools, which generally require the data to be in plain text or other compatible formats. By uncompressing these files, we ensure that downstream applications can efficiently process and analyze the raw sequencing data without compatibility issues related to compression. In this workflow, we do that for both forward and reverse files.
 
 > <hands-on-title> Converting compressed to uncompressed </hands-on-title>
 >
 > 1. {% tool [Convert compressed file to uncompressed.](CONVERTER_gz_to_uncompressed) %} with the following parameters:
->    - {% icon param-file %} *"Choose compressed file"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Choose compressed file"*: `RNA-Seq_Reads_1.fastqsanger.gz` (Input dataset)
 >
 >
 {: .hands_on}
@@ -133,13 +152,13 @@ Uncompressing data is a crucial first step in many bioinformatics workflows beca
 > <hands-on-title> Task description </hands-on-title>
 >
 > 1. {% tool [Convert compressed file to uncompressed.](CONVERTER_gz_to_uncompressed) %} with the following parameters:
->    - {% icon param-file %} *"Choose compressed file"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Choose compressed file"*: `RNA-Seq_Reads_2.fastqsanger.gz` (Input dataset)
 >
 >
 {: .hands_on}
 
 
-## Alignment with **RNA STAR**
+## Alignment with RNA STAR
 
 **RNA STAR** (Spliced Transcripts Alignment to a Reference) is a high-performance tool used to align RNA sequencing (RNA-seq) reads to a reference genome. It identifies the best matches between RNA reads and genome sequences by detecting exon-exon junctions, which are critical for accurately mapping reads from spliced transcripts. RNA STAR uses a "two-pass" mapping approach that first identifies splice junctions across all reads and then uses these junctions to guide a more accurate alignment on the second pass. This capability is especially valuable for studying gene expression, discovering novel splice variants, and identifying fusion genes in cancer and other disease research. The output includes aligned sequences that can be used in subsequent steps of bioinformatics pipelines, such as fusion detection and differential expression analysis.
 
@@ -147,12 +166,12 @@ Uncompressing data is a crucial first step in many bioinformatics workflows beca
 >
 > 1. {% tool [RNA STAR](toolshed.g2.bx.psu.edu/repos/iuc/rgrnastar/rna_star/2.7.10b+galaxy4) %} with the following parameters:
 >    - *"Single-end or paired-end reads"*: `Paired-end (as individual datasets)`
->        - {% icon param-file %} *"RNA-Seq FASTQ/FASTA file, forward reads"*: `output1` (output of **Convert compressed file to uncompressed.** {% icon tool %})
->        - {% icon param-file %} *"RNA-Seq FASTQ/FASTA file, reverse reads"*: `output1` (output of **Convert compressed file to uncompressed.** {% icon tool %})
+>        - {% icon param-file %} *"RNA-Seq FASTQ/FASTA file, forward reads"*: `RNA-Seq_Reads_1.fastqsanger` (output of **Convert compressed file to uncompressed.** {% icon tool %})
+>        - {% icon param-file %} *"RNA-Seq FASTQ/FASTA file, reverse reads"*: `RNA-Seq_Reads_2.fastqsanger` (output of **Convert compressed file to uncompressed.** {% icon tool %})
 >    - *"Custom or built-in reference genome"*: `Use a built-in index`
 >        - *"Reference genome with or without an annotation"*: `use genome reference without builtin gene-model but provide a gtf`
 >            - *"Select reference genome"*: `Human Dec. 2013 (GRCh38/hg38) (hg38)`
->            - {% icon param-file %} *"Gene model (gff3,gtf) file for splice junctions"*: `output` (Input dataset)
+>            - {% icon param-file %} *"Gene model (gff3,gtf) file for splice junctions"*: `human_reference_genome_annotation.gtf` (Input dataset)
 >            - *"Per gene/transcript output"*: `No per gene or transcript output`
 >    - *"Use 2-pass mapping for more sensitive novel splice junction discovery"*: `Yes, perform single-sample 2-pass mapping of all reads`
 >    - *"Report chimeric alignments?"*: `Within the BAM output (together with regular alignments; WithinBAM SoftClip) soft-clipping in the CIGAR for supplemental chimeric alignments`
@@ -180,7 +199,7 @@ Uncompressing data is a crucial first step in many bioinformatics workflows beca
 >
 {: .question}
 
-## Fusion detection with **Arriba**
+## Fusion detection with Arriba
 
 **Arriba** is a specialized tool used for detecting gene fusions from RNA sequencing (RNA-seq) data. It is particularly focused on identifying fusion events in cancer, where gene fusions can drive oncogenic processes. Arriba uses the output from **RNA STAR** alignments, specifically looking at chimeric alignments that result from fusion transcripts, and applies a series of filtering steps to reduce false positives. 
 
@@ -196,9 +215,9 @@ The output includes a list of fusion candidates with key information like fusion
 > 1. {% tool [Arriba](toolshed.g2.bx.psu.edu/repos/iuc/arriba/arriba/2.4.0+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"STAR Aligned.out.sam"*: `mapped_reads` (output of **RNA STAR** {% icon tool %})
 >    - *"Genome assembly fasta (that was used for STAR alignment)"*: `From your history`
->        - {% icon param-file %} *"Genome assembly fasta"*: `output` (Input dataset)
+>        - {% icon param-file %} *"Genome assembly fasta"*: `human_reference_genome.fasta` (Input dataset)
 >    - *"Genome GTF annotation source"*: `From your history`
->        - {% icon param-file %} *"Gene annotation in GTF format"*: `output` (Input dataset)
+>        - {% icon param-file %} *"Gene annotation in GTF format"*: `human_reference_genome_annotation.gtf` (Input dataset)
 >    - {% icon param-file %} *"File containing blacklisted ranges."*: `blacklist` (output of **Arriba Get Filters** {% icon tool %})
 >    - {% icon param-file %} *"File containing protein domains"*: `protein_domains` (output of **Arriba Get Filters** {% icon tool %})
 >    - {% icon param-file %} *"File containing known fusions"*: `known_fusions` (output of **Arriba Get Filters** {% icon tool %})
@@ -224,7 +243,7 @@ The output includes a list of fusion candidates with key information like fusion
 >
 {: .question}
 
-## **Text reformatting**
+## Clean up data using Text reformatting
 
 **Text Reformatting** is a step used in bioinformatics workflows to manipulate and clean up data for easier downstream processing. In fusion detection workflows, text reformatting is often used to parse and restructure output files, making the data consistent and accessible for subsequent analysis steps.
 
@@ -240,49 +259,51 @@ The reformatting step ensures that the processed data adheres to the requirement
 > 1. {% tool [Text reformatting](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/1.1.2) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `fusions_tsv` (output of **Arriba** {% icon tool %})
 >    - *"AWK Program"*:
->      ` (NR==1){
-    for (i=1;i<=NF;i++) {
-        if ($i ~ gene1) { 
-            gene1 = i;
-        }
-        if ($i == gene2) { 
-            gene2 = i;
-        }
-        if ($i == breakpoint1) { 
-            breakpoint1 = i;
-        }
-        if ($i == breakpoint2) { 
-            breakpoint2 = i;
-        }
-        if ($i == reading_frame) { 
-            reading_frame = i;
-        }
-        if ($i == peptide_sequence) { 
-            pscol = i;
-        }
-    }
-}
-(NR>1){
-    pseq = $pscol
-    if (pseq != .) {
-        bp = index(pseq,|);
-        pos = bp - 8; 
-        n=split(pseq,array,|);
-        pep = toupper(array[1] array[2])
-        sub([*],,pep)
-        g1 = $gene1;
-        g2 = $gene2;
-        sub([(,].*,,g1);
-        sub([(,].*,,g2);
-        id = g1 _ g2
-        brkpnts = $breakpoint1 _ $breakpoint2 
-        neopep = substr(pep,pos)
-        if ($reading_frame == in-frame) {
-            neopep = substr(pep,pos,16)
-        }
-        print(id \t (NR-1) \t brkpnts \t neopep);  
-    }
-} `
+> ```
+> (NR==1){
+>    for (i=1;i<=NF;i++) {
+>        if ($i ~ gene1) { 
+>            gene1 = i;
+>        }
+>        if ($i == gene2) { 
+>            gene2 = i;
+>        }
+>        if ($i == breakpoint1) { 
+>            breakpoint1 = i;
+>        }
+>        if ($i == breakpoint2) { 
+>            breakpoint2 = i;
+>        }
+>        if ($i == reading_frame) { 
+>            reading_frame = i;
+>        }
+>        if ($i == peptide_sequence) { 
+>            pscol = i;
+>        }
+>    }
+> }
+> (NR>1){
+>    pseq = $pscol
+>    if (pseq != .) {
+>        bp = index(pseq,|);
+>        pos = bp - 8; 
+>        n=split(pseq,array,|);
+>        pep = toupper(array[1] array[2])
+>        sub([*],,pep)
+>        g1 = $gene1;
+>        g2 = $gene2;
+>        sub([(,].*,,g1);
+>        sub([(,].*,,g2);
+>        id = g1 _ g2
+>        brkpnts = $breakpoint1 _ $breakpoint2 
+>        neopep = substr(pep,pos)
+>        if ($reading_frame == in-frame) {
+>            neopep = substr(pep,pos,16)
+>        }
+>        print(id \t (NR-1) \t brkpnts \t neopep);  
+>    }
+> }
+> ```
 >
 >
 >
@@ -290,7 +311,7 @@ The reformatting step ensures that the processed data adheres to the requirement
 
 
 
-## **Query Tabular**
+## Data refinement with Query Tabular
 
 **Query Tabular** is a bioinformatics tool used to extract and manipulate specific data from tabular datasets in workflows. This tool allows users to perform SQL-like queries on tabular data, enabling them to filter, aggregate, and transform datasets based on user-defined criteria.
 
@@ -311,19 +332,22 @@ By leveraging **Query Tabular**, researchers can efficiently refine and structur
 >            - {% icon param-file %} *"Tabular Dataset for Table"*: `outfile` (output of **Text reformatting** {% icon tool %})
 >            - In *"Table Options"*:
 >                - *"Specify Column Names (comma-separated list)"*: `c1,c2,c3,c4`
->    - *"SQL Query to generate tabular output"*: `SELECT t1.c1 || '__' || t1.c2  || '__' || t1.c3, t1.c4
-FROM t1 `
+>    - *"SQL Query to generate tabular output"*:
+> ``` sql
+> SELECT t1.c1 || '__' || t1.c2  || '__' || t1.c3, t1.c4
+>FROM t1
+> ```
 >    - *"include query result column headers"*: `No`
 >
 >
 {: .hands_on}
 
 
-##  **Tabular-to-FASTA**
+##  Transform data using Tabular-to-FASTA
 
 Tabular to FASTA conversion is a common task in bioinformatics that transforms data structured in a tabular format (such as CSV or TSV) into FASTA format, widely used for representing nucleotide or protein sequences. This conversion is essential when sequence data needs to be input into various bioinformatics tools or databases that require FASTA-formatted files.
 
-> <hands-on-title> COnverting tabular to fasta </hands-on-title>
+> <hands-on-title> Converting tabular to fasta </hands-on-title>
 >
 > 1. {% tool [Tabular-to-FASTA](toolshed.g2.bx.psu.edu/repos/devteam/tabular_to_fasta/tab2fasta/1.1.1) %} with the following parameters:
 >    - {% icon param-file %} *"Tab-delimited file"*: `output` (output of **Query Tabular** {% icon tool %})
@@ -334,7 +358,7 @@ Tabular to FASTA conversion is a common task in bioinformatics that transforms d
 {: .hands_on}
 
 
-## **Regex Find And Replace**
+## Using Regex Find And Replace
 
 Using regex (regular expressions) for find and replace is a powerful technique for text manipulation, allowing you to search for patterns and replace them with desired text. Below is a guide on how to use regex for find and replace, including examples in different programming languages. In this context, we are adding "fusion" to the database header.
 
@@ -347,7 +371,7 @@ Using regex (regular expressions) for find and replace is a powerful technique f
 >            - *"Find Regex"*: `>(\b\w+\S+)(.*$)`
 >            - *"Replacement"*: `>generic|fusion_\1|\2`
 >
->
+> 2. Rename the output FASTA as `Arriba-Fusion-Database.fasta`
 {: .hands_on}
 
 

@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 
 title: "Neoantigen 5: Variant Annotation"
-zenodo_link: ''
+zenodo_link: 'https://zenodo.org/records/14375693'
 questions:
 - How can neoantigens be identified in cancer genomes?
 - What role do neoantigens play in personalized immunotherapy?
@@ -44,8 +44,6 @@ redirect_from:
 ---
 
 
-# Introduction
-
 Neoantigens are tumor-specific antigens that arise from somatic mutations in cancer cells. These mutations result in the generation of abnormal peptides that can be presented by the immune system’s Major Histocompatibility Complex (MHC) molecules. Neoantigens are gaining significant attention in cancer immunotherapy, as they hold the potential to be used in personalized vaccines and therapies aimed at stimulating the immune system to target and destroy tumor cells.
 
 The process of identifying neoantigens begins with the analysis of genomic data to detect somatic mutations, followed by the prediction of the corresponding peptide sequences that can bind to MHC molecules. This process involves a combination of bioinformatics tools and techniques, including variant calling, peptide prediction, and MHC binding affinity analysis. Successful identification of neoantigens can pave the way for personalized treatment strategies that improve patient outcomes in cancer therapy.
@@ -66,7 +64,7 @@ This tutorial focuses on the Neoantigen Annotation pipeline, which is designed t
 # Neoantigen Variant Annotation
 
 This tutorial introduces the process of annotating neoantigens using the PepPointer tool. The aim is to identify potential neoantigens by predicting peptide sequences derived from somatic mutations in cancer genomes, followed by their binding affinity to MHC molecules. The workflow integrates several key bioinformatics steps, including variant analysis, peptide prediction, and immune system interaction analysis. Below is an overview of each major step involved in the tutorial:It is divided into two parts: A, which is the variant annotation, and B, which focuses on the database generation for IEDB.
-# A
+## A
 ### 1. Get Data
 The first step in the process is to gather the necessary data for analysis, which typically includes genomic data in VCF (Variant Call Format) or other formats containing information about somatic mutations. The data is then uploaded into the analysis environment. A well-organized dataset is crucial for smooth and efficient analysis, so it’s important to ensure proper file structure and metadata tagging before beginning.
 
@@ -76,13 +74,13 @@ The next step is to map these mutations to peptide sequences. This involves crea
 ### 3. Annotation and Filtering
 At this stage, the predicted peptides are annotated with relevant biological and immunological information, such as their predicted MHC class, binding affinity, and potential for being recognized by T-cells. Filtering is performed to retain only the most promising candidates, based on binding affinity thresholds and relevance to the tumor type being studied.
 
-### 4. Mapping Peptide sequences with **PepPointer**
+### 4. Mapping Peptide sequences with PepPointer
 PepPointer is used to map the peptide sequences to their corresponding genomic coordinates. This tool helps align peptide sequences (often derived from proteomic data) to the genomic context, providing useful insights into where these peptides are located in the genome. It allows researchers to determine which genomic regions are associated with the peptides of interest, facilitating the study of their potential functional roles.
 
 ### 5. Visualization and Interpretation
 The final step involves visualizing the results of the annotation and filtering steps. Various bioinformatics tools can be used to present the data in a way that is easy to interpret, such as visualizing peptide binding affinity scores or generating summary plots that highlight the most immunogenic neoantigens. This step helps in drawing meaningful conclusions about the potential of the identified peptides for cancer immunotherapy.
 
-# B 
+## B 
 ### 6. Generating FASTA for MHC binding tool
 In this step, we prepare the peptide sequences in FASTA format to be used with an MHC binding prediction tool. MHC (Major Histocompatibility Complex) binding tools are often used in immunology research to predict which peptides can bind to specific MHC molecules and present them to T-cells. 
 
@@ -98,7 +96,10 @@ In this step, we prepare the peptide sequences in FASTA format to be used with a
 >     -> `{{ page.title }}`):
 >
 >    ```
->    
+>    https://zenodo.org/records/14375693/files/Novel_Peptides_from_PepQuery.tabular
+>    https://zenodo.org/records/14375693/files/Fragpipe-Peptide-Report.tabular
+>    https://zenodo.org/records/14375693/files/GffCompare_Annotated_GTF_to_BED.bed
+>    https://zenodo.org/records/14375693/files/Homo_sapiens.GRCh38_canon.106.gtf
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
@@ -116,8 +117,28 @@ In this step, we prepare the peptide sequences in FASTA format to be used with a
 >
 {: .hands_on}
 
+# Import Workflow
 
-## Mutation to Peptide Mapping with **Query Tabular**
+
+> <hands-on-title>Running the Workflow</hands-on-title>
+>
+> 1. **Import the workflow** into Galaxy:
+>
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-5-variant-annotation/workflows/main_workflow.ga" title="peppointer Annotation" %}
+>
+>
+> 2. Run **Workflow** {% icon workflow %} using the following parameters:
+>    - *"Send results to a new history"*: `No`
+>    - {% icon param-file %} *"Novel Peptides from PepQuery"*: `Novel_Peptides_from_PepQuery.tabular`
+>    - {% icon param-file %} *"Fragpipe Peptide Report"*: `Fragpipe-Peptide-Report.tabular`
+>    - {% icon param-file %} *"Annotated-GffCompared-GTFtoBED"*: `GffCompare_Annotated_GTF_to_BED.bed`
+>    - {% icon param-file %} *"Human Reference Genome Annotation"*: `Homo_sapiens.GRCh38_canon.106.gtf`
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
+
+## Mutation to Peptide Mapping with Query Tabular
 
 In this step, we will use the Query Tabular tool to perform a SQL query on a tabular dataset. This tool allows you to filter and extract data from a dataset by applying SQL commands, making it ideal for working with structured data such as CSV or TSV files. You will use it to join tables, select relevant columns, and generate a new output based on the criteria specified in the query. This step helps in refining and organizing the data for further analysis.
 This step extracts information about novel peptides from Frapipe, which primarily includes protein details and the location of the peptide on the protein.
@@ -127,16 +148,19 @@ This step extracts information about novel peptides from Frapipe, which primaril
 > 1. {% tool [Query Tabular](toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.3.2) %} with the following parameters:
 >    - In *"Database Table"*:
 >        - {% icon param-repeat %} *"Insert Database Table"*
->            - {% icon param-file %} *"Tabular Dataset for Table"*: `output` (Input dataset)
+>            - {% icon param-file %} *"Tabular Dataset for Table"*: `Novel_Peptides_from_PepQuery.tabular` (Input dataset)
 >        - {% icon param-repeat %} *"Insert Database Table"*
->            - {% icon param-file %} *"Tabular Dataset for Table"*: `output` (Input dataset)
->    - *"SQL Query to generate tabular output"*: `SELECT t1.c1,t2.c13,t2.c5,t2.c6
-FROM t1
-INNER JOIN t2
-ON t1.c1 = t2.c1`
+>            - {% icon param-file %} *"Tabular Dataset for Table"*: `Fragpipe-Peptide-Report.tabular` (Input dataset)
+>    - *"SQL Query to generate tabular output"*:
+> ``` sql
+> SELECT t1.c1,t2.c13,t2.c5,t2.c6
+> FROM t1
+> INNER JOIN t2
+> ON t1.c1 = t2.c1
+> ```
 >    - *"include query result column headers"*: `No`
 >
->
+{: .hands_on}
 
 
 
@@ -164,7 +188,7 @@ In this step, we will use the Convert tool to modify characters in a dataset. Sp
 > > 1. The "Convert" tool is used to replace or remove specific characters in a dataset, such as pipe characters (|). This ensures that the data conforms to the required format for subsequent analysis or tools. Pipe characters are often used as delimiters in tabular data. Replacing them might be necessary if the data needs to be formatted for a different tool or if the pipe character interferes with parsing in downstream steps.
 > >
 > {: .solution}
->
+> 
 {: .question}
 
 ### Editing certain "u" characters 
@@ -198,7 +222,7 @@ In this step, we will use the Convert tool to remove colons from the dataset. Th
 {: .hands_on}
 
 
-### Extracting bed file information **Query Tabular**
+### Extracting bed file information Query Tabular
 In this step, we will use the Query Tabular tool to extract specific information from a dataset, such as a BED file containing genomic regions, and match it with novel peptides. This allows for identifying the relevant genomic and peptide information by querying data from two sources and combining them through an SQL query. By using an INNER JOIN operation, we can merge data from two tables based on shared columns, and retrieve the necessary information. This query extracts specific columns from both the BED file (such as genomic coordinates) and the novel peptide dataset (such as peptide sequences or identifiers), enabling the identification of peptides that correspond to specific genomic regions. These are the columns that will be extracted - 
 - Chrom: Chromosome name (e.g., chr1).
 - Start: Starting position of the feature (zero-based index).
@@ -215,17 +239,18 @@ In this step, we will use the Query Tabular tool to extract specific information
 >        - {% icon param-repeat %} *"Insert Database Table"*
 >            - {% icon param-file %} *"Tabular Dataset for Table"*: `out_file1` (output of **Convert** {% icon tool %})
 >        - {% icon param-repeat %} *"Insert Database Table"*
->            - {% icon param-file %} *"Tabular Dataset for Table"*: `output` (Input dataset)
->    - *"SQL Query to generate tabular output"*: `SELECT t1.c1,t1.c8,t1.c9,t1.c11,t1.c12,t2.c5,t2.c6,t1.c7
-FROM t1
-INNER JOIN t2
-ON t1.c3 = t2.c4`
+>            - {% icon param-file %} *"Tabular Dataset for Table"*: `Fragpipe-Peptide-Report.tabular` (Input dataset)
+>    - *"SQL Query to generate tabular output"*:
+> ``` sql
+> SELECT t1.c1,t1.c8,t1.c9,t1.c11,t1.c12,t2.c5,t2.c6,t1.c7
+> FROM t1
+> INNER JOIN t2
+> ON t1.c3 = t2.c4
+> ```
 >    - *"include query result column headers"*: `No`
 >
 >
 {: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
 
 
 ### Performing calculations to convert proteomic coordinates to genomic coordinates.  
@@ -238,10 +263,10 @@ To convert proteomic coordinates to genomic coordinates, it is essential to acco
 >    - In *"Database Table"*:
 >        - {% icon param-repeat %} *"Insert Database Table"*
 >            - {% icon param-file %} *"Tabular Dataset for Table"*: `output` (output of **Query Tabular** {% icon tool %})
->    - *"SQL Query to generate tabular output"*: `SELECT t1.*, 
-       t1.c4 * 3 AS c2_multiplied, 
-       t1.c5 * 3 AS c3_multiplied
-FROM t1`
+>    - *"SQL Query to generate tabular output"*:
+> ``` sql
+> SELECT t1.*, t1.c4 * 3 AS c2_multiplied, t1.c5 * 3 AS c3_multiplied FROM t1
+> ```
 >    - *"include query result column headers"*: `No`
 >
 >
@@ -258,16 +283,18 @@ The Query Tabular step in this workflow is used to extract and calculate genomic
 >    - In *"Database Table"*:
 >        - {% icon param-repeat %} *"Insert Database Table"*
 >            - {% icon param-file %} *"Tabular Dataset for Table"*: `output` (output of **Query Tabular** {% icon tool %})
->    - *"SQL Query to generate tabular output"*: `SELECT t1.*, 
-       CASE 
-           WHEN t1.c7 = '-' THEN t1.c3 - t1.c9
-           WHEN t1.c7 = '+' THEN t1.c2 + t1.c9
-       END AS start,
-       CASE 
-           WHEN t1.c7 = '-' THEN t1.c3 - t1.c10
-           WHEN t1.c7 = '+' THEN t1.c2 + t1.c10
-       END AS stop
-FROM t1`
+>    - *"SQL Query to generate tabular output"*:
+> ``` sql
+> SELECT t1.*,
+> CASE
+> WHEN t1.c7 = '-' THEN t1.c3 - t1.c9
+> WHEN t1.c7 = '+' THEN t1.c2 + t1.c9
+> END AS start,
+> CASE
+> WHEN t1.c7 = '-' THEN t1.c3 - t1.c10
+> WHEN t1.c7 = '+' THEN t1.c2 + t1.c10
+> END AS stop FROM t1
+> ```
 >    - *"include query result column headers"*: `No`
 >
 >
@@ -297,15 +324,17 @@ This step is necessary to extract and reorganize relevant genomic information fr
 >    - In *"Database Table"*:
 >        - {% icon param-repeat %} *"Insert Database Table"*
 >            - {% icon param-file %} *"Tabular Dataset for Table"*: `output` (output of **Query Tabular** {% icon tool %})
->    - *"SQL Query to generate tabular output"*: `SELECT 
-    c8 AS `chromosome`,      
-   c11  AS `chromStart`, 
-   c12 AS `chromEnd`,         
-   c1 AS `name`,                  
-   c6 AS `score`,                    
-    c7 AS `strand`           
-FROM 
-   t1`
+>    - *"SQL Query to generate tabular output"*:
+> ``` sql
+> SELECT
+> c8 AS `chromosome`,
+> c11  AS `chromStart`,
+> c12 AS `chromEnd`,
+> c1 AS `name`,
+> c6 AS `score`,
+> c7 AS `strand`
+> FROM t1
+> ```
 >    - *"include query result column headers"*: `No`
 >
 >
@@ -326,7 +355,7 @@ FROM
 >
 {: .question}
 
-## Mapping Peptide sequences with **PepPointer**
+## Mapping Peptide sequences with PepPointer
 
 PepPointer is a tool designed to map peptide sequences to their respective genomic locations using data such as GTF and BED files. In this workflow, PepPointer takes the GTF file, which contains gene annotations and genomic coordinates, and combines it with a BED file, which provides chromosomal coordinates of the peptides. By doing this, PepPointer can identify the exact genomic locations of the peptides, linking them to genes and exons. This step is crucial for accurately correlating proteomic data to genomic sequences, enabling a better understanding of the genomic context in which the peptides are found.
 
@@ -334,7 +363,7 @@ PepPointer is a tool designed to map peptide sequences to their respective genom
 >
 > 1. {% tool [PepPointer](toolshed.g2.bx.psu.edu/repos/galaxyp/pep_pointer/pep_pointer/0.1.3+galaxy1) %} with the following parameters:
 >    - *"Choose the source of the GTF file"*: `From history`
->        - {% icon param-file %} *"GTF file with the genome of interest"*: `output` (Input dataset)
+>        - {% icon param-file %} *"GTF file with the genome of interest"*: `Homo_sapiens.GRCh38_canon.106.gtf` (Input dataset)
 >    - {% icon param-file %} *"BED file with chromosomal coordinates of peptide"*: `output` (output of **Query Tabular** {% icon tool %})
 >
 >
@@ -365,16 +394,19 @@ In this step, we are using Query Tabular to extract and format relevant informat
 >    - In *"Database Table"*:
 >        - {% icon param-repeat %} *"Insert Database Table"*
 >            - {% icon param-file %} *"Tabular Dataset for Table"*: `classified` (output of **PepPointer** {% icon tool %})
->    - *"SQL Query to generate tabular output"*: `SELECT 
-c4 AS Peptide,
-c1 AS Chromosome,
-c2 AS Start,
-c3 AS End,
-c6 AS Strand,
-c7 AS Annotation,
-c1||':'||c2||'-'||c3 AS IGV_Genome_Coordinate,
-'https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&position='||c1||'%3A'||c2||'-'||c3 AS UCSC_Genome_Browser
-FROM  t1`
+>    - *"SQL Query to generate tabular output"*:
+> ``` sql
+> SELECT 
+> c4 AS Peptide,
+> c1 AS Chromosome,
+> c2 AS Start,
+> c3 AS End,
+> c6 AS Strand,
+> c7 AS Annotation,
+> c1||':'||c2||'-'||c3 AS IGV_Genome_Coordinate,
+> 'https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&position='||c1||'%3A'||c2||'-'||c3 AS UCSC_Genome_Browser
+> FROM  t1
+> ```
 >    - *"include query result column headers"*: `Yes`
 >
 >
@@ -394,8 +426,6 @@ FROM  t1`
 > {: .solution}
 >
 {: .question}
-
-{: .hands_on}
 
 
 # B: Database for IEDB 

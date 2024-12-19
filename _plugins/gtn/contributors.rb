@@ -6,6 +6,8 @@ require 'time'
 module Gtn
   # Parse the git repo to get some facts
   module Contributors
+    @HAS_WARNED_ON = []
+
     ##
     # Returns contributors, regardless of whether they are 'contributor' or 'contributions' style
     # Params:
@@ -150,7 +152,10 @@ module Gtn
         return ['grant', site.data['grants'][c]]
       else
         if ! warn
-          Jekyll.logger.warn "Contributor #{c} not found"
+          if ! @HAS_WARNED_ON.include?(c)
+            Jekyll.logger.warn "Contributor #{c} not found"
+            @HAS_WARNED_ON.push(c)
+          end
         end
       end
 
@@ -230,6 +235,8 @@ module Gtn
         "https://gtr.ukri.org/projects?ref=#{contributor['funding_id']}"
       when 'highergov'
         "https://www.highergov.com/contract/#{contributor['funding_id']}/"
+      when 'dfg'
+        "https://gepris-extern.dfg.de/gepris/projekt/#{contributor['funding_id']}?language=en"
       else
         Jekyll.logger.error "Unknown funding system #{contributor['funding_database']}. Please let us know so we can add support for it!"
         'ERROR'

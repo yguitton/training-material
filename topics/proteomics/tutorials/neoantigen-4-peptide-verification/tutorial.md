@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 
 title: "Neoantigen 4: PepQuery2 Verification"
-zenodo_link: ''
+zenodo_link: 'https://zenodo.org/records/14375467'
 questions:
 - How can neoantigens be verified using bioinformatics tools?
 - What is the role of mass spectrometry and peptide sequence databases in neoantigen discovery?
@@ -41,8 +41,6 @@ redirect_from:
 
 ---
 
-
-# Introduction
 
 Verification is an essential step in the process of analyzing neoantigens to ensure that the identified peptides or proteins are accurate and reliable. Neoantigens, which are novel antigens arising from tumor-specific mutations, are crucial for cancer immunotherapy. However, the prediction and identification of these neoantigens must be rigorously validated to ensure they are truly present and capable of eliciting an immune response. Without proper verification, the therapeutic potential of neoantigens cannot be realized, leading to wasted resources and failed treatments.
 
@@ -98,7 +96,10 @@ The final step involves summarizing the results, which include the validated and
 >     -> `{{ page.title }}`):
 >
 >    ```
->    
+>    https://zenodo.org/records/14375467/files/Human-TaxID.txt
+>    https://zenodo.org/records/14375467/files/HUMAN_CRAP.fasta
+>    https://zenodo.org/records/14375467/files/NeoAntigen-Candidates.tabular
+>    https://zenodo.org/records/14375467/files/STS_26T_2_Eclipse_02102024.raw
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
@@ -116,6 +117,26 @@ The final step involves summarizing the results, which include the validated and
 >
 {: .hands_on}
 
+# Import Workflow
+
+
+> <hands-on-title>Running the Workflow</hands-on-title>
+>
+> 1. **Import the workflow** into Galaxy:
+>
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-4-peptide-verification/workflows/main_workflow.ga" title="PepQuery2 Verification" %}
+>
+>
+> 2. Run **Workflow** {% icon workflow %} using the following parameters:
+>    - *"Send results to a new history"*: `No`
+>    - {% icon param-file %} *"Candidate_Neoantigens"*: `NeoAntigen-Candidates.tabular`
+>    - {% icon param-file %} *"Human Uniprot (with isoforms) and CRAP Database"*: `HUMAN_CRAP.fasta`
+>    - {% icon param-file %} *"Input raw file(s)"*: `STS_26T_2_Eclipse_02102024.raw`
+>    - {% icon param-file %} *"Human Taxonomy ID"*: `Human-TaxID.txt`
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
 
 # A: Performing validation of peptides using PepQuery
 
@@ -127,7 +148,7 @@ msconvert is a tool used to preprocess raw mass spectrometry (MS) data files by 
 > <hands-on-title> msconvert</hands-on-title>
 >
 > 1. {% tool [msconvert](toolshed.g2.bx.psu.edu/repos/galaxyp/msconvert/msconvert/3.0.20287.2) %} with the following parameters:
->    - {% icon param-file %} *"Input unrefined MS data"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Input unrefined MS data"*: `STS_26T_2_Eclipse_02102024.raw` (Input dataset)
 >    - *"Do you agree to the vendor licenses?"*: `Yes`
 >    - *"Output Type"*: `mgf`
 >    - In *"Data Processing Filters"*:
@@ -165,9 +186,9 @@ PepQuery2 is a tool used to validate novel peptides and proteins by searching ma
 >    - In *"Input Data"*:
 >        - *"Input Type"*: `peptide`
 >            - *"Peptides?"*: `Peptide list from your history`
->                - {% icon param-file %} *"Peptide Sequences (.txt)"*: `output` (Input dataset)
+>                - {% icon param-file %} *"Peptide Sequences (.txt)"*: `NeoAntigen-Candidates.tabular` (Input dataset)
 >        - *"Protein Reference Database from"*: `history`
->            - {% icon param-file %} *"Protein Reference Database File"*: `output` (Input dataset)
+>            - {% icon param-file %} *"Protein Reference Database File"*: `HUMAN_CRAP.fasta` (Input dataset)
 >        - *"MS/MS dataset to search"*: ` Spectrum Datasets from history`
 >            - {% icon param-file %} *"Spectrum File"*: `output` (output of **msconvert** {% icon tool %})
 >        - *"Report Spectrum Scan as"*: `spectrum title in MGF`
@@ -218,10 +239,11 @@ Query Tabular is a tool used to query tabular datasets using SQL-like commands. 
 >        - {% icon param-repeat %} *"Insert Database Table"*
 >            - {% icon param-file %} *"Tabular Dataset for Table"*: `psm_rank_txt` (output of **PepQuery2** {% icon tool %})
 >    - *"SQL Query to generate tabular output"*:
-`SELECT c1,c4
-FROM t1
-WHERE (c20 = 'Yes')
-`
+> ``` sql
+> SELECT c1,c4
+> FROM t1
+> WHERE (c20 = 'Yes')
+> ```
 >    - *"include query result column headers"*: `No`
 >
 >
@@ -300,7 +322,7 @@ In this step, the NCBI BLAST+ blastp tool is used for performing protein sequenc
 >        - *"Minimum score to add a word to the BLAST lookup table."*: `16`
 >        - *"Composition-based statistics"*: `0: No composition-based statistics`
 >        - *"Restrict search of database to a given set of ID's"*: `Taxonomy identifiers (TaxId's)`
->            - {% icon param-file %} *"Restrict search of database to list of TaxId's"*: `output` (Input dataset)
+>            - {% icon param-file %} *"Restrict search of database to list of TaxId's"*: `Human-TaxID.txt` (Input dataset)
 >
 >
 {: .hands_on}
@@ -344,18 +366,20 @@ The tool helps to refine the data by removing sequences that meet specific crite
 >                - In *"Table Index"*:
 >                    - {% icon param-repeat %} *"Insert Table Index"*
 >                        - *"Index on Columns"*: `pep`
->    - *"SQL Query to generate tabular output"*: `SELECT DISTINCT pep.*
-FROM pep 
-JOIN blast ON pep.pep = blast.qseq
-WHERE pep.pep NOT IN (
-    SELECT qseq 
-    FROM blast 
-    WHERE pident = 100
-)
-AND (blast.pident < 100 
-     OR blast.gapopen >= 1 
-     OR blast.length < blast.qlen)
-ORDER BY pep.pep`
+>    - *"SQL Query to generate tabular output"*:
+> ``` sql
+> SELECT DISTINCT pep.*
+> FROM pep 
+> JOIN blast ON pep.pep = blast.qseq
+> WHERE pep.pep NOT IN
+> (SELECT qseq 
+> FROM blast 
+> WHERE pident = 100)
+> AND (blast.pident < 100
+> OR blast.gapopen >= 1
+> OR blast.length < blast.qlen)
+> ORDER BY pep.pep
+> ```
 >    - *"include query result column headers"*: `No`
 >
 >

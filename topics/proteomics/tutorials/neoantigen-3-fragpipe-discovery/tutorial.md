@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 
 title: "Neoantigen 3: Database merge and FragPipe discovery"
-zenodo_link: ''
+zenodo_link: 'https://zenodo.org/records/14374118'
 questions:
 - What are the key features and unique sequences in protein datasets that contribute to neoantigen discovery?
 - How can we identify neoantigens from proteomic data?
@@ -42,8 +42,6 @@ redirect_from:
 ---
 
 
-# Introduction
-
 In this tutorial, we will guide you through a bioinformatics workflow aimed at merging neoantigen databases with known human protein sequences, preparing the data for proteomics analysis using FragPipe. This workflow involves processing FASTA files, filtering for unique sequences, and validating the FASTA databases before using FragPipe to perform peptide identification and validation of neoantigens.
 
 Throughout the tutorial, you will learn how to integrate multiple datasets, ensuring that you can perform analyses such as the identification of potential neoantigens, which are critical for cancer immunotherapy and vaccine development. The tools and steps covered here are important for any bioinformatics pipeline dealing with proteomics and neoantigen discovery.
@@ -62,14 +60,14 @@ Throughout the tutorial, you will learn how to integrate multiple datasets, ensu
 
 This tutorial guides users through the process of performing database searching or neoantigen protein/peptide discovery. It encompasses essential bioinformatics steps to identify and variant-specific peptides for immunological studies.The overview is divided into 2 major stages: (A) Merging all the variant databases and Validating the sequences, (B) Performing database searching using Fragpipe to discover neoantigen peptides. Below is an overview of each major stages
 
-# A: Merging Databases
+## A: Merging Databases
 ### 1. Get Data
 The first step involves gathering and uploading the necessary proteomics data files into the analysis environment. These files typically contain protein sequences or raw spectrum data that will be processed throughout the tutorial. Proper data organization and tagging are essential to ensure smooth workflow execution.
 
 ### 2. Merging FASTA Files and Filtering for Unique Sequences
 In this step, multiple FASTA files containing protein sequences are merged into a single file. After merging, sequences are filtered to retain only the unique ones, ensuring that redundancy is removed and only relevant protein data is used for downstream analysis.
 
-# B: Discovery search
+## B: Discovery search
 ### 3. Validating FASTA Databases
 Once the FASTA files are merged and filtered, it's important to validate the database to ensure that the protein sequences are correctly formatted and usable for analysis. This step helps identify and correct any issues in the dataset before performing more complex analysis tasks.
 
@@ -95,7 +93,10 @@ In the final step, tabular results from the analysis are queried using SQL-like 
 >     -> `{{ page.title }}`):
 >
 >    ```
->    
+>    https://zenodo.org/records/14374118/files/Experimental-Design-Fragpipe.tabular
+>    https://zenodo.org/records/14374118/files/Arriba-Fusion-Database.fasta
+>    https://zenodo.org/records/14374118/files/Human_cRAP_Non_normal_transcripts_dB.fasta
+>    https://zenodo.org/records/14374118/files/STS_26T_2_Eclipse_02102024.raw
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
@@ -113,6 +114,28 @@ In the final step, tabular results from the analysis are queried using SQL-like 
 >
 {: .hands_on}
 
+# Import Workflow
+
+
+> <hands-on-title>Running the Workflow</hands-on-title>
+>
+> 1. **Import the workflow** into Galaxy:
+>
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-3-fragpipe-discovery/workflows/main_workflow.ga" title="Fragpipe Discovery" %}
+>
+>
+> 2. Run **Workflow** {% icon workflow %} using the following parameters:
+>    - *"Send results to a new history"*: `No`
+>    - {% icon param-file %} *"Non-Normal protein database"*: `Human_cRAP_Non_normal_transcripts_dB.fasta`
+>    - {% icon param-file %} *"Fusion protein database"*: `Arriba-Fusion-Database.fasta`
+>    - {% icon param-file %} *"Input raw file"*: `STS_26T_2_Eclipse_02102024.raw`
+>    - {% icon param-file %} *"Experimental design file for Fragpipe"*: `Experimental-Design-Fragpipe.tabular`
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
+
+
 ## Merging FASTA Files and Filtering for Unique Sequences
 
 Next, we will merge the FASTA files, ensuring that any redundant sequences are removed. This step ensures that we only work with unique sequences, improving the quality and accuracy of the subsequent analysis. In this step, we combine the fusion database generated from the Arriba Pipeline (first neoantigen workflow) with the non-normal database created from HISAT, Freebayes, CustomPRODB, and the Stringtie Pipeline (second neoantigen workflow). Once merging is done, we validate the database to ensure that the sequences are in the right format.
@@ -123,13 +146,16 @@ Next, we will merge the FASTA files, ensuring that any redundant sequences are r
 >    - *"Run in batch mode?"*: `Merge individual FASTAs (output collection if input is collection)`
 >        - In *"Input FASTA File(s)"*:
 >            - {% icon param-repeat %} *"Insert Input FASTA File(s)"*
->                - {% icon param-file %} *"FASTA File"*: `output` (Input dataset)
+>                - {% icon param-file %} *"FASTA File"*: `Human_cRAP_Non_normal_transcripts_dB.fasta` (Input dataset)
+>        - In *"Input FASTA File(s)"*:
+>            - {% icon param-repeat %} *"Insert Input FASTA File(s)"*
+>                - {% icon param-file %} *"FASTA File"*: `Arriba-Fusion-Database.fasta` (Input dataset)
 >
 >
 {: .hands_on}
 
 
-## Sequence database parsing with **Validate FASTA Database**
+## Sequence database parsing with Validate FASTA Database
 
 > <hands-on-title> Validate FASTA Database </hands-on-title>
 >
@@ -166,8 +192,8 @@ In this workflow, FragPipe is used after FASTA database validation to ensure tha
 >
 > 1. {% tool [FragPipe -  Academic Research and Education User License (Non-Commercial)](toolshed.g2.bx.psu.edu/repos/galaxyp/fragpipe/fragpipe/20.0+galaxy2) %} with the following parameters:
 >    - *"I understand that these tools, including MSFragger, IonQuant, Bruker, and Thermo Raw File Reader, are available freely for academic research and educational purposes only, and agree to the following terms."*: `Yes`
->    - {% icon param-file %} *"Proteomics Spectrum files"*: `output` (Input dataset)
->    - {% icon param-file %} *"Manifest file"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Proteomics Spectrum files"*: `STS_26T_2_Eclipse_02102024.raw` (Input dataset)
+>    - {% icon param-file %} *"Manifest file"*: `Experimental-Design-Fragpipe.tabular` (Input dataset)
 >    - {% icon param-file %} *"Proteomics Search Database in FASTA format"*: `goodFastaOut` (output of **Validate FASTA Database** {% icon tool %})
 >    - *"Split database"*: `200`
 >    - *"Workflow"*: `Nonspecific-HLA`
@@ -255,10 +281,10 @@ In this workflow, this step filters the tabular data to isolate the rows that me
 >            - {% icon param-file %} *"Tabular Dataset for Table"*: `out_file1` (output of **Select** {% icon tool %})
 >            - In *"Table Options"*:
 >                - *"Specify Name for Table"*: `fp`
->    - *"SQL Query to generate tabular output"*: `SELECT c1
-FROM fp
-WHERE (c16 IS NULL OR c16 = '')
-AND (c18 IS NULL OR c18 = '')`
+>    - *"SQL Query to generate tabular output"*:
+> ``` sql
+> SELECT c1 FROM fp WHERE (c16 IS NULL OR c16 = '') AND (c18 IS NULL OR c18 = '')
+> ```
 >    - *"include query result column headers"*: `No`
 >
 >

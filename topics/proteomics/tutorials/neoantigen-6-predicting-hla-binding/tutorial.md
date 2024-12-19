@@ -2,12 +2,11 @@
 layout: tutorial_hands_on
 
 title: "Neoantigen 6: Predicting HLA Binding"
-zenodo_link: ''
+zenodo_link: 'https://zenodo.org/records/14375917'
 questions:
 - How can we predict the neoantigens presented by tumor cells?
 - How does the HLA genotype affect the immune response to cancer?
 objectives:
-The following tools will be used in this tutorial:
   - Predict potential neoantigens based on HLA binding affinity.
   - Understand the role of HLA genotyping in predicting personalized immune responses.
   - Use specific tools for processing sequence data to predict HLA-binding peptides.
@@ -44,8 +43,6 @@ redirect_from:
 ---
 
 
-# Introduction
-
 Neoantigen prediction for HLA binding is a critical component of personalized cancer immunotherapy. Neoantigens, which are tumor-specific antigens resulting from mutations in cancer cells, can be recognized by the immune system, making them promising targets for tailored immunotherapies. Human leukocyte antigen (HLA) molecules play a key role in presenting these neoantigens on the surface of cells, where they can be detected by T-cells, triggering an immune response.
 
 This tutorial focuses on predicting HLA binding affinities for potential neoantigens, an essential step in identifying effective targets for immunotherapy. The workflow includes the use of tools such as OptiType and seq2HLA to determine HLA genotypes, as well as data reformatting and querying methods to manage complex data outputs.
@@ -70,6 +67,7 @@ This hands-on tutorial is designed to offer practical experience for learners ai
 {: .agenda}
 
 # Predicting HLA binding
+## Overview of HLA Binding Prediction Workflow
 This tutorial provides a step-by-step guide for predicting HLA binding of neoantigens, a crucial part of personalized immunotherapy research. Using OptiType and seq2HLA, we will perform HLA typing and analyze which neoantigens are likely to bind to a specific individual’s HLA molecules, potentially driving an immune response. This process is essential for identifying candidate peptides that could serve as effective targets in immunotherapy.
 
 ### 1. Get Data
@@ -99,7 +97,9 @@ This structured workflow enables a streamlined approach for accurate HLA typing 
 >     -> `{{ page.title }}`):
 >
 >    ```
->    
+>    https://zenodo.org/records/14375917/files/RNA-Seq_Reads_1.fastqsanger.gz
+>    https://zenodo.org/records/14375917/files/RNA-Seq_Reads_2.fastqsanger.gz
+>   
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
@@ -117,6 +117,24 @@ This structured workflow enables a streamlined approach for accurate HLA typing 
 >
 {: .hands_on}
 
+# Import Workflow
+
+
+> <hands-on-title>Running the Workflow</hands-on-title>
+>
+> 1. **Import the workflow** into Galaxy:
+>
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-6-predicting-hla-binding/workflows/main_workflow.ga" title="HLA Binding Prediction of Verified Candidates" %}
+>
+>
+> 2. Run **Workflow** {% icon workflow %} using the following parameters:
+>    - *"Send results to a new history"*: `No`
+>    - {% icon param-file %} *"RNA-Seq_Reads_1 (forward strand)"*: `RNA-Seq_Reads_1.fastqsanger.gz`
+>    - {% icon param-file %} *"RNA-Seq_Reads_2 (reverse strand)"*: `RNA-Seq_Reads_2.fastqsanger.gz`
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
 
 ## HLA typing with **OptiType**
 
@@ -126,8 +144,8 @@ OptiType is a bioinformatics tool designed specifically for HLA class I typing u
 >
 > 1. {% tool [OptiType](toolshed.g2.bx.psu.edu/repos/iuc/optitype/optitype/1.3.5+galaxy0) %} with the following parameters:
 >    - *"Single or Paired-end reads"*: `Paired`
->        - {% icon param-file %} *"Select first set of reads"*: `output` (Input dataset)
->        - {% icon param-file %} *"Select second set of reads"*: `output` (Input dataset)
+>        - {% icon param-file %} *"Select first set of reads"*: `RNA-Seq_Reads_1.fastqsanger` (Input dataset)
+>        - {% icon param-file %} *"Select second set of reads"*: `RNA-Seq_Reads_2.fastqsanger` (Input dataset)
 >    - *"Enumerations"*: `3`
 >
 >
@@ -157,8 +175,8 @@ seq2HLA is a computational tool for identifying HLA types from RNA-Seq or DNA-Se
 > 1. {% tool [seq2HLA](toolshed.g2.bx.psu.edu/repos/iuc/seq2hla/seq2hla/2.3+galaxy0) %} with the following parameters:
 >    - *"Name prefix for this analysis"*: `STS26TGen`
 >    - *"Paired-end reads"*: `Paired`
->        - {% icon param-file %} *"Select first set of reads"*: `output` (Input dataset)
->        - {% icon param-file %} *"Select second set of reads"*: `output` (Input dataset)
+>        - {% icon param-file %} *"Select first set of reads"*: `RNA-Seq_Reads_1.fastqsanger` (Input dataset)
+>        - {% icon param-file %} *"Select second set of reads"*: `RNA-Seq_Reads_2.fastqsanger` (Input dataset)
 >
 >
 {: .hands_on}
@@ -185,15 +203,17 @@ This step involves reformatting and filtering the HLA alleles output from the Op
 >
 > 1. {% tool [Text reformatting](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/9.3+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `result` (output of **OptiType** {% icon tool %})
->    - *"AWK Program"*: `$1 ~ /[0-9]/{ 
-    for (i = 2; i <=7; i++) { allele[$i]++}
-}
-END {
-    for (i in allele) {
-        print i
-    }
-}`
->
+>    - *"AWK Program"*:
+> ```
+> $1 ~ /[0-9]/{ 
+>    for (i = 2; i <=7; i++) { allele[$i]++}
+> }
+> END {
+>    for (i in allele) {
+>        print i
+>    }
+> }
+> ```
 >
 {: .hands_on}
 
@@ -256,26 +276,36 @@ In this step, we use the Query Tabular tool to validate and organize the HLA typ
 >                            - *"replacement expression"*: `HLA-\1`
 >            - In *"Table Options"*:
 >                - *"Specify Name for Table"*: `seq2hla`
->    - *"SQL Query to generate tabular output"*: `SELECT hla
-FROM
-(SELECT c1 AS hla FROM optitype
-UNION
-SELECT c1 AS hla FROM seq2hla WHERE c1 LIKE '%*%:%'
-UNION 
-SELECT c2 AS hla FROM seq2hla WHERE c2 LIKE '%*%:%') 
-ORDER BY hla`
+>    - *"SQL Query to generate tabular output"*:
+> ``` sql
+> SELECT hla FROM
+> (SELECT c1 AS hla FROM optitype
+> UNION
+> SELECT c1 AS hla FROM seq2hla WHERE c1 LIKE '%*%:%'
+> UNION 
+> SELECT c2 AS hla FROM seq2hla WHERE c2 LIKE '%*%:%') 
+> ORDER BY hla
+> ```
+> 
 >    - *"include query result column headers"*: `No`
 >    - In *"Additional Queries"*:
 >        - In *"SQL Query"*:
 >            - {% icon param-repeat %} *"Insert SQL Query"*
->                - *"SQL Query to generate tabular output"*: `SELECT c1 FROM optitype
-ORDER BY c1`
->                - *"include query result column headers"*: `No`
->            - {% icon param-repeat %} *"Insert SQL Query"*
->                - *"SQL Query to generate tabular output"*: `SELECT c1 FROM seq2hla WHERE c1 LIKE '%*%:%' 
-UNION 
-SELECT c2 FROM seq2hla WHERE c2 LIKE '%*%:%'`
->                - *"include query result column headers"*: `No`
+>                - *"SQL Query to generate tabular output"*:
+> ``` sql
+> SELECT c1 FROM optitype
+> ORDER BY c1
+> ```
+>  - *"include query result column headers"*: `No`
+>    - {% icon param-repeat %} *"Insert SQL Query"*
+>        - *"SQL Query to generate tabular output"*:
+> ``` sql
+> SELECT c1 FROM seq2hla WHERE c1 LIKE '%*%:%' 
+> UNION 
+> SELECT c2 FROM seq2hla WHERE c2 LIKE '%*%:%'
+> ```
+> 
+> - *"include query result column headers"*: `No`
 >
 >
 {: .hands_on}
