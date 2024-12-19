@@ -10,7 +10,7 @@ objectives:
   - "Signpost community leads and users to useful resources"
   - "Explain why metadata is key for such community resources"
   - "Provide a reference, rather than a tutorial"
-time_estimation: "30"
+time_estimation: "30M"
 key_points:
   - "The GTN has worked hard to provide automated metrics and resources to highlight and acknowledge the efforts of communities and community leads"
   - "This only works if we contribute with effective tagging."
