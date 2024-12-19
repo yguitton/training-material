@@ -161,6 +161,12 @@ You can see an example from the Single-cell topic below.
 <h3 class="mb-3">Public workflows</h3>
 <iframe src="https://training.galaxyproject.org/training-material/workflows/embed.html?query=single-cell" height="600px" width="100%" class="gtn-embed" frameborder="1"></iframe>
 
+# Galaxy Community Activities calendar
+
+We host a GoogleCalendar on the [Galaxy Special Interest Group Hub page](https://galaxyproject.org/community/sig/).
+
+{% snippet topics/community/faqs/community_activites_calendar.md %}
+
 # Conclusion
 
 {% icon congratulations %} Congratulations! You've made it to the end! Hopefully you think these resources are brilliant, and are making sure to tag everything (news, events, training materials, workflows, FAQs, you name it, you should tag it!) with your community tag!
