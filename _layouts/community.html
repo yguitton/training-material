@@ -210,12 +210,6 @@ new Chart('contributors-over-time', {
 	data: {
 		datasets: [
 			{
-				data: totals.contributors,
-				label: 'Contributors',
-				borderColor: getStyleDarker("contributors", true),
-				backgroundColor: getStyleDarker("contributors", false),
-			},
-			{
 				data: totals.grants,
 				label: 'Grants',
 				borderColor: getStyleDarker("grants", true),
@@ -226,6 +220,12 @@ new Chart('contributors-over-time', {
 				label: 'Organisations',
 				borderColor: getStyleDarker("organisations", true),
 				backgroundColor: getStyleDarker("organisations", false),
+			},
+			{
+				data: totals.contributors,
+				label: 'Contributors',
+				borderColor: getStyleDarker("contributors", true),
+				backgroundColor: getStyleDarker("contributors", false),
 			},
 		]
 	},
