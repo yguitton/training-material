@@ -707,6 +707,12 @@ dyusuf:
     affiliations:
       - uni-freiburg
 
+dometto:
+    name: Dawa Ometto
+    joined: 2024-12
+    affiliations:
+      - surf
+
 eancelet:
     name: Estelle Ancelet
     email: estelle.ancelet@inrae.fr
@@ -1694,6 +1700,12 @@ miRlyKayleigh:
     email: kayleigh.smith@open.ac.uk
     joined: 2022-12
 
+mirelaminkova:
+    name: Mirela Minkova
+    joined: 2024-12
+    affiliations:
+      - surf
+
 moffmade:
     name: Cory Maughmer
     joined: 2018-06
@@ -1765,6 +1777,11 @@ nagoue:
     email: nadia.goue@uca.fr
     orcid: 0000-0003-2750-1473
     joined: 2019-07
+    
+Najatamk:
+    name: Najat Amoukou
+    email: najatibrahim21@gmail.com
+    joined: 2024-07
 
 nakucher:
     name: Natalie Kucher
@@ -2690,6 +2707,10 @@ yvesvdb:
     joined: 2024-05
     affiliations:
       - ifb
+
+yuliiaorlova:
+    name: Yuliia Orlova
+    joined: 2024-12
 
 zargham-ahmad:
     name: Zargham Ahmad

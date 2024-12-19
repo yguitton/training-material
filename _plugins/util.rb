@@ -1,5 +1,9 @@
 require 'yaml'
 
+# This module specifically avoids having any dependencies. If you have a method
+# that needs to be used in many places, even those without initialisation, it
+# should go here.
+
 ALLOWED_SHORT_IDS = [
   'ChangeCase',
   'Convert characters1',
@@ -150,10 +154,38 @@ def tool_id_extractor(wf, path: [])
   res
 end
 
+def objectify(attrs, url, path)
+  obj = attrs.clone
+  obj['__path'] = path
+  obj['__url'] = url
+
+  def obj.data
+    self
+  end
+
+  def obj.path
+    self['__path']
+  end
+
+  def obj.url
+    self['__url']
+  end
+
+  def obj.content
+    self.fetch('content', 'NO CONTENT AVAILABLE')
+  end
+
+  def obj.title
+    self['title']
+  end
+
+  obj
+end
+
 if __FILE__ == $PROGRAM_NAME
   require 'test/unit'
     # Testing for the class
-  class IntersectionTest < Test::Unit::TestCase
+  class Gtn::Test::IntersectionTest < Test::Unit::TestCase
     def test_bad_versions
       # toolshed.g2.bx.psu.edu/repos/wolma/mimodd_main/mimodd_info/0.1.8_1
       assert_equal(fix_version("0.1.8_1"), "0.1.8galaxy1")
