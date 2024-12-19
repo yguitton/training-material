@@ -6,6 +6,13 @@ require './_plugins/gtn'
 require './_plugins/util'
 require 'securerandom'
 
+class Array
+  def cumulative_sum
+    sum = 0
+    self.map{|x| sum += x}
+  end
+end
+
 module Gtn
   # The main GTN module to parse tutorial.md and slides.html and topics into useful lists of things that can be shown on topic pages, i.e. "materials" (a possible combination of tutorial + slides)
   #
@@ -1255,8 +1262,13 @@ module Gtn
     #    "slides",
     #    #<Jekyll::Page @relative_path="topics/single-cell/tutorials/scrna-plates-batches-barcodes/slides.html">,
     #    ["single-cell"]]] 
-
     def self.all_date_sorted_resources(site)
+      cache.getset('all_date_sorted_resources') do
+        self._all_date_sorted_resources(site)
+      end
+    end
+
+    def self._all_date_sorted_resources(site)
       events = site.pages.select { |x| x['layout'] == 'event' || x['layout'] == 'event-external' }
       materials = list_all_materials(site).reject { |k, _v| k['draft'] }
       news = site.posts.select { |x| x['layout'] == 'news' }
@@ -1542,12 +1554,31 @@ module Jekyll
         years = flat_mats.map{|x| x['pub_date'].year} + flat_mats.map{|x| x['mod_date'].year}
         topic_contribs = identify_contributors({'topic' => {'materials' => flat_mats}}, site)
 
-        # Should cache this really.
         Gtn::TopicFilter.all_date_sorted_resources(site)
-          .select{|x| (x[3].include? 'single-cell') || (x[1] == 'contributors' && topic_contribs.include?(x[2].title[1..]))}
+          .select{|x| (x[3].include? topic_name) || (x[1] == 'contributors' && topic_contribs.include?(x[2].title[1..]))}
           .group_by{|x| x[0].year}
           .map{|k, v| [k, v.group_by{|z| z[1]}]}
           .to_h
+      end
+
+      def count_topic_materials_yearly(site, topic_name)
+        flat_mats = list_materials_flat(site, topic_name)
+        years = flat_mats.map{|x| x['pub_date'].year} + flat_mats.map{|x| x['mod_date'].year}
+        topic_contribs = identify_contributors({'topic' => {'materials' => flat_mats}}, site)
+
+        r = Gtn::TopicFilter.all_date_sorted_resources(site)
+          .select{|x| (x[3].include? topic_name) || (x[1] == 'contributors' && topic_contribs.include?(x[2].title[1..]))}
+          .map{|x| [x[0].year, x[1]]} # Only need year + type
+          .group_by{|x| x[1]} # Group by type.
+          .map{|k, v| [k, v.map{|vv| vv[0]}.tally]}
+          .to_h
+
+        years = (2015..Date.today.year).to_a
+        # Fill in zeros for missing years
+        r.map{|k, v| [k, years.map{|y| v[y] || 0}
+          .cumulative_sum
+          .map.with_index{|value, i| {"y" => value, "x" => "#{years[i]}-01-01"}}]
+        }.to_h
       end
 
       def list_all_tags(site)
