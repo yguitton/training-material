@@ -18,7 +18,7 @@ requirements:
 contributions:
   authorship:
   - nomadscientist
-  requirements:
+requirements:
   -
       type: "internal"
       topic_name: community
