@@ -7,7 +7,12 @@ questions:
   - How do I start a Pulsar instance on SURF Research Cloud?
   - How do I connect to Pulsar?
 objectives:
-  - Be able to attach a Pulsar node to Galaxy and use interactive tools
+  - Be able to attach a Pulsar node to Galaxy
+  - Send jobs to Pulsar
+key_points:
+  - With SRC you can start your own Pulsar on-demand instance in a secure environment.
+  - The Pulsar node is publicly accessible for a Galaxy with the credentials to use.
+  - You can send jobs to a Pulsar node from either a Galaxy instance running on SRC, or even inside your own network.
 requirements:
   - type: "none"
     title: Access to the SURF Research Cloud
@@ -25,6 +30,8 @@ contributions:
   - mirelaminkova
   funding:
   - surf
+
+priority: 11
 
 edam_ontology:
 - topic_0605 # Informatics
@@ -49,9 +56,14 @@ tags:
 
 Using Pulsar via the {SRC} allows researchers to start Pulsar instances on-demand to expand their computational resources and even access GPUs to help and analyze their data in a secure environment following the {GDPR}.
 
-The instance provides secure authentication, where users must have a SURF Research account prior to this tutorial, have set the {SRAM} authentication method, and connect an SSH key to their accounts. In case you are not familiar with {SRC} and need help in setting up your accounts, please follow the instructions on the [SURF Knowledge Base](https://servicedesk.surf.nl/wiki/display/WIKI/SURF+Research+Cloud)
+There are two main use cases we envision this role being useful for:
 
-Pulsar instances can be started and stopped on demand, depending on personal cases and requirements. Inside the SRC members should have access to all publicly available catalog items. If you are not able to create a catalog item, please [contact SURF servicedesk](mailto:servicedesk@surf.nl).
+Saving costs on SRC
+:  Maybe you're already running Galaxy in SRC, but you don't want to run a GPU node because it is very expensive. By using the SRC Pulsar Catalog Item, you can launch a node to do computations and then shut it down when you're done, saving money. Pulsar instances can be started and stopped on demand, depending on personal cases and requirements, giving you a lot of freedom!
+
+Accessing a GPU from a local (in UMC/hospital Galaxy)
+:  If you do not have a GPU easily available within your institute, it may be attractive to send jobs securely to SRC, by launching a Pulsar node in SRC and attaching it to your institute's Galaxy instance.
+
 
 > <agenda-title></agenda-title>
 >
@@ -61,6 +73,10 @@ Pulsar instances can be started and stopped on demand, depending on personal cas
 {: .agenda}
 
 # Prerequisites
+
+The instance provides secure authentication, where users must have a SURF Research account prior to this tutorial, have set the {SRAM} authentication method, and connect an SSH key to their accounts. In case you are not familiar with {SRC} and need help in setting up your accounts, please follow the instructions on the [SURF Knowledge Base](https://servicedesk.surf.nl/wiki/display/WIKI/SURF+Research+Cloud)
+
+Inside the SRC members should have access to all publicly available catalog items. If you are not able to create a catalog item, please [contact SURF servicedesk](mailto:servicedesk@surf.nl).
 
 This tutorial assumes you are member of a {CO} in {SRAM} that has access to {SRC} and a wallet with budget in SRC with enough sources to create Galaxy and Pulsar catalog items. (For more information please refer to the [SURF Knowledge Base](https://servicedesk.surf.nl/wiki/display/WIKI/Budgets%2C+wallets%2C+contracts).
 
@@ -228,5 +244,16 @@ You can find the tool ID from the dropdown at the top right, just to the left of
 {: .tip}
 
 With that, you're done, and for the length of time your node is running, your chosen tools (or everything) will be executed on that Pulsar node with more memory and CPU than the Galaxy host, and maybe a GPU as well!
+
+> <hands-on-title>Launch a Job on Pulsar</hands-on-title>
+> 1. Login to your Galaxy
+> 2. Run one of the tools you have decided to send to Pulsar
+> 3. On the pulsar machine, you can check that it runs by following the logs:
+>
+>    ```bash
+>    sudo journalctl -fu pulsar
+>    ```
+>
+{: .hands_on}
 
 Congratulations on launching Pulsar in SRC! 🌌
