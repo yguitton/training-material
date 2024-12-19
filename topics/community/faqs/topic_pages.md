@@ -5,7 +5,7 @@ layout: faq
 contributors: [nomadscientist, hexylena]
 ---
 
-You can find your **Community Page** and **Maintainer Page** by scrolling down on your training **Topic** page.
+You can find your **Community Home** and **Maintainer Home** by scrolling down on your training **Topic** page.
 
 > <hands-on-title>Go to your topic page resources</hands-on-title>
 >
@@ -13,10 +13,10 @@ You can find your **Community Page** and **Maintainer Page** by scrolling down o
 >    ```
 >     https://training.galaxyproject.org/training-material/topics/<your topic here>
 >    ```
-> 2. Add a #community  to the end of the url.
+> 2. Add a #community to the end of the url.
 >    ```
 >     https://training.galaxyproject.org/training-material/topics/<your topic here>#community
 >    ```
-> 3. Select a page to explore!
+> 3. Select a Home to explore!
 >
 {: .hands_on}

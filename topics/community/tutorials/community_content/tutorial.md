@@ -43,13 +43,13 @@ Here is a list of resources that you can use!
 >
 {: .agenda}
 
-# Maintainer page
+# Maintainer Home
 
 Maintaining resources is **fundamental** to the quality and usefulness of any software resource. We do *not* throw code over the wall!
 
-To help topic maintainers to quickly recognise what materials need updating and fixing, **Topic Maintainer Pages** were built.
+To help topic maintainers to quickly recognise what materials need updating and fixing, topic **Maintainer Homes** were built.
 
-> <hands-on-title>Go to your topic maintainer page</hands-on-title>
+> <hands-on-title>Go to your topic Maintainer Home</hands-on-title>
 >
 > 1. Go to any training topic of interest. This will have the form
 >    ```
@@ -59,7 +59,7 @@ To help topic maintainers to quickly recognise what materials need updating and 
 >    ```
 >     https://training.galaxyproject.org/training-material/topics/<your topic here>/maintainer
 >    ```
-> 3. Explore the maintainer page!
+> 3. Explore the Maintainer Home!
 >
 {: .hands_on}
 
@@ -74,14 +74,14 @@ You can see an example from the Single-cell topic below:
     width="100%"
     height="800"
     style="border: none;"
-    title="Single-Cell Topic Maintainer Page">
+    title="Single-Cell Topic Maintainer Home">
 </iframe>
 
-# Community Page
+# Community Home
 
-Where the **Maintainer page** helps you sustain your community, the **Community page** helps you show off your community. An end-of-year gift in 2024, this page will sift through news, events, and GTN contributions for your community tag of interest (example: single-cell) and provide a beautiful visualization of your efforts.
+Where the **Maintainer Home** helps you sustain your community, the **Community Home** helps you show off your community. An end-of-year gift in 2024, this page will sift through news, events, and GTN contributions for your community tag of interest (example: single-cell) and provide a beautiful visualization of your efforts.
 
-> <hands-on-title>Go to your topic community page</hands-on-title>
+> <hands-on-title>Go to your topic Community Home</hands-on-title>
 >
 > 1. Go to any training topic of interest. This will have the form
 >    ```
@@ -91,7 +91,7 @@ Where the **Maintainer page** helps you sustain your community, the **Community 
 >    ```
 >     https://training.galaxyproject.org/training-material/topics/<your topic here>/community
 >    ```
-> 3. Explore the community page!
+> 3. Explore the Community Home!
 >
 {: .hands_on}
 
@@ -102,12 +102,12 @@ You can see an example from the Single-cell topic below:
     width="100%"
     height="800"
     style="border: none;"
-    title="Single-Cell Topic Community Page">
+    title="Single-Cell Topic Community Home">
 </iframe>
 
 # Topic usage statistics
 
-Next up, you might want to know how many people are actually using your materials? Welcome to your **Topic usage statistics**! You may have already found this, actually, as it's (currently) at the bottom of the Maintainer page.
+Next up, you might want to know how many people are actually using your materials? Welcome to your **Topic usage statistics**! You may have already found this, actually, as it's (currently) at the bottom of the Maintainer Home.
 
 > <hands-on-title>Go to your topic usage statistics</hands-on-title>
 >
@@ -119,7 +119,7 @@ Next up, you might want to know how many people are actually using your material
 >    ```
 >     https://training.galaxyproject.org/training-material/topics/<your topic here>/maintainer.html#statistics-for-your-materials
 >    ```
-> 3. Explore the usage statistics page!
+> 3. Explore the usage statistics!
 >
 {: .hands_on}
 
