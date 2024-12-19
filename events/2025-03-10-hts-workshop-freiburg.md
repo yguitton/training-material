@@ -42,6 +42,14 @@ infrastructure:
     - server: https://usegalaxy.eu
       name: Galaxy EU
 
+tags:
+- introduction
+- sequence-analysis
+- epigenetics
+- transcriptomics
+- variant-analysis
+- microbiome
+
 # Program of your course
 # Add GTN tutorials by supplying the topic and tutorial name
 program:
