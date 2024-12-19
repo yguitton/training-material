@@ -10,7 +10,7 @@ summary:  |
 learning_path_cta: dev_tools_training
 
 subtopics:
-  - id: sigs
+  - id: sig
     title: "Special Interest Groups & Communities"
     description: "These tutorials will get you started with the basics of what a special interest group is and how to build one."
   - id: subdomain
