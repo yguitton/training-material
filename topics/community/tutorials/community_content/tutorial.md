@@ -63,6 +63,8 @@ To help topic maintainers to quickly recognise what materials need updating and 
 >
 {: .hands_on}
 
+{% snippet topics/community/faqs/topic_pages.md %}
+
 You may instantly see some key information missing from tutorials, or how long its been since someone checked it! Time to update some materials!
 
 You can see an example from the Single-cell topic below:
