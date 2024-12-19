@@ -53,11 +53,11 @@ To help topic maintainers to quickly recognise what materials need updating and 
 >
 > 1. Go to any training topic of interest. This will have the form
 >    ```
->     https://training.galaxyproject.org/training-material/topics/<your topic here>
+>    https://training.galaxyproject.org/training-material/topics/<your topic here>
 >    ```
 > 2. Add a /maintainer to the end of the url.
 >    ```
->     https://training.galaxyproject.org/training-material/topics/<your topic here>/maintainer
+>    https://training.galaxyproject.org/training-material/topics/<your topic here>/maintainer
 >    ```
 > 3. Explore the Maintainer Home!
 >
@@ -85,11 +85,11 @@ Where the **Maintainer Home** helps you sustain your community, the **Community 
 >
 > 1. Go to any training topic of interest. This will have the form
 >    ```
->     https://training.galaxyproject.org/training-material/topics/<your topic here>
+>    https://training.galaxyproject.org/training-material/topics/<your topic here>
 >    ```
 > 2. Add a /community to the end of the url.
 >    ```
->     https://training.galaxyproject.org/training-material/topics/<your topic here>/community
+>    https://training.galaxyproject.org/training-material/topics/<your topic here>/community
 >    ```
 > 3. Explore the Community Home!
 >
@@ -113,11 +113,11 @@ Next up, you might want to know how many people are actually using your material
 >
 > 1. Go to any training topic of interest. This will have the form
 >    ```
->     https://training.galaxyproject.org/training-material/topics/<your topic here>
+>    https://training.galaxyproject.org/training-material/topics/<your topic here>
 >    ```
 > 2. Add a /community to the end of the url.
 >    ```
->     https://training.galaxyproject.org/training-material/topics/<your topic here>/maintainer.html#statistics-for-your-materials
+>    https://training.galaxyproject.org/training-material/topics/<your topic here>/maintainer.html#statistics-for-your-materials
 >    ```
 > 3. Explore the usage statistics!
 >
