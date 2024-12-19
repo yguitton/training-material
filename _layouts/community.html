@@ -86,7 +86,7 @@ This is a new, experimental "Community Home" for a given topic. It is intended t
 				<h3>{{ p | regex_replace: '-', ' ' | titlecase }}</h3>
 				<ul>
 				{% for resource in group %}
-				<li><a href="{{ resource[2].url }}">{{ resource[2].title }}</a></li>
+				<li><a href="{{ site.baseurl }}{{ resource[2].url }}">{{ resource[2].title }}</a></li>
 				{% endfor %}
 				</ul>
 				{% endif %}
