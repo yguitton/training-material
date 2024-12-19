@@ -1552,10 +1552,12 @@ module Jekyll
       def list_topic_materials_yearly(site, topic_name)
         flat_mats = list_materials_flat(site, topic_name)
         years = flat_mats.map{|x| x['pub_date'].year} + flat_mats.map{|x| x['mod_date'].year}
-        topic_contribs = identify_contributors({'topic' => {'materials' => flat_mats}}, site)
+        # doesn't use identify_contributors because that excludes grants/orgs.
+        topic_contribs = flat_mats.map{|x| x['contributions']  || {"all" => x['contributors']}}.map{|x| x.values.flatten}.flatten.uniq.sort
+        pfo = ['contributors', 'grants', 'organisations']
 
         Gtn::TopicFilter.all_date_sorted_resources(site)
-          .select{|x| (x[3].include? topic_name) || (x[1] == 'contributors' && topic_contribs.include?(x[2].title[1..]))}
+          .select{|x| (x[3].include? topic_name) || (pfo.include?(x[1]) && topic_contribs.include?(x[2].title[1..]))}
           .group_by{|x| x[0].year}
           .map{|k, v| [k, v.group_by{|z| z[1]}]}
           .to_h
@@ -1564,10 +1566,12 @@ module Jekyll
       def count_topic_materials_yearly(site, topic_name)
         flat_mats = list_materials_flat(site, topic_name)
         years = flat_mats.map{|x| x['pub_date'].year} + flat_mats.map{|x| x['mod_date'].year}
-        topic_contribs = identify_contributors({'topic' => {'materials' => flat_mats}}, site)
+        # doesn't use identify_contributors because that excludes grants/orgs.
+        topic_contribs = flat_mats.map{|x| x['contributions']  || {"all" => x['contributors']}}.map{|x| x.values.flatten}.flatten.uniq.sort
+        pfo = ['contributors', 'grants', 'organisations']
 
         r = Gtn::TopicFilter.all_date_sorted_resources(site)
-          .select{|x| (x[3].include? topic_name) || (x[1] == 'contributors' && topic_contribs.include?(x[2].title[1..]))}
+          .select{|x| (x[3].include? topic_name) || (pfo.include?(x[1]) && topic_contribs.include?(x[2].title[1..]))}
           .map{|x| [x[0].year, x[1]]} # Only need year + type
           .group_by{|x| x[1]} # Group by type.
           .map{|k, v| [k, v.map{|vv| vv[0]}.tally]}

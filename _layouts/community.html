@@ -38,7 +38,7 @@ This is a new, experimental "Community Home" for a given topic. It is intended t
 	<div class="col-md-6">
 		<figure>
 			<canvas id="workflows-over-time" height="250"></canvas>
-			<figcaption>workflows Over Time</figcaption>
+			<figcaption>Workflows Over Time</figcaption>
 		</figure>
 	</div>
 	<div class="col-md-6">
@@ -117,6 +117,9 @@ year,{% for point in cumulative_counts_by_years['tutorials'] %}{{ point.x | rege
 	margin: 0.25em;
 	padding: 0.5em;
 	background: var(--stat-box-color);
+}
+.col-md-8 .row .col-md-12 h3:first-child {
+	margin-top: 0;
 }
 
 body[data-brightness="dark"] .stat-box {
@@ -250,32 +253,32 @@ new Chart('other-over-time', {
 		datasets: [
 			{
 				data: totals.news,
-				label: 'news',
+				label: 'News',
 				borderColor: getStyleDarker("news", true, true),
 				backgroundColor: getStyleDarker("news", true, false),
 				backgroundColor: getStyleDarker("news", false),
 			},
 			{
 				data: totals.events,
-				label: 'events',
+				label: 'Events',
 				borderColor: getStyleDarker("events", true),
 				backgroundColor: getStyleDarker("events", false),
 			},
 			{
 				data: totals['learning-pathways'],
-				label: 'learning-pathways',
+				label: 'Learning Pathways',
 				borderColor: getStyleDarker("learning-pathways", true),
 				backgroundColor: getStyleDarker("learning-pathways", false),
 			},
 			{
 				data: totals.recordings,
-				label: 'recordings',
+				label: 'Recordings',
 				borderColor: getStyleDarker("recordings", true),
 				backgroundColor: getStyleDarker("recordings", false),
 			},
 			{
 				data: totals.faqs,
-				label: 'faqs',
+				label: 'Faqs',
 				borderColor: getStyleDarker("faqs", true),
 				backgroundColor: getStyleDarker("faqs", false),
 			},
