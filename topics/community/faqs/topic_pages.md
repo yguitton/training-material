@@ -11,7 +11,7 @@ You can find your **Community Home** and **Maintainer Home** by scrolling down o
 >
 > 1. Go to any training topic of interest. This will have the form
 >    ```
->     https://training.galaxyproject.org/training-material/topics/<your topic here>
+>    https://training.galaxyproject.org/training-material/topics/<your topic here>
 >    ```
 > 2. Add a #community to the end of the URL (or scroll to the bottom of the topic page and hit the "Community Home" button)
 >    ```
