@@ -72,7 +72,7 @@ You can see an example from the Single-cell topic below:
     width="100%"
     height="800"
     style="border: none;"
-    title="Galaxy Project Single-Cell Maintainer">
+    title="Single-Cell Topic Maintainer Page">
 </iframe>
 
 # Community Page
@@ -100,12 +100,65 @@ You can see an example from the Single-cell topic below:
     width="100%"
     height="800"
     style="border: none;"
-    title="Galaxy Project Single-Cell Maintainer">
+    title="Single-Cell Topic Community Page">
 </iframe>
 
-#
+# Topic usage statistics
 
+Next up, you might want to know how many people are actually using your materials? Welcome to your **Topic usage statistics**! You may have already found this, actually, as it's (currently) at the bottom of the Maintainer page.
+
+> <hands-on-title>Go to your topic usage statistics</hands-on-title>
+>
+> 1. Go to any training topic of interest. This will have the form
+>    ```
+>     https://training.galaxyproject.org/training-material/topics/<your topic here>
+>    ```
+> 2. Add a /community to the end of the url.
+>    ```
+>     https://training.galaxyproject.org/training-material/topics/<your topic here>/maintainer.html#statistics-for-your-materials
+>    ```
+> 3. Explore the usage statistics page!
+>
+{: .hands_on}
+
+You can see an example from the Single-cell topic below.
+
+<iframe
+    src="https://training.galaxyproject.org/training-material/topics/single-cell/maintainer.html#statistics-for-your-materials"
+    width="100%"
+    height="800"
+    style="border: none;"
+    title="Single-Cell Topic Usage Statistics">
+</iframe>
+
+# News widgets
+
+You can also embed news into your pages, subdomains/ Galaxy Labs, or even your Matrix channels.
+
+Follow this documentation to learn how:
+
+1. [GTN Feeds]( {% link feeds/index.md %} )
+2. [Bot integration into matrix]( {% link news/2023/12/20/matrix-bots.md %} )
+
+You can see an example from the Single-cell topic below.
+
+<h3 class="mb-3">News and Events</h3>
+<iframe width="100%" height="600px" src="https://training.galaxyproject.org/training-material/feeds/single-cell-month.w.html"></iframe>
+
+# Workflow search
+
+Want to see all the workflows tagged with your community tag across public servers? Look no further!
+
+Follow this documentation to learn how:
+
+1. [Galaxy Pan-Galactic Workflow Search]( {% link workflows/list.md %} )
+2. [Workflow Search Querying]( {% link news/2023/11/20/workflow-search.md %} )
+
+You can see an example from the Single-cell topic below.
+
+<h3 class="mb-3">Public workflows</h3>
+<iframe src="https://training.galaxyproject.org/training-material/workflows/embed.html?query=single-cell" height="600px" width="100%" class="gtn-embed" frameborder="1"></iframe>
 
 # Conclusion
 
-{% icon congratulations %} Congratulations! You've made it to the end! Hopefully you think **SIGs** are brilliant and maybe you have joined one, or want to start one!
+{% icon congratulations %} Congratulations! You've made it to the end! Hopefully you think these resources are brilliant, and are making sure to tag everything (news, events, training materials, workflows, FAQs, you name it, you should tag it!) with your community tag!
