@@ -31,6 +31,8 @@ contributions:
   funding:
   - surf
 
+priority: 10
+
 edam_ontology:
 - topic_0605 # Informatics
 - topic_3071 # Data Management

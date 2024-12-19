@@ -14,7 +14,7 @@ editorial_board:
 - natefoo
 - slugger70
 
-tags: [Galaxy administrators, 5-day course]
+tags: [Galaxy administrators, 5-day course, admin]
 
 pathway:
   - section: "Monday: Setting up Galaxy with Ansible"

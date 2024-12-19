@@ -2,7 +2,7 @@
 title: "Organizing GTA2025: Give us feedback and your availability!"
 contributions:
   authorship: [teresa-m]
-tags: [gtn, event]
+tags: [gtn, event, teaching, contributing, community]
 layout: news
 cover: "events/images/galaxy-academy-logo.png"
 coveralt: "A laptop displaying shapes resembling a statistical plot with a program from Galaxy Training Academy. Surrounding the laptop, there are DNA strands as well as a pen displayed."
