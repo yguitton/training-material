@@ -4,7 +4,7 @@ contributions:
   authorship:
   - nomadscientist
   - hexylena
-tags: [gtn, single-cell, new feature, new tutorial]
+tags: [gtn, single-cell, new feature, new tutorial, contributing, community]
 layout: news
 cover: "news/images/spoc_images/community_page.png"
 coveralt: "four graphs showing increases over time: training materials including slides and tutorials; contributors; workflows; and other"
