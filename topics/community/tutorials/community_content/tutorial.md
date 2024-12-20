@@ -14,7 +14,6 @@ time_estimation: "30M"
 key_points:
   - "The GTN has worked hard to provide automated metrics and resources to highlight and acknowledge the efforts of communities and community leads"
   - "This only works if we contribute with effective tagging."
-requirements:
 contributions:
   authorship:
   - nomadscientist
