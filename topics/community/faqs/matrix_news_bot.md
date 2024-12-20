@@ -11,6 +11,8 @@ contributors: [nomadscientist, hexylena]
 
 3. Under *Subscribe to a feed*, add a URL from this [GTN feeds listing]({% link feeds/index.md %}). Make sure that it ends in `.xml`.  For example, `https://training.galaxyproject.org/training-material/topics/community/feed.xml` would provide updates on any community-tagged GTN materials into the Matrix channel.  
 
-Details from Matrix are here: https://ems-docs.element.io/books/element-cloud-documentation/page/migrate-to-the-new-github-and-feeds-bots
+4. Under *Template*, change the existing text to the following: `$LINK: $SUMMARY`
 
-4. Provide a reasonable name, and then hit **Subscribe**!
+5. Provide a reasonable name, and then hit **Subscribe**!
+
+Details from Matrix are here: https://ems-docs.element.io/books/element-cloud-documentation/page/migrate-to-the-new-github-and-feeds-bots
