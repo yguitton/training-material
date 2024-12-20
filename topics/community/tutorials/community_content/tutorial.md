@@ -17,6 +17,7 @@ key_points:
 contributions:
   authorship:
   - nomadscientist
+  - shiltemann
 requirements:
   -
       type: "internal"
@@ -67,8 +68,8 @@ You can see an example from the Single-cell topic below:
 <iframe
     src="/training-material/topics/single-cell/maintainer.html"
     width="100%"
-    height="800"
-    style="border: none;"
+    height="400"
+    style="border: 2px solid #00008B;"
     title="Single-Cell Topic Maintainer Home">
 </iframe>
 
@@ -83,7 +84,7 @@ Where the **Maintainer Home** helps you sustain your community, the **Community 
 >
 >    {% snippet topics/community/faqs/community_home.md %}
 >
-> 3. Explore the Community Home!
+> 3. Explore the **Community Home**!
 >    - For example, the [Single Cell Community Home]({% link topics/single-cell/community.md %})
 >
 {: .hands_on}
@@ -93,8 +94,8 @@ You can see an example from the Single-cell topic below:
 <iframe
     src="/training-material/topics/single-cell/community.html"
     width="100%"
-    height="800"
-    style="border: none;"
+    height="400"
+    style="border: 2px solid #00008B;"
     title="Single-Cell Topic Community Home">
 </iframe>
 
@@ -120,8 +121,8 @@ You can see an example from the Single-cell topic below.
 <iframe
     src="/training-material/topics/single-cell/maintainer.html#statistics-for-your-materials"
     width="100%"
-    height="800"
-    style="border: none;"
+    height="400"
+    style="border: 2px solid #00008B;"
     title="Single-Cell Topic Usage Statistics">
 </iframe>
 
@@ -151,7 +152,7 @@ Follow this documentation to learn how:
 You can see an example from the Single-cell topic below.
 
 <h3 class="mb-3">Public workflows</h3>
-<iframe src="/training-material/workflows/embed.html?query=single-cell" height="600px" width="100%" class="gtn-embed" frameborder="1"></iframe>
+<iframe src="/training-material/workflows/embed.html?query=single-cell" height="400px" width="100%" class="gtn-embed" frameborder="1"></iframe>
 
 # Galaxy Community Activities calendar
 
