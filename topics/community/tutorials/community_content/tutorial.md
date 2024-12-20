@@ -133,12 +133,14 @@ You can also embed news into your pages, subdomains/ Galaxy Labs, or even your M
 Follow this documentation to learn how:
 
 1. [GTN Feeds]( {% link feeds/index.md %} )
-2. [Bot integration into matrix]( {% link news/2023/12/20/matrix-bots.md %} )
+2. Bot integration into matrix
+
+{% snippet topics/community/faqs/matrix_news_bot.md %}
 
 You can see an example from the Single-cell topic below.
 
 <h3 class="mb-3">News and Events</h3>
-<iframe width="100%" height="600px" src="/training-material/feeds/single-cell-month.w.html"></iframe>
+<iframe width="100%" height="300px" src="/training-material/feeds/single-cell-month.w.html"></iframe>
 
 # Workflow search
 
