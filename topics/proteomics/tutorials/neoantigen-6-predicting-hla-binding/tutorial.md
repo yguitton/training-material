@@ -15,7 +15,6 @@ key_points:
 - Neoantigen prediction is a key step in personalized medicine.
 - HLA binding affinity helps identify potential neoantigens.
 - Tools like OptiType, seq2HLA, and query tabular tools are essential for the workflow.
-contributors:
 contributions:
   authorship:
     - subinamehta
@@ -99,7 +98,7 @@ This structured workflow enables a streamlined approach for accurate HLA typing 
 >    ```
 >    https://zenodo.org/records/14375917/files/RNA-Seq_Reads_1.fastqsanger.gz
 >    https://zenodo.org/records/14375917/files/RNA-Seq_Reads_2.fastqsanger.gz
->   
+>
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
@@ -195,7 +194,7 @@ seq2HLA is a computational tool for identifying HLA types from RNA-Seq or DNA-Se
 >
 {: .question}
 
-## Reformatting and Filtering HLA Alleles 
+## Reformatting and Filtering HLA Alleles
 
 This step involves reformatting and filtering the HLA alleles output from the OptiType tool to retain only the relevant and unique alleles. The process is essential for streamlining the data and ensuring that only the significant allele information is passed on for further analysis. Using a simple AWK program, we can filter out redundant data and focus on distinct HLA alleles, which are crucial for downstream neoantigen discovery and immunogenomics applications.
 
@@ -205,7 +204,7 @@ This step involves reformatting and filtering the HLA alleles output from the Op
 >    - {% icon param-file %} *"File to process"*: `result` (output of **OptiType** {% icon tool %})
 >    - *"AWK Program"*:
 > ```
-> $1 ~ /[0-9]/{ 
+> $1 ~ /[0-9]/{
 >    for (i = 2; i <=7; i++) { allele[$i]++}
 > }
 > END {
@@ -282,11 +281,11 @@ In this step, we use the Query Tabular tool to validate and organize the HLA typ
 > (SELECT c1 AS hla FROM optitype
 > UNION
 > SELECT c1 AS hla FROM seq2hla WHERE c1 LIKE '%*%:%'
-> UNION 
-> SELECT c2 AS hla FROM seq2hla WHERE c2 LIKE '%*%:%') 
+> UNION
+> SELECT c2 AS hla FROM seq2hla WHERE c2 LIKE '%*%:%')
 > ORDER BY hla
 > ```
-> 
+>
 >    - *"include query result column headers"*: `No`
 >    - In *"Additional Queries"*:
 >        - In *"SQL Query"*:
@@ -300,11 +299,11 @@ In this step, we use the Query Tabular tool to validate and organize the HLA typ
 >    - {% icon param-repeat %} *"Insert SQL Query"*
 >        - *"SQL Query to generate tabular output"*:
 > ``` sql
-> SELECT c1 FROM seq2hla WHERE c1 LIKE '%*%:%' 
-> UNION 
+> SELECT c1 FROM seq2hla WHERE c1 LIKE '%*%:%'
+> UNION
 > SELECT c2 FROM seq2hla WHERE c2 LIKE '%*%:%'
 > ```
-> 
+>
 > - *"include query result column headers"*: `No`
 >
 >
@@ -330,6 +329,6 @@ In this step, we use the Query Tabular tool to validate and organize the HLA typ
 This tutorial covers the workflow for identifying and validating HLA alleles using OptiType and seq2HLA. Each step in the process, from reformatting and filtering to querying, is essential for generating accurate and consistent allele data. This validated data can then be used confidently in downstream immunological analyses, including neoantigen prediction and personalized medicine applications.
 
 
-# Disclaimer 
+# Disclaimer
 
 Please note that all the software tools used in this workflow are subject to version updates and changes. As a result, the parameters, functionalities, and outcomes may differ with each new version. Additionally, if the protein sequences are downloaded at different times, the number of sequences may also vary due to updates in the reference databases or tool modifications. We recommend the users to verify the specific versions of software tools used to ensure the reproducibility and accuracy of results.
