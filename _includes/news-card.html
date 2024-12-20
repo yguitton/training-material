@@ -18,27 +18,36 @@
 {% endif %}
 
 
-  <div class="pathwayitem col-md-4">
-     <a href="{% if n.external %}{{ n.link }}{% else %}{{site.baseurl}}{{n.url}}{% endif %}">
+<div class="pathwayitem col-md-4">
     <div class="card d-flex">
+       <a href="{% if n.external %}{{ n.link }}{% else %}{{site.baseurl}}{{n.url}}{% endif %}">
       <div class="d-flex align-items-center" style="height:200px;">
-
       <img class="card-img-top pathwaycover" src="{% unless coverimage contains 'http' %}{{site.baseurl}}/{% endunless %}{{coverimage}}" alt="{{ coverimagealt }}" loading="lazy">
       </div>
-
+      </a>
       <div class="card-body d-flex flex-column">
         <h5 class="card-title">{{n.title}}</h5>
         <div class="card-text">
           <div class="text-muted">
             {{ n.date | date: "%-d %B %Y" }}
+            <br/>
+            {% for id in n.contributions.authorship %}
+              {% include _includes/contributor-badge.html id=id small=true %}
+            {% endfor %}
+
           </div>
+
+          <a href="{% if n.external %}{{ n.link }}{% else %}{{site.baseurl}}{{n.url}}{% endif %}">
+
           {% if n.external %}
             This is an external post, please follow the link to read it.
           {% else %}
             {{ n.excerpt | strip_html }}
           {% endif %}
+          </a>
 
         </div>
+
       </div>
 
       <div class="card-footer">
@@ -50,7 +59,6 @@
       </div>
 
     </div>
-    </a>
-  </div>
+</div>
 
 
