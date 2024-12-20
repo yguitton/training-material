@@ -1,6 +1,7 @@
 ---
 layout: tutorial_hands_on
 priority: 2
+subtopic: sig
 
 title: "Creating a Special Interest Group"
 questions:
