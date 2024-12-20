@@ -47,7 +47,6 @@ Or jump straight to your comunity home with one of the buttons below!
 <a style="margin:0.25em" class="btn btn-secondary" href="{% link topics/contributing/community.md %}">Contributing</a>
 <a style="margin:0.25em" class="btn btn-secondary" href="{% link topics/data-science/community.md %}">Data Science</a>
 <a style="margin:0.25em" class="btn btn-secondary" href="{% link topics/dev/community.md %}">Development</a>
-<a style="margin:0.25em" class="btn btn-secondary" href="{% link topics/earth-system/community.md %}">Earth System</a>
 <a style="margin:0.25em" class="btn btn-secondary" href="{% link topics/ecology/community.md %}">Ecology</a>
 <a style="margin:0.25em" class="btn btn-secondary" href="{% link topics/epigenetics/community.md %}">Epigenetics</a>
 <a style="margin:0.25em" class="btn btn-secondary" href="{% link topics/evolution/community.md %}">Evolution</a>
