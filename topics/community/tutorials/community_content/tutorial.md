@@ -140,7 +140,7 @@ Follow this documentation to learn how:
 You can see an example from the Single-cell topic below.
 
 <h3 class="mb-3">News and Events</h3>
-<iframe width="100%" height="300px" src="https://training.galaxyproject.org/training-material/feeds/single-cell-month.w.html"></iframe>
+<iframe width="100%" height="300px" src="/training-material/feeds/single-cell-month.w.html"></iframe>
 
 # Workflow search
 
