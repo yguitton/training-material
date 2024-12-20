@@ -5,6 +5,8 @@ area: histories
 box_type: tip
 layout: faq
 contributors: [nomadscientist]
+redirect_from:
+- faqs/gtn/using-answer-key-histories
 ---
 
     1. Select {% icon galaxy-history-options %} **History Options** which is on the top of the list of datasets in the history panel
