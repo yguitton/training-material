@@ -9,7 +9,7 @@ The **Maintainer Home** pages shows the state of the topic and its materials in 
 
 You can find your **Maintainer Home** by
 1. Opening the GTN **Topic** page of your choice
-2. Scrolling down to the **Community Resources** section (below the list tutorials)
+2. Scrolling down to the **Community Resources** section (below the list of tutorials)
 3. Clicking the **Maintainer Home** button
 
    ![screenshot of the community and maintainer homepage buttons]({% link topics/community/images/community_maintainer_home_buttons.png %})

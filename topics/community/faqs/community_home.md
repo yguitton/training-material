@@ -10,7 +10,7 @@ as well as annual "Year in review" sections listing all new additions to the top
 
 You can find your **Community Home** by
 1. Opening the GTN **Topic** page of your choice
-2. Scrolling down to the **Community Resources** section (below the list tutorials)
+2. Scrolling down to the **Community Resources** section (below the list of tutorials)
 3. Clicking the **Community Home** button
 
    ![screenshot of the community and maintainer homepage buttons]({% link topics/community/images/community_maintainer_home_buttons.png %})
