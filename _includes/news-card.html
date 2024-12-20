@@ -28,13 +28,11 @@
       <div class="card-body d-flex flex-column">
         <h5 class="card-title">{{n.title}}</h5>
         <div class="card-text">
+          {% for id in n.contributions.authorship %}
+            {% include _includes/contributor-badge.html id=id small=true %}
+          {% endfor %}
           <div class="text-muted">
             {{ n.date | date: "%-d %B %Y" }}
-            <br/>
-            {% for id in n.contributions.authorship %}
-              {% include _includes/contributor-badge.html id=id small=true %}
-            {% endfor %}
-
           </div>
 
           <a href="{% if n.external %}{{ n.link }}{% else %}{{site.baseurl}}{{n.url}}{% endif %}">
