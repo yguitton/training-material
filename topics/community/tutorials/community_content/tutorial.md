@@ -14,10 +14,10 @@ time_estimation: "30M"
 key_points:
   - "The GTN has worked hard to provide automated metrics and resources to highlight and acknowledge the efforts of communities and community leads"
   - "This only works if we contribute with effective tagging."
-requirements:
 contributions:
   authorship:
   - nomadscientist
+  - shiltemann
 requirements:
   -
       type: "internal"
@@ -51,29 +51,25 @@ To help topic maintainers to quickly recognise what materials need updating and 
 
 > <hands-on-title>Go to your topic Maintainer Home</hands-on-title>
 >
-> 1. Go to any training topic of interest. This will have the form
->    ```
->     https://training.galaxyproject.org/training-material/topics/<your topic here>
->    ```
-> 2. Add a /maintainer to the end of the url.
->    ```
->     https://training.galaxyproject.org/training-material/topics/<your topic here>/maintainer
->    ```
+> 1. Go to any GTN training topic of interest.
+> 2. Scroll down past the tutorials, and click on the "Maintainer Home" button
+>
+>    {% snippet topics/community/faqs/maintainer_home.md %}
+>
 > 3. Explore the Maintainer Home!
+>    - For example, the [Single Cell Maintainer Home]({% link topics/single-cell/maintainer.md %})
 >
 {: .hands_on}
-
-{% snippet topics/community/faqs/topic_pages.md %}
 
 You may instantly see some key information missing from tutorials, or how long its been since someone checked it! Time to update some materials!
 
 You can see an example from the Single-cell topic below:
 
 <iframe
-    src="https://training.galaxyproject.org/training-material/topics/single-cell/maintainer.html"
+    src="/training-material/topics/single-cell/maintainer.html"
     width="100%"
-    height="800"
-    style="border: none;"
+    height="400"
+    style="border: 2px solid #00008B;"
     title="Single-Cell Topic Maintainer Home">
 </iframe>
 
@@ -83,25 +79,23 @@ Where the **Maintainer Home** helps you sustain your community, the **Community 
 
 > <hands-on-title>Go to your topic Community Home</hands-on-title>
 >
-> 1. Go to any training topic of interest. This will have the form
->    ```
->     https://training.galaxyproject.org/training-material/topics/<your topic here>
->    ```
-> 2. Add a /community to the end of the url.
->    ```
->     https://training.galaxyproject.org/training-material/topics/<your topic here>/community
->    ```
-> 3. Explore the Community Home!
+> 1. Go to any GTN training topic of interest.
+> 2. Scroll down past the tutorials, and click on the "Community Home" button
+>
+>    {% snippet topics/community/faqs/community_home.md %}
+>
+> 3. Explore the **Community Home**!
+>    - For example, the [Single Cell Community Home]({% link topics/single-cell/community.md %})
 >
 {: .hands_on}
 
 You can see an example from the Single-cell topic below:
 
 <iframe
-    src="https://training.galaxyproject.org/training-material/topics/single-cell/community.html"
+    src="/training-material/topics/single-cell/community.html"
     width="100%"
-    height="800"
-    style="border: none;"
+    height="400"
+    style="border: 2px solid #00008B;"
     title="Single-Cell Topic Community Home">
 </iframe>
 
@@ -111,25 +105,24 @@ Next up, you might want to know how many people are actually using your material
 
 > <hands-on-title>Go to your topic usage statistics</hands-on-title>
 >
-> 1. Go to any training topic of interest. This will have the form
->    ```
->     https://training.galaxyproject.org/training-material/topics/<your topic here>
->    ```
-> 2. Add a /community to the end of the url.
->    ```
->     https://training.galaxyproject.org/training-material/topics/<your topic here>/maintainer.html#statistics-for-your-materials
->    ```
-> 3. Explore the usage statistics!
+> 1. Go to any GTN training topic of interest.
+> 2. Scroll down past the tutorials, and click on the "Maintainer Home" button
+>
+>    {% snippet topics/community/faqs/maintainer_home.md %}
+>
+> 3. Scroll down to the section "Statistics For Your Materials"
+> 4. Explore the usage statistics!
+>    - For example, the [Single Cell Usage Statistics]({% link topics/single-cell/maintainer.md %}#statistics-for-your-materials)
 >
 {: .hands_on}
 
 You can see an example from the Single-cell topic below.
 
 <iframe
-    src="https://training.galaxyproject.org/training-material/topics/single-cell/maintainer.html#statistics-for-your-materials"
+    src="/training-material/topics/single-cell/maintainer.html#statistics-for-your-materials"
     width="100%"
-    height="800"
-    style="border: none;"
+    height="400"
+    style="border: 2px solid #00008B;"
     title="Single-Cell Topic Usage Statistics">
 </iframe>
 
@@ -161,7 +154,7 @@ Follow this documentation to learn how:
 You can see an example from the Single-cell topic below.
 
 <h3 class="mb-3">Public workflows</h3>
-<iframe src="https://training.galaxyproject.org/training-material/workflows/embed.html?query=single-cell" height="600px" width="100%" class="gtn-embed" frameborder="1"></iframe>
+<iframe src="/training-material/workflows/embed.html?query=single-cell" height="400px" width="100%" class="gtn-embed" frameborder="1"></iframe>
 
 # Galaxy Community Activities calendar
 
