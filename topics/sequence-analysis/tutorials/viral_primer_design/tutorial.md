@@ -295,7 +295,7 @@ The tool VarVAMP offers a wide range of different outputs in the various modes. 
 >
 > 2. Creating a dataset collection 
 >
->    {% snippet  faqs/galaxy/collections_build_list.md name="varVAMP Polio1 qpcr threshold 0.93" n=""%}
+>    {% snippet  faqs/galaxy/collections_build_list.md name="varVAMP Polio1 qpcr threshold 0.93" %}
 {: .hands_on}
 
 Now we got our first VarVAMP outputs and an idea, how the tool is working. We have put them together in a dataset to keep an organized overview. Check the different kind of outputs and get familiar with the results.
