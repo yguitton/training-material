@@ -103,7 +103,7 @@ To effectively utilize **MAFFT**({% cite Katoh2013 %}), a powerful tool for mult
 
 ## Multiple alignment of reference sequences
 
-*Multiple sequence alignment (MSA)* plays an important role in evolutionary analyses of biological sequences. In this part of the tutorial, we want to align the genome datasets to get knowledge about similarity and evolutionary relationship between the sequences. **MAFFT** is a multiple sequence alignment program, which enables the analysis of a file with several sequences with different alignment algorithms.
+First of all we need to generate a *Multiple sequence alignment (MSA)* that we can use as input for VarVAMP, the tool that designs the primers. Aditionally the MSA provides knowledge about similarities and evolutionary relationship between the genome sequences. To generate an MSA we align the previously unaligned genome datasets with **MAFFT**. MAFFT is a multiple sequence alignment program which enables the analysis of a file with several sequences with different alignment algorithms.
 
 When multiple files are added, MAFFT will run for each of these, so it is necessary to have every sequence, which you want to have aligned, in one file. Therefore there is a concatenate option in MAFFT on Galaxy implemented. For further information look in details below:
 
@@ -179,7 +179,7 @@ When multiple files are added, MAFFT will run for each of these, so it is necess
 >
 {: .hands_on}
 
-The aligned polio genome is ready for further use. Before we continue with the primer design, we'll have a look at our output. First, giving the output a proper name will help handling numberous data in future. Secondly, sometimes it is helpfull to visualize the whole alignment or specific region of interests. If you want a visualization of the MSA, Galaxy has an interactive build-in function, which we are going to discover in the next Hands-on-box.
+The aligned polio genome is ready for further use. Before we continue with the primer design, we'll have a look at our output. First, giving the output a proper name will help handling numberous data in the future. Secondly, sometimes it is helpful to visualize the whole alignment or a specific region of interest. If you want a visualization of the MSA, Galaxy has an interactive build-in function, which we are going to discover in the next Hands-on-box.
 
 > <hands-on-title>Visualize the multiple-sequence alignment</hands-on-title>
 >
@@ -196,7 +196,7 @@ The aligned polio genome is ready for further use. Before we continue with the p
 
 ![Picture of the build-in visualization of Galaxy of an aligned Polio 1 genome.](../../images/mafft_varvamp_training/aligned_Polio1_sequence128-142.png "Visualization of the aligned Polio 1 genome through Galaxy build-in view. Options for customization or better analysis on top. Shown are sequence 128-142 with few differences.")
 
-With this alignment we prepared our input Poliovirus 1 genomes for VarVAMP and are ready to design our primers. But before we get to the primer design section with VarVAMP, we have simple questions for you.
+With this alignment we prepared our input Poliovirus 1 genomes for VarVAMP and are ready to design our primers. But before we get to the primer design section with VarVAMP, we have a few simple questions for you.
 
 > <question-title></question-title>
 >
