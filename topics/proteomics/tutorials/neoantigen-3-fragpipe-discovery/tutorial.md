@@ -207,7 +207,7 @@ In this workflow, FragPipe is used after FASTA database validation to ensure tha
 >                - *"Second Enzyme Digest"*: `No`
 >                - *"Maximum length of peptides to be generated during in-silico digestion"*: `20`
 >            - In *"Variable Modifications"*:
->                - *"Select Variable Modifications"*: ``
+>                - *"Select Variable Modifications"*: `Oxidation of M (15.99491461956) modaa`
 >            - In *"Spectrum Processing"*:
 >                - *"Precursor mass mode"*: `corrected`
 >                - *"Precursor Charge Override"*: `Use default`
