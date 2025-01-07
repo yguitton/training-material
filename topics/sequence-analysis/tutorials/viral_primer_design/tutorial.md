@@ -208,7 +208,7 @@ With this alignment we prepared our input Poliovirus 1 genomes for VarVAMP and a
 > >
 > > 1. In total 241 sequences were aligned with up to 7498 bases.
 > > 2. The speed-oriented methods, because there are too many sequences (>200) and it would take too long.
-> > 3. The height of the bars indicates the degree of sigitmilarity of the bases at this position.
+> > 3. The height of the bars indicates the sequence conservation at that site.
 > >
 > {: .solution}
 >
@@ -295,10 +295,10 @@ The tool VarVAMP offers a wide range of different outputs in the various modes. 
 >
 > 2. Creating a dataset collection 
 >
->    {% snippet  faqs/galaxy/collections_build_list.md name="varVAMP Polio1 qpcr threshold 0.93" %}
+>    {% snippet  faqs/galaxy/collections_build_list.md name="varVAMP Polio1 qpcr threshold 0.93" n=""%}
 {: .hands_on}
 
-Now we got our first VarVAMP outputs and an idea, how the tool is working. Wee have put them together in a dataset to keep an organized overview. Check the different kind of outputs and get familiar with the results.
+Now we got our first VarVAMP outputs and an idea, how the tool is working. We have put them together in a dataset to keep an organized overview. Check the different kind of outputs and get familiar with the results.
 
 > <comment-title>Output control</comment-title>
 >
@@ -329,7 +329,7 @@ But first of all, we have some questions for you prepared:
 ## Advanced approach considering off-target sites for the output,
 In our next step, imagine we have a sample to examine, which was taken from virus infected human tissue. We want to be sure, that we are not amplifing any other related enterovirus genome sequences with our polio gene material in our analysis. How do we get to be sure, we specificly build primers for our viral genome of interest?
 
-With varVAMP, it is possible to insert a BLAST database as an off-target reference. We can use the *NCBI BLAST makeblastdb* ({% cite Cock2015 %}) to create a BLAST database of other whole genomes of entereroviruses and use it as a reference. The found primers will be compared with the reference and each hit is given a high penalty. In order to choose the best fitting primer scheme, varVAMP sorts the possible primers by their penalty score and hence avoids designing primers for possible similar genome regions of other organisms. An application example afterwards would be real-time detection of polio 1 viral genomes in a human sample for pandemic surveillance.
+With varVAMP, it is possible to insert a BLAST database as an off-target reference. We can use the *NCBI BLAST makeblastdb* ({% cite Cock2015 %}) to create a BLAST database of other whole genomes of enteroviruses and use it as a reference. The found primers will be compared with the reference and each hit is given a high penalty. In order to choose the best fitting primer scheme, varVAMP sorts the possible primers by their penalty score and hence avoids designing primers for possible similar genome regions of other organisms. An application example afterwards would be real-time detection of polio 1 viral genomes in a human sample for pandemic surveillance.
 
 The following steps are:
 
@@ -508,7 +508,7 @@ Again, we have some questions for you prepared:
 >
 > > <solution-title></solution-title>
 > >
-> > 1. VarVAMP creates 12 primers to amplify the whole Polio gnome, if you use VarVAMP version 1.2.1.
+> > 1. VarVAMP creates 12 primers to amplify the whole Polio genome, if you use VarVAMP version 1.2.1.
 > > 2. The score indicates wheather the primer pair for this amplicon belongs to pool 1 or 2.
 > > 3. For the tiled primer scheme the amplicons are around 1400 bases long and for qPCR around 100.
 > > 4. The qpcr mode reports back small amplicons with an optimized internal probe. The TILED mode provides overlapping amplicons for Oxford Nanopore or Whole Genome Sequencing.
@@ -520,4 +520,4 @@ Again, we have some questions for you prepared:
 
 # Conclusion
 
-Creating primers for further gene analysis is essential. VarVAMP delivers a possibility to design highly divers and personally specified primers and even the option to eliminate off-targets thanks to a BLAST database. In combination with MAFFT, a strongly adjustable multiple alignment tool, it is possible to search for similar genome sequences in a sample batch and if there have viral origin, be able to do preparatory work for the amplification technique of interest. This Galaxy workflow is therefore extremely useful for applications such as the identification of related virus genomes.
+Creating primers for further gene analysis is essential. VarVAMP delivers a possibility to design highly divers and personally specified primers and even the option to eliminate off-targets thanks to a BLAST database. In combination with MAFFT, a strongly adjustable multiple alignment tool, it is possible to search for similar genome sequences in a sample batch and if they have viral origin, be able to do preparatory work for the amplification technique of interest. This Galaxy workflow is therefore extremely useful for applications such as the identification of related virus genomes.
