@@ -284,10 +284,8 @@ The tool VarVAMP offers a wide range of different outputs in the various modes. 
 >    - *"What kind of primers would you like to design? (varvamp mode)"*: `qPCR primers (qpcr)`
 >        - *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify values for both`
 >        - *"Threshold for consensus nucleotides"*: `0.93`
->        - *"Maximum number of ambiguous nucleotides per primer to be tolerated (default: 2)"*: `2`
+>        - *"Maximum number of ambiguous nucleotides per primer to be tolerated"*: `2`
 >        - *"Maximum number of ambiguous nucleotides per qPCR probe to be tolerated"*: `1`
->        - *"Top n qPCR amplicons to test"*: `50`
->        - *"Minimum free energy (kcal/mol/K) cutoff*: `-3`
 >
 >       ><comment-title>Right time for dataset</comment-title>
 >       >
@@ -303,12 +301,10 @@ Now we got our first VarVAMP outputs and an idea, how the tool is working. We ha
 
 > <comment-title>Output control</comment-title>
 >
-> Control your output files with the example files of the [VarVAMP-qPCR-output github page for Polio 1 virus](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_qpcr/polio1). There you can check, if you created the same primers. You can find the primer locations in the bed file "primers.bed".
+> Control your output files with the example files of the [VarVAMP-qPCR-output github page for Polio 1 virus (varVAMP:0.7)](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_qpcr/polio1). There you can check, if you created the same primers. You can find the primer locations in the bed file "primers.bed".
 {: .comment}
 
-In addition to be certain, that these primers are coding only for Polio 1 viral genomes instead of human or other viral genome sequences, it is possible to use a BLAST database as reference for detection of off-target binding sites. We'll get to this feature in the next section.
-
-But first of all, we have some questions for you prepared:
+To control your results and check your understanding of them there are some questions for you prepared:
 
 > <question-title></question-title>
 >
