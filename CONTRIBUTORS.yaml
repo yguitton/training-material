@@ -848,8 +848,11 @@ foellmelanie:
     matrix: 'foellmelanie:matrix.org'
     orcid: 0000-0002-1887-7543
     joined: 2018-10
+    elixir_node: de
     affiliations:
       - uni-freiburg
+      - deNBI
+      - elixir-europe
 
 fpsom:
     name: Fotis E. Psomopoulos
