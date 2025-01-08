@@ -30,6 +30,7 @@ The multiGSEA package was designed to run a robust GSEA-based pathway enrichment
 Pathway definitions can be downloaded from up to eight different pathway databases by means of the graphite Bioconductor package (Sales, Calura, and Romualdi 2018). Feature mapping for transcripts and proteins is supported towards Entrez Gene IDs, Uniprot, Gene Symbol, RefSeq, and Ensembl IDs. The mapping is accomplished through the AnnotationDbi package (Pagès et al. 2019) and currently supported for 11 different model organisms including human, mouse, and rat. ID conversion of metabolite features to Comptox Dashboard IDs (DTXCID, DTXSID), CAS-numbers, Pubchem IDs (CID), HMDB, KEGG, ChEBI, Drugbank IDs, or common metabolite names is accomplished through the AnnotationHub package metabliteIDmapping. This package provides a comprehensive ID mapping for more than 1.1 million entries.
 
 This tutorial covers a simple example workflow illustrating how the multiGSEA package works. The omics data sets that will be used throughout the example were originally provided by Quiros et al. (Quirós et al. 2017). In their publication the authors analyzed the mitochondrial response to four different toxicants, including Actinonin, Diclofenac, FCCB, and Mito-Block (MB), within the transcriptome, proteome, and metabolome layer.
+In this tutorial we will solely focus on the Actinonin data set.
 
 
 > <agenda-title></agenda-title>
@@ -43,7 +44,7 @@ This tutorial covers a simple example workflow illustrating how the multiGSEA pa
 
 # Preparing the Data
 
-To perform pathway enrichment with MultiGSEA, you'll need omics datasets in the file type TSV . These datasets contain columns for feature Symbol, logFC pValue and adj.p-values. We'll use example data provided on Zenodo.
+To perform pathway enrichment with MultiGSEA, you'll need omics datasets in the file type TSV . Each individual data set contains four columns representing the feature (denoted as Symbol), the log2 fold change (logFC), the p-value (pValue), and the adjusted p-values (adj.pValue). We'll use example data provided on Zenodo.
 
 ## Get data
 
@@ -58,7 +59,7 @@ To perform pathway enrichment with MultiGSEA, you'll need omics datasets in the 
 >   - **metabolomics.tsv**
 >
 > <comment-title>URLs of the files</comment-title>
-> - **transcriptomics.tsv** https://zenodo.org/api/records/14216972/files/transcriptome.tsv/content
+>   - **transcriptomics.tsv** https://zenodo.org/api/records/14216972/files/transcriptome.tsv/content
 >   - **proteomics.tsv**    https://zenodo.org/api/records/14216972/files/proteome.tsv/content
 >   - **metabolomics.tsv**  https://zenodo.org/api/records/14216972/files/metabolome.tsv/content
 >  
@@ -82,9 +83,10 @@ In this step, you'll use the MultiGSEA tool to perform GSEA-based pathway enrich
 >        - {% icon param-file %} *"Metabolomics data"*: `Metabolomics`
 > 3. You can also choose the Gene ID format for every data set. In this tutorial we will use the preset "SYMBOL" for transcriptomics and proteomics. For metabolomics we use HMDB.
 > 4. Select in **Supported organisms** the organism of which the data is about. In our case we select `Homo sapiens (Human)`.
-> 5. **Pathway databases**: Select relevant databases. For the tutorial we choose `KEGG`
-> 6. **Combine p-values method**: Choose a method (here `Stouffer` for balanced weighting).
-> 7. **P-value correction method** (for controlling false discovery rate): Choose `Holm`.
+> 5. **Pathway databases**: Databases often contain their own format in which pathway definitions are provided. So you can select a relevant database. For the tutorial we choose `KEGG`
+> 6. **Combine p-values method**: Choose a method (here `Stouffer` for balanced weighting). To more comprehensively measure a pathway response, multiGSEA provides different approaches to compute an aggregated p value over multiple omics layers. Because no single approach for aggregating p values performs best under all circumstances, Loughin proposed basic recommendations on which method to use depending on structure and expectation of the problem. If small p values should be emphasized, Fisher’s method should be chosen. In cases where p values should be treated equally, Stouffer’s method is preferable. If large p values should be emphasized, the user should select Edgington’s method. Figure 2 indicates the difference between those three methods.
+  ![P-Value](../../images/p-value.png "P-value methods")
+> 7. **P-value correction method** Type I and type II errors depend on each other and thus reducing type I errors through a p value adjustment will likely increase the chance of making a type II error and an appropriate trade-off has to be made. Choose one of the different methods for controlling false discovery rate: For the tutorial choose `BH` (Benjamini-Hochberg).
 > 8. Click on `Run Tool`
 >
 {: .hands_on}
