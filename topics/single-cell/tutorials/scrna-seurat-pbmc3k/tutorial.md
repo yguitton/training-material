@@ -11,7 +11,7 @@ answer_histories:
     history: https://usegalaxy.eu/u/marisa_jl/h/clustering-3k-pbmcs-with-seurat---separate-preprocessing---answer-key
     date: 2023-10-28
   - label: "Using SCTransform"
-    history: https://usegalaxy.eu/u/marisa_jl/h/clustering-3k-pbmcs-with-seurat---sctransform---answer-key
+    history: https://usegalaxy.eu/u/marisa_jl/h/clustering-3k-pbmcs-with-seurat---sctransform---answer-ke
     date: 2023-10-28
 questions:
 - How can we identify cell types in single cell RNA-Seq data? 
@@ -397,7 +397,7 @@ The usual preprocessing steps for single cell data are normalisation, selection 
     Scaling is a linear transformation that we apply to prepare our data for dimensional reduction. 
     The default scaling method for the separate `ScaleData` tool in Seurat shifts the expression of each gene so that the mean expression across all the cells is 0. It also scales the expression of each gene so that the variance across all cells is 1. Scaling ensures that highly expressed genes don't dominate the analysis too much - we're interested in differences in expression between cells, not in genes that are always highly expressed in all the cells. The results will be stored in the `scale.data` layer.
     SCTransform doesn't scale data in the same way - although it centers the data by default, it won't scale the data unless you select this option. Instead, SCTransform usually stores the pearson residuals in the `scale.data` layer, which don't need to be scaled to the same variance.
-    By default, both approaches only center/scale the highly variable genes that we'll use for dimensional reduction, but it is possible to scale more genes if required.
+    By default, both approaches only center/scale the highly variable genes that we'll use for dimensional reduction, but it is possible to scale more genes if required. If you choose to use the separate preprocessing tool in this tutorial, then we'll use the ScaleData tool to scale all the genes - this means that we can compare or plot the expression of any of the genes, as they will all be scaled in the same way. We won't perform scaling with SCTransform, as we're following the [original SCT tutorial](https://satijalab.org/seurat/articles/sctransform_vignette.html), but we will center all genes.
 - **Regression**
   The Seurat pipeline can include another step during preprocessing of our single cell data. We can regress out (or remove) the impact of unwanted sources of variation. We could use this technique to remove the effects of the cell cycle or the differences associated with the proportion of mitochondrial genes. The goal is to reduce differences that are related to factors we are not interested in as this can help the differences we are interested in (like those between cell types or experimental groups) stand out more.
     It is possible to use the `ScaleData` function to regress out unwanted variation, but the creators of Seurat recommend using `SCTransform` for preprocessing if you want to do any regression. `SCTransform` automatically regresses out variation associated with sequencing depth (unique counts or nFeature_RNA) and can also regress out other variables. If you choose to use SCTransform in this tutorial, then you'll regress out the variation associated with the proportion of mitochondrial content, just like in [Seurat's original version of this tutorial](https://satijalab.org/seurat/articles/sctransform_vignette.html)
@@ -424,6 +424,8 @@ The usual preprocessing steps for single cell data are normalisation, selection 
 >    - *"Method used"*: `Scale and regress with 'ScaleData'`
 >        - *"Regress out a variable"*: `No`
 >        - *"Features to scale"*: `All Features`
+>
+> We'll choose to scale `All Features` here, instead of just the highly variable genes.
 >
 > 4. Rename the output as `Preprocessed Data`
 >
@@ -1052,8 +1054,9 @@ Although there is a lot of information here, all we need to know for now is that
 > > 1. If we search the markers table for our top genes (you can use Ctrl+F to do this but it may take time for the full dataset to load when you view it), we can see that CST3 is a positive marker for clusters 1, 5, and 7 while MALAT1 is a positive marker for clusters 0, 4 and 6. CD79A was a marker for cluster 3 while NKG7 was a marker for clusters 4 and 6. HLA-DQA1 was a marker for clusters 3 and 7 while PPBP was a marker for cluster 8. So, these top genes are differentially expressed by some of our clusters.
 > > 2. The results make sense, as we would expect the top positive and negative genes for each PC to be expressed in different clusters. The results also match up fairly well with what we saw on the UMAP and violin plots - although we might have thought that MALAT1 could be a marker for clusters 2 and 3 too as it seems to be highly expressed by them. The apparent difference in expression we saw in the plot wasn't strong enough to show up in this statistical test.
 > > However, the top genes associated with our PCs aren't necessarily the most significant markers for our clusters (they can appear quite far down the lists) and they are often markers for more than one cluster. Again, this makes sense, because the PCA was looking for the bigger patterns across the whole dataset, while now we're looking for differences between smaller groups of cells - the clusters.
-> > 3. We could scroll down through the markers table to find the results for cluster 2, but it can be easier to filter the table instead. TODO Add in Filter step here...
-> > If you click on the {% icon galaxy-eye %} for the new output in your history, you should see from the `custer` column that we only have markers for cluster 2. The top five markers for this cluster were:
+> > 3. We could scroll down through the markers table to find the results for cluster 2, but it can be easier to filter the table instead. The {% tool [Filter](Filter1) %} can be used to filter the Markers List from `FindAllMarkers`. We can set the condition to filter on as `c7==2` since column 7 contains the cluster numbers - this will filter out only the rows that have `2` in this column.
+> > Make sure to enter `1` in the `Number of header lines to skip` field as we don't want to cut off the header row because it doesn't have the right value in column 7!
+> > If you then click on the {% icon galaxy-eye %} for the new output in your history, you should see from the `cluster` column that we only have markers for cluster 2. The top five markers for this cluster were:
 > > <span class='Separate-Preprocessing-Steps'>
 > >
 > > > |    |      |
@@ -1443,7 +1446,7 @@ To continue with the supervised approach, we can check the expression of the cho
 
 </div>
 
-We have produced a series of UMAP plots, each coloured according to the expression level of a different marker gene. We can look back at the UMAP plots we created earlier showing the cluster numbers to see which areas correspond to specific clusters.
+We have produced a series of UMAP plots, each coloured according to the expression level of a different marker gene. We can look back at [the UMAP plots we created earlier](#figure-13) showing the cluster numbers to see which areas correspond to specific clusters.
 
 > <question-title></question-title>
 > 1. Are the markers clearly associated with one or more clusters?
@@ -1650,7 +1653,7 @@ In order to create a heatmap, we need to prepare a tabular file with a list of t
 >    - {% icon param-file %} *"Input file with the Seurat object"*: `Annotated Clusters` (output of **Seurat Data Management** {% icon tool %})
 >    - *"Method used"*: `Visualize expression with 'DoHeatmap'`
 >        - {% icon param-file %} *"List of features to plot"*: `Canonical Markers` (Input dataset)
->        - In *"Plot Formatting Options"*:
+>        - In *"Plot Formatting Options"*: 
 >            - *"Size of text above colour bar"*: `3.5`
 >            - *"Angle of text above colour bar"*: `60`
 >    - *"Change size of plot"*: `Yes`
@@ -1678,19 +1681,12 @@ In order to do this, we'll need to turn the output from `FindAllMarkers` into a 
 >
 > 1. Click on the {% icon galaxy-pencil %} pencil icon of the file we renamed as `DE Markers` (this was the CSV output from `FindAllMarkers`) then select {% icon galaxy-chart-select-data %} Datatypes in the central panel. Choose the second option, `Convert to Datatype` and make sure `tabular (using `Convert CSV to tabular`)` is selected in the drop down menu before pressing the `Create Dataset` button. This will create a new, tabular version of the dataset at the top of your history - make sure that this is the version you use in the next step.
 >
-> 2. {% tool [Table Compute](toolshed.g2.bx.psu.edu/repos/iuc/table_compute/table_compute/1.2.4+galaxy0) %} with the following parameters:
->    - *"Input Single or Multiple Tables"*: `Single Table`
->        - {% icon param-file %} *"Table"*: `DE Markers` (**tabular** output of **Convert CSV to tabular** {% icon tool %})
->        - *"Input data has"*:
->              - `Select` Column names on the first row
->              - `Unselect` Row names on the first column
->        - *"Type of table operation"*: `Drop, keep or duplicate rows and columns`
->            - *"List of columns to select"*: `1`
->        - *"Output formatting options"*:
->              - `Unselect` Output column headers
->              - `Unselect` Output row headers
+> 2. {% tool [Cut](Cut1) %} with the following parameters:
+>    - *"Cut columns"*: `c1`
+>    - *"Delimited by"*: `Tab`
+>    - {% icon param-file %} *"From"*: `DE Markers` (**tabular** output of **Convert CSV to tabular** {% icon tool %})
 >
-> 3. Rename this file as `Input DE Markers` - if you take a look at it using the {% icon galaxy-eye %}, you should see the column of gene names with no header line
+> 3. Rename this file as `Input DE Markers` - if you take a look at it using the {% icon galaxy-eye %}, you should see the column of gene names
 >
 > 4. {% tool [Seurat Visualize](toolshed.g2.bx.psu.edu/repos/iuc/seurat_plot/seurat_plot/5.0+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input file with the Seurat object"*: `Annotated Clusters` (output of **Seurat Data Management** {% icon tool %})
@@ -1736,7 +1732,7 @@ Comparing the two plots also shows us why the supervised approach can be faster 
 {: .question}
 
 # Conclusion
-{% icon congratulations %} Well done, you've successfully used Seurat to prepare and cluster single cell data. You might want to check your results against the example histories for the [separate preprocessing steps](https://usegalaxy.eu/u/marisa_jl/h/clustering-3k-pbmcs-with-seurat---separate-preprocessing---answer-key) or [SCTransform route](https://usegalaxy.eu/u/marisa_jl/h/clustering-3k-pbmcs-with-seurat---sctransform---answer-key). You can also take a look at the whole workflow for [the separate steps](https://usegalaxy.eu/u/marisa_jl/w/copy-of-cluster-3k-pbmcs-with-seurat---workflow) or [SCTransform version](https://usegalaxy.eu/u/marisa_jl/w/cluster-3k-pbmcs-with-seurat---workflow---sctransform-version).
+{% icon congratulations %} Well done, you've successfully used Seurat to prepare and cluster single cell data. You might want to check your results against the example histories for the [separate preprocessing steps](https://usegalaxy.eu/u/marisa_jl/h/clustering-3k-pbmcs-with-seurat---separate-preprocessing---answer-key) or [SCTransform route](https://usegalaxy.eu/u/marisa_jl/h/clustering-3k-pbmcs-with-seurat---sctransform---answer-ke). You can also take a look at the whole workflow for [the separate steps](https://usegalaxy.eu/u/marisa_jl/w/copy-of-cluster-3k-pbmcs-with-seurat---workflow) or [SCTransform version](https://usegalaxy.eu/u/marisa_jl/w/cluster-3k-pbmcs-with-seurat---workflow---sctransform-version).
 
 In this tutorial, we've learned about the steps involved in clustering single cell data and how to identify different cell types. We followed a typical clustering workflow:
 
