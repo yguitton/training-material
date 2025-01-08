@@ -171,7 +171,7 @@ When multiple files are added, MAFFT will run for each of these, so it is necess
 >
 >    > <comment-title> Different flavor, different time and accuracy </comment-title>
 >    >
->    > The alignment will be quite fast with the FFT-NS-2 flavor. You can try it out with G-INS-I for example, then you'll see the time and accuracy difference of the algorithms, which MAFFT can offer. It will take a while, so please don't wait for the result before you continue with the training. When it finished, check the first aligned sequence file with the second to evaluate the differences of the alignment methods.
+>    > The alignment will be quite fast with the FFT-NS-2 flavor. You can try it out with G-INS-I for example, then you'll see the time and accuracy difference of the algorithms, which MAFFT can offer. It will take a while, so please don't wait for the result before you continue with the training. Once the alignment is complete, compare the first sequence file with the second to evaluate the differences between the alignment methods.
 >    {: .comment}
 >
 > 2. Rename the dataset
@@ -195,7 +195,7 @@ The aligned polio genome is ready for further use. Before we continue with the p
 >
 {: .hands_on}
 
-![Picture of the build-in visualization of Galaxy of an aligned Polio 1 genome.](../../images/mafft_varvamp_training/aligned_Polio1_sequence128-142.png "Visualization of the aligned Polio 1 genome through Galaxy build-in view. Options for customization or better analysis on top. Shown are sequence 128-142 with few differences.")
+![Picture of the build-in visualization of Galaxy of an aligned Polio 1 genome.](../../images/mafft_varvamp_training/aligned_Polio1_sequence128-142.png "Visualization of the aligned Polio 1 genome through Galaxy build-in view. Options for customization or better analysis on top. Shown are sequence 128-142 at position 1346-1394 with few differences.")
 
 With this alignment we prepared our input Poliovirus 1 genomes for VarVAMP and are ready to design our primers. But before we get to the primer design section with VarVAMP, we have a few simple questions for you.
 
