@@ -85,7 +85,8 @@ Any analysis should get its own Galaxy history. So let's start by creating a new
 {: .hands_on}
 
 ## Transform aligned sequences into unaligned fasta file format
-To effectively utilize **MAFFT**({% cite Katoh2013 %}), a powerful tool for multiple sequence alignment, it's crucial to provide an unaligned fasta sequence file as input. This raw format allows MAFFT to flexibly align sequences based on their similarity, adjusting gaps and mismatches to optimize alignment quality. Furthermore is the transformation of the aligned file a helpful exercise to deepen the knowledge about the variety and diversity of different tools existing on the Galaxy website.
+
+For the primer design we need a *Multiple sequence alignment*, which we can generate with **MAFFT**({% cite Katoh2013 %}). To effectively utilize MAFFT it's crucial to provide an unaligned fasta file as input. This raw format allows the program to flexibly align sequences based on their similarity and to adjust gaps and mismatches to optimize the alignment quality. Furthermore the transformation of the aligned file to an unaligned file is a helpful exercise to deepen your knowledge about the variety and diversity of different tools existing on the Galaxy website.
 
 > <hands-on-title>Degap the Polio1-genomes</hands-on-title>
 >
