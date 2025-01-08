@@ -123,41 +123,17 @@ When multiple files are added, MAFFT will run for each of these, so it is necess
 >
 {: .details}
 
-
-**Standard settings:**
-- Autodetection of the sequence type (nucleic or amino acid)
-    - if nuc, matrix is Kimura200
-    - if prot, matrix is BLOSUM62
-- alignment strategy auto choose(FFT-NS-2 or L-INS-i, depending on sequence number)  = FFT-NS-2 fast, but rough, recommended for larger sequences
-- Gap Extend Penalty = 0.0
-- Gap Open Penalty = -1.53
-
-
 > <details-title> MSA: Multiple sequence alignment with MAFFT - Methods </details-title>
 >
->   MAFFT is a program which offers many ways of customization. In this comment you'll find the ready to use multiple alignment methods:
+>   MAFFT is a program with different methods to align sequences. These methods differ in terms of their speed and accuracy.
 >
-> - Accuracy-oriented methods:
+>   The progressive methods, including the default setting FFT-NS-2, can align high numbers of sequences in relatively short time. These methodes are the fastest but also they have the lowest accuracy. Nevertheless, they are a good first approach.
 >
->    1. L-INS-i (probably most accurate; recommended for <200 sequences; iterative refinement method incorporating local pairwise alignment information)
+>   Then there are iterative refinement methods which use the WSP score to improve the accuracy of the multiple sequence alignment. These methods need more time than the progressive methods because they repeat the iterative refinement until a maximum number of improvement cycles is reached or until there is no more relevant improvement according to the WSP score.
 >
->    2. G-INS-i (suitable for sequences of similar lengths; recommended for <200 sequences; iterative refinement method incorporating global pairwise alignment information)
+>   The last category contains iterative refinement methods using both the WSP and consistency scores. These methods provide the most accuracy but also take the most time. They are useful if the sequences have few similarities.
 >
->    3. E-INS-i (suitable for sequences containing large unalignable regions; recommended for <200 sequences)
->
-> - Speed-oriented methods:
->
->    1. FFT-NS-i (iterative refinement method; two cycles only):
->
->    2. FFT-NS-2 (fast; progressive method)
->
->    3. NW-NS-i (iterative refinement method without FFT approximation; two cycles only)
->
->    4. NW-NS-2 (fast; progressive method without the FFT approximation)
->
-> - Costum setting:
->
->   There is a wide range of personal adjustements offered by MAFFT. Each of these flavours can be set independently on your own. For more information about the algorithms and parameters: [Visit the official MAFFT-website](https://mafft.cbrc.jp/alignment/software/algorithms/algorithms.html)
+>   For more information about the individual methods visit the official [MAFFT-website](https://mafft.cbrc.jp/alignment/software/algorithms/algorithms.html).
 >
 {: .details}
 
@@ -171,7 +147,7 @@ When multiple files are added, MAFFT will run for each of these, so it is necess
 >
 >    > <comment-title> Different flavor, different time and accuracy </comment-title>
 >    >
->    > The alignment will be quite fast with the FFT-NS-2 flavor. You can try it out with G-INS-I for example, then you'll see the time and accuracy difference of the algorithms, which MAFFT can offer. It will take a while, so please don't wait for the result before you continue with the training. Once the alignment is complete, compare the first sequence file with the second to evaluate the differences between the alignment methods.
+>    > The alignment will be quite fast with the FFT-NS-2 flavor. You can try it out with L-INS-i for example, then you'll see the time and accuracy difference of the algorithms, which MAFFT can offer. It will take a while, so please don't wait for the result before you continue with the training. Once the alignment is complete, compare the first sequence file with the second to evaluate the differences between the alignment methods.
 >    {: .comment}
 >
 > 2. Rename the dataset
@@ -297,11 +273,11 @@ The tool VarVAMP offers a wide range of different outputs in the various modes. 
 >    {% snippet  faqs/galaxy/collections_build_list.md name="varVAMP Polio1 qpcr threshold 0.93" %}
 {: .hands_on}
 
-Now we got our first VarVAMP outputs and an idea, how the tool is working. We have put them together in a dataset to keep an organized overview. Check the different kind of outputs and get familiar with the results.
+Now we got our first VarVAMP outputs and an idea, how the tool is working. Additionally we put the outputs together in a dataset to keep an organized overview. Check the different kind of outputs and get familiar with the results.
 
 > <comment-title>Output control</comment-title>
 >
-> Control your output files with the example files of the [VarVAMP-qPCR-output github page for Polio 1 virus (varVAMP:0.7)](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_qpcr/polio1). There you can check, if you created the same primers. You can find the primer locations in the bed file "primers.bed".
+> Control your output files with the example files of the [VarVAMP-qPCR-output github page for Polio 1 virus](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_qpcr/polio1). There you can check, if you created the same primers. You can find the primer locations in the bed file "primers.bed". These primers were designed with the version varVAMP:0.7.
 {: .comment}
 
 To control your results and check your understanding of them there are some questions for you prepared:
