@@ -288,7 +288,7 @@ In this workflow, Column Regex Find And Replace cleans and formats the data in a
 >            - *"Find Regex"*: `^(.*)$`
 >            - *"Replacement"*: `generic|INDEL_\1`
 >
->
+> 2. Rename as Indel-FASTA
 {: .hands_on}
 
 > <hands-on-title> SNV-Column Regex Find And Replace </hands-on-title>
@@ -310,7 +310,7 @@ In this workflow, Column Regex Find And Replace cleans and formats the data in a
 >            - *"Find Regex"*: `^(.*)$`
 >            - *"Replacement"*: `generic|SNV_\1`
 >
->
+> 2. Rename as SNV-FASTA
 {: .hands_on}
 
 > <hands-on-title> RPKM -Column Regex Find And Replace </hands-on-title>
@@ -332,7 +332,7 @@ In this workflow, Column Regex Find And Replace cleans and formats the data in a
 >            - *"Find Regex"*: `^(.*)$`
 >            - *"Replacement"*: `generic|RPKM_\1`
 >
->
+> 2. Rename as RPKM-FASTA
 {: .hands_on}
 
 > <question-title></question-title>
@@ -361,7 +361,7 @@ In this workflow, Tabular-to-FASTA converts the formatted tabular data back into
 >    - *"Title column(s)"*: `c['1']`
 >    - *"Sequence column"*: `c2`
 >
-> 2. Rename as
+> 2. Rename as Indel-FASTA
 {: .hands_on}
 
 > <hands-on-title> SNV-Tabular-to-FASTA </hands-on-title>
@@ -371,7 +371,7 @@ In this workflow, Tabular-to-FASTA converts the formatted tabular data back into
 >    - *"Title column(s)"*: `c['1']`
 >    - *"Sequence column"*: `c2`
 >
->
+> 2. Rename as SNV-FASTA
 {: .hands_on}
 
 > <hands-on-title> RPKM-Tabular-to-FASTA </hands-on-title>
@@ -381,7 +381,7 @@ In this workflow, Tabular-to-FASTA converts the formatted tabular data back into
 >    - *"Title column(s)"*: `c['1']`
 >    - *"Sequence column"*: `c2`
 >
->
+> 2. Rename as RPKM-FASTA
 {: .hands_on}
 
 > <question-title></question-title>
@@ -410,13 +410,13 @@ In this workflow, FASTA Merge Files and Filter Unique Sequences consolidate all 
 >    - *"Run in batch mode?"*: `Merge individual FASTAs (output collection if the input is a collection)`
 >        - In *"Input FASTA File(s)"*:
 >            - {% icon param-repeat %} *"Insert Input FASTA File(s)"*
->                - {% icon param-file %} *"FASTA File"*: `SNV` (output of **Tabular-to-FASTA** {% icon tool %})
+>                - {% icon param-file %} *"FASTA File"*: `SNV-FASTA` (output of **Tabular-to-FASTA** {% icon tool %})
 >        - In *"Input FASTA File(s)"*:
 >            - {% icon param-repeat %} *"Insert Input FASTA File(s)"*
->                - {% icon param-file %} *"FASTA File"*: `INDEL` (output of **Tabular-to-FASTA** {% icon tool %})
+>                - {% icon param-file %} *"FASTA File"*: `INDEL-FASTA` (output of **Tabular-to-FASTA** {% icon tool %})
 >        - In *"Input FASTA File(s)"*:
 >            - {% icon param-repeat %} *"Insert Input FASTA File(s)"*
->                - {% icon param-file %} *"FASTA File"*: `RPKM` (output of **Tabular-to-FASTA** {% icon tool %})>
+>                - {% icon param-file %} *"FASTA File"*: `RPKM-FASTA` (output of **Tabular-to-FASTA** {% icon tool %})>
 > 2. Rename as `Non-normal_CustomProDB_FASTA`
 {: .hands_on}
 
