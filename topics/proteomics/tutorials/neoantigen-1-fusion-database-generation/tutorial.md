@@ -60,23 +60,15 @@ To generate the fusion database, RNA star and Arriba tools are used in this work
 
 The workflow in this tutorial guides users through the generation of a fusion neoantigen database, covering key steps in bioinformatics to identify, filter, and prepare fusion-specific peptides for further immunological study. Below is an overview of each major stage:
 
-### 1. Get Data
-The process begins with the upload and quality assessment of raw sequencing data, which is then uncompressed. This stage sets the groundwork for all subsequent analyses.
-
-### 2. Fusion Detection and Alignment
-RNA sequencing data undergoes alignment to a reference genome using tools like **RNA STAR**, followed by **Arriba** to detect fusion events. These tools identify gene fusions and help characterize the gene segments that combine to form new fusion genes.
-
-### 3. Filtering and Refinement
-After identifying fusions, various filters are applied to remove non-specific or common fusion events using blacklist data and other criteria. This step ensures that only relevant, unique fusion events are retained for neoantigen prediction.
-
-### 4. Peptide Sequence Extraction and Formatting
+1. **Get Data** The process begins with the upload and quality assessment of raw sequencing data, which is then uncompressed. This stage sets the groundwork for all subsequent analyses.
+2. **Fusion Detection and Alignment** RNA sequencing data undergoes alignment to a reference genome using tools like **RNA STAR**, followed by **Arriba** to detect fusion events. These tools identify gene fusions and help characterize the gene segments that combine to form new fusion genes.
+3. **Filtering and Refinement** After identifying fusions, various filters are applied to remove non-specific or common fusion events using blacklist data and other criteria. This step ensures that only relevant, unique fusion events are retained for neoantigen prediction.
+4. **Peptide Sequence Extraction and Formatting**
 Potential neoantigen peptides are extracted from the fusion gene sequences. Using tools such as **Text Reformatting** and **Tabular-to-FASTA**, the data is transformed into formats suitable for further immunological analysis.
-
-### 5. Final Database Formatting
+5. **Final Database Formatting**
 The workflow concludes by applying regex adjustments and formatting functions to standardize the output, creating a database of potential fusion neoantigens.
 
-### Summary
-This workflow provides a structured approach to preparing fusion neoantigen data for downstream applications, such as immunotherapy research, by making fusion-derived peptides accessible in a database for experimental or clinical exploration.
+In summary, this workflow provides a structured approach to preparing fusion neoantigen data for downstream applications, such as immunotherapy research, by making fusion-derived peptides accessible in a database for experimental or clinical exploration.
 
 
 ## Get data
