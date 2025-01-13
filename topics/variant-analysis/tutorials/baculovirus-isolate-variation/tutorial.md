@@ -330,7 +330,384 @@ Insertions/Deletions (indels) are deliberately omitted because they are not rele
 >
 {: .hands_on}
 
-## Visualisierung der variablen SNV Positionen
+# VCF to table transformation
+
+> <hands-on-title> Task description </hands-on-title>
+>
+> 1. {% tool [VCFtoTab-delimited:](toolshed.g2.bx.psu.edu/repos/devteam/vcf2tsv/vcf2tsv/1.0.0_rc1+galaxy0) %} with the following parameters:
+>    - {% icon param-file %} *"Select VCF dataset to convert"*: `output_file` (output of **bcftools call** {% icon tool %})
+>    - *"Fill empty fields with"*: `NULL`
+>
+>    ***TODO***: *Check parameter descriptions*
+>
+>    ***TODO***: *Consider adding a comment or tip box*
+>
+>    > <comment-title> short description </comment-title>
+>    >
+>    > A comment about the tool or something else. This box can also be in the main text
+>    {: .comment}
+>
+{: .hands_on}
+
+
+> <hands-on-title> Task description </hands-on-title>
+>
+> 1. {% tool [Replace Text](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_column/9.3+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"File to process"*: `out_file1` (output of **VCFtoTab-delimited:** {% icon tool %})
+>    - In *"Replacement"*:
+>        - {% icon param-repeat %} *"Insert Replacement"*
+>            - *"in column"*: `c23`
+>            - *"Find pattern"*: `SRR31589148`
+>            - *"Replace with"*: `CpGV-M`
+>        - {% icon param-repeat %} *"Insert Replacement"*
+>            - *"in column"*: `c23`
+>            - *"Find pattern"*: `SRR31589147`
+>            - *"Replace with"*: `CpGV-S`
+>        - {% icon param-repeat %} *"Insert Replacement"*
+>            - *"in column"*: `c23`
+>            - *"Find pattern"*: `SRR31589146`
+>            - *"Replace with"*: `CpGV-E2`
+>        - {% icon param-repeat %} *"Insert Replacement"*
+>            - *"in column"*: `c23`
+>            - *"Find pattern"*: `SRR31679023`
+>            - *"Replace with"*: `CpGV-V15`
+>
+>    ***TODO***: *Check parameter descriptions*
+>
+>    ***TODO***: *Consider adding a comment or tip box*
+>
+>    > <comment-title> short description </comment-title>
+>    >
+>    > A comment about the tool or something else. This box can also be in the main text
+>    {: .comment}
+>
+{: .hands_on}
+
+# Relative nucleotide frequency calculation
+
+> <hands-on-title> Task description </hands-on-title>
+>
+> 1. {% tool [Text reformatting](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/9.3+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"File to process"*: `outfile` (output of **Replace Text** {% icon tool %})
+>    - *"AWK Program"*: `BEGIN { FS=\t; OFS=\t }
+NR == 1 {
+    # Drucke den neuen Header
+    print $0, ALLELE, DPR.ALLELE, REL.ALT, REL.ALT.0.05;
+    next;
+}
+{
+    # Erstelle einen eindeutigen Schlüssel für Position und Probe
+    pos_sample_key = $2 _ $23;
+
+    if (last_pos != $2) {         # Wenn eine neue Position beginnt
+        delete sample_count;      # Zurücksetzen des Sample-Zählers
+        last_pos = $2;            # Aktualisiere die aktuelle Position
+    }
+
+    # Zerlege die DPR-Spalte in Werte
+    split($25, dpr_values, ,);
+
+    # Zähle das Auftreten jeder Probe pro Position
+    sample_count[$23]++;
+    dpr_index = sample_count[$23] + 1;  # Index für das alternative Allel (Start bei 2)
+
+    # Prüfe, ob der Index gültig ist
+    if (dpr_index <= length(dpr_values)) {
+        allele = ALT (dpr_index - 1);            # Bestimme das Allel
+        dpr_value = dpr_values[dpr_index];         # Hole den entsprechenden DPR-Wert
+        rel_alt = (dpr_value / $24);               # Berechne REL.ALT (DPR.ALLELE / DP)
+        rel_alt_filtered = (rel_alt >= 0.05) ? rel_alt : 0;  # Filtere REL.ALT-Werte < 0.05
+        print $0, allele, dpr_value, rel_alt, rel_alt_filtered;  # Ausgabe mit neuen Spalten
+    }
+}`
+>
+>    ***TODO***: *Check parameter descriptions*
+>
+>    ***TODO***: *Consider adding a comment or tip box*
+>
+>    > <comment-title> short description </comment-title>
+>    >
+>    > A comment about the tool or something else. This box can also be in the main text
+>    {: .comment}
+>
+{: .hands_on}
+
+
+> <hands-on-title> Task description </hands-on-title>
+>
+> 1. {% tool [Filter](Filter1) %} with the following parameters:
+>    - {% icon param-file %} *"Filter"*: `outfile` (output of **Text reformatting** {% icon tool %})
+>    - *"With following condition"*: `c28=='ALT1'`
+>
+>    ***TODO***: *Check parameter descriptions*
+>
+>    ***TODO***: *Consider adding a comment or tip box*
+>
+>    > <comment-title> short description </comment-title>
+>    >
+>    > A comment about the tool or something else. This box can also be in the main text
+>    {: .comment}
+>
+{: .hands_on}
+
+## SNV plot - Homogenity/heterogenity check
+
+> <hands-on-title> Task description </hands-on-title>
+>
+> 1. {% tool [Scatterplot with ggplot2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_point/ggplot2_point/3.4.0+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"Input in tabular format"*: `out_file1` (output of **Filter** {% icon tool %})
+>    - *"Column to plot on x-axis"*: `2`
+>    - *"Column to plot on y-axis"*: `30`
+>    - *"Plot title"*: `SNV plot`
+>    - *"Label for x axis"*: `Reference Genome Position of CpGV-M`
+>    - *"Label for y axis"*: `Relative nucleotide frequency `
+>    - In *"Advanced options"*:
+>        - *"Type of plot"*: `Points only (default)`
+>            - *"Data point options"*: `Default`
+>        - *"Plotting multiple groups"*: `Plot multiple groups of data on individual plots`
+>            - *"column differentiating the different groups"*: `23`
+>        - *"Axis title options"*: `Default`
+>        - *"Axis text options"*: `Default`
+>        - *"Plot title options"*: `Default`
+>        - *"Grid lines"*: `Hide major and minor grid lines`
+>        - *"Axis scaling"*: `Automatic axis scaling`
+>    - In *"Output Options"*:
+>        - *"Unit of output dimensions"*: `Centimeters (cm)`
+>        - *"width of output"*: `40.0`
+>        - *"height of output"*: `12.0`
+>        - *"dpi of output"*: `200.0`
+>
+>    ***TODO***: *Check parameter descriptions*
+>
+>    ***TODO***: *Consider adding a comment or tip box*
+>
+>    > <comment-title> short description </comment-title>
+>    >
+>    > A comment about the tool or something else. This box can also be in the main text
+>    {: .comment}
+>
+{: .hands_on}
+
+
+# SNV Specificity determination
+
+> <hands-on-title> Task description </hands-on-title>
+>
+> 1. {% tool [Text reformatting](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/9.3+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"File to process"*: `out_file1` (output of **Filter** {% icon tool %})
+>    - *"AWK Program"*: `BEGIN { FS=\t; OFS=\t }
+NR == 1 {
+    # Drucke den Header und füge die neue Spalte SPEC hinzu
+    print $0, SPEC;
+    next;
+}
+
+{
+    # Wenn wir eine neue Position erreichen, bereite die Spezifität vor
+    if ($2 != current_pos) {
+        # Verteile die berechnete Spezifität an alle Zeilen der aktuellen Position
+        for (i in pos_lines) {
+            # Füge SNV specificity:  vor die Spezifität hinzu
+            final_spec = (specificity ==  ? 0 : SNV specificity:  specificity);
+            print pos_lines[i], final_spec;
+        }
+        # Setze Variablen für die neue Position zurück
+        delete pos_lines;
+        specificity = ;
+        current_pos = $2;
+    }
+
+    # Speichere die aktuelle Zeile für später
+    pos_lines[NR] = $0;
+
+    # Bedingungen für die Berechnung der Spezifität
+    if ($28 == ALT1 && ($23 == CpGV-E2 || $23 == CpGV-S || $23 == CpGV-M) && $31 > 0) {
+        # Konkateniere die Isolate-Namen mit  + , wenn die REL.ALT.0.05 > 0 ist
+        specificity = (specificity ==  ? $23 : specificity  +  $23);
+    }
+}
+
+END {
+    # Verteile die Spezifität für die letzte Position
+    for (i in pos_lines) {
+        # Füge SNV specificity:  vor die Spezifität hinzu
+        final_spec = (specificity ==  ? 0 : SNV specificity:  specificity);
+        print pos_lines[i], final_spec;
+    }
+}`
+>
+>    ***TODO***: *Check parameter descriptions*
+>
+>    ***TODO***: *Consider adding a comment or tip box*
+>
+>    > <comment-title> short description </comment-title>
+>    >
+>    > A comment about the tool or something else. This box can also be in the main text
+>    {: .comment}
+>
+{: .hands_on}
+
+# SNV specificity visualisation
+
+## Understanding SNV specificities
+
+> <hands-on-title> Task description </hands-on-title>
+>
+> 1. {% tool [Filter](Filter1) %} with the following parameters:
+>    - {% icon param-file %} *"Filter"*: `outfile` (output of **Text reformatting** {% icon tool %})
+>    - *"With following condition"*: `c23=='CpGV-S'`
+>    - *"Number of header lines to skip"*: `1`
+>
+>    ***TODO***: *Check parameter descriptions*
+>
+>    ***TODO***: *Consider adding a comment or tip box*
+>
+>    > <comment-title> short description </comment-title>
+>    >
+>    > A comment about the tool or something else. This box can also be in the main text
+>    {: .comment}
+>
+>
+> 2. {% tool [Scatterplot with ggplot2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_point/ggplot2_point/3.4.0+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"Input in tabular format"*: `out_file1` (output of **Filter** {% icon tool %})
+>    - *"Column to plot on x-axis"*: `2`
+>    - *"Column to plot on y-axis"*: `30`
+>    - *"Plot title"*: `SNV specificity plot for CpGV-S`
+>    - *"Label for x axis"*: `Reference Genome Position of CpGV-M`
+>    - *"Label for y axis"*: `Relative Nucleotide Frequency`
+>    - In *"Advanced options"*:
+>        - *"Type of plot"*: `Points only (default)`
+>            - *"Data point options"*: `Default`
+>        - *"Plotting multiple groups"*: `Plot multiple groups of data on individual plots`
+>            - *"column differentiating the different groups"*: `32`
+>        - *"Axis title options"*: `Default`
+>        - *"Axis text options"*: `Default`
+>        - *"Plot title options"*: `Default`
+>        - *"Grid lines"*: `Hide major and minor grid lines`
+>        - *"Axis scaling"*: `Automatic axis scaling`
+>    - In *"Output Options"*:
+>        - *"Unit of output dimensions"*: `Centimeters (cm)`
+>        - *"width of output"*: `40.0`
+>        - *"height of output"*: `12.0`
+>        - *"dpi of output"*: `200.0`
+>
+>    ***TODO***: *Check parameter descriptions*
+>
+>    ***TODO***: *Consider adding a comment or tip box*
+>
+>    > <comment-title> short description </comment-title>
+>    >
+>    > A comment about the tool or something else. This box can also be in the main text
+>    {: .comment}
+>
+{: .hands_on}
+
+
+> <hands-on-title> Task description </hands-on-title>
+>
+> 1. {% tool [Filter](Filter1) %} with the following parameters:
+>    - {% icon param-file %} *"Filter"*: `outfile` (output of **Text reformatting** {% icon tool %})
+>    - *"With following condition"*: `c23=='CpGV-E2'`
+>    - *"Number of header lines to skip"*: `1`
+>
+>    ***TODO***: *Check parameter descriptions*
+>
+>    ***TODO***: *Consider adding a comment or tip box*
+>
+>    > <comment-title> short description </comment-title>
+>    >
+>    > A comment about the tool or something else. This box can also be in the main text
+>    {: .comment}
+>
+>
+> 2. {% tool [Scatterplot with ggplot2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_point/ggplot2_point/3.4.0+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"Input in tabular format"*: `out_file1` (output of **Filter** {% icon tool %})
+>    - *"Column to plot on x-axis"*: `2`
+>    - *"Column to plot on y-axis"*: `30`
+>    - *"Plot title"*: `SNV specificity plot for CpGV-E2`
+>    - *"Label for x axis"*: `Reference Genome Position of CpGV-M`
+>    - *"Label for y axis"*: `Relative Nucleotide Frequency`
+>    - In *"Advanced options"*:
+>        - *"Type of plot"*: `Points only (default)`
+>            - *"Data point options"*: `Default`
+>        - *"Plotting multiple groups"*: `Plot multiple groups of data on individual plots`
+>            - *"column differentiating the different groups"*: `32`
+>        - *"Axis title options"*: `Default`
+>        - *"Axis text options"*: `Default`
+>        - *"Plot title options"*: `Default`
+>        - *"Grid lines"*: `Hide major and minor grid lines`
+>        - *"Axis scaling"*: `Automatic axis scaling`
+>    - In *"Output Options"*:
+>        - *"Unit of output dimensions"*: `Centimeters (cm)`
+>        - *"width of output"*: `40.0`
+>        - *"height of output"*: `12.0`
+>        - *"dpi of output"*: `200.0`
+>
+>    ***TODO***: *Check parameter descriptions*
+>
+>    ***TODO***: *Consider adding a comment or tip box*
+>
+>    > <comment-title> short description </comment-title>
+>    >
+>    > A comment about the tool or something else. This box can also be in the main text
+>    {: .comment}
+>
+{: .hands_on}
+
+
+## Determining the mixture of CpGV-V15
+
+> <hands-on-title> Task description </hands-on-title>
+>
+> 1. {% tool [Filter](Filter1) %} with the following parameters:
+>    - {% icon param-file %} *"Filter"*: `outfile` (output of **Text reformatting** {% icon tool %})
+>    - *"With following condition"*: `c23=='CpGV-V15'`
+>    - *"Number of header lines to skip"*: `1`
+>
+>    ***TODO***: *Check parameter descriptions*
+>
+>    ***TODO***: *Consider adding a comment or tip box*
+>
+>    > <comment-title> short description </comment-title>
+>    >
+>    > A comment about the tool or something else. This box can also be in the main text
+>    {: .comment}
+>
+>
+> 2. {% tool [Scatterplot with ggplot2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_point/ggplot2_point/3.4.0+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"Input in tabular format"*: `out_file1` (output of **Filter** {% icon tool %})
+>    - *"Column to plot on x-axis"*: `2`
+>    - *"Column to plot on y-axis"*: `30`
+>    - *"Plot title"*: `SNV specificity plot for CpGV-V15`
+>    - *"Label for x axis"*: `Reference Genome Position of CpGV-M`
+>    - *"Label for y axis"*: `Relative Nucleotide Frequency`
+>    - In *"Advanced options"*:
+>        - *"Type of plot"*: `Points only (default)`
+>            - *"Data point options"*: `Default`
+>        - *"Plotting multiple groups"*: `Plot multiple groups of data on individual plots`
+>            - *"column differentiating the different groups"*: `32`
+>        - *"Axis title options"*: `Default`
+>        - *"Axis text options"*: `Default`
+>        - *"Plot title options"*: `Default`
+>        - *"Grid lines"*: `Hide major and minor grid lines`
+>        - *"Axis scaling"*: `Automatic axis scaling`
+>    - In *"Output Options"*:
+>        - *"Unit of output dimensions"*: `Centimeters (cm)`
+>        - *"width of output"*: `40.0`
+>        - *"height of output"*: `12.0`
+>        - *"dpi of output"*: `200.0`
+>
+>    ***TODO***: *Check parameter descriptions*
+>
+>    ***TODO***: *Consider adding a comment or tip box*
+>
+>    > <comment-title> short description </comment-title>
+>    >
+>    > A comment about the tool or something else. This box can also be in the main text
+>    {: .comment}
+>
+{: .hands_on}
+
 
 
 
