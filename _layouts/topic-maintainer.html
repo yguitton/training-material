@@ -6,7 +6,7 @@ layout: base
 {% assign topic_material = site | list_materials_structured:topic.name %}
 {% assign topic_material_flat = site | list_materials_flat:topic.name %}
 
-<h1>{{ topic.title }} Editorial Board Home</h1>
+<h1>{{ topic.title }} — Editorial Board Home</h1>
 
 This is a new, experimental "Editorial Board Home" for a given topic. It is intended to provide a single place for maintainers and editorial board members to find out key information about their topic and identify action items.
 
@@ -249,7 +249,7 @@ Coming Soon™
 TODO once this is merged:
 https://github.com/galaxyproject/training-material/pull/4963
 
-<h2>Statistics For Your Materials</h2>
+<h2 id="statistics-for-your-materials">Statistics For Your Materials</h2>
 
 <iframe plausible-embed src="https://plausible.galaxyproject.eu/training.galaxyproject.org?page=%7E%2Ftopics%2F{{ topic.name }}%2F&embed=true&theme=system&background=transparent" scrolling="no" frameborder="0" loading="lazy" style="width: 1px; min-width: 100%; height: 1800px;"></iframe>
 <div style="font-size: 14px; padding-bottom: 14px;">Stats powered by <a target="_blank" style="color: #4F46E5; text-decoration: underline;" href="https://plausible.io">Plausible Analytics</a></div>

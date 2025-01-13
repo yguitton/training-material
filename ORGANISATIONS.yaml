@@ -17,6 +17,12 @@ abromics:
     avatar: "/training-material/assets/images/abromics.png"
     url: https://www.abromics.fr/
 
+ASOC:
+    name: Antarctic and Southern Ocean Coalition
+    url: https://www.asoc.org/
+    avatar: "/training-material/shared/images/ASOC.jpeg"
+    github: false
+
 AustralianBioCommons:
     name: Australian BioCommons
     url: https://www.biocommons.org.au/
@@ -317,6 +323,14 @@ swiss-tph:
     avatar: "/training-material/shared/images/swiss-tph.png"
     github: false
     ror: "03adhka07"
+
+surf:
+    short_name: SURF
+    name: SURF
+    url: https://www.surf.nl/
+    avatar: "/training-material/shared/images/surf.png"
+    github: false
+    ror: "009vhk114"
 
 tb-capt:
     short_name: TB-CAPT
