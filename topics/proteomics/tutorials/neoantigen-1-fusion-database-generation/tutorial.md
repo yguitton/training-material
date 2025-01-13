@@ -230,6 +230,9 @@ The output includes a list of fusion candidates with key information like fusion
 >
 {: .question}
 
+
+# Postprocessing
+
 ## Clean up data using Text reformatting
 
 **Text Reformatting** is a step used in bioinformatics workflows to manipulate and clean up data for easier downstream processing. In fusion detection workflows, text reformatting is often used to parse and restructure output files, making the data consistent and accessible for subsequent analysis steps.
@@ -357,6 +360,8 @@ Using regex (regular expressions) for find and replace is a powerful technique f
 >        - {% icon param-repeat %} *"Insert Check"*
 >            - *"Find Regex"*: `>(\b\w+\S+)(.*$)`
 >            - *"Replacement"*: `>generic|fusion_\1|\2`
+>
+>    {% snippet faqs/galaxy/analysis_regular_expressions.md %}
 >
 > 2. Rename the output FASTA as `Arriba-Fusion-Database.fasta`
 {: .hands_on}
