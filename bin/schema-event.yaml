@@ -54,6 +54,13 @@ mapping:
                   - CONTRIBUTORS
                   - ORGANISATIONS
                   - GRANTS
+            reviewing:
+                type: seq
+                description: This person reviewed this material for accuracy and correctness
+                sequence:
+                - type: str
+                  enum:
+                  - CONTRIBUTORS
             funding:
                 type: seq
                 description: These entities provided funding support for the development of this resource
@@ -313,10 +320,6 @@ mapping:
                 type: str
                 description: |
                   Custom markdown formatted text to display. Note that Jekyll things like `{% snippet %}` or `{% include %}` will not work here.
-          no_galaxy:
-            type: bool
-            description: |
-              Set to `true` to disable the automatic "register for a galaxy account" card.
     tags:
         type: seq
         sequence:

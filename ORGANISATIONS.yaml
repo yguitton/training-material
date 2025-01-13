@@ -17,6 +17,12 @@ abromics:
     avatar: "/training-material/assets/images/abromics.png"
     url: https://www.abromics.fr/
 
+ASOC:
+    name: Antarctic and Southern Ocean Coalition
+    url: https://www.asoc.org/
+    avatar: "/training-material/shared/images/ASOC.jpeg"
+    github: false
+
 AustralianBioCommons:
     name: Australian BioCommons
     url: https://www.biocommons.org.au/
@@ -38,6 +44,14 @@ carpentries:
 deNBI:
     name: de.NBI
     url: https://www.denbi.de/
+
+dfg:
+    name:  Deutsche Forschungsgemeinschaft
+    short_name: "DFG"
+    github: false
+    joined: 2024-12
+    url: https://www.dfg.de/de
+    avatar: "/training-material/shared/images/DFG_grant.png"
 
 earlham:
     name: Earlham Institute
@@ -208,13 +222,6 @@ ncbi:
     avatar: "/training-material/shared/images/ncbi.png"
     ror: "02meqm098"
 
-nfdi4plants:
-    short_name: DataPLANT
-    name: DataPLANT (NFDI4Plants)
-    joined: 2024-07
-    url:  https://nfdi4plants.org
-    avatar: "/training-material/shared/images/logo-dataplant.svg"
-
 NIH:
     name: National Institutes of Health
     short_name: "NIH"
@@ -317,6 +324,14 @@ swiss-tph:
     github: false
     ror: "03adhka07"
 
+surf:
+    short_name: SURF
+    name: SURF
+    url: https://www.surf.nl/
+    avatar: "/training-material/shared/images/surf.png"
+    github: false
+    ror: "009vhk114"
+
 tb-capt:
     short_name: TB-CAPT
     name: TB-CAPT
@@ -362,3 +377,4 @@ vib:
     avatar: "/training-material/shared/images/logo-vib.png"
     github: false
     ror: "03xrhmk39"
+
