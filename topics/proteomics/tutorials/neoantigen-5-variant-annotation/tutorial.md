@@ -61,29 +61,24 @@ This tutorial focuses on the Neoantigen Annotation pipeline, which is designed t
 
 # Neoantigen Variant Annotation
 
-This tutorial introduces the process of annotating neoantigens using the PepPointer tool. The aim is to identify potential neoantigens by predicting peptide sequences derived from somatic mutations in cancer genomes, followed by their binding affinity to MHC molecules. The workflow integrates several key bioinformatics steps, including variant analysis, peptide prediction, and immune system interaction analysis. Below is an overview of each major step involved in the tutorial:It is divided into two parts: A, which is the variant annotation, and B, which focuses on the database generation for IEDB.
-## A
-### 1. Get Data
-The first step in the process is to gather the necessary data for analysis, which typically includes genomic data in VCF (Variant Call Format) or other formats containing information about somatic mutations. The data is then uploaded into the analysis environment. A well-organized dataset is crucial for smooth and efficient analysis, so it’s important to ensure proper file structure and metadata tagging before beginning.
+This tutorial introduces the process of annotating neoantigens using the PepPointer tool. The aim is to identify potential neoantigens by predicting peptide sequences derived from somatic mutations in cancer genomes, followed by their binding affinity to MHC molecules. The workflow integrates several key bioinformatics steps, including variant analysis, peptide prediction, and immune system interaction analysis. Below is an overview of each major step involved in the tutorial:It is divided into two parts: 1, which is the variant annotation, and 2, which focuses on the database generation for IEDB.
 
-### 2. Mutation to Peptide Mapping
-The next step is to map these mutations to peptide sequences. This involves creating a list of peptides that contain the mutated residue, representing potential neoantigens. Peptide prediction tools are used to generate the corresponding peptide sequences from the mutated positions.
+1. **Variant Annotation**
+   1. **Get Data** The first step in the process is to gather the necessary data for analysis, which typically includes genomic data in VCF (Variant Call Format) or other formats containing information about somatic mutations. The data is then uploaded into the analysis environment. A well-organized dataset is crucial for smooth and efficient analysis, so it’s important to ensure proper file structure and metadata tagging before beginning.
+   2. ***Mutation to Peptide Mapping*** The next step is to map these mutations to peptide sequences. This involves creating a list of peptides that contain the mutated residue, representing potential neoantigens. Peptide prediction tools are used to generate the corresponding peptide sequences from the mutated positions.
+   3. **Annotation and Filtering** At this stage, the predicted peptides are annotated with relevant biological and immunological information, such as their predicted MHC class, binding affinity, and potential for being recognized by T-cells. Filtering is performed to retain only the most promising candidates, based on binding affinity thresholds and relevance to the tumor type being studied.
+   4. **Mapping Peptide sequences with PepPointer** PepPointer is used to map the peptide sequences to their corresponding genomic coordinates. This tool helps align peptide sequences (often derived from proteomic data) to the genomic context, providing useful insights into where these peptides are located in the genome. It allows researchers to determine which genomic regions are associated with the peptides of interest, facilitating the study of their potential functional roles.
+   5. **Visualization and Interpretation** The final step involves visualizing the results of the annotation and filtering steps. Various bioinformatics tools can be used to present the data in a way that is easy to interpret, such as visualizing peptide binding affinity scores or generating summary plots that highlight the most immunogenic neoantigens. This step helps in drawing meaningful conclusions about the potential of the identified peptides for cancer immunotherapy.
 
-### 3. Annotation and Filtering
-At this stage, the predicted peptides are annotated with relevant biological and immunological information, such as their predicted MHC class, binding affinity, and potential for being recognized by T-cells. Filtering is performed to retain only the most promising candidates, based on binding affinity thresholds and relevance to the tumor type being studied.
-
-### 4. Mapping Peptide sequences with PepPointer
-PepPointer is used to map the peptide sequences to their corresponding genomic coordinates. This tool helps align peptide sequences (often derived from proteomic data) to the genomic context, providing useful insights into where these peptides are located in the genome. It allows researchers to determine which genomic regions are associated with the peptides of interest, facilitating the study of their potential functional roles.
-
-### 5. Visualization and Interpretation
-The final step involves visualizing the results of the annotation and filtering steps. Various bioinformatics tools can be used to present the data in a way that is easy to interpret, such as visualizing peptide binding affinity scores or generating summary plots that highlight the most immunogenic neoantigens. This step helps in drawing meaningful conclusions about the potential of the identified peptides for cancer immunotherapy.
-
-## B
-### 6. Generating FASTA for MHC binding tool
+2. Database Generation for IEDB
+   1. Generating FASTA for MHC binding tool
 In this step, we prepare the peptide sequences in FASTA format to be used with an MHC binding prediction tool. MHC (Major Histocompatibility Complex) binding tools are often used in immunology research to predict which peptides can bind to specific MHC molecules and present them to T-cells.
 
-# A: Variant annotation
+
+# Variant annotation
+
 ![Variant-annotation-overview-workflow]({% link topics/proteomics/images/neoantigen/PepPointer_Characterization_2.PNG %})
+
 ## Get data
 
 > <hands-on-title> Data Upload </hands-on-title>
@@ -115,8 +110,8 @@ In this step, we prepare the peptide sequences in FASTA format to be used with a
 >
 {: .hands_on}
 
-# Import Workflow
 
+# Import Workflow
 
 > <hands-on-title>Running the Workflow</hands-on-title>
 >

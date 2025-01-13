@@ -54,9 +54,7 @@ To generate the fusion database, RNA star and Arriba tools are used in this work
 >
 {: .agenda}
 
-# Neoantigen Fusion Database Generation
-
-## Overview of Fusion Neoantigen Database Workflow
+# Overview of Fusion Neoantigen Database Workflow
 
 The workflow in this tutorial guides users through the generation of a fusion neoantigen database, covering key steps in bioinformatics to identify, filter, and prepare fusion-specific peptides for further immunological study. Below is an overview of each major stage:
 
@@ -71,7 +69,7 @@ The workflow concludes by applying regex adjustments and formatting functions to
 In summary, this workflow provides a structured approach to preparing fusion neoantigen data for downstream applications, such as immunotherapy research, by making fusion-derived peptides accessible in a database for experimental or clinical exploration.
 
 
-## Get data
+# Get data
 
 > <hands-on-title> Data Upload </hands-on-title>
 >
@@ -102,8 +100,8 @@ In summary, this workflow provides a structured approach to preparing fusion neo
 >
 {: .hands_on}
 
-# Import Workflow
 
+# Import Workflow
 
 > <hands-on-title>Running the Workflow</hands-on-title>
 >
@@ -126,7 +124,6 @@ In summary, this workflow provides a structured approach to preparing fusion neo
 
 # Data preparation
 
-
 ## Convert compressed file to uncompressed
 
 Uncompressing data is a crucial first step in many bioinformatics workflows because raw sequencing data files, especially from high-throughput sequencing, are often stored in compressed formats (such as `.gz` or `.zip`) to save storage space and facilitate faster data transfer. Compressed files need to be uncompressed to make the data readable and accessible for analysis tools, which generally require the data to be in plain text or other compatible formats. By uncompressing these files, we ensure that downstream applications can efficiently process and analyze the raw sequencing data without compatibility issues related to compression. In this workflow, we do that for both forward and reverse files.
@@ -148,7 +145,7 @@ Uncompressing data is a crucial first step in many bioinformatics workflows beca
 {: .hands_on}
 
 
-## Alignment with RNA STAR
+# Alignment with RNA STAR
 
 **RNA STAR** (Spliced Transcripts Alignment to a Reference) is a high-performance tool used to align RNA sequencing (RNA-seq) reads to a reference genome. It identifies the best matches between RNA reads and genome sequences by detecting exon-exon junctions, which are critical for accurately mapping reads from spliced transcripts. RNA STAR uses a "two-pass" mapping approach that first identifies splice junctions across all reads and then uses these junctions to guide a more accurate alignment on the second pass. This capability is especially valuable for studying gene expression, discovering novel splice variants, and identifying fusion genes in cancer and other disease research. The output includes aligned sequences that can be used in subsequent steps of bioinformatics pipelines, such as fusion detection and differential expression analysis.
 
@@ -189,7 +186,7 @@ Uncompressing data is a crucial first step in many bioinformatics workflows beca
 >
 {: .question}
 
-## Fusion detection with Arriba
+# Fusion detection with Arriba
 
 **Arriba** is a specialized tool used for detecting gene fusions from RNA sequencing (RNA-seq) data. It is particularly focused on identifying fusion events in cancer, where gene fusions can drive oncogenic processes. Arriba uses the output from **RNA STAR** alignments, specifically looking at chimeric alignments that result from fusion transcripts, and applies a series of filtering steps to reduce false positives.
 

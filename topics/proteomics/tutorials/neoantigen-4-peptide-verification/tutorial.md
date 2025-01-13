@@ -60,29 +60,15 @@ In this tutorial, we will guide you through a series of bioinformatics tools use
 
 This workflow involves several key steps to validate neoantigens identified through mass spectrometry data. Each step leverages bioinformatics tools to ensure that the predicted peptides or proteins are accurate and can be used for further therapeutic research. Below are the detailed steps of this workflow:
 
-### 1. Get Data
-The first step in the workflow involves gathering and uploading the necessary mass spectrometry (MS) data files. These files, which include raw spectra or peptide data, are essential for identifying potential neoantigens. Proper data organization and renaming ensure that the workflow executes smoothly.
+1. **Get Data** The first step in the workflow involves gathering and uploading the necessary mass spectrometry (MS) data files. These files, which include raw spectra or peptide data, are essential for identifying potential neoantigens. Proper data organization and renaming ensure that the workflow executes smoothly.
+2. **Preprocessing Raw MS Data with msconvert** Next, the raw MS data files are preprocessed using msconvert to convert them into a suitable format for analysis, specifically the Mascot Generic Format (MGF). This step is critical for transforming the data into a structured format that can be analyzed using peptide validation tools.
+3. **Peptide Validation with PepQuery2** Once the data is preprocessed, PepQuery2 is employed to validate the peptides. This tool compares the identified peptides against a protein reference database, using MS/MS data to confirm their authenticity. It ensures that the identified peptides are truly valid and not false positives, which is essential for identifying reliable neoantigens.
+4. **Filtering Tabular Data** After peptide validation, Query Tabular is used to filter the results. This step narrows down the data by focusing on specific criteria such as peptide match status and spectrum quality, ensuring only the most relevant peptides are retained for further analysis.
+5. **Converting Data to FASTA Format** The validated and filtered peptides are then converted into a FASTA format using the Tabular-to-FASTA tool. This format is commonly used for sequence analysis and provides a standardized structure for further processing of the data.
+6. **BLAST-P Sequence Alignment** In the next step, the peptides are subjected to sequence alignment using NCBI BLAST+ blastp against a protein database. This step helps confirm whether the peptides are novel or match known proteins, adding an extra layer of validation to ensure their potential as therapeutic neoantigens.
+7. **Refining Data with Query Tabular** Following the BLAST alignment, Query Tabular is used again to filter out peptides that do not meet the criteria or are not novel. This step helps ensure that only the most promising neoantigen candidates remain for further investigation.
+8. **Summary of Results** The final step involves summarizing the results, which include the validated and refined peptides identified as potential neoantigens. These findings are organized and presented for interpretation, providing valuable insights into the therapeutic potential of the identified neoantigens for immunotherapy.
 
-### 2. Preprocessing Raw MS Data with msconvert
-Next, the raw MS data files are preprocessed using msconvert to convert them into a suitable format for analysis, specifically the Mascot Generic Format (MGF). This step is critical for transforming the data into a structured format that can be analyzed using peptide validation tools.
-
-### 3. Peptide Validation with PepQuery2
-Once the data is preprocessed, PepQuery2 is employed to validate the peptides. This tool compares the identified peptides against a protein reference database, using MS/MS data to confirm their authenticity. It ensures that the identified peptides are truly valid and not false positives, which is essential for identifying reliable neoantigens.
-
-### 4. Filtering Tabular Data
-After peptide validation, Query Tabular is used to filter the results. This step narrows down the data by focusing on specific criteria such as peptide match status and spectrum quality, ensuring only the most relevant peptides are retained for further analysis.
-
-### 5. Converting Data to FASTA Format
-The validated and filtered peptides are then converted into a FASTA format using the Tabular-to-FASTA tool. This format is commonly used for sequence analysis and provides a standardized structure for further processing of the data.
-
-### 6. BLAST-P Sequence Alignment
-In the next step, the peptides are subjected to sequence alignment using NCBI BLAST+ blastp against a protein database. This step helps confirm whether the peptides are novel or match known proteins, adding an extra layer of validation to ensure their potential as therapeutic neoantigens.
-
-### 7. Refining Data with Query Tabular
-Following the BLAST alignment, Query Tabular is used again to filter out peptides that do not meet the criteria or are not novel. This step helps ensure that only the most promising neoantigen candidates remain for further investigation.
-
-### 8. Summary of Results
-The final step involves summarizing the results, which include the validated and refined peptides identified as potential neoantigens. These findings are organized and presented for interpretation, providing valuable insights into the therapeutic potential of the identified neoantigens for immunotherapy.
 
 ## Get data
 

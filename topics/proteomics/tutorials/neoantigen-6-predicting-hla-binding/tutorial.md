@@ -67,20 +67,11 @@ This hands-on tutorial is designed to offer practical experience for learners ai
 ## Overview of HLA Binding Prediction Workflow
 This tutorial provides a step-by-step guide for predicting HLA binding of neoantigens, a crucial part of personalized immunotherapy research. Using OptiType and seq2HLA, we will perform HLA typing and analyze which neoantigens are likely to bind to a specific individual’s HLA molecules, potentially driving an immune response. This process is essential for identifying candidate peptides that could serve as effective targets in immunotherapy.
 
-### 1. Get Data
-The tutorial begins with the acquisition and upload of necessary sequencing files. These files typically contain raw paired-end reads or other sequencing outputs, which will be processed to identify HLA alleles. Proper organization and tagging of data are crucial for maintaining an efficient workflow.
-
-### 2. HLA Typing with OptiType
-OptiType is used first in this tutorial for HLA typing. This tool processes the uploaded sequencing data to identify HLA class I alleles, which are essential for the subsequent neoantigen binding predictions. OptiType’s output will include the predicted HLA alleles that are specific to the individual’s immune profile.
-
-### 3. HLA Typing with seq2HLA
-As a complementary approach, we will use seq2HLA for HLA typing to cross-validate results. By comparing predictions from both OptiType and seq2HLA, we can ensure greater accuracy in identifying relevant HLA alleles, allowing us to confidently proceed with neoantigen predictions.
-
-### 4. Reformatting and Filtering HLA Alleles
-After obtaining results from both HLA typing tools, the next step is to reformat and filter the data. This involves removing redundant entries and preparing the data in a format that’s optimized for binding prediction. Cleaning and filtering ensure that only the most relevant HLA alleles are used in the neoantigen analysis.
-
-### 5. Querying and Validating HLA Typing Results
-The final step is to use SQL-like queries to further refine and validate the HLA typing results. This allows us to filter and focus on the HLA alleles most relevant to our research question, ensuring the quality and relevance of the dataset for predicting neoantigen binding.
+1. **Get Data** The tutorial begins with the acquisition and upload of necessary sequencing files. These files typically contain raw paired-end reads or other sequencing outputs, which will be processed to identify HLA alleles. Proper organization and tagging of data are crucial for maintaining an efficient workflow.
+2. **HLA Typing with OptiType** OptiType is used first in this tutorial for HLA typing. This tool processes the uploaded sequencing data to identify HLA class I alleles, which are essential for the subsequent neoantigen binding predictions. OptiType’s output will include the predicted HLA alleles that are specific to the individual’s immune profile.
+3. **HLA Typing with seq2HLA** As a complementary approach, we will use seq2HLA for HLA typing to cross-validate results. By comparing predictions from both OptiType and seq2HLA, we can ensure greater accuracy in identifying relevant HLA alleles, allowing us to confidently proceed with neoantigen predictions.
+4. **Reformatting and Filtering HLA Alleles** After obtaining results from both HLA typing tools, the next step is to reformat and filter the data. This involves removing redundant entries and preparing the data in a format that’s optimized for binding prediction. Cleaning and filtering ensure that only the most relevant HLA alleles are used in the neoantigen analysis.
+5. **Querying and Validating HLA Typing Results** The final step is to use SQL-like queries to further refine and validate the HLA typing results. This allows us to filter and focus on the HLA alleles most relevant to our research question, ensuring the quality and relevance of the dataset for predicting neoantigen binding.
 
 This structured workflow enables a streamlined approach for accurate HLA typing and binding prediction, setting the foundation for personalized immunotherapy and advancing the development of effective cancer treatments.
 

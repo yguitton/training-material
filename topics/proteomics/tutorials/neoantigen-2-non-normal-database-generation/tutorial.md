@@ -58,20 +58,11 @@ In this workflow, (A) Generation of variant database, (B) Generation of assemble
 
 This tutorial guides users through the process of generating a non-normal variant database. It encompasses essential bioinformatics steps to identify and prepare variant-specific peptides for immunological studies. Below is an overview of each major stage:
 
-### 1. Get Data
-The workflow begins with uploading raw sequencing data, followed by a quality assessment to ensure data integrity. This step establishes a solid foundation for subsequent analyses by addressing any issues in the initial dataset.
-
-### 2. Variant Detection and Mapping
-Next, the RNA sequencing data is aligned to a reference genome using tools like HISAT2 and StringTie. Alignment events are detected with specialized tools like Freebayes, CustomProDB, and GFFcompare, which identify non-normal gene transcripts. These tools analyze the resulting alignments to characterize the gene segments in CDS, single nucleotide variants, indels, UTRs, or frameshifts.
-
-### 3. Text reformatting and Database generation
-Once variants are identified, we generate a customized database and apply various reformatting techniques to tag it, ensuring optimal usability for downstream processing.
-
-### 4. Addition of known protein sequences
-Known proteomics databases are added to the variant database to create a comprehensive database.
-
-### 5. Final Database Construction
-The workflow concludes with applying regex adjustments and other formatting functions to standardize the output. This process culminates in creating a comprehensive database of potential non-normal protein sequences, making them ready for experimental validation and clinical exploration.
+1. **Get Data.** The workflow begins with uploading raw sequencing data, followed by a quality assessment to ensure data integrity. This step establishes a solid foundation for subsequent analyses by addressing any issues in the initial dataset.
+2. **Variant Detection and Mapping.** Next, the RNA sequencing data is aligned to a reference genome using tools like HISAT2 and StringTie. Alignment events are detected with specialized tools like Freebayes, CustomProDB, and GFFcompare, which identify non-normal gene transcripts. These tools analyze the resulting alignments to characterize the gene segments in CDS, single nucleotide variants, indels, UTRs, or frameshifts.
+3. **Text reformatting and Database generation.** Once variants are identified, we generate a customized database and apply various reformatting techniques to tag it, ensuring optimal usability for downstream processing.
+4. **Addition of known protein sequences.** Known proteomics databases are added to the variant database to create a comprehensive database.
+5. **Final Database Construction.** The workflow concludes with applying regex adjustments and other formatting functions to standardize the output. This process culminates in creating a comprehensive database of potential non-normal protein sequences, making them ready for experimental validation and clinical exploration.
 
 
 ## Get data
