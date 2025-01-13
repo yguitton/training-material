@@ -129,15 +129,7 @@ In this workflow, HISAT2 serves the critical role of mapping raw sequencing data
 >        - {% icon param-file %} *"FASTA/Q file #1"*: `RNA-Seq_Reads_1.fastqsanger` (output of **Convert compressed file to uncompressed.** {% icon tool %})
 >        - {% icon param-file %} *"FASTA/Q file #2"*: `RNA-Seq_Reads_2.fastqsanger` (output of **Convert compressed file to uncompressed.** {% icon tool %})
 >        - *"Paired-end options"*: `Use default values`
->    - In *"Advanced Options"*:
->        - *"Input options"*: `Use default values`
->        - *"Alignment options"*: `Use default values`
->        - *"Scoring options"*: `Use default values`
->        - *"Spliced alignment options"*: `Use default values`
->        - *"Reporting options"*: `Use default values`
->        - *"Output options"*: `Use default values`
->        - *"SAM options"*: `Use default values`
->        - *"Other options"*: `Use default values`
+>    - In *"Advanced Options"*: Keep all default settings
 >
 >
 {: .hands_on}
