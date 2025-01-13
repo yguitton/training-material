@@ -102,7 +102,7 @@ This workflow involves several key steps to validate neoantigens identified thro
 {: .hands_on}
 
 
-# A: Performing validation of peptides using PepQuery
+# Performing validation of peptides using PepQuery
 
 ![Validation-with-PepQuery]({% link topics/proteomics/images/neoantigen/PepQuery2_Verification_2.PNG %})
 
@@ -227,7 +227,7 @@ Query Tabular is a tool used to query tabular datasets using SQL-like commands. 
 >
 {: .question}
 
-# B: Extracting Novel Neoantigen Peptides after BLAST-P
+# Extracting Novel Neoantigen Peptides after BLAST-P
 
 ![Novel-Peptides]({% link topics/proteomics/images/neoantigen/PepQuery2_Verification_3.PNG %})
 

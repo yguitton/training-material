@@ -580,7 +580,7 @@ The bed to protein map tool translates the genomic coordinates in a BED file int
 
 This tool is important for converting the genomic annotations (in BED format) that correspond to protein-coding regions into actual protein sequences. This step is critical for downstream protein analysis, such as protein function prediction, domain identification, or understanding the consequences of genetic mutations at the protein level.
 
-> <hands-on-title> **bed to protein map** </hands-on-title>
+> <hands-on-title> bed to protein map </hands-on-title>
 >
 > 1. {% tool [bed to protein map](toolshed.g2.bx.psu.edu/repos/galaxyp/bed_to_protein_map/bed_to_protein_map/0.2.0) %} with the following parameters:
 >    - {% icon param-file %} *"A BED file with 12 columns, thickStart and thickEnd define protein coding region"*: `translation_bed` (output of **Translate BED transcripts** {% icon tool %})
