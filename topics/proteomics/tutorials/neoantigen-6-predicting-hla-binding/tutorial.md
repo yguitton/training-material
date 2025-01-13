@@ -105,24 +105,6 @@ This structured workflow enables a streamlined approach for accurate HLA typing 
 >
 {: .hands_on}
 
-# Import Workflow
-
-
-> <hands-on-title>Running the Workflow</hands-on-title>
->
-> 1. **Import the workflow** into Galaxy:
->
->    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-6-predicting-hla-binding/workflows/main_workflow.ga" title="HLA Binding Prediction of Verified Candidates" %}
->
->
-> 2. Run **Workflow** {% icon workflow %} using the following parameters:
->    - *"Send results to a new history"*: `No`
->    - {% icon param-file %} *"RNA-Seq_Reads_1 (forward strand)"*: `RNA-Seq_Reads_1.fastqsanger.gz`
->    - {% icon param-file %} *"RNA-Seq_Reads_2 (reverse strand)"*: `RNA-Seq_Reads_2.fastqsanger.gz`
->
->    {% snippet faqs/galaxy/workflows_run.md %}
->
-{: .hands_on}
 
 ## HLA typing with **OptiType**
 
@@ -316,6 +298,31 @@ In this step, we use the Query Tabular tool to validate and organize the HLA typ
 # Conclusion
 
 This tutorial covers the workflow for identifying and validating HLA alleles using OptiType and seq2HLA. Each step in the process, from reformatting and filtering to querying, is essential for generating accurate and consistent allele data. This validated data can then be used confidently in downstream immunological analyses, including neoantigen prediction and personalized medicine applications.
+
+
+# Rerunning on your own data
+
+To rerun this entire analysis at once, you can use our workflow. Below we show how to do this:
+
+
+# Import Workflow
+
+
+> <hands-on-title>Running the Workflow</hands-on-title>
+>
+> 1. **Import the workflow** into Galaxy:
+>
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-6-predicting-hla-binding/workflows/main_workflow.ga" title="HLA Binding Prediction of Verified Candidates" %}
+>
+>
+> 2. Run **Workflow** {% icon workflow %} using the following parameters:
+>    - *"Send results to a new history"*: `No`
+>    - {% icon param-file %} *"RNA-Seq_Reads_1 (forward strand)"*: `RNA-Seq_Reads_1.fastqsanger.gz`
+>    - {% icon param-file %} *"RNA-Seq_Reads_2 (reverse strand)"*: `RNA-Seq_Reads_2.fastqsanger.gz`
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
 
 
 # Disclaimer

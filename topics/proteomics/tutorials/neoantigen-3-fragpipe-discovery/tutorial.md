@@ -107,26 +107,6 @@ In this step, multiple FASTA files containing protein sequences are merged into 
 {: .hands_on}
 
 
-# Import Workflow
-
-> <hands-on-title>Running the Workflow</hands-on-title>
->
-> 1. **Import the workflow** into Galaxy:
->
->    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-3-fragpipe-discovery/workflows/main_workflow.ga" title="Fragpipe Discovery" %}
->
->
-> 2. Run **Workflow** {% icon workflow %} using the following parameters:
->    - *"Send results to a new history"*: `No`
->    - {% icon param-file %} *"Non-Normal protein database"*: `Human_cRAP_Non_normal_transcripts_dB.fasta`
->    - {% icon param-file %} *"Fusion protein database"*: `Arriba-Fusion-Database.fasta`
->    - {% icon param-file %} *"Input raw file"*: `STS_26T_2_Eclipse_02102024.raw`
->    - {% icon param-file %} *"Experimental design file for Fragpipe"*: `Experimental-Design-Fragpipe.tabular`
->
->    {% snippet faqs/galaxy/workflows_run.md %}
->
-{: .hands_on}
-
 
 ## Merging FASTA Files and Filtering for Unique Sequences
 
@@ -301,6 +281,30 @@ In this workflow, this step filters the tabular data to isolate the rows that me
 # Conclusion
 
 In this workflow, tools like FragPipe, Collapse Collection, and Query Tabular are used to process, merge, and filter proteomics data for efficient analysis. FragPipe allows for in-depth proteomic analysis, producing results that are consolidated using Collapse Collection into a unified dataset, simplifying further analysis. The Query Tabular tool then enables targeted querying of this dataset, filtering it based on specific conditions to refine the data for downstream analysis. Together, these tools streamline the workflow, enhancing the ability to manage, manipulate, and extract meaningful insights from complex biological data. This step-by-step process exemplifies how bioinformatics tools can be integrated to handle large-scale data, making the analysis more efficient and focused on specific research questions.
+
+
+# Rerunning on your own data
+
+To rerun this entire analysis at once, you can use our workflow. Below we show how to do this:
+
+> <hands-on-title>Running the Workflow</hands-on-title>
+>
+> 1. **Import the workflow** into Galaxy:
+>
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-3-fragpipe-discovery/workflows/main_workflow.ga" title="Fragpipe Discovery" %}
+>
+>
+> 2. Run **Workflow** {% icon workflow %} using the following parameters:
+>    - *"Send results to a new history"*: `No`
+>    - {% icon param-file %} *"Non-Normal protein database"*: `Human_cRAP_Non_normal_transcripts_dB.fasta`
+>    - {% icon param-file %} *"Fusion protein database"*: `Arriba-Fusion-Database.fasta`
+>    - {% icon param-file %} *"Input raw file"*: `STS_26T_2_Eclipse_02102024.raw`
+>    - {% icon param-file %} *"Experimental design file for Fragpipe"*: `Experimental-Design-Fragpipe.tabular`
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
+
 
 # Disclaimer
 

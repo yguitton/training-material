@@ -94,25 +94,6 @@ This workflow outlines a structured approach to predicting and analyzing peptide
 >
 {: .hands_on}
 
-# Import Workflow
-
-
-> <hands-on-title>Running the Workflow</hands-on-title>
->
-> 1. **Import the workflow** into Galaxy:
->
->    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-7-hla-binding-novel-peptides/workflows/main_workflow.ga" title="HLA Binding for Novel Peptides" %}
->
->
-> 2. Run **Workflow** {% icon workflow %} using the following parameters:
->    - *"Send results to a new history"*: `No`
->    - {% icon param-file %} *"Distinct HLA alleles (can be from OptiType and seq2HLA)"*: `IEDB-Optitype-seq2HLA-alleles.tabular`
->    - {% icon param-file %} *"FASTA file of peptides to test for HLA binding (can be from Arriba)"*: `FASTA-IEDB.fasta`
->
->    {% snippet faqs/galaxy/workflows_run.md %}
->
-{: .hands_on}
-
 ## Predicting MHC Binding with IEDB
 In this step of the workflow, the IEDB (Immune Epitope Database) tool is used to predict peptide binding to MHC-I molecules, which is crucial for identifying potential neoantigens. This is accomplished by using the netmhcpan_el prediction method to analyze peptide sequences and their binding affinity to specific MHC alleles. The netmhcpan_el method is a state-of-the-art tool that predicts how likely a peptide sequence is to bind to a given MHC-I allele. The alleles to be tested against are selected from a history file, ensuring that the analysis is tailored to specific genetic variations. Peptides that are predicted to bind MHC-I molecules are provided in a FASTA format, which is the standard for representing protein sequences.
 The IEDB tool is integral in neoantigen discovery because it allows researchers to identify which peptides (out of many potential candidates) have a high likelihood of binding to MHC-I molecules. These peptides are of interest as they could trigger an immune response against cancer cells or pathogens, making them candidates for immunotherapy.
@@ -452,6 +433,30 @@ The ability to predict and validate neoantigens is a cornerstone of modern cance
 This workflow is particularly relevant in the neoantigen discovery process, as it combines computational prediction with experimental validation, ensuring that only the most promising peptides are considered for therapeutic development. By integrating IEDB’s predictive capabilities with PepQuery’s validation approach, this workflow bridges the gap between in silico predictions and in vitro experimental data, allowing for a more robust and reliable neoantigen identification pipeline. Separating peptides into strong and weak binders based on their predicted MHC affinity further refines the selection process, ensuring that high-priority candidates are prioritized for downstream therapeutic application.
 
 Given the increasing demand for personalized cancer treatments, this workflow represents a vital approach for accelerating the identification of clinically relevant neoantigens, thus advancing the field of cancer immunotherapy and personalized medicine.
+
+
+# Rerunning on your own data
+
+To rerun this entire analysis at once, you can use our workflow. Below we show how to do this:
+
+
+> <hands-on-title>Running the Workflow</hands-on-title>
+>
+> 1. **Import the workflow** into Galaxy:
+>
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-7-hla-binding-novel-peptides/workflows/main_workflow.ga" title="HLA Binding for Novel Peptides" %}
+>
+>
+> 2. Run **Workflow** {% icon workflow %} using the following parameters:
+>    - *"Send results to a new history"*: `No`
+>    - {% icon param-file %} *"Distinct HLA alleles (can be from OptiType and seq2HLA)"*: `IEDB-Optitype-seq2HLA-alleles.tabular`
+>    - {% icon param-file %} *"FASTA file of peptides to test for HLA binding (can be from Arriba)"*: `FASTA-IEDB.fasta`
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
+
+
 
 # Disclaimer
 

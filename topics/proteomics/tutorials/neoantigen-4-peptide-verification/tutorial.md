@@ -101,26 +101,6 @@ This workflow involves several key steps to validate neoantigens identified thro
 >
 {: .hands_on}
 
-# Import Workflow
-
-
-> <hands-on-title>Running the Workflow</hands-on-title>
->
-> 1. **Import the workflow** into Galaxy:
->
->    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-4-peptide-verification/workflows/main_workflow.ga" title="PepQuery2 Verification" %}
->
->
-> 2. Run **Workflow** {% icon workflow %} using the following parameters:
->    - *"Send results to a new history"*: `No`
->    - {% icon param-file %} *"Candidate_Neoantigens"*: `NeoAntigen-Candidates.tabular`
->    - {% icon param-file %} *"Human Uniprot (with isoforms) and CRAP Database"*: `HUMAN_CRAP.fasta`
->    - {% icon param-file %} *"Input raw file(s)"*: `STS_26T_2_Eclipse_02102024.raw`
->    - {% icon param-file %} *"Human Taxonomy ID"*: `Human-TaxID.txt`
->
->    {% snippet faqs/galaxy/workflows_run.md %}
->
-{: .hands_on}
 
 # A: Performing validation of peptides using PepQuery
 
@@ -388,6 +368,31 @@ The tool helps to refine the data by removing sequences that meet specific crite
 # Conclusion
 
 This workflow effectively integrates several bioinformatics tools to process, analyze, and refine protein sequence data. Starting from raw MS data, through peptide identification and database querying, to sequence alignment and filtering, each tool serves a specific purpose in ensuring that only the most relevant sequences are selected for further analysis. By utilizing Query Tabular in particular, users can apply custom SQL-like queries to filter out sequences based on specific criteria, which helps focus on the most promising data. The final results in this workflow are the neoantigen peptides which will be then used for further interpretation and exploration, enabling researchers to gain valuable insights into protein sequences with high confidence and precision. This approach highlights the power of combining multiple tools and techniques in a streamlined bioinformatics workflow to tackle complex data analysis challenges.
+
+# Rerunning on your own data
+
+To rerun this entire analysis at once, you can use our workflow. Below we show how to do this:
+
+
+> <hands-on-title>Running the Workflow</hands-on-title>
+>
+> 1. **Import the workflow** into Galaxy:
+>
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-4-peptide-verification/workflows/main_workflow.ga" title="PepQuery2 Verification" %}
+>
+>
+> 2. Run **Workflow** {% icon workflow %} using the following parameters:
+>    - *"Send results to a new history"*: `No`
+>    - {% icon param-file %} *"Candidate_Neoantigens"*: `NeoAntigen-Candidates.tabular`
+>    - {% icon param-file %} *"Human Uniprot (with isoforms) and CRAP Database"*: `HUMAN_CRAP.fasta`
+>    - {% icon param-file %} *"Input raw file(s)"*: `STS_26T_2_Eclipse_02102024.raw`
+>    - {% icon param-file %} *"Human Taxonomy ID"*: `Human-TaxID.txt`
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
+
+
 
 # Disclaimer
 

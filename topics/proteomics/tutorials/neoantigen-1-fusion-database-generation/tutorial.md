@@ -101,27 +101,6 @@ In summary, this workflow provides a structured approach to preparing fusion neo
 {: .hands_on}
 
 
-# Import Workflow
-
-> <hands-on-title>Running the Workflow</hands-on-title>
->
-> 1. **Import the workflow** into Galaxy:
->
->    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-1-fusion-database-generation/workflows/main_workflow.ga" title="Neoantigen Fusion Database Generation" %}
->
->
-> 2. Run **Workflow** {% icon workflow %} using the following parameters:
->    - *"Send results to a new history"*: `No`
->    - {% icon param-file %} *"RNA-Seq_Reads_1 (forward strand)"*: `RNA-Seq_Reads_1.fastqsanger.gz`
->    - {% icon param-file %} *"RNA-Seq_Reads_2 (reverse strand)"*: `RNA-Seq_Reads_2.fastqsanger.gz`
->    - {% icon param-file %} *"Human Reference Genome Annotation"*: `human_reference_genome_annotation.gtf`
->    - {% icon param-file %} *"Human Reference Genome"*: `human_reference_genome.fasta`
->
->    {% snippet faqs/galaxy/workflows_run.md %}
->
-{: .hands_on}
-
-
 # Data preparation
 
 ## Convert compressed file to uncompressed
@@ -370,6 +349,29 @@ Using regex (regular expressions) for find and replace is a powerful technique f
 # Conclusion
 
 The workflow outlined above demonstrates a systematic approach to processing biological data, emphasizing the importance of each step in ensuring accurate and reliable results. By integrating tools like RNA-STAR for alignment and Arriba for structural variant detection, researchers can effectively analyze complex genomic information. The transition from tabular data to FASTA format and the application of regex for find-and-replace operations further streamline data management, enhancing efficiency and clarity. Ultimately, this workflow not only facilitates the identification of neoantigens but also contributes to the broader goals of personalized medicine and targeted therapies. By leveraging these methodologies, researchers can gain deeper insights into the genetic underpinnings of diseases and advance the development of innovative treatments.
+
+# Rerunning on your own data
+
+To rerun this entire analysis at once, you can use our workflow. Below we show how to do this:
+
+> <hands-on-title>Running the Workflow</hands-on-title>
+>
+> 1. **Import the workflow** into Galaxy:
+>
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-1-fusion-database-generation/workflows/main_workflow.ga" title="Neoantigen Fusion Database Generation" %}
+>
+>
+> 2. Run **Workflow** {% icon workflow %} using the following parameters:
+>    - *"Send results to a new history"*: `No`
+>    - {% icon param-file %} *"RNA-Seq_Reads_1 (forward strand)"*: `RNA-Seq_Reads_1.fastqsanger.gz`
+>    - {% icon param-file %} *"RNA-Seq_Reads_2 (reverse strand)"*: `RNA-Seq_Reads_2.fastqsanger.gz`
+>    - {% icon param-file %} *"Human Reference Genome Annotation"*: `human_reference_genome_annotation.gtf`
+>    - {% icon param-file %} *"Human Reference Genome"*: `human_reference_genome.fasta`
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
+
 
 # Disclaimer
 

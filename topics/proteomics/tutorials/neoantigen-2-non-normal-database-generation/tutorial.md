@@ -96,26 +96,6 @@ This tutorial guides users through the process of generating a non-normal varian
 >
 {: .hands_on}
 
-# Import Workflow
-
-
-> <hands-on-title>Running the Workflow</hands-on-title>
->
-> 1. **Import the workflow** into Galaxy:
->
->    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-2-non-normal-database-generation/workflows/main_workflow.ga" title="Neoantigen Non-Normal Database Generation" %}
->
->
-> 2. Run **Workflow** {% icon workflow %} using the following parameters:
->    - *"Send results to a new history"*: `No`
->    - {% icon param-file %} *"Human Reference Genome Annotation"*: `Homo_sapiens.GRCh38_canon.106.gtf`
->    - {% icon param-file %} *"Human Uniprot (with isoforms) and cRAP Database"*: `HUMAN_CRAP.fasta`
->    - {% icon param-file %} *"RNA-Seq_Reads_1 (forward strand)"*: `RNA-Seq_Reads_1.fastqsanger.gz`
->    - {% icon param-file %} *"RNA-Seq_Reads_2 (reverse strand)"*: `RNA-Seq_Reads_2.fastqsanger.gz`
->
->    {% snippet faqs/galaxy/workflows_run.md %}
->
-{: .hands_on}
 
 ## Convert compressed file to uncompressed
 
@@ -656,6 +636,30 @@ Merging non-normal databases with the known human protein sequence involves inte
 In this workflow, we demonstrated a comprehensive process for merging non-normal protein sequence data with known human protein sequences, ensuring compatibility and consistency at each step.
 
 Starting with data preparation, we converted sequence data into appropriate formats making it suitable for downstream analysis. Next, we merged non-normal sequences with known human proteins using tools such as FASTA Merge Files, ensuring the datasets aligned based on common identifiers. The subsequent steps, involving Translating BED transcripts and bed to protein map, translated genomic coordinates into protein sequences, further enriching our dataset. This workflow effectively integrates variant/non-normal proteins with established references, offering a robust resource for further analysis in bioinformatics applications like functional annotation and differential expression studies. By combining multiple bioinformatics tools, this process is adaptable to various research needs, making it invaluable for genomic and proteomic analysis. The output from this workflow will be now used for the neoantigen database searching.
+
+# Rerunning on your own data
+
+To rerun this entire analysis at once, you can use our workflow. Below we show how to do this:
+
+> <hands-on-title>Running the Workflow</hands-on-title>
+>
+> 1. **Import the workflow** into Galaxy:
+>
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-2-non-normal-database-generation/workflows/main_workflow.ga" title="Neoantigen Non-Normal Database Generation" %}
+>
+>
+> 2. Run **Workflow** {% icon workflow %} using the following parameters:
+>    - *"Send results to a new history"*: `No`
+>    - {% icon param-file %} *"Human Reference Genome Annotation"*: `Homo_sapiens.GRCh38_canon.106.gtf`
+>    - {% icon param-file %} *"Human Uniprot (with isoforms) and cRAP Database"*: `HUMAN_CRAP.fasta`
+>    - {% icon param-file %} *"RNA-Seq_Reads_1 (forward strand)"*: `RNA-Seq_Reads_1.fastqsanger.gz`
+>    - {% icon param-file %} *"RNA-Seq_Reads_2 (reverse strand)"*: `RNA-Seq_Reads_2.fastqsanger.gz`
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
+
+
 
 # Disclaimer
 
