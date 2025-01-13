@@ -32,8 +32,6 @@ follow_up_training:
         tutorials:
             - neoantigen-2-non-normal-database-generation
 tags: [label-free]
-redirect_from:
-- /topics/proteomics/tutorials/neoantigen-1-fusion-database-generation/tutorial
 
 ---
 
@@ -201,7 +199,7 @@ Uncompressing data is a crucial first step in many bioinformatics workflows beca
 
 ## Fusion detection with Arriba
 
-**Arriba** is a specialized tool used for detecting gene fusions from RNA sequencing (RNA-seq) data. It is particularly focused on identifying fusion events in cancer, where gene fusions can drive oncogenic processes. Arriba uses the output from **RNA STAR** alignments, specifically looking at chimeric alignments that result from fusion transcripts, and applies a series of filtering steps to reduce false positives. 
+**Arriba** is a specialized tool used for detecting gene fusions from RNA sequencing (RNA-seq) data. It is particularly focused on identifying fusion events in cancer, where gene fusions can drive oncogenic processes. Arriba uses the output from **RNA STAR** alignments, specifically looking at chimeric alignments that result from fusion transcripts, and applies a series of filtering steps to reduce false positives.
 
 Arriba’s pipeline includes features for:
 - Filtering out common artifacts and false-positive fusions based on blacklisted regions.
@@ -262,22 +260,22 @@ The reformatting step ensures that the processed data adheres to the requirement
 > ```
 > (NR==1){
 >    for (i=1;i<=NF;i++) {
->        if ($i ~ gene1) { 
+>        if ($i ~ gene1) {
 >            gene1 = i;
 >        }
->        if ($i == gene2) { 
+>        if ($i == gene2) {
 >            gene2 = i;
 >        }
->        if ($i == breakpoint1) { 
+>        if ($i == breakpoint1) {
 >            breakpoint1 = i;
 >        }
->        if ($i == breakpoint2) { 
+>        if ($i == breakpoint2) {
 >            breakpoint2 = i;
 >        }
->        if ($i == reading_frame) { 
+>        if ($i == reading_frame) {
 >            reading_frame = i;
 >        }
->        if ($i == peptide_sequence) { 
+>        if ($i == peptide_sequence) {
 >            pscol = i;
 >        }
 >    }
@@ -286,7 +284,7 @@ The reformatting step ensures that the processed data adheres to the requirement
 >    pseq = $pscol
 >    if (pseq != .) {
 >        bp = index(pseq,|);
->        pos = bp - 8; 
+>        pos = bp - 8;
 >        n=split(pseq,array,|);
 >        pep = toupper(array[1] array[2])
 >        sub([*],,pep)
@@ -295,12 +293,12 @@ The reformatting step ensures that the processed data adheres to the requirement
 >        sub([(,].*,,g1);
 >        sub([(,].*,,g2);
 >        id = g1 _ g2
->        brkpnts = $breakpoint1 _ $breakpoint2 
+>        brkpnts = $breakpoint1 _ $breakpoint2
 >        neopep = substr(pep,pos)
 >        if ($reading_frame == in-frame) {
 >            neopep = substr(pep,pos,16)
 >        }
->        print(id \t (NR-1) \t brkpnts \t neopep);  
+>        print(id \t (NR-1) \t brkpnts \t neopep);
 >    }
 > }
 > ```

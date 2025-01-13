@@ -32,8 +32,6 @@ follow_up_training:
         tutorials:
             - neoantigen-3-fragpipe-discovery
 tags: [label-free]
-redirect_from:
-- proteomics/tutorials/neoantigen-2-non-normal-database-generation/tutorial
 
 ---
 
@@ -232,7 +230,7 @@ CustomProDB is a bioinformatics tool used to generate custom protein databases t
 In this workflow, CustomProDB plays a critical role in translating genetic variants identified by FreeBayes into custom protein sequences. This variant-specific database is valuable for applications in proteomics, as it allows for the detection of variant-specific peptides in mass spectrometry data. The generated outputs, including a variant FASTA file and mapping files, support downstream analyses, such as studying how genetic variations may affect protein function or abundance.
 
 > <hands-on-title> **CustomProDB** </hands-on-title>
-> 
+>
 >
 > 1. {% tool [CustomProDB](toolshed.g2.bx.psu.edu/repos/galaxyp/custom_pro_db/custom_pro_db/1.22.0) %} with the following parameters:
 >    - *"Will you select a genome annotation from your history or use a built-in annotation?"*: `Use a built-in genome annotation`
@@ -266,7 +264,7 @@ FASTA-to-Tabular is a tool that converts FASTA-formatted sequence files into tab
 In this workflow, FASTA-to-Tabular enables the conversion of variant protein sequences into a structured tabular format, which is helpful for subsequent data processing and analysis. This format allows researchers to efficiently filter, sort, or query specific sequence information and simplifies integration with other data analysis tools or databases. We do this for the indels, single nucleotide variants and rpkm databases.
 
 > <hands-on-title> **INDEL - FASTA-to-Tabular** </hands-on-title>
-> 
+>
 > 1. {% tool [FASTA-to-Tabular](toolshed.g2.bx.psu.edu/repos/devteam/fasta_to_tabular/fasta2tab/1.1.1) %} with the following parameters:
 >    - {% icon param-file %} *"Convert these sequences"*: `output_indel` (output of **CustomProDB** {% icon tool %})
 >
@@ -402,7 +400,7 @@ In this workflow, Tabular-to-FASTA converts the formatted tabular data back into
 >    - *"Title column(s)"*: `c['1']`
 >    - *"Sequence column"*: `c2`
 >
-> 2. Rename as 
+> 2. Rename as
 {: .hands_on}
 
 > <hands-on-title> **SNV-Tabular-to-FASTA** </hands-on-title>
@@ -477,7 +475,9 @@ In this workflow, FASTA Merge Files and Filter Unique Sequences consolidate all 
 
 # Extracting Assembled sequences with Stringtie and GFF compare
 ![Assembled sequence database generation]({% link topics/proteomics/images/neoantigen/Non-Normal_Protein_Database_3.PNG %})
+
 ## Assemble with StringTie
+
 StringTie is a tool used for assembling RNA-Seq alignments into potential transcripts, estimating their abundances, and creating GTF files of transcript structures. In this task, StringTie takes short reads mapped by HISAT2 as input and uses a reference GTF/GFF3 file to guide the assembly of transcripts. This guidance enables StringTie to produce accurate transcript structures that can be useful for differential expression analysis and downstream functional analyses.
 
 In this workflow, StringTie is responsible for reconstructing transcript structures based on RNA-Seq alignments. By using a reference file to guide the assembly, StringTie improves the accuracy of the transcript annotations, which is valuable for comparing expression levels across conditions or identifying novel transcript variants. This step provides a foundation for gene expression quantification and other transcriptome analyses.
@@ -512,6 +512,7 @@ In this workflow, StringTie is responsible for reconstructing transcript structu
 
 
 ## Accuracy of transcript predictions with GffCompare
+
 GffCompare is a tool used to compare and evaluate the accuracy of transcript predictions by comparing GTF/GFF files with reference annotations. In this task, GffCompare takes the transcript assembly output from StringTie and compares it against a reference annotation file. This allows users to identify novel transcripts, assess the accuracy of the assembly, and evaluate the completeness of the transcript predictions relative to known annotations.
 
 In this workflow, GffCompare assesses the quality of the transcript assembly produced by StringTie by aligning it with a known reference annotation. This step helps determine which assembled transcripts match known genes, which are new variants, and which might represent entirely novel transcripts. By providing accuracy metrics and categorizing the transcripts, GffCompare facilitates the interpretation of transcriptomic data, especially in studies aiming to identify new gene isoforms or validate assembled structures.
@@ -661,10 +662,10 @@ Merging non-normal databases with the known human protein sequence involves inte
 
 # Conclusion
 
-In this workflow, we demonstrated a comprehensive process for merging non-normal protein sequence data with known human protein sequences, ensuring compatibility and consistency at each step. 
+In this workflow, we demonstrated a comprehensive process for merging non-normal protein sequence data with known human protein sequences, ensuring compatibility and consistency at each step.
 
 Starting with data preparation, we converted sequence data into appropriate formats making it suitable for downstream analysis. Next, we merged non-normal sequences with known human proteins using tools such as FASTA Merge Files, ensuring the datasets aligned based on common identifiers. The subsequent steps, involving Translating BED transcripts and bed to protein map, translated genomic coordinates into protein sequences, further enriching our dataset. This workflow effectively integrates variant/non-normal proteins with established references, offering a robust resource for further analysis in bioinformatics applications like functional annotation and differential expression studies. By combining multiple bioinformatics tools, this process is adaptable to various research needs, making it invaluable for genomic and proteomic analysis. The output from this workflow will be now used for the neoantigen database searching.
 
-# Disclaimer 
+# Disclaimer
 
 Please note that all the software tools used in this workflow are subject to version updates and changes. As a result, the parameters, functionalities, and outcomes may differ with each new version. Additionally, if the protein sequences are downloaded at different times, the number of sequences may also vary due to updates in the reference databases or tool modifications. We recommend that users verify the specific versions of software tools used to ensure the reproducibility and accuracy of results.

@@ -38,8 +38,6 @@ follow_up_training:
         tutorials:
             - neoantigen-6-predicting-hla-binding
 tags: [label-free]
-redirect_from:
-- proteomics/tutorials/neoantigen-5-variant-annotation/tutorial
 
 ---
 
@@ -80,9 +78,9 @@ PepPointer is used to map the peptide sequences to their corresponding genomic c
 ### 5. Visualization and Interpretation
 The final step involves visualizing the results of the annotation and filtering steps. Various bioinformatics tools can be used to present the data in a way that is easy to interpret, such as visualizing peptide binding affinity scores or generating summary plots that highlight the most immunogenic neoantigens. This step helps in drawing meaningful conclusions about the potential of the identified peptides for cancer immunotherapy.
 
-## B 
+## B
 ### 6. Generating FASTA for MHC binding tool
-In this step, we prepare the peptide sequences in FASTA format to be used with an MHC binding prediction tool. MHC (Major Histocompatibility Complex) binding tools are often used in immunology research to predict which peptides can bind to specific MHC molecules and present them to T-cells. 
+In this step, we prepare the peptide sequences in FASTA format to be used with an MHC binding prediction tool. MHC (Major Histocompatibility Complex) binding tools are often used in immunology research to predict which peptides can bind to specific MHC molecules and present them to T-cells.
 
 # A: Variant annotation
 ![Variant-annotation-overview-workflow]({% link topics/proteomics/images/neoantigen/PepPointer_Characterization_2.PNG %})
@@ -166,7 +164,7 @@ This step extracts information about novel peptides from Frapipe, which primaril
 
 ## Annotation and Filtering
 
-### Converting delimiters 
+### Converting delimiters
 In this step, we will use the Convert tool to modify characters in a dataset. Specifically, the tool will be used to convert all instances of pipe characters (|) to another format. The tool helps clean and standardize the data for subsequent processing or analysis. This is often a necessary step when preparing data for tools that require specific formats or when performing tasks such as parsing or file importation.
 
 > <hands-on-title> Convert </hands-on-title>
@@ -188,10 +186,10 @@ In this step, we will use the Convert tool to modify characters in a dataset. Sp
 > > 1. The "Convert" tool is used to replace or remove specific characters in a dataset, such as pipe characters (|). This ensures that the data conforms to the required format for subsequent analysis or tools. Pipe characters are often used as delimiters in tabular data. Replacing them might be necessary if the data needs to be formatted for a different tool or if the pipe character interferes with parsing in downstream steps.
 > >
 > {: .solution}
-> 
+>
 {: .question}
 
-### Editing certain "u" characters 
+### Editing certain "u" characters
 In this step, we will use the Column Regex Find And Replace tool to find and replace specific patterns in the data columns. Regular expressions (regex) allow for pattern matching, making it easier to identify and modify data based on specific patterns. In this case, the tool will search for occurrences of the pattern u_ and replace them with u: in column c3 of the dataset. This is commonly done to standardize data formatting or clean data for further analysis. In this step, any protein sequences with a "u_" will be replaced with "u".
 
 > <hands-on-title> Column Regex Find And Replace </hands-on-title>
@@ -204,12 +202,12 @@ In this step, we will use the Column Regex Find And Replace tool to find and rep
 >            - *"Find Regex"*: `u_`
 >            - *"Replacement"*: `u:`
 >
->    
+>
 >
 {: .hands_on}
 
 
-### Removing Colons and converting into a different tabular 
+### Removing Colons and converting into a different tabular
 In this step, we will use the Convert tool to remove colons from the dataset. This conversion is useful when you need to standardize the data or prepare it for downstream processing, where colons may interfere with the analysis or formatting. By selecting the "Convert all" option for colons, all occurrences of colons in the dataset will be removed, creating a clean tabular format for further analysis.
 
 > <hands-on-title> Convert </hands-on-title>
@@ -223,7 +221,7 @@ In this step, we will use the Convert tool to remove colons from the dataset. Th
 
 
 ### Extracting bed file information Query Tabular
-In this step, we will use the Query Tabular tool to extract specific information from a dataset, such as a BED file containing genomic regions, and match it with novel peptides. This allows for identifying the relevant genomic and peptide information by querying data from two sources and combining them through an SQL query. By using an INNER JOIN operation, we can merge data from two tables based on shared columns, and retrieve the necessary information. This query extracts specific columns from both the BED file (such as genomic coordinates) and the novel peptide dataset (such as peptide sequences or identifiers), enabling the identification of peptides that correspond to specific genomic regions. These are the columns that will be extracted - 
+In this step, we will use the Query Tabular tool to extract specific information from a dataset, such as a BED file containing genomic regions, and match it with novel peptides. This allows for identifying the relevant genomic and peptide information by querying data from two sources and combining them through an SQL query. By using an INNER JOIN operation, we can merge data from two tables based on shared columns, and retrieve the necessary information. This query extracts specific columns from both the BED file (such as genomic coordinates) and the novel peptide dataset (such as peptide sequences or identifiers), enabling the identification of peptides that correspond to specific genomic regions. These are the columns that will be extracted -
 - Chrom: Chromosome name (e.g., chr1).
 - Start: Starting position of the feature (zero-based index).
 - End: Ending position of the feature (one-based index).
@@ -253,7 +251,7 @@ In this step, we will use the Query Tabular tool to extract specific information
 {: .hands_on}
 
 
-### Performing calculations to convert proteomic coordinates to genomic coordinates.  
+### Performing calculations to convert proteomic coordinates to genomic coordinates.
 To convert proteomic coordinates to genomic coordinates, it is essential to account for the relationship between the protein sequence and its corresponding gene or genomic region. In this workflow, the proteomic coordinates have already been extracted at the amino acid level. Since each amino acid in the protein sequence corresponds to a triplet of nucleotides (a codon) in the mRNA, we need to multiply the proteomic coordinate by 3 to obtain the genomic coordinate. This conversion will give us the position of each amino acid within the genomic sequence. The resulting genomic coordinates are stored in a separate column for easy reference. Once this step is completed, we can extract and organize the information in the correct order for further analysis or mapping to the genomic reference.
 
 
@@ -315,7 +313,7 @@ The Query Tabular step in this workflow is used to extract and calculate genomic
 >
 {: .question}
 
-### Generating BED file for Peppointer 
+### Generating BED file for Peppointer
 This step is necessary to extract and reorganize relevant genomic information from the dataset. By querying specific columns such as chromosome (chromosome), start (chromStart), end (chromEnd), and strand (strand), we are preparing the data for further analysis. These values are essential for mapping proteomic or peptide data to the genomic coordinates, ensuring accurate alignment and interpretation of the sequence in the context of its genomic location. Additionally, renaming columns enhances clarity and standardizes the format, making it easier to work with the data in subsequent steps.
 
 > <hands-on-title> Query Tabular </hands-on-title>
@@ -396,7 +394,7 @@ In this step, we are using Query Tabular to extract and format relevant informat
 >            - {% icon param-file %} *"Tabular Dataset for Table"*: `classified` (output of **PepPointer** {% icon tool %})
 >    - *"SQL Query to generate tabular output"*:
 > ``` sql
-> SELECT 
+> SELECT
 > c4 AS Peptide,
 > c1 AS Chromosome,
 > c2 AS Start,
@@ -428,7 +426,7 @@ In this step, we are using Query Tabular to extract and format relevant informat
 {: .question}
 
 
-# B: Database for IEDB 
+# B: Database for IEDB
 ![Variant-annotation-overview-workflow]({% link topics/proteomics/images/neoantigen/PepPointer_Characterization_3.PNG %})
 
 ## Generating FASTA for MHC binding tool
@@ -456,7 +454,7 @@ By the end of this tutorial, you should now be able to:
 
 The key takeaway from this tutorial is the ability to manipulate complex genomic data and generate insights into potential therapeutic targets using bioinformatics techniques. You should now be better equipped to handle similar datasets and apply these techniques to other types of genomic and proteomic research.
 
-# Disclaimer 
+# Disclaimer
 
 Please note that all the software tools used in this workflow are subject to version updates and changes. As a result, the parameters, functionalities, and outcomes may differ with each new version. We recommend that users verify the specific versions of software tools used to ensure the reproducibility and accuracy of results.
 

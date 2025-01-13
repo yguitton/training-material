@@ -36,8 +36,6 @@ follow_up_training:
         tutorials:
             - neoantigen-4-peptide-verification
 tags: [label-free]
-redirect_from:
-- proteomics/tutorials/neoantigen-3-fragpipe-discovery/tutorial
 
 ---
 
@@ -310,6 +308,6 @@ In this workflow, this step filters the tabular data to isolate the rows that me
 
 In this workflow, tools like FragPipe, Collapse Collection, and Query Tabular are used to process, merge, and filter proteomics data for efficient analysis. FragPipe allows for in-depth proteomic analysis, producing results that are consolidated using Collapse Collection into a unified dataset, simplifying further analysis. The Query Tabular tool then enables targeted querying of this dataset, filtering it based on specific conditions to refine the data for downstream analysis. Together, these tools streamline the workflow, enhancing the ability to manage, manipulate, and extract meaningful insights from complex biological data. This step-by-step process exemplifies how bioinformatics tools can be integrated to handle large-scale data, making the analysis more efficient and focused on specific research questions.
 
-# Disclaimer 
+# Disclaimer
 
 Please note that all the software tools used in this workflow are subject to version updates and changes. As a result, the parameters, functionalities, and outcomes may differ with each new version. Additionally, if the protein sequences are downloaded at different times, the number of sequences may also vary due to updates in the reference databases or tool modifications. We recommend the users to verify the specific versions of software tools used to ensure the reproducibility and accuracy of results.

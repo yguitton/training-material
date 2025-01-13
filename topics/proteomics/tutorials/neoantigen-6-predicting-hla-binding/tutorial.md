@@ -36,8 +36,6 @@ follow_up_training:
         tutorials:
             - neoantigen-7-hla-binding-novel-peptides
 tags: [label-free]
-redirect_from:
-- proteomics/tutorials/neoantigen-6-predicting-hla-binding/tutorial
 
 ---
 

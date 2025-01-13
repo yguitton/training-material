@@ -36,8 +36,6 @@ follow_up_training:
         tutorials:
             - neoantigen-5-variant-annotation
 tags: [label-free]
-redirect_from:
-- proteomics/tutorials/neoantigen-4-peptide-verification/tutorial
 
 ---
 
@@ -297,7 +295,7 @@ In this step, the NCBI BLAST+ blastp tool is used for performing protein sequenc
 
 
 
-**Parameters:** 
+**Parameters:**
 - Protein query sequence(s): The input protein sequence in FASTA format.
 - Subject database/sequences: The BLAST database against which the query sequence will be compared.
 - Type of BLAST: Optimized for short protein queries.
@@ -369,11 +367,11 @@ The tool helps to refine the data by removing sequences that meet specific crite
 >    - *"SQL Query to generate tabular output"*:
 > ``` sql
 > SELECT DISTINCT pep.*
-> FROM pep 
+> FROM pep
 > JOIN blast ON pep.pep = blast.qseq
 > WHERE pep.pep NOT IN
-> (SELECT qseq 
-> FROM blast 
+> (SELECT qseq
+> FROM blast
 > WHERE pident = 100)
 > AND (blast.pident < 100
 > OR blast.gapopen >= 1
@@ -405,6 +403,6 @@ The tool helps to refine the data by removing sequences that meet specific crite
 
 This workflow effectively integrates several bioinformatics tools to process, analyze, and refine protein sequence data. Starting from raw MS data, through peptide identification and database querying, to sequence alignment and filtering, each tool serves a specific purpose in ensuring that only the most relevant sequences are selected for further analysis. By utilizing Query Tabular in particular, users can apply custom SQL-like queries to filter out sequences based on specific criteria, which helps focus on the most promising data. The final results in this workflow are the neoantigen peptides which will be then used for further interpretation and exploration, enabling researchers to gain valuable insights into protein sequences with high confidence and precision. This approach highlights the power of combining multiple tools and techniques in a streamlined bioinformatics workflow to tackle complex data analysis challenges.
 
-# Disclaimer 
+# Disclaimer
 
 Please note that all the software tools used in this workflow are subject to version updates and changes. As a result, the parameters, functionalities, and outcomes may differ with each new version. Additionally, if the protein sequences are downloaded at different times, the number of sequences may also vary due to updates in the reference databases or tool modifications. We recommend the users to verify the specific versions of software tools used to ensure the reproducibility and accuracy of results.

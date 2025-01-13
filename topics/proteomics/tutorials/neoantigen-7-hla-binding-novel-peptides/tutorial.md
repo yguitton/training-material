@@ -32,8 +32,6 @@ requirements:
     topic_name: proteomics
 subtopic: neoantigen
 tags: [label-free]
-redirect_from:
-- proteomics/tutorials/neoantigen-7-hla-binding-novel-peptides/tutorial
 
 ---
 
@@ -71,7 +69,7 @@ Once the MHC-I binding affinities are predicted, it's time to filter the results
 ### 4. Refining Results Using Table Operations
 To further refine the results, the data is aggregated, focusing on the highest-ranked peptides based on various parameters like affinity and percent rank. This tool is used to aggregate data and perform operations such as selecting the highest-ranking peptides based on specified criteria (e.g., using a pivot operation).
 
-### 5. Novel peptide verification with PepQuery2 
+### 5. Novel peptide verification with PepQuery2
 The PepQuery2 tool is used to validate the identified peptides by checking them against a reference protein database to determine whether they are novel or already known. In this step, peptides are compared to the gencode protein reference database, and their sequences are verified using MS/MS spectral data from previous steps. The tool helps ensure the authenticity of the identified peptides, which is critical for confirming their relevance in the biological context. By determining whether peptides are novel or known, this step increases confidence in the results, supporting the identification of unique biomarkers or therapeutic targets and contributing to the overall quality of the research.
 
 ### 6. Filtering confident PepQuery2 validated peptides and annotating their binding affinity to HLA.
@@ -217,7 +215,7 @@ In this step, the Table Compute tool is used to refine and aggregate the data fr
 
 This operation is important because it helps prioritize the peptides that exhibit the strongest binding potential for each allele. By focusing on the best binders per allele, the data becomes more manageable and relevant for further analysis, such as identifying the most promising neoantigen candidates.
 
-This Table Compute tool is used to perform a data manipulation operation called Pivot. This operation transforms the table format and aggregates data based on specific parameters to provide clearer insights. 
+This Table Compute tool is used to perform a data manipulation operation called Pivot. This operation transforms the table format and aggregates data based on specific parameters to provide clearer insights.
 Specifically:
 - The Index is set to icore, which could refer to a specific identifier or feature within the dataset. This helps group the data by this particular attribute.
 - The Column parameter is set to allele, so the data will be organized based on different alleles of the MHC molecules, grouping them accordingly.
@@ -297,7 +295,7 @@ By applying the Remove Beginning tool, the user ensures that any unwanted starti
 {: .hands_on}
 
 
-## Extract Peptide column from the tabular 
+## Extract Peptide column from the tabular
 
 > <hands-on-title>  **Weak Peptide extraction**  </hands-on-title>
 >
@@ -366,7 +364,7 @@ In this step, the PepQuery2 tool is used to validate the identified peptides by 
 
 The first step is to filter the peptides based on the confidence column. The confident peptides are then annotated with the corresponding HLA they bind to.
 
-### Filtering confident peptides 
+### Filtering confident peptides
 > <hands-on-title> **Filter weak confident peptides** </hands-on-title>
 >
 > 1. {% tool [Filter](Filter1) %} with the following parameters:
@@ -405,7 +403,7 @@ The peptides, including both strong and weak binders, are annotated with their r
 >            - {% icon param-file %} *"Tabular Dataset for Table"*: `out_file1` (output of **Filter** {% icon tool %})
 >    - *"SQL Query to generate tabular output"*:
 >   ``` sql
->   SELECT * FROM t1 
+>   SELECT * FROM t1
 >   WHERE t1.icore IN (SELECT c1 FROM t2)
 >   ```
 >    - *"include query result column headers"*: `Yes`
@@ -415,7 +413,7 @@ The peptides, including both strong and weak binders, are annotated with their r
 >                - *"SQL Query to generate tabular output"*:
 >              ``` sql
 >              SELECT icore
->              FROM t1 
+>              FROM t1
 >              WHERE t1.icore IN (SELECT c1 FROM t2)
 >              ORDER BY icore
 >              ```
@@ -438,7 +436,7 @@ The peptides, including both strong and weak binders, are annotated with their r
 >    - *"SQL Query to generate tabular output"*:
 >   ``` sql
 >   SELECT *
->   FROM t1 
+>   FROM t1
 >   WHERE t1.icore IN (SELECT c1 FROM t2)
 >   ```
 >    - *"include query result column headers"*: `Yes`
@@ -448,7 +446,7 @@ The peptides, including both strong and weak binders, are annotated with their r
 >                - *"SQL Query to generate tabular output"*:
 >              ``` sql
 >              SELECT icore
->              FROM t1 
+>              FROM t1
 >              WHERE t1.icore IN (SELECT c1 FROM t2)
 >              ORDER BY icore
 >              ```
@@ -466,6 +464,6 @@ This workflow is particularly relevant in the neoantigen discovery process, as i
 
 Given the increasing demand for personalized cancer treatments, this workflow represents a vital approach for accelerating the identification of clinically relevant neoantigens, thus advancing the field of cancer immunotherapy and personalized medicine.
 
-# Disclaimer 
+# Disclaimer
 
 Please note that all the software tools used in this workflow are subject to version updates and changes. As a result, the parameters, functionalities, and outcomes may differ with each new version. Additionally, if the protein sequences are downloaded at different times, the number of sequences may also vary due to updates in the reference databases or tool modifications. We recommend the users to verify the specific versions of software tools used to ensure the reproducibility and accuracy of results.
