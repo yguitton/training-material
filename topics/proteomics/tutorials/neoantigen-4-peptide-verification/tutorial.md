@@ -170,7 +170,6 @@ PepQuery2 is a tool used to validate novel peptides and proteins by searching ma
 >            - *"Maximum Charge"*: `3`
 >            - *"Minimum length of peptide"*: `8`
 >            - *"Maximum length of peptide"*: `9`
->    - *"Select outputs"*: ``
 >    - *"Use fast mode for searching"*: `Yes`
 >
 >
