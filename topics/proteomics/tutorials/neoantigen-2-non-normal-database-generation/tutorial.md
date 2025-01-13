@@ -52,9 +52,7 @@ In this workflow, (A) Generation of variant database, (B) Generation of assemble
 >
 {: .agenda}
 
-# Neoantigen Non-normal Database Generation
-
-## Overview of Non-normal Neoantigen Database Workflow
+# Overview of Non-normal Neoantigen Database Workflow
 
 This tutorial guides users through the process of generating a non-normal variant database. It encompasses essential bioinformatics steps to identify and prepare variant-specific peptides for immunological studies. Below is an overview of each major stage:
 
@@ -65,7 +63,7 @@ This tutorial guides users through the process of generating a non-normal varian
 5. **Final Database Construction.** The workflow concludes with applying regex adjustments and other formatting functions to standardize the output. This process culminates in creating a comprehensive database of potential non-normal protein sequences, making them ready for experimental validation and clinical exploration.
 
 
-## Get data
+# Get data
 
 > <hands-on-title> Data Upload </hands-on-title>
 >
@@ -97,6 +95,8 @@ This tutorial guides users through the process of generating a non-normal varian
 {: .hands_on}
 
 
+# Preprocessing
+
 ## Convert compressed file to uncompressed
 
 Uncompressing data is a crucial first step in many bioinformatics workflows because raw sequencing data files, especially from high-throughput sequencing, are often stored in compressed formats (such as `.gz` or `.zip`) to save storage space and facilitate faster data transfer. Compressed files need to be uncompressed to make the data readable and accessible for analysis tools, which generally require the data to be in plain text or other compatible formats. By uncompressing these files, we ensure that downstream applications can efficiently process and analyze the raw sequencing data without compatibility issues related to compression. In this workflow, we do that for both forward and reverse files.
@@ -106,12 +106,7 @@ Uncompressing data is a crucial first step in many bioinformatics workflows beca
 > 1. {% tool [Convert compressed file to uncompressed.](CONVERTER_gz_to_uncompressed) %} with the following parameters:
 >    - {% icon param-file %} *"Choose compressed file"*: `RNA-Seq_Reads_1.fastqsanger.gz` (Input dataset)
 >
->
-{: .hands_on}
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Convert compressed file to uncompressed.](CONVERTER_gz_to_uncompressed) %} with the following parameters:
+> 2. {% tool [Convert compressed file to uncompressed.](CONVERTER_gz_to_uncompressed) %} with the following parameters:
 >    - {% icon param-file %} *"Choose compressed file"*: `RNA-Seq_Reads_2.fastqsanger.gz` (Input dataset)
 >
 >
@@ -195,7 +190,9 @@ In this workflow, FreeBayes performs the essential function of variant calling, 
 >
 {: .question}
 
+
 ## Customized Database generation using CustomProDB
+
 CustomProDB is a bioinformatics tool used to generate custom protein databases that incorporate specific genetic variants found in a sample. In this task, CustomProDB utilizes genome annotation data (GRCh38/hg38), a BAM file from HISAT2 alignment, and a VCF file from FreeBayes variant calling to create a variant-aware protein database. This database includes the sample’s unique variant proteins, which is essential for personalized proteomics research.
 
 In this workflow, CustomProDB plays a critical role in translating genetic variants identified by FreeBayes into custom protein sequences. This variant-specific database is valuable for applications in proteomics, as it allows for the detection of variant-specific peptides in mass spectrometry data. The generated outputs, including a variant FASTA file and mapping files, support downstream analyses, such as studying how genetic variations may affect protein function or abundance.
@@ -278,6 +275,7 @@ Column Regex Find And Replace is a tool that applies regular expression (regex) 
 
 In this workflow, Column Regex Find And Replace cleans and formats the data in a way that makes identifiers or variant descriptions consistent. This is important for data compatibility, especially when the data needs to be used across different tools or integrated into larger datasets. It ensures that all sequence labels or variant annotations follow a uniform format, which reduces errors in downstream analyses.
 
+{% snippet faqs/galaxy/analysis_regular_expressions.md %}
 
 > <hands-on-title> INDEL-Column Regex Find And Replace </hands-on-title>
 >
@@ -348,12 +346,12 @@ In this workflow, Column Regex Find And Replace cleans and formats the data in a
 > <question-title></question-title>
 >
 > 1. Why use regular expressions to modify text in a column?
-> 2. What is the purpose of the generic|INDEL_\1 replacement pattern ( or any other pattern) in this tool?
+> 2. What is the purpose of the `generic|INDEL_\1` replacement pattern ( or any other pattern) in this tool?
 >
 > > <solution-title></solution-title>
 > >
 > > 1. Regular expressions allow for flexible, precise pattern matching, enabling the user to find and replace complex text patterns within a column. This is useful for standardizing data formats, extracting relevant portions, or appending additional information to entries.
-> > 2. The generic|INDEL_\1 replacement pattern prepends generic|INDEL_ to each entry in the column, standardizing the label format and clarifying that each entry is related to an insertion or deletion (INDEL) variant. This makes it clear in downstream analysis that the sequence is variant-specific.
+> > 2. The `generic|INDEL_\1` replacement pattern prepends `generic|INDEL_` to each entry in the column, standardizing the label format and clarifying that each entry is related to an insertion or deletion (INDEL) variant. This makes it clear in downstream analysis that the sequence is variant-specific.
 > >
 > {: .solution}
 >
