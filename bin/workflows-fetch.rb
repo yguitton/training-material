@@ -51,7 +51,7 @@ def fetch_workflowhub
 
   project_mapping = projects['data'].to_h { |p| [p['id'], p['attributes']['title']] }
 
-   if !data['links']['next'].nil?
+  if !data['links']['next'].nil?
     puts 'ERROR: Cannot yet handle multiple pages'
     exit 42
   end
