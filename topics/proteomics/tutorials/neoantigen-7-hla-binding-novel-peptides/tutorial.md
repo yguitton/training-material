@@ -425,6 +425,30 @@ The peptides, including both strong and weak binders, are annotated with their r
 >
 {: .hands_on}
 
+## Annotation of Strong and Weak Binder Peptides
+
+The annotation of strong and weak binders tells you how well peptides interact with Human Leukocyte Antigen (HLA) molecules, which is important for understanding their potential role in immune responses, especially in the context of immunotherapy and vaccine development.
+
+Here’s what the annotations mean:
+
+### 1. Strong Binder Peptides:
+- These peptides have high binding affinity to the HLA molecules.
+- Peptides that bind strongly to HLA molecules are more likely to be presented to T-cells, which is a crucial step in eliciting an immune response.
+- Strong binder peptides are often the focus of vaccine development and cancer immunotherapy because they are more likely to activate the immune system effectively.
+- The annotation of strong binders can help identify peptides that are more likely to stimulate immune responses and be used in the development of treatments for diseases like cancer or infections.
+
+### 2. Weak Binder Peptides:
+- These peptides have low binding affinity to the HLA molecules.
+- Peptides that bind weakly to HLA are less likely to be presented to T-cells and may not elicit a strong immune response.
+- Weak binder peptides are generally not prioritized for immunotherapy applications, though they can still be of interest in understanding immune evasion or identifying potential targets that may require further optimization for stronger binding.
+
+### Why the Annotation Matters:
+- Differentiating Strong and Weak Binders helps you prioritize which peptides are more likely to be effective in stimulating an immune response.
+- This classification is useful for:
+  - Designing vaccines or immunotherapies that can generate a strong and specific immune response.
+  - Understanding immune system interactions with peptides from pathogens or tumor cells.
+  - Identifying biomarkers that can be used in diagnostics or therapeutic monitoring.
+
 
 # Conclusion
 
