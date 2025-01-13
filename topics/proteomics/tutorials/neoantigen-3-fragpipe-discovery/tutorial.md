@@ -193,7 +193,7 @@ In this workflow, FragPipe is used after FASTA database validation to ensure tha
 >            - *"Run PTM Shepherd"*: `no`
 >        - In *"Quant (Isobaric)"*:
 >            - *"Perform Isobaric Quantification"*: `no`
->    - *"Additional outputs"*: ``
+>   
 >
 >
 {: .hands_on}
