@@ -248,7 +248,7 @@ In this workflow, we aim to consolidate the peptide output from FragPipe. In the
 >
 {: .hands_on}
 
-> <hands-on-title> Removing contaminants and known proteins with **Select** </hands-on-title>
+> <hands-on-title> Removing contaminants and known proteins with Select </hands-on-title>
 >
 > 1. {% tool [Select](Grep1) %} with the following parameters:
 >    - {% icon param-file %} *"Select lines from"*: `output` (output of **Collapse Collection** {% icon tool %})

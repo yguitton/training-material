@@ -161,7 +161,7 @@ In this step, the Filter tool is used to refine the results from the previous IE
 
 
 
-> <hands-on-title> **Filter weak binders** </hands-on-title>
+> <hands-on-title> Filter weak binders </hands-on-title>
 >
 > 1. {% tool [Filter](Filter1) %} with the following parameters:
 >    - {% icon param-file %} *"Filter"*: `output` (output of **IEDB** {% icon tool %})
@@ -173,7 +173,7 @@ In this step, the Filter tool is used to refine the results from the previous IE
 {: .hands_on}
 
 
-> <hands-on-title> **Filter strong binders** </hands-on-title>
+> <hands-on-title> Filter strong binders </hands-on-title>
 >
 > 1. {% tool [Filter](Filter1) %} with the following parameters:
 >    - {% icon param-file %} *"Filter"*: `output` (output of **IEDB** {% icon tool %})
@@ -211,7 +211,7 @@ Specifically:
 - The Values being analyzed are the percentile_rank, which represent the binding affinities of the peptides.
 - The Aggregator Function is set to Maximum, meaning that for each allele, only the highest binding affinity (best percentile rank) is retained in the output.
 
-> <hands-on-title> **Weak-Table Compute** </hands-on-title>
+> <hands-on-title> Weak-Table Compute </hands-on-title>
 >
 > 1. {% tool [Table Compute](toolshed.g2.bx.psu.edu/repos/iuc/table_compute/table_compute/1.2.4+galaxy0) %} with the following parameters:
 >    - *"Input Single or Multiple Tables"*: `Single Table`
@@ -228,7 +228,7 @@ Specifically:
 {: .hands_on}
 
 
-> <hands-on-title> **Strong-Table Compute** </hands-on-title>
+> <hands-on-title> Strong-Table Compute </hands-on-title>
 >
 > 1. {% tool [Table Compute](toolshed.g2.bx.psu.edu/repos/iuc/table_compute/table_compute/1.2.4+galaxy0) %} with the following parameters:
 >    - *"Input Single or Multiple Tables"*: `Single Table`
@@ -265,7 +265,7 @@ In this sub-step, the Remove Beginning tool is used to clean the data by removin
 
 By applying the Remove Beginning tool, the user ensures that any unwanted starting rows—such as those containing column names, labels, or metadata that might have been carried over from previous operations—are removed, leaving the dataset clean and ready for the next analysis step.
 
-> <hands-on-title> **Weak- Remove beginning** </hands-on-title>
+> <hands-on-title> Weak- Remove beginning </hands-on-title>
 >
 > 1. {% tool [Remove beginning](Remove beginning1) %} with the following parameters:
 >    - {% icon param-file %} *"from"*: `table` (output of **Table Compute** {% icon tool %})
@@ -274,7 +274,7 @@ By applying the Remove Beginning tool, the user ensures that any unwanted starti
 >
 {: .hands_on}
 
-> <hands-on-title> **Strong- Remove beginning** </hands-on-title>
+> <hands-on-title> Strong- Remove beginning </hands-on-title>
 >
 > 1. {% tool [Remove beginning](Remove beginning1) %} with the following parameters:
 >    - {% icon param-file %} *"from"*: `table` (output of **Table Compute** {% icon tool %})
@@ -286,7 +286,7 @@ By applying the Remove Beginning tool, the user ensures that any unwanted starti
 
 ## Extract Peptide column from the tabular
 
-> <hands-on-title>  **Weak Peptide extraction**  </hands-on-title>
+> <hands-on-title>  Weak Peptide extraction </hands-on-title>
 >
 > 1. {% tool [Cut](Cut1) %} with the following parameters:
 >    - *"Cut columns"*: `c1`
@@ -297,7 +297,7 @@ By applying the Remove Beginning tool, the user ensures that any unwanted starti
 {: .hands_on}
 
 
-> <hands-on-title> **Strong Peptide extraction** </hands-on-title>
+> <hands-on-title> Strong Peptide extraction </hands-on-title>
 >
 > 1. {% tool [Cut](Cut1) %} with the following parameters:
 >    - *"Cut columns"*: `c1`
@@ -311,7 +311,7 @@ By applying the Remove Beginning tool, the user ensures that any unwanted starti
 
 In this step, the PepQuery2 tool is used to validate the identified peptides by checking them against a protein reference database to verify whether they are novel or already known. This validation is a critical step in proteomics workflows, as it ensures the authenticity and novelty of the peptides identified in earlier steps. PepQuery2 is utilized to perform novel peptide/protein validation, which involves checking peptide sequences against a reference protein database to confirm if the peptide is novel (not previously identified in the database) or known (matches a protein sequence in the database). The PepQuery2 tool is used in the final step to validate whether the peptides identified in earlier stages are novel or known. This is an essential step to confirm the relevance and accuracy of the findings in a broader biological context. If a peptide is novel, it could represent a potential new target for further research. If it is already known, it helps contextualize the results within existing knowledge. By comparing the identified peptides to a comprehensive database of known human proteins, this step ensures that only relevant and novel peptides are prioritized for further study, enhancing the overall quality and focus of the research.
 
-> <hands-on-title> **Weak Peptide verification - PepQuery 2** </hands-on-title>
+> <hands-on-title> Weak Peptide verification - PepQuery 2 </hands-on-title>
 >
 > 1. {% tool [PepQuery2](toolshed.g2.bx.psu.edu/repos/galaxyp/pepquery2/pepquery2/2.0.2+galaxy2) %} with the following parameters:
 >    - *"Validation Task Type"*: `novel peptide/protein validation`
@@ -330,7 +330,7 @@ In this step, the PepQuery2 tool is used to validate the identified peptides by 
 {: .hands_on}
 
 
-> <hands-on-title> **Strong Peptide verification - PepQuery 2** </hands-on-title>
+> <hands-on-title> Strong Peptide verification - PepQuery 2 </hands-on-title>
 >
 > 1. {% tool [PepQuery2](toolshed.g2.bx.psu.edu/repos/galaxyp/pepquery2/pepquery2/2.0.2+galaxy2) %} with the following parameters:
 >    - *"Validation Task Type"*: `novel peptide/protein validation`
@@ -354,7 +354,7 @@ In this step, the PepQuery2 tool is used to validate the identified peptides by 
 The first step is to filter the peptides based on the confidence column. The confident peptides are then annotated with the corresponding HLA they bind to.
 
 ### Filtering confident peptides
-> <hands-on-title> **Filter weak confident peptides** </hands-on-title>
+> <hands-on-title> Filter weak confident peptides </hands-on-title>
 >
 > 1. {% tool [Filter](Filter1) %} with the following parameters:
 >    - {% icon param-file %} *"Filter"*: `psm_rank_txt` (output of **PepQuery2** {% icon tool %})
@@ -365,7 +365,7 @@ The first step is to filter the peptides based on the confidence column. The con
 {: .hands_on}
 
 
-> <hands-on-title> **Filter strong confident peptides** </hands-on-title>
+> <hands-on-title> Filter strong confident peptides </hands-on-title>
 >
 > 1. {% tool [Filter](Filter1) %} with the following parameters:
 >    - {% icon param-file %} *"Filter"*: `psm_rank_txt` (output of **PepQuery2** {% icon tool %})
@@ -380,7 +380,7 @@ The first step is to filter the peptides based on the confidence column. The con
 
 The peptides, including both strong and weak binders, are annotated with their respective HLA types.
 
- > <hands-on-title> **Annotating weak binder peptides** </hands-on-title>
+ > <hands-on-title> Annotating weak binder peptides </hands-on-title>
 >
 > 1. {% tool [Query Tabular](toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.3.2) %} with the following parameters:
 >    - In *"Database Table"*:
@@ -412,7 +412,7 @@ The peptides, including both strong and weak binders, are annotated with their r
 {: .hands_on}
 
 
-> <hands-on-title> **Annotating strong binder peptides** </hands-on-title>
+> <hands-on-title> Annotating strong binder peptides </hands-on-title>
 >
 > 1. {% tool [Query Tabular](toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.3.2) %} with the following parameters:
 >    - In *"Database Table"*:
