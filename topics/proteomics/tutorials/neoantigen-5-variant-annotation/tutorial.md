@@ -144,7 +144,7 @@ In this step, we will use the Convert tool to modify characters in a dataset. Sp
 
 > <hands-on-title> Convert </hands-on-title>
 >
-> 1. {% tool [Convert](Convert characters1) %} with the following parameters:
+> 1. {% tool [Convert](https://toolshed.g2.bx.psu.edu/view/devteam/convert_characters/042ed2d0a017) %} with the following parameters:
 >    - *"Convert all"*: `Pipes`
 >    - {% icon param-file %} *"in Dataset"*: `output` (output of **Query Tabular** {% icon tool %})
 >
@@ -187,7 +187,7 @@ In this step, we will use the Convert tool to remove colons from the dataset. Th
 
 > <hands-on-title> Convert </hands-on-title>
 >
-> 1. {% tool [Convert](Convert characters1) %} with the following parameters:
+> 1. {% tool [Convert](https://toolshed.g2.bx.psu.edu/view/devteam/convert_characters/042ed2d0a017) %} with the following parameters:
 >    - *"Convert all"*: `Colons`
 >    - {% icon param-file %} *"in Dataset"*: `out_file1` (output of **Column Regex Find And Replace** {% icon tool %})
 >
