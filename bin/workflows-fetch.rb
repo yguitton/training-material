@@ -11,6 +11,7 @@ def request(url)
   request['Accept'] = 'application/json'
   req_options = {
     use_ssl: uri.scheme == 'https',
+    max_retries: 5,
   }
   Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
     http.request(request)
@@ -37,11 +38,19 @@ def fetch_workflows(server)
 end
 
 def fetch_workflowhub
-  projects = JSON.parse(request('https://workflowhub.eu/projects').body)
+
+  begin
+      projects = JSON.parse(request('https://workflowhub.eu/projects').body)
+
+      response = request('https://workflowhub.eu/workflows?filter[workflow_type]=galaxy')
+      data = JSON.parse(response.body)
+  rescue StandardError
+      puts "ERROR: cannot fetch from WorkflowHub"
+      return []
+  end
+
   project_mapping = projects['data'].to_h { |p| [p['id'], p['attributes']['title']] }
 
-  response = request('https://workflowhub.eu/workflows?filter[workflow_type]=galaxy')
-  data = JSON.parse(response.body)
   if !data['links']['next'].nil?
     puts 'ERROR: Cannot yet handle multiple pages'
     exit 42
@@ -49,7 +58,12 @@ def fetch_workflowhub
   puts "INFO: Fetching #{data['data'].length} workflows from WorkflowHub"
   data['data'].map.with_index do |w, _i|
     # {"id"=>"14", "type"=>"workflows", "attributes"=>{"title"=>"Cheminformatics - Docking"}, "links"=>{"self"=>"/workflows/14"}}
-    wf_info = JSON.parse(request("https://workflowhub.eu#{w['links']['self']}").body)
+    begin
+        wf_info = JSON.parse(request("https://workflowhub.eu#{w['links']['self']}").body)
+    rescue StandardError
+        puts "ERROR: cannont fetch from WorkflowHub"
+        return []
+    end
     creator_list = []
 
     creator0 = wf_info['data']['attributes']['creators'][0]
