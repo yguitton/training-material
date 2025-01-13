@@ -610,6 +610,7 @@ name:
   admin/surf-research-cloud-galaxy: "/topics/admin/tutorials/surf-research-cloud-galaxy/tutorial.html"
   admin/surf-research-cloud-pulsar: "/topics/admin/tutorials/surf-research-cloud-pulsar/tutorial.html"
   community/community_content: "/topics/community/tutorials/community_content/tutorial.html"
+  microbiome/metaplasmidome_query: "/topics/microbiome/tutorials/metaplasmidome_query/tutorial.html"
 id:
   T00000: "/topics/admin/tutorials/ansible/tutorial.html"
   T00001: "/topics/admin/tutorials/ansible-galaxy/tutorial.html"
@@ -2107,6 +2108,7 @@ id:
   N00099: "/news/2024/12/17/gta-feedback.html"
   N00100: "/news/2024/12/18/spoc.html"
   N00101: "/news/2024/12/19/community_page.html"
+  W00297: "/topics/microbiome/tutorials/metaplasmidome_query/workflows/metaplasmidome.html"
 misc:
   ansible-galaxy: "/topics/admin/tutorials/ansible-galaxy/tutorial.html"
   feeds: "/feeds/index.html"
