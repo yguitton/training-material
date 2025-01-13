@@ -451,7 +451,7 @@ StringTie is a tool used for assembling RNA-Seq alignments into potential transc
 
 In this workflow, StringTie is responsible for reconstructing transcript structures based on RNA-Seq alignments. By using a reference file to guide the assembly, StringTie improves the accuracy of the transcript annotations, which is valuable for comparing expression levels across conditions or identifying novel transcript variants. This step provides a foundation for gene expression quantification and other transcriptome analyses.
 
-> <hands-on-title> **StringTie**</hands-on-title>
+> <hands-on-title> StringTie </hands-on-title>
 >
 > 1. {% tool [StringTie](toolshed.g2.bx.psu.edu/repos/iuc/stringtie/stringtie/2.2.3+galaxy0) %} with the following parameters:
 >    - *"Input options"*: `Short reads`
