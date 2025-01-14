@@ -3,7 +3,7 @@ layout: tutorial_hands_on
 
 title: Using MultiGSEA
 subtopic: multi-omics
-tags: 
+tags:
   - multi-omics
   - transcriptomics
   - proteomics
@@ -48,30 +48,27 @@ To perform pathway enrichment with MultiGSEA, you'll need omics datasets in the 
 
 ## Get data
 
-> ### Data Upload
->
-><hands-on-title> Getting datasets </hands-on-title>
+### Data Upload
+
+> <hands-on-title> Getting datasets </hands-on-title>
 > 1. Create a new history for this tutorial.
-    {% snippet faqs/galaxy/histories_create_new.md %}
-> 2. Import the datasets from [Zenodo]({{ page.zenodo_link }})  into your Galaxy instance:
->   - **transcriptomics.tsv**
->   - **proteomics.tsv**
->   - **metabolomics.tsv**
 >
-> <comment-title>URLs of the files</comment-title>
->   - **transcriptomics.tsv** https://zenodo.org/api/records/14216972/files/transcriptome.tsv/content
->   - **proteomics.tsv**    https://zenodo.org/api/records/14216972/files/proteome.tsv/content
->   - **metabolomics.tsv**  https://zenodo.org/api/records/14216972/files/metabolome.tsv/content
->  
-{: .comment}
+>    {% snippet faqs/galaxy/histories_create_new.md %}
+>
+> 2. Import the datasets from [Zenodo]({{ page.zenodo_link }})  into your Galaxy instance:
+>    ```
+>    https://zenodo.org/api/records/14216972/files/transcriptome.tsv
+>    https://zenodo.org/api/records/14216972/files/proteome.tsv
+>    https://zenodo.org/api/records/14216972/files/metabolome.tsv
+>    ```
 {: .hands_on}
+
 
 # Running MultiGSEA
 
 In this step, you'll use the MultiGSEA tool to perform GSEA-based pathway enrichment on the uploaded datasets.
 
->## Selecting parameters
-><hands-on-title> Task description </hands-on-title>
+> <hands-on-title> Task description </hands-on-title>
 >
 > 1. Select the tool {% tool [multiGSEA](toolshed.g2.bx.psu.edu/repos/iuc/multigsea/multigsea/1.12.0+galaxy0) %} in Galaxy.
 > 2. Configure the input parameters as follows:
@@ -85,7 +82,7 @@ In this step, you'll use the MultiGSEA tool to perform GSEA-based pathway enrich
 > 4. Select in **Supported organisms** the organism of which the data is about. In our case we select `Homo sapiens (Human)`.
 > 5. **Pathway databases**: Databases often contain their own format in which pathway definitions are provided. So you can select a relevant database. For the tutorial we choose `KEGG`
 > 6. **Combine p-values method**: Choose a method (here `Stouffer` for balanced weighting). To more comprehensively measure a pathway response, multiGSEA provides different approaches to compute an aggregated p value over multiple omics layers. Because no single approach for aggregating p values performs best under all circumstances, Loughin proposed basic recommendations on which method to use depending on structure and expectation of the problem. If small p values should be emphasized, Fisher’s method should be chosen. In cases where p values should be treated equally, Stouffer’s method is preferable. If large p values should be emphasized, the user should select Edgington’s method. Figure 2 indicates the difference between those three methods.
-  ![P-Value](../../images/p-value.png "P-value methods")
+>    ![P-Value](../../images/p-value.png "P-value methods")
 > 7. **P-value correction method** Type I and type II errors depend on each other and thus reducing type I errors through a p value adjustment will likely increase the chance of making a type II error and an appropriate trade-off has to be made. Choose one of the different methods for controlling false discovery rate: For the tutorial choose `BH` (Benjamini-Hochberg).
 > 8. Click on `Run Tool`
 >
@@ -109,7 +106,7 @@ In this step, you'll use the MultiGSEA tool to perform GSEA-based pathway enrich
 {: .question}
 
 > # Conclusion
-> 
+>
 > In this tutorial, you explored the capabilities of MultiGSEA for performing pathway enrichment analysis across multiple omics layers, including transcriptomics, proteomics, and metabolomics data. By following the steps, you learned how to:
 >
 > - Prepare and upload the required omics datasets.
