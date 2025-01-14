@@ -86,7 +86,7 @@ Any analysis should get its own Galaxy history. So let's start by creating a new
 
 ## Transform aligned sequences into unaligned fasta file format
 
-For the primer design we need a *Multiple sequence alignment*, which we can generate with **MAFFT**({% cite Katoh2013 %}). To effectively utilize MAFFT it's crucial to provide an unaligned fasta file as input. This raw format allows the program to flexibly align sequences based on their similarity and to adjust gaps and mismatches to optimize the alignment quality. Furthermore the transformation of the aligned file to an unaligned file is a helpful exercise to deepen your knowledge about the variety and diversity of different tools existing on the Galaxy website.
+For the primer design, we need a *Multiple sequence alignment*, which we can generate with **MAFFT**({% cite Katoh2013 %}). To effectively utilize MAFFT, it's crucial to provide an unaligned fasta file as input. This raw format allows the program to flexibly align sequences based on their similarity and to adjust gaps and mismatches to optimize the alignment quality. Furthermore, the transformation of the aligned file to an unaligned file is a helpful exercise to deepen your knowledge about the variety and diversity of different tools existing on the Galaxy website.
 
 > <hands-on-title>Degap the Polio1-genomes</hands-on-title>
 >
@@ -104,36 +104,36 @@ For the primer design we need a *Multiple sequence alignment*, which we can gene
 
 ## Multiple alignment of reference sequences
 
-First of all we need to generate a *Multiple sequence alignment (MSA)* that we can use as input for VarVAMP, the tool that designs the primers. Aditionally the MSA provides knowledge about similarities and evolutionary relationship between the genome sequences. To generate an MSA we align the previously unaligned genome datasets with **MAFFT**. MAFFT is a multiple sequence alignment program which enables the analysis of a file with several sequences with different alignment algorithms.
+First of all, we need to generate a *Multiple sequence alignment (MSA)* that we can use as input for VarVAMP, the tool that designs the primers. Additionally the MSA provides knowledge about similarities and evolutionary relationships between the genome sequences. To generate an MSA, we align the previously unaligned genome datasets with **MAFFT**. MAFFT is a multiple sequence alignment program that enables the analysis of a file with several sequences with different alignment algorithms.
 
-When multiple files are added, MAFFT will run for each of these, so it is necessary to have every sequence, which you want to have aligned, in one file. Therefore there is a concatenate option in MAFFT on Galaxy implemented. For further information look in details below:
+When multiple files are added, MAFFT will run for each of these, so it is necessary to have every sequence that you want to have aligned in one file. Therefore, there is a concatenate option in MAFFT implemented on Galaxy. For further information look in details below:
 
 > <details-title> MAFFT - 2 Concatenate options </details-title>
 >
->   Concatenating a FASTA file involves combining multiple FASTA-formatted sequences into a single file. This can be useful when you have sequences from different sources or experiments that you want to analyze together. MAFFT offers 2 different options.
+>   Concatenating a FASTA file involves combining multiple FASTA-formatted sequences into a single file. This can be useful when you have sequences from different sources or experiments that you want to analyze together. MAFFT offers 2 different options:
 >
 > **Option 1:**
 >
->   - Upload several fasta files in different dataset upload sections and cross concatenate following the rule, first file of 1. section with first file of 2. section ect. You can add as many dataset sections as you want.
->   - If you want to make multiple alignments of many files seperately, upload them in the first dataset section and don't add a 2. datasets section.
+>   - Upload several fasta files in different dataset upload sections and cross concatenate them according to the following rule, the first file from the first section is combined with the first file from the second section, etc. You can add as many dataset sections as you want.
+>   - If you want to make multiple alignments of many files separately, upload them in the first dataset section and don't add a second dataset section.
 >
 > **Option 2:**
 >
->   - Concatenate simply every fasta in a row, if in the same dataset section or in different section. means 1. dataset section has two files and 2. section three files resulting in one endfile with the sequence order of the files: 1, 2, 3, 4, 5.
+>   - Concatenate all FASTA files sequentially, regardless of whether they are in the same dataset section or in different sections. For example, if the first dataset section contains two files and the second section contains three files, the result will be a single output file with the sequences arranged in the order: 1, 2, 3, 4, 5.
 >
 {: .details}
 
 > <details-title> MSA: Multiple sequence alignment with MAFFT - Methods </details-title>
 >
->   MAFFT is a program with different methods to align sequences. These methods differ in terms of their speed and accuracy.
+>   MAFFT is a program that offers different methods to align sequences. These methods differ in terms of their speed and accuracy.
 >
->   The progressive methods, including the default setting FFT-NS-2, can align high numbers of sequences in relatively short time. These methodes are the fastest but also they have the lowest accuracy. Nevertheless, they are a good first approach.
+>   1. The progressive methods, including the default setting FFT-NS-2, can align high numbers of sequences in relatively short time. These methods are the fastest but also they have the lowest accuracy. Nevertheless, they serve as a good first approach.
 >
->   Then there are iterative refinement methods which use the WSP score to improve the accuracy of the multiple sequence alignment. These methods need more time than the progressive methods because they repeat the iterative refinement until a maximum number of improvement cycles is reached or until there is no more relevant improvement according to the WSP score.
+>   2. Then there are iterative refinement methods, which use the WSP score to improve the accuracy of the multiple sequence alignment. These methods require more time than the progressive methods because they repeat the iterative refinement process until a maximum number of improvement cycles is reached or until there is no more relevant improvement according to the WSP score.
 >
->   The last category contains iterative refinement methods using both the WSP and consistency scores. These methods provide the most accuracy but also take the most time. They are useful if the sequences have few similarities.
+>   3. The last category includes iterative refinement methods, that use both the WSP and consistency scores. These methods provide the most accuracy but also take the most time. They are particularly useful if the sequences have low similarity.
 >
->   For more information about the individual methods visit the official [MAFFT-website](https://mafft.cbrc.jp/alignment/software/algorithms/algorithms.html).
+>   For more information about the individual methods, visit the official [MAFFT-website](https://mafft.cbrc.jp/alignment/software/algorithms/algorithms.html).
 >
 {: .details}
 
@@ -147,7 +147,7 @@ When multiple files are added, MAFFT will run for each of these, so it is necess
 >
 >    > <comment-title> Different flavor, different time and accuracy </comment-title>
 >    >
->    > The alignment will be quite fast with the FFT-NS-2 flavor. You can try it out with L-INS-i for example, then you'll see the time and accuracy difference of the algorithms, which MAFFT can offer. It will take a while, so please don't wait for the result before you continue with the training. Once the alignment is complete, compare the first sequence file with the second to evaluate the differences between the alignment methods.
+>    > The alignment will be quite fast with the FFT-NS-2 flavor. You can try it out with L-INS-i for example to observe the time and accuracy differences of the algorithms offered by MAFFT. It will take some time, so please don't wait for the result before continuing with the training. Once the alignment is complete, compare the first sequence file with the second to evaluate the differences between the alignment methods.
 >    {: .comment}
 >
 > 2. Rename the dataset
@@ -156,16 +156,16 @@ When multiple files are added, MAFFT will run for each of these, so it is necess
 >
 {: .hands_on}
 
-The aligned polio genome is ready for further use. Before we continue with the primer design, we'll have a look at our output. First, giving the output a proper name will help handling numberous data in the future. Secondly, sometimes it is helpful to visualize the whole alignment or a specific region of interest. If you want a visualization of the MSA, Galaxy has an interactive build-in function, which we are going to discover in the next Hands-on-box.
+The aligned polio genome is ready for further use. Before we proceed with the primer design, let's take a closer look at our output. First, giving the output a proper name will help manage numerous data in the future. Secondly, it can be helpful to visualize the entire alignment or a specific region of interest. If you want to visualize the MSA, Galaxy offers an interactive build-in function, which we will explore in the next Hands-on box.
 
 > <hands-on-title>Visualize the multiple-sequence alignment</hands-on-title>
 >
 >    1. Click on the MAFFT output to expand this dataset
 >    2. Click on {% icon galaxy-barchart %} **Visualize**
 >    3. Maximize the browser window (the visualization we are about to launch will not rescale properly if you do this later!)
->    3. Select **Multiple Sequence Alignment** as the visualization
->    4. Wait for the alignment to finish loading
->    5. You can now scroll through the alignment by dragging the scroll-bar, or move through it in windows by clicking next to it on the same line. You can also go to a specific position in the alignment directly via **Extras** -> **Jump to a column**.
+>    4. Select **Multiple Sequence Alignment** as the visualization
+>    5. Wait for the alignment to finish loading
+>    6. You can now scroll through the alignment by dragging the scroll-bar, or move through it in windows by clicking next to it on the same line. You can also go to a specific position in the alignment directly via **Extras** -> **Jump to a column**.
 >
 >       You can manually check some regions of the alignment to see whether they fit the next figure.
 >
@@ -173,7 +173,7 @@ The aligned polio genome is ready for further use. Before we continue with the p
 
 ![Picture of the build-in visualization of Galaxy of an aligned Polio 1 genome.](../../images/mafft_varvamp_training/aligned_Polio1_sequence128-142.png "Visualization of the aligned Polio 1 genome through Galaxy build-in view. Options for customization or better analysis on top. Shown are sequence 128-142 at position 1346-1394 with few differences.")
 
-With this alignment we prepared our input Poliovirus 1 genomes for VarVAMP and are ready to design our primers. But before we get to the primer design section with VarVAMP, we have a few simple questions for you.
+With this alignment, we prepared our input Poliovirus 1 genomes for VarVAMP and are now ready to design our primers. However, before we get to the primer design section with VarVAMP, we have a few simple questions for you.
 
 > <question-title></question-title>
 >
@@ -193,21 +193,21 @@ With this alignment we prepared our input Poliovirus 1 genomes for VarVAMP and a
 
 ## One-step primer and probe design without consideration of off-target sites
 
-Properly designed primers contribute to the specificity, efficiency, and accuracy of techniques like PCR and DNA sequencing, ultimately influencing the reliability and validity of biological research outcomes. *Variable VirusAMPlicons* (*varVAMP*) is a tool to design primers for highly diverse viruses. The input is an alignment of your viral (full-genome) sequences.
+Properly designed primers contribute to the specificity, efficiency, and accuracy of techniques like PCR and DNA sequencing, ultimately influencing the reliability and validity of biological research outcomes. *Variable VirusAMPlicons* (*varVAMP*) is a tool to design primers for highly diverse viruses. The input required is an alignment of your viral (full-genome) sequences.
 
 > <details-title>Functionality of VarVAMP</details-title>
 >
-> For a lot of virus genera it is difficult to design pan-specific primers. varVAMP solves this by introducing ambiguous characters into primers and minimizes mismatches at the 3' end. Primers might not work for some sequences of your input alignment but should recognize the large majority.
+> For many virus genera, it is challenging to design pan-specific primers. VarVAMP addresses this issue by introducing ambiguous characters into primers and minimizing mismatches at the 3' end. While the primers may not work for all sequences in your input alignment, they should recognize the vast majority.
 >
->   VarVAMP comes in three different flavors:
+>   VarVAMP offers three different flavors:
 >
->   1. **SINGLE:** varVAMP searches for the very best primers and reports back non-overlapping amplicons which can be used for PCR-based screening approaches.
->   2. **TILED:** varVAMP uses a graph based approach to design overlapping amplicons that tile the entire viral genome. This designs amplicons that are suitable for Oxford Nanopore or Illumina based full-genome sequencing.
->   3. **QPCR:** varVAMP searches for small amplicons with an optimized internal probe (TaqMan). It minimizes temperature differences between the primers and checks for amplicon secondary structures.
+>   1. **SINGLE:** VarVAMP searches for the best primers and reports non-overlapping amplicons suitable for PCR-based screening approaches.
+>   2. **TILED:** Using a graph-based approach, varVAMP designs overlapping amplicons that tile the entire viral genome. These amplicons are ideal for Oxford Nanopore or Illumina-based full-genome sequencing.
+>   3. **QPCR:** VarVAMP searches for small amplicons with an optimized internal probe (TaqMan). It minimizes temperature differences between the primers and checks for secondary structures in the amplicons.
 >
 {: .details}
 
-The tool VarVAMP offers a wide range of different outputs in the various modes. For example is it possible to get the location of the designed primers, the amplicon or in bed file format or in a graphical pdf format, to gain information about the region or other potential primers. You will find further information in the next detail box. The VarVAMP Analysis log file gives information about the settings and procedures of the tool and will always be distributed.
+The tool VarVAMP offers a wide range of outputs across its various modes. For example, it is possible to obtain the locations of the designed primers and amplicons in BED file format or as a graphical PDF. These outputs provide detailed information about the regions of interest and other potential primers. Further information can be found in the next detail box. The varVAMP analysis log file contains information about the tool's 'settings and procedures and is always included with the outputs.
 
 > <details-title>Output of VarVAMP</details-title>
 >
@@ -265,7 +265,7 @@ The tool VarVAMP offers a wide range of different outputs in the various modes. 
 >
 >       ><comment-title>Right time for dataset</comment-title>
 >       >
->       >In the next step, we'll create a dataset collection, because the numberous output data will soon make the history look unorganized and it will make it easier for you to distinguish between the results. Wait for the outputs of varVAMP to get green and then go on to the next step and create a dataset.
+>       >In the next step, we will create a dataset collection to organize the numerous output data. This will help keep your history tidy and make it easier to distinguish between the results. Wait for the outputs of varVAMP to turn green before proceeding to the next step and creating the dataset collection.
 >       {: .comment}
 >
 > 2. Creating a dataset collection 
@@ -273,14 +273,14 @@ The tool VarVAMP offers a wide range of different outputs in the various modes. 
 >    {% snippet  faqs/galaxy/collections_build_list.md name="varVAMP Polio1 qpcr threshold 0.93" %}
 {: .hands_on}
 
-Now we got our first VarVAMP outputs and an idea, how the tool is working. Additionally we put the outputs together in a dataset to keep an organized overview. Check the different kind of outputs and get familiar with the results.
+Now we have our first varVAMP outputs and a better understanding of how the tool works. Additionally, we have organized the outputs into a dataset collection to maintain a clear overview. Take some time to review the different types of outputs and get familiar with the results.
 
 > <comment-title>Output control</comment-title>
 >
-> Control your output files with the example files of the [VarVAMP-qPCR-output github page for Polio 1 virus](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_qpcr/polio1). There you can check, if you created the same primers. You can find the primer locations in the bed file "primers.bed". These primers were designed with the version varVAMP:0.7.
+> Control your output files by comparing them with the example files from the [varVAMP-qPCR-output GitHub page for Polio 1 virus](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_qpcr/polio1). There you can check if you created the same primers. The primer locations can be found in the BED file "primers.bed". These primers were designed using version varVAMP:0.7.
 {: .comment}
 
-To control your results and check your understanding of them there are some questions for you prepared:
+To check your results and assess your understanding of them, a few questions have been prepared for you:
 
 > <question-title></question-title>
 >
