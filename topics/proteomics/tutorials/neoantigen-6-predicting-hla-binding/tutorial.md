@@ -305,9 +305,6 @@ This tutorial covers the workflow for identifying and validating HLA alleles usi
 To rerun this entire analysis at once, you can use our workflow. Below we show how to do this:
 
 
-# Import Workflow
-
-
 > <hands-on-title>Running the Workflow</hands-on-title>
 >
 > 1. **Import the workflow** into Galaxy:
