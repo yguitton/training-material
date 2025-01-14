@@ -199,7 +199,7 @@ Properly designed primers contribute to the specificity, efficiency, and accurac
 >
 > For many virus genera, it is challenging to design pan-specific primers. VarVAMP addresses this issue by introducing ambiguous characters into primers and minimizing mismatches at the 3' end. While the primers may not work for all sequences in your input alignment, they should recognize the vast majority.
 >
->   VarVAMP offers three different flavors:
+>   VarVAMP offers three different flavours:
 >
 >   1. **SINGLE:** VarVAMP searches for the best primers and reports non-overlapping amplicons suitable for PCR-based screening approaches.
 >   2. **TILED:** Using a graph-based approach, varVAMP designs overlapping amplicons that tile the entire viral genome. These amplicons are ideal for Oxford Nanopore or Illumina-based full-genome sequencing.
