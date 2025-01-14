@@ -12,6 +12,11 @@
             "class": "Person",
             "identifier": "0000-0003-3627-5340",
             "name": "Nicola Soranzo"
+        },
+        {
+            "class": "Person",
+            "identifier": "0000-0002-5192-126X",
+            "name": "Pavankumar Videm"
         }
     ],
     "format-version": "0.1",
