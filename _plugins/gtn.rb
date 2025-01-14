@@ -4,6 +4,7 @@ require 'English'
 require './_plugins/gtn/contributors'
 require './_plugins/gtn/boxify'
 require './_plugins/gtn/mod'
+require './_plugins/gtn/ro-crate'
 require './_plugins/gtn/images'
 require './_plugins/gtn/synthetic'
 require './_plugins/gtn/metrics'
@@ -14,16 +15,24 @@ require './_plugins/gtn/usegalaxy'
 require './_plugins/util'
 require './_plugins/jekyll-topic-filter'
 require 'time'
+require 'net/http'
 
-puts "[GTN] You are running #{RUBY_VERSION} released on #{RUBY_RELEASE_DATE} for #{RUBY_PLATFORM}"
+
+Jekyll.logger.info "[GTN] Jekyll env: #{Jekyll.env}"
+Jekyll.logger.info "[GTN] You are running #{RUBY_VERSION} released on #{RUBY_RELEASE_DATE} for #{RUBY_PLATFORM}"
 version_parts = RUBY_VERSION.split('.')
-puts '[GTN] WARNING: This Ruby is pretty old, you might want to update.' if version_parts[0].to_i < 3
+Jekyll.logger.warn '[GTN] WARNING: This Ruby is pretty old, you might want to update.' if version_parts[0].to_i < 3
 
 ##
-# This module contains functions that are used in the GTN, our internal functions that is.
-
+# We have several sub-areas of Jekyll namespaced things that are useful to know about.
+#
+# - Jekyll::Filters - Liquid Filters that are useful in rendering your HTML
+# - Jekyll::Tags - Liquid Tags can be used to access certain internals in HTML
+# - Jekyll::Generators - Generators emit files at runtime, e.g. the hall of fame pages.
+# - Jekyll::GtnFunctions - Generally miscellaneous Liquid Functions, could be refactored into Jekyll::Filters and Jekyll::Tags
 module Jekyll
-  # The main GTN function library
+  ##
+  # This module contains functions that are used in the GTN, our internal functions that is.
   module GtnFunctions
     # rubocop:disable Naming/PredicateName
 
@@ -68,6 +77,17 @@ module Jekyll
       ELIXIR_NODES[name]
     end
 
+    def url_exists(url)
+      cache.getset("url-exists-#{url}") do
+        uri = URI.parse(url)
+        http = Net::HTTP.new(uri.host, uri.port)
+        http.use_ssl = true if uri.scheme == 'https'
+        response = http.request_head(uri.path)
+        #Jekyll.logger.warn response
+        response.code == '200'
+      end
+    end
+
     ##
     # Obtain the most cited paper in the GTN
     # Params:
@@ -96,7 +116,7 @@ module Jekyll
     #  slugify_unsafe("Hello, World!") # => "Hello-World"
     def slugify_unsafe(text)
       # Gets rid of *most* things without making it completely unusable?
-      text.gsub(%r{["'\\/;:,.!@#$%^&*()]}, '').gsub(/\s/, '-').gsub(/-+/, '-')
+      unsafe_slugify(text)
     end
 
     ##
@@ -327,13 +347,20 @@ module Jekyll
       str.sub(regex, value_replace)
     end
 
+    ##
+    # Check if a match is found
+    def matches(str, regex_search)
+      r = /#{regex_search}/
+      str.match?(r)
+    end
+
     def convert_to_material_list(site, materials)
       # [{"name"=>"introduction", "topic"=>"admin"}]
       return [] if materials.nil?
 
       materials.map do |m|
         if m.key?('name') && m.key?('topic')
-          found = TopicFilter.fetch_tutorial_material(site, m['topic'], m['name'])
+          found = Gtn::TopicFilter.fetch_tutorial_material(site, m['topic'], m['name'])
           Jekyll.logger.warn "Could not find material #{m['topic']}/#{m['name']} in the site data" if found.nil?
 
           if m.key?('time')
@@ -384,7 +411,7 @@ module Jekyll
 
     def layout_to_human(layout)
       case layout
-      when /slides/
+      when /_slides/ # excludes slides-plain
         'Slides'
       when /tutorial_hands_on/
         'Hands-on'
@@ -392,6 +419,8 @@ module Jekyll
         'FAQs'
       when 'news'
         'News'
+      when 'workflow'
+        'Workflow'
       end
     end
 
@@ -525,9 +554,11 @@ module Jekyll
 
     def tutorials_over_time_bar_chart(site)
       graph = Hash.new(0)
-      TopicFilter.list_all_materials(site).each do |material|
-        yymm = material['pub_date'].strftime('%Y-%m')
-        graph[yymm] += 1
+      Gtn::TopicFilter.list_all_materials(site).each do |material|
+        if material['pub_date']
+          yymm = material['pub_date'].strftime('%Y-%m')
+          graph[yymm] += 1
+        end
       end
 
       # Cumulative over time
@@ -552,6 +583,10 @@ module Jekyll
     def topic_name_from_page(page, site)
       if page.key? 'topic_name'
         site.data[page['topic_name']]['title']
+      elsif page['url'] =~ /^\/faqs\/gtn/
+        'GTN FAQ'
+      elsif page['url'] =~ /^\/faqs\/galaxy/
+        'Galaxy FAQ'
       else
         site.data.fetch(page['url'].split('/')[2], { 'title' => '' })['title']
       end
@@ -646,8 +681,135 @@ module Jekyll
       page['path'].split('/')[1]
     end
 
+    ##
+    # Get the list of 'upcoming' events (i.e. reg deadline or start is 30 days away.)
+    # Params:
+    # +site+:: The site object
+    # Returns:
+    # +Array+:: List of events
+    #
+    # Example:
+    #  {{ site | get_upcoming_events }}
+    def get_upcoming_events(site)
+      cache.getset('upcoming-events') do
+        site.pages
+            .select { |p| p.data['layout'] == 'event' || p.data['layout'] == 'event-external' }
+            .reject { |p| p.data['program'].nil? } # Only those with programs
+            .select { |p| p.data['event_upcoming'] == true } # Only those coming soon
+            .map do |p|
+          materials = p.data['program']
+                       .map { |section| section['tutorials'] }
+                       .flatten
+                       .compact # Remove nil entries
+                       .reject { |x| x.fetch('type', nil) == 'custom' } # Remove custom entries
+                       .map { |x| "#{x['topic']}/#{x['name']}" } # Just the material IDs.
+                       .sort.uniq
+          [p, materials]
+        end
+      end
+    end
+
+    ##
+    # Get the list of 'upcoming' events that include this material's ID
+    # Params:
+    # +site+:: The site object
+    # +material+:: The 'material' to get the topic of, it will inspect page.id (use new_material)
+    # Returns:
+    # +Array+:: List of events
+    #
+    # Example:
+    #
+    #   {{ site | get_upcoming_events }}
+    def get_upcoming_events_for_this(site, material)
+      if material.nil?
+        []
+      else
+        get_upcoming_events(site)
+          .select { |_p, materials| materials.include? material['id'] }
+          .map { |p, _materials| p }
+      end
+    end
+
+    ##
+    # Get the list of all videos for the site (the automated + manual.)
+    # Params:
+    # +site+:: The site object
+    # Returns:
+    # +Array+:: List of [topic_id, topic_name, automated_videos, manual_videos]
+    #
+    # Example:
+    #
+    #   {{ site | get_videos_for_videos_page }}
+    def get_videos_for_videos_page(site)
+      res = {}
+      Gtn::TopicFilter.list_all_materials(site).each do |material|
+        next unless material['video'] || material['recordings'] || material['slides_recordings']
+
+        if ! res.key? material['topic_name']
+          res[material['topic_name']] = {
+            'topic_id' => material['topic_name'],
+            'topic_name' => site.data[material['topic_name']]['title'],
+            'automated_videos' => [],
+            'manual_videos' => []
+          }
+        end
+
+        # Automated recording
+        if material['video']
+          vid = "#{material['topic_name']}/tutorials/#{material['tutorial_name']}/slides"
+          res[material['topic_name']]['automated_videos'].push({
+            'title' => material['title'],
+            'vid' => vid,
+            'type' => 'internal',
+            'speakers' => ['awspolly'],
+            'captioners' => Gtn::Contributors.get_authors(material),
+            'cover' => "https://training.galaxyproject.org/videos/topics/#{vid}.mp4.png"
+          })
+        end
+
+        if material['slides_recordings']
+          rec = material['slides_recordings'].max_by { |x| x['date'] }
+          res[material['topic_name']]['manual_videos'].push({
+            'title' => material['title'],
+            'vid' => rec['youtube_id'],
+            'type' => 'youtube',
+            'speakers' => rec['speakers'],
+            'captioners' => rec['captioners'],
+            'cover' => "https://img.youtube.com/vi/#{rec['youtube_id']}/sddefault.jpg"
+          })
+        end
+
+        if material['recordings']
+          rec = material['recordings'].max_by { |x| x['date'] }
+          res[material['topic_name']]['manual_videos'].push({
+            'title' => material['title'],
+            'vid' => rec['youtube_id'],
+            'type' => 'youtube',
+            'speakers' => rec['speakers'],
+            'captioners' => rec['captioners'],
+            'cover' => "https://img.youtube.com/vi/#{rec['youtube_id']}/sddefault.jpg"
+          })
+        end
+      end
+
+      res.each do |k, v|
+        if v['automated_videos'].empty?
+          v.delete('automated_videos')
+        end
+        if v['manual_videos'].empty?
+          v.delete('manual_videos')
+        end
+      end
+
+      res
+    end
+
     def shuffle(array)
       array.shuffle
+    end
+
+    def unix_time_to_date(time)
+      Time.at(time.to_i).strftime('%Y-%m-%d %H:%M:%S')
     end
 
     def is_date_passed(date)
@@ -739,6 +901,30 @@ module Jekyll
     def group_icons(icons)
       icons.group_by { |_k, v| v }.transform_values { |v| v.map { |z| z[0] } }.invert
     end
+
+    def materials_for_pathway(page)
+      d = if page.is_a?(Jekyll::Page)
+            page.data.fetch('pathway', [])
+          else
+            page.fetch('pathway', [])
+          end
+
+      d.map do |m|
+        m.fetch('tutorials', [])
+         .select { |t| t.key?('name') && t.key?('topic') }
+         .map { |t| [t['topic'], t['name']] }
+      end.flatten.compact.sort.uniq
+    end
+
+    def find_learningpaths_including_topic(site, topic_id)
+      site.pages
+          .select { |p| p['layout'] == 'learning-pathway' }
+          .select do |p|
+        materials_for_pathway(p)
+          .map { |topic, _tutorial| topic }
+          .include?(topic_id)
+      end
+    end
     # rubocop:enable Naming/PredicateName
   end
 end
@@ -746,25 +932,15 @@ end
 Liquid::Template.register_filter(Jekyll::GtnFunctions)
 
 ##
-# This does post-modification to every page
-# Mapping the authors to their human names, and copying the cover (when present) to 'image'
-#
-# This exists because the jekyll-feed plugin expects those fields to look like that.
-Jekyll::Hooks.register :posts, :pre_render do |post, _out|
-  post.data['author'] = Gtn::Contributors.get_authors(post.data).map do |c|
-    Gtn::Contributors.fetch_name(post.site, c)
-  end.join(', ')
-  post.data['image'] = post.data['cover']
-end
-
 # We're going to do some find and replace, to replace `@gtn:contributorName` with a link to their profile.
 Jekyll::Hooks.register :site, :pre_render do |site|
+  pfo_keys = site.data['contributors'].keys + site.data['grants'].keys + site.data['organisations'].keys
   site.posts.docs.each do |post|
     if post.content
       post.content = post.content.gsub(/@gtn:([a-zA-Z0-9_-]+)/) do |match|
         # Get first capture
         name = match.gsub('@gtn:', '')
-        if site.data['contributors'].key?(name)
+        if pfo_keys.include?(name)
           "{% include _includes/contributor-badge-inline.html id=\"#{name}\" %}"
         else
           match
@@ -776,7 +952,7 @@ Jekyll::Hooks.register :site, :pre_render do |site|
     if page.content
       page.content = page.content.gsub(/@gtn:([a-zA-Z0-9_-]+)/) do |match|
         name = match.gsub('@gtn:', '')
-        if site.data['contributors'].key?(name)
+        if pfo_keys.include?(name)
           "{% include _includes/contributor-badge-inline.html id=\"#{name}\" %}"
         else
           match
@@ -810,10 +986,10 @@ Jekyll::Hooks.register :site, :post_read do |site|
           end
 
           site.data['organisations'][affiliation]['members'] << name
-        elsif site.data['funders'].key?(affiliation)
-          site.data['funders'][affiliation]['members'] = [] if !site.data['funders'][affiliation].key?('members')
+        elsif site.data['grants'].key?(affiliation)
+          site.data['grants'][affiliation]['members'] = [] if !site.data['grants'][affiliation].key?('members')
 
-          site.data['funders'][affiliation]['members'] << name
+          site.data['grants'][affiliation]['members'] << name
         end
       end
     end
@@ -826,12 +1002,12 @@ Jekyll::Hooks.register :site, :post_read do |site|
           end
 
           site.data['organisations'][affiliation]['former_members'] << name
-        elsif site.data['funders'].key?(affiliation)
-          if !site.data['funders'][affiliation].key?('former_members')
-            site.data['funders'][affiliation]['former_members'] = []
+        elsif site.data['grants'].key?(affiliation)
+          if !site.data['grants'][affiliation].key?('former_members')
+            site.data['grants'][affiliation]['former_members'] = []
           end
 
-          site.data['funders'][affiliation]['former_members'] << name
+          site.data['grants'][affiliation]['former_members'] << name
         end
       end
     end
@@ -856,8 +1032,20 @@ Jekyll::Hooks.register :site, :post_read do |site|
     page.data['short_id'] = shortlinks_reversed[page.url]
   end
 
+  # Annotate symlinks
+  site.pages.each do |page|
+    page.data['symlink'] = File.symlink?(page.path)
+    # Elsewhere we checked more levels deep, maybe enable if needed.
+    # || File.symlink?(File.dirname(page.path)) || File.symlink?(File.dirname(File.dirname(page.path)))
+  end
+
   Jekyll.logger.info '[GTN] Annotating events'
   site.pages.select { |p| p.data['layout'] == 'event' || p.data['layout'] == 'event-external' }.each do |page|
+
+    unless page.data['date_start']
+      # if no date set, use a mock date to prevent build from failihng
+      page.data['date_start'] = Date.parse('2121-01-01')
+    end
     page.data['not_started'] = page.data['date_start'] > Date.today
     page.data['event_over'] = (page.data['date_end'] || page.data['date_start']) < Date.today
 
@@ -877,6 +1065,34 @@ Jekyll::Hooks.register :site, :post_read do |site|
                             else
                               (page.data['date_end'] - page.data['date_start']).to_i + 1
                             end
+
+    # reg deadline
+    deadline = if page.data.key?('registration') && page.data['registration'].key?('deadline')
+                 page.data['registration']['deadline']
+               else
+                 page.data['date_start']
+               end
+
+    # If it's an 'upcoming event'
+    if deadline - 30 <= Date.today && Date.today <= deadline
+      page.data['event_upcoming'] = true
+    end
+  end
+
+  # This exists because the jekyll-feed plugin expects those fields to look like that.
+  posts.each do |post|
+    post.data['author'] = Gtn::Contributors.get_authors(post.data).map do |c|
+      Gtn::Contributors.fetch_name(post.site, c)
+    end.join(', ')
+    if post.data.key? 'cover'
+      post.data['image'] = post.data['cover']
+    end
+  end
+end
+
+Jekyll::Hooks.register :site, :post_write do |site|
+  if Jekyll.env == 'production'
+    Gtn::Shortlinks.fix_missing_redirs(site)
   end
 end
 

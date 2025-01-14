@@ -39,6 +39,26 @@ follow_up_training:
     topic_name: admin
     tutorials:
       - job-destinations
+
+recordings:
+- captioners:
+  - cat-bro
+  - shiltemann
+  date: '2021-02-15'
+  galaxy_version: '21.01'
+  length: 31M
+  youtube_id: R0NbHscL3jA
+  speakers:
+  - hexylena
+- captioners:
+  - beatrizserrano
+  date: '2021-02-15'
+  galaxy_version: '21.01'
+  length: 6M
+  youtube_id: 7CYI5yw9MN8
+  speakers:
+  - hexylena
+
 ---
 
 The tools that are added to Galaxy can have a wide variance in the compute resources that they require and work efficiently on.
