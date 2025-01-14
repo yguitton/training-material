@@ -57,9 +57,9 @@ To perform pathway enrichment with MultiGSEA, you'll need omics datasets in the 
 >
 > 2. Import the datasets from [Zenodo]({{ page.zenodo_link }})  into your Galaxy instance:
 >    ```
->    https://zenodo.org/api/records/14216972/files/transcriptome.tsv
->    https://zenodo.org/api/records/14216972/files/proteome.tsv
->    https://zenodo.org/api/records/14216972/files/metabolome.tsv
+>    https://zenodo.org/records/14216972/files/transcriptome.tsv
+>    https://zenodo.org/records/14216972/files/proteome.tsv
+>    https://zenodo.org/records/14216972/files/metabolome.tsv
 >    ```
 {: .hands_on}
 
@@ -70,23 +70,30 @@ In this step, you'll use the MultiGSEA tool to perform GSEA-based pathway enrich
 
 > <hands-on-title> Task description </hands-on-title>
 >
-> 1. Select the tool {% tool [multiGSEA](toolshed.g2.bx.psu.edu/repos/iuc/multigsea/multigsea/1.12.0+galaxy0) %} in Galaxy.
-> 2. Configure the input parameters as follows:
+> 1. Run {% tool [multiGSEA](toolshed.g2.bx.psu.edu/repos/iuc/multigsea/multigsea/1.12.0+galaxy0) %} with the following parameters
 >    - *"Select transcriptomics data"*: `Enabled`
 >        - {% icon param-file %} *"Transcriptomics data"*: `Transcriptomics`
+>        - {% icon param-select %} *"Gene ID format in transcriptomics data"*: `SYMBOL`
 >    - *"Select proteomics data"*: `Enabled`
 >        - {% icon param-file %} *"Proteomics data"*: `Proteomics`
+>        - {% icon param-select %} *"Gene ID format in proteomics data"*: `SYMBOL`
 >    - *"Select metabolomics data"*: `Enabled`
 >        - {% icon param-file %} *"Metabolomics data"*: `Metabolomics`
-> 3. You can also choose the Gene ID format for every data set. In this tutorial we will use the preset "SYMBOL" for transcriptomics and proteomics. For metabolomics we use HMDB.
-> 4. Select in **Supported organisms** the organism of which the data is about. In our case we select `Homo sapiens (Human)`.
-> 5. **Pathway databases**: Databases often contain their own format in which pathway definitions are provided. So you can select a relevant database. For the tutorial we choose `KEGG`
-> 6. **Combine p-values method**: Choose a method (here `Stouffer` for balanced weighting). To more comprehensively measure a pathway response, multiGSEA provides different approaches to compute an aggregated p value over multiple omics layers. Because no single approach for aggregating p values performs best under all circumstances, Loughin proposed basic recommendations on which method to use depending on structure and expectation of the problem. If small p values should be emphasized, Fisher’s method should be chosen. In cases where p values should be treated equally, Stouffer’s method is preferable. If large p values should be emphasized, the user should select Edgington’s method. Figure 2 indicates the difference between those three methods.
->    ![P-Value](../../images/p-value.png "P-value methods")
-> 7. **P-value correction method** Type I and type II errors depend on each other and thus reducing type I errors through a p value adjustment will likely increase the chance of making a type II error and an appropriate trade-off has to be made. Choose one of the different methods for controlling false discovery rate: For the tutorial choose `BH` (Benjamini-Hochberg).
-> 8. Click on `Run Tool`
+>        - {% icon param-select %} *"Metabolite ID format"*: `HMDB`
+>    - *"Supported organisms"*: `Homo sapiens (Human)`.
+>    - *"Pathway databases"*: `KEGG`
+>    - *"Combine p-values method"*: `Stouffer`
+>    - *"P-value correction method"*: `BH`
+>
+>    > <tip-title>About the parameters</tip-title>
+>    > - **Pathway databases**: `KEGG`Databases often contain their own format in which pathway definitions are provided. So you can select a relevant >    >   database. For the tutorial we choose `KEGG`
+>    > - **Combine p-values method**: Choose a method (here `Stouffer` for balanced weighting). To more comprehensively measure a pathway response, multiGSEA provides different approaches to compute an aggregated p value over multiple omics layers. Because no single approach for aggregating p values performs best under all circumstances, Loughin proposed basic recommendations on which method to use depending on structure and expectation of the problem. If small p values should be emphasized, Fisher’s method should be chosen. In cases where p values should be treated equally, Stouffer’s method is preferable. If large p values should be emphasized, the user should select Edgington’s method. Figure 2 indicates the difference between those three methods.
+>    >   ![P-Value](../../images/p-value.png "P-value methods")
+>    > - **P-value correction method** Type I and type II errors depend on each other and thus reducing type I errors through a p value adjustment will likely increase the chance of making a type II error and an appropriate trade-off has to be made. Choose one of the different methods for controlling false discovery rate: For the tutorial choose `BH` (Benjamini-Hochberg).
+>    {: .tip}
 >
 {: .hands_on}
+
 
 
 > <question-title></question-title>
