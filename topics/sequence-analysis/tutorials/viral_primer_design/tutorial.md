@@ -145,9 +145,9 @@ When multiple files are added, MAFFT will run for each of these, so it is necess
 >    - *"MAFFT flavour"*: `FFT-NS-2 (fast, progressive method)`
 >    - *"Output format"*: `FASTA`
 >
->    > <comment-title> Different flavor, different time and accuracy </comment-title>
+>    > <comment-title> Different flavour, different time and accuracy </comment-title>
 >    >
->    > The alignment will be quite fast with the FFT-NS-2 flavor. You can try it out with L-INS-i for example to observe the time and accuracy differences of the algorithms offered by MAFFT. It will take some time, so please don't wait for the result before continuing with the training. Once the alignment is complete, compare the first sequence file with the second to evaluate the differences between the alignment methods.
+>    > The alignment will be quite fast with the FFT-NS-2 flavour. You can try it out with L-INS-i for example to observe the time and accuracy differences of the algorithms offered by MAFFT. It will take some time, so please don't wait for the result before continuing with the training. Once the alignment is complete, compare the first sequence file with the second to evaluate the differences between the alignment methods.
 >    {: .comment}
 >
 > 2. Rename the dataset
@@ -207,7 +207,7 @@ Properly designed primers contribute to the specificity, efficiency, and accurac
 >
 {: .details}
 
-The tool VarVAMP offers a wide range of outputs across its various modes. For example, it is possible to obtain the locations of the designed primers and amplicons in BED file format or as a graphical PDF. These outputs provide detailed information about the regions of interest and other potential primers. Further information can be found in the next detail box. The varVAMP analysis log file contains information about the tool's 'settings and procedures and is always included with the outputs.
+The tool varVAMP offers a wide range of outputs across its various modes. For example, it is possible to obtain the locations of the designed primers and amplicons in BED file format or as a graphical PDF. These outputs provide detailed information about the regions of interest and other potential primers. Further information can be found in the next detail box. The varVAMP analysis log file contains information about the tool's 'settings and procedures and is always included with the outputs.
 
 > <details-title>Output of VarVAMP</details-title>
 >
@@ -263,7 +263,7 @@ The tool VarVAMP offers a wide range of outputs across its various modes. For ex
 >        - *"Maximum number of ambiguous nucleotides per primer to be tolerated"*: `2`
 >        - *"Maximum number of ambiguous nucleotides per qPCR probe to be tolerated"*: `1`
 >
->       ><comment-title>Right time for dataset</comment-title>
+>       ><comment-title>Right time for a dataset collection</comment-title>
 >       >
 >       >In the next step, we will create a dataset collection to organize the numerous output data. This will help keep your history tidy and make it easier to distinguish between the results. Wait for the outputs of varVAMP to turn green before proceeding to the next step and creating the dataset collection.
 >       {: .comment}
@@ -427,13 +427,11 @@ The newly designed primer schemes can be checked again with the "Amplicon locati
 >
 {: .question}
 
-For practicing further options, we'll now get Polio 1-3 genome data and create primers for another use case with the *TILED* flavor. These primers are suitable for Oxford Nanopore or Illumina based full-genome sequencing.
-
 # Designing a complete pan-specific primer scheme for tiled-amplicon sequencing
 
-As mentioned, we'll prepare primers for Next Generation Sequencing instead of qPCR with the aligned genome data of Polio 1-3. The main goal is to reproduce the whole genome of our input sequences.
+To explore additional options, we will now design primers for another use case using the TILED flavour. This flavour is designed to cover the entire genome of our input data. Therefore, the resulting primers are suitable for Oxford Nanopore or Illumina-based full-genome sequencing.
 
-To focus on the primer scheme design we will skip the multiple sequence alignment step this time and start from the pre-aligned Polio 1-3 sequences available as part of the [ViralPrimerScheme](https://github.com/jonas-fuchs/ViralPrimerSchemes) repository.
+To focus on designing the primer scheme, we will skip the multiple sequence alignment step this time and begin with the pre-aligned Polio 1-3 sequences available as part of the [ViralPrimerScheme](https://github.com/jonas-fuchs/ViralPrimerSchemes) repository.
 
 > <hands-on-title>Get Polio 1-3 sequence alignment</hands-on-title>
 >
@@ -451,7 +449,7 @@ To focus on the primer scheme design we will skip the multiple sequence alignmen
 >
 {: .hands_on}
 
-In the next go-through with VarVAMP, we will get to know the *TILED* flavor. We don't generate a probe for quantasizing our pcr-product anymore, but therefore we need to specify the size of our overlapping region of the amplicons for the tiling function. Another adjustment which can be done is the optimal or maximum length determination of the amplicon. Two important settings, which you already know and can find in every flavor of VarVAMP is n_ambig, the number of ambigious nucleotides in your primer, and the threshold of consensus nucleotides to ensure the specifity of your design.
+In the next run with varVAMP, we will use the TILED flavour. There are also several settings to generate your individual output. You can specify the size of the amplicons and their overlapping regions. As with the primers for qPCR, you can determine the number of ambiguous nucleotides in you primers and the threshold for consensus nucleotides. However, this time we will only specify the maximum number of ambiguous nucleotides and allow the threshold to be automatically estimated.
 
 > <hands-on-title>Primer design with the TILED-flavour for whole genome amplification</hands-on-title>
 >
@@ -464,12 +462,17 @@ In the next go-through with VarVAMP, we will get to know the *TILED* flavor. We 
 > 2. Creating a dataset collection
 >
 >    {% snippet  faqs/galaxy/collections_build_list.md name="varVAMP Polio1-3 tiled" %}
+>
+>       > <comment-title>Dataset collection</comment-title>
+>       >
+>       >If you create a dataset collection at this point, you cannot include the "per-pool primer sequences", as this is already a dataset collection containing two files with the sequences for each pool.
+>       {: .comment}
 {: .hands_on}
 
-As you can see in the output on the right side, you'll have succesfully created primers for further amplification of your viral sequences.
-You can compare your results with the "primers.bed" on the [Viral Schemes Website](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_tiled/Polio).
+As you can see in the output on the right, you have succesfully created primers for further amplification of your viral sequences.
+You can compare your results with the "primers.bed" on the [Viral Schemes website](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_tiled/Polio).
 
-Again, we have some questions for you prepared:
+Again, we have prepared some questions for you:
 
 > <question-title></question-title>
 >
