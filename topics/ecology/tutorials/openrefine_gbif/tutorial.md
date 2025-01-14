@@ -52,15 +52,58 @@ This tutorial is based on the GBIF {% cite gbiftuto2021 %} "Biodiversity data mo
 
 ## Get data
 
-> ### {% icon hands_on %} Hands-on: Data import and project creation
+
+> <hands-on-title> Data import and project creation </hands-on-title>
 >
-> 1. Create a new history for this tutorial, you can for example name it "OpenRefine tutorial"
-> {% snippet faqs/galaxy/histories_create_new.md %}
-> 3. Deploy an OpenRefine instance clicking Execute on the {% tool [OpenRefine tool](interactive_tool_openrefine) %}  without specifying any input dataset for now
-> 4. Import content of the file directly on OpenRefine using "Clipboard" on "Create Project" space. Open the file locally, with notepad++ or any other software allowing reading raw content of text files, and then copy the content, and paste it on the "OpenRefine Clipboard" dedicated space.
-> 5. You can then edit input content parsing options (here noting to change normaly as everything is automagically detected), specify a project name (for example "GBIF tutorial"),  and finally click "Create project".
-![Openrefine parsing options](../../images/openrefine/openrefine_parsinginput.PNG)
-> 7. You will now have your project with first 10 lines of your file displayed
+> 1. Create a new history for this tutorial and give it a name (example: “Openrefine tutorial”) for you to find it again later if needed.
+>
+>    {% snippet faqs/galaxy/histories_create_new.md %}
+>
+>    {% snippet faqs/galaxy/histories_rename.md %}
+>
+> 2. Import data file from GBIF {% cite gbiftuto2021 %} "Biodiversity data mobilization course" accessible [here](https://docs.gbif.org/course-data-mobilization/en/) on Use case 1 ["Herbarium Specimens"](https://docs.gbif.org/course-data-mobilization/en/exercise-3a-c.html) using file from Exercice 3C, at the bottom of the page
+>
+>    "Herbarium Specimens" data file as a csv file named "UC1-3c-open-refine.csv"
+>    ```
+>    https://docs.gbif.org/course-data-mobilization/exercise-data/UC1-3c-open-refine.csv
+>    ```
+>
+>    {% snippet faqs/galaxy/datasets_import_via_link.md %}
+>
+>
+> 3. {% tool [Regex Find And Replace](toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regex1/1.0.3) %} with the following parameters:
+>    - {% icon param-file %} *"Select lines from"*: `UC1-3c-open-refine.csv`
+>    - *"using column"*: `c8`
+>    - In *"Check"*:
+>        - {% icon param-repeat %} *"Insert Check"*
+>            - *"Find Regex"*: `;`
+>            - *"Replacement"*: `\t`
+> 4. Change the datatype from "txt" to "tabular"
+> 
+>    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
+> 
+> 6. Check your output. All columns must be separated by a tabulation now. See example below.
+>
+> ![Output of Regex Find And Replace example](./Images/1_openrefine.png "Output of Regex Find And Replace example")
+> 
+>
+> 7. Rename the datasets if needed, for example with "UC1-3c-open-refine-tabular" to keep orginal name and specify the tabular format.
+>
+>    {% snippet faqs/galaxy/datasets_rename.md %}
+>
+> 
+>
+{: .hands_on}
+
+
+## Deploy an Openrefine instance and push your data in
+
+
+> <hands-on-title> Deploy an Openrefine instance and import data from your Galaxy history </hands-on-title>
+>
+> 1. Deploy an OpenRefine instance clicking Execute on the {% tool [OpenRefine tool](interactive_tool_openrefine) %} specifying "UC1-3c-open-refine-tabular" as input dataset
+> 2. You can then go n the OpenRefine instance, and go to "Open Project" space, then select the project named "Galaxy file"
+> 3. You will now have your project with first 10 lines of your file displayed
 ![Openrefine project start](../../images/openrefine/openrefine_start.PNG)
 {: .hands_on}
 
@@ -242,8 +285,9 @@ different tab.
 
 > ### {% icon hands_on %} Hands-on: Exporting cleaned file into Galaxy.
 >
-> 1. On the upper right corner click on `Export` and select `Tab separated value`.
->    - A notification message as "GBIF tutorial has been exported to Galaxy, please refresh your Galaxy history" is displayed
+> 1. On the upper right corner click on `Export` and select `Galaxy exporter`.
+>    - A notification message as "Dataset has been exported to Galaxy, please close this tab" is displayed
+>    - You normally have your resulting data file on your Galaxy history
 >
 >
 >    > ### {% icon comment %} Comment
@@ -288,5 +332,4 @@ connection is required.
 # Conclusion
 {:.no_toc}
 
-Sum up the tutorial and the key takeaways here. We encourage adding an overview image of the
-pipeline used.
+Here you learn to use OpenRefine from Galaxy platform to clean Biodiversity data.
