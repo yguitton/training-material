@@ -192,18 +192,17 @@ We will also encounter a mixed isolate (a more or less clean mixture of other pr
 and learn how to recognize it. In addition, we will learn how to determine the composition 
 of this mixted isolate based on other sequenced CpGV isolates.
 
-> <details-title> CpGV Isolate Information </details-title>
+> <comment-title> Detailed CpGV Isolate Information </comment-title>
 >
-> Below is a table with further information on the CpGV isolates used.
+> For those who want to delve deeper into the data sets, I have provided a table with links to NCBI SRA and related publications.
 >
 > | Isolate | NCBI Genbank | NCBI SRA | Reference |
 > |:------------------:|:------------------:|:------------------:|:------------------:|
 > | CpGV-M | KM217575 | [SRR31589148](https://trace.ncbi.nlm.nih.gov/Traces?run=SRR31589148) | [Wennmann et al. 2020](https://doi.org/10.3390/v12060625) |
 > | CpGV-S | KM217573 | [SRR31589147](https://trace.ncbi.nlm.nih.gov/Traces?run=SRR31589147) | [Wennmann et al. 2020](https://doi.org/10.3390/v12060625) |
 > | CpGV-E2 | KM217577 | [SRR31589146](https://trace.ncbi.nlm.nih.gov/Traces?run=SRR31589146) | [Gueli Alletti et al. 2017](https://doi.org/10.3390/v9090250) |
-> | CpGV-V15 | not available | [SRR31679023](https://www.ncbi.nlm.nih.gov/sra/SRX27041396) | [Fan et al. 2020](https://doi.org/10.1093/ve/veaa073) |
->
-{: .details}
+> | CpGV-V15 | No assembly available | [SRR31679023](https://www.ncbi.nlm.nih.gov/sra/SRX27041396) | [Fan et al. 2020](https://doi.org/10.1093/ve/veaa073) |
+{: .comment}
 
 Follow the steps below to download the four Illumina datasets published at NCBI SRA.
 
@@ -300,7 +299,8 @@ Insertions/Deletions (indels) are deliberately omitted because they are not rele
 >        - *"Regions"*: `Do not restrict to Regions`
 >        - *"Targets"*: `Do not restrict to Targets`
 >    - In *"Output options"*:
->        - *"Optional tags to output"*: ``
+>        - *"Optional tags to output"*: `DP (Number of high-quality bases)`
+>        - *"Optional tags to output"*: `DPR (Number of high-quality bases for each observed allele)`
 >    - *"Output type"*: `uncompressed VCF`
 >    - Click Run Tool
 >
@@ -330,27 +330,162 @@ Insertions/Deletions (indels) are deliberately omitted because they are not rele
 >
 {: .hands_on}
 
+What you get is a file in Variant Call Format (VCF), which can be difficult to understand at first glance. It is important to note that the file begins with a large header, lines that begin with two hashtags (##), which contain details of the analysis and the data set. After the header, there is a table with a line that contains the column names. This line begins with just one hashtag (#). After that, the results are displayed in a tab-separated format. In our VCF example, some columns have the following abbreviations and meaning (I just select a few that are important to us in this tutorial):
+
+| Fixed fields  | Description  |
+|---:|:---|
+|**CHROM**  |Chromosome (name of the reference, in our case CpGV-M)  |
+|**POS**  |Position (position in the reference genome)   |
+|**REF**  |Nucleotide of the Referance at the corresponding position (POS)   |
+|**ALT**   |Alternative nucleotides detected at this position in the sequencing data.   |
+|**FORMAT**   |Describes the content of the *sample column* reported in the VCF file. In our case GT:PL:DP:DPR.   |
+|**SRR31589146**   |1st sample column: The results for the sequence data SRR31589146 in the format specified in FORMAT.   |
+|**SRR31589147**   |2nd sample column: The results for the sequence data SRR31589147 in the format specified in FORMAT.   |
+|**SRR31589148**   |3rd sample column: The results for the sequence data SRR31589148 in the format specified in FORMAT.   |
+|**SRR31679023**   |4th sample column: The results for the sequence data SRR31679023 in the format specified in FORMAT.
+
+
+To understand how the data is stored, we have to look at FORMAT in detail. This is where two values are of great importance: DP and DPR.
+
+|Genotype&nbsp;field|Description   |
+|---:|:---|
+|**DP**   |Read depth (number of nucleotides) at this position for this sample.   |
+|**DPR**   |The read depth for each allele. Here, the first value corresponds to the reference nucleotide (REF), the second to the first possible allele (ALT1), the second to the second possible allele (ALT2) and the third value to the last possible allele (ALT3).
+
+> <comment-title>DPR functional, but deprecated</comment-title>
+> If you start **bcftools mpileup** with the *Optional tags to output* `DPR (Number of high quality bases for each observed allele)` option, you will see a warning in the information panel of the VCF file: `[warning] tag DPR functional, but deprecated. Please switch to AD in future`. At the time of writing this tutorial, I was using DPR. It works the same way with *Optional tags to output* option `AD` (instead of DPR), but you will need to adjust something later in the workflow. The tutorial will be switched to AD in the near future. For now, we stick with DPR.
+{: .comment}
+
+> <tip-title>Learn more about variant analysis on diploid and non-diploid data!</tip-title>
+> Also take a look at other tutorials that deal with non-diploid (but also diploid) data sets to perform a variant analysis. Broadening your horizons is always important. I recommend the check the tutorials on ... 
+> * [Calling variants in diploid systems]( {% link topics/variant-analysis/tutorials/dip/tutorial.md %} ) and.
+> * [Calling variants in non-diploid systems]( {% link topics/variant-analysis/tutorials/non-dip/tutorial.md %} ).
+> 
+> Maybe later? Then let's continue.
+{: .tip}
+
 # VCF to table transformation
 
-> <hands-on-title> Task description </hands-on-title>
+Now we come to an exciting part, because we have all the information we need to analyse the genetic variation within the sequenced virus populations. The data is only hidden in the VCF file and is difficult for the beginner in bioinformatics to see. We have the positions (`POS`), which were detected as variable in the virus populations. In addition, we know the number of all reads (and thus also nucleotides) in these positions (represented by `DP`). By using `DPR`, we obtain information on how often the alleles (the four possible nucleotides) occur at a particular position. To analyse `DP` and `DPR`, we first have to access it because the information is hidden in each *sample column* in the `FORMAT` genotype data. If we look at the first position `POS = 246` in sample column `SRR31589146`, the following data is visible:     
+`1/1:255,98,0,255,255,255,255,255,255,255:885:106,773,6,0`.  
+The information provided by the FORMAT field explains the division of the data by colons: `GT:PL:DP:DPR`.
+
+We can break it down like this...
+
+| FORMAT genotype field | Value |
+|-----------------------:|:-------|
+|GT                     |1/1    |
+|PL                     |255,98,0,255,255,255,255,255,255,255|
+|DP                     |885    |
+|DPR                    |106,773,6,0|
+
+GT = Genotype information, which cannot be used with virus populations!  
+PL = Phred-scaled genotype likelihood (also not useable for us, because we do not have a diploid organism!)
+
+DPR can be broken down even further, since the individual values, which are separated by commas this time, can be assigned to the reference or the alternative nucleotides. In a virus population, four nucleotides (A, T, G and C) can theoretically occur at each position. One nucleotide defines the reference, leaving three alternatives: first (`ALT1`), second (`ALT2`) and third (`ALT3`) alternative. 
+
+
+
+|CHROM   |POS   |DP   |DPR           | ALT1  |ALT2    |ALT3  |  
+|:------:|:----:|:---:|:------------:|:-----:|:------:|:----:|
+|CpGV-M  |246   |885  |106,773,6,0   |773    |6       |0     |
+
+If we now divide the absolute frequencies of `ALT1 = 773`, `ALT2 = 6` and `ALT3 = 0` by `DP = 885`, we get the relative frequencies (`REL.ALT`):
+
+|ALLELE     |REL.ALT     |
+|:---------:|:----------:|
+|ALT1       |0.873446    |
+|ALT2       |0.00677966  |
+|ALT3       |0           |
+
+
+> <hands-on-title> Transfrom VCF to tab-deliminated table </hands-on-title>
 >
 > 1. {% tool [VCFtoTab-delimited:](toolshed.g2.bx.psu.edu/repos/devteam/vcf2tsv/vcf2tsv/1.0.0_rc1+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Select VCF dataset to convert"*: `output_file` (output of **bcftools call** {% icon tool %})
 >    - *"Fill empty fields with"*: `NULL`
+>    - Click Run Tool
 >
->    ***TODO***: *Check parameter descriptions*
+>    > <comment-title> An easier-to-read table </comment-title>
+>    > This tool creates a table from the VCF file. The columns are tab-deliminated. Take a look at table and see if it is now easier to read. It can also be imported to R/RStudio/Excel more easily.
+>    {: .comment}
 >
->    ***TODO***: *Consider adding a comment or tip box*
+> 2. {% tool [Text reformatting](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/9.3+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"File to process"*: `outfile` (output of **VCFtoTab-delimited** {% icon tool %})
+>    - *"AWK Program"*: *Paste the code from the code box below.*
+> > <code-in-title>awk</code-in-title>
+> > ```
+> > BEGIN { FS="\t"; OFS="\t" }
+> > NR == 1 {
+> >     # Print the new header
+> >     print $0, "ALLELE", "DPR.ALLELE", "REL.ALT", "REL.ALT.0.05";
+> >     next;
+> > }
+> > {
+> >     # Create a unique key for position and sample
+> >     pos_sample_key = $2 "_" $23;
+> > 
+> >     if (last_pos != $2) {         # When a new position starts
+> >         delete sample_count;      # Reset the sample counter
+> >         last_pos = $2;            # Update the current position
+> >     }
+> > 
+> >     # Split the DPR column into values
+> >     split($25, dpr_values, ",");
+> > 
+> >     # Count the occurrences of each sample per position
+> >     sample_count[$23]++;
+> >     dpr_index = sample_count[$23] + 1;  # Index for the alternate allele (starting at 2)
+> > 
+> >     # Check if the index is valid
+> >     if (dpr_index <= length(dpr_values)) {
+> >         allele = "ALT" (dpr_index - 1);            # Determine the allele
+> >         dpr_value = dpr_values[dpr_index];         # Get the corresponding DPR value
+> >         rel_alt = (dpr_value / $24);               # Calculate REL.ALT (DPR.ALLELE / DP)
+> >         rel_alt_filtered = (rel_alt >= 0.05) ? rel_alt : 0;  # Filter REL.ALT values < 0.05
+> >         print $0, allele, dpr_value, rel_alt, rel_alt_filtered;  # Output with new columns
+> >     }
+> > }
+> > ```
+> {: .code-in}
 >
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
+>    - Click Run Tool
+> 
+>    > <comment-title> Create ALLELE and REL.ALT columns </comment-title> 
+>    > The **text reformatting** tool allows the use of AWK code. AWK is for text processing and to performing complex tasks on data sets (such as tab-delimited files). We will come across AWK scripts again later. Here is a brief summary of what it does: 
+>    > * Splitting `DPR` data into separate allele counts.   
+>    > * Calculating the relative allele frequencies (`REL.ALT`) for each allele.  
+>    > * Filtering out relative frequencies below a threshold of 0.05 and storing the result in `REL.ALT.0.05`.  
 >    {: .comment}
 >
 {: .hands_on}
 
 
-> <hands-on-title> Task description </hands-on-title>
+The output table is complex and shows the relative frequency (`REL.ALT`) for each of the three alternative alleles/nucleotides (`ALT1`, `ALT2` and `ALT3`) in each position (`POS`) and sequenced CpGV isolate (`SAMPLE`). In column `REL.ALT.0.05`, values of the `REL.ALT < 0.05` were set to 0 to set a threshold. We will see later why this is sometimes important.
+
+Below is the table with selected relevant columns only. `REL` and `ALT` show the reference and alternative nucleotide, respectively.    
+
+| #CHROM | POS | REF | ALT | SAMPLE      | DP  | DPR         | ALLELE | DPR.ALLELE | REL.ALT    | REL.ALT.0.05 |
+|--------|-----|-----|-----|-------------|-----|-------------|--------|------------|------------|--------------|
+| CpGV-M | 246 | C   | T   | SRR31589146 | 885 | 106,773,6,0 | ALT1   | 773        | 0.873446   | 0.873446     |
+| CpGV-M | 246 | C   | T   | SRR31589147 | 878 | 4,873,1,0   | ALT1   | 873        | 0.994305   | 0.994305     |
+| CpGV-M | 246 | C   | T   | SRR31589148 | 934 | 799,133,1,1 | ALT1   | 133        | 0.142398   | 0.142398     |
+| CpGV-M | 246 | C   | T   | SRR31679023 | 845 | 42,803,0,0  | ALT1   | 803        | 0.950296   | 0.950296     |
+| CpGV-M | 246 | C   | G   | SRR31589146 | 885 | 106,773,6,0 | ALT2   | 6          | 0.00677966 | 0            |
+| CpGV-M | 246 | C   | G   | SRR31589147 | 878 | 4,873,1,0   | ALT2   | 1          | 0.00113895 | 0            |
+| CpGV-M | 246 | C   | G   | SRR31589148 | 934 | 799,133,1,1 | ALT2   | 1          | 0.00107066 | 0            |
+| CpGV-M | 246 | C   | G   | SRR31679023 | 845 | 42,803,0,0  | ALT2   | 0          | 0          | 0            |
+| CpGV-M | 246 | C   | A   | SRR31589146 | 885 | 106,773,6,0 | ALT3   | 0          | 0          | 0            |
+| CpGV-M | 246 | C   | A   | SRR31589147 | 878 | 4,873,1,0   | ALT3   | 0          | 0          | 0            |
+| CpGV-M | 246 | C   | A   | SRR31589148 | 934 | 799,133,1,1 | ALT3   | 1          | 0.00107066 | 0            |
+| CpGV-M | 246 | C   | A   | SRR31679023 | 845 | 42,803,0,0  | ALT3   | 0          | 0          | 0            |
+
+
+# Replace SRA names with virus abbreviations
+
+One thing that stands out are the SAMPLE names, which were taken automatically from the NCBI SRA datasets. Since it is difficult to remember which virus isolate is behind which SRA number, we can replace the accession numbers with proper names. This makes the table even easier to read and later we can use the information directly to display the SNV positions. 
+
+> <hands-on-title> Replace sample by virus names </hands-on-title>
 >
 > 1. {% tool [Replace Text](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_column/9.3+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `out_file1` (output of **VCFtoTab-delimited:** {% icon tool %})
@@ -372,65 +507,20 @@ Insertions/Deletions (indels) are deliberately omitted because they are not rele
 >            - *"Find pattern"*: `SRR31679023`
 >            - *"Replace with"*: `CpGV-V15`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-# Relative nucleotide frequency calculation
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Text reformatting](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/9.3+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"File to process"*: `outfile` (output of **Replace Text** {% icon tool %})
->    - *"AWK Program"*: `BEGIN { FS=\t; OFS=\t }
-NR == 1 {
-    # Drucke den neuen Header
-    print $0, ALLELE, DPR.ALLELE, REL.ALT, REL.ALT.0.05;
-    next;
-}
-{
-    # Erstelle einen eindeutigen Schlüssel für Position und Probe
-    pos_sample_key = $2 _ $23;
-
-    if (last_pos != $2) {         # Wenn eine neue Position beginnt
-        delete sample_count;      # Zurücksetzen des Sample-Zählers
-        last_pos = $2;            # Aktualisiere die aktuelle Position
-    }
-
-    # Zerlege die DPR-Spalte in Werte
-    split($25, dpr_values, ,);
-
-    # Zähle das Auftreten jeder Probe pro Position
-    sample_count[$23]++;
-    dpr_index = sample_count[$23] + 1;  # Index für das alternative Allel (Start bei 2)
-
-    # Prüfe, ob der Index gültig ist
-    if (dpr_index <= length(dpr_values)) {
-        allele = ALT (dpr_index - 1);            # Bestimme das Allel
-        dpr_value = dpr_values[dpr_index];         # Hole den entsprechenden DPR-Wert
-        rel_alt = (dpr_value / $24);               # Berechne REL.ALT (DPR.ALLELE / DP)
-        rel_alt_filtered = (rel_alt >= 0.05) ? rel_alt : 0;  # Filtere REL.ALT-Werte < 0.05
-        print $0, allele, dpr_value, rel_alt, rel_alt_filtered;  # Ausgabe mit neuen Spalten
-    }
-}`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
+>    > <question-title>What is replaced by what?</question-title>
+>    > 1. Can you say which SRA number was replaced by which isolate abbreviation?
+>    >    > <solution-title>Answer:</solution-title>
+>    >    > * SRR31589148 was replaced by CpGV-M  
+>    >    > * SRR31589147 was replaced by CpGV-S  
+>    >    > * SRR31589146 was replaced by CpGV-E2  
+>    >    > * SRR31679023 was replaced by CpGV-V15  
+>    >    {: .solution}
+>    {: .question}
 >
 {: .hands_on}
+
+# Reduce complexity of SNV table to first alternative
+
 
 
 > <hands-on-title> Task description </hands-on-title>
@@ -449,6 +539,10 @@ NR == 1 {
 >    {: .comment}
 >
 {: .hands_on}
+
+
+
+
 
 ## SNV plot - Homogenity/heterogenity check
 
