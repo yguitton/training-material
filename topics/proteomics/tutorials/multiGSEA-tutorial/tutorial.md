@@ -112,10 +112,11 @@ In this step, you'll use the MultiGSEA tool to perform GSEA-based pathway enrich
 >
 {: .question}
 
-> # Conclusion
->
-> In this tutorial, you explored the capabilities of MultiGSEA for performing pathway enrichment analysis across multiple omics layers, including transcriptomics, proteomics, and metabolomics data. By following the steps, you learned how to:
->
-> - Prepare and upload the required omics datasets.
-> - Configure and execute the MultiGSEA tool within Galaxy.
-> -  Combine p-values from different omics layers to derive a unified perspective on pathway enrichment.
+
+# Conclusion
+
+In this tutorial, you explored the capabilities of MultiGSEA for performing pathway enrichment analysis across multiple omics layers, including transcriptomics, proteomics, and metabolomics data. By following the steps, you learned how to:
+
+ - Prepare and upload the required omics datasets.
+ - Configure and execute the MultiGSEA tool within Galaxy.
+ -  Combine p-values from different omics layers to derive a unified perspective on pathway enrichment.
