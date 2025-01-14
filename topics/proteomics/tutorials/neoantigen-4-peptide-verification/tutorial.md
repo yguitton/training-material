@@ -259,13 +259,12 @@ Tabular-to-FASTA is a tool used to convert tabular data into the FASTA format, c
 In this step, the NCBI BLAST+ blastp tool is used for performing protein sequence alignment. It compares the query protein sequence (generated from the Tabular-to-FASTA tool) against a locally installed BLAST database of protein sequences. The alignment is optimized for shorter protein queries (less than 30 residues) using the blastp-short option. The tool uses a PAM30 scoring matrix, along with specific gap costs, and generates tabular output with extended 25 columns, allowing users to examine the results in detail.
 
 
-
-**Parameters:**
-- Protein query sequence(s): The input protein sequence in FASTA format.
-- Subject database/sequences: The BLAST database against which the query sequence will be compared.
-- Type of BLAST: Optimized for short protein queries.
-- Expectation value cutoff: Specifies the cutoff for statistical significance.
-- Advanced options: Includes scoring matrix (PAM30), gap costs, and word size for the BLAST algorithm.
+- **Parameters:**
+  - **Protein query sequence(s):** The input protein sequence in FASTA format.
+  - **Subject database/sequences:** The BLAST database against which the query sequence will be compared.
+  - **Type of BLAST:** Optimized for short protein queries.
+  - **Expectation value cutoff:** Specifies the cutoff for statistical significance.
+  - **Advanced options:** Includes scoring matrix (PAM30), gap costs, and word size for the BLAST algorithm.
 
 > <hands-on-title> NCBI BLAST+ blastp </hands-on-title>
 >
