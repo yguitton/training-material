@@ -4,9 +4,9 @@ area: introduction
 layout: faq
 box_type: tip
 contributors: [nomadscientist]
-redirect_from:
-- faqs/gtn/using-answer-key-histories
+redirect_from: [/faqs/gtn/using-answer-key-histories]
 ---
+
 If you get stuck, you can first check your history against an exemplar history, from your tutorial.
 
 First, import the target history.
