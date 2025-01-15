@@ -470,9 +470,9 @@ In the next run with varVAMP, we will use the TILED flavour. There are also seve
 {: .hands_on}
 
 As you can see in the output on the right, you have succesfully created primers for further amplification of your viral sequences.
-You can compare your results with the "primers.bed" on the [Viral Schemes website](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_tiled/Polio).
 
-Again, we have prepared some questions for you:
+
+Once again, we have prepared some questions for you to verify your results and deepen your understanding of the output:
 
 > <question-title></question-title>
 >
