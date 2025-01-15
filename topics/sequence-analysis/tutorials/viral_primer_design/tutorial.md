@@ -304,13 +304,7 @@ In our next step, imagine we have a sample taken from virus-infected human tissu
 
 With varVAMP, it is possible to use a BLAST database as an off-target reference. Using the tool *NCBI BLAST+ makeblastdb* ({% cite Cock2015 %}), we can create a BLAST database containing the whole genomes of other enteroviruses and use it as a reference. varVAMP compares the identified primers against this database, and each off-target hit is assigned a high penalty. To select the best-fitting primer scheme, varVAMP sorts the potential primers by their penalty scores, thus avoiding primers that might target similar genome regions in other organisms. An application example could be the real-time detection of polio 1 viral genomes in a human sample for pandemic surveillance.
 
-The following steps are:
-
-1. Upload the enterovirus genome data into Galaxy.
-
-2. Create an enterovirus genome database using NCBI BLAST+ makeblastdb.
-
-3. Use the constructed BLAST database with varVAMP to check amplicon primer candidates for off-target matches.
+First of all, you need to upload the enterovirus genome data into Galaxy.
 
 > <hands-on-title>Get the whole genome sequences of enterovirus</hands-on-title>
 > 1. Get the genome sequence fasta files from
@@ -328,7 +322,7 @@ The following steps are:
 >
 {: .hands_on}
 
-Now that we have our data, we can begin the analysis by using NCBI BLAST+ makeblastdb to create a database. This will enable us to detect off-target hits with varVAMP.
+Now that we have our data, we can begin creating an enterovirus genome database using NCBI BLAST+ makeblastdb. This will enable us to detect off-target hits with varVAMP in the next step.
 
 > <hands-on-title>BLAST enterovirus genome database and primer design of Polio virus</hands-on-title>
 >
