@@ -357,17 +357,17 @@ Please try to answer the following questions.
 
 > <question-title></question-title>
 > 
-> 1. Whats the difference between the scores of the 2 bed files?
+> 1. What is the difference between the scores for the amplicons generated with and without considering off-target sites?
 > 2. What does the difference mean?
-> 3. Why did varVAMP choose these primers anyway?
-> 4. What can be modified in our settings, to get more possible primers?
+> 3. Why did varVAMP choose these primers?
+> 4. What settings can be modified to generate more possible primers?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. The second amplicon locations file has the same number of penalty but with 50 points in addition.
+> > 1. You can find the scores in the files named "Amplicon locations". The results generated while considering off-target sites show scores that are 50 points higher than those without considering off-targets.
 > > 2. Because of the enterovirus BLAST db reference, the same primer schemes of the first varVAMP run were found as off-targets and got additional penalty.
-> > 3. There were only these 3. varVAMP didn't have much more choice.
-> > 4. Our threshold for consensus sequences with 0.93 is quite high. With a lower threshold, we will get more potential primer schemes.
+> > 3. Only these three primer schemes matched our specifications.
+> > 4. Our threshold for consensus sequences is set to 0.93, which is quite high. Lowering the threshold eill generate more potential primer schemes.
 > {: .solution}
 >
 {: .question}
