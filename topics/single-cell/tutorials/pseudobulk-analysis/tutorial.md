@@ -30,7 +30,7 @@ Pseudobulk analysis is a powerful technique that bridges the gap between single-
 
 A key advantage of this approach in differential expression analysis is that it avoids treating individual cells as independent samples, which can underestimate variance and lead to inflated significance or overly optimistic p-values ({% cite Squair2021 %}). This occurs because cells from the same biological replicate are inherently more similar to each other than cells from different samples. By grouping data into pseudobulk samples, the analysis aligns with the experimental design, as in bulk RNA-seq, leading to more reliable and robust statistical results ({% cite Murphy2022 %}).
 
-Beyond enhancing statistical validity, pseudobulk analysis enables the identification of cell-type-specific gene expression and functional changes across biological conditions. It balances the detailed resolution of single-cell data with the statistical power of bulk RNA-seq, providing insights into the functional transcriptomic landscape relevant to biological questions. Overall, for differential expression analysis in multi-sample single-cell experiments, pseudo-bulk approaches demonstrate superior performance compared to single-cell-specific DE methods (citation). 
+Beyond enhancing statistical validity, pseudobulk analysis enables the identification of cell-type-specific gene expression and functional changes across biological conditions. It balances the detailed resolution of single-cell data with the statistical power of bulk RNA-seq, providing insights into the functional transcriptomic landscape relevant to biological questions. Overall, for differential expression analysis in multi-sample single-cell experiments, pseudobulk approaches demonstrate superior performance compared to single-cell-specific DE methods (citation). 
 
 In this tutorial, we will guide you through a pseudobulk analysis workflow using the **Decoupler** and **edgeR** tools available in Galaxy ({% Badia-iMompel2022 %}) ({% Liu2015 %}). These tools facilitate functional and differential expression analysis, and their output can be integrated with other Galaxy tools to visualize results, such as creating Volcano Plots, which we will also cover in this tutorial.
 
@@ -50,8 +50,11 @@ In this tutorial, we will guide you through a pseudobulk analysis workflow using
 > 3. Visualization and Reporting
 >    - Generating volcano plots for differentially expressed genes
 >    - Summarizing and presenting functional analysis results
->
-> 4. Key Takeaways and Recommendations
+>      
+> 5. Subsetting Samples from the Original AnnData Object
+>    - Extracting AnnData Object with observations of interest 
+>      
+> 6. Key Takeaways and Recommendations
 >    - Reviewing the pseudobulk analysis pipeline
 >    - Suggestions for additional analyses and further exploration
 >
@@ -64,7 +67,7 @@ In this tutorial, we will guide you through a pseudobulk analysis workflow using
 
 Our data was extracted from the publication titled _"Elevated Calprotectin and Abnormal Myeloid Cell Subsets Discriminate Severe from Mild COVID-19"_ ({% cite Silvin2020 %}). This dataset was chosen because it was utilized by the developers of the `decoupler` tool for pseudobulk aggregate analysis ({% decoupler-pseudobulk %}).
 
-Pseudobulk analysis is an advanced method in single-cell data analysis. For this tutorial, we assume familiarity with common single-cell data formats, such as AnnData or Seurat objects, and experience analyzing single-cell data, including clustering and annotating cell types.
+Pseudobulk analysis is an advanced method in single-cell data analysis. For this tutorial, we assume familiarity with common single-cell data formats, such as AnnData or Seurat objects, and experience analysing single-cell data, including clustering and annotating cell types.
 
 If you're new to these concepts, we recommend exploring our other tutorials before going for pseudobulk:
 - [Clustering 3K PBMCs with Scanpy]({% link topics/single-cell/tutorials/scrna-scanpy-pbmc3k/tutorial.md %}): Learn how to cluster and annotate cells in Galaxy using our single-cell tools.
@@ -107,7 +110,7 @@ Raw counts are crucial for generating accurate pseudobulk aggregates. Since sing
 
 > <tip-title> Missing Raw Counts? </tip-title>
 >
-> If your AnnData object lacks raw counts, you can use the **[AnnData Operations](toolshed.g2.bx.psu.edu/repos/ebi-gxa/anndata_ops/anndata_ops/1.9.3+galaxy0)** tool on the **[Single Cell Galaxy instance](https://singlecell.usegalaxy.eu)**. This tool allows you to copy the `.X` matrix into a new layer, such as `counts` or `raw_counts`, making it accessible as an input parameter for Decoupler.
+> If your AnnData object lacks raw counts, you can use the **[AnnData Operations](toolshed.g2.bx.psu.edu/repos/ebi-gxa/anndata_ops/anndata_ops/1.9.3+galaxy0)** tool on the **[Single Cell Galaxy instance](https://singlecell.usegalaxy.eu)**. This tool allows you to copy the `.X` matrix into a new layer that you may assign a new lable, for e.g., `counts` or `raw_counts`, making it available as a parameter for Decoupler.
 >
 > Importantly, ensure that the copying of this matrix as a raw counts layer is done carefully and correctly. To verify that your AnnData object contains the necessary raw counts layer, you can use the **[Inspect AnnData Object](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy0)** tool. This tool helps confirm the presence of raw counts and other essential metadata in your AnnData object before proceeding with pseudobulk analysis.
 >
@@ -458,31 +461,37 @@ Lets take a moment to interpret the Volcano Plot:
 >
 {: .question}
 
-# Subsetting Samples from Our Original Pseudobulk Count Matrix
+# Subsetting Samples from the Original AnnData Object
 
 In our previous analysis, we found that only one gene, **MTND1P23**, was identified as downregulated in our contrast. This result was obtained by "bulking" **all** cell types from our dataset and performing a differential expression analysis comparing normal vs. COVID-19 samples.
 
-But what if we refine our approach? For instance, instead of analyzing all cell types together, what happens if we focus on a specific cluster, such as **T cells**, and perform the same comparison: normal vs. COVID-19? Would the results remain the same, or would this more targeted approach reveal additional insights?
+Now, what if we refine our approach? For instance, instead of analysing all cell types together, what happens if we focus on a specific cluster, such as **T cells**, and perform the same comparison: normal vs. COVID-19? Would the results remain the same, or would this approach reveal additional insights?
 
-## Let's perform this analysis step-by-step
+## Extracting observations of interest as AnnData object 
 
-> <hands-on-title> Cut Columns on Decoupler Pseudobulk Count Matrix </hands-on-title>
+> <hands-on-title> Use Manipulate AnnData Tools to extract observations </hands-on-title>
 >
-> 1. Use the {% tool [Cut](toolshed.g2.bx.psu.edu/repos/iuc/cut/cut/1.0.2) %} tool with the following parameters:
->    - *"Cut columns"*: `c1,c9,c10,c11,c12,c13,c14,c15`
->        - *"Delimited by"*: `Tab`
->        - *"From"*: `Decoupler pseudo-bulk on data 1: Count Matrix`
->
+> 1. Use the {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy0) %} tool with the following parameters:
+>    - *"Annotated data matrix"*: `AnnData for Pseudobulk` (Your preprocessed, analysed, and annotated AnnData object) 
+>        - *"Function to manipulate the object"*: `Filter observations or variables` 
+>        - *"What to filter?"*: `Observations (obs)` (For filtering cells, select Observations (obs))
+>            - *"Type of filtering?"*: `By key (column) values 
+>            - *"Key to filter"*: `cell_type` (the label that identify cell annotations in our AnnData)
+>                -*"Type of value to filter"*: `Text` 
+>                  -*"Filter"*: `equal to`
+>                  -*"Value"*: `T cell` (the name of the cluster of interest for subset analysis)
 {: .hands_on}
 
+>  After using the {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy0) %} tool to subset the cell type of interest, go back to the top of this tutorial to the hands-on **Pseudobulk with Decoupler** step, and you may perform once again the same steps in this smaller AnnData object that now should only include your T cells.
+ 
 > <question-title> T Cell Count Matrix </question-title>
 >
-> 1. What data is included in our new pseudobulk count matrix, and how is it organized? 
-> 2. How many samples are included in the current dataset, and are all of them derived exclusively from T cells?
+> 1. What data is included in our new pseudobulk count matrix, How is it organized? 
+> 2. How many samples are included in the current dataset? Are all of them derived exclusively from T cells?
 >
 > > <solution-title> Solution </solution-title>
 > >
-> > 1. Our new count matrix consists of the original 1,430 rows, representing all genes with their gene labels in the first column. Additionally, it includes seven other columns corresponding to individual samples, like _Control#1Tcell_ or _SARSCoV2posSevere#1Tcell_.
+> > 1. The new count matrix consists of the original 2,815 rows, representing all genes with their gene labels in the first column. Additionally, it includes seven other columns corresponding to individual samples, like _Control#1Tcell_ or _SARSCoV2posSevere#1Tcell_.
 > > 2. Our dataset now includes a total of seven samples: three controls and four COVID-19 positive samples.
 > >
 > {: .solution}
