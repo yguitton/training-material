@@ -38,7 +38,7 @@ More recently, starting with the Zika virus epidemic from 2015 to 2016 and boost
 
 While SARS-CoV-2 is an extremely well-studied example, many other viral pathogens display a far greater sequence diversity than that of existing SARS-CoV-2 lineages making it even harder to come up with pan-specific primer sets for reliable amplification of arbitrary samples of unknown genotype. The three serotypes of poliovirus (PV-1, PV-2 and PV-3), for example, share only ~70% pairwise sequence identity with one another (compared to still ~ 99% for current SARS-CoV-2 lineages).
 
-In this tutorial we investigate a robust bioinformatics approach that lets you design pan-specific PCR primers or entire primer schemes for viral pathogens with high sequence diversity. The design process starts from known genome sequences of viral isolates, which are supposed to represent the existing sequence diversity of the viral pathogen across its genotypes. From these sequences, we build a multiple-sequence alignment, which then serves as input to the primer design tool **varVAMP**. This tool will try to identify possible primer sites that are conserved enough to work across genotypes while considering user-specified constraints like amplicon sizes for tiled-amplicon sequencing or desired qPCR probe characteristics.
+In this tutorial we investigate a robust bioinformatics approach that lets you design pan-specific PCR primers or entire primer schemes for viral pathogens with high sequence diversity. The design process starts from known genome sequences of viral isolates, which are supposed to represent the existing sequence diversity of the viral pathogen across its genotypes. From these sequences, we build a multiple sequence alignment, which then serves as input to the primer design tool **varVAMP**. This tool will try to identify possible primer sites that are conserved enough to work across genotypes while considering user-specified constraints like amplicon sizes for tiled-amplicon sequencing or desired qPCR probe characteristics.
 
 > <agenda-title></agenda-title>
 >
@@ -104,7 +104,7 @@ For the primer design, we need a *Multiple sequence alignment*, which we can gen
 
 ## Multiple alignment of reference sequences
 
-First of all, we need to generate a *Multiple sequence alignment (MSA)* that we can use as input for VarVAMP, the tool that designs the primers. Additionally the MSA provides knowledge about similarities and evolutionary relationships between the genome sequences. To generate an MSA, we align the previously unaligned genome datasets with **MAFFT**. MAFFT is a multiple sequence alignment program that enables the analysis of a file with several sequences with different alignment algorithms.
+First of all, we need to generate a *Multiple sequence alignment (MSA)* that we can use as input for varVAMP, the tool that designs the primers. Additionally the MSA provides knowledge about similarities and evolutionary relationships between the genome sequences. To generate an MSA, we align the previously unaligned genome datasets with **MAFFT**. MAFFT is a multiple sequence alignment program that enables the analysis of a file with several sequences with different alignment algorithms.
 
 When multiple files are added, MAFFT will run for each of these, so it is necessary to have every sequence that you want to have aligned in one file. Therefore, there is a concatenate option in MAFFT implemented on Galaxy. For further information look in details below:
 
@@ -158,7 +158,7 @@ When multiple files are added, MAFFT will run for each of these, so it is necess
 
 The aligned polio genome is ready for further use. Before we proceed with the primer design, let's take a closer look at our output. First, giving the output a proper name will help manage numerous data in the future. Secondly, it can be helpful to visualize the entire alignment or a specific region of interest. If you want to visualize the MSA, Galaxy offers an interactive build-in function, which we will explore in the next Hands-on box.
 
-> <hands-on-title>Visualize the multiple-sequence alignment</hands-on-title>
+> <hands-on-title>Visualize the multiple sequence alignment</hands-on-title>
 >
 >    1. Click on the MAFFT output to expand this dataset
 >    2. Click on {% icon galaxy-barchart %} **Visualize**
@@ -173,7 +173,7 @@ The aligned polio genome is ready for further use. Before we proceed with the pr
 
 ![Picture of the build-in visualization of Galaxy of an aligned Polio 1 genome.](../../images/mafft_varvamp_training/aligned_Polio1_sequence128-142.png "Visualization of the aligned Polio 1 genome through Galaxy build-in view. Options for customization or better analysis on top. Shown are sequence 128-142 at position 1346-1394 with few differences.")
 
-With this alignment, we prepared our input Poliovirus 1 genomes for VarVAMP and are now ready to design our primers. However, before we get to the primer design section with VarVAMP, we have a few simple questions for you.
+With this alignment, we prepared our input Poliovirus 1 genomes for varVAMP and are now ready to design our primers. However, before we get to the primer design section with varVAMP, we have a few simple questions for you.
 
 > <question-title></question-title>
 >
@@ -195,23 +195,23 @@ With this alignment, we prepared our input Poliovirus 1 genomes for VarVAMP and 
 
 Properly designed primers contribute to the specificity, efficiency, and accuracy of techniques like PCR and DNA sequencing, ultimately influencing the reliability and validity of biological research outcomes. *Variable VirusAMPlicons* (*varVAMP*) is a tool to design primers for highly diverse viruses. The input required is an alignment of your viral (full-genome) sequences.
 
-> <details-title>Functionality of VarVAMP</details-title>
+> <details-title>Functionality of varVAMP</details-title>
 >
-> For many virus genera, it is challenging to design pan-specific primers. VarVAMP addresses this issue by introducing ambiguous characters into primers and minimizing mismatches at the 3' end. While the primers may not work for all sequences in your input alignment, they should recognize the vast majority.
+> For many virus genera, it is challenging to design pan-specific primers. varVAMP addresses this issue by introducing ambiguous characters into primers and minimizing mismatches at the 3' end. While the primers may not work for all sequences in your input alignment, they should recognize the vast majority.
 >
->   VarVAMP offers three different flavours:
+>   varVAMP offers three different flavours:
 >
->   1. **SINGLE:** VarVAMP searches for the best primers and reports non-overlapping amplicons suitable for PCR-based screening approaches.
+>   1. **SINGLE:** varVAMP searches for the best primers and reports non-overlapping amplicons suitable for PCR-based screening approaches.
 >   2. **TILED:** Using a graph-based approach, varVAMP designs overlapping amplicons that tile the entire viral genome. These amplicons are ideal for Oxford Nanopore or Illumina-based full-genome sequencing.
->   3. **QPCR:** VarVAMP searches for small amplicons with an optimized internal probe (TaqMan). It minimizes temperature differences between the primers and checks for secondary structures in the amplicons.
+>   3. **QPCR:** varVAMP searches for small amplicons with an optimized internal probe (TaqMan). It minimizes temperature differences between the primers and checks for secondary structures in the amplicons.
 >
 {: .details}
 
 The tool varVAMP offers a wide range of outputs across its various modes. For example, it is possible to obtain the locations of the designed primers and amplicons in BED file format or as a graphical PDF. These outputs provide detailed information about the regions of interest and other potential primers. Further information can be found in the next detail box. The varVAMP analysis log file contains information about the tool's 'settings and procedures and is always included with the outputs.
 
-> <details-title>Output of VarVAMP</details-title>
+> <details-title>Output of varVAMP</details-title>
 >
-> VarVAMP has many different outputs, which you can select. Here you can find a short summery:
+> varVAMP has many different outputs, which you can select. Here you can find a short summery:
 >
 > **Primer scheme outputs:**
 >   - *Sequences of designed oligos:*
@@ -287,14 +287,14 @@ To check your results and assess your understanding of them, a few questions hav
 > 1. How long are the 3 different amplicons?
 > 2. Why are there primers for 3 different amplicons and not just one?
 > 3. Regarding the penalty score of the different amplicons, which one should be used for qPCR?
-> 4. How is it possible to increase the reproducibility and decrease the computing time of further analysis of VarVAMP?
+> 4. How is it possible to increase the reproducibility and decrease the computing time of further analysis of varVAMP?
 >
 > > <solution-title></solution-title>
 > >
 > > 1. The first amlicon has a length of 93 bases, the second 142 bases and the third is 77 bases long, as you can see in the file *"qPCR amplicon details"*.
-> > 2. VarVAMP shows all primer pairs that fulfill the specified conditions like threshold or amplicon length. In our case 3 primer pairs fulfill all conditions.
+> > 2. varVAMP shows all primer pairs that fulfill the specified conditions like threshold or amplicon length. In our case 3 primer pairs fulfill all conditions.
 > > 3. The penalty score of the amplicons is a simple addition of the 3 penalty scores of the corresponding primers and the probe. For these applies the lower the value of the penalty score the better. Therefore regarding the penalty score the amplicon 0 starting at position 1743 has the lowest value with 6.7 and should be used. But it is also useful to have a closer look at the file *"primer details"* to compare the number of ambiguous nucleotides and the individual penalty scores especially for the probes.
-> > 4. The solution lies in the per default contributed log file. It contains the parameter configuration of your latest VarVAMP run. If you save and use the values of the threshold and n_ambig for further runs, VarVAMP will not start it's automatic calculation of these and thus results in lower computing time and higher reproducibility.
+> > 4. The solution lies in the per default contributed log file. It contains the parameter configuration of your latest varVAMP run. If you save and use the values of the threshold and n_ambig for further runs, varVAMP will not start it's automatic calculation of these and thus results in lower computing time and higher reproducibility.
 > {: .solution}
 >
 {: .question}
@@ -310,7 +310,7 @@ The following steps are:
 
 2. Create a enterovirus genome database with ncbi makeblastdb.
 
-3. Use the builded BLAST database with VarVAMP to check amplicon primer candidates against.
+3. Use the builded BLAST database with varVAMP to check amplicon primer candidates against.
 
 > <hands-on-title>Get the whole genome sequences of enterovirus</hands-on-title>
 > 1. Get the genome sequence fasta files from
@@ -353,7 +353,7 @@ Now that we got our data, we can start the analysis by providing the data to NCB
 >        - *"Minimum free energy (kcal/mol/K) cutoff*: `-3`
 >        - *"Avoid amplicons with off-target primer products?"*: `Yes`
 >           - *"BLAST database"*: the output of **NCBI makeblastdb** `Enterovirus genome db`
->           - *"Customize BLAST Settings?"*: `No, use VarVAMP default settings`
+>           - *"Customize BLAST Settings?"*: `No, use varVAMP default settings`
 >
 > 4. Creating a dataset collection
 >
@@ -376,7 +376,7 @@ Please try to answer the following questions.
 > >
 > > 1. The second amplicon locations file has the same number of penalty but with 50 points in addition.
 > > 2. Because of the enterovirus BLAST db reference, the same primer schemes of the first varVAMP run were found as off-targets and got additional penalty.
-> > 3. There were only these 3. VarVAMP didn't have much more choice.
+> > 3. There were only these 3. varVAMP didn't have much more choice.
 > > 4. Our threshold for consensus sequences with 0.93 is quite high. With a lower threshold, we will get more potential primer schemes.
 > {: .solution}
 >
@@ -397,7 +397,7 @@ Now let's try it out with a lower threshold, to get a primer scheme which is not
 >        - *"Minimum free energy (kcal/mol/K) cutoff*: `-3`
 >        - *"Avoid amplicons with off-target primer products?"*: `Yes`
 >           - *"BLAST database"*: the output of **NCBI makeblastdb** `Enterovirus genome db`
->           - *"Customize BLAST Settings?"*: `No, use VarVAMP default settings`
+>           - *"Customize BLAST Settings?"*: `No, use varVAMP default settings`
 >
 >       > <comment-title>Threshold control</comment-title>
 >       >
@@ -484,7 +484,7 @@ Once again, we have prepared some questions for you to verify your results and d
 >
 > > <solution-title></solution-title>
 > >
-> > 1. VarVAMP creates 12 primers to amplify the whole Polio genome, if you use VarVAMP version 1.2.1.
+> > 1. varVAMP creates 12 primers to amplify the whole Polio genome, if you use varVAMP version 1.2.1.
 > > 2. The score indicates wheather the primer pair for this amplicon belongs to pool 1 or 2.
 > > 3. For the tiled primer scheme, the amplicons are approximately 1400 bases long, while for qPCR,they are around 100 bases. The difference in length exists because the goal of the tiled primer scheme is to cover the entire genome without using too many primers that might interact. In contrast, qPCR focuses on detecting the presence of matching DNA in the sample. Therefore, the amplicons are kept shorter to speed up the amplification process.
 > > 4. The qpcr mode generates small amplicons with an optimized internal probe, while the TILED mode produces overlapping amplicons designed for Oxford Nanopore or Whole Genome Sequencing.
@@ -496,4 +496,4 @@ Once again, we have prepared some questions for you to verify your results and d
 
 # Conclusion
 
-Creating primers for further gene analysis is essential. VarVAMP delivers a possibility to design highly divers and personally specified primers and even the option to eliminate off-targets thanks to a BLAST database. In combination with MAFFT, a strongly adjustable multiple alignment tool, it is possible to search for similar genome sequences in a sample batch and if they have viral origin, be able to do preparatory work for the amplification technique of interest. This Galaxy workflow is therefore extremely useful for applications such as the identification of related virus genomes.
+Creating primers for further gene analysis is essential. varVAMP delivers a possibility to design highly divers and personally specified primers and even the option to eliminate off-targets thanks to a BLAST database. In combination with MAFFT, a strongly adjustable multiple alignment tool, it is possible to search for similar genome sequences in a sample batch and if they have viral origin, be able to do preparatory work for the amplification technique of interest. This Galaxy workflow is therefore extremely useful for applications such as the identification of related virus genomes.
