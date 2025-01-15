@@ -25,3 +25,7 @@ answer_histories:
     history: https://humancellatlas.usegalaxy.eu/u/wendi.bacon.training/h/cs1pre-processing-with-alevin---answer-key
     date: 2024-01-01
 ```
+
+Finally, to prevent yourself from accidentally changing those tutorial histories, you can **Archive History**.
+
+{% snippet faqs/galaxy/histories_archive.md %}
