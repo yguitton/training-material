@@ -478,7 +478,7 @@ Once again, we have prepared some questions for you to verify your results and d
 >
 > 1. How many primers are used to cover the whole Polio genome?
 > 2. What is encoded in the column named "score" in the file *"Amplicon locations"*.
-> 3. How long are the amplicons for the tiled primer scheme and for qPCR?
+> 3. How long are the amplicons for the tiled primer scheme and for qPCR and why do they differ in size?
 > 4. What's the difference of the functionality of the 2 modi qPCR and TILED?
 > 5. If you want to have a more accurate product, which option do you have to manipulate?
 >
@@ -486,9 +486,9 @@ Once again, we have prepared some questions for you to verify your results and d
 > >
 > > 1. VarVAMP creates 12 primers to amplify the whole Polio genome, if you use VarVAMP version 1.2.1.
 > > 2. The score indicates wheather the primer pair for this amplicon belongs to pool 1 or 2.
-> > 3. For the tiled primer scheme the amplicons are around 1400 bases long and for qPCR around 100.
-> > 4. The qpcr mode reports back small amplicons with an optimized internal probe. The TILED mode provides overlapping amplicons for Oxford Nanopore or Whole Genome Sequencing.
-> > 5. You can increase the length of the amplicons, the minimal required overlap and the threshold or decrease the maximum number of ambiguous nucleotides per primer.
+> > 3. For the tiled primer scheme, the amplicons are approximately 1400 bases long, while for qPCR,they are around 100 bases. The difference in length exists because the goal of the tiled primer scheme is to cover the entire genome without using too many primers that might interact. In contrast, qPCR focuses on detecting the presence of matching DNA in the sample. Therefore, the amplicons are kept shorter to speed up the amplification process.
+> > 4. The qpcr mode generates small amplicons with an optimized internal probe, while the TILED mode produces overlapping amplicons designed for Oxford Nanopore or Whole Genome Sequencing.
+> > 5. You can increase the length of the amplicons, the minimum required overlap and the threshold or reduce the maximum number of ambiguous nucleotides per primer.
 > >
 > {: .solution}
 >
