@@ -300,17 +300,17 @@ To check your results and assess your understanding of them, a few questions hav
 {: .question}
 
 ## Advanced approach considering off-target sites for the output,
-In our next step, imagine we have a sample to examine, which was taken from virus infected human tissue. We want to be sure, that we are not amplifing any other related enterovirus genome sequences with our polio gene material in our analysis. How do we get to be sure, we specificly build primers for our viral genome of interest?
+In our next step, imagine we have a sample taken from virus-infected human tissue. We want to ensure that we are not amplifing any related enterovirus genome sequences alongside our polio gene material during analysis. How can we specificlly design primers for our viral genome of interest?
 
-With varVAMP, it is possible to insert a BLAST database as an off-target reference. We can use the *NCBI BLAST makeblastdb* ({% cite Cock2015 %}) to create a BLAST database of other whole genomes of enteroviruses and use it as a reference. The found primers will be compared with the reference and each hit is given a high penalty. In order to choose the best fitting primer scheme, varVAMP sorts the possible primers by their penalty score and hence avoids designing primers for possible similar genome regions of other organisms. An application example afterwards would be real-time detection of polio 1 viral genomes in a human sample for pandemic surveillance.
+With varVAMP, it is possible to use a BLAST database as an off-target reference. Using the tool *NCBI BLAST+ makeblastdb* ({% cite Cock2015 %}), we can create a BLAST database containing the whole genomes of other enteroviruses and use it as a reference. varVAMP compares the identified primers against this database, and each off-target hit is assigned a high penalty. To select the best-fitting primer scheme, varVAMP sorts the potential primers by their penalty scores, thus avoiding primers that might target similar genome regions in other organisms. An application example could be the real-time detection of polio 1 viral genomes in a human sample for pandemic surveillance.
 
 The following steps are:
 
 1. Upload the enterovirus genome data into Galaxy.
 
-2. Create a enterovirus genome database with ncbi makeblastdb.
+2. Create an enterovirus genome database using NCBI BLAST+ makeblastdb.
 
-3. Use the builded BLAST database with varVAMP to check amplicon primer candidates against.
+3. Use the constructed BLAST database with varVAMP to check amplicon primer candidates for off-target matches.
 
 > <hands-on-title>Get the whole genome sequences of enterovirus</hands-on-title>
 > 1. Get the genome sequence fasta files from
@@ -328,7 +328,7 @@ The following steps are:
 >
 {: .hands_on}
 
-Now that we got our data, we can start the analysis by providing the data to NCBI makeblastdb to create a database. This will give us the possibility to detect off-target hits with varVAMP.
+Now that we have our data, we can begin the analysis by using NCBI BLAST+ makeblastdb to create a database. This will enable us to detect off-target hits with varVAMP.
 
 > <hands-on-title>BLAST enterovirus genome database and primer design of Polio virus</hands-on-title>
 >
@@ -360,8 +360,9 @@ Now that we got our data, we can start the analysis by providing the data to NCB
 >    {% snippet  faqs/galaxy/collections_build_list.md name="varVAMP Polio1 qpcr threshold 0.93 + BLAST" %}
 {: .hands_on}
 
-We produced 3 possible primer schemes with our current settings for further qPCR. How do we check, if these are appropriate primer designs which exclude maybe off-targets?
-You know already, that there is a certain bed file output of the qpcr setting of varVAMP, which is called *"Amplicon locations"*. As the name says, it gives information about the start and the end position of the amplicons and, very important, the penalty score. Look it up and compare it to the amplicon location bed file of the first varVAMP run.
+Now that we have generated three possible primer schemes for qPCR using our current settings, how can we verify whether these primers are appropriate and exclude potential off-targets?
+
+You are already familiar with the bed file *"Amplicon locations"*, which is part of the output of the qpcr setting of varVAMP. As the name suggests, it provides information about the start and end positions of the amplicons, along with the crucial penalty score. Please review this file and compare it with the bed file containing the amplicon locations of the first varVAMP run.
 
 Please try to answer the following questions.
 
@@ -382,7 +383,7 @@ Please try to answer the following questions.
 >
 {: .question}
 
-Now let's try it out with a lower threshold, to get a primer scheme which is not penalized by the detection as off-target through the BLAST database. With a lower threshold value, the specificy minimizes as well, but values above 0.7 are acceptable and it depends hardly on the use case. The default value is 0.8, so let's get going with this value.
+Now let's try using a lower threshold to generate a primer scheme that is not penalized by detection as an off-target through the BLAST database. Lowering the threshold will reduce specificity, but values above 0.7 are generally acceptable, depending on the specific use case. The default value is 0.8, so let's proceed with this setting.
 
 > <hands-on-title>Primer design of Polio 1 virus with BLAST db and lower threshold</hands-on-title>
 >
@@ -401,7 +402,7 @@ Now let's try it out with a lower threshold, to get a primer scheme which is not
 >
 >       > <comment-title>Threshold control</comment-title>
 >       >
->       >Try out the automatic set for values like the threshold by varVAMP. If you choose on the website for *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify max ambiguous nts, estimate suitable threshold`, the tool will choose a value on its own. You can look up the value in the "Analysis log" file after you run it.
+>       >You can try using the automatic setting for values like the threshold in varVAMP. On the website, for the question *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"* select the option `Specify max ambiguous nts, estimate suitable threshold`. The tool will then automatically select a value, which you can find in the "Analysis log" file after running the tool.
 >       {: .comment}
 >
 > 2. Creating a dataset collection
@@ -409,7 +410,7 @@ Now let's try it out with a lower threshold, to get a primer scheme which is not
 >    {% snippet  faqs/galaxy/collections_build_list.md name="varVAMP Polio1 qpcr threshold 0.8 + BLAST" %}
 {: .hands_on}
 
-The newly designed primer schemes can be checked again with the "Amplicon locations" file. We got some questions for you prepared:
+The newly designed primer schemes can be checked again with the "Amplicon locations" file. We have prepared some questions for you to assess your understanding:
 
 > <question-title></question-title>
 > 
