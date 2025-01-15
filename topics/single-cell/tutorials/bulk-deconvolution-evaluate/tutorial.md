@@ -188,13 +188,6 @@ The above will be done twice to emulate multiple "subjects". Since the deconvolu
 
 **Remember** since we have a collection of 20 inputs, the output of this workflow will be a collection of 20 elements, each corresponding to the input elements. Each output will have its own random selection of 200 cells.
 
-> <comment-title>Inputting multiple datasets</comment-title>
->
-> In order to upload the input collections into the workflow, you first need to set the input type to **Multiple datasets** in the input file selection.
-> 
-> ![Multiple Datasets](../../images/bulk-deconvolution-evaluate/batch-mode.png "Multiple Datasets button in Galaxy")
-{: .comment}
-
 > <hands-on-title>Run pseudo-bulk and actual proportions workflow</hands-on-title>
 >
 > 1. **Import the workflow** into Galaxy
