@@ -194,8 +194,6 @@ The above will be done twice to emulate multiple "subjects". Since the deconvolu
 >    - Copy the URL (e.g. via right-click) of [this workflow](https://usegalaxy.eu/u/hexhowells/w/deconv-eval-stage-1-create-data) or download it to your computer.
 >    - Import the workflow into Galaxy
 >
->    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/transcriptomics/tutorials/rna-seq-reads-to-counts/workflows/qc_report.ga" title="QC Report" %}
->
 > 2. Run **Workflow pseudobulk and actual proportions** {% icon workflow %} using the following parameters:
 >    - {% icon param-collection %} *"Metadata"*: `Metadata`
 >    - {% icon param-collection %} *"Expression Data"*: `Expression Data`
@@ -270,8 +268,6 @@ The following workflow will take the two pseudo-bulk samples (A and B), as well 
 >    - Copy the URL (e.g. via right-click) of [this workflow](https://usegalaxy.eu/u/hexhowells/w/deconv-eval-stage-2-deconv) or download it to your computer.
 >    - Import the workflow into Galaxy
 >
->    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/transcriptomics/tutorials/rna-seq-reads-to-counts/workflows/qc_report.ga" title="QC Report" %}
->
 > 2. Run **Workflow inferring cellular proportions** {% icon workflow %} using the following parameters:
 >    - {% icon param-collection %} *"Pseudobulk - A"*: `expression data - A`
 >    - {% icon param-collection %} *"Pseudobulk - B"*: `expression data - B`
@@ -305,8 +301,6 @@ Before visualising or inspecting the outputs of the deconvolution tools, we firs
 > 1. **Import the workflow** into Galaxy
 >    - Copy the URL (e.g. via right-click) of [this workflow](https://usegalaxy.eu/u/hexhowells/w/deconv-eval-stage-3-process) or download it to your computer.
 >    - Import the workflow into Galaxy
->
->    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/transcriptomics/tutorials/rna-seq-reads-to-counts/workflows/qc_report.ga" title="QC Report" %}
 >
 > 2. Run **Workflow preprocess visualisations** {% icon workflow %} using the following parameters:
 >    - {% icon param-collection %} *"Cell Proportions"*: `A - Music Results`
@@ -549,8 +543,6 @@ With a basic understanding of some useful metrics, we will now compute these to 
 > 1. **Import the workflow** into Galaxy
 >    - Copy the URL (e.g. via right-click) of [this workflow](https://usegalaxy.eu/u/hexhowells/w/deconv-eval-stage-4-metrics) or download it to your computer.
 >    - Import the workflow into Galaxy
->
->    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/transcriptomics/tutorials/rna-seq-reads-to-counts/workflows/qc_report.ga" title="QC Report" %}
 >
 > 2. Run **Workflow compute metrics** {% icon workflow %} using the following parameters:
 >    - {% icon param-collection %} *"Cell Proportions"*: `Results Table (Music)`
