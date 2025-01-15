@@ -183,7 +183,7 @@ if __FILE__ == $PROGRAM_NAME
   if ARGV.length.positive? && (ARGV[0] == 'test')
     require 'test/unit'
     # Testing for the class
-    class IntersectionTest < Test::Unit::TestCase
+    class Gtn::Test::IntersectionTest < Test::Unit::TestCase
       def test_exact
         data = {
           'servers' => { 0 => 's0', 1 => 's1', 2 => 's2' },

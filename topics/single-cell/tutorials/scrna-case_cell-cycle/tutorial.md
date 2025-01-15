@@ -3,6 +3,10 @@ layout: tutorial_hands_on
 
 title: Removing the effects of the cell cycle
 zenodo_link: https://zenodo.org/record/7311628/
+answer_histories:
+  - label: "UseGalaxy.eu"
+    history: https://singlecell.usegalaxy.eu/u/videmp/h/cell-cycle-regression-workflow
+    date: 2024-12-13
 subtopic: tricks
 priority: 2
 questions:
@@ -33,11 +37,9 @@ contributions:
    - nomadscientist
   testing:
     - hrukkudyr
-
+    - pavanvidem
 
 ---
-
-
 
 Single-cell RNA sequencing can be sensitive to both biological and technical variation, which is why preparing your data carefully is an important part of the analysis. You want the results to reflect the interesting differences in expression between cells that relate to their type or state. Other sources of variation can conceal or confound this, making it harder for you to see what is going on.
 
@@ -243,13 +245,13 @@ Next, we'll need a list of all the genes in our dataset, so that we can mark the
 > 3. {% tool [Add column](toolshed.g2.bx.psu.edu/repos/devteam/add_value/addValue/1.0.0) %} with the following parameters:
 >    - {% icon param-file %} *"to Dataset"*: `table` (output of **Table Compute** {% icon tool %})
 >    - *"Iterate?"*: `YES`
->    
+>
 >
 >    > <comment-title>Keeping the genes in order</comment-title>
 >    >
 >    > Adding these numbers will enable us to keep the genes in their original order. This is essential for adding the cell cycle gene annotation back into the AnnData dataset.
 >    {: .comment}
->    
+>
 >
 > 4. Rename the output `Dataset_Genes`
 {: .hands_on}
@@ -328,9 +330,9 @@ We now have a table with all the gene names in the same order as the main datase
 >     ```
 >    CC_genes
 >     ```
->     
+>
 >    {% snippet faqs/galaxy/datasets_create_new_file.md format="tabular" %}
->    
+>
 >
 > 3. {% tool [Concatenate datasets](cat1) %} with the following parameters:
 >    - {% icon param-file %} *"Concatenate Dataset"*: `Pasted Entry` dataset
@@ -360,7 +362,7 @@ We will need to add the annotation to both the annotated dataset `CellCycle_Anno
 >    - {% icon param-file %} *"Annotated data matrix"*: `CellCycle_Regressed` (output of **Scanpy RegressOut** {% icon tool %})
 >    - *"Function to manipulate the object"*: `Add new annotation(s) for observations or variables`
 >        - {% icon param-file %} *"Table with new annotations"*: `out_file1` (output of **Concatenate datasets** {% icon tool %})
->        
+>
 >
 > 4. Rename the output `CellCycle_Regressed_CC`
 >
@@ -378,7 +380,7 @@ To demonstrate the power of cell cycle regression, we're going to reduce our exp
 >        - *"Type of filtering?"*: `By key (column) values`
 >            - *"Key to filter"*: `CC_genes`
 >            - *"Type of value to filter"*: `Boolean`
->            
+>
 >
 > 2. Rename the output `CellCycle_Annotated_CC_Only`
 >
@@ -389,7 +391,7 @@ To demonstrate the power of cell cycle regression, we're going to reduce our exp
 >        - *"Type of filtering?"*: `By key (column) values`
 >            - *"Key to filter"*: `CC_genes`
 >            - *"Type of value to filter"*: `Boolean`
->            
+>
 >
 > 4. Rename the output `CellCycle_Regressed_CC_Only`
 >
@@ -407,11 +409,11 @@ You will learn more about plotting your data in the [Filter, Plot and Explore]({
 >    - {% icon param-file %} *"Annotated data matrix"*: `CellCycle_Annotated_CC_Only` (output of **Manipulate AnnData** {% icon tool %})
 >    - *"Method used"*: `Computes PCA (principal component analysis) coordinates, loadings and variance decomposition, using 'tl.pca'`
 >        - *"Type of PCA?"*: `Full PCA`
->     
+>
 >    > <comment-title>Plot all the genes </comment-title>
 >    >
->    > Make sure that you de-select the option for the {% tool Cluster, infer trajectories and embed %} tool to use highly variable genes only - some of the cell cycle genes are also HVGs, but we want our plots to include the cell cycle genes that aren't HVGs too.  
->    {: .comment}   
+>    > Make sure that you de-select the option for the {% tool Cluster, infer trajectories and embed %} tool to use highly variable genes only - some of the cell cycle genes are also HVGs, but we want our plots to include the cell cycle genes that aren't HVGs too.
+>    {: .comment}
 >
 > 2. {% tool [Plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.7.1+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"Annotated data matrix"*: `anndata_out` (output of **Cluster, infer trajectories and embed** {% icon tool %})
