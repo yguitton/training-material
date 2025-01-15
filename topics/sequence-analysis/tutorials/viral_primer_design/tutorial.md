@@ -347,13 +347,8 @@ Now that we have our data, we can begin the analysis by using NCBI BLAST+ makebl
 >    - *"What kind of primers would you like to design? (varvamp mode)"*: `qPCR primers (qpcr)`
 >        - *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify values for both`
 >           - *"Threshold for consensus nucleotides"*: `0.93`
->           - *"Maximum number of ambiguous nucleotides per primer to be tolerated (default: 2)"*: `2`
->           - *"Maximum number of ambiguous nucleotides per qPCR probe to be tolerated"*: `1`
->        - *"Top n qPCR amplicons to test"*: `50`
->        - *"Minimum free energy (kcal/mol/K) cutoff*: `-3`
 >        - *"Avoid amplicons with off-target primer products?"*: `Yes`
->           - *"BLAST database"*: the output of **NCBI makeblastdb** `Enterovirus genome db`
->           - *"Customize BLAST Settings?"*: `No, use varVAMP default settings`
+>           - *"BLAST database"*: the output of **NCBI BLAST+ makeblastdb** `Enterovirus genome db`
 >
 > 4. Creating a dataset collection
 >
@@ -392,13 +387,8 @@ Now let's try using a lower threshold to generate a primer scheme that is not pe
 >    - *"What kind of primers would you like to design? (varvamp mode)"*: `qPCR primers (qpcr)`
 >        - *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"*: `Specify values for both`
 >           - *"Threshold for consensus nucleotides"*: `0.8`
->           - *"Maximum number of ambiguous nucleotides per primer to be tolerated (default: 2)"*: `2`
->           - *"Maximum number of ambiguous nucleotides per qPCR probe to be tolerated"*: `1`
->        - *"Top n qPCR amplicons to test"*: `50`
->        - *"Minimum free energy (kcal/mol/K) cutoff*: `-3`
 >        - *"Avoid amplicons with off-target primer products?"*: `Yes`
->           - *"BLAST database"*: the output of **NCBI makeblastdb** `Enterovirus genome db`
->           - *"Customize BLAST Settings?"*: `No, use varVAMP default settings`
+>           - *"BLAST database"*: the output of **NCBI BLAST+ makeblastdb** `Enterovirus genome db`
 >
 >       > <comment-title>Threshold control</comment-title>
 >       >
