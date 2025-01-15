@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 
-title: Using MultiGSEA
+title: Multiomics data analysis using MultiGSEA
 subtopic: multi-omics
 tags:
   - multi-omics
@@ -18,8 +18,9 @@ time_estimation: 1H
 key_points:
 - MultiGSEA provides an integrated workflow for pathway enrichment analysis across multi-omics data.
 - Supports pathway definitions from several databases and robust ID mapping.
-contributors:
-- tStehling
+contributions:
+  authorship:
+    - tStehling
 
 
 ---
