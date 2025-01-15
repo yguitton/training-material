@@ -286,7 +286,6 @@ The following workflow will take the two pseudo-bulk samples (A and B), as well 
 >    - {% icon param-collection %} *"Actual - A"*: `actual - A`
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
-> 3. Rename output collections / add tags?
 {: .hands_on}
 
 <iframe title="Galaxy Workflow Embed" style="width: 100%; height: 700px; border: none;" src="https://usegalaxy.eu/published/workflow?id=6a47b42bf753aa3a&embed=true&buttons=true&about=false&heading=false&minimap=true&zoom_controls=true&initialX=-20&initialY=-20&zoom=0.5"></iframe>
