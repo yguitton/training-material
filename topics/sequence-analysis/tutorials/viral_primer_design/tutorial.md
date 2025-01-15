@@ -398,16 +398,13 @@ The newly designed primer schemes can be checked again with the "Amplicon locati
 
 > <question-title></question-title>
 > 
-> 1. What is the difference of the lower threshold? Did you get a useful primer scheme?
-> 2. What was the goal of the analysis with the additional BLAST database?
-> 3. Consider other use cases for a blast database as off-target elimination!
-> 4. What is the advantage of our result?
+> 1. What is the difference with a lower threshold? Did you get a primer scheme that excludes off-targets?
+> 2. Consider other use cases for a blast database beyond off-target elimination.
 >
 > > <solution-title></solution-title>
-> > 1. We got more potential primer schemes. Yes, we got 3 primer schemes, which aren't penalized as off-targets by varVAMP.
-> > 2. To eliminate possible off-targets in sequences by giving them a high penalty.
-> > 3. If you want to prepare primers to amplify specific viral genome sequences of samples of various origins e.g. wastewater or animal blood samples for real-time surveillance through the fluorescence-based detection.
-> > 4. Now we can be certain, if we get to analyze e.g. a wastewater sample, to amplify only Polio 1 viral genome sequences with these specificly designed primers.
+> > 1. With the lower threshold, we generated more potential primer schemes, including three, that were not penalized as off-targets by varVAMP.
+> > 2. For example, you can prepare primers to amplify specific viral genome sequences from samples of various origins, such as wastewater or animal blood, for real-time surveillance using fluorescence-based detection.
+If you want to prepare primers to amplify specific viral genome sequences of samples of various origins e.g. wastewater or animal blood samples for real-time surveillance through the fluorescence-based detection.
 > {: .solution}
 >
 {: .question}
