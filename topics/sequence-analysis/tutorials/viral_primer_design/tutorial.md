@@ -429,7 +429,7 @@ The newly designed primer schemes can be checked again with the "Amplicon locati
 
 # Designing a complete pan-specific primer scheme for tiled-amplicon sequencing
 
-To explore additional options, we will now design primers for another use case using the TILED flavour. This flavour is designed to cover the entire genome of our input data. Therefore, the resulting primers are suitable for Oxford Nanopore or Illumina-based full-genome sequencing.
+To explore additional options, we will now design primers for another use case using the TILED flavour. This flavour is designed to cover the entire genome of our input data. Therefore, the resulting primers are suitable for Oxford Nanopore or Illumina-based full-genome sequencing. For many genomes there are already existing primer schemes on GitHub, so you don't have to generate them by yourself. For example, there are primer schemes available from [quick-lab](https://github.com/quick-lab/primerschemes/tree/main/primerschemes), [pha4ge](https://github.com/pha4ge/primer-schemes/tree/main/schemes), and [artic-network](https://github.com/artic-network/primer-schemes), where you can explore various primer schemes.
 
 To focus on designing the primer scheme, we will skip the multiple sequence alignment step this time and begin with the pre-aligned Polio 1-3 sequences available as part of the [ViralPrimerScheme](https://github.com/jonas-fuchs/ViralPrimerSchemes) repository.
 
