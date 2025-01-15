@@ -170,37 +170,6 @@ We will now duplicate our single-cell data 20 times and store it in a collection
 >
 {: .hands_on}
 
-## Generate expression set objects
-
-Next we will need to use the single-cell data to build an expression set object, this will be used later in the evaluation when we perform the actual deconvolution. 
-
-**Note: We are using the original imported data here, not the transposed data or collections.**
-
-> <hands-on-title>Build the Expression Set object</hands-on-title>
->
-> 1. {% tool [Construct Expression Set Object](toolshed.g2.bx.psu.edu/repos/bgruening/music_construct_eset/music_construct_eset/0.1.1+galaxy3) %} with the following parameters:
->    - {% icon param-file %} *"Assay Data"*: `EMTABesethealthy.expression.tabular` (Input dataset)
->    - {% icon param-file %} *"Phenotype Data"*: `EMTABesethealthy.phenotype.tabular` (Input dataset)
->
->    > <comment-title></comment-title>
->    >
->    > An ExpressionSet object has many data slots, the principle of which are the experiment data (*exprs*), the phenotype data (*pData*), as well metadata pertaining to experiment information and additional annotations (*fData*).
->    {: .comment}
->
-{: .hands_on}
-
-Similar to the expression data, this ExpressionSet object needs to be duplicated 20 times into a collection for later batch processing.
-
-> <hands-on-title>Generate ESet collection</hands-on-title>
->
-> 1. {% tool [Duplicate file to collection](__DUPLICATE_FILE_TO_COLLECTION__) %} with the following parameters:
->    - {% icon param-file %} *"Input Dataset"*: `RData ESet Object` (output of **Construct Expression Set Object** {% icon tool %})
->    - *"Size of output colection"*: `20`
->
-> 2. **Rename** {% icon galaxy-pencil %} output `ESet Object`
->
-{: .hands_on}
-
 
 # Create pseudo-bulk and actual cell proportions
 
@@ -264,6 +233,39 @@ Comparing the above table with the cell-type counts of the original single-cell 
 # Perform deconvolution on the pseudo-bulk data
 
 Now that we have our pseudo-bulk data alongside the actual proportion values. Our next step is to run deconvolution to get predicted cell-type proportions! Currently, Galaxy contains two tools for performing deconvolution: **MuSiC** and **NNLS**. We will use both of these tools in this tutorial and compare their results together.
+
+## Generate expression set objects
+
+First we will need to use the single-cell data to build an expression set object, which will be used in the following workflow to perform deconvolution.
+
+**Note: We are using the original imported data here, not the transposed data or collections.**
+
+> <hands-on-title>Build the Expression Set object</hands-on-title>
+>
+> 1. {% tool [Construct Expression Set Object](toolshed.g2.bx.psu.edu/repos/bgruening/music_construct_eset/music_construct_eset/0.1.1+galaxy3) %} with the following parameters:
+>    - {% icon param-file %} *"Assay Data"*: `EMTABesethealthy.expression.tabular` (Input dataset)
+>    - {% icon param-file %} *"Phenotype Data"*: `EMTABesethealthy.phenotype.tabular` (Input dataset)
+>
+>    > <comment-title></comment-title>
+>    >
+>    > An ExpressionSet object has many data slots, the principle of which are the experiment data (*exprs*), the phenotype data (*pData*), as well metadata pertaining to experiment information and additional annotations (*fData*).
+>    {: .comment}
+>
+{: .hands_on}
+
+Similar to the expression data, this ExpressionSet object needs to be duplicated 20 times into a collection for later batch processing.
+
+> <hands-on-title>Generate ESet collection</hands-on-title>
+>
+> 1. {% tool [Duplicate file to collection](__DUPLICATE_FILE_TO_COLLECTION__) %} with the following parameters:
+>    - {% icon param-file %} *"Input Dataset"*: `RData ESet Object` (output of **Construct Expression Set Object** {% icon tool %})
+>    - *"Size of output colection"*: `20`
+>
+> 2. **Rename** {% icon galaxy-pencil %} output `ESet Object`
+>
+{: .hands_on}
+
+## Run the Workflow
 
 The following workflow will take the two pseudo-bulk samples (A and B), as well as the original single-cell data as reference and output the deconvolution results for both samples and deconvolution methods. Thus producing 4 output collections. The pdf results of the deconvolution tools will also be outputted from the workflow but won't be needed for the tutorial.
 
