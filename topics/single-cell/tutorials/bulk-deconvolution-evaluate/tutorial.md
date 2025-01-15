@@ -94,6 +94,8 @@ Before continuing lets quickly inspect our single-cell data. We can find all of 
 >
 > 2. **Rename** {% icon galaxy-pencil %} output `Cell type counts`
 >
+>    {% snippet faqs/galaxy/datasets_rename.md %}
+>
 {: .hands_on}
 
 We can see from the output table below, there are various cell types present in the data. Note that many of the cell types have very low proportion values, this should be kept in mind later on as cell types that appear only a hand full of times (or even just once!) in the data may not be very useful and only add noise. 
