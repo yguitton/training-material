@@ -73,7 +73,6 @@ This tutorial is based on the GBIF {% cite gbiftuto2021 %} "Biodiversity data mo
 >
 > 3. {% tool [Regex Find And Replace](toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regex1/1.0.3) %} with the following parameters:
 >    - {% icon param-file %} *"Select lines from"*: `UC1-3c-open-refine.csv`
->    - *"using column"*: `c8`
 >    - In *"Check"*:
 >        - {% icon param-repeat %} *"Insert Check"*
 >            - *"Find Regex"*: `;`
