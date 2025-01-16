@@ -10,7 +10,7 @@ cover-image-alt: Image of a researcher or developer on a computer thinking of bu
 editorial_board:
 - Marie59
 
-tags: [subdomain, community, tool development, 3-day course]
+tags: [subdomain, community, tool development, 3-day course, dev]
 
 pathway:
 

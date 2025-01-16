@@ -3,7 +3,15 @@
 require 'json'
 require 'yaml'
 require './_plugins/gtn'
+require './_plugins/util'
 require 'securerandom'
+
+class Array
+  def cumulative_sum
+    sum = 0
+    self.map{|x| sum += x}
+  end
+end
 
 module Gtn
   # The main GTN module to parse tutorial.md and slides.html and topics into useful lists of things that can be shown on topic pages, i.e. "materials" (a possible combination of tutorial + slides)
@@ -1235,6 +1243,154 @@ module Gtn
       # Order by most popular tool
       t.sort_by { |_k, v| v['tutorials'].length }.reverse.to_h
     end
+
+
+    ##
+    # Not materials but resources (including e.g. recordings, slides separate from tutorials, etc.)
+    #
+    # The structure is a large array of arrays, with [date, category, page-like object, tags]
+    #
+    #   [#<DateTime: 2019-02-22T20:53:50+01:00 ((2458537j,71630s,0n),+3600s,2299161j)>,
+    #    "tutorials",
+    #    #<Jekyll::Page @relative_path="topics/single-cell/tutorials/scrna-preprocessing/tutorial.md">,
+    #    ["single-cell"]],
+    #   [#<DateTime: 2019-02-20T19:33:11+01:00 ((2458535j,66791s,0n),+3600s,2299161j)>,
+    #    "tutorials",
+    #    #<Jekyll::Page @relative_path="topics/single-cell/tutorials/scrna-umis/tutorial.md">,
+    #    ["single-cell"]],
+    #   [#<DateTime: 2019-02-16T21:04:07+01:00 ((2458531j,72247s,0n),+3600s,2299161j)>,
+    #    "slides",
+    #    #<Jekyll::Page @relative_path="topics/single-cell/tutorials/scrna-plates-batches-barcodes/slides.html">,
+    #    ["single-cell"]]] 
+    def self.all_date_sorted_resources(site)
+      cache.getset('all_date_sorted_resources') do
+        self._all_date_sorted_resources(site)
+      end
+    end
+
+    def self._all_date_sorted_resources(site)
+      events = site.pages.select { |x| x['layout'] == 'event' || x['layout'] == 'event-external' }
+      materials = list_all_materials(site).reject { |k, _v| k['draft'] }
+      news = site.posts.select { |x| x['layout'] == 'news' }
+      faqs = site.pages.select { |x| x['layout'] == 'faq' }
+      pathways = site.pages.select { |x| x['layout'] == 'learning-pathway' }
+      workflows = Dir.glob('topics/**/*.ga')
+
+      bucket = events.map do |e|
+        [Gtn::PublicationTimes.obtain_time(e.path).to_datetime, 'events', e, ['event'] + e.data.fetch('tags', [])]
+      end
+
+      materials.each do |m|
+        tags = [m['topic_name']] + (m['tags'] || [])
+        m.fetch('ref_tutorials', []).map do |t|
+          bucket << [Gtn::PublicationTimes.obtain_time(t.path).to_datetime, 'tutorials', t, tags]
+
+          (t['recordings'] || []).map do |r|
+            url = '/' + t.path.gsub(/tutorial(_[A_Z_]*)?.(html|md)$/, 'recordings/')
+            url += "#tutorial-recording-#{Date.parse(r['date']).strftime('%-d-%B-%Y').downcase}"
+            attr = {'title' => "Recording of " + t['title'], 
+                    'contributors' => r['speakers'] + (r['captions'] || []),
+                    'content' => "A #{r['length']} long recording is now available."}
+
+            obj = objectify(attr, url, t.path)
+            bucket << [DateTime.parse(r['date'].to_s), 'recordings', obj, tags]
+          end
+        end
+
+        m.fetch('ref_slides', []).reject { |s| s.url =~ /-plain.html/ }.map do |s|
+          bucket << [Gtn::PublicationTimes.obtain_time(s.path).to_datetime, 'slides', s, tags]
+
+          (s['recordings'] || []).map do |r|
+            url = '/' + s.path.gsub(/slides(_[A_Z_]*)?.(html|md)$/, 'recordings/')
+            url += "#tutorial-recording-#{Date.parse(r['date']).strftime('%-d-%B-%Y').downcase}"
+            attr = {'title' => "Recording of " + s['title'], 
+                    'contributors' => r['speakers'] + (r['captions'] || []),
+                    'content' => "A #{r['length']} long recording is now available."}
+            obj = objectify(attr, url, s.path)
+            bucket << [DateTime.parse(r['date'].to_s), 'recordings', obj, tags]
+          end
+        end
+      end
+
+      bucket += news.map do |n|
+        [n.date.to_datetime, 'news', n, ['news'] + n.data.fetch('tags', [])]
+      end
+
+      bucket += faqs.map do |n|
+        tag = Gtn::PublicationTimes.clean_path(n.path).split('/')[1]
+        [Gtn::PublicationTimes.obtain_time(n.path).to_datetime, 'faqs', n, ['faqs', tag]]
+      end
+
+      bucket += pathways.map do |n|
+        tags = ['learning-pathway'] + (n['tags'] || [])
+        [Gtn::PublicationTimes.obtain_time(n.path).to_datetime, 'learning-pathways', n, tags]
+      end
+
+      bucket += workflows.map do |n|
+        tag = Gtn::PublicationTimes.clean_path(n).split('/')[1]
+        wf_data = JSON.parse(File.read(n))
+
+        attrs = {
+          'title' => wf_data['name'],
+          'description' => wf_data['annotation'],
+          'tags' => wf_data['tags'],
+          'contributors' => wf_data.fetch('creator', []).map do |c|
+            matched = site.data['contributors'].select{|k, v| 
+              v.fetch('orcid', "does-not-exist") == c.fetch('identifier', "").gsub('https://orcid.org/', '')
+            }.first
+            if matched
+              matched[0]
+            else
+              c['name']
+            end
+          end
+        }
+        # These aren't truly stable. I'm not sure what to do about that.
+        obj = objectify(attrs, '/' + n.gsub(/\.ga$/, '.html'), n)
+        # obj = objectify(attrs, '/' + n.path[0..n.path.rindex('/')], n)
+        [Gtn::PublicationTimes.obtain_time(n).to_datetime, 'workflows', obj, ['workflows', tag] + obj['tags']]
+      end
+
+      # Remove symlinks from bucket.
+      bucket = bucket.reject { |date, type, page, tags|
+        File.symlink?(page.path) || File.symlink?(File.dirname(page.path)) || File.symlink?(File.dirname(File.dirname(page.path)))
+      }
+
+      bucket += site.data['contributors'].map do |k, v|
+        a = {'title' => "@#{k}",
+             'content' => "GTN Contributions from #{k}"}
+        obj = objectify(a, "/hall-of-fame/#{k}/", k)
+
+        [DateTime.parse("#{v['joined']}-01T12:00:00", 'content' => "GTN Contributions from #{k}"), 'contributors', obj, ['contributor']]
+      end
+
+      bucket += site.data['grants'].map do |k, v|
+        a = {'title' => "@#{k}",
+             'content' => "GTN Contributions from #{k}"}
+        obj = objectify(a, "/hall-of-fame/#{k}/", k)
+
+        # TODO: backdate grants, organisations
+        if v['joined']
+          [DateTime.parse("#{v['joined']}-01T12:00:00"), 'grants', obj, ['grant']]
+        end
+      end.compact
+
+      bucket += site.data['organisations'].map do |k, v|
+        a = {'title' => "@#{k}",
+             'content' => "GTN Contributions from #{k}"}
+        obj = objectify(a, "/hall-of-fame/#{k}/", k)
+
+        if v['joined']
+          [DateTime.parse("#{v['joined']}-01T12:00:00"), 'organisations', obj, ['organisation']]
+        end
+      end.compact
+
+      bucket
+        .reject{|x| x[0] > DateTime.now } # Remove future-dated materials
+        .reject{|x| x[2]['draft'] == true } # Remove drafts
+        .sort_by {|x| x[0] } # Date-sorted, not strictly necessary since will be grouped.
+        .reverse
+    end
   end
 end
 
@@ -1393,6 +1549,42 @@ module Jekyll
           .uniq { |x| x['id'] }
       end
 
+      def list_topic_materials_yearly(site, topic_name)
+        flat_mats = list_materials_flat(site, topic_name)
+        years = flat_mats.map{|x| x['pub_date'].year} + flat_mats.map{|x| x['mod_date'].year}
+        # doesn't use identify_contributors because that excludes grants/orgs.
+        topic_contribs = flat_mats.map{|x| x['contributions']  || {"all" => x['contributors']}}.map{|x| x.values.flatten}.flatten.uniq.sort
+        pfo = ['contributors', 'grants', 'organisations']
+
+        Gtn::TopicFilter.all_date_sorted_resources(site)
+          .select{|x| (x[3].include? topic_name) || (pfo.include?(x[1]) && topic_contribs.include?(x[2].title[1..]))}
+          .group_by{|x| x[0].year}
+          .map{|k, v| [k, v.group_by{|z| z[1]}]}
+          .to_h
+      end
+
+      def count_topic_materials_yearly(site, topic_name)
+        flat_mats = list_materials_flat(site, topic_name)
+        years = flat_mats.map{|x| x['pub_date'].year} + flat_mats.map{|x| x['mod_date'].year}
+        # doesn't use identify_contributors because that excludes grants/orgs.
+        topic_contribs = flat_mats.map{|x| x['contributions']  || {"all" => x['contributors']}}.map{|x| x.values.flatten}.flatten.uniq.sort
+        pfo = ['contributors', 'grants', 'organisations']
+
+        r = Gtn::TopicFilter.all_date_sorted_resources(site)
+          .select{|x| (x[3].include? topic_name) || (pfo.include?(x[1]) && topic_contribs.include?(x[2].title[1..]))}
+          .map{|x| [x[0].year, x[1]]} # Only need year + type
+          .group_by{|x| x[1]} # Group by type.
+          .map{|k, v| [k, v.map{|vv| vv[0]}.tally]}
+          .to_h
+
+        years = (2015..Date.today.year).to_a
+        # Fill in zeros for missing years
+        r.map{|k, v| [k, years.map{|y| v[y] || 0}
+          .cumulative_sum
+          .map.with_index{|value, i| {"y" => value, "x" => "#{years[i]}-01-01"}}]
+        }.to_h
+      end
+
       def list_all_tags(site)
         Gtn::TopicFilter.list_all_tags(site)
       end
@@ -1460,6 +1652,10 @@ module Jekyll
 
       def edamify(term, site)
         site.data['EDAM'].select{|row| row['Class ID'] == "http://edamontology.org/#{term}"}.first.to_h
+      end
+
+      def titlecase(term)
+        term.split(' ').map(&:capitalize).join(' ')
       end
     end
   end

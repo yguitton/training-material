@@ -774,7 +774,7 @@ blockquote {
         vertical-align: center;
       }
       .card-title{
-        height: 5rem;
+        height: 6rem;
       }
       .card-header {
 	    background: var(--brand-color);
@@ -1218,6 +1218,11 @@ nav[data-toggle='toc'] {
 	color: var(--brand-color-contrast);
 	border: 1px solid var(--hyperlink-hover);
     }
+}
+
+.contributor-badge-small{
+    border: none;
+    padding-right: 0em;
 }
 
 .contributor-badge-inline {

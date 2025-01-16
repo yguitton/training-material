@@ -41,7 +41,31 @@ pathway:
       - name: quality-control
         topic: sequence-analysis
 
-  - section: "Module 4: Assembly"
+  - section: "Module 4: Community taxonomic profiling"
+    description: |
+        This module covers the following questions:
+        - Which species (or genera, families, ...) are present in my sample?
+        - What are the different approaches and tools to get the community profile of my sample?
+        - How can we visualize and compare community profiles?
+
+        This module will cover taxonomic profiling in theory and also with an example tutorial.
+    tutorials:
+      - name: taxonomic-profiling
+        topic: microbiome
+      - name: beer-data-analysis
+        topic: microbiome
+
+  - section: "Module 5: Community diversity"
+    description: |
+       This module covers the following questions:
+        - How many different taxons are present in my sample? How do I additionally take their relative abundance into account?
+        - How similar or how dissimilar are my samples in term of taxonomic diversity?
+        - What are the different metrics used to calculate the taxonomic diversity of my samples?
+    tutorials:
+      - name: diversity
+        topic: microbiome
+
+  - section: "Module 6: Assembly"
     description: |
         This module covers the following questions:
         - Why metagenomic data should be assembled?
@@ -53,36 +77,12 @@ pathway:
       - name: metagenomics-assembly
         topic: microbiome
 
-  - section: "Module 5: Community taxonomic profiling"
-    description: |
-        This module covers the following questions:
-        - Which species (or genera, families, ...) are present in my sample?
-        - What are the different approaches and tools to get the community profile of my sample?
-        - How can we visualize and compare community profiles?
-
-        This module will cover taxonomic profiling in theory and also with an example tutorial.
-    tutorials:
-      - name: taxonomic-profiling
-        topic: microbiome
-        #description: More theoretical tutorial
-      - name: beer-data-analysis
-        topic: microbiome
-        #description: Application tutorial
-
-  - section: "Module 6: Taxonomic binning"
+  - section: "Module 7: Taxonomic binning"
     description:  |
       This module covers the process used to classify DNA sequences obtained from metagenomic sequencing into discrete groups, or bins, based on their similarity to each other.
     tutorials:
       - name: metagenomics-binning
         topic: microbiome
-
-
-  #- section: "Module 7: Community Biodiversity"
-  #  description:
-  #
-  #  tutorials:
-  #    - name: learner_participation_engagement
-  #      topic: microbiome
 
   - section: "Module 8: Applying concepts to metatranscriptomics data"
     description: |
@@ -96,6 +96,8 @@ pathway:
 
   - section: "Recommended follow-up tutorials"
     tutorials:
+      - name: metaplasmidome_query
+        topic: microbiome
       - name: pathogen-detection-from-nanopore-foodborne-data
         topic: microbiome
 ---

@@ -639,6 +639,10 @@ dbrites:
     name: Daniela Brites
     joined: 2022-03
 
+debroas:
+    name: Didier Debroas
+    joined: 2024-12
+
 dechendb:
     name: Dechen Bhuming
     joined: 2023-06
@@ -844,8 +848,11 @@ foellmelanie:
     matrix: 'foellmelanie:matrix.org'
     orcid: 0000-0002-1887-7543
     joined: 2018-10
+    elixir_node: de
     affiliations:
       - uni-freiburg
+      - deNBI
+      - elixir-europe
 
 fpsom:
     name: Fotis E. Psomopoulos
@@ -2122,6 +2129,11 @@ r1corre:
     twitter: r1corre
     orcid: 0000-0001-6354-2278
     joined: 2019-04
+
+reid-wagner:
+    name: Reid Wagner
+    email: wagnerr@umn.edu 
+    joined: 2024-11
 
 rikeshi:
     name: Erik Schill

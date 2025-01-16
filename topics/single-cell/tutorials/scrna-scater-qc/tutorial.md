@@ -7,6 +7,10 @@ priority: 1
 redirect_from:
   - /topics/transcriptomics/tutorials/scrna-scater-qc/tutorial
 zenodo_link: 'https://zenodo.org/record/3386291'
+answer_histories:
+  - label: "UseGalaxy.eu"
+    history: https://singlecell.usegalaxy.eu/u/videmp/h/single-cell-qc-with-scater
+    date: 2024-12-12
 tags:
 questions:
 - How to ensure the quality of single-cell RNA-seq data?
@@ -32,12 +36,13 @@ time_estimation: 1H
 key_points:
 - Single-cell RNA-seq data is often noisy
 - scater can be used to apply the visualise-filter-visualise paradigm of quality control
-contributors:
-- ethering
-- nsoranzo
-
+contributions:
+  authorship:
+    - ethering
+    - nsoranzo
+  testing:
+    - pavanvidem
 gitter: Galaxy-Training-Network/galaxy-single-cell
-
 ---
 
 
