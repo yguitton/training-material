@@ -225,7 +225,7 @@ nfdi4plants:
     url:  https://nfdi4plants.org
     avatar: "/training-material/shared/images/logo-dataplant.svg"
 
-nfdi4micriobiota:
+nfdi4microbiota:
     short_name: NFDI4Microbiota
     name: NFDI4Microbiota
     joined: 2024-07
