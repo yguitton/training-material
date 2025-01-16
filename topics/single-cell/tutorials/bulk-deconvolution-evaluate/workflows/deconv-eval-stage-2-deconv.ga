@@ -4,34 +4,11 @@
     "comments": [
         {
             "child_steps": [
-                14,
-                16,
-                19,
-                20,
-                7
-            ],
-            "color": "turquoise",
-            "data": {
-                "title": "Actual - Infer (A)"
-            },
-            "id": 4,
-            "position": [
-                1937.7,
-                666.2
-            ],
-            "size": [
-                778.3,
-                522.7
-            ],
-            "type": "frame"
-        },
-        {
-            "child_steps": [
                 8,
                 9,
                 10,
-                0,
-                1
+                1,
+                0
             ],
             "color": "green",
             "data": {
@@ -109,6 +86,29 @@
                 548
             ],
             "type": "frame"
+        },
+        {
+            "child_steps": [
+                14,
+                16,
+                19,
+                20,
+                7
+            ],
+            "color": "turquoise",
+            "data": {
+                "title": "Actual - Infer (A)"
+            },
+            "id": 4,
+            "position": [
+                1937.7,
+                666.2
+            ],
+            "size": [
+                778.3,
+                522.7
+            ],
+            "type": "frame"
         }
     ],
     "creator": [
@@ -119,6 +119,7 @@
         }
     ],
     "format-version": "0.1",
+    "license": "MIT",
     "name": "Music Stage 2 - Inferring cellular proportions",
     "report": {
         "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
@@ -570,14 +571,14 @@
             "when": null,
             "workflow_outputs": [
                 {
-                    "label": "MuSiC Deconvolution on input dataset(s): Proportion Matrices",
-                    "output_name": "props",
-                    "uuid": "5eeea4d0-88b4-49e2-99b0-66a2ea93119b"
-                },
-                {
                     "label": null,
                     "output_name": "out_pdf",
                     "uuid": "4478cbe6-919e-4c36-85e0-d759b41df6f1"
+                },
+                {
+                    "label": "MuSiC Deconvolution on input dataset(s): Proportion Matrices",
+                    "output_name": "props",
+                    "uuid": "5eeea4d0-88b4-49e2-99b0-66a2ea93119b"
                 }
             ]
         },
@@ -1076,6 +1077,6 @@
     "tags": [
         "name:deconv-eval"
     ],
-    "uuid": "99aa1cb3-a014-4414-899a-14ca6b2f9acf",
-    "version": 6
+    "uuid": "8a6eb9a5-adb7-478b-8331-85286c0b6b4c",
+    "version": 7
 }

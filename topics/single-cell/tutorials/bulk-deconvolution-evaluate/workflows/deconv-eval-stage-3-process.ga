@@ -53,6 +53,7 @@
         }
     ],
     "format-version": "0.1",
+    "license": "MIT",
     "name": "Music Stage 3 - Preprocess Visualisations",
     "report": {
         "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
@@ -402,6 +403,6 @@
     "tags": [
         "name:deconv-eval"
     ],
-    "uuid": "3b25763d-05b6-43d1-b671-731e478b6672",
-    "version": 16
+    "uuid": "437303ec-15b1-4635-8241-1ab8901db2ea",
+    "version": 17
 }

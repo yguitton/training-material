@@ -79,6 +79,7 @@
         }
     ],
     "format-version": "0.1",
+    "license": "MIT",
     "name": "Music Stage 4 - Compute metrics",
     "report": {
         "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
@@ -757,6 +758,6 @@
     "tags": [
         "name:deconv-eval"
     ],
-    "uuid": "bd1a4ba5-5ac9-4444-9a43-9e64c5da10cb",
-    "version": 28
+    "uuid": "009c84f5-d318-46a4-a6f1-2996351e8310",
+    "version": 29
 }

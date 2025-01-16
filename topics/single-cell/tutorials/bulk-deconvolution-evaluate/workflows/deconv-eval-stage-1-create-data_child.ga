@@ -118,6 +118,7 @@
         }
     ],
     "format-version": "0.1",
+    "license": "MIT",
     "name": "Music Stage 1 - Create pseudobulk and actual proportions (child)",
     "report": {
         "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
@@ -1059,6 +1060,6 @@
     "tags": [
         "name:deconv-eval"
     ],
-    "uuid": "d7915211-9c64-4c42-8f65-63b8c97cc66b",
-    "version": 7
+    "uuid": "efe13622-f266-4913-a99c-ef13333745f4",
+    "version": 8
 }

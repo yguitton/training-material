@@ -4,8 +4,8 @@
     "comments": [
         {
             "child_steps": [
-                1,
-                0
+                0,
+                1
             ],
             "color": "green",
             "data": {
@@ -109,6 +109,7 @@
         }
     ],
     "format-version": "0.1",
+    "license": "MIT",
     "name": "Music Stage 1 - Create pseudobulk and actual proportions",
     "report": {
         "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
@@ -2490,6 +2491,6 @@
     "tags": [
         "name:deconv-eval"
     ],
-    "uuid": "f1a45f24-a0e7-40f2-b078-9ff26397d7eb",
-    "version": 10
+    "uuid": "eca12d13-787c-4551-832b-fff1de6fcab5",
+    "version": 11
 }
