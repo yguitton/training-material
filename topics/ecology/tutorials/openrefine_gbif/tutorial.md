@@ -191,7 +191,7 @@ kind of text, numbers and dates.
 >
 > 1. Go again to "Full name" column menu and perform a `Text facet` to visualize the values, then go again to the column menu and click
 on `Text filter` , perform the following filters and fix them as described below:
->    - search for "sp1" entries -> To remove it and obtain "Cyperus", you can `Edit` directly in the cell)
+>    - search for "sp1" entries -> Then remove it and obtain "Cyperus", clicking on `Edit` directly in the cell
 >    - search for "SP2" entries, check `case sensitive` -> To remove it and obtain "Cyperus", you can `Edit` directly in the cell
 >    - search for "spp".
 >    > 1. Go to "Full name" column menu, then click `Edit cells > Transform`
