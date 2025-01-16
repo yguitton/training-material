@@ -174,7 +174,7 @@ kind of text, numbers and dates.
 
 > ### {% icon hands_on %} Hands-on: Faceting and duplicates.
 >
-> 1. Go to column catalog in "Cat. Numb" , and follow the route `Facet > Customized facets > Duplicates facet`. 
+> 1. Go to column catalog in "Cat. Numb", and follow the route `Facet > Customized facets > Duplicates facet`. 
 >    - The facet will show 4 duplicates
 > 2. Click on true, and you'll see the values in the main window
 > 3. After a check with the specimens labels, fix the values clicking edit directly on the cell with the correct catalogue numbers
