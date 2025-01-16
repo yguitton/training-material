@@ -468,6 +468,7 @@ Ok, time to train! Let's see if you can use the sort tool to answer the followin
 
 This file contains a lot of data, but we may only be interested in a subset of this data. For example, we may only want to look at one particular Olympics, or one particular sport. In such cases we can filter the dataset. This will create a new dataset, removing any rows that are not of interest to us (i.e. that don't meet the criteria we provide).
 
+## Filtering based on column contents
 
 > <hands-on-title>Filter table based on a column</hands-on-title>
 >
@@ -573,7 +574,6 @@ This file contains a lot of data, but we may only be interested in a subset of t
 
 ## Advanced Filtering with Python Syntax
 
-
 In addition to basic filtering, the Galaxy filtering tool allows for more advanced filtering using Python syntax. This can be particularly useful when you need to apply more complex conditions or manipulate the data in specific ways.
 
 > <comment-title> Understanding Python Syntax for Filtering </comment-title>
@@ -597,28 +597,30 @@ In addition to basic filtering, the Galaxy filtering tool allows for more advanc
 These concepts will be used in the filtering expressions we write in Galaxy. Let's now explore some specific scenarios where you might use these expressions.
 
 
+### Filtering Based on Substring Occurrence
+
+We want to filter rows where a particular column contains a specific substring using the `cX.find()` method, where `X` is the column number.
+
+For example, while you can easily filter Summer or Winter Olympics using `c13=="Summer"` or `c13=="Winter"` if the data is stored in a dedicated column, sometimes the data may not be that straightforward. The relevant information might be embedded in another column, like in `c11` with entries such as "1992 Summer Olympics".
+
+In such cases, you can use substring filtering:
+
+> <question-title></question-title>
+>
+> 1. How would you filter the rows where the 11th column contains "Summer"?
+> 2. How would you filter the rows where the 11th column does **not** contain "Summer"?
+>
+> > <solution-title>Answers</solution-title>
+> >
+> > 1. `c11.find('Summer') != -1`
+> > 2. `c11.find('Summer') == -1`
+> >
+> {: .solution}
+{: .question}
+
 > <hands-on-title>Filtering Based on Substring Occurrence</hands-on-title>
 >
->    We want to filter rows where a particular column contains a specific substring using the `cX.find()` method, where `X` is the column number.
->
->    For example, while you can easily filter Summer or Winter Olympics using `c13=="Summer"` or `c13=="Winter"` if the data is stored in a dedicated column, sometimes the data may not be that straightforward. The relevant information might be embedded in another column, like in `c11` with entries such as "1992 Summer Olympics".
->
->    In such cases, you can use substring filtering:
->
->    > <question-title></question-title>
->    >
->    > 1. How would you filter the rows where the 11th column contains "Summer"?
->    > 2. How would you filter the rows where the 11th column does **not** contain "Summer"?
->    >
->    > > <solution-title>Answers</solution-title>
->    > >
->    > > 1. `c11.find('Summer') != -1`
->    > > 2. `c11.find('Summer') == -1`
->    > >
->    > {: .solution}
->    {: .question}
->
->    Ok, great, now that you've got the hang of writing expressions for this tool, let's filter the file for rows where column 11 contains "Summer":
+> Ok, great, now that you've got the hang of writing expressions for this tool, let's filter the file for rows where column 11 contains "Summer":
 >
 > 1. {% tool [**Filter** data on any column using simple expressions]({{version_filter}}) %} with the following parameters:
 >    - {% icon param-file %} *"Filter"*: `olympics.tsv`
@@ -643,27 +645,30 @@ These concepts will be used in the filtering expressions we write in Galaxy. Let
 {: .hands-on }
 
 
+### Filtering Rows that Start or End with a Specific Value
+
+Filter rows based on whether a column starts or ends with a particular value using `cX.startswith()` or `cX.endswith()`.
+
+For example, if we want to:
+ - Find all athletes whose names start with "Liu".
+ - Find all teams whose names end with "China".
+
+
+> <question-title></question-title>
+>
+> 1. How would you filter rows where the 2nd column starts with "Liu"?
+> 2. How would you filter rows where the 9th column ends with "China"?
+>
+> > <solution-title>Answers</solution-title>
+> >
+> > 1. `c2.startswith('Liu')`
+> > 2. `c9.endswith('China')`
+> >
+> {: .solution}
+{: .question}
+
+
 > <hands-on-title>Filtering Rows that Start or End with a Specific Value</hands-on-title>
->
-> Filter rows based on whether a column starts or ends with a particular value using `cX.startswith()` or `cX.endswith()`.
->
-> For example, if we want to:
->
->  - Find all athletes whose names start with "Liu".
->  - Find all teams whose names end with "China".
->
-> > <question-title></question-title>
-> >
-> > 1. How would you filter rows where the 2nd column starts with "Liu"?
-> > 2. How would you filter rows where the 9th column ends with "China"?
-> >
-> > > <solution-title>Answers</solution-title>
-> > >
-> > > 1. `c2.startswith('Liu')`
-> > > 2. `c9.endswith('China')`
-> > >
-> > {: .solution}
-> {: .question}
 >
 > Ok, great, now that you've got the hang of writing expressions for this tool, let's filter the file to find all athletes whose names start with "Liu":
 >
@@ -690,54 +695,40 @@ These concepts will be used in the filtering expressions we write in Galaxy. Let
 {: .hands-on}
 
 
->  <hands-on-title>Filtering Based on the Count of Substring Occurrences</hands-on-title>
->  > Sometimes, you may need to filter rows based on how many times a certain substring appears in a column. This can be done using the `cX.count()` method.
->  > 
->  > For example, if we want to:
->  > 
->  > - Find all athletes born in December, assuming the birth date could be in either "day-month" or "month-day" format.
->  > - Find athletes with three-part names by counting spaces in the name column.
+### Filtering Based on the Count of Substring Occurrences
+
+Sometimes, you may need to filter rows based on **how many times** a certain substring appears in a column. This can be done using the `cX.count()` method.
+
+For example, if we want to find athletes with three-part names by counting spaces in the name column.
+
+> <hands-on-title>Filtering Based on the Count of Substring Occurrences</hands-on-title>
 >
->  > <question-title></question-title>
->  >
->  > 1. How would you filter rows where the 5th column contains "December"?
->  >
->  > > <solution-title>Answers</solution-title>
->  > >
->  > > 1. `c5.count('December') == 1`
->  > > 
->  > {: .solution}
-> {: .question}
+> We want to filter the dataset to find athletes with three-part names.
 >
-> Now let's filter the dataset to find all athletes born in December. Follow the steps below to apply the filtering based on the `cX.count()` method:
-> 
->  1. {% tool [**Filter** data on any column using simple expressions]({{version_filter}}) %} with the following parameters:
->     - {% icon param-file %} *"Filter"*: `olympics.tsv`
->     - {% icon param-text %} *"With the following condition"*: `c5.count('December') == 1`
->     - {% icon param-text %} *"Number of header lines to skip"*: `1`
->
->  2. {% icon galaxy-eye %} **View** the filtered file.
+> 1. Have a look at the `olympics.tsv` file
 >
 >    > <question-title></question-title>
->   >
->   > 1. How many rows contain the string "December" in column 5? (Hint: expand the dataset in your history or use {% tool [Line/Word/Character count]({{version_wc}}) %} )
->   >
->   > > <solution-title>Answers</solution-title>
->   > >
->   > > 1. `18009` (this is including the header line)
->   > >
->   {: .solution}
->   {: .question}
+>    >
+>    > 1. Which column contains the names of athletes?
+>    > 2. For athletes with 3-part names, how many spaces do we expect in that column?
+>    > 3. What expression would you use to find these cases?
+>    >
+>    > > <solution-title>Answers</solution-title>
+>    > >
+>    > > 1. Column 2 contains the names
+>    > > 2. For 3-part names we expect 2 space characters
+>    > > 3. `c2.count(' ') == 2`
+>    > >
+>    > {: .solution}
+>    {: .question}
 >
->  Next, let's filter the dataset to find athletes with three-part names. This is done by counting spaces in the name column:
->
->  1. {% tool [**Filter** data on any column using simple expressions]({{version_filter}}) %} with the following parameters:
+> 2. {% tool [**Filter** data on any column using simple expressions]({{version_filter}}) %} with the following parameters:
 >     - {% icon param-file %} *"Filter"*: `olympics.tsv`
 >     - {% icon param-text %} *"With the following condition"*: `c2.count(' ') == 2`
 >     - {% icon param-text %} *"Number of header lines to skip"*: `1`
->  
->  2. {% icon galaxy-eye %} **View** the filtered file.
->  
+>
+> 3. {% icon galaxy-eye %} **View** the filtered file.
+>
 >     > <question-title></question-title>
 >     >
 >     > 1. How many rows contain three-part names (i.e., two spaces) in column 2?
@@ -746,35 +737,40 @@ These concepts will be used in the filtering expressions we write in Galaxy. Let
 >     > >
 >     > > 1. `11259` (this is including the header line)
 >     > >
->     {: .solution}
+>     > {: .solution}
 >     {: .question}
->  
->  
->  Now let's take it a step further and filter athletes with longer names. You can filter athletes with names that contain the most parts by increasing the number of spaces.
->  
->  > <question-title></question-title>
->  >
->  > 1. How would you filter rows where the 2nd column contains **three spaces** (i.e., four-part names)?
->  >
->  > > <solution-title>Answers</solution-title>
->  > >
->  > > 1. `c2.count(' ') == 3`
->  > >
->  > {: .solution}
->  {: .question}
->  
->  > <question-title></question-title>
->  >
->  > 2. What about filtering for athletes with **five-part names** (i.e., four spaces)?
->  >
->  > > <solution-title>Answers</solution-title>
->  > >
->  > > 1. `c2.count(' ') == 4`
->  > >
->  > {: .solution}
->  {: .question}
->  
->  You can continue increasing the count (up to 5 or more spaces) to find athletes with the longest names, such as "Patricia Galvin de la Tour d'Auvergne" with a six-part name.
+>
+> 4. **Exercises.** Now let's take it a step further and filter athletes with even longer names.
+>
+>    > <question-title></question-title>
+>    >
+>    > 1. How would you filter rows where the 2nd column contains **three spaces** (i.e., four-part names)?
+>    > 2. How many medals were wone by athletes with five-part names **or more**?
+>    > 3. How many parts does the longest name have? Give an example of such a name.
+>    > 4. Bonus: **How many** athletes have 6-part names?
+>    >
+>    > > <solution-title>Hints</solution-title>
+>    > >
+>    > > 1. None ;)
+>    > > 2. You can also use greater than or less than symbols in your expression
+>    > > 3. Keep increasing the count until no results are returned
+>    > > 4. The number of lines returned indicates the number of medals won by long-named athletes, to
+>    > >    find out how many different athletes have such a name, we can use the {% tool [Count - occurrences of each record](Count1) %}
+>    > >    tool on Column 2.
+>    > {: .solution}
+>    >
+>    > > <solution-title>Answers</solution-title>
+>    > >
+>    > > 1. `c2.count(' ') == 3`
+>    > > 2. `c2.count(' ') >= 4` returns 252 lines, meaning 251 medals won accounting for the header line excluding the header line.
+>    > > 3. `c2.count(' ') == 5` is the maximum value to still return results.
+>    > >    Five spaces means a 6-part name. For example Patricia Galvin de la Tour d'Auvergne
+>    > > 4. `c2.count(' ') == 5` returns 48 records. So 48 medals were won by these long-named athletes.
+>    > >     Using the {% tool [Count - occurrences of each record](Count1) %} to count occurrences in column 2, we
+>    > >     discover that there are **20 different athletes with 6-part names**.
+>    > >
+>    > {: .solution}
+>    {: .question}
 >
 {: .hands_on}
 
@@ -800,6 +796,7 @@ Ok, time to train! let's see if you can use the {% tool [Filter]({{version_filte
 > > - Don't forget that the output (and line count) may include the header line
 > > - Do not use quotes on number columns (e.g. year)
 > > - You may need parentheses for complex conditions
+> >
 > >
 > {: .solution}
 >
