@@ -4,8 +4,8 @@
     "comments": [
         {
             "child_steps": [
-                0,
-                1
+                1,
+                0
             ],
             "color": "green",
             "data": {
@@ -24,28 +24,27 @@
         },
         {
             "child_steps": [
-                2,
-                3
+                7
             ],
-            "color": "orange",
+            "color": "turquoise",
             "data": {
-                "title": "Single-cell data"
+                "title": "Sample B"
             },
-            "id": 1,
+            "id": 4,
             "position": [
-                0,
-                279.5
+                458,
+                425.79999999999995
             ],
             "size": [
-                242.3,
-                216.9
+                240,
+                315.1
             ],
             "type": "frame"
         },
         {
             "child_steps": [
-                4,
-                5
+                5,
+                4
             ],
             "color": "green",
             "data": {
@@ -83,22 +82,30 @@
         },
         {
             "child_steps": [
-                7
+                3,
+                2
             ],
-            "color": "turquoise",
+            "color": "orange",
             "data": {
-                "title": "Sample B"
+                "title": "Single-cell data"
             },
-            "id": 4,
+            "id": 1,
             "position": [
-                458,
-                425.79999999999995
+                0,
+                279.5
             ],
             "size": [
-                240,
-                315.1
+                242.3,
+                216.9
             ],
             "type": "frame"
+        }
+    ],
+    "creator": [
+        {
+            "class": "Person",
+            "identifier": "0009-0008-9422-6380",
+            "name": "Morgan Howells"
         }
     ],
     "format-version": "0.1",
@@ -132,13 +139,7 @@
             "type": "parameter_input",
             "uuid": "2335d8fd-b2ac-443c-8531-1ea234861e2b",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "4d51927a-20a6-4d7a-b978-2b2170b94786"
-                }
-            ]
+            "workflow_outputs": []
         },
         "1": {
             "annotation": "BEGIN { print \"0\\tA_infer\\t0\" } NR &gt; 1 {print $0 }",
@@ -165,13 +166,7 @@
             "type": "parameter_input",
             "uuid": "23226507-712c-4862-9c56-875678cd8b7f",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "533ee127-b2c8-43e4-a52a-fb043e0923bd"
-                }
-            ]
+            "workflow_outputs": []
         },
         "2": {
             "annotation": "",
@@ -252,13 +247,7 @@
             "type": "parameter_input",
             "uuid": "2aca4662-e1a9-4c8e-b15d-e0d47aa6f5ed",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "9bdc04cd-4961-48be-a062-0b6f6ca42db1"
-                }
-            ]
+            "workflow_outputs": []
         },
         "5": {
             "annotation": "BEGIN { print \"0\\tB_infer\\t0\" } NR &gt; 1 {print $0 }",
@@ -285,13 +274,7 @@
             "type": "parameter_input",
             "uuid": "271ce13c-da42-421c-bfb3-c7bef3598f7c",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "79538cc4-94e1-49a2-89b9-63dbe8575595"
-                }
-            ]
+            "workflow_outputs": []
         },
         "6": {
             "annotation": "",
@@ -1396,18 +1379,7 @@
             "type": "subworkflow",
             "uuid": "444f1bc4-33de-40c6-8a9e-ebf4ef3a9a13",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "3:output",
-                    "uuid": "849ed2cf-8260-4b16-a154-538301b90e2f"
-                },
-                {
-                    "label": null,
-                    "output_name": "2:output",
-                    "uuid": "d18846ee-d7eb-4aac-9464-cc73bdf3f9b6"
-                }
-            ]
+            "workflow_outputs": []
         },
         "7": {
             "annotation": "",
@@ -2512,24 +2484,12 @@
             "type": "subworkflow",
             "uuid": "dc1d1003-d5d5-4a41-9ba4-4a10fcdfec37",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "3:output",
-                    "uuid": "9ff77e36-e5b2-4a15-9e46-b9520903b259"
-                },
-                {
-                    "label": null,
-                    "output_name": "2:output",
-                    "uuid": "b21100d7-3629-40c1-b7b9-1bfc39da5960"
-                }
-            ]
+            "workflow_outputs": []
         }
     },
     "tags": [
-        "name:MuSiC",
-        "name:final"
+        "name:deconv-eval"
     ],
-    "uuid": "34f93393-3175-4573-adb8-726357a298a6",
-    "version": 8
+    "uuid": "f1a45f24-a0e7-40f2-b078-9ff26397d7eb",
+    "version": 10
 }

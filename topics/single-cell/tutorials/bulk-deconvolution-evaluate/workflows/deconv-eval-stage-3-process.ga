@@ -4,25 +4,6 @@
     "comments": [
         {
             "child_steps": [
-                2
-            ],
-            "color": "pink",
-            "data": {
-                "title": "Pre-process for Scatter Plots"
-            },
-            "id": 0,
-            "position": [
-                534.49978547795,
-                0
-            ],
-            "size": [
-                265,
-                190
-            ],
-            "type": "frame"
-        },
-        {
-            "child_steps": [
                 3,
                 4,
                 5,
@@ -43,6 +24,32 @@
                 193.8
             ],
             "type": "frame"
+        },
+        {
+            "child_steps": [
+                2
+            ],
+            "color": "pink",
+            "data": {
+                "title": "Pre-process for Scatter Plots"
+            },
+            "id": 0,
+            "position": [
+                534.49978547795,
+                0
+            ],
+            "size": [
+                265,
+                190
+            ],
+            "type": "frame"
+        }
+    ],
+    "creator": [
+        {
+            "class": "Person",
+            "identifier": "0009-0008-9422-6380",
+            "name": "Morgan Howells"
         }
     ],
     "format-version": "0.1",
@@ -226,12 +233,7 @@
                     "output_name": "out_file1"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Cut",
-                    "name": "input"
-                }
-            ],
+            "inputs": [],
             "label": "cut diff error",
             "name": "Cut",
             "outputs": [
@@ -252,7 +254,7 @@
                 }
             },
             "tool_id": "Cut1",
-            "tool_state": "{\"columnList\": \"c1,c4\", \"delimiter\": \"T\", \"input\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"columnList\": \"c1,c4\", \"delimiter\": \"T\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.2",
             "type": "tool",
             "uuid": "b221ce69-355a-4466-ad3d-114abae5c57c",
@@ -398,9 +400,8 @@
         }
     },
     "tags": [
-        "name:MuSiC",
-        "name:final"
+        "name:deconv-eval"
     ],
-    "uuid": "e208c8bb-1462-499b-9320-84cf6f5ea4c8",
-    "version": 15
+    "uuid": "3b25763d-05b6-43d1-b671-731e478b6672",
+    "version": 16
 }

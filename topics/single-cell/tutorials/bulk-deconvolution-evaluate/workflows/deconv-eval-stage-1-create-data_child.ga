@@ -4,27 +4,6 @@
     "comments": [
         {
             "child_steps": [
-                0,
-                1,
-                4
-            ],
-            "color": "turquoise",
-            "data": {
-                "title": "Single-cell data"
-            },
-            "id": 0,
-            "position": [
-                0,
-                42.9
-            ],
-            "size": [
-                496.2,
-                261.3
-            ],
-            "type": "frame"
-        },
-        {
-            "child_steps": [
                 18,
                 19,
                 20
@@ -41,6 +20,26 @@
             "size": [
                 745,
                 199.8
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
+                17,
+                3
+            ],
+            "color": "yellow",
+            "data": {
+                "title": "Rename header"
+            },
+            "id": 3,
+            "position": [
+                2058.5,
+                594.9
+            ],
+            "size": [
+                484.8,
+                204.3
             ],
             "type": "frame"
         },
@@ -67,32 +66,12 @@
         },
         {
             "child_steps": [
-                3,
-                17
-            ],
-            "color": "yellow",
-            "data": {
-                "title": "Rename header"
-            },
-            "id": 3,
-            "position": [
-                2058.5,
-                594.9
-            ],
-            "size": [
-                484.8,
-                204.3
-            ],
-            "type": "frame"
-        },
-        {
-            "child_steps": [
-                2,
                 5,
                 7,
                 9,
                 11,
-                13
+                13,
+                2
             ],
             "color": "green",
             "data": {
@@ -108,6 +87,34 @@
                 273.1
             ],
             "type": "frame"
+        },
+        {
+            "child_steps": [
+                4,
+                1,
+                0
+            ],
+            "color": "turquoise",
+            "data": {
+                "title": "Single-cell data"
+            },
+            "id": 0,
+            "position": [
+                0,
+                42.9
+            ],
+            "size": [
+                496.2,
+                261.3
+            ],
+            "type": "frame"
+        }
+    ],
+    "creator": [
+        {
+            "class": "Person",
+            "identifier": "0009-0008-9422-6380",
+            "name": "Morgan Howells"
         }
     ],
     "format-version": "0.1",
@@ -1050,9 +1057,8 @@
         }
     },
     "tags": [
-        "name:MuSiC",
-        "name:final"
+        "name:deconv-eval"
     ],
-    "uuid": "0f0266d3-ed43-4419-97ce-ca740ea9fa7d",
-    "version": 5
+    "uuid": "d7915211-9c64-4c42-8f65-63b8c97cc66b",
+    "version": 7
 }

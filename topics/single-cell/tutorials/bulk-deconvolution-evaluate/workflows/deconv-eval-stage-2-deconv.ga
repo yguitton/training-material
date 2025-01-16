@@ -4,11 +4,34 @@
     "comments": [
         {
             "child_steps": [
-                0,
-                1,
+                14,
+                16,
+                19,
+                20,
+                7
+            ],
+            "color": "turquoise",
+            "data": {
+                "title": "Actual - Infer (A)"
+            },
+            "id": 4,
+            "position": [
+                1937.7,
+                666.2
+            ],
+            "size": [
+                778.3,
+                522.7
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
                 8,
                 9,
-                10
+                10,
+                0,
+                1
             ],
             "color": "green",
             "data": {
@@ -46,52 +69,6 @@
         },
         {
             "child_steps": [
-                17,
-                6,
-                13,
-                15,
-                18
-            ],
-            "color": "turquoise",
-            "data": {
-                "title": "Actual - Infer (B)"
-            },
-            "id": 3,
-            "position": [
-                1936.4,
-                97.5
-            ],
-            "size": [
-                775,
-                548
-            ],
-            "type": "frame"
-        },
-        {
-            "child_steps": [
-                19,
-                16,
-                7,
-                14,
-                20
-            ],
-            "color": "turquoise",
-            "data": {
-                "title": "Actual - Infer (A)"
-            },
-            "id": 4,
-            "position": [
-                1937.7,
-                666.2
-            ],
-            "size": [
-                778.3,
-                522.7
-            ],
-            "type": "frame"
-        },
-        {
-            "child_steps": [
                 11,
                 12
             ],
@@ -109,6 +86,36 @@
                 447.4
             ],
             "type": "frame"
+        },
+        {
+            "child_steps": [
+                13,
+                15,
+                17,
+                18,
+                6
+            ],
+            "color": "turquoise",
+            "data": {
+                "title": "Actual - Infer (B)"
+            },
+            "id": 3,
+            "position": [
+                1936.4,
+                97.5
+            ],
+            "size": [
+                775,
+                548
+            ],
+            "type": "frame"
+        }
+    ],
+    "creator": [
+        {
+            "class": "Person",
+            "identifier": "0009-0008-9422-6380",
+            "name": "Morgan Howells"
         }
     ],
     "format-version": "0.1",
@@ -223,13 +230,7 @@
             "type": "parameter_input",
             "uuid": "2055e45e-6b72-49a8-94f4-e0c5b1790aef",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "741b64ea-4b40-4191-a0e6-3a69d6d92854"
-                }
-            ]
+            "workflow_outputs": []
         },
         "4": {
             "annotation": "Example: sampleID, Individual",
@@ -256,13 +257,7 @@
             "type": "parameter_input",
             "uuid": "3cbbc205-218b-4263-b53d-d3548f4f469c",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "738ae839-4e01-4eec-a2bd-7f18186454d3"
-                }
-            ]
+            "workflow_outputs": []
         },
         "5": {
             "annotation": "Comma list of cell types to use from scRNA dataset.\n\nExample: acinar,alpha,beta,delta,ductal,gamma",
@@ -289,13 +284,7 @@
             "type": "parameter_input",
             "uuid": "d4fceba5-401a-4c03-b848-b1a2d513f2bb",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "ad320939-89f2-4746-b0ba-c6363ac49fc7"
-                }
-            ]
+            "workflow_outputs": []
         },
         "6": {
             "annotation": "Tabular format\nRow &amp; Column Headers\nRows of cell types\nColumn header \"A_actual\" or similar",
@@ -581,14 +570,14 @@
             "when": null,
             "workflow_outputs": [
                 {
-                    "label": null,
-                    "output_name": "out_pdf",
-                    "uuid": "4478cbe6-919e-4c36-85e0-d759b41df6f1"
-                },
-                {
                     "label": "MuSiC Deconvolution on input dataset(s): Proportion Matrices",
                     "output_name": "props",
                     "uuid": "5eeea4d0-88b4-49e2-99b0-66a2ea93119b"
+                },
+                {
+                    "label": null,
+                    "output_name": "out_pdf",
+                    "uuid": "4478cbe6-919e-4c36-85e0-d759b41df6f1"
                 }
             ]
         },
@@ -1085,9 +1074,8 @@
         }
     },
     "tags": [
-        "name:MuSiC",
-        "name:final"
+        "name:deconv-eval"
     ],
-    "uuid": "b49a7db0-2239-4fd7-8bac-2f897c161251",
-    "version": 5
+    "uuid": "99aa1cb3-a014-4414-899a-14ca6b2f9acf",
+    "version": 6
 }
