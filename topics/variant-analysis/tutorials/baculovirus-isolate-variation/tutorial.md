@@ -42,7 +42,7 @@ ranges between 90 to 180 kbp and can encode up to 180 open reading frames (ORF).
 A detailed description of the biology of the Baculoviridae family can be found in the
 official report of the International Committee on Taxonomy of Viruses (ICTV) ({% cite Harrison2018 %}). A detailed summary can also be found on the website of the ICTV (https://ictv.global/).
 
-> <details-title> A Baculovirus Genome </details-title>
+> <comment-title> A Baculovirus Genome </comment-title>
 >
 > The genome of the isolate Autographa californica multiple nucleopolyhedrovirus isolate C6 (AcMNPV-C6)
 > (family *Baculoviridae*, genus *Alphabaculovirus*, species *Alphabaculovirus aucalifornicae*) is one of the 
@@ -56,7 +56,7 @@ official report of the International Committee on Taxonomy of Viruses (ICTV) ({%
 > 
 > ![Alternative text](https://ictv.global/sites/default/files/inline-images/7651.ODD.Baculo.Fig2.v2.png "Figure: Schematic representation of the AcMNPV-C6 genome. ORFs and their orientation are indicated by arrows. (Figure from {% cite ICTV_AcMNPV_genome_figure %})")
 >
-{: .details}
+{: .comment}
 
 The genome size makes it difficult to study genetic variation within a baculovirus population, 
 especially since the most commonly used sequencing technique (Illumina sequencing) 
@@ -364,7 +364,7 @@ To understand how the data is stored, we have to look at FORMAT in detail. This 
 > Maybe later? Then let's continue.
 {: .tip}
 
-# VCF to table transformation
+# VCF to Table Transformation
 
 Now we come to an exciting part, because we have all the information we need to analyse the genetic variation within the sequenced virus populations. The data is only hidden in the VCF file and is difficult for the beginner in bioinformatics to see. We have the positions (`POS`), which were detected as variable in the virus populations. In addition, we know the number of all reads (and thus also nucleotides) in these positions (represented by `DP`). By using `DPR`, we obtain information on how often the alleles (the four possible nucleotides) occur at a particular position. To analyse `DP` and `DPR`, we first have to access it because the information is hidden in each *sample column* in the `FORMAT` genotype data. If we look at the first position `POS = 246` in sample column `SRR31589146`, the following data is visible:     
 `1/1:255,98,0,255,255,255,255,255,255,255:885:106,773,6,0`.  
@@ -465,7 +465,7 @@ The output table is complex and shows the relative frequency (`REL.ALT`) for eac
 
 Below is the table with selected relevant columns only. `REL` and `ALT` show the reference and alternative nucleotide, respectively.    
 
-| #CHROM | POS | REF | ALT | SAMPLE      | DP  | DPR         | ALLELE | DPR.ALLELE | REL.ALT    | REL.ALT.0.05 |
+| CHROM  | POS | REF | ALT | SAMPLE      | DP  | DPR         | ALLELE | DPR.ALLELE | REL.ALT    | REL.ALT.0.05 |
 |--------|-----|-----|-----|-------------|-----|-------------|--------|------------|------------|--------------|
 | CpGV-M | 246 | C   | T   | SRR31589146 | 885 | 106,773,6,0 | ALT1   | 773        | 0.873446   | 0.873446     |
 | CpGV-M | 246 | C   | T   | SRR31589147 | 878 | 4,873,1,0   | ALT1   | 873        | 0.994305   | 0.994305     |
@@ -481,7 +481,7 @@ Below is the table with selected relevant columns only. `REL` and `ALT` show the
 | CpGV-M | 246 | C   | A   | SRR31679023 | 845 | 42,803,0,0  | ALT3   | 0          | 0          | 0            |
 
 
-# Replace SRA names with virus abbreviations
+## Replace SRA Names with Virus Abbreviations
 
 One thing that stands out are the SAMPLE names, which were taken automatically from the NCBI SRA datasets. Since it is difficult to remember which virus isolate is behind which SRA number, we can replace the accession numbers with proper names. This makes the table even easier to read and later we can use the information directly to display the SNV positions. 
 
@@ -506,6 +506,7 @@ One thing that stands out are the SAMPLE names, which were taken automatically f
 >            - *"in column"*: `c23`
 >            - *"Find pattern"*: `SRR31679023`
 >            - *"Replace with"*: `CpGV-V15`
+>    - Click Run Tool
 >
 >    > <question-title>What is replaced by what?</question-title>
 >    > 1. Can you say which SRA number was replaced by which isolate abbreviation?
@@ -519,34 +520,50 @@ One thing that stands out are the SAMPLE names, which were taken automatically f
 >
 {: .hands_on}
 
-# Reduce complexity of SNV table to first alternative
+## Reduce Complexity of SNV Table to First Alternative
 
+Based on the SNV table, we can see that three possible nucleotides (alleles) occur in most positions. After filtering with a minimum threshold of REL.ALT > 0.05, many relative frequencies of ALT2 and ALT3 are set to zero. At least it is visible that in the vast majority of positions only the first alternative has a value of > 0.05. Thus, two nucleotides usually occur in the detected SNV positions: the reference nucleotide (REF) and the nucleotide of the first alternative (ALT1). We want to reduce the complexity of the data set and only consider ALT1 in the further course of this tutorial.
 
-
-> <hands-on-title> Task description </hands-on-title>
+> <hands-on-title>Keep only ALT1 and remove ALT2 and ALT3</hands-on-title>
 >
 > 1. {% tool [Filter](Filter1) %} with the following parameters:
 >    - {% icon param-file %} *"Filter"*: `outfile` (output of **Text reformatting** {% icon tool %})
 >    - *"With following condition"*: `c28=='ALT1'`
+>    - *"Numbers of header ines to skip"*: `1`
+>    - Click Run Tool
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
+>    > <question-title>Mainly two nucleotides only in vairable SNV positions?</question-title>
+>    > Think about an option how the occurance of one, two, three or four nucleotides per SNV position can be analyzed.   
 >    {: .comment}
+>
+>    > <warning-title>Be careful when removing data!</warning-title>  
+>    > The data sets used here have already been analysed extensively and for this tutorial only the first alternative nucleotide (allele) is sufficient to explain the further workflow. Always be sure what you are doing when you remove data! Always ask yourself if you are allowed to do it and what the consequences might be. 
+>    {: .warning}
 >
 {: .hands_on}
 
+# Visualizing SNV Variability Across Isolates
 
+The final table should be much easier to read and contain all the information we need to perform an analysis of the intra-isolate specific variability. Here is an short overview about the final table (selected columns) and its first three SNV positions:  
 
+| CHROM  | POS | REF | ALT | SAMPLE   | DP  | DPR         | ALLELE | DPR.ALLELE | REL.ALT  | REL.ALT.0.05 |
+|--------|-----|-----|-----|----------|-----|-------------|--------|------------|----------|--------------|
+| CpGV-M | 246 | C   | T   | CpGV-E2  | 885 | 106,773,6,0 | ALT1   | 773        | 0.873446 | 0.873446     |
+| CpGV-M | 246 | C   | T   | CpGV-S   | 878 | 4,873,1,0   | ALT1   | 873        | 0.994305 | 0.994305     |
+| CpGV-M | 246 | C   | T   | CpGV-M   | 934 | 799,133,1,1 | ALT1   | 133        | 0.142398 | 0.142398     |
+| CpGV-M | 246 | C   | T   | CpGV-V15 | 845 | 42,803,0,0  | ALT1   | 803        | 0.950296 | 0.950296     |
+| CpGV-M | 249 | A   | C   | CpGV-E2  | 884 | 106,777,1   | ALT1   | 777        | 0.878959 | 0.878959     |
+| CpGV-M | 249 | A   | C   | CpGV-S   | 873 | 2,871,0     | ALT1   | 871        | 0.997709 | 0.997709     |
+| CpGV-M | 249 | A   | C   | CpGV-M   | 935 | 798,137,0   | ALT1   | 137        | 0.146524 | 0.146524     |
+| CpGV-M | 249 | A   | C   | CpGV-V15 | 850 | 48,800,2    | ALT1   | 800        | 0.941176 | 0.941176     |
+| CpGV-M | 564 | T   | C   | CpGV-E2  | 955 | 98,847,9,1  | ALT1   | 847        | 0.886911 | 0.886911     |
+| CpGV-M | 564 | T   | C   | CpGV-S   | 932 | 1,925,6,0   | ALT1   | 925        | 0.992489 | 0.992489     |
+| CpGV-M | 564 | T   | C   | CpGV-M   | 973 | 821,151,1,0 | ALT1   | 151        | 0.15519  | 0.15519      |
+| CpGV-M | 564 | T   | C   | CpGV-V15 | 868 | 33,834,1,0  | ALT1   | 834        | 0.960829 | 0.960829     |
 
+We can now start the first visualisation and create a plot for each CpGV isolate (`SAMPLE`), plotting the position of the SNV (`POS`) against the relative frequency of the alternative nucleotide (`REL.ALT`). Note that we are not using the REL.ALT threshold values because we want to look at the unfiltered data.
 
-## SNV plot - Homogenity/heterogenity check
-
-> <hands-on-title> Task description </hands-on-title>
+> <hands-on-title>SNV plot</hands-on-title>
 >
 > 1. {% tool [Scatterplot with ggplot2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_point/ggplot2_point/3.4.0+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"Input in tabular format"*: `out_file1` (output of **Filter** {% icon tool %})
@@ -567,98 +584,115 @@ One thing that stands out are the SAMPLE names, which were taken automatically f
 >        - *"Axis scaling"*: `Automatic axis scaling`
 >    - In *"Output Options"*:
 >        - *"Unit of output dimensions"*: `Centimeters (cm)`
->        - *"width of output"*: `40.0`
+>        - *"width of output"*: `20.0`
 >        - *"height of output"*: `12.0`
 >        - *"dpi of output"*: `200.0`
+>    - Click Run Tool
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
+>    > <comment-title> Column names and numbers </comment-title>
+>    > To provide ggplot2 with the data for the X- and Y-axis, column numbers must be passed to the function. You have to check which column numbers the columns `POS` and `REL.ALT` have. In addition, ggplot2 offers the option of to split the data according to `SAMPLE`, to obtain a separate plot for each value in SAMPLE. 
+>    > * `POS` = column 2  
+>    > * `REL.ALT` = column 30  
+>    > * `SAMPLE` = column 23  
+>    > ![VCF tab-deliminated table with column names and numbers](../../images/baculovirus-isolate-variation/galaxy_vcf_table_column_numbers_names.png "Section of the VCF table with column numbers and names. ")
 >    {: .comment}
 >
 {: .hands_on}
 
+As a result, we get a SNV plot that shows the relative frequency of the first alternative nucleotide in all variable SNV positions. Before we have a closer look at the data, we have to remember that all the sequencing data (= the reads) were mapped during this workflow against the reference genome of CpGV-M. For that reason, all isolates are compared to the genome of CpGV-M. We see that CpGV-E2 has a heterogeneous SNV pattern. CpGV-M appears homogeneous but with relatively few genetic variation – but keep in mind that the sequence data of CpGV-M was mapped against its own reference, which is why one might assume less variability. For CpGV-S, the variability is also homogeneous, but many SNV positions have a nucleotide frequency close to one. This could indicate that the isolate is homogeneous but different from the reference CpGV-M. For isolate CpGV-V15, a SNV cloud occurs at approximately 0.5 (50%), which could indicate a mixed isolate. By “mixed”, it is meant that two or more (homogenous) isolates occur in a certain ratio in this sample.
 
-# SNV Specificity determination
+![SNV plot](../../images/baculovirus-isolate-variation/snp_plot.png "Single nucleotide variant (SNV) plot of all variable positions in the sequenced CpGV isolates CpGV-E2 (top left), CpGV-M (top right), CpGV-S (bottom left) and CpGV-V15 (bottom right). Each point represents the relative frequency of the first alternative nucleotide (allele).")
 
-> <hands-on-title> Task description </hands-on-title>
+# SNV Specificity Determination
+
+Now we come to the last but most complex section of this tutorial - determining SNV specificities. We have seen that CpGV-V15 is a mixed isolate. Now we want to find out which isolates were mixed and how this SNV pattern can be explained. In the next step, we will consider  SNV positions as markers  and look for SNV positions that are only variable for one or more sequenced isolates of CpGV. If an SNV position is only variable for CpGV-S (i.e. the relative frequency is greater than 0; `REL.ALT > 0`) but is equal to zero for the other isolates, then this position is a marker for CpGV-S, or specific for CpGV-S. Since we cannot perform this determination by hand for all positions, I have written a small program implemented in the **Text reformatting** tool that does the work for us. 
+
+Before we get started, I would like to explain specificity in more detail using an example. First, we decide that we want to determine the specificities for the SNV positions for the following isolates:
+* CpGV-M
+* CpGV-S
+* CpGV-E2.  
+
+Isolate CpGV-V15 is not included in the analysis of SNV specificity determination because we want to explain its composition later with the other data sets.  
+
+The principle behind SNV specificities and how they are determined can be explained by the table below. In the first position 249, all isolates (CpGV-E2, CpGV-S and CpGV-M) have a relative nucleotide frequency >0. This means that all three sequenced isolates have an alternative nucleotide at this position, with frequencies of 14.7%, 88% and >99% for CpGV-M, CpGV-E2 and CpGV-S, respectively. The remaining percentages are the reference nucleotide. Note that I am using the `REL.ALT.0.05` values, which are based on the threshold of 0.05 (values <0.05 were set to zero). By this, the tutorial is simplified. Position 249 is thus variable for all three sequenced isolates and therefore specific for `CpGV-E2 + CpGV-S + CpGV-M`.  
+In the second position 603, only CpGV-E2 has an alternative nucleotide, its `REL.ALT.0.05 > 0`. The isolates of CpGV-S and CpGV-M show no variability in position 603 and are therefore identical to the reference. Thus, `position 603 is specific for CpGV-E2`. If we apply the same logic to positions 1278 and 6393, we can see that `position 1278 is specific for CpGV-S` and `position 6393 is specific for CpGV-E2 and CpGV-S`.  
+If we now wanted to detect specifically isolate CpGV-S and CpGV-E2 in a mixture, positions 603 and 1278 could serve as markers.    
+
+|  POS   | REL.ALT0.05 (CpGV-E2) | REL.ALT0.05 (CpGV-S)  | REL.ALT0.05 (CpGV-M)  | SNV Specificity               |  
+|--------|-----------------------|-----------------------|-----------------------|-------------------------------|
+|249     | 0.88009               | 0.997709              | 0.146524              | CpGV-E2 + CpGV-S + CpGV-M     |
+|603     | 0.898816              | 0                     | 0                     | CpGV-E2                       |
+|1278    | 0                     | 1                     | 0                     | CpGV-S                        |
+|6393    | 0.989407              | 1                     | 0                     | CpGV-E2 + CpGV-S              |
+
+Let us run the tool below to determine the SNV specificities of our dataset.  
+
+> <hands-on-title> SNV specificity determination </hands-on-title>
 >
 > 1. {% tool [Text reformatting](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/9.3+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `out_file1` (output of **Filter** {% icon tool %})
->    - *"AWK Program"*: `BEGIN { FS=\t; OFS=\t }
-NR == 1 {
-    # Drucke den Header und füge die neue Spalte SPEC hinzu
-    print $0, SPEC;
-    next;
-}
-
-{
-    # Wenn wir eine neue Position erreichen, bereite die Spezifität vor
-    if ($2 != current_pos) {
-        # Verteile die berechnete Spezifität an alle Zeilen der aktuellen Position
-        for (i in pos_lines) {
-            # Füge SNV specificity:  vor die Spezifität hinzu
-            final_spec = (specificity ==  ? 0 : SNV specificity:  specificity);
-            print pos_lines[i], final_spec;
-        }
-        # Setze Variablen für die neue Position zurück
-        delete pos_lines;
-        specificity = ;
-        current_pos = $2;
-    }
-
-    # Speichere die aktuelle Zeile für später
-    pos_lines[NR] = $0;
-
-    # Bedingungen für die Berechnung der Spezifität
-    if ($28 == ALT1 && ($23 == CpGV-E2 || $23 == CpGV-S || $23 == CpGV-M) && $31 > 0) {
-        # Konkateniere die Isolate-Namen mit  + , wenn die REL.ALT.0.05 > 0 ist
-        specificity = (specificity ==  ? $23 : specificity  +  $23);
-    }
-}
-
-END {
-    # Verteile die Spezifität für die letzte Position
-    for (i in pos_lines) {
-        # Füge SNV specificity:  vor die Spezifität hinzu
-        final_spec = (specificity ==  ? 0 : SNV specificity:  specificity);
-        print pos_lines[i], final_spec;
-    }
-}`
+>    - *"AWK Program"*: *Paste the code from the code box below.*
+> > <code-in-title>awk</code-in-title>
+> > ```
+> > NR == 1 {
+> >     # Print the header and add the new SPEC column
+> >     print $0, "SPEC";
+> >     next;
+> > }
+> > {
+> >     # When reaching a new position, prepare the specificity
+> >     if ($2 != current_pos) {
+> >         # Assign the calculated specificity to all rows of the current position
+> >         for (i in pos_lines) {
+> >             # Add "SNV specificity: " before the specificity value
+> >             final_spec = (specificity == "" ? "0" : "SNV specificity: " specificity);
+> >             print pos_lines[i], final_spec;
+> >         }
+> >         # Reset variables for the new position
+> >         delete pos_lines;
+> >         specificity = "";
+> >         current_pos = $2;
+> >     }
+> >     # Save the current row for later
+> >     pos_lines[NR] = $0;
+> > 
+> >     # Conditions for calculating specificity
+> >     if ($28 == "ALT1" && ($23 == "CpGV-E2" || $23 == "CpGV-S" || $23 == "CpGV-M") && $31 > 0) {
+> >         # Concatenate isolate names with " + " if REL.ALT.0.05 > 0
+> >         specificity = (specificity == "" ? $23 : specificity " + " $23);
+> >     }
+> > }
+> > END {
+> >     # Assign the specificity to the last position
+> >     for (i in pos_lines) {
+> >         # Add "SNV specificity: " before the specificity value
+> >         final_spec = (specificity == "" ? "0" : "SNV specificity: " specificity);
+> >         print pos_lines[i], final_spec;
+> >     }
+> > }
+> > ```
+> {: .code-in}
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
+>    - Click Run Tool
+> 
 >
 {: .hands_on}
 
-# SNV specificity visualisation
+# Visualization of Variable SNV Positions by Specificity
 
-## Understanding SNV specificities
+Now, the VCF table has an additional column called `SPEC`, which indicates the SNV specificity for each position. This allows us to create a special SNV plot for each isolate. The special thing about this is that a separate plot is created for each isolate and each specificity. Since we can only look at each isolate individually, we first have to filter out the data for one isolate, we start with CpGV-S. After that, a plot is created for each SNV specificity for the CpGV-S isolate.  
 
-> <hands-on-title> Task description </hands-on-title>
+> <hands-on-title> Extract data for one isolate only </hands-on-title>
 >
 > 1. {% tool [Filter](Filter1) %} with the following parameters:
 >    - {% icon param-file %} *"Filter"*: `outfile` (output of **Text reformatting** {% icon tool %})
 >    - *"With following condition"*: `c23=='CpGV-S'`
 >    - *"Number of header lines to skip"*: `1`
+>    - Click Run Tool
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
+>    > <comment-title> Filtering the CpGV-S data </comment-title>
 >    >
->    > A comment about the tool or something else. This box can also be in the main text
+>    > The VCF SNV table is reduced to the data of CpGV-S. This is done by filtering on column 23 (SAMPLE).
 >    {: .comment}
 >
 >
@@ -666,7 +700,7 @@ END {
 >    - {% icon param-file %} *"Input in tabular format"*: `out_file1` (output of **Filter** {% icon tool %})
 >    - *"Column to plot on x-axis"*: `2`
 >    - *"Column to plot on y-axis"*: `30`
->    - *"Plot title"*: `SNV specificity plot for CpGV-S`
+>    - *"Plot title"*: `Isolate CpGV-S`
 >    - *"Label for x axis"*: `Reference Genome Position of CpGV-M`
 >    - *"Label for y axis"*: `Relative Nucleotide Frequency`
 >    - In *"Advanced options"*:
@@ -681,98 +715,75 @@ END {
 >        - *"Axis scaling"*: `Automatic axis scaling`
 >    - In *"Output Options"*:
 >        - *"Unit of output dimensions"*: `Centimeters (cm)`
->        - *"width of output"*: `40.0`
+>        - *"width of output"*: `30.0`
 >        - *"height of output"*: `12.0`
 >        - *"dpi of output"*: `200.0`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
+>    - Click Run Tool
 >
 {: .hands_on}
 
+Let us now look at the result for isolate CpGV-S. We can see that all CpGV-E2 specific SNV positions have a frequency equal or close to zero. This makes sense, since we are looking at the isolate CpGV-S and the CpGV-E2 specific SNV markers should not indicate the presence of CpGV-E2. The situation is different for the SNV positions that are solely or in combination with another isolate specific for CpGV-S: here the frequency is close to 1. This also makes sense, since these markers indicate the presence of CpGV-S, which is the case. The few SNV positions that are specific for CpGV-M also do not indicate the presence of CpGV-M.  
+![SNV specificity plot for CpGV-S](../../images/baculovirus-isolate-variation/SNV_specificity_plot_CpGV-S.png "SNV specificity plot for the sequenced CpGV-S isolate.")
 
-> <hands-on-title> Task description </hands-on-title>
+> <question-title>Can you run the same analysis for CpGV-E2?</question-title>
 >
-> 1. {% tool [Filter](Filter1) %} with the following parameters:
->    - {% icon param-file %} *"Filter"*: `outfile` (output of **Text reformatting** {% icon tool %})
->    - *"With following condition"*: `c23=='CpGV-E2'`
->    - *"Number of header lines to skip"*: `1`
+> Extract the data subset for CpGv-E2 and create the SNV specificity plot. Can you interpret and understand the result?
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
->
-> 2. {% tool [Scatterplot with ggplot2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_point/ggplot2_point/3.4.0+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Input in tabular format"*: `out_file1` (output of **Filter** {% icon tool %})
->    - *"Column to plot on x-axis"*: `2`
->    - *"Column to plot on y-axis"*: `30`
->    - *"Plot title"*: `SNV specificity plot for CpGV-E2`
->    - *"Label for x axis"*: `Reference Genome Position of CpGV-M`
->    - *"Label for y axis"*: `Relative Nucleotide Frequency`
->    - In *"Advanced options"*:
->        - *"Type of plot"*: `Points only (default)`
->            - *"Data point options"*: `Default`
->        - *"Plotting multiple groups"*: `Plot multiple groups of data on individual plots`
->            - *"column differentiating the different groups"*: `32`
->        - *"Axis title options"*: `Default`
->        - *"Axis text options"*: `Default`
->        - *"Plot title options"*: `Default`
->        - *"Grid lines"*: `Hide major and minor grid lines`
->        - *"Axis scaling"*: `Automatic axis scaling`
->    - In *"Output Options"*:
->        - *"Unit of output dimensions"*: `Centimeters (cm)`
->        - *"width of output"*: `40.0`
->        - *"height of output"*: `12.0`
->        - *"dpi of output"*: `200.0`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
+> > <solution-title>Solution</solution-title>
+> >
+> >  ><hands-on-title> Extract data for CpGV-E2 </hands-on-title>
+> > >
+> > > 1. {% tool [Filter](Filter1) %} with the following parameters:
+> > >    - {% icon param-file %} *"Filter"*: `outfile` (output of **Text reformatting** {% icon tool %})
+> > >    - *"With following condition"*: `c23=='CpGV-E2'`
+> > >    - *"Number of header lines to skip"*: `1`
+> > >    - Click Run Tool
+> > >
+> > > 2. {% tool [Scatterplot with ggplot2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_point/ggplot2_point/3.4.0+galaxy1) %} with the following parameters:
+> > >    - {% icon param-file %} *"Input in tabular format"*: `out_file1` (output of **Filter** {% icon tool %})
+> > >    - *"Column to plot on x-axis"*: `2`
+> > >    - *"Column to plot on y-axis"*: `30`
+> > >    - *"Plot title"*: `Isolate CpGV-E2`
+> > >    - *"Label for x axis"*: `Reference Genome Position of CpGV-M`
+> > >    - *"Label for y axis"*: `Relative Nucleotide Frequency`
+> > >    - In *"Advanced options"*:
+> > >        - *"Type of plot"*: `Points only (default)`
+> > >            - *"Data point options"*: `Default`
+> > >        - *"Plotting multiple groups"*: `Plot multiple groups of data on individual plots`
+> > >            - *"column differentiating the different groups"*: `32`
+> > >        - *"Axis title options"*: `Default`
+> > >        - *"Axis text options"*: `Default`
+> > >        - *"Plot title options"*: `Default`
+> > >        - *"Grid lines"*: `Hide major and minor grid lines`
+> > >        - *"Axis scaling"*: `Automatic axis scaling`
+> > >    - In *"Output Options"*:
+> > >        - *"Unit of output dimensions"*: `Centimeters (cm)`
+> > >        - *"width of output"*: `30.0`
+> > >        - *"height of output"*: `12.0`
+> > >        - *"dpi of output"*: `200.0`
+> > >    - Click Run Tool
+> > >
+> > {: .hands_on}
+> {: .solution}
+{: .question}
 
+## Determining the Potential Components of a Mixed Isolate
 
-## Determining the mixture of CpGV-V15
+To create an SNV specificity plot for the isolate CpGV-V15, we proceed in exactly the same way as described above. Unfold the tip box if you are unsure how to create the SNV plot for CpGV-V15.  
 
-> <hands-on-title> Task description </hands-on-title>
+> <tip-title> Creating CpGV-V15 SNV specificity plot </tip-title>
 >
 > 1. {% tool [Filter](Filter1) %} with the following parameters:
 >    - {% icon param-file %} *"Filter"*: `outfile` (output of **Text reformatting** {% icon tool %})
 >    - *"With following condition"*: `c23=='CpGV-V15'`
 >    - *"Number of header lines to skip"*: `1`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
+>    - Click Run Tool
 >
 > 2. {% tool [Scatterplot with ggplot2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_point/ggplot2_point/3.4.0+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"Input in tabular format"*: `out_file1` (output of **Filter** {% icon tool %})
 >    - *"Column to plot on x-axis"*: `2`
 >    - *"Column to plot on y-axis"*: `30`
->    - *"Plot title"*: `SNV specificity plot for CpGV-V15`
+>    - *"Plot title"*: `Isolate CpGV-V15`
 >    - *"Label for x axis"*: `Reference Genome Position of CpGV-M`
 >    - *"Label for y axis"*: `Relative Nucleotide Frequency`
 >    - In *"Advanced options"*:
@@ -787,24 +798,22 @@ END {
 >        - *"Axis scaling"*: `Automatic axis scaling`
 >    - In *"Output Options"*:
 >        - *"Unit of output dimensions"*: `Centimeters (cm)`
->        - *"width of output"*: `40.0`
+>        - *"width of output"*: `30.0`
 >        - *"height of output"*: `12.0`
 >        - *"dpi of output"*: `200.0`
+>    - Click Run Tool
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
+{: .tip}
 
+Although we have determined the SNV specificities using CpGV-M, CpGV-S and CpGV-E2, we can transfer this information to CpGV-V15 because all isolates were mapped against the common reference of CpGV-M. Because of this, we can look at the relative abundance of the CpGV-E2 and CpGV-S markers (= SNV positions) in the CpGV-V15 isolate. Let's look at the result for CpGV-V15 (Fig. 5).   
 
+![SNV specificity plot for CpGV-V15](../../images/baculovirus-isolate-variation/SNV_specificity_plot_CpGV-V15.png  "Deciphering the composition of the isolate CpGV-V15 by using SNV specificities.")
 
+Most of the SNV positions specific for CpGV-E2 have a frequency around 0.5 (50%) (Fig. 5, SNV specificity: CpGV-E2). Looking at the positions specific for CpGV-S, we also see a SNV cloud at around 0.5 (50 %) (Fig. 5, SNV specificity: CpGV-S). From these two observations, we can conclude that CpGV-E2 and CpGV-S occur at a ratio of 50% each. As a control, we look at the markers (SNV positions) that are specific for both CpGV-E2 and CpGV-S (Fig. 5, SNV specificity: CpGV-E2 + CpGV-S). Here we see that most SNV positions have a relative frequency of ~1 (100%). This also makes sense, because if CpGV-V15 is a mixture of CpGV-E2 and CpGV-S, then the markers that indicate both isolates should be at 100%, which is the case. Based on the SNV analysis, it can be concluded that CpGV-V15 is mainly a mixture of CpGV-S and CpGV-E2.  
 
+The same analysis was carried out in more detail with significantly more isolates and it was concluded that CpGV-V15 is a mixture of CpGV-S (49%), CpGV-E2 (42%) and CpGV-M (7%) ({% cite Fan2020 %}).  
+
+The analysis presented in this tutorial is a simplification of the experiment from the publication {% cite Fan2020 %} and is intended to help explain the procedure.  
 
 # Conclusion
 
