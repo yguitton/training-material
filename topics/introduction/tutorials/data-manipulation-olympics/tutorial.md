@@ -690,48 +690,94 @@ These concepts will be used in the filtering expressions we write in Galaxy. Let
 {: .hands-on}
 
 
-> <hands-on-title>Filtering Based on the Count of Substring Occurrences </hands-on-title>
+>  <hands-on-title>Filtering Based on the Count of Substring Occurrences</hands-on-title>
+>  > Sometimes, you may need to filter rows based on how many times a certain substring appears in a column. This can be done using the `cX.count()` method.
+>  > 
+>  > For example, if we want to:
+>  > 
+>  > - Find all athletes born in December, assuming the birth date could be in either "day-month" or "month-day" format.
+>  > - Find athletes with three-part names by counting spaces in the name column.
 >
-> Sometimes, you may need to filter rows based on how many times a certain substring appears in a column. This can be done using the `cX.count()` method.
->
-> For example, if we want to:
->
-> - Find all athletes born in December or September, assuming the birth date could be in either "day-month" or "month-day" format.
->
-> > <question-title></question-title>
-> >
-> > 1. How would you filter rows where the 5th column contains "December" or "September"?Hint: Both months contain three `e` letters.
-> >
-> > > <solution-title>Answers</solution-title>
-> > >
-> > > 1. `c5.count('e') == 3`
-> > >
-> > {: .solution}
+>  > <question-title></question-title>
+>  >
+>  > 1. How would you filter rows where the 5th column contains "December"?
+>  >
+>  > > <solution-title>Answers</solution-title>
+>  > >
+>  > > 1. `c5.count('December') == 1`
+>  > > 
+>  > {: .solution}
 > {: .question}
 >
-> Ok, great, now that you've got the hang of writing expressions for this tool, let's filter the file to find all athletes born in December or September:
+> Now let's filter the dataset to find all athletes born in December. Follow the steps below to apply the filtering based on the `cX.count()` method:
+> 
+>  1. {% tool [**Filter** data on any column using simple expressions]({{version_filter}}) %} with the following parameters:
+>     - {% icon param-file %} *"Filter"*: `olympics.tsv`
+>     - {% icon param-text %} *"With the following condition"*: `c5.count('December') == 1`
+>     - {% icon param-text %} *"Number of header lines to skip"*: `1`
 >
-> 1. {% tool [**Filter** data on any column using simple expressions]({{version_filter}}) %} with the following parameters:
->    - {% icon param-file %} *"Filter"*: `olympics.tsv`
->    - {% icon param-text %} *"With the following condition"*: `c5.count('e') == 3`
->    - {% icon param-text %} *"Number of header lines to skip"*: `1`
->
-> 2. {% icon galaxy-eye %} **View** the filtered file.
+>  2. {% icon galaxy-eye %} **View** the filtered file.
 >
 >    > <question-title></question-title>
->    >
->    > 1. How many rows contained the string "December" or "September" in column 5? (Hint: expand the dataset in your history or use {% tool [Line/Word/Character count]({{version_wc}}) %} )
->    >
->    > > <solution-title>Answers</solution-title>
->    > >
->    > > 1. `36690` (this is including the header line)
->    > >
->    > {: .solution}
->    {: .question}
+>   >
+>   > 1. How many rows contain the string "December" in column 5? (Hint: expand the dataset in your history or use {% tool [Line/Word/Character count]({{version_wc}}) %} )
+>   >
+>   > > <solution-title>Answers</solution-title>
+>   > >
+>   > > 1. `18009` (this is including the header line)
+>   > >
+>   {: .solution}
+>   {: .question}
 >
-> 3. **Rename** {% icon galaxy-pencil %} both outputs to something descriptive.
+>  Next, let's filter the dataset to find athletes with three-part names. This is done by counting spaces in the name column:
+>
+>  1. {% tool [**Filter** data on any column using simple expressions]({{version_filter}}) %} with the following parameters:
+>     - {% icon param-file %} *"Filter"*: `olympics.tsv`
+>     - {% icon param-text %} *"With the following condition"*: `c2.count(' ') == 2`
+>     - {% icon param-text %} *"Number of header lines to skip"*: `1`
+>  
+>  2. {% icon galaxy-eye %} **View** the filtered file.
+>  
+>     > <question-title></question-title>
+>     >
+>     > 1. How many rows contain three-part names (i.e., two spaces) in column 2?
+>     >
+>     > > <solution-title>Answers</solution-title>
+>     > >
+>     > > 1. `11259` (this is including the header line)
+>     > >
+>     {: .solution}
+>     {: .question}
+>  
+>  
+>  Now let's take it a step further and filter athletes with longer names. You can filter athletes with names that contain the most parts by increasing the number of spaces.
+>  
+>  > <question-title></question-title>
+>  >
+>  > 1. How would you filter rows where the 2nd column contains **three spaces** (i.e., four-part names)?
+>  >
+>  > > <solution-title>Answers</solution-title>
+>  > >
+>  > > 1. `c2.count(' ') == 3`
+>  > >
+>  > {: .solution}
+>  {: .question}
+>  
+>  > <question-title></question-title>
+>  >
+>  > 2. What about filtering for athletes with **five-part names** (i.e., four spaces)?
+>  >
+>  > > <solution-title>Answers</solution-title>
+>  > >
+>  > > 1. `c2.count(' ') == 4`
+>  > >
+>  > {: .solution}
+>  {: .question}
+>  
+>  You can continue increasing the count (up to 5 or more spaces) to find athletes with the longest names, such as "Patricia Galvin de la Tour d'Auvergne" with a six-part name.
 >
 {: .hands_on}
+
 
 ## Exercises
 
