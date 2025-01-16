@@ -26,6 +26,8 @@ tags:
 contributions:
   authorship:
     - hexhowells
+  reviewing:
+    - carloscheemendonca
   funding:
     - elixir-fair-data
 
