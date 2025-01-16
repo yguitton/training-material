@@ -155,7 +155,7 @@ kind of text, numbers and dates.
 > ### {% icon hands_on %} Hands-on: Faceting and white space 2.
 >
 > 1. Go to column "Full name" and click on then go to `Text facet`. Then click on `count`.
->    - *Guzmania lingulata* is the first item in the list with 25 specimens, but it is also present in the 4th  `place with 20 specimens.
+>    - *Guzmania lingulata* is the first item in the list with 25 specimens, but it is also present in the 4th position with 20 specimens.
 > 2. Fix the error from the "Full name" column menu, `Edit Cells > Common transforms > Collapse consecutive whitespaces`.
 >
 {: .hands_on}
