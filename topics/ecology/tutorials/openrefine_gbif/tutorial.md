@@ -147,7 +147,7 @@ kind of text, numbers and dates.
 >
 > 1. Go to "Country col." column and click on column menu and perform a `Text Facet`
 >    - On a quick view, the country appears to be spelled correctly, but the facet shows three different values due to the extra spaces at the end of the text.
-> 2. Fix the error from the column menu on "Country col." column, following the route `Edit Cells > Common transforms > Trim leading and trailing whitespace`. You will see a notification message "Text transform on 38 cells in column Country col.: value.trim()" and the posibility to come back on previous state clicking on the `undo` hyperlink.
+> 2. Fix the error from the column menu on "Country col." column, following the route `Edit Cells > Common transforms > Trim leading and trailing whitespace`. You will see a notification message "Text transform on 38 cells in column Country col.: value.trim()" and the possibility to come back on previous state clicking on the `undo` hyperlink.
 > 3. Now check the facet window; only one value will remain.
 >
 {: .hands_on}
