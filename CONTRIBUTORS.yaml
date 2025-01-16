@@ -51,7 +51,7 @@ awspolly:
 
 # our real contributors <3 (please add yourself in alphabetical order)
 
-    
+
 a-asai:
     name: Atsushi Asai
     email: tbudcm7zk@i.softbank.jp
@@ -103,7 +103,7 @@ adairama:
     joined: 2024-12
     location:
       country: SG
-    
+
 
 ahmedhamidawan:
     name: Ahmed Hamid Awan
@@ -506,6 +506,10 @@ Camila-goclowski:
     joined: 2023-01
     email: camila.goclowski@gmail.com
     linkedin: camila-goclowski
+
+carloscheemendonca:
+    name: Carlos Chee Mendonça
+    joined: 2025-01
 
 charitylaw:
     name: Charity Law
@@ -959,9 +963,9 @@ GokceOGUZ:
     email: gokce_oguz@gis.a-star.edu.sg
     orcid: 0000-0003-1044-7204
     linkedin: gokce-oguz
-    location: 
+    location:
       country: SG
-    
+
 guerler:
     name: Aysam Guerler
     joined: 2017-09
@@ -1784,7 +1788,7 @@ nagoue:
     email: nadia.goue@uca.fr
     orcid: 0000-0003-2750-1473
     joined: 2019-07
-    
+
 Najatamk:
     name: Najat Amoukou
     email: najatibrahim21@gmail.com
@@ -2006,8 +2010,8 @@ paulocilasjr:
     joined: 2024-09
     email: paulocilas.moraislyra@moffitt.org
     orcid: 0000-0002-4403-6684
-    affiliations: 
-    - moffitt 
+    affiliations:
+    - moffitt
     twitter: paulocilasjr
 
 paulzierep:
@@ -2097,8 +2101,8 @@ qchiujunhao:
     name: Junhao Qiu
     joined: 2024-02
     orcid: 0009-0005-4322-3401
-    affiliations: 
-    - moffitt 
+    affiliations:
+    - moffitt
     email: junhao.qiu@moffitt.org
 
 Quickbeasts51429:
@@ -2132,7 +2136,7 @@ r1corre:
 
 reid-wagner:
     name: Reid Wagner
-    email: wagnerr@umn.edu 
+    email: wagnerr@umn.edu
     joined: 2024-11
 
 rikeshi:
