@@ -50,7 +50,7 @@ jobs:
           gem install bundler
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
-          CC=gcc-11 CXX=g++-11 npm install
+          CC=gcc-11 CXX=g++-11 npm install --build-from-resource
           bundle pristine ffi
       # END Dependencies
 
