@@ -8,6 +8,10 @@
     "markdown-yaml-metadata-parser": "^3.0.0",
     "canvas": "v3.0.0-rc2"
   }
+  "pnpm": {
+    "overrides": {
+      "gl": "8.1.6"
+  }
 }
 
 
