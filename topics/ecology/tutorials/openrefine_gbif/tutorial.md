@@ -18,6 +18,7 @@ contributions:
     authorship:
         - yvanlebras
         - sophiepamerlon
+        - laurarussell
         - gbiftraining
     funding:
         - pndb
