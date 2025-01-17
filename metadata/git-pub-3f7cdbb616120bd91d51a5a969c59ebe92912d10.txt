@@ -1,3 +1,287 @@
+GTN_GTN:1736530147
+
+A	shared/images/ASOC.jpeg
+GTN_GTN:1736320311
+
+A	topics/microbiome/tutorials/metaplasmidome_query/data-library.yaml
+GTN_GTN:1736271505
+
+A	topics/microbiome/tutorials/metaplasmidome_query/faqs/index.md
+A	topics/microbiome/tutorials/metaplasmidome_query/images/mapping_score_histogram.png
+A	topics/microbiome/tutorials/metaplasmidome_query/images/mapping_score_histogram_after_coverage_filtering.png
+A	topics/microbiome/tutorials/metaplasmidome_query/images/plasmid_coverage_histogram.png
+A	topics/microbiome/tutorials/metaplasmidome_query/tutorial.bib
+A	topics/microbiome/tutorials/metaplasmidome_query/tutorial.md
+A	topics/microbiome/tutorials/metaplasmidome_query/workflows/index.md
+A	topics/microbiome/tutorials/metaplasmidome_query/workflows/metaplasmidome-tests.yml
+A	topics/microbiome/tutorials/metaplasmidome_query/workflows/metaplasmidome.ga
+GTN_GTN:1736164963
+
+R099	metadata/git-mod-02197e63c8460daac435ad17b95d865c24d88cfc.txt	metadata/git-mod-604b572dcf2d11b0bbe550d282ece91893db0178.txt
+R099	metadata/git-pub-02197e63c8460daac435ad17b95d865c24d88cfc.txt	metadata/git-pub-604b572dcf2d11b0bbe550d282ece91893db0178.txt
+GTN_GTN:1735558139
+
+R098	metadata/git-mod-d67c1b4a044ea32b3995599aa89f93dc43d18701.txt	metadata/git-mod-02197e63c8460daac435ad17b95d865c24d88cfc.txt
+R099	metadata/git-pub-d67c1b4a044ea32b3995599aa89f93dc43d18701.txt	metadata/git-pub-02197e63c8460daac435ad17b95d865c24d88cfc.txt
+GTN_GTN:1734946591
+
+R099	metadata/git-mod-b25abfa33fe2909c7effad8e6cf45e05e9006c02.txt	metadata/git-mod-d9926f20cdc672eecbe9f48ddd1ca6c51d4ca969.txt
+R099	metadata/git-pub-b25abfa33fe2909c7effad8e6cf45e05e9006c02.txt	metadata/git-pub-d9926f20cdc672eecbe9f48ddd1ca6c51d4ca969.txt
+GTN_GTN:1734709994
+
+A	topics/community/faqs/matrix_news_bot.md
+GTN_GTN:1734689054
+
+A	news/_posts/2024-12-19-community_page.md
+A	news/images/spoc_images/community_page.png
+A	topics/community/faqs/community_activites_calendar.md
+A	topics/community/faqs/community_home.md
+A	topics/community/faqs/maintainer_home.md
+A	topics/community/images/community_home.png
+A	topics/community/images/community_maintainer_home_buttons.png
+A	topics/community/images/maintainer_home.png
+A	topics/community/tutorials/community_content/faqs/index.md
+A	topics/community/tutorials/community_content/tutorial.md
+GTN_GTN:1734623935
+
+A	news/_posts/2024-12-18-spoc.md
+A	news/images/spoc_images/2024_spoc.png
+A	news/images/spoc_images/2024_spoc_pretty.png
+A	news/images/spoc_images/community_resources_2024.png
+GTN_GTN:1734619185
+
+A	_layouts/community.html
+A	topics/admin/community.md
+A	topics/admin/maintainer.md
+A	topics/ai4life/community.md
+A	topics/ai4life/maintainer.md
+A	topics/assembly/community.md
+A	topics/climate/community.md
+A	topics/community/community.md
+A	topics/computational-chemistry/community.md
+A	topics/contributing/community.md
+A	topics/contributing/maintainer.md
+A	topics/data-science/community.md
+A	topics/data-science/maintainer.md
+A	topics/dev/community.md
+A	topics/dev/maintainer.md
+A	topics/ecology/community.md
+A	topics/epigenetics/community.md
+A	topics/evolution/community.md
+A	topics/fair/community.md
+A	topics/fair/maintainer.md
+A	topics/galaxy-interface/community.md
+A	topics/genome-annotation/community.md
+A	topics/imaging/community.md
+A	topics/introduction/community.md
+A	topics/materials-science/community.md
+A	topics/metabolomics/community.md
+A	topics/microbiome/community.md
+A	topics/proteomics/community.md
+A	topics/sequence-analysis/community.md
+A	topics/single-cell/community.md
+A	topics/statistics/community.md
+A	topics/synthetic-biology/community.md
+A	topics/teaching/community.md
+A	topics/teaching/maintainer.md
+A	topics/transcriptomics/community.md
+A	topics/variant-analysis/community.md
+A	topics/visualisation/community.md
+GTN_GTN:1734533351
+
+A	events/2025-01-28-src.md
+A	shared/images/surf.png
+A	shared/images/surf.svg
+A	topics/admin/tutorials/surf-research-cloud-galaxy/images/1.png
+A	topics/admin/tutorials/surf-research-cloud-galaxy/images/10.png
+A	topics/admin/tutorials/surf-research-cloud-galaxy/images/11.png
+A	topics/admin/tutorials/surf-research-cloud-galaxy/images/12.png
+A	topics/admin/tutorials/surf-research-cloud-galaxy/images/13.png
+A	topics/admin/tutorials/surf-research-cloud-galaxy/images/14.png
+A	topics/admin/tutorials/surf-research-cloud-galaxy/images/15.png
+A	topics/admin/tutorials/surf-research-cloud-galaxy/images/16.png
+A	topics/admin/tutorials/surf-research-cloud-galaxy/images/2.png
+A	topics/admin/tutorials/surf-research-cloud-galaxy/images/3.png
+A	topics/admin/tutorials/surf-research-cloud-galaxy/images/4.png
+A	topics/admin/tutorials/surf-research-cloud-galaxy/images/5.png
+A	topics/admin/tutorials/surf-research-cloud-galaxy/images/6.png
+A	topics/admin/tutorials/surf-research-cloud-galaxy/images/7.png
+A	topics/admin/tutorials/surf-research-cloud-galaxy/images/8.png
+A	topics/admin/tutorials/surf-research-cloud-galaxy/images/9.png
+A	topics/admin/tutorials/surf-research-cloud-galaxy/tutorial.md
+A	topics/admin/tutorials/surf-research-cloud-pulsar/images/id1.png
+A	topics/admin/tutorials/surf-research-cloud-pulsar/images/id2.png
+A	topics/admin/tutorials/surf-research-cloud-pulsar/images/surf1.png
+A	topics/admin/tutorials/surf-research-cloud-pulsar/images/surf10.png
+A	topics/admin/tutorials/surf-research-cloud-pulsar/images/surf2.png
+A	topics/admin/tutorials/surf-research-cloud-pulsar/images/surf3.png
+A	topics/admin/tutorials/surf-research-cloud-pulsar/images/surf4.png
+A	topics/admin/tutorials/surf-research-cloud-pulsar/images/surf5.png
+A	topics/admin/tutorials/surf-research-cloud-pulsar/images/surf6.png
+A	topics/admin/tutorials/surf-research-cloud-pulsar/images/surf7.png
+A	topics/admin/tutorials/surf-research-cloud-pulsar/images/surf8.png
+A	topics/admin/tutorials/surf-research-cloud-pulsar/images/surf9.png
+A	topics/admin/tutorials/surf-research-cloud-pulsar/tutorial.md
+GTN_GTN:1734523975
+
+A	news/_posts/2024-12-17-gta-feedback.md
+GTN_GTN:1734522425
+
+A	events/2025-02-04-biont-software-best-practice.md
+GTN_GTN:1734427323
+
+A	bin/lint-deploy.rb
+GTN_GTN:1734351596
+
+R099	metadata/git-mod-8cb9a3a5113d0b6a5b4374ea1865adbe76b9da68.txt	metadata/git-mod-b25abfa33fe2909c7effad8e6cf45e05e9006c02.txt
+R099	metadata/git-pub-8cb9a3a5113d0b6a5b4374ea1865adbe76b9da68.txt	metadata/git-pub-b25abfa33fe2909c7effad8e6cf45e05e9006c02.txt
+GTN_GTN:1734116077
+
+A	topics/single-cell/tutorials/scrna-case_basic-pipeline/workflows/CS3_Filter,-Plot-and-Explore-Single-cell-RNA-seq-Data-tests.yml
+R082	topics/single-cell/tutorials/scrna-case_basic-pipeline/workflows/CS3_Filter,_Plot_and_Explore_Single-cell_RNA-seq_Data.ga	topics/single-cell/tutorials/scrna-case_basic-pipeline/workflows/CS3_Filter,-Plot-and-Explore-Single-cell-RNA-seq-Data.ga
+GTN_GTN:1734116059
+
+A	topics/single-cell/tutorials/scrna-plant/workflows/scRNA-Plant-Analysis-tests.yml
+A	topics/single-cell/tutorials/scrna-plant/workflows/scRNA-Plant-Analysis.ga
+GTN_GTN:1734115964
+
+A	topics/single-cell/tutorials/scrna-raceid/workflows/RaceID-Workflow-tests.yml
+R072	topics/single-cell/tutorials/scrna-raceid/workflows/main_workflow.ga	topics/single-cell/tutorials/scrna-raceid/workflows/RaceID-Workflow.ga
+GTN_GTN:1734105652
+
+A	topics/ecology/tutorials/ENA_Biodiv_submission/images/image.PNG
+A	topics/ecology/tutorials/ENA_Biodiv_submission/images/image1.png
+A	topics/ecology/tutorials/ENA_Biodiv_submission/images/image2.png
+A	topics/ecology/tutorials/ENA_Biodiv_submission/images/image3.png
+A	topics/ecology/tutorials/ENA_Biodiv_submission/images/image4.png
+A	topics/ecology/tutorials/ENA_Biodiv_submission/images/image5.png
+A	topics/ecology/tutorials/ENA_Biodiv_submission/images/image7.PNG
+A	topics/ecology/tutorials/ENA_Biodiv_submission/images/imageI.png
+A	topics/ecology/tutorials/ENA_Biodiv_submission/metadata_GdBqCOI_ERC000011_Test.xlsx
+A	topics/ecology/tutorials/ENA_Biodiv_submission/tutorial.bib
+A	topics/ecology/tutorials/ENA_Biodiv_submission/tutorial.md
+A	topics/ecology/tutorials/ENA_Biodiv_submission/workflows/index.md
+GTN_GTN:1734105104
+
+A	topics/contributing/faqs/gtn-adr-images.md
+A	topics/contributing/faqs/gtn-adr-jekyll.md
+A	topics/contributing/faqs/gtn-adr-template.md
+A	topics/contributing/faqs/gtn-adr.md
+A	topics/contributing/faqs/gtn-slow-incremental.md
+A	videos/index.html
+A	videos/watch.html
+GTN_GTN:1734096307
+
+A	topics/statistics/images/loris_tutorial/hyperparameters.png
+A	topics/statistics/images/loris_tutorial/model_comparison.png
+A	topics/statistics/images/loris_tutorial/report_tabs.png
+A	topics/statistics/images/loris_tutorial/robustness.png
+A	topics/statistics/images/loris_tutorial/test_metrics_results.png
+A	topics/statistics/images/loris_tutorial/tutorial_schema.png
+A	topics/statistics/tutorials/loris_model/README.md
+A	topics/statistics/tutorials/loris_model/data-library.yaml
+A	topics/statistics/tutorials/loris_model/faqs/index.md
+A	topics/statistics/tutorials/loris_model/tutorial.bib
+A	topics/statistics/tutorials/loris_model/tutorial.md
+A	topics/statistics/tutorials/loris_model/workflows/index.md
+A	topics/statistics/tutorials/loris_model/workflows/main_workflow-tests.yml
+A	topics/statistics/tutorials/loris_model/workflows/main_workflow.ga
+GTN_GTN:1733930817
+
+A	shared/images/DFG_grant.png
+GTN_GTN:1733915934
+
+A	_plugins/gtn/hooks.rb
+A	bin/find-duplicate-workflows.sh
+GTN_GTN:1733902092
+
+A	topics/variant-analysis/tutorials/dunovo/data-library.yaml
+GTN_GTN:1733733574
+
+R099	metadata/git-mod-aa284c5d875ec7123a085d0e0bcf0c59bd10c8ce.txt	metadata/git-mod-8cb9a3a5113d0b6a5b4374ea1865adbe76b9da68.txt
+R099	metadata/git-pub-aa284c5d875ec7123a085d0e0bcf0c59bd10c8ce.txt	metadata/git-pub-8cb9a3a5113d0b6a5b4374ea1865adbe76b9da68.txt
+GTN_GTN:1733508635
+
+A	news/_posts/2024-12-06-spoc_cofest.md
+A	news/images/2024-12-06-spoc-cofest_outputs.png
+GTN_GTN:1733416568
+
+R100	topics/galaxy-interface/tutorials/processing-many-samples-at-once/faqs/visualisations_igv.md	topics/galaxy-interface/tutorials/collections/faqs/visualisations_igv.md
+GTN_GTN:1733404805
+
+A	topics/single-cell/tutorials/scrna-case_FilterPlotandExplore_SeuratTools/workflows/index.md
+A	topics/single-cell/tutorials/scrna-case_FilterPlotandExplore_SeuratTools/workflows/workflow-seurat-filter-plot-explore-test.yml
+A	topics/single-cell/tutorials/scrna-case_FilterPlotandExplore_SeuratTools/workflows/workflow-seurat-filter-plot-explore.ga
+GTN_GTN:1733402887
+
+A	topics/community/faqs/codex.md
+R100	topics/dev/tutorials/community-tool-table/images/galaxy_tool_metadata_extractor_pipeline.png	topics/community/tutorials/community-tool-table/images/galaxy_tool_metadata_extractor_pipeline.png
+R100	topics/dev/tutorials/community-tool-table/images/microgalaxy_tools.png	topics/community/tutorials/community-tool-table/images/microgalaxy_tools.png
+R088	topics/dev/tutorials/community-tool-table/tutorial.md	topics/community/tutorials/community-tool-table/tutorial.md
+GTN_GTN:1733326798
+
+A	topics/contributing/faqs/github-fork-gtn.md
+A	topics/contributing/faqs/github-fork-master-main.md
+A	topics/contributing/faqs/github-fork-sync.md
+A	topics/contributing/tutorials/running-codespaces/images/codespace-publlish.png
+A	topics/contributing/tutorials/running-codespaces/images/codespaces-branch-change1.png
+A	topics/contributing/tutorials/running-codespaces/images/codespaces-branch-change2.png
+A	topics/contributing/tutorials/running-codespaces/images/codespaces-commit-plus.png
+GTN_GTN:1733312117
+
+A	shared/images/nfdi4bioimage.jpeg
+A	topics/imaging/images/omero-suite/omero_credential.png
+A	topics/imaging/images/omero-suite/omero_import.png
+A	topics/imaging/images/omero-suite/omero_metadata.png
+A	topics/imaging/images/omero-suite/omero_rois.png
+A	topics/imaging/images/omero-suite/workflow.png
+A	topics/imaging/images/omero-suite/workflow_invocation.png
+A	topics/imaging/tutorials/omero-suite/data-library.yaml
+A	topics/imaging/tutorials/omero-suite/tutorial.md
+A	topics/imaging/tutorials/omero-suite/workflows/index.md
+GTN_GTN:1733306344
+
+A	assets/images/galaxy_climate.png
+A	assets/images/galaxy_subdomain.png
+A	learning-pathways/dev_tools_training.md
+GTN_GTN:1733228124
+
+A	topics/community/images/tool_subdomain/add_interactive_tool.png
+A	topics/community/images/tool_subdomain/add_section.png
+A	topics/community/images/tool_subdomain/ecology_yml_tool.png
+A	topics/community/tutorials/tools_subdomains/faqs/index.md
+A	topics/community/tutorials/tools_subdomains/tutorial.md
+GTN_GTN:1733163332
+
+A	news/_posts/2024-11-29-tracking-of-mitochondria-and-capturing-mitoflashes.md
+GTN_GTN:1733157690
+
+A	news/_posts/2024-12-02-reviewing.md
+A	news/images/reviewing.png
+GTN_GTN:1733150886
+
+R099	metadata/git-mod-3f194fb994dca3cfc1faafee668927ca5175dda1.txt	metadata/git-mod-d67c1b4a044ea32b3995599aa89f93dc43d18701.txt
+R099	metadata/git-pub-3f194fb994dca3cfc1faafee668927ca5175dda1.txt	metadata/git-pub-d67c1b4a044ea32b3995599aa89f93dc43d18701.txt
+GTN_GTN:1733130083
+
+A	topics/fair/tutorials/earth_system_rocrate/faqs/index.md
+A	topics/fair/tutorials/earth_system_rocrate/images/all_tree_structure.png
+A	topics/fair/tutorials/earth_system_rocrate/images/rocrate1.png
+A	topics/fair/tutorials/earth_system_rocrate/images/rocrate10.png
+A	topics/fair/tutorials/earth_system_rocrate/images/rocrate11.png
+A	topics/fair/tutorials/earth_system_rocrate/images/rocrate12.png
+A	topics/fair/tutorials/earth_system_rocrate/images/rocrate13.png
+A	topics/fair/tutorials/earth_system_rocrate/images/rocrate2.png
+A	topics/fair/tutorials/earth_system_rocrate/images/rocrate3.png
+A	topics/fair/tutorials/earth_system_rocrate/images/rocrate4.png
+A	topics/fair/tutorials/earth_system_rocrate/images/rocrate5.png
+A	topics/fair/tutorials/earth_system_rocrate/images/rocrate6.png
+A	topics/fair/tutorials/earth_system_rocrate/images/rocrate7.png
+A	topics/fair/tutorials/earth_system_rocrate/images/rocrate8.png
+A	topics/fair/tutorials/earth_system_rocrate/images/rocrate9.png
+A	topics/fair/tutorials/earth_system_rocrate/images/workflow_marino.png
+A	topics/fair/tutorials/earth_system_rocrate/images/workflow_rocrate.png
+A	topics/fair/tutorials/earth_system_rocrate/slides.html
 GTN_GTN:1732881138
 
 A	topics/imaging/tutorials/detection-of-mitoflashes/data-library.yaml
