@@ -936,6 +936,12 @@ gatwirival:
     twitter: ValentineGatwi3
     joined: 2021-10
 
+gbiftraining:
+    name: GBIF training team
+    joined: 2025-01
+    affiliations:
+      - gbif
+
 gf777:
     name: Giulio Formenti
     joined: 2022-01
@@ -2365,6 +2371,13 @@ Sofokli5:
 sophia120199:
     name: Sophia Hampe
     joined: 2023-04
+
+sophiepamerlon:
+    name: Sophie Pamerlon
+    joined: 2025-01
+    affiliations:
+      - pndb
+      - gbif
 
 stain:
     name: Stian Soiland-Reyes
