@@ -79,6 +79,8 @@ The data object, which you will import from Zenodo into Galaxy via the provided 
 - **individual**: The individual donor or sample identifier.
 - **sex**: The sex of the individual.
 
+## Data Upload
+
 > <hands-on-title> Data Upload </hands-on-title>
 >
 > 1. Create a new history for this tutorial and name it "Pseudobulk DE Analysis with edgeR"
