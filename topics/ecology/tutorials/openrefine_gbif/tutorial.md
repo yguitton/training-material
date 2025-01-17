@@ -125,18 +125,18 @@ kind of text, numbers and dates.
 >    - All the values will be fixed automatically.
 >
 >
->    > ### {% icon comment %} Comment
+>    > <comment-title></comment-title>
 >    >
 >    > comment1
 >    {: .comment}
 >
 {: .hands_on}
 
-> ### {% icon question %} Questions
+> <question-title></question-title>
 >
 > 1. How many Plantae occurences you now have?
 >
-> > ### {% icon solution %} Solution
+> > <solution-title></solution-title>
 > >
 > > 1. 736
 > >
@@ -161,11 +161,11 @@ kind of text, numbers and dates.
 >
 {: .hands_on}
 
-> ### {% icon question %} Questions
+> <question-title></question-title>
 >
 > 1. How many *Guzmania lingulata* records only appear in the list finally?
 >
-> > ### {% icon solution %} Solution
+> > <solution-title></solution-title>
 > >
 > > 1. 45
 > >
@@ -199,12 +199,12 @@ kind of text, numbers and dates.
 >
 {: .hands_on}
 
-> ### {% icon question %} Questions
+> <question-title></question-title>
 >
 > 1. Do you think you can use also `Edit cells > Transform` formula to apply the changes you made manually for the 2 first terms searched ("sp1" and "SP2")?
 > 2. Why you can easily edit directly these 2 first entries and not the third one?
 >
-> > ### {% icon solution %} Solution
+> > <solution-title></solution-title>
 > >
 > > 1. Yes, using respectively `value.replace(" sp1", "")` and `value.replace(" SP2", "")` formulas
 > > 2. Because the 2 first searchs only concern one entry for each when the third one return several.
@@ -221,18 +221,18 @@ kind of text, numbers and dates.
 > 3. Perform a correction since the genus should be capitalized.
 >
 >
->    > ### {% icon comment %} Comment
+>    > <comment-title></comment-title>
 >    >
 >    > If you want to know more about regular expressions, you can consult https://openrefine.org/docs/manual/expressions#regular-expressions and specifically for GREL functions: https://openrefine.org/docs/manual/grelfunctions
 >    {: .comment}
 >
 {: .hands_on}
 
-> ### {% icon question %} Questions
+> <question-title></question-title>
 >
 > 1. Try to find a regular expression to apply the same kind of `Text filter` operation than on the previous exercise. Which regular expression can work?
 >
-> > ### {% icon solution %} Solution
+> > <solution-title></solution-title>
 > >
 > > 1. On my side, I found this formla `value.replace(value.substring(0,1),toUppercase(value.substring(0,1)))` 
 > >
@@ -266,7 +266,7 @@ kind of text, numbers and dates.
 >    - "New cell value": the value to be applied to every record in the cluster. By default, it is the value with most records. You can also click on any value to apply that to the New cell value.
 >
 >
->    > ### {% icon comment %} Comment
+>    > <comment-title></comment-title>
 >    >
 >    > If you want to know more about clustering click https://openrefine.org/docs/manual/cellediting#cluster-and-edit
 >    {: .comment}
@@ -289,7 +289,7 @@ kind of text, numbers and dates.
 >    - You normally have your resulting data file exported on your Galaxy history as "openrefine-Galaxt file.tsv" dataset.
 >
 >
->    > ### {% icon comment %} Comment
+>    > <comment-title></comment-title>
 >    >
 >    > You can also download directly file on your computer choosing `Export` and `Custom tabular exporter`, allowing you to select notably columns and rows you want to download.
 >    {: .comment}
