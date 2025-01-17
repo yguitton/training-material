@@ -1,19 +1,19 @@
 ---
 layout: tutorial_hands_on
 
-title: Deciphering baculovirus isolates using single nucleotide variants (SNV) and SNV specificities
+title: Deciphering Virus Populations - Single Nucleotide Variants (SNVs) and Specificities in Baculovirus Isolates
 subtopic: ''
 zenodo_link: ''
-level: Introductory
+level: Intermediate
 questions:
 - How can the genetic variability of a baculovirus isolate be analysed?
 - How can single nucleotide variants (SNV) be identified across multiple isolates?
-- How can SNV be used to analyse the composition of an isolate based on SNV specificities?
+- How can SNV be used as markers to analyse the composition of baculovirus populations?
 objectives:
-- Understand the significance of single nucleotide variants (SNVs) (or polymorphisms, SNPs) in baculovirus populations.
-- Apply provided bioinformatic workflows and tools on provided sequence data.
-- Interpret the output of the analysis to determine the composition of baculovirus isolates or samples.
-- Evaluate the quality of SNV analysis to identify poetential sources of error.
+- Understand the significance of single nucleotide variants (SNVs) in baculovirus populations.
+- Determine variable SNV positions for multiple isolates using a common reference genome.
+- Transform the output (VCF file) to a readable table format using tools available at Galaxy only. 
+- Interpret the SNV data to analysis the intra-isolate variability of baculovirus isolates or samples.
 - Learn to create your own sequence data and analyse it using the provided workflow and tool to explore the genetic variation of baculovirus populations.
 time_estimation: 2H
 abbreviations:
@@ -30,7 +30,6 @@ contributors:
 - wennmannj
 
 ---
-
 
 # Introduction
 
@@ -152,7 +151,7 @@ Selecting the right or most suitable reference sequence is important if not crit
 >    {: .warning}
 >
 > 2. {% tool [Collapse Collection](toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0) %} with the following parameters:
->    - {% icon param-file %} *"Collection of files to collapse into single dataset"*: `output` (output of **NCBI Accession Download** {% icon tool %})
+>    - {% icon param-file %} *"Collection of files to collapse into single dataset"*: `NCBI Accession Download on: Downloaded files` (output of **NCBI Accession Download** {% icon tool %})
 >    - Click Run Tool
 >
 >    > <comment-title> Collapse Genbank files </comment-title>
@@ -161,14 +160,11 @@ Selecting the right or most suitable reference sequence is important if not crit
 >    > is required and the list needs to be converted into a single file.
 >    {: .comment}
 >
-> 3. {% tool [Replace Text](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.3+galaxy1) %} with the following parameters:
+> 3. {% tool [Replace Text in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.3+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `output` (output of **Collapse Collection** {% icon tool %})
 >    - In *"Replacement"*:
->        - {% icon param-repeat %} *"Insert Replacement"*
->            - *"Find pattern"*: `^>.*$`
->            - *"Replace with:"*: `>CpGV-M `
->    - In "Configure Output: 'list_paired'":
->      - *Rename dataset*: `CpGV reference`
+>         - *"Find pattern"*: `^>.*$`
+>         - *"Replace with:"*: `>CpGV-M `
 >    - Click Run Tool
 >
 >    > <comment-title> What the tool does... </comment-title>
@@ -187,7 +183,7 @@ Selecting the right or most suitable reference sequence is important if not crit
 The tutorial is based on Illumina data sets from several isolates of the Cydia pomonella granulovirus (CpGV). 
 The CpGV is one of the most well studied baculoviruses because many isolates have been sequenced and sequence 
 data sets are available at NCBI Genbank and NCBI SRA. We will use four CpGV isolates to decipher their 
-intra-isolate specific variation and try to draw conclusios about the isolate's homoe- or heterogenity. 
+intra-isolate specific variation and try to draw conclusios about the isolate's homogenity or heterogenity. 
 We will also encounter a mixed isolate (a more or less clean mixture of other previously sequenced CpGV isoaltes) 
 and learn how to recognize it. In addition, we will learn how to determine the composition 
 of this mixted isolate based on other sequenced CpGV isolates.
@@ -213,8 +209,6 @@ Follow the steps below to download the four Illumina datasets published at NCBI 
 >    - *"Select input type"*: `SRR accession`
 >    - *Accession*: `SRR31589146, SRR31589147, SRR31589148, SRR31679023`
 >    - *Select output format*: `gzip compressed fastq`
->    - In "Configure Output: 'list_paired'":
->      - *Rename dataset*: `CpGV paired read list collection`
 >    - Click Run Tool
 >
 >    > <comment-title> Take a cup of coffee </comment-title>
@@ -241,7 +235,7 @@ quality filtered.
 >
 > 1. {% tool [Trim Galore!](toolshed.g2.bx.psu.edu/repos/bgruening/trim_galore/trim_galore/0.6.7+galaxy0) %} with the following parameters:
 >    - *"Is this library paired- or single-end?"*: `Paired Collection`
->        - {% icon param-collection %} *"Select a paired collection"*: `CpGV paired read list collection` (output of **Download and Extract Reads in FASTAQ format from NCBI SRA** {% icon tool %})
+>        - {% icon param-collection %} *"Select a paired collection"*: `output` (output of **Download and Extract Reads in FASTAQ format from NCBI SRA** {% icon tool %})
 >    - *"Advanced settings"*: `Full parameter list`
 >        - *"Trim low-quality ends from reads in addition to adapter removal (Enter phred quality score threshold)"*: `30`
 >        - *"Discard reads that became shorter than length N"*: `50`
@@ -261,9 +255,9 @@ After that, everything we do with the sequence data is linked to the common refe
 
 > <hands-on-title> Read mapping using bcftools </hands-on-title>
 >
-> 1. {% tool [Map with BWA-MEM](toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.2) %} with the following parameters:
+> 1. {% tool [Map with BWA-MEM](toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.18) %} with the following parameters:
 >    - *"Will you select a reference genome from your history or use a built-in index?"*: `Use a genome from history and build index`
->        - {% icon param-file %} *"Use the following dataset as the reference sequence"*: `CpGV reference` (output of **Replace Text** {% icon tool %})
+>        - {% icon param-file %} *"Use the following dataset as the reference sequence"*: `output` (output of **Replace Text in entire line** {% icon tool %})
 >    - *"Single or Paired-end reads"*: `Paired Collection`
 >        - {% icon param-file %} *"Select a paired collection"*: `trimmed_reads_paired_collection` (output of **Trim Galore!** {% icon tool %})
 >    - *"Set read groups information?"*: `Set read groups (Picard style)`
@@ -283,7 +277,7 @@ Insertions/Deletions (indels) are deliberately omitted because they are not rele
 
 > <hands-on-title> Variable SNV positions </hands-on-title>
 >
-> 1. {% tool [bcftools mpileup](toolshed.g2.bx.psu.edu/repos/iuc/bcftools_mpileup/bcftools_mpileup/1.10) %} with the following parameters:
+> 1. {% tool [bcftools mpileup](toolshed.g2.bx.psu.edu/repos/iuc/bcftools_mpileup/bcftools_mpileup/1.15.1+galaxy4) %} with the following parameters:
 >    - *"Alignment Inputs"*: `Multiple BAM/CRAMs`
 >        - {% icon param-file %} *"Input BAM/CRAMs"*: `bam_output` (output of **Map with BWA-MEM** {% icon tool %})
 >    - *"Choose the source for the reference genome"*: `History`
@@ -338,11 +332,11 @@ What you get is a file in Variant Call Format (VCF), which can be difficult to u
 |**POS**  |Position (position in the reference genome)   |
 |**REF**  |Nucleotide of the Referance at the corresponding position (POS)   |
 |**ALT**   |Alternative nucleotides detected at this position in the sequencing data.   |
-|**FORMAT**   |Describes the content of the *sample column* reported in the VCF file. In our case GT:PL:DP:DPR.   |
+|**FORMAT**   |Describes the content of the *sample column* reported in the VCF file. In our case GT:PL:DP:DPR.           |
 |**SRR31589146**   |1st sample column: The results for the sequence data SRR31589146 in the format specified in FORMAT.   |
 |**SRR31589147**   |2nd sample column: The results for the sequence data SRR31589147 in the format specified in FORMAT.   |
 |**SRR31589148**   |3rd sample column: The results for the sequence data SRR31589148 in the format specified in FORMAT.   |
-|**SRR31679023**   |4th sample column: The results for the sequence data SRR31679023 in the format specified in FORMAT.
+|**SRR31679023**   |4th sample column: The results for the sequence data SRR31679023 in the format specified in FORMAT.   |
 
 
 To understand how the data is stored, we have to look at FORMAT in detail. This is where two values are of great importance: DP and DPR.
@@ -367,17 +361,17 @@ To understand how the data is stored, we have to look at FORMAT in detail. This 
 # VCF to Table Transformation
 
 Now we come to an exciting part, because we have all the information we need to analyse the genetic variation within the sequenced virus populations. The data is only hidden in the VCF file and is difficult for the beginner in bioinformatics to see. We have the positions (`POS`), which were detected as variable in the virus populations. In addition, we know the number of all reads (and thus also nucleotides) in these positions (represented by `DP`). By using `DPR`, we obtain information on how often the alleles (the four possible nucleotides) occur at a particular position. To analyse `DP` and `DPR`, we first have to access it because the information is hidden in each *sample column* in the `FORMAT` genotype data. If we look at the first position `POS = 246` in sample column `SRR31589146`, the following data is visible:     
-`1/1:255,98,0,255,255,255,255,255,255,255:885:106,773,6,0`.  
+`1/1:255,134,0,255,255,255,255,255,255,255:886:107,773,6,0`.  
 The information provided by the FORMAT field explains the division of the data by colons: `GT:PL:DP:DPR`.
 
 We can break it down like this...
 
-| FORMAT genotype field | Value |
-|-----------------------:|:-------|
-|GT                     |1/1    |
-|PL                     |255,98,0,255,255,255,255,255,255,255|
-|DP                     |885    |
-|DPR                    |106,773,6,0|
+| FORMAT genotype field  | Value                                 |
+|-----------------------:|:--------------------------------------|
+|GT                      |1/1                                    |
+|PL                      |255,134,0,255,255,255,255,255,255,255  |
+|DP                      |886                                    |
+|DPR                     |107,773,6,0                            |
 
 GT = Genotype information, which cannot be used with virus populations!  
 PL = Phred-scaled genotype likelihood (also not useable for us, because we do not have a diploid organism!)
@@ -388,14 +382,14 @@ DPR can be broken down even further, since the individual values, which are sepa
 
 |CHROM   |POS   |DP   |DPR           | ALT1  |ALT2    |ALT3  |  
 |:------:|:----:|:---:|:------------:|:-----:|:------:|:----:|
-|CpGV-M  |246   |885  |106,773,6,0   |773    |6       |0     |
+|CpGV-M  |246   |886  |107,773,6,0   |773    |6       |0     |
 
-If we now divide the absolute frequencies of `ALT1 = 773`, `ALT2 = 6` and `ALT3 = 0` by `DP = 885`, we get the relative frequencies (`REL.ALT`):
+If we now divide the absolute frequencies of `ALT1 = 773`, `ALT2 = 6` and `ALT3 = 0` by `DP = 886`, we get the relative frequencies (`REL.ALT`):
 
 |ALLELE     |REL.ALT     |
 |:---------:|:----------:|
-|ALT1       |0.873446    |
-|ALT2       |0.00677966  |
+|ALT1       |0.87246     |
+|ALT2       |0.00677201  |
 |ALT3       |0           |
 
 
@@ -410,38 +404,50 @@ If we now divide the absolute frequencies of `ALT1 = 773`, `ALT2 = 6` and `ALT3 
 >    > This tool creates a table from the VCF file. The columns are tab-deliminated. Take a look at table and see if it is now easier to read. It can also be imported to R/RStudio/Excel more easily.
 >    {: .comment}
 >
-> 2. {% tool [Text reformatting](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/9.3+galaxy1) %} with the following parameters:
+> 2. {% tool [Text reformatting with awk](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/9.3+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `outfile` (output of **VCFtoTab-delimited** {% icon tool %})
 >    - *"AWK Program"*: *Paste the code from the code box below.*
 > > <code-in-title>awk</code-in-title>
 > > ```
 > > BEGIN { FS="\t"; OFS="\t" }
 > > NR == 1 {
+> >     # Identify column indices based on header names
+> >     for (i = 1; i <= NF; i++) {
+> >         if ($i == "POS") pos_col = i;
+> >         if ($i == "SAMPLE") sample_col = i;
+> >         if ($i == "DP") dp_col = i;
+> >         if ($i == "DPR") dpr_col = i;
+> >     }
+> >     # Check if all required columns are found
+> >     if (!(pos_col && sample_col && dp_col && dpr_col)) {
+> >         print "Error: One or more required columns (POS, SAMPLE, DP, DPR) are missing." > "/dev/stderr";
+> >         exit 1;
+> >     }
 > >     # Print the new header
 > >     print $0, "ALLELE", "DPR.ALLELE", "REL.ALT", "REL.ALT.0.05";
 > >     next;
 > > }
 > > {
 > >     # Create a unique key for position and sample
-> >     pos_sample_key = $2 "_" $23;
+> >     pos_sample_key = $(pos_col) "_" $(sample_col);
 > > 
-> >     if (last_pos != $2) {         # When a new position starts
-> >         delete sample_count;      # Reset the sample counter
-> >         last_pos = $2;            # Update the current position
+> >     if (last_pos != $(pos_col)) {  # When a new position starts
+> >         delete sample_count;       # Reset the sample counter
+> >         last_pos = $(pos_col);     # Update the current position
 > >     }
 > > 
 > >     # Split the DPR column into values
-> >     split($25, dpr_values, ",");
+> >     split($(dpr_col), dpr_values, ",");
 > > 
-> >     # Count the occurrences of each sample per position
-> >     sample_count[$23]++;
-> >     dpr_index = sample_count[$23] + 1;  # Index for the alternate allele (starting at 2)
+> >     # Count occurrences of each sample per position
+> >     sample_count[$(sample_col)]++;
+> >     dpr_index = sample_count[$(sample_col)] + 1;  # Index for the alternate allele (starting at 2)
 > > 
 > >     # Check if the index is valid
 > >     if (dpr_index <= length(dpr_values)) {
 > >         allele = "ALT" (dpr_index - 1);            # Determine the allele
 > >         dpr_value = dpr_values[dpr_index];         # Get the corresponding DPR value
-> >         rel_alt = (dpr_value / $24);               # Calculate REL.ALT (DPR.ALLELE / DP)
+> >         rel_alt = (dpr_value / $(dp_col));         # Calculate REL.ALT (DPR.ALLELE / DP)
 > >         rel_alt_filtered = (rel_alt >= 0.05) ? rel_alt : 0;  # Filter REL.ALT values < 0.05
 > >         print $0, allele, dpr_value, rel_alt, rel_alt_filtered;  # Output with new columns
 > >     }
@@ -452,7 +458,7 @@ If we now divide the absolute frequencies of `ALT1 = 773`, `ALT2 = 6` and `ALT3 
 >    - Click Run Tool
 > 
 >    > <comment-title> Create ALLELE and REL.ALT columns </comment-title> 
->    > The **text reformatting** tool allows the use of AWK code. AWK is for text processing and to performing complex tasks on data sets (such as tab-delimited files). We will come across AWK scripts again later. Here is a brief summary of what it does: 
+>    > The **Text reformatting with awk** tool allows the use of AWK code. AWK is for text processing and to performing complex tasks on data sets (such as tab-delimited files). We will come across AWK scripts again later. Here is a brief summary of what it does: 
 >    > * Splitting `DPR` data into separate allele counts.   
 >    > * Calculating the relative allele frequencies (`REL.ALT`) for each allele.  
 >    > * Filtering out relative frequencies below a threshold of 0.05 and storing the result in `REL.ALT.0.05`.  
@@ -467,18 +473,18 @@ Below is the table with selected relevant columns only. `REL` and `ALT` show the
 
 | CHROM  | POS | REF | ALT | SAMPLE      | DP  | DPR         | ALLELE | DPR.ALLELE | REL.ALT    | REL.ALT.0.05 |
 |--------|-----|-----|-----|-------------|-----|-------------|--------|------------|------------|--------------|
-| CpGV-M | 246 | C   | T   | SRR31589146 | 885 | 106,773,6,0 | ALT1   | 773        | 0.873446   | 0.873446     |
-| CpGV-M | 246 | C   | T   | SRR31589147 | 878 | 4,873,1,0   | ALT1   | 873        | 0.994305   | 0.994305     |
-| CpGV-M | 246 | C   | T   | SRR31589148 | 934 | 799,133,1,1 | ALT1   | 133        | 0.142398   | 0.142398     |
-| CpGV-M | 246 | C   | T   | SRR31679023 | 845 | 42,803,0,0  | ALT1   | 803        | 0.950296   | 0.950296     |
-| CpGV-M | 246 | C   | G   | SRR31589146 | 885 | 106,773,6,0 | ALT2   | 6          | 0.00677966 | 0            |
-| CpGV-M | 246 | C   | G   | SRR31589147 | 878 | 4,873,1,0   | ALT2   | 1          | 0.00113895 | 0            |
-| CpGV-M | 246 | C   | G   | SRR31589148 | 934 | 799,133,1,1 | ALT2   | 1          | 0.00107066 | 0            |
-| CpGV-M | 246 | C   | G   | SRR31679023 | 845 | 42,803,0,0  | ALT2   | 0          | 0          | 0            |
-| CpGV-M | 246 | C   | A   | SRR31589146 | 885 | 106,773,6,0 | ALT3   | 0          | 0          | 0            |
-| CpGV-M | 246 | C   | A   | SRR31589147 | 878 | 4,873,1,0   | ALT3   | 0          | 0          | 0            |
-| CpGV-M | 246 | C   | A   | SRR31589148 | 934 | 799,133,1,1 | ALT3   | 1          | 0.00107066 | 0            |
-| CpGV-M | 246 | C   | A   | SRR31679023 | 845 | 42,803,0,0  | ALT3   | 0          | 0          | 0            |
+| CpGV-M | 246 | C   | T   | SRR31589146 | 886 | 107,773,6,0 | ALT1   | 773        | 0.87246    | 0.873446     |
+| CpGV-M | 246 | C   | G   | SRR31589146 | 886 | 107,773,6,0 | ALT2   | 6          | 0.00677201 | 0            |
+| CpGV-M | 246 | C   | A   | SRR31589146 | 886 | 107,773,6,0 | ALT3   | 0          | 0          | 0            |
+| CpGV-M | 246 | C   | T   | SRR31589147 | 881 | 5,875,1,0   | ALT1   | 875        | 0.99319    | 0.994305     |
+| CpGV-M | 246 | C   | G   | SRR31589147 | 881 | 5,875,1,0   | ALT2   | 1          | 0.00113507 | 0            |
+| CpGV-M | 246 | C   | A   | SRR31589147 | 881 | 5,875,1,0   | ALT3   | 0          | 0          | 0            |
+| CpGV-M | 246 | C   | T   | SRR31589148 | 935 | 800,133,1,1 | ALT1   | 133        | 0.142246   | 0.142398     |
+| CpGV-M | 246 | C   | G   | SRR31589148 | 935 | 800,133,1,1 | ALT2   | 1          | 0.00106952 | 0            |
+| CpGV-M | 246 | C   | A   | SRR31589148 | 935 | 800,133,1,1 | ALT3   | 1          | 0.00106952 | 0            |
+| CpGV-M | 246 | C   | T   | SRR31679023 | 839 | 42,797,0,0  | ALT1   | 797        | 0.94994    | 0.950296     |
+| CpGV-M | 246 | C   | G   | SRR31679023 | 839 | 42,797,0,0  | ALT2   | 0          | 0          | 0            |
+| CpGV-M | 246 | C   | A   | SRR31679023 | 839 | 42,797,0,0  | ALT3   | 0          | 0          | 0            |
 
 
 ## Replace SRA Names with Virus Abbreviations
@@ -487,23 +493,23 @@ One thing that stands out are the SAMPLE names, which were taken automatically f
 
 > <hands-on-title> Replace sample by virus names </hands-on-title>
 >
-> 1. {% tool [Replace Text](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_column/9.3+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"File to process"*: `out_file1` (output of **VCFtoTab-delimited:** {% icon tool %})
+> 1. {% tool [Replace Text in a specific column](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_column/9.3+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"File to process"*: `out_file1` (output of **Text reformatting with awk:** {% icon tool %})
 >    - In *"Replacement"*:
 >        - {% icon param-repeat %} *"Insert Replacement"*
->            - *"in column"*: `c23`
+>            - *"in column"*: `c25`
 >            - *"Find pattern"*: `SRR31589148`
 >            - *"Replace with"*: `CpGV-M`
 >        - {% icon param-repeat %} *"Insert Replacement"*
->            - *"in column"*: `c23`
+>            - *"in column"*: `c25`
 >            - *"Find pattern"*: `SRR31589147`
 >            - *"Replace with"*: `CpGV-S`
 >        - {% icon param-repeat %} *"Insert Replacement"*
->            - *"in column"*: `c23`
+>            - *"in column"*: `c25`
 >            - *"Find pattern"*: `SRR31589146`
 >            - *"Replace with"*: `CpGV-E2`
 >        - {% icon param-repeat %} *"Insert Replacement"*
->            - *"in column"*: `c23`
+>            - *"in column"*: `c25`
 >            - *"Find pattern"*: `SRR31679023`
 >            - *"Replace with"*: `CpGV-V15`
 >    - Click Run Tool
@@ -526,9 +532,9 @@ Based on the SNV table, we can see that three possible nucleotides (alleles) occ
 
 > <hands-on-title>Keep only ALT1 and remove ALT2 and ALT3</hands-on-title>
 >
-> 1. {% tool [Filter](Filter1) %} with the following parameters:
->    - {% icon param-file %} *"Filter"*: `outfile` (output of **Text reformatting** {% icon tool %})
->    - *"With following condition"*: `c28=='ALT1'`
+> 1. {% tool [Filter data on any column using simple expressions](Filter1) %} with the following parameters:
+>    - {% icon param-file %} *"Filter"*: `outfile` (output of **Replace Text in a specific column** {% icon tool %})
+>    - *"With following condition"*: `c30=='ALT1'`
 >    - *"Numbers of header ines to skip"*: `1`
 >    - Click Run Tool
 >
@@ -548,18 +554,18 @@ The final table should be much easier to read and contain all the information we
 
 | CHROM  | POS | REF | ALT | SAMPLE   | DP  | DPR         | ALLELE | DPR.ALLELE | REL.ALT  | REL.ALT.0.05 |
 |--------|-----|-----|-----|----------|-----|-------------|--------|------------|----------|--------------|
-| CpGV-M | 246 | C   | T   | CpGV-E2  | 885 | 106,773,6,0 | ALT1   | 773        | 0.873446 | 0.873446     |
-| CpGV-M | 246 | C   | T   | CpGV-S   | 878 | 4,873,1,0   | ALT1   | 873        | 0.994305 | 0.994305     |
-| CpGV-M | 246 | C   | T   | CpGV-M   | 934 | 799,133,1,1 | ALT1   | 133        | 0.142398 | 0.142398     |
-| CpGV-M | 246 | C   | T   | CpGV-V15 | 845 | 42,803,0,0  | ALT1   | 803        | 0.950296 | 0.950296     |
-| CpGV-M | 249 | A   | C   | CpGV-E2  | 884 | 106,777,1   | ALT1   | 777        | 0.878959 | 0.878959     |
-| CpGV-M | 249 | A   | C   | CpGV-S   | 873 | 2,871,0     | ALT1   | 871        | 0.997709 | 0.997709     |
-| CpGV-M | 249 | A   | C   | CpGV-M   | 935 | 798,137,0   | ALT1   | 137        | 0.146524 | 0.146524     |
-| CpGV-M | 249 | A   | C   | CpGV-V15 | 850 | 48,800,2    | ALT1   | 800        | 0.941176 | 0.941176     |
-| CpGV-M | 564 | T   | C   | CpGV-E2  | 955 | 98,847,9,1  | ALT1   | 847        | 0.886911 | 0.886911     |
-| CpGV-M | 564 | T   | C   | CpGV-S   | 932 | 1,925,6,0   | ALT1   | 925        | 0.992489 | 0.992489     |
-| CpGV-M | 564 | T   | C   | CpGV-M   | 973 | 821,151,1,0 | ALT1   | 151        | 0.15519  | 0.15519      |
-| CpGV-M | 564 | T   | C   | CpGV-V15 | 868 | 33,834,1,0  | ALT1   | 834        | 0.960829 | 0.960829     |
+| CpGV-M | 246 | C   | T   | CpGV-E2  | 886 | 107,773,6,0 | ALT1   | 773        | 0.87246  | 0.87246      |
+| CpGV-M | 246 | C   | T   | CpGV-S   | 881 | 5,875,1,0   | ALT1   | 875        | 0.99319  | 0.99319      |
+| CpGV-M | 246 | C   | T   | CpGV-M   | 935 | 800,133,1,1 | ALT1   | 133        | 0.142246 | 0.142246     |
+| CpGV-M | 246 | C   | T   | CpGV-V15 | 839 | 42,797,0,0  | ALT1   | 797        | 0.94994  | 0.94994      |
+| CpGV-M | 249 | A   | C   | CpGV-E2  | 888 | 106,780,1   | ALT1   | 780        | 0.878378 | 0.878378     |
+| CpGV-M | 249 | A   | C   | CpGV-S   | 881 | 2,879,0     | ALT1   | 879        | 0.99773  | 0.99773      |
+| CpGV-M | 249 | A   | C   | CpGV-M   | 938 | 799,139,0   | ALT1   | 139        | 0.148188 | 0.148188     |
+| CpGV-M | 249 | A   | C   | CpGV-V15 | 843 | 48,793,2    | ALT1   | 793        | 0.940688 | 0.940688     |
+| CpGV-M | 564 | T   | C   | CpGV-E2  | 964 | 98,856,9,1  | ALT1   | 856        | 0.887967 | 0.887967     |
+| CpGV-M | 564 | T   | C   | CpGV-S   | 947 | 1,940,6,0   | ALT1   | 940        | 0.992608 | 0.992608     |
+| CpGV-M | 564 | T   | C   | CpGV-M   | 976 | 821,154,1,0 | ALT1   | 154        | 0.157787 | 0.157787     |
+| CpGV-M | 564 | T   | C   | CpGV-V15 | 880 | 33,846,1,0  | ALT1   | 846        | 0.961364 | 0.961364     |
 
 We can now start the first visualisation and create a plot for each CpGV isolate (`SAMPLE`), plotting the position of the SNV (`POS`) against the relative frequency of the alternative nucleotide (`REL.ALT`). Note that we are not using the REL.ALT threshold values because we want to look at the unfiltered data.
 
@@ -568,7 +574,7 @@ We can now start the first visualisation and create a plot for each CpGV isolate
 > 1. {% tool [Scatterplot with ggplot2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_point/ggplot2_point/3.4.0+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"Input in tabular format"*: `out_file1` (output of **Filter** {% icon tool %})
 >    - *"Column to plot on x-axis"*: `2`
->    - *"Column to plot on y-axis"*: `30`
+>    - *"Column to plot on y-axis"*: `32`
 >    - *"Plot title"*: `SNV plot`
 >    - *"Label for x axis"*: `Reference Genome Position of CpGV-M`
 >    - *"Label for y axis"*: `Relative nucleotide frequency `
@@ -576,7 +582,7 @@ We can now start the first visualisation and create a plot for each CpGV isolate
 >        - *"Type of plot"*: `Points only (default)`
 >            - *"Data point options"*: `Default`
 >        - *"Plotting multiple groups"*: `Plot multiple groups of data on individual plots`
->            - *"column differentiating the different groups"*: `23`
+>            - *"column differentiating the different groups"*: `25`
 >        - *"Axis title options"*: `Default`
 >        - *"Axis text options"*: `Default`
 >        - *"Plot title options"*: `Default`
@@ -592,8 +598,8 @@ We can now start the first visualisation and create a plot for each CpGV isolate
 >    > <comment-title> Column names and numbers </comment-title>
 >    > To provide ggplot2 with the data for the X- and Y-axis, column numbers must be passed to the function. You have to check which column numbers the columns `POS` and `REL.ALT` have. In addition, ggplot2 offers the option of to split the data according to `SAMPLE`, to obtain a separate plot for each value in SAMPLE. 
 >    > * `POS` = column 2  
->    > * `REL.ALT` = column 30  
->    > * `SAMPLE` = column 23  
+>    > * `REL.ALT` = column 32  
+>    > * `SAMPLE` = column 25  
 >    > ![VCF tab-deliminated table with column names and numbers](../../images/baculovirus-isolate-variation/galaxy_vcf_table_column_numbers_names.png "Section of the VCF table with column numbers and names. ")
 >    {: .comment}
 >
@@ -605,7 +611,7 @@ As a result, we get a SNV plot that shows the relative frequency of the first al
 
 # SNV Specificity Determination
 
-Now we come to the last but most complex section of this tutorial - determining SNV specificities. We have seen that CpGV-V15 is a mixed isolate. Now we want to find out which isolates were mixed and how this SNV pattern can be explained. In the next step, we will consider  SNV positions as markers  and look for SNV positions that are only variable for one or more sequenced isolates of CpGV. If an SNV position is only variable for CpGV-S (i.e. the relative frequency is greater than 0; `REL.ALT > 0`) but is equal to zero for the other isolates, then this position is a marker for CpGV-S, or specific for CpGV-S. Since we cannot perform this determination by hand for all positions, I have written a small program implemented in the **Text reformatting** tool that does the work for us. 
+Now we come to the last but most complex section of this tutorial - determining SNV specificities. We have seen that CpGV-V15 is a mixed isolate. Now we want to find out which isolates were mixed and how this SNV pattern can be explained. In the next step, we will consider  SNV positions as markers  and look for SNV positions that are only variable for one or more sequenced isolates of CpGV. If an SNV position is only variable for CpGV-S (i.e. the relative frequency is greater than 0; `REL.ALT > 0`) but is equal to zero for the other isolates, then this position is a marker for CpGV-S, or specific for CpGV-S. Since we cannot perform this determination by hand for all positions, I have written a small program implemented in the **Text reformatting with awk** tool that does the work for us. 
 
 Before we get started, I would like to explain specificity in more detail using an example. First, we decide that we want to determine the specificities for the SNV positions for the following isolates:
 * CpGV-M
@@ -620,28 +626,44 @@ If we now wanted to detect specifically isolate CpGV-S and CpGV-E2 in a mixture,
 
 |  POS   | REL.ALT0.05 (CpGV-E2) | REL.ALT0.05 (CpGV-S)  | REL.ALT0.05 (CpGV-M)  | SNV Specificity               |  
 |--------|-----------------------|-----------------------|-----------------------|-------------------------------|
-|249     | 0.88009               | 0.997709              | 0.146524              | CpGV-E2 + CpGV-S + CpGV-M     |
-|603     | 0.898816              | 0                     | 0                     | CpGV-E2                       |
-|1278    | 0                     | 1                     | 0                     | CpGV-S                        |
-|6393    | 0.989407              | 1                     | 0                     | CpGV-E2 + CpGV-S              |
+|249     | 0.878378              | 0.99773               | 0.148188              | CpGV-E2 + CpGV-S + CpGV-M     |
+|603     | 1                     | 0                     | 0                     | CpGV-E2                       |
+|1278    | 0                     | 0.998963              | 0                     | CpGV-S                        |
+|6393    | 0.98847               | 0.997783              | 0                     | CpGV-E2 + CpGV-S              |
 
 Let us run the tool below to determine the SNV specificities of our dataset.  
 
 > <hands-on-title> SNV specificity determination </hands-on-title>
 >
-> 1. {% tool [Text reformatting](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/9.3+galaxy1) %} with the following parameters:
+> 1. {% tool [Text reformatting with awk](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/9.3+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `out_file1` (output of **Filter** {% icon tool %})
 >    - *"AWK Program"*: *Paste the code from the code box below.*
 > > <code-in-title>awk</code-in-title>
 > > ```
+> > BEGIN { FS="\t"; OFS="\t" }
 > > NR == 1 {
+> >     # Dynamically find column indices based on header names
+> >     for (i = 1; i <= NF; i++) {
+> >         if ($i == "POS") pos_col = i;
+> >         if ($i == "ALLELE") allele_col = i;
+> >         if ($i == "SAMPLE") sample_col = i;
+> >         if ($i == "REL.ALT.0.05") rel_alt_col = i;
+> >     }
+> > 
+> >     # Check if all required columns were found
+> >     if (!(pos_col && allele_col && sample_col && rel_alt_col)) {
+> >         print "Error: Required columns (POS, ALLELE, SAMPLE, REL.ALT.0.05) are missing." > "/dev/stderr";
+> >         exit 1;
+> >     }
+> > 
 > >     # Print the header and add the new SPEC column
 > >     print $0, "SPEC";
 > >     next;
 > > }
+> > 
 > > {
 > >     # When reaching a new position, prepare the specificity
-> >     if ($2 != current_pos) {
+> >     if ($(pos_col) != current_pos) {
 > >         # Assign the calculated specificity to all rows of the current position
 > >         for (i in pos_lines) {
 > >             # Add "SNV specificity: " before the specificity value
@@ -651,17 +673,21 @@ Let us run the tool below to determine the SNV specificities of our dataset.
 > >         # Reset variables for the new position
 > >         delete pos_lines;
 > >         specificity = "";
-> >         current_pos = $2;
+> >         current_pos = $(pos_col);
 > >     }
+> > 
 > >     # Save the current row for later
 > >     pos_lines[NR] = $0;
 > > 
 > >     # Conditions for calculating specificity
-> >     if ($28 == "ALT1" && ($23 == "CpGV-E2" || $23 == "CpGV-S" || $23 == "CpGV-M") && $31 > 0) {
+> >     if ($(allele_col) == "ALT1" && 
+> >         ($(sample_col) == "CpGV-E2" || $(sample_col) == "CpGV-S" || $(sample_col) == "CpGV-M") && 
+> >         $(rel_alt_col) > 0) {
 > >         # Concatenate isolate names with " + " if REL.ALT.0.05 > 0
-> >         specificity = (specificity == "" ? $23 : specificity " + " $23);
+> >         specificity = (specificity == "" ? $(sample_col) : specificity " + " $(sample_col));
 > >     }
 > > }
+> > 
 > > END {
 > >     # Assign the specificity to the last position
 > >     for (i in pos_lines) {
@@ -684,9 +710,9 @@ Now, the VCF table has an additional column called `SPEC`, which indicates the S
 
 > <hands-on-title> Extract data for one isolate only </hands-on-title>
 >
-> 1. {% tool [Filter](Filter1) %} with the following parameters:
->    - {% icon param-file %} *"Filter"*: `outfile` (output of **Text reformatting** {% icon tool %})
->    - *"With following condition"*: `c23=='CpGV-S'`
+> 1. {% tool [Filter data on any column using simple expressions](Filter1) %} with the following parameters:
+>    - {% icon param-file %} *"Filter"*: `outfile` (output of **Text reformatting with awk** {% icon tool %})
+>    - *"With following condition"*: `c25=='CpGV-S'`
 >    - *"Number of header lines to skip"*: `1`
 >    - Click Run Tool
 >
@@ -697,9 +723,9 @@ Now, the VCF table has an additional column called `SPEC`, which indicates the S
 >
 >
 > 2. {% tool [Scatterplot with ggplot2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_point/ggplot2_point/3.4.0+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Input in tabular format"*: `out_file1` (output of **Filter** {% icon tool %})
+>    - {% icon param-file %} *"Input in tabular format"*: `out_file1` (output of **Filter data on any column using simple expressions** {% icon tool %})
 >    - *"Column to plot on x-axis"*: `2`
->    - *"Column to plot on y-axis"*: `30`
+>    - *"Column to plot on y-axis"*: `32`
 >    - *"Plot title"*: `Isolate CpGV-S`
 >    - *"Label for x axis"*: `Reference Genome Position of CpGV-M`
 >    - *"Label for y axis"*: `Relative Nucleotide Frequency`
@@ -707,7 +733,7 @@ Now, the VCF table has an additional column called `SPEC`, which indicates the S
 >        - *"Type of plot"*: `Points only (default)`
 >            - *"Data point options"*: `Default`
 >        - *"Plotting multiple groups"*: `Plot multiple groups of data on individual plots`
->            - *"column differentiating the different groups"*: `32`
+>            - *"column differentiating the different groups"*: `34`
 >        - *"Axis title options"*: `Default`
 >        - *"Axis text options"*: `Default`
 >        - *"Plot title options"*: `Default`
@@ -733,16 +759,16 @@ Let us now look at the result for isolate CpGV-S. We can see that all CpGV-E2 sp
 > >
 > >  ><hands-on-title> Extract data for CpGV-E2 </hands-on-title>
 > > >
-> > > 1. {% tool [Filter](Filter1) %} with the following parameters:
+> > > 1. {% tool [Filter data on any column using simple expressions](Filter1) %} with the following parameters:
 > > >    - {% icon param-file %} *"Filter"*: `outfile` (output of **Text reformatting** {% icon tool %})
-> > >    - *"With following condition"*: `c23=='CpGV-E2'`
+> > >    - *"With following condition"*: `c25=='CpGV-E2'`
 > > >    - *"Number of header lines to skip"*: `1`
 > > >    - Click Run Tool
 > > >
 > > > 2. {% tool [Scatterplot with ggplot2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_point/ggplot2_point/3.4.0+galaxy1) %} with the following parameters:
 > > >    - {% icon param-file %} *"Input in tabular format"*: `out_file1` (output of **Filter** {% icon tool %})
 > > >    - *"Column to plot on x-axis"*: `2`
-> > >    - *"Column to plot on y-axis"*: `30`
+> > >    - *"Column to plot on y-axis"*: `32`
 > > >    - *"Plot title"*: `Isolate CpGV-E2`
 > > >    - *"Label for x axis"*: `Reference Genome Position of CpGV-M`
 > > >    - *"Label for y axis"*: `Relative Nucleotide Frequency`
@@ -750,7 +776,7 @@ Let us now look at the result for isolate CpGV-S. We can see that all CpGV-E2 sp
 > > >        - *"Type of plot"*: `Points only (default)`
 > > >            - *"Data point options"*: `Default`
 > > >        - *"Plotting multiple groups"*: `Plot multiple groups of data on individual plots`
-> > >            - *"column differentiating the different groups"*: `32`
+> > >            - *"column differentiating the different groups"*: `34`
 > > >        - *"Axis title options"*: `Default`
 > > >        - *"Axis text options"*: `Default`
 > > >        - *"Plot title options"*: `Default`
@@ -773,16 +799,16 @@ To create an SNV specificity plot for the isolate CpGV-V15, we proceed in exactl
 
 > <tip-title> Creating CpGV-V15 SNV specificity plot </tip-title>
 >
-> 1. {% tool [Filter](Filter1) %} with the following parameters:
+> 1. {% tool [Filter data on any column using simple expressions](Filter1) %} with the following parameters:
 >    - {% icon param-file %} *"Filter"*: `outfile` (output of **Text reformatting** {% icon tool %})
->    - *"With following condition"*: `c23=='CpGV-V15'`
+>    - *"With following condition"*: `c25=='CpGV-V15'`
 >    - *"Number of header lines to skip"*: `1`
 >    - Click Run Tool
 >
 > 2. {% tool [Scatterplot with ggplot2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_point/ggplot2_point/3.4.0+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"Input in tabular format"*: `out_file1` (output of **Filter** {% icon tool %})
 >    - *"Column to plot on x-axis"*: `2`
->    - *"Column to plot on y-axis"*: `30`
+>    - *"Column to plot on y-axis"*: `32`
 >    - *"Plot title"*: `Isolate CpGV-V15`
 >    - *"Label for x axis"*: `Reference Genome Position of CpGV-M`
 >    - *"Label for y axis"*: `Relative Nucleotide Frequency`
@@ -790,7 +816,7 @@ To create an SNV specificity plot for the isolate CpGV-V15, we proceed in exactl
 >        - *"Type of plot"*: `Points only (default)`
 >            - *"Data point options"*: `Default`
 >        - *"Plotting multiple groups"*: `Plot multiple groups of data on individual plots`
->            - *"column differentiating the different groups"*: `32`
+>            - *"column differentiating the different groups"*: `34`
 >        - *"Axis title options"*: `Default`
 >        - *"Axis text options"*: `Default`
 >        - *"Plot title options"*: `Default`
