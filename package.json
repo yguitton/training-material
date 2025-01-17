@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@axe-core/cli": "^4.6.0",
-    "editly": "^0.14.2",
+    "github:sailplan/editly": "^0.14.2",
     "ffmpeg-static": "^4.4.0",
     "http-server": "^13.0.2",
     "lunr": "^2.3.9",
