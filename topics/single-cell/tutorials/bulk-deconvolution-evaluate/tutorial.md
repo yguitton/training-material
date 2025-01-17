@@ -238,8 +238,12 @@ First we will need to use the single-cell data to build an expression set object
 > <hands-on-title>Build the Expression Set object</hands-on-title>
 >
 > 1. {% tool [Construct Expression Set Object](toolshed.g2.bx.psu.edu/repos/bgruening/music_construct_eset/music_construct_eset/0.1.1+galaxy3) %} with the following parameters:
+>    - *"Awk- actual header (A)"*: `BEGIN { print "A_actual\tcell_type" } { print $0 }`
+>    - *"Awk - infer header (A)"*: `BEGIN { print "0\tA_infer\t0" } NR > 1 {print $0 }`
 >    - {% icon param-file %} *"Assay Data"*: `EMTABesethealthy.expression.tabular` (Input dataset)
 >    - {% icon param-file %} *"Phenotype Data"*: `EMTABesethealthy.phenotype.tabular` (Input dataset)
+>    - *"Awk- actual header (B)"*: `BEGIN { print "B_actual\tcell_type" } { print $0 }`
+>    - *"Awk - infer header (B)"*: `BEGIN { print "0\tB_infer\t0" } NR > 1 {print $0 }`
 >
 >    > <comment-title></comment-title>
 >    >
