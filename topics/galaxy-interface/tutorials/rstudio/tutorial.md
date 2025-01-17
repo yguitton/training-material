@@ -380,7 +380,7 @@ To import a dataset from the history into RStudio user needs to get the path to 
 gx_get(7)
 ```
 
-It is important to know that this is just a print path function and do not import anything. Users should use a proper R function to read the file. For example, they can pass the path to a function that reads tables such as `read_table` or `read_tsv`. Let's assume that dataset 7 in the history is a tab-separated table (TSV) and we want to read it into our RStudio. Users can do it as follows:
+It is important to know that the `gx_get()` function copies the data from the Galaxy history to the RStudio session and returns the path to the copied file. Users are supposed to use a proper R function to read the file. For example, they can pass the path to a function that reads tables such as `read_table` or `read_tsv`. Let's assume that dataset 7 in the history is a tab-separated table (TSV) and we want to read it into our RStudio. Users can do it as follows:
 ```
 table_name <- read.table(gx_get(7))
 ```
