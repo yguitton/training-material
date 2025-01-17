@@ -154,8 +154,8 @@ Raw counts are crucial for generating accurate pseudobulk aggregates. Since sing
 >
 {: .question}
 
-<solution-title>Solutions</solution-title>
-
+> <solution-title>Solutions</solution-title>
+>
 > 1. The Decoupler tool generates multiple outputs, including:
 >    - **Pseudobulk Count Matrix** (tabular file)
 >    - **Samples Metadata (Factor file)** (tabular file)
