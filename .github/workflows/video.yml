@@ -10,7 +10,7 @@ on:
 jobs:
   runner-job:
     if: github.repository_owner == 'galaxyproject'
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     services:
       # Label used to access the service container
       mozillatts:
@@ -50,7 +50,7 @@ jobs:
           gem install bundler
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
-          npm install
+          npm install --build-from-resource
           bundle pristine ffi
       # END Dependencies
 
