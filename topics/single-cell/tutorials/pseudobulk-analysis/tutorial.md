@@ -13,9 +13,9 @@ objectives:
 - Perform differential expression analysis using edgeR
 time_estimation: 3H
 key_points:
-- Pseudobulk analysis bridges the gap between single-cell and bulk RNA-seq data
-- Decoupler generates a pseudobulk count matrix, enabling downstream differential expression and functional analyses.
-- edgeR is a robust tool for differential expression in pseudobulk datasets
+- Pseudobulk analysis approach bridges the gap between single-cell and bulk RNA-seq data  
+- Decoupler tool generates a pseudobulk count matrix, enabling downstream differential expression and functional analyses 
+- edgeR is a robust tool for differential expression in pseudobulk datasets  
 contributors:
 - dianichj
 - pavanvidem
@@ -30,11 +30,11 @@ Pseudobulk analysis is a powerful technique that bridges the gap between single-
 
 A key advantage of this approach in differential expression analysis is that it avoids treating individual cells as independent samples, which can underestimate variance and lead to inflated significance or overly optimistic p-values ({% cite Squair2021 %}). This occurs because cells from the same biological replicate are inherently more similar to each other than cells from different samples. By grouping data into pseudobulk samples, the analysis aligns with the experimental design, as in bulk RNA-seq, leading to more reliable and robust statistical results ({% cite Murphy2022 %}).
 
-Beyond enhancing statistical validity, pseudobulk analysis enables the identification of cell-type-specific gene expression and functional changes across biological conditions. It balances the detailed resolution of single-cell data with the statistical power of bulk RNA-seq, providing insights into the functional transcriptomic landscape relevant to biological questions. Overall, for differential expression analysis in multi-sample single-cell experiments, pseudobulk approaches demonstrate superior performance compared to single-cell-specific DE methods (citation). 
+Beyond enhancing statistical validity, pseudobulk analysis enables the identification of cell-type-specific gene expression and functional changes across biological conditions. It balances the detailed resolution of single-cell data with the statistical power of bulk RNA-seq, providing insights into the functional transcriptomic landscape relevant to biological questions. Overall, for differential expression analysis in multi-sample single-cell experiments, pseudobulk approaches demonstrate superior performance compared to single-cell-specific DE methods ({% cite Squair2021 %}). 
 
 In this tutorial, we will guide you through a pseudobulk analysis workflow using the **Decoupler** and **edgeR** tools available in Galaxy ({% Badia-iMompel2022 %}) ({% Liu2015 %}). These tools facilitate functional and differential expression analysis, and their output can be integrated with other Galaxy tools to visualize results, such as creating Volcano Plots, which we will also cover in this tutorial.
 
-> <agenda-title>Pseudobulk Analysis Pipeline Agenda</agenda-title>:
+> <agenda-title>Pseudobulk Analysis Pipeline Agenda</agenda-title>
 >
 > 1. Introduction to Pseudobulk Analysis and Data Preprocessing
 >    - Overview of pseudobulk analysis
@@ -51,10 +51,10 @@ In this tutorial, we will guide you through a pseudobulk analysis workflow using
 >    - Generating volcano plots for differentially expressed genes
 >    - Summarizing and presenting functional analysis results
 >      
-> 5. Subsetting Samples from the Original AnnData Object
+> 4. Subsetting Samples from the Original AnnData Object
 >    - Extracting AnnData Object with observations of interest 
 >      
-> 6. Key Takeaways and Recommendations
+> 5. Key Takeaways and Recommendations
 >    - Reviewing the pseudobulk analysis pipeline
 >    - Suggestions for additional analyses and further exploration
 >
@@ -69,7 +69,7 @@ Our data was extracted from the publication titled _"Elevated Calprotectin and A
 
 Pseudobulk analysis is an advanced method in single-cell data analysis. For this tutorial, we assume familiarity with common single-cell data formats, such as AnnData or Seurat objects, and experience analysing single-cell data, including clustering and annotating cell types.
 
-If you're new to these concepts, we recommend exploring our other tutorials before going for pseudobulk:
+If you're new to these concepts, we recommend exploring our other tutorials before performing pseudobulk analysis:
 - [Clustering 3K PBMCs with Scanpy]({% link topics/single-cell/tutorials/scrna-scanpy-pbmc3k/tutorial.md %}): Learn how to cluster and annotate cells in Galaxy using our single-cell tools.
 - [Combining single cell datasets after pre-processing]({% link topics/single-cell/tutorials/scrna-case_alevin-combine-datasets/tutorial.md %}): Understand how to combine multiple datasets into one AnnData object and add metadata from single-cell experiments.
 
@@ -110,13 +110,13 @@ Raw counts are crucial for generating accurate pseudobulk aggregates. Since sing
 
 > <tip-title> Missing Raw Counts? </tip-title>
 >
-> If your AnnData object lacks raw counts, you can use the **[AnnData Operations](toolshed.g2.bx.psu.edu/repos/ebi-gxa/anndata_ops/anndata_ops/1.9.3+galaxy0)** tool on the **[Single Cell Galaxy instance](https://singlecell.usegalaxy.eu)**. This tool allows you to copy the `.X` matrix into a new layer that you may assign a new lable, for e.g., `counts` or `raw_counts`, making it available as a parameter for Decoupler.
+> If your AnnData object lacks raw counts, you can use the **[AnnData Operations](toolshed.g2.bx.psu.edu/repos/ebi-gxa/anndata_ops/anndata_ops/1.9.3+galaxy0)** tool on the **[Single Cell Galaxy instance](https://singlecell.usegalaxy.eu)**. This tool allows you to copy the `.X` matrix into a new layer that you may assign a new label, for e.g., `counts` or `raw_counts`, making it available as a parameter for Decoupler.
 >
 > Importantly, ensure that the copying of this matrix as a raw counts layer is done carefully and correctly. To verify that your AnnData object contains the necessary raw counts layer, you can use the **[Inspect AnnData Object](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy0)** tool. This tool helps confirm the presence of raw counts and other essential metadata in your AnnData object before proceeding with pseudobulk analysis.
 >
 {: .tip}
 
-> <hands-on-title> Pseudobulk with Decoupler </hands-on-title>
+> <hands-on-title> Decoupler Pseudobulk </hands-on-title>
 >
 > 1. {% tool [Decoupler pseudo-bulk](toolshed.g2.bx.psu.edu/repos/ebi-gxa/decoupler_pseudobulk/decoupler_pseudobulk/1.4.0+galaxy5) %} tool with the following parameters:
 >     - {% icon param-file %} **Input AnnData file**: `AnnData for Pseudobulk` (Input dataset obtained > from Zenodo)
@@ -234,7 +234,7 @@ The next steps will help you refine your data for easier handling. We will use s
 
 ## Generating the Contrast File 
 
-This file will be use as the contrast input file in the edgeR tool. 
+This file will be used as the contrast input file in the edgeR tool. 
 
 > <hands-on-title> Creating a Contrast File for edgeR </hands-on-title>
 >
@@ -279,11 +279,11 @@ This file will be use as the contrast input file in the edgeR tool.
 
 # Differential Expression Analysis (DE) with edgeR
 
-The tool **edgeR** is commonly used for differential expression (DE) analysis of pseudobulk aggregates in single-cell RNA-seq studies (citation). It calculates gene dispersions based on the total counts for each gene and adjusts these estimates using an approach called empirical Bayes. This method improves reliability by pooling information across all genes in the dataset to stabilize dispersion estimates, particularly for genes with low counts or limited data. By "borrowing strength" from the behavior of other genes, empirical Bayes reduces the risk of overestimating or underestimating variability, ensuring more robust and accurate results (citation). Differential expression is then evaluated using an exact test for the negative binomial distribution, which is similar to Fisher’s exact test but modified to handle the variability typically seen in RNA-seq data (citation). 
+The tool **edgeR** is commonly used for differential expression (DE) analysis of pseudobulk aggregates in single-cell RNA-seq studies ({% cite Chen2024 %}). It calculates gene dispersions based on the total counts for each gene and adjusts these estimates using an approach called empirical Bayes. This method improves reliability by pooling information across all genes in the dataset to stabilize dispersion estimates, particularly for genes with low counts or limited data. By "borrowing strength" from the behavior of other genes, empirical Bayes reduces the risk of overestimating or underestimating variability, ensuring more robust and accurate results ({% cite Chen2024 %}). Differential expression is then evaluated using an exact test for the negative binomial distribution, which is similar to Fisher’s exact test but modified to handle the variability typically seen in RNA-seq data ({% cite Chen2024 %}). 
 
-In addition to exact tests, edgeR employs generalized linear models (GLMs), which allow for the analysis of more complex experimental designs. GLMs model gene counts as a function of experimental conditions (e.g., treatment groups or time points) and estimate how these conditions influence gene expression. Likelihood-based methods, such as quasi-likelihood (QL) approaches, are central to this framework. Standard likelihood methods evaluate the fit of the model to the data, while quasi-likelihood methods add an extra layer by explicitly accounting for biological and technical variability, improving the reliability of DE results. These models allow edgeR to identify subtle expression differences while controlling for overdispersion in the data (citation).
+In addition to exact tests, edgeR employs generalized linear models (GLMs), which allow for the analysis of more complex experimental designs. GLMs model gene counts as a function of experimental conditions (e.g., treatment groups or time points) and estimate how these conditions influence gene expression. Likelihood-based methods, such as quasi-likelihood (QL) approaches, are central to this framework. Standard likelihood methods evaluate the fit of the model to the data, while quasi-likelihood methods add an extra layer by explicitly accounting for biological and technical variability, improving the reliability of DE results. These models allow edgeR to identify subtle expression differences while controlling for overdispersion in the data ({% cite Chen2016 %}).
 
-Several plots can be generated to assist in understanding the data and the results of the analysis, including MDS, BCV, QL, and MD plots. These visualizations provide insights into sample relationships, variability, and differential expression, and will be explained further in the tutorial. With these concepts in mind, lets now perform our DE analysis using our edgeR tool in Galaxy!
+Several plots can be generated to assist in understanding the data and the results of the analysis, including MDS, BCV, QL, and MD plots. These visualizations provide insights into sample relationships, variability, and differential expression, and will be explained further in the tutorial. With these concepts in mind, let's now perform our DE analysis using our edgeR tool in Galaxy!
 
 > <hands-on-title> Run a DGE Analysis with edgeR </hands-on-title>
 >
@@ -380,7 +380,7 @@ After performing the differential expression analysis with edgeR, we will clean 
 >   
 {: .hands_on}
 
-**Replce text** to standardize and clean column headers or dataset identifiers by replacing unnecessary prefixes (e.g., `edgeR_`) with nothing.
+**Replace text** to standardize and clean column headers or dataset identifiers by replacing unnecessary prefixes (e.g., `edgeR_`) with nothing.
 
 > <hands-on-title> Replace Text </hands-on-title>
 >
@@ -441,7 +441,7 @@ In this step, we will use the sanitized output from the previous steps to genera
 
 ## What are the results of the Volcano Plot?
 
-Lets take a moment to interpret the Volcano Plot:
+Let's take a moment to interpret the Volcano Plot:
 ![Volcano Plot](../../topics/single-cell/images/pseudobulk-analysis/VolcanoPlot.png)
 - Which genes are most significant?
 - How does the fold change correlate with the P-values?
@@ -486,7 +486,7 @@ Now, what if we refine our approach? For instance, instead of analysing all cell
 > 
 > <question-title> T Cell Count Matrix </question-title>
 >
-> 1. What data is included in our new pseudobulk count matrix, How is it organized? 
+> 1. What data is included in the new pseudobulk count matrix. How is the matrix structured, and what do the column labels represent? 
 > 2. How many samples are included in the current dataset? Are all of them derived exclusively from T cells?
 >
 > > <solution-title> Solution </solution-title>
