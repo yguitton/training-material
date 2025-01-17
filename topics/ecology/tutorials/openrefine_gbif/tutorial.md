@@ -14,7 +14,7 @@ objectives:
 time_estimation: 0h45m
 key_points:
 - OpenRefine is a powerfull tool, with many functionnalities to check, clean and enrich your data
-contributors:
+contributions:
     authorship:
         - yvanlebras
         - sophiepamerlon
