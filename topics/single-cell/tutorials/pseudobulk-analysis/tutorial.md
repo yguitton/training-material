@@ -32,7 +32,7 @@ A key advantage of this approach in differential expression analysis is that it 
 
 Beyond enhancing statistical validity, pseudobulk analysis enables the identification of cell-type-specific gene expression and functional changes across biological conditions. It balances the detailed resolution of single-cell data with the statistical power of bulk RNA-seq, providing insights into the functional transcriptomic landscape relevant to biological questions. Overall, for differential expression analysis in multi-sample single-cell experiments, pseudobulk approaches demonstrate superior performance compared to single-cell-specific DE methods ({% cite Squair2021 %}). 
 
-In this tutorial, we will guide you through a pseudobulk analysis workflow using the **Decoupler** and **edgeR** tools available in Galaxy ({% Badia-iMompel2022 %}) ({% Liu2015 %}). These tools facilitate functional and differential expression analysis, and their output can be integrated with other Galaxy tools to visualize results, such as creating Volcano Plots, which we will also cover in this tutorial.
+In this tutorial, we will guide you through a pseudobulk analysis workflow using the **Decoupler** and **edgeR** tools available in Galaxy ({% cite Badia-iMompel2022 %}) ({% Liu2015 %}). These tools facilitate functional and differential expression analysis, and their output can be integrated with other Galaxy tools to visualize results, such as creating Volcano Plots, which we will also cover in this tutorial.
 
 > <agenda-title>Pseudobulk Analysis Pipeline Agenda</agenda-title>
 >
