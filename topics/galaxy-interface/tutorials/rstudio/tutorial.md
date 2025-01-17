@@ -370,6 +370,23 @@ Then you can safely shut down RStudio.
 
 Getting data in and out from Galaxy
 
+## Import Data from the Galaxy History to RStudio
 
-# Conclusion
+To import a dataset from the history into RStudio user needs to get the path to that file. To do so, the user can use `gx_get()` function with the dataset `id`. For example, if a user wants to import a dataset with ID 7 to their RStudio, they can get the path to the file by:
 
+```
+gx_get(7)
+```
+
+It is important to know that this is just a print path function and do not import anything. Users should use a proper R function to read the file. For example, they can pass the path to a function that reads tables such as `read_table` or `read_tsv`. Let's assume that dataset 7 in the history is a tab-separated table (TSV) and we want to read it into our RStudio. Users can do it as follows:
+```
+table_name <- read.table(gx_get(7))
+```
+
+## Export Data from the RStudio
+
+Users can export the RHistory and all objects from RStudio to Galaxy as follows (`analysis_17.01.2025` is an arbitrary name):
+```
+gx_save(session_name = "analysis_17.01.2025")
+```
+This data object can be loaded to R.
