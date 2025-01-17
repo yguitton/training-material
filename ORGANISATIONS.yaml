@@ -134,6 +134,13 @@ forschungszentrum-juelich:
     url: https://www.fz-juelich.de/de
     github: false
 
+gbif:
+    short_name: GBIF
+    name: Global Biodiversity Information Facility
+    url: https://www.gbif.org/
+    avatar: "/training-material/shared/images/gbif-standard-green-logo.jpg"
+    github: false
+
 ifb:
     short_name: IFB
     name: Institut Français de Bioinformatique
