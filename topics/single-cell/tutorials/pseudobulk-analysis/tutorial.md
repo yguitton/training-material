@@ -16,8 +16,9 @@ key_points:
 - Pseudobulk analysis approach bridges the gap between single-cell and bulk RNA-seq data  
 - Decoupler tool generates a pseudobulk count matrix, enabling downstream differential expression and functional analyses 
 - edgeR is a robust tool for differential expression in pseudobulk datasets  
-contributors:
-- dianichj
+contributions:
+  authorship:
+    - dianichj
 - pavanvidem
 tags:
 - single-cell
