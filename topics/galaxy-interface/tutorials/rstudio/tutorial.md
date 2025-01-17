@@ -25,6 +25,8 @@ contributions:
   - bebatut
   - fpsom
   - tobyhodges
+  editing:
+  - dadrasarmin 
   funding:
   - gallantries
 subtopic: analyse
