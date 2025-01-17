@@ -260,8 +260,7 @@ kind of text, numbers and dates.
 > 4. Now you can see information about the clusters:
 >    - "Cluster size": the number of different versions that the clustering algorithm believes to be the same.
 >    - "Row count": the number of records with any of the cluster values.
->    - "Values in cluster": the actual values that the algorithm believes to be the same. There is also the number
-of records with each particular value, and the possibility to browse the contents of the cluster in a different tab.
+>    - "Values in cluster": the actual values that the algorithm believes to be the same. There is also the number of records with each particular value, and the possibility to browse the contents of the cluster in a different tab.
 >    - "Merge?": check if values are to be merged into a single standard value.
 >    - "New cell value": the value to be applied to every record in the cluster. By default, it is the value with most records. You can also click on any value to apply that to the New cell value.
 >
