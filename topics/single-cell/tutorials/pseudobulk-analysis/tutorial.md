@@ -472,23 +472,23 @@ Now, what if we refine our approach? For instance, instead of analysing all cell
 > <hands-on-title> Use Manipulate AnnData Tools to extract observations </hands-on-title>
 >
 > 1. Use the {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy0) %} tool with the following parameters:
->    - *"Annotated data matrix"*: `AnnData for Pseudobulk` (Your preprocessed, analysed, and annotated AnnData object) 
->        - *"Function to manipulate the object"*: `Filter observations or variables` 
->        - *"What to filter?"*: `Observations (obs)` (For filtering cells, select Observations (obs))
->            - *"Type of filtering?"*: `By key (column) values 
->            - *"Key to filter"*: `cell_type` (the label that identify cell annotations in our AnnData)
->                -*"Type of value to filter"*: `Text` 
->                  -*"Filter"*: `equal to`
->                  -*"Value"*: `T cell` (the name of the cluster of interest for subset analysis)
+>    - *"Annotated data matrix"*: `AnnData for Pseudobulk` (Your preprocessed, analysed, and annotated AnnData object)  
+>    - *"Function to manipulate the object"*: `Filter observations or variables`  
+>    - *"What to filter?"*: `Observations (obs)` (For filtering cells, select Observations (obs))  
+>    - *"Type of filtering?"*: `By key (column) values`  
+>    - *"Key to filter"*: `cell_type` (the label that identifies cell annotations in our AnnData)  
+>    - *"Type of value to filter"*: `Text`  
+>    - *"Filter"*: `equal to`  
+>    - *"Value"*: `T cell` (the name of the cluster of interest for subset analysis)
 {: .hands_on}
 >
->  After using the {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy0) %} tool to subset the cell type of interest, go back to the top of this tutorial to the hands-on **Pseudobulk with Decoupler** step, and you may perform once again the same steps in this smaller AnnData object that now should only include your T cells.
+>  After using the {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy0) %} tool to subset the cell type of interest, go back to the top of this tutorial to the hands-on **Pseudobulk with Decoupler** step, and you may perform once again the same steps in this smaller AnnData object that now should only include your T cells. Results from this analysis will correspond to differential expression between conditions only for T cells. 
 > 
 > <question-title> T Cell Count Matrix </question-title>
 >
 > 1. What data is included in the new pseudobulk count matrix. How is the matrix structured, and what do the column labels represent? 
 > 2. How many samples are included in the current dataset? Are all of them derived exclusively from T cells?
->
+> 
 > > <solution-title> Solution </solution-title>
 > >
 > > 1. The new count matrix consists of the original 2,815 rows, representing all genes with their gene labels in the first column. Additionally, it includes seven other columns corresponding to individual samples, like _Control#1Tcell_ or _SARSCoV2posSevere#1Tcell_.
@@ -497,7 +497,6 @@ Now, what if we refine our approach? For instance, instead of analysing all cell
 > {: .solution}
 >
 {: .question}
-
 
 # Key Takeaways and Recommendations
 
