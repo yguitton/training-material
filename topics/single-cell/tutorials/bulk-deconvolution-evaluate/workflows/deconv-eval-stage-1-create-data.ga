@@ -24,16 +24,36 @@
         },
         {
             "child_steps": [
-                7
+                3,
+                2
+            ],
+            "color": "orange",
+            "data": {
+                "title": "Single-cell data"
+            },
+            "id": 1,
+            "position": [
+                0,
+                279.5
+            ],
+            "size": [
+                242.3,
+                216.9
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
+                6
             ],
             "color": "turquoise",
             "data": {
-                "title": "Sample B"
+                "title": "Sample A"
             },
-            "id": 4,
+            "id": 2,
             "position": [
-                458,
-                425.79999999999995
+                457.3,
+                67.9
             ],
             "size": [
                 240,
@@ -63,40 +83,20 @@
         },
         {
             "child_steps": [
-                6
+                7
             ],
             "color": "turquoise",
             "data": {
-                "title": "Sample A"
+                "title": "Sample B"
             },
-            "id": 2,
+            "id": 4,
             "position": [
-                457.3,
-                67.9
+                458,
+                425.79999999999995
             ],
             "size": [
                 240,
                 315.1
-            ],
-            "type": "frame"
-        },
-        {
-            "child_steps": [
-                3,
-                2
-            ],
-            "color": "orange",
-            "data": {
-                "title": "Single-cell data"
-            },
-            "id": 1,
-            "position": [
-                0,
-                279.5
-            ],
-            "size": [
-                242.3,
-                216.9
             ],
             "type": "frame"
         }
@@ -140,7 +140,13 @@
             "type": "parameter_input",
             "uuid": "2335d8fd-b2ac-443c-8531-1ea234861e2b",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "20f26ab9-85f6-4aff-93cf-cb17aee1edb3"
+                }
+            ]
         },
         "1": {
             "annotation": "BEGIN { print \"0\\tA_infer\\t0\" } NR &gt; 1 {print $0 }",
@@ -167,7 +173,13 @@
             "type": "parameter_input",
             "uuid": "23226507-712c-4862-9c56-875678cd8b7f",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "d2ab64dd-59e5-4ab7-83bb-e14eddb2e85c"
+                }
+            ]
         },
         "2": {
             "annotation": "",
@@ -248,7 +260,13 @@
             "type": "parameter_input",
             "uuid": "2aca4662-e1a9-4c8e-b15d-e0d47aa6f5ed",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "dd0138e1-2ab7-43d9-a3d2-dcbacb4fc957"
+                }
+            ]
         },
         "5": {
             "annotation": "BEGIN { print \"0\\tB_infer\\t0\" } NR &gt; 1 {print $0 }",
@@ -275,7 +293,13 @@
             "type": "parameter_input",
             "uuid": "271ce13c-da42-421c-bfb3-c7bef3598f7c",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "06b88103-7692-4267-8b50-b78d2189bfbc"
+                }
+            ]
         },
         "6": {
             "annotation": "",
@@ -1380,7 +1404,18 @@
             "type": "subworkflow",
             "uuid": "444f1bc4-33de-40c6-8a9e-ebf4ef3a9a13",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "3:output",
+                    "uuid": "c92f692a-33fd-4551-b357-cfb4ca65ee8d"
+                },
+                {
+                    "label": null,
+                    "output_name": "2:output",
+                    "uuid": "20736e13-f6ff-45a5-8a3f-dfea6e7dd72d"
+                }
+            ]
         },
         "7": {
             "annotation": "",
@@ -2485,7 +2520,18 @@
             "type": "subworkflow",
             "uuid": "dc1d1003-d5d5-4a41-9ba4-4a10fcdfec37",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "3:output",
+                    "uuid": "1e9ddad5-cc6e-4d5e-aca4-13b7a1ab5422"
+                },
+                {
+                    "label": null,
+                    "output_name": "2:output",
+                    "uuid": "4cc4f5ab-3916-4077-b6b8-2293f400cd39"
+                }
+            ]
         }
     },
     "tags": [

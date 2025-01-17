@@ -231,7 +231,13 @@
             "type": "parameter_input",
             "uuid": "2055e45e-6b72-49a8-94f4-e0c5b1790aef",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "7b660bc2-ea2d-4527-8d5c-9d148bd4e531"
+                }
+            ]
         },
         "4": {
             "annotation": "Example: sampleID, Individual",
@@ -258,7 +264,13 @@
             "type": "parameter_input",
             "uuid": "3cbbc205-218b-4263-b53d-d3548f4f469c",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "de53cd36-7bc4-42b6-b562-af94aaeb99a4"
+                }
+            ]
         },
         "5": {
             "annotation": "Comma list of cell types to use from scRNA dataset.\n\nExample: acinar,alpha,beta,delta,ductal,gamma",
@@ -285,7 +297,13 @@
             "type": "parameter_input",
             "uuid": "d4fceba5-401a-4c03-b848-b1a2d513f2bb",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "9e0eaebf-fdb9-44da-af0c-30ded65df718"
+                }
+            ]
         },
         "6": {
             "annotation": "Tabular format\nRow &amp; Column Headers\nRows of cell types\nColumn header \"A_actual\" or similar",
