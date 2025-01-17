@@ -374,7 +374,7 @@ Getting data in and out from Galaxy
 
 ## Import Data from the Galaxy History to RStudio
 
-To import a dataset from the history into RStudio user needs to get the path to that file. To do so, the user can use `gx_get()` function with the dataset `id`. For example, if a user wants to import a dataset with ID 7 to their RStudio, they can get the path to the file by:
+To import a dataset from the history into RStudio a user needs to get the path to that file. To do so, the user can use `gx_get()` function with the dataset `id`. For example, if a user wants to import a dataset with ID 7 to their RStudio, they can get the path to the file by:
 
 ```
 gx_get(7)
