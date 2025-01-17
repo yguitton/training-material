@@ -50,7 +50,7 @@ jobs:
           gem install bundler
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
-          npm install
+          npm install --build-from-resource
           bundle pristine ffi
       # END Dependencies
 
