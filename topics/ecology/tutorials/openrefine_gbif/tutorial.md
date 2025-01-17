@@ -11,7 +11,7 @@ objectives:
 - Use OpenRefine faceting functionnalities to apply mass editing and manage duplicates
 - Use OpenRefine clustering and filtering functionnalities to edit, transform data notably using regular expression
 - Use OpenRefine to apply API services on your data
-time_estimation: 0H45
+time_estimation: 0h45m
 key_points:
 - OpenRefine is a powerfull tool, with many functionnalities to check, clean and enrich your data
 contributors:
@@ -190,7 +190,7 @@ kind of text, numbers and dates.
 > ### {% icon hands_on %} Hands-on: Basic filter.
 >
 > 1. Go again to "Full name" column menu and perform a `Text facet` to visualize the values, then go again to the column menu and click
-on `Text filter` , perform the following filters and fix them as described below:
+on `Text filter`, perform the following filters and fix them as described below:
 >    - search for "sp1" entries -> Then remove it and obtain "Cyperus", clicking on `Edit` directly in the cell
 >    - search for "SP2" entries, check `case sensitive` -> To remove it and obtain "Cyperus", you can `Edit` directly in the cell
 >    - search for "spp".
@@ -254,17 +254,17 @@ on `Text filter` , perform the following filters and fix them as described below
 
 > ### {% icon hands_on %} Hands-on: Basic clustering.
 >
-> 1. Go to County , then in the menu column click `Text facet`.
->    - Keep in mind that the correct counties are: Flores, La Libertad, Melchor de Mencos, San Andres and San Jose.
+> 1. Go to County and perform a `Text facet`.
+>    - Keep in mind that the correct counties are: "Flores", "La Libertad", "Melchor de Mencos", "San Andres" and "San Jose".
 > 2. On the top right of the facet window click on `Cluster`, a new window will appear.
-> 3. Now you can see information about the clusters:
->    - Cluster size: the number of different versions that the clustering algorithm believes to be the same.
->    - Row count: the number of records with any of the cluster values.
->    - Values in cluster: the actual values that the algorithm believes to be the same. There is also the number
-of records with each particular value, and the possibility to browse the contents of the cluster in a
-different tab.
->    - Merge?: check if values are to be merged into a single standard value.
->    - New cell value: the value to be applied to every record in the cluster. By default, it is the value with most records. You can also click on any value to apply that to the New cell value.
+> 3. Click on the `Cluster` button from this new window.
+> 4. Now you can see information about the clusters:
+>    - "Cluster size": the number of different versions that the clustering algorithm believes to be the same.
+>    - "Row count": the number of records with any of the cluster values.
+>    - "Values in cluster": the actual values that the algorithm believes to be the same. There is also the number
+of records with each particular value, and the possibility to browse the contents of the cluster in a different tab.
+>    - "Merge?": check if values are to be merged into a single standard value.
+>    - "New cell value": the value to be applied to every record in the cluster. By default, it is the value with most records. You can also click on any value to apply that to the New cell value.
 >
 >
 >    > ### {% icon comment %} Comment
@@ -272,21 +272,22 @@ different tab.
 >    > If you want to know more about clustering click https://openrefine.org/docs/manual/cellediting#cluster-and-edit
 >    {: .comment}
 >
-> 4. Click on `Select All` and then on `Merge Selected & close`, you will see a notification message "Mass edit 119 cells in column County".
-> 5. To fix the remaining counties go again to Cluster in the facet window of Count.
-> 6. In the Cluster and edit window, go to `Keying Function`, then select `ngram-fingerprint`, and set "1" as the value in `Ngram Size`. Press the enter key.
-> 7. Click on `Select All` and then on `Merge Selected & close`, you will see a notification message "Mass edit 360 cells in column County".
+> 5. Click on `Select All` and then on `Merge Selected & close`, you will see a notification message "Mass edit 119 cells in column County".
+> 6. To fix the remaining counties go again to Cluster in the facet window of Count.
+> 7. In the *Cluster and edit* window, go to `Keying Function`, then select `ngram-fingerprint`, and set "1" as the value in `n-Gram Size`.
+> 8. Press the `Cluster` button, you normally see a cluster about "San Andres" of size "4".
+> 9. Click on `Select All` and then on `Merge Selected & close`, you will see a notification message "Mass edit 360 cells in column County".
 >    - Your counties are now fixed! Congratulation!
 {: .hands_on}
 
 
 ## Exporting
 
-> ### {% icon hands_on %} Hands-on: Exporting cleaned file into Galaxy.
+> ### {% icon hands_on %} Hands-on: Exporting cleaned file into your Galaxy history.
 >
 > 1. On the upper right corner click on `Export` and select `Galaxy exporter`.
->    - A notification message as "Dataset has been exported to Galaxy, please close this tab" is displayed
->    - You normally have your resulting data file on your Galaxy history
+>    - A notification message as "Dataset has been exported to Galaxy, please close this tab" is displayed.
+>    - You normally have your resulting data file exported on your Galaxy history as "openrefine-Galaxt file.tsv" dataset.
 >
 >
 >    > ### {% icon comment %} Comment
@@ -301,15 +302,14 @@ different tab.
 
 Reconciliation matches the information in one of your columns to an outside database. This is particularly helpful when it
 comes to name validation, as it proves the name you have exists somewhere else. This is a really useful service, but can be
-time consuming. In this case we will go through the process with only three records using the API from GBIF. Internet
-connection is required.
+time consuming. In this case we will go through the process with only three records using the API from GBIF.
 
 > ### {% icon hands_on %} Hands-on: Higher taxonomy.
 >
 > 1. Go to "Collector" column, then make a `Text facet`. Select the collector "Elsa P".
 > 2. Under "Full name", click on column menu and then `Edit column > Add column by fetching URLs…` , call the new column "Api_name"
-> 3. Change the Throttle Delay to 250 and paste the expression "http://api.gbif.org/v1/species/match?verbose=true&name="+escape(value,'url')"
-> 4. Click ok and wait, this might take some time depending on your internet connection and the number of taxa.
+> 3. Change the Throttle Delay to 250 and paste the expression *"http://api.gbif.org/v1/species/match?verbose=true&name="+escape(value,'url')*
+> 4. Click ok and wait, this might take some time depending on internet connection and the number of taxa.
 > 5. Go to "Api_name", click on column menu and then `Edit column > Add column based on this column...`. Call the new column "higherClassification" and paste the expression: 
 >    ```
 >    value.parseJson().get("kingdom")+
@@ -321,8 +321,8 @@ connection is required.
 >    You will see the Kingdom, Phylum, Class, Order and family of each taxon.
 > 6. Under "higherClassification" follow the route `Edit column > Split into several columns…`, leave the initial settings.
 > 7. Now you know how to obtain the taxonomic categories of a given taxon if this is available in the GBIF API. Column names can be edited in `Edit column > Rename this column`.
-> 8. For the purpose of the workshop, the columns created in this exercise (Higher taxonomy) must be deleted. Under All , which is the first column, go to `Edit columns > Re-order / remove columns…`. Remove columns "Api_name", "higherClassification1", "higherClassification2", "higherClassification3", "higherClassification4" and "higherClassification5".
-> 9. You can finally export your cleaned data file through "Export" / "Custom tabular exporter" / "Download" and click on the "Donwload" button to save resulting file in tsv format.
+> 8. For the purpose of the original GBIF workshop, the columns created in this exercise (Higher taxonomy) must be deleted. Under All, which is the first column, go to `Edit columns > Re-order / remove columns…`. Remove columns "Api_name", "higherClassification 1", "higherClassification 2", "higherClassification 3", "higherClassification 4" and "higherClassification 5".
+> 9. No need to export this file as it is normally come back to previous version you already exported.
 > 
 {: .hands_on}
 
@@ -331,4 +331,4 @@ connection is required.
 # Conclusion
 {:.no_toc}
 
-Here you learn to use OpenRefine from Galaxy platform to clean Biodiversity data.
+Here you learned how to use OpenRefine tool from Galaxy platform to clean Biodiversity data. This tutorial notably allowed you to apply some basic but powerfull functionnalities of OpenRefine to clean your data.
