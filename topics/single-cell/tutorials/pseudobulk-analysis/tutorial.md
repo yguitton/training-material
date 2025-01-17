@@ -19,7 +19,7 @@ key_points:
 contributions:
   authorship:
     - dianichj
-- pavanvidem
+    - pavanvidem
 tags:
 - single-cell
 - transcriptomics
