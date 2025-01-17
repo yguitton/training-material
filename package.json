@@ -5,8 +5,7 @@
     "ffmpeg-static": "^4.4.0",
     "http-server": "^13.0.2",
     "lunr": "^2.3.9",
-    "markdown-yaml-metadata-parser": "^3.0.0",
-    "node-gyp": "^9.3.0"
+    "markdown-yaml-metadata-parser": "^3.0.0"
   }
 }
 
