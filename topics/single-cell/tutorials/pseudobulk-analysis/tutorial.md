@@ -86,9 +86,9 @@ The data object, which you will import from Zenodo into Galaxy via the provided 
 > 1. Create a new history for this tutorial and name it "Pseudobulk DE Analysis with edgeR"
 > 2. Import the AnnData file from [Zenodo](https://zenodo.org/records/13929549):
 >
->   ```
->   https://zenodo.org/records/13929549/files/Source_AnnData_file.h5ad
->   ```
+>    ```
+>    https://zenodo.org/records/13929549/files/Source_AnnData_file.h5ad
+>    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
