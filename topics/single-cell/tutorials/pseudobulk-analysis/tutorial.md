@@ -483,9 +483,9 @@ Now, what if we refine our approach? For instance, instead of analysing all cell
 >    - *"Filter"*: `equal to`  
 >    - *"Value"*: `T cell` (the name of the cluster of interest for subset analysis)
 {: .hands_on}
->
->  After using the {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy0) %} tool to subset the cell type of interest, go back to the top of this tutorial to the hands-on **Pseudobulk with Decoupler** step, and you may perform once again the same steps in this smaller AnnData object that now should only include your T cells. Results from this analysis will correspond to differential expression between conditions only for T cells. 
-> 
+
+After using the {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy0) %} tool to subset the cell type of interest, go back to the top of this tutorial to the hands-on **Pseudobulk with Decoupler** step, and you may perform once again the same steps in this smaller AnnData object that now should only include your T cells. Results from this analysis will correspond to differential expression between conditions only for T cells. 
+
 > <question-title> T Cell Count Matrix </question-title>
 >
 > 1. What data is included in the new pseudobulk count matrix. How is the matrix structured, and what do the column labels represent? 
