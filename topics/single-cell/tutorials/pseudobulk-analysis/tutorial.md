@@ -169,9 +169,9 @@ Raw counts are crucial for generating accurate pseudobulk aggregates. Since sing
 >    - **Genes Metadata:** Includes gene-related information such as gene symbols, Ensembl IDs, dispersion values, etc.
 >    - **Genes to Ignore:** Lists of genes to could be excluded or should be carefully considered for specific contrasts. This file contains a contrast field and the corresponding genes written as gene symbols.
 >    - **Pseudobulk Plot:** A visual representation of the pseudobulk data.
->    ![Pseudobulk Plot Example](../../topics/single-cell/images/pseudobulk-analysis/Decoupler_Pseudobulk_Plot.png)
+>    ![Pseudobulk Plot Example](../../images/pseudobulk-analysis/Decoupler_Pseudobulk_Plot.png)
 >    - **Filter by Expression Plot:** Illustrates the expression filtering applied to the data.
->    ![Filter by Expression Plot Example](../../topics/single-cell/images/pseudobulk-analysis/Decoupler_Pseudobulk_Plot.png)
+>    ![Filter by Expression Plot Example](../../images/pseudobulk-analysis/Decoupler_Pseudobulk_Plot.png)
 >      **Pseudobulk AnnData file:**: An AnnData file that contains the aggregated pseudobulks.  
 >
 > 3. The **pseudobulk count matrix** is the primary input required for analysis using **edgeR**, a tool designed for differential expression analysis. The **Samples Metadata** is another file that will serve as an input for the edgeR tool. 
@@ -339,10 +339,10 @@ Several plots can be generated to assist in understanding the data and the resul
 >    - The **FDR** is the adjusted p-value, calculated using the Benjamini-Hochberg method, which helps control for false positives when testing many genes. Genes with an FDR below a threshold (e.g., 0.05) are considered statistically significant.
 > 
 > **Plot Interpretations**:
->   - **MDS Plot**: Displays relationships between samples based on gene expression profiles. Samples that cluster closely are more similar in their expression. Use this to identify whether samples separate by biological condition or to detect potential batch effects.  ![MDS Plot](../../topics/single-cell/images/pseudobulk-analysis/mdsplot_disease.png)
->   - **BCV Plot**: Shows the dispersion for each gene, with higher values indicating greater variability. This is useful for assessing how variability is modeled in the dataset. ![BCV Plot](../../topics/single-cell/images/pseudobulk-analysis/bcvplot.png)
->   - **QL Plot**: Highlights the quasi-likelihood dispersions, which represent variability modeled during statistical testing. Proper dispersion modeling ensures robust differential expression analysis. ![QL Plot](../../topics/single-cell/images/pseudobulk-analysis/qlplot.png)
->   - **MD Plot**: Visualizes the mean expression levels against log fold change for each gene. Genes far from the center indicate stronger differential expression, with points above or below the horizontal line showing upregulated or downregulated genes, respectively.  ![MD Plot](../../topics/single-cell/images/pseudobulk-analysis/mdplot_normal-COVID_19.png)
+>   - **MDS Plot**: Displays relationships between samples based on gene expression profiles. Samples that cluster closely are more similar in their expression. Use this to identify whether samples separate by biological condition or to detect potential batch effects.  ![MDS Plot](../../images/pseudobulk-analysis/mdsplot_disease.png)
+>   - **BCV Plot**: Shows the dispersion for each gene, with higher values indicating greater variability. This is useful for assessing how variability is modeled in the dataset. ![BCV Plot](../../images/pseudobulk-analysis/bcvplot.png)
+>   - **QL Plot**: Highlights the quasi-likelihood dispersions, which represent variability modeled during statistical testing. Proper dispersion modeling ensures robust differential expression analysis. ![QL Plot](../../images/pseudobulk-analysis/qlplot.png)
+>   - **MD Plot**: Visualizes the mean expression levels against log fold change for each gene. Genes far from the center indicate stronger differential expression, with points above or below the horizontal line showing upregulated or downregulated genes, respectively.  ![MD Plot](../../images/pseudobulk-analysis/mdplot_normal-COVID_19.png)
 > 
 > {: .solution}
 >
@@ -442,7 +442,7 @@ In this step, we will use the sanitized output from the previous steps to genera
 ## What are the results of the Volcano Plot?
 
 Let's take a moment to interpret the Volcano Plot:
-![Volcano Plot](../../topics/single-cell/images/pseudobulk-analysis/VolcanoPlot.png)
+![Volcano Plot](../../images/pseudobulk-analysis/VolcanoPlot.png)
 - Which genes are most significant?
 - How does the fold change correlate with the P-values?
 - Are there any unexpected patterns?
