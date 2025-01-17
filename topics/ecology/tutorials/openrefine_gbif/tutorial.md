@@ -193,8 +193,8 @@ kind of text, numbers and dates.
 >    - search for "sp1" entries -> Then remove it and obtain "Cyperus", clicking on `Edit` directly in the cell
 >    - search for "SP2" entries, check `case sensitive` -> To remove it and obtain "Cyperus", you can `Edit` directly in the cell
 >    - search for "spp".
->    > 1. Go to "Full name" column menu, then click `Edit cells > Transform`
->    > 2. In the text box paste the formula `value.replace(" spp.", "")` and click `ok`
+>       - Go to "Full name" column menu, then click `Edit cells > Transform`
+>       - In the text box paste the formula `value.replace(" spp.", "")` and click `ok`
 >
 {: .hands_on}
 
