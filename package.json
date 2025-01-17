@@ -6,13 +6,6 @@
     "http-server": "^13.0.2",
     "lunr": "^2.3.9",
     "markdown-yaml-metadata-parser": "^3.0.0"
-  },
-  "overrides": {
-    "gpu.js": {
-      "gl": {
-        "node-gyp": ">7.0.0"
-      }
-    }
   }
 }
 
