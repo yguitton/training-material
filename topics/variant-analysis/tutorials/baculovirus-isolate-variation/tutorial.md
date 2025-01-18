@@ -550,7 +550,7 @@ Based on the SNV table, we can see that three possible nucleotides (alleles) occ
 
 # Visualizing SNV Variability Across Isolates
 
-The final table should be much easier to read and contain all the information we need to perform an analysis of the intra-isolate specific variability. Here is an short overview about the final table (selected columns) and its first three SNV positions:  
+The final table should be much easier to read and contain all the information we need to perform an analysis of the intra-isolate specific variability. Here is a short overview of the final table (selected columns) and its first three SNV positions:  
 
 | CHROM  | POS | REF | ALT | SAMPLE   | DP  | DPR         | ALLELE | DPR.ALLELE | REL.ALT  | REL.ALT.0.05 |
 |--------|-----|-----|-----|----------|-----|-------------|--------|------------|----------|--------------|
