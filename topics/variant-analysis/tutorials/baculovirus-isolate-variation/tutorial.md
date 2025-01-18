@@ -61,10 +61,10 @@ The genome size makes it difficult to study genetic variation within a baculovir
 especially since the most commonly used sequencing technique (Illumina sequencing) 
 generates only short reads and requires genome assembly. Since genome assembly generates 
 a consensus sequence that reflects the majority of a sequenced virus population, 
-occuring genetic variation is masked. Tools for haplotype-sensitive assembly are 
-available but so far have been establisehd for viruses with a relatively short genome 
+occurring genetic variation is masked. Tools for haplotype-sensitive assembly are 
+available but so far have been established for viruses with a relatively short genome 
 but not for baculoviruses or other large dsDNA viruses. Using Nanopore sequencing, 
-it is possible to sequence signficiant fragments of  baculovirus genomes to determine major 
+it is possible to sequence significiant fragments of  baculovirus genomes to determine major 
 haplotypes ({% cite Wennmann2024 %}). 
 
 Single nucleotide variants (SNV) have been proven as a powerful tool for analyzing 
