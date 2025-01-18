@@ -76,11 +76,11 @@ as this sequencing technique provides highly accurate reads with a very low prob
 of sequencing error. The data is usually provided and stored in FASTQ or FASTQsanger format.
 
 When a baculovirus sample or isolate is sequenced, a dataset of sequence reads is 
-obtained that consists of a multitude of fragmented genomes and the excact reconstruction 
+obtained that consists of a multitude of fragmented genomes and the exact reconstruction 
 of individual whole genomes is no longer possible. However, variable SNV positions can 
 be used as markers to count the frequency of the nucleotides that occur in the SNV positions. 
 The determination of the nucleotides is only possible because not one but many genomes 
-were sequenced. Therefor, the SNVs reflect the genetic variability of the virus population itself. 
+were sequenced. Therefore, the SNVs reflect the genetic variability of the virus population itself. 
 
 Although deletions and insertions can also occur, these are not covered in this tutorial.
 
