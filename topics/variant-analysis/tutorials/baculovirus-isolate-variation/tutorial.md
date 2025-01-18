@@ -489,7 +489,7 @@ Below is the table with selected relevant columns only. `REL` and `ALT` show the
 
 ## Replace SRA Names with Virus Abbreviations
 
-One thing that stands out are the SAMPLE names, which were taken automatically from the NCBI SRA datasets. Since it is difficult to remember which virus isolate is behind which SRA number, we can replace the accession numbers with proper names. This makes the table even easier to read and later we can use the information directly to display the SNV positions. 
+One thing that stands out is the SAMPLE names, which were taken automatically from the NCBI SRA datasets. Since it is difficult to remember which virus isolate is behind which SRA number, we can replace the accession numbers with proper names. This makes the table even easier to read and later we can use the information directly to display the SNV positions. 
 
 > <hands-on-title> Replace sample by virus names </hands-on-title>
 >
