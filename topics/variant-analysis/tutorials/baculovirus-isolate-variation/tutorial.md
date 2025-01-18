@@ -221,7 +221,7 @@ Follow the steps below to download the four Illumina datasets published at NCBI 
 # Read Preprocessing and Quality Control
 
 After the reference genome and the paired-end Illumina reads are loaded in the history, 
-it is time to start the analysis. First, the reads needs to be adapter trimmed and
+it is time to start the analysis. First, the reads need to be adapter trimmed and
 quality filtered. 
 
 > <tip-title>Learn more about quality of reads!</tip-title>
