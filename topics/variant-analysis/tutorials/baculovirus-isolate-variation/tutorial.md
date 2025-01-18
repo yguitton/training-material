@@ -12,8 +12,8 @@ questions:
 objectives:
 - Understand the significance of single nucleotide variants (SNVs) in baculovirus populations.
 - Determine variable SNV positions for multiple isolates using a common reference genome.
-- Transform the output (VCF file) to a readable table format using tools available at Galaxy only. 
-- Interpret the SNV data to analysis the intra-isolate variability of baculovirus isolates or samples.
+- Transform the output (VCF file) to a readable table format
+- Interpret the SNV data to analyse the intra-isolate variability of baculovirus isolates or samples.
 - Learn to create your own sequence data and analyse it using the provided workflow and tool to explore the genetic variation of baculovirus populations.
 time_estimation: 2H
 abbreviations:
