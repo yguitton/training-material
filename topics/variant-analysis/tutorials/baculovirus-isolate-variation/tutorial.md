@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 
 title: Deciphering Virus Populations - Single Nucleotide Variants (SNVs) and Specificities in Baculovirus Isolates
-subtopic: ''
+subtopic: 'one-health'
 zenodo_link: ''
 level: Intermediate
 questions:
