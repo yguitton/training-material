@@ -70,10 +70,10 @@ haplotypes ({% cite Wennmann2024 %}).
 Single nucleotide variants (SNV) have been proven as a powerful tool for analyzing 
 the genetic variability of sequenced baculovirus isolates ({% cite Fan2020 %}). SNV 
 are particularly useful for the analysis of intra-isolate or intra-sample specific 
-variation, as a many bioinformatic workflows and tools are established for SNV determination 
+variation, as many bioinformatic workflows and tools are established for SNV determination 
 and processing. For the identification of SNVs, Illumina sequencing data is mostly used, 
 as this sequencing technique provides highly accurate reads with a very low probability 
-of sequencing error. The data is usually provided and stored in fatsq or fastqsanger format.
+of sequencing error. The data is usually provided and stored in FASTQ or FASTQsanger format.
 
 When a baculovirus sample or isolate is sequenced, a dataset of sequence reads is 
 obtained that consists of a multitude of fragmented genomes and the excact reconstruction 
