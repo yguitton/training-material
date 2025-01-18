@@ -226,7 +226,7 @@ quality filtered.
 
 > <tip-title>Learn more about quality of reads!</tip-title>
 > Before and after trimming, it is usually a good idea to check the quality of the reads using FASTQC. 
-> Howver, we will omit this step here. 
+> However, we will omit this step here. 
 > If you are interested in learning more about read quality, I recommend the check the [Galaxy Training Quality Control]( {% link topics/sequence-analysis/tutorials/quality-control/tutorial.md %} ) tutorial.
 {: .tip}
 
