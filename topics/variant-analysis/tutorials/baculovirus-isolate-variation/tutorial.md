@@ -101,7 +101,7 @@ The tutorial presented here aims to explain...
 The workflow is based on sequencing data from the Cydia pomonella granulovirus (CpGV) 
 (family *Baculoviridae*, genus *Betabaculovirus*). CpGV is used commercially in agriculture 
 for the biological control the larvae of the codling moth (*Cydia pomonella*), which cause 
-significant losses to  fruit crops, such als apple and pear.
+significant losses to fruit crops, such as apples and pears.
 
 > <agenda-title></agenda-title>
 >
