@@ -24,7 +24,7 @@ abbreviations:
     SRA: Sequence Read Archive
 key_points:
 - Baculovirus populations are heterogeneous and show genetic variability.
-- Some SNV positions occur only in certain isolates and are therefore specific for that isolate.
+- Some SNV positions occur only in certain isolates and are therefore specific to that isolate.
 - SNV specificities can be used as markers to identify isolates and determine mixtures.
 contributors:
 - wennj
