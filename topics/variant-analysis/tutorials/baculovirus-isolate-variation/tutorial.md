@@ -324,7 +324,7 @@ Insertions/Deletions (indels) are deliberately omitted because they are not rele
 >
 {: .hands_on}
 
-What you get is a file in Variant Call Format (VCF), which can be difficult to understand at first glance. It is important to note that the file begins with a large header, lines that begin with two hashtags (##), which contain details of the analysis and the data set. After the header, there is a table with a line that contains the column names. This line begins with just one hashtag (#). After that, the results are displayed in a tab-separated format. In our VCF example, some columns have the following abbreviations and meaning (I just select a few that are important to us in this tutorial):
+What you get is a file in Variant Call Format (VCF), which can be difficult to understand at first glance. It is important to note that the file begins with a large header, lines that begin with two hashtags (##), which contain details of the analysis and the data set. After the header, there is a table with a line that contains the column names. This line begins with just one hashtag (#). After that, the results are displayed in a tab-separated format. In our VCF example, some columns have the following abbreviations and meanings (I just selected a few that are important to us in this tutorial):
 
 | Fixed fields  | Description  |
 |---:|:---|
