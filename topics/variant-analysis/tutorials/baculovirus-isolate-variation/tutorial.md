@@ -181,12 +181,12 @@ Selecting the right or most suitable reference sequence is important if not crit
 ## Paired-end Sequencing Data from NCBI SRA
 
 The tutorial is based on Illumina data sets from several isolates of the Cydia pomonella granulovirus (CpGV). 
-The CpGV is one of the most well studied baculoviruses because many isolates have been sequenced and sequence 
+The CpGV is one of the most well-studied baculoviruses because many isolates have been sequenced and sequence 
 data sets are available at NCBI Genbank and NCBI SRA. We will use four CpGV isolates to decipher their 
-intra-isolate specific variation and try to draw conclusios about the isolate's homogenity or heterogenity. 
-We will also encounter a mixed isolate (a more or less clean mixture of other previously sequenced CpGV isoaltes) 
+intra-isolate specific variation and try to draw conclusions about the isolate's homogeneity or heterogeneity. 
+We will also encounter a mixed isolate (a more or less clean mixture of other previously sequenced CpGV isolates) 
 and learn how to recognize it. In addition, we will learn how to determine the composition 
-of this mixted isolate based on other sequenced CpGV isolates.
+of this mixed isolate based on other sequenced CpGV isolates.
 
 > <comment-title> Detailed CpGV Isolate Information </comment-title>
 >
