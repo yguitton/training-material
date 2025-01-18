@@ -596,7 +596,7 @@ We can now start the first visualisation and create a plot for each CpGV isolate
 >    - Click Run Tool
 >
 >    > <comment-title> Column names and numbers </comment-title>
->    > To provide ggplot2 with the data for the X- and Y-axis, column numbers must be passed to the function. You have to check which column numbers the columns `POS` and `REL.ALT` have. In addition, ggplot2 offers the option of to split the data according to `SAMPLE`, to obtain a separate plot for each value in SAMPLE. 
+>    > To provide ggplot2 with the data for the X- and Y-axis, column numbers must be passed to the function. You have to check which column numbers the columns `POS` and `REL.ALT` have. In addition, ggplot2 offers the option of splitting the data according to `SAMPLE`, to obtain a separate plot for each value in SAMPLE. 
 >    > * `POS` = column 2  
 >    > * `REL.ALT` = column 32  
 >    > * `SAMPLE` = column 25  
