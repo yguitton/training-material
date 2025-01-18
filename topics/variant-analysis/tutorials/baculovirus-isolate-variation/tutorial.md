@@ -347,7 +347,7 @@ To understand how the data is stored, we have to look at FORMAT in detail. This 
 |**DPR**   |The read depth for each allele. Here, the first value corresponds to the reference nucleotide (REF), the second to the first possible allele (ALT1), the second to the second possible allele (ALT2) and the third value to the last possible allele (ALT3).
 
 > <comment-title>DPR functional, but deprecated</comment-title>
-> If you start **bcftools mpileup** with the *Optional tags to output* `DPR (Number of high quality bases for each observed allele)` option, you will see a warning in the information panel of the VCF file: `[warning] tag DPR functional, but deprecated. Please switch to AD in future`. At the time of writing this tutorial, I was using DPR. It works the same way with *Optional tags to output* option `AD` (instead of DPR), but you will need to adjust something later in the workflow. The tutorial will be switched to AD in the near future. For now, we stick with DPR.
+> If you start **bcftools mpileup** with the *Optional tags to output* `DPR (Number of high-quality bases for each observed allele)` option, you will see a warning in the information panel of the VCF file: `[warning] tag DPR functional but deprecated. Please switch to AD in future. At the time of writing this tutorial, I was using DPR. It works the same way with *Optional tags to output* option `AD` (instead of DPR), but you will need to adjust something later in the workflow. The tutorial will be switched to AD in the near future. For now, we stick with DPR.
 {: .comment}
 
 > <tip-title>Learn more about variant analysis on diploid and non-diploid data!</tip-title>
