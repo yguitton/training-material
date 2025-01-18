@@ -46,7 +46,7 @@ official report of the International Committee on Taxonomy of Viruses (ICTV) ({%
 > The genome of the isolate Autographa californica multiple nucleopolyhedrovirus isolate C6 (AcMNPV-C6)
 > (family *Baculoviridae*, genus *Alphabaculovirus*, species *Alphabaculovirus aucalifornicae*) is one of the 
 > best-studied baculovirus genomes and is 133,894 bp long ({% cite Ayres1994 %}). 
-> It is the first fully sequenced genon of baculoviruses and today hundreds of genomes are fully sequenced
+> It is the first fully sequenced genome of baculoviruses and today hundreds of genomes are fully sequenced
 > and publically available at NCBI Genbank. The genome of AcMNPV-C6 encodes for 154 open reading frames (ORF)
 > in both forward and reverse orientation (see figure). 
 > So far, 38 ORFs were identified, which are encoded by all baculoviruses sequenced to date and are 
