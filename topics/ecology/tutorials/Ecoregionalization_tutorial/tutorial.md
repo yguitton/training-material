@@ -32,6 +32,9 @@ contributions:
     - yvanlebras
     - Marie59
     - Rassine
+  funding:
+    - pndb
+    - ASOC
 
 subtopic: ecologyanalysis
 ---
