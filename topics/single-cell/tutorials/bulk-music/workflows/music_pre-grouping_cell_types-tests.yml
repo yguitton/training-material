@@ -1,0 +1,27 @@
+- doc: Test outline for music_pre-grouping_cell_types
+  job:
+    scRNA Assay Tabular:
+      class: File
+      path: test-data/scRNA Assay Tabular.tabular
+      filetype: tabular
+    scRNA Phenotype Tabular:
+      class: File
+      path: test-data/scRNA Phenotype Tabular.tabular
+      filetype: tabular
+    Bulk RNA Assay Tabular:
+      class: File
+      path: test-data/Bulk RNA Assay Tabular.tabular
+      filetype: tabular
+    Bulk RNA Phenotype Tabular:
+      class: File
+      path: test-data/Bulk RNA Phenotype Tabular.tabular
+      filetype: tabular
+    epith.markers:
+      class: File
+      path: test-data/epith.markers.txt
+      filetype: txt
+    immune.markers:
+      class: File
+      path: test-data/immune.markers.txt
+      filetype: txt
+  outputs: {}

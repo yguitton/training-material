@@ -1,0 +1,26 @@
+- doc: Test outline for music_deconvolution
+  job:
+    scRNA Assay Tabular:
+      class: File
+      path: test-data/scRNA Assay Tabular.tabular
+      filetype: tabular
+    scRNA Phenotype Tabular:
+      class: File
+      path: test-data/scRNA Phenotype Tabular.tabular
+      filetype: tabular
+    Bulk RNA Assay Tabular:
+      class: File
+      path: test-data/Bulk RNA Assay Tabular.tabular
+      filetype: tabular
+    Bulk RNA Phenotype Tabular:
+      class: File
+      path: test-data/Bulk RNA Phenotype Tabular.tabular
+      filetype: tabular
+    Cell Types List: alpha,beta,delta,gamma,acinar,ductal
+  outputs:
+    out_tab (Step 8):
+      path: test-data/out_tab (Step 8).tabular
+    out_tab (Step 10):
+      path: test-data/out_tab (Step 10).tabular
+    out_pdf (Step 11):
+      path: test-data/out_pdf (Step 11).pdf
