@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 
-title: "S3 bucket in Galaxy"
+title: "Adding file-sources to Galaxy"
 questions:
   - "How to set up an S3 bucket"
 objectives:
