@@ -51,7 +51,7 @@ Argo is an international program that observes the interior of the ocean with a 
 >    - Create a branch on your fork
 >    - Go to the file **file_sources_conf.yml.j2** in **templates/galaxy/config/**
 >
-> There you can edit the file and add your S3 bucket by filling out the right informations such as this for the Argo example:
+> There you can edit the file and add your S3 bucket by adding a Argo specific section, like in the following:
 > ```
 > - type: s3fs
 >   label: Argo marine floats data and metadata from Global Data Assembly Centre (Argo GDAC)
