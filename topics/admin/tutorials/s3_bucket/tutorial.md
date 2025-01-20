@@ -66,5 +66,5 @@ Argo is an international program to observe the interior of the ocean with a fle
 {: .hands_on}
 
 # Conclusion 
-Here you are all set and once your Pull Request is merged you'll soon be able to see your bucket in the data libraries.
+Here you are all set and once your Pull Request is merged you'll soon be able to see your bucket in **upload data**, **Choose remote files**, and then search for your bucket label !
 
