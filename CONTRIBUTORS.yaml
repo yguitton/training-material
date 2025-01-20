@@ -586,6 +586,13 @@ combesf:
     affiliations:
       - elixir-europe
 
+CordulaHege:
+    name: Cordula Almut Selma Hege
+    joined: 2024-11
+    affiliations:
+        - nfdi4microbiota
+        - hzi-bifo
+
 coverbeck:
     name: Charles Overbeck
     email: coverbec@ucsc.edu
@@ -618,6 +625,13 @@ d-salgado:
 danielabutano:
     name: Daniela Butano
     joined: 2019-09
+
+dawnmy:
+    name: Zhi-Luo Deng
+    joined: 2024-11
+    affiliations:
+      - hzi-bifo
+      - nfdi4microbiota
 
 Sch-Da:
     name: Daniela Schneider
@@ -934,6 +948,14 @@ garimavs:
     email: garimasingh.2k21@gmail.com
     joined: 2022-03
 
+GaryRobertson:
+    name: Gary Robertson
+    joined: 2024-11
+    affiliations:
+       - hzi-bifo
+       - nfdi4microbiota
+    github: false
+
 gatwirival:
     name: Valentine Gatwiri
     email: valegjohn@gmail.com
@@ -991,6 +1013,14 @@ hechth:
   email: helge.hecht@recetox.muni.cz
   orcid: 0000-0001-6744-996X
   elixir_node: cz
+
+HeshamAlmessady:
+  name: Hesham Almessady
+  joined: 2024-11
+  github: false
+  affiliations:
+    - hzi-bifo
+    - nfdi4microbiota
 
 heylf:
     name: Florian Heyl

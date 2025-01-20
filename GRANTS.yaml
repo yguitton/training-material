@@ -225,6 +225,16 @@ nfdi4plants:
     url:  https://nfdi4plants.org
     avatar: "/training-material/shared/images/logo-dataplant.svg"
 
+nfdi4microbiota:
+    short_name: NFDI4Microbiota
+    name: NFDI4Microbiota
+    joined: 2024-07
+    funding_id: "460129525"
+    funding_database: dfg
+    funder_name: DFG
+    url:  https://nfdi4microbiota.de
+    avatar: "/training-material/shared/images/nfdi4microbiota_logo.png"
+
 nhgri-anvil:
     name: National Human Genome Research Institute Genomic Data Science Analysis, Visualization, and Informatics Lab-Space
     short_name: "NHGRI ANVIL"
