@@ -134,6 +134,12 @@ forschungszentrum-juelich:
     url: https://www.fz-juelich.de/de
     github: false
 
+hzi-bifo:
+   name: Helmholtz Centre for Infection Research
+   short_name: HZI
+   url: https://www.helmholtz-hzi.de/en/
+   avatar: "/training-material/shared/images/hzi.png"
+
 ifb:
     short_name: IFB
     name: Institut Français de Bioinformatique

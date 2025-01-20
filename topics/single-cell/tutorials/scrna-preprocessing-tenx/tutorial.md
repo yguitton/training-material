@@ -66,8 +66,12 @@ recordings:
 
 answer_histories:
   - label: "UseGalaxy.org"
+    history: https://usegalaxy.org/u/wendi_bacon/h/pre-processing-of-10x-single-cell-rna-datasets
+    date: 2024-12-10
+  - label: "UseGalaxy.org - unarchived"
     history: https://usegalaxy.org/u/videmp/h/pre-processing-of-10x-single-cell-rna-datasets
     date: 2024-10-04
+
 ---
 
 
