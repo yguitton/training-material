@@ -14,7 +14,7 @@ answer_histories:
     history: https://usegalaxy.eu/u/marisa_jl/h/clustering-3k-pbmcs-with-seurat---sctransform---answer-ke
     date: 2023-10-28
 questions:
-- How can we identify cell types in single cell RNA-Seq data? 
+- How can we identify cell types in single cell RNA-Seq data?
 - What are the steps for clustering single cell data with Seurat?
 objectives:
 - Explain the steps involved in clustering single cell data
@@ -41,7 +41,7 @@ contributors:
 
 ---
 
-Single cell RNA-seq analysis enables us to explore differences in gene expression between cells. It can reveal the heterogenity within cell populations and help us to identify cell types that could play roles in development, disease, or other processes. Single cell omics is a relatively young field, but there are a few commonly-used analysis pipelines that you will often see in the literature. In this tutorial, we will use one of these pipelines, Seurat, to cluster single cell data from a 10X Genomics experiment ({% cite seurat2023v5 %}). You can follow the same analysis using the Scanpy pipeline in the [Clustering 3K PBMCs with Scanpy]({% link topics/single-cell/tutorials/scrna-scanpy-pbmc3k/tutorial.md %}) tutorial. 
+Single cell RNA-seq analysis enables us to explore differences in gene expression between cells. It can reveal the heterogenity within cell populations and help us to identify cell types that could play roles in development, disease, or other processes. Single cell omics is a relatively young field, but there are a few commonly-used analysis pipelines that you will often see in the literature. In this tutorial, we will use one of these pipelines, Seurat, to cluster single cell data from a 10X Genomics experiment ({% cite seurat2023v5 %}). You can follow the same analysis using the Scanpy pipeline in the [Clustering 3K PBMCs with Scanpy]({% link topics/single-cell/tutorials/scrna-scanpy-pbmc3k/tutorial.md %}) tutorial.
 
 Clustering is typically the first type of analysis we will perform on a single cell dataset. It groups together cells that are expressing similar genes, which makes the data easier to understand and often helps us to identify specific cell types.
 
@@ -101,9 +101,9 @@ In this matrix, the values represent the number of each feature (i.e. gene; row)
 >    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
 >
 > 3. Rename the datasets as `genes`, `barcodes`, and `matrix` if necessary
-> 
+>
 >    {% snippet faqs/galaxy/datasets_rename.md %}
->    
+>
 > 4. Check the datatypes are correct - the `genes` and `barcodes` files should be tsv or tabular while the `matrix` should be an mtx file
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md %}
@@ -114,7 +114,7 @@ In this matrix, the values represent the number of each feature (i.e. gene; row)
 >
 {: .hands_on}
 
-The beginning of the file should look like this: 
+The beginning of the file should look like this:
 
 > <question-title></question-title>
 >
@@ -144,7 +144,7 @@ Representing the matrix with these three files is convenient for sharing the dat
 
 In order to analyse the data using Seurat, we will first need to create a SeuratObject. A SeuratObject can store all our data, including the gene names, cell barcodes and matrix in a single RDS file. Since Seurat was written in the R programming language, SeuratObjects are saved as RData or RDS files. An RDS file is simply a type of RData file that contains a single object.
 
-SeuratObjects can also hold any metadata we might have about our cells or genes, as well as the information we will produce during our analysis, such as our dimensional reductions and cell clusters. A SeuratObject can hold data in multiple layers (also known as slots in earlier version of Seurat). We can have layers of raw counts, normalised data, and scaled data. We could also store multiple assays or types of data in a single object, although in this tutorial we will only be using one assay for RNA-seq data. The SeuratObject is designed to be self-contained so that we don't have to work with lots of different files, even if we have different versions or types of data. 
+SeuratObjects can also hold any metadata we might have about our cells or genes, as well as the information we will produce during our analysis, such as our dimensional reductions and cell clusters. A SeuratObject can hold data in multiple layers (also known as slots in earlier version of Seurat). We can have layers of raw counts, normalised data, and scaled data. We could also store multiple assays or types of data in a single object, although in this tutorial we will only be using one assay for RNA-seq data. The SeuratObject is designed to be self-contained so that we don't have to work with lots of different files, even if we have different versions or types of data.
 
 Creating a SeuratObject in R would require two steps - first, we would need to read in our data, in this case using the `Read10X` function, then secondly we would turn it into a SeuratObject using the `CreateSeuratObject` function. On Galaxy, we can perform both steps with a single tool. The `CreateSeuratObject` function also generates some QC metrics and performs basic filtering of the data.
 
@@ -161,7 +161,7 @@ Creating a SeuratObject in R would require two steps - first, we would need to r
 >        - *"Calculate percentage of mito genes in each cell"*: `No`
 >
 > 2. Rename the generated file to `Input 3k PBMC`
-> 
+>
 > 3. Check that the format is `rds`
 {: .hands_on}
 
@@ -174,12 +174,12 @@ We can't look at the RDS file directly as it is designed for computers to read, 
 >        - *"Display information about"*: `General`
 >
 > 2. Click the {% icon galaxy-eye %} on the output in your history to see some information about your SeuratObject
-> 
+>
 {: .hands_on}
 
 > <question-title></question-title>
 >
-> 1. How many cells and genes are in the `Input 3k PBMC` SeuratObject we just created? 
+> 1. How many cells and genes are in the `Input 3k PBMC` SeuratObject we just created?
 > 2. Is this the same as the number of cells and genes we started out with?
 >
 > > <solution-title></solution-title>
@@ -223,12 +223,12 @@ The `CreateSeuratObject` function we used in the {% tool Seurat Create %} tool a
 
 ### Computation of QC metrics
 
-We already have two useful QC metrics that were calculated when we created our SeuratObject: 
+We already have two useful QC metrics that were calculated when we created our SeuratObject:
 
 - **nCount_RNA** the total sum of RNAs that were found in each cell.
-    The total number of counts is related to cell size, but it can also be an indication of quality. If `nCount_RNA` is very high we might be looking at results from a doublet or multiplet - two or more cells that were isolated together during the experiment. If `nCount_RNA` is very low, then it is likely that we lost a lot of the RNA due to cell lysis (breakage) or inefficient cDNA capture and amplification - or perhaps we only captured a fragment of a cell. 
+    The total number of counts is related to cell size, but it can also be an indication of quality. If `nCount_RNA` is very high we might be looking at results from a doublet or multiplet - two or more cells that were isolated together during the experiment. If `nCount_RNA` is very low, then it is likely that we lost a lot of the RNA due to cell lysis (breakage) or inefficient cDNA capture and amplification - or perhaps we only captured a fragment of a cell.
 - **nFeature_RNA** the number of unique genes that were detected in each cell.
-    We would expect to see some variation in the variety of genes expressed by cells of different sizes, types, and conditions, but if this number is unusually high or low then it could be a sign of poor quality. High `nFeature_RNA` could be another sign of a doublet or multiplet - we might have captured cells of different types and processed them together. Low `nFeature_RNA` could be due to loss of RNA if `nCount_RNA` is also low, or a sign that we have failed to capture the diversity of the transcript population, perhaps due to technical problems in our experiment. 
+    We would expect to see some variation in the variety of genes expressed by cells of different sizes, types, and conditions, but if this number is unusually high or low then it could be a sign of poor quality. High `nFeature_RNA` could be another sign of a doublet or multiplet - we might have captured cells of different types and processed them together. Low `nFeature_RNA` could be due to loss of RNA if `nCount_RNA` is also low, or a sign that we have failed to capture the diversity of the transcript population, perhaps due to technical problems in our experiment.
 
 One other metric that is often used to assess cell quality is the proportion of reads that came from the mitochondrial genome. The proportion is often higher in low quality, damaged or dying cells. Mitochondrial RNAs, which are protected inside the mitochondrial membranes, can be the last RNAs to be degraded or lost from a damaged cell, so we can end up with higher proportions of them in a low quality cell. We could have calculated the proportion of mitochondrial genes while creating our SeuratObject, but we will calculate it separately here to see how it is done - and how we could do the same for other types of genes.
 
@@ -249,9 +249,9 @@ When we use these QC metrics to remove low quality cells, we are assuming they a
 
 ### Filtering of low-quality cells
 
-The simplest approch for identifing low-quality cells is to apply thresholds on the QC metrics. We assume that any cells beyond these thresholds are low quality cells and that this is due to those technical factors. Although this is a simple strategy, we will need to decide where to set our thresholds, and this will depend on the experimental protocol and biological system - there are no standard thresholds that we can use for every dataset. 
+The simplest approch for identifing low-quality cells is to apply thresholds on the QC metrics. We assume that any cells beyond these thresholds are low quality cells and that this is due to those technical factors. Although this is a simple strategy, we will need to decide where to set our thresholds, and this will depend on the experimental protocol and biological system - there are no standard thresholds that we can use for every dataset.
 
-We can visualise the QC metrics to help us decide where to set our thresholds for filtering out low quality cells. We want to get rid of cells that have unusually high or low numbers of genes or unique features, as well as cells that have higher proportions of mitochondrial genes. 
+We can visualise the QC metrics to help us decide where to set our thresholds for filtering out low quality cells. We want to get rid of cells that have unusually high or low numbers of genes or unique features, as well as cells that have higher proportions of mitochondrial genes.
 
 > <hands-on-title>Visualise QC Metrics</hands-on-title>
 >
@@ -286,17 +286,17 @@ We can visualise the QC metrics to help us decide where to set our thresholds fo
 
 > <question-title></question-title>
 >
-> 1. What do the violin plots tell us about the cell sizes and quality in our dataset? 
+> 1. What do the violin plots tell us about the cell sizes and quality in our dataset?
 > 2. What do the scatter plots in tell us about the relationship between cell size and the other QC metrics?
 >
 > > <solution-title></solution-title>
 > > 1. The violin plots give us an overview of the cell sizes (nCount_RNA), number of unique genes (nFeature_RNA), and proportion of mitochondrial reads for our cells. We can see that most of the cells are grouped together near the bottom of each plot, but there are some outliers that have unusually high or low values of each metric. Cells with higher values of nCount_RNA are likely to be larger as they contained more RNA. Cells with higher values of nFeature_RNA had RNAs produced from lots of different genes, while those with low nFeature_RNA had RNAs produced from a smaller range of genes. Cells with high percent.mt had lots of reads from mitochondrial genes. Although there will be some natural variation in cell size, the range of genes being expressed, and mitochondrial content, we suspect that extreme values of these three metrics reflect low quality cells.
-> > 2. The scatter plots show us how these QC metrics relate to each other. As expected, the cells with higher total RNA counts also tend to have higher numbers of unique features, but some cells have particularly high values of both - these could be doublets. The proportion of mitochondrial genes doesn't increase with cell size (total counts) in the same way. We can see a small number of cells that have very high proportions of mitochondrial reads despite having low total reads - these are likely to be damaged cells that have lost a lot of their non-mitochondrial RNAs. 
+> > 2. The scatter plots show us how these QC metrics relate to each other. As expected, the cells with higher total RNA counts also tend to have higher numbers of unique features, but some cells have particularly high values of both - these could be doublets. The proportion of mitochondrial genes doesn't increase with cell size (total counts) in the same way. We can see a small number of cells that have very high proportions of mitochondrial reads despite having low total reads - these are likely to be damaged cells that have lost a lot of their non-mitochondrial RNAs.
 > >
 > {: .solution}
 {: .question}
 
-We can now set our QC thresholds based on these plots. Unfortunately, there are no standard thresholds that can be applied to every dataset, so we need to look at our data and make this decision for ourselves. 
+We can now set our QC thresholds based on these plots. Unfortunately, there are no standard thresholds that can be applied to every dataset, so we need to look at our data and make this decision for ourselves.
 
 We've already filtered out the cells with the lowest total counts when we created the SeuratObject, so we'll focus on filtering the number of unique features and the proportion of mitochondrial reads. We saw on the scatter plots that the cells with high values for these two metrics also had the highest nCount_RNA values, so we'll actually be getting rid of the cells with the highest total counts too.
 
@@ -311,7 +311,7 @@ We've already filtered out the cells with the lowest total counts when we create
 >
 > > <solution-title></solution-title>
 > > 1. A threshold of 2500 seems sensible for this dataset. The violin plot for nFeature_RNA shows that most of our cells should be under this threshold, so we won't lose too much of our data. The scatter plot shows that the cells above this threshold also had unusually high values of nCount_RNA, which suggest they could include some doublets.
-> > 2. A threshold of 5% should work for this dataset. As before, the violin plot shows that the majority of our cells are below this threshold, but in this case the cells above it had low total RNA counts, which suggests these could be damaged cells that had lost a lot of their other RNAs. Although there are few standards to guide us in single cell analysis, you will see the same 5% threshold for mitochondrial content used in many studies. It often works well, but it can filter out energetic cell types such as muscle cells, so we shouldn't apply this threshold without considering whether it works for our dataset. Some studies don't filter on mitochondrial reads at all! 
+> > 2. A threshold of 5% should work for this dataset. As before, the violin plot shows that the majority of our cells are below this threshold, but in this case the cells above it had low total RNA counts, which suggests these could be damaged cells that had lost a lot of their other RNAs. Although there are few standards to guide us in single cell analysis, you will see the same 5% threshold for mitochondrial content used in many studies. It often works well, but it can filter out energetic cell types such as muscle cells, so we shouldn't apply this threshold without considering whether it works for our dataset. Some studies don't filter on mitochondrial reads at all!
 > >
 > {: .solution}
 {: .question}
@@ -364,13 +364,14 @@ If we produce the same plots again, we can see what has changed in our data.
 > <question-title></question-title>
 >
 > 1. Have we eliminated the low-quality cells from our data?
+>
 > > <solution-title></solution-title>
 > > 1. We can see in both the violin and scatter plots that the outliers have been eliminated from our dataset - we've removed the cells with high mitochondrial counts and/or unusually high numbers of detected genes. We hope that this means we've got rid of the poor quality cells without losing any real biological variation, but we can't really be sure. Sometimes it is necessary to come back and re-think our filters - for example if you get to the end of the analysis and realise that you're missing a cell type that should be present in your data!
 > >
 > {: .solution}
 {: .question}
 
-## Further Preprocessing 
+## Further Preprocessing
 
 Now that we're happy with the cells left in our SeuratObject, we can begin preparing the data for analysis. Seurat provides two routes for preprocessing, one with separate tools for each step and another that combines all these preprocessing steps into a single tool, `SCTransform`.
 
@@ -390,11 +391,11 @@ The usual preprocessing steps for single cell data are normalisation, selection 
     Although this form of normalisation is widely-used, it does assume that each cell originally had the same number of RNA molecules, which isn't the case when our samples contain cells of different types and sizes. SCTransform takes a different approach to normalisation that doesn't make the same assumption about the cells {% cite SCTransform2022 %}. Instead, it creates a model of the UMI counts that enables it to regress out variation in sequencing depth (nFeature_RNA) and pools information from genes with similar abundances to adjust the variances. The corrected counts will be stored in the `counts` layer of the new SCT assay. The log1p(counts) will be stored in the `data` layer and the pearson residuals will be stored in the `scale.data` layer.
 - **Selection of highly variable features**
     Rather than use the entire dataset in every stage of the analysis, we can focus on the genes that provide the most information - the highly variable genes that showed the biggest differences in expression between cells. We assume that these bigger differences reflect genuine biological differences, while the smaller differences in expression seen in other genes is down to chance or technical noise. Focusing on the most variable genes can make biological differences clearer in single cell analysis.
-    Feature selection can have a big impact on our analysis as we will run downstream analyses (e.g. PCA) on these genes. We will be comparing cells based on the expression of these variable genes. 
+    Feature selection can have a big impact on our analysis as we will run downstream analyses (e.g. PCA) on these genes. We will be comparing cells based on the expression of these variable genes.
     Seurat's separate `FindVariableFeatures` tool selects the 2000 most variable genes by default, while `SCTransform` selects the top 3000 genes. We can select more variable genes when we use SCTransform because this method is better at removing technical effects from the data, so the additional variable features are more likely to represent biological variation.
   We may need to change this setting for some datasets to ensure we're selecting the most useful genes without including too many others.
 - **Scaling**
-    Scaling is a linear transformation that we apply to prepare our data for dimensional reduction. 
+    Scaling is a linear transformation that we apply to prepare our data for dimensional reduction.
     The default scaling method for the separate `ScaleData` tool in Seurat shifts the expression of each gene so that the mean expression across all the cells is 0. It also scales the expression of each gene so that the variance across all cells is 1. Scaling ensures that highly expressed genes don't dominate the analysis too much - we're interested in differences in expression between cells, not in genes that are always highly expressed in all the cells. The results will be stored in the `scale.data` layer.
     SCTransform doesn't scale data in the same way - although it centers the data by default, it won't scale the data unless you select this option. Instead, SCTransform usually stores the pearson residuals in the `scale.data` layer, which don't need to be scaled to the same variance.
     By default, both approaches only center/scale the highly variable genes that we'll use for dimensional reduction, but it is possible to scale more genes if required. If you choose to use the separate preprocessing tool in this tutorial, then we'll use the ScaleData tool to scale all the genes - this means that we can compare or plot the expression of any of the genes, as they will all be scaled in the same way. We won't perform scaling with SCTransform, as we're following the [original SCT tutorial](https://satijalab.org/seurat/articles/sctransform_vignette.html), but we will center all genes.
@@ -469,13 +470,13 @@ The usual preprocessing steps for single cell data are normalisation, selection 
 {: .hands_on}
 
 <div class='Separate-Preprocessing-Steps' markdown='1'>
-  
+
 ![Most genes are grouped together at the bottom of the plot with low standardized variance. The selected variable genes are highlighted in red and labelled by name. They have higher standardized variances although most are still quite close to the non variable genes. The labels read PPBP, S100A9, LYZ, IGLL5, GNLY, FTL, PF4, FTH1, GNG11, and FCER1A.](../../images/scrna-seurat-pbmc3k/seurat_variable_genes.png "Plot showing the standardized variances of variable and non-variable genes. The top 10 most variable genes are labelled.")
 
 </div>
 
 <div class='SCTransform' markdown='1'>
-  
+
 ![Most genes are closely grouped together, right at the bottom of the plot with low standardized variance. The selected variable genes are highlighted in red and labelled by name. They are higher up on the plot, showing they have higher standardized variances although most are still quite close to the non variable genes. They are S100A9, GNLY, LYZ, S100A8, NKG7, FTL, GZMB, IGLL5, FTH1, and CCL5.](../../images/scrna-seurat-pbmc3k/seurat_variable_genes_SCT.png "Plot showing the standardized variances of variable and non-variable genes. The top 10 most variable genes are labelled.")
 
 </div>
@@ -483,8 +484,9 @@ The usual preprocessing steps for single cell data are normalisation, selection 
 > <question-title></question-title>
 > 1. What are the top 10 most variable genes in this dataset?
 > 2. Why are we interested in these genes?
+>
 > > <solution-title></solution-title>
-> > 
+> >
 > > 1. We can check the list of the top variable genes in our history by clicking on the {% icon galaxy-eye %} or see them on our variable features plot.
 > > <span class='Separate-Preprocessing-Steps'>
 > >
@@ -531,7 +533,7 @@ The usual preprocessing steps for single cell data are normalisation, selection 
 
 # Dimensionality Reduction
 
-Dimensional reduction is a key step in single cell analysis that simplifies our big, complex datasets enough to enable us to perform and understand further analyses. 
+Dimensional reduction is a key step in single cell analysis that simplifies our big, complex datasets enough to enable us to perform and understand further analyses.
 
 In single cell analysis, we're comparing cells based on their patterns of gene expression - we're looking for cells with similar transcriptomic profiles. Each gene represents a dimension of the data. If we only found two genes being expressed in our cells, we could represent them on a 2-dimensional plot. The two axes of the plot would represent the expression levels of the two genes. Each cell would become a point on the plot, positioned according to its expression of these genes. We might spot one group of cells with high levels of both genes and another group that expresses large amounts of one gene and not much of the other.
 
@@ -551,7 +553,7 @@ Principal Component Analysis (PCA) is a dimensionality reduction technique that 
 
 The axes or dimensions identified by PCA will be ordered based on how much of the variation they explain. The first axis (or Principal Component, PC) is chosen so that it captures the greatest variance across cells. The next PC is the axis orthogonal to (uncorrelated with) the first that captures the greatest amount of the remaining variation across the cells. The third PC will be orthoganol to the first two and capture the greatest amount of the remaining variation, and so on. You can decide how many PCs you want to produce and then how many of these PCs you want to use in downstream analyses.
 
-We assume that the top PCs are more likely to represent real biological variation in the data because this should affect multiple genes in coordinated ways, having a bigger impact on variation. Random technical or biological noise should affect each gene independently, without creating patterns of correlation or explaining much variation, so these effects should be represented in the later PCs. By using just the top PCs in our downstream analysis, we can therefore focus on the biological variation and eliminate some of the unwanted noise while also making our data easier to analyse. 
+We assume that the top PCs are more likely to represent real biological variation in the data because this should affect multiple genes in coordinated ways, having a bigger impact on variation. Random technical or biological noise should affect each gene independently, without creating patterns of correlation or explaining much variation, so these effects should be represented in the later PCs. By using just the top PCs in our downstream analysis, we can therefore focus on the biological variation and eliminate some of the unwanted noise while also making our data easier to analyse.
 
 ### Perform the PCA
 
@@ -609,6 +611,7 @@ Rather than just looking at a list of genes, we can also produce plots to help u
 > 1. What are the top positive and negative genes for the first three PCs?
 > 2. Are any of our top 10 highly variable genes associated with the top PCS? Does this surprise you?
 > 3. When we plot the cells along the PC axes (in the next step) do you expect to see differences in the expression of these genes along the associated axis?
+>
 > > <solution-title></solution-title>
 > > <span class='Separate-Preprocessing-Steps'>
 > > 1. The list produced by the `RunPCA` function shows the genes that were most strongly positively and negatively assocated with each PC. The top positively associated genes were CST3 for PC1, CD79A for PC2, and HLA-DQA1 for PC3. The top negatively associated genes were MALAT1 for PC1, NKG7 for PC2, and PPBP for PC3. However, these top genes don't define the PCs by themselves - they are part of groups of genes that showed correlated patterns of expression.
@@ -652,6 +655,7 @@ Next, let's see how our cells are distributed along the top PCs. We can use `Dim
 
 > <question-title></question-title>
 > 1. Can you see any groups or clusters of cells in the the PCA plot?
+>
 > > <solution-title></solution-title>
 > > 1. The cells seem to form three main clusters, although there are also cells spread outside and in between these groups. The cells are distributed along the full length of both axes, which makes sense as these are the PCs that explain the greatest amounts of variation in the data.
 > > If you've tried the other preprocessing route in this tutorial, then you might notice that while the plots look quite similar, it seems like one of them has been flipped upside down and back to front compared to the other! This explains why MALAT1 is the top positive gene for PC1 in the separate preprocessing route but the top negative gene for PC1 in the SCTransform route - this axis is showing simiar differences, but the other way around.
@@ -699,6 +703,7 @@ You should now have two plots showing the expression of these genes on different
 > <question-title></question-title>
 > 1. How does the expression of the top positive and negative genes relate to PCs 1 and 2?
 > 2. How does the expression of the top positive and negative genes relate to PCs 2 and 3?
+>
 > > <solution-title></solution-title>
 > > 1. When we look at the expression of our top genes along PCs 1 and 2 we see that, as expected, the top positively associated gene for PC1, CST3, is almost exclusively expressed in cells at the positive end of the PC1 (horizontal) axis. The pattern is less clear for the negatively associated MALAT1 as most cells are expressing it, but if we look closely we can see that the expression is higher in cells at the negative end of the PC1 axis. We can see similar patterns for the top genes associated with PC2. The top positively associated gene, CD79A is mainly expressed by the cells closest to the top of the PC2 (vertical) axis. The top negative gene NKG7 is mainly expressed by cells along the lower half of the PC2 axis.
 > > We don't see similar patterns for the genes associated with PC3 in this figure - although these genes are only expressed in parts of the plot, there is no clear relationship with either the PC1 or PC2 axes. This is exactly what we would expect to see - these genes are associated with PC3 so they shouldn't show any relationship with the axes.
@@ -718,6 +723,7 @@ You should now have two plots showing the expression of these genes on different
 > <question-title></question-title>
 > 1. How does the expression of the top positive and negative genes relate to PCs 1 and 2?
 > 2. How does the expression of the top positive and negative genes relate to PCs 2 and 3?
+>
 > > <solution-title></solution-title>
 > > 1. When we look at the expression of our top genes along PCs 1 and 2 we see that, as expected, the top positively associated gene for PC1, MALAT1, is expressed at higher levels in cells at the positive end of the PC1 (horizontal) axis while the top negatively associated gene, FTL, is expressed mainly at the negative end. The pattern isn't as clear for these genes as it is for the other PCs we plotted, because both MALAT1 and FTL are expressed to some extent by most of the cells in our plots. We can see more obvious patterns for the top genes associated with PC2. The top positively associated gene, NKG7 is mainly expressed by the cells at the positive end of the PC2 (vertical) axis. The top negative gene HLA-DRA is mainly expressed by cells along the lower half of the PC2 axis.
 > > We don't see similar patterns for the genes associated with PC3 in this figure - although these genes are only expressed in parts of the plot, there is no clear relationship with either the PC1 or PC2 axes. This is exactly what we would expect to see - these genes are associated with PC3 so they shouldn't show any relationship with the PC1 and PC2 axes.
@@ -776,12 +782,13 @@ Another option for visualising our PCA results is to use `DimHeatmap` to produce
 > 1. What does the PC1 heatmap reveal about the expression of the top genes for this PC, <span class="Separate-Preprocessing-Steps">CST3 and MALAT1?</span><span class="SCTransform">MALAT1 and FTL?</span>
 > 2. Why do the plots become messier for lower PCs?
 > 3. Which type of PCA visualisation was most useful for understanding the main sources of variation in the data?
+>
 > > <solution-title></solution-title>
 > > 1. The bottom row of the heatmap shows the PCA scores for the top positive gene associated with PC1, in the top cells for this PC. We can see that most cells on the left side of the heatmap are coloured yellow in this row, indicating they scored highly for this gene. Almost all of the cells on the right side are black or pink in this bottom row, indicating lower scores for the gene. Meanwhile, we see the opposite for the top negative gene associated with PC1, which appears in the topmost row of the heatmap. Cells (columns) that scored highly for the top positive gene had low scores for the top negative gene, while those that had low scores for the top positive gene showed high scores for the top negative gene.
 > > Clearly, there is strong variation in these genes across the cells in the plot - and that variation isn't just in these two genes, but also in the 28 other genes in this heatmap. These are the two correlated groups of genes that define the first PC. Half the genes were more highly expressed in cells at one end of the PC while the other half were expressed more at the other end of the PC.
 > > 2. Each of the plots for the top PCs distinguishes very clearly between two groups of cells. For each of the top PCs, one group (the left side of the plot) scored highly for most of the genes positively associated with the PC and usually had low scores for the genes negatively associated with the PC. The second group (the right side of the plot) showed the opposite, with low scores for positively associated genes and high scores for negatively associated genes.
 > > The distinction becomes less clear in later PCs, with more cells showing different patterns to the rest and a less obvious distinction between the two sides of the plots. This makes sense, because the top PCs are the ones that explained the greatest amount of variation in the data, so they are linked to very clear patterns of expression across many cells. The later PCs didn't explain much variation because they aren't linked with such obvious patterns.
-> > 3. The most useful plot might depend on your own preferences as well as the data you're analysing, but the DimHeatmap is often best for identifying which PCs will be most interesting for downstream analysis. Both cells and genes are ordered by their PCA scores on these plots, so you can see which PCs have the strongest impact on the most numbers of cells while also identifying the sets of features associated with different PCs. You can also limit the number of cells being plotted if you want to focus on the most extreme cells for each PC. 
+> > 3. The most useful plot might depend on your own preferences as well as the data you're analysing, but the DimHeatmap is often best for identifying which PCs will be most interesting for downstream analysis. Both cells and genes are ordered by their PCA scores on these plots, so you can see which PCs have the strongest impact on the most numbers of cells while also identifying the sets of features associated with different PCs. You can also limit the number of cells being plotted if you want to focus on the most extreme cells for each PC.
 > {: .solution}
 {: .question}
 
@@ -816,6 +823,7 @@ The Elbow Plot ranks the PCs based on the percentage of variance that each of th
 
 > <question-title></question-title>
 > 1. How many PCs should we use?
+>
 > > <solution-title></solution-title>
 > > <span class='Separate-Preprocessing-Steps'>
 > > 1. As with many decisions in single cell analysis, there isn't an exact method for deciding how many PCs we should use. The elbow or bend in our plot appears to be around PC9-10, so we'll use 10 dimensions in this tutorial, but you could justifiably choose anywhere between about PC7 to PC12 on the basis of this plot. It is usually better to err on the higher side than to get rid of PCs that might be useful. Sometimes it is worth repeating the analysis with different numbers of PCs to see how it affects the results.
@@ -840,7 +848,7 @@ We will perform graph-based, unsupervised clustering in two steps to find out wh
 1. **Computation of a neighborhood graph**
 
     First, we will build a graph where every cell is a node that is connected to its neighbors by a line or edge. The distances between cells (the lengths of these edges) will be based on a distance metric, which is calculated by comparing the values for our top PCs between each pair of cells. The edges are weighted based on the similarity between the cells, so that more weight is given to the connections between cells that are more similar based on their expression patterns. The cells that share the closest, most heavily weighted connections in the graph are the ones with the most similar expression profiles - they are each others' nearest neighbours. Seurat uses a K-nearest neighbor (KNN) graph, so it will draw edges (lines) between each cell and a certain number (k) of its nearest neighbours.
-    
+
 2. **Clustering of the neighborhood graph**
 
     Second, we will partition this graph into a number of highly interconnected groups, 'quasi-cliques', or communities. Seurat provides several different algorithms for clustering, but they all work to find the optimal way to organise the data into groups. Clustering algorithms will look for communities of cells that are more closely connected with each other than with the cells outside their group. Each community represents a cluster that we can use for downstream interpretation.
@@ -987,6 +995,7 @@ UMAP plots aren't the only way to see what is going on with the clusters we've j
 > <question-title></question-title>
 > 1. Are the top genes for PCs 1-3 expressed in the clusters you expected?
 > 2. Do you find it easier to understand gene expression with the violin plots or the UMAPs we coloured by expression in the last step?
+>
 > > <solution-title></solution-title>
 > > 1. We can see the same expression patterns in the violin plots as we did in the UMAP feature plots. <span class="Separate-Preprocessing-Steps">For example, MALAT1 is expressed across most of the clusters while PPBP is only expressed in cluster 8.</span><span class="SCTransform">*For example, S100A8 expression is highest in cluster 1.</span>
 > > We can also see that there is some expression of the top genes outside the clusters they are most highly expressed in, although usually at low levels in a small number of cells. <span class="Separate-Preprocessing-Steps">One exception we can see on this plot is a cell in cluster 1 that expressed very high levels of HLA-DQA1 - perhaps this cell was assigned to the wrong cluster or maybe there was some contamination or error, but it could also just be an unusual cell that really did have higher levels of this gene!</span><span class="SCTransform"></span>
@@ -1050,6 +1059,7 @@ Although there is a lot of information here, all we need to know for now is that
 > 1. Are the top genes associated with PCs 1-3 in our list of markers? Which clusters are they markers for?
 > 2. Do these results match your expectations?
 > 3. What were the top 5 markers for cluster 2?
+>
 > > <solution-title></solution-title>
 > > 1. If we search the markers table for our top genes (you can use Ctrl+F to do this but it may take time for the full dataset to load when you view it), we can see that CST3 is a positive marker for clusters 1, 5, and 7 while MALAT1 is a positive marker for clusters 0, 4 and 6. CD79A was a marker for cluster 3 while NKG7 was a marker for clusters 4 and 6. HLA-DQA1 was a marker for clusters 3 and 7 while PPBP was a marker for cluster 8. So, these top genes are differentially expressed by some of our clusters.
 > > 2. The results make sense, as we would expect the top positive and negative genes for each PC to be expressed in different clusters. The results also match up fairly well with what we saw on the UMAP and violin plots - although we might have thought that MALAT1 could be a marker for clusters 2 and 3 too as it seems to be highly expressed by them. The apparent difference in expression we saw in the plot wasn't strong enough to show up in this statistical test.
@@ -1101,7 +1111,7 @@ Let's try finding the positive and negative markers of cluster 2.
 >
 {: .hands_on}
 
-The results from this test will look a little different than when we were comparing markers for all the clusters. 
+The results from this test will look a little different than when we were comparing markers for all the clusters.
 
 The first column is still the name of the marker gene. The following columns tell us the:
 
@@ -1117,6 +1127,7 @@ We don't have a cluster column this time as we were only testing one group again
 > <question-title></question-title>
 > 1. What are the top five markers of cluster 2 and are they positive or negative markers?
 > 2. Are these the same as the top five markers for cluster 2 when we ran `FindAllMarkers`?
+>
 > > <solution-title></solution-title>
 > > 1. When we look at the marker table, we can see that the first five genes listed as markers of cluster 2 are:
 > >  <span class='Separate-Preprocessing-Steps'>
@@ -1168,6 +1179,7 @@ We just used `FindMarkers` to run the same test on cluster 2 as `FindAllMarkers`
 > <question-title></question-title>
 > 1. What are the top five markers of cluster 5 compared to clusters 0 and 3?
 > 2. Are these the same as the top five markers for the cluster when we ran FindAllMarkers?
+>
 > > <solution-title></solution-title>
 > > 1. The top five markers in the output table are:
 > > <span class='Separate-Preprocessing-Steps'>
@@ -1253,7 +1265,7 @@ We can also use other methods for DE analyis in Seurat. We can use the 'ROC' tes
 > >
 > > </span>
 > >
-> > Many of the top markers (including all of the top five) have names starting with RP. In humans, this gene naming patterns indicates that they are ribosomal genes (encoding proteins or RNAs that form ribosomes). Cluster <span class='Separate-Preprocessing-Steps'>0</span><span class='SCTransform'>2</span> might represent a group of cells that are very busy making new proteins using all these ribosomes. If we expect our data to include a cell type that has lots of ribosomes, then this could be a sign that they've formed their own cluster, so we'll be happy with this result (this is actually the case here, as we'll see in the next section). 
+> > Many of the top markers (including all of the top five) have names starting with RP. In humans, this gene naming patterns indicates that they are ribosomal genes (encoding proteins or RNAs that form ribosomes). Cluster <span class='Separate-Preprocessing-Steps'>0</span><span class='SCTransform'>2</span> might represent a group of cells that are very busy making new proteins using all these ribosomes. If we expect our data to include a cell type that has lots of ribosomes, then this could be a sign that they've formed their own cluster, so we'll be happy with this result (this is actually the case here, as we'll see in the next section).
 > > However, if we don't expect to see differences in ribosomal content between cells, then we might suspect that we've ended up with a cluster based on ribosomal RNA content rather than on cell type. In this case, we might want to go back to the QC steps. We could score the cells for `percent.ribo` in the same way we did for `percent.mt`. We could then filter out cells with unusually high proportions of ribosomal genes or regress out the variation associated with this characteristic during the scaling step. Just as when we're filtering cells by mitochondrial RNA proportions, we would need to think carefully about this - we wouldn't want to eliminate a cell type just because it has higher proportions of ribosomal genes, which is what we could end up doing if we tried it with this particular dataset.
 > >
 > {:.solution}
@@ -1285,26 +1297,27 @@ If we're taking the unsupervised approach, then we might want to limit our marke
 >            - *"Only return positive markers"*: `Yes`
 >
 > 2. Rename the second output (the csv file) as `DE Markers`
-> 
+>
 >    {% snippet faqs/galaxy/datasets_rename.md %}
->    
+>
 {: .hands_on}
 
 We could now search online or in a database such as [PanglaoDB](https://panglaodb.se/) or the [Human Protein Atlas](https://www.proteinatlas.org/) to find out which cell types express the markers we've identified for each cluster. If we look at the top 10 markers for cluster 3, we see that the first gene in the list is CD79A.
 
 > <question-title></question-title>
 > 1. Which type of cells express CD79A?
+>
 > > <solution-title></solution-title>
 > > 1. A quick search online or in one of the databases should tell you that CD79A is usually expressed by B cells, which are a type of PBMC, so we would expect to find some in this dataset. This suggests that cluster 3 is made up of B cells.
-> > 
+> >
 >  {: .solution}
 {: .question}
 
 If we were to continue with this unsupervised approach, we would look at more of the top markers for cluster 3 to check that they are expressed by the same cell type as CD79A. We would then repeat the process for the rest of our clusters.
 
-The unsupervised approach might be the only option if we don't know exactly what we're looking for - we might be investigating rare cell types, working with samples from an understudied species, or looking at the changes that happen in a particular disease. However, in many cases, we can use what we already know to begin to understand our dataset. We can look for genes that previous research has identified as markers for the cell types we expect to see. We won't always get all the answers we need from a supervised approach like this, but it can be a quicker way to identify known cell types. 
+The unsupervised approach might be the only option if we don't know exactly what we're looking for - we might be investigating rare cell types, working with samples from an understudied species, or looking at the changes that happen in a particular disease. However, in many cases, we can use what we already know to begin to understand our dataset. We can look for genes that previous research has identified as markers for the cell types we expect to see. We won't always get all the answers we need from a supervised approach like this, but it can be a quicker way to identify known cell types.
 
-A supervised approach should work well for the current dataset because PBMCs have been very well characterised. We know which cell types should be present in a PBMC sample and which genes each of these cell types should be expressing. 
+A supervised approach should work well for the current dataset because PBMCs have been very well characterised. We know which cell types should be present in a PBMC sample and which genes each of these cell types should be expressing.
 
 <div class='Separate-Preprocessing-Steps' markdown='1'>
 
@@ -1416,7 +1429,7 @@ You should be able to identify clusters of all six of these T cell subtypes in y
 </div>
 
 > <comment-title></comment-title>
-> How do you know which markers to use to identify different cell types? 
+> How do you know which markers to use to identify different cell types?
 > Unfortunately, there isn't always an easy answer - it depends on how well defined the cell types you're interested in are. A quick search online or a look through the literature should give you an idea of which markers other people have used to identify the cell types you expect to see in your sample. You could look for genes that have been identified by previous single cell studies or ones that are used to identify or isolate a specific cell type. For well studied cell types like PBMCs, it should be easy to find lists of canonical markers that are often used.
 {: .comment}
 
@@ -1452,6 +1465,7 @@ We have produced a series of UMAP plots, each coloured according to the expressi
 > 1. Are the markers clearly associated with one or more clusters?
 > 2. Are the canonical markers only expressed in these clusters?
 > 3. How similar are the clusters in terms of their expression of these cell type markers? Are more similar cell types closer together on the UMAP plot?
+>
 > > <solution-title></solution-title>
 > > 1. Each cell type marker is clearly expressed at higher levels in certain parts of the plots - we don't have the same problem as we did when we plotted the top genes for PCs 1-3 and found that MALAT1 was expressed at quite high levels across the entire plot! When we compare the expression plots to the clusters we previously plotted, we can see that they match up quite well with each other. Most of the markers are expressed more in certain clusters, but there isn't always a clear boundary, especially for clusters that are close together in the plot. Some markers are associated with a single cluster, such as MS4A1 and PPBP, while others are expressed across multiple clusters.
 > > 2. Although marker expression mainly occurs in one or more clusters, there is still some expression by cells in other parts of the plot. It could be that these genes are sometimes expressed by other cell types, but these could also be cells of the same type that have simply ended up further away in the plot. It can sometimes be hard to tell which cluster these cells have been assigned to from these plots, especially when you consider that some points could be hidden behind others. Cells of the same type might have been assigned to different clusters, but there could also be a few cells that have been plotted at a distance from where the main part of their assigned cluster appears on this plot. <span class-'Separate-Preprocessing-Steps'>If we look back at the UMAP coloured by cluster, we can spot a couple of differently coloured cells at the tip of cluster 7 and by cluster 8.</span><span class='SCTransform'>If we look back at the UMAP coloured by cluster, we can spot a couple of differently coloured cells and mixed into cluster 3 and at the tip of cluster 10.</span>
@@ -1489,6 +1503,7 @@ Another option for visualising marker gene expression across clusters is the Vio
 > 1. Are the markers clearly associated with one or more clusters?
 > 2. Are the canonical markers only expressed in these clusters - and are they expressed at the same level by all the cells in these clusters?
 > 3. How similar are the clusters to each other in terms of their marker gene expression - are there any clusters that seem particularly alike?
+>
 > > <solution-title></solution-title>
 > > 1. The violin plot can make the associations between clusters and markers look clearer, since each cluster is plotted separately and labelled by number. Some of the markers are clearly expressed mainly in one or a few clusters, while others like LYZ and S100A4 are expressed across most of the clusters.
 > > 2. None of the markers are unique to a specific cluster - there are always a few dots (or cells) in the other clusters that are expressing these genes. We can also see that the expression level varies within each cluster as there are cells at different positions along the vertical axis. As well as looking at the expression level in individual cells (dots) we can compare the overall expression patterns by looking at the coloured violin shapes, which show us where most of the cells in each cluster are plotted. For example, we can see there was more variation in the expression level of NKG7 in cluster 4 (where the violin shape is longer) than there was in cluster <span class='Separate-Preprocessing-Steps'>6</span><span class='SCTransform'>5</span> (where there is a short violin shape as all the cells showed high expression of this gene).
@@ -1499,11 +1514,12 @@ Another option for visualising marker gene expression across clusters is the Vio
 Based on our table of marker genes and these plots, we know which clusters were expressing the canonical markers for each cell type or subtype. We can use this information to annotate our clusters by cell type.
 
 <div class='Separate-Preprocessing-Steps' markdown='1'>
-  
+
 > <question-title></question-title>
 > 1. Can you identify the cell types for each cluster?
+>
 > > <solution-title></solution-title>
-> > 1. Based on the expression of the known PBMC markers, we can assign the following cell types to our clusters: 
+> > 1. Based on the expression of the known PBMC markers, we can assign the following cell types to our clusters:
 > >
 > > > | Cell Type            | Marker Genes      | Clusters        |
 > > > | ---------------------|-------------------|-----------------|
@@ -1523,11 +1539,12 @@ Based on our table of marker genes and these plots, we know which clusters were 
 </div>
 
 <div class='SCTransform' markdown='1'>
-  
+
 > <question-title></question-title>
 > 1. Can you identify the cell types for each cluster?
+>
 > > <solution-title></solution-title>
-> > 1. Based on the expression of the known PBMC markers, we can assign the following cell types to our clusters: 
+> > 1. Based on the expression of the known PBMC markers, we can assign the following cell types to our clusters:
 > >
 > > > | Cell Type            | Marker Genes      | Clusters       |
 > > > | ---------------------|-------------------|----------------|
@@ -1562,7 +1579,7 @@ We can now rename our clusters using these cell names, while keeping a copy of t
 >            - *"Save copy of old idents first"*: `Yes`
 >
 > 2. Rename the output as `Annotated Clusters`
-> 
+>
 {: .hands_on}
 
 Now we can plot our UMAP again, this time showing the names of our clusters.
@@ -1597,7 +1614,7 @@ In order to create a heatmap, we need to prepare a tabular file with a list of t
 > <hands-on-title>Create Heatmaps to Compare Expression by Cluster - Canonical Markers</hands-on-title>
 >
 > 1. Use the Upload Data - Paste/Fetch data option to create a table of genes to plot. Select the input type as **tabular** and enter a list of genes, one on each row. You can type these in or copy and paste the following list - don't copy the empty header row if you do this!
-> 
+>
 >    {% snippet faqs/galaxy/datasets_create_new_file.md format="tabular" %}
 > <span class='Separate-Preprocessing-Steps'>
 >
@@ -1606,7 +1623,7 @@ In order to create a heatmap, we need to prepare a tabular file with a list of t
 > | IL7R   |
 > | CCR7   |
 > | CD14   |
-> | LYZ    | 
+> | LYZ    |
 > | S100A4 |
 > | MS4A1  |
 > | CD8A   |
@@ -1617,11 +1634,11 @@ In order to create a heatmap, we need to prepare a tabular file with a list of t
 > | FCER1A |
 > | CST3   |
 > | PPBP   |
-> 
+>
 ></span>
 >
 ><span class='SCTransform'>
-> 
+>
 > |        |
 > |--------|
 > | IL7R   |
@@ -1653,7 +1670,7 @@ In order to create a heatmap, we need to prepare a tabular file with a list of t
 >    - {% icon param-file %} *"Input file with the Seurat object"*: `Annotated Clusters` (output of **Seurat Data Management** {% icon tool %})
 >    - *"Method used"*: `Visualize expression with 'DoHeatmap'`
 >        - {% icon param-file %} *"List of features to plot"*: `Canonical Markers` (Input dataset)
->        - In *"Plot Formatting Options"*: 
+>        - In *"Plot Formatting Options"*:
 >            - *"Size of text above colour bar"*: `3.5`
 >            - *"Angle of text above colour bar"*: `60`
 >    - *"Change size of plot"*: `Yes`
@@ -1720,8 +1737,9 @@ Comparing the two plots also shows us why the supervised approach can be faster 
 > <question-title></question-title>
 > 1. Which plot type was best for annotating clusters?
 > 2. Are you happy with this clustering - even for cluster <span class='Separate-Preprocessing-Steps'>0</span><span class='SCTransform'>2</span>0, the CD4NaiveT cells, which had a lot of ribosomal genes in its top markers list?
+>
 > > <solution-title></solution-title>
-> > 1. The best type of plot for identifying cell types can depend on your data as well as your own personal preferences. You might find one plot easier to interpret than another. It can also be helpful to create different types of plots as some patterns may be clearer on one type while others are clearer on another. It's also good to be able to confirm your interpretation on multiple plots! 
+> > 1. The best type of plot for identifying cell types can depend on your data as well as your own personal preferences. You might find one plot easier to interpret than another. It can also be helpful to create different types of plots as some patterns may be clearer on one type while others are clearer on another. It's also good to be able to confirm your interpretation on multiple plots!
 > > UMAP plots are often used to provide a quick and memorable overview of the data, but it can be tricky to match the expression patterns to the clusters, especially given the limitations of these plots - some cells can be hidden, adjacent clusters can blend into each other, and we can't rely on the 2D plot to accurately represent all the relationships between cells and clusters.
 > > Violin plots present each cluster separately, so they can make it easier to differentiate between clusters. Since every cluster is given the same amount of space on the plot, no matter how many cells it contains, violin plots can also make it easier to see what's going on with smaller clusters. We can also get a clearer idea of how much variation there is within and between clusters, although some of the points may still be hidden behind others.
 > > Heatmaps can give us the best overview of the variation between cells as each cell is given its own little section on the plot. We can see how consistently the markers are expressed within the cluster and how common it is for cells outside the cluster to express the same genes. We can also see the overall patterns as blocks of cells with similar expression profiles, including the clusters that share similar patterns. However, heatmaps can be less useful if we want to focus on individual cells or genes, as it can be hard to pick out details.
