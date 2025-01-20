@@ -40,7 +40,7 @@ Argo is an international program that observes the interior of the ocean with a 
 > There you can visit the [catalog of data](https://registry.opendata.aws/collab/asdi/), and by searching for Argo you can directly get to the [Argo registry](https://registry.opendata.aws/argo-gdac-marinedata/).
 >
 > On this last page you'll find all the information you'll need to add the S3 bucket to Galaxy 
-> ![Image of the Argo registry on amazon](../../images/s3_bucket/argo_registry.png)
+> ![Image of the Argo registry on amazon](../../images/file_sources/argo_registry.png)
 {: .hands_on}
 
 
@@ -60,7 +60,7 @@ Argo is an international program that observes the interior of the ocean with a 
 >   bucket: argo-gdac-sandbox
 >   anon: true
 > ```
-> ![Image of the file_sources_conf.yml.j2 file with th argo bucket added](../../images/s3_bucket/s3_in_galaxy.png)
+> ![Image of the file_sources_conf.yml.j2 file with th argo bucket added](../../images/file_sources/s3_in_galaxy.png)
 >
 > Finally, commit your changes and write a nice message for the admin when you open your Pull Request.
 {: .hands_on}
