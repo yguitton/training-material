@@ -7,7 +7,6 @@ questions:
 objectives:
   - "Add your S3 bucket on Galaxy"
 time_estimation: "15m"
-subtopic: tooldev
 key_points:
   - "S3 bucket in as a data library"
 tags:
