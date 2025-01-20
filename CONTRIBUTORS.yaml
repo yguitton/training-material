@@ -633,25 +633,25 @@ Sch-Da:
     name: Daniela Schneider
     joined: 2024-10
 
- dadrasarmin:
-   name: Armin Dadras
-   joined: 2025-01
-   email: dadras@informatik.uni-freiburg.de
-   fediverse: https://mastodon.social/@dadrasarmin
-   fediverse_flavor: mastodon
-   bluesky: dadrasarmin.bsky.social
-   linkedin: armindadras
-   matrix: 'armin.dadras:matrix.org'
-   orcid: 0000-0001-7649-2388
-   maintainer_contact: matrix
-   contact_for_training: true
-   affiliations:
-      - uni-freiburg
-      - eurosciencegateway
-   location:
-      country: DE
-      lat: 47.997791
-      lon: 7.842609
+dadrasarmin:
+    name: Armin Dadras
+    joined: 2025-01
+    email: dadras@informatik.uni-freiburg.de
+    fediverse: https://mastodon.social/@dadrasarmin
+    fediverse_flavor: mastodon
+    bluesky: dadrasarmin.bsky.social
+    linkedin: armindadras
+    matrix: 'armin.dadras:matrix.org'
+    orcid: 0000-0001-7649-2388
+    maintainer_contact: matrix
+    contact_for_training: true
+    affiliations:
+        - uni-freiburg
+        - eurosciencegateway
+    location:
+        country: DE
+        lat: 47.997791
+        lon: 7.842609
 
 dannon:
     name: Dannon Baker
