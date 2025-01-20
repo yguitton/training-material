@@ -37,7 +37,7 @@ Argo is an international program that observes the interior of the ocean with a 
 > <hands-on-title>Find an S3 bucket</hands-on-title>
 > Go on [Amazon Sustainability Data Initiative](https://exchange.aboutamazon.com/data-initiative). 
 >
-> There you can visit the [catalog of data](https://registry.opendata.aws/collab/asdi/), and by searching for Argo you can directly arrive [Argo registry](https://registry.opendata.aws/argo-gdac-marinedata/).
+> There you can visit the [catalog of data](https://registry.opendata.aws/collab/asdi/), and by searching for Argo you can directly get to the [Argo registry](https://registry.opendata.aws/argo-gdac-marinedata/).
 >
 > On this last page you'll find all the information you'll need to add the S3 bucket to Galaxy 
 > ![Image of the Argo registry on amazon](../../images/s3_bucket/argo_registry.png)
