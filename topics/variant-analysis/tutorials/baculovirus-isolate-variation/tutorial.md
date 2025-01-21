@@ -401,7 +401,7 @@ If we now divide the absolute frequencies of `ALT1 = 773`, `ALT2 = 6` and `ALT3 
 >    - Click Run Tool
 >
 >    > <comment-title> An easier-to-read table </comment-title>
->    > This tool creates a table from the VCF file. The columns are tab-deliminated. Take a look at table and see if it is now easier to read. It can also be imported to R/RStudio/Excel more easily.
+>    > This tool creates a table from the VCF file. The columns are tab-delimited. Take a look at the table and see if it is now easier to read. It can also be imported to R/RStudio/Excel more easily.
 >    {: .comment}
 >
 > 2. {% tool [Text reformatting with awk](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/9.3+galaxy1) %} with the following parameters:
