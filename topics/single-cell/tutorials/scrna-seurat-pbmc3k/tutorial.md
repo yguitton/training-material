@@ -45,10 +45,6 @@ Single cell RNA-seq analysis enables us to explore differences in gene expressio
 
 Clustering is typically the first type of analysis we will perform on a single cell dataset. It groups together cells that are expressing similar genes, which makes the data easier to understand and often helps us to identify specific cell types.
 
-{% snippet topics/single-cell/faqs/single_cell_omics.md %}
-
-{% snippet faqs/galaxy/tutorial_mode.md %}
-
 > <comment-title></comment-title>
 >
 > This tutorial is based on the [Seurat - Guided Clustering Tutorial](https://satijalab.org/seurat/articles/pbmc3k_tutorial). The SCTransform sections also draw from the [Using sctransform in Seurat](https://satijalab.org/seurat/articles/sctransform_vignette.html) tutorial.
@@ -65,6 +61,8 @@ Clustering is typically the first type of analysis we will perform on a single c
 {: .agenda}
 
 # Important tips for easier analysis
+
+{% snippet topics/single-cell/faqs/single_cell_omics.md %}
 
 {% snippet faqs/galaxy/tutorial_mode.md %}
 
@@ -1613,52 +1611,52 @@ In order to create a heatmap, we need to prepare a tabular file with a list of t
 
 > <hands-on-title>Create Heatmaps to Compare Expression by Cluster - Canonical Markers</hands-on-title>
 >
-> 1. Use the Upload Data - Paste/Fetch data option to create a table of genes to plot. Select the input type as **tabular** and enter a list of genes, one on each row. You can type these in or copy and paste the following list - don't copy the empty header row if you do this!
+> 1. Use the Upload Data - Paste/Fetch data option to create a table of genes to plot. Select the input type as **tabular** and enter a list of genes, one on each row. You can copy and paste in the following list.
 >
 >    {% snippet faqs/galaxy/datasets_create_new_file.md format="tabular" %}
 > <span class='Separate-Preprocessing-Steps'>
 >
-> |        |
-> |--------|
-> | IL7R   |
-> | CCR7   |
-> | CD14   |
-> | LYZ    |
-> | S100A4 |
-> | MS4A1  |
-> | CD8A   |
-> | FCGR3A |
-> | MS4A7  |
-> | GNLY   |
-> | NKG7   |
-> | FCER1A |
-> | CST3   |
-> | PPBP   |
+>    ```
+>    IL7R
+>    CCR7
+>    CD14
+>    LYZ
+>    S100A4
+>    MS4A1
+>    CD8A
+>    FCGR3A
+>    MS4A7
+>    GNLY
+>    NKG7
+>    FCER1A
+>    CST3
+>    PPBP
+>    ```
 >
-></span>
+> </span>
 >
-><span class='SCTransform'>
+> <span class='SCTransform'>
 >
-> |        |
-> |--------|
-> | IL7R   |
-> | GZMK   |
-> | CCL5   |
-> | CCR7   |
-> | CD14   |
-> | IL32   |
-> | ISG15  |
-> | LYZ    |
-> | S100A4 |
-> | MS4A1  |
-> | CD8A   |
-> | FCGR3A |
-> | MS4A7  |
-> | GNLY   |
-> | NKG7   |
-> | FCER1A |
-> | CST3   |
-> | PPBP   |
+>    ```
+>    IL7R
+>    GZMK
+>    CCL5
+>    CCR7
+>    CD14
+>    IL32
+>    ISG15
+>    LYZ
+>    S100A4
+>    MS4A1
+>    CD8A
+>    FCGR3A
+>    MS4A7
+>    GNLY
+>    NKG7
+>    FCER1A
+>    CST3
+>    PPBP
+>    ```
 >
 > </span>
 >
