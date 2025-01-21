@@ -36,8 +36,8 @@ contributors:
 Baculoviruses of the family *Baculoviridae* ({% cite Harrison2018 %}) are among the most intensively 
 studied viruses, not only because of their widespread application in biotechnology, medicine, and 
 agriculture ({% cite vanOers2007 %}). Like all members of the class *Naldaviricetes*, 
-baculoviruses have a circular large dsDNA genome that, in the family *Baculoviridae*, 
-ranges between 90 to 180 kbp and can encode up to 180 open reading frames (ORF). 
+baculoviruses have large circular dsDNA genomes that, in the family *Baculoviridae*, 
+range from 90 to 180 kbp and can encode up to 180 open reading frames (ORFs). 
 A detailed description of the biology of the Baculoviridae family can be found in the
 official report of the International Committee on Taxonomy of Viruses (ICTV) ({% cite Harrison2018 %}). A detailed summary can also be found on the website of the ICTV (https://ictv.global/).
 
