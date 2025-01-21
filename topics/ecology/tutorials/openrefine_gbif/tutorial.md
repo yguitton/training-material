@@ -74,7 +74,7 @@ This tutorial is based on the GBIF {% cite GBIFtraining2021 %} "Biodiversity dat
 > 
 > 6. Check your output. All columns must be separated by a tabulation now. See example below.
 >
-> ![Output of Regex Find And Replace example](../../images/openrefine/1_openrefine.png "Output of Regex Find And Replace example")
+>    ![Output of Regex Find And Replace example](../../images/openrefine/1_openrefine.png "Output of Regex Find And Replace example"){: style="width:50%"}
 > 
 >
 > 7. Rename the datasets if needed, for example with "UC1-3c-open-refine-tabular" to keep orginal name and specify the tabular format.
