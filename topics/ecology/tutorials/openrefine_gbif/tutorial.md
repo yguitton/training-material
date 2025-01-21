@@ -9,7 +9,7 @@ questions:
 
 objectives:
 - Use OpenRefine faceting functionnalities to apply mass editing and manage duplicates
-- Use OpenRefine clustering and filtering functionnalities to edit, transform data notably using regular expression
+- Use OpenRefine clustering and filtering functionalities to edit, transform data notably using regular expression
 - Use OpenRefine to apply API services on your data
 time_estimation: 0h45m
 key_points:
