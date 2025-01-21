@@ -69,19 +69,19 @@ This tutorial is based on the GBIF {% cite GBIFtraining2021 %} "Biodiversity dat
 >            - *"Find Regex"*: `;`
 >            - *"Replacement"*: `\t`
 > 4. Change the datatype from "txt" to "tabular"
-> 
+>
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
-> 
+>
 > 6. Check your output. All columns must be separated by a tabulation now. See example below.
 >
 >    ![Output of Regex Find And Replace example](../../images/openrefine/1_openrefine.png "Output of Regex Find And Replace example"){: style="width:50%"}
-> 
+>
 >
 > 7. Rename the datasets if needed, for example with "UC1-3c-open-refine-tabular" to keep orginal name and specify the tabular format.
 >
 >    {% snippet faqs/galaxy/datasets_rename.md %}
 >
-> 
+>
 >
 {: .hands_on}
 
@@ -162,7 +162,7 @@ kind of text, numbers and dates.
 
 > <hands-on-title> {% icon hands_on %} Hands-on: Faceting and duplicates. </hands-on-title>
 >
-> 1. Go to column catalog in "Cat. Numb", and follow the route `Facet > Customized facets > Duplicates facet`. 
+> 1. Go to column catalog in "Cat. Numb", and follow the route `Facet > Customized facets > Duplicates facet`.
 >    - The facet will show 4 duplicates
 > 2. Click on true, and you'll see the values in the main window
 > 3. After a check with the specimens labels, fix the values clicking edit directly on the cell with the correct catalogue numbers
@@ -173,7 +173,7 @@ kind of text, numbers and dates.
 >
 {: .hands_on}
 
-## Filtering 
+## Filtering
 
 > <hands-on-title> {% icon hands_on %} Hands-on: Basic filter. </hands-on-title>
 >
@@ -213,6 +213,8 @@ kind of text, numbers and dates.
 >    > If you want to know more about regular expressions, you can consult the [Openrefine regular expressions documentation](https://openrefine.org/docs/manual/expressions#regular-expressions) and specifically the [documentation for GREL function](https://openrefine.org/docs/manual/grelfunctions)
 >    {: .comment}
 >
+>    {% snippet faqs/galaxy/analysis_regular_expressions.md %}
+>
 {: .hands_on}
 
 > <question-title></question-title>
@@ -221,7 +223,7 @@ kind of text, numbers and dates.
 >
 > > <solution-title></solution-title>
 > >
-> > 1. On my side, I found this formla `value.replace(value.substring(0,1),toUppercase(value.substring(0,1)))` 
+> > 1. On my side, I found this formla `value.replace(value.substring(0,1),toUppercase(value.substring(0,1)))`
 > >
 > {: .solution}
 >
@@ -296,7 +298,7 @@ time consuming. In this case we will go through the process with only three reco
 > 2. Under "Full name", click on column menu and then `Edit column > Add column by fetching URLs…` , call the new column "Api_name"
 > 3. Change the Throttle Delay to 250 and paste the expression *"http://api.gbif.org/v1/species/match?verbose=true&name="+escape(value,'url')*
 > 4. Click ok and wait, this might take some time depending on internet connection and the number of taxa.
-> 5. Go to "Api_name", click on column menu and then `Edit column > Add column based on this column...`. Call the new column "higherClassification" and paste the expression: 
+> 5. Go to "Api_name", click on column menu and then `Edit column > Add column based on this column...`. Call the new column "higherClassification" and paste the expression:
 >    ```
 >    value.parseJson().get("kingdom")+
 >    ", "+value.parseJson().get("phylum")+
@@ -309,7 +311,7 @@ time consuming. In this case we will go through the process with only three reco
 > 7. Now you know how to obtain the taxonomic categories of a given taxon if this is available in the GBIF API. Column names can be edited in `Edit column > Rename this column`.
 > 8. For the purpose of the original GBIF workshop, the columns created in this exercise (Higher taxonomy) must be deleted. Under All, which is the first column, go to `Edit columns > Re-order / remove columns…`. Remove columns "Api_name", "higherClassification 1", "higherClassification 2", "higherClassification 3", "higherClassification 4" and "higherClassification 5".
 > 9. No need to export this file as it is normally come back to previous version you already exported.
-> 
+>
 {: .hands_on}
 
 
