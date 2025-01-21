@@ -93,7 +93,9 @@ This tutorial is based on the GBIF {% cite GBIFtraining2021 %} "Biodiversity dat
 >
 > 1. {% tool [OpenRefine tool](interactive_tool_openrefine) %} with the following parameters:
 >    - *"Input file in tabular format"*: `UC1-3c-open-refine-tabular`
-> 2. You can then go n the OpenRefine instance, and go to "Open Project" space, then select the project named "Galaxy file"
+> 2. Open the OpenRefine instance
+>    - go to "Open Project" space
+>    - select the project named "Galaxy file"
 > 3. You will now have your project with first 10 lines of your file displayed
 > ![OpenRefine project start](../../images/openrefine/openrefine_start.PNG)
 >
