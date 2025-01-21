@@ -112,7 +112,7 @@ kind of text, numbers and dates.
 >
 > 1. Go to column "kingdom", and then click on the column menu and follow the route to `Text facet`.
 >    - On the left a window with the name of the column will appear, that is the facet.
-> ![OpenRefine facet kingdom](../../images/openrefine/openrefine_facet_kingdom.PNG)
+>    ![OpenRefine facet kingdom](../../images/openrefine/openrefine_facet_kingdom.PNG)
 > 2. Click on count to sort by count, then click on name to sort alphabetically
 > 3. Fix the spelling mistakes (Plante -> Plantae). Place the cursor over the text in the window and click on `edit`, then fix the error in the text box, and to save click on apply.
 >    - All the values will be fixed automatically.
@@ -135,7 +135,8 @@ kind of text, numbers and dates.
 >
 > 1. Go to "Country col." column and click on column menu and perform a `Text Facet`
 >    - On a quick view, the country appears to be spelled correctly, but the facet shows three different values due to the extra spaces at the end of the text.
-> 2. Fix the error from the column menu on "Country col." column, following the route `Edit Cells > Common transforms > Trim leading and trailing whitespace`. You will see a notification message "Text transform on 38 cells in column Country col.: value.trim()" and the possibility to come back on previous state clicking on the `undo` hyperlink.
+> 2. Fix the error from the column menu on "Country col." column, following the route `Edit Cells > Common transforms > Trim leading and trailing whitespace`.
+>    - You will see a notification message "Text transform on 38 cells in column Country col.: value.trim()" and the possibility to come back on previous state clicking on the `undo` hyperlink.
 > 3. Now check the facet window; only one value will remain.
 >
 {: .hands_on}
@@ -177,12 +178,14 @@ kind of text, numbers and dates.
 
 > <hands-on-title> {% icon hands_on %} Hands-on: Basic filter. </hands-on-title>
 >
-> 1. Go again to "Full name" column menu and perform a `Text facet` to visualize the values, then go again to the column menu and click on `Text filter`, perform the following filters and fix them as described below:
->    - search for "sp1" entries -> Then remove it and obtain "Cyperus", clicking on `Edit` directly in the cell
->    - search for "SP2" entries, check `case sensitive` -> To remove it and obtain "Cyperus", you can `Edit` directly in the cell
->    - search for "spp".
->       - Go to "Full name" column menu, then click `Edit cells > Transform`
->       - In the text box paste the formula `value.replace(" spp.", "")` and click `ok`
+> 1. Go again to "Full name" column menu and perform a `Text facet` to visualize the values
+> 2. Then go again to the column menu and click on `Text filter`
+> 3. Perform the following filters and fix them as described below:
+>      - search for "sp1" entries -> Then remove it and obtain "Cyperus", clicking on `Edit` directly in the cell
+>      - search for "SP2" entries, check `case sensitive` -> To remove it and obtain "Cyperus", you can `Edit` directly in the cell
+>      - search for "spp".
+>         - Go to "Full name" column menu, then click `Edit cells > Transform`
+>         - In the text box paste the formula `value.replace(" spp.", "")` and click `ok`
 >
 {: .hands_on}
 
@@ -232,7 +235,7 @@ kind of text, numbers and dates.
 > <hands-on-title> {% icon hands_on %} Hands-on: Advance filter 2. </hands-on-title>
 >
 > 1. Go to column "Full name" and perform a `Text filter`.
-> 2. Check `regular expression` and `case sensitive`, then paste the expression "^[A-Z].*\s[A-Z]"
+> 2. Check `regular expression` and `case sensitive`, then paste the expression `^[A-Z].*\s[A-Z]`
 >    - This regular expression filters the strings that start with a capital letter followed by 0 or more characters, then a space, then a capital letter.
 > 3. Perform a correction since the second word of the name should be lowercase.
 >
@@ -248,21 +251,23 @@ kind of text, numbers and dates.
 > 2. On the top right of the facet window click on `Cluster`, a new window will appear.
 > 3. Click on the `Cluster` button from this new window.
 > 4. Now you can see information about the clusters:
->    - "Cluster size": the number of different versions that the clustering algorithm believes to be the same.
->    - "Row count": the number of records with any of the cluster values.
->    - "Values in cluster": the actual values that the algorithm believes to be the same. There is also the number of records with each particular value, and the possibility to browse the contents of the cluster in a different tab.
->    - "Merge?": check if values are to be merged into a single standard value.
->    - "New cell value": the value to be applied to every record in the cluster. By default, it is the value with most records. You can also click on any value to apply that to the New cell value.
+>    - **"Cluster size":** the number of different versions that the clustering algorithm believes to be the same.
+>    - **"Row count":** the number of records with any of the cluster values.
+>    - **"Values in cluster":** the actual values that the algorithm believes to be the same. There is also the number of records with each particular value, and the possibility to browse the contents of the cluster in a different tab.
+>    - **"Merge?":** check if values are to be merged into a single standard value.
+>    - **"New cell value":** the value to be applied to every record in the cluster. By default, it is the value with most records. You can also click on any value to apply that to the New cell value.
 >
 >
 >    > <comment-title></comment-title>
 >    >
->    > If you want to know more about clustering click https://openrefine.org/docs/manual/cellediting#cluster-and-edit
+>    > If you want to know more about clustering have a look at the [manual](https://openrefine.org/docs/manual/cellediting#cluster-and-edit)
 >    {: .comment}
 >
-> 5. Click on `Select All` and then on `Merge Selected & close`, you will see a notification message "Mass edit 119 cells in column County".
+> 5. Click on `Select All` and then on `Merge Selected & close`
+>    - You will see a notification message "Mass edit 119 cells in column County".
 > 6. To fix the remaining counties go again to Cluster in the facet window of Count.
-> 7. In the *Cluster and edit* window, go to `Keying Function`, then select `ngram-fingerprint`, and set "1" as the value in `n-Gram Size`.
+> 7. In the *Cluster and edit* window, go to `Keying Function`, then select `ngram-fingerprint`
+>    - set "1" as the value in `n-Gram Size`.
 > 8. Press the `Cluster` button, you normally see a cluster about "San Andres" of size "4".
 > 9. Click on `Select All` and then on `Merge Selected & close`, you will see a notification message "Mass edit 360 cells in column County".
 >    - Your counties are now fixed! Congratulation!
@@ -295,10 +300,13 @@ time consuming. In this case we will go through the process with only three reco
 > <hands-on-title> {% icon hands_on %} Hands-on: Higher taxonomy. </hands-on-title>
 >
 > 1. Go to "Collector" column, then make a `Text facet`. Select the collector "Elsa P".
-> 2. Under "Full name", click on column menu and then `Edit column > Add column by fetching URLs…` , call the new column "Api_name"
-> 3. Change the Throttle Delay to 250 and paste the expression *"http://api.gbif.org/v1/species/match?verbose=true&name="+escape(value,'url')*
+> 2. Under "Full name", click on column menu and then `Edit column > Add column by fetching URLs…`
+>    - call the new column "Api_name"
+> 3. Change the Throttle Delay to 250 and paste the expression `http://api.gbif.org/v1/species/match?verbose=true&name="+escape(value,'url')`
 > 4. Click ok and wait, this might take some time depending on internet connection and the number of taxa.
-> 5. Go to "Api_name", click on column menu and then `Edit column > Add column based on this column...`. Call the new column "higherClassification" and paste the expression:
+> 5. Go to "Api_name", click on column menu and then `Edit column > Add column based on this column...`.
+>    - Call the new column "higherClassification" and paste the expression:
+>
 >    ```
 >    value.parseJson().get("kingdom")+
 >    ", "+value.parseJson().get("phylum")+
@@ -309,7 +317,9 @@ time consuming. In this case we will go through the process with only three reco
 >    You will see the Kingdom, Phylum, Class, Order and family of each taxon.
 > 6. Under "higherClassification" follow the route `Edit column > Split into several columns…`, leave the initial settings.
 > 7. Now you know how to obtain the taxonomic categories of a given taxon if this is available in the GBIF API. Column names can be edited in `Edit column > Rename this column`.
-> 8. For the purpose of the original GBIF workshop, the columns created in this exercise (Higher taxonomy) must be deleted. Under All, which is the first column, go to `Edit columns > Re-order / remove columns…`. Remove columns "Api_name", "higherClassification 1", "higherClassification 2", "higherClassification 3", "higherClassification 4" and "higherClassification 5".
+> 8. For the purpose of the original GBIF workshop, the columns created in this exercise (Higher taxonomy) must be deleted.
+>    -  Under All, which is the first column, go to `Edit columns > Re-order / remove columns…`.
+>    - Remove columns "Api_name", "higherClassification 1", "higherClassification 2", "higherClassification 3", "higherClassification 4" and "higherClassification 5".
 > 9. No need to export this file as it is normally come back to previous version you already exported.
 >
 {: .hands_on}
