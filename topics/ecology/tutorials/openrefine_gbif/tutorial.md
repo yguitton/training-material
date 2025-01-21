@@ -35,11 +35,6 @@ This tutorial is based on the GBIF {% cite GBIFtraining2021 %} "Biodiversity dat
 >
 > In this tutorial, we will cover:
 >
-> 1. Import data to OpenRefine
-> 2. Faceting
-> 3. Filtering
-> 4. Clustering
-> 5. API use
 > {:toc}
 >
 {: .agenda}
