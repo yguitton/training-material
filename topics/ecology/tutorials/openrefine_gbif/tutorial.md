@@ -119,12 +119,6 @@ kind of text, numbers and dates.
 > 3. Fix the spelling mistakes (Plante -> Plantae). Place the cursor over the text in the window and click on `edit`, then fix the error in the text box, and to save click on apply.
 >    - All the values will be fixed automatically.
 >
->
->    > <comment-title></comment-title>
->    >
->    > comment1
->    {: .comment}
->
 {: .hands_on}
 
 > <question-title></question-title>
