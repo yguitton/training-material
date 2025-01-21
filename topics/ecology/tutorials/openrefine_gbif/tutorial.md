@@ -51,7 +51,7 @@ This tutorial is based on the GBIF {% cite GBIFtraining2021 %} "Biodiversity dat
 
 > <hands-on-title> Data import and project creation </hands-on-title>
 >
-> 1. Create a new history for this tutorial and give it a name (example: “Openrefine tutorial”) for you to find it again later if needed.
+> 1. Create a new history for this tutorial and give it a name (example: “OpenRefine tutorial”) for you to find it again later if needed.
 >
 >    {% snippet faqs/galaxy/histories_create_new.md %}
 >
@@ -91,15 +91,15 @@ This tutorial is based on the GBIF {% cite GBIFtraining2021 %} "Biodiversity dat
 {: .hands_on}
 
 
-## Deploy an Openrefine instance and push your data in
+## Deploy an OpenRefine instance and push your data in
 
 
-> <hands-on-title> Deploy an Openrefine instance and import data from your Galaxy history </hands-on-title>
+> <hands-on-title> Deploy an OpenRefine instance and import data from your Galaxy history </hands-on-title>
 >
 > 1. Deploy an OpenRefine instance clicking Execute on the {% tool [OpenRefine tool](interactive_tool_openrefine) %} specifying "UC1-3c-open-refine-tabular" as input dataset
 > 2. You can then go n the OpenRefine instance, and go to "Open Project" space, then select the project named "Galaxy file"
 > 3. You will now have your project with first 10 lines of your file displayed
-> ![Openrefine project start](../../images/openrefine/openrefine_start.PNG)
+> ![OpenRefine project start](../../images/openrefine/openrefine_start.PNG)
 >
 {: .hands_on}
 
@@ -114,7 +114,7 @@ kind of text, numbers and dates.
 >
 > 1. Go to column "kingdom", and then click on the column menu and follow the route to `Text facet`.
 >    - On the left a window with the name of the column will appear, that is the facet.
-> ![Openrefine facet kingdom](../../images/openrefine/openrefine_facet_kingdom.PNG)
+> ![OpenRefine facet kingdom](../../images/openrefine/openrefine_facet_kingdom.PNG)
 > 2. Click on count to sort by count, then click on name to sort alphabetically
 > 3. Fix the spelling mistakes (Plante -> Plantae). Place the cursor over the text in the window and click on `edit`, then fix the error in the text box, and to save click on apply.
 >    - All the values will be fixed automatically.
