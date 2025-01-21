@@ -15,7 +15,7 @@ objectives:
 - Transform the output (VCF file) to a readable table format
 - Interpret the SNV data to analyse the intra-isolate variability of baculovirus isolates or samples.
 - Learn to create your own sequence data and analyse it using the provided workflow and tool to explore the genetic variation of baculovirus populations.
-time_estimation: 2H
+time_estimation: 3H
 abbreviations:
     CpGV: Cydia pomonella granulovirus
     NCBI: National Center for Biotechnology Information
