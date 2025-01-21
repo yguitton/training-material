@@ -447,7 +447,7 @@ The usual preprocessing steps for single cell data are normalisation, selection 
 >
 > 2. Rename the output as `Preprocessed Data`
 >
-> If we inspect this dataset, we can see that a new assay called `SCT` has been created and is set as the default assay. Click on the {% icon galaxy-eye %}- of the following output to check this.
+>    If we inspect this dataset, we can see that a new assay called `SCT` has been created and is set as the default assay. Click on the {% icon galaxy-eye %}- of the following output to check this.
 >
 > 3. {% tool [Seurat Data Management](toolshed.g2.bx.psu.edu/repos/iuc/seurat_data/seurat_data/5.0+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input file with the Seurat object"*: `Preprocessed Data` (output of **Seurat Preprocessing** {% icon tool %})
@@ -1696,7 +1696,12 @@ In order to do this, we'll need to turn the output from `FindAllMarkers` into a 
 
 > <hands-on-title>Create Heatmaps to Compare Expression by Cluster - Markers from DE</hands-on-title>
 >
-> 1. Click on the {% icon galaxy-pencil %} pencil icon of the file we renamed as `DE Markers` (this was the CSV output from `FindAllMarkers`) then select {% icon galaxy-chart-select-data %} Datatypes in the central panel. Choose the second option, `Convert to Datatype` and make sure `tabular (using `Convert CSV to tabular`)` is selected in the drop down menu before pressing the `Create Dataset` button. This will create a new, tabular version of the dataset at the top of your history - make sure that this is the version you use in the next step.
+> 1. Click on the {% icon galaxy-pencil %} pencil icon of the file we renamed as `DE Markers` (this was the CSV output from `FindAllMarkers`) then 
+     - select {% icon galaxy-chart-select-data %} Datatypes in the central panel. 
+     - Choose the second option, `Convert to Datatype` 
+     - make sure `tabular (using `Convert CSV to tabular`)` is selected in the drop down menu
+     - press the `Create Dataset` button. 
+     - This will create a new, tabular version of the dataset at the top of your history - make sure that this is the version you use in the next step.
 >
 > 2. {% tool [Cut](Cut1) %} with the following parameters:
 >    - *"Cut columns"*: `c1`
