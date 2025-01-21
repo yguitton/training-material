@@ -1377,6 +1377,14 @@ kostrykin:
       - elixir-europe
       - deNBI
 
+KristinaGomoryova:
+    name: Kristina Gomoryova
+    orcid: 0000-0003-4407-3917
+    joined: 2025-01
+    email: gomoryova@sci.muni.cz
+    elixir_node: cz
+    twitter: kristina_gomory
+
 kxk302:
     name: Kaivan Kamali
     email: kxk302@gmail.com
