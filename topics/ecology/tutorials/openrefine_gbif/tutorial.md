@@ -57,7 +57,7 @@ This tutorial is based on the GBIF {% cite GBIFtraining2021 %} "Biodiversity dat
 >
 >    {% snippet faqs/galaxy/histories_rename.md %}
 >
-> 2. Import data file from GBIF {% cite gbiftuto2021 %} "Biodiversity data mobilization course" accessible on [GBIF website](https://docs.gbif.org/course-data-mobilization/en/) on Use case 1 ["Herbarium Specimens"](https://docs.gbif.org/course-data-mobilization/en/exercise-3a-c.html) using file from Exercice 3C, at the bottom of the page
+> 2. Import data file from GBIF {% cite GBIFtraining2021 %} "Biodiversity data mobilization course" accessible on [GBIF website](https://docs.gbif.org/course-data-mobilization/en/) on Use case 1 ["Herbarium Specimens"](https://docs.gbif.org/course-data-mobilization/en/exercise-3a-c.html) using file from Exercice 3C, at the bottom of the page
 >
 >    "Herbarium Specimens" data file as a csv file named "UC1-3c-open-refine.csv"
 >    ```
