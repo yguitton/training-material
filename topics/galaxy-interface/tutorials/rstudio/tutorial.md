@@ -392,7 +392,7 @@ Users can export the RHistory and all objects from RStudio to Galaxy as follows 
 gx_save(session_name = "analysis_17.01.2025")
 ```
 This data object can be loaded to R.
-If users want to export just one file from their R environment to their Galaxy history, they should first write the object from the memory to a file and then use the path to that file to export it. For example, if we want to export a table called `results` from RStudio to Galaxy we can do as follows:
+If you want to export just one file from your R environment to your Galaxy history, you should first write the object from the memory to a file and then use the path to that file to export it. For example, if we want to export a table called `results` from RStudio to Galaxy we can do as follows:
 ```
 write.csv(results, "./result.csv", row.names = FALSE) # Do you want to save the row.names or not?
 gx_put("result.csv")
