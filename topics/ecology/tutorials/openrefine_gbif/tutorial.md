@@ -42,8 +42,6 @@ This tutorial is based on the GBIF {% cite GBIFtraining2021 %} "Biodiversity dat
 
 # Retrieve data from GBIF "Biodiversity data mobilization course"
 
-## Get data
-
 
 > <hands-on-title> Data import and project creation </hands-on-title>
 >
