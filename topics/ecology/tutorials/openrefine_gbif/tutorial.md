@@ -13,7 +13,7 @@ objectives:
 - Use OpenRefine to apply API services on your data
 time_estimation: 0h45m
 key_points:
-- OpenRefine is a powerfull tool, with many functionnalities to check, clean and enrich your data
+- OpenRefine is a powerful tool, with many functionalities to check, clean and enrich your data
 contributions:
     authorship:
         - yvanlebras
