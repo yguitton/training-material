@@ -4,8 +4,6 @@ contributions:
   authorship: [teresa-m, shiltemann]
 tags: [gtn, event]
 layout: news
-cover: "events/images/galaxy-academy-logo.png"
-coveralt: "logo for the Galaxy Academy event consisting of a laptop surrounded by illustrations of DNA molecules"
 ---
 
 # The Galaxy Training Network joined the BioNT Community Event & CarpentryConnect - Heidelberg 2024
