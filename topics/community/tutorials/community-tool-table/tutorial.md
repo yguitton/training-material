@@ -4,6 +4,7 @@ title: Creation of an interactive Galaxy tools table for your community
 level: Introductory
 redirect_from:
 - /topics/dev/tutorials/community-tool-table/tutorial
+subtopic: sig
 
 questions:
 - Is it possible to have an overview of all Galaxy tools for a specific scientific domain?
