@@ -35,6 +35,7 @@ This tutorial is based on the GBIF {% cite GBIFtraining2021 %} "Biodiversity dat
 >
 > In this tutorial, we will cover:
 >
+> 1. TOC
 > {:toc}
 >
 {: .agenda}
@@ -86,7 +87,7 @@ This tutorial is based on the GBIF {% cite GBIFtraining2021 %} "Biodiversity dat
 {: .hands_on}
 
 
-## Deploy an OpenRefine instance and push your data in
+# Deploy an OpenRefine instance and push your data in
 
 
 > <hands-on-title> Deploy an OpenRefine instance and import data from your Galaxy history </hands-on-title>
@@ -102,7 +103,7 @@ This tutorial is based on the GBIF {% cite GBIFtraining2021 %} "Biodiversity dat
 {: .hands_on}
 
 
-## Faceting
+# Faceting
 
 Faceting is a feature that will allow us to get a big picture overview of the data, and to filter down to just the subset of rows
 that we want to change or view in bulk. It facilitates the use and analysis of data and can be done with cells containing any
@@ -174,7 +175,7 @@ kind of text, numbers and dates.
 >
 {: .hands_on}
 
-## Filtering
+# Filtering
 
 > <hands-on-title> {% icon hands_on %} Hands-on: Basic filter. </hands-on-title>
 >
@@ -242,7 +243,7 @@ kind of text, numbers and dates.
 {: .hands_on}
 
 
-## Clustering
+# Clustering
 
 > <hands-on-title> {% icon hands_on %} Hands-on: Basic clustering. </hands-on-title>
 >
@@ -274,7 +275,7 @@ kind of text, numbers and dates.
 {: .hands_on}
 
 
-## Exporting
+# Exporting
 
 > <hands-on-title> {% icon hands_on %} Hands-on: Exporting cleaned file into your Galaxy history. </hands-on-title>
 >
@@ -291,7 +292,7 @@ kind of text, numbers and dates.
 {: .hands_on}
 
 
-## API use
+# API use
 
 Reconciliation matches the information in one of your columns to an outside database. This is particularly helpful when it
 comes to name validation, as it proves the name you have exists somewhere else. This is a really useful service, but can be
