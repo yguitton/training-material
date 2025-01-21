@@ -33,7 +33,7 @@ contributors:
 
 # Introduction
 
-Baculoviruses of the family *Baculoviridae* ({% cite Harrison2018 %}) are one of the most intensively 
+Baculoviruses of the family *Baculoviridae* ({% cite Harrison2018 %}) are among the most intensively 
 studied viruses, not only because of their widespread application in biotechnology, medicine, and 
 agriculture ({% cite vanOers2007 %}). Like all members of the class *Naldaviricetes*, 
 baculoviruses have a circular large dsDNA genome that, in the family *Baculoviridae*, 
