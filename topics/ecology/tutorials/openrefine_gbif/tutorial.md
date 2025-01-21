@@ -19,8 +19,8 @@ contributions:
         - yvanlebras
         - sophiepamerlon
         - laurarussell
-        - gbiftraining
     funding:
+        - gbif
         - pndb
 
 subtopic: ecologymetadatamgt
