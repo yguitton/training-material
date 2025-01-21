@@ -210,7 +210,7 @@ kind of text, numbers and dates.
 >
 >    > <comment-title></comment-title>
 >    >
->    > If you want to know more about regular expressions, you can consult https://openrefine.org/docs/manual/expressions#regular-expressions and specifically for GREL functions: https://openrefine.org/docs/manual/grelfunctions
+>    > If you want to know more about regular expressions, you can consult the [Openrefine regular expressions documentation](https://openrefine.org/docs/manual/expressions#regular-expressions) and specifically the [documentation for GREL function](https://openrefine.org/docs/manual/grelfunctions)
 >    {: .comment}
 >
 {: .hands_on}
