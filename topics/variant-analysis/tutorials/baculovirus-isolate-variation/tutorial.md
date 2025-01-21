@@ -204,7 +204,7 @@ Follow the steps below to download the four Illumina datasets published at NCBI 
 
 > <hands-on-title>NCBI SRA Data Download</hands-on-title>
 >
->    Run {% tool [Download and Extract Reads in FASTAQ format from NCBI SRA](toolshed.g2.bx.psu.edu/repos/iuc/sra_tools/fastq_dump/3.1.1+galaxy1) %} with the following parameters:
+>    Run {% tool [Download and Extract Reads in FASTQ format from NCBI SRA](toolshed.g2.bx.psu.edu/repos/iuc/sra_tools/fastq_dump/3.1.1+galaxy1) %} with the following parameters:
 >
 >    - *"Select input type"*: `SRR accession`
 >    - *Accession*: `SRR31589146, SRR31589147, SRR31589148, SRR31679023`
