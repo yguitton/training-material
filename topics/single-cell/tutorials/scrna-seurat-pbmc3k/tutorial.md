@@ -490,7 +490,7 @@ The usual preprocessing steps for single cell data are normalisation, selection 
 > > <solution-title></solution-title>
 > >
 > > 1. We can check the list of the top variable genes in our history by clicking on the {% icon galaxy-eye %} or see them on our variable features plot.
-> > <span class='Separate-Preprocessing-Steps'>
+> > <div class='Separate-Preprocessing-Steps' markdown="1">
 > >
 > > > |    |         |
 > > > |----|---------|
@@ -505,9 +505,9 @@ The usual preprocessing steps for single cell data are normalisation, selection 
 > > > | 9  | GNG11   |
 > > > | 10 | S100A8  |
 > > {: .matrix}
-> > </span>
+> > </div>
 > >
-> > <span class='SCTransform'>
+> > <div class='SCTransform' markdown="1">
 > >
 > > > |    |          |
 > > > |----|----------|
@@ -522,7 +522,7 @@ The usual preprocessing steps for single cell data are normalisation, selection 
 > > > | 9  | FTH1     |
 > > > | 10 | CCL5     |
 > > {: .matrix}
-> > </span>
+> > </div>
 > >
 > > > <comment-title></comment-title>
 > > > The list of highly variable genes you end up with will depend on which preprocessing route you chose. The two preprocessing routes use different methods to select features, so they won't always end up with the same genes, although there are likely to be some similarities. `SCTransform` also returns 3000 variable genes by default, rather than the 2000 selected by `FindVariableFeatures`. We can select more features with `SCTransform` because its normalisation method is better at removing technical effects from the data, so we believe that these additional genes reflect subtler biological variations rather than technical differences.
