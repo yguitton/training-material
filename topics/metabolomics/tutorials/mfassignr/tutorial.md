@@ -225,7 +225,7 @@ On the output, there are two dataframes, `Ambiguous` and `Unambigous` provided.
 >    - *"ppm_err"*: `3`
 >    - *"Ion mode"*: `negative`
 >    - *"SN ratio"*: `6`
->    - *"Estimated noise"*: `346.0`
+>    - *"Estimated noise"*: `346.0706`
 >    - *"Lower limit of molecular mass to be assigned"*: `50.0`
 >    - *"Upper limit of molecular mass to be assigned"*: `1000.0`
 >
@@ -303,61 +303,20 @@ Combined, these series should cover the full mass spectral range to provide the 
 
 Currently, it is up to the user to choose the most suitable recalibrant series that will be used for the recalibration in the Recal step. It is possible to choose up to 10 series and they should indeed span over the whole range of m/z - often an error is thrown to add more series in case there are gaps, or the chosen series would have a good score but would be way too alike. 
 
-The series can be chosen either manually by the user, or using the **FindRecalSeries** function, which we will describe in the next section.
+The series can be chosen either manually by the user, or using the **FindRecalSeries** function, which we will describe in the next section. 
 
 ## FindRecalSeries
 
-This function attempts to help with selecting the most appropriate recalibration series. The input to FindRecalSeries() is the output of RecalList, so all series are without particular order. 
+The FindRecalSeries function attempts to find the most suitable recalibration series, which are required for the next step. Ideal series would cover the whole m/z range, would be long and combined would have a 'Tall Peak' at least every 100 m/z. Also we want the 'Abundance.score' parameter to be as high as possible, and 'Peak.Distance' parameter to be as close to 1 as possible. 
 
-The number of series provided by **RecalList** is quite extensive: using the model data, we get 225 series. Because computing all 10-element combinations out of 225 series would be very computationally expensive (we are at 7.480909295 E+16 possible combinations!), we first do pre-filtering:
-
-- We keep only the series with **Abundance.Score** > 0 - we want this parameter to be as high as possible, so we can very well get rid of negative values,
-- **Peak.Distance** < 2. Here, we want this parameter as close to 1 as possible, and although the majority of series do have it indeed very close to 1, there are also some clear outliers around 4 which we can confidently filter out.
-
-Now we get out of 225 series to 94, and if we further restrict the Abundance.Score to 100, we end up with 33 series, where computing any combination is much easier.
-
-**How the series are selected?** We are computing scores for the individual parameters, described below, for each series within the combination and then summing them together, computing a summary score. This way, we can then sort the series from the highest summary score to the lowest and return the highest-scoring ones. Of note, the summary score characterizes a particular *combination* of series, meaning all series within the combination will have the same summary score.
-
-Computing scores is not always that straightforward - in the case of Abundance or Series.Length, where the higher the value the better, we can simply consider summing up the original values. However, in case of Peak.Score and Peak.Distance.Proximity, it gets more complicated. Peak.Score we want as low as possible, therefore we compute (and do the sum of) inverted values (meaning 1/ Peak.Score). Similarly, we want the Peak.Distance.Proximity as close to 1 as possible, therefore we compute the difference (peak.distance - 1) and then we sum up the inverted values.
-
-On the input, we need except for the RecalSeries output from RecalList also **global_min** and **global_max**, which correspond to the acquisition range of the instrument (in our case, it is 100-800 m/z) and are important for computing the coverage. Furthermore, we set the **abundance_score threshold**, **peak_distance_threshold** and **coverage_threshold**, which we already described above.
-
-Another two important parameters are **number_of_combinations** and **fill_series**. `Number_of_combinations` sets how many combinations we want to compute and for which we will get the scoring. The default value is 5, which is a nice "price-to-performance ratio". Keep in mind, that the more combinations you set, the longer computing time is expected, growing exponentially.
-
-To tackle this problem, we introduced the **fill_series** parameter. The fill_series parameter influences how many series will be returned. In the final step, all combinations of series are ordered based on their summary score: meaning we can have an order list as: (series1, series4, series8: score 1000); (series1, series2, series5: score 900); (series2, series3, series8: score 800), etc. As we already explained, all series within the particular combination will have the same score, so in our case, within the first combination, series1, series4, and series8 would all have a score of 1000.
-
-If we set the value of `fill_series` to FALSE, the best scoring combination of series is returned. Using the example above, series1, series4, and series8 would get returned.
-
-If we set `fill_series` to TRUE, the best scoring combination of series is returned first, and then, based on the summary score order, the list is filled up to 10 series. However, naturally, we would have the same series as a part of different combinations. Therefore, we fill them with unique entries based on descending scores. Using the example above again, we would return series1, series4, series8 (best scoring combination), series2, series5, (as series1 has been already reported) series3 (as series2 and series8 have been already reported). This provides a more precise approach for the recalibration and also better coverage, while still keeping the computing time as low as possible.
+We will only provide the 'Recalibration series' dataframe from RecalList function, and the best series will be chosen automatically. Although a list of more than 10 series might be provided on the output, only first 10 best series will be used by the Recal function in the next step.
 
 > <hands-on-title> Selecting most suitable series </hands-on-title>
 >
 > 1. {% tool [MFAssignR FindRecalSeries](mfassignr_findRecalSeries) %} with the following parameters:
 >    - {% icon param-file %} *"Input data"*: `recal_series` (output of **MFAssignR RecalList** {% icon tool %})
->    - *"Global min"*: `100`
->    - *"Global max"*: `800`
->    - *"number_of_combinations"*: `5`
->    - *"abundance_score_threshold"*: `100`
->    - *"peak_distance_threshold"*: `2`
->    - *"coverage_threshold"*: `80`
->    - *"fill_series"*: `FALSE`
->
 >
 {: .hands_on}
-
-> <question-title></question-title>
->
-> 1. How many series are returned when parameter `fill_series = FALSE` and when `TRUE`?
-> 2. I set the `fill_series = TRUE` and only 7 series were returned. How is it possible?
->
-> > <solution-title></solution-title>
-> >
-> > 1. When `fill_series = FALSE`, only the number of series corresponding to the number of combinations computed is returned, so in our case 5 series will be returned. If we set `fill_series = TRUE`, the series will automatically get filled up to 10 series.
-> > 2. The number of series passing all additional thresholds was too low, so 7 unique series were the only ones, which got into the selection.
-> >
-> {: .solution}
->
-{: .question}
 
 ## Recal
 
@@ -369,18 +328,14 @@ A common error points to increasing the `MzRange` parameter, which sets the reca
 >
 > 1. {% tool [MFAssignR Recal](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_recal/mfassignr_recal/1.1.2+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input data (Output from MFAssign)"*: `Unambig` (output of **MFAssignR MFAssignCHO** {% icon tool %})
->    - {% icon param-file %} *"Calibration series (Output from RecalList)"*: `final_series` (output of **MFAssignR FindRecalSeries** {% icon tool %})
->    - {% icon param-file %} *"Peaks dataframe (Mono from IsoFiltR)"*: `mono_out` (output of **MFAssignR IsoFiltR** {% icon tool %})
+>    - {% icon param-file %} *"Calibration series (Output from RecalList)"*: `Final recalibration series` (output of **MFAssignR FindRecalSeries** {% icon tool %})
+>    - {% icon param-file %} *"Peaks dataframe (Mono from IsoFiltR)"*: `Monoisotopic masses` (output of **MFAssignR IsoFiltR** {% icon tool %})
 >    - {% icon param-file %} *"Isopeaks dataframe (Iso from IsoFiltR)"*: `iso_out` (output of **MFAssignR IsoFiltR** {% icon tool %})
 >    - *"Ion mode"*: `negative`
 >    - *"SN ratio"*: `6`
->    - *"Estimated noise"*: `346.0`
+>    - *"Estimated noise"*: `346.0706`
 >    - *"Mass windows used for the segmented recalibration"*: `50.0`
 >
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
 >
 {: .hands_on}
 
