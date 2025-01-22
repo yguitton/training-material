@@ -405,7 +405,7 @@ The usual preprocessing steps for single cell data are normalisation, selection 
   The Seurat pipeline can include another step during preprocessing of our single cell data. We can regress out (or remove) the impact of unwanted sources of variation. We could use this technique to remove the effects of the cell cycle or the differences associated with the proportion of mitochondrial genes. The goal is to reduce differences that are related to factors we are not interested in as this can help the differences we are interested in (like those between cell types or experimental groups) stand out more.
     It is possible to use the `ScaleData` function to regress out unwanted variation, but the creators of Seurat recommend using `SCTransform` for preprocessing if you want to do any regression. `SCTransform` automatically regresses out variation associated with sequencing depth (unique counts or nFeature_RNA) and can also regress out other variables. If you choose to use SCTransform in this tutorial, then you'll regress out the variation associated with the proportion of mitochondrial content, just like in [Seurat's original version of this tutorial](https://satijalab.org/seurat/articles/sctransform_vignette.html)
 
-{% include _includes/cyoa-choices.html option1='Separate Preprocessing Steps' option2='SCTransform' default='Separate-Preprocessing-Steps' text="You can perform each preprocessing step separately, which might give you a better understanding of the different elements involved in preprocessing, or run them all at once using SCTransform." %}
+{% include _includes/cyoa-choices.html option1="Separate Preprocessing Steps" option2="SCTransform" default="Separate-Preprocessing-Steps" text="You can perform each preprocessing step separately, which might give you a better understanding of the different elements involved in preprocessing, or run them all at once using SCTransform." %}
 
 <div class='Separate-Preprocessing-Steps' markdown='1'>
 ><hands-on-title>Separate Preprocessing Steps</hands-on-title>
@@ -1698,11 +1698,11 @@ In order to do this, we'll need to turn the output from `FindAllMarkers` into a 
 
 > <hands-on-title>Create Heatmaps to Compare Expression by Cluster - Markers from DE</hands-on-title>
 >
-> 1. Click on the {% icon galaxy-pencil %} pencil icon of the file we renamed as `DE Markers` (this was the CSV output from `FindAllMarkers`) then 
->     - select {% icon galaxy-chart-select-data %} Datatypes in the central panel. 
->     - Choose the second option, `Convert to Datatype` 
+> 1. Click on the {% icon galaxy-pencil %} pencil icon of the file we renamed as `DE Markers` (this was the CSV output from `FindAllMarkers`) then
+>     - select {% icon galaxy-chart-select-data %} Datatypes in the central panel.
+>     - Choose the second option, `Convert to Datatype`
 >     - make sure `tabular (using `Convert CSV to tabular`)` is selected in the drop down menu
->     - press the `Create Dataset` button. 
+>     - press the `Create Dataset` button.
 >     - This will create a new, tabular version of the dataset at the top of your history - make sure that this is the version you use in the next step.
 >
 > 2. {% tool [Cut](Cut1) %} with the following parameters:
