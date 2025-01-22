@@ -36,10 +36,9 @@ This training covers the multi-element molecular formula (MF) assignment using t
 3. Use **IsoFiltR()** to identify potential 13C and 34S isotope masses.
 4. Using the signal-to-noise (S/N) threshold, and the two data frames output from IsoFiltR(), run **MFAssignCHO()** to assign MF with C, H, and O to assess the mass accuracy.
 5. Use **RecalList()** to generate a list of the potential recalibrant series.
-6. Select the most suitable recalibrant series using **FindRecalSeries()**.
-7. After choosing recalibrant series, use **Recal()** to recalibrate the mass lists.
-8. Assign MF to the recalibrated mass list using **MFAssign()**.
-9. Check the output plots from MFAssign() to evaluate the quality of the assignments.
+6. After choosing recalibrant series, use **Recal()** to recalibrate the mass lists.
+7. Assign MF to the recalibrated mass list using **MFAssign()**.
+8. Check the output plots from MFAssign() to evaluate the quality of the assignments.
 
 We can illustrate the workflow also on the following scheme:
 ![workflow_graphical](images/mfassignr_scheme.png)
@@ -133,7 +132,7 @@ When running the function, we can stick with the default values: the upper limit
 
 > <hands-on-title> Noise assessment using KMDNoise </hands-on-title>
 >
-> 1. {% tool [MFAssignR KMDNoise](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_histnoise/mfassignr_kmdnoise/1.1.1+galaxy0) %} with the following parameters:
+> 1. {% tool [MFAssignR KMDNoise](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_histnoise/mfassignr_kmdnoise/1.1.2+galaxy0) %} with the following parameters:
 >
 >- {% icon param-file %} *"Input data"*: `mfassignr_input.txt` (Input dataset)
 >- {% icon param-file %} *"upper limit for the y intercept"*: `0.2`
@@ -169,7 +168,7 @@ The `cut` parameter can be computed as an estimated noise level * multiplier, so
 
 > <hands-on-title> Plot the SNplot </hands-on-title>
 >
-> 1. {% tool [MFAssignR SNplot](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_snplot/mfassignr_snplot/1.1.1+galaxy0) %} with the following parameters:
+> 1. {% tool [MFAssignR SNplot](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_snplot/mfassignr_snplot/1.1.2+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input data"*: `mfassignr_input.txt` (Input dataset)
 >    - *"cut"*: `2076.0`
 >    - *"mass"*: `301.0`
@@ -195,13 +194,14 @@ Isotope filtering has 4 steps:
 
 After performing isotopic filtering, two tables are outputted, one containing the isotopic masses and one containing the monoisotopic masses and all masses that did not have a matching isotopic mass. In complex mixtures, a mass can be classified as both monoisotopic and isotopic; in those cases, it is included in both output tables and classified after the MF assignment.
 
-We will change only the S/N ratio parameter, otherwise, we can follow with the default settings.
+We will change only the S/N ratio parameter and Estimated noise (based on the KMDNoise function), otherwise, we can follow with the default settings.
 
 > <hands-on-title> Isotope filtering using IsoFiltR </hands-on-title>
 >
-> 1. {% tool [MFAssignR IsoFiltR](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_isofiltr/mfassignr_isofiltr/1.1.1+galaxy0) %} with the following parameters:
+> 1. {% tool [MFAssignR IsoFiltR](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_isofiltr/mfassignr_isofiltr/1.1.2+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input Peak Data"*: `mfassignr-input.txt` (Input dataset)
->    - *"Signal-to-Noise Ratio"*: `2076`
+>    - *"SN ratio"*: `6.0`
+>    - *"Estimated noise"* `346.0706`
 >
 >
 {: .hands_on}
@@ -219,7 +219,7 @@ On the output, there are two dataframes, `Ambiguous` and `Unambigous` provided.
 > <hands-on-title> Preliminary MF assignment with MFAssignCHO </hands-on-title>
 >
 >
-> 1. {% tool [MFAssignR MFAssignCHO](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_mfassigncho/mfassignr_mfassignCHO/1.1.1+galaxy0) %} with the following parameters:
+> 1. {% tool [MFAssignR MFAssignCHO](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_mfassigncho/mfassignr_mfassignCHO/1.1.2+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Data frame of monoisotopic masses"*: `mono_out` (output of **MFAssignR IsoFiltR** {% icon tool %})
 >    - {% icon param-file %} *"Data frame of isotopic masses"*: `iso_out` (output of **MFAssignR IsoFiltR** {% icon tool %})
 >    - *"ppm_err"*: `3`
@@ -268,7 +268,7 @@ As in input, we will use the Unambig data frame which we generated in the MFAssi
 
 > <hands-on-title> Finding recalibrant series </hands-on-title>
 >
-> 1. {% tool [MFAssignR RecalList](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_recallist/mfassignr_recallist/1.1.1+galaxy0) %} with the following parameters:
+> 1. {% tool [MFAssignR RecalList](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_recallist/mfassignr_recallist/1.1.2+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input data"*: `Unambig` (output of **MFAssignR MFAssignCHO** {% icon tool %})
 >
 >
@@ -367,7 +367,7 @@ A common error points to increasing the `MzRange` parameter, which sets the reca
 
 > <hands-on-title> Internal mass recalibration </hands-on-title>
 >
-> 1. {% tool [MFAssignR Recal](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_recal/mfassignr_recal/1.1.1+galaxy0) %} with the following parameters:
+> 1. {% tool [MFAssignR Recal](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_recal/mfassignr_recal/1.1.2+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input data (Output from MFAssign)"*: `Unambig` (output of **MFAssignR MFAssignCHO** {% icon tool %})
 >    - {% icon param-file %} *"Calibration series (Output from RecalList)"*: `final_series` (output of **MFAssignR FindRecalSeries** {% icon tool %})
 >    - {% icon param-file %} *"Peaks dataframe (Mono from IsoFiltR)"*: `mono_out` (output of **MFAssignR IsoFiltR** {% icon tool %})
@@ -390,7 +390,7 @@ The last step of the workflow is the actual assignment of molecular formulas wit
 
 > <hands-on-title> MF assignment using MFAssign </hands-on-title>
 >
-> 1. {% tool [MFAssignR MFAssign](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_mfassign/mfassignr_mfassign/1.1.1+galaxy0) %} with the following parameters:
+> 1. {% tool [MFAssignR MFAssign](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_mfassign/mfassignr_mfassign/1.1.2+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Data frame of monoisotopic masses"*: `Mono` (output of **MFAssignR Recal** {% icon tool %})
 >    - {% icon param-file %} *"Data frame of isotopic masses"*: `Iso` (output of **MFAssignR Recal** {% icon tool %})
 >    - *"Ion mode"*: `negative`
