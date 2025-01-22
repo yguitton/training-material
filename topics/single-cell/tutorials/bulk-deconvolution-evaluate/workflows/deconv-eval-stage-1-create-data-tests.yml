@@ -30,4 +30,36 @@
     Awk - infer header (A): BEGIN { print "0\tA_infer\t0" } NR > 1 {print $0 }
     Awk - actual header (B): BEGIN { print "B_actual\tcell_type" } { print $0 }
     Awk - infer header (B): BEGIN { print "0\tB_infer\t0" } NR > 1 {print $0 }
-  outputs: {}
+  outputs:
+    Actual cell proportions (B):
+      element_tests:
+        None 1:
+          path: test-data/Actual cell proportions (B)_None 1.tabular
+        None 2:
+          path: test-data/Actual cell proportions (B)_None 2.tabular
+        None 3:
+          path: test-data/Actual cell proportions (B)_None 3.tabular
+    Pseudobulk (B):
+      element_tests:
+        None 1:
+          path: test-data/Pseudobulk (B)_None 1.tabular
+        None 2:
+          path: test-data/Pseudobulk (B)_None 2.tabular
+        None 3:
+          path: test-data/Pseudobulk (B)_None 3.tabular
+    Pseudobulk (A):
+      element_tests:
+        None 1:
+          path: test-data/Pseudobulk (A)_None 1.tabular
+        None 2:
+          path: test-data/Pseudobulk (A)_None 2.tabular
+        None 3:
+          path: test-data/Pseudobulk (A)_None 3.tabular
+    Actual cell proportions (A):
+      element_tests:
+        None 1:
+          path: test-data/Actual cell proportions (A)_None 1.tabular
+        None 2:
+          path: test-data/Actual cell proportions (A)_None 2.tabular
+        None 3:
+          path: test-data/Actual cell proportions (A)_None 3.tabular

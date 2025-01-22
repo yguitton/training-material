@@ -3,9 +3,25 @@
     "annotation": "",
     "comments": [
         {
+            "color": "turquoise",
+            "data": {
+                "title": "Sample B"
+            },
+            "id": 4,
+            "position": [
+                458,
+                425.79999999999995
+            ],
+            "size": [
+                240,
+                315.1
+            ],
+            "type": "frame"
+        },
+        {
             "child_steps": [
-                0,
-                1
+                1,
+                0
             ],
             "color": "green",
             "data": {
@@ -24,8 +40,8 @@
         },
         {
             "child_steps": [
-                3,
-                2
+                2,
+                3
             ],
             "color": "orange",
             "data": {
@@ -43,9 +59,6 @@
             "type": "frame"
         },
         {
-            "child_steps": [
-                6
-            ],
             "color": "turquoise",
             "data": {
                 "title": "Sample A"
@@ -63,8 +76,8 @@
         },
         {
             "child_steps": [
-                5,
-                4
+                4,
+                5
             ],
             "color": "green",
             "data": {
@@ -78,25 +91,6 @@
             "size": [
                 240.1,
                 242.6
-            ],
-            "type": "frame"
-        },
-        {
-            "child_steps": [
-                7
-            ],
-            "color": "turquoise",
-            "data": {
-                "title": "Sample B"
-            },
-            "id": 4,
-            "position": [
-                458,
-                425.79999999999995
-            ],
-            "size": [
-                240,
-                315.1
             ],
             "type": "frame"
         }
@@ -144,7 +138,7 @@
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "20f26ab9-85f6-4aff-93cf-cb17aee1edb3"
+                    "uuid": "47e8b2d1-e28b-4a64-87bc-9634d60dafdb"
                 }
             ]
         },
@@ -177,7 +171,7 @@
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "d2ab64dd-59e5-4ab7-83bb-e14eddb2e85c"
+                    "uuid": "2767f947-b47a-4714-b614-47ebb66909d7"
                 }
             ]
         },
@@ -264,7 +258,7 @@
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "dd0138e1-2ab7-43d9-a3d2-dcbacb4fc957"
+                    "uuid": "fc776d2e-a029-4cd4-9665-f62cbb3e1f9b"
                 }
             ]
         },
@@ -297,7 +291,7 @@
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "06b88103-7692-4267-8b50-b78d2189bfbc"
+                    "uuid": "e05b47b9-e529-4aa2-83ea-b36cc5f162e2"
                 }
             ]
         },
@@ -1406,14 +1400,24 @@
             "when": null,
             "workflow_outputs": [
                 {
-                    "label": null,
-                    "output_name": "3:output",
-                    "uuid": "c92f692a-33fd-4551-b357-cfb4ca65ee8d"
+                    "label": "Pseudobulk (A)",
+                    "output_name": "Pseudobulk",
+                    "uuid": "6eb76b30-ea3d-4368-b274-8f436779290a"
                 },
                 {
                     "label": null,
                     "output_name": "2:output",
-                    "uuid": "20736e13-f6ff-45a5-8a3f-dfea6e7dd72d"
+                    "uuid": "0ecb48a9-a2d8-4048-95a2-5400146c7567"
+                },
+                {
+                    "label": "Actual cell proportions (A)",
+                    "output_name": "Actual cell proportions",
+                    "uuid": "e3d5d9a5-91b6-4359-a57a-79c15de58a8e"
+                },
+                {
+                    "label": null,
+                    "output_name": "3:output",
+                    "uuid": "2ef55372-5ee0-4c74-a675-e8d5de9b61aa"
                 }
             ]
         },
@@ -2522,14 +2526,24 @@
             "when": null,
             "workflow_outputs": [
                 {
+                    "label": "Actual cell proportions (B)",
+                    "output_name": "Actual cell proportions",
+                    "uuid": "b2b26617-c894-42c7-9b66-71b0d9d74b9d"
+                },
+                {
+                    "label": "Pseudobulk (B)",
+                    "output_name": "Pseudobulk",
+                    "uuid": "f781b721-c9da-4bcf-96f6-21c5ad3e4536"
+                },
+                {
                     "label": null,
                     "output_name": "3:output",
-                    "uuid": "1e9ddad5-cc6e-4d5e-aca4-13b7a1ab5422"
+                    "uuid": "40eb8f74-0223-48b7-9f76-533d9476b862"
                 },
                 {
                     "label": null,
                     "output_name": "2:output",
-                    "uuid": "4cc4f5ab-3916-4077-b6b8-2293f400cd39"
+                    "uuid": "6e599e05-93f1-42a0-9784-87bde835c417"
                 }
             ]
         }
@@ -2537,6 +2551,6 @@
     "tags": [
         "name:deconv-eval"
     ],
-    "uuid": "eca12d13-787c-4551-832b-fff1de6fcab5",
-    "version": 11
+    "uuid": "02d4d123-46c9-4115-804d-fccd210f8a80",
+    "version": 12
 }
