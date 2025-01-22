@@ -18,6 +18,7 @@ key_points:
 contributors:
 - KristinaGomoryova
 - hechth
+subtopic: post-process
 
 ---
 
@@ -115,7 +116,7 @@ Once the datasets are uploaded (green in the right menu), set the `Input evidenc
 
 > <hands-on-title>Data loading</hands-on-title>
 >
-> 1. {% tool [bioconductor-scp](update-link) %} with the following parameters
+> 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
 >   - *"Input evidence table"*: `evidences.txt`
 >   - *"Sample annotations table"*: `sampleAnnotation.txt`
 >   - *"Which column specifies the run identifier and batch name?"*: `Raw.file`
@@ -128,7 +129,7 @@ Once the datasets are uploaded (green in the right menu), set the `Input evidenc
 
 At the level of PSMs we will perform the first round of quality control filtering. Firstly, we will remove the contaminant proteins, which are denoted by the `Reverse` and `Potential.contaminant` columns. Next we set the threshold for the `Parent ion fraction (PIF)`: PIF indicates the fraction the target peak makes up of the total intensity in the inclusion window, so it is an indicator of a purity of a spectrum. 
 
-We will also remove the samples which contain way too little PSMs. To have at least somewhat estimate of how many features per run there are, we can use the {% tool [Group](toolshed.g2.bx.psu.edu/repos/galaxyp/maxquant/maxquant/1.6.10.43+galaxy3) %} tool in Galaxy: set the `Select data` to 'evidences.txt' and `Group by column` to '19', which corresponds to the 'Raw.file' column. In the `Operation`, set then `Type` to 'Count' and `On column` to 'Column: 1'. This will give us an estimate of how many features per run there are - even if we look at the unfiltered data (keep in mind, that after the contaminants removal there will be actually less features). In here, we can see that the 190321S_LCA10_X_FP97_blank_01 run has approximately three times less features than other runs, so we would remove this one with some reasonable threshold - in our case, we can use e.g. 150. This means that if a run has less than 150 features, it will be removed. 
+We will also remove the samples which contain way too little PSMs. To have at least somewhat estimate of how many features per run there are, we can use the {% tool [Group](Grouping1) %} tool in Galaxy: set the `Select data` to 'evidences.txt' and `Group by column` to '19', which corresponds to the 'Raw.file' column. In the `Operation`, set then `Type` to 'Count' and `On column` to 'Column: 1'. This will give us an estimate of how many features per run there are - even if we look at the unfiltered data (keep in mind, that after the contaminants removal there will be actually less features). In here, we can see that the 190321S_LCA10_X_FP97_blank_01 run has approximately three times less features than other runs, so we would remove this one with some reasonable threshold - in our case, we can use e.g. 150. This means that if a run has less than 150 features, it will be removed. 
 
 Additionally, we will compute the **sample to carrier ratio (SCR)**, which is a metric computed as division of the reporter intensity in the single-cell sample by the reporter ion intensity in the carrier channel within the same batch. To compute this, we need to know what are the single cell channels (in our case the Monocyte and Macrophage) and also how many cells were present in the carrier channel (in our case there were 200 cells). We expect, that the carrier intensities will be much higher than the single cell intensities and also we do expect that that ratio between the single cells and the carrier will be 1/200 which is 0.005. After running this workflow, a QC figure titled "QC_plot_SCR" or "QC_plot_SCR_col" will appear within the Plots collection. We can see the histogram of the MeanSCR values and we can see that opposite to the expected ratio 0.005 the peak is around 0.01. There are however few outlier PSMs which have much higher ratios and should be filtered out above 0.1. Therefore we will set the threshold for the filtering to 0.1.
 
@@ -136,7 +137,7 @@ Finally, we will apply the filtering based on the **q-values**. In the evidences
 
 > <hands-on-title>Data filtering</hands-on-title>
 >
-> 1. {% tool [bioconductor-scp](update-link) %} with the following parameters
+> 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
 >   - *"Filter reverse sequence"*: `True`
 >   - *"Filter potential contaminant"*: `True`
 >   - *"Parent ion fraction"*: `0.8`
@@ -166,7 +167,7 @@ By default, the aggregation will be done on the **Modified.sequence** column (fo
 
 > <hands-on-title>Aggregation to the peptide level</hands-on-title>
 >
-> 1. {% tool [bioconductor-scp](update-link) %} with the following parameters
+> 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
 >   - *"Which function to use for the aggregation?"*: `colMedians`
 >   - *"Which column should be used for the PSM to peptide aggregation?"*: `Modified.sequence`
 >
@@ -182,7 +183,7 @@ After the filtering, we can remove the blank sample if we haven't done it alread
 
 > <hands-on-title>Peptide filtering</hands-on-title>
 >
-> 1. {% tool [bioconductor-scp](update-link) %} with the following parameters
+> 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
 >   - *"Which samples to keep?"*: `Monocyte`, `Macrophage` and `Blank`
 >   - *"Filter based on median intensity?"*: `no`
 >   - *"Filter based on median CV?"*: `yes`
@@ -198,7 +199,7 @@ The next step is normalization, which helps us to remove the technical bias and 
 
 > <hands-on-title>Peptide normalization</hands-on-title>
 >
-> 1. {% tool [bioconductor-scp](update-link) %} with the following parameters
+> 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
 >   - *"Normalization method rows"*: `rowMeans`
 >   - *"Normalization method columns"*: `colMedians`
 >
@@ -210,7 +211,7 @@ Due to the non-normal distribution which is common for the proteomics data, we u
 
 > <hands-on-title>Log transformation of intensities</hands-on-title>
 >
-> 1. {% tool [bioconductor-scp](update-link) %} with the following parameters
+> 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
 >   - *"Log transformation base"*: `2`
 >
 {: .hands_on}
@@ -221,7 +222,7 @@ Finally, we want to get rid of the peptides which do have a high missing rate in
 
 > <hands-on-title>NA values removal</hands-on-title>
 >
-> 1. {% tool [bioconductor-scp](update-link) %} with the following parameters
+> 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
 >   - *"Remove peptides with high missing rate?"*: `yes`
 >   - *"% of NA values filtering threshold"*: `99`
 >
@@ -237,7 +238,7 @@ For the aggregation of peptides to the protein level, we will use again the colM
 
 > <hands-on-title>Aggregation to the protein level</hands-on-title>
 >
-> 1. {% tool [bioconductor-scp](update-link) %} with the following parameters
+> 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
 >   - *"Which function to use for the aggregation?"*: `colMedians`
 >   - *"Which column should be used for the PSM to peptide aggregation?"*: `Leading.razor.protein`
 >
@@ -249,7 +250,7 @@ Next, we will also normalize the intensities on the protein level - again firstl
 
 > <hands-on-title>Protein normalization</hands-on-title>
 >
-> 1. {% tool [bioconductor-scp](update-link) %} with the following parameters
+> 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
 >   - *"Normalization method rows"*: `rowMeans`
 >   - *"Normalization method columns"*: `colMedians`
 >
@@ -261,7 +262,7 @@ Finally, we have to deal with the missing values as their presence is problemati
 
 > <hands-on-title>Missing values imputation</hands-on-title>
 >
-> 1. {% tool [bioconductor-scp](update-link) %} with the following parameters
+> 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
 >   - *"Which k to use for the kNN imputation"*: `3`
 >
 {: .hands_on}
@@ -291,7 +292,7 @@ In the bioconductor-scp, there are two batch removal methods implemented: alread
 
 > <hands-on-title>Batch effect correction</hands-on-title>
 >
-> 1. {% tool [bioconductor-scp](update-link) %} with the following parameters
+> 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
 >   - *"Which batch correction method to use?"*: `ComBat`
 >   - *"Which column is the technical variable to be corrected?"*: `c2: runCol`
 >
@@ -314,7 +315,7 @@ The next step is the dimensionality reduction. We will firstly use the Principal
 
 > <hands-on-title>Batch effect correction: PCA</hands-on-title>
 >
-> 1. {% tool [bioconductor-scp](update-link) %} with the following parameters
+> 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
 >   - *"Run principal component analysis (PCA)?"*: `yes`
 >   - *"Number of components"*: `5`
 >   - *"What column to color the PCA according to?"*: `c4: SampleType`
@@ -325,7 +326,7 @@ In contrast to PCA, which is a linear dimension reduction, UMAP is a non-linear 
 
 > <hands-on-title>Batch effect correction: UMAP</hands-on-title>
 >
-> 1. {% tool [bioconductor-scp](update-link) %} with the following parameters
+> 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
 >   - *"Run UMAP on PCA data?"*: `yes`
 >   - *"Number of components"*: `2`
 >
