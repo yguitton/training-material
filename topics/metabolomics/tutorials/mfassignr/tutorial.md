@@ -36,9 +36,10 @@ This training covers the multi-element molecular formula (MF) assignment using t
 3. Use **IsoFiltR()** to identify potential 13C and 34S isotope masses.
 4. Using the signal-to-noise (S/N) threshold, and the two data frames output from IsoFiltR(), run **MFAssignCHO()** to assign MF with C, H, and O to assess the mass accuracy.
 5. Use **RecalList()** to generate a list of the potential recalibrant series.
-6. After choosing recalibrant series, use **Recal()** to recalibrate the mass lists.
-7. Assign MF to the recalibrated mass list using **MFAssign()**.
-8. Check the output plots from MFAssign() to evaluate the quality of the assignments.
+6. Use **FindRecalSeries()** to find the most suitable recalibrant series.
+7. After choosing recalibrant series, use **Recal()** to recalibrate the mass lists.
+8. Assign MF to the recalibrated mass list using **MFAssign()**.
+9. Check the output plots from MFAssign() to evaluate the quality of the assignments.
 
 We can illustrate the workflow also on the following scheme:
 ![workflow_graphical](images/mfassignr_scheme.png)
@@ -212,7 +213,7 @@ Once we have denoised data and have identified the potential 13C and 34S masses,
 
 Firstly, the initial formula assignment with the CHOFIT algorithm is performed along with the quality checks. Then, KMD and z* values are calculated for all masses with the CH2 Kendrick base, and masses are sorted into CH2 homologous series. Subsequently, 1-3 members of each CH2 homologous series below the user-defined threshold are selected and assigned a MF. The ambiguous MFs are returned within the Unassigned list, whereas the unambiguous MF are further re-assigned using CH2, O, H2, H2O, and CH2O extensions. 
 
-Let's use the MFAssignCHO function. On the input, we will need the output of the IsoFiltR function, a data frame of monoisotopic masses, and also (optionally) the data frame containing isotopic masses. Furthermore, we select in which ion mode we measured the data (positive or negative) and we set the signal-to-noise threshold - based on the noise estimate we obtained from the KMDNoise or HistNoise functions multiplied by the multiplier. Finally, based on the acquisition range, we set the lowMW and highMW, and also the allowed ppm error. Other parameters we can leave in default settings, although in the 'Advanced' tab, many additional parameters can be set by users, including amounts of elements, ratios (e.g. minimum allowed O/C ratio) and many others. 
+Let's use the MFAssignCHO function. On the input, we will need the output of the IsoFiltR function, a data frame of monoisotopic masses, and also (optionally) the data frame containing isotopic masses. Furthermore, we select in which ion mode we measured the data (positive or negative) and we set the signal-to-noise threshold - based on the noise estimate we obtained from the KMDNoise or HistNoise functions multiplied by the multiplier. Finally, based on the acquisition range, we set the lowMW and highMW, and also the allowed ppm error. Other parameters we can leave in default settings, although in the 'Advanced' tab, many additional parameters can be set by user, including amounts of elements, ratios (e.g. minimum allowed O/C ratio) and many others. 
 
 On the output, there are two dataframes, `Ambiguous` and `Unambigous` provided.
 
