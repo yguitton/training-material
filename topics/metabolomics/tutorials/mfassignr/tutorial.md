@@ -265,7 +265,7 @@ There are three consecutive functions, **RecalList**, **FindRecalSeries** and **
 ## RecalList
 
 Firstly, we will generate a table containing potential recalibrant CH2 homologous series using the RecalList function. 
-As in input, we will use the Unambig data frame which we generated in the MFAssignCHO function:
+As in input, we will use the `Unambig` data frame which we generated in the MFAssignCHO function:
 
 > <hands-on-title> Finding recalibrant series </hands-on-title>
 >
@@ -302,11 +302,11 @@ On the output, we get a data frame containing CH2 homologous series that contain
 
 ## FindRecalSeries
 
-Which are the best series for recalibration? Combined, these series should cover the full mass spectral range to provide the best overall recalibration. The best series to choose are generally long and combined have a “Tall Peak” at least every 100 m/z.
+Which are the best series for recalibration? Combined, these series should cover the full mass spectral range to provide the best overall recalibration. The best series to choose are generally long and combined have a "Tall Peak” at least every 100 m/z.
 
 Currently, it is up to the user to choose the most suitable recalibrant series that will be used for the recalibration in the Recal step. It is possible to choose up to 10 series and they should indeed span over the whole range of m/z - often an error is thrown to add more series in case there are gaps, or the chosen series would have a good score but would be way too alike. Therefore, we provide the **FindRecalSeries** function, which attempts to select the best series which fulfill the abovementioned criteria.
 
-We will only provide the 'Recalibration series' dataframe from RecalList function, and the best series will be chosen automatically. Although a list of more than 10 series might be provided on the output, only first 10 best series will be used by the Recal function in the next step.
+We will only provide the `Recalibration series` dataframe from RecalList function, and the best series will be chosen automatically. Although a list of more than 10 series might be provided on the output, only first 10 best series will be used by the Recal function in the next step.
 
 > <hands-on-title> Selecting most suitable series </hands-on-title>
 >
