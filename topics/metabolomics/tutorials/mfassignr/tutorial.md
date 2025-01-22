@@ -212,7 +212,7 @@ Once we have denoised data and have identified the potential 13C and 34S masses,
 
 Firstly, the initial formula assignment with the CHOFIT algorithm is performed along with the quality checks. Then, KMD and z* values are calculated for all masses with the CH2 Kendrick base, and masses are sorted into CH2 homologous series. Subsequently, 1-3 members of each CH2 homologous series below the user-defined threshold are selected and assigned a MF. The ambiguous MFs are returned within the Unassigned list, whereas the unambiguous MF are further re-assigned using CH2, O, H2, H2O, and CH2O extensions. 
 
-Let's use the MFAssignCHO function. On the input, we will need the output of the IsoFiltR function, a data frame of monoisotopic masses, and also (optionally) the data frame containing isotopic masses. Furthermore, we select in which ion mode we measured the data (positive or negative) and we set the signal-to-noise threshold - based on the noise estimate we obtained from the KMDNoise or HistNoise functions multiplied by the multiplier. Finally, based on the acquisition range, we set the lowMW and highMW, and also the allowed ppm error. Other parameters we can leave in default settings. 
+Let's use the MFAssignCHO function. On the input, we will need the output of the IsoFiltR function, a data frame of monoisotopic masses, and also (optionally) the data frame containing isotopic masses. Furthermore, we select in which ion mode we measured the data (positive or negative) and we set the signal-to-noise threshold - based on the noise estimate we obtained from the KMDNoise or HistNoise functions multiplied by the multiplier. Finally, based on the acquisition range, we set the lowMW and highMW, and also the allowed ppm error. Other parameters we can leave in default settings, although in the 'Advanced' tab, many additional parameters can be set by users, including amounts of elements, ratios (e.g. minimum allowed O/C ratio) and many others. 
 
 On the output, there are two dataframes, `Ambiguous` and `Unambigous` provided.
 
@@ -341,16 +341,17 @@ A common error points to increasing the `MzRange` parameter, which sets the reca
 
 # Molecular formula assignment
 
-The last step of the workflow is the actual assignment of molecular formulas with 12C, 1H, and 16O and a variety of heteroatoms and isotopes, including 2H, 13C, 14N, 15N, 31P, 32S, 34S, 35Cl, 37Cl, 19F, 79Br, 81Br, and 126I. It can also assign Na+ adducts, common in positive ion mode. We have already described the principles of the MFAssignCHO function, which works the very same way as MFAssign (only being limited to C, H, and O elements), so let's directly use the MFAssign function for the formula assignment.
+The last step of the workflow is the actual assignment of molecular formulas with 12C, 1H, and 16O and a variety of heteroatoms and isotopes, including 2H, 13C, 14N, 15N, 31P, 32S, 34S, 35Cl, 37Cl, 19F, 79Br, 81Br, and 126I. It can also assign Na+ adducts, common in positive ion mode. We have already described the principles of the MFAssignCHO function, which works the very same way as MFAssign (only being limited to C, H, and O elements), so let's directly use the MFAssign function for the formula assignment. 
 
 > <hands-on-title> MF assignment using MFAssign </hands-on-title>
 >
 > 1. {% tool [MFAssignR MFAssign](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_mfassign/mfassignr_mfassign/1.1.2+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Data frame of monoisotopic masses"*: `Mono` (output of **MFAssignR Recal** {% icon tool %})
 >    - {% icon param-file %} *"Data frame of isotopic masses"*: `Iso` (output of **MFAssignR Recal** {% icon tool %})
+>    - *"ppm_err*: `3`
 >    - *"Ion mode"*: `negative`
 >    - *"SN ratio"*: `6`
->    - *"Estimated noise"*: `346.0`
+>    - *"Estimated noise"*: `346.0706`
 >    - *"Lower limit of molecular mass to be assigned"*: `50.0`
 >    - *"Upper limit of molecular mass to be assigned"*: `1000.0`
 >
