@@ -490,39 +490,41 @@ The usual preprocessing steps for single cell data are normalisation, selection 
 > > <solution-title></solution-title>
 > >
 > > 1. We can check the list of the top variable genes in our history by clicking on the {% icon galaxy-eye %} or see them on our variable features plot.
-> > <div class="Separate-Preprocessing-Steps" markdown="1">
+> >    <div class="Separate-Preprocessing-Steps" markdown="1">
 > >
-> > > |    |         |
-> > > |----|---------|
-> > > | 1  | PPBP    |
-> > > | 2  | LYZ     |
-> > > | 3  | S100A9  |
-> > > | 4  | IGLL5   |
-> > > | 5  | GNLY    |
-> > > | 6  | FTL     |
-> > > | 7  | PF4     |
-> > > | 8  | FTH1    |
-> > > | 9  | GNG11   |
-> > > | 10 | S100A8  |
-> > {: .matrix}
-> > </div>
+> >    |    |         |
+> >    |----|---------|
+> >    | 1  | PPBP    |
+> >    | 2  | LYZ     |
+> >    | 3  | S100A9  |
+> >    | 4  | IGLL5   |
+> >    | 5  | GNLY    |
+> >    | 6  | FTL     |
+> >    | 7  | PF4     |
+> >    | 8  | FTH1    |
+> >    | 9  | GNG11   |
+> >    | 10 | S100A8  |
+> >    {: .matrix}
 > >
-> > <div class="SCTransform" markdown="1">
+> >    </div>
 > >
-> > > |    |          |
-> > > |----|----------|
-> > > | 1  | S100A9   |
-> > > | 2  | GNLY     |
-> > > | 3  | LYZ      |
-> > > | 4  | S100A8   |
-> > > | 5  | NKG7     |
-> > > | 6  | FTL      |
-> > > | 7  | GZMB     |
-> > > | 8  | IGLL5    |
-> > > | 9  | FTH1     |
-> > > | 10 | CCL5     |
-> > {: .matrix}
-> > </div>
+> >    <div class="SCTransform" markdown="1">
+> >
+> >    |    |          |
+> >    |----|----------|
+> >    | 1  | S100A9   |
+> >    | 2  | GNLY     |
+> >    | 3  | LYZ      |
+> >    | 4  | S100A8   |
+> >    | 5  | NKG7     |
+> >    | 6  | FTL      |
+> >    | 7  | GZMB     |
+> >    | 8  | IGLL5    |
+> >    | 9  | FTH1     |
+> >    | 10 | CCL5     |
+> >    {: .matrix}
+> >
+> >    </div>
 > >
 > >    > <comment-title></comment-title>
 > >    > The list of highly variable genes you end up with will depend on which preprocessing route you chose. The two preprocessing routes use different methods to select features, so they won't always end up with the same genes, although there are likely to be some similarities. `SCTransform` also returns 3000 variable genes by default, rather than the 2000 selected by `FindVariableFeatures`. We can select more features with `SCTransform` because its normalisation method is better at removing technical effects from the data, so we believe that these additional genes reflect subtler biological variations rather than technical differences.
@@ -1066,7 +1068,7 @@ Although there is a lot of information here, all we need to know for now is that
 > > 3. We could scroll down through the markers table to find the results for cluster 2, but it can be easier to filter the table instead. The {% tool [Filter](Filter1) %} can be used to filter the Markers List from `FindAllMarkers`. We can set the condition to filter on as `c7==2` since column 7 contains the cluster numbers - this will filter out only the rows that have `2` in this column.
 > >    Make sure to enter `1` in the `Number of header lines to skip` field as we don't want to cut off the header row because it doesn't have the right value in column 7!
 > >    If you then click on the {% icon galaxy-eye %} for the new output in your history, you should see from the `cluster` column that we only have markers for cluster 2. The top five markers for this cluster were:
-> >    
+> >
 > > <div class="Separate-Preprocessing-Steps" markdown="1">
 > >
 > > > |    |      |
@@ -1182,7 +1184,7 @@ We just used `FindMarkers` to run the same test on cluster 2 as `FindAllMarkers`
 >
 > > <solution-title></solution-title>
 > > 1. The top five markers in the output table are:
-> > 
+> >
 > > <div class="Separate-Preprocessing-Steps" markdown="1">
 > >
 > > > |    |               |
@@ -1240,7 +1242,7 @@ We can also use other methods for DE analyis in Seurat. We can use the 'ROC' tes
 >
 > > <solution-title></solution-title>
 > > 1. The top five markers in the output table are:
-> > 
+> >
 > > <div class="Separate-Preprocessing-Steps" markdown="1">
 > >
 > > > |    |       |
