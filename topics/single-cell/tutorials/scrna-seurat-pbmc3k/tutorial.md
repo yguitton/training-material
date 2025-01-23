@@ -612,17 +612,19 @@ Rather than just looking at a list of genes, we can also produce plots to help u
 </div>
 
 > <question-title></question-title>
+>
 > 1. What are the top positive and negative genes for the first three PCs?
 > 2. Are any of our top 10 highly variable genes associated with the top PCS? Does this surprise you?
 > 3. When we plot the cells along the PC axes (in the next step) do you expect to see differences in the expression of these genes along the associated axis?
 >
 > > <solution-title></solution-title>
-> > <div class="Separate-Preprocessing-Steps" markdown="1">
-> > 1. The list produced by the `RunPCA` function shows the genes that were most strongly positively and negatively assocated with each PC. The top positively associated genes were CST3 for PC1, CD79A for PC2, and HLA-DQA1 for PC3. The top negatively associated genes were MALAT1 for PC1, NKG7 for PC2, and PPBP for PC3. However, these top genes don't define the PCs by themselves - they are part of groups of genes that showed correlated patterns of expression. The figures show us more information about the top genes. We can see the top 30 genes in each of these groups on the plots. We can also see how strongly each of these genes was associated with the PC.
-> > </div>
-> > <div class="SCTransform" markdown="1">
-> > 1. The list produced by the `RunPCA` function shows the genes that were most strongly positively and negatively assocated with each PC. The top positively associated genes were MALAT1 for PC1, NKG7 for PC2, and S100A8 for PC3, while the top negatively associated genes were FTL for PC1, HLA-DRA for PC2, and CD74 for PC3. However, these top genes don't define the PCs by themselves - they are part of groups of genes that showed correlated patterns of expression. The figures show us more information about the top genes. We can see the top 30 genes in each of these groups on the plots. We can also see how strongly each of these genes was associated with the PC.
-> > </div>
+> >
+> > 1. <div class="Separate-Preprocessing-Steps" markdown="1">The list produced by the `RunPCA` function shows the genes that were most strongly positively and negatively assocated with each PC. The top positively associated genes were CST3 for PC1, CD79A for PC2, and HLA-DQA1 for PC3. The top negatively associated genes were MALAT1 for PC1, NKG7 for PC2, and PPBP for PC3. However, these top genes don't define the PCs by themselves - they are part of groups of genes that showed correlated patterns of expression. The figures show us more information about the top genes. We can see the top 30 genes in each of these groups on the plots. We can also see how strongly each of these genes was associated with the PC.
+> >    </div>
+> >    <div class="SCTransform" markdown="1">
+> >    The list produced by the `RunPCA` function shows the genes that were most strongly positively and negatively assocated with each PC. The top positively associated genes were MALAT1 for PC1, NKG7 for PC2, and S100A8 for PC3, while the top negatively associated genes were FTL for PC1, HLA-DRA for PC2, and CD74 for PC3. However, these top genes don't define the PCs by themselves - they are part of groups of genes that showed correlated patterns of expression. The figures show us more information about the top genes. We can see the top 30 genes in each of these groups on the plots. We can also see how strongly each of these genes was associated with the PC.
+> >    </div>
+> >
 > > 2. We can see that some of our highly variable genes are associated with the top PCs. For example, FTL is one of the top genes associated with PC1. We should expect to see some of our highly variable genes here as we used the features we selected to perform the PCA. It also makes sense that our top 10 variable genes are strongly associated with PCs, because we know these are the genes that varied most across the dataset and the PCA was looking for these strong differences in expression. However, a gene that varied a lot won't necessarily be associated with a top PC unless its expression correlates with other variable genes - a group of correlated genes is likely to have a stronger impact than a single gene, even if that one gene varies a lot.
 > > 3. Since these are the genes that most are strongly associated with each PC, we should expect to see strong differences in their expression from one end of the associated axis to the other. The genes positively associated with PC1 should mainly be expressed near the positive end of the PC1 axis while the negatively associated genes should mainly be expressed at the negative end. We would expect to see similar patterns for the other PCs.
 > {: .solution}
