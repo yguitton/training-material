@@ -1133,35 +1133,42 @@ We don't have a cluster column this time as we were only testing one group again
 > 2. Are these the same as the top five markers for cluster 2 when we ran `FindAllMarkers`?
 >
 > > <solution-title></solution-title>
+> >
 > > 1. When we look at the marker table, we can see that the first five genes listed as markers of cluster 2 are:
-> > <div class="Separate-Preprocessing-Steps" markdown="1">
+> >    <div class="Separate-Preprocessing-Steps" markdown="1">
 > >
-> > > |    |      |
-> > > |----|------|
-> > > | 1  | IL32 |
-> > > | 2  | LTB  |
-> > > | 3  | CD3D |
-> > > | 4  | IL7R |
-> > > | 5  | LDHB |
-> > {: .matrix}
+> >    |    |      |
+> >    |----|------|
+> >    | 1  | IL32 |
+> >    | 2  | LTB  |
+> >    | 3  | CD3D |
+> >    | 4  | IL7R |
+> >    | 5  | LDHB |
+> >    {: .matrix}
 > >
-> > </div>
+> >    </div>
 > >
-> > <div class="SCTransform" markdown="1">
+> >    <div class="SCTransform" markdown="1">
 > >
-> > > |    |        |
-> > > |----|--------|
-> > > | 1  | RPS27  |
-> > > | 2  | RPL32  |
-> > > | 3  | S100A4 |
-> > > | 4  | RPS6   |
-> > > | 5  | RPS12  |
-> > {: .matrix}
+> >    |    |        |
+> >    |----|--------|
+> >    | 1  | RPS27  |
+> >    | 2  | RPL32  |
+> >    | 3  | S100A4 |
+> >    | 4  | RPS6   |
+> >    | 5  | RPS12  |
+> >    {: .matrix}
 > >
-> > </div>
-> >    We can look at the third column, `avg_log2FC` to see if these are positive or negative markers. <div class="Separate-Preprocessing-Steps" markdown="1">Although we didn't limit this test to positive markers, we can see that the avg_log2FC for the five top markers is positive, which means these are all positive markers for cluster 2. Expression of these genes was higher in cluster 2 than in the rest of the dataset.</div><div class="SCTransform">We can see that the `avg_log2fc` value for S100A4 is negative, which means this was a negative marker for cluster 2 - it was less likely to be expressed by these cells than in the rest of the dataset. The rest of the top five markers were positive markers.</div>
-> > 2. <div class="Separate-Preprocessing-Steps" markdown="1">If we go back to the filtered list of cluster 2 markers, we will see the same top five markers for this cluster. Since we used `FindMarkers` to test cluster 2 against all the rest of the data, we actually performed the same test that `FindAllMarkers` does for each cluster in turn. The only difference is that we previously limited `FindAllMarkers` to positive markers only. We don't see a difference in the top five markers as these all happened to be positive markers for cluster 2, but if we keep looking down the marker tables we'll start to see differences as the negative markers we just found for cluster 2 using `FindMarkers` won't appear in our `FindAllMarkers` table. If we hadn't limited that test to positive markers, then we wouldn't see any differences.</div><div class="SCTransform" markdown="1">If we go back to the filtered list of cluster 2 markers, we will see most of the same genes in the top five. The only exception is that one negative marker, S100A4, which didn't appear in the `FindAllMarkers` results because we limited those to positive markers. We should see the same positive markers in both tables because when we used `FindMarkers` to test cluster 2 against all the rest of the data, we actually performed the same test that `FindAllMarkers` does for each cluster in turn. If we hadn't limited those results to positive markers, our marker genes would be identical.</div>
->>
+> >    </div>
+> >
+> >    We can look at the third column, `avg_log2FC` to see if these are positive or negative markers. <span class="Separate-Preprocessing-Steps" markdown="1">Although we didn't limit this test to positive markers, we can see that the avg_log2FC for the five top markers is positive, which means these are all positive markers for cluster 2. Expression of these genes was higher in cluster 2 than in the rest of the dataset.</span><span class="SCTransform">We can see that the `avg_log2fc` value for S100A4 is negative, which means this was a negative marker for cluster 2 - it was less likely to be expressed by these cells than in the rest of the dataset. The rest of the top five markers were positive markers.</span>
+> >
+> > 2. <div class="Separate-Preprocessing-Steps" markdown="1">If we go back to the filtered list of cluster 2 markers, we will see the same top five markers for this cluster. Since we used `FindMarkers` to test cluster 2 against all the rest of the data, we actually performed the same test that `FindAllMarkers` does for each cluster in turn. The only difference is that we previously limited `FindAllMarkers` to positive markers only. We don't see a difference in the top five markers as these all happened to be positive markers for cluster 2, but if we keep looking down the marker tables we'll start to see differences as the negative markers we just found for cluster 2 using `FindMarkers` won't appear in our `FindAllMarkers` table. If we hadn't limited that test to positive markers, then we wouldn't see any differences.
+> >    </div>
+> >
+> >    <div class="SCTransform" markdown="1">If we go back to the filtered list of cluster 2 markers, we will see most of the same genes in the top five. The only exception is that one negative marker, S100A4, which didn't appear in the `FindAllMarkers` results because we limited those to positive markers. We should see the same positive markers in both tables because when we used `FindMarkers` to test cluster 2 against all the rest of the data, we actually performed the same test that `FindAllMarkers` does for each cluster in turn. If we hadn't limited those results to positive markers, our marker genes would be identical.
+> >    </div>
+> >
 > {: .solution}
 {: .question}
 
@@ -1181,37 +1188,39 @@ We just used `FindMarkers` to run the same test on cluster 2 as `FindAllMarkers`
 {: .hands_on}
 
 > <question-title></question-title>
+>
 > 1. What are the top five markers of cluster 5 compared to clusters 0 and 3?
 > 2. Are these the same as the top five markers for the cluster when we ran FindAllMarkers?
 >
 > > <solution-title></solution-title>
+> >
 > > 1. The top five markers in the output table are:
 > >
-> > <div class="Separate-Preprocessing-Steps" markdown="1">
+> >    <div class="Separate-Preprocessing-Steps" markdown="1">
 > >
-> > > |    |               |
-> > > |----|---------------|
-> > > | 1  | FCGR3A        |
-> > > | 2  | IFITM3        |
-> > > | 3  | CFD           |
-> > > | 4  | CD68          |
-> > > | 5  | RP11-290F20.3 |
-> > {: .matrix}
+> >    |    |               |
+> >    |----|---------------|
+> >    | 1  | FCGR3A        |
+> >    | 2  | IFITM3        |
+> >    | 3  | CFD           |
+> >    | 4  | CD68          |
+> >    | 5  | RP11-290F20.3 |
+> >    {: .matrix}
 > >
-> > </div>
+> >    </div>
 > >
-> > <div class="SCTransform" markdown="1">
+> >    <div class="SCTransform" markdown="1">
 > >
-> > > |    |          |
-> > > |----|----------|
-> > > | 1  | GZMB     |
-> > > | 2  | PRF1     |
-> > > | 3  | FGFBP2   |
-> > > | 4  | GNLY     |
-> > > | 5  | GZMA     |
-> > {: .matrix}
+> >    |    |          |
+> >    |----|----------|
+> >    | 1  | GZMB     |
+> >    | 2  | PRF1     |
+> >    | 3  | FGFBP2   |
+> >    | 4  | GNLY     |
+> >    | 5  | GZMA     |
+> >    {: .matrix}
 > >
-> > </div>
+> >    </div>
 > >
 > > 2. If we go back to our `FindAllMarkers` table, we'll see that these aren't exactly the same as the top five markers for cluster 5 when we compared it to all of the rest of the dataset (remember you can filter the results of `FindAllMarkers` again if you get bored of scrolling all the way down to cluster 5!). Only two of these markers are in the top five of both lists, although we can find the other genes further down in the table if we look.
 > >    We wouldn't expect to see the same results because we're now looking for differences specifically between cluster 5 and clusters 0 and 3. The genes that `FindAllMarkers` identified as differentiating cluster 5 from all of the other clusters might not be best at differentiating it specifically from clusters 0 and 3 - some of those markers could actually be expressed by all three of these clusters.
@@ -1474,8 +1483,8 @@ We have produced a series of UMAP plots, each coloured according to the expressi
 >
 > > <solution-title></solution-title>
 > > 1. Each cell type marker is clearly expressed at higher levels in certain parts of the plots - we don't have the same problem as we did when we plotted the top genes for PCs 1-3 and found that MALAT1 was expressed at quite high levels across the entire plot! When we compare the expression plots to the clusters we previously plotted, we can see that they match up quite well with each other. Most of the markers are expressed more in certain clusters, but there isn't always a clear boundary, especially for clusters that are close together in the plot. Some markers are associated with a single cluster, such as MS4A1 and PPBP, while others are expressed across multiple clusters.
-> > 2. Although marker expression mainly occurs in one or more clusters, there is still some expression by cells in other parts of the plot. It could be that these genes are sometimes expressed by other cell types, but these could also be cells of the same type that have simply ended up further away in the plot. It can sometimes be hard to tell which cluster these cells have been assigned to from these plots, especially when you consider that some points could be hidden behind others. Cells of the same type might have been assigned to different clusters, but there could also be a few cells that have been plotted at a distance from where the main part of their assigned cluster appears on this plot. <div class="Separate-Preprocessing-Steps" markdown="1">If we look back at the UMAP coloured by cluster, we can spot a couple of differently coloured cells at the tip of cluster 7 and by cluster 8.</div><div class="SCTransform" markdown="1">If we look back at the UMAP coloured by cluster, we can spot a couple of differently coloured cells and mixed into cluster 3 and at the tip of cluster 10.</div>
-> > 3. We can distinguish between all of our clusters on the basis of which known markers they are shown to express. Each cluster expresses a unique combination of these genes, although the markers aren't only expressed in the clusters they're mainly associated with. Some of the clusters are more similar to each other, particularly those that are close together on the plot, forming part of the same larger group of cells. <div class="Separate-Preprocessing-Steps">For example, clusters 1, 5 and 7 are grouped together on the plot and all express a lot of LYZ, S100A4, and CST3.</div><div class="SCTransform">For example, clusters 1 and 6 are grouped together on the plot for and both express a lot of S100A4 and CST3.</div> Since the UMAP was created based on the PCA, which was in turn based on similarities in expression of the highly variable genes, it makes sense that clusters that are plotted closer together are more similar in expression to each other. However, we should always remember that we're only looking at a 2D plot of the first two UMAP dimensions, so we shouldn't read too much into what we see! The plot can't tell us everything about the relationships between cells and clusters.
+> > 2. Although marker expression mainly occurs in one or more clusters, there is still some expression by cells in other parts of the plot. It could be that these genes are sometimes expressed by other cell types, but these could also be cells of the same type that have simply ended up further away in the plot. It can sometimes be hard to tell which cluster these cells have been assigned to from these plots, especially when you consider that some points could be hidden behind others. Cells of the same type might have been assigned to different clusters, but there could also be a few cells that have been plotted at a distance from where the main part of their assigned cluster appears on this plot. <span class="Separate-Preprocessing-Steps" markdown="1">If we look back at the UMAP coloured by cluster, we can spot a couple of differently coloured cells at the tip of cluster 7 and by cluster 8.</span><span class="SCTransform" markdown="1">If we look back at the UMAP coloured by cluster, we can spot a couple of differently coloured cells and mixed into cluster 3 and at the tip of cluster 10.</span>
+> > 3. We can distinguish between all of our clusters on the basis of which known markers they are shown to express. Each cluster expresses a unique combination of these genes, although the markers aren't only expressed in the clusters they're mainly associated with. Some of the clusters are more similar to each other, particularly those that are close together on the plot, forming part of the same larger group of cells. <span class="Separate-Preprocessing-Steps">For example, clusters 1, 5 and 7 are grouped together on the plot and all express a lot of LYZ, S100A4, and CST3.</span><span class="SCTransform">For example, clusters 1 and 6 are grouped together on the plot for and both express a lot of S100A4 and CST3.</span> Since the UMAP was created based on the PCA, which was in turn based on similarities in expression of the highly variable genes, it makes sense that clusters that are plotted closer together are more similar in expression to each other. However, we should always remember that we're only looking at a 2D plot of the first two UMAP dimensions, so we shouldn't read too much into what we see! The plot can't tell us everything about the relationships between cells and clusters.
 > {: .solution}
 {: .question}
 
@@ -1622,7 +1631,8 @@ In order to create a heatmap, we need to prepare a tabular file with a list of t
 > 1. Use the Upload Data - Paste/Fetch data option to create a table of genes to plot. Select the input type as **tabular** and enter a list of genes, one on each row. You can copy and paste in the following list.
 >
 >    {% snippet faqs/galaxy/datasets_create_new_file.md format="tabular" %}
-> <div class="Separate-Preprocessing-Steps" markdown="1">
+>
+>    <div class="Separate-Preprocessing-Steps" markdown="1">
 >
 >    ```
 >    IL7R
@@ -1641,9 +1651,9 @@ In order to create a heatmap, we need to prepare a tabular file with a list of t
 >    PPBP
 >    ```
 >
-> </div>
+>    </div>
 >
-> <div class="SCTransform" markdown="1">
+>    <div class="SCTransform" markdown="1">
 >
 >    ```
 >    IL7R
@@ -1666,7 +1676,7 @@ In order to create a heatmap, we need to prepare a tabular file with a list of t
 >    PPBP
 >    ```
 >
-> </div>
+>    </div>
 >
 > 2. Rename the file as `Canonical Markers` when it has finished uploading and make sure the datatype is **tabular**
 >
