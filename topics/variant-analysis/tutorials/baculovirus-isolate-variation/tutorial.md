@@ -540,9 +540,17 @@ Based on the SNV table, we can see that three possible nucleotides (alleles) occ
 >    - *"Numbers of header ines to skip"*: `1`
 >    - Click Run Tool
 >
->    > <question-title>Mainly two nucleotides only in vairable SNV positions?</question-title>
->    > Think about an option how the occurance of one, two, three or four nucleotides per SNV position can be analyzed.   
->    {: .comment}
+>    > <question-title>How can you check whether only two nucleotides occur (mostly) per SNV position?</question-title>
+>    > Think about an option how the occurance of one, two, three or four nucleotides per SNV position can be analyzed.
+>    >    > <solution-title>Answer:</solution-title>
+>    >    > When looking only at a table with several columns and numbers, it is difficult to understand that mainly a reference and one alternative nucleotide were detected in the SNV positions. 
+>    >    > One way to examine the frequency of a second or third alternative nucleotide is to filter the table with `c30=='ALT2'` or `c30=='ALT3'` instead of `c30=='ALT1'`.
+>    >    > The resulting table can be used to create a distribution over the `REL.ALT` values in column 32 (`c32`). 
+>    >    > You can perform this analysis by using the following tools: `Filter data on any column using simple expression`, `Cut columns from a table` to extract column 32 (`c32`), which corresponds to `REL.ALT`
+>    >    > and `Histogram with ggplot2`.  This task is a small challenge for you, if you like. It is up to you to familiarise yourself with the individual tools. 
+>    >    > But it could be woth it, as it could help you understand why we do not consider ALT2 and ALT3 further in the next steps.
+>    >    {: .solution}
+>    {: .question}
 >
 >    > <warning-title>Be careful when removing data!</warning-title>  
 >    > The data sets used here have already been analysed extensively and for this tutorial only the first alternative nucleotide (allele) is sufficient to explain the further workflow. Always be sure what you are doing when you remove data! Always ask yourself if you are allowed to do it and what the consequences might be. 
