@@ -192,7 +192,7 @@ We can't look at the RDS file directly as it is designed for computers to read, 
 {: .question}
 
 > <comment-title></comment-title>
-> If you would like to see the impact of the initial filtering performed by {% tool Seurat Create %}, then you can rerun it step with these filters removed (or changed) and then perform the QC visualisation steps described in the next section on the unfiltered dataset. The Seurat pipeline usually includes some filtering during object creation, which shouldn't cause any problems as long as we use reasonable thresholds that only filter out the lowest quality cells and genes.  We can always come back and create a new object with different values if we suspect they weren't right for our dataset once we make our QC plots or if we have problems later on in the analysis.
+> If you would like to see the impact of the initial filtering performed by {% tool Seurat Create %}, then you can rerun this step with these filters removed (or changed) and then perform the QC visualisation steps described in the next section on the unfiltered dataset. The Seurat pipeline usually includes some filtering during object creation, which shouldn't cause any problems as long as we use reasonable thresholds that only filter out the lowest quality cells and genes.  We can always come back and create a new object with different values if we suspect they weren't right for our dataset once we make our QC plots or if we have problems later on in the analysis.
 {: .comment}
 
 # Preprocessing
@@ -407,7 +407,7 @@ The usual preprocessing steps for single cell data are normalisation, selection 
 
 {% include _includes/cyoa-choices.html option1="Separate Preprocessing Steps" option2="SCTransform" default="Separate-Preprocessing-Steps" text="You can perform each preprocessing step separately, which might give you a better understanding of the different elements involved in preprocessing, or run them all at once using SCTransform." %}
 
-<div class='Separate-Preprocessing-Steps' markdown='1'>
+<div class="Separate-Preprocessing-Steps" markdown="1">
 ><hands-on-title>Separate Preprocessing Steps</hands-on-title>
 >
 > 1. {% tool [Seurat Preprocessing](toolshed.g2.bx.psu.edu/repos/iuc/seurat_preprocessing/seurat_preprocessing/5.0+galaxy0) %} with the following parameters:
@@ -435,12 +435,12 @@ The usual preprocessing steps for single cell data are normalisation, selection 
 {: .hands_on}
 </div>
 
-<div class='SCTransform' markdown='1'>
+<div class="SCTransform" markdown="1">
 ><hands-on-title>SCTransform</hands-on-title>
 >
 > 1. {% tool [Seurat Preprocessing](toolshed.g2.bx.psu.edu/repos/iuc/seurat_preprocessing/seurat_preprocessing/5.0+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input file with the Seurat object"*: `Filtered Dataset` (output of **Seurat Create** {% icon tool %})
->    - *"Method used"*: `Complete all preprocessing with 'SCTransform'`
+>    - *"Method used"*: `Complete all preprocessing with "SCTransform"`
 >        - *"Genes to calculate residual features for"*: `all genes`
 >            - *"How to set variable features"*: `set number of variable features`
 >        - *"Output list of most variable features"*: `Yes`
@@ -471,13 +471,13 @@ The usual preprocessing steps for single cell data are normalisation, selection 
 >
 {: .hands_on}
 
-<div class='Separate-Preprocessing-Steps' markdown='1'>
+<div class="Separate-Preprocessing-Steps" markdown="1">
 
 ![Most genes are grouped together at the bottom of the plot with low standardized variance. The selected variable genes are highlighted in red and labelled by name. They have higher standardized variances although most are still quite close to the non variable genes. The labels read PPBP, S100A9, LYZ, IGLL5, GNLY, FTL, PF4, FTH1, GNG11, and FCER1A.](../../images/scrna-seurat-pbmc3k/seurat_variable_genes.png "Plot showing the standardized variances of variable and non-variable genes. The top 10 most variable genes are labelled.")
 
 </div>
 
-<div class='SCTransform' markdown='1'>
+<div class="SCTransform" markdown="1">
 
 ![Most genes are closely grouped together, right at the bottom of the plot with low standardized variance. The selected variable genes are highlighted in red and labelled by name. They are higher up on the plot, showing they have higher standardized variances although most are still quite close to the non variable genes. They are S100A9, GNLY, LYZ, S100A8, NKG7, FTL, GZMB, IGLL5, FTH1, and CCL5.](../../images/scrna-seurat-pbmc3k/seurat_variable_genes_SCT.png "Plot showing the standardized variances of variable and non-variable genes. The top 10 most variable genes are labelled.")
 
@@ -490,7 +490,7 @@ The usual preprocessing steps for single cell data are normalisation, selection 
 > > <solution-title></solution-title>
 > >
 > > 1. We can check the list of the top variable genes in our history by clicking on the {% icon galaxy-eye %} or see them on our variable features plot.
-> > <div class='Separate-Preprocessing-Steps' markdown="1">
+> > <div class="Separate-Preprocessing-Steps" markdown="1">
 > >
 > > > |    |         |
 > > > |----|---------|
@@ -507,7 +507,7 @@ The usual preprocessing steps for single cell data are normalisation, selection 
 > > {: .matrix}
 > > </div>
 > >
-> > <div class='SCTransform' markdown="1">
+> > <div class="SCTransform" markdown="1">
 > >
 > > > |    |          |
 > > > |----|----------|
@@ -524,9 +524,7 @@ The usual preprocessing steps for single cell data are normalisation, selection 
 > > {: .matrix}
 > > </div>
 > >
-> > > <comment-title></comment-title>
-> > > The list of highly variable genes you end up with will depend on which preprocessing route you chose. The two preprocessing routes use different methods to select features, so they won't always end up with the same genes, although there are likely to be some similarities. `SCTransform` also returns 3000 variable genes by default, rather than the 2000 selected by `FindVariableFeatures`. We can select more features with `SCTransform` because its normalisation method is better at removing technical effects from the data, so we believe that these additional genes reflect subtler biological variations rather than technical differences.
-> > {: .comment}
+> > The list of highly variable genes you end up with will depend on which preprocessing route you chose. The two preprocessing routes use different methods to select features, so they won't always end up with the same genes, although there are likely to be some similarities. `SCTransform` also returns 3000 variable genes by default, rather than the 2000 selected by `FindVariableFeatures`. We can select more features with `SCTransform` because its normalisation method is better at removing technical effects from the data, so we believe that these additional genes reflect subtler biological variations rather than technical differences.
 > >
 > > 2. Single cell datasets contain a lot of information, including expression data for thousands of different genes. Some of these genes don't tell us much about the data, for example they might be housekeeping genes that are expressed at similar levels in most of our cells. We want to find the genes that can tell us most about the differences between our cells, so we want to identify the genes whose expression varies most across the dataset - focusing on these highly variable features should help us to uncover the biological differences we're looking for.
 > >
@@ -597,13 +595,13 @@ Rather than just looking at a list of genes, we can also produce plots to help u
 >
 {: .hands_on}
 
-<div class='Separate-Preprocessing-Steps' markdown='1'>
+<div class="Separate-Preprocessing-Steps" markdown="1">
 
 ![Three plots with dots for the top 30 genes for each PC. Each plot has dots near the positive and negative ends of the axis and no values close to zero](../../images/scrna-seurat-pbmc3k/seurat_vizdimloadings.png "Plots showing the genes with the highest positive and negative loadings for each of the first three PCs")
 
 </div>
 
-<div class='SCTransform' markdown='1'>
+<div class="SCTransform" markdown="1">
 
 ![Three plots with dots for the top 30 genes for each PC. Each plot has dots near the positive and negative ends of the axis and no values close to zero](../../images/scrna-seurat-pbmc3k/seurat_vizdimloadings_SCT.png "Plots showing the genes with the highest positive and negative loadings for each of the first three PCs")
 
@@ -615,14 +613,14 @@ Rather than just looking at a list of genes, we can also produce plots to help u
 > 3. When we plot the cells along the PC axes (in the next step) do you expect to see differences in the expression of these genes along the associated axis?
 >
 > > <solution-title></solution-title>
-> > <span class='Separate-Preprocessing-Steps'>
+> > <div class="Separate-Preprocessing-Steps" markdown="1">
 > > 1. The list produced by the `RunPCA` function shows the genes that were most strongly positively and negatively assocated with each PC. The top positively associated genes were CST3 for PC1, CD79A for PC2, and HLA-DQA1 for PC3. The top negatively associated genes were MALAT1 for PC1, NKG7 for PC2, and PPBP for PC3. However, these top genes don't define the PCs by themselves - they are part of groups of genes that showed correlated patterns of expression.
 > > The figures show us more information about the top genes. We can see the top 30 genes in each of these groups on the plots. We can also see how strongly each of these genes was associated with the PC.
-> > </span>
-> > <span class='SCTransform'>
+> > </div>
+> > <div class="SCTransform" markdown="1">
 > > 1. The list produced by the `RunPCA` function shows the genes that were most strongly positively and negatively assocated with each PC. The top positively associated genes were MALAT1 for PC1, NKG7 for PC2, and S100A8 for PC3, while the top negatively associated genes were FTL for PC1, HLA-DRA for PC2, and CD74 for PC3. However, these top genes don't define the PCs by themselves - they are part of groups of genes that showed correlated patterns of expression.
 > > The figures show us more information about the top genes. We can see the top 30 genes in each of these groups on the plots. We can also see how strongly each of these genes was associated with the PC.
-> > </span>
+> > </div>
 > > 2. We can see that some of our highly variable genes are associated with the top PCs. For example, FTL is one of the top genes associated with PC1. We should expect to see some of our highly variable genes here as we used the features we selected to perform the PCA. It also makes sense that our top 10 variable genes are strongly associated with PCs, because we know these are the genes that varied most across the dataset and the PCA was looking for these strong differences in expression. However, a gene that varied a lot won't necessarily be associated with a top PC unless its expression correlates with other variable genes - a group of correlated genes is likely to have a stronger impact than a single gene, even if that one gene varies a lot.
 > > 3. Since these are the genes that most are strongly associated with each PC, we should expect to see strong differences in their expression from one end of the associated axis to the other. The genes positively associated with PC1 should mainly be expressed near the positive end of the PC1 axis while the negatively associated genes should mainly be expressed at the negative end. We would expect to see similar patterns for the other PCs.
 > {: .solution}
@@ -639,7 +637,7 @@ Next, let's see how our cells are distributed along the top PCs. We can use `Dim
 >
 {: .hands_on}
 
-<div class='Separate-Preprocessing-Steps' markdown='1'>
+<div class="Separate-Preprocessing-Steps" markdown="1">
 
 ![Three large groups appear in different parts of the plot with a scattering of cells in between them](../../images/scrna-seurat-pbmc3k/seurat_PCA_DimPlot.png "PCA plot showing the distribution of cells along the first two principal components")
 
@@ -649,7 +647,7 @@ Next, let's see how our cells are distributed along the top PCs. We can use `Dim
 
 </div>
 
-<div class='SCTransform' markdown='1'>
+<div class="SCTransform" markdown="1">
 
 ![Three large groups appear in different parts of the plot with a scattering of cells in between them](../../images/scrna-seurat-pbmc3k/seurat_PCA_DimPlot_SCT.png "PCA plot showing the distribution of cells along the first two principal components")
 
@@ -696,7 +694,7 @@ We don't have to use PCs 1 and 2 as the axes. We can decide which PCs we want to
 
 You should now have two plots showing the expression of these genes on different axes.
 
-<div class='Separate-Preprocessing-Steps' markdown='1'>
+<div class="Separate-Preprocessing-Steps" markdown="1">
 
 ![Six versions of the same PCA plot showing three main groups of cells in different parts of the plot. The positively associated genes for each PC are mainly shown as expressed in cells near the positive end of that axis. The opposite is true for the negatively associated genes.](../../images/scrna-seurat-pbmc3k/seurat_PCA_12_featureplots.png "PCA Plots coloured by expression of the top positive and  negative markers for PCs 1 to 3, plotted along the PC1 and PC2 axes")
 
@@ -716,7 +714,7 @@ You should now have two plots showing the expression of these genes on different
 
 </div>
 
-<div class='SCTransform' markdown='1'>
+<div class="SCTransform" markdown="1">
 
 ![Six versions of the same PCA plot showing three main groups of cells in different parts of the plot. The positively associated genes for each PC are mainly shown as expressed in cells near the positive end of that axis. The opposite is true for the negatively associated genes.](../../images/scrna-seurat-pbmc3k/seurat_PCA_12_featureplots_SCT.png "PCA Plots coloured by expression of the top positive and  negative markers for PCs 1 to 3, plotted along the PC1 and PC2 axes")
 
@@ -760,7 +758,7 @@ Another option for visualising our PCA results is to use `DimHeatmap` to produce
 >        - *"Height of plot in pixels"*: `4400`
 {: .hands_on}
 
-<div class='Separate-Preprocessing-Steps' markdown='1'>
+<div class="Separate-Preprocessing-Steps" markdown="1">
 
 ![The heatmap is sharply divided into four quarters. The left side of shows PCA scores for groups of cells that have low values for the genes in the top half of the plot that were negatively associated with PC1 and high values for genes in the bottom half that were positively associated with PC1. Cells on the right side have high values in the top half of the plot and low values in the bottom half of the plot](../../images/scrna-seurat-pbmc3k/seurat_heatmap_PC_1.png "Heatmap of PCA scores for the top 30 genes associated with PC1")
 
@@ -768,7 +766,7 @@ Another option for visualising our PCA results is to use `DimHeatmap` to produce
 
 </div>
 
-<div class='SCTransform' markdown='1'>
+<div class="SCTransform" markdown="1">
 
 ![The heatmap is sharply divided into four quarters. The left side of shows PCA scores for groups of cells that have low values for the genes in the top half of the plot that were negatively associated with PC1 and high values for genes in the bottom half that were positively associated with PC1. Cells on the right side have high values in the top half of the plot and low values in the bottom half of the plot](../../images/scrna-seurat-pbmc3k/seurat_heatmap_PC_1_SCT.png "Heatmap of PCA scores for the top 30 genes associated with PC1")
 
@@ -811,13 +809,13 @@ The Elbow Plot ranks the PCs based on the percentage of variance that each of th
 >
 {: .hands_on}
 
-<div class='Separate-Preprocessing-Steps' markdown='1'>
+<div class="Separate-Preprocessing-Steps" markdown="1">
 
 ![Dots showing the standard deviation for each PC start high for PC1 then drop substantially for each following PC. A sharp bend appears around PC10 where the drop from one PC to the next becomes very small. The dots from PC10 onwards are close to the bottom axis, with low standard deviations.](../../images/scrna-seurat-pbmc3k/seurat_elbowplot.png "Elbow Plot showing the standard deviations for the first 30 PCs")
 
 </div>
 
-<div class='SCTransform' markdown='1'>
+<div class="SCTransform" markdown="1">
 
 ![Dots showing the standard deviation for each PC start high for PC1 then drop substantially for each following PC. A sharp bend appears around PC10, with a gentler slope down towards the horizontal axis from this point. The dots from PC30 onwards are close to the bottom axis, with low standard deviations.](../../images/scrna-seurat-pbmc3k/seurat_elbowplot_SCT.png "Elbow Plot showing the standard deviations for the first 30 PCs")
 
@@ -827,15 +825,15 @@ The Elbow Plot ranks the PCs based on the percentage of variance that each of th
 > 1. How many PCs should we use?
 >
 > > <solution-title></solution-title>
-> > <span class='Separate-Preprocessing-Steps'>
+> > <div class="Separate-Preprocessing-Steps" markdown="1">
 > > 1. As with many decisions in single cell analysis, there isn't an exact method for deciding how many PCs we should use. The elbow or bend in our plot appears to be around PC9-10, so we'll use 10 dimensions in this tutorial, but you could justifiably choose anywhere between about PC7 to PC12 on the basis of this plot. It is usually better to err on the higher side than to get rid of PCs that might be useful. Sometimes it is worth repeating the analysis with different numbers of PCs to see how it affects the results.
 > > As always, it is also important to consider biology when making your decision. In this case, an expert might have spotted that the genes strongly associated with PCs 12 and 13 are known markers for certain rare subtypes of immune cells (e.g. MZB1 is a marker for Plasmacytoid Dendritic cells). However, these cells are so rare that we're unlikely to find many in a dataset of this size, so these PCs might not be that useful here. In a larger dataset or one that was enriched for these cell types, we might decide to include these PCs in our analysis because of these genes. Since we only have 2700 cells, we can't be sure that this is a true biological signal rather than just noise, so we'll stick with the top 10 PCs on the basis of our Elbow Plot.
 > > It's also worth noting that we calcualted 50 PCs earlier, but only plotted 30 of them here as we wouldn't expect to need all 50 to explain this small dataset (especially after seeing the weaker patterns in those later heatmaps) - if we didn't see a clear bend in this plot, we could try plotting all 50 PCs instead.
-> > </span>
-> > <span class='SCTransform'>
+> > </div>
+> > <div class="SCTransform" markdown="1">
 > > 1. The plot shows a sharp elbow or bend at around PC10, but there is a gradual slope down towards the x-axis after this rather than an immediate drop to the bottom. In order to capture some of this additional variation for our analysis, we might decide to include 30 PCs. The curve of dots is much flatter and closer to the x-axis after this point, so the additional PCs won't explain much more of the variation.
 > > We can actually use more PCs when we preprocess with SCTransform than if we used the separate preprocessing tools because the more effective normalisation method seems to be better at removing technical effects from the data. When we preprocess with SCTransform, we assume that higher PCs are more likely to represent subtle biological variation rather than technical effects, so we might improve our results by including more of them.
-> > </span>
+> > </div>
 > {: .solution}
 {: .question}
 
@@ -937,7 +935,7 @@ Now we can visualise the UMAP, just as we did with the PCA. We can also colour i
 >
 {: .hands_on}
 
-<div class='Separate-Preprocessing-Steps' markdown='1'>
+<div class="Separate-Preprocessing-Steps" markdown="1">
 
 ![Plot showing three big groups of cells coloured by cluster, from 0 to 8. The smallest of these three main groups only contains cells coloured as cluster 3. The other two groups are made up of cells from different clusters.](../../images/scrna-seurat-pbmc3k/seurat_UMAP_DimPlot.png "UMAP coloured by cluster")
 
@@ -945,7 +943,7 @@ Now we can visualise the UMAP, just as we did with the PCA. We can also colour i
 
 </div>
 
-<div class='SCTransform' markdown='1'>
+<div class="SCTransform" markdown="1">
 
 ![Plot showing three big groups of cells coloured by cluster, from 0 to 11. The smallest of these three main groups only contains cells coloured as cluster 3. The other two groups are made up of cells from different clusters.](../../images/scrna-seurat-pbmc3k/seurat_UMAP_DimPlot_SCT.png "UMAP coloured by cluster")
 
@@ -982,13 +980,13 @@ UMAP plots aren't the only way to see what is going on with the clusters we've j
 >
 {: .hands_on}
 
-<div class='Separate-Preprocessing-Steps' markdown='1'>
+<div class="Separate-Preprocessing-Steps" markdown="1">
 
 ![Six violin plots. CST3 is expressed in clusters 1, 5 and 7 and in some cells in cluster 8. MALAT1 is expressed across all clusters except 8. CD79A is expressed in cluster 3. NKG7 is expressed in clusters 4 and 6. HLA-DQA1 is expressed in clusters 3 and 7 with one cell in cluster 1 expressing very high levels. PPBP is expressed in cluster 8.](../../images/scrna-seurat-pbmc3k/seurat_topgenes_violin.png "Violin plots showing expression of the top genes associated with PCs 1-3 in each cluster")
 
 </div>
 
-<div class='SCTransform' markdown='1'>
+<div class="SCTransform" markdown="1">
 
 ![Six violin plots. MALAT1 is expressed in most clusters, but there is less expression in clusters 1, 6, 9, and 11, which are the clusters with the highest expression of FTL. NKG7 is expressed in clusters 4, 5, and 7. HLA-DRA is expressed by clusters 1, 3, 6, and 9. S100A8 is expressed at the highest levels in cluster 1 but also appears in clusters 6 and 9. CD74 is most highly expressed in clusters 3 and 9 but is also present in other clusters.](../../images/scrna-seurat-pbmc3k/seurat_topgenes_violin_SCT.png "Violin plots showing expression of the top genes associated with PCs 1-3 in each cluster")
 
@@ -1069,7 +1067,7 @@ Although there is a lot of information here, all we need to know for now is that
 > > 3. We could scroll down through the markers table to find the results for cluster 2, but it can be easier to filter the table instead. The {% tool [Filter](Filter1) %} can be used to filter the Markers List from `FindAllMarkers`. We can set the condition to filter on as `c7==2` since column 7 contains the cluster numbers - this will filter out only the rows that have `2` in this column.
 > > Make sure to enter `1` in the `Number of header lines to skip` field as we don't want to cut off the header row because it doesn't have the right value in column 7!
 > > If you then click on the {% icon galaxy-eye %} for the new output in your history, you should see from the `cluster` column that we only have markers for cluster 2. The top five markers for this cluster were:
-> > <span class='Separate-Preprocessing-Steps'>
+> > <span class="Separate-Preprocessing-Steps">
 > >
 > > > |    |      |
 > > > |----|------|
@@ -1082,7 +1080,7 @@ Although there is a lot of information here, all we need to know for now is that
 > >
 > > </span>
 > >
-> > <span class='SCTransform'>
+> > <span class="SCTransform">
 > >
 > > > |    |        |
 > > > |----|--------|
@@ -1132,7 +1130,7 @@ We don't have a cluster column this time as we were only testing one group again
 >
 > > <solution-title></solution-title>
 > > 1. When we look at the marker table, we can see that the first five genes listed as markers of cluster 2 are:
-> >  <span class='Separate-Preprocessing-Steps'>
+> >  <div class="Separate-Preprocessing-Steps" markdown="1">
 > >
 > > > |    |      |
 > > > |----|------|
@@ -1143,9 +1141,9 @@ We don't have a cluster column this time as we were only testing one group again
 > > > | 5  | LDHB |
 > > {: .matrix}
 > >
-> > </span>
+> > </div>
 > >
-> > <span class='SCTransform'>
+> > <div class="SCTransform" markdown="1">
 > >
 > > > |    |        |
 > > > |----|--------|
@@ -1156,9 +1154,9 @@ We don't have a cluster column this time as we were only testing one group again
 > > > | 5  | RPS12  |
 > > {: .matrix}
 > >
-> > </span>
-> > We can look at the third column, `avg_log2FC` to see if these are positive or negative markers. <span class='Separate-Preprocessing-Steps'>Although we didn't limit this test to positive markers, we can see that the avg_log2FC for the five top markers is positive, which means these are all positive markers for cluster 2. Expression of these genes was higher in cluster 2 than in the rest of the dataset.</span><span class='SCTransform'>We can see that the `avg_log2fc` value for S100A4 is negative, which means this was a negative marker for cluster 2 - it was less likely to be expressed by these cells than in the rest of the dataset. The rest of the top five markers were positive markers.</span>span>
-> > 2. <span class='Separate-Preprocessing-Steps'>If we go back to the filtered list of cluster 2 markers, we will see the same top five markers for this cluster. Since we used `FindMarkers` to test cluster 2 against all the rest of the data, we actually performed the same test that `FindAllMarkers` does for each cluster in turn. The only difference is that we previously limited `FindAllMarkers` to positive markers only. We don't see a difference in the top five markers as these all happened to be positive markers for cluster 2, but if we keep looking down the marker tables we'll start to see differences as the negative markers we just found for cluster 2 using `FindMarkers` won't appear in our `FindAllMarkers` table. If we hadn't limited that test to positive markers, then we wouldn't see any differences.</span><span class='SCTransform'>If we go back to the filtered list of cluster 2 markers, we will see most of the same genes in the top five. The only exception is that one negative marker, S100A4, which didn't appear in the `FindAllMarkers` results because we limited those to positive markers. We should see the same positive markers in both tables because when we used `FindMarkers` to test cluster 2 against all the rest of the data, we actually performed the same test that `FindAllMarkers` does for each cluster in turn. If we hadn't limited those results to positive markers, our marker genes would be identical.</span>
+> > </div>
+> > We can look at the third column, `avg_log2FC` to see if these are positive or negative markers. <div class="Separate-Preprocessing-Steps" markdown="1">Although we didn't limit this test to positive markers, we can see that the avg_log2FC for the five top markers is positive, which means these are all positive markers for cluster 2. Expression of these genes was higher in cluster 2 than in the rest of the dataset.</div><div class="SCTransform">We can see that the `avg_log2fc` value for S100A4 is negative, which means this was a negative marker for cluster 2 - it was less likely to be expressed by these cells than in the rest of the dataset. The rest of the top five markers were positive markers.</div>
+> > 2. <div class="Separate-Preprocessing-Steps" markdown="1">If we go back to the filtered list of cluster 2 markers, we will see the same top five markers for this cluster. Since we used `FindMarkers` to test cluster 2 against all the rest of the data, we actually performed the same test that `FindAllMarkers` does for each cluster in turn. The only difference is that we previously limited `FindAllMarkers` to positive markers only. We don't see a difference in the top five markers as these all happened to be positive markers for cluster 2, but if we keep looking down the marker tables we'll start to see differences as the negative markers we just found for cluster 2 using `FindMarkers` won't appear in our `FindAllMarkers` table. If we hadn't limited that test to positive markers, then we wouldn't see any differences.</div><div class="SCTransform" markdown="1">If we go back to the filtered list of cluster 2 markers, we will see most of the same genes in the top five. The only exception is that one negative marker, S100A4, which didn't appear in the `FindAllMarkers` results because we limited those to positive markers. We should see the same positive markers in both tables because when we used `FindMarkers` to test cluster 2 against all the rest of the data, we actually performed the same test that `FindAllMarkers` does for each cluster in turn. If we hadn't limited those results to positive markers, our marker genes would be identical.</div>
 >>
 > {: .solution}
 {: .question}
@@ -1184,7 +1182,7 @@ We just used `FindMarkers` to run the same test on cluster 2 as `FindAllMarkers`
 >
 > > <solution-title></solution-title>
 > > 1. The top five markers in the output table are:
-> > <span class='Separate-Preprocessing-Steps'>
+> > <div class="Separate-Preprocessing-Steps" markdown="1">
 > >
 > > > |    |               |
 > > > |----|---------------|
@@ -1195,9 +1193,9 @@ We just used `FindMarkers` to run the same test on cluster 2 as `FindAllMarkers`
 > > > | 5  | RP11-290F20.3 |
 > > {: .matrix}
 > >
-> > </span>
+> > </div>
 > >
-> > <span class='SCTransform'>
+> > <div class="SCTransform" markdown="1">
 > >
 > > > |    |          |
 > > > |----|----------|
@@ -1208,7 +1206,7 @@ We just used `FindMarkers` to run the same test on cluster 2 as `FindAllMarkers`
 > > > | 5  | GZMA     |
 > > {: .matrix}
 > >
-> > </span>
+> > </div>
 > >
 > > 2. If we go back to our `FindAllMarkers` table, we'll see that these aren't exactly the same as the top five markers for cluster 5 when we compared it to all of the rest of the dataset (remember you can filter the results of `FindAllMarkers` again if you get bored of scrolling all the way down to cluster 5!). Only two of these markers are in the top five of both lists, although we can find the other genes further down in the table if we look.
 > > We wouldn't expect to see the same results because we're now looking for differences specifically between cluster 5 and clusters 0 and 3. The genes that `FindAllMarkers` identified as differentiating cluster 5 from all of the other clusters might not be best at differentiating it specifically from clusters 0 and 3 - some of those markers could actually be expressed by all three of these clusters.
@@ -1216,7 +1214,7 @@ We just used `FindMarkers` to run the same test on cluster 2 as `FindAllMarkers`
 > {: .solution}
 {: .question}
 
-## Find the cluster <span class='Separate-Preprocessing-Steps'>0</span><span class='SCTransform'>2</span> markers with the highest 'classification power'
+## Find the cluster <span class="Separate-Preprocessing-Steps">0</span><span class="SCTransform">2</span> markers with the highest 'classification power'
 
 We can also use other methods for DE analyis in Seurat. We can use the 'ROC' test to find out the 'classification power' of marker genes for our clusters. A classification power of 1 means that the expression level of this gene can perfectly assign cells to this cluster. A classification power of 0 means that the expression of this gene is useless for identifying cells in this particular cluster - it's completely random!
 
@@ -1228,7 +1226,7 @@ We can also use other methods for DE analyis in Seurat. We can use the 'ROC' tes
 >        - *"Compare markers for two groups of cells"*: `No`
 >        - *"Change cell identities before finding markers"*: `No`
 >        - *"Compare markers between clusters of cells"*: `Yes`
->            - *"Identity class to define markers for"*: <span class='Separate-Preprocessing-Steps'>`0`</span><span class='SCTransform'>`2`</span>
+>            - *"Identity class to define markers for"*: <span class="Separate-Preprocessing-Steps">`0`</span><span class="SCTransform">`2`</span>
 >        - *"Minimum log-fold difference to test"*: `0.25`
 >        - *"Select test to run"*: `roc`
 >        - In *"Advanced Options"*:
@@ -1237,11 +1235,11 @@ We can also use other methods for DE analyis in Seurat. We can use the 'ROC' tes
 {: .hands_on}
 
 > <question-title></question-title>
-> 1. What do the names of the top markers for cluster <span class='Separate-Preprocessing-Steps'>0</span><span class='SCTransform'>2</span> have in common and what does this signify?
+> 1. What do the names of the top markers for this cluster have in common and what does this signify?
 >
 > > <solution-title></solution-title>
-> > 1. the top five markers in the output table are:
-> > <span class='Separate-Preprocessing-Steps'>
+> > 1. The top five markers in the output table are:
+> > <div class="Separate-Preprocessing-Steps" markdown="1">
 > >
 > > > |    |       |
 > > > |----|-------|
@@ -1252,9 +1250,9 @@ We can also use other methods for DE analyis in Seurat. We can use the 'ROC' tes
 > > > | 5  | RPS14 |
 > > {: .matrix}
 > >
-> > </span>
+> > </div>
 > >
-> > <span class='SCTransform'>
+> > <div class="SCTransform" markdown="1">
 > >
 > > > |    |       |
 > > > |----|-------|
@@ -1265,9 +1263,9 @@ We can also use other methods for DE analyis in Seurat. We can use the 'ROC' tes
 > > > | 5  | RPS14 |
 > > {: .matrix}
 > >
-> > </span>
+> > </div>
 > >
-> > Many of the top markers (including all of the top five) have names starting with RP. In humans, this gene naming patterns indicates that they are ribosomal genes (encoding proteins or RNAs that form ribosomes). Cluster <span class='Separate-Preprocessing-Steps'>0</span><span class='SCTransform'>2</span> might represent a group of cells that are very busy making new proteins using all these ribosomes. If we expect our data to include a cell type that has lots of ribosomes, then this could be a sign that they've formed their own cluster, so we'll be happy with this result (this is actually the case here, as we'll see in the next section).
+> > Many of the top markers (including all of the top five) have names starting with RP. In humans, this gene naming patterns indicates that they are ribosomal genes (encoding proteins or RNAs that form ribosomes). This cluster might represent a group of cells that are very busy making new proteins using all these ribosomes. If we expect our data to include a cell type that has lots of ribosomes, then this could be a sign that they've formed their own cluster, so we'll be happy with this result (this is actually the case here, as we'll see in the next section).
 > > However, if we don't expect to see differences in ribosomal content between cells, then we might suspect that we've ended up with a cluster based on ribosomal RNA content rather than on cell type. In this case, we might want to go back to the QC steps. We could score the cells for `percent.ribo` in the same way we did for `percent.mt`. We could then filter out cells with unusually high proportions of ribosomal genes or regress out the variation associated with this characteristic during the scaling step. Just as when we're filtering cells by mitochondrial RNA proportions, we would need to think carefully about this - we wouldn't want to eliminate a cell type just because it has higher proportions of ribosomal genes, which is what we could end up doing if we tried it with this particular dataset.
 > >
 > {:.solution}
@@ -1321,7 +1319,7 @@ The unsupervised approach might be the only option if we don't know exactly what
 
 A supervised approach should work well for the current dataset because PBMCs have been very well characterised. We know which cell types should be present in a PBMC sample and which genes each of these cell types should be expressing.
 
-<div class='Separate-Preprocessing-Steps' markdown='1'>
+<div class="Separate-Preprocessing-Steps" markdown="1">
 
 To begin, we'll need a list of these canonical markers for PBMCs. Let's use the one provided in the [original Seurat version](https://satijalab.org/seurat/articles/pbmc3k_tutorial) of this tutorial:
 
@@ -1342,7 +1340,7 @@ To begin, we'll need a list of these canonical markers for PBMCs. Let's use the 
 
 </div>
 
-<div class='SCTransform' markdown='1'>
+<div class="SCTransform" markdown="1">
 
 To begin, we'll need a list of these canonical markers for PBMCs. Let's use the ones provided in the original Seurat [clustering](https://satijalab.org/seurat/articles/pbmc3k_tutorial) and [SCTransform](https://satijalab.org/seurat/articles/sctransform_vignette.html) tutorials:
 
@@ -1379,13 +1377,13 @@ The suggested marker gene for B cells isn't our top marker, CD79A, but MS4A1. If
 >
 {: .hands_on}
 
-<div class='Separate-Preprocessing-Steps' markdown='1'>
+<div class="Separate-Preprocessing-Steps" markdown="1">
 
 ![Two violin plots showing expression of CD79A and MS4A1 mainly in cluster 3](../../images/scrna-seurat-pbmc3k/seurat_MS4A1_CD79A_Violin.png "Violin plots showing expression of CD79A and MS4A1 by cluster")
 
 </div>
 
-<div class='SCTransform' markdown='1'>
+<div class="SCTransform" markdown="1">
 
 ![Two violin plots showing expression of CD79A and MS4A1 mainly in cluster 3](../../images/scrna-seurat-pbmc3k/seurat_MS4A1_CD79A_Violin_SCT.png "Violin plots showing expression of CD79A and MS4A1 by cluster")
 
@@ -1400,7 +1398,7 @@ Sometimes the results aren't quite so clear as markers might be expressed across
 > 1. {% tool [Seurat Visualize](toolshed.g2.bx.psu.edu/repos/iuc/seurat_plot/seurat_plot/5.0+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input file with the Seurat object"*: `UMAP Results` (output of **Seurat Run Dimensional Reduction** {% icon tool %})
 >    - *"Method used"*: `Violin Plot with 'VlnPlot'`
->        - *"Features to plot"*: <span class='Separate-Preprocessing-Steps'>`IL7R,CCR7,S100A4,CD8A`</span><span class='SCTransform'>`IL7R,CCR7,S100A4,CD8A,GZMK,CCL5,IL32,ISG15`</span>
+>        - *"Features to plot"*: <span class="Separate-Preprocessing-Steps">`IL7R,CCR7,S100A4,CD8A`</span><span class="SCTransform">`IL7R,CCR7,S100A4,CD8A,GZMK,CCL5,IL32,ISG15`</span>
 >        - In *"Plot Formatting Options"*:
 >            - *"Number of columns to display"*: `4`
 >    - *"Change size of plot"*: `Yes`
@@ -1408,7 +1406,7 @@ Sometimes the results aren't quite so clear as markers might be expressed across
 >
 {: .hands_on}
 
-<div class='Separate-Preprocessing-Steps' markdown='1'>
+<div class="Separate-Preprocessing-Steps" markdown="1">
 
 ![The first violin plot shows IL7R expressed in clusters 0, 2 and 4 (although there is some lower level expression in cluster 7). Second plot shows high CCR7 expression in cluster 0 with some expression in cluster 2. Plot 3 shows S100A4 expression across most clusters, including at high levels in cluster 2. Fourth plot shows CD8A expression in cluster 4.](../../images/scrna-seurat-pbmc3k/seurat_violin_T_cell_markers.png "Violin plots showing expression of IL7R, CCR7, S100A4, and CD8A by cluster")
 
@@ -1418,7 +1416,7 @@ If we look at which other markers are being expressed (or not expressed) by the 
 
 </div>
 
-<div class='SCTransform' markdown='1'>
+<div class="SCTransform" markdown="1">
 
 ![The first violin plot show IL7R expressed in clusters 0, 2, 4, 8, and 10. Plot 2 shows CCR7 expression in clusters 2, 8, and 10. Plot 3 shows S100A4 expression across most clusters, including at high levels in cluster 0. Plot 4 shows expression of CD8A in clusters 4, 7, and 8. Plot 5 shows GZMK expression in cluster 4 with some lower level expression in cluster 7. Plot 6 shows CCL5 expression in clusters 4, 5, 7, and 11. Plot 7 shows IL32 expression across most clusters, including  Plot 8 shows ISG15 expression at low levels in most clusters, with higher expression in cluster 10.](../../images/scrna-seurat-pbmc3k/seurat_violin_T_cell_markers_SCT.png "Violin plots showing expression of IL7R, CCR7, S100A4, CD8A, GZMK, and CCL5 by cluster")
 
@@ -1441,7 +1439,7 @@ To continue with the supervised approach, we can check the expression of the cho
 > 1. {% tool [Seurat Visualize](toolshed.g2.bx.psu.edu/repos/iuc/seurat_plot/seurat_plot/5.0+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input file with the Seurat object"*: `UMAP Results` (output of **Seurat Run Dimensional Reduction** {% icon tool %})
 >    - *"Method used"*: `Visualize expression with 'FeaturePlot'`
->        - *"Features to plot"*: <span class='Separate-Preprocessing-Steps'>`IL7R,CCR7,CD14,LYZ,S100A4,MS4A1,CD8A,FCGR3A,MS4A7,GNLY,NKG7,FCER1A,CST3,PPBP`</span><span class='SCTransform'>`CD14,LYZ,MS4A1,FCGR3A,MS4A7,GNLY,NKG7,FCER1A,CST3,PPBP,IL7R,CCR7,S100A4,CD8A,GZMK,CCL5,IL32,ISG15`</span>
+>        - *"Features to plot"*: <span class="Separate-Preprocessing-Steps">`IL7R,CCR7,CD14,LYZ,S100A4,MS4A1,CD8A,FCGR3A,MS4A7,GNLY,NKG7,FCER1A,CST3,PPBP`</span><span class="SCTransform">`CD14,LYZ,MS4A1,FCGR3A,MS4A7,GNLY,NKG7,FCER1A,CST3,PPBP,IL7R,CCR7,S100A4,CD8A,GZMK,CCL5,IL32,ISG15`</span>
 >        - *"Name of reduction to use"*: `umap`
 >    - *"Change size of plot"*: `Yes`
 >        - *"Width of plot in pixels"*: `4100`
@@ -1449,13 +1447,13 @@ To continue with the supervised approach, we can check the expression of the cho
 >
 {: .hands_on}
 
-<div class='Separate-Preprocessing-Steps' markdown='1'>
+<div class="Separate-Preprocessing-Steps" markdown="1">
 
 ![14 UMAP Plots coloured by expression of different genes. Plot 1 shows IL7R expression in clusters 0, 2 and part of cluster 4. Plot 2 shows CCR7 expression in cluster 0. Plot 3 shows CD14 expression mainly in cluster 1. Plot 4 shows LYZ expression in clusters 1, 5 and 7. Plot 5 shows high S100A4 expression in clusters 1, 5, and 7 with medium expression in clusters 2, 4 and 6. Plot 6 shows MS4A1 expression in cluster 3. Plot 7 shows CD8A expression in cluster 4. Plot 8 shows FCGR3A expression in clusters 5 and 6. Plot 9 shows MS4A7 expression in cluster 5. Plot 10 shows GNLY expression in cluster 6. Plot 11 shows NKG7 expression in clusters 4 and 6. Plot 12 shows FCER1A expression in cluster 7. Plot 13 shows CST3 expression in clusters 1, 5 and 7. Plot 14 shows PPBP expression in cluster 8.](../../images/scrna-seurat-pbmc3k/seurat_FeaturePlot_CellTypeMarkers.png "UMAP plots showing expression of canonical markers for PBMCs")
 
 </div>
 
-<div class='SCTransform' markdown='1'>
+<div class="SCTransform" markdown="1">
 
 ![18 UMAP Plots coloured by expression of different genes. Plot 1 shows CD14 expression mainly in cluster 1. Plot 2 shows LYZ expression in clusters 1, 6, and 9.  Plot 3 shows MS4A1 expression in cluster 3.  Plot 4 shows FCGR3A expression in clusters 5 and 6. Plot 5 shows MS4A7 expression in cluster 6. Plot 6 shows GNLY expression in cluster 5. Plot 7 shows NKG7 expression in clusters 5 and 7. Plot 8 shows FCER1A expression in cluster 9. Plot 9 shows CST3 expression in clusters 1, 6, 9, and 11. Plot 10 shows PPBP expression in cluster 11.  Plot 11 shows IL7R expression in clusters 0, 2, 4, 8, 10 and part of cluster 7. Plot 12 shows CCR7 expression in clusters 2, 8, and 10. Plot 13 shows high S100A4 expression in clusters 1 and 6 with medium expression in clusters 0, 4, 5, 7 and 9. Plot 14 shows CD8A expression in clusters 4, 7, and 8. Plot 15 shows GZMK expression in cluster 4. Plot 16 shows CCL5 expression in clusters 4, 5, and 7. Plot 17 shows IL32 expression in clusters 0, 2, 4, 5, 6, 7, and 11. Plot 18 shows high ISG15 expression in cluster 10 with some expression in clusters 1 and 6](../../images/scrna-seurat-pbmc3k/seurat_FeaturePlot_CellTypeMarkers_SCT.png "UMAP plots showing expression of canonical markers for PBMCs")
 
@@ -1470,8 +1468,8 @@ We have produced a series of UMAP plots, each coloured according to the expressi
 >
 > > <solution-title></solution-title>
 > > 1. Each cell type marker is clearly expressed at higher levels in certain parts of the plots - we don't have the same problem as we did when we plotted the top genes for PCs 1-3 and found that MALAT1 was expressed at quite high levels across the entire plot! When we compare the expression plots to the clusters we previously plotted, we can see that they match up quite well with each other. Most of the markers are expressed more in certain clusters, but there isn't always a clear boundary, especially for clusters that are close together in the plot. Some markers are associated with a single cluster, such as MS4A1 and PPBP, while others are expressed across multiple clusters.
-> > 2. Although marker expression mainly occurs in one or more clusters, there is still some expression by cells in other parts of the plot. It could be that these genes are sometimes expressed by other cell types, but these could also be cells of the same type that have simply ended up further away in the plot. It can sometimes be hard to tell which cluster these cells have been assigned to from these plots, especially when you consider that some points could be hidden behind others. Cells of the same type might have been assigned to different clusters, but there could also be a few cells that have been plotted at a distance from where the main part of their assigned cluster appears on this plot. <span class-'Separate-Preprocessing-Steps'>If we look back at the UMAP coloured by cluster, we can spot a couple of differently coloured cells at the tip of cluster 7 and by cluster 8.</span><span class='SCTransform'>If we look back at the UMAP coloured by cluster, we can spot a couple of differently coloured cells and mixed into cluster 3 and at the tip of cluster 10.</span>
-> > 3. We can distinguish between all of our clusters on the basis of which known markers they are shown to express. Each cluster expresses a unique combination of these genes, although the markers aren't only expressed in the clusters they're mainly associated with. Some of the clusters are more similar to each other, particularly those that are close together on the plot, forming part of the same larger group of cells. <span class-'Separate-Preprocessing-Steps'>For example, clusters 1, 5 and 7 are grouped together on the plot and all express a lot of LYZ, S100A4, and CST3.</span><span class='SCTransform'>For example, clusters 1 and 6 are grouped together on the plot for and both express a lot of S100A4 and CST3.</span> Since the UMAP was created based on the PCA, which was in turn based on similarities in expression of the highly variable genes, it makes sense that clusters that are plotted closer together are more similar in expression to each other. However, we should always remember that we're only looking at a 2D plot of the first two UMAP dimensions, so we shouldn't read too much into what we see! The plot can't tell us everything about the relationships between cells and clusters.
+> > 2. Although marker expression mainly occurs in one or more clusters, there is still some expression by cells in other parts of the plot. It could be that these genes are sometimes expressed by other cell types, but these could also be cells of the same type that have simply ended up further away in the plot. It can sometimes be hard to tell which cluster these cells have been assigned to from these plots, especially when you consider that some points could be hidden behind others. Cells of the same type might have been assigned to different clusters, but there could also be a few cells that have been plotted at a distance from where the main part of their assigned cluster appears on this plot. <div class="Separate-Preprocessing-Steps" markdown="1">If we look back at the UMAP coloured by cluster, we can spot a couple of differently coloured cells at the tip of cluster 7 and by cluster 8.</div><div class="SCTransform" markdown="1">If we look back at the UMAP coloured by cluster, we can spot a couple of differently coloured cells and mixed into cluster 3 and at the tip of cluster 10.</div>
+> > 3. We can distinguish between all of our clusters on the basis of which known markers they are shown to express. Each cluster expresses a unique combination of these genes, although the markers aren't only expressed in the clusters they're mainly associated with. Some of the clusters are more similar to each other, particularly those that are close together on the plot, forming part of the same larger group of cells. <div class="Separate-Preprocessing-Steps">For example, clusters 1, 5 and 7 are grouped together on the plot and all express a lot of LYZ, S100A4, and CST3.</div><div class="SCTransform">For example, clusters 1 and 6 are grouped together on the plot for and both express a lot of S100A4 and CST3.</div> Since the UMAP was created based on the PCA, which was in turn based on similarities in expression of the highly variable genes, it makes sense that clusters that are plotted closer together are more similar in expression to each other. However, we should always remember that we're only looking at a 2D plot of the first two UMAP dimensions, so we shouldn't read too much into what we see! The plot can't tell us everything about the relationships between cells and clusters.
 > {: .solution}
 {: .question}
 
@@ -1482,20 +1480,20 @@ Another option for visualising marker gene expression across clusters is the Vio
 > 1. {% tool [Seurat Visualize](toolshed.g2.bx.psu.edu/repos/iuc/seurat_plot/seurat_plot/5.0+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input file with the Seurat object"*: `UMAP Results` (output of **Seurat Run Dimensional Reduction** {% icon tool %})
 >    - *"Method used"*: `Violin Plot with 'VlnPlot'`
->        - *"Features to plot"*: <span class='Separate-Preprocessing-Steps'>`IL7R,CCR7,CD14,LYZ,S100A4,MS4A1,CD8A,FCGR3A,MS4A7,GNLY,NKG7,FCER1A,CST3,PPBP`</span><span class='SCTransform'>`CD14,LYZ,MS4A1,FCGR3A,MS4A7,GNLY,NKG7,FCER1A,CST3,PPBP,IL7R,CCR7,S100A4,CD8A,GZMK,CCL5,IL32,ISG15`</span>
+>        - *"Features to plot"*: <span class="Separate-Preprocessing-Steps">`IL7R,CCR7,CD14,LYZ,S100A4,MS4A1,CD8A,FCGR3A,MS4A7,GNLY,NKG7,FCER1A,CST3,PPBP`</span><span class="SCTransform">`CD14,LYZ,MS4A1,FCGR3A,MS4A7,GNLY,NKG7,FCER1A,CST3,PPBP,IL7R,CCR7,S100A4,CD8A,GZMK,CCL5,IL32,ISG15`</span>
 >    - *"Change size of plot"*: `Yes`
 >        - *"Width of plot in pixels"*: `4100`
 >        - *"Height of plot in pixels"*: `4100`
 >
 {: .hands_on}
 
-<div class='Separate-Preprocessing-Steps' markdown='1'>
+<div class="Separate-Preprocessing-Steps" markdown="1">
 
 ![14 Violin plots showing expression of different genes. Plot 1 shows IL7R expression in clusters 0, 2, and 4, with some expression in cluster 7. Plot 2 shows CCR7 expression in cluster 0 and to a lesser extent in cluster 2. Plot 3 shows CD14 expression in cluster 1. Plot 4 shows LYZ expression across all clusters, with the highest expression in clusters 1 and 7. Plot 5 shows S100A4 expression across all clusters, with the highest expression in clusters 1 and 5. Plot 6 shows MS4A1 expression in cluster 3. Plot 7 shows CD8A expression in cluster 4. Plot 8 shows FCGR3A expression in clusters 5 and 6. Plot 9 shows MS4A7 expression in cluster 5 and to a lesser extent in cluster 1. Plot 10 shows GNLY expression in clusters 4 and 6. Plot 11 shows NKG7 expression in clusters 4 and 6, with some expression at lower levels in clusters 5 and 7. Plot 12 shows FCER1A expression in cluster 7. Plot 13 shows CST3 expression in clusters 1, 5, and 7 with some expression in cluster 8. Plot 14 shows PPBP expression in cluster 8.](../../images/scrna-seurat-pbmc3k/seurat_Violin_CellTypeMarkers.png "Violin plots showing expression of canonical marker genes by cluster")
 
 </div>
 
-<div class='SCTransform' markdown='1'>
+<div class="SCTransform" markdown="1">
 
 ![18 Violin plots showing expression of different genes. Plot 1 shows CD14 expression in cluster 1. Plot 2 shows LYZ expression across all clusters, with high expression in cluster 1 and 9.  Plot 3 shows MS4A1 expression in cluster 3.  Plot 4 shows FCGR3A expression in clusters 5, 6, and 7. Plot 5 shows MS4A7 expression in cluster 6 with some low expression in cluster 1. Plot 6 shows high GNLY expression in cluster 5 as well as expression at various levels in cluster 7. Plot 7 shows NKG7 expression in clusters 4, 5, and 7. Plot 8 shows FCER1A expression in cluster 9. Plot 9 shows CST3 expression in clusters 1, 6, 9, and 11. Plot 10 shows PPBP expression in cluster 11. Plot 11 shows IL7R expression in clusters 0, 2, 4, 8, and 10. Plot 12 shows CCR7 expression in clusters 2, 8, and 10. Plot 13 shows S100A4 expression across all clusters, with the highest expression in clusters 1, 6, and 9. Plot 14 shows CD8A expression in cluster 4, 7, and 8. Plot 15 shows GZMK expression in cluster 4 with some expression in cluster 7. Plot 16 shows CCL5 expression in cluster 4, 5, 7, and 11. Plot 17 shows IL32 expression across clusters 0, 2, 4, 5, 7, 8, and 10 with some expression in cluster 11. Plot 18 shows ISG15 expression across most clusters, with the highest expression in cluster 10.](../../images/scrna-seurat-pbmc3k/seurat_Violin_CellTypeMarkers_SCT.png "Violin plots showing expression of canonical marker genes by cluster")
 
@@ -1508,14 +1506,14 @@ Another option for visualising marker gene expression across clusters is the Vio
 >
 > > <solution-title></solution-title>
 > > 1. The violin plot can make the associations between clusters and markers look clearer, since each cluster is plotted separately and labelled by number. Some of the markers are clearly expressed mainly in one or a few clusters, while others like LYZ and S100A4 are expressed across most of the clusters.
-> > 2. None of the markers are unique to a specific cluster - there are always a few dots (or cells) in the other clusters that are expressing these genes. We can also see that the expression level varies within each cluster as there are cells at different positions along the vertical axis. As well as looking at the expression level in individual cells (dots) we can compare the overall expression patterns by looking at the coloured violin shapes, which show us where most of the cells in each cluster are plotted. For example, we can see there was more variation in the expression level of NKG7 in cluster 4 (where the violin shape is longer) than there was in cluster <span class='Separate-Preprocessing-Steps'>6</span><span class='SCTransform'>5</span> (where there is a short violin shape as all the cells showed high expression of this gene).
+> > 2. None of the markers are unique to a specific cluster - there are always a few dots (or cells) in the other clusters that are expressing these genes. We can also see that the expression level varies within each cluster as there are cells at different positions along the vertical axis. As well as looking at the expression level in individual cells (dots) we can compare the overall expression patterns by looking at the coloured violin shapes, which show us where most of the cells in each cluster are plotted. For example, we can see there was more variation in the expression level of NKG7 in cluster 4 (where the violin shape is longer) than there was in cluster <span class="Separate-Preprocessing-Steps">6</span><span class="SCTransform">5</span> (where there is a short violin shape as all the cells showed high expression of this gene).
 > > 3. Each cluster has a unique pattern of expression of the canonical markers. Some clusters are very distinct as they express markers that are rarely seen in other clusters. Cluster 3 is the only cluster to express MS4A1 and it doesn't express much of the other markers. Other clusters seem to be more similar to each other, with multiple clusters of T cells all expressing IL7R, although the expression levels of other genes vary between these cells allowing us to classify them as different subtypes. This makes sense because cluster 3 is far away from all the other clusters in the UMAP while the different T cell clusters are close to each other because of their similarities.
 > {: .solution}
 {: .question}
 
 Based on our table of marker genes and these plots, we know which clusters were expressing the canonical markers for each cell type or subtype. We can use this information to annotate our clusters by cell type.
 
-<div class='Separate-Preprocessing-Steps' markdown='1'>
+<div class="Separate-Preprocessing-Steps" markdown="1">
 
 > <question-title></question-title>
 > 1. Can you identify the cell types for each cluster?
@@ -1540,7 +1538,7 @@ Based on our table of marker genes and these plots, we know which clusters were 
 
 </div>
 
-<div class='SCTransform' markdown='1'>
+<div class="SCTransform" markdown="1">
 
 > <question-title></question-title>
 > 1. Can you identify the cell types for each cluster?
@@ -1577,7 +1575,7 @@ We can now rename our clusters using these cell names, while keeping a copy of t
 >    - *"Method used"*: `Manipulate Seurat Object`
 >        - *"Manipulation to perform"*: `Rename idents`
 >            - *"Rename all idents"*: `Yes`
->                - *"New names"*: <span class='Separate-Preprocessing-Steps'>`CD4 Naive T, CD14 Mono, CD4 Memory T, B, CD8 T,FCGR3A Mono, NK, DC, Platelet`</span><span class='SCtransform'>`CD4 Memory T, CD14 Mono, CD4 Naive T, B, CD8 Effector T, NK, FCGR3A Mono, CD8 Memory T, CD8 Naive T,DC, CD4 IFN-activated T,Platelet`</span>
+>                - *"New names"*: <span class="Separate-Preprocessing-Steps">`CD4 Naive T, CD14 Mono, CD4 Memory T, B, CD8 T,FCGR3A Mono, NK, DC, Platelet`</span><span class="SCTransform">`CD4 Memory T, CD14 Mono, CD4 Naive T, B, CD8 Effector T, NK, FCGR3A Mono, CD8 Memory T, CD8 Naive T,DC, CD4 IFN-activated T,Platelet`</span>
 >            - *"Save copy of old idents first"*: `Yes`
 >
 > 2. Rename the output as `Annotated Clusters`
@@ -1595,13 +1593,13 @@ Now we can plot our UMAP again, this time showing the names of our clusters.
 >
 {: .hands_on}
 
-<div class='Separate-Preprocessing-Steps' markdown='1'>
+<div class="Separate-Preprocessing-Steps" markdown="1">
 
 ![Plot showing three big groups of cells divided into 9 clusters and coloured by cell type. The smallest of these three main groups only contains cells coloured as B cells. The other two groups are made up of cells from different cell types.](../../images/scrna-seurat-pbmc3k/seurat_UMAP_DimPlot_CellTypes.png "UMAP coloured by cell type")
 
 </div>
 
-<div class='SCTransform' markdown='1'>
+<div class="SCTransform" markdown="1">
 
 ![Plot showing three big groups of cells divided into 12 clusters and coloured by cell type. The smallest of these three main groups only contains cells coloured as B cells. The other two groups are made up of cells from different cell types.](../../images/scrna-seurat-pbmc3k/seurat_UMAP_DimPlot_CellTypes_SCT.png "UMAP coloured by cell type")
 
@@ -1618,7 +1616,7 @@ In order to create a heatmap, we need to prepare a tabular file with a list of t
 > 1. Use the Upload Data - Paste/Fetch data option to create a table of genes to plot. Select the input type as **tabular** and enter a list of genes, one on each row. You can copy and paste in the following list.
 >
 >    {% snippet faqs/galaxy/datasets_create_new_file.md format="tabular" %}
-> <span class='Separate-Preprocessing-Steps'>
+> <div class="Separate-Preprocessing-Steps" markdown="1">
 >
 >    ```
 >    IL7R
@@ -1637,9 +1635,9 @@ In order to create a heatmap, we need to prepare a tabular file with a list of t
 >    PPBP
 >    ```
 >
-> </span>
+> </div>
 >
-> <span class='SCTransform'>
+> <div class="SCTransform" markdown="1">
 >
 >    ```
 >    IL7R
@@ -1662,7 +1660,7 @@ In order to create a heatmap, we need to prepare a tabular file with a list of t
 >    PPBP
 >    ```
 >
-> </span>
+> </div>
 >
 > 2. Rename the file as `Canonical Markers` when it has finished uploading and make sure the datatype is **tabular**
 >
@@ -1681,13 +1679,13 @@ In order to create a heatmap, we need to prepare a tabular file with a list of t
 >
 {: .hands_on}
 
-<div class='Separate-Preprocessing-Steps' markdown='1'>
+<div class="Separate-Preprocessing-Steps" markdown="1">
 
 ![Heatmap showing expression of IL7R mainly in CD4NaiveT, CD4MemoryT, and CD8T cells, expression of CCR7 mainly in CD4NaiveT, CD4MemoryT, and B cells, expression of CD14 in CD14Mono cells, expression of LYZ in clusters CD14Mono, FCGR3Mono, and DC cells, expression of S100A4 in CD14Mono and FCGR3A cells, expression of MS4A1 in B cells, expression of CD8A in CD8T cells, expression of FCGR3A in FCGR3AMono and NK cells, expression of MS4A7 in FCGR3AMono and some CD14Mono cells, expression of GNLY in NK cells and to a lesser extent in CD8T cells, expression of NKG7 in CD8T and NK cells, expression of FCER1A in cluster DC, expression of CST3 in CD14Mono, FCGR3A and DC cells, and expression of PPBP in Platelets.](../../images/scrna-seurat-pbmc3k/seurat_DoHeatmap_CellType_markers.png "Heatmap showing expression of known PBMC markers by cluster")
 
 </div>
 
-<div class='SCTransform' markdown='1'>
+<div class="SCTransform" markdown="1">
 
 ![Heatmap showing expression of IL7R mainly in CD4MemoryT, CD4NaiveT, and CD8EffectorT cells, expression of GZMK in CD8EffectorT cells and some CD8MemoryT cells, expression of CCL5 in CD8EffectorT, CD8MemoryT and most NK cells, expression of CCR7 mainly in CD4NaiveT and CD8NaiveT cells, expression of CD14 in CD14Mono cells, expression of IL32 in CD4MemoryT, CD8EffectorT, and CD8MemoryT cells as well as some NK cells, expression of ISG15 in CD4IFN-activatedT cells as well as some CD14Mono and FCGR3AMono cells, expression of LYZ in CD14Mono and DC cells, expression of S100A4 mainly in CD14Mono and FCGR3AMono cells but also in some CD4MemoryT cells, expression of MS4A1 in B cells, expression of CD8A in CD8EffectorT, CD8MemoryT, and CD8NaiveT cells, expression of FCGR3A in FCGR3AMono and NK cells as well as some CD8MemoryT cells, expression of MS4A7 in FCG3RAMono cells with some expression by CD14Mono cells, expression of GNLY in NK cells, expression of NKG7 in NK and CD8MemoryT cells as well as some CD8EffectorT cells, expression of FCER1A in DC, expression of CST3 in CD14Mono, FCGR3AMono and DC cells, and expression of PPBP in Platelets.](../../images/scrna-seurat-pbmc3k/seurat_DoHeatmap_CellType_markers_SCT.png "Heatmap showing expression of known PBMC markers by cluster")
 
@@ -1725,13 +1723,13 @@ In order to do this, we'll need to turn the output from `FindAllMarkers` into a 
 >
 {: .hands_on}
 
-<div class='Separate-Preprocessing-Steps' markdown='1'>
+<div class="Separate-Preprocessing-Steps" markdown="1">
 
 ![Heatmap showing blocks of higher expression for the top 10 markers in the clusters they are markers for. Most cells in each cluster express the markers for that cluster but the patterns are stronger for some genes than others. Some cells outside the clusters also express the markers. For example the CD8T cells show some expression of the top markers for CD4NaiveT and CD4MemoryT cells, although expression of their own top markers is much higher.](../../images/scrna-seurat-pbmc3k/seurat_DoHeatmap_TopPositiveMarkers.png "Heatmap showing expression of the top 10 markers for each cluster")
 
 </div>
 
-<div class='SCTransform' markdown='1'>
+<div class="SCTransform" markdown="1">
 
 ![Heatmap showing blocks of higher expression for the top 10 markers in the clusters they are markers for. Most cells in each cluster express the markers for that cluster but the patterns are stronger for some genes than others. Some cells outside the clusters also express the markers. For example, the different T cell subtypes often show high expression of the top markers for other T cell groups.](../../images/scrna-seurat-pbmc3k/seurat_DoHeatmap_TopPositiveMarkers_SCT.png "Heatmap showing expression of the top 10 markers for each cluster")
 
@@ -1743,7 +1741,7 @@ Comparing the two plots also shows us why the supervised approach can be faster 
 
 > <question-title></question-title>
 > 1. Which plot type was best for annotating clusters?
-> 2. Are you happy with this clustering - even for cluster <span class='Separate-Preprocessing-Steps'>0</span><span class='SCTransform'>2</span>0, the CD4NaiveT cells, which had a lot of ribosomal genes in its top markers list?
+> 2. Are you happy with this clustering - even for the CD4NaiveT cells cluster, which had a lot of ribosomal genes in its top markers list?
 >
 > > <solution-title></solution-title>
 > > 1. The best type of plot for identifying cell types can depend on your data as well as your own personal preferences. You might find one plot easier to interpret than another. It can also be helpful to create different types of plots as some patterns may be clearer on one type while others are clearer on another. It's also good to be able to confirm your interpretation on multiple plots!
@@ -1751,7 +1749,7 @@ Comparing the two plots also shows us why the supervised approach can be faster 
 > > Violin plots present each cluster separately, so they can make it easier to differentiate between clusters. Since every cluster is given the same amount of space on the plot, no matter how many cells it contains, violin plots can also make it easier to see what's going on with smaller clusters. We can also get a clearer idea of how much variation there is within and between clusters, although some of the points may still be hidden behind others.
 > > Heatmaps can give us the best overview of the variation between cells as each cell is given its own little section on the plot. We can see how consistently the markers are expressed within the cluster and how common it is for cells outside the cluster to express the same genes. We can also see the overall patterns as blocks of cells with similar expression profiles, including the clusters that share similar patterns. However, heatmaps can be less useful if we want to focus on individual cells or genes, as it can be hard to pick out details.
 > > 2. We should be happy with the results of our clustering as they match up with what we already know about PBMCs. We have been able to annotate each cluster as a different cell type based on a supervised approach - and we could do the same using an unsupervised approach. The decisions we made along the way, such as the number of PCs we used and how many nearest neighbors we looked for have worked well. We even identified some subtypes of T cells, although we were able to separate out more of these when we used SCTransform.
-> > Even though many of the top markers for cluster <span class='Separate-Preprocessing-Steps'>0</span><span class='SCTransform'>2</span> were from ribosomal genes, we were still able to identify it as a specific cell type. It represents our population of Naive CD4+ T cells. If we search online to learn a bit more about this cell type, we'll quickly find that it is known to have lots of ribosomes, so in this case, we can be confident that the high expression of ribosomal genes in these cells is due to real biological differences between cell types, rather than a problem with our data. If we weren't able to assign a cell type to this cluster, for example because it expressed a mix of markers for different types, then we would come to a different conclusion!
+> > Even though many of the top markers for the CD4NaiveT cell cluster were from ribosomal genes, we were still able to identify it as a specific cell type. It represents our population of Naive CD4+ T cells. If we search online to learn a bit more about this cell type, we'll quickly find that it is known to have lots of ribosomes, so in this case, we can be confident that the high expression of ribosomal genes in these cells is due to real biological differences between cell types, rather than a problem with our data. If we weren't able to assign a cell type to this cluster, for example because it expressed a mix of markers for different types, then we would come to a different conclusion!
 > > If we couldn't see strong associations between our clusters and the different cell types that we expect to see in the dataset, then this would be very suspicious - did something go wrong with our experiment or analysis? We would need to go back and try to identify the problem to see if we can fix it. If the problem isn't too bad, we might just need to change some of the clustering parameters to get clusters that make biological sense - maybe we would need to use more PCs, look for more/fewer nearest neighbors, or simply change the resolution. If the problem is more serious, we might need to recheck the quality of our data or make bigger changes to the analysis.
 > {: .solution}
 {: .question}
