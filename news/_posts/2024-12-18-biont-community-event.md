@@ -10,7 +10,7 @@ layout: news
 
 BioNT, in collaboration with The Carpentry, proudly hosted [CarpentryConnect2024](https://biont-training.eu/CarpentryConnect2024.html) at EMBL Heidelberg from November 12th to 14th. Designed as a community event, it brought together diverse learning communities to exchange ideas and discuss about there communities involvement, learning materials, teaching concepts and many other topics.
 
-The event aimed to bridge the gap between academia and industry learning efforts in the biotechnology and biomedical sectors, supporting BioNT’s consortium goal of enhancing digital skills among small and medium-sized enterprises in the european union.
+The event aimed to bridge the gap between academia and industry learning efforts in the biotechnology and biomedical sectors, supporting BioNT’s consortium goal of enhancing digital skills among small and medium-sized enterprises in the European union.
 
 
 The Galaxy Training Network (GTN) participated with a poster, a lightning talk, and a mini hackathon. The poster and lightning talk showcased the GTN’s capabilities and opportunities, facilitating valuable connections with interested attendees. These interactions led to insightful discussions and questions about the GTN, for which we are grateful.
