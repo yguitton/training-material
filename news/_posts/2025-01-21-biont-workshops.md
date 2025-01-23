@@ -15,7 +15,7 @@ The BioNT consortium is committed to offering a robust training program and cult
 ## A practical introduction to bioinformatics and RNA-seq using Galaxy
 
 The second round of our Python workshop took place from September 10th to 13th, 2024. Interested participants were invited to register through the [event page](https://www.cecam.org/workshop-details/a-practical-introduction-to-bioinformatics-and-rna-seq-using-galaxy-1359) on CECAM, which provided a detailed summary of the workshop's content and schedule.
- 
+
 This workshop offered a **hands-on** introduction to bioinformatics, where key concepts in sequencing data analysis were discussed, alongside a comprehensive overview of bioinformatics data analysis techniques. The emphasis was on **RNA-sequencing**, a method that has revolutionized genomics and healthcare research due to its high-throughput capabilities and relative cost-effectiveness. With the advancement of computational tools for data analysis, RNA-sequencing has greatly enhanced our understanding of RNA biology.
 
 For insights into the first round of the RNA-seq workshop, you can read more in our [blog post](https://galaxyproject.org/news/2023-09-28-biont-workshop/).
@@ -45,7 +45,7 @@ In total, we accepted 61 participants, of which 52 actively engaged in the works
 
 Most applicants joined the workshop to acquire new skills relevant to their current or future job roles. Over half of the applicants were already familiar with Galaxy, with some using it on a daily basis. Consequently, participants were given the option to skip the initial introductory day if they did not require a basic overview of Galaxy.
 
-Throughout the workshop, participants were engaged through affirmative feedback prompts and had the opportunity to request additional time as needed. This approach ensured that those who wished to follow along live could do so effectively. On the final day, there was a noticeable split between participants who wished to proceed at the planned pace and those who needed more time to complete assignments, leading to some frustration due to the necessity to condense the content towards the end. However, since the GTN learning materials are designed for self-paced study, participants could complete the course on their own time. Additionally, a shared document where participant could addressing questions and seek out for help was made available throughout the week following the workshop. For the next round an assessment of the different knowledge levels of the participants can be beneficial. 
+Throughout the workshop, participants were engaged through affirmative feedback prompts and had the opportunity to request additional time as needed. This approach ensured that those who wished to follow along live could do so effectively. On the final day, there was a noticeable split between participants who wished to proceed at the planned pace and those who needed more time to complete assignments, leading to some frustration due to the necessity to condense the content towards the end. However, since the GTN learning materials are designed for self-paced study, participants could complete the course on their own time. Additionally, a shared document where participant could addressing questions and seek out for help was made available throughout the week following the workshop. For the next round an assessment of the different knowledge levels of the participants can be beneficial.
 
 Feedback from the post-workshop survey was overwhelmingly positive, with all respondents either agreeing or strongly agreeing with the following statements: (1) I felt comfortable learning in this workshop environment, (2) I can immediately apply what I learned at this workshop, (3) I was able to get clear answers to my questions from the instructors, (4) The instructors were enthusiastic about the workshop, (5) I felt comfortable interacting with the instructors, and (6) The instructors were knowledgeable about the material taught.
 
@@ -66,10 +66,10 @@ For more insights into the initial Python workshop, you can explore the [blog po
 The workshop was conducted using learning materials from [**The Carpentries**](https://carpentries.org/index, known for their community-driven development and extensive validation through workshop evaluations. This approach ensured that the content was both robust and user-friendly.
 
 To facilitate a smooth experience, installation instructions were provided ahead of time, along with scheduled help sessions for those who requested assistance. Participants received a checklist to test their setups prior to the workshop, ensuring that all technical requirements were met.
- 
+
 Held on October 17th and 18th, the workshop was entirely online and offered at no cost. Sessions ran from 09:00 to 15:00 CET and were delivered via a Zoom webinar format. To protect participant privacy, their visibility was disabled; however, they could still view and learn from the trainers. Direct interaction, such as chat or voice communication, was not available in Zoom during the sessions.
 
-Throughout the workshop, all interactions were facilitated through a shared document, allowing for real-time engagement. A [History document](https://biont.biobyte.de/s/a5fI42MC8#) capturing the entire conversation was accessible to participants even after the workshop, providing a valuable resource for review and continued learning. 
+Throughout the workshop, all interactions were facilitated through a shared document, allowing for real-time engagement. A [History document](https://biont.biobyte.de/s/a5fI42MC8#) capturing the entire conversation was accessible to participants even after the workshop, providing a valuable resource for review and continued learning.
 
 
 
@@ -84,7 +84,7 @@ At the conclusion of the workshop, 29 participants who requested and met all the
 
 The workshop was exceedingly well-received by participants. Almost all of them agreed or strongly agreed with the following statements: (1) I felt comfortable learning in this workshop environment, (2) I can immediately apply what I learned at this workshop, (3) I was able to get clear answers to my questions from the instructors, (4) The instructors were enthusiastic about the workshop, (5) I felt comfortable interacting with the instructors, and (6) The instructors were knowledgeable about the material being taught.
 
-The participants mentiont that a strength of the workshop was the shared document, where they found help throute the workshop. they did mention that the speed and the contend, exercises and level of diffecoulty was good. And others mentioned that they feel they have a good idea about Python and are motivated to learn more.
+The participants mention that a strength of the workshop was the shared document, where they found help throughout the workshop. They did mention that the speed and the content, exercises and level of difficulty was good. And others mentioned that they feel they have a good idea about Python and are motivated to learn more.
 
 Within the feedback, participants highlighted the shared document as a key resource that provided continuous support throughout the workshop. They appreciated the pace, content, and the exercises, noting that the level of difficulty was well-balanced. Many expressed that they now have a solid understanding of Python and are motivated to further their learning.
 
