@@ -8,7 +8,7 @@ layout: news
 
 # The Galaxy Training Network joined the BioNT Community Event & CarpentryConnect - Heidelberg 2024
 
-BioNT, in collaboration with The Carpentry, proudly hosted [CarpentryConnect2024](https://biont-training.eu/CarpentryConnect2024.html) at EMBL Heidelberg from November 12th to 14th. Designed as a community event, it brought together diverse learning communities to exchange ideas and discuss about there communities involvement, learning materials, teaching concepts and many other topics.
+BioNT, in collaboration with The Carpentry, proudly hosted [CarpentryConnect2024](https://biont-training.eu/CarpentryConnect2024.html) at EMBL Heidelberg from November 12th to 14th. Designed as a community event, it brought together diverse learning communities to exchange ideas and discuss about their communities' involvement, learning materials, teaching concepts and many other topics.
 
 The event aimed to bridge the gap between academia and industry learning efforts in the biotechnology and biomedical sectors, supporting BioNT’s consortium goal of enhancing digital skills among small and medium-sized enterprises in the European union.
 
