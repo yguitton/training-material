@@ -4,9 +4,9 @@
     "comments": [
         {
             "child_steps": [
+                9,
                 4,
-                5,
-                9
+                5
             ],
             "color": "red",
             "data": {
@@ -54,7 +54,7 @@
             "id": 1,
             "position": [
                 677.0784262934139,
-                0.0
+                0
             ],
             "size": [
                 240,
@@ -71,6 +71,7 @@
         }
     ],
     "format-version": "0.1",
+    "license": "MIT",
     "name": "Music: Pre-grouping cell types",
     "report": {
         "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
@@ -119,7 +120,7 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 0.0,
+                "left": 0,
                 "top": 235.9479759744854
             },
             "tool_id": null,
@@ -373,7 +374,13 @@
             "type": "tool",
             "uuid": "894432a6-e1ee-4242-aecf-72e0a297d00b",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": "out_pdf",
+                    "output_name": "out_pdf",
+                    "uuid": "9c4e9980-be47-4095-b116-5c6874329f63"
+                }
+            ]
         },
         "9": {
             "annotation": "",
@@ -428,13 +435,24 @@
             "type": "tool",
             "uuid": "63a748c4-9184-42cb-87d7-025b8730b568",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": "out_tab",
+                    "output_name": "out_tab",
+                    "uuid": "3935b7f2-a422-4ad8-bbe2-65615865174b"
+                },
+                {
+                    "label": "out_pdf",
+                    "output_name": "out_pdf",
+                    "uuid": "a002d52f-2253-4763-852e-6fe3ef90d352"
+                }
+            ]
         }
     },
     "tags": [
-        "single-cell",
-        "transcriptomics"
+        "transcriptomics",
+        "single-cell"
     ],
-    "uuid": "51c125e1-745c-4fd4-b251-7f79348a0139",
-    "version": 10
+    "uuid": "aaf9baf2-62c7-44db-be76-3bdcadfdfb39",
+    "version": 13
 }

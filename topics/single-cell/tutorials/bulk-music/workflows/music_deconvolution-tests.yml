@@ -2,25 +2,25 @@
   job:
     scRNA Assay Tabular:
       class: File
-      path: test-data/scRNA Assay Tabular.tabular
+      path: https://zenodo.org/records/5719228/files/EMTABesethealthy.expression.tabular
       filetype: tabular
     scRNA Phenotype Tabular:
       class: File
-      path: test-data/scRNA Phenotype Tabular.tabular
+      path: https://zenodo.org/records/5719228/files/EMTABesethealthy.phenotype.tabular
       filetype: tabular
     Bulk RNA Assay Tabular:
       class: File
-      path: test-data/Bulk RNA Assay Tabular.tabular
+      path: https://zenodo.org/records/5719228/files/GSE50244bulkeset.expression.tabular
       filetype: tabular
     Bulk RNA Phenotype Tabular:
       class: File
-      path: test-data/Bulk RNA Phenotype Tabular.tabular
+      path: https://zenodo.org/records/5719228/files/GSE50244bulkeset.phenotype.tabular
       filetype: tabular
     Cell Types List: alpha,beta,delta,gamma,acinar,ductal
   outputs:
     out_tab (Step 8):
-      path: test-data/out_tab (Step 8).tabular
+      path: test-data/music-out_tab-step_8.tabular
     out_tab (Step 10):
-      path: test-data/out_tab (Step 10).tabular
+      path: test-data/music-out_tab-step_10.tabular
     out_pdf (Step 11):
-      path: test-data/out_pdf (Step 11).pdf
+      path: test-data/music-out_pdf-step_11.pdf

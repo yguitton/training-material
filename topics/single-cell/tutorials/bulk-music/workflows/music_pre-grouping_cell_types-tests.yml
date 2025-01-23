@@ -2,26 +2,30 @@
   job:
     scRNA Assay Tabular:
       class: File
-      path: test-data/scRNA Assay Tabular.tabular
+      path: https://zenodo.org/records/5719228/files/Mousesubeset.expression.tabular
       filetype: tabular
     scRNA Phenotype Tabular:
       class: File
-      path: test-data/scRNA Phenotype Tabular.tabular
+      path: https://zenodo.org/records/5719228/files/Mousesubeset.phenotype.tabular
       filetype: tabular
     Bulk RNA Assay Tabular:
       class: File
-      path: test-data/Bulk RNA Assay Tabular.tabular
+      path: https://zenodo.org/records/5719228/files/Mousebulkeset.expression.tabular
       filetype: tabular
     Bulk RNA Phenotype Tabular:
       class: File
-      path: test-data/Bulk RNA Phenotype Tabular.tabular
+      path: https://zenodo.org/records/5719228/files/Mousebulkeset.phenotype.tabular
       filetype: tabular
     epith.markers:
       class: File
-      path: test-data/epith.markers.txt
+      path: https://zenodo.org/records/5719228/files/epith.markers
       filetype: txt
     immune.markers:
       class: File
-      path: test-data/immune.markers.txt
+      path: https://zenodo.org/records/5719228/files/immune.markers
       filetype: txt
-  outputs: {}
+  outputs:
+    out_pdf:
+      path: test-data/music_pre_group-out_pdf.pdf
+    out_tab:
+      path: test-data/music_pre_group-out_tab.tabular
