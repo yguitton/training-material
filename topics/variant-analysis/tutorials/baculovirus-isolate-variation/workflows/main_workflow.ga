@@ -654,7 +654,7 @@
             "workflow_outputs": []
         },
         "9": {
-            "annotation": "The DPR value is further decomposed for each position and sample and attached to the table. Four additional columns are added to the table: ALLELE, DPR.ALLELE, REL.ALT and REL.ALT.0.05.",
+            "annotation": "The DPR value is further decomposed for each position and isolate and attached to the table. Four additional columns are added to the table: ALLELE, DPR.ALLELE, REL.ALT and REL.ALT.0.05.",
             "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/9.3+galaxy1",
             "errors": null,
             "id": 9,
@@ -664,7 +664,12 @@
                     "output_name": "out_file1"
                 }
             },
-            "inputs": [],
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Text reformatting",
+                    "name": "infile"
+                }
+            ],
             "label": "Relative allele frequency calculation",
             "name": "Text reformatting",
             "outputs": [
@@ -693,7 +698,7 @@
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"code\": \"BEGIN { FS=\\\"\\\\t\\\"; OFS=\\\"\\\\t\\\" }\\nNR == 1 {\\n    # Identify column indices based on header names\\n    for (i = 1; i <= NF; i++) {\\n        if ($i == \\\"POS\\\") pos_col = i;\\n        if ($i == \\\"SAMPLE\\\") sample_col = i;\\n        if ($i == \\\"DP\\\") dp_col = i;\\n        if ($i == \\\"DPR\\\") dpr_col = i;\\n    }\\n    # Check if all required columns are found\\n    if (!(pos_col && sample_col && dp_col && dpr_col)) {\\n        print \\\"Error: One or more required columns (POS, SAMPLE, DP, DPR) are missing.\\\" > \\\"/dev/stderr\\\";\\n        exit 1;\\n    }\\n    # Print the new header\\n    print $0, \\\"ALLELE\\\", \\\"DPR.ALLELE\\\", \\\"REL.ALT\\\", \\\"REL.ALT.0.05\\\";\\n    next;\\n}\\n{\\n    # Create a unique key for position and sample\\n    pos_sample_key = $(pos_col) \\\"_\\\" $(sample_col);\\n\\n    if (last_pos != $(pos_col)) {  # When a new position starts\\n        delete sample_count;       # Reset the sample counter\\n        last_pos = $(pos_col);     # Update the current position\\n    }\\n\\n    # Split the DPR column into values\\n    split($(dpr_col), dpr_values, \\\",\\\");\\n\\n    # Count occurrences of each sample per position\\n    sample_count[$(sample_col)]++;\\n    dpr_index = sample_count[$(sample_col)] + 1;  # Index for the alternate allele (starting at 2)\\n\\n    # Check if the index is valid\\n    if (dpr_index <= length(dpr_values)) {\\n        allele = \\\"ALT\\\" (dpr_index - 1);            # Determine the allele\\n        dpr_value = dpr_values[dpr_index];         # Get the corresponding DPR value\\n        rel_alt = (dpr_value / $(dp_col));         # Calculate REL.ALT (DPR.ALLELE / DP)\\n        rel_alt_filtered = (rel_alt >= 0.05) ? rel_alt : 0;  # Filter REL.ALT values < 0.05\\n        print $0, allele, dpr_value, rel_alt, rel_alt_filtered;  # Output with new columns\\n    }\\n}\", \"infile\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"code\": \"BEGIN { FS=\\\"\\\\t\\\"; OFS=\\\"\\\\t\\\" }\\nNR == 1 {\\n    # Rename \\\"SAMPLE\\\" to \\\"ISOLATE\\\" in the header\\n    for (i = 1; i <= NF; i++) {\\n        if ($i == \\\"SAMPLE\\\") $i = \\\"ISOLATE\\\";\\n    }\\n\\n    # Identify column indices based on updated header names\\n    for (i = 1; i <= NF; i++) {\\n        if ($i == \\\"POS\\\") pos_col = i;\\n        if ($i == \\\"ISOLATE\\\") isolate_col = i;\\n        if ($i == \\\"DP\\\") dp_col = i;\\n        if ($i == \\\"DPR\\\") dpr_col = i;\\n    }\\n\\n    # Check if all required columns are found\\n    if (!(pos_col && isolate_col && dp_col && dpr_col)) {\\n        print \\\"Error: One or more required columns (POS, ISOLATE, DP, DPR) are missing.\\\" > \\\"/dev/stderr\\\";\\n        exit 1;\\n    }\\n\\n    # Print the updated header\\n    print $0, \\\"ALLELE\\\", \\\"DPR.ALLELE\\\", \\\"REL.ALT\\\", \\\"REL.ALT.0.05\\\";\\n    next;\\n}\\n{\\n    # Create a unique key for position and isolate\\n    pos_isolate_key = $(pos_col) \\\"_\\\" $(isolate_col);\\n\\n    if (last_pos != $(pos_col)) {  # When a new position starts\\n        delete isolate_count;      # Reset the isolate counter\\n        last_pos = $(pos_col);     # Update the current position\\n    }\\n\\n    # Split the DPR column into values\\n    split($(dpr_col), dpr_values, \\\",\\\");\\n\\n    # Count occurrences of each isolate per position\\n    isolate_count[$(isolate_col)]++;\\n    dpr_index = isolate_count[$(isolate_col)] + 1;  # Index for the alternate allele (starting at 2)\\n\\n    # Check if the index is valid\\n    if (dpr_index <= length(dpr_values)) {\\n        allele = \\\"ALT\\\" (dpr_index - 1);            # Determine the allele\\n        dpr_value = dpr_values[dpr_index];         # Get the corresponding DPR value\\n        rel_alt = (dpr_value / $(dp_col));         # Calculate REL.ALT (DPR.ALLELE / DP)\\n        rel_alt_filtered = (rel_alt >= 0.05) ? rel_alt : 0;  # Filter REL.ALT values < 0.05\\n        print $0, allele, dpr_value, rel_alt, rel_alt_filtered;  # Output with new columns\\n    }\\n}\", \"infile\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "9.3+galaxy1",
             "type": "tool",
             "uuid": "f49d6516-ec89-49d4-91ae-ad16765594cb",
@@ -875,7 +880,7 @@
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"code\": \"BEGIN { FS=\\\"\\\\t\\\"; OFS=\\\"\\\\t\\\" }\\nNR == 1 {\\n    # Dynamically find column indices based on header names\\n    for (i = 1; i <= NF; i++) {\\n        if ($i == \\\"POS\\\") pos_col = i;\\n        if ($i == \\\"ALLELE\\\") allele_col = i;\\n        if ($i == \\\"SAMPLE\\\") sample_col = i;\\n        if ($i == \\\"REL.ALT.0.05\\\") rel_alt_col = i;\\n    }\\n\\n    # Check if all required columns were found\\n    if (!(pos_col && allele_col && sample_col && rel_alt_col)) {\\n        print \\\"Error: Required columns (POS, ALLELE, SAMPLE, REL.ALT.0.05) are missing.\\\" > \\\"/dev/stderr\\\";\\n        exit 1;\\n    }\\n\\n    # Print the header and add the new SPEC column\\n    print $0, \\\"SPEC\\\";\\n    next;\\n}\\n\\n{\\n    # When reaching a new position, prepare the specificity\\n    if ($(pos_col) != current_pos) {\\n        # Assign the calculated specificity to all rows of the current position\\n        for (i in pos_lines) {\\n            # Add \\\"SNV specificity: \\\" before the specificity value\\n            final_spec = (specificity == \\\"\\\" ? \\\"0\\\" : \\\"SNV specificity: \\\" specificity);\\n            print pos_lines[i], final_spec;\\n        }\\n        # Reset variables for the new position\\n        delete pos_lines;\\n        specificity = \\\"\\\";\\n        current_pos = $(pos_col);\\n    }\\n\\n    # Save the current row for later\\n    pos_lines[NR] = $0;\\n\\n    # Conditions for calculating specificity\\n    if ($(allele_col) == \\\"ALT1\\\" && \\n        ($(sample_col) == \\\"CpGV-E2\\\" || $(sample_col) == \\\"CpGV-S\\\" || $(sample_col) == \\\"CpGV-M\\\") && \\n        $(rel_alt_col) > 0) {\\n        # Concatenate isolate names with \\\" + \\\" if REL.ALT.0.05 > 0\\n        specificity = (specificity == \\\"\\\" ? $(sample_col) : specificity \\\" + \\\" $(sample_col));\\n    }\\n}\\n\\nEND {\\n    # Assign the specificity to the last position\\n    for (i in pos_lines) {\\n        # Add \\\"SNV specificity: \\\" before the specificity value\\n        final_spec = (specificity == \\\"\\\" ? \\\"0\\\" : \\\"SNV specificity: \\\" specificity);\\n        print pos_lines[i], final_spec;\\n    }\\n}\", \"infile\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"code\": \"BEGIN { FS=\\\"\\\\t\\\"; OFS=\\\"\\\\t\\\" }\\nNR == 1 {\\n    # Dynamically find column indices based on header names\\n    for (i = 1; i <= NF; i++) {\\n        if ($i == \\\"POS\\\") pos_col = i;\\n        if ($i == \\\"ALLELE\\\") allele_col = i;\\n        if ($i == \\\"ISOLATE\\\") isolate_col = i;\\n        if ($i == \\\"REL.ALT.0.05\\\") rel_alt_col = i;\\n    }\\n\\n    # Check if all required columns were found\\n    if (!(pos_col && allele_col && isolate_col && rel_alt_col)) {\\n        print \\\"Error: Required columns (POS, ALLELE, ISOLATE, REL.ALT.0.05) are missing.\\\" > \\\"/dev/stderr\\\";\\n        exit 1;\\n    }\\n\\n    # Print the header and add the new SPEC column\\n    print $0, \\\"SPEC\\\";\\n    next;\\n}\\n\\n{\\n    # When reaching a new position, prepare the specificity\\n    if ($(pos_col) != current_pos) {\\n        # Assign the calculated specificity to all rows of the current position\\n        for (i in pos_lines) {\\n            # Add \\\"SNV specificity: \\\" before the specificity value\\n            final_spec = (specificity == \\\"\\\" ? \\\"0\\\" : \\\"SNV specificity: \\\" specificity);\\n            print pos_lines[i], final_spec;\\n        }\\n        # Reset variables for the new position\\n        delete pos_lines;\\n        specificity = \\\"\\\";\\n        current_pos = $(pos_col);\\n    }\\n\\n    # Save the current row for later\\n    pos_lines[NR] = $0;\\n\\n    # Conditions for calculating specificity\\n    if ($(allele_col) == \\\"ALT1\\\" && \\n        ($(isolate_col) == \\\"CpGV-E2\\\" || $(isolate_col) == \\\"CpGV-S\\\" || $(isolate_col) == \\\"CpGV-M\\\") && \\n        $(rel_alt_col) > 0) {\\n        # Concatenate isolate names with \\\" + \\\" if REL.ALT.0.05 > 0\\n        specificity = (specificity == \\\"\\\" ? $(isolate_col) : specificity \\\" + \\\" $(isolate_col));\\n    }\\n}\\n\\nEND {\\n    # Assign the specificity to the last position\\n    for (i in pos_lines) {\\n        # Add \\\"SNV specificity: \\\" before the specificity value\\n        final_spec = (specificity == \\\"\\\" ? \\\"0\\\" : \\\"SNV specificity: \\\" specificity);\\n        print pos_lines[i], final_spec;\\n    }\\n}\", \"infile\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "9.3+galaxy1",
             "type": "tool",
             "uuid": "c1a05c89-8f44-44b9-b124-936ef2cd6a0b",
@@ -1016,12 +1021,7 @@
                     "output_name": "out_file1"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Scatterplot with ggplot2",
-                    "name": "input1"
-                }
-            ],
+            "inputs": [],
             "label": "ggplot2 V15 dotplot ",
             "name": "Scatterplot with ggplot2",
             "outputs": [
@@ -1050,7 +1050,7 @@
                 "owner": "iuc",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"adv\": {\"type_conditional\": {\"type_options\": \"points\", \"__current_case__\": 0, \"points\": {\"pointoptions\": \"default\", \"__current_case__\": 0}}, \"factor\": {\"factoring\": \"Multiple\", \"__current_case__\": 2, \"factorcol\": \"34\"}, \"axis_title_customization\": {\"axis_customization\": \"default\", \"__current_case__\": 0}, \"axis_text_customization\": {\"axis_customization\": \"default\", \"__current_case__\": 0}, \"plot_title_customization\": {\"axis_customization\": \"default\", \"__current_case__\": 0}, \"gridlinecust\": \"hideboth\", \"transform\": \"none\", \"scaling\": {\"plot_scaling\": \"Automatic\", \"__current_case__\": 0}, \"theme\": \"bw\", \"legend\": \"yes\"}, \"input1\": {\"__class__\": \"RuntimeValue\"}, \"out\": {\"unit_output_dim\": \"cm\", \"width_output_dim\": \"40.0\", \"height_output_dim\": \"12.0\", \"dpi_output_dim\": \"200.0\", \"additional_output_format\": \"none\"}, \"title\": \"Isolate CpGV-V15\", \"xlab\": \"Reference Genome Position of CpGV-M\", \"xplot\": \"2\", \"ylab\": \"Relative Nucleotide Frequency\", \"yplot\": \"32\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"adv\": {\"type_conditional\": {\"type_options\": \"points\", \"__current_case__\": 0, \"points\": {\"pointoptions\": \"default\", \"__current_case__\": 0}}, \"factor\": {\"factoring\": \"Multiple\", \"__current_case__\": 2, \"factorcol\": \"34\"}, \"axis_title_customization\": {\"axis_customization\": \"default\", \"__current_case__\": 0}, \"axis_text_customization\": {\"axis_customization\": \"default\", \"__current_case__\": 0}, \"plot_title_customization\": {\"axis_customization\": \"default\", \"__current_case__\": 0}, \"gridlinecust\": \"hideboth\", \"transform\": \"none\", \"scaling\": {\"plot_scaling\": \"Automatic\", \"__current_case__\": 0}, \"theme\": \"bw\", \"legend\": \"yes\"}, \"input1\": {\"__class__\": \"ConnectedValue\"}, \"out\": {\"unit_output_dim\": \"cm\", \"width_output_dim\": \"40.0\", \"height_output_dim\": \"12.0\", \"dpi_output_dim\": \"200.0\", \"additional_output_format\": \"none\"}, \"title\": \"Isolate CpGV-V15\", \"xlab\": \"Reference Genome Position of CpGV-M\", \"xplot\": \"2\", \"ylab\": \"Relative Nucleotide Frequency\", \"yplot\": \"32\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.4.0+galaxy1",
             "type": "tool",
             "uuid": "fa410722-3375-4593-b233-9e61a09ed13e",
@@ -1068,12 +1068,7 @@
                     "output_name": "out_file1"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Scatterplot with ggplot2",
-                    "name": "input1"
-                }
-            ],
+            "inputs": [],
             "label": "ggplot2 CpGV-S dotplot",
             "name": "Scatterplot with ggplot2",
             "outputs": [
@@ -1102,7 +1097,7 @@
                 "owner": "iuc",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"adv\": {\"type_conditional\": {\"type_options\": \"points\", \"__current_case__\": 0, \"points\": {\"pointoptions\": \"default\", \"__current_case__\": 0}}, \"factor\": {\"factoring\": \"Multiple\", \"__current_case__\": 2, \"factorcol\": \"34\"}, \"axis_title_customization\": {\"axis_customization\": \"default\", \"__current_case__\": 0}, \"axis_text_customization\": {\"axis_customization\": \"default\", \"__current_case__\": 0}, \"plot_title_customization\": {\"axis_customization\": \"default\", \"__current_case__\": 0}, \"gridlinecust\": \"hideboth\", \"transform\": \"none\", \"scaling\": {\"plot_scaling\": \"Automatic\", \"__current_case__\": 0}, \"theme\": \"bw\", \"legend\": \"yes\"}, \"input1\": {\"__class__\": \"RuntimeValue\"}, \"out\": {\"unit_output_dim\": \"cm\", \"width_output_dim\": \"40.0\", \"height_output_dim\": \"12.0\", \"dpi_output_dim\": \"200.0\", \"additional_output_format\": \"none\"}, \"title\": \"Isolate CpGV-S\", \"xlab\": \"Reference Genome Position of CpGV-M\", \"xplot\": \"2\", \"ylab\": \"Relative Nucleotide Frequency\", \"yplot\": \"32\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"adv\": {\"type_conditional\": {\"type_options\": \"points\", \"__current_case__\": 0, \"points\": {\"pointoptions\": \"default\", \"__current_case__\": 0}}, \"factor\": {\"factoring\": \"Multiple\", \"__current_case__\": 2, \"factorcol\": \"34\"}, \"axis_title_customization\": {\"axis_customization\": \"default\", \"__current_case__\": 0}, \"axis_text_customization\": {\"axis_customization\": \"default\", \"__current_case__\": 0}, \"plot_title_customization\": {\"axis_customization\": \"default\", \"__current_case__\": 0}, \"gridlinecust\": \"hideboth\", \"transform\": \"none\", \"scaling\": {\"plot_scaling\": \"Automatic\", \"__current_case__\": 0}, \"theme\": \"bw\", \"legend\": \"yes\"}, \"input1\": {\"__class__\": \"ConnectedValue\"}, \"out\": {\"unit_output_dim\": \"cm\", \"width_output_dim\": \"40.0\", \"height_output_dim\": \"12.0\", \"dpi_output_dim\": \"200.0\", \"additional_output_format\": \"none\"}, \"title\": \"Isolate CpGV-S\", \"xlab\": \"Reference Genome Position of CpGV-M\", \"xplot\": \"2\", \"ylab\": \"Relative Nucleotide Frequency\", \"yplot\": \"32\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.4.0+galaxy1",
             "type": "tool",
             "uuid": "ca3bde4a-244b-4466-b2d6-2d4bd64ccaeb",
@@ -1120,12 +1115,7 @@
                     "output_name": "out_file1"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Scatterplot with ggplot2",
-                    "name": "input1"
-                }
-            ],
+            "inputs": [],
             "label": "ggplot2 CpGV-E2 dotplot",
             "name": "Scatterplot with ggplot2",
             "outputs": [
@@ -1154,7 +1144,7 @@
                 "owner": "iuc",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"adv\": {\"type_conditional\": {\"type_options\": \"points\", \"__current_case__\": 0, \"points\": {\"pointoptions\": \"default\", \"__current_case__\": 0}}, \"factor\": {\"factoring\": \"Multiple\", \"__current_case__\": 2, \"factorcol\": \"34\"}, \"axis_title_customization\": {\"axis_customization\": \"default\", \"__current_case__\": 0}, \"axis_text_customization\": {\"axis_customization\": \"default\", \"__current_case__\": 0}, \"plot_title_customization\": {\"axis_customization\": \"default\", \"__current_case__\": 0}, \"gridlinecust\": \"hideboth\", \"transform\": \"none\", \"scaling\": {\"plot_scaling\": \"Automatic\", \"__current_case__\": 0}, \"theme\": \"bw\", \"legend\": \"yes\"}, \"input1\": {\"__class__\": \"RuntimeValue\"}, \"out\": {\"unit_output_dim\": \"cm\", \"width_output_dim\": \"40.0\", \"height_output_dim\": \"12.0\", \"dpi_output_dim\": \"200.0\", \"additional_output_format\": \"none\"}, \"title\": \"Isolate CpGV-E2\", \"xlab\": \"Reference Genome Position of CpGV-M\", \"xplot\": \"2\", \"ylab\": \"Relative Nucleotide Frequency\", \"yplot\": \"32\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"adv\": {\"type_conditional\": {\"type_options\": \"points\", \"__current_case__\": 0, \"points\": {\"pointoptions\": \"default\", \"__current_case__\": 0}}, \"factor\": {\"factoring\": \"Multiple\", \"__current_case__\": 2, \"factorcol\": \"34\"}, \"axis_title_customization\": {\"axis_customization\": \"default\", \"__current_case__\": 0}, \"axis_text_customization\": {\"axis_customization\": \"default\", \"__current_case__\": 0}, \"plot_title_customization\": {\"axis_customization\": \"default\", \"__current_case__\": 0}, \"gridlinecust\": \"hideboth\", \"transform\": \"none\", \"scaling\": {\"plot_scaling\": \"Automatic\", \"__current_case__\": 0}, \"theme\": \"bw\", \"legend\": \"yes\"}, \"input1\": {\"__class__\": \"ConnectedValue\"}, \"out\": {\"unit_output_dim\": \"cm\", \"width_output_dim\": \"40.0\", \"height_output_dim\": \"12.0\", \"dpi_output_dim\": \"200.0\", \"additional_output_format\": \"none\"}, \"title\": \"Isolate CpGV-E2\", \"xlab\": \"Reference Genome Position of CpGV-M\", \"xplot\": \"2\", \"ylab\": \"Relative Nucleotide Frequency\", \"yplot\": \"32\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.4.0+galaxy1",
             "type": "tool",
             "uuid": "9692760b-f4e7-4b1f-95b7-83308243c8ce",
@@ -1168,6 +1158,6 @@
         "name:baculovirus",
         "name:naldv"
     ],
-    "uuid": "a5c9d771-5995-4c42-8636-0d976a06133c",
-    "version": 49
+    "uuid": "fa0c1470-f4fb-4177-a0e1-e86e4d447494",
+    "version": 52
 }

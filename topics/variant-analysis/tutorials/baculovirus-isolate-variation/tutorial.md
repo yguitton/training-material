@@ -8,13 +8,13 @@ level: Intermediate
 questions:
 - How can the genetic variability of a baculovirus isolate be analysed?
 - How can single nucleotide variants (SNV) be identified across multiple isolates?
-- How can SNV be used as markers to analyse the composition of baculovirus populations?
+- How can SNV be used as markers to analyse the composition of baculovirus isolates?
 objectives:
-- Understand the significance of single nucleotide variants (SNVs) in baculovirus populations.
+- Understand the significance of single nucleotide variants (SNVs).
 - Determine variable SNV positions for multiple isolates using a common reference genome.
-- Transform the output (VCF file) to a readable table format
-- Interpret the SNV data to analyse the intra-isolate variability of baculovirus isolates or samples.
-- Learn to create your own sequence data and analyse it using the provided workflow and tool to explore the genetic variation of baculovirus populations.
+- Transform the output (VCF file) to a readable table format.
+- Interpret the SNV data to analyse the intra-isolate variability of baculoviruses.
+- Learn to create your own sequence data and analyse it using the provided workflow and tool to explore the genetic variation.
 time_estimation: 3H
 abbreviations:
     CpGV: Cydia pomonella granulovirus
@@ -23,7 +23,7 @@ abbreviations:
     SNV: Single nucleotide variant
     SRA: Sequence Read Archive
 key_points:
-- Baculovirus populations are heterogeneous and show genetic variability.
+- Baculovirus isolates are heterogeneous and show genetic variability.
 - Some SNV positions occur only in certain isolates and are therefore specific to that isolate.
 - SNV specificities can be used as markers to identify isolates and determine mixtures.
 contributors:
@@ -59,36 +59,38 @@ official report of the International Committee on Taxonomy of Viruses (ICTV) ({%
 >
 {: .comment}
 
-The genome size makes it difficult to study genetic variation within a baculovirus population, 
+The genome size makes it difficult to study genetic variation within a baculovirus isolate, 
 especially since the most commonly used sequencing technique (Illumina sequencing) 
-generates only short reads and requires genome assembly. Since genome assembly generates 
-a consensus sequence that reflects the majority of a sequenced virus population, 
-occurring genetic variation is masked. Tools for haplotype-sensitive assembly are 
-available but so far have been established for viruses with a relatively short genome 
-but not for baculoviruses or other large dsDNA viruses. Using Nanopore sequencing, 
-it is possible to sequence significiant fragments of  baculovirus genomes to determine major 
-haplotypes ({% cite Wennmann2024 %}). 
+generates only short reads and requires genome assembly. 
+Since an isolate represents a population of viruses and their genomes that differ genetically from one another, 
+the complexity of the analysis is further increased. 
+Typically, genome assemblies are performed that lead to the generation of a consensus sequence, 
+which usually reflects the majority of the sequenced virus population and intends to represent the entire isolate.
+The problem is that the consensus sequence can mask genetic variability.
+Tools for haplotype-sensitive assembly are available but so far have been established for viruses 
+with a relatively short genome but not for baculoviruses or other large dsDNA viruses. 
+Using Nanopore sequencing, it is possible to sequence significiant fragments of baculovirus genomes 
+to determine major haplotypes ({% cite Wennmann2024 %}). 
 
 Single nucleotide variants (SNV) have been proven as a powerful tool for analyzing 
 the genetic variability of sequenced baculovirus isolates ({% cite Fan2020 %}). SNV 
-are particularly useful for the analysis of intra-isolate or intra-sample specific 
+are particularly useful for the analysis of intra-isolate specific 
 variation, as many bioinformatic workflows and tools are established for SNV determination 
 and processing. For the identification of SNVs, Illumina sequencing data is mostly used, 
 as this sequencing technique provides highly accurate reads with a very low probability 
 of sequencing error. The data is usually provided and stored in FASTQ or FASTQsanger format.
 
-When a baculovirus sample or isolate is sequenced, a dataset of sequence reads is 
+When a baculovirus isolate is sequenced, a dataset of sequence reads is 
 obtained that consists of a multitude of fragmented genomes and the exact reconstruction 
 of individual whole genomes is no longer possible. However, variable SNV positions can 
 be used as markers to count the frequency of the nucleotides that occur in the SNV positions. 
 The determination of the nucleotides is only possible because not one but many genomes 
-were sequenced. Therefore, the SNVs reflect the genetic variability of the virus population itself. 
-
+were sequenced. Therefore, the SNVs reflect the genetic variability of the isolate itself. 
 Although deletions and insertions can also occur, these are not covered in this tutorial.
 
 When multiple baculovirus isolates have been sequenced, SNV positions can be determined 
 that are specific to only certain isolates. These specific SNV markers can then be used 
-to identify and isolate based on sequencing data only, even when the isolate is present 
+to identify an isolate based on sequencing data only, even when the isolate is present 
 in a mixture with other isolates. To enable this identification of baculovirus isolates, 
 SNV positions must be determined across multiple isolates using a common reference sequence. 
 This reference serves as an anchor for the detected SNV positions and must be chosen with care. 
@@ -102,7 +104,7 @@ The tutorial presented here aims to explain...
 
 The workflow is based on sequencing data from the Cydia pomonella granulovirus (CpGV) 
 (family *Baculoviridae*, genus *Betabaculovirus*). CpGV is used commercially in agriculture 
-for the biological control the larvae of the codling moth (*Cydia pomonella*), which cause 
+for the biological control of larvae of the codling moth (*Cydia pomonella*), which cause 
 significant losses to fruit crops, such as apples and pears.
 
 > <agenda-title></agenda-title>
@@ -136,7 +138,7 @@ we will work our way towards our goal step by step.
 
 ## Reference Genome from NCBI Genbank
 
-Selecting the right or most suitable reference sequence is important if not critical for the entire analysis. The reference genome used in this tutorial is the Cydia pomonella granulovirus (Mexican isolate, CpGV-M). The function of the reference is to act as an anchor point to link detected SNV positions in all sequenced and analyzed isolates. Selecting a correct reference genome is critical because it must be as closely related as possible to the sequenced samples/isolates. Therefore, it is best to use a reference from the same species that has been well analyzed by previous studies or the scientific community.  The following step will download the NCBI Accession Number `KM217575`, which corresponds to the `Cydia pomonella granulovirus isolate CpGV-M, complete genome`. It will later serve as the reference genome for the detection of SNV positions.  
+Selecting the right or most suitable reference sequence is important if not critical for the entire analysis. The reference genome used in this tutorial is the Cydia pomonella granulovirus (Mexican isolate, CpGV-M). The function of the reference is to act as an anchor point to link detected SNV positions in all sequenced and analyzed isolates. Selecting a correct reference genome is critical because it must be as closely related as possible to the sequenced isolates. Therefore, it is best to use a reference from the same species that has been well analyzed by previous studies or the scientific community.  The following step will download the NCBI Accession Number `KM217575`, which corresponds to the `Cydia pomonella granulovirus isolate CpGV-M, complete genome`. It will later serve as the reference genome for the detection of SNV positions.  
 
 
 > <hands-on-title> Reference genome download </hands-on-title>
@@ -335,21 +337,21 @@ What you get is a file in Variant Call Format (VCF), which can be difficult to u
 |**REF**  |Nucleotide of the Referance at the corresponding position (POS)   |
 |**ALT**   |Alternative nucleotides detected at this position in the sequencing data.   |
 |**FORMAT**   |Describes the content of the *sample column* reported in the VCF file. In our case GT:PL:DP:DPR.           |
-|**SRR31589146**   |1st sample column: The results for the sequence data SRR31589146 in the format specified in FORMAT.   |
-|**SRR31589147**   |2nd sample column: The results for the sequence data SRR31589147 in the format specified in FORMAT.   |
-|**SRR31589148**   |3rd sample column: The results for the sequence data SRR31589148 in the format specified in FORMAT.   |
-|**SRR31679023**   |4th sample column: The results for the sequence data SRR31679023 in the format specified in FORMAT.   |
+|**SRR31589146**   |1st isolate: The results for the sequence data SRR31589146 in the format specified in FORMAT.   |
+|**SRR31589147**   |2nd isolate: The results for the sequence data SRR31589147 in the format specified in FORMAT.   |
+|**SRR31589148**   |3rd isolate: The results for the sequence data SRR31589148 in the format specified in FORMAT.   |
+|**SRR31679023**   |4th isolate: The results for the sequence data SRR31679023 in the format specified in FORMAT.   |
 
 
 To understand how the data is stored, we have to look at FORMAT in detail. This is where two values are of great importance: DP and DPR.
 
 |Genotype&nbsp;field|Description   |
 |---:|:---|
-|**DP**   |Read depth (number of nucleotides) at this position for this sample.   |
+|**DP**   |Read depth (number of nucleotides) at this position for this isolate.   |
 |**DPR**   |The read depth for each allele. Here, the first value corresponds to the reference nucleotide (REF), the second to the first possible allele (ALT1), the second to the second possible allele (ALT2) and the third value to the last possible allele (ALT3).
 
 > <comment-title>DPR functional, but deprecated</comment-title>
-> If you start **bcftools mpileup** with the *Optional tags to output* `DPR (Number of high-quality bases for each observed allele)` option, you will see a warning in the information panel of the VCF file: `[warning] tag DPR functional but deprecated. Please switch to AD in future. At the time of writing this tutorial, I was using DPR. It works the same way with *Optional tags to output* option `AD` (instead of DPR), but you will need to adjust something later in the workflow. The tutorial will be switched to AD in the near future. For now, we stick with DPR.
+> If you start **bcftools mpileup** with the *Optional tags to output* `DPR (Number of high-quality bases for each observed allele)` option, you will see a warning in the information panel of the VCF file: `[warning] tag DPR functional but deprecated. Please switch to AD in future.` At the time of writing this tutorial, I was using DPR. It works the same way with *Optional tags to output* option `AD` (instead of DPR), but you will need to adjust something later in the workflow. The tutorial will be switched to AD in the near future. For now, we stick with DPR.
 {: .comment}
 
 > <tip-title>Learn more about variant analysis on diploid and non-diploid data!</tip-title>
@@ -362,7 +364,7 @@ To understand how the data is stored, we have to look at FORMAT in detail. This 
 
 # VCF to Table Transformation
 
-Now we come to an exciting part, because we have all the information we need to analyse the genetic variation within the sequenced virus populations. The data is only hidden in the VCF file and is difficult for the beginner in bioinformatics to see. We have the positions (`POS`), which were detected as variable in the virus populations. In addition, we know the number of all reads (and thus also nucleotides) in these positions (represented by `DP`). By using `DPR`, we obtain information on how often the alleles (the four possible nucleotides) occur at a particular position. To analyse `DP` and `DPR`, we first have to access it because the information is hidden in each *sample column* in the `FORMAT` genotype data. If we look at the first position `POS = 246` in sample column `SRR31589146`, the following data is visible:     
+Now we come to an exciting part, because we have all the information we need to analyse the genetic variation within the sequenced virus isolates. The data is only hidden in the VCF file and is difficult for the beginner in bioinformatics to see. We have the positions (`POS`), which were detected as variable in the virus isolates. In addition, we know the number of all reads (and thus also nucleotides) in these positions (represented by `DP`). By using `DPR`, we obtain information on how often the alleles (the four possible nucleotides) occur at a particular position. To analyse `DP` and `DPR`, we first have to access it because the information is hidden in each *sample column* in the `FORMAT` genotype data. If we look at the first position `POS = 246` in sample column `SRR31589146`, the following data is visible:     
 `1/1:255,134,0,255,255,255,255,255,255,255:886:107,773,6,0`.  
 The information provided by the FORMAT field explains the division of the data by colons: `GT:PL:DP:DPR`.
 
@@ -375,10 +377,10 @@ We can break it down like this...
 |DP                      |886                                    |
 |DPR                     |107,773,6,0                            |
 
-GT = Genotype information, which cannot be used with virus populations!  
+GT = Genotype information, which cannot be used with virus isolates!  
 PL = Phred-scaled genotype likelihood (also not useable for us, because we do not have a diploid organism!)
 
-DPR can be broken down even further, since the individual values, which are separated by commas this time, can be assigned to the reference or the alternative nucleotides. In a virus population, four nucleotides (A, T, G and C) can theoretically occur at each position. One nucleotide defines the reference, leaving three alternatives: first (`ALT1`), second (`ALT2`) and third (`ALT3`) alternative. 
+DPR can be broken down even further, since the individual values, which are separated by commas this time, can be assigned to the reference or the alternative nucleotides. In a virus isolate, four nucleotides (A, T, G and C) can theoretically occur at each position. One nucleotide defines the reference, leaving three alternatives: first (`ALT1`), second (`ALT2`) and third (`ALT3`) alternative. 
 
 
 
@@ -413,16 +415,21 @@ If we now divide the absolute frequencies of `ALT1 = 773`, `ALT2 = 6` and `ALT3 
 > > ```
 > > BEGIN { FS="\t"; OFS="\t" }
 > > NR == 1 {
+> > 
+> >     # Rename "SAMPLE" to "ISOLATE" in the header
+> >     for (i = 1; i <= NF; i++) {
+> >         if ($i == "SAMPLE") $i = "ISOLATE";
+> >     }
 > >     # Identify column indices based on header names
 > >     for (i = 1; i <= NF; i++) {
 > >         if ($i == "POS") pos_col = i;
-> >         if ($i == "SAMPLE") sample_col = i;
+> >         if ($i == "ISOLATE") isolate_col = i;
 > >         if ($i == "DP") dp_col = i;
 > >         if ($i == "DPR") dpr_col = i;
 > >     }
 > >     # Check if all required columns are found
-> >     if (!(pos_col && sample_col && dp_col && dpr_col)) {
-> >         print "Error: One or more required columns (POS, SAMPLE, DP, DPR) are missing." > "/dev/stderr";
+> >     if (!(pos_col && isolate_col && dp_col && dpr_col)) {
+> >         print "Error: One or more required columns (POS, ISOLATE, DP, DPR) are missing." > "/dev/stderr";
 > >         exit 1;
 > >     }
 > >     # Print the new header
@@ -430,20 +437,20 @@ If we now divide the absolute frequencies of `ALT1 = 773`, `ALT2 = 6` and `ALT3 
 > >     next;
 > > }
 > > {
-> >     # Create a unique key for position and sample
-> >     pos_sample_key = $(pos_col) "_" $(sample_col);
+> >     # Create a unique key for position and isolate
+> >     pos_isolate_key = $(pos_col) "_" $(isolate_col);
 > > 
 > >     if (last_pos != $(pos_col)) {  # When a new position starts
-> >         delete sample_count;       # Reset the sample counter
+> >         delete isolate_count;      # Reset the isolate counter
 > >         last_pos = $(pos_col);     # Update the current position
 > >     }
 > > 
 > >     # Split the DPR column into values
 > >     split($(dpr_col), dpr_values, ",");
 > > 
-> >     # Count occurrences of each sample per position
-> >     sample_count[$(sample_col)]++;
-> >     dpr_index = sample_count[$(sample_col)] + 1;  # Index for the alternate allele (starting at 2)
+> >     # Count occurrences of each isolate per position
+> >     isolate_count[$(isolate_col)]++;
+> >     dpr_index = isolate_count[$(isolate_col)] + 1;  # Index for the alternate allele (starting at 2)
 > > 
 > >     # Check if the index is valid
 > >     if (dpr_index <= length(dpr_values)) {
@@ -469,11 +476,11 @@ If we now divide the absolute frequencies of `ALT1 = 773`, `ALT2 = 6` and `ALT3 
 {: .hands_on}
 
 
-The output table is complex and shows the relative frequency (`REL.ALT`) for each of the three alternative alleles/nucleotides (`ALT1`, `ALT2` and `ALT3`) in each position (`POS`) and sequenced CpGV isolate (`SAMPLE`). In column `REL.ALT.0.05`, values of the `REL.ALT < 0.05` were set to 0 to set a threshold. We will see later why this is sometimes important.
+The output table is complex and shows the relative frequency (`REL.ALT`) for each of the three alternative alleles/nucleotides (`ALT1`, `ALT2` and `ALT3`) in each position (`POS`) and sequenced CpGV isolate (`ISOLATE`). In column `REL.ALT.0.05`, values of the `REL.ALT < 0.05` were set to 0 to set a threshold. We will see later why this is sometimes important.
 
 Below is the table with selected relevant columns only. `REL` and `ALT` show the reference and alternative nucleotide, respectively.    
 
-| CHROM  | POS | REF | ALT | SAMPLE      | DP  | DPR         | ALLELE | DPR.ALLELE | REL.ALT    | REL.ALT.0.05 |
+| CHROM  | POS | REF | ALT | ISOLATE     | DP  | DPR         | ALLELE | DPR.ALLELE | REL.ALT    | REL.ALT.0.05 |
 |--------|-----|-----|-----|-------------|-----|-------------|--------|------------|------------|--------------|
 | CpGV-M | 246 | C   | T   | SRR31589146 | 886 | 107,773,6,0 | ALT1   | 773        | 0.87246    | 0.873446     |
 | CpGV-M | 246 | C   | G   | SRR31589146 | 886 | 107,773,6,0 | ALT2   | 6          | 0.00677201 | 0            |
@@ -491,9 +498,9 @@ Below is the table with selected relevant columns only. `REL` and `ALT` show the
 
 ## Replace SRA Names with Virus Abbreviations
 
-One thing that stands out is the SAMPLE names, which were taken automatically from the NCBI SRA datasets. Since it is difficult to remember which virus isolate is behind which SRA number, we can replace the accession numbers with proper names. This makes the table even easier to read and later we can use the information directly to display the SNV positions. 
+One thing that stands out are the NCBI SRA numbers in the ISOLATE column, which have been automatically extracted from the NCBI SRA datasets. Since it is difficult to remember which virus isolate is behind which number, we can replace these accession numbers with proper names, e.g. virus isolate abbreviations. This makes the table even easier to read and later we can use the information directly to display the SNV positions. 
 
-> <hands-on-title> Replace sample by virus names </hands-on-title>
+> <hands-on-title> Replace SRA accession numbers by virus isolate abbreviations </hands-on-title>
 >
 > 1. {% tool [Replace Text in a specific column](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_column/9.3+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `out_file1` (output of **Text reformatting with awk:** {% icon tool %})
@@ -562,7 +569,7 @@ Based on the SNV table, we can see that three possible nucleotides (alleles) occ
 
 The final table should be much easier to read and contain all the information we need to perform an analysis of the intra-isolate specific variability. Here is a short overview of the final table (selected columns) and its first three SNV positions:  
 
-| CHROM  | POS | REF | ALT | SAMPLE   | DP  | DPR         | ALLELE | DPR.ALLELE | REL.ALT  | REL.ALT.0.05 |
+| CHROM  | POS | REF | ALT | ISOLATE  | DP  | DPR         | ALLELE | DPR.ALLELE | REL.ALT  | REL.ALT.0.05 |
 |--------|-----|-----|-----|----------|-----|-------------|--------|------------|----------|--------------|
 | CpGV-M | 246 | C   | T   | CpGV-E2  | 886 | 107,773,6,0 | ALT1   | 773        | 0.87246  | 0.87246      |
 | CpGV-M | 246 | C   | T   | CpGV-S   | 881 | 5,875,1,0   | ALT1   | 875        | 0.99319  | 0.99319      |
@@ -577,7 +584,7 @@ The final table should be much easier to read and contain all the information we
 | CpGV-M | 564 | T   | C   | CpGV-M   | 976 | 821,154,1,0 | ALT1   | 154        | 0.157787 | 0.157787     |
 | CpGV-M | 564 | T   | C   | CpGV-V15 | 880 | 33,846,1,0  | ALT1   | 846        | 0.961364 | 0.961364     |
 
-We can now start the first visualisation and create a plot for each CpGV isolate (`SAMPLE`), plotting the position of the SNV (`POS`) against the relative frequency of the alternative nucleotide (`REL.ALT`). Note that we are not using the REL.ALT threshold values because we want to look at the unfiltered data.
+We can now start the first visualisation and create a plot for each CpGV isolate (`ISOLATE`), plotting the position of the SNV (`POS`) against the relative frequency of the alternative nucleotide (`REL.ALT`). Note that we are not using the REL.ALT threshold values because we want to look at the unfiltered data.
 
 > <hands-on-title>SNV plot</hands-on-title>
 >
@@ -606,16 +613,16 @@ We can now start the first visualisation and create a plot for each CpGV isolate
 >    - Click Run Tool
 >
 >    > <comment-title> Column names and numbers </comment-title>
->    > To provide ggplot2 with the data for the X- and Y-axis, column numbers must be passed to the function. You have to check which column numbers the columns `POS` and `REL.ALT` have. In addition, ggplot2 offers the option of splitting the data according to `SAMPLE`, to obtain a separate plot for each value in SAMPLE. 
+>    > To provide ggplot2 with the data for the X- and Y-axis, column numbers must be passed to the function. You have to check which column numbers the columns `POS` and `REL.ALT` have. In addition, ggplot2 offers the option of splitting the data according to `ISOLATE`, to obtain a separate plot for each value in ISOLATE. 
 >    > * `POS` = column 2  
 >    > * `REL.ALT` = column 32  
->    > * `SAMPLE` = column 25  
+>    > * `ISOLATE` = column 25  
 >    > ![VCF tab-deliminated table with column names and numbers](../../images/baculovirus-isolate-variation/galaxy_vcf_table_column_numbers_names.png "Section of the VCF table with column numbers and names. ")
 >    {: .comment}
 >
 {: .hands_on}
 
-As a result, we get a SNV plot that shows the relative frequency of the first alternative nucleotide in all variable SNV positions. Before we have a closer look at the data, we have to remember that all the sequencing data (= the reads) were mapped during this workflow against the reference genome of CpGV-M. For that reason, all isolates are compared to the genome of CpGV-M. We see that CpGV-E2 has a heterogeneous SNV pattern. CpGV-M appears homogeneous but with relatively few genetic variation – but keep in mind that the sequence data of CpGV-M was mapped against its own reference, which is why one might assume less variability. For CpGV-S, the variability is also homogeneous, but many SNV positions have a nucleotide frequency close to one. This could indicate that the isolate is homogeneous but different from the reference CpGV-M. For isolate CpGV-V15, a SNV cloud occurs at approximately 0.5 (50%), which could indicate a mixed isolate. By “mixed”, it is meant that two or more (homogenous) isolates occur in a certain ratio in this sample.
+As a result, we get a SNV plot that shows the relative frequency of the first alternative nucleotide in all variable SNV positions. Before we have a closer look at the data, we have to remember that all the sequencing data (= the reads) were mapped during this workflow against the reference genome of CpGV-M. For that reason, all isolates are compared to the genome of CpGV-M. We see that CpGV-E2 has a heterogeneous SNV pattern. CpGV-M appears homogeneous but with relatively few genetic variation – but keep in mind that the sequence data of CpGV-M was mapped against its own reference, which is why one might assume less variability. For CpGV-S, the variability is also homogeneous, but many SNV positions have a nucleotide frequency close to one. This could indicate that the isolate is homogeneous but different from the reference CpGV-M. For isolate CpGV-V15, a SNV cloud occurs at approximately 0.5 (50%), which could indicate a mixed isolate. By “mixed”, it is meant that two or more (homogenous) isolates occur in a certain ratio in this isolate.
 
 ![SNV plot](../../images/baculovirus-isolate-variation/snp_plot.png "Single nucleotide variant (SNV) plot of all variable positions in the sequenced CpGV isolates CpGV-E2 (top left), CpGV-M (top right), CpGV-S (bottom left) and CpGV-V15 (bottom right). Each point represents the relative frequency of the first alternative nucleotide (allele).")
 
@@ -656,13 +663,13 @@ Let us run the tool below to determine the SNV specificities of our dataset.
 > >     for (i = 1; i <= NF; i++) {
 > >         if ($i == "POS") pos_col = i;
 > >         if ($i == "ALLELE") allele_col = i;
-> >         if ($i == "SAMPLE") sample_col = i;
+> >         if ($i == "ISOLATE") isolate_col = i;
 > >         if ($i == "REL.ALT.0.05") rel_alt_col = i;
 > >     }
 > > 
 > >     # Check if all required columns were found
-> >     if (!(pos_col && allele_col && sample_col && rel_alt_col)) {
-> >         print "Error: Required columns (POS, ALLELE, SAMPLE, REL.ALT.0.05) are missing." > "/dev/stderr";
+> >     if (!(pos_col && allele_col && isolate_col && rel_alt_col)) {
+> >         print "Error: Required columns (POS, ALLELE, ISOLATE, REL.ALT.0.05) are missing." > "/dev/stderr";
 > >         exit 1;
 > >     }
 > > 
@@ -691,10 +698,10 @@ Let us run the tool below to determine the SNV specificities of our dataset.
 > > 
 > >     # Conditions for calculating specificity
 > >     if ($(allele_col) == "ALT1" && 
-> >         ($(sample_col) == "CpGV-E2" || $(sample_col) == "CpGV-S" || $(sample_col) == "CpGV-M") && 
+> >         ($(isolate_col) == "CpGV-E2" || $(isolate_col) == "CpGV-S" || $(isolate_col) == "CpGV-M") && 
 > >         $(rel_alt_col) > 0) {
 > >         # Concatenate isolate names with " + " if REL.ALT.0.05 > 0
-> >         specificity = (specificity == "" ? $(sample_col) : specificity " + " $(sample_col));
+> >         specificity = (specificity == "" ? $(isolate_col) : specificity " + " $(isolate_col));
 > >     }
 > > }
 > > 
@@ -728,7 +735,7 @@ Now, the VCF table has an additional column called `SPEC`, which indicates the S
 >
 >    > <comment-title> Filtering the CpGV-S data </comment-title>
 >    >
->    > The VCF SNV table is reduced to the data of CpGV-S. This is done by filtering on column 23 (SAMPLE).
+>    > The VCF SNV table is reduced to the data of CpGV-S. This is done by filtering on column 23 (ISOLATE).
 >    {: .comment}
 >
 >
@@ -853,8 +860,8 @@ The analysis presented in this tutorial is a simplification of the experiment fr
 
 # Conclusion
 
-Four Illumina sequencing data sets from isolates of a large dsDNA virus (Cydia pomonella granulovirus, family *Baculoviridae*) were used to demonstrate how insight can be gained into intra-isolate specific genetic variability. SNVs were identified as markers to assess the homogeneity and heterogeneity of these sequenced viral populations. The relative frequency with which alternative nucleotides occur at each variable SNV position was also used to assign SNV specificities, i.e. to identify them as markers for one or a combination of isolates. The markers were used to decipher the composition of a mixed isolate and to estimate its composition.  
-This tutorial provides a basis for understanding the complexity behind viral populations and how consensus sequences, often generated by sequencing and genome assembly, can mask genetic variability. The tutorial also includes a complete Galaxy workflow that includes all the steps described above. It is intended to help you create your own workflow for your own data.  
+Four Illumina sequencing data sets from isolates of a large dsDNA virus (Cydia pomonella granulovirus, family *Baculoviridae*) were used to demonstrate how insight can be gained into intra-isolate specific genetic variability. SNVs were identified as markers to assess the homogeneity and heterogeneity of these sequenced CpGV isolates. The relative frequency with which alternative nucleotides occur at each variable SNV position was also used to assign SNV specificities, i.e. to identify them as markers for one or a combination of isolates. The markers were used to decipher the composition of a mixed isolate and to estimate its composition.  
+This tutorial provides a basis for understanding the complexity behind isolates, which represent virus populations, and how consensus sequences, often generated by sequencing and genome assembly, can mask genetic variability. The tutorial also includes a complete Galaxy workflow that includes all the steps described above. It is intended to help you create your own workflow for your own data.  
 
 Please leave me a comment if you liked the workflow or have any questions. I would love to hear your feedback.  
 
