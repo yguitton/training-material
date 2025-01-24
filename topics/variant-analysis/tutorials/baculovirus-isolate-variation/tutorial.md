@@ -165,7 +165,7 @@ Selecting the right or most suitable reference sequence is important if not crit
 >    {: .comment}
 >
 > 3. {% tool [Replace Text in entire line](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.3+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"File to process"*: `output` (output of **Collapse Collection** {% icon tool %})
+>    - {% icon param-file %} *"File to process"*: the collapsed collection containing the single reference genome; output of **Collapse Collection** {% icon tool %}
 >    - In *"Replacement"*:
 >         - *"Find pattern"*: `^>.*$`
 >         - *"Replace with:"*: `>CpGV-M `
@@ -239,7 +239,7 @@ quality filtered.
 >
 > 1. {% tool [Trim Galore!](toolshed.g2.bx.psu.edu/repos/bgruening/trim_galore/trim_galore/0.6.7+galaxy0) %} with the following parameters:
 >    - *"Is this library paired- or single-end?"*: `Paired Collection`
->        - {% icon param-collection %} *"Select a paired collection"*: `output` (output of **Download and Extract Reads in FASTAQ format from NCBI SRA** {% icon tool %})
+>        - {% icon param-collection %} *"Select a paired collection"*: `Paired-end data (fastq-dump)` (output of **Download and Extract Reads in FASTAQ format from NCBI SRA** {% icon tool %})
 >    - *"Advanced settings"*: `Full parameter list`
 >        - *"Trim low-quality ends from reads in addition to adapter removal (Enter phred quality score threshold)"*: `30`
 >        - *"Discard reads that became shorter than length N"*: `50`
@@ -261,9 +261,9 @@ After that, everything we do with the sequence data is linked to the common refe
 >
 > 1. {% tool [Map with BWA-MEM](toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.18) %} with the following parameters:
 >    - *"Will you select a reference genome from your history or use a built-in index?"*: `Use a genome from history and build index`
->        - {% icon param-file %} *"Use the following dataset as the reference sequence"*: `output` (output of **Replace Text in entire line** {% icon tool %})
+>        - {% icon param-file %} *"Use the following dataset as the reference sequence"*: the renamed reference genome in FASTA format, output of **Replace Text in entire line** {% icon tool %}
 >    - *"Single or Paired-end reads"*: `Paired Collection`
->        - {% icon param-file %} *"Select a paired collection"*: `trimmed_reads_paired_collection` (output of **Trim Galore!** {% icon tool %})
+>        - {% icon param-file %} *"Select a paired collection"*: the trimmed paired read collection, generated as output of **Trim Galore!** {% icon tool %}
 >    - *"Set read groups information?"*: `Set read groups (Picard style)`
 >        - *"Auto-assign"*: `Yes`
 >        - *"Auto-assign"*: `Yes`
@@ -283,9 +283,9 @@ Insertions/Deletions (indels) are deliberately omitted because they are not rele
 >
 > 1. {% tool [bcftools mpileup](toolshed.g2.bx.psu.edu/repos/iuc/bcftools_mpileup/bcftools_mpileup/1.15.1+galaxy4) %} with the following parameters:
 >    - *"Alignment Inputs"*: `Multiple BAM/CRAMs`
->        - {% icon param-file %} *"Input BAM/CRAMs"*: `bam_output` (output of **Map with BWA-MEM** {% icon tool %})
+>        - {% icon param-file %} *"Input BAM/CRAMs"*: the BAM file collection; output of **Map with BWA-MEM** {% icon tool %}
 >    - *"Choose the source for the reference genome"*: `History`
->        - {% icon param-file %} *"Genome Reference"*: `output` (Input dataset)
+>        - {% icon param-file %} *"Genome Reference"*: the renamed reference genome in FASTA format, output of **Replace Text in entire line** {% icon tool %}
 >    - In *"Indel Calling"*:
 >        - *"Perform INDEL calling"*: `Do not perform INDEL calling`
 >    - In *"Input Filtering Options"*:
@@ -307,7 +307,7 @@ Insertions/Deletions (indels) are deliberately omitted because they are not rele
 >    {: .comment}
 >
 > 2. {% tool [bcftools call](toolshed.g2.bx.psu.edu/repos/iuc/bcftools_call/bcftools_call/1.15.1+galaxy5) %} with the following parameters:
->    - {% icon param-file %} *"VCF/BCF Data"*: `output_file` (output of **bcftools mpileup** {% icon tool %})
+>    - {% icon param-file %} *"VCF/BCF Data"*: the uncompressed VCF file; output of **bcftools mpileup** {% icon tool %}
 >    - In *"Restrict to"*:
 >        - *"Regions"*: `Do not restrict to Regions`
 >    - In *"Consensus/variant calling Options"*:
@@ -397,10 +397,10 @@ If we now divide the absolute frequencies of `ALT1 = 773`, `ALT2 = 6` and `ALT3 
 |ALT3       |0           |
 
 
-> <hands-on-title> Transfrom VCF to tab-deliminated table </hands-on-title>
+> <hands-on-title> Transfrom VCF to tab-delimited table </hands-on-title>
 >
 > 1. {% tool [VCFtoTab-delimited:](toolshed.g2.bx.psu.edu/repos/devteam/vcf2tsv/vcf2tsv/1.0.0_rc1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Select VCF dataset to convert"*: `output_file` (output of **bcftools call** {% icon tool %})
+>    - {% icon param-file %} *"Select VCF dataset to convert"*: the filtered VCF file; output of **bcftools call** {% icon tool %}
 >    - *"Fill empty fields with"*: `NULL`
 >    - Click Run Tool
 >
@@ -409,7 +409,7 @@ If we now divide the absolute frequencies of `ALT1 = 773`, `ALT2 = 6` and `ALT3 
 >    {: .comment}
 >
 > 2. {% tool [Text reformatting with awk](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/9.3+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"File to process"*: `outfile` (output of **VCFtoTab-delimited** {% icon tool %})
+>    - {% icon param-file %} *"File to process"*: the tab-delimited VCF table; output of **VCFtoTab-delimited** {% icon tool %}
 >    - *"AWK Program"*: *Paste the code from the code box below.*
 > > <code-in-title>awk</code-in-title>
 > > ```
@@ -503,7 +503,7 @@ One thing that stands out are the NCBI SRA numbers in the ISOLATE column, which 
 > <hands-on-title> Replace SRA accession numbers by virus isolate abbreviations </hands-on-title>
 >
 > 1. {% tool [Replace Text in a specific column](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_column/9.3+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"File to process"*: `out_file1` (output of **Text reformatting with awk:** {% icon tool %})
+>    - {% icon param-file %} *"File to process"*: the reformatted VCF table; output of **Text reformatting with awk:** {% icon tool %}
 >    - In *"Replacement"*:
 >        - {% icon param-repeat %} *"Insert Replacement"*
 >            - *"in column"*: `c25`
@@ -542,7 +542,7 @@ Based on the SNV table, we can see that three possible nucleotides (alleles) occ
 > <hands-on-title>Keep only ALT1 and remove ALT2 and ALT3</hands-on-title>
 >
 > 1. {% tool [Filter data on any column using simple expressions](Filter1) %} with the following parameters:
->    - {% icon param-file %} *"Filter"*: `outfile` (output of **Replace Text in a specific column** {% icon tool %})
+>    - {% icon param-file %} *"Filter"*: the VCF table with the replaced isolate abbreviations; output of **Replace Text in a specific column** {% icon tool %}
 >    - *"With following condition"*: `c30=='ALT1'`
 >    - *"Numbers of header ines to skip"*: `1`
 >    - Click Run Tool
@@ -553,7 +553,7 @@ Based on the SNV table, we can see that three possible nucleotides (alleles) occ
 >    >    > When looking only at a table with several columns and numbers, it is difficult to understand that mainly a reference and one alternative nucleotide were detected in the SNV positions. 
 >    >    > One way to examine the frequency of a second or third alternative nucleotide is to filter the table with `c30=='ALT2'` or `c30=='ALT3'` instead of `c30=='ALT1'`.
 >    >    > The resulting table can be used to create a distribution over the `REL.ALT` values in column 32 (`c32`). 
->    >    > You can perform this analysis by using the following tools: `Filter data on any column using simple expression`, `Cut columns from a table` to extract column 32 (`c32`), which corresponds to `REL.ALT`
+>    >    > You can perform this analysis by using the following tools: `Filter data on any column using simple expressions`, `Cut columns from a table` to extract column 32 (`c32`), which corresponds to `REL.ALT`
 >    >    > and `Histogram with ggplot2`.  This task is a small challenge for you, if you like. It is up to you to familiarise yourself with the individual tools. 
 >    >    > But it could be woth it, as it could help you understand why we do not consider ALT2 and ALT3 further in the next steps.
 >    >    {: .solution}
@@ -589,12 +589,12 @@ We can now start the first visualisation and create a plot for each CpGV isolate
 > <hands-on-title>SNV plot</hands-on-title>
 >
 > 1. {% tool [Scatterplot with ggplot2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_point/ggplot2_point/3.4.0+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Input in tabular format"*: `out_file1` (output of **Filter** {% icon tool %})
+>    - {% icon param-file %} *"Input in tabular format"*: the ALT1-filtered VCF table; output of **Filter data on any column using simple expressions** {% icon tool %}
 >    - *"Column to plot on x-axis"*: `2`
 >    - *"Column to plot on y-axis"*: `32`
 >    - *"Plot title"*: `SNV plot`
 >    - *"Label for x axis"*: `Reference Genome Position of CpGV-M`
->    - *"Label for y axis"*: `Relative nucleotide frequency `
+>    - *"Label for y axis"*: `Relative Nucleotide Frequency `
 >    - In *"Advanced options"*:
 >        - *"Type of plot"*: `Points only (default)`
 >            - *"Data point options"*: `Default`
@@ -617,7 +617,7 @@ We can now start the first visualisation and create a plot for each CpGV isolate
 >    > * `POS` = column 2  
 >    > * `REL.ALT` = column 32  
 >    > * `ISOLATE` = column 25  
->    > ![VCF tab-deliminated table with column names and numbers](../../images/baculovirus-isolate-variation/galaxy_vcf_table_column_numbers_names.png "Section of the VCF table with column numbers and names. ")
+>    > ![VCF tab-delimited table with column names and numbers](../../images/baculovirus-isolate-variation/galaxy_vcf_table_column_numbers_names.png "Section of the VCF table with column numbers and names. ")
 >    {: .comment}
 >
 {: .hands_on}
@@ -653,7 +653,7 @@ Let us run the tool below to determine the SNV specificities of our dataset.
 > <hands-on-title> SNV specificity determination </hands-on-title>
 >
 > 1. {% tool [Text reformatting with awk](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/9.3+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"File to process"*: `out_file1` (output of **Filter** {% icon tool %})
+>    - {% icon param-file %} *"File to process"*: the ALT1-filtered VCF table; output of **Filter data on any column using simple expressions** {% icon tool %}
 >    - *"AWK Program"*: *Paste the code from the code box below.*
 > > <code-in-title>awk</code-in-title>
 > > ```
@@ -728,7 +728,7 @@ Now, the VCF table has an additional column called `SPEC`, which indicates the S
 > <hands-on-title> Extract data for one isolate only </hands-on-title>
 >
 > 1. {% tool [Filter data on any column using simple expressions](Filter1) %} with the following parameters:
->    - {% icon param-file %} *"Filter"*: `outfile` (output of **Text reformatting with awk** {% icon tool %})
+>    - {% icon param-file %} *"Filter"*: the VCF table with determined SNV specificities; output of **Text reformatting with awk** {% icon tool %}
 >    - *"With following condition"*: `c25=='CpGV-S'`
 >    - *"Number of header lines to skip"*: `1`
 >    - Click Run Tool
@@ -740,7 +740,7 @@ Now, the VCF table has an additional column called `SPEC`, which indicates the S
 >
 >
 > 2. {% tool [Scatterplot with ggplot2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_point/ggplot2_point/3.4.0+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Input in tabular format"*: `out_file1` (output of **Filter data on any column using simple expressions** {% icon tool %})
+>    - {% icon param-file %} *"Input in tabular format"*: the VCF table for CpGV-S; output of **Filter data on any column using simple expressions** {% icon tool %}
 >    - *"Column to plot on x-axis"*: `2`
 >    - *"Column to plot on y-axis"*: `32`
 >    - *"Plot title"*: `Isolate CpGV-S`
@@ -777,13 +777,13 @@ Let us now look at the result for isolate CpGV-S. We can see that all CpGV-E2 sp
 > >  ><hands-on-title> Extract data for CpGV-E2 </hands-on-title>
 > > >
 > > > 1. {% tool [Filter data on any column using simple expressions](Filter1) %} with the following parameters:
-> > >    - {% icon param-file %} *"Filter"*: `outfile` (output of **Text reformatting** {% icon tool %})
+> > >    - {% icon param-file %} *"Filter"*: the VCF table with determined SNV specificities; output of **Text reformatting with awk** {% icon tool %}
 > > >    - *"With following condition"*: `c25=='CpGV-E2'`
 > > >    - *"Number of header lines to skip"*: `1`
 > > >    - Click Run Tool
 > > >
 > > > 2. {% tool [Scatterplot with ggplot2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_point/ggplot2_point/3.4.0+galaxy1) %} with the following parameters:
-> > >    - {% icon param-file %} *"Input in tabular format"*: `out_file1` (output of **Filter** {% icon tool %})
+> > >    - {% icon param-file %} *"Input in tabular format"*: the VCF table for CpGV-E2; output of **Filter data on any column using simple expressions** {% icon tool %}
 > > >    - *"Column to plot on x-axis"*: `2`
 > > >    - *"Column to plot on y-axis"*: `32`
 > > >    - *"Plot title"*: `Isolate CpGV-E2`
@@ -817,13 +817,13 @@ To create an SNV specificity plot for the isolate CpGV-V15, we proceed in exactl
 > <tip-title> Creating CpGV-V15 SNV specificity plot </tip-title>
 >
 > 1. {% tool [Filter data on any column using simple expressions](Filter1) %} with the following parameters:
->    - {% icon param-file %} *"Filter"*: `outfile` (output of **Text reformatting** {% icon tool %})
+>    - {% icon param-file %} *"Filter"*: the VCF table with determined SNV specificities; output of **Text reformatting with awk** {% icon tool %}
 >    - *"With following condition"*: `c25=='CpGV-V15'`
 >    - *"Number of header lines to skip"*: `1`
 >    - Click Run Tool
 >
 > 2. {% tool [Scatterplot with ggplot2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_point/ggplot2_point/3.4.0+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Input in tabular format"*: `out_file1` (output of **Filter** {% icon tool %})
+>    - {% icon param-file %} *"Input in tabular format"*: the VCF table for CpGV-V15; output of **Filter data on any column using simple expressions** {% icon tool %}
 >    - *"Column to plot on x-axis"*: `2`
 >    - *"Column to plot on y-axis"*: `32`
 >    - *"Plot title"*: `Isolate CpGV-V15`
