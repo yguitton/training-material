@@ -87,14 +87,28 @@ The images are saved in the BioImage archive and can be uploaded to the Galaxy s
 >    {: .comment}
 >
 > 3. Rename {% icon galaxy-pencil %} the file `Neuroblastoma_0.tif` to `input_image.tif`  
-> 4. Check that the datatype
+>
+> 4. Import the additional files for the tutorial from [Zenodo]({{ https://doi.org/XXX/zenodo.XXX }}) or from
+>    the shared data library (`GTN - Material` -> `{{ page.topic_name }}`
+>     -> `{{ page.title }}`):
+>
+>    - **Important:** If setting the type to 'Auto-detect', make sure that after upload, the datatype is set to tiff.
+>
+>    ```
+>    https://zenodo.org/records/5494629/files/input_seed.tif
+>    ```
+>
+>    {% snippet faqs/galaxy/datasets_import_via_link.md %}
+>
+>    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
+>
+> 5. Check the datatype of the two uploaded files.
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
 >
-> 5. Add to each database a tag corresponding to `input`
+> 6. Add to each file a tag corresponding to `input`
 >
 >    {% snippet faqs/galaxy/datasets_add_tag.md %}
->
 >
 {: .hands_on}
 
@@ -117,18 +131,20 @@ The images are saved in the BioImage archive and can be uploaded to the Galaxy s
 >
 >    ```
 >    https://zenodo.org/records/5494629/files/Sep_2014_RGB_602500_646500.tif
+>    https://zenodo.org/records/5494629/files/Sep_2014_seed.tif
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
 >    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
 >
-> 3. Rename {% icon galaxy-pencil %} the file `Sep_2014_RGB_602500_646500.tif` to `input_image.tif`
+> 3. Rename {% icon galaxy-pencil %} the file `Sep_2014_RGB_602500_646500.tif` to `input_image.tif`, and 
+> .  `Sep_2014_seed.tif` to `seed_image.tif`.
 > 4. Check that the datatype
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
 >
-> 5. Add to each database a tag corresponding to `input`
+> 5. Add to each file a tag corresponding to `input`
 >
 >    {% snippet faqs/galaxy/datasets_add_tag.md %}
 >
@@ -141,11 +157,11 @@ The images are saved in the BioImage archive and can be uploaded to the Galaxy s
 > <hands-on-title> Select channel for Voronoi Segmentation </hands-on-title>
 >
 > 1. {% tool [Convert image format](toolshed.g2.bx.psu.edu/repos/imgteam/bfconvert/ip_convertimage/6.7.0+galaxy3) %} with the following parameters:
->    - {% icon param-file %} *"Input Image"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Input Image"*: `input_image.tif` (Input dataset)
 >    - *"Extract series"*: `All series`
 >    - *"Extract timepoint"*: `All timepoints`
 >    - *"Extract channel"*: `Extract channel`
->        - *"Channel id"*: `{'id': 2, 'output_name': 'output'}`
+>    - *"Channel id"*: 0
 >    - *"Extract z-slice"*: `All z-slices`
 >    - *"Extract range"*: `All images`
 >    - *"Extract crop"*: `Full image`
@@ -157,120 +173,36 @@ The images are saved in the BioImage archive and can be uploaded to the Galaxy s
 >    > Select a single channel from the input image. Note that some tools number channels starting from 1, while others start from 0.
 >    {: .comment}
 >
-{: .hands_on}
-
-## Sub-step with **Convert image format**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Convert image format](toolshed.g2.bx.psu.edu/repos/imgteam/bfconvert/ip_convertimage/6.7.0+galaxy3) %} with the following parameters:
->    - {% icon param-file %} *"Input Image"*: `output` (Input dataset)
->    - *"Extract series"*: `All series`
->    - *"Extract timepoint"*: `All timepoints`
->    - *"Extract channel"*: `Extract channel`
->        - *"Channel id"*: `{'id': 2, 'output_name': 'output'}`
->    - *"Extract z-slice"*: `All z-slices`
->    - *"Extract range"*: `All images`
->    - *"Extract crop"*: `Full image`
->    - *"Tile image"*: `No tiling`
->    - *"Pyramid image"*: `No Pyramid`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
+> 2. Rename {% icon galaxy-pencil %} the file `output` to `image_ch1.tif`
 >
 {: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Convert binary image to label map**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Convert binary image to label map](toolshed.g2.bx.psu.edu/repos/imgteam/binary2labelimage/ip_binary_to_labelimage/0.5+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Binary image"*: `output` (Input dataset)
->    - *"Mode"*: `Connected component analysis`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
 
 ## Sub-step with **Filter 2-D image**
+To run Voronoi segmentation, a seed image is required, which can be prepared manually or using an automatic tool, though the preparation process is outside the scope of this discussion. We have already prepared the seed image, and this is the one we are using for the Voronoi segmentation here.
+We apply image filters to enhance or suppress specific features of interest, such as edges or noise.
 
-> <hands-on-title> Task description </hands-on-title>
+> <hands-on-title>  Filter image </hands-on-title>
 >
 > 1. {% tool [Filter 2-D image](toolshed.g2.bx.psu.edu/repos/imgteam/2d_simple_filter/ip_filter_standard/1.12.0+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input image"*: `output` (output of **Convert image format** {% icon tool %})
+>    - {% icon param-file %} *"Input image"*: `image_ch1.tif` (output of **Convert image format** {% icon tool %})
 >    - *"Filter type"*: `Gaussian`
+> .  - *"Sigma"*: 3
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
+> 2. Rename {% icon galaxy-pencil %} the generated file to `image_filter_ch1.tif`
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
 
-> <question-title></question-title>
+## Sub-step with **Convert binary image to label map**
+We will assign a assign a unique label to each object in the seed image using connected component analysis.
+
+> <hands-on-title> Assign unique label to each object</hands-on-title>
 >
-> 1. Question1?
-> 2. Question2?
+> 1. {% tool [Convert binary image to label map](toolshed.g2.bx.psu.edu/repos/imgteam/binary2labelimage/ip_binary_to_labelimage/0.5+galaxy0) %} with the following parameters:
+>    - {% icon param-file %} *"Binary image"*: `seed_image.tif` (Seed input file uploaded during the first step)
+>    - *"Mode"*: `Connected component analysis`
 >
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
+{: .hands_on}
 
 ## Sub-step with **Compute Voronoi tessellation**
 
