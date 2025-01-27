@@ -223,7 +223,7 @@ Do you want to learn how to use Galaxy, a open source data analysis platform? Th
 **We will open registrations on the 3rd of March** 
 
 ## Do you want to join the GTA as a trainer?
-Please fill our [form](https://docs.google.com/forms/d/e/1FAIpQLSf_DVEdf7n9MWJe7XLa3UTPGMNE9y-F8S-EHXRrZ-twNETYrg/viewform?usp=sf_link) to indicate in what capacity you would like to help. 
+Please fill our [form](https://forms.gle/V9QqSDNg2UmQaDHy8) to indicate in what capacity you would like to help. 
 
 ## Further information about the event
 We provide you with training materials which you can study at your own pace and on your own time throughout the week. Don't worry, asynchronous does not mean that you are alone! If you ever need help, you can contact one of our many trainers worldwide via **Slack chat** .
