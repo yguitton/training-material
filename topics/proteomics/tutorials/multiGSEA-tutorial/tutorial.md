@@ -95,7 +95,22 @@ In this step, you'll use the MultiGSEA tool to perform GSEA-based pathway enrich
 >
 {: .hands_on}
 
+# Mitochondrial stress activates metabolic pathways of amino acid biosynthesis.
 
+>Mitochondrial stress triggers the activation of amino acid biosynthesis and related metabolic pathways, as highlighted by Quiros et al. (Ref findest du in der Vignette), who identified up-regulation of several amino acid related pathways.
+>These findings align with our results using a multi-omics approach with multiGSEA
+>Our results also reveal the enrichment of amino acid-related pathways, e.g.:
+>
+>```
+>
+>cut -f 1,9 output.tsv |grep amino -i
+>(KEGG) Amino sugar and nucleotide sugar metabolism    0.00347274191804089
+>(KEGG) Biosynthesis of amino acids    1.13741176493032e-05
+>(REACTOME) Selenoamino acid metabolism    1.02032778591504e-05
+>(REACTOME) Amino acid and derivative metabolism    2.2775071953139e-11
+>(REACTOME) Response of EIF2AK4 (GCN2) to amino acid deficiency    4.83629358772636e-09
+>
+>```
 
 > <question-title></question-title>
 >
