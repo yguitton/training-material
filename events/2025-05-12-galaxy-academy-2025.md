@@ -171,21 +171,21 @@ program:
       For assistance, you can access support through the Slack channel associated with each track module. Please note that while we strive to accommodate all time zones, responses to specific questions may take a bit longer depending on the availability of experts in your time zone.
     tracks:  # instead of tutorials, you can also define tracks, this will create a button per tracks that will lead to a different page
       - title: Proteomics
-        link: events/tracks/gta2024-proteomics.md
+        link: events/tracks/gta2025-proteomics.md
       #- title: Assembly
       #  link: events/tracks/gta2024-assembly.md
       - title: Transcriptomics
-        link: events/tracks/gta2024-transcriptomics.md
+        link: events/tracks/gta2025-transcriptomics.md
       - title: Single Cell
-        link: events/tracks/gta2024-single-cell.md
+        link: events/tracks/gta2025-single-cell.md
       - title: Microbiome
-        link: events/tracks/gta2024-microbiome.md
+        link: events/tracks/gta2025-microbiome.md
       #- title: Bacterial Genomics
       #  link: events/tracks/gta2024-bacterial-genomics.md
       #- title: BY-COVID
       #  link: events/tracks/gta2024-bycovid.md
       - title: Machine Learning
-        link: events/tracks/gta2024-ml.md
+        link: events/tracks/gta2025-ml.md
 
   - section: "Friday: Grab bag"
     description: |
@@ -222,7 +222,7 @@ Do you want to learn how to use Galaxy, a open source data analysis platform? Th
 
 **We will open registrations on the 3rd of March** 
 
-## Do you want to join the GTA as an trainer?
+## Do you want to join the GTA as a trainer?
 Please fill our [form](https://docs.google.com/forms/d/e/1FAIpQLSf_DVEdf7n9MWJe7XLa3UTPGMNE9y-F8S-EHXRrZ-twNETYrg/viewform?usp=sf_link) to indicate in what capacity you would like to help. 
 
 ## Further information about the event
@@ -235,4 +235,4 @@ You can set your own pace on your learning journey using our provided self-learn
 
 You only need a browser and an account on one of the galaxy instances registered for this event. Please have a look at the setup tab.
 
-# **Certificates:** You can earn a certificate for the tracks you attended by answering a short questionnaire to verify your participation.
+**Certificates:** You will be able to obtain a certificates by the end to the event. more information are coming soon.
