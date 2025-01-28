@@ -367,7 +367,9 @@ If you want to prepare primers to amplify specific viral genome sequences of sam
 
 # Designing a complete pan-specific primer scheme for tiled-amplicon sequencing
 
-To explore additional options, we will now design primers for another use case using the TILED flavour. This flavour is designed to cover the entire genome of our input data. Therefore, the resulting primers are suitable for Oxford Nanopore or Illumina-based full-genome sequencing. For many genomes there are already existing primer schemes on GitHub, so you don't have to generate them by yourself. For example, there are primer schemes available from [quick-lab](https://github.com/quick-lab/primerschemes/tree/main/primerschemes), [pha4ge](https://github.com/pha4ge/primer-schemes/tree/main/schemes), and [artic-network](https://github.com/artic-network/primer-schemes), where you can explore various primer schemes.
+To explore additional options, we will now design primers for another use case using the TILED flavour. This flavour is designed to cover the entire genome of our input data. Therefore, the resulting primers are suitable for Oxford Nanopore or Illumina-based full-genome sequencing. 
+
+However, for many genomes, existing primer schemes are already available on GitHub, so you don't have to generate them by yourself. For example, you can explore various schemes from [quick-lab](https://github.com/quick-lab/primerschemes/tree/main/primerschemes), [pha4ge](https://github.com/pha4ge/primer-schemes/tree/main/schemes), and [artic-network](https://github.com/artic-network/primer-schemes).
 
 To focus on designing the primer scheme, we will skip the multiple sequence alignment step this time and begin with the pre-aligned Polio 1-3 sequences available as part of the [ViralPrimerScheme](https://github.com/jonas-fuchs/ViralPrimerSchemes) repository.
 
@@ -387,7 +389,7 @@ To focus on designing the primer scheme, we will skip the multiple sequence alig
 >
 {: .hands_on}
 
-In the next run with varVAMP, we will use the TILED flavour. There are also several settings to generate your individual output. You can specify the size of the amplicons and their overlapping regions. As with the primers for qPCR, you can determine the number of ambiguous nucleotides in you primers and the threshold for consensus nucleotides. However, this time we will only specify the maximum number of ambiguous nucleotides and allow the threshold to be automatically estimated.
+In this varVAMP run, we will use the TILED flavour. Similar to the qPCR primer design, you can determine the number of ambiguous nucleotides and set a threshold for consensus nucleotides. However, this time we will only specify the maximum number of ambiguous nucleotides and allow the threshold to be automatically estimated.
 
 > <hands-on-title>Primer design with the TILED-flavour for whole genome amplification</hands-on-title>
 >
@@ -407,7 +409,7 @@ In the next run with varVAMP, we will use the TILED flavour. There are also seve
 >       {: .comment}
 {: .hands_on}
 
-As you can see in the output on the right, you have succesfully created primers for further amplification of your viral sequences.
+Now you have successfully created primers for further amplification of your viral sequences.
 
 
 Once again, we have prepared some questions for you to verify your results and deepen your understanding of the output:
@@ -418,14 +420,14 @@ Once again, we have prepared some questions for you to verify your results and d
 > 2. What is encoded in the column named "score" in the file *"Amplicon locations"*.
 > 3. How long are the amplicons for the tiled primer scheme and for qPCR and why do they differ in size?
 > 4. What's the difference of the functionality of the 2 modi qPCR and TILED?
-> 5. If you want to have a more accurate product, which option do you have to manipulate?
+> 5. If you want to have a more accurate product, which options do you have to manipulate?
 >
 > > <solution-title></solution-title>
 > >
 > > 1. varVAMP creates 12 primers to amplify the whole Polio genome, if you use varVAMP version 1.2.1.
 > > 2. The score indicates wheather the primer pair for this amplicon belongs to pool 1 or 2.
-> > 3. For the tiled primer scheme, the amplicons are approximately 1400 bases long, while for qPCR,they are around 100 bases. The difference in length exists because the goal of the tiled primer scheme is to cover the entire genome without using too many primers that might interact. In contrast, qPCR focuses on detecting the presence of matching DNA in the sample. Therefore, the amplicons are kept shorter to speed up the amplification process.
-> > 4. The qpcr mode generates small amplicons with an optimized internal probe, while the TILED mode produces overlapping amplicons designed for Oxford Nanopore or Whole Genome Sequencing.
+> > 3. For the tiled primer scheme, the amplicons are approximately 1400 bases long, while for qPCR, they are around 100 bases. The difference in length exists because the goal of the tiled primer scheme is to cover the entire genome without using too many primers that might interact. In contrast, qPCR focuses on detecting the presence of matching DNA in a sample. Therefore, the amplicons are kept shorter to speed up the amplification process.
+> > 4. The qPCR mode generates small amplicons with an optimized internal probe, while the TILED mode produces overlapping amplicons designed for Oxford Nanopore or Whole Genome Sequencing.
 > > 5. You can increase the length of the amplicons, the minimum required overlap and the threshold or reduce the maximum number of ambiguous nucleotides per primer.
 > >
 > {: .solution}
