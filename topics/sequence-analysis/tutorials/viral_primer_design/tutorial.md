@@ -180,12 +180,14 @@ With this alignment, we prepared our input Poliovirus 1 genomes for varVAMP and 
 > 1. How many sequences were aligned and how long are they?
 > 2. What kind of alignment method is recommended for our kind of data and why?
 > 3. What does the height of the bars in the top row above the position of the bases indicate?
+> 4. Are there differences in the results produced by the two MAFFT methods?
 >
 > > <solution-title></solution-title>
 > >
 > > 1. In total 241 sequences were aligned with up to 7498 bases.
 > > 2. The speed-oriented methods, because there are too many sequences (>200) and it would take too long.
 > > 3. The height of the bars indicates the sequence conservation at that site.
+> > 4. For our genome alignment, both MAFFT methods, FFT-NS-2 and L-INS-i, produce nearly identical results. The only difference is a slight shift at site 107. In this case, as with other highly conserved genome sequences, neither method is superior. However, FFT-NS-2 is significantly faster and fully sufficient.
 > >
 > {: .solution}
 >
