@@ -207,51 +207,7 @@ Properly designed primers contribute to the specificity, efficiency, and accurac
 >
 {: .details}
 
-The tool varVAMP offers a wide range of outputs across its various modes. For example, it is possible to obtain the locations of the designed primers and amplicons in BED file format or as a graphical PDF. These outputs provide detailed information about the regions of interest and other potential primers. Further information can be found in the next detail box. The varVAMP analysis log file contains information about the tool's 'settings and procedures and is always included with the outputs.
-
-> <details-title>Output of varVAMP</details-title>
->
-> varVAMP has many different outputs, which you can select. Here you can find a short summery:
->
-> **Primer scheme outputs:**
->   - *Sequences of designed oligos:*
->       - Sequences of all designed oligos 
->   - *Primer binding sites:*  
->       - Primer binding sites in BED format; includes primer penalties (lower is better) as the score column
->   - *Amplicon locations:*
->       -  Amplicon locations in BED format; includes amplicon penalties (lower is better) in the score column 
->   - *Primer details:*
->       -  Primer details in tabular format
->   - *Primer to amplicon assignment:* ~ *only in SINGLE and TILED*
->       -  Primer-to-amplicon assignment in tabular format; lists primers belonging to the same amplicon on one line for simpler automated parsing
->   - *Unresolved primer dimers:* ~ *only in TILED*
->       - If any primers in the tiling scheme are predicted to form primer dimers, details about these will be found in this tabular output 
->   - *qPCR amplicon details:* ~ *only in QPCR*
->       - qPCR amplicon details in tabular format 
->
-> **Consensus sequence and alignment-related outputs:**
->   - *Ambiguous consensus sequence:*
->       - The consensus sequence containing ambiguous nucleotides; this sequence is what positional information in primer scheme outputs is referring to!
->   - *Majority consensus sequence (no ambiguity codes):*
->       - Consensus sequence without ambiguous nucleotide codes, but with the most prevalent nucleotide at each position instead. 
->   - *Alignment cleaned:*
->       -  The preprocessed alignment used to build consensus sequences 
->
-> **Graphical outputs:**
->   - *Amplicon design overview plot:*
->       - Amplicon design overview
->   - *Per-base mismatches barplots:*
->       -  Per-primer barplot of mismatches to input sequences
-> 
-> **Other/intermediate outputs:**
->   - *All candidate primer regions:*
->       -  List of all candidate regions of the consensus sequence that were evaluated for primers in BED format 
->   - *All primer sites:* ~ *only in SINGLE and TILED*
->       -  Binding sites of ALL high-scoring primers that were considered in BED format; includes primer penalties (lower is better) as the score column
->   - *All candidate qPCR probe regions:* ~ *only in QPCR*
->       -  List of all candidate regions of the consensus sequence that were evaluated for qPCR probes in BED format 
->
-{: .details}
+The tool varVAMP offers a wide range of outputs across its various modes. For example, it is possible to obtain the locations of the designed primers and amplicons in BED file format or as a graphical PDF. These outputs provide detailed information about the regions of interest and other potential primers. Further information can be found in the next detail box. The varVAMP analysis log file contains information about the tool's settings and procedures and is always included with the outputs.
 
 > <hands-on-title>Generate qPCR primer/probe set</hands-on-title>
 >
