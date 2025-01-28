@@ -3,9 +3,9 @@ layout: event
 
 title: Galaxy Training Academy 2025
 description: |
-  The Galaxy Academy is a self-paced online training event for beginners as well as learners who would like to improve their Galaxy data analysis skills. Over the course of one week, we will have a different topic and focus every day.
+  The Galaxy Academy is a self-paced online training event for beginners as well as learners who would like to improve their Galaxy data analysis skills. Over the course of one week, we offer a diverse selection of learning track for you.
 
-  <button id="program-button" class="btn btn-info" onclick="$('#program-tab').tab('show');">Start the Course!</button>
+# <button id="program-button" class="btn btn-info" onclick="$('#program-tab').tab('show');">Start the Course!</button>
 
 cover-image: events/images/galaxy-academy-logo.png
 cover-image-alt: logo for the Galaxy Academy event consisting of a laptop surrounded by illustrations of DNA molecules
@@ -36,10 +36,10 @@ tags:
 
 contributions:
     organisers:
+        - delphine-l
         - teresa-m
         - natalie-wa
         - annasyme
-        - delphine-l
         - shiltemann
         - dianichj
         - dadrasarmin
@@ -88,7 +88,6 @@ contributions:
         - biont
         - nfdi4plants
         - deNBI
-        - by-covid
         - elixir-europe
         - mwk
         - abromics
@@ -115,7 +114,7 @@ infrastructure:
 
 program:
   - section: "Monday: Introduction"
-    description: You will start the the week onl your own time by watching videos and/or following the text-based tutorials provided in the program below. There are no live sessions, so you can determine your own schedule. A large team of instructors is available on Slack to answer your questions 24/7! Enjoy!
+    description: You will start the the week on your own time by watching videos and/or following the text-based tutorials provided in the program below. There are no live sessions, so you can determine your own schedule. A large team of instructors is available on Slack to answer your questions 24/7! Enjoy!
 
 
   - section: "Galaxy introduction"
@@ -168,7 +167,7 @@ program:
     description: |
       Over the course of these three days, you can choose your preferred track and learn how to use Galaxy for data analysis in this research field. If you find multiple topics interesting, feel free to explore more than one track. Each track will guide you through the process, from basic to more advanced analyses, to accommodate learners of all levels.
 
-      For assistance, you can access support through the Slack channel associated with each track module. Please note that while we strive to accommodate all time zones, responses to specific questions may take a bit longer depending on the availability of experts in your time zone.
+# For assistance, you can access support through the Slack channel associated with each track module. Please note that while we strive to accommodate all time zones, responses to specific questions may take a bit longer depending on the availability of experts in your time zone.
     tracks:  # instead of tutorials, you can also define tracks, this will create a button per tracks that will lead to a different page
       - title: Proteomics
         link: events/tracks/gta2025-proteomics.md
@@ -196,12 +195,12 @@ program:
   - section: Fair training
     subsection: true
     tutorials:
-      - type: custom
-        name: Daily Icebreaker
-        description: |
-          **For the last ice breaker, we would love to know what the most interesting or exciting thing you learned this week is!!**
+      #- type: custom
+      #  name: Daily Icebreaker
+      #  description: |
+      #    **For the last ice breaker, we would love to know what the most interesting or exciting thing you learned this week is!!**
 
-          Post your answer on Slack [#social](https://gtnsmrgsbord.slack.com/channels/social) channel
+      #    Post your answer on Slack [#social](https://gtnsmrgsbord.slack.com/channels/social) channel
       - type: custom
         name: "[An overview of the RO-Crate concept and its implementations](https://gallantries.github.io/video-library/videos/ro-crates/intro/slides/)"
         description: |
@@ -217,22 +216,30 @@ program:
 
 
 ---
-# Welcome to the Galaxy Training Academy
+# Welcome to the Galaxy Training Academy 2025
 Do you want to learn how to use Galaxy, a open source data analysis platform? Then you are at the right place. We offer here a **5-day Global Online and Asynchronous learning event**.
 
-**We will open registrations on the 3rd of March** 
+**We will open registrations on the 3rd of March.**  
 
 ## Do you want to join the GTA as a trainer?
 Please fill our [form](https://forms.gle/V9QqSDNg2UmQaDHy8) to indicate in what capacity you would like to help. 
 
-## Further information about the event
-We provide you with training materials which you can study at your own pace and on your own time throughout the week. Don't worry, asynchronous does not mean that you are alone! If you ever need help, you can contact one of our many trainers worldwide via **Slack chat** .
+## How will the event be run
+The event is asynchronous which means you can set your own pace on your learning journey using our provided self-learning materials. You will start the event by your self at your own time. Don't worry, asynchronous does not mean that you are alone! If you ever need help, you can contact one of our many trainers worldwide via **Slack chat**.
 
-
-On the first day you can make yourself familiar with the Galaxy platform. In the next days you can follow different tracks, please go to the program tab for more information.
-
-You can set your own pace on your learning journey using our provided self-learning materials. Next to the program, you will find Slack channels you can join to exchange with the trainers and other participants during the event. Here you will also find help if you have qustions or run into an issue during the training. We try to cover all time zones with helpers for each topic, but please be patient if you do not get an immediat response.
-
+**How to participate**
+First you will need to register. **We will open registrations on the 3rd of March.** 
 You only need a browser and an account on one of the galaxy instances registered for this event. Please have a look at the setup tab.
 
-**Certificates:** You will be able to obtain a certificates by the end to the event. more information are coming soon.
+**Content of the event**
+We provide you with training materials which you can study at your own pace and on your own time throughout the week. Have a look at our [program](https://training.galaxyproject.org/training-material/). The program is still **under development**. 
+
+On the first day you can make yourself familiar with the Galaxy platform. In the next days you can follow different tracks, please go to the program tab for more information. On Friday we offer a ***Fair training*** program to you.
+
+**How to get help** 
+You will not be alone! If you ever need help, you can contact one of our many trainers worldwide via **Slack chat**. Next to the program, you will find Slack channels you can join to exchange with the trainers and other participants during the event. Here you will also find help if you have questions or run into an issue during the training. We try to cover all time zones with helpers for each topic, but please be patient if you do not get an immediate response.
+
+
+**Certificates**
+
+You will be able to obtain a certificates by the end to the event. more information are coming soon.
