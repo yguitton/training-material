@@ -6,7 +6,7 @@
 #
 #  EXAMPLE CONTRIBUTOR:
 #
-# userid:                  # madatory; your github username
+# userid:                  # mandatory; your github username
 #   name: Namey Name       # mandatory; your name
 #   joined: 2017-09        # mandatory; the month you added yourself to this file
 #   email: ma@example.com                      # your email address
@@ -632,6 +632,26 @@ dawnmy:
 Sch-Da:
     name: Daniela Schneider
     joined: 2024-10
+
+dadrasarmin:
+    name: Armin Dadras
+    joined: 2025-01
+    email: dadras@informatik.uni-freiburg.de
+    fediverse: https://mastodon.social/@dadrasarmin
+    fediverse_flavor: mastodon
+    bluesky: dadrasarmin.bsky.social
+    linkedin: armindadras
+    matrix: 'armin.dadras:matrix.org'
+    orcid: 0000-0001-7649-2388
+    maintainer_contact: matrix
+    contact_for_training: true
+    affiliations:
+        - uni-freiburg
+        - eurosciencegateway
+    location:
+        country: DE
+        lat: 47.997791
+        lon: 7.842609
 
 dannon:
     name: Dannon Baker
@@ -1405,6 +1425,12 @@ Lain-inrae:
     elixir_node: fr
     affiliations:
       - elixir-europe
+
+laurarussell:
+    name: Laura Russell
+    joined: 2025-01
+    affiliations:
+      - gbif
 
 lcooper:
     name: Laura Cooper
@@ -2403,6 +2429,13 @@ Sofokli5:
 sophia120199:
     name: Sophia Hampe
     joined: 2023-04
+
+sophiepamerlon:
+    name: Sophie Pamerlon
+    joined: 2025-01
+    affiliations:
+      - pndb
+      - gbif
 
 stain:
     name: Stian Soiland-Reyes
