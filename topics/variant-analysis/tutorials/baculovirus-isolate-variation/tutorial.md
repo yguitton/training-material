@@ -7,10 +7,10 @@ zenodo_link: ''
 level: Intermediate
 questions:
 - How can the genetic variability of a baculovirus isolate be analysed?
-- How can single nucleotide variants (SNV) be identified across multiple isolates?
-- How can SNV be used as markers to analyse the composition of baculovirus isolates?
+- How can single nucleotide variants (SNVs) be identified across multiple isolates?
+- How can SNVs be used as markers to analyse the composition of baculovirus isolates?
 objectives:
-- Understand the significance of single nucleotide variants (SNVs).
+- Understand the significance of SNVs.
 - Determine variable SNV positions for multiple isolates using a common reference genome.
 - Transform the output (VCF file) to a readable table format.
 - Interpret the SNV data to analyse the intra-isolate variability of baculoviruses.
@@ -41,7 +41,7 @@ Like all members of the class *Naldaviricetes*,
 baculoviruses have large circular dsDNA genomes that, in the family *Baculoviridae*, 
 range from 90 to 180 kbp and can encode up to 180 open reading frames (ORFs). 
 A detailed description of the biology of the Baculoviridae family can be found in the
-official report of the International Committee on Taxonomy of Viruses (ICTV) ({% cite Harrison2018 %}). A detailed summary can also be found on the website of the ICTV (https://ictv.global/).
+official report of the International Committee on Taxonomy of Viruses (ICTV) ({% cite Harrison2018 %}). A detailed summary can also be found on the [website of the ICTV](https://ictv.global/).
 
 > <comment-title> A Baculovirus Genome </comment-title>
 >
@@ -72,13 +72,12 @@ with a relatively short genome but not for baculoviruses or other large dsDNA vi
 Using Nanopore sequencing, it is possible to sequence significiant fragments of baculovirus genomes 
 to determine major haplotypes ({% cite Wennmann2024 %}). 
 
-Single nucleotide variants (SNV) have been proven as a powerful tool for analyzing 
-the genetic variability of sequenced baculovirus isolates ({% cite Fan2020 %}). SNV 
-are particularly useful for the analysis of intra-isolate specific 
+SNVs have been proven as a powerful tool for analyzing the genetic variability of sequenced baculovirus isolates ({% cite Fan2020 %}).
+SNVs are particularly useful for the analysis of intra-isolate specific
 variation, as many bioinformatic workflows and tools are established for SNV determination 
 and processing. For the identification of SNVs, Illumina sequencing data is mostly used, 
 as this sequencing technique provides highly accurate reads with a very low probability 
-of sequencing error. The data is usually provided and stored in FASTQ or FASTQsanger format.
+of sequencing error. The data is usually provided and stored in FASTQ format.
 
 When a baculovirus isolate is sequenced, a dataset of sequence reads is 
 obtained that consists of a multitude of fragmented genomes and the exact reconstruction 
@@ -198,10 +197,10 @@ of this mixed isolate based on other sequenced CpGV isolates.
 >
 > | Isolate | NCBI Genbank | NCBI SRA | Reference |
 > |:------------------:|:------------------:|:------------------:|:------------------:|
-> | CpGV-M | KM217575 | [SRR31589148](https://trace.ncbi.nlm.nih.gov/Traces?run=SRR31589148) | [Wennmann et al. 2020](https://doi.org/10.3390/v12060625) |
-> | CpGV-S | KM217573 | [SRR31589147](https://trace.ncbi.nlm.nih.gov/Traces?run=SRR31589147) | [Wennmann et al. 2020](https://doi.org/10.3390/v12060625) |
+> | CpGV-M | KM217575 | [SRR31589148](https://trace.ncbi.nlm.nih.gov/Traces?run=SRR31589148) | {% cite Wennmann2020 %}
+> | CpGV-S | KM217573 | [SRR31589147](https://trace.ncbi.nlm.nih.gov/Traces?run=SRR31589147) | {% cite Wennmann2020 %} |
 > | CpGV-E2 | KM217577 | [SRR31589146](https://trace.ncbi.nlm.nih.gov/Traces?run=SRR31589146) | [Gueli Alletti et al. 2017](https://doi.org/10.3390/v9090250) |
-> | CpGV-V15 | No assembly available | [SRR31679023](https://www.ncbi.nlm.nih.gov/sra/SRX27041396) | [Fan et al. 2020](https://doi.org/10.1093/ve/veaa073) |
+> | CpGV-V15 | No assembly available | [SRR31679023](https://www.ncbi.nlm.nih.gov/sra/SRX27041396) | {% cite Fan2020 %} |
 {: .comment}
 
 Follow the steps below to download the four Illumina datasets published at NCBI SRA.
@@ -239,7 +238,7 @@ quality filtered.
 >
 > 1. {% tool [Trim Galore!](toolshed.g2.bx.psu.edu/repos/bgruening/trim_galore/trim_galore/0.6.7+galaxy0) %} with the following parameters:
 >    - *"Is this library paired- or single-end?"*: `Paired Collection`
->        - {% icon param-collection %} *"Select a paired collection"*: `Paired-end data (fastq-dump)` (output of **Download and Extract Reads in FASTAQ format from NCBI SRA** {% icon tool %})
+>        - {% icon param-collection %} *"Select a paired collection"*: `Paired-end data (fastq-dump)` (output of **Download and Extract Reads in FASTQ format from NCBI SRA** {% icon tool %})
 >    - *"Advanced settings"*: `Full parameter list`
 >        - *"Trim low-quality ends from reads in addition to adapter removal (Enter phred quality score threshold)"*: `30`
 >        - *"Discard reads that became shorter than length N"*: `50`
@@ -552,10 +551,13 @@ Based on the SNV table, we can see that three possible nucleotides (alleles) occ
 >    >    > <solution-title>Answer:</solution-title>
 >    >    > When looking only at a table with several columns and numbers, it is difficult to understand that mainly a reference and one alternative nucleotide were detected in the SNV positions. 
 >    >    > One way to examine the frequency of a second or third alternative nucleotide is to filter the table with `c30=='ALT2'` or `c30=='ALT3'` instead of `c30=='ALT1'`.
->    >    > The resulting table can be used to create a distribution over the `REL.ALT` values in column 32 (`c32`). 
->    >    > You can perform this analysis by using the following tools: `Filter data on any column using simple expressions`, `Cut columns from a table` to extract column 32 (`c32`), which corresponds to `REL.ALT`
->    >    > and `Histogram with ggplot2`.  This task is a small challenge for you, if you like. It is up to you to familiarise yourself with the individual tools. 
->    >    > But it could be woth it, as it could help you understand why we do not consider ALT2 and ALT3 further in the next steps.
+>    >    > The resulting table can be used to create a distribution over the `REL.ALT` values in column 32 (`c32`).
+>    >    >
+>    >    > You can perform this analysis by using the following tools: **Filter data on any column using simple expressions** {% icon tool %}, **Cut columns from a table** {% icon tool %} to extract column 32 (`c32`), which corresponds to `REL.ALT`
+>    >    > and **Histogram with ggplot2** {% icon tool %}.
+>    >    >
+>    >    > This task is left to you as a small challenge, if you like. It is up to you to familiarise yourself with the individual tools,
+>    >    > but it could be worth it, as it could help you understand why we do not consider ALT2 and ALT3 further in the next steps.
 >    >    {: .solution}
 >    {: .question}
 >
@@ -637,7 +639,7 @@ Before we get started, I would like to explain specificity in more detail using 
 
 Isolate CpGV-V15 is not included in the analysis of SNV specificity determination because we want to explain its composition later with the other data sets.  
 
-The principle behind SNV specificities and how they are determined can be explained by the table below. In the first position 249, all isolates (CpGV-E2, CpGV-S and CpGV-M) have a relative nucleotide frequency >0. This means that all three sequenced isolates have an alternative nucleotide at this position, with frequencies of 14.7%, 88% and >99% for CpGV-M, CpGV-E2 and CpGV-S, respectively. The remaining percentages are the reference nucleotide. Note that I am using the `REL.ALT.0.05` values, which are based on the threshold of 0.05 (values <0.05 were set to zero). By this, the tutorial is simplified. Position 249 is thus variable for all three sequenced isolates and therefore specific for `CpGV-E2 + CpGV-S + CpGV-M`.  
+The principle behind SNV specificities and how they are determined can be explained by the table below. In the first position 249, all isolates (CpGV-E2, CpGV-S and CpGV-M) have a relative nucleotide frequency > 0. This means that all three sequenced isolates have an alternative nucleotide at this position, with frequencies of 14.7%, 88% and >99% for CpGV-M, CpGV-E2 and CpGV-S, respectively. The remaining percentages are the reference nucleotide. Note that I am using the `REL.ALT.0.05` values, which are based on the threshold of 0.05 (values < 0.05 were set to zero). By this, the tutorial is simplified. Position 249 is thus variable for all three sequenced isolates and therefore specific for `CpGV-E2 + CpGV-S + CpGV-M`.
 In the second position 603, only CpGV-E2 has an alternative nucleotide, its `REL.ALT.0.05 > 0`. The isolates of CpGV-S and CpGV-M show no variability in position 603 and are therefore identical to the reference. Thus, `position 603 is specific for CpGV-E2`. If we apply the same logic to positions 1278 and 6393, we can see that `position 1278 is specific for CpGV-S` and `position 6393 is specific for CpGV-E2 and CpGV-S`.  
 If we now wanted to detect specifically isolate CpGV-S and CpGV-E2 in a mixture, positions 603 and 1278 could serve as markers.    
 
@@ -772,7 +774,7 @@ Let us now look at the result for isolate CpGV-S. We can see that all CpGV-E2 sp
 >
 > Extract the data subset for CpGv-E2 and create the SNV specificity plot. Can you interpret and understand the result?
 >
-> > <solution-title>Solution</solution-title>
+> > <solution-title></solution-title>
 > >
 > >  ><hands-on-title> Extract data for CpGV-E2 </hands-on-title>
 > > >
