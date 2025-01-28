@@ -15,10 +15,10 @@ objectives:
 
 time_estimation: 1H
 key_points:
-- Robust pan-specific primers and primer schemes are important to avoid false-negatives in diagnostic settings and poorly covered samples in sequencing projects
-- A multiple sequence alignment that captures well the underlying sequence diversity of the viral pathogen of interest is a prerequisite for designing good pan-specific primers/primer schemes
-- varVAMP is an excellent solution for automating the design of primers and whole primer schemes from multiple sequence alignments of representative viral genotypes
-- By passing a BLAST database of off-target sequences to varVAMP you can reduce the risk of designing primers binding to these sequences
+- Robust pan-specific primers and primer schemes are crucial for preventing false-negatives in diagnostic settings and ensuring adequate coverage of samples in sequencing projects
+- A multiple sequence alignment that accurately captures the underlying sequence diversity of the viral pathogen of interest is essential for designing effective pan-specific primers and primer schemes
+- varVAMP is an excellent tool for automating the design of primers and whole primer schemes based on multiple sequence alignments of representative viral genotypes
+- By providing varVAMP with a BLAST database of off-target sequences, you can minimize the risk of designing primers that bind to these unintended sequences
 contributions:
   authorship:
   - VerenaMoo
