@@ -30,16 +30,16 @@ contributors:
 
 This training covers the multi-element molecular formula (MF) assignment using the MFAssignR tool. It was originally developed by {% cite Schum2020 %} for the analysis of untargeted mass spectrometry data coming from complex environmental mixtures. The package contains several functions including noise assessment, isotope filtering, internal mass recalibration, and formula assignment. 
 
-**MFAssignR workflow** is composed of several steps:
+The **MFAssignR workflow** is composed of several steps:
 
-1. Run **KMDNoise()** to determine the noise level for the data.
-2. Check effectiveness of S/N threshold using **SNplot()**.
-3. Use **IsoFiltR()** to identify potential 13C and 34S isotope masses.
-4. Using the signal-to-noise (S/N) threshold, and the two data frames output from IsoFiltR(), run **MFAssignCHO()** to assign MF with C, H, and O to assess the mass accuracy.
-5. Use **RecalList()** to generate a list of the potential recalibrant series.
-6. Use **FindRecalSeries()** to find the most suitable recalibrant series.
-7. After choosing recalibrant series, use **Recal()** to recalibrate the mass lists.
-8. Assign MF to the recalibrated mass list using **MFAssign()**.
+1. Run **KMDNoise** to determine the noise level for the data.
+2. Check the effectiveness of the S/N threshold using **SNplot**.
+3. Use **IsoFiltR** to identify potential 13C and 34S isotope masses.
+4. Using the signal-to-noise (S/N) threshold, and the two data frames output from IsoFiltR(), run **MFAssignCHO** to assign MF with C, H, and O to assess the mass accuracy.
+5. Use **RecalList** to generate a list of the potential recalibrant series.
+6. Use **FindRecalSeries** to find the most suitable recalibrant series.
+7. After choosing recalibrant series, use **Recal** to recalibrate the mass lists.
+8. Assign MF to the recalibrated mass list using **MFAssign**.
 9. Check the output plots from MFAssign() to evaluate the quality of the assignments.
 
 We can illustrate the workflow also on the following scheme:
@@ -60,11 +60,11 @@ Let's dive now into the individual steps and explain all the inputs, parameter s
 
 At the very beginning, we need to import the dataset we will be using. MFAssignR requires on input a table in a **tabular format**, where:
 
-- the first column is mass,
+- the first column is the mass to charge ratio (m/z),
 - the second column is intensity,
 - the optional third column is retention time.
 
-In our case, we will use the model data from the MFAssignR package, which contains the negative ions from acetonitrile extract of wildfire-influenced atmospheric organic aerosol, collected at the Pacific Northwest National Laboratory. The detection m/z range of the instrument was 100-800 and the ions were analyzed by electrospray ionization on Orbitrap Elite MS and recorded as Xcalibur.raw files. In the MFAssignR package, this dataset is named Raw_Neg_ML in .rds format, which we saved as a tabular file and we will use this file as our input.
+In our case, we will use the model data from the MFAssignR package, which contains the negative ions from acetonitrile extract of wildfire-influenced atmospheric organic aerosol, collected at the Pacific Northwest National Laboratory (PNNL). The detection m/z range of the instrument was 100-800 and the ions were analyzed by electrospray ionization (ESI) on Orbitrap Elite MS and recorded as Xcalibur.raw files. In the MFAssignR package, this dataset is named Raw_Neg_ML in .rds format, which we saved as a tabular file and we will use this file as our input.
 
 > <hands-on-title> Upload data </hands-on-title>
 >
