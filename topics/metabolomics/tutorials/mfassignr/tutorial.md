@@ -1,17 +1,16 @@
 ---
 layout: tutorial_hands_on
 
-title: Molecular formula assignment and recalibration with MFAssignR package
+title: Molecular formula assignment and mass recalibration with MFAssignR package
 zenodo_link: https://zenodo.org/records/13768009
 level: Intermediate
 questions:
 - What are the main steps of untargeted metabolomics LC-MS data pre-processing?
-- How to analyze complex mixture samples using the MFAssignR package?
+- How to annotate small molecules contained in mass spectrometry analyses of complex mixtures using the MFAssignR package?
 objectives:
 - To learn about the main steps in the pre-processing of untargeted metabolomics LC-MS data.
-- To try hands-on analysis using the real biological data.
+- To try hands-on analysis using the real data.
 requirements:
-  -
     type: "internal"
     topic_name: metabolomics
     tutorials:
@@ -20,6 +19,8 @@ requirements:
 time_estimation: 2H
 key_points:
 - MFAssignR can be used to process the untargeted LC-MS metabolomics data, including complex environmental mixture samples
+- MFAssignR can be used to annotate data obtained from LC-MS experiments with molecular formulas using _in silico_ calculations
+- MFAssignR can be used to find a recalibration series and to recalibrate mass spectrometry data to increase the accuracy
 contributors:
 - Kristina Gomoryova
 - hechth
