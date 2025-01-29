@@ -95,22 +95,45 @@ In this step, you'll use the MultiGSEA tool to perform GSEA-based pathway enrich
 >
 {: .hands_on}
 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+mit hands on boxen wie für mutltigsea anstatt grep das filter tool für 0.1 usw und das tool: Search in textfiles (grep)  toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_grep_tool/9.3+galaxy1 nach amino suchen
+
 # Mitochondrial stress activates metabolic pathways of amino acid biosynthesis.
 
+After we performed pathway enrichment on our data we want to continue our analysis by filtering the outputs.
+
+><hands-on-title> Filtering by values</hands-on-title>
+> We are going to use the tool {% tool [Filter data on any column using simple expressions](Filter1) %} with the following parameters:
+> - {% icon param-file %} *"Filter"*: Select the output dataset of the multiGSEA tool.
+> - *"With following condition"*: `c9<=0.01`
+>{: .hands_on}
+
+
+><hands-on-title> Filtering by keyword</hands-on-title>
 >Mitochondrial stress triggers the activation of amino acid biosynthesis and related metabolic pathways, as highlighted by Quiros et al. (Ref findest du in der Vignette), who identified up-regulation of several amino acid related pathways.
 >These findings align with our results using a multi-omics approach with multiGSEA
 >Our results also reveal the enrichment of amino acid-related pathways, e.g.:
 >
->```
+>For further filtering we are going to use the tool {% tool [Search in textfiles](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_grep_tool/9.3+galaxy1) %} with the following parameters:
+> - {% icon param-file %} *"Selectlines from"*: Select the output of the last filter.
+> - *"that"*: Choose "Match"
+> - *"Type of regex*": Choose "Basic (-G)"
+> - *"Regular Expression"*: \b[Aa]mino\b
+> - *"Match type"*: "case insensitive"
+> - *"Show lines preceding the matched line"*: 0
+> - *"Show lines trailing the matched line"*: 0
+> - "*Output*": "text file (for further processing)"
 >
->cut -f 1,9 output.tsv |grep amino -i
->(KEGG) Amino sugar and nucleotide sugar metabolism    0.00347274191804089
->(KEGG) Biosynthesis of amino acids    1.13741176493032e-05
->(REACTOME) Selenoamino acid metabolism    1.02032778591504e-05
->(REACTOME) Amino acid and derivative metabolism    2.2775071953139e-11
->(REACTOME) Response of EIF2AK4 (GCN2) to amino acid deficiency    4.83629358772636e-09
+>This should produce a file with the following content:
+>```
+>(KEGG) Amino sugar and nucleotide sugar metabolism	0.258278145695364	0.571272307893517	8.40563134115856e-07	4.03302191748788e-05	2.34233775080415e-05	0.00310502061987873	8.75854833022965e-05	0.00347274191804089
+>(KEGG) Biosynthesis of amino acids	3.7749282501799e-05	0.00138827212066317	1.53729180439681e-10	2.45864202583197e-08	0.0794621026894866	0.333364038319823	1.48946778740876e-07	1.13741176493032e-05
+>(REACTOME) Amino acid and derivative metabolism	4.7058253543142e-06	0.000231903073460604	7.70587893652191e-22	1.84864035687161e-18	0.055363321799308	0.286607081313329	9.03772696553135e-14	2.2775071953139e-11
+>(REACTOME) Response of EIF2AK4 (GCN2) to amino acid deficiency	6.42075812177139e-07	4.52021371772706e-05	3.76589836665495e-10	5.31434716565013e-08	NA	NA	3.35403180955872e-11	4.83629358772636e-09
+
 >
 >```
+>{: .hands_on}
 
 > <question-title></question-title>
 >
