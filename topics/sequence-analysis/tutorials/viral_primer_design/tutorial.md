@@ -358,12 +358,13 @@ The newly designed primer schemes can be checked again with the files *"qPCR amp
 > <question-title></question-title>
 > 
 > 1. What is the difference with a lower threshold? Did you get a primer scheme that excludes off-targets?
-> 2. Consider other use cases for a blast database beyond off-target elimination.
+> 2. Why doesn't the amplicon collection include the amplicons that we generated with the higher threshold?
+> 3. Consider other use cases for avoiding off-targets using a BLAST database.
 >
 > > <solution-title></solution-title>
-> > 1. With the lower threshold, we generated more potential primer schemes, including three, that were not penalized as off-targets by varVAMP.
-> > 2. For example, you can prepare primers to amplify specific viral genome sequences from samples of various origins, such as wastewater or animal blood, for real-time surveillance using fluorescence-based detection.
-If you want to prepare primers to amplify specific viral genome sequences of samples of various origins e.g. wastewater or animal blood samples for real-time surveillance through the fluorescence-based detection.
+> > 1. With the lower threshold, we generated more potential primer schemes, including four that do not contain off-targets.
+> > 2. The lower threshold leads to more potential amplicons that can achieve better scores than those with a higher threshold. Therefore the primers generated with the higher threshold are not considered in the varVAMP run with the lower threshold because all of them contain off-targets and have higher scores.
+> > 3. For example, you can prepare primers to amplify specific viral genome sequences from samples of various origins, such as wastewater or animal blood, enabling real-time surveillance through fluorescence-based detection.
 > {: .solution}
 >
 {: .question}
