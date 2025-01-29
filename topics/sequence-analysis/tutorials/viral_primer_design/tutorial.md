@@ -326,7 +326,7 @@ What does the difference mean?
 > > 1. No, the primers generated without consideration of off-target sites are identical to those generated with consideration.
 > > 2. Yes, the amplicons include off-targets.
 > > 3. Before varVAMP can account for off-target sites, it must consider settings such as the threshold and the maximum number of ambiguous nucleotides. These settings resulted in only three amplicons, all of which contain off-targets.
-> > 4. Our threshold for consensus sequences is set to 0.93, which is quite high. Lowering the threshold will generate more potential primer schemes.
+> > 4. Our threshold for consensus sequences is set to 0.93, which is quite high. Lowering this threshold would generate more potential primer schemes. Alternatively, increasing the maximum number of ambiguous nucleotides is another option.
 > {: .solution}
 >
 {: .question}
