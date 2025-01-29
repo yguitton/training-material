@@ -108,7 +108,7 @@ The data object, which you will import from Zenodo into Galaxy via the provided 
 
 In this step, our goal is to perform a "bioinformatic cell sorting" based on the annotated clusters of the single-cell data.
 
-To start a pseudobulk analysis, ensure that the AnnData object you will use contains all the necessary metadata for ***"pseudobulking"***. For example, key annotations, such as cell type, condition, disease, and batch, should be present. Most importantly, the AnnData object has to include a layer with the raw counts of gene expression.
+To start a pseudobulk analysis, ensure that the AnnData object you will use contains all the necessary metadata for ***"pseudobulking"***. For example, key annotations, such as cell_type, condition, disease, and batch, should be present. Most importantly, the AnnData object has to include a layer with the raw counts of gene expression.
 
 Raw counts are crucial for generating accurate pseudobulk aggregates. Since single-cell data is typically normalized after annotation, it’s important to preserve the raw counts in the AnnData object before normalization steps if you would like to perform a pseudobulk analysis later on. These raw counts are directly used by tools like **Decoupler** to generate the pseudobulk count matrix. Note that normalized count matrices should not be used with Decoupler, even if the tool appears to process them successfully.
 
