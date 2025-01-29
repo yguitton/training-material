@@ -307,9 +307,9 @@ Now that we have our data, we can begin creating an enterovirus genome database 
 >    {% snippet  faqs/galaxy/collections_build_list.md name="varVAMP Polio1 qpcr threshold 0.93 + BLAST" %}
 {: .hands_on}
 
-Now that we have generated three possible primer schemes for qPCR using our current settings, how can we verify whether these primers are appropriate and exclude potential off-targets?
+Now that we have generated three possible primer schemes for qPCR using our current settings, how can we check whether these primers are appropriate and exclude potential off-targets?
 
-You are already familiar with the bed file “Amplicon locations”, which is part of the output of the qpcr setting of varVAMP. As the name suggests, it provides information about the start and end positions of the amplicons, along with the crucial penalty score. Please review this file and compare it with the bed file containing the amplicon locations of the first varVAMP run.
+You can have a look at the files *"qPCR amplicon details"* and *"Primer details"* to see the locations of the generated amplicons and whether they consider off targets. Please review your output and compare it with the amplicons of the first varVAMP run.
 
 Please try to answer the following questions.
 
