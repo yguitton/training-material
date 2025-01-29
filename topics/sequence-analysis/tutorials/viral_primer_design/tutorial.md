@@ -309,23 +309,24 @@ Now that we have our data, we can begin creating an enterovirus genome database 
 
 Now that we have generated three possible primer schemes for qPCR using our current settings, how can we verify whether these primers are appropriate and exclude potential off-targets?
 
-You are already familiar with the bed file *"Amplicon locations"*, which is part of the output of the qpcr setting of varVAMP. As the name suggests, it provides information about the start and end positions of the amplicons, along with the crucial penalty score. Please review this file and compare it with the bed file containing the amplicon locations of the first varVAMP run.
+You are already familiar with the bed file “Amplicon locations”, which is part of the output of the qpcr setting of varVAMP. As the name suggests, it provides information about the start and end positions of the amplicons, along with the crucial penalty score. Please review this file and compare it with the bed file containing the amplicon locations of the first varVAMP run.
 
 Please try to answer the following questions.
 
 > <question-title></question-title>
 > 
-> 1. What is the difference between the scores for the amplicons generated with and without considering off-target sites?
-> 2. What does the difference mean?
-> 3. Why did varVAMP choose these primers?
+> 1. Is there a difference between the primers designed whith consideration of off-target sites and those designed without it?
+> 2. Does the output contain off-target amplicons?
+> 3. Why didn't varVAMP design primers without off-target sites?
+What does the difference mean?
 > 4. What settings can be modified to generate more possible primers?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. You can find the scores in the files named "Amplicon locations". The results generated while considering off-target sites show scores that are 50 points higher than those without considering off-targets.
-> > 2. Because of the enterovirus BLAST db reference, the same primer schemes of the first varVAMP run were found as off-targets and got additional penalty.
-> > 3. Only these three primer schemes matched our specifications.
-> > 4. Our threshold for consensus sequences is set to 0.93, which is quite high. Lowering the threshold eill generate more potential primer schemes.
+> > 1. No, the primers generated without consideration of off-target sites are identical to those generated with consideration.
+> > 2. Yes, the amplicons include off-targets.
+> > 3. Before varVAMP can account for off-target sites, it must consider settings such as the threshold and the maximum number of ambiguous nucleotides. These settings resulted in only three amplicons, all of which contain off-targets.
+> > 4. Our threshold for consensus sequences is set to 0.93, which is quite high. Lowering the threshold will generate more potential primer schemes.
 > {: .solution}
 >
 {: .question}
