@@ -1,0 +1,81 @@
+# metadata box
+overview: "Überblick" # maybe Zusammenfassung fits better
+questions: "Fragen"
+objectives: "Lernziele"
+requirements: "Voraussetzungen"
+authors: "Autoren"
+add-contributions: "Beiträge hinzufügen!"
+
+time-estimation: "Zeitschätzungen"
+minutes: "Minuten"
+hour: "Stunde"
+hours: "Stunden"
+
+level: "Level" # oder Stufe
+introductory: "Einführung" # oder Anfänger
+intermediate: "Mittelstufe"
+advanced: "Fortgeschrittene"
+
+supporting-materials: "Unterstützende Materialien"
+slides: "Folien"
+datasets: "Datensätze"
+workflows: "Workflows" # oder Arbeitsabläufe
+supporting-galaxies: "Verfügbar auf diesen Galaxies" # oder Galaxien
+last-modification: "Letzte Änderung"
+# Also as
+# last-modification: "Updated"
+
+
+# other boxes
+tip: "Tipp"
+handson: "Hands On" # oder praktisch, praxisbezogen 
+figure: "Abbildung"
+
+# endmatter
+key-points: "Eckpunkte"
+faqs: "Häufig gestellte Fragen"
+references: "Referenzen"
+# Also as
+# references: "Funding"
+feedback: "Rückmeldung" # oder Feedback
+feedback-text: "Haben Sie dieses Material als Dozent verwendet? Geben Sie uns gerne Feedback"
+feedback-link-text: "wie es war"
+feedback-text-learner: "Haben Sie dieses Material als Lernender oder Studierender genutzt? Klicken Sie auf das untenstehende Formular, um uns eine Rückmeldung zu geben."
+
+glossary: "Glossar"
+citing-tutorial: "Dieses Tutorial zitieren"
+congrats: "Herzlichen Glückwunsch zum erfolgreichen Abschluss dieses Tutorials!"
+
+want-exend-knowledge: "Möchten Sie Ihr Wissen erweitern?"
+recommended-followup: "Machen Sie eine der von uns empfohlenen Tutorials" # Follow one of our recommended follow-up trainings
+
+license: "Lizenz"
+license-tutorial: "Der Inhalt des Tutorials ist lizenziert unter der Creative Commons Attribution 4.0 International License" 
+license-framework: "Das GTN Framework ist lizenziert unter MIT"
+
+# slides
+thank-you: "Dankeschön"
+collaborative-effort: "Dieses Material ist das Ergebnis einer gemeinschaftlichen Arbeit. Vielen Dank an das [Galaxy Training Network](https://training.galaxyproject.org) und alle Mitwirkenden!"
+edit-on-github: "Haben Sie einen Tippfehler gefunden? In diesem Tutorial ist etwas falsch? Bearbeiten Sie es auf GitHub."
+
+first-time-using-slides: "Verwenden Sie die Pfeiltasten, um zwischen den Folien zu wechseln"
+presenter-notes: "Drücken Sie <kbd>P</kbd>, um die Präsentationsnotizen anzuzeigen"
+presenter-notes-explanation: |
+  Die Präsentationsnotizen enthalten zusätzliche Informationen, die nützlich sein können, wenn Sie diese Folien für einen Kurs verwenden möchten.
+
+  Drücken Sie erneut P, um die Präsentationsnotizen auszuschalten.
+
+  Drücken Sie C, um ein neues Fenster zu erstellen, in dem die gleiche Präsentation angezeigt wird.
+  Dieses Fenster ist mit dem Hauptfenster verknüpft. Wenn Sie in dem einen Fenster die Folien wechseln, wird diese im anderen Fenster ebenfalls geändert.
+
+  Nützlich beim Präsentieren.
+plaintext-slides: "Folien im Klartext"
+video-slides: "Video-Folien"
+before-diving-in: "Bevor Sie sich mit dieser Präsentation vertraut machen, empfehlen wir Ihnen, einen Blick auf folgende Seiten zu werfen"
+
+# In the code but not in lang.yaml
+# notebooks: "Jupyter Notebook"
+# notebooks: "RMarkdown Notebook"
+# published: "Veröffentlicht"
+# best-in-rstudio: "Am besten in RStudio ansehen"
+# best-in-jupyter: "Am besten in Jupyter Notebook ansehen"
