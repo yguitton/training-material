@@ -38,6 +38,7 @@ contributions:
     organisers:
         - delphine-l
         - teresa-m
+        - scottcain
         - natalie-wa
         - annasyme
         - shiltemann
@@ -228,15 +229,18 @@ Please fill our [form](https://forms.gle/V9QqSDNg2UmQaDHy8) to indicate in what 
 The event is asynchronous which means you can set your own pace on your learning journey using our provided self-learning materials. You will start the event by your self at your own time. Don't worry, asynchronous does not mean that you are alone! If you ever need help, you can contact one of our many trainers worldwide via **Slack chat**.
 
 **How to participate**
+
 First you will need to register. **We will open registrations on the 3rd of March.** 
 You only need a browser and an account on one of the galaxy instances registered for this event. Please have a look at the setup tab.
 
 **Content of the event**
+
 We provide you with training materials which you can study at your own pace and on your own time throughout the week. Have a look at our [program](https://training.galaxyproject.org/training-material/). The program is still **under development**. 
 
 On the first day you can make yourself familiar with the Galaxy platform. In the next days you can follow different tracks, please go to the program tab for more information. On Friday we offer a ***Fair training*** program to you.
 
 **How to get help** 
+
 You will not be alone! If you ever need help, you can contact one of our many trainers worldwide via **Slack chat**. Next to the program, you will find Slack channels you can join to exchange with the trainers and other participants during the event. Here you will also find help if you have questions or run into an issue during the training. We try to cover all time zones with helpers for each topic, but please be patient if you do not get an immediate response.
 
 
