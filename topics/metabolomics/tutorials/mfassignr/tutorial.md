@@ -197,7 +197,7 @@ Isotope filtering has 4 steps:
 
 After performing isotopic filtering, two tables are outputted, one containing the isotopic masses and one containing the monoisotopic masses and all masses that did not have a matching isotopic mass. In complex mixtures, a mass can be classified as both monoisotopic and isotopic; in those cases, it is included in both output tables and classified after the MF assignment.
 
-We will change only the S/N ratio parameter and Estimated noise (based on the KMDNoise function), otherwise, we can follow with the default settings.
+We will change only the S/N ratio parameter and estimated noise (based on the KMDNoise function), otherwise, we can follow with the default settings.
 
 > <hands-on-title> Isotope filtering using IsoFiltR </hands-on-title>
 >
@@ -211,11 +211,11 @@ We will change only the S/N ratio parameter and Estimated noise (based on the KM
 
 # Preliminary molecular formula assignment
 
-Once we have denoised data and have identified the potential 13C and 34S masses, we can start with the preliminary MF assignment, using the **MFAssignCHO** function. This function assigns MF only with C, H, and O elements to assess the mass accuracy, and therefore it's much quicker than the main MFAssign function. It is based on the CHOFIT algorithm developed by {% cite Green2015 %}.
+Once we have denoised the data and have identified the potential 13C and 34S masses, we can start with the preliminary MF assignment, using the **MFAssignCHO** function. This function assigns MF only with C, H, and O elements to assess the mass accuracy, and therefore it's much quicker than the main MFAssign function. It is based on the CHOFIT algorithm developed by {% cite Green2015 %}.
 
-Firstly, the initial formula assignment with the CHOFIT algorithm is performed along with the quality checks. Then, KMD and z* values are calculated for all masses with the CH2 Kendrick base, and masses are sorted into CH2 homologous series. Subsequently, 1-3 members of each CH2 homologous series below the user-defined threshold are selected and assigned a MF. The ambiguous MFs are returned within the Unassigned list, whereas the unambiguous MF are further re-assigned using CH2, O, H2, H2O, and CH2O extensions. 
+Firstly, the initial formula assignment with the CHOFIT algorithm is performed along with the quality checks. Then, KMD and z* values are calculated for all masses with the CH2 Kendrick base, and masses are sorted into CH2 homologous series. Subsequently, 1-3 members of each CH2 homologous series below the user-defined threshold are selected and assigned a MF. The ambiguous MFs are returned within the _Unassigned_ list, whereas the unambiguous MF are further re-assigned using CH2, O, H2, H2O, and CH2O extensions. 
 
-Let's use the MFAssignCHO function. On the input, we will need the output of the IsoFiltR function, a data frame of monoisotopic masses, and also (optionally) the data frame containing isotopic masses. Furthermore, we select in which ion mode we measured the data (positive or negative) and we set the signal-to-noise threshold - based on the noise estimate we obtained from the KMDNoise or HistNoise functions multiplied by the multiplier. Finally, based on the acquisition range, we set the lowMW and highMW, and also the allowed ppm error. Other parameters we can leave in default settings, although in the 'Advanced' tab, many additional parameters can be set by user, including amounts of elements, ratios (e.g. minimum allowed O/C ratio) and many others. 
+Let's use the MFAssignCHO function. On the input, we will need the output of the IsoFiltR function, a data frame of monoisotopic masses, and also (optionally) the data frame containing isotopic masses. Furthermore, we select in which ion mode we measured the data (positive or negative) and we set the signal-to-noise threshold - based on the noise estimate we obtained from the **KMDNoise** or **HistNoise** functions multiplied by the multiplier. Finally, based on the acquisition range, we set the lowMW and highMW, and also the allowed ppm error. Other parameters we can leave in default settings, although in the 'Advanced' tab, many additional parameters can be set by user, including amounts of elements, ratios (e.g. minimum allowed O/C ratio) and many others. 
 
 On the output, there are two dataframes, `Ambiguous` and `Unambigous` provided.
 
@@ -243,9 +243,9 @@ This plot shows us the absolute error, which increases with the increasing mass 
 ![Van Krevelen plot](images/vankrevelen.png)
 
 > <details-title>Van Krevelen plot</details-title>
->Van Krevelen plot was originally introduced in 1950 {% cite krevelen1950graphical %} to illustrate 
+>The Van Krevelen plot was originally introduced in 1950 {% cite krevelen1950graphical %} to illustrate 
 >the coal formation processes. It typically depicts the atomic ratios of hydrogen-to-carbon (H/C) 
->ratio on y-axis and oxygen-to-carbon (O/C) on x-axis. Certain molecules occupy different regions of
+>ratio on the y-axis and oxygen-to-carbon (O/C) on the x-axis. Certain molecules occupy different regions of
 >the van Krevelen plot, e.g. alkanes usually have high H/C and low O/C ratios, aromatic compounds have
 >lower H/C ratios and carbohydrates usually have high O/C and moderate H/C ratios.
 >
@@ -254,7 +254,7 @@ This plot shows us the absolute error, which increases with the increasing mass 
 Van Krevelen plot visualizes the chemical composition of complex chemical mixtures and it characterizes the data quality and how the data is distributed. Compounds with similar structures and functional groups will cluster together on the plot.
 
 ![MS groups](images/MSgroups.png)
-MSgroups plot shows the abundance distribution of unambiguous assignments. 
+The MSgroups plot shows the abundance distribution of unambiguous molecular formula assignments. 
 
 ![msassign](images/msassign.png)
 Assignment mass spectrum then shows what was assigned: green are the assigned compounds, red are unassigned ones (eventually, if applicable, isotopes are in blue). It is useful to check whether there are any gaps around a particular m/z, which would mean there is a problem with the assignment.
