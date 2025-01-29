@@ -160,7 +160,7 @@ The function outputs a **KMD plot**, where the noise area is separated between r
 
 ## SNplot
 
-We can now check the effectiveness of the S/N threshold using SNplot, which plots the mass spectrum with the masses below and above the chosen threshold, where the noise is indicated by red.
+We can now check the effectiveness of the S/N threshold using **SNplot**, which plots the mass spectrum with the masses below and above the chosen threshold, where the noise is indicated by red.
 
 The `cut` parameter can be computed as an estimated noise level * multiplier, so if we get 346.0706 as a noise level from KMDnoise, we can multiply it by 6, which gives us 2076.
 
@@ -172,7 +172,8 @@ The `cut` parameter can be computed as an estimated noise level * multiplier, so
 >
 > 1. {% tool [MFAssignR SNplot](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_snplot/mfassignr_snplot/1.1.2+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input data"*: `mfassignr_input.txt` (Input dataset)
->    - *"cut"*: `2076.0`
+>    - *"SN ratio"*: `6.0`
+>    - *"Estimated noise"* `346.0706`
 >    - *"mass"*: `301.0`
 >    - *"window.x"*: `50.0`
 >    - *"window.y"*: `10.0`
