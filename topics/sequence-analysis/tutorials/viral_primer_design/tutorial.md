@@ -84,9 +84,9 @@ Any analysis should get its own Galaxy history. So let's start by creating a new
 >
 {: .hands_on}
 
-## Transform aligned sequences into unaligned fasta file format
+## Transform aligned sequences into unaligned FASTA file format
 
-For the primer design, we need a *Multiple sequence alignment*, which we can generate with **MAFFT**({% cite Katoh2013 %}). To effectively utilize MAFFT, it's crucial to provide an unaligned fasta file as input. This raw format allows the program to flexibly align sequences based on their similarity and to adjust gaps and mismatches to optimize the alignment quality. Furthermore, the transformation of the aligned file to an unaligned file is a helpful exercise to deepen your knowledge about the variety and diversity of different tools existing on the Galaxy website.
+For the primer design, we need a *Multiple sequence alignment*, which we can generate with **MAFFT**({% cite Katoh2013 %}). To effectively utilize MAFFT, it's crucial to provide an unaligned FASTA file as input. This raw format allows the program to flexibly align sequences based on their similarity and to adjust gaps and mismatches to optimize the alignment quality. Furthermore, the transformation of the aligned file to an unaligned file is a helpful exercise to deepen your knowledge about the variety and diversity of different tools existing on the Galaxy website.
 
 > <hands-on-title>Degap the Polio1-genomes</hands-on-title>
 >
@@ -114,7 +114,7 @@ When multiple files are added, MAFFT will run for each of these, so it is necess
 >
 > **Option 1:**
 >
->   - Upload several fasta files in different dataset upload sections and cross concatenate them according to the following rule, the first file from the first section is combined with the first file from the second section, etc. You can add as many dataset sections as you want.
+>   - Upload several FASTA files in different dataset upload sections and cross concatenate them according to the following rule, the first file from the first section is combined with the first file from the second section, etc. You can add as many dataset sections as you want.
 >   - If you want to make multiple alignments of many files separately, upload them in the first dataset section and don't add a second dataset section.
 >
 > **Option 2:**
@@ -209,7 +209,7 @@ Properly designed primers contribute to the specificity, efficiency, and accurac
 >
 {: .details}
 
-The tool varVAMP offers a wide range of outputs across its various modes. For example, it is possible to obtain the locations of the designed primers and amplicons in BED file format or as a graphical PDF. These outputs provide detailed information about the regions of interest and other potential primers. Further information can be found in the next detail box. The varVAMP analysis log file contains information about the tool's settings and procedures and is always included with the outputs.
+The tool varVAMP offers a wide range of outputs across its various modes. For example, it is possible to obtain the locations of the designed primers and amplicons in BED file format or as a graphical PDF. These outputs provide detailed information about the regions of interest and other potential primers. Further information can be found in the next detail box. The varVAMP *"Analysis Log"* file contains information about the tool's settings and procedures and is always included with the outputs.
 
 > <hands-on-title>Generate qPCR primer/probe set</hands-on-title>
 >
@@ -252,7 +252,7 @@ To check your results and assess your understanding of them, a few questions hav
 > > 1. The first amlicon has a length of 93 bases, the second 142 bases and the third is 77 bases long, as you can see in the file *"qPCR amplicon details"*.
 > > 2. varVAMP shows all primer pairs that fulfill the specified conditions like threshold or amplicon length. In our case 3 primer pairs fulfill all conditions.
 > > 3. The penalty score of the amplicons is a simple addition of the 3 penalty scores of the corresponding primers and the probe. For these applies the lower the value of the penalty score the better. Therefore regarding the penalty score the amplicon 0 starting at position 1743 has the lowest value with 6.7 and should be used. But it is also useful to have a closer look at the file *"primer details"* to compare the number of ambiguous nucleotides and the individual penalty scores especially for the probes.
-> > 4. The solution lies in the per default contributed log file. It contains the parameter configuration of your latest varVAMP run. If you save and use the values of the threshold and n_ambig for further runs, varVAMP will not start it's automatic calculation of these and thus results in lower computing time and higher reproducibility.
+> > 4. The solution lies in the per default contributed *"Analysis Log"* file. It contains the parameter configuration of your latest varVAMP run. If you save and use the values of the threshold and n_ambig for further runs, varVAMP will not start it's automatic calculation of these and thus results in lower computing time and higher reproducibility.
 > {: .solution}
 >
 {: .question}
@@ -265,7 +265,7 @@ With varVAMP, it is possible to use a BLAST database as an off-target reference.
 First of all, you need to upload the enterovirus genome data into Galaxy.
 
 > <hands-on-title>Get the whole genome sequences of enterovirus</hands-on-title>
-> 1. Get the genome sequence fasta files from
+> 1. Get the genome sequence FASTA files from
 >
 >    ```
 >    
@@ -345,7 +345,7 @@ Now let's try using a lower threshold to generate a primer scheme that is not cl
 >
 >       > <comment-title>Threshold control</comment-title>
 >       >
->       >You can try using the automatic setting for values like the threshold in varVAMP. On the website, for the question *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"* select the option `Specify max ambiguous nts, estimate suitable threshold`. The tool will then automatically select a value, which you can find in the "Analysis log" file after running the tool.
+>       >You can try using the automatic setting for values like the threshold in varVAMP. On the website, for the question *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"* select the option `Specify max ambiguous nts, estimate suitable threshold`. The tool will then automatically select a value, which you can find in the *"Analysis Log"* file after running the tool.
 >       {: .comment}
 >
 > 2. Creating a dataset collection
