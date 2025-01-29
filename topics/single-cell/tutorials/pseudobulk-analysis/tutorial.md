@@ -19,7 +19,7 @@ key_points:
 contributions:
   authorship:
     - dianichj
-editing:
+  editing:
     - pavanvidem
 tags:
 - single-cell
