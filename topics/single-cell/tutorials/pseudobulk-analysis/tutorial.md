@@ -75,7 +75,7 @@ If you're new to these concepts, we recommend exploring our other tutorials befo
 - [Clustering 3K PBMCs with Scanpy]({% link topics/single-cell/tutorials/scrna-scanpy-pbmc3k/tutorial.md %}): Learn how to cluster and annotate cells in Galaxy using our single-cell tools.
 - [Combining single cell datasets after pre-processing]({% link topics/single-cell/tutorials/scrna-case_alevin-combine-datasets/tutorial.md %}): Understand how to combine multiple datasets into one AnnData object and add metadata from single-cell experiments.
 
-The data object, which you will import from Zenodo into Galaxy via the provided link, has been preprocessed, analysed, and annotated. It includes the following key observations:
+The data object, which you will import from Zenodo into Galaxy via the provided link, has been preprocessed, analysed, and annotated. It includes the following key observation metadata:
 - **cell_type**: The type of cell identified.
 - **disease**: Indicates whether the sample is a control or corresponds to a COVID-19 condition.
 - **individual**: The individual donor or sample identifier.
