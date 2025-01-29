@@ -309,7 +309,7 @@ Now that we have our data, we can begin creating an enterovirus genome database 
 
 Now that we have generated three possible primer schemes for qPCR using our current settings, how can we check whether these primers are appropriate and exclude potential off-targets?
 
-You can have a look at the files *"qPCR amplicon details"* and *"Primer details"* to see the locations of the generated amplicons and whether they consider off targets. Please review your output and compare it with the amplicons of the first varVAMP run.
+You can have a look at the files *"qPCR amplicon details"* and *"Primer details"* to see the locations of the generated amplicons and whether they consider off-targets. Please review your output and compare it with the amplicons of the first varVAMP run.
 
 Please try to answer the following questions.
 
@@ -331,7 +331,7 @@ What does the difference mean?
 >
 {: .question}
 
-Now let's try using a lower threshold to generate a primer scheme that is not penalized by detection as an off-target through the BLAST database. Lowering the threshold will reduce specificity, but values above 0.7 are generally acceptable, depending on the specific use case. The default value is 0.8, so let's proceed with this setting.
+Now let's try using a lower threshold to generate a primer scheme that is not classified as an off-target amplicon through the BLAST database. Lowering the threshold will reduce specificity, but values above 0.7 are generally acceptable, depending on the specific use case. Since the default value is 0.8, so let's proceed with this setting.
 
 > <hands-on-title>Primer design of Polio 1 virus with BLAST db and lower threshold</hands-on-title>
 >
@@ -353,7 +353,7 @@ Now let's try using a lower threshold to generate a primer scheme that is not pe
 >    {% snippet  faqs/galaxy/collections_build_list.md name="varVAMP Polio1 qpcr threshold 0.8 + BLAST" %}
 {: .hands_on}
 
-The newly designed primer schemes can be checked again with the "Amplicon locations" file. We have prepared some questions for you to assess your understanding:
+The newly designed primer schemes can be checked again with the files *"qPCR amplicon details"* and *"Primer details"*. We have prepared some questions for you to assess your understanding:
 
 > <question-title></question-title>
 > 
