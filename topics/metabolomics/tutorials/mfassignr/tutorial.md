@@ -103,19 +103,19 @@ KMDNoise function takes advantage of the calculation of **Kendrick Mass Defect (
 
 > <details-title>Kendrick Mass Defect</details-title>
 >
->**Kendrick mass (KM)** was developed to simplify classification and
+>The **Kendrick mass (KM)** serves to simplify classification and
 >identification of repeating units in molecules, typically 
 >homologous CH2 series, which differ only by the number of base 
 >units (-CH2 groups in this case). It sets the mass of the molecular fragment to 
 >integer value in atomic mass units (amu).
 >
->KM of a compound can be therefore calculated as known m/z of the compound multiplied by ratio (rounded
+>The KM of a compound can be therefore calculated as the known m/z (given the ionization) of the compound multiplied by a ratio (rounded
 >(CH2_mass)/exact(CH2_mass)), which is (14/14.01565) = 0.9988834.
 >
 >$$\text{KM} = \text{m/z} \times \frac{\text{14.00000}}{\text{14.01565}}$$
 >
 >
->**Kendrick Mass Defect (KMD)** is then defined as the difference 
+>The **Kendrick Mass Defect (KMD)** is then defined as the difference 
 >between rounded KM values and KM.
 >$$\text{KMD} = \text{nominal KM} - {\text{KM}}$$
 >
@@ -126,11 +126,11 @@ KMDNoise function takes advantage of the calculation of **Kendrick Mass Defect (
 {: .details}
 
 
-When the KMD is calculated for all peaks in the mass spectrum, there will be a clear separation of more intense analyte peaks and low-intense noise peaks. To isolate the noise region, we can use the KMD limits of chemically feasible molecular formulas in conjunction with the calculation of the slope of a KMD plot using a linear equation $$y = 0,1132x + b$$, where *y* is the KMD value, *0,1132* was an empirically derived integer, *x* the measured ion mass and *b* an y-intercept. To provide a more accurate assessment, two lines with different y-intercepts are selected (we will set this lower and upper y-limit below). Once the noise region is isolated, a noise level will be estimated as the average intensity of peaks within that region.
+When the KMD is calculated for all peaks in the mass spectrum, there will be a clear separation of more intense analyte peaks and low-intense noise peaks. To isolate the noise region, we can use the KMD limits of chemically feasible molecular formulas in conjunction with the calculation of the slope of a KMD plot using a linear equation $$y = 0.1132x + b$$, where *y* is the KMD value, *0,1132* was an empirically derived integer, *x* the measured ion mass and *b* an y-intercept. To provide a more accurate assessment, two lines with different y-intercepts are selected (we will set this lower and upper y-limit below). Once the noise region is isolated, a noise level will be estimated as the average intensity of peaks within that region.
 
 ![KMD plot](images/KMDplot_explained.png)
 
-When running the function, we can stick with the default values: the upper limit for the y-intercept is set to 0.2, so that it does not interact with any potentially double-charged peaks, the lower limit of the y-intercept value is set to 0.05 to ensure no analyte peaks are incorporated into the noise estimation. Both upper and lower x intercept limits are optional and will be set to minimum and maximum mass in the data if not specified. 
+When running the function, we can stick with the default values: the upper limit for the y-intercept is set to 0.2, so that it does not interact with any potentially double-charged peaks, the lower limit of the y-intercept value is set to 0.05 to ensure no analyte peaks are incorporated into the noise estimation. Both upper and lower x-intercept limits are optional and will be set to minimum and maximum mass in the data if not specified. 
 
 > <hands-on-title> Noise assessment using KMDNoise </hands-on-title>
 >
