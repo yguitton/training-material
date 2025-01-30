@@ -6,12 +6,12 @@ requirements: "Voraussetzungen"
 authors: "Autoren"
 add-contributions: "Beiträge hinzufügen!"
 
-time-estimation: "Zeitschätzungen"
+time-estimation: "Geschätzte Bearbeitungszeit"
 minutes: "Minuten"
 hour: "Stunde"
 hours: "Stunden"
 
-level: "Level" # oder Stufe
+level: "Level" 
 introductory: "Einführung" # oder Anfänger
 intermediate: "Mittelstufe"
 advanced: "Fortgeschrittene"
@@ -23,7 +23,7 @@ workflows: "Workflows" # oder Arbeitsabläufe
 supporting-galaxies: "Verfügbar auf diesen Galaxies" # oder Galaxien
 last-modification: "Letzte Änderung"
 # Also as
-# last-modification: "Updated"
+# last-modification: "Updated" # aktualisiert
 
 
 # other boxes
@@ -38,16 +38,16 @@ references: "Referenzen"
 # Also as
 # references: "Funding"
 feedback: "Rückmeldung" # oder Feedback
-feedback-text: "Haben Sie dieses Material als Dozent verwendet? Geben Sie uns gerne Feedback"
-feedback-link-text: "wie es war"
-feedback-text-learner: "Haben Sie dieses Material als Lernender oder Studierender genutzt? Klicken Sie auf das untenstehende Formular, um uns eine Rückmeldung zu geben."
+feedback-text: "Hast du dieses Material als Lernender verwendet? Gebe uns gerne Feedback"
+feedback-link-text: "wie es war" # wie ist es gelaufen
+feedback-text-learner: "Hast du dieses Material als Lernender oder Studierender genutzt? Klick auf das untenstehende Formular, um uns Feedback zu geben."
 
 glossary: "Glossar"
 citing-tutorial: "Dieses Tutorial zitieren"
 congrats: "Herzlichen Glückwunsch zum erfolgreichen Abschluss dieses Tutorials!"
 
-want-exend-knowledge: "Möchten Sie Ihr Wissen erweitern?"
-recommended-followup: "Machen Sie eine der von uns empfohlenen Tutorials" # Follow one of our recommended follow-up trainings
+want-exend-knowledge: "Möchtest Du dein Wissen erweitern?"
+recommended-followup: "Mach eines unserer empfohlenen Folgetrainings" # Follow one of our recommended follow-up trainings
 
 license: "Lizenz"
 license-tutorial: "Der Inhalt des Tutorials ist lizenziert unter der Creative Commons Attribution 4.0 International License" 
@@ -56,22 +56,22 @@ license-framework: "Das GTN Framework ist lizenziert unter MIT"
 # slides
 thank-you: "Dankeschön"
 collaborative-effort: "Dieses Material ist das Ergebnis einer gemeinschaftlichen Arbeit. Vielen Dank an das [Galaxy Training Network](https://training.galaxyproject.org) und alle Mitwirkenden!"
-edit-on-github: "Haben Sie einen Tippfehler gefunden? In diesem Tutorial ist etwas falsch? Bearbeiten Sie es auf GitHub."
+edit-on-github: "Hast du einen Tippfehler gefunden? In diesem Tutorial ist etwas falsch? Bearbeite es auf GitHub."
 
-first-time-using-slides: "Verwenden Sie die Pfeiltasten, um zwischen den Folien zu wechseln"
-presenter-notes: "Drücken Sie <kbd>P</kbd>, um die Präsentationsnotizen anzuzeigen"
+first-time-using-slides: "Verwende die Pfeiltasten, um zwischen den Folien zu wechseln"
+presenter-notes: "Drücke <kbd>P</kbd>, um die Präsentationsnotizen anzuzeigen"
 presenter-notes-explanation: |
-  Die Präsentationsnotizen enthalten zusätzliche Informationen, die nützlich sein können, wenn Sie diese Folien für einen Kurs verwenden möchten.
+  Die Präsentationsnotizen enthalten zusätzliche Informationen, die nützlich sein können, wenn du diese Folien für einen Kurs verwenden möchten.
 
   Drücken Sie erneut P, um die Präsentationsnotizen auszuschalten.
 
-  Drücken Sie C, um ein neues Fenster zu erstellen, in dem die gleiche Präsentation angezeigt wird.
-  Dieses Fenster ist mit dem Hauptfenster verknüpft. Wenn Sie in dem einen Fenster die Folien wechseln, wird diese im anderen Fenster ebenfalls geändert.
+  Drücke C, um ein neues Fenster zu erstellen, in dem die gleiche Präsentation angezeigt wird.
+  Dieses Fenster ist mit dem Hauptfenster verknüpft. Wenn du in einem Fenster die Folien wechseln, wird diese im anderen Fenster ebenfalls geändert.
 
   Nützlich beim Präsentieren.
 plaintext-slides: "Folien im Klartext"
 video-slides: "Video-Folien"
-before-diving-in: "Bevor Sie sich mit dieser Präsentation vertraut machen, empfehlen wir Ihnen, einen Blick auf folgende Seiten zu werfen"
+before-diving-in: "Bevor du dich mit dieser Präsentation vertraut machst, empfehlen wir dir, einen Blick auf folgende Seiten zu werfen"
 
 # In the code but not in lang.yaml
 # notebooks: "Jupyter Notebook"
