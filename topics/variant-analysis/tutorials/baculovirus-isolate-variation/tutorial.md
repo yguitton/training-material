@@ -14,7 +14,6 @@ objectives:
 - Determine variable SNV positions for multiple isolates using a common reference genome.
 - Transform the output (VCF file) to a readable table format.
 - Interpret the SNV data to analyse the intra-isolate variability of baculoviruses.
-- Learn to create your own sequence data and analyse it using the provided workflow and tool to explore the genetic variation.
 time_estimation: 3H
 abbreviations:
     CpGV: Cydia pomonella granulovirus
@@ -30,8 +29,6 @@ contributors:
 - wennj
 
 ---
-
-# Introduction
 
 Baculoviruses of the family *Baculoviridae* ({% cite Harrison2018 %}) are among the most intensively 
 studied viruses, not only because of their widespread application in biotechnology as protein expression 
@@ -199,7 +196,7 @@ of this mixed isolate based on other sequenced CpGV isolates.
 > |:------------------:|:------------------:|:------------------:|:------------------:|
 > | CpGV-M | KM217575 | [SRR31589148](https://trace.ncbi.nlm.nih.gov/Traces?run=SRR31589148) | {% cite Wennmann2020 %}
 > | CpGV-S | KM217573 | [SRR31589147](https://trace.ncbi.nlm.nih.gov/Traces?run=SRR31589147) | {% cite Wennmann2020 %} |
-> | CpGV-E2 | KM217577 | [SRR31589146](https://trace.ncbi.nlm.nih.gov/Traces?run=SRR31589146) | [Gueli Alletti et al. 2017](https://doi.org/10.3390/v9090250) |
+> | CpGV-E2 | KM217577 | [SRR31589146](https://trace.ncbi.nlm.nih.gov/Traces?run=SRR31589146) | {% cite Alletti2017 %} |
 > | CpGV-V15 | No assembly available | [SRR31679023](https://www.ncbi.nlm.nih.gov/sra/SRX27041396) | {% cite Fan2020 %} |
 {: .comment}
 
@@ -524,7 +521,7 @@ One thing that stands out are the NCBI SRA numbers in the ISOLATE column, which 
 >
 >    > <question-title>What is replaced by what?</question-title>
 >    > 1. Can you say which SRA number was replaced by which isolate abbreviation?
->    >    > <solution-title>Answer:</solution-title>
+>    >    > <solution-title></solution-title>
 >    >    > * SRR31589148 was replaced by CpGV-M  
 >    >    > * SRR31589147 was replaced by CpGV-S  
 >    >    > * SRR31589146 was replaced by CpGV-E2  
@@ -548,7 +545,7 @@ Based on the SNV table, we can see that three possible nucleotides (alleles) occ
 >
 >    > <question-title>How can you check whether only two nucleotides occur (mostly) per SNV position?</question-title>
 >    > Think about an option how the occurance of one, two, three or four nucleotides per SNV position can be analyzed.
->    >    > <solution-title>Answer:</solution-title>
+>    >    > <solution-title></solution-title>
 >    >    > When looking only at a table with several columns and numbers, it is difficult to understand that mainly a reference and one alternative nucleotide were detected in the SNV positions. 
 >    >    > One way to examine the frequency of a second or third alternative nucleotide is to filter the table with `c30=='ALT2'` or `c30=='ALT3'` instead of `c30=='ALT1'`.
 >    >    > The resulting table can be used to create a distribution over the `REL.ALT` values in column 32 (`c32`).
