@@ -1,0 +1,11 @@
+- doc: Test outline for Workflow-to-detect-SNV-from-Illumina-sequenced-baculovirus-isolates
+  job: {}
+  outputs:
+    bcftools_call_output:
+      path: test-data/bcftools_call_output.vcf
+    vcf_table_ALT1:
+      path: test-data/vcf_table_ALT1.tabular
+    vcf_table_ALT1_specificity:
+      path: test-data/vcf_table_ALT1_specificity.tabular
+    vcf_table:
+      path: test-data/vcf_table.tabular

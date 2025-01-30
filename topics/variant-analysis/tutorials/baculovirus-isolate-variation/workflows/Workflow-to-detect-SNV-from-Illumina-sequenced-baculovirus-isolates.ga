@@ -4,6 +4,86 @@
     "comments": [
         {
             "child_steps": [
+                0,
+                4,
+                2
+            ],
+            "color": "blue",
+            "data": {
+                "title": "Reference genome"
+            },
+            "id": 0,
+            "position": [
+                0,
+                0
+            ],
+            "size": [
+                846,
+                451
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
+                1,
+                3
+            ],
+            "color": "red",
+            "data": {
+                "title": "Paired-end sequencing data"
+            },
+            "id": 1,
+            "position": [
+                72.30000000000001,
+                569.7
+            ],
+            "size": [
+                623,
+                509
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
+                5
+            ],
+            "color": "yellow",
+            "data": {
+                "title": "Mapping"
+            },
+            "id": 2,
+            "position": [
+                911.3,
+                435.2
+            ],
+            "size": [
+                371.4,
+                498.6
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
+                7,
+                6
+            ],
+            "color": "green",
+            "data": {
+                "title": "SNP determination"
+            },
+            "id": 3,
+            "position": [
+                1360,
+                217.39999999999998
+            ],
+            "size": [
+                576.4,
+                388.4
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
                 8,
                 9,
                 10,
@@ -21,6 +101,42 @@
             "size": [
                 794,
                 405
+            ],
+            "type": "frame"
+        },
+        {
+            "color": "none",
+            "data": {
+                "size": 2,
+                "text": "<br>"
+            },
+            "id": 5,
+            "position": [
+                2097.2,
+                572.4
+            ],
+            "size": [
+                177.3,
+                75.3
+            ],
+            "type": "text"
+        },
+        {
+            "child_steps": [
+                13
+            ],
+            "color": "none",
+            "data": {
+                "title": "SNV specificity determination"
+            },
+            "id": 6,
+            "position": [
+                2929,
+                230.9
+            ],
+            "size": [
+                369,
+                379
             ],
             "type": "frame"
         },
@@ -45,122 +161,6 @@
             "size": [
                 584,
                 488
-            ],
-            "type": "frame"
-        },
-        {
-            "child_steps": [
-                6,
-                7
-            ],
-            "color": "green",
-            "data": {
-                "title": "SNP determination"
-            },
-            "id": 3,
-            "position": [
-                1360,
-                217.39999999999998
-            ],
-            "size": [
-                576.4,
-                388.4
-            ],
-            "type": "frame"
-        },
-        {
-            "child_steps": [
-                5
-            ],
-            "color": "yellow",
-            "data": {
-                "title": "Mapping"
-            },
-            "id": 2,
-            "position": [
-                911.3,
-                435.2
-            ],
-            "size": [
-                371.4,
-                498.6
-            ],
-            "type": "frame"
-        },
-        {
-            "color": "none",
-            "data": {
-                "size": 2,
-                "text": "<br>"
-            },
-            "id": 5,
-            "position": [
-                2097.2,
-                572.4
-            ],
-            "size": [
-                177.3,
-                75.3
-            ],
-            "type": "text"
-        },
-        {
-            "child_steps": [
-                1,
-                3
-            ],
-            "color": "red",
-            "data": {
-                "title": "Paired-end sequencing data"
-            },
-            "id": 1,
-            "position": [
-                72.30000000000001,
-                569.7
-            ],
-            "size": [
-                623,
-                509
-            ],
-            "type": "frame"
-        },
-        {
-            "child_steps": [
-                0,
-                2,
-                4
-            ],
-            "color": "blue",
-            "data": {
-                "title": "Reference genome"
-            },
-            "id": 0,
-            "position": [
-                0,
-                0
-            ],
-            "size": [
-                846,
-                451
-            ],
-            "type": "frame"
-        },
-        {
-            "child_steps": [
-                13
-            ],
-            "color": "none",
-            "data": {
-                "title": "SNV specificity determination"
-            },
-            "id": 6,
-            "position": [
-                2929,
-                230.9
-            ],
-            "size": [
-                369,
-                379
             ],
             "type": "frame"
         }
@@ -221,13 +221,7 @@
             "type": "tool",
             "uuid": "b8790a27-af0a-4489-aab3-2cac05f4b8c2",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": "output",
-                    "output_name": "output",
-                    "uuid": "b7742aee-012f-4a63-bf8a-6832e50b5fba"
-                }
-            ]
+            "workflow_outputs": []
         },
         "1": {
             "annotation": "Provide a dataset list of paired (forward and reverse) reads in fastq format.",
@@ -278,13 +272,7 @@
             "type": "tool",
             "uuid": "be719ef0-a527-46d6-80b4-cccc1fc9d4f9",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": "list_paired",
-                    "output_name": "list_paired",
-                    "uuid": "9966b4d1-59c2-4d77-b6ab-896ed9af1804"
-                }
-            ]
+            "workflow_outputs": []
         },
         "2": {
             "annotation": "NCBI Download accepts multiple accession numbers and creates a list as output. Therefore, the Fasta files can contain multiple records. For this analysis just one reference genome is required and the list needs to be converted into one file.",
@@ -323,13 +311,7 @@
             "type": "tool",
             "uuid": "30ca54a0-94eb-4628-9ec9-b517c738706c",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": "Collapsed collection",
-                    "output_name": "output",
-                    "uuid": "5944c818-05f7-440a-aa58-85d518cb1283"
-                }
-            ]
+            "workflow_outputs": []
         },
         "3": {
             "annotation": "",
@@ -373,13 +355,7 @@
             "type": "tool",
             "uuid": "106a4583-0095-4428-b353-3faeeea45652",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": "trimmed_reads_paired_collection",
-                    "output_name": "trimmed_reads_paired_collection",
-                    "uuid": "e843f78b-ca62-466a-95e0-c2b8165dbd4c"
-                }
-            ]
+            "workflow_outputs": []
         },
         "4": {
             "annotation": "Provide a descriptive and unique name for the reference sequence.",
@@ -426,13 +402,7 @@
             "type": "tool",
             "uuid": "e31b4710-7ddb-4cc4-b759-c6f338bbf6ce",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": "FASTA reference file",
-                    "output_name": "outfile",
-                    "uuid": "877471b7-89b1-44ba-8fb1-3a78b12bd28f"
-                }
-            ]
+            "workflow_outputs": []
         },
         "5": {
             "annotation": "",
@@ -484,13 +454,7 @@
             "type": "tool",
             "uuid": "74092913-3e4f-4038-aff5-0d0158587c2b",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": "Map with BWA-MEM on input dataset(s) (mapped reads in BAM format)",
-                    "output_name": "bam_output",
-                    "uuid": "148584c2-6fa2-40c5-a861-e1f1b7ee0186"
-                }
-            ]
+            "workflow_outputs": []
         },
         "6": {
             "annotation": "",
@@ -546,13 +510,7 @@
             "type": "tool",
             "uuid": "6251f03d-bdfb-4696-b2eb-5746d7f817fb",
             "when": null,
-            "workflow_outputs": [
-                {
-                    "label": "output_file",
-                    "output_name": "output_file",
-                    "uuid": "c7a12751-ac5f-4b6a-bbe5-e842d478442a"
-                }
-            ]
+            "workflow_outputs": []
         },
         "7": {
             "annotation": "",
@@ -604,7 +562,13 @@
             "type": "tool",
             "uuid": "5a537643-fa45-4b3a-adb8-dc56d5943879",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": "bcftools_call_output",
+                    "output_name": "output_file",
+                    "uuid": "d8a45d4f-c8e4-40da-ba84-7ec13aa8ca4d"
+                }
+            ]
         },
         "8": {
             "annotation": "The VCF is converted to an easier to read table format.",
@@ -664,12 +628,7 @@
                     "output_name": "out_file1"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Text reformatting",
-                    "name": "infile"
-                }
-            ],
+            "inputs": [],
             "label": "Relative allele frequency calculation",
             "name": "Text reformatting",
             "outputs": [
@@ -698,7 +657,7 @@
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"code\": \"BEGIN { FS=\\\"\\\\t\\\"; OFS=\\\"\\\\t\\\" }\\nNR == 1 {\\n    # Rename \\\"SAMPLE\\\" to \\\"ISOLATE\\\" in the header\\n    for (i = 1; i <= NF; i++) {\\n        if ($i == \\\"SAMPLE\\\") $i = \\\"ISOLATE\\\";\\n    }\\n\\n    # Identify column indices based on updated header names\\n    for (i = 1; i <= NF; i++) {\\n        if ($i == \\\"POS\\\") pos_col = i;\\n        if ($i == \\\"ISOLATE\\\") isolate_col = i;\\n        if ($i == \\\"DP\\\") dp_col = i;\\n        if ($i == \\\"DPR\\\") dpr_col = i;\\n    }\\n\\n    # Check if all required columns are found\\n    if (!(pos_col && isolate_col && dp_col && dpr_col)) {\\n        print \\\"Error: One or more required columns (POS, ISOLATE, DP, DPR) are missing.\\\" > \\\"/dev/stderr\\\";\\n        exit 1;\\n    }\\n\\n    # Print the updated header\\n    print $0, \\\"ALLELE\\\", \\\"DPR.ALLELE\\\", \\\"REL.ALT\\\", \\\"REL.ALT.0.05\\\";\\n    next;\\n}\\n{\\n    # Create a unique key for position and isolate\\n    pos_isolate_key = $(pos_col) \\\"_\\\" $(isolate_col);\\n\\n    if (last_pos != $(pos_col)) {  # When a new position starts\\n        delete isolate_count;      # Reset the isolate counter\\n        last_pos = $(pos_col);     # Update the current position\\n    }\\n\\n    # Split the DPR column into values\\n    split($(dpr_col), dpr_values, \\\",\\\");\\n\\n    # Count occurrences of each isolate per position\\n    isolate_count[$(isolate_col)]++;\\n    dpr_index = isolate_count[$(isolate_col)] + 1;  # Index for the alternate allele (starting at 2)\\n\\n    # Check if the index is valid\\n    if (dpr_index <= length(dpr_values)) {\\n        allele = \\\"ALT\\\" (dpr_index - 1);            # Determine the allele\\n        dpr_value = dpr_values[dpr_index];         # Get the corresponding DPR value\\n        rel_alt = (dpr_value / $(dp_col));         # Calculate REL.ALT (DPR.ALLELE / DP)\\n        rel_alt_filtered = (rel_alt >= 0.05) ? rel_alt : 0;  # Filter REL.ALT values < 0.05\\n        print $0, allele, dpr_value, rel_alt, rel_alt_filtered;  # Output with new columns\\n    }\\n}\", \"infile\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"code\": \"BEGIN { FS=\\\"\\\\t\\\"; OFS=\\\"\\\\t\\\" }\\nNR == 1 {\\n    # Rename \\\"SAMPLE\\\" to \\\"ISOLATE\\\" in the header\\n    for (i = 1; i <= NF; i++) {\\n        if ($i == \\\"SAMPLE\\\") $i = \\\"ISOLATE\\\";\\n    }\\n\\n    # Identify column indices based on updated header names\\n    for (i = 1; i <= NF; i++) {\\n        if ($i == \\\"POS\\\") pos_col = i;\\n        if ($i == \\\"ISOLATE\\\") isolate_col = i;\\n        if ($i == \\\"DP\\\") dp_col = i;\\n        if ($i == \\\"DPR\\\") dpr_col = i;\\n    }\\n\\n    # Check if all required columns are found\\n    if (!(pos_col && isolate_col && dp_col && dpr_col)) {\\n        print \\\"Error: One or more required columns (POS, ISOLATE, DP, DPR) are missing.\\\" > \\\"/dev/stderr\\\";\\n        exit 1;\\n    }\\n\\n    # Print the updated header\\n    print $0, \\\"ALLELE\\\", \\\"DPR.ALLELE\\\", \\\"REL.ALT\\\", \\\"REL.ALT.0.05\\\";\\n    next;\\n}\\n{\\n    # Create a unique key for position and isolate\\n    pos_isolate_key = $(pos_col) \\\"_\\\" $(isolate_col);\\n\\n    if (last_pos != $(pos_col)) {  # When a new position starts\\n        delete isolate_count;      # Reset the isolate counter\\n        last_pos = $(pos_col);     # Update the current position\\n    }\\n\\n    # Split the DPR column into values\\n    split($(dpr_col), dpr_values, \\\",\\\");\\n\\n    # Count occurrences of each isolate per position\\n    isolate_count[$(isolate_col)]++;\\n    dpr_index = isolate_count[$(isolate_col)] + 1;  # Index for the alternate allele (starting at 2)\\n\\n    # Check if the index is valid\\n    if (dpr_index <= length(dpr_values)) {\\n        allele = \\\"ALT\\\" (dpr_index - 1);            # Determine the allele\\n        dpr_value = dpr_values[dpr_index];         # Get the corresponding DPR value\\n        rel_alt = (dpr_value / $(dp_col));         # Calculate REL.ALT (DPR.ALLELE / DP)\\n        rel_alt_filtered = (rel_alt >= 0.05) ? rel_alt : 0;  # Filter REL.ALT values < 0.05\\n        print $0, allele, dpr_value, rel_alt, rel_alt_filtered;  # Output with new columns\\n    }\\n}\", \"infile\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "9.3+galaxy1",
             "type": "tool",
             "uuid": "f49d6516-ec89-49d4-91ae-ad16765594cb",
@@ -750,7 +709,13 @@
             "type": "tool",
             "uuid": "e22af6e5-08a6-489d-80fb-b854cddd77c5",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": "vcf_table",
+                    "output_name": "outfile",
+                    "uuid": "186d4e5c-fceb-4031-b569-d84dbcd1c156"
+                }
+            ]
         },
         "11": {
             "annotation": "In this step the dataset is reduced to the first alternative nucleotide (ALT1) only. ",
@@ -791,7 +756,13 @@
             "type": "tool",
             "uuid": "bee7e307-6eab-46fa-9d8f-255fd8b85f74",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": "vcf_table_ALT1",
+                    "output_name": "out_file1",
+                    "uuid": "7ebeb330-a4df-4027-b636-daa0e5e39938"
+                }
+            ]
         },
         "12": {
             "annotation": "A general overview to access the isolates overall heterogeneity/homogeneity. ",
@@ -885,7 +856,13 @@
             "type": "tool",
             "uuid": "c1a05c89-8f44-44b9-b124-936ef2cd6a0b",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": "vcf_table_ALT1_specificity",
+                    "output_name": "outfile",
+                    "uuid": "b2f9dabd-7bbf-4b96-a351-78a2b2552586"
+                }
+            ]
         },
         "14": {
             "annotation": "",
@@ -1158,6 +1135,6 @@
         "name:baculovirus",
         "name:naldv"
     ],
-    "uuid": "fa0c1470-f4fb-4177-a0e1-e86e4d447494",
-    "version": 52
+    "uuid": "d2208643-f8a8-47a9-8c68-13bac81bd14d",
+    "version": 54
 }
