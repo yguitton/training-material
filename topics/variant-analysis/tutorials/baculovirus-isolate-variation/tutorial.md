@@ -734,7 +734,7 @@ Now, the VCF table has an additional column called `SPEC`, which indicates the S
 >
 >    > <comment-title> Filtering the CpGV-S data </comment-title>
 >    >
->    > The VCF SNV table is reduced to the data of CpGV-S. This is done by filtering on column 23 (ISOLATE).
+>    > The VCF SNV table is reduced to the data of CpGV-S. This is done by filtering on column 25 (ISOLATE).
 >    {: .comment}
 >
 >
