@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 
-title: "Neoantigen 2: Non-normal-Database-Generation"
+title: "Neoantigen 2: Non-Reference-Database-Generation"
 zenodo_link: "https://zenodo.org/records/14372521"
 questions:
 - Why must we generate a customized fusion database for Proteogenomics research?
@@ -40,7 +40,7 @@ Proteogenomics leverages mass spectrometry (MS)-based proteomics data alongside 
 
 In this framework, Proteogenomics incorporates RNA-Seq data to generate tailored protein sequence databases, enabling the identification of protein sequence variants, including neoantigens, through mass spectrometry analysis ({% cite Chambers_2017 %}).
 
-![Non-Normal_Protein_Database overview workflow]({% link topics/proteomics/images/neoantigen/Non-Normal_Protein_Database_1.PNG %})
+![Non-Reference_Protein_Database overview workflow]({% link topics/proteomics/images/neoantigen/non-reference_Protein_Database_1.PNG %})
 
 In this workflow, (A) Generation of variant database, (B) Generation of assembled protein database, and (C) Merging all databases with known HUMAN protein sequences.
 > <agenda-title></agenda-title>
@@ -52,15 +52,15 @@ In this workflow, (A) Generation of variant database, (B) Generation of assemble
 >
 {: .agenda}
 
-# Overview of Non-normal Neoantigen Database Workflow
+# Overview of Non-Reference Neoantigen Database Workflow
 
-This tutorial guides users through the process of generating a non-normal variant database. It encompasses essential bioinformatics steps to identify and prepare variant-specific peptides for immunological studies. Below is an overview of each major stage:
+This tutorial guides users through the process of generating a non-reference variant database. It encompasses essential bioinformatics steps to identify and prepare variant-specific peptides for immunological studies. Below is an overview of each major stage:
 
 1. **Get Data.** The workflow begins with uploading raw sequencing data, followed by a quality assessment to ensure data integrity. This step establishes a solid foundation for subsequent analyses by addressing any issues in the initial dataset.
-2. **Variant Detection and Mapping.** Next, the RNA sequencing data is aligned to a reference genome using tools like HISAT2 and StringTie. Alignment events are detected with specialized tools like Freebayes, CustomProDB, and GFFcompare, which identify non-normal gene transcripts. These tools analyze the resulting alignments to characterize the gene segments in CDS, single nucleotide variants, indels, UTRs, or frameshifts.
+2. **Variant Detection and Mapping.** Next, the RNA sequencing data is aligned to a reference genome using tools like HISAT2 and StringTie. Alignment events are detected with specialized tools like Freebayes, CustomProDB, and GFFcompare, which identify non-reference gene transcripts. These tools analyze the resulting alignments to characterize the gene segments in CDS, single nucleotide variants, indels, UTRs, or frameshifts.
 3. **Text reformatting and Database generation.** Once variants are identified, we generate a customized database and apply various reformatting techniques to tag it, ensuring optimal usability for downstream processing.
 4. **Addition of known protein sequences.** Known proteomics databases are added to the variant database to create a comprehensive database.
-5. **Final Database Construction.** The workflow concludes with applying regex adjustments and other formatting functions to standardize the output. This process culminates in creating a comprehensive database of potential non-normal protein sequences, making them ready for experimental validation and clinical exploration.
+5. **Final Database Construction.** The workflow concludes with applying regex adjustments and other formatting functions to standardize the output. This process culminates in creating a comprehensive database of potential non-reference protein sequences, making them ready for experimental validation and clinical exploration.
 
 
 # Get data
@@ -113,7 +113,7 @@ Uncompressing data is a crucial first step in many bioinformatics workflows beca
 {: .hands_on}
 
 # Extracting Single amino acid variants with HISAT and Freebayes
-![A:Generating variant protein sequence database]({% link topics/proteomics/images/neoantigen/Non-Normal_Protein_Database_2.PNG %})
+![A:Generating variant protein sequence database]({% link topics/proteomics/images/neoantigen/non-reference_Protein_Database_2.PNG %})
 ## Aligning to the reference genome with HISAT2
 HISAT2 is a fast and efficient tool used in bioinformatics workflows to align sequence reads to a reference genome. In this task, HISAT2 is used to align paired-end reads against the human genome version GRCh38 (hg38). This alignment is essential for downstream analyses such as variant calling or transcript quantification. HISAT2 is configured to use default alignment and scoring options to ensure simplicity and speed, which is often suitable for general-purpose analyses.
 
@@ -417,7 +417,7 @@ In this workflow, FASTA Merge Files and Filter Unique Sequences consolidate all 
 >        - In *"Input FASTA File(s)"*:
 >            - {% icon param-repeat %} *"Insert Input FASTA File(s)"*
 >                - {% icon param-file %} *"FASTA File"*: `RPKM-FASTA` (output of **Tabular-to-FASTA** {% icon tool %})>
-> 2. Rename as `Non-normal_CustomProDB_FASTA`
+> 2. Rename as `non-reference_CustomProDB_FASTA`
 {: .hands_on}
 
 > <question-title></question-title>
@@ -435,7 +435,7 @@ In this workflow, FASTA Merge Files and Filter Unique Sequences consolidate all 
 {: .question}
 
 # Extracting Assembled sequences with Stringtie and GFF compare
-![Assembled sequence database generation]({% link topics/proteomics/images/neoantigen/Non-Normal_Protein_Database_3.PNG %})
+![Assembled sequence database generation]({% link topics/proteomics/images/neoantigen/non-reference_Protein_Database_3.PNG %})
 
 ## Assemble with StringTie
 
@@ -594,12 +594,12 @@ This tool is important for converting the genomic annotations (in BED format) th
 >
 {: .question}
 
-# Merging the non-normal databases with the known HUMAN protein sequence
+# Merging the non-reference databases with the known HUMAN protein sequence
 
-Merging non-normal databases with the known human protein sequence involves integrating data from various sources into a unified format for more efficient analysis. In bioinformatics, this process is often necessary when working with protein sequence data, especially when datasets include variations, unknown sequences, or newly identified proteins alongside well-established reference proteins from the human genome. In this case, we are merging a previously integrated variant database (which includes SNV, INDEL, and RPKM), assembled FASTA data generated from translating BED files to transcripts, the UniProt human reference, and a known contaminant database.
+Merging non-reference databases with the known human protein sequence involves integrating data from various sources into a unified format for more efficient analysis. In bioinformatics, this process is often necessary when working with protein sequence data, especially when datasets include variations, unknown sequences, or newly identified proteins alongside well-established reference proteins from the human genome. In this case, we are merging a previously integrated variant database (which includes SNV, INDEL, and RPKM), assembled FASTA data generated from translating BED files to transcripts, the UniProt human reference, and a known contaminant database.
 
 
-![Database Merging]({% link topics/proteomics/images/neoantigen/Non-Normal_Protein_Database_4.PNG %})
+![Database Merging]({% link topics/proteomics/images/neoantigen/non-reference_Protein_Database_4.PNG %})
 
 
 ## Merging all databases using FASTA Merge Files and Filter Unique Sequences
@@ -613,7 +613,7 @@ Merging non-normal databases with the known human protein sequence involves inte
 >                - {% icon param-file %} *"FASTA File"*: `HUMAN_CRAP.fasta` (Input FASTA database)
 >        - In *"Input FASTA File(s)"*:
 >            - {% icon param-repeat %} *"Insert Input FASTA File(s)"*
->                - {% icon param-file %} *"FASTA File"*: `Non-normal_CustomProDB_FASTA` (output of **FASTA merge of 3 CustomProDB databases** {% icon tool %})
+>                - {% icon param-file %} *"FASTA File"*: `non-reference_CustomProDB_FASTA` (output of **FASTA merge of 3 CustomProDB databases** {% icon tool %})
 >        - In *"Input FASTA File(s)"*:
 >            - {% icon param-repeat %} *"Insert Input FASTA File(s)"*
 >                - {% icon param-file %} *"FASTA File"*: `translation_fasta` (output of **Translate BED transcripts** {% icon tool %})
@@ -623,9 +623,9 @@ Merging non-normal databases with the known human protein sequence involves inte
 
 # Conclusion
 
-In this workflow, we demonstrated a comprehensive process for merging non-normal protein sequence data with known human protein sequences, ensuring compatibility and consistency at each step.
+In this workflow, we demonstrated a comprehensive process for merging non-reference protein sequence data with known human protein sequences, ensuring compatibility and consistency at each step.
 
-Starting with data preparation, we converted sequence data into appropriate formats making it suitable for downstream analysis. Next, we merged non-normal sequences with known human proteins using tools such as FASTA Merge Files, ensuring the datasets aligned based on common identifiers. The subsequent steps, involving Translating BED transcripts and bed to protein map, translated genomic coordinates into protein sequences, further enriching our dataset. This workflow effectively integrates variant/non-normal proteins with established references, offering a robust resource for further analysis in bioinformatics applications like functional annotation and differential expression studies. By combining multiple bioinformatics tools, this process is adaptable to various research needs, making it invaluable for genomic and proteomic analysis. The output from this workflow will be now used for the neoantigen database searching.
+Starting with data preparation, we converted sequence data into appropriate formats making it suitable for downstream analysis. Next, we merged non-reference sequences with known human proteins using tools such as FASTA Merge Files, ensuring the datasets aligned based on common identifiers. The subsequent steps, involving Translating BED transcripts and bed to protein map, translated genomic coordinates into protein sequences, further enriching our dataset. This workflow effectively integrates variant/non-reference proteins with established references, offering a robust resource for further analysis in bioinformatics applications like functional annotation and differential expression studies. By combining multiple bioinformatics tools, this process is adaptable to various research needs, making it invaluable for genomic and proteomic analysis. The output from this workflow will be now used for the neoantigen database searching.
 
 # Rerunning on your own data
 
@@ -635,7 +635,7 @@ To rerun this entire analysis at once, you can use our workflow. Below we show h
 >
 > 1. **Import the workflow** into Galaxy:
 >
->    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-2-non-normal-database-generation/workflows/main_workflow.ga" title="Neoantigen Non-Normal Database Generation" %}
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-2-non-reference-database-generation/workflows/main_workflow.ga" title="Neoantigen non-reference Database Generation" %}
 >
 >
 > 2. Run **Workflow** {% icon workflow %} using the following parameters:
