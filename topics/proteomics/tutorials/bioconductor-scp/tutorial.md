@@ -41,9 +41,9 @@ Of note, all functions within the **bioconductor-scp** tool are sorted 'chronolo
 > Finally, the last layer is the **protein** level, where multiple peptides (can) match one protein. 
 {: .details}
 
-In our tutorial, we will analyze the data included in the scp package, similarly as it's in the scp vignette. The dataset is a subset of a data included in the publication by Specht et al. {% cite Specht2021 %} and is publicly available [on Zenodo](https://doi.org/10.5281/zenodo.14650887). Data come from the SCOPE2 method (next generation Single Cell ProtEomics), where single cells are firstly isolated, lysed and proteins released into the solvent are then enzymatically digested. Individual peptides are then barcoded with the tandem-mass-tags (TMT) and labelled peptides from multiple single cells are combined into a single mixture and analyzed by LC-MS/MS. As a model system, monocytes from human cell line U-937 differentiated into macrophage-like cells in the presence of an agonist of protein kinase C, phorbol-12-myristate-13-acetate (PMA), were used here. The main question was whether the macrophage population will be as homogenous as the monocyte one they originated from or more heterogenous. 
+In our tutorial, we will analyze the data included in the scp package, similarly as it's in the scp vignette. The dataset is a subset of a data included in the publication by Specht et al. {% cite Specht2021 %} and is publicly available [on Zenodo](https://doi.org/10.5281/zenodo.14650887). Data come from the SCoPE2 method (next generation Single Cell ProtEomics), where single cells are firstly isolated, lysed and proteins released into the solvent are then enzymatically digested. Individual peptides are then barcoded with the tandem-mass-tags (TMT) and labelled peptides from multiple single cells are combined into a single mixture and analyzed by LC-MS/MS. As a model system, monocytes from human cell line U-937 differentiated into macrophage-like cells in the presence of an agonist of protein kinase C, phorbol-12-myristate-13-acetate (PMA), were used here. The main question was whether the macrophage population will be as homogenous as the monocyte one they originated from or more heterogenous. 
 
-There are 5 different types of samples in the SCOPE2 data:
+There are 5 different types of samples in the SCoPE2 data:
 
   - *Carrier channel*: contains 200 cell equivalents and its main purpose is to boost the peptide identification rate and reduce the sample loss,
   - *Reference channel*: contains 5 cell equivalents and it is used for normalization purposes, to partially correct for the between-run variation,
@@ -150,8 +150,8 @@ Finally, we will apply the filtering based on the **q-values**. In the evidences
 >
 {: .hands_on}
 
-> <comment-title>SCOPE2 data-specific settings</comment-title>
-> If you are analysing the SCOPE2 data, set the `Compute relative reporter ion intensities` to 'True'. These are
+> <comment-title>SCoPE2 data-specific settings</comment-title>
+> If you are analysing the SCoPE2 data, set the `Compute relative reporter ion intensities` to 'True'. These are
 > computed in a way that intensities in the single cell channels are divided by the reference channel.
 {: .comment}
 
