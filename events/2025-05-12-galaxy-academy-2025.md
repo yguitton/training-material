@@ -3,7 +3,7 @@ layout: event
 
 title: Galaxy Training Academy 2025
 description: |
-  The Galaxy Academy is a self-paced online training event for beginners as well as learners who would like to improve their Galaxy data analysis skills. Over the course of one week, we offer a diverse selection of learning track for you.
+  The Galaxy Training Academy is a self-paced online training event for beginners as well as advanced learners who would like to improve their Galaxy data analysis skills. Over the course of one week, we offer a diverse selection of learning track for you.
 
 # <button id="program-button" class="btn btn-info" onclick="$('#program-tab').tab('show');">Start the Course!</button>
 
@@ -220,24 +220,32 @@ program:
 # Welcome to the Galaxy Training Academy 2025
 Do you want to learn how to use Galaxy, a open source data analysis platform? Then you are at the right place. We offer here a **5-day Global Online and Asynchronous learning event**.
 
-**We will open registrations on the 3rd of March.**  
+**Registrations will open on the 3rd of March.**  
 
 ## Do you want to join the GTA as a trainer?
 Please fill our [form](https://forms.gle/V9QqSDNg2UmQaDHy8) to indicate in what capacity you would like to help. 
 
-## How will the event be run
+## Do you want to participate as a learner?
+In the following you will learn everything you need to know about the event.
+
+**Course format**
+
 The event is asynchronous which means you can set your own pace on your learning journey using our provided self-learning materials. You will start the event by your self at your own time. Don't worry, asynchronous does not mean that you are alone! If you ever need help, you can contact one of our many trainers worldwide via **Slack chat**.
 
 **How to participate**
 
 First you will need to register. **We will open registrations on the 3rd of March.** 
-You only need a browser and an account on one of the galaxy instances registered for this event. Please have a look at the setup tab.
+You only need a browser and an account on one of the galaxy instances registered for this event. Please have a look at the [setup page](https://training.galaxyproject.org/training-material/events/2025-05-12-galaxy-academy-2025.html#setup).
+
+<button id="program-button" class="btn btn-info" onclick="$('#setup-tab').tab('show');">Setup</button>
 
 **Content of the event**
 
-We provide you with training materials which you can study at your own pace and on your own time throughout the week. Have a look at our [program](https://training.galaxyproject.org/training-material/). The program is still **under development**. 
+We provide you with training materials which you can study at your own pace and on your own time throughout the week. Have a look at our [program](https://training.galaxyproject.org/training-material/events/2025-05-12-galaxy-academy-2025.html#program). The program is still **under development**. 
 
-On the first day you can make yourself familiar with the Galaxy platform. In the next days you can follow different tracks, please go to the program tab for more information. On Friday we offer a ***Fair training*** program to you.
+<button id="program-button" class="btn btn-info" onclick="$('#program-tab').tab('show');">Program</button>
+
+On the first day you can make yourself familiar with the Galaxy platform. In the next days you can follow different tracks. Please go to the program tab for more information. On Friday we offer a ***Fair training*** program to you.
 
 **How to get help** 
 
@@ -246,4 +254,4 @@ You will not be alone! If you ever need help, you can contact one of our many tr
 
 **Certificates**
 
-You will be able to obtain a certificates by the end to the event. more information are coming soon.
+You will be able to obtain a certificates by the end to the event. More information are coming soon.
