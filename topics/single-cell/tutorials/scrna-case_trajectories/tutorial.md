@@ -12,6 +12,9 @@ answer_histories:
   - label: "UseGalaxy.eu"
     history: https://humancellatlas.usegalaxy.eu/u/marisa_jl/h/inferring-trajectories-using-scanpy---example-history
     date: 2023-12-14
+  - label: "UseGalaxy.eu-ARCHIVED"
+    history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/inferring-trajectories-using-scanpy---example-history
+    date: 2024-10-12
 
 input_histories:
   - label: "UseGalaxy.eu"
@@ -36,6 +39,7 @@ requirements:
 tags:
 - 10x
 - paper-replication
+- MIGHTS
 
 contributions:
   authorship:
@@ -48,8 +52,6 @@ contributions:
     - hexylena
 ---
 
-
-# Introduction
 
 You've done all the hard work of preparing a single-cell matrix, processing it, plotting it, interpreting it, and finding lots of lovely genes. Now you want to infer trajectories, or relationships between cells... you can do that here, using the Galaxy interface, or head over to the [Jupyter notebook version of this tutorial]({% link topics/single-cell/tutorials/scrna-case_JUPYTER-trajectories/tutorial.md %}) to learn how to perform the same analysis using Python.
 
@@ -84,6 +86,10 @@ We will use the same sample from the previous three tutorials, which contains la
 
 We've provided you with experimental data to analyse from a mouse dataset of fetal growth restriction {% cite Bacon2018 %}. This is the full dataset generated from [this tutorial]({% link topics/single-cell/tutorials/scrna-case_basic-pipeline/tutorial.md %}) (see the [study in Single Cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/experiments/E-MTAB-6945/results/tsne) and the [project submission](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6945/)). You can find the final dataset in this [input history](https://usegalaxy.eu/u/wendi.bacon.training/h/cs4inferred-trajectory-analysis-using-python-jupyter-notebook-in-galaxy---input) or download from Zenodo below.
 
+{% include _includes/cyoa-choices.html option1="History_import" option2="Zenodo_import" default="History_import"
+       text="Importing via History is quickest. Works only on Galaxy EU for now." %}
+
+<div class="History_import" markdown="1">
 > <hands-on-title>Option 1: Data upload - Import history</hands-on-title>
 >
 > 1. Import history from: [input history](https://usegalaxy.eu/u/wendi.bacon.training/h/cs4inferred-trajectory-analysis-using-python-jupyter-notebook-in-galaxy---input)
@@ -94,7 +100,9 @@ We've provided you with experimental data to analyse from a mouse dataset of fet
 > 2. **Rename** {% icon galaxy-pencil %} the the history to your name of choice.
 >
 {: .hands_on}
+</div>
 
+<div class="Zenodo_import" markdown="1">
 > <hands-on-title>Option 2: Data upload - Add to history</hands-on-title>
 >
 > 1. Create a new history for this tutorial
@@ -115,6 +123,7 @@ We've provided you with experimental data to analyse from a mouse dataset of fet
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="h5ad" %}
 >
 {: .hands_on}
+</div>
 
 ## Filtering for T-cells
 
@@ -219,7 +228,7 @@ Now that we have our diffusion map, we need to re-calculate neighbors using the 
 {: .hands_on}
 
 > <comment-title></comment-title>
-> If you're using the latest versions of these tools (e.g. {% tool [Scanpy ComputeGraph](https://usegalaxy.eu/root?tool_id=toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_compute_graph/scanpy_compute_graph/1.9.3+galaxy0) %}, rather than the ones suggested in the tutorial (e.g. {% tool [Scanpy ComputeGraph](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_compute_graph/scanpy_compute_graph/1.8.1+galaxy9) %} then you may need to change one more parameter here to set the `Number of PCs to use` to 15. These are the 15 diffusion components we just calculated, rather than actual PCs.
+> If you're using the latest versions of these tools (e.g. {% tool [Scanpy ComputeGraph](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_compute_graph/scanpy_compute_graph/1.9.3+galaxy0) %}, rather than the ones suggested in the tutorial (e.g. {% tool [Scanpy ComputeGraph](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_compute_graph/scanpy_compute_graph/1.8.1+galaxy9) %} then you may need to change one more parameter here to set the `Number of PCs to use` to 15. These are the 15 diffusion components we just calculated, rather than actual PCs.
 {: .comment}
 
 ## Re-draw the FDG

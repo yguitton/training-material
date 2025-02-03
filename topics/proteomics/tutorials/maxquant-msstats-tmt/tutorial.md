@@ -94,7 +94,9 @@ We start the MaxQuant run with TMT parameters for MS2 based reporter quantitatio
 >        - {% icon param-file %} *"Specify an experimental design template"*: `experimental design template` 
 >    - In *"Parameter Group"*:
 >        - {% icon param-collection %} *"Infiles"*: `MFA380.raw` `MFA381.raw` `MFA382.raw` `MFA383.raw` `MFA384.raw` `MFA385.raw` `MFA386.raw` `MFA387.raw` `MFA388.raw` `MFA389.raw` `MFA390.raw` `MFA391.raw`
->        - *"Quantitation Methods"*: `reporter ion MS2`
+>        -  *"variable Modifications"*: `Oxidation (M)` `Acetyl (Protein N-term)`
+>        -  *"enzyme"*: `Trypsin/P`
+>        -  *"Quantitation Methods"*: `reporter ion MS2`
 >            - *"isobaric labeling"*: `TMT11plex`
 >            - *"Filter by PIF"*: `Yes`
 >    - *"Generate PTXQC (proteomics quality control pipeline) report? (experimental setting)"*: `Yes`
