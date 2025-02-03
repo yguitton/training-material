@@ -168,7 +168,7 @@ By default, the aggregation will be done on the **Modified.sequence** column (fo
 > <hands-on-title>Aggregation to the peptide level</hands-on-title>
 >
 > 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
->   - *"Which function to use for the aggregation?"*: `colMedians`
+>   - *"Which function to use for the aggregation?"*: `Aggregate using the median of each sample: colMedians`
 >   - *"Which column should be used for the PSM to peptide aggregation?"*: `c6: Modified.sequence`
 >
 {: .hands_on}
@@ -239,7 +239,7 @@ For the aggregation of peptides to the protein level, we will use again the colM
 > <hands-on-title>Aggregation to the protein level</hands-on-title>
 >
 > 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
->   - *"Which function to use for the aggregation?"*: `colMedians`
+>   - *"Which function to use for the aggregation?"*: `Aggregate using the median of each sample: colMedians`
 >   - *"Which column should be used for the PSM to peptide aggregation?"*: `c17: Leading.razor.protein`
 >
 {: .hands_on}
