@@ -1,3 +1,87 @@
+GTN_GTN:1738530837
+
+A	topics/single-cell/images/bulk-deconvolution-evaluate/batch-mode.png
+A	topics/single-cell/images/bulk-deconvolution-evaluate/pearson.png
+A	topics/single-cell/images/bulk-deconvolution-evaluate/rmse.png
+A	topics/single-cell/images/bulk-deconvolution-evaluate/scatterplot-compare.png
+A	topics/single-cell/images/bulk-deconvolution-evaluate/scatterplot-music.png
+A	topics/single-cell/images/bulk-deconvolution-evaluate/violin-compare.png
+A	topics/single-cell/images/bulk-deconvolution-evaluate/violin-music.png
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/tutorial.md
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/deconv-eval-stage-1-create-data-tests.yml
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/deconv-eval-stage-1-create-data.ga
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/deconv-eval-stage-2-deconv-tests.yml
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/deconv-eval-stage-2-deconv.ga
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/deconv-eval-stage-3-process-tests.yml
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/deconv-eval-stage-3-process.ga
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/deconv-eval-stage-4-metrics-tests.yml
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/deconv-eval-stage-4-metrics.ga
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/index.md
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/A - Music Results_None 1.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/A - Music Results_None 2.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/A - Music Results_None 3.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/A - NNLS Results_None 1.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/A - NNLS Results_None 2.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/A - NNLS Results_None 3.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Actual cell proportions (A)_None 1.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Actual cell proportions (A)_None 2.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Actual cell proportions (A)_None 3.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Actual cell proportions (B)_None 1.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Actual cell proportions (B)_None 2.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Actual cell proportions (B)_None 3.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Actuals - A_None 1.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Actuals - A_None 2.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Actuals - A_None 3.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Actuals - B_None 1.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Actuals - B_None 2.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Actuals - B_None 3.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/B - Music Results_None 1.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/B - Music Results_None 2.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/B - Music Results_None 3.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/B - NNLS Results_None 1.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/B - NNLS Results_None 2.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/B - NNLS Results_None 3.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Cell Proportions.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Cell Proportions_None 1.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Cell Proportions_None 2.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Cell Proportions_None 3.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/ESet Reference scRNA-seq_None 1.rdata
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/ESet Reference scRNA-seq_None 2.rdata
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/ESet Reference scRNA-seq_None 3.rdata
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Error Table.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Expression Data_None 1.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Expression Data_None 2.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Expression Data_None 3.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Metadata_None 1.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Metadata_None 2.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Metadata_None 3.tabular
+A	"topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/MuSiC Deconvolution on input dataset(s)\357\200\272 Proportion Matrices_Music Estimated Proportions of Cell Types.tabular"
+A	"topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/MuSiC Deconvolution on input dataset(s)\357\200\272 Proportion Matrices_NNLS Estimated Proportions of Cell Types.tabular"
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Pearson Correlation.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Pseudobulk (A)_None 1.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Pseudobulk (A)_None 2.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Pseudobulk (A)_None 3.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Pseudobulk (B)_None 1.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Pseudobulk (B)_None 2.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Pseudobulk (B)_None 3.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Pseudobulk - A_None 1.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Pseudobulk - A_None 2.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Pseudobulk - A_None 3.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Pseudobulk - B_None 1.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Pseudobulk - B_None 2.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Pseudobulk - B_None 3.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Results Table.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/Squared Error.tabular
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/out_pdf (Step 12)_None 1.pdf
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/out_pdf (Step 12)_None 2.pdf
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/out_pdf (Step 12)_None 3.pdf
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/out_rds (Step 11)_None 1.rdata
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/out_rds (Step 11)_None 2.rdata
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/test-data/out_rds (Step 11)_None 3.rdata
+GTN_GTN:1737961705
+
+R099	metadata/git-mod-d9926f20cdc672eecbe9f48ddd1ca6c51d4ca969.txt	metadata/git-mod-b42014f17cb888716aae51705820aa8d9dce5633.txt
+R099	metadata/git-pub-d9926f20cdc672eecbe9f48ddd1ca6c51d4ca969.txt	metadata/git-pub-b42014f17cb888716aae51705820aa8d9dce5633.txt
 GTN_GTN:1737668009
 
 A	topics/single-cell/images/scrna-seurat-pbmc3k/seurat_DoHeatmap_CellType_markers.png
