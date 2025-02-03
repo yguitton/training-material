@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 subtopic: deconvo
-priority: 4
+priority: 2
 title: Comparing inferred cell compositions using MuSiC deconvolution
 zenodo_link: https://zenodo.org/record/7319925
 tags:

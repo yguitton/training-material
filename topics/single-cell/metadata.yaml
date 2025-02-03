@@ -18,7 +18,7 @@ community_ctas:
     link_text: Introduction to Galaxy
     icon: tutorial
   - description: |
-      The Single Cell & Galaxy Communities are also available via Slack
+      The Single Cell & Galaxy learners are on Slack
     link: https://gxy.io/gtn-slack
     link_text: GTN Slack Workspace
     icon: comment
