@@ -119,7 +119,7 @@ Once the datasets are uploaded (green in the right menu), set the `Input evidenc
 > 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
 >   - *"Input evidence table"*: `evidences.txt`
 >   - *"Sample annotations table"*: `sampleAnnotation.txt`
->   - *"Which column specifies the run identifier and batch name?"*: `Raw.file`
+>   - *"Which column specifies the run identifier and batch name?"*: `c19: Raw.file`
 >   - *"Remove empty columns"*: `Yes`
 >   - *"Generate QC plots?"*: `Yes`
 >
@@ -169,7 +169,7 @@ By default, the aggregation will be done on the **Modified.sequence** column (fo
 >
 > 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
 >   - *"Which function to use for the aggregation?"*: `colMedians`
->   - *"Which column should be used for the PSM to peptide aggregation?"*: `Modified.sequence`
+>   - *"Which column should be used for the PSM to peptide aggregation?"*: `c6: Modified.sequence`
 >
 {: .hands_on}
 
@@ -240,7 +240,7 @@ For the aggregation of peptides to the protein level, we will use again the colM
 >
 > 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
 >   - *"Which function to use for the aggregation?"*: `colMedians`
->   - *"Which column should be used for the PSM to peptide aggregation?"*: `Leading.razor.protein`
+>   - *"Which column should be used for the PSM to peptide aggregation?"*: `c17: Leading.razor.protein`
 >
 {: .hands_on}
 
@@ -286,7 +286,7 @@ After the imputation, we end up with a full numeric matrix without any missing v
 
 ## Batch effect correction
 
-Batch effects are unavoidable in SCP experiments as only few multiplexed single cells can be acquired at once. However, having an untreated batch effect could compromise statistical analysis and lead to incorrect biological interpretation. There are two main approaches how to deal with it: either we can include the batch as a covariate in a statistical model and model it, or we can estimate it and remove it using tools as ComBat. 
+Batch effects are unavoidable in SCP experiments as only a few multiplexed single cells can be acquired at once. However, having an untreated batch effect could compromise statistical analysis and lead to incorrect biological interpretation. There are two main approaches how to deal with it: either we can include the batch as a covariate in a statistical model and model it, or we can estimate it and remove it using tools as **ComBat**. 
 
 In the bioconductor-scp, there are two batch removal methods implemented: already mentioned **ComBat** from the sva R package and **removeBatchEffect** method from limma R package. In principle, both methods perform well for the SCP data: ComBat is preferred if the sample size is small (<10) {% cite Goh2017 %}, whereas removeBatchEffect is preferred for large sample sizes, but in general it is up to the users preferences or previous experience which method they will choose. A good strategy would be also to run both methods and then check the PCA and UMAP plots or inspect the batch corrected data. In this tutorial, we will use ComBat. The only thing we need to select is the batch variable to be corrected (e.g. day when the samples were run, sorting day, digestion, … - in general column in the sampleAnnotation table) - here we will use the RunCol.
 
