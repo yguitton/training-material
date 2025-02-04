@@ -80,8 +80,8 @@ There are two files required on the input:
 
 -  **sampleAnnotation.txt file**. SampleAnnotation file serves as a metadata information about the experiment itself and it's up to the user to create it. It should contain all important information about e.g. the batch allocation, sample types, etc. Required columns are:
     - *runCol/Raw.file identifier*: specifies the MS acquisition runs or files and corresponds to identically labelled column in the Evidence file.
-    - *SampleType*: provides the type of sample that is acquired (carrier, reference, single cell types - e.g. Monocyte, Macrophage, etc.). It is needed only in case of multiplexed experiments.
     - *quantCols*: specifies the quantification data column names (e.g. Reporter.intensity.1)
+    - *SampleType*: provides the type of sample that is acquired (carrier, reference, single cell types - e.g. Monocyte, Macrophage, etc.). It is needed only in case of multiplexed experiments.
     - If relevant, also *batch specification data*: batch, sorting day, digestion type, etc.
 
 As mentioned, we will use the subset of the data from {% cite Specht2021 %}. Both example files, evidences.txt and sampleAnnotation.txt, can be imported from Zenodo.
