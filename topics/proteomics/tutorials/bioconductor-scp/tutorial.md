@@ -69,14 +69,14 @@ Having now background to both the SCP method and the data example origin, let's 
 There are two files required on the input: 
 
 -  **Evidence.txt file**. Evidence file is one of the outputs from MaxQuant, containing all the information about identified PSMs. In general, we don't need the whole file, which often contains tens of columns, but only a minimal set is required:
-    - *runCol/Raw.file identifier*: specifies the MS acquisition runs or files (has to be present also in the second required file, SampleAnnotation)
-    - *Potential.contaminant*: marks the contaminant peptides (labeled with +)
-    - *Reverse*: marks the reverse peptides from the decoy database (labeled with +)
-    - *PIF*: provides spectral purity
-    - *PEP or dart_PEP*: provides the peptide posterior error probabilities
     - *Modified.sequence*: provides the peptide identifiers
     - *Leading.razor.protein*: provides the protein identifiers
+    - *runCol/Raw.file identifier*: specifies the MS acquisition runs or files (has to be present also in the second required file, SampleAnnotation)
+    - *PIF*: provides spectral purity
+    - *PEP or dart_PEP*: provides the peptide posterior error probabilities
     - *Reporter.intensity columns*: contain quantification values. Any other intensity-based quantification columns are allowed.
+    - *Reverse*: marks the reverse peptides from the decoy database (labeled with +)
+    - *Potential.contaminant*: marks the contaminant peptides (labeled with +)  
 
 -  **sampleAnnotation.txt file**. SampleAnnotation file serves as a metadata information about the experiment itself and it's up to the user to create it. It should contain all important information about e.g. the batch allocation, sample types, etc. Required columns are:
     - *runCol/Raw.file identifier*: specifies the MS acquisition runs or files and corresponds to identically labelled column in the Evidence file.
