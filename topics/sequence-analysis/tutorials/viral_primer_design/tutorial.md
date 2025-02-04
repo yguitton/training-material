@@ -5,9 +5,9 @@ title: Primer and primer scheme design for pan-specific detection and sequencing
 level: Introductory
 questions:
 - What are pan-specific primers and primer schemes and why are they important?
-- How do you capture viral species diversity in the form of a multiple sequence alignment?
-- How do you design primers that will be mostly unaffected by differences between viral genotypes?
-- How do you avoid generating primers with off-target binding sites?
+- How to capture viral species diversity in the form of a multiple sequence alignment?
+- How to design primers that will be mostly unaffected by differences between viral genotypes?
+- How to avoid generating primers with off-target binding sites?
     
 objectives:
 - Reproduce published qPCR primers and primer schemes for polio virus using MAFFT and varVAMP
@@ -185,8 +185,8 @@ With this alignment, we prepared our input Poliovirus 1 genomes for varVAMP and 
 > > <solution-title></solution-title>
 > >
 > > 1. In total 241 sequences were aligned with up to 7498 bases.
-> > 2. The speed-oriented methods, because there are too many sequences (>200) and it would take too long.
-> > 3. The height of the bars indicates the sequence conservation at that site.
+> > 2. The speed-oriented methods, because there are too many sequences (>200) and it would take very long with other methods.
+> > 3. The height of the bars indicates the sequence conservation at that site, with taller bars representing higher conservation.
 > > 4. For our genome alignment, both MAFFT methods, FFT-NS-2 and L-INS-i, produce nearly identical results. The only difference is a slight shift at site 107. In this case, as with other highly conserved genome sequences, neither method is superior. However, FFT-NS-2 is significantly faster and fully sufficient.
 > >
 > {: .solution}
@@ -197,19 +197,17 @@ With this alignment, we prepared our input Poliovirus 1 genomes for varVAMP and 
 
 Properly designed primers contribute to the specificity, efficiency, and accuracy of techniques like PCR and DNA sequencing, ultimately influencing the reliability and validity of biological research outcomes. *Variable VirusAMPlicons* (*varVAMP*) is a tool to design primers for highly diverse viruses. The input required is an alignment of your viral (full-genome) sequences.
 
-> <details-title>Functionality of varVAMP</details-title>
+> <details-title>varVAMP modes</details-title>
 >
 > For many virus genera, it is challenging to design pan-specific primers. varVAMP addresses this issue by introducing ambiguous characters into primers and minimizing mismatches at the 3' end. While the primers may not work for all sequences in your input alignment, they should recognize the vast majority.
 >
->   varVAMP offers three different flavours:
+>   varVAMP offers three different modes:
 >
 >   1. **SINGLE:** varVAMP searches for the best primers and reports non-overlapping amplicons suitable for PCR-based screening approaches.
 >   2. **TILED:** Using a graph-based approach, varVAMP designs overlapping amplicons that tile the entire viral genome. These amplicons are ideal for Oxford Nanopore or Illumina-based full-genome sequencing.
 >   3. **QPCR:** varVAMP searches for small amplicons with an optimized internal probe (TaqMan). It minimizes temperature differences between the primers and checks for secondary structures in the amplicons.
 >
 {: .details}
-
-The tool varVAMP offers a wide range of outputs across its various modes. For example, it is possible to obtain the locations of the designed primers and amplicons in BED file format or as a graphical PDF. These outputs provide detailed information about the regions of interest and other potential primers. Further information can be found in the next detail box. The varVAMP *"Analysis Log"* file contains information about the tool's settings and procedures and is always included with the outputs.
 
 > <hands-on-title>Generate qPCR primer/probe set</hands-on-title>
 >
@@ -231,11 +229,11 @@ The tool varVAMP offers a wide range of outputs across its various modes. For ex
 >    {% snippet  faqs/galaxy/collections_build_list.md name="varVAMP Polio1 qpcr threshold 0.93" %}
 {: .hands_on}
 
-Now we have our first varVAMP outputs and a better understanding of how the tool works. Additionally, we have organized the outputs into a dataset collection to maintain a clear overview. Take some time to review the different types of outputs and get familiar with the results.
+Now we have our first varVAMP outputs and a better understanding of how the tool works. As you can see varVAMP offers a wide range of outputs. For example, it is possible to obtain the locations of the designed primers and amplicons in BED file format or as a graphical PDF. These outputs provide detailed information about the regions of interest and other potential primers. The varVAMP *"Analysis Log"* file contains information about the tool's settings and procedures and is always included with the outputs. Take some time to review the different types of outputs and get familiar with the results.
 
 > <comment-title>Output control</comment-title>
 >
-> Control your output files by comparing them with the example files from the [varVAMP-qPCR-output GitHub page for Polio 1 virus](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_qpcr/polio1). There you can check if you created the same primers. The primer locations can be found in the BED file "primers.bed". These primers were designed using version varVAMP:0.7.
+> Check your output files by comparing them with the example files from the [varVAMP-qPCR-output GitHub page for Polio 1 virus](https://github.com/jonas-fuchs/ViralPrimerSchemes/tree/main/varvamp_qpcr/polio1). There you can check if you created the same primers. The primer locations can be found in the BED file "primers.bed". These primers were designed using version varVAMP:0.7.
 {: .comment}
 
 To check your results and assess your understanding of them, a few questions have been prepared for you:
@@ -257,7 +255,7 @@ To check your results and assess your understanding of them, a few questions hav
 >
 {: .question}
 
-## Advanced approach considering off-target sites for the output,
+## Advanced approach considering off-target sites for the output
 In our next step, imagine we have a sample taken from virus-infected human tissue. We want to ensure that we are not amplifing any related enterovirus genome sequences alongside our polio gene material during analysis. How can we specificlly design primers for our viral genome of interest?
 
 With varVAMP, it is possible to use a BLAST database as an off-target reference. Using the tool *NCBI BLAST+ makeblastdb* ({% cite Cock2015 %}), we can create a BLAST database containing the whole genomes of other enteroviruses and use it as a reference. varVAMP compares the identified primers against this database, and each off-target hit is taken into account. To select the best-fitting primer scheme, varVAMP sorts the potential primers by their penalty scores and the presence of off-targets. Therefore varVAMP avoids designing primers that might target similar genome regions in other organisms. An application example could be the real-time detection of polio 1 viral genomes in a human sample for pandemic surveillance.
@@ -280,7 +278,7 @@ First of all, you need to upload the enterovirus genome data into Galaxy.
 >
 {: .hands_on}
 
-Now that we have our data, we can begin creating an enterovirus genome database using NCBI BLAST+ makeblastdb. This will enable us to detect off-target hits with varVAMP in the next step.
+Now that we have our data, we can begin creating an enterovirus genome database using *NCBI BLAST+ makeblastdb*. This will enable us to detect off-target hits with varVAMP in the next step.
 
 > <hands-on-title>BLAST enterovirus genome database and primer design of Polio virus</hands-on-title>
 >
@@ -307,7 +305,7 @@ Now that we have our data, we can begin creating an enterovirus genome database 
 >    {% snippet  faqs/galaxy/collections_build_list.md name="varVAMP Polio1 qpcr threshold 0.93 + BLAST" %}
 {: .hands_on}
 
-Now that we have generated three possible primer schemes for qPCR using our current settings, how can we check whether these primers are appropriate and exclude potential off-targets?
+Having generated three possible primer schemes for qPCR using our current settings, how can we check whether these primers are appropriate and exclude potential off-targets?
 
 You can have a look at the files *"qPCR amplicon details"* and *"Primer details"* to see the locations of the generated amplicons and whether they consider off-targets. Please review your output and compare it with the amplicons of the first varVAMP run.
 
@@ -324,14 +322,14 @@ What does the difference mean?
 > > <solution-title></solution-title>
 > >
 > > 1. No, the primers generated without consideration of off-target sites are identical to those generated with consideration.
-> > 2. Yes, the amplicons include off-targets.
+> > 2. Yes, all amplicons include off-targets.
 > > 3. Before varVAMP can account for off-target sites, it must consider settings such as the threshold and the maximum number of ambiguous nucleotides. These settings resulted in only three amplicons, all of which contain off-targets.
 > > 4. Our threshold for consensus sequences is set to 0.93, which is quite high. Lowering this threshold would generate more potential primer schemes. Alternatively, increasing the maximum number of ambiguous nucleotides is another option.
 > {: .solution}
 >
 {: .question}
 
-Now let's try using a lower threshold to generate a primer scheme that is not classified as an off-target amplicon through the BLAST database. Lowering the threshold will reduce specificity, but values above 0.7 are generally acceptable, depending on the specific use case. Since the default value is 0.8, so let's proceed with this setting.
+Now let's try using a lower threshold to generate a primer scheme that is not classified as an off-target amplicon through the BLAST database. Lowering the threshold will reduce specificity, but values above 0.7 are generally acceptable, depending on the specific use case. Since the default value is 0.8, let's proceed with this setting.
 
 > <hands-on-title>Primer design of Polio 1 virus with BLAST db and lower threshold</hands-on-title>
 >
@@ -375,7 +373,7 @@ The newly designed primer schemes can be checked again with the files *"qPCR amp
 
 To explore additional options, we will now design primers for another use case using the TILED flavour. This flavour is designed to cover the entire genome of our input data. Therefore, the resulting primers are suitable for Oxford Nanopore or Illumina-based full-genome sequencing. 
 
-However, for many genomes, existing primer schemes are already available on GitHub, so you don't have to generate them by yourself. For example, you can explore various schemes from [quick-lab](https://github.com/quick-lab/primerschemes/tree/main/primerschemes), [pha4ge](https://github.com/pha4ge/primer-schemes/tree/main/schemes), and [artic-network](https://github.com/artic-network/primer-schemes).
+However, for many genomes, existing primer schemes are already available on GitHub, so you don't have to generate them by yourself. For example, you can explore various schemes from [quick-lab](https://github.com/quick-lab/primerschemes/tree/main/primerschemes), [pha4ge](https://github.com/pha4ge/primer-schemes/tree/main/schemes), and [ARTIC-network](https://github.com/artic-network/primer-schemes).
 
 To focus on designing the primer scheme, we will skip the multiple sequence alignment step this time and begin with the pre-aligned Polio 1-3 sequences available as part of the [ViralPrimerScheme](https://github.com/jonas-fuchs/ViralPrimerSchemes) repository.
 
@@ -411,7 +409,7 @@ In this varVAMP run, we will use the TILED flavour. Similar to the qPCR primer d
 >
 >       > <comment-title>Dataset collection</comment-title>
 >       >
->       >If you create a dataset collection at this point, you cannot include the "per-pool primer sequences", as this is already a dataset collection containing two files with the sequences for each pool.
+>       >If you create a dataset collection at this point, you cannot include the "per-pool primer sequences", as this is already a dataset collection containing two files with the primer sequences for each pool.
 >       {: .comment}
 {: .hands_on}
 
