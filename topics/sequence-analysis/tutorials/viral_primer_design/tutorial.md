@@ -345,7 +345,7 @@ Now let's try using a lower threshold to generate a primer scheme that is not cl
 >
 >       > <comment-title>Threshold control</comment-title>
 >       >
->       >You can try using the automatic setting for values like the threshold in varVAMP. On the website, for the question *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"* select the option `Specify max ambiguous nts, estimate suitable threshold`. The tool will then automatically select a value, which you can find in the *"Analysis Log"* file after running the tool.
+>       >You can try using the estimation for values like the threshold in varVAMP. On Galaxy, for the question *"How to set the main parameters, threshold for consensus nucleotides and max ambiguous nts per primer?"* select the option `Specify max ambiguous nts, estimate suitable threshold`. The tool will then automatically select a value, which you can find in the *"Analysis Log"* file after running the tool.
 >       {: .comment}
 >
 > 2. Creating a dataset collection
@@ -360,11 +360,13 @@ The newly designed primer schemes can be checked again with the files *"qPCR amp
 > 1. What is the difference with a lower threshold? Did you get a primer scheme that excludes off-targets?
 > 2. Why doesn't the amplicon collection include the amplicons that we generated with the higher threshold?
 > 3. Consider other use cases for avoiding off-targets using a BLAST database.
+> 4. Do you get the same primers if you allow varVAMP to estimate the threshold?
 >
 > > <solution-title></solution-title>
 > > 1. With the lower threshold, we generated more potential primer schemes, including four that do not contain off-targets.
 > > 2. The lower threshold leads to more potential amplicons that can achieve better scores than those with a higher threshold. Therefore the primers generated with the higher threshold are not considered in the varVAMP run with the lower threshold because all of them contain off-targets and have higher scores.
 > > 3. For example, you can prepare primers to amplify specific viral genome sequences from samples of various origins, such as wastewater or animal blood, enabling real-time surveillance through fluorescence-based detection.
+> > 4. No, because varVAMP estimates the optimal threshold to be 0.92 and we used different thresholds. As a result, 5 primer schemes have now been generated, one of which considers off-targets.
 > {: .solution}
 >
 {: .question}
