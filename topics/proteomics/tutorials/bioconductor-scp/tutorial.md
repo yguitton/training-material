@@ -370,6 +370,21 @@ In contrast to PCA, which is a linear dimension reduction, UMAP is a non-linear 
 
 In the end of the workflow, several datasets are exported. By default, a log transformed, normalized, imputed and batch-corrected data on the protein level are provided. Additionally, it is possible to export also intermediate results, meaning peptides, normalized peptides, log transformed peptides, proteins, normalized proteins and imputed proteins. Also, it is possible to export the scp object as an Rdata object, which can be further loaded into the R environment using the R load() function, and the Rscript to reproduce the analysis outside of Galaxy. Both plots and intermediate results will be provided as collections.
 
+In our tutorial, we will get all the QC plots (because we set the `Generate QC plots?` to Yes). Let's a bit describe what we can find in the Plots collection:
+
+  - *PCA*: PCA plots a scatterplot where PC1 is displayed on the x-axis and PC2 on they y-axis. We can see how much variance is explained by these two principal components and whether there are any clusters of e.g. samples based on how similar they are.
+  - *QC_boxplot_peptide*: Boxplots of the (non-normalized) log2 transformed peptide intensities for the individual `Runs` colored based on the `SampleType`.
+  - *QC_boxplot_peptide_norm*: Boxplots of the normalized and log2 transformed peptide intensities for the individual `Runs` colored based on the `SampleType`.
+  - *QC_boxplot_protein*: Boxplots of the (non-normalized) log2 transformed protein intensities for the individual `Runs` colored based on the `SampleType`.
+  - *QC_boxplot_protein_norm*: Boxplots of the normalized and log2 transformed protein intensities for the individual `Runs` colored based on the `SampleType`.
+  - *QC_heatmap_proteins*: Heatmap of missing values on the protein level (intensities after protein normalization were used). Columns are `Runs`, rows are individual proteins. Black means that protein has non-zero intensity, white means the protein has NA value for in the particular run. This can be useful to estimate what type of missingness is prevalent in our data (if the protein is missing in a stochastic manner across conditions, it will likely be MCAR; if protein absence/presence is biased towards specific samples group, it will likely be MNAR).
+  - *QC_median_CV*: Boxplots of the median coefficient of variation (CV) in the single cell samples and blank. We want to assess the consistency of quantification and filter out the cells with unreliable quantifications. In our example scenario, based on the distribution in Macrophage and Monocyte samples, we would set the threshold to 0.65.
+  - *QC_plot_SCR*: This plot shows the histogram of the mean sample-to-carrier ratio (SCR), which is computed as reporter ion intensity of a single cell channel divided by the reporter ion intensity of the carrier channel within one batch. We expect that the carrier intensity will be much higher than the single cell intensity. Because we have 200 cells in the carrier channel, we expect the ratio to be 1/200 (=0.005, the dashed line). We want to filter the PSMs which have a very high meanSCR, so in our case we would set the threshold to 0.1, where the long tail begins.
+  - *QC_plot_SCR_col*: the density plot of meanSCR as described above.
+  - *UMAP*: UMAP plot based on the PCA data. 
+
+In our tutorial, we didn't generate the intermediate outputs. These are the dataframes containing the rowData (Gene.names, Leading.razor.protein, ...) along with the particular numerical matrix - i.e. reporter intensities aggregated to the peptide or protein level, after transformation/normalization.
+
 # Summary tool setting
 
 Let's once again recapitulate how did we set the form: below we will mention only the parameters where we adjusted values, the other parameters were left to the default settings.
