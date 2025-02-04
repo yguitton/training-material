@@ -202,8 +202,8 @@ The next step is normalization, which helps us to remove the technical bias and 
 > <hands-on-title>Peptide normalization</hands-on-title>
 >
 > 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
->   - *"Normalization method rows"*: `rowMeans`
 >   - *"Normalization method columns"*: `colMedians`
+>   - *"Normalization method rows"*: `rowMeans`
 >
 {: .hands_on}
 
@@ -253,8 +253,8 @@ Next, we will also normalize the intensities on the protein level - again firstl
 > <hands-on-title>Protein normalization</hands-on-title>
 >
 > 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
->   - *"Normalization method rows"*: `rowMeans`
 >   - *"Normalization method columns"*: `colMedians`
+>   - *"Normalization method rows"*: `rowMeans`
 >
 {: .hands_on}
 
