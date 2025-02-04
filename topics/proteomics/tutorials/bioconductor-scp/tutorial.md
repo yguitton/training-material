@@ -242,7 +242,7 @@ For the aggregation of peptides to the protein level, we will use again the colM
 >
 > 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
 >   - *"Which function to use for the aggregation?"*: `Aggregate using the median of each sample: colMedians`
->   - *"Which column should be used for the PSM to peptide aggregation?"*: `c17: Leading.razor.protein`
+>   - *"Which column should be used for the peptide to protein aggregation?"*: `c17: Leading.razor.protein`
 >
 {: .hands_on}
 
@@ -370,3 +370,23 @@ In contrast to PCA, which is a linear dimension reduction, UMAP is a non-linear 
 
 In the end of the workflow, several datasets are exported. By default, a log transformed, normalized, imputed and batch-corrected data on the protein level are provided. Additionally, it is possible to export also intermediate results, meaning peptides, normalized peptides, log transformed peptides, proteins, normalized proteins and imputed proteins. Also, it is possible to export the scp object as an Rdata object, which can be further loaded into the R environment using the R load() function, and the Rscript to reproduce the analysis outside of Galaxy. Both plots and intermediate results will be provided as collections.
 
+# Summary tool setting
+
+Let's once again recapitulate how did we set the form: below we will mention only the parameters where we adjusted values, the other parameters were left to the default settings.
+
+> <hands-on-title>bioconductor-scp: Full example</hands-on-title>
+>
+> 1. {% tool [bioconductor-scp](toolshed.g2.bx.psu.edu/repos/recetox/bioconductor_scp/bioconductor_scp/1.16.0+galaxy0) %} with the following parameters
+>   - *"Input evidence table"*: `evidences.txt`
+>   - *"Sample annotations table"*: `sampleAnnotation.txt`
+>   - *"Which column specifies the run identifier and batch name?"*: `c19: Raw.file`
+>   - *"Single-cell channels present in the experiment"*: `Monocyte` and `Macrophage`
+>   - *"Which column should be used for the PSM to peptide aggregation?"*: `c6: Modified.sequence`
+>   - *"Which samples to keep?"*: `Monocyte`, `Macrophage` and `Blank`
+>   - *"Which column should be used for the peptide to protein aggregation?"*: `c17: Leading.razor.protein`
+>   - *"Which column is the technical variable to be corrected?"*: `c2: runCol`
+>   - *"What column to color the PCA according to?"*: `c4: SampleType`
+
+{: .hands_on}
+
+That's it! Good luck with the analysis of your own single-cell proteomics data!
