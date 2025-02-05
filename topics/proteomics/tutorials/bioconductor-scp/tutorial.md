@@ -136,7 +136,7 @@ Once the datasets are uploaded (green in the right menu), set the `Input evidenc
 >
 {: .hands_on}
 
-> <warning-title>Warning: Do not run the bioconductor-scp tool yet!</warning-title>
+> <warning-title>Do not run the bioconductor-scp tool yet!</warning-title>
 > We will learn and set the remaining tool parameters in the next steps of the tutorial. Once we set all the parameters, we will run the tool.
 {: .warning}
 
@@ -170,10 +170,6 @@ Finally, we will apply the filtering based on the **q-values**. In the evidences
 > computed in a way that intensities in the single cell channels are divided by the reference channel.
 {: .comment}
 
-> <warning-title>Warning: Do not run the bioconductor-scp tool yet!</warning-title>
-> We will learn and set the remaining tool parameters in the next steps of the tutorial. Once we set all the parameters, we will run the tool.
-{: .warning}
-
 Having the data cleaned, we can now follow with the aggregation of PSMs to the peptide level and peptide-level data processing.
 
 # Peptide-level operations
@@ -191,10 +187,6 @@ By default, the aggregation will be done on the **Modified.sequence** column (fo
 >   - *"Which column should be used for the PSM to peptide aggregation?"*: `c6: Modified.sequence`
 >
 {: .hands_on}
-
-> <warning-title>Warning: Do not run the bioconductor-scp tool yet!</warning-title>
-> We will learn and set the remaining tool parameters in the next steps of the tutorial. Once we set all the parameters, we will run the tool.
-{: .warning}
 
 ## Peptide filtering
 
@@ -216,10 +208,6 @@ After the filtering, we can remove the blank sample if we haven't done it alread
 >
 {: .hands_on}
 
-> <warning-title>Warning: Do not run the bioconductor-scp tool yet!</warning-title>
-> We will learn and set the remaining tool parameters in the next steps of the tutorial. Once we set all the parameters, we will run the tool.
-{: .warning}
-
 ## Peptide normalization
 
 The next step is normalization, which helps us to remove the technical bias and variation from the samples, but still preserves the biological variation. In contrast to the common untargeted proteomics workflow, in the SCP experiment we perform dual normalization, firstly on columns (meaning samples) and second on rows (meaning features, so peptides). We provide two methods of normalization, either on means or medians, with the preferred options set as default. 
@@ -232,9 +220,6 @@ The next step is normalization, which helps us to remove the technical bias and 
 >
 {: .hands_on}
 
-> <warning-title>Warning: Do not run the bioconductor-scp tool yet!</warning-title>
-> We will learn and set the remaining tool parameters in the next steps of the tutorial. Once we set all the parameters, we will run the tool.
-{: .warning}
 
 ## Log transformation
 
@@ -247,10 +232,6 @@ Due to the non-normal distribution which is common for the proteomics data, we u
 >
 {: .hands_on}
 
-> <warning-title>Warning: Do not run the bioconductor-scp tool yet!</warning-title>
-> We will learn and set the remaining tool parameters in the next steps of the tutorial. Once we set all the parameters, we will run the tool.
-{: .warning}
-
 ## High percentage missing values peptides removal
 
 Finally, we want to get rid of the peptides which do have a high missing rate in order to keep only the most reliable identifications. We set the percent of missing values, meaning that peptides exhibiting a higher number of missing values will be removed from the analysis. Here, the pNA is set to 99, meaning peptides containing more than 99% of missing data will be excluded. 
@@ -262,10 +243,6 @@ Finally, we want to get rid of the peptides which do have a high missing rate in
 >   - *"% of NA values filtering threshold"*: `99`
 >
 {: .hands_on}
-
-> <warning-title>Warning: Do not run the bioconductor-scp tool yet!</warning-title>
-> We will learn and set the remaining tool parameters in the next steps of the tutorial. Once we set all the parameters, we will run the tool.
-{: .warning}
 
 This leaves us with a reliable list of peptide identifications. The next step is aggregation to the protein level.
 
@@ -283,10 +260,6 @@ For the aggregation of peptides to the protein level, we will use again the colM
 >
 {: .hands_on}
 
-> <warning-title>Warning: Do not run the bioconductor-scp tool yet!</warning-title>
-> We will learn and set the remaining tool parameters in the next steps of the tutorial. Once we set all the parameters, we will run the tool.
-{: .warning}
-
 ## Protein normalization
 
 Next, we will also normalize the intensities on the protein level - again firstly in the column-wise manner and then in the row-wise manner. For the columns, we will use the colMedians and for the rows the rowMeans.
@@ -299,10 +272,6 @@ Next, we will also normalize the intensities on the protein level - again firstl
 >
 {: .hands_on}
 
-> <warning-title>Warning: Do not run the bioconductor-scp tool yet!</warning-title>
-> We will learn and set the remaining tool parameters in the next steps of the tutorial. Once we set all the parameters, we will run the tool.
-{: .warning}
-
 ## Missing values imputation
 
 Finally, we have to deal with the missing values as their presence is problematic for some multivariate analyses such as Principal Component Analysis (PCA) and leads to reduced statistical power as incomplete data limits the ability to detect significant differences between experimental groups. The most common way how to approach them is by the process called **missing values imputation**. By the imputation, we can replace the missing values with the artificial counterparts. Missing values can be of two major types: missing completely at random (MCAR) and missing not at random (MNAR) and they should be treated separately. In the SCP data, the MCAR type is more prevalent, and for MCAR data k-Nearest Neighbors (kNN) approach is often employed. The kNN approach will replace the missing values based on the weighted average of k-most similar proteins - it assumes that the missingness is due to a stochastic factor (e.g. instrumentation problem, but the protein is actually present). For the kNN, we have to choose the number of k-nearest neighbors beforehand, which we can set to 3.
@@ -313,10 +282,6 @@ Finally, we have to deal with the missing values as their presence is problemati
 >   - *"Which k to use for the kNN imputation"*: `3`
 >
 {: .hands_on}
-
-> <warning-title>Warning: Do not run the bioconductor-scp tool yet!</warning-title>
-> We will learn and set the remaining tool parameters in the next steps of the tutorial. Once we set all the parameters, we will run the tool.
-{: .warning}
 
 > <details-title> k-Nearest Neighbors </details-title>
 > 
@@ -348,10 +313,6 @@ In the bioconductor-scp, there are two batch removal methods implemented: alread
 >   - *"Which column is the technical variable to be corrected?"*: `c2: runCol`
 >
 {: .hands_on}
-
-> <warning-title>Warning: Do not run the bioconductor-scp tool yet!</warning-title>
-> We will learn and set the remaining tool parameters in the next steps of the tutorial. Once we set all the parameters, we will run the tool.
-{: .warning}
 
 > <details-title> ComBat </details-title>
 > 
@@ -387,9 +348,6 @@ In contrast to PCA, which is a linear dimension reduction, UMAP is a non-linear 
 >
 {: .hands_on}
 
-> <warning-title>Warning: Do not run the bioconductor-scp tool yet!</warning-title>
-> We will learn and set the remaining tool parameters in the next steps of the tutorial. Once we set all the parameters, we will run the tool.
-{: .warning}
 
 > <details-title> Dimensionality reduction: PCA, UMAP, tSNE </details-title>
 > 
