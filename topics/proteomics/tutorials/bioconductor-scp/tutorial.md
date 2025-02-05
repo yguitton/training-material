@@ -41,6 +41,8 @@ Of note, all functions within the **bioconductor-scp** tool are sorted 'chronolo
 > Finally, the last layer is the **protein** level, where multiple peptides (can) match one protein. 
 {: .details}
 
+The whole tutorial uses only two tools: {% tool [Group - data by a column and perform aggregate operation on other columns.](Grouping1) %} tool and **bioconductor-scp** tool {% icon tool %}. It is structured in a way that parameters associated with the particular data processing step are set in the Hands-on section and the background is explained. However, the **bioconductor-scp** tool will successfully run only after setting all the parameters, so please Run it only after setting of the whole form is completed.
+
 In our tutorial, we will analyze the data included in the scp package, similarly as it's in the scp vignette. The dataset is a subset of a data included in the publication by Specht et al. {% cite Specht2021 %} and is publicly available [on Zenodo](https://doi.org/10.5281/zenodo.14650887). Data come from the SCoPE2 method (next generation Single Cell ProtEomics, firstly described in the abovementioned publication), where single cells are firstly isolated, lysed and proteins released into the solvent are then enzymatically digested. Individual peptides are then barcoded with the tandem-mass-tags (TMT) and labelled peptides from multiple single cells are combined into a single mixture and analyzed by LC-MS/MS. As a model system, monocytes from human cell line U-937 differentiated into macrophage-like cells in the presence of an agonist of protein kinase C, phorbol-12-myristate-13-acetate (PMA), were used here. The main question was whether the macrophage population will be as homogenous as the monocyte one they originated from or more heterogenous. 
 
 ![SCOPE2_method](../../images/bioconductor-scp_SCOPE2.png "Scheme of the SCoPE2 method. Adapted from the <a href="https://scope2.slavovlab.net/">Slavov lab website</a>.")
@@ -53,7 +55,7 @@ There are 5 different types of samples in the SCoPE2 data:
   - *Blank channel*: serves as a negative control, they are processed identically to the single cell channels, but do not contain any cells,
   - *Single cell channel*: contain the single cell samples - in our case Monocytes and Macrophages.  
 
-Having now background to both the SCP method and the data example origin, let's dive into the analysis itself!
+Having now background to both the SCP method and the data example origin, let's dive into the analysis itself!  
 
 > <agenda-title></agenda-title>
 >
