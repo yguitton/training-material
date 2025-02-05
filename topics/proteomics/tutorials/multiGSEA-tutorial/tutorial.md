@@ -32,7 +32,9 @@ Pathway definitions can be downloaded from up to eight different pathway databas
 
 This tutorial covers a simple example workflow illustrating how the multiGSEA package works. The omics data sets that will be used throughout the example were originally provided by Quiros et al. (Quirós et al. 2017). In their publication the authors analyzed the mitochondrial response to four different toxicants, including Actinonin, Diclofenac, FCCB, and Mito-Block (MB), within the transcriptome, proteome, and metabolome layer.
 In this tutorial we will solely focus on the Actinonin data set.
-
+For more background information you can read following articles: 
+- Multiomics analysis by Quiros {% cite quiros2017multi %}
+- Methods for combining p-values by Loughin {% cite LOUGHIN2004467 %}
 
 > <agenda-title></agenda-title>
 >
@@ -95,9 +97,6 @@ In this step, you'll use the MultiGSEA tool to perform GSEA-based pathway enrich
 >
 {: .hands_on}
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-mit hands on boxen wie für mutltigsea anstatt grep das filter tool für 0.1 usw und das tool: Search in textfiles (grep)  toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_grep_tool/9.3+galaxy1 nach amino suchen
-
 # Mitochondrial stress activates metabolic pathways of amino acid biosynthesis.
 
 After we performed pathway enrichment on our data we want to continue our analysis by filtering the outputs.
@@ -130,7 +129,6 @@ After we performed pathway enrichment on our data we want to continue our analys
 >(KEGG) Biosynthesis of amino acids	3.7749282501799e-05	0.00138827212066317	1.53729180439681e-10	2.45864202583197e-08	0.0794621026894866	0.333364038319823	1.48946778740876e-07	1.13741176493032e-05
 >(REACTOME) Amino acid and derivative metabolism	4.7058253543142e-06	0.000231903073460604	7.70587893652191e-22	1.84864035687161e-18	0.055363321799308	0.286607081313329	9.03772696553135e-14	2.2775071953139e-11
 >(REACTOME) Response of EIF2AK4 (GCN2) to amino acid deficiency	6.42075812177139e-07	4.52021371772706e-05	3.76589836665495e-10	5.31434716565013e-08	NA	NA	3.35403180955872e-11	4.83629358772636e-09
-
 >
 >```
 >{: .hands_on}
