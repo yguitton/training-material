@@ -644,7 +644,7 @@ The RefSeq genes we downloaded from UCSC did only contain the RefSeq identifiers
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md genome="mm9" %}
 >
->    {% snippet faqs/galaxy/datasets_import_from_data_library.md path='Click on "Training data" and then "Introduction - From peaks to genes"' %}
+>    {% snippet faqs/galaxy/datasets_import_from_data_library.md path='Click on "GTN - Material", "Introduction to Galaxy Analyses", "From peaks to genes", and then "DOI: 10.5281/zenodo.1025586"' %}
 >
 >    As default, Galaxy takes the link as name, so rename them.
 >
