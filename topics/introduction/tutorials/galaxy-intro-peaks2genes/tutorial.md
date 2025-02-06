@@ -525,7 +525,7 @@ Galaxy makes this very simple with the `Extract workflow` option. This means tha
 >
 >    You will get a message that the workflow was created. But where did it go?
 >
-> 6. Click on **Workflow** in the top menu of Galaxy
+> 6. Click on **Workflow** in the left menu of Galaxy
 >
 >    Here you have a list of all your workflows
 >
@@ -543,10 +543,9 @@ Galaxy makes this very simple with the `Extract workflow` option. This means tha
 >
 > 8. Connect each input dataset to the **Intersect** {% icon tool %} tool by dragging the arrow pointing outwards on the right of its box (which denotes an output) to an arrow on the left of the **Intersect** box pointing inwards (which denotes an input)
 > 9. Rename the input datasets to `Reference regions` and `Peak regions`
-> 10. Click on the {% icon galaxy-gear %} (gear) icon at the top right
-> 11. Press **Auto Re-layout** to clean up our view
+> 10. Press **Auto Re-layout** to clean up our view
 >     ![Auto re-layouting](../../images/intro_07.png)
-> 12. Click on the {% icon galaxy-save %} **Save** icon (top-right) to save your changes
+> 11. Click on the {% icon galaxy-save %} **Save** icon (top) to save your changes
 >     ![Save workflow button]({% link topics/contributing/images/save_workflow.png %}){: width="50%"}
 >
 >    > <tip-title>Hiding intermediate steps</tip-title>
@@ -575,12 +574,12 @@ We again need our peak file, but we'd like to work in a clean history. Instead o
 >
 >    {% snippet faqs/galaxy/histories_create_new.md %}
 >
-> 2. Click on the **View all histories** ({% icon galaxy-columns %} icon) at the top right of your history
+> 2. Click on the **History options** at the top right of your history. Click on the **Show Histories Side-by-Side**
 >
 >       You should see both of your histories side-by-side now
 >
 > 3. Drag and drop the edited peak file (`Peak regions`, after the replace steps), which contains the summit information, to your new history.
-> 4. Click on the Home icon {% icon galaxy-home %} (or **Analyze Data** on older Galaxy versions) in the top menu bar to go back to your analysis window
+> 4. Click on the Galaxy name in the top menu bar (top left) to go back to your analysis window
 >
 {: .hands_on}
 
@@ -662,7 +661,7 @@ The RefSeq genes we downloaded from UCSC did only contain the RefSeq identifiers
 It's time to reuse the workflow we created earlier.
 
 > <hands-on-title>Run a workflow</hands-on-title>
-> 1. Open the workflow menu (top menu bar)
+> 1. Open the workflow menu (left menu bar)
 > 2. Find the workflow you made in the previous section, and select the option **Run**
 > 3. Choose as inputs our `mm9.RefSeq_genes` (`#genes`) BED file and the result of the **Cut** tool (`#peaks`)
 > 4. Click **Run workflow**
@@ -675,7 +674,7 @@ We used our workflow to rerun our analysis with the peak summits. The **Group** 
 But wouldn't it be more interesting to know the number of peaks in each unique gene? Let's rerun the workflow with different settings!
 
 > <hands-on-title>Run a workflow with changed settings</hands-on-title>
-> 1. Open the workflow menu (top menu bar)
+> 1. Open the workflow menu (left menu bar)
 > 2. Find the workflow you made in the previous section, and select the option **Run**
 > 3. Choose as inputs our `mm9.RefSeq_genes` (`#genes`) BED file and the result of the **Cut** tool (`#peaks`)
 > 4. Click on the title of the {% icon tool %} **Group** tool to expand the options.
