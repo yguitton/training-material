@@ -4,14 +4,42 @@ type: use
 topic_type: technology
 title: Single Cell
 
-learning_path_cta: intro_single_cell
+learning_path_ctas:
+  For Beginners: intro_single_cell
+  For Intermediate Users: beyond_single_cell
+  For Coding Enthusiasts: reloaded_single_cell
+
+
+# Using the community CTAs feature opts you into managing your own requirements list here a bit manually
+community_ctas:
+  - description: |
+      **Pre-requisites:** If you've never used Galaxy before, first try the:
+    link: https://training.galaxyproject.org/training-material/topics/introduction/
+    link_text: Introduction to Galaxy
+    icon: tutorial
+  - description: |
+      The Single Cell & Galaxy learners are on Slack
+    link: https://gxy.io/gtn-slack
+    link_text: GTN Slack Workspace
+    icon: comment
+  - description: |
+      Come chat Single Cell with us on Matrix
+    link: https://matrix.to/#/#spoc3:matrix.org
+    link_text: Community Matrix Chat
+    icon: comment
+  - description: |
+      What else do you want to see? Let us know!
+    link: https://docs.google.com/spreadsheets/d/15hqgqA-RMDhXR-ylKhRF-Dab9Ij2arYSKiEVoPl2df4/edit?usp=sharing
+    link_text: Tool/Tutorial Requests
+    icon: tool
+
 gitter: Galaxy-Training-Network_galaxy-single-cell:gitter.im
 
 summary: |
   Training material and practicals for all kinds of single cell analysis (particularly scRNA-seq!).
 
-  What else do you want to see? You can submit tool or tutorial requests, or upvote other requests, on our <i class="fa fa-wrench" aria-hidden="true"></i> [Single-Cell & Spatial Omics Tool Request Spreadsheet](https://docs.google.com/spreadsheets/d/15hqgqA-RMDhXR-ylKhRF-Dab9Ij2arYSKiEVoPl2df4/edit?usp=sharing).
-   {: .alert.alert-success}
+# What else do you want to see? You can submit tool or tutorial requests, or upvote other requests, on our <i class="fa fa-wrench" aria-hidden="true"></i> [Single-Cell & Spatial Omics Tool Request Spreadsheet]().
+#  {: .alert.alert-success}
 
 #docker_image: "quay.io/galaxy/transcriptomics-training"
 

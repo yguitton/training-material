@@ -31,7 +31,6 @@ abbreviations:
 
 ---
 
-# Introduction
 In many organism, {TF} play an important tole in the regulation of the gene expression. In human, we have up to 2,800 proteins and more than 1,600 are
 TF ([list of transcription factors](https://en.wikipedia.org/wiki/List_of_human_transcription_factors)), although the number might change over timer.
 Investigating the role of TFs, such as [GATA1](https://en.wikipedia.org/wiki/GATA1), is a very important task to understand the regulatory mechanisms in the cell and thus ascertain
