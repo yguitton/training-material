@@ -160,8 +160,8 @@ Before we can do any manipulation, we will need some data. Let's upload our tabl
 >    > > 4. There are 17 columns in this file. There are multiple ways to find this answer:
 >    > >    - Count the columns manually (only doable for small files)
 >    > >    - In the expanded view, scroll sideways on the dataset preview, at the top the columns are numbered
->    > >    - Click on the {% icon galaxy-info %} i icon on the dataset, here you will find more detailed information about the file and the job that created it.
->    > >      At the bottom is also a preview (peek) of the dataset, and numbered columns
+>    > >    - Click on the {% icon galaxy-info %} i icon on the dataset; here you will find more detailed information about the file and the job that created it.
+>    > >      At the bottom is also a preview (peek) of the dataset and numbered columns
 >    > >
 >    > > ![a screenshot of the expanded view of the dataset in the history, it shows the datatype, number of lines in the file, and a preview
 >    > > of the dataset with numbered columns](./images/columns-number.png)
@@ -207,7 +207,7 @@ This tutorial is structured a bit differently than most. **You do not have to do
 
 # File Format Conversion
 
-The file we uploaded is a `.tsv` file. This stands for *tab-separated values*. This means that this is a file containing rows and columns, where a TAB character is used to signify a column ends and a new one begins. Galaxy is great at understanding tab-separated files files, and most of the data manipulation tools are designed to work with such files.
+The file we uploaded is a `.tsv` file. This stands for *tab-separated values*. This means that this is a file containing rows and columns, where a TAB character is used to signify a column ends and a new one begins. Galaxy is great at understanding tab-separated files, and most of the data manipulation tools are designed to work with such files.
 
 A similar format you may come across a lot in data science, is the `.csv` file, or *comma-separated values* file. This is the same as `.tsv`, but uses comma (`,`) characters to indicate new columns, instead of TAB (`\t`) characters.
 
@@ -232,7 +232,7 @@ Galaxy can convert these two formats into each other.
 >    > >
 >    > > 1. Galaxy does not display the table as nicely as before.
 >    > >    This is because Galaxy is optimized to work with `tsv` files. For most rows you now see commas separating the different columns.
->    > > 2. If the data in a column contains a comma (e.g. in this file we have events such as `swimming 5,000 meters`), we put the value in quotes to signifiy that that comma is part of the data, not a column delimiter.
+>    > > 2. If the data in a column contains a comma (e.g. in this file we have events such as `swimming 5,000 meters`), we put the value in quotes to signify that that comma is part of the data, not a column delimiter.
 >    > >
 >    > {: .solution}
 >    {: .question}
@@ -343,7 +343,7 @@ This is great, but maybe it would make more sense to sort alphabetically by athl
 
 ## Sort on multiple columns at once
 
-So we want to sort twice, first by year, an then within each year, we sort again alphabetically by name. The sort tool can do this!
+So we want to sort twice, first by year, and then within each year, we sort again alphabetically by name. The sort tool can do this!
 
 
 > <hands-on-title>Sort table based on a column</hands-on-title>
@@ -547,7 +547,7 @@ This file contains a lot of data, but we may only be interested in a subset of t
 >
 >    > <question-title></question-title>
 >    >
->    > 1. How many lines do you expect in the this file?
+>    > 1. How many lines do you expect in this file?
 >    > 2. How many lines are in this file? Were you right?
 >    >
 >    > > <solution-title noprefix>Hints</solution-title>
@@ -560,9 +560,9 @@ This file contains a lot of data, but we may only be interested in a subset of t
 >    > > <solution-title noprefix>Answers</solution-title>
 >    > >
 >    > > 1. The original file has 234,523 lines, and the Winter Olympics had 44,681 lines. So we would expect 234,523 - 44,681 = 189,842 rows of data. Since we have subtracted the header line in this equation as well, we expect the Summer Olympics file to have 1 more line that this, so 189,843 total lines.
->    > > 2. 189,843. If you were off by one or two lines, it may have been that you counted the header lines double
+>    > > 2. 189,843. If you were off by one or two lines, it may have been that you counted the header lines double.
 >    > > <br>
->    > > It is always useful to take a moment to think about the expected outcome, this makes it easier to spot mistakes and will save you time in the long run.
+>    > > It is always useful to take a moment to think about the expected outcome; this makes it easier to spot mistakes and will save you time in the long run.
 >    > >
 >    > {: .solution}
 >    {: .question}
