@@ -34,6 +34,7 @@ contributions:
   - hexylena
   editing:
   - teresa-m
+  - dadrasarmin
   funding:
   - elixir-europe
   - deNBI
