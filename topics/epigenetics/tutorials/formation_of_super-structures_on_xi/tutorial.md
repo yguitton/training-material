@@ -474,7 +474,7 @@ We are using **bamCoverage** {% icon tool %}. Given a BAM file, this tool genera
 >    > {: .solution }
 >    {: .question}
 >
-> 3. Use **IGV** {% icon tool %} to inspect both signal coverages (input and ChIP samples). Alternatively,you can use **JBrowse2** as mentioned above to load multiple tracks and look a genome intervals.
+> 3. Use **IGV** {% icon tool %} to inspect both signal coverages (input and ChIP samples). Alternatively, you can use **JBrowse2** as mentioned above to load multiple tracks and look at genome intervals.
 >
 {: .hands_on}
 
