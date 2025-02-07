@@ -745,7 +745,7 @@ For example, if we want to find athletes with three-part names by counting space
 >    > <question-title></question-title>
 >    >
 >    > 1. How would you filter rows where the 2nd column contains **three spaces** (i.e., four-part names)?
->    > 2. How many medals were wone by athletes with five-part names **or more**?
+>    > 2. How many medals were won by athletes with five-part names **or more**?
 >    > 3. How many parts does the longest name have? Give an example of such a name.
 >    > 4. Bonus: **How many** athletes have 6-part names?
 >    >
@@ -1218,7 +1218,7 @@ You may have noticed that we could also provide multiple columns to group on. If
 > > 3. Any calculations you run which try to compute anything over the weight column (Column 8) will fail. Please see the [final exercise section](#exercises-putting-it-all-together) for the solution
 > >    to this question, in which we will first clean up the data in the weight column using the Find and Replace operation.
 > >
-> >    This type of situation occurs quite frequently, where you data does not fit with your expectations or assumptions, and you may have to perform additional data
+> >    This type of situation occurs quite frequently, where your data does not fit with your expectations or assumptions, and you may have to perform additional data
 > >    manipulation steps to clean up your data. It is very useful to know how to read the error messages of tools. Depending on the tool, the error messages may or may
 > >    not be very informative, but in many cases it can give you a clue as to why it failed, which sometimes can be fixed by you. If you think it is a problem with the
 > >    tool itself, please submit a bug report, and the tool authors will be able to have a look at it. More information about troubleshooting and reporting errors can
@@ -1477,7 +1477,7 @@ Look at the `birth_day` column. It has values in a format like `12 December`. Su
 >
 >    > <question-title></question-title>
 >    >
->    > 1. How do we match on the birthday format? How strict/exact shoule we be here?
+>    > 1. How do we match on the birthday format? How strict/exact should we be here?
 >    > 2. How do we captures both the day and the month?
 >    > 3. How do we refer to the values we captured (for the replacement value)
 >    >
@@ -1593,7 +1593,7 @@ Notice that during this step, we also changed the order of the columns. This too
 > >    - {% icon param-text %} *"Header name"*: `athlete_id`
 > >    - {% icon param-toggle %} *"Keep named columns"*: `No`
 > >
-> >    **Note:** the *"Keep named columns"* parameter determines wheter we keep or remove the columns we specified.
+> >    **Note:** the *"Keep named columns"* parameter determines whether we keep or remove the columns we specified.
 > >    You could have obtained the same result by supplying all column names except the first one, and selecting
 > >    *"Keep named columns"*: `No`, but that would have been a lot more work.
 > >
@@ -1723,7 +1723,7 @@ We would now like to take our Olympics dataset as the basis, and add columns to 
 >    > > <solution-title></solution-title>
 >    > >
 >    > > 1. All the columns from the country information file are added to the end of each row of our olympics dataset
->    > > 2. Our olympics datset had 17 columns, the country information file has 56 columns. Therefore we have 17+56=73 columns columns in our resulting file. This also means the NOC column
+>    > > 2. Our Olympics dataset had 17 columns, the country information file has 56 columns. Therefore, we have 17+56=73 columns in our resulting file. This also means the NOC column
 >    > >    we joined on appears twice in our output.
 >    > > 3. There is a lot of data duplication in this file now. The exact same country information is added to every line of every athlete from a certain country.
 >    > >    This means much larger file size, and more usage of your quota.
@@ -1770,7 +1770,7 @@ First, let's get this data for the 2022 Olympics
 {: .hands_on}
 
 
-Since this new dataset has the exact same structure (number and order of columns), we can simple add the lines from this file to the end of our existing `olympics.tsv` file.
+Since this new dataset has the exact same structure (number and order of columns), we can simply add the lines from this file to the end of our existing `olympics.tsv` file.
 
 
 > <hands-on-title>Adding 2022 Olympics to our dataset</hands-on-title>
@@ -1982,7 +1982,7 @@ row a weight range is used), and then answering the question a couple of questio
 > <question-title noprefix>Exercise 2: Data cleaning and computations of the weight column</question-title>
 >
 > 1. Get a list of all the values that occur in the weight column, take note of all the values that are not a single number or `NA`; anything else should be cleaned up
-> 2. Clean up the weight column (Colum 8) so that we only have single numbers; weight classes (e.g. `63-78`) should be replace by the lower bound (`63`) of that class
+> 2. Clean up the weight column (Column 8) so that we only have single numbers; weight classes (e.g. `63-78`) should be replace by the lower bound (`63`) of that class
 > 3. How heavy was the lightest woman competing in the Biathlon? And the heaviest?
 >
 > > <solution-title noprefix>Hints</solution-title>
