@@ -416,7 +416,6 @@ Let's once again recapitulate how did we set the form: below we will mention onl
 >   - *"Which column should be used for the peptide to protein aggregation?"*: `c17: Leading.razor.protein`
 >   - *"Which column is the technical variable to be corrected?"*: `c2: runCol`
 >   - *"What column to color the PCA according to?"*: `c4: SampleType`
-
 {: .hands_on}
 
 That's it! Good luck with the analysis of your own single-cell proteomics data!
