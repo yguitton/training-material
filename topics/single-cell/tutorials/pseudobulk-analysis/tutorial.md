@@ -36,32 +36,14 @@ Beyond enhancing statistical validity, pseudobulk analysis enables the identific
 
 In this tutorial, we will guide you through a pseudobulk analysis workflow using the **Decoupler** and **edgeR** tools available in Galaxy ({% cite Badia-iMompel2022 %}) ({% cite Liu2015 %}). These tools facilitate functional and differential expression analysis, and their output can be integrated with other Galaxy tools to visualize results, such as creating Volcano Plots, which we will also cover in this tutorial.
 
-> <agenda-title>Pseudobulk Analysis Pipeline Agenda</agenda-title>
+> <agenda-title></agenda-title>
 >
-> 1. Introduction to Pseudobulk Analysis and Data Preprocessing
->    - Overview of pseudobulk analysis
->    - Preparing single-cell data for pseudobulk analysis
->    - Aggregating data into pseudobulk samples
->    - Inspecting Decoupler outputs
+> In this tutorial, we will cover:
 >
-> 2. Differential Expression Analysis with edgeR
->    - Preparing input files for edgeR
->    - Performing differential expression analysis
->    - Understanding and interpreting the results
->
-> 3. Visualization and Reporting
->    - Generating volcano plots for differentially expressed genes
->    - Summarizing and presenting functional analysis results
->      
-> 4. Subsetting Samples from the Original AnnData Object
->    - Extracting AnnData Object with observations of interest 
->      
-> 5. Key Takeaways and Recommendations
->    - Reviewing the pseudobulk analysis pipeline
->    - Suggestions for additional analyses and further exploration
+> 1. TOC
+> {:toc}
 >
 {: .agenda}
-
 
 # Let's Get the Data!
 
