@@ -161,8 +161,8 @@ Raw counts are crucial for generating accurate pseudobulk aggregates. Since sing
 > >   - **Pseudobulk AnnData file:** An AnnData file that contains the aggregated pseudobulks.  
 > >
 > > 3. The **pseudobulk count matrix** is the primary input required for analysis using **edgeR**, a tool designed for differential expression analysis. The **Samples Metadata** is another file that will serve as an input for the edgeR tool. 
->
-{: .solution}
+> >
+> {: .solution}
 
 
 ## Sanitation Steps - Part 1
