@@ -130,16 +130,14 @@ Raw counts are crucial for generating accurate pseudobulk aggregates. Since sing
 >
 {: .hands_on}
 
-> <question-title> What are the outputs of the Decoupler tool? </question-title>
+> <question-title>What are the outputs of the Decoupler tool?</question-title>
 >
 > 1. How many outputs does the Decoupler tool generate?
 > 2. What do the outputs represent? What is the interpretation of the plots?
 > 3. Which output(s) will we use in edgeR for differential expression analysis?
 >
-{: .question}
-
-> <solution-title>Solutions</solution-title>
->
+> > <solution-title>Solutions</solution-title>
+> >
 > > 1. The Decoupler tool generates multiple outputs, including:
 > >    - **Pseudobulk Count Matrix** (tabular file)
 > >    - **Samples Metadata (Factor file)** (tabular file)
@@ -147,22 +145,26 @@ Raw counts are crucial for generating accurate pseudobulk aggregates. Since sing
 > >    - **Pseudobulk Plot** (PNG format)
 > >    - **Filter by Expression Plot** (PNG format)
 > >    - **Genes to Ignore by Contrast Field** (tabular file)
-> >    - **Pseudobulk AnnData file** (If chosen, h5ad file) 
+> >    - **Pseudobulk AnnData file** (If chosen, h5ad file)
 > >
 > > 2. The output files contain the following:
-> >    - **Pseudobulk Count Matrix:** Contains the raw count aggregates for each pseudobulk sample. 
+> >    - **Pseudobulk Count Matrix:** Contains the raw count aggregates for each pseudobulk sample.
 > >    - **Samples Metadata (Factor File):** Provides metadata annotated for each sample, including factors or annotations added to the AnnData object.
 > >    - **Genes Metadata:** Includes gene-related information such as gene symbols, Ensembl IDs, dispersion values, etc.
-> >    - **Genes to Ignore:** Lists of genes that could be excluded or should be carefully considered for specific contrasts. This file contains a contrast field and the corresponding genes written as gene symbols.
-> >    - **Pseudobulk Plot:** A visual representation of the pseudobulk data.
+> >    - **Genes to Ignore:** Lists of genes that could be excluded or should be carefully considered for specific contrasts.  
+> >      This file contains a contrast field and the corresponding genes written as gene symbols.
+> >    - **Pseudobulk Plot:** A visual representation of the pseudobulk data.  
 > >      ![Pseudobulk Plot Example](../../images/pseudobulk-analysis/Decoupler_Pseudobulk_Plot.png)
-> >    - **Filter by Expression Plot:** Illustrates the expression filtering applied to the data.
+> >    - **Filter by Expression Plot:** Illustrates the expression filtering applied to the data.  
 > >      ![Filter by Expression Plot Example](../../images/pseudobulk-analysis/Decoupler_Pseudobulk_Plot.png)
-> >    - **Pseudobulk AnnData file:** An AnnData file that contains the aggregated pseudobulks.  
+> >    - **Pseudobulk AnnData file:** An AnnData file that contains the aggregated pseudobulks.
 > >
-> > 3. The **pseudobulk count matrix** is the primary input required for analysis using **edgeR**, a tool designed for differential expression analysis. The **Samples Metadata** is another file that will serve as an input for the edgeR tool.
-> 
-{: .solution}
+> > 3. The **pseudobulk count matrix** is the primary input required for analysis using **edgeR**, a tool designed for differential expression analysis.  
+> >    The **Samples Metadata** is another file that will serve as an input for the edgeR tool.
+> >
+> {: .solution}
+>
+{: .question}
 
 ## Sanitation Steps - Part 1
 
