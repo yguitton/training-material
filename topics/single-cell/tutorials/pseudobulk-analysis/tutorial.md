@@ -139,31 +139,30 @@ Raw counts are crucial for generating accurate pseudobulk aggregates. Since sing
 {: .question}
 
 > <solution-title>Solutions</solution-title>
-> 
+>
 > > 1. The Decoupler tool generates multiple outputs, including:
-> >   - **Pseudobulk Count Matrix** (tabular file)
-> >   - **Samples Metadata (Factor file)** (tabular file)
-> >   - **Genes Metadata** (tabular file)
-> >   - **Pseudobulk Plot** (PNG format)
-> >   - **Filter by Expression Plot** (PNG format)
-> >   - **Genes to Ignore by Contrast Field** (tabular file)
-> >   - **Pseudobulk AnnData file** (If chosen, h5ad file) 
+> >    - **Pseudobulk Count Matrix** (tabular file)
+> >    - **Samples Metadata (Factor file)** (tabular file)
+> >    - **Genes Metadata** (tabular file)
+> >    - **Pseudobulk Plot** (PNG format)
+> >    - **Filter by Expression Plot** (PNG format)
+> >    - **Genes to Ignore by Contrast Field** (tabular file)
+> >    - **Pseudobulk AnnData file** (If chosen, h5ad file) 
 > >
 > > 2. The output files contain the following:
-> >   - **Pseudobulk Count Matrix:** Contains the raw count aggregates for each pseudobulk sample. 
-> >   - **Samples Metadata (Factor File):** Provides metadata annotated for each sample, including factors or annotations added to the AnnData object.
-> >   - **Genes Metadata:** Includes gene-related information such as gene symbols, Ensembl IDs, dispersion values, etc.
-> >   - **Genes to Ignore:** Lists of genes to could be excluded or should be carefully considered for specific contrasts. This file contains a contrast field and the corresponding genes written as gene symbols.
-> >   - **Pseudobulk Plot:** A visual representation of the pseudobulk data.
-> >   ![Pseudobulk Plot Example](../../images/pseudobulk-analysis/Decoupler_Pseudobulk_Plot.png)
-> >   - **Filter by Expression Plot:** Illustrates the expression filtering applied to the data.
-> >   ![Filter by Expression Plot Example](../../images/pseudobulk-analysis/Decoupler_Pseudobulk_Plot.png)
-> >   - **Pseudobulk AnnData file:** An AnnData file that contains the aggregated pseudobulks.  
+> >    - **Pseudobulk Count Matrix:** Contains the raw count aggregates for each pseudobulk sample. 
+> >    - **Samples Metadata (Factor File):** Provides metadata annotated for each sample, including factors or annotations added to the AnnData object.
+> >    - **Genes Metadata:** Includes gene-related information such as gene symbols, Ensembl IDs, dispersion values, etc.
+> >    - **Genes to Ignore:** Lists of genes that could be excluded or should be carefully considered for specific contrasts. This file contains a contrast field and the corresponding genes written as gene symbols.
+> >    - **Pseudobulk Plot:** A visual representation of the pseudobulk data.
+> >      ![Pseudobulk Plot Example](../../images/pseudobulk-analysis/Decoupler_Pseudobulk_Plot.png)
+> >    - **Filter by Expression Plot:** Illustrates the expression filtering applied to the data.
+> >      ![Filter by Expression Plot Example](../../images/pseudobulk-analysis/Decoupler_Pseudobulk_Plot.png)
+> >    - **Pseudobulk AnnData file:** An AnnData file that contains the aggregated pseudobulks.  
 > >
-> > 3. The **pseudobulk count matrix** is the primary input required for analysis using **edgeR**, a tool designed for differential expression analysis. The **Samples Metadata** is another file that will serve as an input for the edgeR tool. 
-> >
-> {: .solution}
-
+> > 3. The **pseudobulk count matrix** is the primary input required for analysis using **edgeR**, a tool designed for differential expression analysis. The **Samples Metadata** is another file that will serve as an input for the edgeR tool.
+> 
+{: .solution}
 
 ## Sanitation Steps - Part 1
 
@@ -484,15 +483,14 @@ After using the {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/an
 >
 {: .question}
 
-# Key Takeaways and Recommendations
-
-## Key Takeaways
-- **Pseudobulk Analysis Advantage:** Pseudobulk analysis bridges single-cell and bulk RNA-seq approaches, combining high resolution with statistical robustness.
-- **Importance of Metadata:** Proper annotation and metadata inclusion (e.g., cell types, conditions) are needed for generating pseudobulk matrices.
-- **Role of Decoupler:** The Decoupler tool can generate pseudobulk matrices, offering flexibility in filtering and visualization.
-- **Strength of edgeR:** edgeR provides robust differential expression analysis for pseudobulk data, accounting for biological and technical variability.
-- **Visualization and Interpretation:** Tools like Volcano Plots enhance interpretation by highlighting significant genes and trends in differential expression.
-
+key_points:
+  - **Pseudobulk Analysis Advantage:** Bridges single-cell and bulk RNA-seq approaches, combining high resolution with statistical robustness.
+  - **Importance of Metadata:** Proper annotation and metadata (e.g., cell types, conditions) are crucial for generating pseudobulk matrices.
+  - **Role of Decoupler:** Generates pseudobulk matrices with flexibility in filtering and visualization.
+  - **Strength of edgeR:** Provides robust differential expression analysis, accounting for biological and technical variability.
+  - **Visualization and Interpretation:** Tools like Volcano Plots highlight significant genes and trends in differential expression.
+  - **Prerequisites:** Prior knowledge of **PBMC analysis** and **Combining Single-Cell Datasets** is recommended before starting this tutorial.
+    
 ## Recommendations
 1. **Data Preprocessing:**
    - Ensure raw counts are preserved in your AnnData object before pseudobulk analysis.
