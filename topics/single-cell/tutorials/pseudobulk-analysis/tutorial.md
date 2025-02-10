@@ -75,7 +75,7 @@ The data object, which you will import from Zenodo into Galaxy via the provided 
 
 ## Data Upload
 
-> <hands-on-title></hands-on-title>
+> <hands-on-title>Upload your data</hands-on-title>
 >
 > 1. Create a new history for this tutorial and name it "Pseudobulk DE Analysis with edgeR"
 > 2. Import the AnnData file from [Zenodo]({{page.zenodo_link}}):
