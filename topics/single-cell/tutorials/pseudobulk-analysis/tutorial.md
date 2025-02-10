@@ -435,12 +435,14 @@ After using the {% tool [Scanpy filter](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_
 >
 > 1. What data is included in the new pseudobulk count matrix. How is the matrix structured, and what do the column labels represent? 
 > 2. How many samples are included in the current dataset? Are all of them derived exclusively from T cells?
+> 3. After performing pseudobulk analysis of T cells only, how does the volcano plot look like? Does it show differentially expressed genes between diseases? 
 > 
 > > <solution-title></solution-title>
 > >
 > > 1. The new count matrix consists of the original 2,815 rows, representing all genes with their gene labels in the first column. Additionally, it includes seven other columns corresponding to individual samples, like _Control#1Tcell_ or _SARSCoV2posSevere#1Tcell_.
 > > 2. Our dataset now includes a total of seven samples: three controls and four COVID-19 positive samples.
-> >
+> > 3. The volcano plot for T cells, comparing differentially expressed genes between conditions, is shown here: ![Volcano Plot T Cells](../../images/pseudobulk-analysis/Volcano_plot_tcells.png). No differentially expressed genes (DEGs) were detected when analyzing T cells alone between healthy and COVID-19 conditions.
+> > 
 > {: .solution}
 >
 {: .question}
