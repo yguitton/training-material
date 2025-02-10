@@ -1,47 +1,64 @@
 {
     "a_galaxy_workflow": "true",
-    "annotation": "Workflow for the first half of the \"Bulk RNA Deconvolution with MuSiC\" tutorial.",
+    "annotation": "Workflow for the second half of the \"Bulk RNA Deconvolution with MuSiC\" tutorial.\n\nImplements the \"Estimation of cell type proportions with pre-grouping of cell types\" section",
     "comments": [
         {
             "child_steps": [
-                10,
-                4
+                9,
+                4,
+                5
             ],
-            "color": "pink",
+            "color": "red",
             "data": {
-                "title": "MuSiC - Deconvolution"
+                "title": "Heatmap of cell type similarities"
             },
-            "id": 1,
+            "id": 2,
             "position": [
-                797.1,
-                311.7946832153121
+                675.3784262934139,
+                233.20000000000002
             ],
             "size": [
-                482.8,
-                331.4
+                512.8,
+                437
             ],
             "type": "frame"
         },
         {
             "child_steps": [
-                7,
-                9,
-                5,
-                8,
-                6
+                6,
+                7
             ],
-            "color": "blue",
+            "color": "orange",
             "data": {
-                "title": "Building the Expression Set objects"
+                "title": "Construct expression set object"
             },
             "id": 0,
             "position": [
-                259.48113902888974,
+                260.22340383793386,
+                93.10000000000002
+            ],
+            "size": [
+                250,
+                509
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
+                8
+            ],
+            "color": "turquoise",
+            "data": {
+                "title": "Colinearity Dendrogram"
+            },
+            "id": 1,
+            "position": [
+                677.0784262934139,
                 0
             ],
             "size": [
-                502,
-                759
+                240,
+                203.5
             ],
             "type": "frame"
         }
@@ -55,7 +72,7 @@
     ],
     "format-version": "0.1",
     "license": "MIT",
-    "name": "MuSiC: Deconvolution",
+    "name": "Music: Pre-grouping cell types",
     "report": {
         "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
     },
@@ -76,14 +93,14 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 1.2366847048153744,
-                "top": 158.38883771019155
+                "left": 1.7122571010688326,
+                "top": 126.19271974408805
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": null}",
             "tool_version": null,
             "type": "data_input",
-            "uuid": "e52b10f5-bdde-4b42-aee1-a259a7653190",
+            "uuid": "99f193a2-4f45-497e-95ff-84f0177e1cf1",
             "when": null,
             "workflow_outputs": []
         },
@@ -104,13 +121,13 @@
             "outputs": [],
             "position": {
                 "left": 0,
-                "top": 264.4800424288345
+                "top": 235.9479759744854
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": null}",
             "tool_version": null,
             "type": "data_input",
-            "uuid": "b6ce0332-6b6a-4cd9-a0d5-5f8d58a855c3",
+            "uuid": "1d5ea6b7-4c0c-4ab1-ba25-6a34f1414d76",
             "when": null,
             "workflow_outputs": []
         },
@@ -130,14 +147,14 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 0.15947378162077186,
-                "top": 382.01990496679537
+                "left": 1.3066705562721648,
+                "top": 379.91729887245367
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": null}",
             "tool_version": null,
             "type": "data_input",
-            "uuid": "1694b9d5-0db2-4e93-b542-03d137b968ae",
+            "uuid": "8d51d37b-723b-4895-93fd-20ef94a74418",
             "when": null,
             "workflow_outputs": []
         },
@@ -157,14 +174,14 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 5.492747209771736,
-                "top": 494.9931775618105
+                "left": 1.1160094717918803,
+                "top": 490.72025196530876
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": null}",
             "tool_version": null,
             "type": "data_input",
-            "uuid": "3720c7a7-2883-40df-b5ec-35bae0c33690",
+            "uuid": "fa4ddd24-2ebd-4822-982e-f81652cb9e22",
             "when": null,
             "workflow_outputs": []
         },
@@ -177,29 +194,56 @@
             "inputs": [
                 {
                     "description": "",
-                    "name": "Cell Types List"
+                    "name": "epith.markers"
                 }
             ],
-            "label": "Cell Types List",
-            "name": "Input parameter",
+            "label": "epith.markers",
+            "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 817.002692399355,
-                "top": 541.357357276171
+                "left": 706.7067544448422,
+                "top": 458.12225530126335
             },
             "tool_id": null,
-            "tool_state": "{\"parameter_type\": \"text\", \"optional\": false}",
+            "tool_state": "{\"optional\": false, \"tag\": null}",
             "tool_version": null,
-            "type": "parameter_input",
-            "uuid": "7bf54fb5-200e-4fb2-9f7d-90ba5116dbeb",
+            "type": "data_input",
+            "uuid": "75c317c7-4e02-461c-9173-bcfaf9f42e28",
             "when": null,
             "workflow_outputs": []
         },
         "5": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/music_construct_eset/music_construct_eset/0.1.1+galaxy4",
+            "content_id": null,
             "errors": null,
             "id": 5,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "immune.markers"
+                }
+            ],
+            "label": "immune.markers",
+            "name": "Input dataset",
+            "outputs": [],
+            "position": {
+                "left": 695.4194917780079,
+                "top": 551.1001038806075
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false, \"tag\": null}",
+            "tool_version": null,
+            "type": "data_input",
+            "uuid": "5f96e0ec-5785-47ea-af9b-8b64448b72db",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "6": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/music_construct_eset/music_construct_eset/0.1.1+galaxy4",
+            "errors": null,
+            "id": 6,
             "input_connections": {
                 "exprs_file": {
                     "id": 0,
@@ -224,8 +268,8 @@
                 }
             ],
             "position": {
-                "left": 281.11145859540704,
-                "top": 193.6759463745118
+                "left": 285.5177964559105,
+                "top": 161.61995656729547
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/music_construct_eset/music_construct_eset/0.1.1+galaxy4",
@@ -235,18 +279,18 @@
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"annotation\": null, \"expdata\": {\"name\": \"\", \"lab\": \"\", \"contact\": \"\", \"title\": \"\", \"abstract\": \"\", \"url\": \"\", \"other\": [{\"__index__\": 0, \"field\": \"notes\", \"comment\": \"Created in Galaxy\"}]}, \"exprs_file\": {\"__class__\": \"ConnectedValue\"}, \"metadata\": [], \"pdata_file\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"__input_ext\": \"input\", \"annotation\": null, \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"expdata\": {\"name\": \"\", \"lab\": \"\", \"contact\": \"\", \"title\": \"\", \"abstract\": \"\", \"url\": \"\", \"other\": [{\"__index__\": 0, \"field\": \"notes\", \"comment\": \"Created in Galaxy\"}]}, \"exprs_file\": {\"__class__\": \"ConnectedValue\"}, \"metadata\": [], \"pdata_file\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.1.1+galaxy4",
             "type": "tool",
-            "uuid": "c977a039-b654-4f9a-9406-06866c06745f",
+            "uuid": "ed2cc0d6-4f5d-4c96-a9e2-6436e435c5ec",
             "when": null,
             "workflow_outputs": []
         },
-        "6": {
+        "7": {
             "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/music_construct_eset/music_construct_eset/0.1.1+galaxy4",
             "errors": null,
-            "id": 6,
+            "id": 7,
             "input_connections": {
                 "exprs_file": {
                     "id": 2,
@@ -271,8 +315,8 @@
                 }
             ],
             "position": {
-                "left": 277.8400487142159,
-                "top": 419.4586019787689
+                "left": 286.20347628990595,
+                "top": 400.35835655358954
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/music_construct_eset/music_construct_eset/0.1.1+galaxy4",
@@ -282,186 +326,40 @@
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"annotation\": null, \"expdata\": {\"name\": \"\", \"lab\": \"\", \"contact\": \"\", \"title\": \"\", \"abstract\": \"\", \"url\": \"\", \"other\": [{\"__index__\": 0, \"field\": \"notes\", \"comment\": \"Created in Galaxy\"}]}, \"exprs_file\": {\"__class__\": \"ConnectedValue\"}, \"metadata\": [], \"pdata_file\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"__input_ext\": \"input\", \"annotation\": null, \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"expdata\": {\"name\": \"\", \"lab\": \"\", \"contact\": \"\", \"title\": \"\", \"abstract\": \"\", \"url\": \"\", \"other\": [{\"__index__\": 0, \"field\": \"notes\", \"comment\": \"Created in Galaxy\"}]}, \"exprs_file\": {\"__class__\": \"ConnectedValue\"}, \"metadata\": [], \"pdata_file\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.1.1+galaxy4",
             "type": "tool",
-            "uuid": "464cb3a3-6619-4ae3-98d8-657a2f0a6a12",
+            "uuid": "b2713fe9-0270-45fc-8981-cc4586d42f8e",
             "when": null,
             "workflow_outputs": []
-        },
-        "7": {
-            "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/music_inspect_eset/music_inspect_eset/0.1.1+galaxy4",
-            "errors": null,
-            "id": 7,
-            "input_connections": {
-                "rds_eset": {
-                    "id": 5,
-                    "output_name": "out_rds"
-                }
-            },
-            "inputs": [],
-            "label": "Extract Cell Types",
-            "name": "Inspect Expression Set Object",
-            "outputs": [
-                {
-                    "name": "out_tab",
-                    "type": "tabular"
-                }
-            ],
-            "position": {
-                "left": 540.7875737884788,
-                "top": 40.0382979453558
-            },
-            "post_job_actions": {},
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/music_inspect_eset/music_inspect_eset/0.1.1+galaxy4",
-            "tool_shed_repository": {
-                "changeset_revision": "fde4c972e7c5",
-                "name": "music_inspect_eset",
-                "owner": "bgruening",
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            },
-            "tool_state": "{\"inspector\": \"fData\", \"rds_eset\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "0.1.1+galaxy4",
-            "type": "tool",
-            "uuid": "1d1e7d01-45bb-4995-8380-d95d30c5c071",
-            "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "out_tab",
-                    "uuid": "81b26ba9-32e3-43a6-b1e1-4c5655538be9"
-                }
-            ]
         },
         "8": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/music_inspect_eset/music_inspect_eset/0.1.1+galaxy4",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/music_deconvolution/music_deconvolution/0.1.1+galaxy4",
             "errors": null,
             "id": 8,
             "input_connections": {
-                "rds_eset": {
-                    "id": 5,
-                    "output_name": "out_rds"
-                }
-            },
-            "inputs": [],
-            "label": "Extract General Info (scrna)",
-            "name": "Inspect Expression Set Object",
-            "outputs": [
-                {
-                    "name": "out_tab",
-                    "type": "tabular"
-                }
-            ],
-            "position": {
-                "left": 541.4470560817157,
-                "top": 170.47539065599267
-            },
-            "post_job_actions": {},
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/music_inspect_eset/music_inspect_eset/0.1.1+galaxy4",
-            "tool_shed_repository": {
-                "changeset_revision": "fde4c972e7c5",
-                "name": "music_inspect_eset",
-                "owner": "bgruening",
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            },
-            "tool_state": "{\"inspector\": \"print\", \"rds_eset\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "0.1.1+galaxy4",
-            "type": "tool",
-            "uuid": "9202bf69-9497-4574-9de4-b0387486b3af",
-            "when": null,
-            "workflow_outputs": []
-        },
-        "9": {
-            "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/music_inspect_eset/music_inspect_eset/0.1.1+galaxy4",
-            "errors": null,
-            "id": 9,
-            "input_connections": {
-                "rds_eset": {
-                    "id": 6,
-                    "output_name": "out_rds"
-                }
-            },
-            "inputs": [],
-            "label": "Extract General Info (Bulk)",
-            "name": "Inspect Expression Set Object",
-            "outputs": [
-                {
-                    "name": "out_tab",
-                    "type": "tabular"
-                }
-            ],
-            "position": {
-                "left": 521.4813002926044,
-                "top": 625.8904103386584
-            },
-            "post_job_actions": {},
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/music_inspect_eset/music_inspect_eset/0.1.1+galaxy4",
-            "tool_shed_repository": {
-                "changeset_revision": "fde4c972e7c5",
-                "name": "music_inspect_eset",
-                "owner": "bgruening",
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            },
-            "tool_state": "{\"inspector\": \"print\", \"rds_eset\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "0.1.1+galaxy4",
-            "type": "tool",
-            "uuid": "c49d1e7b-af28-436d-a136-28713ff4106a",
-            "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "out_tab",
-                    "uuid": "1f24824b-6b75-4509-8fb1-2af378f54534"
-                }
-            ]
-        },
-        "10": {
-            "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/music_deconvolution/music_deconvolution/0.1.1+galaxy4",
-            "errors": null,
-            "id": 10,
-            "input_connections": {
                 "bulk_eset": {
-                    "id": 6,
+                    "id": 7,
                     "output_name": "out_rds"
-                },
-                "do|celltypes": {
-                    "id": 4,
-                    "output_name": "output"
                 },
                 "scrna_eset": {
-                    "id": 5,
+                    "id": 6,
                     "output_name": "out_rds"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool MuSiC Deconvolution",
-                    "name": "do"
-                }
-            ],
-            "label": "Music: Estimate Cell Proportions",
+            "inputs": [],
+            "label": null,
             "name": "MuSiC Deconvolution",
             "outputs": [
-                {
-                    "name": "props",
-                    "type": "input"
-                },
-                {
-                    "name": "summaries",
-                    "type": "input"
-                },
                 {
                     "name": "out_pdf",
                     "type": "pdf"
                 }
             ],
             "position": {
-                "left": 1059.8293847944933,
-                "top": 351.8111830837978
+                "left": 697.1279373558052,
+                "top": 40.060184841924986
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/music_deconvolution/music_deconvolution/0.1.1+galaxy4",
@@ -471,16 +369,82 @@
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"bulk_eset\": {\"__class__\": \"ConnectedValue\"}, \"do\": {\"method\": \"estimateprops\", \"__current_case__\": 0, \"est_methods\": [\"MuSiC\", \"NNLS\"], \"celltypes_label\": \"cellType\", \"samples_label\": \"sampleID\", \"celltypes\": {\"__class__\": \"ConnectedValue\"}, \"phenotype_factors\": \"\", \"phenotype_factors_always_exclude\": \"sampleID,SubjectName\", \"disease_factor\": {\"use\": \"yes\", \"__current_case__\": 1, \"phenotype_scrna_target\": \"beta\", \"phenotype_target\": \"hba1c\", \"phenotype_target_threshold\": \"6.5\", \"sample_disease_group\": \"T2D\", \"sample_disease_group_scale\": \"5\"}, \"maxyscale\": null}, \"scrna_eset\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"__input_ext\": \"input\", \"bulk_eset\": {\"__class__\": \"ConnectedValue\"}, \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"do\": {\"method\": \"dendrogram\", \"__current_case__\": 1, \"celltypes_label\": \"cellType\", \"clustertype_label\": \"clusterType\", \"samples_label\": \"sampleID\", \"celltypes\": \"Endo,Podo,PT,LOH,DCT,CD-PC,CD-IC,Fib,Macro,Neutro,B lymph,T lymph,NK\", \"cluster_groups\": []}, \"scrna_eset\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.1.1+galaxy4",
             "type": "tool",
-            "uuid": "4ddccd45-8474-4d44-8223-ecde7ea26c95",
+            "uuid": "894432a6-e1ee-4242-aecf-72e0a297d00b",
             "when": null,
             "workflow_outputs": [
                 {
-                    "label": null,
+                    "label": "out_pdf",
                     "output_name": "out_pdf",
-                    "uuid": "1262e4d1-7601-451a-b6a6-89b7f950cf7e"
+                    "uuid": "9c4e9980-be47-4095-b116-5c6874329f63"
+                }
+            ]
+        },
+        "9": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/music_deconvolution/music_deconvolution/0.1.1+galaxy4",
+            "errors": null,
+            "id": 9,
+            "input_connections": {
+                "bulk_eset": {
+                    "id": 7,
+                    "output_name": "out_rds"
+                },
+                "do|cluster_groups_2|marker_list": {
+                    "id": 4,
+                    "output_name": "output"
+                },
+                "do|cluster_groups_3|marker_list": {
+                    "id": 5,
+                    "output_name": "output"
+                },
+                "scrna_eset": {
+                    "id": 6,
+                    "output_name": "out_rds"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "MuSiC Deconvolution",
+            "outputs": [
+                {
+                    "name": "out_pdf",
+                    "type": "pdf"
+                },
+                {
+                    "name": "out_tab",
+                    "type": "tabular"
+                }
+            ],
+            "position": {
+                "left": 968.2066851474364,
+                "top": 273.3194371712229
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/music_deconvolution/music_deconvolution/0.1.1+galaxy4",
+            "tool_shed_repository": {
+                "changeset_revision": "8cd2ecfa2e61",
+                "name": "music_deconvolution",
+                "owner": "bgruening",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"input\", \"bulk_eset\": {\"__class__\": \"ConnectedValue\"}, \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"do\": {\"method\": \"dendrogram\", \"__current_case__\": 1, \"celltypes_label\": \"cellType\", \"clustertype_label\": \"clusterType\", \"samples_label\": \"sampleID\", \"celltypes\": \"Endo,Podo,PT,LOH,DCT,CD-PC,CD-IC,Fib,Macro,Neutro,B lymph,T lymph,NK\", \"cluster_groups\": [{\"__index__\": 0, \"cluster_id\": \"C1\", \"celltypes\": \"Neutro\", \"marker_name\": \"\", \"marker_list\": null}, {\"__index__\": 1, \"cluster_id\": \"C2\", \"celltypes\": \"Podo\", \"marker_name\": \"\", \"marker_list\": null}, {\"__index__\": 2, \"cluster_id\": \"C3\", \"celltypes\": \"Endo,CD-PC,LOH,CD-IC,DCT,PT\", \"marker_name\": \"Epithelial\", \"marker_list\": {\"__class__\": \"ConnectedValue\"}}, {\"__index__\": 3, \"cluster_id\": \"C4\", \"celltypes\": \"Macro,Fib,B lymph,NK,T lymph\", \"marker_name\": \"Immune\", \"marker_list\": {\"__class__\": \"ConnectedValue\"}}]}, \"scrna_eset\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.1+galaxy4",
+            "type": "tool",
+            "uuid": "63a748c4-9184-42cb-87d7-025b8730b568",
+            "when": null,
+            "workflow_outputs": [
+                {
+                    "label": "out_tab",
+                    "output_name": "out_tab",
+                    "uuid": "3935b7f2-a422-4ad8-bbe2-65615865174b"
+                },
+                {
+                    "label": "out_pdf",
+                    "output_name": "out_pdf",
+                    "uuid": "a002d52f-2253-4763-852e-6fe3ef90d352"
                 }
             ]
         }
@@ -489,6 +453,6 @@
         "transcriptomics",
         "single-cell"
     ],
-    "uuid": "9ace88c8-5f6b-4177-857c-ffe1dc3146da",
-    "version": 24
+    "uuid": "aaf9baf2-62c7-44db-be76-3bdcadfdfb39",
+    "version": 13
 }
