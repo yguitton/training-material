@@ -9,12 +9,9 @@ contributions:
         - pratikdjagtap
         - foellmelanie
 
-
-
-
 program:
   - section: "Proteomics program" 
     description: |
-      Further information coming soon.
+      Further information is coming soon.
 
 ---
