@@ -40,7 +40,7 @@ Proteogenomics leverages mass spectrometry (MS)-based proteomics data alongside 
 
 In this framework, Proteogenomics incorporates RNA-Seq data to generate tailored protein sequence databases, enabling the identification of protein sequence variants, including neoantigens, through mass spectrometry analysis ({% cite Chambers_2017 %}).
 
-![Non-Reference_Protein_Database overview workflow]({% link topics/proteomics/images/neoantigen/non-reference_Protein_Database_1.PNG %})
+![Non-Reference_Protein_Database overview workflow]({% link topics/proteomics/images/neoantigen/non-normal_Protein_Database_1.PNG %})
 
 In this workflow, (A) Generation of variant database, (B) Generation of assembled protein database, and (C) Merging all databases with known HUMAN protein sequences.
 > <agenda-title></agenda-title>
@@ -113,7 +113,7 @@ Uncompressing data is a crucial first step in many bioinformatics workflows beca
 {: .hands_on}
 
 # Extracting Single amino acid variants with HISAT and Freebayes
-![A:Generating variant protein sequence database]({% link topics/proteomics/images/neoantigen/non-reference_Protein_Database_2.PNG %})
+![A:Generating variant protein sequence database]({% link topics/proteomics/images/neoantigen/non-normal_Protein_Database_2.PNG %})
 ## Aligning to the reference genome with HISAT2
 HISAT2 is a fast and efficient tool used in bioinformatics workflows to align sequence reads to a reference genome. In this task, HISAT2 is used to align paired-end reads against the human genome version GRCh38 (hg38). This alignment is essential for downstream analyses such as variant calling or transcript quantification. HISAT2 is configured to use default alignment and scoring options to ensure simplicity and speed, which is often suitable for general-purpose analyses.
 
@@ -435,7 +435,7 @@ In this workflow, FASTA Merge Files and Filter Unique Sequences consolidate all 
 {: .question}
 
 # Extracting Assembled sequences with Stringtie and GFF compare
-![Assembled sequence database generation]({% link topics/proteomics/images/neoantigen/non-reference_Protein_Database_3.PNG %})
+![Assembled sequence database generation]({% link topics/proteomics/images/neoantigen/non-normal_Protein_Database_3.PNG %})
 
 ## Assemble with StringTie
 
@@ -599,7 +599,7 @@ This tool is important for converting the genomic annotations (in BED format) th
 Merging non-reference databases with the known human protein sequence involves integrating data from various sources into a unified format for more efficient analysis. In bioinformatics, this process is often necessary when working with protein sequence data, especially when datasets include variations, unknown sequences, or newly identified proteins alongside well-established reference proteins from the human genome. In this case, we are merging a previously integrated variant database (which includes SNV, INDEL, and RPKM), assembled FASTA data generated from translating BED files to transcripts, the UniProt human reference, and a known contaminant database.
 
 
-![Database Merging]({% link topics/proteomics/images/neoantigen/non-reference_Protein_Database_4.PNG %})
+![Database Merging]({% link topics/proteomics/images/neoantigen/non-normal_Protein_Database_4.PNG %})
 
 
 ## Merging all databases using FASTA Merge Files and Filter Unique Sequences
