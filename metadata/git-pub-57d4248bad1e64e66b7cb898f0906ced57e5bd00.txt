@@ -1,3 +1,17 @@
+GTN_GTN:1738930924
+
+A	topics/proteomics/images/bioconductor-scp_SCOPE2.png
+A	topics/proteomics/tutorials/bioconductor-scp/faqs/index.md
+A	topics/proteomics/tutorials/bioconductor-scp/tutorial.bib
+A	topics/proteomics/tutorials/bioconductor-scp/tutorial.md
+A	topics/proteomics/tutorials/bioconductor-scp/workflows/index.md
+GTN_GTN:1738750870
+
+A	topics/single-cell/tutorials/bulk-deconvolution-evaluate/data-library.yaml
+GTN_GTN:1738576286
+
+R099	metadata/git-mod-b42014f17cb888716aae51705820aa8d9dce5633.txt	metadata/git-mod-8c7ed9154cd76c9027b0a247c539573070ac0dca.txt
+R099	metadata/git-pub-b42014f17cb888716aae51705820aa8d9dce5633.txt	metadata/git-pub-8c7ed9154cd76c9027b0a247c539573070ac0dca.txt
 GTN_GTN:1738530837
 
 A	topics/single-cell/images/bulk-deconvolution-evaluate/batch-mode.png
