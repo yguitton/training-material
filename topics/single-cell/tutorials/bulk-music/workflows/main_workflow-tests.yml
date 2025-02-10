@@ -1,4 +1,4 @@
-- doc: Test outline for music_deconvolution
+- doc: Test outline for main_workflow
   job:
     scRNA Assay Tabular:
       class: File
