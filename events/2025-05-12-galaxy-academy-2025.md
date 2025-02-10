@@ -3,7 +3,8 @@ layout: event
 
 title: Galaxy Training Academy 2025
 description: |
-  The Galaxy Training Academy is a self-paced online training event for beginners as well as advanced learners who would like to improve their Galaxy data analysis skills. Over the course of one week, we offer a diverse selection of learning track for you.
+  The Galaxy Training Academy is a self-paced online training event for beginners and advanced learners who want to improve their Galaxy data analysis skills. 
+  Over the course of one week, we offer a diverse selection of learning track for you.
 
 # <button id="program-button" class="btn btn-info" onclick="$('#program-tab').tab('show');">Start the Course!</button>
 
@@ -94,7 +95,6 @@ contributions:
         - abromics
         - ifb
 
-
 location:
   name: online
 
@@ -108,15 +108,14 @@ infrastructure:
       name: Galaxy Main
     - server: https://usegalaxy.org.au/
       name: Galaxy AU
-
   support:
     platform: Slack
 
-
 program:
   - section: "Monday: Introduction"
-    description: You will start the the week on your own time by watching videos and/or following the text-based tutorials provided in the program below. There are no live sessions, so you can determine your own schedule. A large team of instructors is available on Slack to answer your questions 24/7! Enjoy!
-
+    description: |
+        You will start the week on your local time by watching videos and/or following the text-based tutorials in the program below. There are no live sessions, so you can determine your schedule.
+        A large team of instructors is available on Slack to answer your questions 24/7! Enjoy!
 
   - section: "Galaxy introduction"
     subsection: true
@@ -156,12 +155,11 @@ program:
   #    - type: custom
   #      name: Daily Icebreakers
   #      description: |
-  #        **Tuesday:** For today's ice breaker, we would love to know one weird fact #that you know for no reason.
-   #       **Wednesday:** We would love to hear where you find inspiration. Maybe you find inspirtaiton through nature or maybe you have a prominant role model in your life—we'd love to learn more about you!
-   #       **Thursday:** if you could take any one movie prop from a movie set, what would it be?
+  #        **Tuesday:** For today's icebreaker, we would love to know one weird fact #that you know for no reason.
+   #       **Wednesday:** We would love to hear where you find inspiration. Maybe you find inspiration through nature or maybe you have a prominent role model in your life—we'd love to learn more about you!
+   #       **Thursday:** If you could take any one movie prop from a movie set, what would it be?
 
     #      Post your answers each day to Slack [#social](https://gtnsmrgsbord.slack.com/channels/social) channel.
-
 
   - section: "Tuesday to Thursday: Pick a track"
     subsection: true
@@ -169,7 +167,7 @@ program:
       Over the course of these three days, you can choose your preferred track and learn how to use Galaxy for data analysis in this research field. If you find multiple topics interesting, feel free to explore more than one track. Each track will guide you through the process, from basic to more advanced analyses, to accommodate learners of all levels.
 
 # For assistance, you can access support through the Slack channel associated with each track module. Please note that while we strive to accommodate all time zones, responses to specific questions may take a bit longer depending on the availability of experts in your time zone.
-    tracks:  # instead of tutorials, you can also define tracks, this will create a button per tracks that will lead to a different page
+    tracks:  # Instead of tutorials, you can also define tracks, this will create a button per track that will lead to a different page
       - title: Proteomics
         link: events/tracks/gta2025-proteomics.md
       #- title: Assembly
@@ -189,8 +187,9 @@ program:
 
   - section: "Friday: Grab bag"
     description: |
-      Can't get enough? Then please pick one of our FAIR tutorials below, or any of the tutorials of within one of the tracks. The trainers present on Slack will do their best to help you if you have a problem and answer questions, but they may not be expert in the topic you selected.
-      You can directly start with you prefered tutorial.
+      Can't get enough? Then please pick one of our FAIR tutorials below or any of the tutorials within one of the tracks. The trainers present on Slack will do their best to help you
+      if you have a problem and answer questions, but they may not be experts in the topic you selected.
+      You can directly start with your preferred tutorial.
 
 #**Need help with these tutorials?** Ask your questions via the Slack Channel [#gta_friday-grab-bag](https://gtnsmrgsbord.slack.com/archives/C07N2A4HQ15).
   - section: Fair training
@@ -199,7 +198,7 @@ program:
       #- type: custom
       #  name: Daily Icebreaker
       #  description: |
-      #    **For the last ice breaker, we would love to know what the most interesting or exciting thing you learned this week is!!**
+      #    **For the last icebreaker, we would love to know what the most interesting or exciting thing you learned this week is!!**
 
       #    Post your answer on Slack [#social](https://gtnsmrgsbord.slack.com/channels/social) channel
       - type: custom
@@ -218,24 +217,25 @@ program:
 
 ---
 # Welcome to the Galaxy Training Academy 2025
-Do you want to learn how to use Galaxy, a open source data analysis platform? Then you are at the right place. We offer here a **5-day Global Online and Asynchronous learning event**.
+Do you want to learn how to use Galaxy, an open source data analysis platform? Then you are at the right place. We offer here a **5-day Global Online and Asynchronous learning event**.
 
 **Registrations will open on the 3rd of March.**  
 
 ## Do you want to join the GTA as a trainer?
-Please fill our [form](https://forms.gle/V9QqSDNg2UmQaDHy8) to indicate in what capacity you would like to help. 
+Please fill out our [form](https://forms.gle/V9QqSDNg2UmQaDHy8) to indicate in what capacity you would like to help. 
 
 ## Do you want to participate as a learner?
-In the following you will learn everything you need to know about the event.
+In the following, you will learn everything you need to know about the event.
 
 **Course format**
 
-The event is asynchronous which means you can set your own pace on your learning journey using our provided self-learning materials. You will start the event by your self at your own time. Don't worry, asynchronous does not mean that you are alone! If you ever need help, you can contact one of our many trainers worldwide via **Slack chat**.
+The event is asynchronous which means you can set your own pace on your learning journey using our provided self-learning materials. You will start the event by yourself at your preferred time.
+Don't worry, asynchronous does not mean that you are alone! If you ever need help, you can contact one of our many trainers worldwide via **Slack chat**.
 
 **How to participate**
 
-First you will need to register. **We will open registrations on the 3rd of March.** 
-You only need a browser and an account on one of the galaxy instances registered for this event. Please have a look at the [setup page](https://training.galaxyproject.org/training-material/events/2025-05-12-galaxy-academy-2025.html#setup).
+First, you will need to register. **We will open registrations on the 3rd of March.** 
+You only need a browser and an account on one of the Galaxy instances registered for this event. Please have a look at the [setup page](https://training.galaxyproject.org/training-material/events/2025-05-12-galaxy-academy-2025.html#setup).
 
 <button id="program-button" class="btn btn-info" onclick="$('#setup-tab').tab('show');">Setup</button>
 
@@ -245,7 +245,7 @@ We provide you with training materials which you can study at your own pace and 
 
 <button id="program-button" class="btn btn-info" onclick="$('#program-tab').tab('show');">Program</button>
 
-On the first day you can make yourself familiar with the Galaxy platform. In the next days you can follow different tracks. Please go to the program tab for more information. On Friday we offer a ***Fair training*** program to you.
+On the first day, you can make yourself familiar with the Galaxy platform. In the next days, you can follow different tracks. Please go to the program tab for more information. On Friday we offer a ***Fair training*** program to you.
 
 **How to get help** 
 
@@ -254,4 +254,4 @@ You will not be alone! If you ever need help, you can contact one of our many tr
 
 **Certificates**
 
-You will be able to obtain a certificates by the end to the event. More information are coming soon.
+You will be able to obtain a certificate by the end of the event. More information is coming soon.
