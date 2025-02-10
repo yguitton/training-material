@@ -333,8 +333,7 @@ Several plots can be generated to assist in understanding the data and the resul
 
 ## Sanitation Steps - Part 2
 
-After performing the differential expression analysis with edgeR, we will clean the data to prepare it for visualization. This involves extracting collection elements, removing unnecessary columns, standardizing text, and splitting the file if needed. We will use the [Extract element identifiers](https://toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2), [Remove columns](https://toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0), [Replace Text](https://toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.3+galaxy1), and [Split file](https://toolshed.g2.bx.psu.edu/repos/bgruening/split_file_to_collection/split_file_to_collection/0.5.2).
-
+After performing the differential expression analysis with edgeR, we will clean the data to prepare it for visualization. This involves extracting collection elements, removing unnecessary columns, standardizing text, and splitting the file if needed. We will use the [Extract element identifiers](https://toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2), [Remove columns](https://toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0).
 
 > <hands-on-title></hands-on-title>
 >
@@ -357,6 +356,7 @@ After performing the differential expression analysis with edgeR, we will clean 
 >        - {% icon param-repeat %} *"Insert Select Columns"*
 >            - *"Header name"*: `FDR`
 >    - *"Keep named columns"*: `Yes`
+>    - *"Rename output file to"*: `edgeR_DEG_summary`
 >
 {: .hands_on}
 
@@ -367,7 +367,7 @@ In this step, we will use the sanitized output from the previous steps to genera
 > <hands-on-title> Create a Volcano Plot of the DEG </hands-on-title>
 >
 > 1. Use the {% tool [Volcano Plot](toolshed.g2.bx.psu.edu/repos/iuc/volcanoplot/volcanoplot/0.0.6) %} tool with the following parameters:
->    - {% icon param-file %} *"Specify an input file"*: `output_tabular` (output from **Remove Columns** {% icon tool %})
+>    - {% icon param-file %} *"Specify an input file"*: `edgeR_DEG_summary` (tabular file output from **Remove Columns** {% icon tool %})
 >    - *"File has header?"*: `Yes`
 >    - *"FDR (adjusted P value) column number"*: `c4`
 >    - *"P value (raw) column number"*: `c3`
