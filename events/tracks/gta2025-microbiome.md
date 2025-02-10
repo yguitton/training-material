@@ -8,9 +8,6 @@ contributions:
     organisers:
         - paulzierep
         - bebatut
-
-
-
 program:
   - section: "Microbiome program" 
     description: |

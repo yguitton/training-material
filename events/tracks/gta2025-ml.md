@@ -8,13 +8,8 @@ contributions:
     organisers:
         - anuprulez
 
-
-
 program:
   - section: "Machine Learning program" 
     description: |
       Further information coming soon
-
- 
-
 ---
