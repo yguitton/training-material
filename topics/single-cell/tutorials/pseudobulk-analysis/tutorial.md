@@ -440,7 +440,7 @@ Let's take a moment to interpret the Volcano Plot:
 > 1. What is the significance of genes located at the extremes of the plot (e.g., high LogFC and low P-value)? 
 > 2. How many genes meet the significance threshold in this analysis?
 >
-> > <solution-title> Solution </solution-title>
+> > <solution-title></solution-title>
 > >
 > > 1. Genes at the extremes of the Volcano plot are highly significant and exhibit strong differential expression. Consider exploring the biological significance of these genes to gain deeper insights into their roles.
 > > 2. In our current analysis, we identified only one downregulated gene, MTND1P23, with a logFC of -3.1956, in normal conditions compared to COVID-19 patients.
