@@ -258,7 +258,7 @@ The tool **edgeR** is commonly used for differential expression (DE) analysis of
 
 In addition to exact tests, edgeR employs generalized linear models (GLMs), which allow for the analysis of more complex experimental designs. GLMs model gene counts as a function of experimental conditions (e.g., treatment groups or time points) and estimate how these conditions influence gene expression. Likelihood-based methods, such as quasi-likelihood (QL) approaches, are central to this framework. Standard likelihood methods evaluate the fit of the model to the data, while quasi-likelihood methods add an extra layer by explicitly accounting for biological and technical variability, improving the reliability of DE results. These models allow edgeR to identify subtle expression differences while controlling for overdispersion in the data ({% cite Chen2016 %}).
 
-Several plots can be generated to assist in understanding the data and the results of the analysis, including MDS, BCV, QL, and MD plots. These visualizations provide insights into sample relationships, variability, and differential expression, and will be explained further in the tutorial. With these concepts in mind, let's now perform our DE analysis using our edgeR tool in Galaxy!
+Several plots can be generated to assist in understanding the data and the results of the analysis, including Multidimensional scaling (MDS), Biological Coefficient of Variation plot (BCV), Quasi-Likelihood (QL), and Mean-Difference plot o MA (MD) plots. These visualizations provide insights into sample relationships, variability, and differential expression, and will be explained further in the tutorial. With these concepts in mind, let's now perform our DE analysis using our edgeR tool in Galaxy!
 
 > <hands-on-title> Run a DGE Analysis with edgeR </hands-on-title>
 >
@@ -316,7 +316,7 @@ Several plots can be generated to assist in understanding the data and the resul
 > >   - **MDS Plot**: Displays relationships between samples based on gene expression profiles. Samples that cluster closely are more similar in their expression. Use this to identify whether samples separate by biological condition or to detect potential batch effects.  ![MDS Plot](../../images/pseudobulk-analysis/mdsplot_disease.png)
 > >   - **BCV Plot**: Shows the dispersion for each gene, with higher values indicating greater variability. This is useful for assessing how variability is modeled in the dataset. ![BCV Plot](../../images/pseudobulk-analysis/bcvplot.png)
 > >   - **QL Plot**: Highlights the quasi-likelihood dispersions, which represent variability modeled during statistical testing. Proper dispersion modeling ensures robust differential expression analysis. ![QL Plot](../../images/pseudobulk-analysis/qlplot.png)
-> >   - **MD Plot**: Visualizes the mean expression levels against log fold change for each gene. Genes far from the center indicate stronger differential expression, with points above or below the horizontal line showing upregulated or downregulated genes, respectively.  ![MD Plot](../../images/pseudobulk-analysis/mdplot_normal-COVID_19.p> ng)
+> >   - **MD Plot**: Visualizes the mean expression levels against log fold change for each gene. Genes far from the center indicate stronger differential expression, with points above or below the horizontal line showing upregulated or downregulated genes, respectively.  ![MD Plot](../../images/pseudobulk-analysis/mdplot_normal-COVID_19.png)
 > > 
 > {: .solution}
 >
@@ -324,19 +324,15 @@ Several plots can be generated to assist in understanding the data and the resul
 
 ## Sanitation Steps - Part 2
 
-After performing the differential expression analysis with edgeR, we will clean the data to prepare it for visualization. This involves extracting collection elements, removing unnecessary columns, standardizing text, and splitting the file if needed. We will use the {% tool [Extract element identifiers](toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2) %}, {% tool [Remove columns](toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0) %}, {% tool [Replace Text](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.3+galaxy1) %}, {% tool [Split file](toolshed.g2.bx.psu.edu/repos/bgruening/split_file_to_collection/split_file_to_collection/0.5.2) %}, and {% tool [Parse parameter value](param_value_from_file) %}
+After performing the differential expression analysis with edgeR, we will clean the data to prepare it for visualization. This involves extracting collection elements, removing unnecessary columns, standardizing text, and splitting the file if needed. We will use the [Extract element identifiers](https://toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2), [Remove columns](https://toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0), [Replace Text](https://toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.3+galaxy1), and [Split file](https://toolshed.g2.bx.psu.edu/repos/bgruening/split_file_to_collection/split_file_to_collection/0.5.2).
 
 
-> <hands-on-title>Extract Identifiers</hands-on-title>
+> <hands-on-title></hands-on-title>
 >
 > **Extract element identifiers** will allow us to processes the **edgeR** output, which is a collection of datasets, to extract individual elements (like the first table from our collection) for further analysis.
 > 
 > 1. Use the {% tool [Extract element identifiers](toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2) %} tool with the following parameters:
->    - {% icon param-file %} *"Dataset collection"*: `outTables` (output from the **edgeR** tool {% icon tool %})
->
-{: .hands_on}
-
-> <hands-on-title> Remove Unnecessary Columns </hands-on-title>
+>    - {% icon param-file %} *"Dataset collection"*: `outTables` (output from the **edgeR** tool {% icon tool %})     
 >
 > **Remove columns** to filter out unnecessary columns from the **edgeR** output and retain only the essential ones for analysis: Gene ID (`id`), Log Fold Change (`logFC`), P-value (`PValue`), and False Discovery Rate (`FDR`).
 > 
@@ -352,10 +348,6 @@ After performing the differential expression analysis with edgeR, we will clean 
 >        - {% icon param-repeat %} *"Insert Select Columns"*
 >            - *"Header name"*: `FDR`
 >    - *"Keep named columns"*: `Yes`
->   
-{: .hands_on}
-
-> <hands-on-title> Replace Text </hands-on-title>
 >
 > **Replace text** to standardize and clean column headers or dataset identifiers by replacing unnecessary prefixes (e.g., `edgeR_`) with nothing.
 >
@@ -365,10 +357,6 @@ After performing the differential expression analysis with edgeR, we will clean 
 >        - {% icon param-repeat %} *"Insert Replacement"*
 >            - *"Find pattern"*: `edgeR_`
 >
-{: .hands_on}
-
-> <hands-on-title> Split File </hands-on-title>
->
 > **Split file,** if the dataset is too large to process in one go, split it into smaller chunks. 
 >
 > 1. Use the {% tool [Split file](toolshed.g2.bx.psu.edu/repos/bgruening/split_file_to_collection/split_file_to_collection/0.5.2) %} tool with the following parameters:
@@ -376,15 +364,6 @@ After performing the differential expression analysis with edgeR, we will clean 
 >        - {% icon param-file %} *"Text file to split"*: `outfile` (output of **Replace Text** {% icon tool %})
 >        - *"Specify number of output files or number of records per file?"*: `Number of records per file ('chunk mode')`
 >        - *"Method to allocate records to new files"*: `Maintain record order`
->
-{: .hands_on}
-
-**Parse parameter value** to extract specific parameter values (e.g., dataset names) from the split files for further dynamic inputs in downstream analysis.
-
-> <hands-on-title> Parse Parameter Value </hands-on-title>
->
-> 1. Use the {% tool [Parse parameter value](param_value_from_file) %} tool with the following parameters:
->    - {% icon param-file %} *"Input file containing parameter to parse out of"*: `list_output_txt` (output of **Split File** {% icon tool %})
 >
 {: .hands_on}
 
