@@ -15,9 +15,12 @@ time_estimation: 3H
 key_points:
 - Single-cell proteomics can reveal cellular heterogeneity and uncover rare cell populations.
 - Well-tested and standardized tools as bioconductor-scp are essential for the reproducible data analysis.
-contributors:
-- KristinaGomoryova
-- hechth
+contributions:
+  authorship:
+    - KristinaGomoryova
+    - hechth
+  editing:
+   - pavanvidem
 subtopic: post-process
 
 ---
