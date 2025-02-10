@@ -12,12 +12,12 @@ objectives:
 - Perform differential expression analysis using edgeR
 time_estimation: 3H
 key_points: 
-- Pseudobulk Analysis Advantage: Bridges single-cell and bulk RNA-seq approaches, combining high resolution with statistical robustness.
-- Importance of Metadata: Proper annotation and metadata (e.g., cell types, conditions) are crucial for generating pseudobulk matrices.
-- Role of Decoupler: Generates pseudobulk matrices with flexibility in filtering and visualization.
-- Strength of edgeR: Provides robust differential expression analysis, accounting for biological and technical variability.
-- Visualization and Interpretation: Tools like Volcano Plots highlight significant genes and trends in differential expression.
-- Prerequisites: Prior knowledge of PBMC analysis and Combining Single-Cell Datasets is recommended before starting this tutorial.
+- The advantage of pseudobulk analysis is that it bridges single-cell and bulk RNA-seq approaches, combining high resolution with statistical robustness.
+- Metadata is important because proper annotation and metadata, such as cell types and conditions, are crucial for generating pseudobulk matrices.
+- Decoupler plays a key role by generating pseudobulk matrices with flexibility in filtering and visualization.
+- edgeR provides robust differential expression analysis, taking into account biological and technical variability.
+- Visualization and interpretation are essential, with tools like Volcano Plots highlighting significant genes and trends in differential expression.
+- Before starting this tutorial, prior knowledge of PBMC analysis and combining single-cell datasets is recommended.
 contributions:
   authorship:
     - dianichj
