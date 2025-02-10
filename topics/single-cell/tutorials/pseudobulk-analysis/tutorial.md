@@ -12,10 +12,13 @@ objectives:
 - Understand and generate the pseudobulk expression matrix with Decoupler
 - Perform differential expression analysis using edgeR
 time_estimation: 3H
-key_points:
-- Pseudobulk analysis approach bridges the gap between single-cell and bulk RNA-seq data  
-- Decoupler tool generates a pseudobulk count matrix, enabling downstream differential expression and functional analyses 
-- edgeR is a robust tool for differential expression in pseudobulk datasets  
+key_points: 
+  - Pseudobulk Analysis Advantage: Bridges single-cell and bulk RNA-seq approaches, combining high resolution with statistical robustness.
+  - Importance of Metadata: Proper annotation and metadata (e.g., cell types, conditions) are crucial for generating pseudobulk matrices.
+  - Role of Decoupler: Generates pseudobulk matrices with flexibility in filtering and visualization.
+  - Strength of edgeR: Provides robust differential expression analysis, accounting for biological and technical variability.
+  - Visualization and Interpretation: Tools like Volcano Plots highlight significant genes and trends in differential expression.
+  - Prerequisites: Prior knowledge of **PBMC analysis** and **Combining Single-Cell Datasets** is recommended before starting this tutorial.
 contributions:
   authorship:
     - dianichj
@@ -104,7 +107,7 @@ Raw counts are crucial for generating accurate pseudobulk aggregates. Since sing
 
 > <hands-on-title> Decoupler Pseudobulk </hands-on-title>
 >
-> 1. {% tool [Decoupler pseudo-bulk](toolshed.g2.bx.psu.edu/repos/ebi-gxa/decoupler_pseudobulk/decoupler_pseudobulk/1.4.0+galaxy5) %} tool with the following parameters:
+> 1. {% tool [Decoupler pseudo-bulk](toolshed.g2.bx.psu.edu/repos/ebi-gxa/decoupler_pseudobulk/decoupler_pseudobulk/1.4.0+galaxy8) %} tool with the following parameters:
 >     - {% icon param-file %} **Input AnnData file**: `AnnData for Pseudobulk` (Input dataset obtained > from Zenodo)
 >     - **Produce a list of genes to filter out per contrast?**: `No`
 >     - **Obs Fields to Merge**: *(Leave empty if not applicable)*
@@ -458,9 +461,9 @@ Now, what if we refine our approach? For instance, instead of analysing all cell
 
 > <hands-on-title> Use Manipulate AnnData Tools to extract observations </hands-on-title>
 >
-> 1. Use the {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy0) %} tool with the following parameters:
+> 1. Use the {% tool [Scanpy filter](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_filter/scanpy_filter/1.10.2+galaxy3) %} tool with the following parameters:
 >    - *"Annotated data matrix"*: `AnnData for Pseudobulk` (Your preprocessed, analysed, and annotated AnnData object)  
->    - *"Function to manipulate the object"*: `Filter observations or variables`  
+>    - *"Method used for filtering"*: `Filter on any column of observations or variables`  
 >    - *"What to filter?"*: `Observations (obs)` (For filtering cells, select Observations (obs))  
 >    - *"Type of filtering?"*: `By key (column) values`  
 >    - *"Key to filter"*: `cell_type` (the label that identifies cell annotations in our AnnData)  
@@ -469,7 +472,7 @@ Now, what if we refine our approach? For instance, instead of analysing all cell
 >    - *"Value"*: `T cell` (the name of the cluster of interest for subset analysis)
 {: .hands_on}
 
-After using the {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy0) %} tool to subset the cell type of interest, go back to the top of this tutorial to the hands-on **Pseudobulk with Decoupler** step, and you may perform once again the same steps in this smaller AnnData object that now should only include your T cells. Results from this analysis will correspond to differential expression between conditions only for T cells. 
+After using the {% tool [Scanpy filter](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_filter/scanpy_filter/1.10.2+galaxy3) %} tool to subset the cell type of interest, go back to the top of this tutorial to the hands-on **Pseudobulk with Decoupler** step, and you may perform once again the same steps in this smaller AnnData object that now should only include your T cells. Results from this analysis will correspond to differential expression between conditions only for T cells. 
 
 > <question-title> T Cell Count Matrix </question-title>
 >
@@ -485,13 +488,6 @@ After using the {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/an
 >
 {: .question}
 
-key_points:
-  - **Pseudobulk Analysis Advantage:** Bridges single-cell and bulk RNA-seq approaches, combining high resolution with statistical robustness.
-  - **Importance of Metadata:** Proper annotation and metadata (e.g., cell types, conditions) are crucial for generating pseudobulk matrices.
-  - **Role of Decoupler:** Generates pseudobulk matrices with flexibility in filtering and visualization.
-  - **Strength of edgeR:** Provides robust differential expression analysis, accounting for biological and technical variability.
-  - **Visualization and Interpretation:** Tools like Volcano Plots highlight significant genes and trends in differential expression.
-  - **Prerequisites:** Prior knowledge of **PBMC analysis** and **Combining Single-Cell Datasets** is recommended before starting this tutorial.
     
 ## Recommendations
 1. **Data Preprocessing:**
