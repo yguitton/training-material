@@ -137,7 +137,7 @@ Raw counts are crucial for generating accurate pseudobulk aggregates. Since sing
 > 2. What do the outputs represent? What is the interpretation of the plots?
 > 3. Which output(s) will we use in edgeR for differential expression analysis?
 >
-> > <solution-title>Solutions</solution-title>
+> > <solution-title></solution-title>
 > >
 > > 1. The Decoupler tool generates multiple outputs, including:
 > >    - **Pseudobulk Count Matrix** (tabular file)
