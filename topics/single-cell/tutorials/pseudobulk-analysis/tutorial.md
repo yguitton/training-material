@@ -1,6 +1,5 @@
 ---
 layout: tutorial_hands_on
-
 title: Pseudobulk Analysis with Decoupler and EdgeR
 zenodo_link: https://zenodo.org/records/13929549
 questions:
@@ -18,7 +17,7 @@ key_points:
 - Role of Decoupler: Generates pseudobulk matrices with flexibility in filtering and visualization.
 - Strength of edgeR: Provides robust differential expression analysis, accounting for biological and technical variability.
 - Visualization and Interpretation: Tools like Volcano Plots highlight significant genes and trends in differential expression.
-- Prerequisites: Prior knowledge of **PBMC analysis** and **Combining Single-Cell Datasets** is recommended before starting this tutorial.
+- Prerequisites: Prior knowledge of PBMC analysis and Combining Single-Cell Datasets is recommended before starting this tutorial.
 contributions:
   authorship:
     - dianichj
@@ -28,7 +27,6 @@ tags:
 - single-cell
 - transcriptomics
 - pseudobulk
-
 ---
 
 Pseudobulk analysis is a powerful technique that bridges the gap between single-cell and bulk RNA-seq data. It involves aggregating gene expression data from groups of cells within the same biological replicate, such as a mouse or patient, typically based on clustering or cell type annotations ({% cite Murphy2022 %}).
