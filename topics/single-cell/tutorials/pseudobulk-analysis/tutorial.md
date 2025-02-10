@@ -1,6 +1,7 @@
 ---
 layout: tutorial_hands_on
 title: Pseudobulk Analysis with Decoupler and EdgeR
+subtopic: end-to-end
 zenodo_link: https://zenodo.org/records/13929549
 questions:
 - How does pseudobulk analysis help in understanding cell-type-specific gene expression changes?  
@@ -27,6 +28,14 @@ tags:
 - single-cell
 - transcriptomics
 - pseudobulk
+
+answer_histories:
+  - label: "UseGalaxy.eu"
+    history: https://usegalaxy.eu/u/dianitachj24/h/pseudo-bulk-edger
+    date: 2025-02-10
+  - label: "UseGalaxy.eu"
+    history: https://usegalaxy.eu/u/dianitachj24/h/pseudo-bulk-edger-tcells
+    date: 2025-02-10
 ---
 
 Pseudobulk analysis is a powerful technique that bridges the gap between single-cell and bulk RNA-seq data. It involves aggregating gene expression data from groups of cells within the same biological replicate, such as a mouse or patient, typically based on clustering or cell type annotations ({% cite Murphy2022 %}).
@@ -66,7 +75,7 @@ The data object, which you will import from Zenodo into Galaxy via the provided 
 
 ## Data Upload
 
-> <hands-on-title> Data Upload </hands-on-title>
+> <hands-on-title></hands-on-title>
 >
 > 1. Create a new history for this tutorial and name it "Pseudobulk DE Analysis with edgeR"
 > 2. Import the AnnData file from [Zenodo]({{page.zenodo_link}}):
@@ -348,22 +357,6 @@ After performing the differential expression analysis with edgeR, we will clean 
 >        - {% icon param-repeat %} *"Insert Select Columns"*
 >            - *"Header name"*: `FDR`
 >    - *"Keep named columns"*: `Yes`
->
-> **Replace text** to standardize and clean column headers or dataset identifiers by replacing unnecessary prefixes (e.g., `edgeR_`) with nothing.
->
->  1. Use the {% tool [Replace Text](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.3+galaxy1) %} tool with the following parameters:
->    - {% icon param-file %} *"File to process"*: `output` (output of **Extract Element Identifiers** {% icon tool %})
->    - In *"Replacement"*:
->        - {% icon param-repeat %} *"Insert Replacement"*
->            - *"Find pattern"*: `edgeR_`
->
-> **Split file,** if the dataset is too large to process in one go, split it into smaller chunks. 
->
-> 1. Use the {% tool [Split file](toolshed.g2.bx.psu.edu/repos/bgruening/split_file_to_collection/split_file_to_collection/0.5.2) %} tool with the following parameters:
->    - *"Select the file type to split"*: `Text files`
->        - {% icon param-file %} *"Text file to split"*: `outfile` (output of **Replace Text** {% icon tool %})
->        - *"Specify number of output files or number of records per file?"*: `Number of records per file ('chunk mode')`
->        - *"Method to allocate records to new files"*: `Maintain record order`
 >
 {: .hands_on}
 
