@@ -99,7 +99,7 @@ location:
   name: online
 
 infrastructure:
-  tiaas: true
+  tiaas: false
   servers:
     - server: https://usegalaxy.eu
       name: Galaxy EU
