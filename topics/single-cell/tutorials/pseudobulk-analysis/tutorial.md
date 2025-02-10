@@ -302,36 +302,36 @@ Several plots can be generated to assist in understanding the data and the resul
 > 1. What are the output(s) of the edgeR tool?  
 > 2. How can we interpret our output result file?  
 >
-> <solution-title>edgeR Outputs and Interpretation</solution-title>
->
-> 1. **Output files**:
->    - **edgeR Tables**: This file includes columns with information such as:
->    - **Gene Symbol**: The identifier for each gene.
->    - **Log Fold Change (logFC)**: Represents the direction and magnitude of differential expression. Positive values indicate upregulation, and negative values indicate downregulation.
->    - **Raw p-value (PValue)**: The unadjusted statistical significance value for each gene, indicating the likelihood of observing the result under the null hypothesis.
->    - **False Discovery Rate (FDR)**: The adjusted p-value using the Benjamini-Hochberg correction method to account for multiple testing and control the expected proportion of false positives.
->    - **(Optional)**: If additional outputs, such as "normalized counts," are selected in the edgeR tool, the table will also include these counts.
->    - **edgeR Report**: This is an HTML file containing various visualizations and summaries of the analysis, such as:
->    - **MDS Plot (Multidimensional Scaling)**: Visualizes the relationships between samples based on gene expression profiles.
->    - **BCV Plot (Biological Coefficient of Variation)**: Displays the estimated dispersion for each gene.
->    - **QL Plot (Quasi-Likelihood)**: Shows the quasi-likelihood dispersions for the dataset.
->    - **MD Plot (Mean-Difference Plot)**: Compares the mean expression of genes versus their log fold change.
-> 
-> 2. **Interpreting the Results**:
->    - The table contains the results of the differential expression analysis.  
->    - The **first column** typically lists the gene symbols from the dataset.  
->    - The **logFC** indicates the direction and magnitude of differential expression:
->    - **Upregulated genes**: Genes with higher expression in the first group of the contrast (e.g., 'normal' group in a "normal-COVID_19" contrast).
->    - **Downregulated genes**: Genes with lower expression in the first group of the contrast (e.g., 'normal' group in a "normal-COVID_19" contrast).
->    - The **raw p-value** represents the statistical significance of the result for each gene before adjustment for multiple comparisons. Lower values indicate stronger evidence against the null hypothesis.  
->    - The **FDR** is the adjusted p-value, calculated using the Benjamini-Hochberg method, which helps control for false positives when testing many genes. Genes with an FDR below a threshold (e.g., 0.05) are considered statistically significant.
-> 
-> **Plot Interpretations**:
->   - **MDS Plot**: Displays relationships between samples based on gene expression profiles. Samples that cluster closely are more similar in their expression. Use this to identify whether samples separate by biological condition or to detect potential batch effects.  ![MDS Plot](../../images/pseudobulk-analysis/mdsplot_disease.png)
->   - **BCV Plot**: Shows the dispersion for each gene, with higher values indicating greater variability. This is useful for assessing how variability is modeled in the dataset. ![BCV Plot](../../images/pseudobulk-analysis/bcvplot.png)
->   - **QL Plot**: Highlights the quasi-likelihood dispersions, which represent variability modeled during statistical testing. Proper dispersion modeling ensures robust differential expression analysis. ![QL Plot](../../images/pseudobulk-analysis/qlplot.png)
->   - **MD Plot**: Visualizes the mean expression levels against log fold change for each gene. Genes far from the center indicate stronger differential expression, with points above or below the horizontal line showing upregulated or downregulated genes, respectively.  ![MD Plot](../../images/pseudobulk-analysis/mdplot_normal-COVID_19.png)
-> 
+> > <solution-title>edgeR Outputs and Interpretation</solution-title>
+> >
+> > 1. **Output files**:
+> >    - **edgeR Tables**: This file includes columns with information such as:
+> >    - **Gene Symbol**: The identifier for each gene.
+> >    - **Log Fold Change (logFC)**: Represents the direction and magnitude of differential expression. Positive values indicate upregulation, and negative values indicate downregulation.
+> >    - **Raw p-value (PValue)**: The unadjusted statistical significance value for each gene, indicating the likelihood of observing the result under the null hypothesis.
+> >    - **False Discovery Rate (FDR)**: The adjusted p-value using the Benjamini-Hochberg correction method to account for multiple testing and control the expected proportion of false positives.
+> >    - **(Optional)**: If additional outputs, such as "normalized counts," are selected in the edgeR tool, the table will also include these counts.
+> >    - **edgeR Report**: This is an HTML file containing various visualizations and summaries of the analysis, such as:
+> >    - **MDS Plot (Multidimensional Scaling)**: Visualizes the relationships between samples based on gene expression profiles.
+> >    - **BCV Plot (Biological Coefficient of Variation)**: Displays the estimated dispersion for each gene.
+> >    - **QL Plot (Quasi-Likelihood)**: Shows the quasi-likelihood dispersions for the dataset.
+> >    - **MD Plot (Mean-Difference Plot)**: Compares the mean expression of genes versus their log fold change.
+> > 
+> > 2. **Interpreting the Results**:
+> >    - The table contains the results of the differential expression analysis.  
+> >    - The **first column** typically lists the gene symbols from the dataset.  
+> >    - The **logFC** indicates the direction and magnitude of differential expression:
+> >    - **Upregulated genes**: Genes with higher expression in the first group of the contrast (e.g., 'normal' group in a "normal-COVID_19" contrast).
+> >    - **Downregulated genes**: Genes with lower expression in the first group of the contrast (e.g., 'normal' group in a "normal-COVID_19" contrast).
+> >    - The **raw p-value** represents the statistical significance of the result for each gene before adjustment for multiple comparisons. Lower values indicate stronger evidence against the null hypothesis.  
+> >    - The **FDR** is the adjusted p-value, calculated using the Benjamini-Hochberg method, which helps control for false positives when testing many genes. Genes with an FDR below a threshold (e.g., 0.05) are considered statistically significant.
+> > 
+> > **Plot Interpretations**:
+> >   - **MDS Plot**: Displays relationships between samples based on gene expression profiles. Samples that cluster closely are more similar in their expression. Use this to identify whether samples separate by biological condition or to detect potential batch effects.  ![MDS Plot](../../images/pseudobulk-analysis/mdsplot_disease.png)
+> >   - **BCV Plot**: Shows the dispersion for each gene, with higher values indicating greater variability. This is useful for assessing how variability is modeled in the dataset. ![BCV Plot](../../images/pseudobulk-analysis/bcvplot.png)
+> >   - **QL Plot**: Highlights the quasi-likelihood dispersions, which represent variability modeled during statistical testing. Proper dispersion modeling ensures robust differential expression analysis. ![QL Plot](../../images/pseudobulk-analysis/qlplot.png)
+> >   - **MD Plot**: Visualizes the mean expression levels against log fold change for each gene. Genes far from the center indicate stronger differential expression, with points above or below the horizontal line showing upregulated or downregulated genes, respectively.  ![MD Plot](../../images/pseudobulk-analysis/mdplot_normal-COVID_19.p> ng)
+> > 
 > {: .solution}
 >
 {: .question}
