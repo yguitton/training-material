@@ -616,7 +616,7 @@ To accomplish this task we will use [Cutadapt](https://cutadapt.readthedocs.io/e
 >       - *"Quality cutoff(s) (R1)"*: `20`
 >    - In *"Read Filtering Options"*
 >       - *"Minimum length (R1)"*: `20`
->    - {% icon param-select %} *"Outputs selector"*: `Report`
+>    - {% icon param-select %} *"Additional outputs to generate"*: `Report`
 >
 > 2. Inspect the generated txt file (`Report`)
 >
@@ -868,7 +868,7 @@ After trimming, reverse reads will be shorter because of their quality and then 
 >       - *"Quality cutoff(s) (R1)"*: `20`
 >    - In *"Read Filtering Options"*
 >       - *"Minimum length (R1)"*: `20`
->    - {%icon param-select%} *"Outputs selector"*: `Report`
+>    - {%icon param-select%} *"Additional outputs to generate"*: `Report`
 >
 > 2. Inspect the generated txt file (`Report`)
 >
