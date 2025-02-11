@@ -853,23 +853,22 @@ With paired-end reads the average quality scores for forward reads will almost a
 After trimming, reverse reads will be shorter because of their quality and then will be eliminated during the filtering step. If one of the reverse reads is removed, its corresponding forward read should be removed too. Otherwise we will get different number of reads in both files and in different order, and order is important for the next steps. Therefore **it is important to treat the forward and reverse reads together for trimming and filtering**.
 
 > <hands-on-title>Improving the quality of paired-end data</hands-on-title>
-> 1. {% tool [Cutadapt](toolshed.g2.bx.psu.edu/repos/lparsons/cutadapt/cutadapt/3.4+galaxy2) %} with the following parameters
+> 1. {% tool [Cutadapt](toolshed.g2.bx.psu.edu/repos/lparsons/cutadapt/cutadapt/4.9+galaxy1) %} with the following parameters
 >    - *"Single-end or Paired-end reads?"*: `Paired-end`
 >       - {% icon param-file %} *"FASTQ/A file #1"*: `GSM461178_untreat_paired_subset_1.fastq` (Input dataset)
 >       - {% icon param-file %} *"FASTQ/A file #2"*: `GSM461178_untreat_paired_subset_2.fastq` (Input dataset)
 >
 >          The order is important here!
 >
->       - In *Read 1 Options* or *Read 2 Options*
+>       - In *Read 1 Adapters* or *Read 2 Adapters*
 >
 >         No adapters were found in these datasets. When you process your own data and you know which adapter sequences were used during library preparation, you should provide their sequences here.
 >
->    - In *"Filter Options"*
->       - *"Minimum length"*: `20`
->    - In *"Read Modification Options"*
->       - *"Quality cutoff"*: `20`
->    - In *"Output Options"*
->       - *"Report"*: `Yes`
+>    - In *"Other Read Trimming Options"*
+>       - *"Quality cutoff(s) (R1)"*: `20`
+>    - In *"Read Filtering Options"*
+>       - *"Minimum length (R1)"*: `20`
+>    - {%icon param-select%} *"Outputs selector"*: `Report`
 >
 > 2. Inspect the generated txt file (`Report`)
 >
