@@ -1,4 +1,4 @@
-name: [Cron] GTN News to Bluesky
+name: "[Cron] GTN News to Bluesky"
 on:
   schedule:
     # This will run every day at 14:00 UTC. Alter it using https://crontab.guru/.
