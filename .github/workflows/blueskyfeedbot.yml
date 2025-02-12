@@ -29,9 +29,14 @@ jobs:
           rss-feed: https://training.galaxyproject.org/training-material/feed.xml
           # Template of status posted to Bluesky (Handlebars)
           template: |
+            📣 New GTN news post!
+
             {{item.title}}
 
-            {{item.link}}
+            {{item.summary}}
+
+            Read full post at {{item.link}}
+
           # This is your service URL (optional)
           service-url: https://bsky.social
           # This is the Bluesky username (example: username.bsky.social)
