@@ -188,14 +188,14 @@ The next steps will help you refine your data for easier handling. We will use s
 >            - *"Find pattern"*: `[ --+*^]+`
 >            - *"Replace with:"*: `_`
 >
-> 1. {% tool [Replace Text](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.3+galaxy1) %} with the following parameters:
+> 2. {% tool [Replace Text](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.3+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `samples_metadata` (output of **Decoupler pseudo-bulk** {% icon tool %})
 >    - In *"Replacement"*:
 >        - {% icon param-repeat %} *"Insert Replacement"*
 >            - *"Find pattern"*: `[ --+*^]+`
 >            - *"Replace with:"*: `_`
 >
-> 1. {% tool [Remove columns](toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0) %} with the following parameters:
+> 3. {% tool [Remove columns](toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0) %} with the following parameters:
 >    - {% icon param-file %} *"Tabular file"*: `genes_metadata` (output of **Decoupler pseudo-bulk** {% icon tool %})
 >    - In *"Select Columns"*:
 >        - {% icon param-repeat %} *"Insert Select Columns"*
@@ -205,7 +205,7 @@ The next steps will help you refine your data for easier handling. We will use s
 >        - {% icon param-repeat %} *"Insert Select Columns"*
 >            - *"Header name"*: `width`
 >
-> 1. {% tool [Replace Text](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_column/9.3+galaxy1) %} with the following parameters:
+> 4. {% tool [Replace Text](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_column/9.3+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `outfile` (output of **Replace Text: Sample Metadata Step** {% icon tool %})
 >    - In *"Replacement"*:
 >        - {% icon param-repeat %} *"Insert Replacement"*
