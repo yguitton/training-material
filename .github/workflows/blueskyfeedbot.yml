@@ -1,4 +1,6 @@
-name: "[Cron] GTN News to Bluesky"
+# This action will create a Bluesky post for every GTN news post (via RSS feed)
+
+name: "[Cron] Bluesky bot"
 on:
   schedule:
     # This will run every day at 14:00 UTC. Alter it using https://crontab.guru/.
@@ -29,12 +31,10 @@ jobs:
           rss-feed: https://training.galaxyproject.org/training-material/feed.xml
           # Template of status posted to Bluesky (Handlebars)
           template: |
-            📣 New GTN news post!
-
             {{item.title}}
             {{item.description}}
 
-            Read full post at {{item.link}}
+            Read more at {{item.link}}
 
           # This is your service URL (optional)
           service-url: https://bsky.social
