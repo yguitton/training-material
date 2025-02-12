@@ -57,7 +57,7 @@ contributions:
 ## Create an account on a Galaxy instance/server
 If you already have an account, skip to the next section!
 
-In Galaxy, 'server' and 'instance' are often used interchangeably. We basically mean, different regions have different Galaxy servers, with slightly different tool installation. If you don't have a specific instance in mind, we recommend registering at one of the main public servers.
+In Galaxy, *server* and *instance* are often used interchangeably. These terms basically mean that different regions have different Galaxy servers/instances, with slightly different tool installations and appearances. If you don't have a specific server/instance in mind, we recommend registering at one of the main public servers/instances, detailed below.
 
 {% snippet faqs/galaxy/account_create.md %}
 
