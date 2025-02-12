@@ -1404,8 +1404,9 @@ kostrykin:
 KristinaGomoryova:
     name: Kristina Gomoryova
     orcid: 0000-0003-4407-3917
-    joined: 2024-09
+    joined: 2025-01
     email: gomoryova@sci.muni.cz
+    elixir_node: cz
     twitter: kristina_gomory
 
 kxk302:
@@ -2327,6 +2328,9 @@ sbenateau:
     affiliations:
       - elixir-europe
 
+scottcain:
+    name: Scott Cain
+    joined: 2025-01
 
 sebastian-schaaf:
     name: Sebastian Schaaf

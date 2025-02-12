@@ -622,6 +622,7 @@ name:
   ecology/openrefine_gbif: "/topics/ecology/tutorials/openrefine_gbif/tutorial.html"
   single-cell/scrna-seurat-pbmc3k: "/topics/single-cell/tutorials/scrna-seurat-pbmc3k/tutorial.html"
   single-cell/bulk-deconvolution-evaluate: "/topics/single-cell/tutorials/bulk-deconvolution-evaluate/tutorial.html"
+  proteomics/bioconductor-scp: "/topics/proteomics/tutorials/bioconductor-scp/tutorial.html"
 id:
   T00000: "/topics/admin/tutorials/ansible/tutorial.html"
   T00001: "/topics/admin/tutorials/ansible-galaxy/tutorial.html"
