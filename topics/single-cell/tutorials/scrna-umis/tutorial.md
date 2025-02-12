@@ -261,12 +261,14 @@ At this point we now have a history with two items: our paired FASTQ test data, 
 >    {% snippet faqs/galaxy/datasets_change_datatype.md %}
 >
 > 1. Viewing our 4 reads side-by-side
->    - Activate the **Scratchbook** by clicking on the **Enable/Disable Scratchbook** icon on the main top toolbar
+>    - Activate the **Window Manager** by clicking on the **Enable/Disable Window Manager** icon on the main top toolba
 >    - Click on the newly generated FastQ pair ending in *"with matched ID"* to expand the individual reads
 >      - Click on the {% icon galaxy-eye %} symbol of the forward read
->      - Click somewhere outside the white box to close the **Scratchbook**
+>      - Click somewhere outside the white box to close the **Window Manager**
 >      - Click on the {% icon galaxy-eye %} symbol of the reverse read
 >    - Position/Resize the boxes as desired
+>
+>    {% snippet faqs/galaxy/features_scratchbook.md %}
 {: .hands_on}
 
 <!--
@@ -467,7 +469,7 @@ For this we need to take the barcode information from the Forward reads, and sti
 >    >
 >    {: .comment}
 > 1. Click the {% icon galaxy-eye %} symbol on the *Reads1: UMI-tools extract* file
-> 1. Click somewhere outside the white box to close the **Scratchbook**
+> 1. Click somewhere outside the white box to close the **Window Manager**
 > 1. Click the {% icon galaxy-eye %} symbol on the *Reads2: UMI-tools extract* file
 >
 {: .hands_on}
