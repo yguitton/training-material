@@ -217,8 +217,16 @@ The next steps will help you refine your data for easier handling. We will use s
 >            - *"in column"*: `c2`
 >            - *"Find pattern"*: `^([0-9])(.+)`
 >            - *"Replace with"*: `GG_\\1\\2`
+> 
+> In the previous steps, the following modifications were made to the files:
+>
+> 1. **Replace Text**: Replaces special characters (`[ --+*^]+`) with underscores (`_`) in the `count_matrix` file.
+> 2. **Remove Columns**: Removes the `start`, `end`, and `width` columns from the `genes_metadata` file.
+> 3. **Replace Text**: Replaces special characters (`[ --+*^]+`) with underscores (`_`) in the `samples_metadata` file.
+> 4. **Replace Text in Column**: Modifies values in column `c2` of `outfile from step 3` by prefixing `GG_` to numbers at the beginning of the string.
 >
 >    {% snippet faqs/galaxy/analysis_regular_expressions.md %}
+>    
 {: .hands_on}
 
 ## Generating the Contrast File
@@ -396,9 +404,6 @@ In this step, we will use the sanitized output from the previous steps to genera
 
 Let's take a moment to interpret the Volcano Plot:
 ![Volcano Plot](../../images/pseudobulk-analysis/VolcanoPlot.png)
-- Which genes are most significant?
-- How does the fold change correlate with the P-values?
-- Are there any unexpected patterns?
 
 > <question-title></question-title>
 >
