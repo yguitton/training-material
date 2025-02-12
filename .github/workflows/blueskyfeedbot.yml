@@ -32,6 +32,7 @@ jobs:
             📣 New GTN news post!
 
             {{item.title}}
+            By {{item.author}}
 
             {{item.summary}}
 
