@@ -246,7 +246,7 @@ At this point we now have a history with two items: our paired FASTQ test data, 
 > <hands-on-title>Extracting the Reads</hands-on-title>
 >
 > 1. Extracting our 4 reads
->    * {% tool [Filter sequences by ID](toolshed.g2.bx.psu.edu/repos/peterjc/seq_filter_by_id/seq_filter_by_id/0.2.7) %} with the following parameters:
+>    * {% tool [Filter sequences by ID](toolshed.g2.bx.psu.edu/repos/peterjc/seq_filter_by_id/seq_filter_by_id/0.2.9) %} with the following parameters:
 >      - **Sequence file to be filtered**
 >        - Click the *Dataset Collection* icon
 >        - Select the FastQ collection if not already selected.
@@ -365,7 +365,7 @@ The encoding of the barcodes on the first read can actually be seen by examining
 
 > <hands-on-title>Confirming the Barcoding</hands-on-title>
 >
-> 1. {% tool [FastQC](toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.72+galaxy1) %} with the following parameters:
+> 1. {% tool [FastQC](toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.74+galaxy1) %} with the following parameters:
 >    - {% icon param-collection %} *"Short read data from your current history"*: `Paired FastQ` (the original paired set) You will need to choose 'Dataset collection' to allow this as an input.
 >
 >    > <comment-title></comment-title>
@@ -451,11 +451,10 @@ For this we need to take the barcode information from the Forward reads, and sti
 
 > <hands-on-title>Barcode Extraction and Annotation of our 4 reads</hands-on-title>
 >
-> 1. {% tool [UMI-tools extract](toolshed.g2.bx.psu.edu/repos/iuc/umi_tools_extract/umi_tools_extract/0.5.5.1) %} with the following parameters:
+> 1. {% tool [UMI-tools extract](toolshed.g2.bx.psu.edu/repos/iuc/umi_tools_extract/umi_tools_extract/1.1.6+galaxy0) %} with the following parameters:
 >    - *"Library type"*: `Paired-end Dataset Collection`
 >        - {% icon param-collection %} *"Reads in FASTQ format"*: `output` (Our paired set of 4 sequences)
 >        - *"Barcode on both reads?"*: `Barcode on first read only`
->    - *"Use Known Barcodes?"*: `No`
 >    - *"Barcode pattern for first read"*: `NNNNNNCCCCCC`
 >    - *"Enable quality filter?"*: `No`
 >
