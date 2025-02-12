@@ -33,11 +33,11 @@ key_points:
   - A DotPlot is a fantastic way to validate clusters across different analyses
 
 contributors:
-    authorship:
-      - mtekman
-      - beatrizserrano
-      - gallardoalba
-      - pavanvidem
+  authorship:
+    - mtekman
+    - beatrizserrano
+    - gallardoalba
+    - pavanvidem
 
 follow_up_training:
   -
