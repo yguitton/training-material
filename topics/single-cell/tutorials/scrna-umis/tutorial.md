@@ -21,8 +21,11 @@ key_points:
   - "Relocating barcodes into headers"
   - "Removing unwanted barcodes"
 
-contributors:
-  - mtekman
+contributions:
+    authorship:
+        - mtekman
+    editing:
+        - hexhowells
 
 gitter: Galaxy-Training-Network/galaxy-single-cell
 
