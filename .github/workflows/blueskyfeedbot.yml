@@ -32,9 +32,6 @@ jobs:
             📣 New GTN news post!
 
             {{item.title}}
-            By {{item.author}}
-
-            {{item.summary}}
 
             Read full post at {{item.link}}
 
@@ -47,4 +44,4 @@ jobs:
           # This is a path to the cache file, using the above cache path
           cache-file: ${{ github.workspace }}/blueskyfeedbot/cache.json
           # The maximum number of posts created on the first run
-          initial-post-limit: 2
+          initial-post-limit: 1
