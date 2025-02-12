@@ -19,6 +19,11 @@ key_points:
 - edgeR provides robust differential expression analysis, taking into account biological and technical variability.
 - Visualization and interpretation are essential, with tools like Volcano Plots highlighting significant genes and trends in differential expression.
 - Before starting this tutorial, prior knowledge of PBMC analysis and combining single-cell datasets is recommended.
+requirements:
+- type: internal
+  topic_name: single-cell
+  tutorials:
+  - scrna-scanpy-pbmc3k
 contributions:
   authorship:
     - dianichj
@@ -188,14 +193,7 @@ The next steps will help you refine your data for easier handling. We will use s
 >            - *"Find pattern"*: `[ --+*^]+`
 >            - *"Replace with:"*: `_`
 >
-> 2. {% tool [Replace Text](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.3+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"File to process"*: `samples_metadata` (output of **Decoupler pseudo-bulk** {% icon tool %})
->    - In *"Replacement"*:
->        - {% icon param-repeat %} *"Insert Replacement"*
->            - *"Find pattern"*: `[ --+*^]+`
->            - *"Replace with:"*: `_`
->
-> 3. {% tool [Remove columns](toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0) %} with the following parameters:
+> 2. {% tool [Remove columns](toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0) %} with the following parameters:
 >    - {% icon param-file %} *"Tabular file"*: `genes_metadata` (output of **Decoupler pseudo-bulk** {% icon tool %})
 >    - In *"Select Columns"*:
 >        - {% icon param-repeat %} *"Insert Select Columns"*
@@ -204,6 +202,13 @@ The next steps will help you refine your data for easier handling. We will use s
 >            - *"Header name"*: `end`
 >        - {% icon param-repeat %} *"Insert Select Columns"*
 >            - *"Header name"*: `width`
+>
+> 3. {% tool [Replace Text](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.3+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"File to process"*: `samples_metadata` (output of **Decoupler pseudo-bulk** {% icon tool %})
+>    - In *"Replacement"*:
+>        - {% icon param-repeat %} *"Insert Replacement"*
+>            - *"Find pattern"*: `[ --+*^]+`
+>            - *"Replace with:"*: `_`
 >
 > 4. {% tool [Replace Text](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_column/9.3+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `outfile` (output of **Replace Text: Sample Metadata Step** {% icon tool %})
