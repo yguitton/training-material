@@ -26,8 +26,9 @@ requirements:
     tutorials:
       - scrna-intro
 contributors:
-- mtekman
-- nomadscientist
+  authorship:
+    - mtekman
+    - nomadscientist
 
 follow_up_training:
   -

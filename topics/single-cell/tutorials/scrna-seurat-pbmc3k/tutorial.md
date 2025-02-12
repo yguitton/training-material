@@ -34,6 +34,14 @@ requirements:
     tutorials:
         - scrna-preprocessing
         - scrna-preprocessing-tenx
+
+follow_up_training:
+-
+    type: "internal"
+    topic_name: single-cell
+    tutorials:
+        - EBI-retrieval
+
 tags:
 - 10x
 contributions:

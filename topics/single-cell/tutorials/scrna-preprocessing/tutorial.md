@@ -39,11 +39,12 @@ follow_up_training:
     tutorials:
         - scrna-umis
 
-contributors:
-  - mtekman
-  - bebatut
-  - erxleben
-  - wm75
+contributions:
+  authorship:
+    - mtekman
+    - bebatut
+    - erxleben
+    - wm75
 
 gitter: Galaxy-Training-Network/galaxy-single-cell
 
