@@ -621,6 +621,8 @@ name:
   admin/file_sources: "/topics/admin/tutorials/file_sources/tutorial.html"
   ecology/openrefine_gbif: "/topics/ecology/tutorials/openrefine_gbif/tutorial.html"
   single-cell/scrna-seurat-pbmc3k: "/topics/single-cell/tutorials/scrna-seurat-pbmc3k/tutorial.html"
+  single-cell/bulk-deconvolution-evaluate: "/topics/single-cell/tutorials/bulk-deconvolution-evaluate/tutorial.html"
+  proteomics/bioconductor-scp: "/topics/proteomics/tutorials/bioconductor-scp/tutorial.html"
 id:
   T00000: "/topics/admin/tutorials/ansible/tutorial.html"
   T00001: "/topics/admin/tutorials/ansible-galaxy/tutorial.html"
@@ -2132,6 +2134,10 @@ id:
   N00104: "/news/2025/01/21/biont-workshops.html"
   W00305: "/topics/single-cell/tutorials/scrna-seurat-pbmc3k/workflows/Seurat_PBMC_Workflow.html"
   W00306: "/topics/single-cell/tutorials/scrna-seurat-pbmc3k/workflows/Seurat_PBMC_Workflow_SCT.html"
+  W00307: "/topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/deconv-eval-stage-1-create-data.html"
+  W00308: "/topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/deconv-eval-stage-2-deconv.html"
+  W00309: "/topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/deconv-eval-stage-3-process.html"
+  W00310: "/topics/single-cell/tutorials/bulk-deconvolution-evaluate/workflows/deconv-eval-stage-4-metrics.html"
 misc:
   ansible-galaxy: "/topics/admin/tutorials/ansible-galaxy/tutorial.html"
   feeds: "/feeds/index.html"

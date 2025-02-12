@@ -507,6 +507,10 @@ Camila-goclowski:
     email: camila.goclowski@gmail.com
     linkedin: camila-goclowski
 
+carloscheemendonca:
+    name: Carlos Chee Mendonça
+    joined: 2025-01
+
 charitylaw:
     name: Charity Law
     joined: 2018-09
@@ -1396,6 +1400,14 @@ kostrykin:
     affiliations:
       - elixir-europe
       - deNBI
+
+KristinaGomoryova:
+    name: Kristina Gomoryova
+    orcid: 0000-0003-4407-3917
+    joined: 2025-01
+    email: gomoryova@sci.muni.cz
+    elixir_node: cz
+    twitter: kristina_gomory
 
 kxk302:
     name: Kaivan Kamali
@@ -2316,6 +2328,9 @@ sbenateau:
     affiliations:
       - elixir-europe
 
+scottcain:
+    name: Scott Cain
+    joined: 2025-01
 
 sebastian-schaaf:
     name: Sebastian Schaaf
