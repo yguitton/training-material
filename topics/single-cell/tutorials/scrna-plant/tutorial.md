@@ -32,7 +32,7 @@ key_points:
   - Filtering parameters are dependent on the dataset, and should be explored using scatter or violin plots
   - A DotPlot is a fantastic way to validate clusters across different analyses
 
-contributors:
+contributions:
   authorship:
     - mtekman
     - beatrizserrano
