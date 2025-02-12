@@ -2107,6 +2107,16 @@ pcm32:
     name: Pablo Moreno
     joined: 2019-06
 
+philreeddata:
+    name: Phil Reed
+    orcid: 0000-0002-4479-715X
+    bluesky: philreeddata.bsky.social
+    elixir_node: uk
+    bio: "Research Community & Training Manager"
+    joined: 2025-02
+    affiliations:
+      - elixir-europe
+
 plushz:
     name: Polina Polunina
     orcid: 0000-0002-0507-4602
