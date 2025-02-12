@@ -11,7 +11,7 @@ objectives:
 - To learn about the main steps in the pre-processing of untargeted metabolomics LC-MS data.
 - To try hands-on analysis using the real data.
 requirements:
-    type: "internal"
+  - type: "internal"
     topic_name: metabolomics
     tutorials:
       - introduction
