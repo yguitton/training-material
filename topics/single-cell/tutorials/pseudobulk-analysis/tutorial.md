@@ -452,7 +452,7 @@ After using the {% tool [Scanpy filter](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_
 > >
 > > 1. The new count matrix consists of the original 2,815 rows, representing all genes with their gene labels in the first column. Additionally, it includes seven other columns corresponding to individual samples, like _Control#1Tcell_ or _SARSCoV2posSevere#1Tcell_.
 > > 2. Our dataset now includes a total of seven samples: three controls and four COVID-19 positive samples.
-> > 3. The volcano plot for T cells, comparing differentially expressed genes between conditions, is shown here: ![Volcano Plot T Cells](../../images/pseudobulk-analysis/Volcano_plot_tcells.png). No differentially expressed genes (DEGs) were detected when analyzing T cells alone between healthy and COVID-19 conditions.
+> > 3. The volcano plot for T cells, comparing differentially expressed genes between conditions, is shown here: ![Volcano Plot T Cells](../../images/pseudobulk-analysis/Volcano_plot_tcells.png) No differentially expressed genes (DEGs) were detected when analyzing T cells alone between healthy and COVID-19 conditions.
 > >
 > {: .solution}
 >
