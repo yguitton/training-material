@@ -33,6 +33,13 @@ requirements:
         - scrna-case_alevin-combine-datasets
         - scrna-case_basic-pipeline
 
+follow_up_training:
+-
+    type: "internal"
+    topic_name: single-cell
+    tutorials:
+        - scrna-case_monocle3-rstudio
+        - GO-enrichment
 
 tags:
 - 10x

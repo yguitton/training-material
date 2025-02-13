@@ -54,8 +54,14 @@ contributions:
 >
 {: .agenda}
 
-## What does Galaxy look like?
+## Create an account on a Galaxy instance/server
+If you already have an account, skip to the next section!
 
+In Galaxy, *server* and *instance* are often used interchangeably. These terms basically mean that different regions have different Galaxy servers/instances, with slightly different tool installations and appearances. If you don't have a specific server/instance in mind, we recommend registering at one of the main public servers/instances, detailed below.
+
+{% snippet faqs/galaxy/account_create.md %}
+
+## What does Galaxy look like?
 
 > <hands-on-title>Log in to Galaxy</hands-on-title>
 > 1. Open your favorite browser (Chrome, Safari or Firefox as your browser, not Internet Explorer!)

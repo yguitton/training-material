@@ -36,12 +36,14 @@ follow_up_training:
     tutorials:
       - scrna-scanpy-pbmc3k
 
-contributors:
-  - mtekman
-  - hrhotz
-  - blankenberg
-  - nomadscientist
-  - pavanvidem
+contributions:
+  authorship:
+    - mtekman
+    - hrhotz
+    - blankenberg
+    - pavanvidem
+  editing:
+    - nomadscientist
 
 gitter: Galaxy-Training-Network/galaxy-single-cell
 
