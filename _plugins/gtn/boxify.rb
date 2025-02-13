@@ -93,6 +93,9 @@ module Gtn
     end
 
     def self.format_box_title(title, box_type, lang = 'en', noprefix: false)
+      if box_type == 'hands_on'
+        box_type = "hands-on"
+      end
       lang = 'en' if (lang == '') || lang.nil?
       title_fmted = (!title.nil? && title.length.positive? ? ": #{title}" : '')
       if noprefix && !title.nil?
