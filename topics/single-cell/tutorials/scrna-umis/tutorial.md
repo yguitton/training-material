@@ -40,6 +40,18 @@ recordings:
   speakers:
   - nomadscientist
 
+follow_up_training:
+-
+    type: "internal"
+    topic_name: single-cell
+    tutorials:
+        - scrna-plates-batches-barcodes
+
+requirements:
+- type: internal
+  topic_name: single-cell
+  tutorials:
+  - scrna-intro
 ---
 
 
