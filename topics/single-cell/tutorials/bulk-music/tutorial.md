@@ -30,6 +30,8 @@ contributions:
   authorship:
     - mtekman
     - nomadscientist
+  editing:
+    - hexhowells
 
 follow_up_training:
   -
