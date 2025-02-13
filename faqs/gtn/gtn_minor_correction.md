@@ -6,7 +6,7 @@ contributors: [philreeddata]
 area: contributors
 ---
 
-If you find a minor mistake in any GTN training material, we encourage you to propose a correction. For small changes such as typos, this can be done using the GitHub web editor. If you can implement the corrections yourself, this saves a lot of time for the editors. You can also be more confident that everyone will understand exactly what changes are being proposed, in the places where they are needed.
+If you find a minor mistake in any GTN training material, we encourage you to propose a correction. For small changes such as typos, this can be done using the GitHub web editor. If you can implement the corrections yourself, this saves a lot of time for the editors. When you submit your suggestion, it will be carefully checked by an expert, so do not worry about breaking anything! You can also be more confident that everyone will understand exactly what changes are being proposed, in the places where they are needed.
 
 Outline of the steps:
 
