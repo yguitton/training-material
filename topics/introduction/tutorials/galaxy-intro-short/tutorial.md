@@ -36,6 +36,7 @@ contributions:
   editing:
   - bebatut
   - ahmedhamidawan
+  - philreeddata
   funding:
   - AustralianBioCommons
   - elixir-europe
