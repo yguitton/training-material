@@ -12,7 +12,7 @@ questions:
 - How can I visualize my GO enrichment results to make them easier to understand and interpret?
 
 objectives:
-- Understand the Role of GO Enrichment in Single-Cell Analysis.
+- Understand the role of GO Enrichment in Single-Cell Analysis.
 - Use marker genes from different cell clusters or conditions for GO enrichment analysis.
 - Compare enrichment across experimental conditions (e.g., wild type vs. knockout) to uncover functional changes associated with genetic or environmental perturbations.
 - Link GO enrichment results with previously annotated cell clusters, providing a clearer picture of the functional roles of different cell populations.
@@ -48,11 +48,12 @@ contributions:
   - nomadscientist
   - bgruening
   - pcm32
+  - nsoranzo
 ---
 
 In the tutorial [Filter, plot and explore single-cell RNA-seq data with Scanpy]({% link topics/single-cell/tutorials/scrna-case_basic-pipeline/tutorial.md %}), we took an important step in our single-cell RNA sequencing analysis by identifying marker genes for each of the clusters in our dataset. These marker genes are crucial, as they help us distinguish between different cell types and states, giving us a clearer picture of the cellular diversity within our samples.
 However, simply identifying marker genes is just the beginning. To truly understand what makes each cluster unique, we need to dive deeper into the biological functions these genes are involved in. This is where Gene Ontology (GO) enrichment analysis comes into play.
-We will perform GO enrichment analysis as a type of over-representation analysis (ORA), ORA is a statistical method that determines whether genes from pre-defined sets (e.g. genes belonging to a specific GO term) are expressed more than would be expected in a subset of your data. The most commonly used statistical tests are Fischer's exact test and hypergeometric test, more details about them are explained in the tutorial slides.
+We will perform GO enrichment analysis as a type of over-representation analysis (ORA). ORA is a statistical method that determines whether genes from pre-defined sets (e.g. genes belonging to a specific GO term) are expressed more than would be expected in a subset of your data. The most commonly used statistical tests are Fischer's exact test and hypergeometric test, more details about them are explained in the [tutorial slides]({% link topics/single-cell/tutorials/GO-enrichment/slides.html %}).
 
 
 > <agenda-title></agenda-title>
@@ -87,7 +88,7 @@ We'll also use three additional files for GO enrichment analysis.
 
 >  <comment-title>Concept behind GO Enrichment Analysis</comment-title>
 >
->  The goal of GO enrichment analysis is to interpret the biological significance of long lists of **marker genes**. By summarizing these genes into a shorter list of enriched **GO terms**. The analysis works by comparing each GO term between your list of marker genes and a **background gene set**. Statistical tests are then used to calculate a p-value that indicates whether a particular GO term is significantly enriched in the marker gene list compared to the background.
+>  The goal of GO enrichment analysis is to interpret the biological significance of long lists of **marker genes** by summarizing these genes into a shorter list of enriched **GO terms**. The analysis works by comparing each GO term between your list of marker genes and a **background gene set**. Statistical tests are then used to calculate a p-value that indicates whether a particular GO term is significantly enriched in the marker gene list compared to the background.
 {: .comment}
 
 # Get data
@@ -103,6 +104,9 @@ You can access the data for this tutorial in multiple ways:
 > <hands-on-title> Data Upload from Zenodo </hands-on-title>
 >
 > 1. Create a new history for this tutorial
+>
+>    {% snippet faqs/galaxy/histories_create_new.md %}
+>
 > 2. Import the files from [Zenodo]({{ page.zenodo_link }})
 >
 >    ```
