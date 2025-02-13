@@ -30,6 +30,13 @@ requirements:
       - bulk-music-2-preparescref
       - bulk-music-3-preparebulk
 
+follow_up_training:
+  -
+    type: "internal"
+    topic_name: single-cell
+    tutorials:
+        - EBI-retrieval
+
 ---
 
 

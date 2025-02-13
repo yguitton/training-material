@@ -40,6 +40,13 @@ answer_histories:
   - label: "UseGalaxy.eu"
     history: https://usegalaxy.eu/u/dianitachj24/h/pseudo-bulk-edger-tcells
     date: 2025-02-10
+follow_up_training:
+-
+    type: "internal"
+    topic_name: single-cell
+    tutorials:
+        - EBI-retrieval
+        - GO-enrichment
 ---
 
 Pseudobulk analysis is a powerful technique that bridges the gap between single-cell and bulk RNA-seq data. It involves aggregating gene expression data from groups of cells within the same biological replicate, such as a mouse or patient, typically based on clustering or cell type annotations ({% cite Murphy2022 %}).
