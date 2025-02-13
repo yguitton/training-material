@@ -22,9 +22,8 @@ datasets: "Datasets"
 workflows: "Workflows"
 supporting-galaxies: "Available on these Galaxies"
 last-modification: "Last modification"
-# Also as
-# last-modification: "Updated"
-
+published: "Published"
+revision: "Revision"
 
 # boxes
 tip: "Tip"

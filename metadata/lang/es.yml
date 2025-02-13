@@ -22,7 +22,8 @@ datasets: "Conjuntos de datos"
 workflows: "Flujos de trabajos"
 supporting-galaxies: "Disponible en estas instancias de Galaxy"
 last-modification: "Última modificación"
-
+published: "Published"
+revision: "Revision"
 
 # boxes
 tip: "Consejo"

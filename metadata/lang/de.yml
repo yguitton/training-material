@@ -22,8 +22,8 @@ datasets: "Datensätze"
 workflows: "Workflows" # oder Arbeitsabläufe
 supporting-galaxies: "Verfügbar auf diesen Galaxies" # oder Galaxien
 last-modification: "Letzte Änderung"
-# Also as
-# last-modification: "Updated"
+published: "Published TODO"
+revision: "Revision TODO"
 
 # boxes
 tip: "Tipp"
@@ -67,6 +67,7 @@ feedback-text-learner: "Hast du dieses Material als Lernender oder Studierender 
 glossary: "Glossar"
 citing-tutorial: "Dieses Tutorial zitieren"
 congrats: "Herzlichen Glückwunsch zum erfolgreichen Abschluss dieses Tutorials!"
+
 
 want-exend-knowledge: "Möchtest Du dein Wissen erweitern?"
 recommended-followup: "Mach eines unserer empfohlenen Folgetrainings" # Follow one of our recommended follow-up trainings
