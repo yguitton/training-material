@@ -8,7 +8,7 @@ contributors: [nomadscientist]
 
 Did you know we have a unique Single Cell Omics Lab with all our single cell tools highlighted to make it easier to use on Galaxy? We recommend this site for all your single cell analysis needs, particularly for newer users.
 
-The Single Cell Omics Lab currently uses the main European Galaxy infrastructure and power, it's just organised better for users of particular analyses...like single cell!
+The Single Cell Omics Lab uses its local Galaxy server infrastructure and power, it's just organised better for users of particular analyses...like single cell!
 
 Try it out!
 
