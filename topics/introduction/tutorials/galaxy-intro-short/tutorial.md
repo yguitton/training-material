@@ -93,7 +93,7 @@ The first time you use Galaxy, there will be no files in your history panel.
 
 ## Name your current history
 
-Your "History" is in the panel at the right.
+Your "History" is in the panel at the right. It is a record of the actions you have taken. 
 
 > <hands-on-title>Name history</hands-on-title>
 > 1. Go to the **History** panel (on the right)
@@ -168,11 +168,11 @@ What is this file?
 >    ![galaxy history view showing a single dataset mutant_r1.fastq. Display link is being hovered.](../../images/eye-icon.png){:width="320px"}
 {: .hands_on}
 
-The contents of the file will be displayed in the central Galaxy panel.
+The contents of the file will be displayed in the central Galaxy panel. If the dataset is large, you will see a warning message which explains that only the first megabyte is shown.
 
 This file contains DNA sequencing reads from a bacteria, in FASTQ format:
 
-   ![preview of a fastq file showing the 4 line structure described in fig caption. 3 reads are shown.](../../images/fastq.png "A FastQ file of course has four lines per record: the record identifier (`@mutant-no_snps.gff-24960/`), the sequence (`AATG…`), the plus character (`+`), and then the quality scores for the sequence (`5??A…`)."){:width="620px"}
+   ![preview of a fastq file showing the 4 line structure described in fig caption. 3 reads are shown.](../../images/fastq.png "A FastQ file has four lines per record: the record identifier (`@mutant-no_snps.gff-24960/`), the sequence (`AATG…`), the plus character (`+`), and then the quality scores for the sequence (`5??A…`)."){:width="620px"}
 
 ## Use a tool
 
@@ -180,14 +180,14 @@ Let's look at the quality of the reads in this file.
 
 > <hands-on-title>Use a tool</hands-on-title>
 > 1. Type **FastQC** in the tools panel search box (top)
-> 2. Click the {% tool [FastQC](toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.74+galaxy1) %} tool
+> 2. Click the {% tool [FastQC](toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.74+galaxy1) %} tool (it appears as **FastQC Read Quality reports** without the version number)
 >
 >    The tool will be displayed in the central Galaxy panel.
 >
 > 3. Select the following parameters:
->    - {% icon param-file %} *"Raw read data from your current history"*: the FASTQ dataset that we uploaded
+>    - {% icon param-file %} *"Raw read data from your current history"*: the FASTQ dataset that we uploaded (should be already selected)
 >    - No change in the other parameters
-> 4. Click **Execute**
+> 4. Click **Run Tool**
 >
 {: .hands_on}
 
@@ -218,7 +218,7 @@ This tool has summarised information about all of the reads in our FASTQ file.
 
 > <question-title></question-title>
 >
-> 1. What was the length of the reads in the input FASTQ file?
+> 1. What was the sequence length of reads in the input FASTQ file?
 > 2. Do these reads have higher quality scores in the centre or at the ends?
 >
 >   > <solution-title></solution-title>
@@ -240,7 +240,7 @@ Let's run a tool to filter out lower-quality reads from our FASTQ file.
 >    - {% icon param-file %} *"Input FASTQ file"*: our initial FASTQ dataset
 >    - *"Quality cut-off value"*: 35
 >    - *"Percent of bases in sequence that must have quality equal to / higher than cut-off value"*: 80
-> 4. Click **Execute**
+> 4. Click **Run Tool**
 {: .hands_on}
 
 After the tool has run, its output dataset will appear at the top of your History panel.
@@ -285,7 +285,7 @@ We can now try to filter our input reads to an even higher standard, and see how
 >
 >    For example, you might decide you want 80 percent of bases to have a quality of 36 or higher, instead of 35.
 >
-> 3. Click **Execute**
+> 3. Click **Run Tool**
 > 4. View the results: Click the output dataset name to expand the information
 >
 >    > <comment-title></comment-title>
