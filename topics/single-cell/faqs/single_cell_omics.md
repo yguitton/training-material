@@ -8,7 +8,7 @@ contributors: [nomadscientist]
 
 Did you know we have a unique Single Cell Omics Lab with all our single cell tools highlighted to make it easier to use on Galaxy? We recommend this site for all your single cell analysis needs, particularly for newer users.
 
-The Single Cell Omics Lab is a different view of the underlying Galaxy server that organises tools, workflows etc better for users of particular analyses...like single cell! It also provides a playground for communities to engage and connect, distribute more targeted news, and events and allow for placing community-specific funding sources.
+The Single Cell Omics Lab is a different view of the underlying Galaxy server that organises tools and resources better for single-cell users! It also provides a platform for communities to engage and connect; distribute more targeted news and events; and highlight community-specific funding sources.
 
 Try it out!
 
