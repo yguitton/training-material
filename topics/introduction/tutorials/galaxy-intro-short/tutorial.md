@@ -64,7 +64,7 @@ In Galaxy, *server* and *instance* are often used interchangeably. These terms b
 ## What does Galaxy look like?
 
 > <hands-on-title>Log in to Galaxy</hands-on-title>
-> 1. Open your favorite browser (Chrome, Safari or Firefox as your browser, not Internet Explorer!)
+> 1. Open your favorite browser (Chrome, Safari, Edge or Firefox as your browser, not Internet Explorer!)
 > 2. Browse to your Galaxy instance
 > 3. Log in or register
 >
