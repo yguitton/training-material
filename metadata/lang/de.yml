@@ -11,7 +11,7 @@ minutes: "Minuten"
 hour: "Stunde"
 hours: "Stunden"
 
-level: "Level" 
+level: "Level"
 introductory: "Einführung" # oder Anfänger
 intermediate: "Mittelstufe"
 advanced: "Fortgeschrittene"
@@ -28,7 +28,17 @@ last-modification: "Letzte Änderung"
 
 # other boxes
 tip: "Tipp"
-handson: "Hands On" # oder praktisch, praxisbezogen 
+hands-on: "GERMAN_TODO" # oder praktisch, praxisbezogen
+agenda: "GERMAN_TODO"
+code-in: 'GERMAN_TODO'
+code-out: 'GERMAN_TODO'
+comment: 'GERMAN_TODO'
+details: 'GERMAN_TODO'
+solution: 'GERMAN_TODO'
+warning: 'GERMAN_TODO'
+question: 'GERMAN_TODO'
+
+
 figure: "Abbildung"
 
 # endmatter
@@ -50,7 +60,7 @@ want-exend-knowledge: "Möchtest Du dein Wissen erweitern?"
 recommended-followup: "Mach eines unserer empfohlenen Folgetrainings" # Follow one of our recommended follow-up trainings
 
 license: "Lizenz"
-license-tutorial: "Der Inhalt des Tutorials ist lizenziert unter der Creative Commons Attribution 4.0 International License" 
+license-tutorial: "Der Inhalt des Tutorials ist lizenziert unter der Creative Commons Attribution 4.0 International License"
 license-framework: "Das GTN Framework ist lizenziert unter MIT"
 
 # slides

@@ -24,10 +24,20 @@ supporting-galaxies: "Disponible en estas instancias de Galaxy"
 last-modification: "Última modificación"
 
 
-# other boxes
+# boxes
 tip: "Consejo"
-handson: "Práctica"
+hands-on: "Práctica"
+agenda: "Agenda"
+code-in: 'Entrada'
+code-out: 'Salida'
+comment: 'Comentario'
+details: 'Detalles'
+solution: 'Solución'
+warning: '¡Precaucion!'
+question: 'Preguntas'
+
 figure: "Figura"
+
 
 # endmatter
 key-points: "Puntos clave"

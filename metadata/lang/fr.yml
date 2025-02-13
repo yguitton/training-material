@@ -26,7 +26,17 @@ last-modification: "Dernière modification"
 
 # other boxes
 tip: "Conseil"
-handson: "En pratique"
+hands-on: "En pratique"
+agenda: "Agenda"
+code-in: 'Entrée'
+code-out: 'Sortie'
+comment: 'Commentaire'
+details: 'Détails'
+solution: 'Solution'
+warning: 'Attention'
+question: 'Question'
+
+
 figure: "Figure"
 
 # endmatter
