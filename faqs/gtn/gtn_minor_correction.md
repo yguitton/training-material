@@ -20,6 +20,8 @@ In this example, we will show how to correct a typo in the metadata of a learnin
 
 ### 1. Start from the page with the minor mistake
 
+![A page with a typo](images/minor-fix-01.png)
+
 1. From the [learning pathways page](/learning-pathways), you can see the tags below each pathway. Here, one of the pathways has a tag 'introcuction', which should be 'introduction'. 
 2. Click to open the page.
 3. At the top-right of the page, click **Settings** then **Propose a change or correction**. This will begin to open the page in the GitHub web editor.
