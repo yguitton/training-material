@@ -2,7 +2,7 @@
   job:
     Reads filter list:
       class: File
-      path: test-data/Reads filter list.tabular
+      path: test-data/Reads_filter_list.tabular
       filetype: tabular
     FastQ data:
       class: Collection
