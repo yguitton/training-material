@@ -72,8 +72,8 @@ want-exend-knowledge: "Möchtest Du dein Wissen erweitern?"
 recommended-followup: "Mach eines unserer empfohlenen Folgetrainings" # Follow one of our recommended follow-up trainings
 
 license: "Lizenz"
-license-tutorial: "Der Inhalt des Tutorials ist lizenziert unter der Creative Commons Attribution 4.0 International License"
-license-framework: "Das GTN Framework ist lizenziert unter MIT"
+license-tutorial: "Der Inhalt des Tutorials ist lizenziert unter der"
+license-framework: "Das GTN Framework ist lizenziert unter"
 
 # slides
 thank-you: "Dankeschön"
