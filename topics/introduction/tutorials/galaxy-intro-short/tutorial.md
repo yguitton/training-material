@@ -289,7 +289,7 @@ We can now try to filter our input reads to an even higher standard, and see how
 > 4. View the results: Click the output dataset name to expand the information
 >
 >    > <comment-title></comment-title>
->    > Not the {% icon galaxy-eye %} (eye) icon.
+>    > Take care not to click the {% icon galaxy-eye %} (eye) icon as this will display the contents of the file in the central Galaxy panel instead.
 >    {: .comment}
 >
 {: .hands_on}
@@ -307,7 +307,7 @@ You can re-run a tool many times with different settings. Each time you re-run t
 
 ## Share your history
 
-Finally, let's imagine that you had a problem in your analysis and you want to ask for help. The easiest way to ask for help is to share your history. Try and create a link for your history and share it with...yourself!
+Let's imagine that you had a problem in your analysis and you want to ask for help. The easiest way to ask for help is to share your history. Try and create a link for your history and share it with...yourself!
 
 {% snippet faqs/galaxy/histories_sharing.md %}
 
@@ -384,7 +384,7 @@ Where is your first history, called "My Analysis"?
 >
 >    This makes a copy of the dataset in the new history (without actually using additional disk space).
 >
-> 3. Click the Home icon {% icon galaxy-home %} (or **Analyze Data** on older versions of Galaxy) in the top panel to go back to your analysis window
+> 3. Click the Galaxy logo (Home) at the top-left (or **Analyze Data** on older versions of Galaxy) in the top panel to go back to your analysis window
 >
 {: .hands_on}
 
