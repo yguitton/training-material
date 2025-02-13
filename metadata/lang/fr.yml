@@ -44,10 +44,10 @@ testers: "Tester(s)"
 reviewers: "Reviewer(s)"
 infrastructure: "Infrastructure"
 
-instructors: "Instructors(s) TODO"
-organisers: "Organiser(s) TODO"
-data-providers: "Data Provider(s) TODO"
-ux-designers: "UX/Designer(s) TODO"
+instructors: "Instructors(s)"
+organisers: "Organiser(s)"
+data-providers: "Data Provider(s)"
+ux-designers: "UX/Designer(s)"
 
 figure: "Figure"
 
