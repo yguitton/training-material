@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 title: Pseudobulk Analysis with Decoupler and EdgeR
-subtopic: end-to-end
+subtopic: exploratory
 zenodo_link: https://zenodo.org/records/13929549
 questions:
 - How does pseudobulk analysis help in understanding cell-type-specific gene expression changes?
@@ -40,6 +40,13 @@ answer_histories:
   - label: "UseGalaxy.eu"
     history: https://usegalaxy.eu/u/dianitachj24/h/pseudo-bulk-edger-tcells
     date: 2025-02-10
+follow_up_training:
+-
+    type: "internal"
+    topic_name: single-cell
+    tutorials:
+        - EBI-retrieval
+        - GO-enrichment
 ---
 
 Pseudobulk analysis is a powerful technique that bridges the gap between single-cell and bulk RNA-seq data. It involves aggregating gene expression data from groups of cells within the same biological replicate, such as a mouse or patient, typically based on clustering or cell type annotations ({% cite Murphy2022 %}).
@@ -217,7 +224,7 @@ The next steps will help you refine your data for easier handling. We will use s
 >            - *"in column"*: `c2`
 >            - *"Find pattern"*: `^([0-9])(.+)`
 >            - *"Replace with"*: `GG_\\1\\2`
-> 
+>
 > In the previous steps, the following modifications were made to the files:
 >
 > 1. **Replace Text**: Replaces special characters (`[ --+*^]+`) with underscores (`_`) in the `count_matrix` file.
