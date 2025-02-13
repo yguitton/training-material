@@ -48,6 +48,14 @@ requirements:
     tutorials:
         - scrna-case_basic-pipeline
         - scrna-data-ingest
+follow_up_training:
+-
+    type: "internal"
+    topic_name: single-cell
+    tutorials:
+        - EBI-retrieval
+        - GO-enrichment
+
 tags:
 - 10x
 - paper-replication

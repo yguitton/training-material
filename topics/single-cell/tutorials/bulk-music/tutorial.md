@@ -25,9 +25,11 @@ requirements:
     topic_name: single-cell
     tutorials:
       - scrna-intro
-contributors:
-- mtekman
-- nomadscientist
+
+contributions:
+  authorship:
+    - mtekman
+    - nomadscientist
 
 follow_up_training:
   -
