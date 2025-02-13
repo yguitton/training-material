@@ -51,11 +51,6 @@ gitter: Galaxy-Training-Network/galaxy-single-cell
 ---
 
 
-
-# Introduction
-
-
-
 ## Why do Single Cell sequencing?
 
 
