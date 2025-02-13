@@ -262,7 +262,7 @@ At this point we now have a history with two items: our paired FASTQ test data, 
 >    {% snippet faqs/galaxy/datasets_change_datatype.md %}
 >
 > 1. Viewing our 4 reads side-by-side
->    - Activate the **Window Manager** by clicking on the **Enable/Disable Window Manager** icon on the main top toolba
+>    - Activate the **Window Manager** by clicking on the **Enable/Disable Window Manager** icon on the main top toolbar
 >    - Click on the newly generated FastQ pair ending in *"with matched ID"* to expand the individual reads
 >      - Click on the {% icon galaxy-eye %} symbol of the forward read
 >      - Click somewhere outside the white box to close the **Window Manager**
