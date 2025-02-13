@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 title: Pseudobulk Analysis with Decoupler and EdgeR
-subtopic: end-to-end
+subtopic: exploratory
 zenodo_link: https://zenodo.org/records/13929549
 questions:
 - How does pseudobulk analysis help in understanding cell-type-specific gene expression changes?
@@ -217,7 +217,7 @@ The next steps will help you refine your data for easier handling. We will use s
 >            - *"in column"*: `c2`
 >            - *"Find pattern"*: `^([0-9])(.+)`
 >            - *"Replace with"*: `GG_\\1\\2`
-> 
+>
 > In the previous steps, the following modifications were made to the files:
 >
 > 1. **Replace Text**: Replaces special characters (`[ --+*^]+`) with underscores (`_`) in the `count_matrix` file.

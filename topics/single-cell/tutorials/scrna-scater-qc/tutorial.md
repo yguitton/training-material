@@ -11,6 +11,7 @@ answer_histories:
   - label: "UseGalaxy.eu"
     history: https://singlecell.usegalaxy.eu/u/videmp/h/single-cell-qc-with-scater
     date: 2024-12-12
+draft: true
 tags:
 questions:
 - How to ensure the quality of single-cell RNA-seq data?
