@@ -36,6 +36,19 @@ solution: 'Solución'
 warning: '¡Precaucion!'
 question: 'Preguntas'
 
+# contributions
+authors: "Author(s)"
+translation: "Translation"
+editors: "Editor(s)"
+testers: "Tester(s)"
+reviewers: "Reviewer(s)"
+infrastructure: "Infrastructure"
+
+instructors: "Instructors(s)"
+organisers: "Organiser(s)"
+data-providers: "Data Provider(s)"
+ux-designers: "UX/Designer(s)"
+
 figure: "Figura"
 
 

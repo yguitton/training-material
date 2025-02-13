@@ -23,10 +23,9 @@ workflows: "Workflows" # oder Arbeitsabläufe
 supporting-galaxies: "Verfügbar auf diesen Galaxies" # oder Galaxien
 last-modification: "Letzte Änderung"
 # Also as
-# last-modification: "Updated" # aktualisiert
+# last-modification: "Updated"
 
-
-# other boxes
+# boxes
 tip: "Tipp"
 hands-on: "GERMAN_TODO" # oder praktisch, praxisbezogen
 agenda: "GERMAN_TODO"
@@ -37,6 +36,19 @@ details: 'GERMAN_TODO'
 solution: 'GERMAN_TODO'
 warning: 'GERMAN_TODO'
 question: 'GERMAN_TODO'
+
+# contributions
+authors: "Author(s) TODO"
+translation: "Translation TODO"
+editors: "Editor(s) TODO"
+testers: "Tester(s) TODO"
+reviewers: "Reviewer(s) TODO"
+infrastructure: "Infrastructure TODO"
+
+instructors: "Instructors(s) TODO"
+organisers: "Organiser(s) TODO"
+data-providers: "Data Provider(s) TODO"
+ux-designers: "UX/Designer(s) TODO"
 
 
 figure: "Abbildung"

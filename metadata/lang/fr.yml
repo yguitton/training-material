@@ -24,7 +24,7 @@ supporting-galaxies: "Disponible sur ces instances de Galaxy"
 last-modification: "Dernière modification"
 
 
-# other boxes
+# boxes
 tip: "Conseil"
 hands-on: "En pratique"
 agenda: "Agenda"
@@ -36,6 +36,18 @@ solution: 'Solution'
 warning: 'Attention'
 question: 'Question'
 
+# contributions
+authors: "Author(s)"
+translation: "Translation"
+editors: "Editor(s)"
+testers: "Tester(s)"
+reviewers: "Reviewer(s)"
+infrastructure: "Infrastructure"
+
+instructors: "Instructors(s) TODO"
+organisers: "Organiser(s) TODO"
+data-providers: "Data Provider(s) TODO"
+ux-designers: "UX/Designer(s) TODO"
 
 figure: "Figure"
 
