@@ -1,3 +1,6 @@
+# reference language file in English
+# to add your language, copy this file and replace the text with your translations
+
 # metadata box
 overview: "Overview"
 questions: "Questions"
@@ -45,10 +48,14 @@ testers: "Tester(s)"
 reviewers: "Reviewer(s)"
 infrastructure: "Infrastructure"
 
-instructors: "Instructors(s) TODO"
-organisers: "Organiser(s) TODO"
-data-providers: "Data Provider(s) TODO"
-ux-designers: "UX/Designer(s) TODO"
+instructors: "Instructors(s)"
+organisers: "Organiser(s)"
+data-providers: "Data Provider(s)"
+ux-designers: "UX/Designer(s)"
+
+topic: "Topic"
+tutorial: "Tutorial"
+getting-support: "Have questions about this tutorial? Have a look at the available FAQ pages and support channels"
 
 figure: "Figure"
 

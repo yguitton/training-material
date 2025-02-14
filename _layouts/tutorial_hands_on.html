@@ -318,9 +318,16 @@ download.file("{{ site.url }}{{ site.baseurl }}/{{ page.path | replace: ".md", "
                 {% endif %}
 
                 <h1>{{ locale['faqs'] | default: "Frequently Asked Questions" }}</h1>
-                Have questions about this tutorial? Check out the {% if hasfaq == "true" %}<a href="faqs/">tutorial FAQ page</a> or the {% endif %} <a href="{{site.baseurl}}/topics/{{topic.name}}/faqs/">FAQ page for the {{topic.title}} topic</a> to see if your question is listed there.
-                If not, please ask your question on the <a href="{{site.gitter_url}}">GTN Gitter Channel</a> or the
-                <a href="https://help.galaxyproject.org">Galaxy Help Forum</a>
+                {{ locale['getting-support'] | default: "Have questions about this tutorial? Have a look at the available FAQ pages and support channels" }}
+                <ul>
+                {% if hasfaq == "true" %}
+                  <li><a href="faqs/">{{ locale['tutorial'] | default: "Tutorial" }} FAQs</a></li>
+                {% endif %}
+                  <li><a href="{{site.baseurl}}/topics/{{topic.name}}/faqs/">{{ locale['topic'] | default: "Topic" }}  FAQs</a></li>
+                  <li><a href="{{site.baseurl}}/faqs/galaxy/">Galaxy FAQs</a> </li>
+                  <li><a href="{{site.gitter_url}}">GTN Matrix Chat</a></li>
+                  <li><a href="https://help.galaxyproject.org">Galaxy Help Forum</a></li>
+                </ul>
 
 		<!--
                 {% if own_material.quiz %}

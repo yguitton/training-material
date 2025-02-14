@@ -50,6 +50,11 @@ organisers: "Organiser(s)"
 data-providers: "Data Provider(s)"
 ux-designers: "UX/Designer(s)"
 
+topic: "Topic"
+tutorial: "Tutorial"
+getting-support: "Have questions about this tutorial? Have a look at the available FAQ pages and support channels"
+
+
 figure: "Figure"
 
 # endmatter
