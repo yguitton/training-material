@@ -136,10 +136,9 @@ When running the function, we can stick with the default values: the upper limit
 > <hands-on-title> Noise assessment using KMDNoise </hands-on-title>
 >
 > 1. {% tool [MFAssignR KMDNoise](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_histnoise/mfassignr_kmdnoise/1.1.2+galaxy0) %} with the following parameters:
->
->- {% icon param-file %} *"Input data"*: `mfassignr_input.txt` (Input dataset)
->- {% icon param-file %} *"upper limit for the y intercept"*: `0.2`
->- {% icon param-file %} *"lower limit for the y intercept"*: `0.05`
+>    - {% icon param-file %} *"Input data"*: `mfassignr_input.txt` (Input dataset)
+>    - {% icon param-file %} *"upper limit for the y intercept"*: `0.2`
+>    - {% icon param-file %} *"lower limit for the y intercept"*: `0.05`
 >   
 >
 {: .hands_on}
