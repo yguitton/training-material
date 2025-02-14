@@ -134,7 +134,7 @@ To perform GO enrichment analysis on each cell cluster individually, we need to 
 > 1. {% tool [Split file](toolshed.g2.bx.psu.edu/repos/bgruening/split_file_on_column/tp_split_on_column/0.4) %} with the following parameters:
 >    - {% icon param-file %} *"File to select"*: `Markers_cluster` (Input dataset)
 >    - *"on column"*: `c1`
->    - *"Include the header in all split files?"*: `Yes`
+>    - *"Include the header in all splitted files?"*: `Yes`
 >
 >
 >    > <comment-title> Input Dataset </comment-title>
