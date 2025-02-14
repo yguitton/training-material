@@ -5,7 +5,7 @@
 source 'https://rubygems.org'
 gem 'addressable'
 gem 'awesome_bot'
-gem 'html-proofer', '< 5.0.0' # No specific need, it adds a lot of extra deps that we don't really need.
+gem 'html-proofer', '> 5.0.0' # No specific need, it adds a lot of extra deps that we don't really need.
 gem 'jekyll'
 gem 'jekyll-feed'
 gem 'jekyll-redirect-from'
