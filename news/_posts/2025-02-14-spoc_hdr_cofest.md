@@ -8,8 +8,6 @@ cover: "news/images/2023_dec_sc.png"
 coveralt: "swirled cluster dots surround a circle of people all holding hands, looking towards the bright center (future)"
 ---
 
-# Second SPOC CoFest
-
 We held our second **🖖🏾SPOC CoFest**, in the great tradition of the excellent CoFests organised in the GTN that welcomed @gtn:nomadscientist and many others into the community.
 
 This was our first live event, run as one of 12 projects in the inaugural [Health Data Research UK / ELIXIR UK Joint Hackathon](https://www.hdruk.ac.uk/research/research-data-infrastructure/hdr-uk-and-elixir-uk-hackathon/).
