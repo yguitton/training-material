@@ -1,5 +1,5 @@
 ---
-layout: tutorial_hands_on
+layout: tutorial_test
 lang: en
 
 title: "Lorum Ipsum"
