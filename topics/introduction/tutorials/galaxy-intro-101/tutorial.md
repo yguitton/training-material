@@ -367,7 +367,7 @@ Now that we have a list of all exons, and the number of SNPs they contain, we wo
 
 > <hands-on-title>Sorting</hands-on-title>
 >
-> 1. {% tool [Sort](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/1.1.1sort1) %} data in ascending or descending order:
+> 1. {% tool [Sort](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/1.1.1) %} data in ascending or descending order:
 >
 >    - *"Sort Query"*: Output from **Datamash** {% icon tool %}
 >    - In *"Column selections"* set the following:
@@ -581,7 +581,7 @@ Now that we have built our workflow, let's use it on some different data. For ex
 >    - Display the "Galaxy 101" history in the Center pane by clicking "Open in Center pane" button:
 >    ![Opening a history in the center pane](../../images/open_in_center_pane_button.png)
 >
->    - Drag an drop `Exons` dataset into the empty history created at step 1
+>    - Drag and drop `Exons` dataset into the empty history created at step 1
 >    ![Drag and drop of `Exons` dataset in the history overview](../../images/drag_n_drop_dataset.gif)
 > 3. Click the Home icon {% icon galaxy-home %} (or **Analyze Data** on older Galaxy versions) at the top to return to the main analysis window
 >

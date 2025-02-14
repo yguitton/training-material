@@ -53,7 +53,7 @@ data.each do |row|
     'description' => row['Description of your event'],
     'external' => row['Link to event page'],
     'contributions' => {
-       'organisers' => row['Organizers already in the GTN CONTRIBUTORS file'].split(',').map(&:strip)
+       'organisers' => row['Organizers already in the GTN CONTRIBUTORS file']&.split(',')&.map(&:strip)
     },
     'location' => {
         'name' => row['Location of the event']

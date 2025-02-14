@@ -17,6 +17,9 @@ answer_histories:
   - label: "UseGalaxy.eu"
     history: https://usegalaxy.eu/u/j.jakiela/h/combining-datasets-key-history
     date: 2024-03-26
+  - label: "UseGalaxy.eu - ARCHIVED"
+    history: https://usegalaxy.eu/u/wendi.bacon.training/h/combining-datasets-400k-key-history
+    date: 2024-12-10
   - label: "All total samples - processed after Alevin into single object (UseGalaxy.eu)"
     history: https://usegalaxy.eu/u/j.jakiela/h/all-total-samples-processed-after-alevin-into-single-object
     date: 2024-03-26
@@ -24,6 +27,9 @@ answer_histories:
 input_histories:
   - label: "UseGalaxy.eu"
     history: https://usegalaxy.eu/u/j.jakiela/h/combining-datasets-input
+  - label: "UseGalaxy.eu - ARCHIVED"
+    history: https://usegalaxy.eu/u/wendi.bacon.training/h/combining-datasets-input
+    date: 2024-12-10
   - label: "UseGalaxy.org"
     history: https://usegalaxy.org/u/juliajot/h/combining-datasets-input
 
