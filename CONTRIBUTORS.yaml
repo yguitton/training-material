@@ -51,7 +51,7 @@ awspolly:
 
 # our real contributors <3 (please add yourself in alphabetical order)
 
-    
+
 a-asai:
     name: Atsushi Asai
     email: tbudcm7zk@i.softbank.jp
@@ -103,7 +103,7 @@ adairama:
     joined: 2024-12
     location:
       country: SG
-    
+
 
 ahmedhamidawan:
     name: Ahmed Hamid Awan
@@ -946,9 +946,9 @@ GokceOGUZ:
     email: gokce_oguz@gis.a-star.edu.sg
     orcid: 0000-0003-1044-7204
     linkedin: gokce-oguz
-    location: 
+    location:
       country: SG
-    
+
 guerler:
     name: Aysam Guerler
     joined: 2017-09
@@ -1635,8 +1635,8 @@ MD-Chem:
     orcid: 0000-0002-8891-6333
     email: dasmohua1991@gmail.com
     affiliations:
-      - Genome Institute of Singapore
-    location: 
+      - gis
+    location:
         country: SG
 
 Mehgan-E:
@@ -1992,8 +1992,8 @@ paulocilasjr:
     joined: 2024-09
     email: paulocilas.moraislyra@moffitt.org
     orcid: 0000-0002-4403-6684
-    affiliations: 
-    - moffitt 
+    affiliations:
+    - moffitt
     twitter: paulocilasjr
 
 paulzierep:
@@ -2083,8 +2083,8 @@ qchiujunhao:
     name: Junhao Qiu
     joined: 2024-02
     orcid: 0009-0005-4322-3401
-    affiliations: 
-    - moffitt 
+    affiliations:
+    - moffitt
     email: junhao.qiu@moffitt.org
 
 Quickbeasts51429:
