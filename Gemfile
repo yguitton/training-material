@@ -10,7 +10,7 @@ gem 'jekyll'
 gem 'jekyll-feed'
 gem 'jekyll-redirect-from'
 gem 'kwalify'
-gem 'nokogiri', '>= 1.10.4'
+gem 'nokogiri', '>= 1.16'
 gem 'pkg-config'
 gem 'webrick' if RUBY_VERSION >= '3.0' # Ruby3 does not ship with webrick and Jekyll needs it, see https://github.com/jekyll/jekyll/issues/8523
 
