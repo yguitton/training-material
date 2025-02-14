@@ -38,12 +38,12 @@ warning: '¡Precaucion!'
 question: 'Preguntas'
 
 # contributions
-authors: "Author(s)"
-translation: "Translation"
-editors: "Editor(s)"
+authors: "Autores/as"
+translation: "Traducción"
+editors: "Editores/as"
 testers: "Tester(s)"
-reviewers: "Reviewer(s)"
-infrastructure: "Infrastructure"
+reviewers: "Revisores/as"
+infrastructure: "Infrastructura"
 
 instructors: "Instructors(s)"
 organisers: "Organiser(s)"
