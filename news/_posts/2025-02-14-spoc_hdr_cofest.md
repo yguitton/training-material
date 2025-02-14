@@ -1,7 +1,7 @@
 ---
 title: "SPOC HDR UK ELIXIR CoFest 2025: How did it go?"
 contributions:
-  authorship: [nomadscientist]
+  authorship: [nomadscientist, hexhowells]
 tags: [gtn, single-cell]
 layout: news
 cover: "news/images/2023_dec_sc.png"
@@ -20,6 +20,6 @@ We also used the excellent Maintainer page to identify and update metadata in nu
 
 ![Side by side images showing a list of training resources and many red X on the left (before) and many green checks on the right (after)]({% link news/images/2024-02-14-spoc_maintainer_updates.png %} "SPOC Training Material page: Before and after")
 
-🎉A big thank you to all the participants for their hard work!🎉
+🎉A big thank you to all the participants for their hard work, and to HDR UK and ELIXIR-UK for our selection and funding!🎉
 
 ![Chart showing: 3 new participants, 3 experienced SPOC members, 19 PRs made and 16 merged, 8 tutorials tested on different servers, 9 issues raised, 1 tool dependency fixed, 1 new learning pathway WIP, 1 new FAQ, 2 socials attended]({% link news/images/2025-02-14-spoc-hdr-cofest_outputs.png %} "SPOC HDR UK ELIXIR CoFest: By the numbers (at time of writing!)")
