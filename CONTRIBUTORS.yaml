@@ -2254,8 +2254,6 @@ shrutikhare-git:
     orcid: 0000-0001-5622-2663
     location:        
       country: SG    
-    location:        # add location so we can add you to the world map
-      country: SG
 shwdey:
     name: Shweta Pandey
     email: shwphd@gmail.com
