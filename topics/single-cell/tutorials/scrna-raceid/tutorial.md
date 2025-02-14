@@ -12,7 +12,7 @@ answer_histories:
     date: 2024-12-13
 
 draft: true
-tags:
+tags: []
 questions:
   - What is normalisation and why is it necessary?
   - How many types of unwanted variation are there?
