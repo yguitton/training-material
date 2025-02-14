@@ -20,7 +20,8 @@ In this example, we will show how to correct a typo in the metadata of a learnin
 
 ### 1. Start from the page with the minor mistake
 
-![A page with a typo](images/minor-fix-01.png)
+![Example of a page with a typo, this time in the page metadata](images/minor-fix-01.png)
+![At the top a training material, click Settings then Propose a change or correction](images/minor-fix-02.png)
 
 1. From the [learning pathways page](/learning-pathways), you can see the tags below each pathway. Here, one of the pathways has a tag 'introcuction', which should be 'introduction'. 
 2. Click to open the page.
@@ -28,15 +29,21 @@ In this example, we will show how to correct a typo in the metadata of a learnin
 
 ### 2. Open the page in the GitHub editor  
 
+![You need to create a 'fork' of the training material](images/minor-fix-04.png)
+
 1. You may be asked to sign into GitHub. (We will not cover how to register for a GitHub account here.)
 2. If you have not previously done so, you will be asked to create a fork of the GTN training materials repository. This means, create a linked copy of the training materials in your personal GitHub account. Click **Fork this repository**.
 
 ### 3. Make the correction  
 
+![Make your changes in the editor](images/minor-fix-06.png)
+
 1. You will see the text and markup that makes up the training material. It uses a language called Markdown. 
 2. In this example, we need to correct a line of the metadata at the top of the file (this is called the frontmatter). Type your correction.
 
 ### 4. Save the changes with a description of what you did
+
+![Save your changes, give a summary and 'commit' them](images/minor-fix-08.png)
 
 1. When you have finished making corrections, click the **Commit changes...** button. 
 2. You will be asked to provide a brief summary of the changes you have made. In the box labeled **Commit message**, type a summary. 
@@ -44,6 +51,8 @@ In this example, we will show how to correct a typo in the metadata of a learnin
 4. Click the **Propose changes** button.
 
 ### 5. Send the proposal to the GTN team to check then apply the change
+
+![Send the proposal in a 'pull request'](images/minor-fix-11.png)
 
 1. You are taken to a page titled **Comparing changes**. You will see a list of the changes you have made. This appears as lines removed (beginning with a minus sign, in red) and lines added (beginning with a plus sign, in green).
 2. Click the **Create pull request** button. This will open a pull request; this is a submission of your proposal that contains all the essential information for the editors and the platform to implement and apply the correction.
