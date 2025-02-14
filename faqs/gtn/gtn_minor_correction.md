@@ -24,7 +24,7 @@ In this example, we will show how to correct a typo in the metadata of a learnin
 
 ![A training material page]({% link faqs/gtn/images/minor-fix-02.png %} "At the top a training material, click Settings then Propose a change or correction")
 
-1. From the [learning pathways page](/learning-pathways), you can see the tags below each pathway. Here, one of the pathways has a tag 'introcuction', which should be 'introduction'. 
+1. From the [learning pathways page]({% link learning-pathways/ %}), you can see the tags below each pathway. Here, one of the pathways has a tag 'introcuction', which should be 'introduction'. 
 2. Click to open the page.
 3. At the top-right of the page, click **Settings** then **Propose a change or correction**. This will open the page in edit mode. The training material is stored in GitHub, an external site, but we will walk you through how to navigate it.
 
