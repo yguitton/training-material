@@ -21,10 +21,11 @@ key_points:
 - MFAssignR can be used to process the untargeted LC-MS metabolomics data, including complex environmental mixture samples
 - MFAssignR can be used to annotate data obtained from LC-MS experiments with molecular formulas using _in silico_ calculations
 - MFAssignR can be used to find a recalibration series and to recalibrate mass spectrometry data to increase the accuracy
-contributors:
-- Kristina Gomoryova
-- hechth
-- skschum
+contributions:
+  authorship:
+  - KristinaGomoryova
+  - hechth
+  - skschum
 
 ---
 
