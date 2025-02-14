@@ -36,6 +36,16 @@ contributions:
   funding:
     - elixir-fair-data
 
+requirements:
+    -
+        type: "internal"
+        topic_name: single-cell
+        tutorials:
+            - scrna-data-formats
+            - scrna-case_alevin
+            - scrna-case_alevin-combine-datasets
+            - scrna-case_basic-pipeline
+
 follow_up_training:
   -
     type: "internal"
