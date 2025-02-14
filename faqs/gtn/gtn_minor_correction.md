@@ -6,7 +6,6 @@ contributors: [philreeddata, nomadscientist]
 area: contributors
 redirect_from:
 - faqs/gtn/contributors_github_interface
-
 ---
 
 If you find a minor mistake in any GTN training material, we encourage you to propose a correction. For small changes such as typos, this can be done from the browser. If you can implement the corrections yourself, in the context of where they happen, this saves a lot of time for the editors.  When you submit your suggestion, it will be carefully checked by an expert, so do not worry about breaking anything! 
