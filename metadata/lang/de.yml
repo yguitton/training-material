@@ -12,15 +12,15 @@ hour: "Stunde"
 hours: "Stunden"
 
 level: "Level"
-introductory: "Anfänger" # oder  Einführung
-intermediate: "Mittelstufe"
-advanced: "Fortgeschritten"
+introductory: "Einsteiger" # oder  Einführung
+intermediate: "Fortgeschrittene"
+advanced: "Profis"
 
 supporting-materials: "Unterstützende Materialien"
 slides: "Folien"
 datasets: "Datensätze"
 workflows: "Workflows" # oder Arbeitsabläufe
-supporting-galaxies: "Verfügbar auf diesen Galaxies" # oder Galaxien
+supporting-galaxies: "Verfügbar auf diesen Galaxy-Instanzen" # oder Galaxien
 last-modification: "Letzte Änderung"
 published: "Veröffentlicht"
 revision: "Überarbeitung"
@@ -63,9 +63,9 @@ references: "Förderung"
 # Also as
 # references: "Funding"
 feedback: "Feedback" # oder Feedback
-feedback-text: "Hast du dieses Material als Lernende(r) verwendet? Gebe uns gerne Feedback"
-feedback-link-text: "wie du es fandest" # wie ist es gelaufen ist
-feedback-text-learner: "Hast du dieses Material als Lernende(r) oder Studierende(r) genutzt? Klick auf das untenstehende Formular, um uns Feedback zu geben."
+feedback-text: "Feedback Möglichkeit für Lehrende:"
+feedback-link-text: "Wie lief dein Kurs" # wie ist es gelaufen ist
+feedback-text-learner: "Für Kursteilnehmer/-innen oder Studierende: Über Rückmeldung durch das untenstehende Formular würden wir uns freuen."
 
 glossary: "Glossar"
 citing-tutorial: "Dieses Tutorial zitieren"
@@ -89,13 +89,13 @@ presenter-notes: "Drücke <kbd>P</kbd>, um die Präsentationsnotizen anzuzeigen"
 presenter-notes-explanation: |
   Die Präsentationsnotizen enthalten zusätzliche Informationen, die nützlich sein können, wenn du diese Folien für einen Kurs verwenden möchten.
 
-  Drücken Sie erneut P, um die Präsentationsnotizen auszuschalten.
+  Drücke erneut P, um die Präsentationsnotizen auszuschalten.
 
   Drücke C, um ein neues Fenster zu erstellen, in dem die gleiche Präsentation angezeigt wird.
   Dieses Fenster ist mit dem Hauptfenster verknüpft. Wenn du in einem Fenster die Folien wechseln, wird diese im anderen Fenster ebenfalls geändert.
 
   Nützlich beim Präsentieren.
-plaintext-slides: "Folien im Klartext"
+plaintext-slides: "Folien im als einfaches HTML-Dokument"
 video-slides: "Video-Folien"
 before-diving-in: "Bevor du dich mit dieser Präsentation vertraut machst, empfehlen wir dir, einen Blick auf folgende Seiten zu werfen"
 
