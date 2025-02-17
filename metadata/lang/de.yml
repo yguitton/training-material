@@ -12,9 +12,9 @@ hour: "Stunde"
 hours: "Stunden"
 
 level: "Level"
-introductory: "Einführung" # oder Anfänger
+introductory: "Anfänger" # oder  Einführung
 intermediate: "Mittelstufe"
-advanced: "Fortgeschrittene"
+advanced: "Fortgeschritten"
 
 supporting-materials: "Unterstützende Materialien"
 slides: "Folien"
@@ -29,8 +29,8 @@ revision: "Überarbeitung"
 tip: "Tipp"
 hands-on: "Praktische Übung" # oder praktisch, praxisbezogen
 agenda: "Agenda" # Agenda, Tagesordunung
-code-in: 'Verschlüsselt' # Verschlüsselt ?
-code-out: 'Entschlüsseln' # Entschlüsseln ?
+code-in: 'Eingabe' #  
+code-out: 'Ausgabe' # 
 comment: 'Kommentar'
 details: 'Details'
 solution: 'Lösung'
@@ -39,7 +39,7 @@ question: 'Frage'
 
 # contributions
 authors: "Autoren"
-translation: "Übersetzung"
+translation: "Übersetzer"
 editors: "Lektoren"
 testers: "Tester" # Prüfer
 reviewers: "Gutachter"
@@ -47,7 +47,7 @@ infrastructure: "Infrastruktur"
 
 instructors: "Dozenten"
 organisers: "Organisatoren"
-data-providers: "Datenanbieter"
+data-providers: "Datenbereitstellung" 
 ux-designers: "UX/Designer"
 
 topic: "Thema"
@@ -57,20 +57,20 @@ getting-support: " Fragen zu diesem Tutorial? Schau auf die verfügbaren FAQ-Sei
 figure: "Abbildung"
 
 # endmatter
-key-points: "Eckpunkte"
+key-points: "Zusammenfassung"
 faqs: "Häufig gestellte Fragen"
-references: "Referenzen"
+references: "Förderung"
 # Also as
 # references: "Funding"
-feedback: "Rückmeldung" # oder Feedback
-feedback-text: "Hast du dieses Material als Lernender verwendet? Gebe uns gerne Feedback"
-feedback-link-text: "wie es war" # wie ist es gelaufen
-feedback-text-learner: "Hast du dieses Material als Lernender oder Studierender genutzt? Klick auf das untenstehende Formular, um uns Feedback zu geben."
+feedback: "Feedback" # oder Feedback
+feedback-text: "Hast du dieses Material als Lernende(r) verwendet? Gebe uns gerne Feedback"
+feedback-link-text: "wie du es fandest" # wie ist es gelaufen ist
+feedback-text-learner: "Hast du dieses Material als Lernende(r) oder Studierende(r) genutzt? Klick auf das untenstehende Formular, um uns Feedback zu geben."
 
 glossary: "Glossar"
 citing-tutorial: "Dieses Tutorial zitieren"
 congrats: "Herzlichen Glückwunsch zum erfolgreichen Abschluss dieses Tutorials!"
-funders-ack: "Diese Personen oder Organisationen unterstützten die Entwicklung dieser Quelle finanziell."
+funders-ack: "Diese Personen oder Organisationen unterstützten die Entwicklung dieser Quelle finanziell." # Quelle -> Tutorial? Can I use Tutorial hier instead of resources?
 
 want-exend-knowledge: "Möchtest Du dein Wissen erweitern?"
 recommended-followup: "Mach eines unserer empfohlenen Folgetrainings" # Follow one of our recommended follow-up trainings
