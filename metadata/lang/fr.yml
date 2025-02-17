@@ -23,7 +23,7 @@ workflows: "Workflows"
 supporting-galaxies: "Disponible sur ces instances de Galaxy"
 last-modification: "Dernière modification"
 published: "Publication"
-revision: "Revision"
+revision: "Révision"
 
 # boxes
 tip: "Conseil"
