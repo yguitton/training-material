@@ -22,37 +22,37 @@ datasets: "Datensätze"
 workflows: "Workflows" # oder Arbeitsabläufe
 supporting-galaxies: "Verfügbar auf diesen Galaxies" # oder Galaxien
 last-modification: "Letzte Änderung"
-published: "Published TODO"
-revision: "Revision TODO"
+published: "Veröffentlicht"
+revision: "Überarbeitung"
 
 # boxes
 tip: "Tipp"
-hands-on: "GERMAN_TODO" # oder praktisch, praxisbezogen
-agenda: "GERMAN_TODO"
-code-in: 'GERMAN_TODO'
-code-out: 'GERMAN_TODO'
-comment: 'GERMAN_TODO'
-details: 'GERMAN_TODO'
-solution: 'GERMAN_TODO'
-warning: 'GERMAN_TODO'
-question: 'GERMAN_TODO'
+hands-on: "Praktische Übung" # oder praktisch, praxisbezogen
+agenda: "Agenda" # Agenda, Tagesordunung
+code-in: 'Verschlüsselt' # Verschlüsselt ?
+code-out: 'Entschlüsseln' # Entschlüsseln ?
+comment: 'Kommentar'
+details: 'Details'
+solution: 'Lösung'
+warning: 'Warnung'
+question: 'Frage'
 
 # contributions
-authors: "Author(s) TODO"
-translation: "Translation TODO"
-editors: "Editor(s) TODO"
-testers: "Tester(s) TODO"
-reviewers: "Reviewer(s) TODO"
-infrastructure: "Infrastructure TODO"
+authors: "Autoren"
+translation: "Übersetzung"
+editors: "Lektoren"
+testers: "Tester" # Prüfer
+reviewers: "Gutachter"
+infrastructure: "Infrastruktur"
 
-instructors: "Instructors(s) TODO"
-organisers: "Organiser(s) TODO"
-data-providers: "Data Provider(s) TODO"
-ux-designers: "UX/Designer(s) TODO"
+instructors: "Dozenten"
+organisers: "Organisatoren"
+data-providers: "Datenanbieter"
+ux-designers: "UX/Designer"
 
-topic: "Topic TODO"
-tutorial: "Tutorial TODO"
-getting-support: " Have questions about this tutorial? Have a look at the available FAQ pages and support channels TODO"
+topic: "Thema"
+tutorial: "Tutorial"
+getting-support: " Fragen zu diesem Tutorial? Schau auf die verfügbaren FAQ-Seiten und Support-Kanäle"
 
 figure: "Abbildung"
 
