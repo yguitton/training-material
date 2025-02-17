@@ -440,7 +440,7 @@ download.file("{{ site.url }}{{ site.baseurl }}/{{ page.path | replace: ".md", "
 
         {% if page.contributions and page.contributions.funding %}
 		<h2 id="funding">{{locale['references']| default: "Funding" }}</h2>
-		<p>These individuals or organisations provided funding support for the development of this resource</p>
+		<p>{{ locale['funders-ack'] | default: "These individuals or organisations provided funding support for the development of this resource" }}</p>
 
                 {% include _includes/funding-statement.md funders=page.contributions.funding %}
         {% endif %}
