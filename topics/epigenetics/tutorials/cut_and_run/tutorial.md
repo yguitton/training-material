@@ -493,7 +493,7 @@ In the following step, we want to apply a tool to identify robust peaks between 
 >    - *"How should a dataset be selected?"*: `Select by index`
 >    - *"Element index:"*: `0`
 >
-> You can use the arrow to rerun the same tool just changing the last parameter:
+>    You can use the arrow to rerun the same tool just changing the last parameter:
 >
 > 2. {% tool [Extract Dataset](__EXTRACT_DATASET__) %} with:
 >    - {% icon param-collection %} *"Input List"*: `MACS2 callpeak on collection N (narrow Peaks)`
