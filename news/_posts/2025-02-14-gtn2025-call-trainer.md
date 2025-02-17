@@ -1,3 +1,4 @@
+---
 title: "Call for Trainers and Helpers for the Galaxy Training Academy 2025"
 layout: news
 tags:
