@@ -132,35 +132,35 @@ We first have to check if our data contains adapter sequences that we have to re
 >       - {% icon param-collection %} *"Raw read data from your current history"*: Choose the output of **Flatten collection** {% icon tool %} selected as **Dataset collection**.
 > 3. Inspect the web page output of **FastQC** {% icon tool %} for the `Rep1_forward` sample. Check what adapters are found at the end of the reads.
 >
-> > <question-title></question-title>
-> >
-> > 1. How many reads are in the FASTQ?
-> > 2. Which sections have a warning or an error?
-> >
-> > > <solution-title></solution-title>
-> > >
-> > > 1. There are 300,000 reads.
-> > > 2. The 4 steps below have warnings:
-> > >
-> > >    1. **Per base sequence content**
-> > >
-> > >       CUT&RUN has sometimes base biases like ChIP-Seq.
-> > >
-> > >    2. **Sequence Duplication Levels**
-> > >
-> > >       The read library quite often has PCR duplicates that are introduced
-> > >       simply by the PCR itself. We will remove these duplicates later on.
-> > >
-> > >    3. **Overrepresented sequences**
-> > >
-> > >       Our data contains TruSeq adapter, Illumina PCR Primer, and a read from the mitochondrial chromosome.
-> > >
-> > >    4. **Adapter Content**
-> > >
-> > >       Our data contains an adapter (Illumina Universal Adapter) that we still have to remove.
-> > >
-> > {: .solution}
-> >
+>    > <question-title></question-title>
+>    >
+>    > 1. How many reads are in the FASTQ?
+>    > 2. Which sections have a warning or an error?
+>    >
+>    > > <solution-title></solution-title>
+>    > >
+>    > > 1. There are 300,000 reads.
+>    > > 2. The 4 steps below have warnings:
+>    > >
+>    > >    1. **Per base sequence content**
+>    > >
+>    > >       CUT&RUN has sometimes base biases like ChIP-Seq.
+>    > >
+>    > >    2. **Sequence Duplication Levels**
+>    > >
+>    > >       The read library quite often has PCR duplicates that are introduced
+>    > >       simply by the PCR itself. We will remove these duplicates later on.
+>    > >
+>    > >    3. **Overrepresented sequences**
+>    > >
+>    > >       Our data contains TruSeq adapter, Illumina PCR Primer, and a read from the mitochondrial chromosome.
+>    > >
+>    > >    4. **Adapter Content**
+>    > >
+>    > >       Our data contains an adapter (Illumina Universal Adapter) that we still have to remove.
+>    > >
+>    > {: .solution}
+>    >
 >    {: .question}
 >
 >    As it is tedious to inspect all these reports individually we will combine them with {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.24.1+galaxy0) %}.
