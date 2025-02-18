@@ -75,7 +75,7 @@ citing-tutorial: "Dieses Tutorial zitieren"
 congrats: "Herzlichen Glückwunsch zum erfolgreichen Abschluss dieses Tutorials!"
 funders-ack: "Diese Personen oder Organisationen unterstützten die Entwicklung dieser Quelle finanziell." # Quelle -> Tutorial? Can I use Tutorial hier instead of resources?
 
-want-exend-knowledge: "Möchtest Du dein Wissen erweitern?"
+want-extend-knowledge: "Möchtest Du dein Wissen erweitern?"
 recommended-followup: "Mach eines unserer empfohlenen Folgetrainings" # Follow one of our recommended follow-up trainings
 
 license: "Lizenz"
