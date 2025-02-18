@@ -9,7 +9,7 @@ description: |
 # <button id="program-button" class="btn btn-info" onclick="$('#program-tab').tab('show');">Start the Course!</button>
 
 cover-image: events/images/Galaxy_GTA2025_Transparent.png
-cover-image-alt: logo for the Galaxy Academy event consisting of a laptop surrounded by illustrations of DNA molecules
+cover-image-alt: logo for the Galaxy Training Academy Event 2025
 
 registration:
   # link: 
