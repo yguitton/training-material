@@ -32,9 +32,10 @@ jobs:
           # Template of status posted to Bluesky (Handlebars)
           template: |
             {{item.title}}
-            {{item.description}}
 
             Read more at {{item.link}}
+
+            @galaxyproject.bsky.social
 
           # This is your service URL (optional)
           service-url: https://bsky.social

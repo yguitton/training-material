@@ -1710,6 +1710,16 @@ mcmaniou:
     affiliations:
       - elixir-europe
 
+MD-Chem:
+    name: Mohua Das
+    joined: 2024-12
+    orcid: 0000-0002-8891-6333
+    email: dasmohua1991@gmail.com
+    affiliations:
+      - gis
+    location:
+        country: SG
+
 Mehgan-E:
     name: Mehgan Evans
     email: mehgancaseyevans1@gmail.com
@@ -2385,6 +2395,13 @@ Shorla:
     email: Sogunkelu@gmail.com
     joined: 2021-10
 
+shrutikhare-git:
+    name: Shruti Khare
+    joined: 2024-12
+    email: skshrutikhare@gmail.com
+    orcid: 0000-0001-5622-2663
+    location:        
+      country: SG    
 shwdey:
     name: Shweta Pandey
     email: shwphd@gmail.com
