@@ -1,5 +1,5 @@
 ---
-layout: tutorial_test
+layout: testing_tutorial
 lang: de
 
 title: "Lorum Ipsum"
@@ -18,6 +18,18 @@ time_estimation: "42M"
 key_points:
  - ullam porttitor urna at mi vulputate convallis.
  - Cras mattis tempor interdum. Cras dignissim, ligula ut vulputate efficitur, lacus metus congue urn
+
+requirements:
+ - type: "internal"
+   topic_name: introduction
+   tutorials:
+    - galaxy-intro-short
+
+follow_up_training:
+ - type: "internal"
+   topic_name: introduction
+   tutorials:
+   - galaxy-intro-short
 
 contributions:
   authorship:

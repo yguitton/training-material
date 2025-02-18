@@ -60,6 +60,9 @@ getting-support: "Have questions about this tutorial? Have a look at the availab
 figure: "Figure"
 
 # endmatter
+you-finished-tutorial: "You've finished the tutorial"
+i-finished-tutorial: "I finished this tutorial"
+follow-up-training: "Do you want to extend your knowledge? Follow one of our recommended follow-up trainings"
 key-points: "Key points"
 faqs: "Frequently Asked Questions"
 references: "References"
@@ -69,6 +72,7 @@ feedback: "Feedback"
 feedback-text: "Did you use this material as an instructor? Feel free to give us feedback on"
 feedback-link-text: "how it went"
 feedback-text-learner: "Did you use this material as a learner or student? Click the form below to leave feedback."
+feedback-none: "No feedback has been recieved yet for this training. Be the first one by filling in the feedback form from"
 funders-ack: "These individuals or organisations provided funding support for the development of this resource"
 
 

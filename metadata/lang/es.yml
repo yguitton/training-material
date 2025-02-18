@@ -58,6 +58,9 @@ figure: "Figura"
 
 
 # endmatter
+you-finished-tutorial: "You've finished the tutorial"
+i-finished-tutorial: "I finished this tutorial"
+follow-up-training: "Do you want to extend your knowledge? Follow one of our recommended follow-up trainings"
 key-points: "Puntos clave"
 faqs: "Preguntas frecuentes"
 #Have questions about this tutorial? Check out the FAQ page for the Introduction to Galaxy Analyses topic to see if your question is listed there. If not, please ask your question on the GTN Gitter Channel or the Galaxy Help Forum: "¿Tienes preguntas sobre este tutorial? Consulta la página de preguntas frecuentes para ver si tu pregunta aparece allí. De lo contrario, haz tu pregunta en en el canal GTN de Gitter o en el Foro de ayuda de Galaxy"
@@ -66,6 +69,7 @@ feedback: "Retroalimentación"
 feedback-text: "¿Utilizaste este material como instructor?"
 feedback-link-text: "Cuéntanos tu experiencia"
 feedback-text-learner: "¿Has usado este material como aprendiz o estudiante? Haz click en el formulario a continuación para dejarnos tu opinión"
+feedback-none: "No feedback has been recieved yet for this training. Be the first one by filling in the feedback form from"
 funders-ack: "These individuals or organisations provided funding support for the development of this resource"
 
 glossary: "Glosario"

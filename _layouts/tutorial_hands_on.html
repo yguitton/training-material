@@ -284,8 +284,8 @@ download.file("{{ site.url }}{{ site.baseurl }}/{{ page.path | replace: ".md", "
                 </section>
 
                 <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
-                        <h3>You've Finished the Tutorial</h3>
-                        <button id="tutorial-finish-button" class="btn btn-primary" onclick="tutorial_finish()">I finished this tutorial 👍</button>
+                        <h3>{{ locale['you-finished-tutorial'] | default: "You've Finished the Tutorial" }}</h3>
+                        <button id="tutorial-finish-button" class="btn btn-primary" onclick="tutorial_finish()">{{ locale['i-finished-tutorial'] | default: "I finished this tutorial" }} 👍</button>
                         <p style="display: none" id="tutorial-finish-text">Please also consider filling out the <a href="#gtn-feedback">Feedback Form</a> as well!</p>
                         <script>
                         function tutorial_finish() {
@@ -477,7 +477,7 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                 {% if page.follow_up_training %}
                 <blockquote class="agenda follow-up">
                     <div class="box-title">Go Further</div>
-                    <strong class="follow-up">{% icon curriculum aria=false %} Do you want to extend your knowledge? Follow one of our recommended follow-up trainings:</strong>
+                    <strong class="follow-up">{% icon curriculum aria=false %} {{ locale['follow-up-training'] | default: "Do you want to extend your knowledge? Follow one of our recommended follow-up trainings" }}:</strong>
                     <ul>
                         {% include _includes/display_extra_training.md extra_trainings=page.follow_up_training %}
                     </ul>
@@ -536,7 +536,7 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 		    </ul>
 		    {% endfor %}
         {% else %}
-            <p>No feedback has been recieved yet for this training. Be the first one by filling in the feedback form from <a href="#gtn-feedback">above</a>. </p>
+            <p>{{ locale['feedback-none'] | default: "No feedback has been recieved yet for this training. Be the first one by filling in the feedback form from" }} <a href="#gtn-feedback">above</a>. </p>
         {% endif %}
 		</blockquote>
 

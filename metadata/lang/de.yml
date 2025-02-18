@@ -29,8 +29,8 @@ revision: "Überarbeitung"
 tip: "Tipp"
 hands-on: "Praktische Übung" # oder praktisch, praxisbezogen
 agenda: "Agenda" # Agenda, Tagesordunung
-code-in: 'Eingabe' #  
-code-out: 'Ausgabe' # 
+code-in: 'Eingabe' #
+code-out: 'Ausgabe' #
 comment: 'Kommentar'
 details: 'Details'
 solution: 'Lösung'
@@ -47,7 +47,7 @@ infrastructure: "Infrastruktur"
 
 instructors: "Dozenten"
 organisers: "Organisatoren"
-data-providers: "Datenbereitstellung" 
+data-providers: "Datenbereitstellung"
 ux-designers: "UX/Designer"
 
 topic: "Thema"
@@ -57,6 +57,9 @@ getting-support: " Fragen zu diesem Tutorial? Schau auf die verfügbaren FAQ-Sei
 figure: "Abbildung"
 
 # endmatter
+you-finished-tutorial: "TODO You've finished the tutorial"
+i-finished-tutorial: "TODO I finished this tutorial"
+follow-up-training: "TODO Do you want to extend your knowledge? Follow one of our recommended follow-up trainings"
 key-points: "Zusammenfassung"
 faqs: "Häufig gestellte Fragen"
 references: "Förderung"
@@ -66,6 +69,7 @@ feedback: "Feedback" # oder Feedback
 feedback-text: "Feedback Möglichkeit für Lehrende:"
 feedback-link-text: "Wie lief dein Kurs" # wie ist es gelaufen ist
 feedback-text-learner: "Für Kursteilnehmer/-innen oder Studierende: Über Rückmeldung durch das untenstehende Formular würden wir uns freuen."
+feedback-none: "TODO No feedback has been recieved yet for this training. Be the first one by filling in the feedback form from"
 
 glossary: "Glossar"
 citing-tutorial: "Dieses Tutorial zitieren"
