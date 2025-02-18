@@ -2,6 +2,7 @@
 layout: testing_tutorial_slides
 lang: en
 
+logo: GTN
 title: "Lorum Ipsum"
 zenodo_link: "fake_zenodo_link"
 level: Introductory
