@@ -26,7 +26,7 @@ The event is a asynchronous, online, and self-paced learning event for learners 
 You can find more information about the [program](https://training.galaxyproject.org/training-material/events/2025-05-12-galaxy-academy-2025.html#monday-introduction) and the outline of the event on the [event page](https://training.galaxyproject.org/training-material/events/2025-05-12-galaxy-academy-2025.html).
 
 
-![Chart showing: banner for the call for trainer, including the GTA logo, the GTN logo with a person shouting. And text asking for trainers and helpers for the GTA]({{site.baseurl}}/news/images/GTA2025_call_trainer_banner.png)
+![Chart showing: banner for the call for trainer, including the GTA logo, the GTN logo with a person shouting. And text asking for trainers and helpers for the GTA]({% link news/images/GTA2025_call_trainer_banner.png %})
 
 
 
