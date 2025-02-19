@@ -476,7 +476,7 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 {% if page.follow_up_training %}
                 <blockquote class="agenda follow-up">
-                    <div class="box-title">{{locale['want-extend-knowledge' | default: "Do you want to extend your knowledge?"]}}</div>
+                    <div class="box-title">{{locale['want-extend-knowledge'] | default: "Do you want to extend your knowledge?"}}</div>
                     <strong class="follow-up">{% icon curriculum aria=false %} {{locale['recommended-followup'] | default: "Follow one of our recommended follow-up trainings" }}:</strong>
                     <ul>
                         {% include _includes/display_extra_training.md extra_trainings=page.follow_up_training %}
