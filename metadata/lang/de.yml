@@ -57,8 +57,8 @@ getting-support: " Fragen zu diesem Tutorial? Schau auf die verfügbaren FAQ-Sei
 figure: "Abbildung"
 
 # endmatter
-you-finished-tutorial: "TODO You've finished the tutorial"
-i-finished-tutorial: "TODO I finished this tutorial"
+you-finished-tutorial: "Du hast das Tutorial abgeschlossen"
+i-finished-tutorial: "Ich habe dieses Tutorial abgeschlossen"
 key-points: "Zusammenfassung"
 faqs: "Häufig gestellte Fragen"
 references: "Förderung"
@@ -68,7 +68,7 @@ feedback: "Feedback" # oder Feedback
 feedback-text: "Feedback Möglichkeit für Lehrende:"
 feedback-link-text: "Wie lief dein Kurs" # wie ist es gelaufen ist
 feedback-text-learner: "Für Kursteilnehmer/-innen oder Studierende: Über Rückmeldung durch das untenstehende Formular würden wir uns freuen."
-feedback-none: "TODO No feedback has been recieved yet for this training. Be the first one by filling in the feedback form from"
+feedback-none: "Es wurde noch kein Feedback für diese Training abgegeben. Seien der Erste und füllen  das Feedback-Formular aus."
 
 glossary: "Glossar"
 citing-tutorial: "Dieses Tutorial zitieren"
@@ -84,7 +84,7 @@ license-framework: "Das GTN Framework ist lizenziert unter"
 
 # slides
 thank-you: "Dankeschön"
-collaborative-effort: "Dieses Material ist das Ergebnis einer gemeinschaftlichen Arbeit. Vielen Dank an das [Galaxy Training Network](https://training.galaxyproject.org) und alle Mitwirkenden!"
+collaborative-effort: "Dieses Lernmaterial ist das Ergebnis einer gemeinschaftlichen Arbeit. Vielen Dank an das [Galaxy Training Network](https://training.galaxyproject.org) und alle Mitwirkenden!"
 edit-on-github: "Hast du einen Tippfehler gefunden? In diesem Tutorial ist etwas falsch? Bearbeite es auf GitHub."
 
 first-time-using-slides: "Verwende die Pfeiltasten, um zwischen den Folien zu wechseln"
