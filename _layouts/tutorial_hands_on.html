@@ -476,8 +476,8 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 {% if page.follow_up_training %}
                 <blockquote class="agenda follow-up">
-                    <div class="box-title">Go Further</div>
-                    <strong class="follow-up">{% icon curriculum aria=false %} {{ locale['want-extend-knowledge'] | default: "Do you want to extend your knowledge?" }} {{locale['recommended-followup'] | default: "Follow one of our recommended follow-up trainings" }}:</strong>
+                    <div class="box-title">{{locale['want-extend-knowledge' | default: "Do you want to extend your knowledge?"]}}</div>
+                    <strong class="follow-up">{% icon curriculum aria=false %} {{locale['recommended-followup'] | default: "Follow one of our recommended follow-up trainings" }}:</strong>
                     <ul>
                         {% include _includes/display_extra_training.md extra_trainings=page.follow_up_training %}
                     </ul>
@@ -514,7 +514,7 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 		   <table class="charts-css bar show-labels" style="--labels-size: 8rem; overflow-y: hidden">
 		   {% for hist in feedback_histo %}
 			<tr>
-				<th scope="row">{{ hist[0] | to_stars }}</th>
+				<th scope="row">t{ hist[0] | to_stars }}</th>
 				<td style="--size: {{ hist[1][1] }}">{{ hist[1][0] }}</td>
 			</tr>
 		   {% endfor %}
@@ -536,7 +536,7 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 		    </ul>
 		    {% endfor %}
         {% else %}
-            <p>{{ locale['feedback-none'] | default: "No feedback has been recieved yet for this training. Be the first one by filling in the feedback form from" }} <a href="#gtn-feedback">above</a>. </p>
+            <p>{{ locale['feedback-none'] | default: "No feedback has been recieved yet for this training. Be the first one by filling in the feedback form." }} </p>
         {% endif %}
 		</blockquote>
 
