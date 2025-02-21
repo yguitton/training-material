@@ -66,7 +66,7 @@ This demo is inspired by the [Apollo User's Guide](https://genomearchitect.readt
 > If you're doing this tutorial on your own, or if the instructor has not set up a specific Apollo organism for you, select `Create your own organism`.
 {: .comment}
 
-{% include _includes/cyoa-choices.html option1="Create your own organism" option2="Use a pre-created organism" default="Create your own organism" %}
+{% include _includes/cyoa-choices.html option1="Create your own organism" option2="Use a pre-created organism" default="Create-your-own-organism" %}
 
 > <agenda-title></agenda-title>
 >
