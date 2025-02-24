@@ -92,7 +92,7 @@ The data object, which you will import from Zenodo into Galaxy via the provided 
 > 2. Import the AnnData file from [Zenodo]({{page.zenodo_link}}):
 >
 >    ```
->   {{ page.zenodo_link }}/files/Source_AnnData_file.h5ad
+>    {{ page.zenodo_link }}/files/Source_AnnData_file.h5ad
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
@@ -233,7 +233,7 @@ The next steps will help you refine your data for easier handling. We will use s
 > 4. **Replace Text in Column**: Modifies values in column `c2` of `outfile from step 3` by prefixing `GG_` to numbers at the beginning of the string.
 >
 >    {% snippet faqs/galaxy/analysis_regular_expressions.md %}
->    
+>
 {: .hands_on}
 
 ## Generating the Contrast File
