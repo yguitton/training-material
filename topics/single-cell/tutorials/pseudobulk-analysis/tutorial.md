@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 title: Pseudobulk Analysis with Decoupler and EdgeR
 subtopic: exploratory
-zenodo_link: https://zenodo.org/records/13929549
+zenodo_link: https://zenodo.org/records/14917999
 questions:
 - How does pseudobulk analysis help in understanding cell-type-specific gene expression changes?
 - What steps are required to prepare single-cell data (e.g., clustering, annotation, and metadata addition) for pseudobulk analysis?
@@ -92,7 +92,7 @@ The data object, which you will import from Zenodo into Galaxy via the provided 
 > 2. Import the AnnData file from [Zenodo]({{page.zenodo_link}}):
 >
 >    ```
->   {{ page.zenodo_link }}/files/Source%20AnnData%20file.h5ad
+>   {{ page.zenodo_link }}/files/Source_AnnData_file.h5ad
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
