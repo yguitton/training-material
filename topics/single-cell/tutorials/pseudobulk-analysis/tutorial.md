@@ -92,7 +92,7 @@ The data object, which you will import from Zenodo into Galaxy via the provided 
 > 2. Import the AnnData file from [Zenodo]({{page.zenodo_link}}):
 >
 >    ```
->    https://zenodo.org/records/13929549/files/Source_AnnData_file.h5ad
+>   {{ page.zenodo_link }}/files/Source%20AnnData%20file.h5ad
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
