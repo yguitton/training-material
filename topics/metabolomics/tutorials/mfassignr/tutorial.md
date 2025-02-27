@@ -312,7 +312,7 @@ We will only provide the `Recalibration series` dataframe from RecalList functio
 
 > <hands-on-title> Selecting most suitable series </hands-on-title>
 >
-> 1. {% tool [MFAssignR FindRecalSeries](mfassignr_findRecalSeries) %} with the following parameters:
+> 1. {% tool [MFAssignR FindRecalSeries](toolshed.g2.bx.psu.edu/repos/recetox/mfassignr_findrecalseries/mfassignr_findRecalSeries/1.1.2+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"Input data"*: `recal_series` (output of **MFAssignR RecalList** {% icon tool %})
 >
 {: .hands_on}
