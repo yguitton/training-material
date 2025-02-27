@@ -103,7 +103,7 @@ In this step, you'll use the MultiGSEA tool to perform GSEA-based pathway enrich
 
 # Mitochondrial stress activates metabolic pathways of amino acid biosynthesis.
 
-After we performed pathway enrichment on our data we want to continue our analysis by filtering the outputs.
+After we performed pathway enrichment on our data we want to continue our analysis by filtering the outputs, e.g. by p-value.
 
 ><hands-on-title> Filtering by values</hands-on-title>
 > We are going to use the tool {% tool [Filter data on any column using simple expressions](Filter1) %} with the following parameters:
@@ -115,13 +115,14 @@ After we performed pathway enrichment on our data we want to continue our analys
 ><hands-on-title> Filtering by keyword</hands-on-title>
 >Mitochondrial stress triggers the activation of amino acid biosynthesis and related metabolic pathways, as highlighted by Quiros et al. (Ref findest du in der Vignette), who identified up-regulation of several amino acid related pathways.
 >These findings align with our results using a multi-omics approach with multiGSEA
->Our results also reveal the enrichment of amino acid-related pathways, e.g.:
+>Our results also reveal the enrichment of amino acid-related pathways. This can be see, e.g., by searching for pathways containing the word "amino" in the name. We can search for this using the regular expression `"\bamino\b"` (`\b` is a special character marking a word border).
+>
 >
 >For further filtering we are going to use the tool {% tool [Search in textfiles](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_grep_tool/9.3+galaxy1) %} with the following parameters:
 > - {% icon param-file %} *"Selectlines from"*: Select the output of the last filter.
 > - *"that"*: Choose "Match"
 > - *"Type of regex*": Choose "Basic (-G)"
-> - *"Regular Expression"*: \b[Aa]mino\b
+> - *"Regular Expression"*: \bamino\b
 > - *"Match type"*: "case insensitive"
 > - *"Show lines preceding the matched line"*: 0
 > - *"Show lines trailing the matched line"*: 0
