@@ -171,7 +171,7 @@ The first step is importing the datasets into an AnnData object with the tool *p
 >
 > ![TSSe plots against number of unique fragments]({% link topics/single-cell/images/scatac-batch-correction-snapatac2/tsse-colon01-colon02.png %}"Examplary plots of TSSe from <code>colon_multisample_01</code> and <code>colon_multisample_02</code>")
 >
-High-quality cells can be identified in the plot of {TSSe} scores against a number of unique fragments for each cell.
+> High-quality cells can be identified in the plot of {TSSe} scores against a number of unique fragments for each cell.
 >
 > > <question-title></question-title>
 > >
