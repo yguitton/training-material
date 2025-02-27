@@ -28,7 +28,7 @@ contributions:
 
 Multiplex tissue images are large, multi-channel images that contain intensity data for numerous biomarkers. The methods for generating multiplex tissue images are diverse, and each method can require specialized knowledge for downstream processing and analysis. The MCMICRO ({% cite Schapiro2021 %}) pipeline was developed to process multiplex images into single-cell data, and to have the range of tools to accomodate for different imaging methods. The tools used in the MCMICRO pipeline, in addition to tools for single-cell analysis, spatial analysis, and interactive visualization are available in Galaxy to facilitate comprehensive and accessible analyses of multiplex tissue images. The MCMICRO tools available in Galaxy are capable of processing Whole Slide Images (WSI) and Tissue Microarrays (TMA). WSIs are images in which a tissue section from a single sample occupies the entire microscope slide; whereas, TMAs multiplex smaller cores from multiple samples onto a single slide. This tutorial will demonstrate how to use the Galaxy multiplex imaging tools to process and analyze publicly available TMA test data provided by MCMICRO (Figure 1.).
 
-Find a full [example history](https://cancer.usegalaxy.org/u/watsocam/h/gtnexemplar002tma)
+Find a full [example history](https://cancer.usegalaxy.org/u/watsocam/h/gtnexemplar002tmaworkflowfeb2025-answer-key-history-2)
 
 ![Aviator screenshot, described in figure caption](../../images/multiplex-tissue-imaging-TMA/ex2_combined_avivator.png "Fully registered image of the MCMICRO Exemplar-002 Tissue microarray. Exemplar-002 consists of four cores, each with a distinct tissue organization and expression of biomarkers. In the image, there are six biomarkers shown: DNA (white), CD163 (yellow), CD3D (blue), CD31 (red), VDAC1 (green), and Keratin (orange). This image is being viewed using Avivator, an interactive tool that allows the user to selectively view channels and adjust channel intensities.")
 
@@ -82,7 +82,7 @@ Multiplex tissue images come in a variety of forms and file-types depending on t
 >
 {: .warning}
 
-The raw files for each round (10 in total) of the exemplar-002 data are available on [cancer.usegalaxy.org](https://cancer.usegalaxy.org) under **Data Libraries** (Figure 2.). Import the raw files into a new history as a **list collection**.
+Alternatively, the raw files for each round (10 in total) of the exemplar-002 data are available on [cancer.usegalaxy.org](https://cancer.usegalaxy.org) under **Data Libraries** (Figure 2.). Import the raw files into a new history as a **list collection**.
 
 
 ![Screenshot of the Galaxy data libraries on cancer.usegalaxy.org, highlighting the path to the dataset, Libraries, Exemplar 002, raw. The UI shows all datasets in that folder selected before using the Export to History button to import them as a Collection.](../../images/multiplex-tissue-imaging-TMA/ex2_getData.png "Finding the Exemplar-002 data on cancer.usegalaxy.org Data Libraries.")
@@ -98,7 +98,7 @@ Two new list collections will appear in the history upon completion:
 
 > <hands-on-title> Illumination correction </hands-on-title>
 >
-> 1. {% tool [BaSiC Illumination](toolshed.g2.bx.psu.edu/repos/perssond/basic_illumination/basic_illumination/1.0.3+galaxy1) %} with the following parameters:
+> 1. {% tool [BaSiC Illumination](toolshed.g2.bx.psu.edu/repos/perssond/basic_illumination/basic_illumination/1.1.1+galaxy2) %} with the following parameters:
 >
 >    - {% icon param-collection %} *"Raw Cycle Images: "*: List collection of raw images
 >
@@ -119,15 +119,13 @@ After illumination is corrected across round tiles, the tiles must be stitched t
 
 > <hands-on-title>: Image stitching and registration </hands-on-title>
 >
-> 1. {% tool [ASHLAR](toolshed.g2.bx.psu.edu/repos/perssond/ashlar/ashlar/1.14.0+galaxy1) %} with the following parameters:
+> 1. {% tool [ASHLAR](toolshed.g2.bx.psu.edu/repos/perssond/ashlar/ashlar/1.18.0+galaxy1) %} with the following parameters:
 >
 >    - {% icon param-collection %} *"Raw Images"*: List collection of raw images
 >    - {% icon param-collection %} *"Deep Field Profile Images"*: List collection of DFP images produced by **BaSiC Illumination**
 >    - {% icon param-collection %} *"Flat Field Profile Images"*: List collection of FFP images produced by **BaSiC Illumination**
->    - {% icon param-file %} *"Markers File (optional)"*: Comma-separated markers file with marker_names in third column
->
->    - In *"Advanced Options"*:
->        - *"Write output as a single pyramidal TIFF"*: `Yes`
+>    - *"Rename channels in OME-XML metadata"*: `Yes`
+>        - {% icon param-file %} *"Markers File"*: Comma-separated markers file with marker_names in third column
 >
 {: .hands_on}
 
@@ -167,18 +165,17 @@ UNetCoreograph will output images (used for downstream steps), masks, and a prev
 {: .hands_on}
 
 
-# Nuclear segmentation with **Mesmer**
+# Perform segmentation of multiplexed tissue data with **Mesmer**
 
-Cell segmentation is the basis for all downstream single-cell analyses. Different segmentation tools work highly variably depending on the imaging modality or platform used. Because of this, Galaxy-ME has incorporated several cell segmentation tools so users may find the tool that works optimally for their data.
+Nuclear and/or cellular segmentation is the basis for all downstream single-cell analyses. Different segmentation tools work highly variably depending on the imaging modality or platform used. Because of this, Galaxy-ME has incorporated several segmentation tools so users may find the tool that works optimally for their data.
 
 Available segmentation tools in Galaxy-ME:
 
   - Mesmer ({% cite Greenwald2021 %})
   - UnMicst and s3segmenter ({% cite Yapp2022 %})
   - Cellpose ({% cite Stringer2020 %})
-  - ilastik ({% cite Berg2019 %})
 
-In this tutorial, we use **Mesmer** because it tends to perform generally well on a diverse range of image types, and has a limited number of parameters to understand.
+In this tutorial, we use **Mesmer** because it tends to perform generally well on a diverse range of image types, and can be parameterized to suite different modalities. 
 
 > <comment-title>Important detail: Running images in batches</comment-title>
 >
@@ -188,14 +185,16 @@ In this tutorial, we use **Mesmer** because it tends to perform generally well o
 
 > <hands-on-title> Nuclear segmentation </hands-on-title>
 >
-> 1. {% tool [Mesmer](toolshed.g2.bx.psu.edu/repos/goeckslab/mesmer/mesmer/0.12.3+galaxy2) %} with the following parameters:
->    - {% icon param-collection %} *"Image containing the nuclear marker(s) "*: Collection output of UNetCoreograph (images)
+> 1. {% tool [Mesmer](toolshed.g2.bx.psu.edu/repos/goeckslab/mesmer/mesmer/0.12.3+galaxy3) %} with the following parameters:
+>    - {% icon param-collection %} *"Image containing all the marker(s) "*: Collection output of UNetCoreograph (images)
+>    - *"The numerical indices of the channel(s) for the nuclear markers"*: `0`
 >    - *"Resolution of the image in microns-per-pixel"*: `0.65`
 >    - *"Compartment for segmentation prediction:"*: `Nuclear`
 >
 >    > <comment-title>np.squeeze</comment-title>
 >    >
->    > The **np.squeeze** parameter is very important to select as `Yes` to make the output compatible with next steps
+>    > Make sure the **np.squeeze** parameter is set to `Yes` to make the output compatible with next steps.
+>    > This is the default behavoir. 
 >    {: .comment}
 >
 {: .hands_on}
@@ -217,7 +216,7 @@ The quantification step will produce a CSV cell feature table for every image in
 
 > <hands-on-title> Quantification </hands-on-title>
 >
-> 1. {% tool [Quantification](toolshed.g2.bx.psu.edu/repos/perssond/quantification/quantification/1.5.3+galaxy1) %} with the following parameters:
+> 1. {% tool [Quantification](toolshed.g2.bx.psu.edu/repos/perssond/quantification/quantification/1.6.0+galaxy0) %} with the following parameters:
 >
 >    - {% icon param-collection %} *"Registered TIFF "*: Collection output of UNetCoreograph (images)
 >    - {% icon param-collection %} *"Primary Cell Mask "*: Collection output of Mesmer (or other segmentation tool)
@@ -241,7 +240,7 @@ Learn more about this file format at the [anndata documentation](https://anndata
 
 > <hands-on-title> Conver to Anndata </hands-on-title>
 >
-> 1. {% tool [Convert McMicro Output to Anndata](toolshed.g2.bx.psu.edu/repos/goeckslab/scimap_mcmicro_to_anndata/scimap_mcmicro_to_anndata/0.17.7+galaxy0) %} with the following parameters:
+> 1. {% tool [Convert McMicro Output to Anndata](toolshed.g2.bx.psu.edu/repos/goeckslab/scimap_mcmicro_to_anndata/scimap_mcmicro_to_anndata/2.1.0+galaxy2) %} with the following parameters:
 >
 >    - {% icon param-collection %} *"Select the input image or images"*: Collection output of Quantification (cellMaskQuant)
 >    - In *"Advanced Options"*:
@@ -265,19 +264,16 @@ There are several ways to classify cells available in Galaxy-ME. Unsupervised ap
 
 > <hands-on-title> Single Cell Phenotyping with Scimap </hands-on-title>
 >
-> 1. {% tool [Single Cell Phenotyping](toolshed.g2.bx.psu.edu/repos/goeckslab/scimap_phenotyping/scimap_phenotyping/0.17.7+galaxy0) %} with the following parameters:
+> 1. {% tool [Single Cell Phenotyping](toolshed.g2.bx.psu.edu/repos/goeckslab/scimap_phenotyping/scimap_phenotyping/2.1.0+galaxy2) %} with the following parameters:
 >
 >    - {% icon param-collection %} *"Select the input anndata"*: Output of **Convert MCMICRO output to Anndata**
+>    - *"Whether to log the data prior to rescaling"*: `True`
 >    - {% icon param-file %} *"Select the dataset containing manual gate information"*: (Optional) manually determined gates in CSV format. Gates will be determined automatically using a GMM for each marker if this file is not provided
 >    - {% icon param-file %} *"Select the dataset containing gating workflow"*: `exemplar_002_phenotypes.csv`, CSV phenotype workflow (Figure 5.)
->    - *"Save the GMM gates plots If True"*: `Yes`
->
 >
 >    > <comment-title>Limitations of GMM automated phenotyping</comment-title>
 >    >
->    > When manual gates are not provided, Scimap fits a GMM to determine a threshold between positive and negative cells. This automated gating works well when markers are highly abundant within the tissue, and the data shows a bimodal distribution (Figure 6A.). GMM gating can lead to spurious thresholds, however, when the data does not appear to be bimodal (Figure 6B.). This tends to happen when the marker is not highly abundant in the tissue, so there isn't a large positive population. Markers that have a highly continuous range of intensity, like certain functional markers, can also be problematic with GMM gating. It is recommended to always look at the GMM plots output by Scimap, and validate any potentially spurious gates manually.
->    >
->    > ![Two bar plots with overlain curves. Left in A shows a bimodal distribution of CD3D, right in B shows a unimodal distribution in CD11B.](../../images/multiplex-tissue-imaging-TMA/ex2_example_GMMs.png "Scimap automatic gating GMMs for two markers. (A) An example of a marker with a bimodal distribution and a reasonable looking gate. (B) An example of a marker with a unimodal distribution that is not ideal for fitting with a GMM, and would be a candidate for manual validation and gating.")
+>    > When manual gates are not provided, Scimap fits a 2-component Gaussian Mixture Model (GMM) to determine a threshold between positive and negative cells. This automated gating can work well when markers are highly abundant within the tissue, and the data shows a bimodal distribution; **however**, this is usually not the case, and it is recommended to provide manual gates which can be found using the **GateFinder** tool
 >    >
 >    {: .comment}
 >
@@ -309,7 +305,7 @@ Some tools can cause the channel names in an OME-TIFF image to be lost. To fix t
 
 > <hands-on-title> Rename channels </hands-on-title>
 >
-> 1. {% tool [Rename OME-TIFF Channels](toolshed.g2.bx.psu.edu/repos/goeckslab/rename_tiff_channels/rename_tiff_channels/0.0.1+galaxy1) %} with the following parameters:
+> 1. {% tool [Rename OME-TIFF Channels](toolshed.g2.bx.psu.edu/repos/goeckslab/rename_tiff_channels/rename_tiff_channels/0.0.2+galaxy1) %} with the following parameters:
 >
 >    - {% icon param-file %} *"Input image in OME-tiff format"*: `Convert image`
 >    - *"Format of input image"*: `ome.tiff`
@@ -340,7 +336,7 @@ For any `OME-TIFF` image in a Galaxy-ME history, there will be an option to view
 
 > <hands-on-title> Vitessce visualization </hands-on-title>
 >
-> 1. {% tool [Vitessce Visualization](toolshed.g2.bx.psu.edu/repos/goeckslab/vitessce_spatial/vitessce_spatial/1.0.4+galaxy0) %} with the following parameters:
+> 1. {% tool [Vitessce Visualization](toolshed.g2.bx.psu.edu/repos/goeckslab/vitessce_spatial/vitessce_spatial/3.5.1+galaxy0) %} with the following parameters:
 >
 >    - {% icon param-collection %} *"Select the OME Tiff image"*: OME-TIFF image to be viewed (or collection of files to run in batch)
 >    - {% icon param-collection %} *"Select masks for the OME Tiff image (Optional)"*: Output of Mesmer (or other segmentation tool)
