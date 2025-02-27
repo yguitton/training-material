@@ -40,7 +40,6 @@ gitter: Galaxy-Training-Network/galaxy-single-cell
 ---
 
 
-# Introduction
 
 <!-- This is a comment. -->
 Performing experiments in replicates is a cornerstone of modern biological science. However, when integrating data from multiple single-cell sequencing experiments, technical confounders might impact the results. 
