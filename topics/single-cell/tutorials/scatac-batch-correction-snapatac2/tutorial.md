@@ -17,12 +17,11 @@ key_points:
 - Batch correction is important for the integration of data from multiple experiments
 - Batch correction algorithms identify similar cells and move them closer together through appropriate correction vectors.
 requirements:
-  -
-    type: "internal"
-    topic_name: single-cell
-    tutorials:
-      - scatac-preprocessing-tenx
-      - scatac-standard-processing-snapatac2
+- type: internal
+  topic_name: single-cell
+  tutorials:
+  - scatac-preprocessing-tenx
+  - scatac-standard-processing-snapatac2
 tags:
 - 10x
 - epigenetics
@@ -146,7 +145,7 @@ The first step is importing the datasets into an AnnData object with the tool *p
 >
 > - The [**AnnData**](https://anndata.readthedocs.io/en/latest/) format was initially developed for the [**Scanpy**](https://scanpy.readthedocs.io/en/stable/index.html) package and is now a widely accepted data format to store annotated data matrices in a space-efficient manner.
 >
-> ![Anndata format]({% link topics/single-cell/images/scatac-standard-snapatac2/anndata_schema.svg %} "<code>AnnData</code> format stores a count matrix <code>X</code> together with annotations of observations (i.e. cells) <code>obs</code>, variables (i.e. genes) <code>var</code> and unstructured annotations <code>uns</code>.")
+> ![Anndata format]({% link topics/single-cell/images/scatac-standard-snapatac2/anndata_schema.svg %} "AnnData format stores a count matrix `X` together with annotations of observations (i.e., cells) `obs`, variables (i.e., genes) `var`, and unstructured annotations `uns`.")
 >
 {: .details}
 
@@ -175,8 +174,8 @@ The first step is importing the datasets into an AnnData object with the tool *p
 >
 > > <question-title></question-title>
 > >
-> > 1. Where are high-quality cells located in a {TSSe} plot?
-> > 2. Based on these plots, how should the filter be set?
+> > 1. Where are high-quality cells typically located on a {TSSe} plot?
+> > 2. Based on these plots, how should the filtering threshold be set?
 > >
 > > > <solution-title></solution-title>
 > > >
@@ -262,7 +261,7 @@ This is achieved in two steps:
 >
 {: .hands_on}
 
-## Concatenate AnnDatas
+## Concatenating all AnnData files
 
 > <hands-on-title> Concatenate </hands-on-title>
 >
@@ -293,7 +292,7 @@ This is achieved in two steps:
 >    > * Many toolsets producing outputs in *AnnData* formats in Galaxy, provide the general information by default:
 >    >    * Click on the name of the dataset in the history to expand it. The general Anndata information will be given in the expanded box.
 >    >    * Alternatively, expand the dataset and click on {% icon details %}*Dataset Details*. Scroll to Job Information and inspect the Tool Standard Output.
->    > * If a tool does not provide the general AnnData information, or a more specific query is required, the tool {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.3+galaxy0) %} can also be selected.
+>    > * If a tool does not provide general AnnData information or a more specific query is needed, you can use {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.3+galaxy0) %}.
 >    {: .tip}
 >
 >    ```
@@ -305,9 +304,9 @@ This is achieved in two steps:
 >
 > > <question-title></question-title>
 > >
-> > 1. How many colon cells are stored in this AnnData object?
-> > 2. What does the 'batch' annotation represent?
-> > 3. What do the different annotations for 'count-' and 'selected-' stand for?
+> > 1. How many colon cells are present in this AnnData object?  
+> > 2. What does the 'batch' annotation indicate?  
+> > 3. What do the 'count-' and 'selected-' annotations represent?  
 > >
 > > > <solution-title></solution-title>
 > > >
