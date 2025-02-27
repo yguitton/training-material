@@ -2146,8 +2146,10 @@ id:
   W00312: "/topics/single-cell/tutorials/bulk-music/workflows/music_pre-grouping_cell_types.html"
   W00313: "/topics/single-cell/tutorials/pseudobulk-analysis/workflows/pseudo-bulk_edgeR.html"
   W00314: "/topics/single-cell/tutorials/scrna-umis/workflows/Understanding-Barcodes.html"
+  N00106: "/news/2025/02/14/gtn2025-call-trainer.html"
 misc:
   ansible-galaxy: "/topics/admin/tutorials/ansible-galaxy/tutorial.html"
   feeds: "/feeds/index.html"
   events: "/events/index.html"
   stats: "/stats/index.html"
+  microgalaxy: "/search2?query=microgalaxy"
