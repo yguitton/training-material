@@ -76,7 +76,7 @@ In our case, we will use the model data from the MFAssignR package, which contai
 > 2. Import the files from [Zenodo]({{ page.zenodo_link }}):
 >
 >    ```
->    https://zenodo.org/api/records/13768009/files/mfassignr_input.txt/content
+>    https://zenodo.org/records/13768009/files/mfassignr_input.txt
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
