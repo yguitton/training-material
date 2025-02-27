@@ -12,6 +12,9 @@ answer_histories:
   - label: "UseGalaxy.eu"
     history: https://humancellatlas.usegalaxy.eu/u/marisa_jl/h/inferring-trajectories-using-scanpy---example-history
     date: 2023-12-14
+  - label: "UseGalaxy.eu-ARCHIVED"
+    history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/inferring-trajectories-using-scanpy---example-history
+    date: 2024-10-12
 
 input_histories:
   - label: "UseGalaxy.eu"
@@ -33,9 +36,20 @@ requirements:
         - scrna-case_alevin
         - scrna-case_alevin-combine-datasets
         - scrna-case_basic-pipeline
+
+follow_up_training:
+-
+    type: "internal"
+    topic_name: single-cell
+    tutorials:
+        - EBI-retrieval
+        - GO-enrichment
+
+
 tags:
 - 10x
 - paper-replication
+- MIGHTS
 
 contributions:
   authorship:
@@ -48,8 +62,6 @@ contributions:
     - hexylena
 ---
 
-
-# Introduction
 
 You've done all the hard work of preparing a single-cell matrix, processing it, plotting it, interpreting it, and finding lots of lovely genes. Now you want to infer trajectories, or relationships between cells... you can do that here, using the Galaxy interface, or head over to the [Jupyter notebook version of this tutorial]({% link topics/single-cell/tutorials/scrna-case_JUPYTER-trajectories/tutorial.md %}) to learn how to perform the same analysis using Python.
 
@@ -226,7 +238,7 @@ Now that we have our diffusion map, we need to re-calculate neighbors using the 
 {: .hands_on}
 
 > <comment-title></comment-title>
-> If you're using the latest versions of these tools (e.g. {% tool [Scanpy ComputeGraph](https://usegalaxy.eu/root?tool_id=toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_compute_graph/scanpy_compute_graph/1.9.3+galaxy0) %}, rather than the ones suggested in the tutorial (e.g. {% tool [Scanpy ComputeGraph](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_compute_graph/scanpy_compute_graph/1.8.1+galaxy9) %} then you may need to change one more parameter here to set the `Number of PCs to use` to 15. These are the 15 diffusion components we just calculated, rather than actual PCs.
+> If you're using the latest versions of these tools (e.g. {% tool [Scanpy ComputeGraph](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_compute_graph/scanpy_compute_graph/1.9.3+galaxy0) %}, rather than the ones suggested in the tutorial (e.g. {% tool [Scanpy ComputeGraph](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_compute_graph/scanpy_compute_graph/1.8.1+galaxy9) %} then you may need to change one more parameter here to set the `Number of PCs to use` to 15. These are the 15 diffusion components we just calculated, rather than actual PCs.
 {: .comment}
 
 ## Re-draw the FDG

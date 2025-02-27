@@ -13,10 +13,16 @@ answer_histories:
   - label: "UseGalaxy.eu (includes AnnData to CDS conversion)"
     history: https://humancellatlas.usegalaxy.eu/u/j.jakiela/h/monoce3-tutorial-workflow
     date: 2024-03-04
+  - label: "UseGalaxy.eu (includes AnnData to CDS conversion)-ARCHIVED"
+    history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/monocle3-tutorial-workflow
+    date: 2024-12-10
 
 input_histories:
   - label: "CDS file (UseGalaxy.eu)"
     history: https://usegalaxy.eu/u/j.jakiela/h/cds-input-file-for-monocle3-tutorial
+  - label: "CDS file (UseGalaxy.eu) - ARCHIVED"
+    history: https://usegalaxy.eu/u/wendi.bacon.training/h/cds-input-file-for-monocle3-tutorial
+    date: 2024-12-10
 
 questions:
 - How can I prepare input files for Monocle starting from an AnnData object?
@@ -40,14 +46,20 @@ requirements:
     type: "internal"
     topic_name: single-cell
     tutorials:
-        - scrna-case_alevin
-        - scrna-case_alevin-combine-datasets
         - scrna-case_basic-pipeline
-        - scrna-case_JUPYTER-trajectories
         - scrna-data-ingest
+follow_up_training:
+-
+    type: "internal"
+    topic_name: single-cell
+    tutorials:
+        - EBI-retrieval
+        - GO-enrichment
+
 tags:
 - 10x
 - paper-replication
+- MIGHTS
 
 contributions:
   authorship:

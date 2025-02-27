@@ -30,6 +30,8 @@ contributions:
   authorship:
     - rlibouba
     - abretaud
+  editing:
+    - felicitas215
   funding:
     - eurosciencegateway
 abbreviations:
@@ -67,7 +69,7 @@ In this tutorial, you'll learn how to perform a structural annotation of the gen
 
 To annotate our genome using Helixer, we will use the following files:
 
-- The **genome sequence** in fasta format. For best results, the sequence should be soft-masked beforehand. You can learn how to do it by following the [RepeatMasker tutorial]({% link topics/genome-annotation/tutorials/repeatmasker/tutorial.md %}). For this tutorial, we will try to annotate the genome assembled in the [Flye assembly tutorial]({% link topics/assembly/tutorials/flye-assembly/tutorial.md %}) and already masked for you using RepeatMasker.
+- The **genome sequence** in fasta format. For this tutorial, we will try to annotate the genome assembled in the [Flye assembly tutorial]({% link topics/assembly/tutorials/flye-assembly/tutorial.md %}). (Note: Helixer will ignore soft-masking. Hard-masking is not recommnded for Helixer either, as it does not ignore the hard-masked regions, but will get less information from them, which could influence your predictions in a negative way.)
 
 > <hands-on-title>Data upload</hands-on-title>
 >
@@ -170,7 +172,7 @@ We want to run BUSCO on the protein sequences predicted from gene sequences of t
 >    - {% icon param-file %} *"Input GFF3 or GTF feature file"*: output of {% tool [Helixer](toolshed.g2.bx.psu.edu/repos/genouest/helixer/helixer/0.3.3+galaxy1)) %}
 >    - In *"Reference Genome"* select: `From your history` (Input dataset)
 >    - *"Genome Reference Fasta"*: `masked genome` (Input dataset)
->    - In *"Select fasta outputs"* select: `fasta file with spliced exons for each GFF transcript (-y)`
+>    - In *"Select fasta outputs"* select: `protein fasta file with the translation of CDS for each record (-y)`
 >    - *"full GFF attribute preservation (all attributes are shown)"*: `Yes`
 >    - *"decode url encoded characters within attributes"*: `Yes`
 >    - *"warn about duplicate transcript IDs and other potential problems with the given GFF/GTF records"*: `Yes`
@@ -221,6 +223,35 @@ This gives information about the completeness of the Helixer annotation. A good 
 > - So the Helixer annotation looks like a good one, with high completeness and low duplication.
 >
 {: .comment}
+
+## Evaluation with **OMArk**
+
+[OMArk](https://github.com/DessimozLab/OMArk) is proteome quality assessment software. It provides measures of proteome completeness, characterises the consistency of all protein-coding genes with their homologues and identifies the presence of contamination by other species. OMArk is based on the OMA orthology database, from which it exploits orthology relationships, and on the OMAmer software for rapid placement of all proteins in gene families.
+
+OMArk's analysis is based on HOGs (Hierarchical Orthologous Groups), which play a central role in its assessment of the completeness and coherence of gene sets. HOGs make it possible to compare the genes of a given species with groups of orthologous genes conserved across a taxonomic clade. 
+
+> <hands-on-title>OMArk on extracted protein sequences</hands-on-title>
+>
+> 1. {% tool [OMArk](toolshed.g2.bx.psu.edu/repos/iuc/omark/omark/0.3.0+galaxy2) %} with the following parameters:
+>    - {% icon param-file %} *"Protein sequences"*: `gffread: pep.fa`
+>    - *"OMAmer database*: select `LUCA-v2.0.0`
+>    - In *"Which outputs should be generated"*: select `Detailed summary`
+>
+{: .hands_on}
+
+The OMArk tool generated an output file in .txt format containing detailed information on the assessment of the completeness, consistency and species composition of the proteome analysed. This report includes statistics on conserved genes, the proportion of duplications, missing genes and the identification of reference lineages.
+
+> <comment-title>What can we deduce from these results?</comment-title>
+>
+> - Number of conserved HOGs: OMArk has identified a set of 5622 HOGs which are thought to be conserved in the majority of species in the Mucorineae clade.
+> - 85.52% of genes are complete, so the annotation is of good quality in terms of genomic completeness.
+> - Number of proteins in the whole proteome: 19 299. Of which 62.83% are present and 30.94% of the proteome does not share sufficient similarities with known gene families.
+> - No contamination detected.
+> - The OMArk analysis is based on the Mucorineae lineage, a more recent and specific clade than that used in the BUSCO assessment, which selected the Mucorales as the reference group.
+{: .comment}
+
+
+
 
 # Visualisation with a genome browser
 

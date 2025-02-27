@@ -6,7 +6,13 @@ priority: 2
 redirect_from:
   - /topics/transcriptomics/tutorials/scrna-raceid/tutorial
 zenodo_link: 'https://zenodo.org/record/1511582'
-tags:
+answer_histories:
+  - label: "UseGalaxy.eu"
+    history: https://singlecell.usegalaxy.eu/u/videmp/h/downstream-single-cell-rna-analysis-with-raceid
+    date: 2024-12-13
+
+draft: true
+tags: []
 questions:
   - What is normalisation and why is it necessary?
   - How many types of unwanted variation are there?
@@ -41,12 +47,15 @@ key_points:
   - RaceID can be used to cluster cells based on the their gene expression profiles
   - StemID describes a hierarchical relationship between clusters to find multipotent progenitor stem cells to provide an understanding of cell development
   - FateID predicts the potential lineages that cells within specific clusters are inclined towards
-contributors:
-  - mtekman
-  - astrovsky01
+
+contributions:
+    authorship:
+        - mtekman
+        - astrovsky01
+    testing:
+        - pavanvidem
 
 gitter: Galaxy-Training-Network/galaxy-single-cell
-
 
 ---
 
