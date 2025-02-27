@@ -296,13 +296,12 @@ This is achieved in two steps:
 >    > * If a tool does not provide the general AnnData information, or a more specific query is required, the tool {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.3+galaxy0) %} can also be selected.
 >    {: .tip}
 >
->    > ```
->    > AnnData object with n_obs × n_vars = 34372 × 606219
->    >  obs: 'n_fragment', 'frac_dup', 'frac_mito', 'tsse', 'doublet_probability', 'doublet_score', 'batch'
->    >  var: 'count-0', 'selected-0', 'count-1', 'selected-1', 'count-2', 'selected-2', 'count-3', 'selected-3', 'count-4', 'selected-4'
->    >  obsm: 'fragment_paired'
->    > ```
->    >
+>    ```
+>    AnnData object with n_obs × n_vars = 34372 × 606219
+>     obs: 'n_fragment', 'frac_dup', 'frac_mito', 'tsse', 'doublet_probability', 'doublet_score', 'batch'
+>     var: 'count-0', 'selected-0', 'count-1', 'selected-1', 'count-2', 'selected-2', 'count-3', 'selected-3', 'count-4', 'selected-4'
+>     obsm: 'fragment_paired'
+>    ```
 >
 > > <question-title></question-title>
 > >
