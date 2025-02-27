@@ -2152,3 +2152,4 @@ misc:
   feeds: "/feeds/index.html"
   events: "/events/index.html"
   stats: "/stats/index.html"
+  microgalaxy: "/search2?query=microgalaxy"
