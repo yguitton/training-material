@@ -21,6 +21,7 @@ key_points:
 contributions:
   authorship:
     - tStehling
+    - bernt-matthias
 
 
 ---
