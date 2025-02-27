@@ -31,8 +31,11 @@ abbreviations:
     TSSe: transcription start site enrichment
     TSS: transcription start sites
     UMAP: Uniform Manifold Approximation and Projection
-contributors:
-- timonschlegel
+contributions:
+ authorship:
+  - timonschlegel
+ editing:
+  - dianichj
 gitter: Galaxy-Training-Network/galaxy-single-cell
 
 
