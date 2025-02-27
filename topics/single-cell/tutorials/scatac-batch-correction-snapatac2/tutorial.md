@@ -192,17 +192,17 @@ The first step is to import the datasets into an AnnData object using the *pp.im
 
 ## Filtering the count matrices
 
-The `{TSSe}` threshold balances data retention and quality control. In our dataset, the `{TSSe}` distributions indicate substantial differences in sample quality between batches. To retain as much biological data as possible, we will use a broader filter (e.g., minimum `{TSSe} = 7.0`).
+The {TSSe} threshold balances data retention and quality control. In our dataset, the {TSSe} distributions indicate substantial differences in sample quality between batches. To retain as much biological data as possible, we will use a broader filter (e.g., minimum {TSSe} = 7.0).
 
-**Standard `{TSSe}` Thresholds**
-- **Strict (`TSSe ≥ 10–15`)**: High-confidence cells.
-- **Moderate (`TSSe ≥ 7–10`)**: Balances data retention and quality but may include lower-quality cells.
-- **Broad (`TSSe ≥ 5–7`)**: Maximizes retention but increases the risk of including lower-quality data.
+**Standard {TSSe} Thresholds**
+- **Strict (TSSe ≥ 10–15)**: High-confidence cells.
+- **Moderate (TSSe ≥ 7–10)**: Balances data retention and quality but may include lower-quality cells.
+- **Broad (TSSe ≥ 5–7)**: Maximizes retention but increases the risk of including lower-quality data.
 
 **Choosing the Right Cutoff**
 - If sample quality varies, a **moderate threshold (≥7.0)** helps retain more data.
 - If high-quality data is required, **stricter filtering (≥10.0)** is recommended.
-- Inspect `{TSSe}` distributions to determine the most suitable threshold for your dataset.
+- Inspect {TSSe} distributions to determine the most suitable threshold for your dataset.
 
 > <hands-on-title> Filtering </hands-on-title>
 >
