@@ -17,8 +17,8 @@ requirements:
       - bioimage-metadata
       - bioimage-REMBI
 editorial_board:
-  - thomaswollmann
   - kostrykin
+  - beatrizserrano
 references:
   -
     authors: "Thomas Wollmann et al"
