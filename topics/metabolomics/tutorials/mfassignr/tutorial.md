@@ -73,7 +73,7 @@ In our case, we will use the model data from the MFAssignR package, which contai
 >
 >    {% snippet faqs/galaxy/histories_create_new.md %}
 >
-> 2. Import the files from [Zenodo]({{ https://zenodo.org/records/13768009 }}):
+> 2. Import the files from [Zenodo]({{ page.zenodo_link }}):
 >
 >    ```
 >    https://zenodo.org/api/records/13768009/files/mfassignr_input.txt/content
