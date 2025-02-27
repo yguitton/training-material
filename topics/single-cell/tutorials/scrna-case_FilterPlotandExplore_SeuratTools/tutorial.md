@@ -6,11 +6,6 @@ subtopic: single-cell-CS
 priority: 3
 zenodo_link: 'https://zenodo.org/record/7053673'
 
-input_histories:
-  - label: "UseGalaxy.eu"
-    history: https://singlecell.usegalaxy.eu/u/camila-goclowski/h/tool-based-seurat-fpe-input-data
-
-
 questions:
 - Is my single cell dataset a quality dataset?
 - How do I pick thresholds and parameters in my analysis? What’s a “reasonable” number, and will the world collapse if I pick the wrong one?
@@ -33,6 +28,14 @@ requirements:
         - scrna-intro
         - scrna-preprocessing-tenx
 
+follow_up_training:
+-
+    type: "internal"
+    topic_name: single-cell
+    tutorials:
+        - scrna-case_monocle3-trajectories
+        - GO-enrichment
+
 tags:
 - 10x
 - paper-replication
@@ -52,10 +55,17 @@ answer_histories:
     - label: "usegalaxy.eu"
       history: https://usegalaxy.eu/u/camila-goclowski/h/seurattool-based-fpe
       date: 2024-06-03
+    - label: "usegalaxy.eu - ARCHIVED"
+      history: https://usegalaxy.eu/u/wendi.bacon.training/h/tool-based-fpe
+      date: 2024-12-10
 
 input_histories:
     - label: "usegalaxy.eu"
       history: https://usegalaxy.eu/u/camila-goclowski/h/tool-based-seurat-fpe-input-data
+    - label: "usegalaxy.eu-ARCHIVED"
+      history: https://usegalaxy.eu/u/wendi.bacon.training/h/tool-based-seurat-fpe-input-data
+      date: 2024-12-10
+
 
 ---
 
@@ -82,7 +92,7 @@ We’ll provided you with experimental data to analyse from a mouse dataset of f
 ## Get Data onto Galaxy
 To start, let's get our dataset loaded into Galaxy.
 
-{% include _includes/cyoa-choices.html option1="EBI Data Retrieval" option2="Importing from a history" option3="Uploading from Zenodo" default="EBI-Data-Retrieval" text="There are multiple ways in which to collect the data for this tutorial. I find it easiest to do so via the EBI Data Retrieval." %}
+{% include _includes/cyoa-choices.html option1="EBI Data Retrieval" option2="Importing from a history" option3="Uploading from Zenodo" default="EBI Data Retrieval" text="There are multiple ways in which to collect the data for this tutorial. I find it easiest to do so via the EBI Data Retrieval." %}
 
 <div class='EBI-Data-Retrieval' markdown='1'>
 > <hands-on-title>EBI Data Retrieval</hands-on-title>
@@ -808,4 +818,3 @@ If we look at the differences between genotypes alone (so the pseudo-bulk), we c
 Ultimately, there are quite a lot ways to analyse your single-cell data, both within the confines of this tutorial (the many parameters that could be changed throughout) and outside of it (batch correction, sub-clustering, cell-cycle scoring, inferred trajectories, etc.) Most analyses will still yield the same general output, though: there are fewer knockout cells in the mature T-cell population, suggesting some sort of abberant development of T-cells in the Igf2-p0 hets.
 
 {% icon congratulations %} Congratulations! You have interpreted your plots in several important ways! You might want to consult your results with this [control history](https://singlecell.usegalaxy.eu/u/camila-goclowski/h/seurattool-based-fpe), and check out the [workflow](./workflows/) for this tutorial.
-
