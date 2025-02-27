@@ -274,7 +274,7 @@ This is achieved in two steps:
 >        - *"Join method"*: `Intersection of variables`
 >        - *"Key to add the batch annotation to obs"*: `batch`
 >
->    > <details-title>Issues with the concatenation</details-title>
+>    > <details-title>Issues with concatenation</details-title>
 >    > - Depending on the size of the datasets, this operation can take a lot of time. With the `colon_multisample` datasets, the concatenation can run for 1h. 
 >    > - For even larger datasets, the allocated memory of the tool might not be enough and the operation fails. In that case, you will receive the following error message: 
 >    >
