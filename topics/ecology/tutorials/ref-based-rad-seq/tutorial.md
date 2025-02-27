@@ -179,11 +179,13 @@ We propose to continue the tutorial using the dataset collection containing the 
 
 ## Quality control
 
-For quality control, we use similar tools as described in [NGS-QC tutorial]({{site.baseurl}}/topics/sequence-analysis/tutorials/quality-control/tutorial.html): [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/).
+For quality control, we use similar tools as described in [NGS-QC tutorial]({{site.baseurl}}/topics/sequence-analysis/tutorials/quality-control/tutorial.html): [Falco](https://falco.readthedocs.io/en/latest/)
+
+Falco is an efficiency-optimized rewrite of [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/).
 
 > <hands-on-title>Quality control</hands-on-title>
 >
-> 1. **FastQC** {% icon tool %} to check the quality of the reads:
+> 1. **Falco** {% icon tool %} to check the quality of the reads:
 >    - {% icon param-collection %} *"Short read data from your current history"*: the fastq files (collection)
 >
 >    > <question-title></question-title>
