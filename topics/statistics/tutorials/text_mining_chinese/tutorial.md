@@ -238,9 +238,7 @@ In the next step, we want to extract specific lines only. To determine what cont
 >    > Add another Unicode here if you want to select a different character, for example, '□' or '△'.
 >    > For example, you can get the respective code on [Character Code Finder](https://www.mauvecloud.net/charsets/CharCodeFinder.html).
 >    > Copy the character you want to filter for in the "input" window and select "Decimal Character Codes" as an output. If you do this for symbol ×, you get 215.
-
 >    {: .comment}
-
 {: .hands_on}
 
 
