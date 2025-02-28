@@ -2,8 +2,16 @@
     "a_galaxy_workflow": "true",
     "annotation": "",
     "comments": [],
+    "creator": [
+        {
+            "class": "Person",
+            "identifier": "0000-0003-3763-0797",
+            "name": "Matthias Bernt"
+        }
+    ],
     "format-version": "0.1",
-    "name": "multiGSEA Workflow",
+    "license": "MIT",
+    "name": "MultiGSEA",
     "report": {
         "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
     },
@@ -219,10 +227,18 @@
             "type": "tool",
             "uuid": "46fdc5cd-7e17-421e-aec3-2f70673e5432",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": "Filtered output",
+                    "output_name": "output",
+                    "uuid": "862ee6ea-d4c2-456c-b755-6d9bafc9ac55"
+                }
+            ]
         }
     },
-    "tags": [],
+    "tags": [
+        "Multi-omics"
+    ],
     "uuid": "3d38e914-f020-446b-8e3d-c65e6ed3b3a8",
     "version": 1
 }
