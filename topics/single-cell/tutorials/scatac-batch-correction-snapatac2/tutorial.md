@@ -393,10 +393,10 @@ Batch effects can be visualized using a `{UMAP}` projection, where samples are c
 After confirming the presence of batch effects, they should be removed using correction algorithms. **SnapATAC2** provides three batch correction methods: *Harmony*, *MNC-correct*, and *Scanorama*. To determine the most suitable algorithm for your dataset, compare the outputs of each method.
 
 > <details-title> Batch correction algorithms </details-title>
-> - Batch correction algorithms adjust the cell-by-feature count matrix to account for batch-specific differences between samples.  
-> - Batch effects can arise from various technical sources, such as sequencing lanes, plates, protocols, and handling. Additionally, biological factors, including tissue types, species, and inter-individual variation, can also contribute to batch effects {% cite Luecken2021 %}.  
-> - Many batch correction algorithms have been developed, with most scATAC-seq methods adapted from scRNA-seq batch removal techniques.  
-> - *Harmony* {% cite Korsunsky2019 %} is a principal component analysis (PCA)-based method that leverages lower-dimensional data to assign cells to new clusters. It prioritizes multi-sample clustering to integrate datasets by computing linear correction factors for each batch and cluster, iteratively adjusting cell positions until optimal batch correction is achieved.  
+> - Batch correction algorithms adjust the cell-by-feature count matrix to account for batch-specific differences between samples.
+> - Batch effects can arise from various technical sources, such as sequencing lanes, plates, protocols, and handling. Additionally, biological factors, including tissue types, species, and inter-individual variation, can also contribute to batch effects {% cite Luecken2021 %}.
+> - Many batch correction algorithms have been developed, with most scATAC-seq methods adapted from scRNA-seq batch removal techniques.
+> - *Harmony* {% cite Korsunsky2019 %} is a principal component analysis (PCA)-based method that leverages lower-dimensional data to assign cells to new clusters. It prioritizes multi-sample clustering to integrate datasets by computing linear correction factors for each batch and cluster, iteratively adjusting cell positions until optimal batch correction is achieved.
 >
 >   ![Graphical abstract of Harmony batch correction]({% link topics/single-cell/images/scatac-batch-correction-snapatac2/harmony-graphical-abstract.png %})
 >
@@ -404,13 +404,13 @@ After confirming the presence of batch effects, they should be removed using cor
 >
 >   ![Graphical abstract of Scanorama batch correction]({% link topics/single-cell/images/scatac-batch-correction-snapatac2/scanorama-graphical-abstract.png %})
 >
-> - *MNC-correct* {% cite Zhang2024 %} is a modified version of the *mutual nearest neighbor* algorithm {% cite Haghverdi2018 %}. It calculates centroids for batch-specific clusters and identifies pairs of mutual nearest centroids (MNC) across batches. Correction vectors then align the batches in the same plane. Additionally, *MNC-correct* can be run iteratively to refine corrections for optimal alignment.  
+> - *MNC-correct* {% cite Zhang2024 %} is a modified version of the *mutual nearest neighbor* algorithm {% cite Haghverdi2018 %}. It calculates centroids for batch-specific clusters and identifies pairs of mutual nearest centroids (MNC) across batches. Correction vectors then align the batches in the same plane. Additionally, *MNC-correct* can be run iteratively to refine corrections for optimal alignment.
 >
 >   ![Graphical abstract of MNC-correct batch correction]({% link topics/single-cell/images/scatac-batch-correction-snapatac2/mnn-graphical-abstract.png %})
 >
 {: .details}
 
-We will first use *Harmony* to correct batch effects, followed by testing the other methods.  
+We will first use *Harmony* to correct batch effects, followed by testing the other methods.
 > <hands-on-title> Batch correction and visualization</hands-on-title>
 >
 > 1. {% tool [SnapATAC2 Preprocessing](toolshed.g2.bx.psu.edu/repos/iuc/snapatac2_preprocessing/snapatac2_preprocessing/2.6.4+galaxy1) %} with the following parameters:
@@ -425,10 +425,10 @@ We will first use *Harmony* to correct batch effects, followed by testing the ot
 >
 > 2. {% icon galaxy-pencil %} Rename the AnnData output to `Multisample AnnData harmony UMAP`
 >
-> > <comment-title> Key for Cluster Labels </comment-title>  
-> > - Adding the new *UMAP embeddings* under the key `umap_harmony` preserves the non-batch-corrected embeddings in the AnnData object.  
-> >   - Alternatively, leaving this parameter empty will overwrite the existing embeddings.  
-> {: .comment}  
+> > <comment-title> Key for Cluster Labels </comment-title>
+> > - Adding the new *UMAP embeddings* under the key `umap_harmony` preserves the non-batch-corrected embeddings in the AnnData object.
+> >   - Alternatively, leaving this parameter empty will overwrite the existing embeddings.
+> {: .comment}
 >
 > 4. {% tool [SnapATAC2 Plotting](toolshed.g2.bx.psu.edu/repos/iuc/snapatac2_plotting/snapatac2_plotting/2.6.4+galaxy1) %} with the following parameters:
 >    - *"Method used for plotting"*: `Plot the UMAP embedding, using 'pl.umap'`
@@ -445,13 +445,13 @@ We will first use *Harmony* to correct batch effects, followed by testing the ot
 >
 > > <question-title></question-title>
 > >
-> > 1. How did *Harmony* affect the appearance of this plot?  
-> > 2. Are there areas in the plot where batch effects persist?  
+> > 1. How did *Harmony* affect the appearance of this plot?
+> > 2. Are there areas in the plot where batch effects persist?
 > >
 > > > <solution-title></solution-title>
 > > >
-> > > 1. *Harmony* has successfully removed most batch effects. Notably, the center-left groups have merged into a single larger group containing all batches.  
-> > > 2. Yes, some batch effects remain, particularly in the upper-right corner, where batch-specific colors do not fully overlap. However, this could also be due to certain samples having fewer cells, leading to underrepresentation in clusters of rare cell types. Therefore, it is unclear whether *Harmony* has completely eliminated all batch effects.  
+> > > 1. *Harmony* has successfully removed most batch effects. Notably, the center-left groups have merged into a single larger group containing all batches.
+> > > 2. Yes, some batch effects remain, particularly in the upper-right corner, where batch-specific colors do not fully overlap. However, this could also be due to certain samples having fewer cells, leading to underrepresentation in clusters of rare cell types. Therefore, it is unclear whether *Harmony* has completely eliminated all batch effects.
 > > >
 > > {: .solution}
 >  {: .question}
@@ -460,10 +460,10 @@ We will first use *Harmony* to correct batch effects, followed by testing the ot
 {: .hands_on}
 
 > <details-title>Batch Correction with Scanorama and MNC-correct</details-title>
-> - Other batch correction methods can be applied using {% tool [SnapATAC2 Preprocessing](toolshed.g2.bx.psu.edu/repos/iuc/snapatac2_preprocessing/snapatac2_preprocessing/2.6.4+galaxy1) %}, including *pp.mnc_correct* and *pp.scanorama_integrate*.  
->   - For *MNC-correct*, the number of iterations can be adjusted.  
-> - To determine the optimal batch correction method, it is recommended to test different algorithms and parameter settings.  
-> - Example outputs from *Scanorama* and *MNC-correct* are shown below:  
+> - Other batch correction methods can be applied using {% tool [SnapATAC2 Preprocessing](toolshed.g2.bx.psu.edu/repos/iuc/snapatac2_preprocessing/snapatac2_preprocessing/2.6.4+galaxy1) %}, including *pp.mnc_correct* and *pp.scanorama_integrate*.
+>   - For *MNC-correct*, the number of iterations can be adjusted.
+> - To determine the optimal batch correction method, it is recommended to test different algorithms and parameter settings.
+> - Example outputs from *Scanorama* and *MNC-correct* are shown below:
 >
 >  ![Batch correction UMAP plots of MNC-correct with different settings and Scanorama]({% link topics/single-cell/images/scatac-batch-correction-snapatac2/mnc-correct-scanorama-umap-spectral.png %} "UMAP plots of batch correction with different methods. (a) Batch correction with MNC-correct and default settings. (b) Batch correction with Scanorama. (c) Batch correction with MNC-correct and 30 iterations.")
 >
@@ -473,7 +473,7 @@ We will first use *Harmony* to correct batch effects, followed by testing the ot
 > >
 > > > <solution-title></solution-title>
 > > >
-> > > - *Harmony* achieved the best batch integration, as it produced the fewest single-batch groups. *Scanorama* and *MNC-correct* (with default settings) did not integrate the batches as effectively. However, *MNC-correct* with 30 iterations significantly reduced batch effects and could also be used for further analysis.  
+> > > - *Harmony* achieved the best batch integration, as it produced the fewest single-batch groups. *Scanorama* and *MNC-correct* (with default settings) did not integrate the batches as effectively. However, *MNC-correct* with 30 iterations significantly reduced batch effects and could also be used for further analysis.
 > > >
 > > {: .solution}
 >  {: .question}
@@ -482,7 +482,7 @@ We will first use *Harmony* to correct batch effects, followed by testing the ot
 
 
 # Clustering of the batch corrected samples
-The analysis can now continue using the same methods outlined in the [standard pathway]({% link topics/single-cell/tutorials/scatac-standard-processing-snapatac2/tutorial.md %}). The batch-corrected embeddings are clustered and visualized using the *Leiden* algorithm.  
+The analysis can now continue using the same methods outlined in the [standard pathway]({% link topics/single-cell/tutorials/scatac-standard-processing-snapatac2/tutorial.md %}). The batch-corrected embeddings are clustered and visualized using the *Leiden* algorithm.
 
 > <hands-on-title> Leiden clustering and visualization </hands-on-title>
 >
@@ -491,15 +491,15 @@ The analysis can now continue using the same methods outlined in the [standard p
 >        - {% icon param-file %} *"Annotated data matrix"*: `Multisample AnnData harmony UMAP` (output of **tl.umap** {% icon tool %})
 >        - *"The key for the matrix"*: `X_spectral_harmony`
 >
-> > <tip-title>Matrix Keys</tip-title>  
-> >  
-> > - Each batch correction algorithm stores its corrected matrix under a specific key:  
-> >   - *Harmony*: `X_spectral_harmony`  
-> >   - *MNC-correct*: `X_spectral_mnn`  
-> >   - *Scanorama*: `X_spectral_scanorama`  
-> > - These keys are stored in the AnnData object under `'obsm'`.  
-> >  
-> > {: .tip}  
+> > <tip-title>Matrix Keys</tip-title>
+> >
+> > - Each batch correction algorithm stores its corrected matrix under a specific key:
+> >   - *Harmony*: `X_spectral_harmony`
+> >   - *MNC-correct*: `X_spectral_mnn`
+> >   - *Scanorama*: `X_spectral_scanorama`
+> > - These keys are stored in the AnnData object under `'obsm'`.
+> >
+> {: .tip}
 >
 > 2. {% tool [SnapATAC2 Clustering](toolshed.g2.bx.psu.edu/repos/iuc/snapatac2_clustering/snapatac2_clustering/2.6.4+galaxy1) %} with the following parameters:
 >    - *"Dimension reduction and Clustering"*: `Cluster cells into subgroups, using 'tl.leiden'`
@@ -523,10 +523,10 @@ The analysis can now continue using the same methods outlined in the [standard p
 >
 {: .hands_on}
 
-After integrating the datasets and clustering the cells, the scATAC-seq analysis can proceed with downstream analysis. This includes [cell cluster annotation]({% link topics/single-cell/tutorials/scatac-standard-processing-snapatac2/tutorial.md %}#cell-cluster-annotation) and differential peak analysis.  
+After integrating the datasets and clustering the cells, the scATAC-seq analysis can proceed with downstream analysis. This includes [cell cluster annotation]({% link topics/single-cell/tutorials/scatac-standard-processing-snapatac2/tutorial.md %}#cell-cluster-annotation) and differential peak analysis.
 > <comment-title></comment-title>
 >
-> The **SnapATAC2** tools for differential peak analysis are available in Galaxy, but no GTN training materials are currently provided. Until a tutorial is available, you can refer to the **SnapATAC2** documentation for a [tutorial on differential peak analysis](https://kzhang.org/SnapATAC2/version/2.6/tutorials/diff.html).  
+> The **SnapATAC2** tools for differential peak analysis are available in Galaxy, but no GTN training materials are currently provided. Until a tutorial is available, you can refer to the **SnapATAC2** documentation for a [tutorial on differential peak analysis](https://kzhang.org/SnapATAC2/version/2.6/tutorials/diff.html).
 >
 > The tools are available in Galaxy under {% tool [SnapATAC2 Peaks and Motif](toolshed.g2.bx.psu.edu/repos/iuc/snapatac2_peaks_and_motif/snapatac2_peaks_and_motif/2.6.4+galaxy1) %}.
 >
@@ -536,6 +536,6 @@ After integrating the datasets and clustering the cells, the scATAC-seq analysis
 # Conclusion
 {% icon congratulations %} Well done, you’ve made it to the end! You might want to consult your results with this [control history](https://usegalaxy.eu/u/timonschlegel/h/multisample-batch-correction-with-harmony-and-snapatac2), or check out the [full workflow](https://usegalaxy.eu/u/timonschlegel/w/multisample-batch-correction-with-snapatac2-and-harmony) for this tutorial.
 
-In this tutorial, we integrated five {scATAC-seq} colon samples using a scalable Galaxy workflow. We compared different batch integration algorithms to identify the most suitable method for our data. Finally, we clustered the cells to prepare the data for downstream analysis.  
+In this tutorial, we integrated five {scATAC-seq} colon samples using a scalable Galaxy workflow. We compared different batch integration algorithms to identify the most suitable method for our data. Finally, we clustered the cells to prepare the data for downstream analysis.
 
 ![SnapATAC2 batch correction pipeline]({% link topics/single-cell/images/scatac-batch-correction-snapatac2/Batch-correction-pipeline-overview.png %})
