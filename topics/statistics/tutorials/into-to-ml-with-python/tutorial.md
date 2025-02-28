@@ -708,7 +708,7 @@ To that end, we begin by dividing our data into :
  * **train** set : find the best model
  * **test** set  : give an honest evaluation of how the model perform on completely new data.
 
-<!-- ![train_test](../images/train_test.png) -->
+
 The train set will be used to find the best model, with the **best parameter and hyper-parameter values**.
 
 The test set will only be used at the very end, to report model performance.
