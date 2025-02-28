@@ -134,6 +134,27 @@ forschungszentrum-juelich:
     url: https://www.fz-juelich.de/de
     github: false
 
+
+gis:
+  name: Genome Institute of Singapore
+  short_name: GIS
+  url: https://www.a-star.edu.sg/gis
+  github: false
+
+gbif:
+    short_name: GBIF
+    name: Global Biodiversity Information Facility
+    url: https://www.gbif.org/
+    avatar: "/training-material/shared/images/gbif-standard-green-logo.jpg"
+    github: false
+
+hzi-bifo:
+   name: Helmholtz Centre for Infection Research
+   short_name: HZI
+   url: https://www.helmholtz-hzi.de/en/
+   avatar: "/training-material/shared/images/hzi.png"
+
+
 ifb:
     short_name: IFB
     name: Institut Français de Bioinformatique

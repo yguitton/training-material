@@ -6,7 +6,7 @@
 #
 #  EXAMPLE CONTRIBUTOR:
 #
-# userid:                  # madatory; your github username
+# userid:                  # mandatory; your github username
 #   name: Namey Name       # mandatory; your name
 #   joined: 2017-09        # mandatory; the month you added yourself to this file
 #   email: ma@example.com                      # your email address
@@ -51,7 +51,7 @@ awspolly:
 
 # our real contributors <3 (please add yourself in alphabetical order)
 
-    
+
 a-asai:
     name: Atsushi Asai
     email: tbudcm7zk@i.softbank.jp
@@ -59,8 +59,7 @@ a-asai:
 
 abretaud:
     name: Anthony Bretaudeau
-    email: anthony.bretaudeau@inrae.fr
-    twitter: abretau
+    email: anthony.bretaudeau@irisa.fr
     matrix: 'abretaud:matrix.org'
     orcid: 0000-0003-0914-2470
     joined: 2017-09
@@ -72,6 +71,7 @@ abretaud:
       lon: -1.64
     fediverse: https://genomic.social/@abretaud
     fediverse_flavor: mastodon
+    bluesky: abretaud.bsky.social
     affiliations:
       - gallantries
       - eurosciencegateway
@@ -103,7 +103,7 @@ adairama:
     joined: 2024-12
     location:
       country: SG
-    
+
 
 ahmedhamidawan:
     name: Ahmed Hamid Awan
@@ -507,6 +507,10 @@ Camila-goclowski:
     email: camila.goclowski@gmail.com
     linkedin: camila-goclowski
 
+carloscheemendonca:
+    name: Carlos Chee Mendonça
+    joined: 2025-01
+
 charitylaw:
     name: Charity Law
     joined: 2018-09
@@ -582,6 +586,13 @@ combesf:
     affiliations:
       - elixir-europe
 
+CordulaHege:
+    name: Cordula Almut Selma Hege
+    joined: 2024-11
+    affiliations:
+        - nfdi4microbiota
+        - hzi-bifo
+
 coverbeck:
     name: Charles Overbeck
     email: coverbec@ucsc.edu
@@ -615,9 +626,36 @@ danielabutano:
     name: Daniela Butano
     joined: 2019-09
 
+dawnmy:
+    name: Zhi-Luo Deng
+    joined: 2024-11
+    affiliations:
+      - hzi-bifo
+      - nfdi4microbiota
+
 Sch-Da:
     name: Daniela Schneider
     joined: 2024-10
+
+dadrasarmin:
+    name: Armin Dadras
+    joined: 2025-01
+    email: dadras@informatik.uni-freiburg.de
+    fediverse: https://mastodon.social/@dadrasarmin
+    fediverse_flavor: mastodon
+    bluesky: dadrasarmin.bsky.social
+    linkedin: armindadras
+    matrix: 'armin.dadras:matrix.org'
+    orcid: 0000-0001-7649-2388
+    maintainer_contact: matrix
+    contact_for_training: true
+    affiliations:
+        - uni-freiburg
+        - eurosciencegateway
+    location:
+        country: DE
+        lat: 47.997791
+        lon: 7.842609
 
 dannon:
     name: Dannon Baker
@@ -930,6 +968,14 @@ garimavs:
     email: garimasingh.2k21@gmail.com
     joined: 2022-03
 
+GaryRobertson:
+    name: Gary Robertson
+    joined: 2024-11
+    affiliations:
+       - hzi-bifo
+       - nfdi4microbiota
+    github: false
+
 gatwirival:
     name: Valentine Gatwiri
     email: valegjohn@gmail.com
@@ -959,9 +1005,9 @@ GokceOGUZ:
     email: gokce_oguz@gis.a-star.edu.sg
     orcid: 0000-0003-1044-7204
     linkedin: gokce-oguz
-    location: 
+    location:
       country: SG
-    
+
 guerler:
     name: Aysam Guerler
     joined: 2017-09
@@ -987,6 +1033,14 @@ hechth:
   email: helge.hecht@recetox.muni.cz
   orcid: 0000-0001-6744-996X
   elixir_node: cz
+
+HeshamAlmessady:
+  name: Hesham Almessady
+  joined: 2024-11
+  github: false
+  affiliations:
+    - hzi-bifo
+    - nfdi4microbiota
 
 heylf:
     name: Florian Heyl
@@ -1147,6 +1201,17 @@ jennydg:
 jfallmann:
     name: Joerg Fallmann
     joined: 2017-09
+
+wennj:
+    name: Jörg Wennmann
+    email: joerg.wennmann@julius-kuehn.de
+    orcid: 0000-0003-3060-8992
+    contact_for_training: true
+    joined: 2025-01
+    location:
+      country: DE
+      lat: 49.449466
+      lon: 8.640339
 
 jfaulon:
     name: Jean-Loup Faulon
@@ -1347,6 +1412,14 @@ kostrykin:
       - elixir-europe
       - deNBI
 
+KristinaGomoryova:
+    name: Kristina Gomoryova
+    orcid: 0000-0003-4407-3917
+    joined: 2025-01
+    email: gomoryova@sci.muni.cz
+    elixir_node: cz
+    twitter: kristina_gomory
+
 kxk302:
     name: Kaivan Kamali
     email: kxk302@gmail.com
@@ -1367,6 +1440,12 @@ Lain-inrae:
     elixir_node: fr
     affiliations:
       - elixir-europe
+
+laurarussell:
+    name: Laura Russell
+    joined: 2025-01
+    affiliations:
+      - gbif
 
 lcooper:
     name: Laura Cooper
@@ -1642,6 +1721,16 @@ mcmaniou:
     affiliations:
       - elixir-europe
 
+MD-Chem:
+    name: Mohua Das
+    joined: 2024-12
+    orcid: 0000-0002-8891-6333
+    email: dasmohua1991@gmail.com
+    affiliations:
+      - gis
+    location:
+        country: SG
+
 Mehgan-E:
     name: Mehgan Evans
     email: mehgancaseyevans1@gmail.com
@@ -1784,7 +1873,7 @@ nagoue:
     email: nadia.goue@uca.fr
     orcid: 0000-0003-2750-1473
     joined: 2019-07
-    
+
 Najatamk:
     name: Najat Amoukou
     email: najatibrahim21@gmail.com
@@ -2006,8 +2095,8 @@ paulocilasjr:
     joined: 2024-09
     email: paulocilas.moraislyra@moffitt.org
     orcid: 0000-0002-4403-6684
-    affiliations: 
-    - moffitt 
+    affiliations:
+    - moffitt
     twitter: paulocilasjr
 
 paulzierep:
@@ -2038,6 +2127,16 @@ pclo:
 pcm32:
     name: Pablo Moreno
     joined: 2019-06
+
+philreeddata:
+    name: Phil Reed
+    orcid: 0000-0002-4479-715X
+    bluesky: philreeddata.bsky.social
+    elixir_node: uk
+    bio: "Research Community & Training Manager"
+    joined: 2025-02
+    affiliations:
+      - elixir-europe
 
 plushz:
     name: Polina Polunina
@@ -2097,8 +2196,8 @@ qchiujunhao:
     name: Junhao Qiu
     joined: 2024-02
     orcid: 0009-0005-4322-3401
-    affiliations: 
-    - moffitt 
+    affiliations:
+    - moffitt
     email: junhao.qiu@moffitt.org
 
 Quickbeasts51429:
@@ -2132,7 +2231,7 @@ r1corre:
 
 reid-wagner:
     name: Reid Wagner
-    email: wagnerr@umn.edu 
+    email: wagnerr@umn.edu
     joined: 2024-11
 
 rikeshi:
@@ -2260,6 +2359,9 @@ sbenateau:
     affiliations:
       - elixir-europe
 
+scottcain:
+    name: Scott Cain
+    joined: 2025-01
 
 sebastian-schaaf:
     name: Sebastian Schaaf
@@ -2304,6 +2406,13 @@ Shorla:
     email: Sogunkelu@gmail.com
     joined: 2021-10
 
+shrutikhare-git:
+    name: Shruti Khare
+    joined: 2024-12
+    email: skshrutikhare@gmail.com
+    orcid: 0000-0001-5622-2663
+    location:        
+      country: SG    
 shwdey:
     name: Shweta Pandey
     email: shwphd@gmail.com
@@ -2365,6 +2474,13 @@ Sofokli5:
 sophia120199:
     name: Sophia Hampe
     joined: 2023-04
+
+sophiepamerlon:
+    name: Sophie Pamerlon
+    joined: 2025-01
+    affiliations:
+      - pndb
+      - gbif
 
 stain:
     name: Stian Soiland-Reyes
