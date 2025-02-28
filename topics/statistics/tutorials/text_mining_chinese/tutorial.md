@@ -131,6 +131,8 @@ We will use Regular Expressions in a tool called "Replace text". It contains fou
  >    > The result is a clean and reformatted text.
 >    {: .comment}
 >
+>    {% snippet faqs/galaxy/analysis_regular_expressions.md %}
+>
 {: .hands_on}
 
 Remember to apply those steps to both the censored and the uncensored text. Rename both new texts in a meaningful way. Choose, for example, "Cleaned Censored Text" and "Cleaned Uncensored Text".
