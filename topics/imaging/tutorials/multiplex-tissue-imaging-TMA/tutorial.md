@@ -109,7 +109,7 @@ Two new list collections will appear in the history upon completion:
 
 After illumination is corrected across round tiles, the tiles must be stitched together, and subsequently, each round mosaic must be registered together into a single pyramidal OME-TIFF file. **ASHLAR** ({% cite Muhlich2022 %}) from MCMICRO provides both of these functions.
 
-> <comment-title>Important detail: Marker File</comment-title>
+> <comment-title>Naming image channels using a marker metadata file</comment-title>
 >
 > **ASHLAR** optionally reads a marker metadata file to name the channels in the output OME-TIFF image. This marker file will also be used in later steps. Make sure that the marker file is comma-separated and has the `marker_names` as the third column (Figure 3.).
 >
@@ -340,7 +340,7 @@ Clicking the link will open a new window with the Avivator interactive dashboard
 
 ## Generating an interactive visualization dashboard with **Vitessce**
 
-**Vitessce** is a powerful visualization tool that creates interactive dashboards (Figure 9.) to look at a multiplex `OME-TIFF` images in conjunction with data generated during analysis and stored in an anndata file. The segmentation mask can be overlaid onto the image to qualitatively assess the segmentation performance. The mask can then be colored with associated observational data (Figure 9A.), such as `phenotype`, with the same colors appearing in barplots (Figure 9B.), UMAP representations, heatmaps, and marker intensity violin plots for comrehensive data exploration.
+**Vitessce** is a powerful visualization tool that creates interactive dashboards (Figure 9.) to look at a multiplex `OME-TIFF` images in conjunction with data generated during analysis and stored in an anndata file. The segmentation mask can be overlaid onto the image to qualitatively assess segmentation performance, and visually explore cell-type annotations and marker intensities. The different visualization components are linked by cell index, so users can analyze the image, UMAP representations, heatmaps, and marker intensity violin plots for comprehensive data exploration. 
 
 ![Screenshot of the vitessce dashboard.](../../images/multiplex-tissue-imaging-TMA/ex2_fullVitessce.png "A Full view of a vitesse dashboard for one core from Exemplar-002.")
 
@@ -373,12 +373,12 @@ Galaxy-ME includes additional tools from **Scimap** and tools from the **Squidpy
 
 > <hands-on-title> Spatial analysis with Squidpy </hands-on-title>
 >
-> 1. {% tool **Squidpy Graph and Plotting** %} generate a spatial neighborhood graph with the following parameters:
+> 1. {% tool [Analyze and visualize spatial multi-omics data with Squidpy](toolshed.g2.bx.psu.edu/repos/goeckslab/squidpy_spatial/squidpy_spatial/1.5.0+galaxy2) %} generate a spatial neighborhood graph with the following parameters:
 >
 >    - {% icon param-collection %} *"Select the input anndata"*: Anndata file containing phenotype information (or other variable of interest)
 >    - *"Select an analysis"*: `Spatial neighbors -- Create a graph from spatial coordinates`
 >
-> 2. {% tool **Squidpy Graph and Plotting** %} compute and plot a neighborhood enrichment analysis with the following parameters:
+> 2. {% tool [Analyze and visualize spatial multi-omics data with Squidpy](toolshed.g2.bx.psu.edu/repos/goeckslab/squidpy_spatial/squidpy_spatial/1.5.0+galaxy2) %} compute and plot a neighborhood enrichment analysis with the following parameters:
 >
 >    - {% icon param-collection %} *"Select the input anndata"*: Output of step 1 (anndata file with spatial neighborhood graph)
 >    - *"Select an analysis"*: `nhood_enrichment -- Compute neighborhood enrichment by permutation test`
@@ -386,13 +386,13 @@ Galaxy-ME includes additional tools from **Scimap** and tools from the **Squidpy
 >
 >    > <comment-title>Neighborhood enrichment plot</comment-title>
 >    >
->    > **Squidpy** was used to calculate neighborhood enrichments for each phenotype in core 2 of exemplar 2 (Figure 10.). This shows which phenotypes co-locate most frequently within the tissue.
+>    > **Squidpy** was used to calculate neighborhood enrichments for each phenotype in core 2 of exemplar 2 (Figure 11.). This shows which phenotypes co-locate most frequently within the tissue.
 >    >
 >    > ![Heatmap showing phenotype vs neighbourhood enrichment. Most of the heatmap is blue/green (low) but one cell under epithelial is bright yellow (high)](../../images/multiplex-tissue-imaging-TMA/ex2_squidpy_enrichment.png "The output of Squidpy's neighborhood enrichment on core 2 from Exemplar-002.")
 >    >
 >    {: .comment}
 >
-> 3. {% tool **Squidpy Graph and Plotting** %} calculate Ripley's L curves for each phenotype with the following parameters:
+> 3. {% tool [Analyze and visualize spatial multi-omics data with Squidpy](toolshed.g2.bx.psu.edu/repos/goeckslab/squidpy_spatial/squidpy_spatial/1.5.0+galaxy2) %} calculate Ripley's L curves for each phenotype with the following parameters:
 >
 >    - {% icon param-collection %} *"Select the input anndata"*: Output of step 1 (anndata file with spatial neighborhood graph)
 >    - *"Select an analysis"*: `nhood_enrichment -- Compute neighborhood enrichment by permutation test`
@@ -404,9 +404,22 @@ Galaxy-ME includes additional tools from **Scimap** and tools from the **Squidpy
 >
 >    > <comment-title>Ripley's L plot</comment-title>
 >    >
->    > **Squidpy** was used to calculate Ripley's L curves for each phenotype in core 2 of exemplar 2 (Figure 11.). This shows the overall organization of each phenotype in the tissue. If the curve for a given phenotype lies above the light grey null line (Example: Epithelial cells in Figure 11.), the phenotype is statistically significantly clustered. If the curve lies on the null line (Example: Myeloid lineage in Figure 11.), it's spatial distribution within the tissue is random. If the curve is underneath the null line (Example: T cells in Figure 11.), it's spatial distribution is statistically significantly dispersed.
+>    > **Squidpy** was used to calculate Ripley's L curves for each phenotype in core 2 of exemplar 2 (Figure 12.). This shows the overall organization of each phenotype in the tissue. If the curve for a given phenotype lies above the light grey null line (Example: Epithelial cells in Figure 11.), the phenotype is statistically significantly clustered. If the curve lies on the null line (Example: Myeloid lineage in Figure 11.), it's spatial distribution within the tissue is random. If the curve is underneath the null line (Example: T cells in Figure 11.), it's spatial distribution is statistically significantly dispersed.
 >    >
 >    > ![Graph of Ripley's L. Value is plotted against bins, all of which show cursves starting at 0 and increasing as bins increase. Epithelial is the highest curve.](../../images/multiplex-tissue-imaging-TMA/ex2_squidpy_ripleys.png "The output of Squidpy's Ripley's L curve on core 2 from Exemplar-002.")
+>    >
+>    {: .comment}
+>
+> 4. {% tool [Create spatial scatterplot with Squidpy](toolshed.g2.bx.psu.edu/repos/goeckslab/squidpy_spatial/squidpy_spatial/1.5.0+galaxy2) %} generate a spatial scatterplot of cell phenotypes with the following parameters:
+>
+>    - {% icon param-collection %} *"Select the input anndata"*: Output of step 1 (anndata file with spatial neighborhood graph)
+>    - *"Key for annotations in adata.obs or variables/genes"*: `phenotype` (In this case we use the default; however this could be any observational variable (phenotype, leiden, louvain, etc.) or continuous variable name (CD45, CD3, Area, etc.))
+>
+>    > <comment-title>Spatial scatterplot</comment-title>
+>    >
+>    > **Squidpy** was used to generate a spatial scatterplot of core 2 of exemplar 2 (Figure 13.). This is useful for visualizing the distribution of cell types, or any other categorical or continuous variable in the anndata file. 
+>    >
+>    > ![Spatial scatterplot of TMA core showing cell types annotated by colors](../../images/multiplex-tissue-imaging-TMA/ex2_squidpy_scatter.png "The output of Squidpy's spatial scatterplot tool on core 2 from Exemplar-002.")
 >    >
 >    {: .comment}
 >
