@@ -12,7 +12,7 @@ objectives:
   - Visualise your results in a word cloud.
 time_estimation: 1H
 key_points:
-  - The <em>diff</em> tool allows to automatically compare two similar texts
+  - The *diff* tool allows to automatically compare two similar texts
   - The word cloud shows redactions from the texts at one glance
 tags:
 - Humanities
@@ -58,7 +58,7 @@ The machine-readable versions of the Chinese newspaper articles I originally use
 >
 >    ```
 >    https://zenodo.org/records/14899614/files/Example_Chinese_newspaper_censored.txt
->     https://zenodo.org/records/14899614/files/Example_Chinese_newspaper_uncensored.txt
+>    https://zenodo.org/records/14899614/files/Example_Chinese_newspaper_uncensored.txt
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
