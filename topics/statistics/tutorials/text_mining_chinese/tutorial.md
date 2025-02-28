@@ -7,14 +7,14 @@ questions:
   - How can I automatically compare two Chinese newspaper articles?
   - What characters were censored in a Chinese newspaper published in Hong Kong in the 1930s?
 objectives:
-  - Learn to clean and compare two texts. 
+  - Learn to clean and compare two texts.
   - Extract specific information out of texts.
   - Visualise your results in a word cloud.
 time_estimation: 1H
 key_points:
   - The <em>diff</em> tool allows to automatically compare two similar texts
-  - The word cloud shows redactions from the texts at one glance 
-tags: 
+  - The word cloud shows redactions from the texts at one glance
+tags:
 - Humanities
 - Text_mining
 contributors:
@@ -24,11 +24,11 @@ contributors:
 
 The British Hong Kong Government censored Chinese newspapers before their publication in the colony in the 1930s ({% cite Ng2022 %}). Those redactions were visibly marked by replacement characters like ×, making them visible even to those who did not read any Chinese.
 
-![Example of a Chinese article with symbol × marking censored characters](../../images/Example_x_censored_Chinese_article.svg "Example of a Chinese article with symbol × marking censored characters")
+![Example of a Chinese article with symbol × marking censored characters]({% link topics/statistics/tutorials/text_mining_chinese/images/Example_x_censored_Chinese_article.svg %} "Example of a Chinese article with symbol × marking censored characters")
 
 The schematic example, adapted from {% cite Schneider2024, 19 %}, shows what such a censored Chinese article looked like. It is read from right to left and top to bottom. The two more prominent lines on the right are the article title, and the following text is the article's main body. It contains the character × several times, indicating various instances where it was censored.
 
-Despite this obvious form of censorship, no research is looking into what Chinese characters the × replaced. My dissertation ({% cite Schneider2024 %}), which informs this workflow, started at this point. Through extensive research, I found several articles censored in the Hong Kong edition of Da gong bao (大公報) as uncensored versions. Those mostly came from Chinese editions printed in mainland China, where different censorship regulations applied. Those articles from China were not censored and openly showed the characters redacted in the Hong Kong versions. An example of a censored article could be {% cite Anon..16.10.1938_5598 %} and of the uncensored version {% cite TKP.16.10.1938_18864 %}. 
+Despite this obvious form of censorship, no research is looking into what Chinese characters the × replaced. My dissertation ({% cite Schneider2024 %}), which informs this workflow, started at this point. Through extensive research, I found several articles censored in the Hong Kong edition of Da gong bao (大公報) as uncensored versions. Those mostly came from Chinese editions printed in mainland China, where different censorship regulations applied. Those articles from China were not censored and openly showed the characters redacted in the Hong Kong versions. An example of a censored article could be {% cite Anon..16.10.1938_5598 %} and of the uncensored version {% cite TKP.16.10.1938_18864 %}.
 
 The tutorial uses text mining to compare censored and uncensored text and to answer the following question: What characters were censored in a Chinese newspaper published in Hong Kong in the 1930s?
 
@@ -53,7 +53,7 @@ The machine-readable versions of the Chinese newspaper articles I originally use
 >
 >    {% snippet faqs/galaxy/histories_create_new.md %}
 >
-> 2. Import the files from [Zenodo](https://zenodo.org/records/14899614) 
+> 2. Import the files from [Zenodo](https://zenodo.org/records/14899614)
 >
 >
 >    ```
@@ -89,7 +89,7 @@ The machine-readable versions of the Chinese newspaper articles I originally use
 
 # Pre-processing
 
-We pre-process and clean both texts to make the comparison easier and more apparent. This step will unify their layout. It uses Regular Expressions (Regex) to find and replace certain text parts. Here, the Regex also helps to restructure the text.  
+We pre-process and clean both texts to make the comparison easier and more apparent. This step will unify their layout. It uses Regular Expressions (Regex) to find and replace certain text parts. Here, the Regex also helps to restructure the text.
 
 
 > <details-title> More on Regular Expressions (optional) </details-title>
@@ -120,7 +120,7 @@ We will use Regular Expressions in a tool called "Replace text". It contains fou
 >            - *"Replace with:"*: `\1\n`
 >
 >    > <comment-title>Explaining the above Regular Expressions</comment-title>
->    > Regular expressions can not only find particular words, as you might be familiar with from regular text editors. 
+>    > Regular expressions can not only find particular words, as you might be familiar with from regular text editors.
 >    > It is more powerful and can find particular patterns, for example, only capitalised words or all numbers.
 >    > In this step, we mostly delete unnecessary placeholders.
 >    > The first pattern we want to find is `\r`. It catches a specific form of invisible linebreaks that would create unwanted gaps in the comparison later. We delete those by leaving the optional "Replace with" field blank.
@@ -178,9 +178,9 @@ We can now compare the two cleaned texts. This will visualise the differences be
 
 The HTML file could look like this:
 
-![Screenshot of the <em>diff</em> tool comparing the censored and uncensored text](../../images/Diff_WF_HTML.jpg "Example of the HTML file comparing the censored and uncensored text")
+![Screenshot of the <em>diff</em> tool comparing the censored and uncensored text]({% link topics/statistics/tutorials/text_mining_chinese/images/Diff_WF_HTML.jpg %} "Example of the HTML file comparing the censored and uncensored text")
 
-It shows what passages differ in the two texts. Red parts show deletions and green-coloured areas are additions. 
+It shows what passages differ in the two texts. Red parts show deletions and green-coloured areas are additions.
 This output is very convenient for researchers, as it shows differences quickly. However, it is not helpful for further processing with Galaxy. For this, we run this tool a second time with slightly changed parameters. The output is the basis for our further analysis.
 
 
@@ -208,8 +208,8 @@ It is less intuitive to understand at first glance. Again, clean the censored te
 >
 > > <solution-title>Answer</solution-title>
 > >
-> > 1. This output is a raw file and shows several columns. Changes between the two texts are not coloured. 
-> > Instead, they are marked by various symbols in column 8. 
+> > 1. This output is a raw file and shows several columns. Changes between the two texts are not coloured.
+> > Instead, they are marked by various symbols in column 8.
 > >
 > {: .solution}
 >
@@ -240,7 +240,7 @@ In the next step, we want to extract specific lines only. To determine what cont
 >    > Copy the character you want to filter for in the "input" window and select "Decimal Character Codes" as an output. If you do this for symbol ×, you get 215.
 
 >    {: .comment}
- 
+
 {: .hands_on}
 
 
@@ -259,7 +259,7 @@ In the next step, we want to extract specific lines only. To determine what cont
 
 # Sub-step with **Compute**
 
-After filtering for the censored lines, we insert a sub-step to ensure smooth computing. The previous setup could cause an error if the characters filtered in the last step were erased. Then, the extracted file would miss the last column, which would cause an error. This is invisible to the researchers in the file. The compute step covers this potential error and ensures all necessary columns exist. 
+After filtering for the censored lines, we insert a sub-step to ensure smooth computing. The previous setup could cause an error if the characters filtered in the last step were erased. Then, the extracted file would miss the last column, which would cause an error. This is invisible to the researchers in the file. The compute step covers this potential error and ensures all necessary columns exist.
 
 > <hands-on-title> Compute to ensure all columns exist </hands-on-title>
 >
@@ -307,7 +307,7 @@ This step sums up how often each character appeared on the table before.
 
 # Sort your findings
 
-Particularly if you get a long list in the last step, sorting the results from the most to least frequent characters is necessary. 
+Particularly if you get a long list in the last step, sorting the results from the most to least frequent characters is necessary.
 If you are only interested in the quantitative results, this can be your final output.
 
 > <hands-on-title> Sort </hands-on-title>
@@ -318,7 +318,7 @@ If you are only interested in the quantitative results, this can be your final o
 >
 >    > <comment-title> How to sort? </comment-title>
 >    >
->    > Select column `c2` because it contains the character frequency. 
+>    > Select column `c2` because it contains the character frequency.
 >    {: .comment}
 >
 {: .hands_on}
@@ -329,7 +329,7 @@ If you are only interested in the quantitative results, this can be your final o
 >
 > > <solution-title></solution-title>
 > >
-> > 1. The character 敵, meaning enemy, was censored 10 times in the first text. 
+> > 1. The character 敵, meaning enemy, was censored 10 times in the first text.
 > >
 > {: .solution}
 >
@@ -339,7 +339,7 @@ Why would the British Hong Kong Government consistently censor this character? J
 
 # Cut out the censored characters only
 
-If you want to visualise of your results, this step gets you there. We select only the uncensored characters from text two. The result is only one column with different rows of Chinese characters. 
+If you want to visualise of your results, this step gets you there. We select only the uncensored characters from text two. The result is only one column with different rows of Chinese characters.
 It allows scaling words by frequency in the word cloud in the next step. As a result, characters that appear more often appear bigger, making the results evident at first sight.
 
 > <hands-on-title> Select the censored characters </hands-on-title>
@@ -378,17 +378,17 @@ The last step is to visualise the results within a word cloud. It shows, which c
 
 Your word cloud should look similar to this:
 
-![Screenshot of the above Workflow in Galaxy](../../images/Wordcloud_censored_characters.png "Screenshot of the above workflow showing each of the steps explained in this tutorial")
+![Screenshot of the above Workflow in Galaxy]({% link topics/statistics/tutorials/text_mining_chinese/images/Wordcloud_censored_characters.png %} "Screenshot of the above workflow showing each of the steps explained in this tutorial")
 
 
 # Conclusion
 
 This tutorial used text mining to extract censored characters from a Chinese newspaper.
 
-![Screenshot of the above Workflow in Galaxy](../../images/Workflow_Screenshot.jpg "Screenshot of the above workflow showing each of the steps explained above")
+![Screenshot of the above Workflow in Galaxy]({% link topics/statistics/tutorials/text_mining_chinese/images/Workflow_Screenshot.jpg %} "Screenshot of the above workflow showing each of the steps explained above")
 
-The uploaded dummy texts contained several differences. They used slightly different punctuation, and some sentences and characters differed. The most obvious difference is that the second text was published uncensored in China, while the original text, published in Hong Kong, contained censorship symbols. This allowed us to extract what characters were censored in the text from Hong Kong. 
+The uploaded dummy texts contained several differences. They used slightly different punctuation, and some sentences and characters differed. The most obvious difference is that the second text was published uncensored in China, while the original text, published in Hong Kong, contained censorship symbols. This allowed us to extract what characters were censored in the text from Hong Kong.
 
-Within this workflow, we first unified the layout of both texts, showing one character per line for an easier comparison with <em>diff</em> tool. The tool marked the differences between both texts in colour. Afterwards, we extracted only lines censored with ×. The extraction of the results ran in two strands: One was counting and sorting the results. This will answer what characters the British Hong Kong Government censored in their Chinese newspapers in the 1930s: Based on the (simplified) dummy texts, the characters were 敵 (enemy), 寇 (brave) and 日 (Japan). The character for <em>enemy</em> dominates and was censored five times more often than the character for <em>brave</em>. 
+Within this workflow, we first unified the layout of both texts, showing one character per line for an easier comparison with <em>diff</em> tool. The tool marked the differences between both texts in colour. Afterwards, we extracted only lines censored with ×. The extraction of the results ran in two strands: One was counting and sorting the results. This will answer what characters the British Hong Kong Government censored in their Chinese newspapers in the 1930s: Based on the (simplified) dummy texts, the characters were 敵 (enemy), 寇 (brave) and 日 (Japan). The character for <em>enemy</em> dominates and was censored five times more often than the character for <em>brave</em>.
 
 What do those findings tell us? The British Hong Kong Government avoided publishing newspapers with a strong stand against Japan. Why? Because the British colony Hong Kong, with a large Chinese population, is located very close to the Chinese mainland. Especially after the Japanese army invaded China in the summer of 1937, the British had to walk a tightrope. They tried to support the Chinese efforts without offending Japan. As a British outpost, Hong Kong had little military power and would not withstand a Japanese attack for long. Therefore, the British tried to appease the Japanese Government and avoid an attack. Calling them brave or enemy openly would have been dangerous. The one redaction of 日 (Japan) is very uncommon. This shows that the censorship practices were adaptable and not always unified. Censoring Hong Kong's newspapers to avoid anti-Japanese content is therefore a practical example of how appeasement policies from the British Government were implemented locally. This newspaper comparison is consistent with the findings in archival sources that I also researched for my dissertation ({% cite Schneider.2024, 19 %}) and lays the censored characters open for the first time.
