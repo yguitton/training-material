@@ -491,15 +491,15 @@ The analysis can now continue using the same methods outlined in the [standard p
 >        - {% icon param-file %} *"Annotated data matrix"*: `Multisample AnnData harmony UMAP` (output of **tl.umap** {% icon tool %})
 >        - *"The key for the matrix"*: `X_spectral_harmony`
 >
-> > <tip-title>Matrix Keys</tip-title>
-> >
-> > - Each batch correction algorithm stores its corrected matrix under a specific key:
-> >   - *Harmony*: `X_spectral_harmony`
-> >   - *MNC-correct*: `X_spectral_mnn`
-> >   - *Scanorama*: `X_spectral_scanorama`
-> > - These keys are stored in the AnnData object under `'obsm'`.
-> >
-> {: .tip}
+>    > <tip-title>Matrix Keys</tip-title>
+>    >
+>    > - Each batch correction algorithm stores its corrected matrix under a specific key:
+>    >   - *Harmony*: `X_spectral_harmony`
+>    >   - *MNC-correct*: `X_spectral_mnn`
+>    >   - *Scanorama*: `X_spectral_scanorama`
+>    > - These keys are stored in the AnnData object under `'obsm'`.
+>    >
+>    {: .tip}
 >
 > 2. {% tool [SnapATAC2 Clustering](toolshed.g2.bx.psu.edu/repos/iuc/snapatac2_clustering/snapatac2_clustering/2.6.4+galaxy1) %} with the following parameters:
 >    - *"Dimension reduction and Clustering"*: `Cluster cells into subgroups, using 'tl.leiden'`
