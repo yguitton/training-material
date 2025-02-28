@@ -100,7 +100,7 @@ We pre-process and clean both texts to make the comparison easier and more appar
 {: .details}
 
 
-## Use **Replace Text** to clean both texts
+## Clean up both texts
 
 We will use Regular Expressions in a tool called "Replace text". It contains four different sub-steps. Those will vary if you upload different texts. Apply this step first to the censored and then to the uncensored text to get two cleaned ones.
 
@@ -149,11 +149,11 @@ Remember to apply those steps to both the censored and the uncensored text. Rena
 
 
 
-# Comparing the censored and uncensored text
+## Comparing the censored and uncensored text
 
 We can now compare the two cleaned texts. This will visualise the differences between the two texts and mark them by colour. Make sure to upload the cleaned censored text with the replacement characters like ‘×’ first. As text two, upload the cleaned uncensored text without the replacement characters.  This version (HTML version) creates an HTML file, which colour codes differences as additions (green) or extractions (red) when comparing the texts.
 
-## For Researchers
+### For Researchers
 
 > <hands-on-title> Comparing the texts using <em>diff</em> tool </hands-on-title>
 >
@@ -255,7 +255,7 @@ In the next step, we want to extract specific lines only. To determine what cont
 {: .question}
 
 
-# Sub-step with **Compute**
+## Ensure Consistent File Format
 
 After filtering for the censored lines, we insert a sub-step to ensure smooth computing. The previous setup could cause an error if the characters filtered in the last step were erased. Then, the extracted file would miss the last column, which would cause an error. This is invisible to the researchers in the file. The compute step covers this potential error and ensures all necessary columns exist.
 
