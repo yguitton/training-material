@@ -425,10 +425,10 @@ We will first use *Harmony* to correct batch effects, followed by testing the ot
 >
 > 2. {% icon galaxy-pencil %} Rename the AnnData output to `Multisample AnnData harmony UMAP`
 >
-> > <comment-title> Key for Cluster Labels </comment-title>
-> > - Adding the new *UMAP embeddings* under the key `umap_harmony` preserves the non-batch-corrected embeddings in the AnnData object.
-> >   - Alternatively, leaving this parameter empty will overwrite the existing embeddings.
-> {: .comment}
+>    > <comment-title> Key for Cluster Labels </comment-title>
+>    > - Adding the new *UMAP embeddings* under the key `umap_harmony` preserves the non-batch-corrected embeddings in the AnnData object.
+>    >   - Alternatively, leaving this parameter empty will overwrite the existing embeddings.
+>    {: .comment}
 >
 > 4. {% tool [SnapATAC2 Plotting](toolshed.g2.bx.psu.edu/repos/iuc/snapatac2_plotting/snapatac2_plotting/2.6.4+galaxy1) %} with the following parameters:
 >    - *"Method used for plotting"*: `Plot the UMAP embedding, using 'pl.umap'`
