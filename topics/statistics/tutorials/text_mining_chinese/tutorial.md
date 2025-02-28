@@ -178,7 +178,7 @@ We can now compare the two cleaned texts. This will visualise the differences be
 
 The HTML file could look like this:
 
-![Screenshot of the <em>diff</em> tool comparing the censored and uncensored text]({% link topics/statistics/tutorials/text_mining_chinese/images/Diff_WF_HTML.jpg %} "Example of the HTML file comparing the censored and uncensored text")
+![Screenshot of the diff tool comparing the censored and uncensored text]({% link topics/statistics/tutorials/text_mining_chinese/images/Diff_WF_HTML.jpg %} "Example of the HTML file comparing the censored and uncensored text")
 
 It shows what passages differ in the two texts. Red parts show deletions and green-coloured areas are additions.
 This output is very convenient for researchers, as it shows differences quickly. However, it is not helpful for further processing with Galaxy. For this, we run this tool a second time with slightly changed parameters. The output is the basis for our further analysis.
@@ -378,7 +378,7 @@ The last step is to visualise the results within a word cloud. It shows, which c
 
 Your word cloud should look similar to this:
 
-![Screenshot of the above Workflow in Galaxy]({% link topics/statistics/tutorials/text_mining_chinese/images/Wordcloud_censored_characters.png %} "Screenshot of the above workflow showing each of the steps explained in this tutorial")
+![Screenshot of the above Workflow in Galaxy]({% link topics/statistics/tutorials/text_mining_chinese/images/Wordcloud_censored_characters.png %})
 
 
 # Conclusion
@@ -389,6 +389,6 @@ This tutorial used text mining to extract censored characters from a Chinese new
 
 The uploaded dummy texts contained several differences. They used slightly different punctuation, and some sentences and characters differed. The most obvious difference is that the second text was published uncensored in China, while the original text, published in Hong Kong, contained censorship symbols. This allowed us to extract what characters were censored in the text from Hong Kong.
 
-Within this workflow, we first unified the layout of both texts, showing one character per line for an easier comparison with <em>diff</em> tool. The tool marked the differences between both texts in colour. Afterwards, we extracted only lines censored with ×. The extraction of the results ran in two strands: One was counting and sorting the results. This will answer what characters the British Hong Kong Government censored in their Chinese newspapers in the 1930s: Based on the (simplified) dummy texts, the characters were 敵 (enemy), 寇 (brave) and 日 (Japan). The character for <em>enemy</em> dominates and was censored five times more often than the character for <em>brave</em>.
+Within this workflow, we first unified the layout of both texts, showing one character per line for an easier comparison with *diff* tool. The tool marked the differences between both texts in colour. Afterwards, we extracted only lines censored with ×. The extraction of the results ran in two strands: One was counting and sorting the results. This will answer what characters the British Hong Kong Government censored in their Chinese newspapers in the 1930s: Based on the (simplified) dummy texts, the characters were 敵 (enemy), 寇 (brave) and 日 (Japan). The character for *enemy* dominates and was censored five times more often than the character for *brave*.
 
 What do those findings tell us? The British Hong Kong Government avoided publishing newspapers with a strong stand against Japan. Why? Because the British colony Hong Kong, with a large Chinese population, is located very close to the Chinese mainland. Especially after the Japanese army invaded China in the summer of 1937, the British had to walk a tightrope. They tried to support the Chinese efforts without offending Japan. As a British outpost, Hong Kong had little military power and would not withstand a Japanese attack for long. Therefore, the British tried to appease the Japanese Government and avoid an attack. Calling them brave or enemy openly would have been dangerous. The one redaction of 日 (Japan) is very uncommon. This shows that the censorship practices were adaptable and not always unified. Censoring Hong Kong's newspapers to avoid anti-Japanese content is therefore a practical example of how appeasement policies from the British Government were implemented locally. This newspaper comparison is consistent with the findings in archival sources that I also researched for my dissertation ({% cite Schneider2024 %}) and lays the censored characters open for the first time.
