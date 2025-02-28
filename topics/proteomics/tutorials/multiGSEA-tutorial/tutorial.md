@@ -106,13 +106,16 @@ In this step, you'll use the MultiGSEA tool to perform GSEA-based pathway enrich
 After we performed pathway enrichment on our data we want to continue our analysis by filtering the outputs, e.g. by p-value.
 
 ><hands-on-title> Filtering by values</hands-on-title>
+>
 > We are going to use the tool {% tool [Filter data on any column using simple expressions](Filter1) %} with the following parameters:
 > - {% icon param-file %} *"Filter"*: Select the output dataset of the multiGSEA tool.
 > - *"With following condition"*: `c9<=0.01`
->{: .hands_on}
+>
+{: .hands_on}
 
 
 ><hands-on-title> Filtering by keyword</hands-on-title>
+>
 >Mitochondrial stress triggers the activation of amino acid biosynthesis and related metabolic pathways, as highlighted by Quiros et al. (Ref findest du in der Vignette), who identified up-regulation of several amino acid related pathways.
 >These findings align with our results using a multi-omics approach with multiGSEA
 >Our results also reveal the enrichment of amino acid-related pathways. This can be see, e.g., by searching for pathways containing the word "amino" in the name. We can search for this using the regular expression `"\bamino\b"` (`\b` is a special character marking a word border).
@@ -136,7 +139,8 @@ After we performed pathway enrichment on our data we want to continue our analys
 >(REACTOME) Response of EIF2AK4 (GCN2) to amino acid deficiency	6.42075812177139e-07	4.52021371772706e-05	3.76589836665495e-10	5.31434716565013e-08	NA	NA	3.35403180955872e-11	4.83629358772636e-09
 >
 >```
->{: .hands_on}
+>
+{: .hands_on}
 
 > <question-title></question-title>
 >
