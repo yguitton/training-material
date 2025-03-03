@@ -13,13 +13,6 @@ editorial_board:
 funding:
   - elixir-fair-data
 
-requirements:
-  -
-    type: "internal"
-    topic_name: single-cell
-    learning-pathways:
-      - intro_single_cell
-
 title: Bioinformatics Projects: Using deconvolution to get new insights from old bulk RNA-seq data
 description: |
   Are you an educator looking for project ideas for students to practice independent enquiry and research skills? Are you a student looking for a project idea? Look no more - here, you will find a learning pathway of tutorials that can guide you through the skills to find old data and transform it into new results!
