@@ -198,9 +198,9 @@ Falco is an efficiency-optimized rewrite of [FastQC](https://www.bioinformatics.
 >    {: .question}
 >
 > 2. **MultiQC** {% icon tool %} with the following parameters:
->    - *"Which tool was used generate logs?"*: `FastQC`
+>    - *"Which tool was used generate logs?"*: `FastQC` (no matter whether FastQC or Falco was used)
 >    - *"Type of FastQC output?"*: `raw data`
->    - {% icon param-collection %} *"FASTQC output"*: the `raw data` output of FastQC (collection)
+>    - {% icon param-collection %} *"FASTQC output"*: the `raw data` output of Falco (collection)
 {: .hands_on}
 
 ![MultiQC output](../../images/RAD4_Population_Genomics/multiqc.PNG)
