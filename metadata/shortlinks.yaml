@@ -625,6 +625,9 @@ name:
   proteomics/bioconductor-scp: "/topics/proteomics/tutorials/bioconductor-scp/tutorial.html"
   proteomics/neoantigen-2-non-reference-database-generation: "/topics/proteomics/tutorials/neoantigen-2-non-reference-database-generation/tutorial.html"
   single-cell/pseudobulk-analysis: "/topics/single-cell/tutorials/pseudobulk-analysis/tutorial.html"
+  single-cell/scatac-batch-correction-snapatac2: "/topics/single-cell/tutorials/scatac-batch-correction-snapatac2/tutorial.html"
+  statistics/text_mining_chinese: "/topics/statistics/tutorials/text_mining_chinese/tutorial.html"
+  variant-analysis/baculovirus-isolate-variation: "/topics/variant-analysis/tutorials/baculovirus-isolate-variation/tutorial.html"
 id:
   T00000: "/topics/admin/tutorials/ansible/tutorial.html"
   T00001: "/topics/admin/tutorials/ansible-galaxy/tutorial.html"
@@ -2095,7 +2098,7 @@ id:
   T00474: "/topics/contributing/tutorials/updating_tutorial/tutorial.html"
   T00475: "/topics/community/tutorials/community-tool-table/tutorial.html"
   T00476: "/topics/community/tutorials/tools_subdomains/tutorial.html"
-  T00477: "/topics/statistics/tutorials/loris_model/tutorial.html"
+  T00477: "/topics/variant-analysis/tutorials/baculovirus-isolate-variation/tutorial.html"
   S00127: "/topics/fair/tutorials/earth_system_rocrate/slides.html"
   F00438: "/topics/community/faqs/codex.html"
   F00439: "/topics/contributing/faqs/github-fork-gtn.html"
@@ -2147,6 +2150,9 @@ id:
   W00313: "/topics/single-cell/tutorials/pseudobulk-analysis/workflows/pseudo-bulk_edgeR.html"
   W00314: "/topics/single-cell/tutorials/scrna-umis/workflows/Understanding-Barcodes.html"
   N00106: "/news/2025/02/14/gtn2025-call-trainer.html"
+  W00315: "/topics/single-cell/tutorials/scatac-batch-correction-snapatac2/workflows/main_workflow.html"
+  W00316: "/topics/statistics/tutorials/text_mining_chinese/workflows/main_workflow.html"
+  W00317: "/topics/variant-analysis/tutorials/baculovirus-isolate-variation/workflows/Workflow-to-detect-SNV-from-Illumina-sequenced-baculovirus-isolates.html"
 misc:
   ansible-galaxy: "/topics/admin/tutorials/ansible-galaxy/tutorial.html"
   feeds: "/feeds/index.html"
