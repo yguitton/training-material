@@ -1206,7 +1206,7 @@ module Gtn
           isbn = nil
         end
 
-        results.push([x.key, 'Missing a DOI, URL or ISBN. Please add one of the three.']) if doi.nil? && url.nil? && isbn.nil
+        results.push([x.key, 'Missing a DOI, URL or ISBN. Please add one of the three.']) if doi.nil? && url.nil? && isbn.nil?
 
         begin
           x.title
