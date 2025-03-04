@@ -25,7 +25,8 @@ contributions:
 ---
 
 
-The British Hong Kong Government censored Chinese newspapers before their publication in the colony in the 1930s ({% cite Ng2022 %}). Replacement characters like × visibly marked those redactions, making them visible even to those who did not read any Chinese.
+The British Hong Kong Government censored Chinese newspapers before their publication in the colony in the 1930s ({% cite Ng2022 %}).
+Replacement characters like `×` visibly marked those redactions, making them visible even to those who did not read any Chinese.
 
 ![Example of a Chinese article with symbol × marking censored characters]({% link topics/statistics/tutorials/text_mining_chinese/images/Example_x_censored_Chinese_article.svg %} "Example of a Chinese article with symbol × marking censored characters")
 
