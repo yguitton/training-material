@@ -19,7 +19,7 @@ description: |
 
   To be clear, we will only provide the methods - you will need to come up with your own research question by exploring the literature and available public datasets, apply these analyses, and interpret the results. Your research question will take the form of, **"How does <variable X> impact the cell type proportions in <tissue/sample/organism Y>?"**
 
-  Note: You will need to be familiar with the Galaxy interface and single-cell RNA-seq analysis in general to follow this Learning Pathway. You can do so by completing the [Introduction to single-cell analysis learning pathway]({% link learning-pathway/intro_single_cell.md %}). It would be a bonus to also complete the [Beyond single cell learning pathway]({% link learning-pathway/beyond_single_cell.md %}) to reinforce that knowledge.
+  Note: You will need to be familiar with the Galaxy interface and single-cell RNA-seq analysis in general to follow this Learning Pathway. You can do so by completing the [Introduction to single-cell analysis learning pathway]({% link learning-pathways/intro_single_cell.md %}). It would be a bonus to also complete the [Beyond single cell learning pathway]({% link learning-pathways/beyond_single_cell.md %}) to reinforce that knowledge.
 
   For support throughout these tutorials, join our Galaxy [single cell chat group on Matrix](https://matrix.to/#/#Galaxy-Training-Network_galaxy-single-cell:gitter.im) to ask questions!
 
