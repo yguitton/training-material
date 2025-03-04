@@ -190,7 +190,7 @@ It shows what passages differ in the two texts. Red parts show deletions and gre
 This output is very convenient for researchers, as it shows differences quickly. However, it is not helpful for further processing with Galaxy. For this, we run this tool a second time with slightly changed parameters. The output is the basis for our further analysis.
 
 
-### Create a file for further processing
+### Create a _diff_ file for further processing
 This step runs the text comparison line by line again to create a raw file that the computer can work with.
 It is less intuitive to understand at first glance. Again, clean the censored text with the replacement characters like ‘×’ first and the uncensored text second.
 
