@@ -11,7 +11,7 @@ description: |
 #cover-image: <div style="background:white"> 
 #              <img src="./events/images/Galaxy_GTA2025_Transparent.png">
 #              </div> 
-cover-image: events/images/Galaxy_GTA2025_Transparent.png
+cover-image: events/images/Galaxy_GTA2025.png
 cover-image-alt: logo for the Galaxy Training Academy Event 2025
 
 registration:
@@ -182,6 +182,8 @@ program:
       #  link: events/tracks/gta2024-bycovid.md
       - title: Machine Learning
         link: events/tracks/gta2025-ml.md
+      - title: From Zero to Hero with Python
+        link: events/tracks/gta2025-bioNT.md
 
   - section: "Friday: Grab bag"
     description: |
@@ -232,7 +234,7 @@ We provide you with training materials which you can study at your own pace and 
 
 <button id="program-button" class="btn btn-info" onclick="$('#program-tab').tab('show');">Program</button>
 
-On the first day, you can make yourself familiar with the Galaxy platform. In the next days, you can learn about Proteomics, Assembly, Transcriptomics, Single Cell, Microbiome or Machine Learning data analysis in Galaxy. On the last day, the Friday we additionally offer a ***Fair training*** program to you.
+On the first day, you can make yourself familiar with the Galaxy platform. In the next days, you can learn about Proteomics, Assembly, Transcriptomics, Single Cell, Microbiome or Machine Learning data analysis in Galaxy. On the last day, the Friday we additionally offer a ***FAIR training*** program to you.
 
 **Course format**
 
