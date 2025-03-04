@@ -67,7 +67,7 @@ The machine-readable versions of the Chinese newspaper articles I originally use
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
 > 3. Rename the datasets
-> 4. Check that the datatype is txt.
+> 4. Check that the datatype is `txt`.
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
 >
