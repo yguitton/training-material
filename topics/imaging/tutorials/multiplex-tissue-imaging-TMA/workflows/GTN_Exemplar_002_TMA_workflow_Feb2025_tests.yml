@@ -1,0 +1,183 @@
+- doc: Test outline for GTN_Exemplar_002_TMA_workflow_Feb2025
+  job:
+    markers.csv:
+      class: File
+      location: https://zenodo.org/records/7622545/files/markers.csv
+      filetype: csv
+    PhenotypeWorkflow:
+      class: File
+      location: https://zenodo.org/records/7622545/files/exemplar_002_phenotypes.csv
+      filetype: csv
+    Raw cycle images:
+      class: Collection
+      collection_type: list
+      elements:
+      - class: File
+        identifier: exemplar-002-cycle-01.ome.tiff
+        location: https://zenodo.org/record/7622545/files/exemplar-002-cycle-01.ome.tiff
+      - class: File
+        identifier: exemplar-002-cycle-02.ome.tiff
+        location: https://zenodo.org/record/7622545/files/exemplar-002-cycle-02.ome.tiff
+      - class: File
+        identifier: exemplar-002-cycle-03.ome.tiff
+        location: https://zenodo.org/record/7622545/files/exemplar-002-cycle-03.ome.tiff
+      - class: File
+        identifier: exemplar-002-cycle-04.ome.tiff
+        location: https://zenodo.org/record/7622545/files/exemplar-002-cycle-04.ome.tiff
+      - class: File
+        identifier: exemplar-002-cycle-05.ome.tiff
+        location: https://zenodo.org/record/7622545/files/exemplar-002-cycle-05.ome.tiff
+      - class: File
+        identifier: exemplar-002-cycle-06.ome.tiff
+        location: https://zenodo.org/record/7622545/files/exemplar-002-cycle-06.ome.tiff
+      - class: File
+        identifier: exemplar-002-cycle-07.ome.tiff
+        location: https://zenodo.org/record/7622545/files/exemplar-002-cycle-07.ome.tiff
+      - class: File
+        identifier: exemplar-002-cycle-08.ome.tiff
+        location: https://zenodo.org/record/7622545/files/exemplar-002-cycle-08.ome.tiff
+      - class: File
+        identifier: exemplar-002-cycle-09.ome.tiff
+        location: https://zenodo.org/record/7622545/files/exemplar-002-cycle-09.ome.tiff
+      - class: File
+        identifier: exemplar-002-cycle-10.ome.tiff
+        location: https://zenodo.org/record/7622545/files/exemplar-002-cycle-10.ome.tiff
+  outputs:
+    Registered image:
+      checksum: "sha1$4926712ce6abcaa8071fb60508696e0b8437a0b5"
+    TMA dearray map:
+      checksum: "sha1$5d31f904254b7503e6a46b96c342d2ed264f9d23"
+    DFP images:
+      element_tests:
+        exemplar-002-cycle-01.ome.tiff:
+          checksum: "sha1$931bdb12c458395783007b372e5e0c4d5e26cfcd"
+        exemplar-002-cycle-02.ome.tiff:
+          checksum: "sha1$29946bb75af2a3d8b3bfa70cd71b76191c3e3b28"
+        exemplar-002-cycle-03.ome.tiff:
+          checksum: "sha1$a0e9bf2d55a3d50212daf3137c17527c42cacdc3"
+        exemplar-002-cycle-04.ome.tiff:
+          checksum: "sha1$7fe1e30fb53ffde13168f6ce0a1d34b87f0c45ea"
+        exemplar-002-cycle-05.ome.tiff:
+          checksum: "sha1$3977376255fa75086fc0ee25d2d8d06150abb252"
+        exemplar-002-cycle-06.ome.tiff:
+          checksum: "sha1$37368db7fe1e0d271206b42c8e3d46bc280cf465"
+        exemplar-002-cycle-07.ome.tiff:
+          checksum: "sha1$7bb7694fdd7b8aad63f5b9d211f7c8cad751bd03"
+        exemplar-002-cycle-08.ome.tiff:
+          checksum: "sha1$2359e7573a78c9159c9553a4f9383fbb713e3b11"
+        exemplar-002-cycle-09.ome.tiff:
+          checksum: "sha1$27e371275cdf6d4f5c7e4519c214bbe1daa41afe"
+        exemplar-002-cycle-10.ome.tiff:
+          checksum: "sha1$d898c5e866b8b76968bb3d532f1560ee89583818"
+    FFP images:
+      element_tests:
+        exemplar-002-cycle-01.ome.tiff:
+          checksum: "sha1$f0df6c36228dc5f042f0df1dc5c6d705e5e5deae"
+        exemplar-002-cycle-02.ome.tiff:
+          checksum: "sha1$9f74a221a3602c02ed70b2e482faccb317c2b4c1"
+        exemplar-002-cycle-03.ome.tiff:
+          checksum: "sha1$12c8d1038049d5871509dbbaebede7e7f18b9311"
+        exemplar-002-cycle-04.ome.tiff:
+          checksum: "sha1$e85947ec53cab28fb419ece1a8f635dc3371ab8c"
+        exemplar-002-cycle-05.ome.tiff:
+          checksum: "sha1$2bd296285a2cf4b178d81fcc8aa477fd3bd0e1ef"
+        exemplar-002-cycle-06.ome.tiff:
+          checksum: "sha1$0ba1edc3d3374afc73fa0d082ed32d7a3f657fb1"
+        exemplar-002-cycle-07.ome.tiff:
+          checksum: "sha1$da4e1277eb29a54ebd3a77e0541e46bbf3549cb0"
+        exemplar-002-cycle-08.ome.tiff:
+          checksum: "sha1$8c0d07be76120a604ef3ef0b736a48c728f5f368"
+        exemplar-002-cycle-09.ome.tiff:
+          checksum: "sha1$50a0f1fbe8804116df1e37103e75d94613c8c38d"
+        exemplar-002-cycle-10.ome.tiff:
+          checksum: "sha1$16e6ea8454e2694d5b97e0a4d026c780fdc82098"
+    Dearray images:
+      element_tests:
+        '1':
+          checksum: "sha1$52ea022a20eae280b4a1e530c2fa935b3997f6e4"
+        '2':
+          checksum: "sha1$4cf03d453c85376990fc73fa230fd995ec13bbfa"
+        '3':
+          checksum: "sha1$30115bc8f70b7591be60a862478f0ea471074cc4"
+        '4':
+          checksum: "sha1$35d7282db64f555dc2525d1a8cc0ddee06a09f1a"
+    Dearray masks:
+      element_tests:
+        '1':
+          checksum: "sha1$68c156c4ba0222c49f5572c8095a0aa8f539e776"
+        '2':
+          checksum: "sha1$61a5e28f7919bc88af02f7f2a98502cfa2b0afec"
+        '3':
+          checksum: "sha1$eab508feac0fab918b61cc35cc2b4ceead10b390"
+        '4':
+          checksum: "sha1$a01e721c8e17bff6117a1baa958962ef67c296f1"
+    Nuclear mask:
+      element_tests:
+        '1':
+          checksum: "sha1$ef452b6469434bdd97564943857a657718a2531e"
+        '2':
+          checksum: "sha1$49530cf926c567093c05d6737cfc79ee99a4aa51"
+        '3':
+          checksum: "sha1$da2fccd91cae0534e7cf8357a21b0255d666f2f3"
+        '4':
+          checksum: "sha1$8f21ef92cb65a1b90e70e063406c6699ee96d66e"
+    Converted image:
+      element_tests:
+        '1':
+          checksum: "sha1$9f1ae4e597b4e1aa2b2cfe2cb40c221018d2e0aa"
+        '2':
+          checksum: "sha1$2403f38f6c70cb1254779d07a8a849310cc1b59a"
+        '3':
+          checksum: "sha1$c259b769dae0ad68d0f17f2ebb3c39e41f4926df"
+        '4':
+          checksum: "sha1$c7cbd3200933b34b0cd716f7db57d4a8eeb6cf8a"
+    Primary Mask Quantification:
+      element_tests:
+        '1':
+          checksum: "sha1$8ff199897999fe76eab5869f2772ec1bf25b9d34"
+        '2':
+          checksum: "sha1$2a96622b6f0d286f4a1ff953beb07159e4ddf7b6"
+        '3':
+          checksum: "sha1$b8ea79a00812bfd529751d3393813d24f3631d78"
+        '4':
+          checksum: "sha1$b4fc4b174fcd3f1e76cdf713b26aa4644612d0cd"
+    Renamed image:
+      element_tests:
+        '1':
+          checksum: "sha1$4e2a0aa8cc2f19a44b4174c62b7e4fbed0f2aca4"
+        '2':
+          checksum: "sha1$74c0134e386483e1c8c469352c873f3c26c0a903"
+        '3':
+          checksum: "sha1$58f27b8a11b69690a680edeabe553871cd2e4810"
+        '4':
+          checksum: "sha1$927f2a9c88c0ffe8785971b2b5a1f32389c17c4f"
+    Anndata feature table:
+      element_tests:
+        '1':
+          checksum: "sha1$3bd5d32b16303ee9f7b6747cfcb73d43ad8e5920"
+        '2':
+          checksum: "sha1$ae1063a0c4d59601a803bec625917b80c2fe7a26"
+        '3':
+          checksum: "sha1$b9390f8a00b118f9f571d4e02872218a7035a41b"
+        '4':
+          checksum: "sha1$f8a6b1ccbd91e070ecfd24fdee70c49409e197f1"
+    Phenotyped feature table:
+      element_tests:
+        '1':
+          checksum: "sha1$10e08ed26ab050644873c08a7103cb8c1058a1c5"
+        '2':
+          checksum: "sha1$bdfd5b17622c6f79524b6fb890ff04caa3df5847"
+        '3':
+          checksum: "sha1$5e8d42cb9b9e67408c4cc9f974017bf19a55e8a0"
+        '4':
+          checksum: "sha1$f2a0b74f7a458c1a308c08ba680b54a736e82f4f"
+    Vitessce dashboard:
+      element_tests:
+        '1':
+          checksum: "sha1$01d07533774decd31471898e2d60da8c2c06ab82"
+        '2':
+          checksum: "sha1$8732e27e35d37ef18e780de4459a40a0e9662c5e"
+        '3':
+          checksum: "sha1$84ad8675605be1b209a751870b21d67cc8022727"
+        '4':
+          checksum: "sha1$aff677eb4bf6bf0765e175d758b9b27de603d8ea"

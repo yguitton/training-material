@@ -13,74 +13,10 @@
     "name": "GTN_Exemplar_002_TMA_workflow_Feb2025",
     "steps": {
         "0": {
-            "annotation": "CSV file containing marker names",
-            "content_id": null,
-            "errors": null,
-            "id": 0,
-            "input_connections": {},
-            "inputs": [
-                {
-                    "description": "CSV file containing marker names",
-                    "name": "markers.csv"
-                }
-            ],
-            "label": "markers.csv",
-            "name": "Input dataset",
-            "outputs": [],
-            "position": {
-                "bottom": 790.03125,
-                "height": 61.78125,
-                "left": -489.265625,
-                "right": -289.265625,
-                "top": 728.25,
-                "width": 200,
-                "x": -489.265625,
-                "y": 728.25
-            },
-            "tool_id": null,
-            "tool_state": "{\"optional\": false, \"tag\": \"\"}",
-            "tool_version": null,
-            "type": "data_input",
-            "uuid": "25572610-4522-4ff0-abdd-88bb5ca24d78",
-            "workflow_outputs": []
-        },
-        "1": {
-            "annotation": "Raw TIFF images (CZI, TIFF) in an round-ordered list",
-            "content_id": null,
-            "errors": null,
-            "id": 1,
-            "input_connections": {},
-            "inputs": [
-                {
-                    "description": "Raw TIFF images (CZI, TIFF) in an round-ordered list",
-                    "name": "Raw cycle images"
-                }
-            ],
-            "label": "Raw cycle images",
-            "name": "Input dataset collection",
-            "outputs": [],
-            "position": {
-                "bottom": 402.4375,
-                "height": 82.171875,
-                "left": -823.25,
-                "right": -623.25,
-                "top": 320.265625,
-                "width": 200,
-                "x": -823.25,
-                "y": 320.265625
-            },
-            "tool_id": null,
-            "tool_state": "{\"optional\": false, \"tag\": \"\", \"collection_type\": \"list\"}",
-            "tool_version": null,
-            "type": "data_collection_input",
-            "uuid": "319b84a9-8bb4-459d-8808-236bef8c5326",
-            "workflow_outputs": []
-        },
-        "2": {
             "annotation": "Scimap formatted phenotype workflow",
             "content_id": null,
             "errors": null,
-            "id": 2,
+            "id": 0,
             "input_connections": {},
             "inputs": [
                 {
@@ -92,20 +28,84 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "bottom": 735.421875,
-                "height": 82.171875,
-                "left": 829.828125,
-                "right": 1029.828125,
-                "top": 653.25,
+                "bottom": 652.4453125,
+                "height": 82.1953125,
+                "left": 122.078125,
+                "right": 322.078125,
+                "top": 570.25,
                 "width": 200,
-                "x": 829.828125,
-                "y": 653.25
+                "x": 122.078125,
+                "y": 570.25
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"format\": [\"csv\"], \"tag\": \"\"}",
             "tool_version": null,
             "type": "data_input",
             "uuid": "4054ab54-4ac3-4577-ab70-3d8a17f0df49",
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "CSV file containing marker names",
+            "content_id": null,
+            "errors": null,
+            "id": 1,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "CSV file containing marker names",
+                    "name": "markers.csv"
+                }
+            ],
+            "label": "markers.csv",
+            "name": "Input dataset",
+            "outputs": [],
+            "position": {
+                "bottom": 707.046875,
+                "height": 61.796875,
+                "left": -1197.015625,
+                "right": -997.015625,
+                "top": 645.25,
+                "width": 200,
+                "x": -1197.015625,
+                "y": 645.25
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false, \"tag\": \"\"}",
+            "tool_version": null,
+            "type": "data_input",
+            "uuid": "25572610-4522-4ff0-abdd-88bb5ca24d78",
+            "workflow_outputs": []
+        },
+        "2": {
+            "annotation": "Raw TIFF images (CZI, TIFF) in an round-ordered list",
+            "content_id": null,
+            "errors": null,
+            "id": 2,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "Raw TIFF images (CZI, TIFF) in an round-ordered list",
+                    "name": "Raw cycle images"
+                }
+            ],
+            "label": "Raw cycle images",
+            "name": "Input dataset collection",
+            "outputs": [],
+            "position": {
+                "bottom": 319.4609375,
+                "height": 82.1953125,
+                "left": -1531,
+                "right": -1331,
+                "top": 237.265625,
+                "width": 200,
+                "x": -1531,
+                "y": 237.265625
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false, \"tag\": \"\", \"collection_type\": \"list\"}",
+            "tool_version": null,
+            "type": "data_collection_input",
+            "uuid": "319b84a9-8bb4-459d-8808-236bef8c5326",
             "workflow_outputs": []
         },
         "3": {
@@ -115,7 +115,7 @@
             "id": 3,
             "input_connections": {
                 "in_files": {
-                    "id": 1,
+                    "id": 2,
                     "output_name": "output"
                 }
             },
@@ -138,14 +138,14 @@
                 }
             ],
             "position": {
-                "bottom": 466.171875,
-                "height": 143.953125,
-                "left": -511.21875,
-                "right": -311.21875,
-                "top": 322.21875,
+                "bottom": 383.2109375,
+                "height": 143.9921875,
+                "left": -1218.96875,
+                "right": -1018.96875,
+                "top": 239.21875,
                 "width": 200,
-                "x": -511.21875,
-                "y": 322.21875
+                "x": -1218.96875,
+                "y": 239.21875
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/perssond/basic_illumination/basic_illumination/1.1.1+galaxy2",
@@ -163,12 +163,12 @@
                 {
                     "label": "DFP images",
                     "output_name": "output_dfp",
-                    "uuid": "58dbaf0c-394a-49ff-9308-16a9bb73fea3"
+                    "uuid": "9bb4d081-65d3-41d3-b4d7-3a284e318918"
                 },
                 {
                     "label": "FFP images",
                     "output_name": "output_ffp",
-                    "uuid": "a64165da-f1d0-4a20-92a3-d37693e7b385"
+                    "uuid": "eb4ff41e-b4f4-4bc9-97ac-2135448fca6b"
                 }
             ]
         },
@@ -187,11 +187,11 @@
                     "output_name": "output_ffp"
                 },
                 "lraw": {
-                    "id": 1,
+                    "id": 2,
                     "output_name": "output"
                 },
                 "rename|markers_file": {
-                    "id": 0,
+                    "id": 1,
                     "output_name": "output"
                 }
             },
@@ -222,14 +222,14 @@
                 }
             ],
             "position": {
-                "bottom": 525,
-                "height": 204.734375,
-                "left": -249.21875,
-                "right": -49.21875,
-                "top": 320.265625,
+                "bottom": 442.0546875,
+                "height": 204.7890625,
+                "left": -956.96875,
+                "right": -756.96875,
+                "top": 237.265625,
                 "width": 200,
-                "x": -249.21875,
-                "y": 320.265625
+                "x": -956.96875,
+                "y": 237.265625
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/perssond/ashlar/ashlar/1.18.0+galaxy1",
@@ -247,7 +247,7 @@
                 {
                     "label": "Registered image",
                     "output_name": "output",
-                    "uuid": "d700f30e-fbad-4ed5-b563-fdac0f43818a"
+                    "uuid": "8da8f737-558d-4a27-8754-026d620254a9"
                 }
             ]
         },
@@ -285,14 +285,14 @@
                 }
             ],
             "position": {
-                "bottom": 494.609375,
-                "height": 174.34375,
-                "left": -1.1875,
-                "right": 198.8125,
-                "top": 320.265625,
+                "bottom": 411.65625,
+                "height": 174.390625,
+                "left": -708.9375,
+                "right": -508.9375,
+                "top": 237.265625,
                 "width": 200,
-                "x": -1.1875,
-                "y": 320.265625
+                "x": -708.9375,
+                "y": 237.265625
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/perssond/coreograph/unet_coreograph/2.2.8+galaxy1",
@@ -308,19 +308,19 @@
             "uuid": "3313c99a-963d-422e-bec4-e3888c443260",
             "workflow_outputs": [
                 {
+                    "label": "Dearray images",
+                    "output_name": "tma_sections",
+                    "uuid": "904a9e13-adb5-44d2-8db7-42fc1d0549bf"
+                },
+                {
                     "label": "TMA dearray map",
                     "output_name": "TMA_MAP",
-                    "uuid": "5dfbf033-2254-43e6-a79a-1d9f680b2bfd"
+                    "uuid": "ff7db833-2718-4569-b8fb-245602b827a2"
                 },
                 {
-                    "label": "Dearly masks",
+                    "label": "Dearray masks",
                     "output_name": "masks",
-                    "uuid": "b8d3f6ec-2f1e-462b-839d-81cf8a998df5"
-                },
-                {
-                    "label": "Dearryed images",
-                    "output_name": "tma_sections",
-                    "uuid": "6f092b15-a4de-475d-aade-ce07a49bf0b1"
+                    "uuid": "56389f0e-5734-4db6-b54c-42c29f33cde8"
                 }
             ]
         },
@@ -350,14 +350,14 @@
                 }
             ],
             "position": {
-                "bottom": 494.84375,
-                "height": 174.734375,
-                "left": 290.828125,
-                "right": 490.828125,
-                "top": 320.109375,
+                "bottom": 391.5,
+                "height": 154.390625,
+                "left": -416.921875,
+                "right": -216.921875,
+                "top": 237.109375,
                 "width": 200,
-                "x": 290.828125,
-                "y": 320.109375
+                "x": -416.921875,
+                "y": 237.109375
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/goeckslab/mesmer/mesmer/0.12.3+galaxy3",
@@ -373,9 +373,9 @@
             "uuid": "17d89ea7-98f6-4a1f-bc2b-276a0a00f726",
             "workflow_outputs": [
                 {
-                    "label": "Mesmer on input dataset(s): Mask",
+                    "label": "Nuclear mask",
                     "output_name": "mask",
-                    "uuid": "ed82deaa-7015-44cd-97f1-f3e1efdad1ab"
+                    "uuid": "7e71ef67-be85-44a4-903b-09d1eb7cd4f1"
                 }
             ]
         },
@@ -390,7 +390,12 @@
                     "output_name": "tma_sections"
                 }
             },
-            "inputs": [],
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Convert image",
+                    "name": "input_file"
+                }
+            ],
             "label": null,
             "name": "Convert image",
             "outputs": [
@@ -400,14 +405,14 @@
                 }
             ],
             "position": {
-                "bottom": 760.734375,
-                "height": 113.5625,
-                "left": 263.8125,
-                "right": 463.8125,
-                "top": 647.171875,
+                "bottom": 677.765625,
+                "height": 113.59375,
+                "left": -443.9375,
+                "right": -243.9375,
+                "top": 564.171875,
                 "width": 200,
-                "x": 263.8125,
-                "y": 647.171875
+                "x": -443.9375,
+                "y": 564.171875
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/imgteam/bfconvert/ip_convertimage/6.7.0+galaxy0",
@@ -417,7 +422,7 @@
                 "owner": "imgteam",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"bigtiff\": \"false\", \"channel_options\": {\"extract\": \"False\", \"__current_case__\": 0}, \"compression\": \"False\", \"crop_options\": {\"extract\": \"False\", \"__current_case__\": 0}, \"input_file\": {\"__class__\": \"ConnectedValue\"}, \"noflat\": \"true\", \"out_format\": \"ome.tiff\", \"pyramid_options\": {\"generate\": \"True\", \"__current_case__\": 0, \"pyramid_resolutions\": \"4\", \"pyramid_scale\": \"2\"}, \"range_options\": {\"extract\": \"False\", \"__current_case__\": 0}, \"series_options\": {\"extract\": \"False\", \"__current_case__\": 0}, \"tile_options\": {\"extract\": \"True\", \"__current_case__\": 1, \"tile_x\": \"512\", \"tile_y\": \"512\"}, \"timepoint_options\": {\"extract\": \"False\", \"__current_case__\": 0}, \"z_options\": {\"extract\": \"False\", \"__current_case__\": 0}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"bigtiff\": \"false\", \"channel_options\": {\"extract\": \"False\", \"__current_case__\": 0}, \"compression\": \"False\", \"crop_options\": {\"extract\": \"False\", \"__current_case__\": 0}, \"input_file\": {\"__class__\": \"RuntimeValue\"}, \"noflat\": \"true\", \"out_format\": \"ome.tiff\", \"pyramid_options\": {\"generate\": \"True\", \"__current_case__\": 0, \"pyramid_resolutions\": \"4\", \"pyramid_scale\": \"2\"}, \"range_options\": {\"extract\": \"False\", \"__current_case__\": 0}, \"series_options\": {\"extract\": \"False\", \"__current_case__\": 0}, \"tile_options\": {\"extract\": \"True\", \"__current_case__\": 1, \"tile_x\": \"512\", \"tile_y\": \"512\"}, \"timepoint_options\": {\"extract\": \"False\", \"__current_case__\": 0}, \"z_options\": {\"extract\": \"False\", \"__current_case__\": 0}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "6.7.0+galaxy0",
             "type": "tool",
             "uuid": "48525e3f-e21f-453b-9b3f-5d29ea433c5c",
@@ -425,7 +430,7 @@
                 {
                     "label": "Converted image",
                     "output_name": "output",
-                    "uuid": "6d8f993a-9149-4afd-b9a5-b19c3cc802ba"
+                    "uuid": "3f808f80-6d5c-40ba-ae30-39c8b7214028"
                 }
             ]
         },
@@ -436,7 +441,7 @@
             "id": 8,
             "input_connections": {
                 "channel_names": {
-                    "id": 0,
+                    "id": 1,
                     "output_name": "output"
                 },
                 "image": {
@@ -479,14 +484,14 @@
                 }
             ],
             "position": {
-                "bottom": 575.625,
-                "height": 255.515625,
-                "left": 556.78125,
-                "right": 756.78125,
-                "top": 320.109375,
+                "bottom": 492.6953125,
+                "height": 255.5859375,
+                "left": -150.96875,
+                "right": 49.03125,
+                "top": 237.109375,
                 "width": 200,
-                "x": 556.78125,
-                "y": 320.109375
+                "x": -150.96875,
+                "y": 237.109375
             },
             "post_job_actions": {
                 "HideDatasetActionsuppmask": {
@@ -510,7 +515,7 @@
                 {
                     "label": "Primary Mask Quantification",
                     "output_name": "cellmask",
-                    "uuid": "d304fbc4-2f12-4dc7-9c50-de84879120ab"
+                    "uuid": "8271483c-88fc-4717-be3f-a0ce931872d0"
                 }
             ]
         },
@@ -521,7 +526,7 @@
             "id": 9,
             "input_connections": {
                 "channel_csv": {
-                    "id": 0,
+                    "id": 1,
                     "output_name": "output"
                 },
                 "image": {
@@ -529,16 +534,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Rename OME-TIFF channels",
-                    "name": "channel_csv"
-                },
-                {
-                    "description": "runtime parameter for tool Rename OME-TIFF channels",
-                    "name": "image"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "Rename OME-TIFF channels",
             "outputs": [
@@ -548,14 +544,14 @@
                 }
             ],
             "position": {
-                "bottom": 833.921875,
-                "height": 184.734375,
-                "left": 569.828125,
-                "right": 769.828125,
-                "top": 649.1875,
+                "bottom": 750.9765625,
+                "height": 184.7890625,
+                "left": -137.921875,
+                "right": 62.078125,
+                "top": 566.1875,
                 "width": 200,
-                "x": 569.828125,
-                "y": 649.1875
+                "x": -137.921875,
+                "y": 566.1875
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/goeckslab/rename_tiff_channels/rename_tiff_channels/0.0.2+galaxy1",
@@ -565,7 +561,7 @@
                 "owner": "goeckslab",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"channel_csv\": {\"__class__\": \"RuntimeValue\"}, \"image\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"channel_csv\": {\"__class__\": \"ConnectedValue\"}, \"image\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.0.2+galaxy1",
             "type": "tool",
             "uuid": "a04a5ec4-72c1-4f8f-b0c8-b39d9eb28560",
@@ -573,7 +569,7 @@
                 {
                     "label": "Renamed image",
                     "output_name": "renamed_image",
-                    "uuid": "2b72f178-4b71-455c-a73c-6778dffcb199"
+                    "uuid": "46bdcabc-190c-4578-93a6-90379a338e20"
                 }
             ]
         },
@@ -588,12 +584,7 @@
                     "output_name": "cellmask"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Convert McMicro Output to Anndata",
-                    "name": "image_path"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "Convert McMicro Output to Anndata",
             "outputs": [
@@ -603,14 +594,14 @@
                 }
             ],
             "position": {
-                "bottom": 475.4375,
-                "height": 154.34375,
-                "left": 847.84375,
-                "right": 1047.84375,
-                "top": 321.09375,
+                "bottom": 392.484375,
+                "height": 154.390625,
+                "left": 140.09375,
+                "right": 340.09375,
+                "top": 238.09375,
                 "width": 200,
-                "x": 847.84375,
-                "y": 321.09375
+                "x": 140.09375,
+                "y": 238.09375
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/goeckslab/scimap_mcmicro_to_anndata/scimap_mcmicro_to_anndata/2.1.0+galaxy2",
@@ -620,7 +611,7 @@
                 "owner": "goeckslab",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"drop_markers\": \"\", \"image_path\": {\"__class__\": \"RuntimeValue\"}, \"options\": {\"remove_dna\": \"false\", \"remove_string_from_name\": \"\", \"log\": \"true\", \"random_sample\": null, \"CellId\": \"CellID\", \"unique_CellId\": \"false\", \"split\": \"X_centroid\", \"custom_imageid\": \"\", \"min_cells\": null}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"drop_markers\": \"\", \"image_path\": {\"__class__\": \"ConnectedValue\"}, \"options\": {\"remove_dna\": \"false\", \"remove_string_from_name\": \"\", \"log\": \"true\", \"random_sample\": null, \"CellId\": \"CellID\", \"unique_CellId\": \"false\", \"split\": \"X_centroid\", \"custom_imageid\": \"\", \"min_cells\": null}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "2.1.0+galaxy2",
             "type": "tool",
             "uuid": "87db8083-cc54-4583-a6d1-dd80031cbc4f",
@@ -628,7 +619,7 @@
                 {
                     "label": "Anndata feature table",
                     "output_name": "outfile",
-                    "uuid": "d9dcc86d-ed43-4e1a-8783-34cd7c1c243f"
+                    "uuid": "a8bfa0a7-14dc-48f9-abd2-b511a3f0eb65"
                 }
             ]
         },
@@ -643,19 +634,11 @@
                     "output_name": "outfile"
                 },
                 "gating_workflow": {
-                    "id": 2,
+                    "id": 0,
                     "output_name": "output"
                 }
             },
             "inputs": [
-                {
-                    "description": "runtime parameter for tool Single Cell Phenotyping",
-                    "name": "anndata"
-                },
-                {
-                    "description": "runtime parameter for tool Single Cell Phenotyping",
-                    "name": "gating_workflow"
-                },
                 {
                     "description": "runtime parameter for tool Single Cell Phenotyping",
                     "name": "manual_gates"
@@ -670,14 +653,14 @@
                 }
             ],
             "position": {
-                "bottom": 582.03125,
-                "height": 255.90625,
-                "left": 1110.859375,
-                "right": 1310.859375,
-                "top": 326.125,
+                "bottom": 499.109375,
+                "height": 255.984375,
+                "left": 403.109375,
+                "right": 603.109375,
+                "top": 243.125,
                 "width": 200,
-                "x": 1110.859375,
-                "y": 326.125
+                "x": 403.109375,
+                "y": 243.125
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/goeckslab/scimap_phenotyping/scimap_phenotyping/2.1.0+galaxy2",
@@ -687,7 +670,7 @@
                 "owner": "goeckslab",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"anndata\": {\"__class__\": \"RuntimeValue\"}, \"gating_workflow\": {\"__class__\": \"RuntimeValue\"}, \"log\": \"true\", \"manual_gates\": {\"__class__\": \"RuntimeValue\"}, \"random_state\": \"0\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"anndata\": {\"__class__\": \"ConnectedValue\"}, \"gating_workflow\": {\"__class__\": \"ConnectedValue\"}, \"log\": \"true\", \"manual_gates\": {\"__class__\": \"RuntimeValue\"}, \"random_state\": \"0\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "2.1.0+galaxy2",
             "type": "tool",
             "uuid": "61a05d40-8d52-4c7d-ab68-29e1484628e5",
@@ -695,7 +678,7 @@
                 {
                     "label": "Phenotyped feature table",
                     "output_name": "output",
-                    "uuid": "b6a99eac-18fa-4989-b462-be2e237ae72d"
+                    "uuid": "d96c96dc-75a1-4e7e-b7c1-a8d6f9970fc7"
                 }
             ]
         },
@@ -718,20 +701,7 @@
                     "output_name": "mask"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Vitessce",
-                    "name": "do_phenotyping"
-                },
-                {
-                    "description": "runtime parameter for tool Vitessce",
-                    "name": "image"
-                },
-                {
-                    "description": "runtime parameter for tool Vitessce",
-                    "name": "masks"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "Vitessce",
             "outputs": [
@@ -745,14 +715,14 @@
                 }
             ],
             "position": {
-                "bottom": 574.609375,
-                "height": 245.515625,
-                "left": 1372.34375,
-                "right": 1572.34375,
-                "top": 329.09375,
+                "bottom": 491.6796875,
+                "height": 245.5859375,
+                "left": 664.59375,
+                "right": 864.59375,
+                "top": 246.09375,
                 "width": 200,
-                "x": 1372.34375,
-                "y": 329.09375
+                "x": 664.59375,
+                "y": 246.09375
             },
             "post_job_actions": {
                 "HideDatasetActionvitessce_config": {
@@ -768,7 +738,7 @@
                 "owner": "goeckslab",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"do_phenotyping\": {\"phenotyping_choice\": \"add_h5ad\", \"__current_case__\": 1, \"anndata\": {\"__class__\": \"RuntimeValue\"}, \"scatterplot_embeddings\": {\"embedding\": \"umap\", \"__current_case__\": 0, \"options\": {\"n_neighbors\": \"30\", \"n_pcs\": \"10\", \"knn\": \"true\", \"random_state\": \"0\"}}, \"phenotype_factory\": {\"phenotype_mode\": \"choices\", \"__current_case__\": 0, \"phenotypes\": [\"phenotype\"]}}, \"image\": {\"__class__\": \"RuntimeValue\"}, \"masks\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"do_phenotyping\": {\"phenotyping_choice\": \"add_h5ad\", \"__current_case__\": 1, \"anndata\": {\"__class__\": \"ConnectedValue\"}, \"scatterplot_embeddings\": {\"embedding\": \"umap\", \"__current_case__\": 0, \"options\": {\"n_neighbors\": \"30\", \"n_pcs\": \"10\", \"knn\": \"true\", \"random_state\": \"0\"}}, \"phenotype_factory\": {\"phenotype_mode\": \"choices\", \"__current_case__\": 0, \"phenotypes\": [\"phenotype\"]}}, \"image\": {\"__class__\": \"ConnectedValue\"}, \"masks\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.5.1+galaxy0",
             "type": "tool",
             "uuid": "f3e7aa93-3c92-45ba-aca9-d3a42bc60490",
@@ -776,7 +746,7 @@
                 {
                     "label": "Vitessce dashboard",
                     "output_name": "output",
-                    "uuid": "3652391a-12db-4734-9429-6ec6a5ddb964"
+                    "uuid": "4525b0a2-785a-455e-86fa-60edea1af899"
                 }
             ]
         }
@@ -784,6 +754,6 @@
     "tags": [
         "imaging"
     ],
-    "uuid": "aac8d920-6ef5-4956-91b0-3eb6181d5874",
-    "version": 21
+    "uuid": "b78215d6-bd9e-453d-8fec-0ffe18ff83fe",
+    "version": 23
 }
