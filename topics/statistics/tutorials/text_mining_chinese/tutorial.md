@@ -159,7 +159,7 @@ Remember to apply those steps to both the censored and the uncensored text. Rena
 
 We can now compare the two cleaned texts. This will visualise the differences between the two texts and mark them by colour. Make sure to upload the cleaned censored text with the replacement characters like ‘×’ first. As text two, upload the cleaned uncensored text without the replacement characters.  This version (HTML version) creates an HTML file, which colour codes differences as additions (green) or extractions (red) when comparing the texts.
 
-### Create a file for researchers
+### Create a _diff_ file for researchers
 
 > <hands-on-title> Comparing the texts using <em>diff</em> tool </hands-on-title>
 >
