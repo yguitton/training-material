@@ -4,7 +4,7 @@
     "creator": [
         {
             "class": "Person",
-            "identifier": "0000-0002-6942-2469",
+            "identifier": "https://orcid.org/0000-0002-6942-2469",
             "name": "Cameron Watson"
         }
     ],
@@ -109,7 +109,7 @@
             "workflow_outputs": []
         },
         "3": {
-            "annotation": "",
+            "annotation": "Input round-ordered TIFF image collection",
             "content_id": "toolshed.g2.bx.psu.edu/repos/perssond/basic_illumination/basic_illumination/1.1.1+galaxy2",
             "errors": null,
             "id": 3,
@@ -125,7 +125,7 @@
                     "name": "in_files"
                 }
             ],
-            "label": null,
+            "label": "Illumination correction with Basic",
             "name": "BaSiC Illumination",
             "outputs": [
                 {
@@ -173,7 +173,7 @@
             ]
         },
         "4": {
-            "annotation": "",
+            "annotation": "Provide a markers file to name image channels",
             "content_id": "toolshed.g2.bx.psu.edu/repos/perssond/ashlar/ashlar/1.18.0+galaxy1",
             "errors": null,
             "id": 4,
@@ -213,7 +213,7 @@
                     "name": "rename"
                 }
             ],
-            "label": null,
+            "label": "Stitching and registration with Ashlar",
             "name": "ASHLAR",
             "outputs": [
                 {
@@ -252,7 +252,7 @@
             ]
         },
         "5": {
-            "annotation": "",
+            "annotation": "Split TMA cores, or split tissue segments for WSIs",
             "content_id": "toolshed.g2.bx.psu.edu/repos/perssond/coreograph/unet_coreograph/2.2.8+galaxy1",
             "errors": null,
             "id": 5,
@@ -268,7 +268,7 @@
                     "name": "source_image"
                 }
             ],
-            "label": null,
+            "label": "TMA dearray with UNetCoreograph",
             "name": "UNetCoreograph",
             "outputs": [
                 {
@@ -325,7 +325,7 @@
             ]
         },
         "6": {
-            "annotation": "",
+            "annotation": "Channel indices are 0-based. Resolution is in microns per pixel",
             "content_id": "toolshed.g2.bx.psu.edu/repos/goeckslab/mesmer/mesmer/0.12.3+galaxy3",
             "errors": null,
             "id": 6,
@@ -341,7 +341,7 @@
                     "name": "image"
                 }
             ],
-            "label": null,
+            "label": "Nuclear segmentation with Mesmer",
             "name": "Perform segmentation of multiplexed tissue data",
             "outputs": [
                 {
@@ -380,7 +380,7 @@
             ]
         },
         "7": {
-            "annotation": "",
+            "annotation": "This step is only necessary because dearray step outputs non-OME TIFFs",
             "content_id": "toolshed.g2.bx.psu.edu/repos/imgteam/bfconvert/ip_convertimage/6.7.0+galaxy0",
             "errors": null,
             "id": 7,
@@ -396,7 +396,7 @@
                     "name": "input_file"
                 }
             ],
-            "label": null,
+            "label": "Convert dearray images to OME-TIFF",
             "name": "Convert image",
             "outputs": [
                 {
@@ -435,7 +435,7 @@
             ]
         },
         "8": {
-            "annotation": "",
+            "annotation": "Defaults to outputting all cell metrics",
             "content_id": "toolshed.g2.bx.psu.edu/repos/perssond/quantification/quantification/1.6.0+galaxy0",
             "errors": null,
             "id": 8,
@@ -471,7 +471,7 @@
                     "name": "supp_mask"
                 }
             ],
-            "label": null,
+            "label": "Cell feature quantification with MC-Quant",
             "name": "MCQUANT",
             "outputs": [
                 {
@@ -520,7 +520,7 @@
             ]
         },
         "9": {
-            "annotation": "",
+            "annotation": "Same marker file format as supplied for Ashlar",
             "content_id": "toolshed.g2.bx.psu.edu/repos/goeckslab/rename_tiff_channels/rename_tiff_channels/0.0.2+galaxy1",
             "errors": null,
             "id": 9,
@@ -535,7 +535,7 @@
                 }
             },
             "inputs": [],
-            "label": null,
+            "label": "Rename OME-TIFF channels",
             "name": "Rename OME-TIFF channels",
             "outputs": [
                 {
@@ -574,7 +574,7 @@
             ]
         },
         "10": {
-            "annotation": "",
+            "annotation": "Allows for input to downstream analytical steps",
             "content_id": "toolshed.g2.bx.psu.edu/repos/goeckslab/scimap_mcmicro_to_anndata/scimap_mcmicro_to_anndata/2.1.0+galaxy2",
             "errors": null,
             "id": 10,
@@ -585,7 +585,7 @@
                 }
             },
             "inputs": [],
-            "label": null,
+            "label": "Convert CSV to h5ad format",
             "name": "Convert McMicro Output to Anndata",
             "outputs": [
                 {
@@ -624,7 +624,7 @@
             ]
         },
         "11": {
-            "annotation": "",
+            "annotation": "Providing manual gates can improve phenotyping",
             "content_id": "toolshed.g2.bx.psu.edu/repos/goeckslab/scimap_phenotyping/scimap_phenotyping/2.1.0+galaxy2",
             "errors": null,
             "id": 11,
@@ -644,7 +644,7 @@
                     "name": "manual_gates"
                 }
             ],
-            "label": null,
+            "label": "Cell phenotyping with Scimap",
             "name": "Single Cell Phenotyping",
             "outputs": [
                 {
@@ -683,7 +683,7 @@
             ]
         },
         "12": {
-            "annotation": "",
+            "annotation": "Dashboard components can be resized or removed while viewing",
             "content_id": "toolshed.g2.bx.psu.edu/repos/goeckslab/vitessce_spatial/vitessce_spatial/3.5.1+galaxy0",
             "errors": null,
             "id": 12,
@@ -702,7 +702,7 @@
                 }
             },
             "inputs": [],
-            "label": null,
+            "label": "Create a Vitessce dashboard",
             "name": "Vitessce",
             "outputs": [
                 {
