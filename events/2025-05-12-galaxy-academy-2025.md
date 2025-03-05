@@ -8,13 +8,16 @@ description: |
 
 # <button id="program-button" class="btn btn-info" onclick="$('#program-tab').tab('show');">Start the Course!</button>
 
-cover-image: events/images/Galaxy_GTA2025_Transparent.png
+#cover-image: <div style="background:white"> 
+#              <img src="./events/images/Galaxy_GTA2025_Transparent.png">
+#              </div> 
+cover-image: events/images/Galaxy_GTA2025.png
 cover-image-alt: logo for the Galaxy Training Academy Event 2025
 
 registration:
-  # link: 
+  link: https://forms.gle/xqZMd4gduwJ6XyKU6 
   deadline: 2025-05-08
-  open: false
+  open: true
 
 date_start: 2025-05-12
 date_end: 2025-05-16
@@ -41,13 +44,11 @@ contributions:
         - teresa-m
         - scottcain
         - natalie-wa
-        - annasyme
         - shiltemann
         - dianichj
         - dadrasarmin
     instructors:
         - ahmedhamidawan
-        - erxleben
         - annasyme
         - anuprulez
         - abretaud
@@ -62,9 +63,7 @@ contributions:
         - EngyNasr
         - emmaustin20
         - GarethPrice-Aus
-        - igormakunin
         - jdavcs
-        - lldelisle
         - bernt-matthias
         - foellmelanie
         - meltemktn
@@ -76,7 +75,6 @@ contributions:
         - plushz
         - pratikdjagtap
         - RZ9082
-        - rlibouba
         - SaimMomin12
         - stephanierobin
         - subinamehta
@@ -170,8 +168,8 @@ program:
     tracks:  # Instead of tutorials, you can also define tracks, this will create a button per track that will lead to a different page
       - title: Proteomics
         link: events/tracks/gta2025-proteomics.md
-      #- title: Assembly
-      #  link: events/tracks/gta2024-assembly.md
+      - title: Assembly
+        link: events/tracks/gta2025-assembly.md
       - title: Transcriptomics
         link: events/tracks/gta2025-transcriptomics.md
       - title: Single Cell
@@ -184,10 +182,12 @@ program:
       #  link: events/tracks/gta2024-bycovid.md
       - title: Machine Learning
         link: events/tracks/gta2025-ml.md
+      - title: From Zero to Hero with Python
+        link: events/tracks/gta2025-bioNT.md
 
   - section: "Friday: Grab bag"
     description: |
-      Can't get enough? Then please pick one of our FAIR tutorials below or any of the tutorials within one of the tracks. The trainers present on Slack will do their best to help you
+      Can't get enough? Then please pick one of our FAIR or Plant Galaxy tutorials below or any of the tutorials within one of the tracks. The trainers present on Slack will do their best to help you
       if you have a problem and answer questions, but they may not be experts in the topic you selected.
       You can directly start with your preferred tutorial.
 
@@ -213,19 +213,28 @@ program:
           [<i class="fas fa-video" aria-hidden="true"></i> Lecture Video](https://gallantries.github.io/video-library/videos/ro-crates/workflowhub/tutorial/)
       - name: ro-crate-galaxy-best-practices
         topic: fair
+  
+  - section: Plant Galaxy
+    subsection: true
+    tutorials:
+      - type: custom
+        name: "Identification of Transcription associated proteins (TAPs)"
+        description: |
+          Comming soon
+
 
 
 ---
 # Welcome to the Galaxy Training Academy 2025
 Do you want to learn how to use Galaxy, an open source data analysis platform? Then you are at the right place. We offer here a **5-day Global Online and Asynchronous learning event**.
 
-**Registrations will open on the 3rd of March.**  
+**Content of the event**
 
-## Do you want to join the GTA as a trainer?
-Please fill out our [form](https://forms.gle/V9QqSDNg2UmQaDHy8) to indicate in what capacity you would like to help. 
+We provide you with training materials which you can study at your own pace and on your own time throughout the week. Have a look at our [program](https://training.galaxyproject.org/training-material/events/2025-05-12-galaxy-academy-2025.html#program). 
 
-## Do you want to participate as a learner?
-In the following, you will learn everything you need to know about the event.
+<button id="program-button" class="btn btn-info" onclick="$('#program-tab').tab('show');">Program</button>
+
+On the first day, you can make yourself familiar with the Galaxy platform. In the next days, you can learn about Proteomics, Assembly, Transcriptomics, Single Cell, Microbiome or Machine Learning data analysis in Galaxy. On the last day, the Friday we additionally offer a ***FAIR training*** program to you.
 
 **Course format**
 
@@ -239,13 +248,7 @@ You only need a browser and an account on one of the Galaxy instances registered
 
 <button id="program-button" class="btn btn-info" onclick="$('#setup-tab').tab('show');">Setup</button>
 
-**Content of the event**
 
-We provide you with training materials which you can study at your own pace and on your own time throughout the week. Have a look at our [program](https://training.galaxyproject.org/training-material/events/2025-05-12-galaxy-academy-2025.html#program). The program is still **under development**. 
-
-<button id="program-button" class="btn btn-info" onclick="$('#program-tab').tab('show');">Program</button>
-
-On the first day, you can make yourself familiar with the Galaxy platform. In the next days, you can follow different tracks. Please go to the program tab for more information. On Friday we offer a ***Fair training*** program to you.
 
 **How to get help** 
 
@@ -255,3 +258,9 @@ You will not be alone! If you ever need help, you can contact one of our many tr
 **Certificates**
 
 You will be able to obtain a certificate by the end of the event. More information is coming soon.
+
+
+
+## Do you want to join the GTA as a trainer?
+Please fill out our [form](https://forms.gle/V9QqSDNg2UmQaDHy8) to indicate in what capacity you would like to help. 
+
