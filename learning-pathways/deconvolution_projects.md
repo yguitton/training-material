@@ -17,7 +17,7 @@ title: "Bioinformatics Projects: Using deconvolution to get new insights from ol
 description: |
   Are you an educator looking for project ideas for students to practice independent enquiry and research skills? Are you a student looking for a project idea? Look no more - here, you will find a learning pathway of tutorials that can guide you through the skills to find old data and transform it into new results!
 
-  To be clear, we will only provide the methods - you will need to come up with your own research question by exploring the literature and available public datasets, apply these analyses, and interpret the results. Your research question will take the form of, **"How does <variable X> impact the cell type proportions in <tissue/sample/organism Y>?"**
+  To be clear, we will only provide the methods - you will need to come up with your own research question by exploring the literature and available public datasets, apply these analyses, and interpret the results. Your research question will take the form of, **"How does `variable X` impact the cell type proportions in `issue/sample/organism Y`?"**
 
   Note: You will need to be familiar with the Galaxy interface and single-cell RNA-seq analysis in general to follow this Learning Pathway. You can do so by completing the [Introduction to single-cell analysis learning pathway]({% link learning-pathways/intro_single_cell.md %}). It would be a bonus to also complete the [Beyond single cell learning pathway]({% link learning-pathways/beyond_single_cell.md %}) to reinforce that knowledge.
 
