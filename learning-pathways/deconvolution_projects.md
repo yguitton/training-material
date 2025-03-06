@@ -10,8 +10,8 @@ editorial_board:
 - hexhowells
 - mtekman
 
-#funding:
-#  - elixir-fair-data
+funding:
+  - elixir-fair-data
 
 title: "Bioinformatics Projects: Using deconvolution to get new insights from old bulk RNA-seq data"
 description: |
