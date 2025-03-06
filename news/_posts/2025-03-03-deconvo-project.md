@@ -2,12 +2,12 @@
 title: "Bioinformatics Projects Pathway for Students: New insights from public data!"
 contributions:
   authorship: [nomadscientist]
+  funding: [elixir-fair-data]
 tags: [gtn, single-cell]
 layout: news
 cover: "assets/images/wab-lp-deconvolution.png"
 coveralt: "XY plot of actual versus inferred proportions, with coloured dots representing clusters and largely falling in a 1-1 slope"
-#funding:
-#  - elixir-fair-data
+
 ---
 
 With a huge thanks to ELIXIR-UK's DaSH Fellowship funding, we are delighted to present our new Learning Pathway, [**"Bioinformatics Projects: Using deconvolution to get new insights from old bulk RNA-seq"**]({% link learning-pathways/deconvolution_projects.md %}).
