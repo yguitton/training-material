@@ -10,7 +10,7 @@ coveralt: "XY plot of actual versus inferred proportions, with coloured dots rep
 #  - elixir-fair-data
 ---
 
-With a huge thanks to ELIXIR-UK's DaSH Fellowship funding, we are delighted to present our new Learning Pathway, [**"Bioinformatics Projects: Using deconvolution to get new insights from old bulk RNA-seq"**](% link learning-pathways/deconvolution_projects.md %).
+With a huge thanks to ELIXIR-UK's DaSH Fellowship funding, we are delighted to present our new Learning Pathway, [**"Bioinformatics Projects: Using deconvolution to get new insights from old bulk RNA-seq"**]({% link learning-pathways/deconvolution_projects.md %}).
 
 As science moves forward - and indeed, large language models and AI put the final nails in the coffin of education evaluation through recall - project-based learning takes centre stage. Such work develops independent thinking, resilience, initiative, and accountability in students - all key attributes for employability and ultimately advancing science. However, project-based learning is difficult to scale across a student body. Finding project ideas for and working up project ideas with students takes significantly more time than traditional multiple-choice question tests.
 
