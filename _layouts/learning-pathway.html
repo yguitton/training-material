@@ -23,7 +23,7 @@ layout: base
 
     {% snippet faqs/gtn/what-is-a-learning-pathway.md %}
 
-    <p>{{ pathway.description | markdownify }}</p>
+    <p>{{ pathway.description | liquefy | markdownify }}</p>
     <p>{{ content | markdownify }}</p>
 
 
