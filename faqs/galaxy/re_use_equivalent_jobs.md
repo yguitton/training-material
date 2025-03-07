@@ -20,7 +20,10 @@ To activate this feature, take the following steps:
 - Find the grey box: `Do you want to be able to re-use equivalent jobs?` 
 - Within the box, change the slider saying `no` to `yes`.
 - Scroll down to the bottom of the middle panel and click the `Save` button.
-2. After completing the first step, you will notice a new option for each tool you want to run, above the `Run tool` button and below the `Email notification`. When you activate `Attempt to re-use jobs with identical parameters?`
+2. Now you will notice the option `Attempt to re-use jobs with identical parameters?` for every tool you want to run. To test this:
+- Click on any tool you would like to run
+- If you scroll down to the end of the  `Tool Parameters` section, until you see the `Run tool` button, you will notice the new option `Attempt to re-use jobs with identical parameters?` above the `Run tool` button.
+- You can enable this option by sliding the `No` to `Yes`
   and click on the `Run tool`, Galaxy will check if you have access to a run with identical parameters. If so, the results will be displayed shortly thereafter.
 
 At the moment, this feature only works with data stored in your own histories or `datasets` directory.
