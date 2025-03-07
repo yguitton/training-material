@@ -24,7 +24,7 @@ To activate this feature, take the following steps:
 - Click on any tool you would like to run
 - If you scroll down to the end of the  `Tool Parameters` section, until you see the `Run tool` button, you will notice the new option `Attempt to re-use jobs with identical parameters?` above the `Run tool` button.
 - You can enable this option by sliding the `No` to `Yes`
-  and click on the `Run tool`, Galaxy will check if you have access to a run with identical parameters. If so, the results will be displayed shortly thereafter.
+ - Once you click on the `Run tool`, Galaxy will check if you have access to a run with identical parameters. If so, the results will be displayed shortly thereafter.
 
 At the moment, this feature only works with data stored in your own histories or `datasets` directory.
 This function cannot be used to obtain results if the input files are acquired from the internet (for example, input files from Zenodo).
