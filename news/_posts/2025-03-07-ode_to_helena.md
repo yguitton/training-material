@@ -17,7 +17,7 @@ As a result, building and delivering training often depends on goodwill. Ensurin
 
 From auto-generating tutorial skeletons and workflow tests to embedding accessibility settings and tutorial validation, @gtn:hexylena designed an infrastructure that ensures high-quality training from a broad range of busy contributors. She rewards trainers with automated page metrics and systems for tracking the breadth and depth of training materials. The automated Galaxy Contributor page is often more comprehensive than institutional profiles, ORCID, or Google Scholar, capturing everything from testing to reviewing. This also allows users to verify whether materials have been tested - something sorely lacking in much of the chaotic world of bioinformatics documentation.
 
-Bioinformatics training is often built by passionate individuals without dedicated funding. @gtn:hexylena 's automation innovations allow them to build the vast array of GTN materials - that should cost a fortune to build and use - with only scraps of time
+ - Bioinformatics training is often built by passionate individuals without dedicated funding. @gtn:hexylena 's automation innovations allow them to build the vast array of GTN materials - that should cost a fortune to build and use - with only scraps of time
 
 # Quotes from the 🥓Bacon Brigade
 
