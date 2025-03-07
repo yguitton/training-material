@@ -8,7 +8,7 @@ contributors: [dadrasarmin]
 
 Galaxy instances allow you to retrieve the results of running a tool from the cache (and hence almost immediately) if the tool with the exact same input and parameters has already been executed in your history. 
 This is also true if another user used the same tool and inputs and made their history publicly available.
-This is highly helpful in situations like training events. In such a case, the instructor might complete the tasks and make their results public. 
+This can be highly helpful, e.g., for training events, if the instructor makes a respective training history public before the event. 
 If the trainee activates this option in their account and uses the same input and parameters, they will immediately receive the results. This feature reduce the waiting time in the training sessions,
 saves energy and computational resources, and therefore reducing environmental impact.
 
