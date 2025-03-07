@@ -3,7 +3,7 @@ title: How do I re-use equivalent jobs in Galaxy (aka Job Cache)?
 area: user preferences
 layout: faq
 box_type: tip
-contributors: [dadrasarmin]
+contributors: [dadrasarmin, teresa-m]
 ---
 
 Galaxy instances allow you to retrieve the results of running a tool from the cache (and hence almost immediately) if the tool with the exact same input and parameters has already been executed in your history. 
