@@ -19,7 +19,7 @@ To activate this feature, take the following steps:
 - In your middle panel search for `Manage Information` and select them.
 - Find the grey box: `Do you want to be able to re-use equivalent jobs?` 
 - Within the box, change the slider saying `no` to `yes`.
-- Scroll down to the bottom of the middle panel and select the `Save` button.
+- Scroll down to the bottom of the middle panel and click the `Save` button.
 2. After completing the first step, you will notice a new option for each tool you want to run, above the `Run tool` button and below the `Email notification`. When you activate `Attempt to re-use jobs with identical parameters?`
   and click on the `Run tool`, Galaxy will check if you have access to a run with identical parameters. If so, the results will be displayed shortly thereafter.
 
