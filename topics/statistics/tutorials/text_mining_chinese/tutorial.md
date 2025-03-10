@@ -1,6 +1,5 @@
 ---
 layout: tutorial_hands_on
-draft: true
 
 title: Text-Mining Differences in Chinese Newspaper Articles
 level: Introductory
