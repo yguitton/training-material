@@ -2916,6 +2916,10 @@ tbrown91:
     orcid: 0000-0001-8293-4816
     joined: 2024-08
 
+tStehling:
+    name: Thorben Stehling
+    joined: 2024-11
+
 rmassei:
     name: Riccardo Massei
     email: riccardo.massei@ufz.de
@@ -2923,4 +2927,3 @@ rmassei:
     joined: 2024-11
     affiliations:
       - nfdi4bioimage
-
