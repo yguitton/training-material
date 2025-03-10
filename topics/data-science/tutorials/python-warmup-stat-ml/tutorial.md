@@ -208,10 +208,6 @@ plt.show()
 ```
 
 
-    
-![png](output_15_0.png)
-    
-
 
 **Adding color, symbols, ...**
 
@@ -244,10 +240,6 @@ plt.plot(y3, color = 'orange', marker = '', linestyle = '-', linewidth = 4 )
 
 plt.show()
 ```
-
-
-    
-![png](output_17_0.png)
     
 
 
@@ -296,10 +288,6 @@ ax[1].plot( y3, color = 'orange', marker = '', linestyle = '-' )
 
 plt.show()
 ```
-
-
-    
-![png](output_20_0.png)
     
 
 
@@ -335,10 +323,6 @@ ax[1][1].plot( y4, color = 'teal', linestyle = '-.' , linewidth=5 )
 
 plt.show()
 ```
-
-
-    
-![png](output_23_0.png)
     
 
 
@@ -376,10 +360,6 @@ ax[1].set_title('plot 2')
 
 plt.show()
 ```
-
-
-    
-![png](output_25_0.png)
     
 
 
@@ -415,9 +395,6 @@ plt.show()
 
 ```
 
-
-    
-![png](output_27_0.png)
     
 
 
@@ -430,8 +407,11 @@ Writing a matplotlib figure to a file can be achieved simply by replacing the ca
  * `dpi` : dots per inches , useful to set-up when saving to raster formats (ie., pixel-based such as png or jpeg). The actual size of the image is set using the argument `figsize` of `plt.subplots()`
 
 
-> Note : in a jupyter notebook the figure will still be shown, whereas in a standard .py script it will not appear on screen.
-
+> <comment-title></comment-title>
+>
+> in a jupyter notebook the figure will still be shown, whereas in a standard .py script it will not appear on screen.
+>
+{: .comment}
 
 Here is a demonstration. Apply in on your side and verify that the file `testPlot.png` was created:
 
@@ -458,11 +438,6 @@ ax[1].plot( y3, color = 'orange', marker = '', linestyle = '-' )
 
 plt.savefig( 'testPlot.png' , dpi = 90  )
 ```
-
-
-    
-![png](output_29_0.png)
-    
 
 
 ## Exercise 00.01 : bringing together numpy and matplotlib <a class="anchor" id="ex01"></a>
@@ -587,13 +562,6 @@ plt.show()
 ```
 
 
-    
-![png](output_45_0.png)
-    
-
-
-[back to the top](#top)
-
 ## Statistical testing
 
 `numpy.random` let's you draw random numbers ;
@@ -615,11 +583,6 @@ plt.plot(x,normPDF , label='PDF' )
 plt.legend()
 plt.show()
 ```
-
-
-    
-![png](output_47_0.png)
-    
 
 
 We can also get the expected quantiles of a distribution:
@@ -714,11 +677,6 @@ plt.plot( x , y_observed , marker = '.' , linestyle='' , alpha = 0.7 , label = '
 plt.legend()
 plt.show()
 ```
-
-
-    
-![png](output_56_0.png)
-    
 
 
 [back to the top](#top)
@@ -1041,10 +999,6 @@ plt.xlabel( 'dose' )
 plt.ylabel( 'proportion of dead' )
 plt.show()
 ```
-
-
-    
-![png](output_64_0.png)
     
 
 
@@ -1071,17 +1025,7 @@ plt.show()
 
 ```
 
-    /home/wandrille/Installed_software/anaconda3/envs/introML2022/lib/python3.10/site-packages/pandas/core/arraylike.py:397: RuntimeWarning: divide by zero encountered in log
-      result = getattr(ufunc, method)(*inputs, **kwargs)
 
-
-
-    
-![png](output_66_1.png)
-    
-
-
-[back to the top](#top)
 
 ## Exercise 00.02 : tying everything together <a class="anchor" id="exo2"></a>
 

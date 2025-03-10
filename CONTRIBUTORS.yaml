@@ -2219,7 +2219,7 @@ rahmot:
 ralfg:
     name: Ralf Gabriels
     joined: 2025-02
-    elixir-node: be
+    elixir_node: be
 
 raphaelmourad:
     name: Raphael Mourad

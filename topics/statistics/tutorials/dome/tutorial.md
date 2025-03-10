@@ -6,7 +6,7 @@ draft: true
 questions:
 - to do
 objectives:
-- 
+- to do
 time_estimation: 3H
 key_points:
 - To be added
