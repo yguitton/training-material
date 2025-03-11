@@ -72,7 +72,7 @@ Machine learning procedures allow us to take those considerations into account. 
 
 More particularly we will see that the machine learning paradigm modifies the function to optimize that we have seen before by adding a penalty to covariables that generalize badly. We will also see that in a machine learning procedure, the generalization is approached by fitting and evaluating mutliple times your model on subset of your data.
 
-**The machine learning paradigm emphasizes the importance of building a general model that will be good at dealing with future, unknown, data points rather than being the best model on the data that we have now.**
+The machine learning paradigm emphasizes the importance of building a general model that will be good at dealing with future, unknown, data points rather than being the best model on the data that we have now.
 
 > <agenda-title></agenda-title>
 >
@@ -1786,7 +1786,7 @@ plt.xlabel('Predicted label')
 
 <!--![png](output_95_1.png)-->
   
-**If you want to use a GLM other than the logistic regression:**
+If you want to use a GLM other than the logistic regression:
 [GLM in sklearn](https://scikit-learn.org/stable/modules/linear_model.html#generalized-linear-regression)
 
 
@@ -2117,7 +2117,7 @@ $exp(-\gamma||\overrightarrow{x_{i}}-\overrightarrow{x_{j}}||^{2})$ : gaussian r
 
 $tanh(\kappa\overrightarrow{x_{i}}.\overrightarrow{x_{j}}+c)$ : hyperbolic tangent
 
-**This is really powerful for classification but going non-linear by using a kernel trick prevents you from interpreting how your features are massaged to create this classifier... So, if you want interpretability and do science rather than engineering : keep it linear.**
+This is really powerful for classification but going non-linear by using a kernel trick prevents you from interpreting how your features are massaged to create this classifier... So, if you want interpretability and do science rather than engineering : keep it linear.
 
 <!--![3d_svm](image/3d_svm.png)-->
 
@@ -2560,29 +2560,27 @@ Of course, you will have to compute this threshold at each step of your tree sin
 ---
 The **impurity is related to how much your feature splitting is still having mixed classes**. So the impurity ends up giving a score: either it is a simple [Shannon entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) or it is a [Gini coefficient](https://en.wikipedia.org/wiki/Gini_coefficient).
 
-#### Shannon Entropy
+### Shannon Entropy
 
 $$Entropy = - \sum_{j} p_j log_2(p_j)$$
 
 This measure is linked to information theory, where the information of an event occuring is the $log_2$ of this event's probability of occuring.
 For purity, **0 is the best possible score, and 1 the worst**.
 
-#### Gini coefficient
+### Gini coefficient
 
 $$Gini = 1- \sum_{j} p_j^2$$
 
 The idea is to measure the **probability that a dummy classifier mislabels your data**.
 **0 is best, 1 is worst.**
 
----
 Before going further, just a little bit of vocabulary: 
 * **Trees** are made of **nodes** (where the question is asked and where the splitting occurs). 
 * A **branch** is the outcome of a splitting. 
 * A **leaf** is the last node on a branch (no more splitting).
 
-[Back to the ToC](#toc)
 
-### Toy example to visualize decision tree. <a class="anchor" id="toy-decision-tree"></a>
+### Toy example to visualize decision tree. 
 
 Let explore some hyperparameters of this method that, you will see in those examples, act like a regularization:
 - **Max Tree depth**: the maximum number of consecutive questions to ask
@@ -3837,7 +3835,7 @@ Solution - BONUS - an even better splitting strategy
 
 # Annexes
 
-### Features selection
+## Features selection
 
 
 ```python
@@ -3969,7 +3967,7 @@ plt.show()
     
 
 
-##### Classification
+#### Classification
 One thing (among others) that you can do is to look for a **subset of features that seems to be important to describe the target class**. It's like the pairplots above but instead of just looking at it you choose the features you want to keep.
 
 You can choose different metrics for 'how important to describe the class' a feature is. 

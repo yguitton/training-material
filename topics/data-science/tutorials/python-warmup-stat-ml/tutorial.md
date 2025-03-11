@@ -209,14 +209,14 @@ plt.show()
 
 
 
-**Adding color, symbols, ...**
+**### Adding color, symbols, ...**
 
 `matplotlib` offers many options to customize the appearance of your plot.
 
 Here are the (some) common arguments to `plot()` (which can also be applied to many other graphical representations):
- * `color` : could be given as a (red,green,blue) tuple, a [name](https://matplotlib.org/3.1.0/gallery/color/named_colors.html), a hex code, ...  (see [here](https://matplotlib.org/tutorials/colors/colors.html) for all the options)
- * `marker` : symbols for the data point. `'.'` is a point, `'v'` a down triangle, ... see [here](https://matplotlib.org/3.3.3/api/markers_api.html#module-matplotlib.markers) for the list of possibilities.
- * `linestyle` : style of the line. `'-'` is solid, `'--'` is dashed, `''` for no line. See [here](https://matplotlib.org/3.3.3/gallery/lines_bars_and_markers/linestyles.html) for more options
+ * `color` : could be given as a (red,green,blue) tuple, a [name](https://matplotlib.org/3.1.0/gallery/color/named_colors.html), a hex code, ...  (see [Something better here](https://matplotlib.org/tutorials/colors/colors.html) for all the options)
+ * `marker` : symbols for the data point. `'.'` is a point, `'v'` a down triangle, ... see [Something better here](https://matplotlib.org/3.3.3/api/markers_api.html#module-matplotlib.markers) for the list of possibilities.
+ * `linestyle` : style of the line. `'-'` is solid, `'--'` is dashed, `''` for no line. See [Something better here](https://matplotlib.org/3.3.3/gallery/lines_bars_and_markers/linestyles.html) for more options
  * `linewidth` : width of the lines
  * `markersize` : size of the markers
 
@@ -247,7 +247,7 @@ Note that:
  * you can call plot several time in a row to make several lines appear (only `plt.show()` causes the figure to appear)
  * the frame of the picture automatically adjust to what it needs to show
 
-**multiple subplots**
+**### multiple subplots**
 
 Now would normally be when we show you how to add labels, titles and legends to figures. 
 
@@ -293,7 +293,7 @@ plt.show()
 
 Notice how we call `ax[0].plot(...)` instead of `plt.plot(...)` to specify in which subplots we want to plot.
 
-**multiple subplots - continued**
+**### multiple subplots - continued**
 
 Let's see the same thing with several lines and several columns
 
@@ -326,7 +326,7 @@ plt.show()
     
 
 
-**setting up labels**
+**### setting up labels**
 
 To set the labels at the x-axis, y-axis and title, we use the method of the Axe object:
  * `.set_xlabel(...)`
@@ -398,7 +398,7 @@ plt.show()
     
 
 
-**additional : writing a figure to a file**
+**### additional : writing a figure to a file**
 
 Writing a matplotlib figure to a file can be achieved simply by replacing the call to `plt.show()` to `plt.savefig(...)`.
 
@@ -477,7 +477,7 @@ bonus question solution:
 ## Generating random numbers
 
 
-**the basics**
+**### the basics**
 
 
 ```python
@@ -504,7 +504,7 @@ print( rd.random(size=10) ) # draw directly 10 numbers
      0.75933345 0.06571168 0.45772397 0.67191214]
 
 
-**setting the seed : pseudorandomness and reproducibility**
+**### setting the seed : pseudorandomness and reproducibility**
 
 
 ```python
@@ -520,7 +520,7 @@ print( 'after resetting seed' , rd.random(size=5) )
     after resetting seed [0.37454012 0.95071431 0.73199394 0.59865848 0.15601864]
 
 
-**beyond the uniform distribution**
+**### beyond the uniform distribution**
 
 numpy offers you quite a large [set of distributions you can draw from](https://docs.scipy.org/doc/numpy-1.15.0/reference/routines.random.html#distributions).
 
@@ -621,7 +621,7 @@ print('\tp-value:',pval)
         p-value: 0.7901311339594405
 
 
-**What is our conclusion for these tests results? What do you think about this?**
+**### What is our conclusion for these tests results? What do you think about this?**
 
 
 ```python
@@ -985,7 +985,7 @@ df[ ['ndied','nalive'] ] # select several columns
 
 
 
-**Plotting DataFrame Columns**
+**### Plotting DataFrame Columns**
 
 Because `DataFrame` columns are iterable, they can seamlessly be given as argument to `plot()`.
 
