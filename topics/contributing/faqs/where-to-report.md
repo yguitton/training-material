@@ -23,4 +23,8 @@ Report an **Issue** on the correct Github repository:
  - **Galaxy Community Hub**: https://github.com/galaxyproject/galaxy-hub/
  - **Galaxy Training Network**: https://github.com/galaxyproject/training-material
 
- What we ask from anyone raising an issue, is that you be willing to follow up with us. We may need more information or have different ideas, and it would be very helpful to continue the conversation to make the best fix or feature!
+ > <warning-title>Be thorough!</warning-title>
+ > Remember to be *thorough* when posting issues! Consider this [FAQ on posting](https://training.galaxyproject.org/training-material/faqs/galaxy/analysis_troubleshooting_reporting.html).
+ {: .warning}
+
+What we ask from anyone raising an issue, is that you be willing to follow up with us. We may need more information or have different ideas, and it would be very helpful to continue the conversation to make the best fix or feature!
