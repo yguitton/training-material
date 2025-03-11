@@ -1,0 +1,26 @@
+---
+title: "Posting issues and ideas for the Galaxy Community"
+area: github
+box_type: tip
+layout: faq
+contributors: [nomadscientist]
+---
+
+The Galaxy community addresses issues and needs through resolving issues on Github.
+
+# Are you struggling to analyse something and need help?
+- [Check out ]({% link faqs/galaxy/analysis_reporting_issues.html %})
+
+# Have you found a key problem and/or had an idea that could improve Galaxy?
+
+Report an **Issue** on the correct Github repository:
+
+ - **Tools**: Need a tool added to a server? Check [this FAQ out]({% link https://training.galaxyproject.org/training-material/faqs/galaxy/request-galaxy-tools-on-a-specific-server.html %)
+ - **Tools**: Bug in the tool: Select your tool in the Galaxy interface | Drop-down arrow to **See in Tool Shed** | **Development repository** , then describe the issue there
+ - **Tools**: Request for developers to wrap a tool: Either you will have a domain-specific location (such as the [Single-cell & sPatial Omics Community tool request form](https://docs.google.com/spreadsheets/d/15hqgqA-RMDhXR-ylKhRF-Dab9Ij2arYSKiEVoPl2df4/edit?usp=sharing) or you can post the request in our Intergalatic Utilities Commission: https://github.com/galaxyproject/tools-iuc
+ - **User interface**: https://github.com/galaxyproject/galaxy
+ - **Subdomains / Galaxy Labs**: Specific community content: https://github.com/galaxyproject/galaxy_codex or General Galaxy Labs issue: https://github.com/usegalaxy-au/galaxy-labs-engine
+ - **Galaxy Community Hub**: https://github.com/galaxyproject/galaxy-hub/
+ - **Galaxy Training Network**: https://github.com/galaxyproject/training-material
+
+ What we ask from anyone raising an issue, is that you be willing to follow up with us. We may need more information or have different ideas, and it would be very helpful to continue the conversation to make the best fix or feature!
