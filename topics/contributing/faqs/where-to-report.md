@@ -15,7 +15,7 @@ The Galaxy community addresses issues and needs through resolving issues on Gith
 
 Report an **Issue** on the correct Github repository:
 
- - **Tools**: Need a tool added to a server? Check [this FAQ out]({% link https://training.galaxyproject.org/training-material/faqs/galaxy/request-galaxy-tools-on-a-specific-server.html %})
+ - **Tools**: Need a tool added to a server? Check [this FAQ out]({% link faqs/galaxy/request-galaxy-tools-on-a-specific-server.html %)
  - **Tools**: Bug in the tool: Select your tool in the Galaxy interface | Drop-down arrow to **See in Tool Shed** | **Development repository** , then describe the issue there
  - **Tools**: Request for developers to wrap a tool: Either you will have a domain-specific location (such as the [Single-cell & sPatial Omics Community tool request form](https://docs.google.com/spreadsheets/d/15hqgqA-RMDhXR-ylKhRF-Dab9Ij2arYSKiEVoPl2df4/edit?usp=sharing) or you can post the request in our Intergalatic Utilities Commission: https://github.com/galaxyproject/tools-iuc
  - **User interface**: https://github.com/galaxyproject/galaxy
