@@ -59,8 +59,7 @@ a-asai:
 
 abretaud:
     name: Anthony Bretaudeau
-    email: anthony.bretaudeau@inrae.fr
-    twitter: abretau
+    email: anthony.bretaudeau@irisa.fr
     matrix: 'abretaud:matrix.org'
     orcid: 0000-0003-0914-2470
     joined: 2017-09
@@ -72,6 +71,7 @@ abretaud:
       lon: -1.64
     fediverse: https://genomic.social/@abretaud
     fediverse_flavor: mastodon
+    bluesky: abretaud.bsky.social
     affiliations:
       - gallantries
       - eurosciencegateway
@@ -1202,6 +1202,17 @@ jfallmann:
     name: Joerg Fallmann
     joined: 2017-09
 
+wennj:
+    name: Jörg Wennmann
+    email: joerg.wennmann@julius-kuehn.de
+    orcid: 0000-0003-3060-8992
+    contact_for_training: true
+    joined: 2025-01
+    location:
+      country: DE
+      lat: 49.449466
+      lon: 8.640339
+
 jfaulon:
     name: Jean-Loup Faulon
     email: Jean-loup.Faulon@inrae.fr
@@ -1709,6 +1720,16 @@ mcmaniou:
     elixir_node: gr
     affiliations:
       - elixir-europe
+
+MD-Chem:
+    name: Mohua Das
+    joined: 2024-12
+    orcid: 0000-0002-8891-6333
+    email: dasmohua1991@gmail.com
+    affiliations:
+      - gis
+    location:
+        country: SG
 
 Mehgan-E:
     name: Mehgan Evans
@@ -2385,6 +2406,13 @@ Shorla:
     email: Sogunkelu@gmail.com
     joined: 2021-10
 
+shrutikhare-git:
+    name: Shruti Khare
+    joined: 2024-12
+    email: skshrutikhare@gmail.com
+    orcid: 0000-0001-5622-2663
+    location:        
+      country: SG    
 shwdey:
     name: Shweta Pandey
     email: shwphd@gmail.com
@@ -2888,6 +2916,10 @@ tbrown91:
     orcid: 0000-0001-8293-4816
     joined: 2024-08
 
+tStehling:
+    name: Thorben Stehling
+    joined: 2024-11
+
 rmassei:
     name: Riccardo Massei
     email: riccardo.massei@ufz.de
@@ -2895,4 +2927,3 @@ rmassei:
     joined: 2024-11
     affiliations:
       - nfdi4bioimage
-

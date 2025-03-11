@@ -7,8 +7,10 @@ title: "Pre-processing of Single-Cell RNA Data"
 subtopic: end-to-end
 priority: 1
 
+draft: true
+
 zenodo_link: "https://zenodo.org/record/3253142"
-tags:
+tags: []
 questions:
   - "What is single-cell?"
   - "How do we process a batch?"
