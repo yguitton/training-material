@@ -109,7 +109,7 @@ We will use Regular Expressions in a tool called "Replace text". It contains fou
 
 > <hands-on-title> Cleaning the Text with Regular Expressions </hands-on-title>
 >
-> 1. {% tool [Replace Text](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.3+galaxy1) %} with the following parameters:
+> 1. {% tool [Replace Text](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `output` (Input dataset)
 >    - In *"Replacement"*:
 >        - {% icon param-repeat %} *"Insert Replacement"*
@@ -368,7 +368,7 @@ The last step is to visualise the results within a word cloud. It shows, which c
 
 > <hands-on-title> Task description </hands-on-title>
 >
-> 1. {% tool [Generate a word cloud](toolshed.g2.bx.psu.edu/repos/bgruening/wordcloud/wordcloud/1.9.4+galaxy0) %} with the following parameters:
+> 1. {% tool [Generate a word cloud](toolshed.g2.bx.psu.edu/repos/bgruening/wordcloud/wordcloud/1.9.4+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"Input file"*: `out_file1` (output of **Cut** {% icon tool %})
 >    - *"Do you want to select a special font?": `Select from a list of fonts`: `Noto Sans Traditional Chinese`
 >    - *"Smallest font size to use"*: `8`
