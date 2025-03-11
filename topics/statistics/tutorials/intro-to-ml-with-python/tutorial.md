@@ -2571,8 +2571,7 @@ For purity, **0 is the best possible score, and 1 the worst**.
 
 $$Gini = 1- \sum_{j} p_j^2$$
 
-The idea is to measure the **probability that a dummy classifier mislabels your data**.
-**0** is **best, **1** is worst.**
+The idea is to measure the **probability that a dummy classifier mislabels your data**: **0** is **best, **1** is worst.**
 
 Before going further, just a little bit of vocabulary: 
 * **Trees** are made of **nodes** (where the question is asked and where the splitting occurs). 
@@ -2799,7 +2798,7 @@ There are 3 main advantages to this kind of methods:
 * you don't need to rescale
 * it already includes non linear fitting
 
-**### Moreover it is 'easy' to interpret.**
+Moreover it is 'easy' to interpret.
 
 But....(yes there is a but, there is no free lunch)
 
@@ -4015,7 +4014,7 @@ Another score would be to use the amount of [Mutual Information](https://en.wiki
 
 The way this mutual information is caclulated is out of the scope of this class as it is a bit technical.
 
-##### For regression just use correlation or Mutual Iformation
+For regression just use correlation or Mutual Information
 
 
 ```python
