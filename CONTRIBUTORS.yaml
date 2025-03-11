@@ -2243,6 +2243,15 @@ rahmot:
     joined: 2021-10
     linkedin: rahmot-afolabi
 
+ralfg:
+    name: Ralf Gabriels
+    joined: 2025-02
+    elixir_node: be
+
+raphaelmourad:
+    name: Raphael Mourad
+    joined: 2025-02
+
 Rassine:
     name: Ankerl Yassine
     email: yassine.ankerl@live.fr
@@ -2770,6 +2779,11 @@ vladvisan:
 vloux:
     name: Valentin Loux
     joined: 2019-04
+
+wandrilled:
+    name: Wandrille Duchemin
+    joined: 2025-02
+    elixir_node: ch
 
 wee-snufkin:
     name: Julia Jakiela
