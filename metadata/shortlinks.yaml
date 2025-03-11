@@ -17,6 +17,7 @@ name:
   admin/k8s-managing-galaxy: "/topics/admin/tutorials/k8s-managing-galaxy/tutorial.html"
   admin/monitoring: "/topics/admin/tutorials/monitoring/tutorial.html"
   admin/object-store: "/topics/admin/tutorials/object-store/tutorial.html"
+  admin/onedata: "/topics/admin/tutorials/onedata/tutorial.html"  # fixme add them all
   admin/pulsar: "/topics/admin/tutorials/pulsar/tutorial.html"
   admin/reports: "/topics/admin/tutorials/reports/tutorial.html"
   admin/singularity: "/topics/admin/tutorials/singularity/tutorial.html"
@@ -951,6 +952,7 @@ id:
   T00320: "/topics/variant-analysis/tutorials/trio-analysis/tutorial.html"
   T00321: "/topics/visualisation/tutorials/circos/tutorial.html"
   T00322: "/topics/visualisation/tutorials/jbrowse/tutorial.html"
+  T00323: "/topics/admin/tutorials/onedata/tutorial.html"
   S00000: "/topics/admin/tutorials/advanced-galaxy-customisation/slides.html"
   S00001: "/topics/admin/tutorials/ansible/slides.html"
   S00002: "/topics/admin/tutorials/ansible-galaxy/slides.html"
