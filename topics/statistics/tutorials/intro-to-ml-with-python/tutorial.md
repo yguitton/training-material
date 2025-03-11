@@ -2572,7 +2572,7 @@ For purity, **0 is the best possible score, and 1 the worst**.
 $$Gini = 1- \sum_{j} p_j^2$$
 
 The idea is to measure the **probability that a dummy classifier mislabels your data**.
-**0 is best, 1 is worst.**
+**0** is **best, **1** is worst.**
 
 Before going further, just a little bit of vocabulary: 
 * **Trees** are made of **nodes** (where the question is asked and where the splitting occurs). 
@@ -2799,7 +2799,7 @@ There are 3 main advantages to this kind of methods:
 * you don't need to rescale
 * it already includes non linear fitting
 
-**Moreover it is 'easy' to interpret.**
+**### Moreover it is 'easy' to interpret.**
 
 But....(yes there is a but, there is no free lunch)
 
@@ -3265,9 +3265,7 @@ Tree-based techniques are interesting because:
  
 However as you have seen they tend to take longer to train...
 
-[back to the ToC](#toc)
-    
-# Conclusion <a id='conclusion'></a>
+# Conclusion
 
 During this notebook we have only given a whirlwind tour of what ML is and what is it about.
 
@@ -3280,13 +3278,8 @@ However, more than a collection of algorithm, Machine Learning should also be se
    * [classification metrics](https://scikit-learn.org/stable/modules/model_evaluation.html#classification-metrics)
    * [regression metrics](https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics)
 
-<br>
 
-[Back to the ToC](#toc)
-
-<br>
-
-# Classification exercise : predicting heart disease on the framingham data-set <a class="anchor" id="exo-classif"></a>
+# Classification exercise : predicting heart disease on the framingham data-set
 
 Use everything you have learned to model and predict the column `'TenYearCHD'` (dependent variable : ten year risk of coronary heart disease).
 
@@ -3511,13 +3504,8 @@ Additionnal little diagnostic plot
 # %load -r 146- solutions/solution_03_03.py
 ```
 
-<br>
 
-[Back to the ToC](#toc)
-
-<br>
-
-# Additionnal Regression exercise : predicting daily maximal temperature <a class="anchor" id="exo-regression"></a>
+# Additionnal Regression exercise : predicting daily maximal temperature
 
 
 ```python
@@ -3967,7 +3955,7 @@ plt.show()
     
 
 
-#### Classification
+### Classification
 One thing (among others) that you can do is to look for a **subset of features that seems to be important to describe the target class**. It's like the pairplots above but instead of just looking at it you choose the features you want to keep.
 
 You can choose different metrics for 'how important to describe the class' a feature is. 
