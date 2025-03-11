@@ -9,7 +9,8 @@ contributors: [nomadscientist]
 The Galaxy community addresses issues and needs through resolving issues on Github.
 
 # Are you struggling to analyse something and need help?
-  {% snippet faqs/galaxy/analysis_reporting_issues.md %}
+
+{% snippet faqs/galaxy/analysis_reporting_issues.md %}
 
 # Have you found a key problem and/or had an idea that could improve Galaxy?
 
@@ -24,9 +25,9 @@ Report an **Issue** on the correct Github repository:
  - **Galaxy Community Hub**: https://github.com/galaxyproject/galaxy-hub/
  - **Galaxy Training Network**: https://github.com/galaxyproject/training-material
 
- > <warning-title>Be thorough!</warning-title>
- > Remember to be *thorough* when posting issues! Consider the FAQ on posting!
- >        {% snippet faqs/galaxy/analysis_troubleshooting_reporting.md %}
- {: .warning}
+> <warning-title>Be thorough!</warning-title>
+> Remember to be *thorough* when posting issues! Consider the FAQ on posting!
+>        {% snippet faqs/galaxy/analysis_troubleshooting_reporting.md %}
+{: .warning}
 
 What we ask from anyone raising an issue, is that you be willing to follow up with us. We may need more information or have different ideas, and it would be very helpful to continue the conversation to make the best fix or feature!
