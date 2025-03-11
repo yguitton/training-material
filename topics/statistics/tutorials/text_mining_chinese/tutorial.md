@@ -114,6 +114,7 @@ We will use Regular Expressions in a tool called "Replace text". It contains fou
 >    - In *"Replacement"*:
 >        - {% icon param-repeat %} *"Insert Replacement"*
 >            - *"Find pattern"*: `\r`
+>            - *"Additional sed commands before replacement"*: `:a;N;$!ba;`
 >        - {% icon param-repeat %} *"Insert Replacement"*
 >            - *"Find pattern"*: `\n`
 >        - {% icon param-repeat %} *"Insert Replacement"*
@@ -126,7 +127,10 @@ We will use Regular Expressions in a tool called "Replace text". It contains fou
 >    > Regular expressions can not only find particular words, as you might be familiar with from regular text editors.
 >    > It is more powerful and can find particular patterns, for example, only capitalised words or all numbers.
 >    > In this step, we mostly delete unnecessary placeholders.
->    > The first pattern we want to find is `\r`. It catches a specific form of invisible linebreaks that would create unwanted gaps in the comparison later. We delete those by leaving the optional "Replace with" field blank.
+>    > The first pattern we want to find is `\r`. It catches a specific form of invisible linebreaks that would create unwanted gaps in the comparison later.
+>    > We delete those by leaving the optional "Replace with" field blank.
+>    > The additional sed commands before replacement `:a;N;$!ba;` catch all blank spaces with this tool.
+>    > It is necessary only once to ensure that particular end-of-line characters are removed consistently.
 >    > Similarly, `\n` marks linebreaks. We also delete those by leaving the optional "Replace with" field blank.
 >    > The next expression we search for is `\s`. Those are spaces as you see them between words on your computer. We delete those.
 >    > As a result, there are no gaps in our text anymore.
