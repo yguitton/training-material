@@ -9,7 +9,7 @@ contributors: [nomadscientist]
 The Galaxy community addresses issues and needs through resolving issues on Github.
 
 # Are you struggling to analyse something and need help?
-- [Check out ]({% link faqs/galaxy/analysis_reporting_issues.html %})
+  {% snippet faqs/galaxy/analysis_reporting_issues.md %}
 
 # Have you found a key problem and/or had an idea that could improve Galaxy?
 
