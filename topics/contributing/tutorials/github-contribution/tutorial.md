@@ -26,14 +26,10 @@ contributors:
   - bebatut
 redirect_from:
   - "/topics/contributing/tutorials/github-command-line-contribution/tutorial"
-  - "/topics/contributing/tutorials/github-interface-contribution/tutorial"
 ---
+Most of the GTN content is written in [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) with some metadata (or variables) found in [YAML](http://yaml.org/) files. Everything is stored on a [GitHub](https://github.com) repository: [{{ site.github_repository }}]({{ site.github_repository }}).
 
-
-
-Most of the content is written in [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) with some metadata (or variables) found in [YAML](http://yaml.org/) files. Everything is stored on a [GitHub](https://github.com) repository: [{{ site.github_repository }}]({{ site.github_repository }}).
-
-The process of development of new content is open and transparent, using git and following the [GitHub flow](https://guides.github.com/introduction/flow/):
+The process of development of new content is open and transparent, using git and following the [GitHub flow](https://guides.github.com/introduction/flow/), which we will walk you through:
 
 ![Open source development process](../../images/oss_development_process.png "Open source development process")
 
@@ -54,6 +50,20 @@ The process of development of new content is open and transparent, using git and
 > {:toc}
 >
 {: .agenda}
+
+{% include _includes/cyoa-choices.html option1="Desktop" option2="Command-line" default="Desktop"
+       text="You can engage with Github via either an application on your computer, called Github Desktop, or through using the CommandLine. If you're not used to using the CommandLine, or you just like a user interface, then use the Github Desktop." %}
+
+<div class="Desktop" markdown="1">
+
+> <hands-on-title>Download Github Desktop</hands-on-title>
+>
+> 1. Go to the [Github Desktop site](https://desktop.github.com/download/)
+> 2. Select the **Download for (your kind of computer)**
+> 3. Follow any instructions
+{: .hands_on}
+
+</div>
 
 # Create a fork of this repository on GitHub
 
@@ -82,6 +92,29 @@ To modify the content of the repository, you need a copy of it on your computer.
 
 ![Explanation of the cloning](../../images/PR_schema_02.png "Cloning a repository"){: width="900px"}
 
+<div class="Desktop" markdown="1">
+
+> <hands-on-title>Clone the GitHub repository</hands-on-title>
+>
+> 1. Get the URL of your fork. You can find this on the main page of your fork under the green button:
+>    1. Click on **Code** (right)
+>
+>       ![Get fork URL](../../images/clone_code_button.png)
+>
+>    2. Select **Open with Github Desktop**
+>
+>       Your computer might ask if it's ok to open the website Select *Allow* if so.
+>     
+>       ![Clone a Repository](../../images/clone_a_repo.png)
+>
+>    2. If you are happy with the location of the folder, select **Clone**
+>       This may take some time the first time (as the GTN repository is quite large!), but eventually the folder will be in your computer.
+{: .hands_on}
+
+</div>
+
+<div class="Command-line" markdown="1">
+
 > <hands-on-title>Clone the GitHub repository</hands-on-title>
 >
 > 1. Get the URL of your fork. You can find this on the main page of your fork under the green button:
@@ -107,6 +140,9 @@ To modify the content of the repository, you need a copy of it on your computer.
 >    $ cd training-material
 >    ```
 {: .hands_on}
+
+
+</div>
 
 > <comment-title></comment-title>
 > If you already have a local copy of the GitHub repository, you need to update it before doing any changes. To learn how to do that, please follow the [last section](#stay-up-to-date).
