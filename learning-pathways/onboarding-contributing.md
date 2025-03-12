@@ -7,7 +7,7 @@ priority: 1
 
 editorial_board:
 - nomadscientist
-- PhilReedData
+- philreeddata
 
 redirect_from:
 - /learning-pathways/building_tutorials
