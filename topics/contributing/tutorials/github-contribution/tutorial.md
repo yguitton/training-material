@@ -51,6 +51,16 @@ The process of development of new content is open and transparent, using git and
 >
 {: .agenda}
 
+# Create a Github account, if you have not already
+
+> <hands-on-title>Create a Github account</hands-on-title>
+>
+> 1. Go to the [Github](https://github.com)
+> 2. Create an account & follow the instructions. If anything is unclear, you can check [their documentation on account creation](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github).
+{: .hands_on}
+
+# Create a fork of this repository on GitHub
+
 {% include _includes/cyoa-choices.html option1="Desktop" option2="Command-line" default="Desktop"
        text="You can engage with Github via either an application on your computer, called Github Desktop, or through using the CommandLine. If you're not used to using the CommandLine, or you just like a user interface, then use the Github Desktop." %}
 
@@ -64,8 +74,6 @@ The process of development of new content is open and transparent, using git and
 {: .hands_on}
 
 </div>
-
-# Create a fork of this repository on GitHub
 
 A fork is a copy of a repository. [Forking](https://help.github.com/articles/fork-a-repo/) a repository allows you to freely experiment with changes without affecting the original project:
 
