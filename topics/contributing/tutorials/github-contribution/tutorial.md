@@ -160,26 +160,7 @@ When you're working on a project, you're going to have a bunch of different feat
 
 Here for this tutorial, you will create a branch called "my_new_branch" in which you will modify the `CONTRIBUTORS.yaml` file, the file used to generate the [Hall of Fame]({% link hall-of-fame.md %}).
 
-> <hands-on-title>Create a branch</hands-on-title>
->
-> 1. List the existing branch
->
->    ```
->    $ git branch
->      * main
->    ```
->
->    The branch on which you are is shown with the `*`
->
-> 2. Create a new branch
->
->    ```
->    $ git checkout -b my_new_branch
->    Switched to a new branch 'my_new_branch'
->    ```
->
-> 3. List the existing branch to check that the branch has been created and you are now on it
-{: .hands_on}
+
 
 This branch is added to your local copy:
 
