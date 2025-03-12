@@ -445,17 +445,16 @@ For example, one of the reviewers of your pull request may have asked you to add
 > 3. Save the file
 >
 > 4. Commit the changes to your branch (as before)
-> 5.  
-> 1. Make any requested changes in
 >
->    It should look like
+> 5. Select **Push origin** to push these changes from your local folder to your online Github branch (which is linked to your pull request)
 >
->    ```yaml
->    bebatut:
->         name: Bérénice Batut
->    ```
+>       ![Push origin](../../images/desktop-push_origin.png)
 >
-
+>    The pull request should be automatically updated
+>
+> 6. Check that the new changes are added to the pull request on GitHub
+>
+{: .hands_on}
 
 </div>
 
