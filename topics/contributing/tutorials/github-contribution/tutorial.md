@@ -160,7 +160,54 @@ When you're working on a project, you're going to have a bunch of different feat
 
 Here for this tutorial, you will create a branch called "my_new_branch" in which you will modify the `CONTRIBUTORS.yaml` file, the file used to generate the [Hall of Fame]({% link hall-of-fame.md %}).
 
+<div class="Desktop" markdown="1">
+> <hands-on-title>Create a branch</hands-on-title>
+>
+> 1. Go to *Current Branch*
+>
+>       ![Click on Current Branch](../../images/desktop-select_current_branch.png)
+>
+> 2. Either select an existing branch by searching, or (as in this case) type a name for a new branch:
+>    ```
+>    my_new_branch
+>    ```
+>       ![Select a branch option](../../images/desktop-select_branch.png)
+>       ![Type in new branch name](../../images/desktop-new_branch.png)
+>
+> 3. Select **Create New Branch**
+>
+>       ![Create branch confirmation](../../images/desktop-create_branch.png)
+>
+> 4. Select **Create Branch**
+{: .hands_on}
 
+
+</div>
+
+<div class="Command-line" markdown="1">
+
+> <hands-on-title>Create a branch</hands-on-title>
+>
+> 1. List the existing branch
+>
+>    ```
+>    $ git branch
+>      * main
+>    ```
+>
+>    The branch on which you are is shown with the `*`
+>
+> 2. Create a new branch
+>
+>    ```
+>    $ git checkout -b my_new_branch
+>    Switched to a new branch 'my_new_branch'
+>    ```
+>
+> 3. List the existing branch to check that the branch has been created and you are now on it
+{: .hands_on}
+
+</div>
 
 This branch is added to your local copy:
 
