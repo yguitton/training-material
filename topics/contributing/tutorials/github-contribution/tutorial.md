@@ -241,7 +241,11 @@ You have created your first branch! Now you want to make the change in the `CONT
 >
 > 3. Save the file
 >
-> 4.
+> 4. Go back to your Github Desktop, which should now show that file change. Add a useful *commit message* and a *description* saying what you did.
+>
+>       ![Find the contributors file](../../images/desktop-commit.png)
+>
+> 5. Select **Commit to my_new_branch**
 
 </div>
 
