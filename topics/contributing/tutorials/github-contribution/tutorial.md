@@ -402,28 +402,59 @@ On larger pull requests, you can end up with all three! Here's how to deal this.
 
 ## 1: A reviewer commits their own changes to your pull request
 
-These changes currently only exist in your Github repository online, not on your local branch. In case you have to make further changes, it's important you *fetch* those changes onto your local branch.
+These changes currently only exist in your Github repository online, not on your local branch. In case you have to make any further changes, it's important you *fetch* those changes onto your local branch. This is how you stay up to date.
 
 > <hands-on-title>Fetch origin</hands-on-title>
-> 1. Go to your GitHub repository on a web browser
-> 2. Change to the "my_new_branch" branch:
->    1. Click on **Branch: main** (left)
->
->       ![Selecting branch on GitHub](../../images/PR_branch_github.png)
->
->    2. Select the branch "my_new_branch"
->
-> 4. Check that your name is in the `CONTRIBUTORS.yaml` file
+> 1. On your Github Desktop, select **Fetch origin**
+>       ![Fetch origin](../../images/desktop-fetch_origin.png)
 >
 {: .hands_on}
-, one of the reviewers of your pull request may have asked you to add your name after your GitHub username in the `CONTRIBUTORS.yaml` file, if you didn't already. Or, they may have suggested some changes.
 
-## Commit suggested changes
+You can then make further changes locally, keeping your local and online branch synched.
 
+## 2: Commit suggested changes
 
+> <hands-on-title>Commit suggested changes</hands-on-title>
+>
+> 1. On your Pull Request link where you see the suggested changes, commit them (or engage further, or edit them) on GitHub
+>
+>       ![Fetch origin](../../images/desktop-commit_suggestion.png)
+>
+> 2. Now that your branch is updated, you need to **Fetch origin**
+>
+>       ![Fetch origin](../../images/desktop-fetch_origin.png)
+>
+{: .hands_on}
 
-Two things may happen
+You can then make further changes locally, keeping your local and online branch synched (are you noticing a pattern?).
+
+## 3: Make requested changes
+
+</div>
+
+For example, one of the reviewers of your pull request may have asked you to add your name after your GitHub username in the `CONTRIBUTORS.yaml` file, if you didn't already.
+
+<div class="Desktop" markdown="1">
+
 > <hands-on-title>Make further changes</hands-on-title>
+>
+> 1. Just like when you made your initial branch and edited the file in your text editor, go to Github Desktop | **Current Branch** (make sure it is the correct one!) | **Open the repository in your external editor**
+>
+> 2. Navigate to the `CONTRIBUTORS.yaml` file and make any suggested changes
+>
+> 3. Save the file
+>
+> 4. Commit the changes to your branch (as before)
+> 5.  
+> 1. Make any requested changes in
+>
+>    It should look like
+>
+>    ```yaml
+>    bebatut:
+>         name: Bérénice Batut
+>    ```
+>
 
 
 </div>
@@ -431,7 +462,7 @@ Two things may happen
 
 <div class="Command-line" markdown="1">
 
-For example, one of the reviewers of your pull request may have asked you to add your name after your GitHub username in the `CONTRIBUTORS.yaml` file, if you didn't already.
+
 
 > <hands-on-title>Make further changes</hands-on-title>
 >
