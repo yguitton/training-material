@@ -150,12 +150,11 @@ To modify the content of the repository, you need a copy of it on your computer.
 >    ```
 {: .hands_on}
 
-
-</div>
-
 > <comment-title></comment-title>
 > If you already have a local copy of the GitHub repository, you need to update it before doing any changes. To learn how to do that, please follow the [last section](#stay-up-to-date).
 {: .comment}
+
+</div>
 
 # Create a new branch
 
@@ -536,6 +535,11 @@ On the bottom of your pull request, you can see the status of the tests:
 
     Even it is green, we recommend to check the result of the tests, as some of tests are allowed to fail (to avoid too much noise).
 
+
+
+
+<div class="Command-line" markdown="1">
+
 # Stay up to date
 
 You now want to work on a new tutorial or make some other new changes. However since you get a local copy, some changes have happened to the original GitHub repository. You need then to update your local copy of the repository before changing anything.
@@ -566,27 +570,27 @@ You now want to work on a new tutorial or make some other new changes. However s
 >
 {: .hands_on}
 
+
 You can now restart the GitHub flow to propose new changes: start by [creating a new branch](#create-a-new-branch).
+</div>
 
 
 # Close the Pull Request
 
 Great! You now know how to make pull request on GitHub, and how to make changes after a review.
+
 Reviewers can now approve and merge your pull request.
 
-Because this was just a practice pull request, let's close it again.
 
+ - If you do not intend to contribute to Galaxy, please close the pull request as per below.
+ - Otherwise, wait until your pull request is **merged** before closing it!
 
 > <hands-on-title>Close the Pull Request</hands-on-title>
->
-> Once you have run through all these steps, please close the pull request again.
 >
 > 1. Go to the [list of pull request tab on GitHub](https://github.com/galaxyproject/training-material/pulls)
 > 2. Click on your pull request
 > 3. Scroll to the bottom of the page
 > 3. Click on "Close pull request" button
->
-> Whenever you add your first real contribution, you can add yourself to the `CONTRIBUTORS.yaml` file in that PR.
 >
 {: .hands_on}
 
