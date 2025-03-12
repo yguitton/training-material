@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 
-title: "Visualising your training material creation on the GTN website"
+title: "Preview the GTN website as you edit your training material"
 questions:
   - "How can I get a preview of the GTN website?"
 objectives:
