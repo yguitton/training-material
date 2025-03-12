@@ -232,7 +232,13 @@ You have created your first branch! Now you want to make the change in the `CONT
 > <hands-on-title>Make changes in a branch</hands-on-title>
 >
 > 1. Select **Open the repository in your external editor** if you have one. Otherwise, you will need to find a text editor. You can consider using [Visual Studio Code](https://code.visualstudio.com), for example. The text editors allow you to navigate through folders and type in code with automatically detected formatting, which is very helpful!
+<<<<<<< Updated upstream
 
+=======
+>
+>       ![Open in editor](../../images/desktop-open_in_editor.png)
+> 2.
+>>>>>>> Stashed changes
 
 </div>
 
