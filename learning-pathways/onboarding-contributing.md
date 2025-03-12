@@ -27,12 +27,18 @@ pathway:
       - name: galaxy-intro-101
         topic: introduction
 
-  - section: "Module 2: Edit a small error"
+  - section: "Module 1: Edit a small error"
     description: |
       Make a minor correction to an existing training material. You will edit one page using GitHub, so find a typo and get ready!
     tutorials:
       - name: gtn_minor_correction.html
         link: /faqs/gtn
+  - section: "Module 2: Add yourself as a contributor"
+    description: |
+      While you can make minor corrections using the web-based Github interface, for larger changes (and, indeed, for building new materials altogether), you will need to work more extensively with Github. When you make larger changes, you should be acknowledged for your work - we will therefore use this Github training to also add yourself to our contributors list, so that we can acknowledge you going forward!
+    tutorials:
+      - name: github-command-line-contribution
+        topic: contributing
   - section: "Reference: Cool content"
     description: |
         If you want to add icons, images, cool learning boxes and more, you will need to use this next resource. Treat it as the Wikipedia of building training material - it's not meant to be a tutorial, but rather a resource to look up or scan through for ideas.
@@ -42,10 +48,8 @@ pathway:
 
   - section: "Module 3: Make a larger change"
     description: |
-      While you can make minor corrections using the web-based Github interface, for larger changes (and, indeed, for building new materials altogether), you will need to work more extensively with Github. You will also need to decide on a larger change to make in Galaxy! You may already have ideas on what to fix; you can reference our FAQ for ideas on what to change; or contact a [Community of Practice](https://galaxyproject.org/community/sig/) to see if they have anything that needs doing. We will show you how to visualise those changes, and see how what you do will impact the materials. We do this via Codespaces. Finally, we show you had to add yourself as an editor, to acknowledge your contribution!
+      You will also need to decide on a larger change to make in Galaxy! You may already have ideas on what to fix; you can reference our FAQ for ideas on what to change; or contact a [Community of Practice](https://galaxyproject.org/community/sig/) to see if they have anything that needs doing. We will show you how to visualise those changes, and see how what you do will impact the materials. We do this via Codespaces. Finally, we show you had to add yourself as an editor, to acknowledge your contribution!
     tutorials:
-      - name: github-command-line-contribution
-        topic: contributing
       - name: contributors_getting_started
         topic: ../faqs/gtn
       - name: running-codespaces
