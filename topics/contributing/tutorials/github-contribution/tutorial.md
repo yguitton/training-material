@@ -228,6 +228,17 @@ You have created your first branch! Now you want to make the change in the `CONT
 
 ![Divergence of the branch compared to main](../../images/PR_branches_02.png "The changes on your branch will not be on the main branch")
 
+<div class="Desktop" markdown="1">
+> <hands-on-title>Make changes in a branch</hands-on-title>
+>
+> 1. Select **Open the repository in your external editor** if you have one. Otherwise, you will need to find a text editor. You can consider using [Visual Studio Code](https://code.visualstudio.com), for example. The text editors allow you to navigate through folders and type in code with automatically detected formatting, which is very helpful!
+
+
+</div>
+
+
+<div class="Command-line" markdown="1">
+
 > <hands-on-title>Make changes in a branch</hands-on-title>
 >
 > 1. Open with your favorite text editor the `CONTRIBUTORS.yaml` file that is on your computer
@@ -260,6 +271,9 @@ You have created your first branch! Now you want to make the change in the `CONT
 > 5. Check that there are no more changes to commit with `git status`
 >
 {: .hands_on}
+
+</div>
+
 
 # Push your branch on your GitHub repository
 
