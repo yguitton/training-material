@@ -246,7 +246,12 @@ You have created your first branch! Now you want to make the change in the `CONT
 >       ![Find the contributors file](../../images/desktop-commit.png)
 >
 > 5. Select **Commit to my_new_branch**
+<<<<<<< Updated upstream
 
+=======
+>
+{: .hands_on}
+>>>>>>> Stashed changes
 </div>
 
 
@@ -292,6 +297,22 @@ You have created your first branch! Now you want to make the change in the `CONT
 
 The changes you made on your branch are only on the local copy of the repository. To propagate them online, you need to push them on your fork on GitHub:
 
+<<<<<<< Updated upstream
+=======
+<div class="Desktop" markdown="1">
+> <hands-on-title>Push the changes</hands-on-title>
+>
+> 1. Select **Publish branch**
+>       ![Publish branch](../../images/desktop-publish_branch.png)
+>
+{: .hands_on}
+
+</div>
+
+
+<div class="Command-line" markdown="1">
+
+>>>>>>> Stashed changes
 > <hands-on-title>Push the changes</hands-on-title>
 >
 > 1. Push the changes to the GitHub repository
@@ -304,8 +325,20 @@ The changes you made on your branch are only on the local copy of the repository
 >    > When you `git push`ed, you specified `origin`. Git repositories can know that forks exist in multiple places. When you clone one, it creates a "remote" (a remote repository) which it names `origin`, set to the URL that you used when you cloned. By having multiple remotes, you can manage more complex workflows.
 >    {: .details}
 >
+<<<<<<< Updated upstream
 > 2. Go to your GitHub repository
 > 3. Change to the "my_new_branch" branch:
+=======
+{: .hands_on}
+
+</div>
+
+To check this has worked, you can go to your Github account.
+
+> <hands-on-title>Push the changes</hands-on-title>
+> 1. Go to your GitHub repository on a web browser
+> 2. Change to the "my_new_branch" branch:
+>>>>>>> Stashed changes
 >    1. Click on **Branch: main** (left)
 >
 >       ![Selecting branch on GitHub](../../images/PR_branch_github.png)
