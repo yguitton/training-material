@@ -246,12 +246,8 @@ You have created your first branch! Now you want to make the change in the `CONT
 >       ![Find the contributors file](../../images/desktop-commit.png)
 >
 > 5. Select **Commit to my_new_branch**
-<<<<<<< Updated upstream
-
-=======
 >
 {: .hands_on}
->>>>>>> Stashed changes
 </div>
 
 
@@ -297,8 +293,6 @@ You have created your first branch! Now you want to make the change in the `CONT
 
 The changes you made on your branch are only on the local copy of the repository. To propagate them online, you need to push them on your fork on GitHub:
 
-<<<<<<< Updated upstream
-=======
 <div class="Desktop" markdown="1">
 > <hands-on-title>Push the changes</hands-on-title>
 >
@@ -312,7 +306,6 @@ The changes you made on your branch are only on the local copy of the repository
 
 <div class="Command-line" markdown="1">
 
->>>>>>> Stashed changes
 > <hands-on-title>Push the changes</hands-on-title>
 >
 > 1. Push the changes to the GitHub repository
@@ -325,10 +318,6 @@ The changes you made on your branch are only on the local copy of the repository
 >    > When you `git push`ed, you specified `origin`. Git repositories can know that forks exist in multiple places. When you clone one, it creates a "remote" (a remote repository) which it names `origin`, set to the URL that you used when you cloned. By having multiple remotes, you can manage more complex workflows.
 >    {: .details}
 >
-<<<<<<< Updated upstream
-> 2. Go to your GitHub repository
-> 3. Change to the "my_new_branch" branch:
-=======
 {: .hands_on}
 
 </div>
@@ -338,7 +327,6 @@ To check this has worked, you can go to your Github account.
 > <hands-on-title>Push the changes</hands-on-title>
 > 1. Go to your GitHub repository on a web browser
 > 2. Change to the "my_new_branch" branch:
->>>>>>> Stashed changes
 >    1. Click on **Branch: main** (left)
 >
 >       ![Selecting branch on GitHub](../../images/PR_branch_github.png)
@@ -356,6 +344,13 @@ To check this has worked, you can go to your Github account.
 You pushed your changes to GitHub, but currently they are only on your fork. You want to have these changes in the main GitHub repository in order to appear on our [Hall of Fame]({% link hall-of-fame.md %}) online. You can't add or push directly the main GitHub repository, so you need to create what we call a pull request:
 
 ![Pull request](../../images/PR_schema_05.png "Pull Requests provide a way to notify project maintainers about the changes you'd like them to consider")
+
+<div class="Desktop" markdown="1">
+> <comment-title></comment-title>
+> You will see that you can also make pull requests directly from Github Desktop. That also works great!
+{: .comment}
+
+</div>
 
 > <hands-on-title>Create a pull request</hands-on-title>
 >
@@ -393,13 +388,54 @@ Once the pull is open, it will be reviewed. There are two possible outcomes:
 1. Your pull request is accepted. Congratulations! Your changes will be merged into the main branch of the original repository. The website will be re-built and you will be in the [Hall of Fame]({% link hall-of-fame.md %})
 2. Your pull request needs modifications: the reviewers will ask for some changes, possibly because the automatic tests are failing.
 
-# Make the requested changes
+# Make any requested changes
 
-One of the reviewers of your pull request asked you to add your name after your GitHub username in the `CONTRIBUTORS.yaml` file
+<div class="Desktop" markdown="1">
+
+Three things can happen:
+
+1. A reviewer commits changes to your pull request (they fix something themselves)
+2. A reviewer suggests changes to your pull request (they think something will be helpful, but want you to check and decide)
+3. A reviewer posts comments, asking you to make some sort of change.
+
+On larger pull requests, you can end up with all three! Here's how to deal this.
+
+## 1: A reviewer commits their own changes to your pull request
+
+These changes currently only exist in your Github repository online, not on your local branch. In case you have to make further changes, it's important you *fetch* those changes onto your local branch.
+
+> <hands-on-title>Fetch origin</hands-on-title>
+> 1. Go to your GitHub repository on a web browser
+> 2. Change to the "my_new_branch" branch:
+>    1. Click on **Branch: main** (left)
+>
+>       ![Selecting branch on GitHub](../../images/PR_branch_github.png)
+>
+>    2. Select the branch "my_new_branch"
+>
+> 4. Check that your name is in the `CONTRIBUTORS.yaml` file
+>
+{: .hands_on}
+, one of the reviewers of your pull request may have asked you to add your name after your GitHub username in the `CONTRIBUTORS.yaml` file, if you didn't already. Or, they may have suggested some changes.
+
+## Commit suggested changes
+
+
+
+Two things may happen
+> <hands-on-title>Make further changes</hands-on-title>
+
+
+</div>
+
+
+<div class="Command-line" markdown="1">
+
+For example, one of the reviewers of your pull request may have asked you to add your name after your GitHub username in the `CONTRIBUTORS.yaml` file, if you didn't already.
 
 > <hands-on-title>Make further changes</hands-on-title>
 >
-> 1. Make the requested changes in the `CONTRIBUTORS.yaml` file
+> 1. Make any requested changes in the `CONTRIBUTORS.yaml` file
 >
 >    It should look like
 >
@@ -441,6 +477,8 @@ One of the reviewers of your pull request asked you to add your name after your 
 > 6. Check that the new changes are added to the pull request on GitHub
 >
 {: .hands_on}
+
+</div>
 
 # Check the automatic tests
 
