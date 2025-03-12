@@ -1957,7 +1957,8 @@ nomadscientist:
       - ou
       - spoc
     bio: Senior Lecturer at The Open University
-    country: UK
+    location:
+      country: UK
     elixir_node: uk
     email: wendi.bacon@open.ac.uk
     #fediverse: https://mstdn.science/@wendibacon1
