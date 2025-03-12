@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 
-title: "Contributing with GitHub via command-line"
+title: "Contributing the Galaxy Training Network with GitHub"
 questions:
   - "How can I contribute to an open-source project with GitHub?"
   - "What is the GitHub flow?"
@@ -24,6 +24,9 @@ key_points:
 contributors:
   - cmonjeau
   - bebatut
+redirect_from:
+  - "/topics/contributing/tutorials/github-command-line-contribution/tutorial"
+  - "/topics/contributing/tutorials/github-interface-contribution/tutorial"
 ---
 
 
