@@ -262,7 +262,7 @@ ou:
     name: The Open University
     bio: As the largest university in Europe, we are committed to delivering highly accredited, distance learning degrees, and supporting all students to achieve their academic dreams.
     url: https://www.open.ac.uk
-    avatar: "shared/images/logos/logo_ou.png"
+    avatar: "/training-material/shared/images/logos/logo_ou.png"
 
 panacea:
     short_name: PanACEA
@@ -349,7 +349,7 @@ spoc:
     name: 🖖🏾Single-cell & sPatial Omics Community of practice
     bio: We are a mix of users, developers, and trainers providing feedback and energy to improve and expand the Galaxy single cell and spatial omics capabilities.
     url: https://galaxyproject.org/community/sig/singlecell/
-    avatar: "shared/images/logos/spoc_hand.png"
+    avatar: "/training-material/shared/images/logos/spoc_hand.png"
 
 swiss-tph:
     short_name: SwissTPH
