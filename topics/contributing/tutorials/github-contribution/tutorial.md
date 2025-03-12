@@ -24,6 +24,7 @@ key_points:
 contributors:
   - cmonjeau
   - bebatut
+  - nomadscientist
 redirect_from:
   - "/topics/contributing/tutorials/github-command-line-contribution/tutorial"
 ---
