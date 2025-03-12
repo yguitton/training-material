@@ -232,13 +232,16 @@ You have created your first branch! Now you want to make the change in the `CONT
 > <hands-on-title>Make changes in a branch</hands-on-title>
 >
 > 1. Select **Open the repository in your external editor** if you have one. Otherwise, you will need to find a text editor. You can consider using [Visual Studio Code](https://code.visualstudio.com), for example. The text editors allow you to navigate through folders and type in code with automatically detected formatting, which is very helpful!
-<<<<<<< Updated upstream
-
-=======
 >
 >       ![Open in editor](../../images/desktop-open_in_editor.png)
-> 2.
->>>>>>> Stashed changes
+>
+> 2. Scroll down to the `CONTRIBUTORS.yaml` file and follow the text in that file to add yourself.
+>
+>       ![Find the contributors file](../../images/desktop-contributors_file.png)
+>
+> 3. Save the file
+>
+> 4.
 
 </div>
 
