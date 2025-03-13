@@ -63,7 +63,7 @@ The process of development of new content is open and transparent, using git and
 # Create a fork of this repository on GitHub
 
 {% include _includes/cyoa-choices.html option1="Desktop" option2="Command-line" default="Desktop"
-       text="You can engage with GitHub via either an application on your computer, called GitHub Desktop, or through using the CommandLine. If you're not used to using the CommandLine, or you just like a user interface, then use the GitHub Desktop." %}
+       text="You can engage with GitHub via either an application on your computer, called GitHub Desktop, or through using the Command-line. If you're not used to using the Command-line, or you just like a user interface, then use the GitHub Desktop." %}
 
 <div class="Desktop" markdown="1">
 
@@ -169,6 +169,7 @@ When you're working on a project, you're going to have a bunch of different feat
 Here for this tutorial, you will create a branch called "my_new_branch" in which you will modify the `CONTRIBUTORS.yaml` file, the file used to generate the [Hall of Fame]({% link hall-of-fame.md %}).
 
 <div class="Desktop" markdown="1">
+
 > <hands-on-title>Create a branch</hands-on-title>
 >
 > 1. Go to *Current Branch*
