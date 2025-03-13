@@ -310,7 +310,7 @@ Some tools can cause the channel names in an OME-TIFF image to be lost. To fix t
 
 > <hands-on-title> Rename channels </hands-on-title>
 >
-> 1. {% tool [Rename OME-TIFF Channels](toolshed.g2.bx.psu.edu/repos/goeckslab/rename_tiff_channels/rename_tiff_channels/0.0.2+galaxy1) %} with the following parameters:
+> 1. {% tool [Rename OME-TIFF channels](toolshed.g2.bx.psu.edu/repos/goeckslab/rename_tiff_channels/rename_tiff_channels/0.0.2+galaxy1) %} with the following parameters:
 >
 >    - {% icon param-file %} *"Input image in OME-tiff format"*: `Convert image`
 >    - *"Format of input image"*: `ome.tiff`
