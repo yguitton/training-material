@@ -29,9 +29,9 @@ contributions:
   - nomadscientist
 
 redirect_from:
-  - /topics/contributing/running-codespaces/tutorial
-  - /topics/contributing/running-jekyll/tutorial
-  - /topics/contributing/gitpod/tutorial
+  - "/topics/contributing/running-codespaces/tutorial"
+  - "/topics/contributing/running-jekyll/tutorial"
+  - "/topics/contributing/gitpod/tutorial"
 
 recordings:
 - captioners:
