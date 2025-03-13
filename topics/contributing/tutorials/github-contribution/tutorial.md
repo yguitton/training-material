@@ -27,7 +27,6 @@ contributors:
   - nomadscientist
 redirect_from:
   - "/topics/contributing/tutorials/github-command-line-contribution/tutorial"
-  - "/topics/contributing/tutorials/github-command-line-contribution"
 ---
 Most of the GTN content is written in [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) with some metadata (or variables) found in [YAML](http://yaml.org/) files. Everything is stored on a [GitHub](https://github.com) repository: [{{ site.github_repository }}]({{ site.github_repository }}).
 
