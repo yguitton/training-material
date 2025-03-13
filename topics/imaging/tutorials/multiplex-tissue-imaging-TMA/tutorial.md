@@ -256,7 +256,7 @@ Learn more about this file format at the [anndata documentation](https://anndata
 
 > <comment-title>Connection to Scanpy and other Galaxy tool suites</comment-title>
 >
-> Conversion to Anndata format allows users to feed their MTI datasets into a broad array of single-cell analysis tools that have been developed by the Galaxy community. For example, the Python package {% tool [Scanpy](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_compute_graph/scanpy_compute_graph/1.9.3+galaxy0) %} is available as a Galaxy tool suite and is extremely useful for filtering, feature scaling and normalization, dimensionality reduction, community detection, and many other downstream analysis tasks. 
+> Conversion to Anndata format allows users to feed their MTI datasets into a broad array of single-cell analysis tools that have been developed by the Galaxy community. For example, the Python package {% tool [Scanpy ComputeGraph](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_compute_graph/scanpy_compute_graph/1.9.3+galaxy0) %} is available as a Galaxy tool suite and is extremely useful for filtering, feature scaling and normalization, dimensionality reduction, community detection, and many other downstream analysis tasks. 
 >
 {: .comment}
 
