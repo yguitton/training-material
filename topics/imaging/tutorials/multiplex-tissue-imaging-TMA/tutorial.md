@@ -76,7 +76,7 @@ Multiplex tissue images come in a variety of forms and file-types depending on t
 >
 {: .hands_on}
 
-> <warning-title>**Imaging platform differences**</warning-title>
+> <warning-title>Imaging platform differences</warning-title>
 >
 > The Exemplar-002 raw images are in *ome.tiff* format; however, commonly seen raw file-types are *ome.tiff*, *tiff*, *czi*, and *svs*. If your input images are not *ome.tiff* or *tiff*, you may have to edit the dataset attributes in Galaxy to allow tools to recognize them as viable inputs.
 >
@@ -129,7 +129,7 @@ After illumination is corrected across round tiles, the tiles must be stitched t
 >
 {: .hands_on}
 
-> <warning-title>**Imaging platform differences**</warning-title>
+> <warning-title>Imaging platform differences</warning-title>
 >
 > ASHLAR, among other tools in the MCMICRO and Galaxy-ME pre-processing tools have some parameters that are specific to the
 > imaging patform used. By default, ASHLAR is oriented to work with images from RareCyte scanners. AxioScan scanners render images
@@ -199,16 +199,16 @@ In this tutorial, we use **Mesmer** because it tends to perform generally well o
 >
 {: .hands_on}
 
-> <warning-title>Imaging platform differences: Image resolution**</warning-title>
+> <warning-title>Imaging platform differences: Image resolution</warning-title>
 >
 > A crucial parameter for Mesmer and other segmentation tools is the **Image resolution**. This is reported in microns/pixel, and can vary depending on the imaging platform used and the settings at image acquisition. Mesmer accepts the resolution in microns/pixel; however, if using UnMICST, the resolution must be reported as a ratio of the resolution of UnMICST's training images (0.65). For example, when using UnMICST, if your images were captured at a resolution of 0.65, then the UnMICST value would be 1, but if your images were captured at 0.325 microns/pixel, then the value you would enter for UnMICST would be 0.5.
 >
 {: .warning}
 
 
-# Calculate single-cell features with **Quantification**
+# Calculate single-cell features with **MCQUANT**
 
-After generating a segmentation mask, the mask and the original registered image can be used to extract mean intensities for each marker in the panel, spatial coordinates, and morphological features for every cell. This step is performed by MCMICRO's **Quantification** module.
+After generating a segmentation mask, the mask and the original registered image can be used to extract mean intensities for each marker in the panel, spatial coordinates, and morphological features for every cell. This step is performed by MCMICRO's quantification module (**MCQUANT**).
 
 Once again, as this is a TMA, we will be running this in batch mode for every core image and its segmentation mask.
 
@@ -216,7 +216,7 @@ The quantification step will produce a CSV cell feature table for every image in
 
 > <hands-on-title> Quantification </hands-on-title>
 >
-> 1. {% tool [Quantification](toolshed.g2.bx.psu.edu/repos/perssond/quantification/quantification/1.6.0+galaxy0) %} with the following parameters:
+> 1. {% tool [MCQUANT](toolshed.g2.bx.psu.edu/repos/perssond/quantification/quantification/1.6.0+galaxy0) %} with the following parameters:
 >
 >    - {% icon param-collection %} *"Registered TIFF "*: Collection output of UNetCoreograph (images)
 >    - {% icon param-collection %} *"Primary Cell Mask "*: Collection output of Mesmer (or other segmentation tool)
