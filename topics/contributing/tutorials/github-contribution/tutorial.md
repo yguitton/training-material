@@ -180,7 +180,7 @@ Here for this tutorial, you will create a branch called "my_new_branch" in which
 >    ```
 >    my_new_branch
 >    ```
->       ![Select a branch option](../../images/desktop-select_branch.png)
+>       ![Select a branch option](../../images/desktop-select_a_branch.png)
 >       ![Type in new branch name](../../images/desktop-new_branch.png)
 >
 > 3. Select **Create New Branch**
