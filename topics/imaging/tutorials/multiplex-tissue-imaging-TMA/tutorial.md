@@ -175,7 +175,7 @@ Available segmentation tools in Galaxy-ME:
   - UnMicst and s3segmenter ({% cite Yapp2022 %})
   - Cellpose ({% cite Stringer2020 %})
 
-In this tutorial, we use **Mesmer** because it tends to perform generally well on a diverse range of image types, and can be parameterized to suite different modalities. 
+In this tutorial, we use **Mesmer** because it tends to perform generally well on a diverse range of image types, and can be adapted to suite different modalities. 
 
 > <comment-title>Important detail: Running images in batches</comment-title>
 >
