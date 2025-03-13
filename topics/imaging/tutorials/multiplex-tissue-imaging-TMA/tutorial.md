@@ -321,7 +321,7 @@ Some tools can cause the channel names in an OME-TIFF image to be lost. To fix t
 
 ## Initial visualization with **Avivator**
 
-For any `OME-TIFF` image in a Galaxy-ME history, there will be an option to view the image using **Avivator**. This is a great way to perform an initial inspection of an image for QC purposes before continuing with downstream steps. The **Avivator** window can be launched by clicking the {% icon dataset-visualize %} **Dataset visualization** icon under an expanded dataset, which will open a page with visualization options. From here, click the **Display at Avivator link** (Figure 6.)
+For any `OME-TIFF` image in a Galaxy-ME history, there will be an option to view the image using **Avivator**. This is a great way to perform an initial inspection of an image for QC purposes before continuing with downstream steps. The **Avivator** window can be launched by clicking the {% icon dataset-visualize %} **Dataset visualization** icon under an expanded dataset, which will open a page with visualization options. From here, click the **Display at Avivator link** (Figure 6).
 
 ![A screenshot showing the 'display at aviator' link which can be accessed through the dataset visualizations button.](../../images/multiplex-tissue-imaging-TMA/avivator_new_display.png "The 'display at Avivator' link which can be accessed through the dataset visualizations button.")
 
