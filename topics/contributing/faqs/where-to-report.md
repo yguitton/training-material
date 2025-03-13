@@ -19,9 +19,9 @@ Perhaps a tool isn't working, or something similar?
 Report an **Issue** on the correct Github repository:
 
  - **Tools**: Need a tool added to a server? Check out the FAQ for this:
- 
-      {% snippet faqs/galaxy/request-galaxy-tools-on-a-specific-server.md %}
-      
+
+   {% snippet faqs/galaxy/request-galaxy-tools-on-a-specific-server.md %}
+
  - **Tools**: Problem in a tool, such as a parameter you want to use is missing: Select your tool in the Galaxy interface | Drop-down arrow to **See in Tool Shed** | **Development repository** , then describe the issue there
  - **Tools**: Request for developers to wrap a tool: Either you will have a domain-specific location (such as the [Single-cell & sPatial Omics Community tool request form](https://docs.google.com/spreadsheets/d/15hqgqA-RMDhXR-ylKhRF-Dab9Ij2arYSKiEVoPl2df4/edit?usp=sharing) or you can post the request in our Intergalatic Utilities Commission: https://github.com/galaxyproject/tools-iuc
  - **User interface**: https://github.com/galaxyproject/galaxy
@@ -32,7 +32,7 @@ Report an **Issue** on the correct Github repository:
 > <warning-title>Be thorough!</warning-title>
 > Remember to be *thorough* when posting issues! Consider the FAQ on posting!
 >
->        {% snippet faqs/galaxy/analysis_troubleshooting_reporting.md %}
+> {% snippet faqs/galaxy/analysis_troubleshooting_reporting.md %}
 >
 {: .warning}
 
