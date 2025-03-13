@@ -43,7 +43,7 @@ With the example you will find in the `tutorial.bib` file, you can add a citatio
 this article here in your tutorial like this:
 {% raw %} `{% cite Batut2018 %}`{% endraw %}.
 This will be rendered like this: {% cite Batut2018 %}, and links to a
-[bibliography section](#bibliography) which will automatically be created at the end of the
+bibliography section which will automatically be created at the end of the
 tutorial.
 
 

@@ -42,7 +42,7 @@ With the example you will find in the `tutorial.bib` file, you can add a citatio
 this article here in your tutorial like this:
 {% raw %} `{% cite Batut2018 %}`{% endraw %}.
 This will be rendered like this: {% cite Batut2018 %}, and links to a
-[bibliography section](#bibliography) which will automatically be created at the end of the
+bibliography section which will automatically be created at the end of the
 tutorial.
 
 
@@ -87,8 +87,6 @@ tutorial.
 
 It comes first a description of the step: some background and some theory.
 Some image can be added there to support the theory explanation:
-
-![Alternative text](../../images/image_name "Legend of the image")
 
 The idea is to keep the theory description before quite simple to focus more on the practical part.
 
