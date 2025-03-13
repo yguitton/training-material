@@ -56,7 +56,7 @@ The process of development of new content is open and transparent, using git and
 
 > <hands-on-title>Create a GitHub account</hands-on-title>
 >
-> 1. Go to the [GitHub](https://github.com)
+> 1. Go to the [GitHub website](https://github.com)
 > 2. Create an account & follow the instructions. If anything is unclear, you can check [their documentation on account creation](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github).
 {: .hands_on}
 
@@ -69,7 +69,7 @@ The process of development of new content is open and transparent, using git and
 
 > <hands-on-title>Download GitHub Desktop</hands-on-title>
 >
-> 1. Go to the [GitHub Desktop site](https://desktop.github.com/download/)
+> 1. Go to the [GitHub Desktop website](https://desktop.github.com/download/)
 > 2. Select the **Download for (your kind of computer)**
 > 3. Follow any instructions
 {: .hands_on}
@@ -587,7 +587,7 @@ Reviewers can now approve and merge your pull request.
 
 > <hands-on-title>Close the Pull Request</hands-on-title>
 >
-> 1. Go to the [list of pull request tab on GitHub](https://github.com/galaxyproject/training-material/pulls)
+> 1. Go to the [list of pull requests tab on the GitHub website](https://github.com/galaxyproject/training-material/pulls)
 > 2. Click on your pull request
 > 3. Scroll to the bottom of the page
 > 3. Click on "Close pull request" button
