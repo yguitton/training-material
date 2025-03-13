@@ -52,24 +52,24 @@ The process of development of new content is open and transparent, using git and
 >
 {: .agenda}
 
-# Create a Github account, if you have not already
+# Create a GitHub account, if you have not already
 
-> <hands-on-title>Create a Github account</hands-on-title>
+> <hands-on-title>Create a GitHub account</hands-on-title>
 >
-> 1. Go to the [Github](https://github.com)
+> 1. Go to the [GitHub](https://github.com)
 > 2. Create an account & follow the instructions. If anything is unclear, you can check [their documentation on account creation](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github).
 {: .hands_on}
 
 # Create a fork of this repository on GitHub
 
 {% include _includes/cyoa-choices.html option1="Desktop" option2="Command-line" default="Desktop"
-       text="You can engage with Github via either an application on your computer, called Github Desktop, or through using the CommandLine. If you're not used to using the CommandLine, or you just like a user interface, then use the Github Desktop." %}
+       text="You can engage with GitHub via either an application on your computer, called GitHub Desktop, or through using the CommandLine. If you're not used to using the CommandLine, or you just like a user interface, then use the GitHub Desktop." %}
 
 <div class="Desktop" markdown="1">
 
-> <hands-on-title>Download Github Desktop</hands-on-title>
+> <hands-on-title>Download GitHub Desktop</hands-on-title>
 >
-> 1. Go to the [Github Desktop site](https://desktop.github.com/download/)
+> 1. Go to the [GitHub Desktop site](https://desktop.github.com/download/)
 > 2. Select the **Download for (your kind of computer)**
 > 3. Follow any instructions
 {: .hands_on}
@@ -110,7 +110,7 @@ To modify the content of the repository, you need a copy of it on your computer.
 >
 >       ![Get fork URL](../../images/clone_code_button.png)
 >
->    2. Select **Open with Github Desktop**
+>    2. Select **Open with GitHub Desktop**
 >
 >       Your computer might ask if it's ok to open the website Select *Allow* if so.
 >     
@@ -240,7 +240,7 @@ You have created your first branch! Now you want to make the change in the `CONT
 >
 > 3. Save the file
 >
-> 4. Go back to your Github Desktop, which should now show that file change. Add a useful *commit message* and a *description* saying what you did.
+> 4. Go back to your GitHub Desktop, which should now show that file change. Add a useful *commit message* and a *description* saying what you did.
 >
 >       ![Find the contributors file](../../images/desktop-commit.png)
 >
@@ -321,7 +321,7 @@ The changes you made on your branch are only on the local copy of the repository
 
 </div>
 
-To check this has worked, you can go to your Github account.
+To check this has worked, you can go to your GitHub account.
 
 > <hands-on-title>Push the changes</hands-on-title>
 > 1. Go to your GitHub repository on a web browser
@@ -346,7 +346,7 @@ You pushed your changes to GitHub, but currently they are only on your fork. You
 
 <div class="Desktop" markdown="1">
 > <comment-title></comment-title>
-> You will see that you can also make pull requests directly from Github Desktop. That also works great!
+> You will see that you can also make pull requests directly from GitHub Desktop. That also works great!
 {: .comment}
 
 </div>
@@ -401,10 +401,10 @@ On larger pull requests, you can end up with all three! Here's how to deal this.
 
 ## 1: A reviewer commits their own changes to your pull request
 
-These changes currently only exist in your Github repository online, not on your local branch. In case you have to make any further changes, it's important you *fetch* those changes onto your local branch. This is how you stay up to date.
+These changes currently only exist in your GitHub repository online, not on your local branch. In case you have to make any further changes, it's important you *fetch* those changes onto your local branch. This is how you stay up to date.
 
 > <hands-on-title>Fetch origin</hands-on-title>
-> 1. On your Github Desktop, select **Fetch origin**
+> 1. On your GitHub Desktop, select **Fetch origin**
 >       ![Fetch origin](../../images/desktop-fetch_origin.png)
 >
 {: .hands_on}
@@ -437,7 +437,7 @@ For example, one of the reviewers of your pull request may have asked you to add
 
 > <hands-on-title>Make further changes</hands-on-title>
 >
-> 1. Just like when you made your initial branch and edited the file in your text editor, go to Github Desktop | **Current Branch** (make sure it is the correct one!) | **Open the repository in your external editor**
+> 1. Just like when you made your initial branch and edited the file in your text editor, go to GitHub Desktop | **Current Branch** (make sure it is the correct one!) | **Open the repository in your external editor**
 >
 > 2. Navigate to the `CONTRIBUTORS.yaml` file and make any suggested changes
 >
@@ -445,7 +445,7 @@ For example, one of the reviewers of your pull request may have asked you to add
 >
 > 4. Commit the changes to your branch (as before)
 >
-> 5. Select **Push origin** to push these changes from your local folder to your online Github branch (which is linked to your pull request)
+> 5. Select **Push origin** to push these changes from your local folder to your online GitHub branch (which is linked to your pull request)
 >
 >       ![Push origin](../../images/desktop-push_origin.png)
 >
