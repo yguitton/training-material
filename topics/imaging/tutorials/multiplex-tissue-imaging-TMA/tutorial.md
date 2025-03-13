@@ -417,7 +417,7 @@ Galaxy-ME includes additional tools from **Scimap** and tools from the **Squidpy
 >
 >    > <comment-title>Spatial scatterplot</comment-title>
 >    >
->    > **Squidpy** was used to generate a spatial scatterplot of core 2 of exemplar 2 (Figure 13.). This is useful for visualizing the distribution of cell types, or any other categorical or continuous variable in the anndata file. 
+>    > **Squidpy** was used to generate a spatial scatterplot of core 2 of exemplar 2 (Figure 13). This is useful for visualizing the distribution of cell types, or any other categorical or continuous variable in the anndata file. 
 >    >
 >    > ![Spatial scatterplot of TMA core showing cell types annotated by colors](../../images/multiplex-tissue-imaging-TMA/ex2_squidpy_scatter.png "The output of Squidpy's spatial scatterplot tool on core 2 from Exemplar-002.")
 >    >
