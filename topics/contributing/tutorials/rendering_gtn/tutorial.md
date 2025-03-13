@@ -33,7 +33,7 @@ redirect_from:
   - /topics/contributing/running-jekyll/tutorial
   - /topics/contributing/gitpod/tutorial
 
-recordings:
+  recordings:
   - captioners:
       - shiltemann
     date: '2021-02-15'
@@ -309,9 +309,9 @@ If you are working on your own training materials and want preview them online w
 > 4. **Log in** with GitHub
 >    ![GitPod sign-in menu with various options, including GitHub](../../images/gitpod/signin.png){: width="25%"}
 > 5. Click on **Configure your own repository** under the Workspaces menu
->    ![GitPod homepage](../images/gitpod/gitpod-home.png)
+>    ![GitPod homepage](../../images/gitpod/gitpod-home.png)
 > 6. Under **Select a repository** choose your fork, e.g. `https://github.com/shiltemann/training-material`
->    ![screenshot of new workspace menu](../images/gitpod/gitpod-workspace.png)
+>    ![screenshot of new workspace menu](../../images/gitpod/gitpod-workspace.png)
 > 7. Click **continue**
 >    - This will create an enviroment where you can make changes to the GTN and preview them
 >    - **Note:** It can take quite some time to start up the first time (15-30 minutes)
@@ -332,7 +332,7 @@ If you are working on your own training materials and want preview them online w
 >    > 5. Click the slider in front of **Prebuilds are disabled** to toggle the setting
 >    > 6. Set **Branch Filter** to **Default Branch**
 >    >
->    > ![screenshot of prebuild setting of our repository](../images/gitpod/gitpod-prebuilds.png)
+>    > ![screenshot of prebuild setting of our repository](../../images/gitpod/gitpod-prebuilds.png)
 >    >
 >    > **Run a prebuild now**
 >    > 1. In GitPod, click on your name in the top left of the screen
@@ -391,7 +391,7 @@ Before we start making any changes, let's build the website and get a live previ
 > 3. When the build process is finished, the terminal will show you a link, and a window should popup with a preview on the right.
 >    - You may have to click the "Try Again" button if the preview was generated before the site building completed
 >
->      ![gitpod with the GTN open in the right panel](../images/gitpod/gitpod-launched.png)
+>      ![gitpod with the GTN open in the right panel](../../images/gitpod/gitpod-launched.png)
 >
 >    - Click on the link in the terminal to see the GTN in full-screen: `Server address: http://127.0.0.1:4000/training-material/`
 >
