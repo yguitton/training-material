@@ -194,7 +194,7 @@ In this tutorial, we use **Mesmer** because it tends to perform generally well o
 >    > <comment-title>np.squeeze</comment-title>
 >    >
 >    > Make sure the **np.squeeze** parameter is set to `Yes` to make the output compatible with next steps.
->    > This is the default behavoir. 
+>    > This is the default behavior. 
 >    {: .comment}
 >
 {: .hands_on}
