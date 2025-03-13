@@ -412,7 +412,7 @@ These changes currently only exist in your GitHub repository online, not on your
 
 You can then make further changes locally, keeping your local and online branch synched.
 
-## 2: Commit suggested changes
+## 2: A reviewer suggests changes
 
 > <hands-on-title>Commit suggested changes</hands-on-title>
 >
@@ -428,7 +428,7 @@ You can then make further changes locally, keeping your local and online branch 
 
 You can then make further changes locally, keeping your local and online branch synched (are you noticing a pattern?).
 
-## 3: Make requested changes
+## 3: A reviewer posts comments to be addressed
 
 </div>
 
