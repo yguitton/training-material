@@ -178,7 +178,6 @@ The parameters for running BUSCO on these protein sequences:
 >        - *"Lineage"*: `Mucorales`
 >    - In *"Advanced Options"*:
 >        - *"Which outputs should be generated"*: select all outputs
->
 {: .hands_on}
 
 Several output files are generated:
@@ -202,15 +201,13 @@ The parameters for running BUSCO on the masked genome:
 >        - *"Lineage"*: `Mucorales`
 >    - In *"Advanced Options"*:
 >        - *"Which outputs should be generated"*: select all outputs
->
 {: .hands_on}
+
 
 > <comment-title>What can we deduce from these results?</comment-title>
 >
 > - Completeness: The results of 50.3% complete BUSCOs for the genome and 43.9% for proteins are relatively low. These results can be explained by the reduction in file size in order to speed up analyses with Braker3.
 > - Duplication and fragmentation: The duplication rate is low and the proportion of fragmented genes is small, suggesting that the annotation is correct overall, but incomplete.
-> 
-
 {: .comment}
 
 ## Evaluation with **OMArk**
