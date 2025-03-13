@@ -346,7 +346,7 @@ Clicking the link will open a new window with the Avivator interactive dashboard
 
 > <hands-on-title> Vitessce visualization </hands-on-title>
 >
-> 1. {% tool [Vitessce Visualization](toolshed.g2.bx.psu.edu/repos/goeckslab/vitessce_spatial/vitessce_spatial/3.5.1+galaxy0) %} with the following parameters:
+> 1. {% tool [Vitessce](toolshed.g2.bx.psu.edu/repos/goeckslab/vitessce_spatial/vitessce_spatial/3.5.1+galaxy0) %} with the following parameters:
 >
 >    - {% icon param-collection %} *"Select the OME Tiff image"*: OME-TIFF image to be viewed (or collection of files to run in batch)
 >    - {% icon param-collection %} *"Select masks for the OME Tiff image (Optional)"*: Output of Mesmer (or other segmentation tool)
