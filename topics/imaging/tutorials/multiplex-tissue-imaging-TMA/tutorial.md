@@ -325,7 +325,7 @@ For any `OME-TIFF` image in a Galaxy-ME history, there will be an option to view
 
 ![A screenshot showing the 'display at aviator' link which can be accessed through the dataset visualizations button.](../../images/multiplex-tissue-imaging-TMA/avivator_new_display.png "The 'display at Avivator' link which can be accessed through the dataset visualizations button.")
 
-Clicking the link will open a new window with the Avivator interactive dashboard. Here, users can select channels to view, adjust the channel contrast and colors for viewing, and zoom in to inspect the image (Figure 7.). 
+Clicking the link will open a new window with the Avivator interactive dashboard. Here, users can select channels to view, adjust the channel contrast and colors for viewing, and zoom in to inspect the image (Figure 7). 
 
 ![A screenshot showing a TMA core visualized in the Avivator dashboard.](../../images/multiplex-tissue-imaging-TMA/ex2_core2_avivator.png "The Avivator dashboard allows for initial image exploration, channel selection, and zooming.")
 
