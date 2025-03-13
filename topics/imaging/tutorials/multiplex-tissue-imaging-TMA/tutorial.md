@@ -138,7 +138,7 @@ After illumination is corrected across round tiles, the tiles must be stitched t
 >
 > ASHLAR will work for most imaging modalities; however, certain modalities require different tools to be registered. For example,
 > multiplex immunohistochemistry (mIHC) images must use an aligner that registers each moving image to a reference Hematoxylin image.
-> For this, Galaxy-ME includes the alternative registration tool {% tool [PALOM](toolshed.g2.bx.psu.edu/repos/watsocam/palom/palom/2022.8.2+galaxy0) %}.
+> For this, Galaxy-ME includes the alternative registration tool {% tool [palom](toolshed.g2.bx.psu.edu/repos/watsocam/palom/palom/2022.8.2+galaxy0) %}.
 >
 {: .warning}
 
