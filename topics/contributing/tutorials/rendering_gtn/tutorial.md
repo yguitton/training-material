@@ -33,7 +33,7 @@ redirect_from:
   - /topics/contributing/running-jekyll/tutorial
   - /topics/contributing/gitpod/tutorial
 
-  recordings:
+recordings:
   - captioners:
       - shiltemann
     date: '2021-02-15'
