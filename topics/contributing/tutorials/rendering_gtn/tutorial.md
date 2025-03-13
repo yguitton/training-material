@@ -33,15 +33,15 @@ redirect_from:
   - /topics/contributing/running-jekyll/tutorial
   - /topics/contributing/gitpod/tutorial
 
-  recordings:
-  - captioners:
-      - shiltemann
-    date: '2021-02-15'
-    galaxy_version: '21.01'
-    length: 20M
-    youtube_id: _-wnsPttBCo
-    speakers:
-      - shiltemann
+recordings:
+- captioners:
+    - shiltemann
+  date: '2021-02-15'
+  galaxy_version: '21.01'
+  length: 20M
+  youtube_id: _-wnsPttBCo
+  speakers:
+    - shiltemann
 ---
 
 If you are working on training materials, you will likely want to preview your changes as you go! You have a few options on how to do this.
