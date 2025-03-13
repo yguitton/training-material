@@ -428,7 +428,7 @@ Galaxy-ME includes additional tools from **Scimap** and tools from the **Squidpy
 
 # Conclusion
 
-In this tutorial, we demonstrated a complete multiplex tissue imaging analysis workflow performed entirely in a web browser using Galaxy-ME. Using an example tissue microarray imaged with cylic immunofluoresence provided by MCMICRO, we...
+In this tutorial, we demonstrated a complete multiplex tissue imaging analysis workflow performed entirely in a web browser using Galaxy-ME. Using an example tissue microarray imaged with cyclic immunofluorescence provided by MCMICRO, we...
 
   - Corrected illumination between imaging tiles
   - Stitched and registered input images to produce a single, pyramidal OME-TIFF image that is viewable in multiple built-in interactive viewing tools (Avivator, Vitessce)
