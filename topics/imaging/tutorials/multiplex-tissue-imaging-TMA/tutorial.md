@@ -386,7 +386,7 @@ Galaxy-ME includes additional tools from **Scimap** and tools from the **Squidpy
 >
 >    > <comment-title>Neighborhood enrichment plot</comment-title>
 >    >
->    > **Squidpy** was used to calculate neighborhood enrichments for each phenotype in core 2 of exemplar 2 (Figure 11.). This shows which phenotypes co-locate most frequently within the tissue.
+>    > **Squidpy** was used to calculate neighborhood enrichments for each phenotype in core 2 of exemplar 2 (Figure 11). This shows which phenotypes co-locate most frequently within the tissue.
 >    >
 >    > ![Heatmap showing phenotype vs neighbourhood enrichment. Most of the heatmap is blue/green (low) but one cell under epithelial is bright yellow (high)](../../images/multiplex-tissue-imaging-TMA/ex2_squidpy_enrichment.png "The output of Squidpy's neighborhood enrichment on core 2 from Exemplar-002.")
 >    >
