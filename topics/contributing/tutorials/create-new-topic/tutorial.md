@@ -161,7 +161,7 @@ Several metadata are defined in `metadata.yaml` file in your topic folder to :
 > 3. Make sure that Jekyll is running
 >
 >    > <comment-title>Jekyll</comment-title>
->    > Want to learn how to start Jekyll? [Check out our tutorial to serve the website locally]({% link topics/contributing/tutorials/running-jekyll/tutorial.md %})
+>    > Want to learn how to start Jekyll? [Check out our tutorial to serve the website locally]({% link topics/contributing/tutorials/rendering_gtn/tutorial.md %})
 >    {: .comment}
 >
 > 4. Check how it changes the local website
