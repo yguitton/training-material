@@ -12,7 +12,7 @@ To add your event to the GTN, you will need to supply your course information (d
 Your event will also be shown on the [GTN event horizon]({% link events/index.md %}) and on the homepage. We are also happy to advertise your event on social media and Matrix channels.
 
 
-**Already have your own event page?** No problem! You can add your event as and external event (see below) and we will simply link to your page!
+**Already have your own event page?** No problem! You can add your event as an external event (see below) and we will simply link to your page!
 
 To add your event to the GTN:
 
@@ -30,7 +30,7 @@ For a full list of metadata fields for events, please have a look at our [schema
 Please also feel free to contact us with ideas for improvements! We know that training comes in many different forms, so if something in your event is not yet supported, let us know and we are happy to add it!
 
 
-## External events
+### External events
 
 Already have a course webpage? Great! In this case, you only have to provide the most basic information about your course (title, desciption, dates, location).
 

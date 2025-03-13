@@ -6,6 +6,12 @@ require './_plugins/util'
 require 'json'
 
 class DateTime
+  ##
+  # Convert a given DateTime stamp roughly to an African/European lunch time
+  #
+  # Why that time? It is when the majority of our users are online and wanting to read the news.
+  #
+  # This is really only available in the feeds plugin, should not be assumed to be available elsewhere.
   def to_euro_lunch
     self.to_date.to_datetime + 0.6
   end
@@ -16,37 +22,25 @@ TRACKING = "?utm_source=matrix&utm_medium=newsbot&utm_campaign=matrix-news"
 PRIO = [
   'news',
   'events',
+  'learning-pathways',
   'tutorials',
   'slides',
+  'recordings',
   'faqs',
   'workflows',
   'contributors',
-  'funders',
+  'grants',
   'organisations'
 ].map.with_index { |x, i| [x, i] }.to_h
 
-def objectify(attrs, url, path)
-  obj = attrs.clone
-  obj['__path'] = path
-  obj['__url'] = url
-
-  def obj.data
-    self
+def track(url)
+  if url =~ /utm_source/
+    url
+  elsif url.include? '#'
+    url.gsub(/#/, TRACKING + '#')
+  else
+    url + TRACKING
   end
-
-  def obj.path
-    self['__path']
-  end
-
-  def obj.url
-    self['__url']
-  end
-
-  def obj.content
-    self.fetch('content', 'NO CONTENT AVAILABLE')
-  end
-
-  obj
 end
 
 FEED_WIDGET_XSLT = Nokogiri::XSLT(File.read('feed-widget.xslt.xml'))
@@ -88,7 +82,7 @@ end
 
 ICON_FOR = {
   'contributors' => '🧑‍🏫',
-  'funders' => '💰',
+  'grants' => '💰',
   'organisations' => '🏢',
   'events' => '📅',
   'tutorials' => '📚',
@@ -96,6 +90,8 @@ ICON_FOR = {
   'news' => '📰',
   'faqs' => '❓',
   'workflows' => '🛠️',
+  'learning-pathways' => '🛤️',
+  'recordings' => '🎥',
 }
 
 def generate_opml(site, groups)
@@ -146,7 +142,7 @@ def generate_topic_feeds(site, topic, bucket)
 
       mats.each do |time, group, page, tags|
         xml.entry do
-          xml.title(ICON_FOR[group] + " " +page.data['title'])
+          xml.title(ICON_FOR[group] + " " + page.data['title'])
           link = "#{site.config['url']}#{site.baseurl}#{page.url}"
           xml.link(href: link)
           # Our links are (mostly) stable
@@ -199,106 +195,6 @@ def generate_tag_topic_feeds(_site)
   # Any new materials tagged with that tag
   # Any news by tag
   ''
-end
-
-def all_date_sorted_materials(site)
-  events = site.pages.select { |x| x['layout'] == 'event' || x['layout'] == 'event-external' }
-  materials = TopicFilter.list_all_materials(site).reject { |k, _v| k['draft'] }
-  news = site.posts.select { |x| x['layout'] == 'news' }
-  faqs = site.pages.select { |x| x['layout'] == 'faq' }
-  workflows = Dir.glob('topics/**/*.ga')
-
-  bucket = events.map do |e|
-    [Gtn::PublicationTimes.obtain_time(e.path).to_datetime, 'events', e, ['event'] + e.data.fetch('tags', [])]
-  end
-
-  materials.each do |m|
-    tags = [m['topic_name']] + (m['tags'] || [])
-    bucket += m.fetch('ref_tutorials', []).map do |t|
-      [Gtn::PublicationTimes.obtain_time(t.path).to_datetime, 'tutorials', t, tags]
-    end
-
-    bucket += m.fetch('ref_slides', []).reject { |s| s.url =~ /-plain.html/ }.map do |s|
-      [Gtn::PublicationTimes.obtain_time(s.path).to_datetime, 'slides', s, tags]
-    end
-  end
-
-  bucket += news.map do |n|
-    [n.date.to_datetime, 'news', n, ['news'] + n.data.fetch('tags', [])]
-  end
-
-  bucket += faqs.map do |n|
-    tag = Gtn::PublicationTimes.clean_path(n.path).split('/')[1]
-    [Gtn::PublicationTimes.obtain_time(n.path).to_datetime, 'faqs', n, ['faqs', tag]]
-  end
-
-  bucket += workflows.map do |n|
-    tag = Gtn::PublicationTimes.clean_path(n).split('/')[1]
-    wf_data = JSON.parse(File.read(n))
-
-    attrs = {
-      'title' => wf_data['name'],
-      'description' => wf_data['annotation'],
-      'tags' => wf_data['tags'],
-      'contributors' => wf_data.fetch('creator', []).map do |c|
-        p ">> #{c}"
-        matched = site.data['contributors'].select{|k, v| 
-          v.fetch('orcid', "does-not-exist") == c.fetch('identifier', "").gsub('https://orcid.org/', '')
-        }.first
-        if matched
-          matched[0]
-        else
-          c['name']
-        end
-      end
-    }
-
-    # These aren't truly stable. I'm not sure what to do about that.
-    obj = objectify(attrs, '/' + n.gsub(/\.ga$/, '.html'), n)
-    # obj = objectify(attrs, '/' + n.path[0..n.path.rindex('/')], n)
-
-
-    [Gtn::PublicationTimes.obtain_time(n).to_datetime, 'workflows', obj, ['workflows', tag] + obj['tags']]
-  end
-
-  # Remove symlinks from bucket.
-  bucket = bucket.reject { |date, type, page, tags|
-    File.symlink?(page.path) || File.symlink?(File.dirname(page.path)) || File.symlink?(File.dirname(File.dirname(page.path)))
-  }
-
-  bucket += site.data['contributors'].map do |k, v|
-    a = {'title' => "@#{k}",
-         'content' => "GTN Contributions from #{k}"}
-    obj = objectify(a, "/hall-of-fame/#{k}/", k)
-
-    [DateTime.parse("#{v['joined']}-01T12:00:00", 'content' => "GTN Contributions from #{k}"), 'contributors', obj, ['contributor']]
-  end
-
-  bucket += site.data['funders'].map do |k, v|
-    a = {'title' => "@#{k}",
-         'content' => "GTN Contributions from #{k}"}
-    obj = objectify(a, "/hall-of-fame/#{k}/", k)
-
-    # TODO: backdate funders, organisations
-    if v['joined']
-      [DateTime.parse("#{v['joined']}-01T12:00:00"), 'funders', obj, ['funder']]
-    end
-  end.compact
-
-  bucket += site.data['organisations'].map do |k, v|
-    a = {'title' => "@#{k}",
-         'content' => "GTN Contributions from #{k}"}
-    obj = objectify(a, "/hall-of-fame/#{k}/", k)
-
-    if v['joined']
-      [DateTime.parse("#{v['joined']}-01T12:00:00"), 'organisations', obj, ['organisation']]
-    end
-  end.compact
-
-  bucket
-    .reject{|x| x[0] > DateTime.now } # Remove future-dated materials
-    .sort_by {|x| x[0] } # Date-sorted, not strictly necessary since will be grouped.
-    .reverse
 end
 
 def group_bucket_by(bucket, group_by: 'day')
@@ -407,7 +303,7 @@ def generate_matrix_feed_itemized(site, mats, group_by: 'day', filter_by: nil)
                 href = "#{site.config['url']}#{site.config['baseurl']}#{page.url}"
 
                 xml.id(href)
-                xml.link(href: href + TRACKING)
+                xml.link(href: track(href))
 
                 tags.uniq.each do |tag|
                   xml.category(term: tag)
@@ -423,7 +319,7 @@ def generate_matrix_feed_itemized(site, mats, group_by: 'day', filter_by: nil)
                   xml.summary(text)
                 end
 
-                prefix = type.gsub(/s$/, '').capitalize.gsub(/Faq/, 'FAQ').gsub(/New$/, 'Post')
+                prefix = type.gsub(/s$/, '').gsub(/-/, ' ').capitalize.gsub(/Faq/, 'FAQ').gsub(/New$/, 'Post')
                 title = "#{ICON_FOR[type]} New #{prefix}: #{page.data['title']}"
 
                 xml.title(title)
@@ -479,7 +375,7 @@ end
 # Our old style matrix bot postsx
 def generate_matrix_feed(site, mats, group_by: 'day', filter_by: nil)
   # new materials (tut + sli)
-  # new funders/contributors/orgs
+  # new grants/contributors/orgs
   # new news posts(?)
   filter_title = nil
   if !filter_by.nil?
@@ -527,7 +423,7 @@ def generate_matrix_feed(site, mats, group_by: 'day', filter_by: nil)
       xml.id("#{site.config['url']}#{site.baseurl}/#{path}")
       title_parts = [filter_title, "#{lookup[group_by]} Updates"].compact
       xml.title(title_parts.join(' — '))
-      xml.subtitle('The latest events, tutorials, slides, blog posts, FAQs, workflows, and contributors in the GTN.')
+      xml.subtitle('The latest events, tutorials, slides, blog posts, FAQs, workflows, learning paths, recordings, and contributors in the GTN.')
       xml.logo("#{site.config['url']}#{site.baseurl}/assets/images/GTN-60px.png")
 
       bucket.each do |date, parts|
@@ -554,17 +450,17 @@ def generate_matrix_feed(site, mats, group_by: 'day', filter_by: nil)
               # xml.h4 title
 
               parts.group_by { |x| x[1] }.sort_by { |x| PRIO[x[0]] }.each do |type, items|
-                xml.h4 "#{ICON_FOR[type]} #{type.capitalize}"
+                xml.h4 "#{ICON_FOR[type]} #{type.gsub(/-/, ' ').capitalize}"
                 if items.length.positive?
                   xml.ul do
                     items.each do |date, _type, page, _tags|
                       xml.li do
                         if page.is_a?(String)
-                          href = "#{site.config['url']}#{site.config['baseurl']}/hall-of-fame/#{page}/#{TRACKING}"
+                          href = track("#{site.config['url']}#{site.config['baseurl']}/hall-of-fame/#{page}/")
                           text = "@#{page}"
                         else
                           text = page.data['title']
-                          href = "#{site.config['url']}#{site.config['baseurl']}#{page.url}#{TRACKING}"
+                          href = track("#{site.config['url']}#{site.config['baseurl']}#{page.url}")
                         end
                         if group_by != 'day'
                           text += " (#{date.strftime('%B %d, %Y')})"
@@ -645,9 +541,9 @@ def generate_event_feeds(site)
           xml.updated(Gtn::PublicationTimes.obtain_time(page.path).to_datetime.rfc3339)
 
           # TODO: find a better solution maybe with namespaces?
-          # xml.category(term: "starts:#{page.data['date_start'].to_datetime.rfc3339}")
-          # xml.category(term: "ends:#{(page.data['date_end'] || page.data['date_start']).to_datetime.rfc3339}")
-          # xml.category(term: "days:#{page.data['duration']}")
+          xml.category(term: "starts:#{page.data['date_start'].to_datetime.rfc3339}")
+          xml.category(term: "ends:#{(page.data['date_end'] || page.data['date_start']).to_datetime.rfc3339}")
+          xml.category(term: "days:#{page.data['duration']}")
 
           # xml.path(page.path)
           xml.category(term: "new #{page['layout']}")
@@ -693,12 +589,12 @@ Jekyll::Hooks.register :site, :post_write do |site|
       {title: 'Events', url: "#{site.config['url']}#{site.baseurl}/events/feed.xml"}
     ]
 
-    bucket = all_date_sorted_materials(site)
+    bucket = Gtn::TopicFilter.all_date_sorted_resources(site)
     bucket.freeze
 
     opml['GTN Topics'] = []
     opml['GTN Topics - Digests'] = []
-    TopicFilter.list_topics(site).each do |topic|
+    Gtn::TopicFilter.list_topics(site).each do |topic|
       generate_topic_feeds(site, topic, bucket)
       opml['GTN Topics'] <<
         {title: "#{topic} all changes", url: "#{site.config['url']}#{site.baseurl}/topic/feed.xml"}

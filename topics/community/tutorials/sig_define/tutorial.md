@@ -2,6 +2,7 @@
 layout: tutorial_hands_on
 priority: 1
 title: "What's a Special Interest Group?"
+subtopic: sig
 questions:
   - "What is a Special Interest Group?"
   - "What is the purpose of a Special Interest Group?"
@@ -37,6 +38,8 @@ follow_up_training:
         - sig_create
 ---
 
+In Galaxy, the term *[Special Interest Group](https://galaxyproject.org/community/sig)* (**SIG**) refers to a dedicated scientific community that crosses individual lab boundaries and wants to collaborate, share resources, support each other, and/or collectively advocate on a given theme. We have **SIGs** based on [**region**](https://galaxyproject.org/community/sig/#regional-communities), [**domain of science**](https://galaxyproject.org/community/sig/#communities-of-practice), and more. You might consider that a **SIG** covers any group of like-minded Galaxy enthusiasts not currently combined into a [**Working Group**](https://galaxyproject.org/community/wg/).
+
 > <agenda-title></agenda-title>
 >
 > In this tutorial, we will cover:
@@ -45,10 +48,6 @@ follow_up_training:
 > {:toc}
 >
 {: .agenda}
-
-# Special Interest Groups
-
-In Galaxy, the term *[Special Interest Group](https://galaxyproject.org/community/sig)* (**SIG**) refers to a dedicated scientific community that crosses individual lab boundaries and wants to collaborate, share resources, support each other, and/or collectively advocate on a given theme. We have **SIGs** based on [**region**](https://galaxyproject.org/community/sig/#regional-communities), [**domain of science**](https://galaxyproject.org/community/sig/#communities-of-practice), and more. You might consider that a **SIG** covers any group of like-minded Galaxy enthusiasts not currently combined into a [**Working Group**](https://galaxyproject.org/community/wg/).
 
 <div class='right'><img src="../../images/mind_map.svg" alt="Person looking at a diagram with a central rectangle connected to many other nodes representing people and connections" width="25" /></div>
 

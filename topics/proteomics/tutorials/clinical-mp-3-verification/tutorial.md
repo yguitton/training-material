@@ -56,9 +56,9 @@ The PepQuery tool is used to validate the identified microbial peptides from Sea
 
 Interestingly, the PepQuery tool does not rely on searching peptides against a reference protein sequence database as “traditional” shotgun proteomics does, which enables it to identify novel, disease-specific sequences with sensitivity and specificity in its protein validation (Figure A). Then we extract microbial protein sequences that are assigned to the PepQuery verified peptides. To this, we again add the Human UniProt Reference proteome (with Isoforms) and cRAP databases for creating a database for quantitation purposes (Figure B).
 
-![Peptide Verification](../../images/clinical-mp/clinical-mp-verification-1.JPG)
+![Peptide Verification]({% link topics/proteomics/images/clinical-mp/clinical-mp-verification-1.JPG %})
 
-![Database generation from verified peptides](../../images/clinical-mp/clinical-mp-verification-2.JPG)
+![Database generation from verified peptides]({% link topics/proteomics/images/clinical-mp/clinical-mp-verification-2.JPG %})
 
 
 > <agenda-title></agenda-title>
@@ -105,8 +105,8 @@ Interestingly, the PepQuery tool does not rely on searching peptides against a r
 >
 {: .hands_on}
 
-# Import Workflow
 
+# Import Workflow
 
 > <hands-on-title>Running the Workflow</hands-on-title>
 >
@@ -304,7 +304,8 @@ We will use the Query Tabular tool {% cite Johnson2019 %} to search the PepQuery
 > > <comment-title>SQL Query information</comment-title>
 > >  The query input files are the list of peptides and the peptide report we obtained from MaxQuant and SGPS. The query is matching each peptide (m.pep) from the PepQuery results to the peptide reports so that each verified peptide has its protein/protein group assigned to it.
 > {: .comment}
->
+{: .hands_on}
+
 > <hands-on-title> Remove Header with Remove beginning </hands-on-title>
 >
 > 1. {% tool [Remove beginning](Remove beginning1) %} with the following parameters:
@@ -363,8 +364,8 @@ Again, we will use the Query Tabular tool to retrieve UniProt IDs (accession num
 >                - *"Use first line as column names"*: `Yes`
 >                - *"Specify Column Names (comma-separated list)"*: `pep,prot`
 >    ` *"SQL Query to generate tabular output"*: `SELECT distinct(prot) AS Accession
->     from t1`
->     *"include query result column headers"*: `No`
+>       from t1`
+>        - *"include query result column headers"*: `No`
 >
 >
 {: .hands_on}

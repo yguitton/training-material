@@ -14,13 +14,16 @@ answer_histories:
   - label: "UseGalaxy.eu"
     history: https://usegalaxy.eu/u/j.jakiela/h/filter-plot-and-explore-single-cell-rna-seq-data-updated
     date: 2023-10-10
+  - label: "UseGalaxy.eu - ARCHIVED"
+    history: https://usegalaxy.eu/u/wendi.bacon.training/h/filter-plot-and-explore-single-cell-rna-seq-data
+    date: 2024-12-10
   - label: "Older version"
     history: https://usegalaxy.eu/u/wendi.bacon.training/h/cs3filter-plot-and-explore-single-cell-rna-seq-data---answer-key-2
     date: 2024-02-28
 
 input_histories:
   - label: "UseGalaxy.eu"
-    history: https://usegalaxy.eu/u/j.jakiela/h/filter-plot-explore-tutorial-input
+    history:  https://usegalaxy.eu/published/history?id=67ff4cea2adc574d
 
 questions:
 - Is my single cell dataset a quality dataset?
@@ -45,8 +48,8 @@ requirements:
         - scrna-case_alevin
         - scrna-case_alevin-combine-datasets
 tags:
-- 10x
 - paper-replication
+- MIGHTS
 
 
 contributions:
@@ -106,7 +109,7 @@ You can access the data for this tutorial in multiple ways:
 
    {% snippet faqs/galaxy/histories_copy_dataset.md %}
 
-2. **Importing from a history** - You can import [this history](https://usegalaxy.eu/u/j.jakiela/h/filter-plot-explore-tutorial-input)
+2. **Importing from a history** - You can import [this history](https://usegalaxy.eu/published/history?id=67ff4cea2adc574d)
 
    {% snippet faqs/galaxy/histories_import.md %}
 

@@ -9,7 +9,7 @@ tags:
   - jbrowse1
 
 edam_ontology:
-- topic_0362 # Genome annotatino
+- topic_0362 # Genome annotation
 
 questions:
     - How to annotate an eukaryotic genome with Helixer?
@@ -18,18 +18,20 @@ questions:
 objectives:
     - Load genome into Galaxy
     - Annotate genome with Helixer
-    - Evaluate annotation quality with BUSCO and Compleasm
+    - Evaluate annotation quality with BUSCO
     - View annotations in JBrowse
 
 time_estimation: 4h
 level: Intermediate
 key_points:
     - Helixer allows to perform structural annotation of an eukaryotic genome
-    - BUSCO and Compleasm allow to inspect the quality of an annotation
+    - BUSCO allows to inspect the quality of an annotation
 contributions:
   authorship:
     - rlibouba
     - abretaud
+  editing:
+    - felicitas215
   funding:
     - eurosciencegateway
 abbreviations:
@@ -67,7 +69,7 @@ In this tutorial, you'll learn how to perform a structural annotation of the gen
 
 To annotate our genome using Helixer, we will use the following files:
 
-- The **genome sequence** in fasta format. For best results, the sequence should be soft-masked beforehand. You can learn how to do it by following the [RepeatMasker tutorial]({% link topics/genome-annotation/tutorials/repeatmasker/tutorial.md %}). For this tutorial, we will try to annotate the genome assembled in the [Flye assembly tutorial]({% link topics/assembly/tutorials/flye-assembly/tutorial.md %}) and already masked for you using RepeatMasker.
+- The **genome sequence** in fasta format. For this tutorial, we will try to annotate the genome assembled in the [Flye assembly tutorial]({% link topics/assembly/tutorials/flye-assembly/tutorial.md %}). (Note: Helixer will ignore soft-masking. Hard-masking is not recommnded for Helixer either, as it does not ignore the hard-masked regions, but will get less information from them, which could influence your predictions in a negative way.)
 
 > <hands-on-title>Data upload</hands-on-title>
 >
@@ -95,7 +97,7 @@ We can run [**Helixer**](https://github.com/weberlab-hhu/Helixer) to perform the
 
 We need to input the genome sequence we want to annotate.
 
-We also need to choose between 4 differents lineages: *invertebrate*, *vertebrate*, *land plant* or *fungi*. Select the one that fits the best to the species you're studying: *fungi* in our case. Helixer is shipped with these 4 models that were trained specifically to annotate genes from each lineage lineages. Advanced users can upload their own lineage model in .h5 format with the *"Lineage model"* option.
+We also need to choose between 4 different lineages: *invertebrate*, *vertebrate*, *land plant* or *fungi*. Select the one that fits the best to the species you're studying: *fungi* in our case. Helixer is shipped with these 4 models that were trained specifically to annotate genes from each of these lineages. Advanced users can upload their own lineage model in .h5 format with the *"Lineage model"* option.
 
 As an option, we can also enter a species name.
 
@@ -111,7 +113,7 @@ As an option, we can also enter a species name.
 
 > <comment-title>Advanced parameters</comment-title>
 >
-> Depending on the lineage,the parameters *"Subsequence length"*, *"Overlap offset"* and *"Overlap corelength"* are adjusted to corresponding default values (listed in the help of each option).
+> Depending on the lineage, the parameters *"Subsequence length"*, *"Overlap offset"* and *"Overlap corelength"* are adjusted to corresponding default values (listed in the help of each option).
 >
 > This is due in particular to the size of the genomes. Indeed, it is recommended to increase the value of *"Subsequence length"* for genomes containing large genes. This is particularly important for vertebrates and invertebrates.
 >
@@ -154,11 +156,13 @@ Two output files are generated:
 >
 {: .comment}
 
-These statistics are interesting on their own: you often have a rough idea of the expected number of genes or mean length when annotating a new genome, by comparing with similary already published species. You can also use them to compare the quality of annotations produced by different tools.
+These statistics are interesting on their own: you often have a rough idea of the expected number of genes or mean length when annotating a new genome, by comparing with published similar species. You can also use them to compare the quality of annotations produced by different tools.
 
 ## Evaluation with **Busco**
 
 [BUSCO](http://busco.ezlab.org/) (Benchmarking Universal Single-Copy Orthologs) is a tool allowing to evaluate the quality of a genome assembly or of a genome annotation. By comparing genomes from various more or less related species, the authors determined sets of ortholog genes that are present in single copy in (almost) all the species of a clade (Bacteria, Fungi, Plants, Insects, Mammalians, ...). Most of these genes are essential for the organism to live, and are expected to be found in any newly sequenced and annotated genome from the corresponding clade. Using this data, BUSCO is able to evaluate the proportion of these essential genes (also named BUSCOs) found in a set of (predicted) transcript or protein sequences. This is a good evaluation of the "completeness" of the annotation.
+
+As an alternative for genomes only one can use [**compleasm**](https://github.com/huangnengCSU/compleasm) with the same BUSCO gene sets, as compleasm is a bit more sensitive and thus allows finding slightly more conserved genes. 
 
 We want to run BUSCO on the protein sequences predicted from gene sequences of the Helixer annotation. So first generate these sequences:
 
@@ -168,14 +172,14 @@ We want to run BUSCO on the protein sequences predicted from gene sequences of t
 >    - {% icon param-file %} *"Input GFF3 or GTF feature file"*: output of {% tool [Helixer](toolshed.g2.bx.psu.edu/repos/genouest/helixer/helixer/0.3.3+galaxy1)) %}
 >    - In *"Reference Genome"* select: `From your history` (Input dataset)
 >    - *"Genome Reference Fasta"*: `masked genome` (Input dataset)
->    - In *"Select fasta outputs"* select: `fasta file with spliced exons for each GFF transcript (-y)`
+>    - In *"Select fasta outputs"* select: `protein fasta file with the translation of CDS for each record (-y)`
 >    - *"full GFF attribute preservation (all attributes are shown)"*: `Yes`
 >    - *"decode url encoded characters within attributes"*: `Yes`
 >    - *"warn about duplicate transcript IDs and other potential problems with the given GFF/GTF records"*: `Yes`
 >
 {: .hands_on}
 
-The run BUSCO on these protein sequences:
+To run BUSCO on these protein sequences:
 
 > <hands-on-title>BUSCO in proteome mode</hands-on-title>
 >
@@ -219,6 +223,35 @@ This gives information about the completeness of the Helixer annotation. A good 
 > - So the Helixer annotation looks like a good one, with high completeness and low duplication.
 >
 {: .comment}
+
+## Evaluation with **OMArk**
+
+[OMArk](https://github.com/DessimozLab/OMArk) is proteome quality assessment software. It provides measures of proteome completeness, characterises the consistency of all protein-coding genes with their homologues and identifies the presence of contamination by other species. OMArk is based on the OMA orthology database, from which it exploits orthology relationships, and on the OMAmer software for rapid placement of all proteins in gene families.
+
+OMArk's analysis is based on HOGs (Hierarchical Orthologous Groups), which play a central role in its assessment of the completeness and coherence of gene sets. HOGs make it possible to compare the genes of a given species with groups of orthologous genes conserved across a taxonomic clade. 
+
+> <hands-on-title>OMArk on extracted protein sequences</hands-on-title>
+>
+> 1. {% tool [OMArk](toolshed.g2.bx.psu.edu/repos/iuc/omark/omark/0.3.0+galaxy2) %} with the following parameters:
+>    - {% icon param-file %} *"Protein sequences"*: `gffread: pep.fa`
+>    - *"OMAmer database*: select `LUCA-v2.0.0`
+>    - In *"Which outputs should be generated"*: select `Detailed summary`
+>
+{: .hands_on}
+
+The OMArk tool generated an output file in .txt format containing detailed information on the assessment of the completeness, consistency and species composition of the proteome analysed. This report includes statistics on conserved genes, the proportion of duplications, missing genes and the identification of reference lineages.
+
+> <comment-title>What can we deduce from these results?</comment-title>
+>
+> - Number of conserved HOGs: OMArk has identified a set of 5622 HOGs which are thought to be conserved in the majority of species in the Mucorineae clade.
+> - 85.52% of genes are complete, so the annotation is of good quality in terms of genomic completeness.
+> - Number of proteins in the whole proteome: 19 299. Of which 62.83% are present and 30.94% of the proteome does not share sufficient similarities with known gene families.
+> - No contamination detected.
+> - The OMArk analysis is based on the Mucorineae lineage, a more recent and specific clade than that used in the BUSCO assessment, which selected the Mucorales as the reference group.
+{: .comment}
+
+
+
 
 # Visualisation with a genome browser
 

@@ -6,6 +6,10 @@ priority: 3
 redirect_from:
   - /topics/transcriptomics/tutorials/scrna-plant/tutorial
 zenodo_link: 'https://zenodo.org/record/4597857'
+answer_histories:
+  - label: "UseGalaxy.eu"
+    history: https://singlecell.usegalaxy.eu/u/videmp/h/analysis-of-plant-scrna-seq-data-with-scanpy
+    date: 2024-12-13
 tags:
   - plants
   - paper-replication
@@ -27,16 +31,22 @@ time_estimation: 2H
 key_points:
   - Filtering parameters are dependent on the dataset, and should be explored using scatter or violin plots
   - A DotPlot is a fantastic way to validate clusters across different analyses
-contributors:
-  - mtekman
-  - beatrizserrano
-  - gallardoalba
-  - pavanvidem
 
+contributions:
+  authorship:
+    - mtekman
+    - beatrizserrano
+    - gallardoalba
+    - pavanvidem
+
+follow_up_training:
+  -
+      type: "internal"
+      topic_name: single-cell
+      tutorials:
+          - EBI-retrieval
 
 gitter: Galaxy-Training-Network/galaxy-single-cell
-
-
 
 recordings:
 - captioners:
