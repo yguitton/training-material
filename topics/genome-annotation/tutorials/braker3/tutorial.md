@@ -34,7 +34,7 @@ contributions:
     - rlibouba
     - abretaud
   reviewing:
-    - Deeptivarshney 
+    - deeptivarshney 
 
   funding:
     - eurosciencegateway
