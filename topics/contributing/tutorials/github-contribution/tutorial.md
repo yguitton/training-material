@@ -27,7 +27,7 @@ contributions:
   - bebatut
   - nomadscientist
   reviewing:
-  - PhilReedData 
+  - PhilReedData
   - shiltemann
 redirect_from:
   - "/topics/contributing/tutorials/github-command-line-contribution/tutorial"
@@ -580,15 +580,16 @@ You can now restart the GitHub flow to propose new changes: start by [creating a
 </div>
 
 
-# Close the Pull Request
+# Finishing the pull request
 
-Great! You now know how to make pull request on GitHub, and how to make changes after a review.
+Great! You now know how to make pull request on GitHub, and how to make changes after a review. Reviewers can now approve and merge your pull request, however, there's no point adding you as a contributor if you don't plan to contribute! So you have to make a choice - do you plan to contribute now, later, or never?
 
-Reviewers can now approve and merge your pull request.
+{% include _includes/cyoa-choices.html option1="Contribute-now" option2="Contribute-later" option3="Contribute-never" default="Contribute-now"
+       text="Your choice impacts how you will continue with your pull request." %}
 
+<div class="Contribute-never" markdown="1">
 
- - If you do not intend to contribute to Galaxy, please close the pull request as per below.
- - Otherwise, wait until your pull request is **merged** before closing it!
+If you do not intend to contribute to Galaxy, please close the pull request as per below.
 
 > <hands-on-title>Close the Pull Request</hands-on-title>
 >
@@ -599,6 +600,38 @@ Reviewers can now approve and merge your pull request.
 >
 {: .hands_on}
 
+</div>
+
+<div class="Contribute-later" markdown="1">
+
+If you plan to contribute to Galaxy, but not anytime soon, we ask that you close your Pull Request. When you come back to contribute to Galaxy, you can add any changes to the branch that you are working on, and open a fresh pull request following the same instructions above!
+
+> <hands-on-title>Close the Pull Request</hands-on-title>
+>
+> 1. Go to the [list of pull requests tab on the GitHub website](https://github.com/galaxyproject/training-material/pulls)
+> 2. Click on your pull request
+> 3. Scroll to the bottom of the page
+> 3. Click on "Close pull request" button
+>
+{: .hands_on}
+
+</div>
+
+<div class="Contribute-now" markdown="1">
+
+Thank you so much for being willing to contribute! The easiest way to start contributing is to look through training materials to find typos, poor figure legends or alt text - basically, a text-based issue that you can correct. If you're feeling bold, you can also look at some of these [ideas for ways to contribute]({% link faqs/gtn/contributors_getting_started.md }).
+
+1. Find a typo/error
+2. Fix it locally, just the way you edited the `CONTRIBUTORS.yaml` file above.
+3. Commit this change to your branch (the same one with yourself added to the `CONTRIBUTORS.yaml` file)
+4. Push this change from your local machine to the Github site
+5. Check the change is reflected in your Pull Request
+
+The steps are the same as your initial contribution to the `CONTRIBUTORS.yaml` file. You will then, as before, engage further with reviewers to finalise your Pull Request, and eventually (if all goes well!) your Pull Request will be approved and merged!
+
+{% icon congratulations %} Congrats, you'll have made your first contribution to the Galaxy Training Network!
+
+</div>
 
 # Conclusion
 
