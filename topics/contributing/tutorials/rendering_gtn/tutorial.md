@@ -52,7 +52,7 @@ recordings:
 If you are working on training materials, you will likely want to preview your changes as you go! You have a few options on how to do this.
 
 {% include _includes/cyoa-choices.html option1="Codespaces" option2="Gitpod" option3="Command-line" default="Codespaces"
-       text="We recommend using Codespaces. We used to use Gitpod, however it loads a bit slower and the interface changed as of spring 2025, so the tutorial may be out of date. Originally, we rendered using the Command-line and a site-builder called Jekyll, but that's probably the hardest route. CodeSpaces and GitPod are both online methods, only the command-line option requires you to install things on your machine." %}
+       text="We recommend using Codespaces. We used to use Gitpod, however it loads a bit slower and the interface changed as of spring 2025, so the tutorial may be out of date. **CodeSpaces and GitPod are both online methods**; only the command-line option requires you to install things on your machine." %}
 
 <div class="Codespaces" markdown="1">
 
@@ -556,7 +556,7 @@ We also need to make sure that a couple of other utilities and build requirement
 >    - Note: The GTN repo is quite large, therefore we recommend to use the `--depth 1 --branch main` flags here. This will clone only the main branch, and only the most recent revision, rather than the full history.
 > 4. Navigate to the the cloned repository
 >    - `cd training-material`
-> 5. Set up the conda environment
+> 5. Set up the conda environment (see tip box below for an method without conda)
 >
 >     It will install some needed tools (ruby, nodejs, etc) in a protected environment, without interfering with the existing tools or versions.
 >
@@ -610,7 +610,7 @@ We also need to make sure that a couple of other utilities and build requirement
 >      bundle exec jekyll serve --strict_front_matter -d _site/training-material --incremental --config _config.yml,_config-dev.yml
 >      ```
 > 6. Changes now showing?
->    - Stop the preview, run `make clean`, and rebuild it
+>    - Stop the preview, run `make clean`, `bundle install`, and rebuild it
 {: .tip}
 
 
