@@ -18,6 +18,11 @@ key_points:
   - "GitPod can be used to serve the GTN training materials"
   - "Checking the GTN website can also be done locally"
 
+tags:
+  - Choose your own Adventure
+  - GitPod
+  - CodeSpaces
+  - Command-line
 
 contributions:
   authorship:
