@@ -280,7 +280,7 @@ Click on the newly created dataset's eye to display it. You will see a JBrowse g
 
 We have embedded a copy of the resulting JBrowse here, if something went wrong during one of the steps you can always just check this output:
 
-{% snippet topics/visualisation/faqs/visualizations_jbrowse.html datadir="data" tracks="DNA%2Caa6aca08d6fd82b94c7a86712a632760_0"%}
+{% snippet topics/visualisation/faqs/visualizations_jbrowse.html datadir="data" tracks="DNA%2Caa6aca08d6fd82b94c7a86712a632760_0" %}
 
 Check that **Braker3 annotation** is selected in the top left-hand corner. If not, select it to view the annotation. 
 
