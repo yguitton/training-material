@@ -33,8 +33,8 @@ Collaboration is at the heart of effective GIS projects. Teams often include mem
 > 4. Using Follow Mode
 > 5. Adding Annotations and Comments
 > 6. Collaborating on Notebooks
-{: .agenda}
 > {:toc}
+{: .agenda}
 
 # 1. Launching Your Collaborative Session
 
