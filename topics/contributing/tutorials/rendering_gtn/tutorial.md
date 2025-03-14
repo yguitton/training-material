@@ -578,7 +578,7 @@ We also need to make sure that a couple of other utilities and build requirement
 > <tip-title>[Advanced] Building GTN without Conda (using Ruby's RVM)</tip-title>
 >
 > If you do not want to use conda, you can also run jekyll directly using Ruby and RVM:
-> 1. Install RVM (Ruby Version Manager) on your system ([instructions]())
+> 1. Install RVM (Ruby Version Manager) on your system ([instructions](https://rvm.io/rvm/install))
 >    - For Ubuntu:
 >      ```
 >      sudo apt-get install software-properties-common
