@@ -372,6 +372,9 @@ TrimAl is a tool for the automated removal of spurious sequences or poorly align
 
 ## Tree Generation
 
+
+
+
 > <hands-on-title> Task description </hands-on-title>
 >
 > 1. {% tool [Quicktree](toolshed.g2.bx.psu.edu/repos/iuc/quicktree/quicktree/2.5+galaxy0) %} with the following parameters:
@@ -424,6 +427,10 @@ TrimAl is a tool for the automated removal of spurious sequences or poorly align
 
 TODO: exercise to repeat on other trees?
 
+
+## Repeating analysis on your own data
+
+TODO: Provide full gene family tree workflow and show how to use
 
 # Conclusion
 
