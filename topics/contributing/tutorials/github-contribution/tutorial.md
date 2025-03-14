@@ -619,7 +619,7 @@ If you plan to contribute to Galaxy, but not anytime soon, we ask that you close
 
 <div class="Contribute-now" markdown="1">
 
-Thank you so much for being willing to contribute! The easiest way to start contributing is to look through training materials to find typos, poor figure legends or alt text - basically, a text-based issue that you can correct. If you're feeling bold, you can also look at some of these [ideas for ways to contribute]({% link faqs/gtn/contributors_getting_started.md }).
+Thank you so much for being willing to contribute! The easiest way to start contributing is to look through training materials to find typos, poor figure legends or alt text - basically, a text-based issue that you can correct. If you're feeling bold, you can also look at some of these [ideas for ways to contribute]({% link faqs/gtn/contributors_getting_started.md %}).
 
 1. Find a typo/error
 2. Fix it locally, just the way you edited the `CONTRIBUTORS.yaml` file above.
