@@ -565,11 +565,54 @@ We also need to make sure that a couple of other utilities and build requirement
 >     3. Create the `galaxy_training_material` conda environment: `make create-env`
 >
 > 6. Install Jekyll and related modules into the conda environment: `make install`
+>
+> > <details-title>Troubleshooting `libxml2` errors</details-title>
+> > If you encounter an error about libxml2 on Linux, please try to install `libxml2-dev` (executing `sudo apt install libxml2-dev`) if on Debian/Ubuntu or `libxml2-devel` (executing `sudo yum install libxml2-devel`) if on Fedora/RedHat/CentOS, and re-run `make install` .
+> {: .details}
+>
 {: .hands_on}
 
-> <details-title>Troubleshooting `libxml2` errors</details-title>
-> If you encounter an error about libxml2 on Linux, please try to install `libxml2-dev` (executing `sudo apt install libxml2-dev`) if on Debian/Ubuntu or `libxml2-devel` (executing `sudo yum install libxml2-devel`) if on Fedora/RedHat/CentOS, and re-run `make install` .
-{: .details}
+
+
+
+> <tip-title>[Advanced] Building GTN without Conda (using Ruby's RVM)</tip-title>
+>
+> If you do not want to use conda, you can also run jekyll directly using Ruby and RVM:
+> 1. Install RVM (Ruby Version Manager) on your system ([instructions]())
+>    - For Ubuntu:
+>      ```
+>      sudo apt-get install software-properties-common
+>      sudo apt-add-repository -y ppa:rael-gc/rvm
+>      sudo apt-get update
+>      sudo apt-get install rvm
+>      sudo usermod -a -G rvm $USER
+>      ```
+> 2. Install a Ruby version
+>    ```
+>    rvm install ruby-3.2.4
+>    ```
+> 3. Create ruby GTN environment
+>    ```
+>    rvm use 3.2.4@gtn --create
+>    ```
+> 4. Install dependencies
+>    ```
+>    bundle install
+>    ```
+> 5. Run the GTN
+>    - Always make sure your ruby environment is activated `rvm use 3.2.4@gtn` and up-to-date `bundle install`
+>    - Get a GTN preview
+>      ```
+>      bundle exec jekyll serve --incremental
+>      ```
+>    - Quicker build preview (but certain features are disabled)
+>      ```
+>      bundle exec jekyll serve --strict_front_matter -d _site/training-material --incremental --config _config.yml,_config-dev.yml
+>      ```
+> 6. Changes now showing?
+>    - Stop the preview, run `make clean`, and rebuild it
+{: .tip}
+
 
 
 # Checking the website generation
