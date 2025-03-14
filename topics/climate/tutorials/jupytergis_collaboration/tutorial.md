@@ -49,24 +49,24 @@ Collaboration is at the heart of effective GIS projects. Teams often include mem
 - In the search box, type **JupyterGIS**.
 - Click **Interactive JupyterGIS Notebook** and then click the **Run Tool** button.
 
-![Run Tool](../images/jupytergis_collaboration/run_tool.png)
+![Run Tool](../../images/jupytergis_collaboration/run_tool.png)
 
 - Click on **Interactive Tools** on the left sidebar.
 - Wait a few minutes until the job status changes to “running.”
 - Click on the **Jupyter Interactive GIS Tool** link that appears to open JupyterLab.
 
-![Start JGIS](../images/jupytergis_collaboration/start_jgis.png)
+![Start JGIS](../../images/jupytergis_collaboration/start_jgis.png)
 
 ## 1.3. Create Your GIS File
 
 - In the JupyterLab Launcher, scroll down to the **Other** section.
 - Click **GIS File** to open a blank canvas for your project.
 
-![New GIS File](../images/jupytergis_collaboration/new_gis_file.png)
+![New GIS File](../../images/jupytergis_collaboration/new_gis_file.png)
 
 - Notice that you are given an anonymous username, which you can see in the upper right corner. Every user in the project will be assigned an anonymous username.
 
-![Username](../images/jupytergis_collaboration/username.png)
+![Username](../../images/jupytergis_collaboration/username.png)
 
 # 2. Sharing Your Document
 
@@ -75,14 +75,14 @@ Collaboration is at the heart of effective GIS projects. Teams often include mem
 - Click on the **Share** button in your interface on the upper right corner, then click on the **Copy Link** button.
 - Share this link with colleagues to invite them to your session.
 
-![Share](../images/jupytergis_collaboration/share.png)
+![Share](../../images/jupytergis_collaboration/share.png)
 
 ## 2.2. Confirm Collaborator Access
 
 - When your colleagues join using the link, their usernames appear in the top right corner.
 - This lets you know exactly who is working on the document.
 
-![Shared Users](../images/jupytergis_collaboration/shared_users.png)
+![Shared Users](../../images/jupytergis_collaboration/shared_users.png)
 
 ---
 
@@ -94,14 +94,14 @@ Collaboration is at the heart of effective GIS projects. Teams often include mem
 - The new layer appears immediately for all collaborators in your session.
 - Experiment by adjusting settings like opacity or color, each change is instantly visible to your collaborators.
 
-![Add Layers](../images/jupytergis_collaboration/add_layers.gif)
+![Add Layers](../../images/jupytergis_collaboration/add_layers.gif)
 
 ## 3.2. Tracking Collaborators with Cursors
 
 - Each user's cursor appears on the document in the same color as their icon. This feature makes it easy to see where your teammates are focused on.
 - Click on a cursor to display the location (latitude and longitude) where that user is working.
 
-![Cursor](../images/jupytergis_collaboration/cursor.png)
+![Cursor](../../images/jupytergis_collaboration/cursor.png)
 
 ---
 
@@ -114,7 +114,7 @@ Follow mode allows you to track another user’s activity in the document in rea
 - Click on a collaborator's user icon in the upper right corner to activate follow mode. Observe that the document will then have a frame in their assigned color.
 - Click on the user icon again to exit follow mode.
 
-![Follow Mode](../images/jupytergis_collaboration/follow_mode.gif)
+![Follow Mode](../../images/jupytergis_collaboration/follow_mode.gif)
 
 
 > <question-title></question-title>
@@ -158,7 +158,7 @@ Annotations and comments let you add notes directly on your GIS file, which make
 - Open the right sidebar to view all annotations and comments in the document.
 - Click on the middle button to locate the annotation.
 
-![Annotation](../images/jupytergis_collaboration/annotation.gif)
+![Annotation](../../images/jupytergis_collaboration/annotation.gif)
 
 > <question-title></question-title>
 >
@@ -186,12 +186,12 @@ Real-time collaboration in notebooks is a powerful tool for teams working on cod
 
 - To create a notebook, click on the **+** icon to open the Launcher, then select one of the kernels under **Notebook**.
 
-![Notebook](../images/jupytergis_collaboration/create_notebook.png)
+![Notebook](../../images/jupytergis_collaboration/create_notebook.png)
 
 - Once a notebook is created, it is automatically accessible to all collaborators—no additional sharing is needed.
 - To open a shared notebook, click on the explorer button in the left sidebar, then locate and click on the notebook.
 
-![Notebook](../images/jupytergis_collaboration/open_notebook.png)
+![Notebook](../../images/jupytergis_collaboration/open_notebook.png)
 
 - Anyone in the session can open, edit, and run the notebook.
 
@@ -200,7 +200,7 @@ Real-time collaboration in notebooks is a powerful tool for teams working on cod
 - As you write or execute code, every change is visible to your team instantly.
 - Multiple users can write, edit, and run code in the same notebook at the same time for a dynamic, interactive coding experience.
 
-![Notebook](../images/jupytergis_collaboration/notebook.gif)
+![Notebook](../../images/jupytergis_collaboration/notebook.gif)
 
 > <question-title></question-title>
 >
