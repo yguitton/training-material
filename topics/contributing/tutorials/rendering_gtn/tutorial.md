@@ -52,7 +52,7 @@ recordings:
 If you are working on training materials, you will likely want to preview your changes as you go! You have a few options on how to do this.
 
 {% include _includes/cyoa-choices.html option1="Codespaces" option2="Gitpod" option3="Command-line" default="Codespaces"
-       text="We recommend using Codespaces. We used to use Gitpod, however it loads a bit slower and the interface changed as of spring 2025, so the tutorial may be out of date. Originally, we rendered using the Command-line and a site-builder called Jekyll, but that's probably the hardest route." %}
+       text="We recommend using Codespaces. We used to use Gitpod, however it loads a bit slower and the interface changed as of spring 2025, so the tutorial may be out of date. Originally, we rendered using the Command-line and a site-builder called Jekyll, but that's probably the hardest route. CodeSpaces and GitPod are both online methods, only the command-line option requires you to install things on your machine." %}
 
 <div class="Codespaces" markdown="1">
 
