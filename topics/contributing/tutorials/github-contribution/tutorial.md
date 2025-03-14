@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 
-title: "Contributing the Galaxy Training Network with GitHub"
+title: "Contributing to the Galaxy Training Network with GitHub"
 questions:
   - "How can I contribute to an open-source project with GitHub?"
   - "What is the GitHub flow?"
