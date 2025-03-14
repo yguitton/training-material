@@ -253,34 +253,27 @@ TAPscan provides the user with three different output files. Each output file is
 
 Now that we have identified TAP families of interest across multiple species, let's perform an evolutionary analysis.
 
+
+TODO: include pairwise alignment? --> the parsing step after is not very easy to understand, maybe too confusing.
+
+
+
+
+
+## Multiple Sequence Alignment
+
 > <hands-on-title> Task description </hands-on-title>
 >
 > 1. {% tool [MAFFT](toolshed.g2.bx.psu.edu/repos/rnateam/mafft/rbc_mafft/7.526+galaxy1) %} with the following parameters:
 >    - *"For multiple inputs generate"*: `a single MSA of all sequences from all inputs`
 >        - In *"Input batch"*:
 >            - {% icon param-repeat %} *"Insert Input batch"*
->                - {% icon param-file %} *"Sequences to align"*: `data_param` (output of **Pick parameter value** {% icon tool %})
->    - *"Type of sequences"*: `Amino acids`
->        - *"Type of scoring matrix"*: `BLOSUM`
->        - *"Configure gap costs"*: `Set values`
->    - *"Support unusual characters?"*: `Yes`
+>                - {% icon param-collection %} *"Sequences to align"*: the collection of FASTA files from our TAP families (output of **Filter FASTA** {% icon tool %})
 >    - *"MAFFT flavour"*: `Auto`
->    - *"Reorder output?"*: `Yes`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
+> <question-title> </question-title>
 >
 > 1. Question1?
 > 2. Question2?
@@ -294,7 +287,8 @@ Now that we have identified TAP families of interest across multiple species, le
 >
 {: .question}
 
-## Sub-step with **trimAl**
+
+## Alignment trimming
 
 > <hands-on-title> Task description </hands-on-title>
 >
@@ -305,34 +299,11 @@ Now that we have identified TAP families of interest across multiple species, le
 >        - *"Similarity threshold"*: `0.001`
 >        - *"Minimum conservance percentage"*: `0`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
 
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Quicktree**
+## Tree Generation
 
 > <hands-on-title> Task description </hands-on-title>
 >
@@ -341,34 +312,9 @@ Now that we have identified TAP families of interest across multiple species, le
 >        - {% icon param-file %} *"Alignment file"*: `trimmed_output` (output of **trimAl** {% icon tool %})
 >    - *"Calcuate bootstrap values with n iterations"*: `1000`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
 
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **IQ-TREE**
 
 > <hands-on-title> Task description </hands-on-title>
 >
@@ -392,35 +338,11 @@ Now that we have identified TAP families of interest across multiple species, le
 >        - In *"Ultrafast bootstrap parameters"*:
 >            - *"Specify number of bootstrap replicates (>=1000)."*: `1000`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
 
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
+## Tree Visualisation
 
-
-## Sub-step with **ETE tree viewer**
 
 > <hands-on-title> Task description </hands-on-title>
 >
@@ -430,117 +352,10 @@ Now that we have identified TAP families of interest across multiple species, le
 >        - {% icon param-file %} *"Multiple Alignment FASTA file"*: `output` (output of **Text transformation** {% icon tool %})
 >    - *"Format of the output image."*: `PNG`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
 
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **ETE tree viewer**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [ETE tree viewer](toolshed.g2.bx.psu.edu/repos/iuc/ete_treeviewer/ete_treeviewer/3.1.3+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Newick Tree to visualise"*: `output` (output of **Text transformation** {% icon tool %})
->    - *"Add alignment information to image?"*: `yes`
->        - {% icon param-file %} *"Multiple Alignment FASTA file"*: `output` (output of **Text transformation** {% icon tool %})
->    - *"Format of the output image."*: `PNG`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **ETE tree viewer**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [ETE tree viewer](toolshed.g2.bx.psu.edu/repos/iuc/ete_treeviewer/ete_treeviewer/3.1.3+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Newick Tree to visualise"*: `output` (output of **Text transformation** {% icon tool %})
->    - *"Add alignment information to image?"*: `yes`
->        - {% icon param-file %} *"Multiple Alignment FASTA file"*: `output` (output of **Text transformation** {% icon tool %})
->    - *"Format of the output image."*: `PNG`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-
-## Re-arrange
-
-To create the template, each step of the workflow had its own subsection.
-
-***TODO***: *Re-arrange the generated subsections into sections or other subsections.
-Consider merging some hands-on boxes to have a meaningful flow of the analyses*
-
-
-
+TODO: exercise to repeat on other trees?
 
 
 # Conclusion
