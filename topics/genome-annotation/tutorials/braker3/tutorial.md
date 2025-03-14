@@ -34,7 +34,8 @@ contributions:
     - rlibouba
     - abretaud
   reviewing:
-    - deeptivarshney 
+    - deeptivarshney
+    - shiltemann
 
   funding:
     - eurosciencegateway
@@ -276,6 +277,12 @@ This browser enables you to navigate along the chromosomes of the genome and vie
 {: .hands_on}
 
 Click on the newly created dataset's eye to display it. You will see a JBrowse genome browser. You can have a look at the [JBrowse tutorial]({% link topics/visualisation/tutorials/jbrowse/tutorial.md %}) for a more in-depth description of JBrowse.
+
+We have embedded a copy of the resulting JBrowse here, if something went wrong during one of the steps you can always just check this output:
+
+{% snippet topics/visualisation/faqs/visualizations_jbrowse_annotation_braker3.html datadir="data" %}
+
+Check that **Braker3 annotation** is selected in the top left-hand corner. If not, select it to view the annotation. 
 
 # Conclusion
 
