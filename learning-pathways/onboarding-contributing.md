@@ -7,7 +7,7 @@ priority: 1
 
 editorial_board:
 - nomadscientist
-- philreeddata
+- PhilReedData
 
 redirect_from:
 - /learning-pathways/building_tutorials
@@ -33,7 +33,7 @@ pathway:
     tutorials:
       - name: gtn_minor_correction.html
         link: /faqs/gtn
-        
+
   - section: "Module 2: Add yourself as a contributor"
     description: |
       While you can make minor corrections using the web-based Github interface, for larger changes (and, indeed, for building new materials altogether), you will need to work more extensively with Github. When you make larger changes, you should be acknowledged for your work - we will therefore use this Github training to also add yourself to our contributors list, so that we can acknowledge you going forward!
