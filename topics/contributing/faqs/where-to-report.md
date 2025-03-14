@@ -8,13 +8,17 @@ contributors: [nomadscientist]
 
 The Galaxy community addresses issues and needs through resolving issues on Github.
 
-# Are you struggling to analyse something and need help?
+# Help you
+
+Are you struggling to analyse something and need help?
 
 Perhaps a tool isn't working, or something similar?
 
 {% snippet faqs/galaxy/analysis_reporting_issues.md %}
 
-# OR, have you found a definite problem with Galaxy and/or had an idea that could improve Galaxy?
+# Help Galaxy
+
+Alternatively, have you found a definite problem with Galaxy and/or had an idea that could improve Galaxy?
 
 Report an **Issue** on the correct Github repository:
 

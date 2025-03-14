@@ -23,6 +23,9 @@ contributions:
   authorship:
     - CameronFRWatson
     - alliecreason
+  reviewing:
+    - kostrykin
+    - beatrizserrano
 ---
 
 
@@ -175,11 +178,11 @@ Available segmentation tools in Galaxy-ME:
   - UnMicst and s3segmenter ({% cite Yapp2022 %})
   - Cellpose ({% cite Stringer2020 %})
 
-In this tutorial, we use **Mesmer** because it tends to perform generally well on a diverse range of image types, and can be adapted to suite different modalities. 
+In this tutorial, we use **Mesmer** because it tends to perform generally well on a diverse range of image types, and can be adapted to suite different modalities.
 
 > <comment-title>Important detail: Running images in batches</comment-title>
 >
-> Now that each image has been split into individual core images, downstream tools must be run on the images separately. Luckily, Galaxy makes this easy by including the option to run each tool in batch across a collection of inputs. Next to the input for the tool, select {% icon param-collection %} (**Dataset collection**) as the input type, and pass the collection output by UNetCoreograph as input. If these tools are being used for a single WSI, this can be ignored and the tools can be run on single files individually. If users are processing multiple WSIs simultaneously, the steps would be identical to the TMA case, storing images in collections and running tools in batches. 
+> Now that each image has been split into individual core images, downstream tools must be run on the images separately. Luckily, Galaxy makes this easy by including the option to run each tool in batch across a collection of inputs. Next to the input for the tool, select {% icon param-collection %} (**Dataset collection**) as the input type, and pass the collection output by UNetCoreograph as input. If these tools are being used for a single WSI, this can be ignored and the tools can be run on single files individually. If users are processing multiple WSIs simultaneously, the steps would be identical to the TMA case, storing images in collections and running tools in batches.
 >
 {: .comment}
 
@@ -194,7 +197,7 @@ In this tutorial, we use **Mesmer** because it tends to perform generally well o
 >    > <comment-title>np.squeeze</comment-title>
 >    >
 >    > Make sure the **np.squeeze** parameter is set to `Yes` to make the output compatible with next steps.
->    > This is the default behavior. 
+>    > This is the default behavior.
 >    {: .comment}
 >
 {: .hands_on}
@@ -256,7 +259,7 @@ Learn more about this file format at the [anndata documentation](https://anndata
 
 > <comment-title>Connection to Scanpy and other Galaxy tool suites</comment-title>
 >
-> Conversion to Anndata format allows users to feed their MTI datasets into a broad array of single-cell analysis tools that have been developed by the Galaxy community. For example, the Python package {% tool [Scanpy ComputeGraph](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_compute_graph/scanpy_compute_graph/1.9.3+galaxy0) %} is available as a Galaxy tool suite and is extremely useful for filtering, feature scaling and normalization, dimensionality reduction, community detection, and many other downstream analysis tasks. 
+> Conversion to Anndata format allows users to feed their MTI datasets into a broad array of single-cell analysis tools that have been developed by the Galaxy community. For example, the Python package {% tool [Scanpy ComputeGraph](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_compute_graph/scanpy_compute_graph/1.9.3+galaxy0) %} is available as a Galaxy tool suite and is extremely useful for filtering, feature scaling and normalization, dimensionality reduction, community detection, and many other downstream analysis tasks.
 >
 {: .comment}
 
@@ -325,13 +328,13 @@ For any `OME-TIFF` image in a Galaxy-ME history, there will be an option to view
 
 ![A screenshot showing the 'display at aviator' link which can be accessed through the dataset visualizations button.](../../images/multiplex-tissue-imaging-TMA/avivator_new_display.png "The 'display at Avivator' link which can be accessed through the dataset visualizations button.")
 
-Clicking the link will open a new window with the Avivator interactive dashboard. Here, users can select channels to view, adjust the channel contrast and colors for viewing, and zoom in to inspect the image (Figure 7). 
+Clicking the link will open a new window with the Avivator interactive dashboard. Here, users can select channels to view, adjust the channel contrast and colors for viewing, and zoom in to inspect the image (Figure 7).
 
 ![A screenshot showing a TMA core visualized in the Avivator dashboard.](../../images/multiplex-tissue-imaging-TMA/ex2_core2_avivator.png "The Avivator dashboard allows for initial image exploration, channel selection, and zooming.")
 
 > <tip-title>Accessing Avivator on older Galaxy instances</tip-title>
 >
-> Some Galaxy instances that are running older versions of Galaxy will have the **Display at Avivator** link directly in the expanded dataset view (Figure 8.). 
+> Some Galaxy instances that are running older versions of Galaxy will have the **Display at Avivator** link directly in the expanded dataset view (Figure 8.).
 >
 > ![A screenshot showing the old 'display at aviator' link which is found on the expanded dataset view.](../../images/multiplex-tissue-imaging-TMA/avivator_old_display.png "Older Galaxy versions will have the 'display at Avivator' link directly on the expanded dataset view.")
 >
@@ -340,7 +343,7 @@ Clicking the link will open a new window with the Avivator interactive dashboard
 
 ## Generating an interactive visualization dashboard with **Vitessce**
 
-**Vitessce** is a powerful visualization tool that creates interactive dashboards (Figure 9.) to look at a multiplex `OME-TIFF` images in conjunction with data generated during analysis and stored in an anndata file. The segmentation mask can be overlaid onto the image to qualitatively assess segmentation performance, and visually explore cell-type annotations and marker intensities. The different visualization components are linked by cell index, so users can analyze the image, UMAP representations, heatmaps, and marker intensity violin plots for comprehensive data exploration. 
+**Vitessce** is a powerful visualization tool that creates interactive dashboards (Figure 9.) to look at a multiplex `OME-TIFF` images in conjunction with data generated during analysis and stored in an anndata file. The segmentation mask can be overlaid onto the image to qualitatively assess segmentation performance, and visually explore cell-type annotations and marker intensities. The different visualization components are linked by cell index, so users can analyze the image, UMAP representations, heatmaps, and marker intensity violin plots for comprehensive data exploration.
 
 ![Screenshot of the vitessce dashboard.](../../images/multiplex-tissue-imaging-TMA/ex2_fullVitessce.png "A Full view of a vitesse dashboard for one core from Exemplar-002.")
 
@@ -360,7 +363,7 @@ Clicking the link will open a new window with the Avivator interactive dashboard
 
 > <tip-title>Customizing the Vitessce dashboard during use</tip-title>
 >
-> When running a Vitessce dashboard, the components may look squished and difficult to use. Individual components can be expanded using a handle at the bottom right corner of each component. Additionally, components can be removed to make room for others by clicking the 'X' in the upper right corner of each component. Once the dashboard is closed, it will return to its original state and all original components will be restored when opened again. 
+> When running a Vitessce dashboard, the components may look squished and difficult to use. Individual components can be expanded using a handle at the bottom right corner of each component. Additionally, components can be removed to make room for others by clicking the 'X' in the upper right corner of each component. Once the dashboard is closed, it will return to its original state and all original components will be restored when opened again.
 >
 > ![screenshot of vitessce interface with some of the components removed or resized.](../../images/multiplex-tissue-imaging-TMA/ex2_vitessce_zoomed.png "Each window in the dashboard can be resized or removed to view the components in more detail. Closing and re-opening the dashboard will restore the original state.")
 >
@@ -417,7 +420,7 @@ Galaxy-ME includes additional tools from **Scimap** and tools from the **Squidpy
 >
 >    > <comment-title>Spatial scatterplot</comment-title>
 >    >
->    > **Squidpy** was used to generate a spatial scatterplot of core 2 of exemplar 2 (Figure 13). This is useful for visualizing the distribution of cell types, or any other categorical or continuous variable in the anndata file. 
+>    > **Squidpy** was used to generate a spatial scatterplot of core 2 of exemplar 2 (Figure 13). This is useful for visualizing the distribution of cell types, or any other categorical or continuous variable in the anndata file.
 >    >
 >    > ![Spatial scatterplot of TMA core showing cell types annotated by colors](../../images/multiplex-tissue-imaging-TMA/ex2_squidpy_scatter.png "The output of Squidpy's spatial scatterplot tool on core 2 from Exemplar-002.")
 >    >
