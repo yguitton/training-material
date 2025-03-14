@@ -551,8 +551,11 @@ We also need to make sure that a couple of other utilities and build requirement
 >    - For Debian/Ubuntu: `sudo apt update && sudo apt install git curl make`
 >    - For Fedora/CentOs/RedHat: `sudo yum install git curl make`
 >
-> 3. (If not done yet) Clone the training material GitHub repository: `git clone https://github.com/galaxyproject/training-material.git`
-> 4. Navigate to the `training-material/` folder with `cd`
+> 3. Clone the training material GitHub repository:
+>    - `git clone --depth 1 --branch main https://github.com/galaxyproject/training-material.git`
+>    - Note: The GTN repo is quite large, therefore we recommend to use the `--depth 1 --branch main` flags here. This will clone only the main branch, and only the most recent revision, rather than the full history.
+> 4. Navigate to the the cloned repository
+>    - `cd training-material`
 > 5. Set up the conda environment
 >
 >     It will install some needed tools (ruby, nodejs, etc) in a protected environment, without interfering with the existing tools or versions.
@@ -588,7 +591,7 @@ Once Jekyll and its modules are installed in our conda environment, we can check
 With `make serve-quick`, a local Jekyll server will run in background. It will check the changes and regenerate the website accordingly. You may need to reload the page to see the changes (and sometimes to wait 1-2 minutes).
 
 
-> <tip-title></tip-title>
+> <tip-title>make serve vs make serve-quick</tip-title>
 >
 > 1. Use `make serve` instead of `make serve-quick` to get all plugins, but also configure the post, host and pass additional flags. This however can be quite slow.
 >
