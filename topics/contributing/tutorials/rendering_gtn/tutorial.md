@@ -214,14 +214,14 @@ When you have finished your changes, it all looks good in the preview, you want 
 > <hands-on-title>Comitting changes</hands-on-title>
 > Before you can commit your changes you have to create a branch. You have two options to preform this task:
 >  1. **Option 1: via the terminal**
->    - Hit <kbd>ctrl+c</kbd> if your preview was still running to stop it
->    - Create a new branch, commit your changes, push changes:
+>     - Hit <kbd>ctrl+c</kbd> if your preview was still running to stop it
+>     - Create a new branch, commit your changes, push changes:
 >
->    ```bash
->    git checkout -b fix-title
->    git commit -m "update tutorial title" topics/introduction/tutorials/galaxy-intro-short/tutorial.md
->    git push origin fix-title
->    ```
+>     ```bash
+>     git checkout -b fix-title
+>     git commit -m "update tutorial title" topics/introduction/tutorials/galaxy-intro-short/tutorial.md
+>     git push origin fix-title
+>     ```
 >
 > 2. **Option 2: via the web interface**
 >    - Create a new branch:
