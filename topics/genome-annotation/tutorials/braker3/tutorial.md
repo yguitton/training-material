@@ -57,11 +57,11 @@ Annotating the eukaryotic genome represents a somewhat more complex challenge th
 
 In this tutorial we will use a software tool called Braker3 to annotate the genome sequence of a small eukaryote: [*Mucor mucedo*](https://en.wikipedia.org/wiki/Mucor_mucedo) (a fungal plant pathogen).
 
-[Braker3](https://github.com/Gaius-Augustus/BRAKER) is a automated bioinformatics tool that uses RNA-seq and protein data to annotate genomes. It integrates GeneMark-ETP and AUGUSTUS software to predict genes with a high degree of precision. By combining the results of these two tools, Braker3 generates a final file containing gene annotations with strong extrinsic support (i.e. based on external experimental data). 
+[Braker3](https://github.com/Gaius-Augustus/BRAKER) is an automated bioinformatics tool that uses RNA-seq and protein data to annotate genomes. It integrates GeneMark-ETP and AUGUSTUS software to predict genes with a high degree of precision. By combining the results of these two tools, Braker3 generates a final file containing gene annotations with strong extrinsic support (i.e. based on external experimental data). 
 
 Braker3 facilitates genome annotation by leveraging transcriptomic and protein data to produce more reliable and robust gene predictions.
 
-In this tutorial, you will learn how to perform structural annotation of the genome and assess its quality. To simplify learning and reduce analysis time, we will use a lightweight dataset, which may result in a less complete annotation than in the context of analysis under real conditions.
+In this tutorial, you will learn how to perform structural annotation of the genome and assess its quality. To simplify learning and reduce analysis time, we will use a lightweight dataset, which may result in a less complete annotation than in the context of an analysis under real conditions.
 
 > <agenda-title></agenda-title>
 >
@@ -77,8 +77,8 @@ In this tutorial, you will learn how to perform structural annotation of the gen
 To annotate our genome using Braker3, we will use the following files:
 
 - The **genome sequence** in fasta format. For best results, the sequence should be soft-masked beforehand. You can learn how to do it by following the [RepeatMasker tutorial]({% link topics/genome-annotation/tutorials/repeatmasker/tutorial.md %}). For this tutorial, we will try to annotate the genome assembled in the [Flye assembly tutorial]({% link topics/assembly/tutorials/flye-assembly/tutorial.md %}). The size of the genome has been reduced to reduce Braker3 execution time.
-- Some **RNAseq data** in fastq format. We will align them on the genome, and Braker3 will use it as evidence to annotate genes.
-- A set of **protein sequences**, like UniProt/SwissProt. It is important to have good quality. The number of protein sequences has been reduced to reduce Braker3's execution time.
+- Some **RNAseq data** in bam format. We will align them on the genome, and Braker3 will use it as evidence to annotate genes.
+- A set of **protein sequences**, like UniProt/SwissProt. It is important to have good quality, curated sequences here, and the UniProt/SwissProt databank fits very well. For this tutorial, we have prepared a subset of this databank to speed up computing, but you should use UniProt/SwissProt for real life analysis.
 
 > <hands-on-title>Data upload</hands-on-title>
 >
@@ -107,10 +107,27 @@ To annotate our genome using Braker3, we will use the following files:
 In this tutorial, the alignments from RNA-seq is already prepared. 
 These data were obtained using the RNA STAR tool, the steps of which were described in the 
 [Funannotate]({% link topics/genome-annotation/tutorials/funannotate/tutorial.md %}) tutorial. 
-When using Braker3 with STAR to align RNA-Seq data, the **--outSAMstrandField intronMotif** parameter must be added. 
+When using Braker3 with STAR to align RNA-Seq data, the **--outSAMstrandField intronMotif** parameter must be added.
 This parameter adds specific intron information to the alignment files (BAM). 
 This information is necessary for Braker3 to correctly understand and use the alignments to annotate genes.
 Without this parameter, Braker3 may not function correctly or may produce incomplete results.
+
+These are the parameters to select if you want to run an RNA STAR before annotating with Braker3:
+
+> <hands-on-title></hands-on-title>
+>
+> 1. {% tool [RNA STAR](toolshed.g2.bx.psu.edu/repos/iuc/rgrnastar/rna_star/2.7.8a+galaxy0) %} with the following parameters:
+>    - *"Single-end or paired-end reads"*: `Paired-end (as individual datasets)`
+>        - {% icon param-file %} *"RNA-Seq FASTQ/FASTA file, forward reads"*: `rnaseq_R1.fq.gz` (Input dataset)
+>        - {% icon param-file %} *"RNA-Seq FASTQ/FASTA file, reverse reads"*: `rnaseq_R2.fq.gz` (Input dataset)
+>    - *"Custom or built-in reference genome"*: `Use reference genome from history and create temporary index`
+>        - {% icon param-file %} *"Select a reference genome"*: `genome_masked.fasta` (Input dataset)
+>        - *"Length of the SA pre-indexing string"*: `11`
+>    - In *"BAM output format specification"*:
+>        - In *"Read alignement tags to include in the BAM output"*:
+>             - Select `XS (strand flag, see parameter help below)`
+>
+{: .hands_on}
 
 # Structural annotation 
 
@@ -136,7 +153,7 @@ With these files, We can run [**Braker3**](https://github.com/Gaius-Augustus/BRA
 
 > <comment-title>on parameters</comment-title>
 >
-> - If you are working with fungi, we recommend that you activate the **--fungus** parameter. This enables Braker3 to run the GeneMArk-ETP algorithm with a branch point model. 
+> - If you are working with fungi, we recommend that you activate the **--fungus** parameter. This enables Braker3 to run the GeneMark-ETP algorithm with a branch point model. 
 {: .comment}
 
 > <comment-title>Don't wait</comment-title>
@@ -156,8 +173,6 @@ The GFF3 format is a standard bioinformatics format for storing genome annotatio
 [BUSCO](http://busco.ezlab.org/) (Benchmarking Universal Single-Copy Orthologs) is a widely used tool to evaluate the quality of a genome assembly and annotation. By comparing genomes from 
 various related and distantly related species, the authors determined sets of ortholog genes that are present in single copy in (almost) all the species of a clade (Bacteria, Fungi, Plants, Insects, Mammalians, …). 
 Most of these genes are essential for the organism to live, and are expected to be found in any newly sequenced and annotated genome from the corresponding clade. Using this data, BUSCO evaluates the "completeness" of genome annotation by assessing the proportion of these essential genes (also named BUSCOs) found in a set of (predicted) transcript or protein sequences. 
-
-As an alternative for genomes only one can use [**compleasm**](https://github.com/huangnengCSU/compleasm) with the same BUSCO gene sets, as compleasm is a bit more sensitive and thus allows finding slightly more conserved genes.
 
 We want to run BUSCO on the protein sequences predicted from gene sequences of the Braker3 annotation. 
 
