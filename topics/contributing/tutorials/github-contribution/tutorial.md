@@ -416,7 +416,7 @@ You can then make further changes locally, keeping your local and online branch 
 
 > <hands-on-title>Commit suggested changes</hands-on-title>
 >
-> 1. On your Pull Request link where you see the suggested changes, commit them (or engage further, or edit them) on GitHub
+> 1. On your Pull Request link where you see the suggested changes, commit them by clicking on the "Commit suggestion" button (or engage further, or edit them) on GitHub
 >
 >       ![Fetch origin](../../images/desktop-commit_suggestion.png)
 >
