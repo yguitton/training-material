@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 
 title: Phylogenetic analysis for bacterial comparative genomics
-zenodo_link: ''
+zenodo_link: 'https://zenodo.org/records/1'
 draft: true
 questions:
 - to do
