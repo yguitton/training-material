@@ -18,13 +18,18 @@ requirements:
      - onedata-getting-started
 
 questions:
-- FIXME?
-- FIXME?
+- How to use Onedata as a storage location for Galaxy datasets?
+- What is the difference between Remote File Source and Storage Location?
+- What permissions are required for Onedata Storage Location?
 objectives:
-- FIXME
+- Configure Onedata as a Storage Location for Galaxy datasets
+- Learn how to manage Storage Location preferences
+- Understand the requirements and implications of using Onedata storage
 key_points:
-- FIXME.
-- FIXME.
+- Storage Location stores Galaxy datasets directly in your Onedata space
+- Write access to the Onedata space is required
+- Storage Location is different from Remote File Source - it acts as an Object Store
+- You can use multiple Storage Locations and set preferences between them
 ---
 
 FIXME Is there a better location for this tutorial than data upload?

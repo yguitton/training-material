@@ -19,13 +19,18 @@ requirements:
      - onedata-getting-started
 
 questions:
-- FIXME?
-- FIXME?
+- How to import data from Onedata to Galaxy?
+- How to configure Onedata as a data source in Galaxy?
+- What are the different ways to configure Onedata in Galaxy?
 objectives:
-- FIXME
+- Learn how to configure Onedata as a data source in Galaxy
+- Understand the difference between configuring your own and generic Onedata source
+- Learn how to import data from Onedata to Galaxy
 key_points:
-- FIXME.
-- FIXME.
+- Onedata can be configured as a data source in two ways - as your own or generic remote source
+- Onezone domain and access token are required for Onedata configuration
+- Data from Onedata can be easily imported to Galaxy through the remote files selection interface
+- Onedata provides access to shared GTN training data
 ---
 
 <!-- FIXME consider using {: .hands-on} sections -->
@@ -89,7 +94,7 @@ Follow these steps:
 5. Fill in the information. If you wish to perform exports to this remote, check
    the **Writable?** toggle and make sure that your Onedata access token is write-enabled.
    ![Configure Onedata Remote File Source](../../images/onedata-remote-import/configure-onedata-rfs.png)
-6. Click **Create** and it's done! You can now [use the Onedata remote](#importing-data).
+6. Click **Create** and it's done! You can now [use the Onedata remote](#importing-uploading-data).
 
 
 ## Configure a generic Onedata remote

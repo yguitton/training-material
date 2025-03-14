@@ -20,13 +20,18 @@ requirements:
      - onedata-remote-import
 
 questions:
-- FIXME?
-- FIXME?
+- How to export Galaxy datasets to Onedata?
+- What configuration is needed for Onedata export?
+- What permissions are required for Onedata export?
 objectives:
-- FIXME
+- Configure a writable Onedata Remote File Source
+- Learn how to export datasets to Onedata
+- Understand the requirements for Onedata export
 key_points:
-- FIXME.
-- FIXME.
+- Remote File Source must be configured as writable to enable export
+- Export can be done through the "Export datasets" tool
+- Write access is required in the Onedata access token
+- Export works with both generic and user-configured Remote File Sources
 ---
 
 

@@ -12,13 +12,19 @@ time_estimation: "15m"
 level: Introductory
 
 questions:
-- FIXME?
-- FIXME?
+- What is Onedata and how does it integrate with Galaxy?
+- How to access Onedata services and get required credentials?
+- What are the different ways to use Onedata in Galaxy?
 objectives:
-- FIXME
+- Understand the basic concepts of Onedata distributed storage
+- Learn how to access Onedata services and obtain access tokens
+- Identify different types of Onedata integration with Galaxy
+- Know which credentials are needed for each integration type
 key_points:
-- FIXME.
-- FIXME.
+- Onedata is a distributed storage system that can be integrated with Galaxy in multiple ways
+- Access tokens are required for all types of Onedata integration
+- Galaxy supports both data import/export (Remote File Sources) and storage (Object Store) integration with Onedata
+- Different integration types require different levels of access permissions
 ---
 
 FIXME: how to improve the images so that they display nicely?
