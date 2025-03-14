@@ -18,6 +18,11 @@ key_points:
   - "GitPod can be used to serve the GTN training materials"
   - "Checking the GTN website can also be done locally"
 
+tags:
+  - Choose your own Adventure
+  - GitPod
+  - CodeSpaces
+  - Command-line
 
 contributions:
   authorship:
@@ -47,7 +52,7 @@ recordings:
 If you are working on training materials, you will likely want to preview your changes as you go! You have a few options on how to do this.
 
 {% include _includes/cyoa-choices.html option1="Codespaces" option2="Gitpod" option3="Command-line" default="Codespaces"
-       text="We recommend using Codespaces. We used to use Gitpod, however it loads a bit slower and the interface changed as of spring 2025, so the tutorial may be out of date. Originally, we rendered using the Command-line and a site-builder called Jekyll, but that's probably the hardest route." %}
+       text="We recommend using Codespaces. We used to use Gitpod, however it loads a bit slower and the interface changed as of spring 2025, so the tutorial may be out of date. **CodeSpaces and GitPod are both online methods**; only the command-line option requires you to install things on your machine." %}
 
 <div class="Codespaces" markdown="1">
 
@@ -209,14 +214,14 @@ When you have finished your changes, it all looks good in the preview, you want 
 > <hands-on-title>Comitting changes</hands-on-title>
 > Before you can commit your changes you have to create a branch. You have two options to preform this task:
 >  1. **Option 1: via the terminal**
->    - Hit <kbd>ctrl+c</kbd> if your preview was still running to stop it
->    - Create a new branch, commit your changes, push changes:
+>     - Hit <kbd>ctrl+c</kbd> if your preview was still running to stop it
+>     - Create a new branch, commit your changes, push changes:
 >
->    ```bash
->    git checkout -b fix-title
->    git commit -m "update tutorial title" topics/introduction/tutorials/galaxy-intro-short/tutorial.md
->    git push origin fix-title
->    ```
+>     ```bash
+>     git checkout -b fix-title
+>     git commit -m "update tutorial title" topics/introduction/tutorials/galaxy-intro-short/tutorial.md
+>     git push origin fix-title
+>     ```
 >
 > 2. **Option 2: via the web interface**
 >    - Create a new branch:
@@ -546,9 +551,12 @@ We also need to make sure that a couple of other utilities and build requirement
 >    - For Debian/Ubuntu: `sudo apt update && sudo apt install git curl make`
 >    - For Fedora/CentOs/RedHat: `sudo yum install git curl make`
 >
-> 3. (If not done yet) Clone the training material GitHub repository: `git clone https://github.com/galaxyproject/training-material.git`
-> 4. Navigate to the `training-material/` folder with `cd`
-> 5. Set up the conda environment
+> 3. Clone the training material GitHub repository:
+>    - `git clone --depth 1 --branch main https://github.com/galaxyproject/training-material.git`
+>    - Note: The GTN repo is quite large, therefore we recommend to use the `--depth 1 --branch main` flags here. This will clone only the main branch, and only the most recent revision, rather than the full history.
+> 4. Navigate to the the cloned repository
+>    - `cd training-material`
+> 5. Set up the conda environment (see tip box below for an method without conda)
 >
 >     It will install some needed tools (ruby, nodejs, etc) in a protected environment, without interfering with the existing tools or versions.
 >
@@ -557,11 +565,54 @@ We also need to make sure that a couple of other utilities and build requirement
 >     3. Create the `galaxy_training_material` conda environment: `make create-env`
 >
 > 6. Install Jekyll and related modules into the conda environment: `make install`
+>
+> > <details-title>Troubleshooting `libxml2` errors</details-title>
+> > If you encounter an error about libxml2 on Linux, please try to install `libxml2-dev` (executing `sudo apt install libxml2-dev`) if on Debian/Ubuntu or `libxml2-devel` (executing `sudo yum install libxml2-devel`) if on Fedora/RedHat/CentOS, and re-run `make install` .
+> {: .details}
+>
 {: .hands_on}
 
-> <details-title>Troubleshooting `libxml2` errors</details-title>
-> If you encounter an error about libxml2 on Linux, please try to install `libxml2-dev` (executing `sudo apt install libxml2-dev`) if on Debian/Ubuntu or `libxml2-devel` (executing `sudo yum install libxml2-devel`) if on Fedora/RedHat/CentOS, and re-run `make install` .
-{: .details}
+
+
+
+> <tip-title>[Advanced] Building GTN without Conda (using Ruby's RVM)</tip-title>
+>
+> If you do not want to use conda, you can also run jekyll directly using Ruby and RVM:
+> 1. Install RVM (Ruby Version Manager) on your system ([instructions](https://rvm.io/rvm/install))
+>    - For Ubuntu:
+>      ```
+>      sudo apt-get install software-properties-common
+>      sudo apt-add-repository -y ppa:rael-gc/rvm
+>      sudo apt-get update
+>      sudo apt-get install rvm
+>      sudo usermod -a -G rvm $USER
+>      ```
+> 2. Install a Ruby version
+>    ```
+>    rvm install ruby-3.2.4
+>    ```
+> 3. Create ruby GTN environment
+>    ```
+>    rvm use 3.2.4@gtn --create
+>    ```
+> 4. Install dependencies
+>    ```
+>    bundle install
+>    ```
+> 5. Run the GTN
+>    - Always make sure your ruby environment is activated `rvm use 3.2.4@gtn` and up-to-date `bundle install`
+>    - Get a GTN preview
+>      ```
+>      bundle exec jekyll serve --incremental
+>      ```
+>    - Quicker build preview (but certain features are disabled)
+>      ```
+>      bundle exec jekyll serve --strict_front_matter -d _site/training-material --incremental --config _config.yml,_config-dev.yml
+>      ```
+> 6. Changes now showing?
+>    - Stop the preview, run `make clean`, `bundle install`, and rebuild it
+{: .tip}
+
 
 
 # Checking the website generation
@@ -583,7 +634,7 @@ Once Jekyll and its modules are installed in our conda environment, we can check
 With `make serve-quick`, a local Jekyll server will run in background. It will check the changes and regenerate the website accordingly. You may need to reload the page to see the changes (and sometimes to wait 1-2 minutes).
 
 
-> <tip-title></tip-title>
+> <tip-title>make serve vs make serve-quick</tip-title>
 >
 > 1. Use `make serve` instead of `make serve-quick` to get all plugins, but also configure the post, host and pass additional flags. This however can be quite slow.
 >
