@@ -38,7 +38,7 @@ pathway:
     description: |
       While you can make minor corrections using the web-based Github interface, for larger changes (and, indeed, for building new materials altogether), you will need to work more extensively with Github. When you make larger changes, you should be acknowledged for your work - we will therefore use this Github training to also add yourself to our contributors list, so that we can acknowledge you going forward!
     tutorials:
-      - name: github-command-line-contribution
+      - name: github-contribution
         topic: contributing
   - section: "Reference: Cool content"
     description: |
@@ -49,17 +49,16 @@ pathway:
 
   - section: "Module 3: Make a larger change"
     description: |
-      You will also need to decide on a larger change to make in Galaxy! You may already have ideas on what to fix; you can reference our FAQ for ideas on what to change; or contact a [Community of Practice](https://galaxyproject.org/community/sig/) to see if they have anything that needs doing. We will show you how to visualise those changes, and see how what you do will impact the materials. We do this via Codespaces. Finally, we show you had to add yourself as an editor, to acknowledge your contribution!
+      You will also need to decide on a larger change to make in Galaxy! You may already have ideas on what to fix; you can reference our FAQ for ideas on what to change; or contact a [Community of Practice](https://galaxyproject.org/community/sig/) to see if they have anything that needs doing. We will show you how to visualise those changes, and see how what you do will impact the materials. Finally, we show you had to add yourself as an editor, to acknowledge your contribution!
     tutorials:
       - name: contributors_getting_started
         topic: ../faqs/gtn
-      - name: running-codespaces
+      - name: rendering_gtn
         topic: contributing
       - name: new-contributions
         topic: contributing/faqs
 
 # Ideally, we have a github-Desktop option as a CYOA in the github command line contribution
-# Ideally, we have a CYOA for visualisation
 # Ideally, we then have an FAQ or tutorial on 'Reviewing GTN materials' here as the next Module.
 # Where should these go? https://training.galaxyproject.org/training-material/topics/dev/faqs/contributing.html & https://training.galaxyproject.org/training-material/faqs/gtn/contributors_git_advanced.html?
 
