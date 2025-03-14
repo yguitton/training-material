@@ -12,7 +12,7 @@ objectives:
 - Add annotations and comments to provide context, ask questions, or share insights.
 time_estimation: 30M
 contributors:
-- elifsu-simula #TODO add it to contributors.yaml
+- elifsu-simula
 - annefou
 ---
 
