@@ -79,7 +79,7 @@ We first need to download the sequenced reads (FASTQs) as well as other annotati
 >
 >    {% snippet faqs/galaxy/histories_create_new.md %}
 >
-> 2. Import the files from [Zenodo](https://doi.org/10.5281/zenodo.3862792) or from
+> 2. Import the files from [Zenodo](https://doi.org/10.5281/zenodo.6823059) or from
 >    the shared data library (`GTN - Material` -> `{{ page.topic_name }}`
 >     -> `{{ page.title }}`):
 >
