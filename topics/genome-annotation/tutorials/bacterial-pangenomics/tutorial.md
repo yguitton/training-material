@@ -16,6 +16,7 @@ key_points:
 - to do
 contributions:
   authorship:
+  - ggautreau
   - hchiapello
   - bebatut
   - vloux
