@@ -10,7 +10,7 @@ editorial_board:
 - PhilReedData
 
 redirect_from:
-- /learning-pathways/building_tutorials
+- "/learning-pathways/building_tutorials"
 
 title: Onboarding for new contributors
 description: |
