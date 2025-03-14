@@ -584,7 +584,7 @@ You can now restart the GitHub flow to propose new changes: start by [creating a
 
 Great! You now know how to make pull request on GitHub, and how to make changes after a review. Reviewers can now approve and merge your pull request, however, there's no point adding you as a contributor if you don't plan to contribute! So you have to make a choice - do you plan to contribute now, later, or never?
 
-{% include _includes/cyoa-choices.html option1="Contribute-now" option2="Contribute-later" option3="Contribute-never" default="Contribute-now"
+{% include _includes/cyoa-choices.html disambiguation="whencontribute"  option1="Contribute-now" option2="Contribute-later" option3="Contribute-never" default="Contribute-now"
        text="Your choice impacts how you will continue with your pull request." %}
 
 <div class="Contribute-never" markdown="1">
