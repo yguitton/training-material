@@ -52,7 +52,7 @@ In this tutorial, we will illustrate the identification of TAPs in Streptophyte 
 >
 {: .agenda}
 
-# Get data
+## Get data
 
 In this tutorial, we will use representative protein sequences obtained from the [Genome Zoo database](https://github.com/Rensing-Lab/Genome-Zoo). The selected sequences represent different plant lineages:
 
@@ -71,6 +71,7 @@ In this tutorial, we will use representative protein sequences obtained from the
 - Oryza sativa (spp. japonica) (ORYSAJA)
 - Arabidopsis thaliana (ARATH)
 
+
 > <hands-on-title> Data Upload </hands-on-title>
 >
 > 1. Create a new history for this tutorial and give it a proper name
@@ -81,7 +82,7 @@ In this tutorial, we will use representative protein sequences obtained from the
 >
 >    {% snippet faqs/galaxy/histories_rename.md %}
 >
-
+>
 {: .hands_on}
 
 Now, we need to import the data
@@ -140,9 +141,9 @@ TAPscan provides the user with three different output files. Each output file is
 - **Output 3: "Detected TAPs Extra"** - is similar to output 1 but contains additional information about subfamilies.
 
 
-## Sub-step with **Filter**
+## **Filter TAPScan output**
 
-> <hands-on-title> Task description </hands-on-title>
+> <hands-on-title> Filter the TAPScan output Based on the Column  </hands-on-title>
 >
 > 1. {% tool [Filter](Filter1) %} with the following parameters:
 >    - {% icon param-file %} *"Filter"*: `taps_detected` (output of **TAPScan Classify** {% icon tool %})
@@ -156,25 +157,9 @@ TAPscan provides the user with three different output files. Each output file is
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
+## **Fetch the Column for IDs list**
 
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Cut**
-
-> <hands-on-title> Task description </hands-on-title>
+> <hands-on-title> Cut the column </hands-on-title>
 >
 > 1. {% tool [Cut](Cut1) %} with the following parameters:
 >    - *"Cut columns"*: `c1`
@@ -191,25 +176,9 @@ TAPscan provides the user with three different output files. Each output file is
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
+## **Remove header from the IDs list**
 
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Remove beginning**
-
-> <hands-on-title> Task description </hands-on-title>
+> <hands-on-title> Remove header line </hands-on-title>
 >
 > 1. {% tool [Remove beginning](Remove beginning1) %} with the following parameters:
 >    - {% icon param-file %} *"from"*: `out_file1` (output of **Cut** {% icon tool %})
@@ -241,9 +210,9 @@ TAPscan provides the user with three different output files. Each output file is
 >
 {: .question}
 
-## Sub-step with **Filter FASTA**
+## **Extract the sequences for TAP families**
 
-> <hands-on-title> Task description </hands-on-title>
+> <hands-on-title> Extract the FASTA sequences </hands-on-title>
 >
 > 1. {% tool [Filter FASTA](toolshed.g2.bx.psu.edu/repos/galaxyp/filter_by_fasta_ids/filter_by_fasta_ids/2.3) %} with the following parameters:
 >    - {% icon param-collection %} *"FASTA sequences"*: `output` (Input dataset collection)
@@ -266,12 +235,12 @@ TAPscan provides the user with three different output files. Each output file is
 
 > <question-title></question-title>
 >
-> 1. Question1?
+> 1. What if my IDs don't match?
 > 2. Question2?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. Answer for question1
+> > 1. If your FASTA file includes additional annotations in the headers, you may need to preprocess your ID list or modify the matching criteria.
 > > 2. Answer for question2
 > >
 > {: .solution}
