@@ -92,6 +92,8 @@ adya29:
     email: adya_shreya@gis.a-star.edu.sg
     joined: 2024-12
     linkedin: adya-shreya
+    affiliations:
+      - spoc
     location:
       country: SG
 
@@ -101,6 +103,8 @@ adairama:
     orcid: 0000-0002-7598-2892
     linkedin: adairama
     joined: 2024-12
+    affiliations:
+      - spoc
     location:
       country: SG
 
@@ -506,6 +510,8 @@ Camila-goclowski:
     joined: 2023-01
     email: camila.goclowski@gmail.com
     linkedin: camila-goclowski
+    former_affiliations:
+      - spoc
 
 carloscheemendonca:
     name: Carlos Chee Mendonça
@@ -707,6 +713,8 @@ dianichj:
         email: dianachj@informatik.uni-freiburg.de
         orcid: 0000-0002-5857-1477
         joined: 2024-08
+        affiliations:
+          - spoc
 
 DinithiRajapaksha:
         name: Dinithi Rajapaksha
@@ -982,6 +990,11 @@ gatwirival:
     twitter: ValentineGatwi3
     joined: 2021-10
 
+ggautreau:
+    name: Guillaume Gautreau
+    elixir_node: fr
+    joined: 2025-03
+
 gf777:
     name: Giulio Formenti
     joined: 2022-01
@@ -1005,6 +1018,8 @@ GokceOGUZ:
     email: gokce_oguz@gis.a-star.edu.sg
     orcid: 0000-0003-1044-7204
     linkedin: gokce-oguz
+    affiliations:
+      - spoc
     location:
       country: SG
 
@@ -1022,6 +1037,11 @@ guillaume-gricourt:
 hannahkimincompbio:
     name: Hannah Kim
     joined: 2024-09
+
+hchiapello:
+    name: Hélène Chiapello
+    elixir_node: fr
+    joined: 2025-03
 
 hdashnow:
     name: Harriet Dashnow
@@ -1056,6 +1076,9 @@ hexhowells:
     email: hexhowells@gmail.com
     orcid: 0009-0008-9422-6380
     joined: 2023-06
+    affiliations:
+      - ou
+      - spoc
 
 hexylena:
     name: Helena Rasche
@@ -1606,6 +1629,11 @@ MarisaJL:
     twitter: Marisa_Loach
     email: marisa.loach@open.ac.uk
     joined: 2022-10
+    affiliations:
+      - spoc
+      - ou
+    former_affiliations:
+      - uni-freiburg
 
 martenson:
     name: Martin Čech
@@ -1728,6 +1756,7 @@ MD-Chem:
     email: dasmohua1991@gmail.com
     affiliations:
       - gis
+      - spoc
     location:
         country: SG
 
@@ -1831,6 +1860,7 @@ mtekman:
     elixir_node: de
     affiliations:
       - uni-freiburg
+      - spoc
     former_affiliations:
       - elixir-europe
 
@@ -1857,6 +1887,7 @@ Nilchia:
     affiliations:
       - uni-freiburg
       - elixir-europe
+      - spoc
 
 smza:
     name: Munazah Andrabi
@@ -1931,18 +1962,24 @@ njall:
     joined: 2019-02
 
 nomadscientist:
-    name: Wendi Bacon
-    email: wendi.bacon@open.ac.uk
-    twitter: WendiBacon1
-    matrix: 'nomadscientist:matrix.org'
-    joined: 2020-03
-    elixir_node: uk
-    orcid: 0000-0002-8170-8806
-    bio: Senior Lecturer at The Open University
-    fediverse: https://mstdn.science/@wendibacon1
-    fediverse_flavor: mastodon
     affiliations:
       - elixir-europe
+      - ou
+      - spoc
+    bio: Senior Lecturer at The Open University
+    location:
+      country: UK
+    elixir_node: uk
+    email: wendi.bacon@open.ac.uk
+    #fediverse: https://mstdn.science/@wendibacon1
+    #fediverse_flavor: mastodon
+    former_affiliations:
+      - embl-ebi
+    joined: 2020-03
+    linkedin: wendi-bacon-7462aa100
+    matrix: 'nomadscientist:matrix.org'
+    name: Wendi Bacon
+    orcid: 0000-0002-8170-8806
 
 npalopoli:
     name: Nicolas Palopoli
@@ -2115,6 +2152,7 @@ pavanvidem:
     affiliations:
       - uni-freiburg
       - elixir-europe
+      - spoc
 
 pickettbd:
     name: Brandon Pickett
@@ -2128,7 +2166,7 @@ pcm32:
     name: Pablo Moreno
     joined: 2019-06
 
-philreeddata:
+PhilReedData:
     name: Phil Reed
     orcid: 0000-0002-4479-715X
     bluesky: philreeddata.bsky.social
@@ -2420,8 +2458,10 @@ shrutikhare-git:
     joined: 2024-12
     email: skshrutikhare@gmail.com
     orcid: 0000-0001-5622-2663
-    location:        
-      country: SG    
+    affiliations:
+      - spoc
+    location:
+      country: SG
 shwdey:
     name: Shweta Pandey
     email: shwphd@gmail.com
@@ -2762,6 +2802,8 @@ wee-snufkin:
     joined: 2022-06
     elixir_node: uk
     orcid: 0009-0001-2017-8805
+    affiliations:
+      - spoc
 
 willdurand:
     name: William Durand
@@ -2923,6 +2965,9 @@ MennaGamal:
     name: Menna Gamal
     email: mennayoussef@live.com
     joined: 2024-09
+    affiliations:
+      - ou
+      - spoc
 
 tbrown91:
     name: Tom Brown
