@@ -33,6 +33,8 @@ contributions:
   authorship:
     - rlibouba
     - abretaud
+  reviewing:
+    - Deeptivarshney 
 
   funding:
     - eurosciencegateway
