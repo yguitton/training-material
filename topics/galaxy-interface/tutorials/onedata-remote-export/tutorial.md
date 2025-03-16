@@ -7,6 +7,7 @@ tags:
   - storage
 contributors:
   - lopiola
+  - bwalkowi
 
 time_estimation: "5m"
 level: Introductory
@@ -24,14 +25,14 @@ questions:
 - What configuration is needed for Onedata export?
 - What permissions are required for Onedata export?
 objectives:
-- Configure a writable Onedata Remote File Source
-- Learn how to export datasets to Onedata
-- Understand the requirements for Onedata export
+- Configure a writable Onedata Remote File Source.
+- Learn how to export datasets to Onedata.
+- Understand the requirements for Onedata export.
 key_points:
-- Remote File Source must be configured as writable to enable export
-- Export can be done through the "Export datasets" tool
-- Write access is required in the Onedata access token
-- Export works with both generic and user-configured Remote File Sources
+- Export can be done through the "Export datasets" tool.
+- Remote File Source must be configured as writable to enable export.
+- Write access is required in the Onedata access token.
+- Export works with both generic and user-configured Remote File Sources.
 ---
 
 
@@ -53,7 +54,7 @@ key_points:
 # Introduction
 
 Onedata Remote File Source can be configured as writable. In such a case, you
-can export your Galaxy datasets to a Onedata space.
+can export your Galaxy datasets to a Onedata Space.
 
 
 # Configuration
@@ -91,3 +92,12 @@ In case of errors:
    job. Try using the default settings.
 2. Avoid whitespace characters (spaces, tabs) in the **Directory URI**,
    as they are known to cause problems.
+3. Take a look at the 
+   [troubleshooting]({% link topics/galaxy-interface/tutorials/onedata-getting-started/tutorial.html#troubleshooting %}) 
+   guide.
+
+
+# Related topics
+
+The Onedata Remote file source can also be used for data import — see the 
+[tutorial]({% link topics/galaxy-interface/tutorials/onedata-remote-import/tutorial.html %}).

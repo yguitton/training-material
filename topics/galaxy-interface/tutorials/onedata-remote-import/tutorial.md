@@ -7,6 +7,7 @@ tags:
   - storage
 contributors:
   - lopiola
+  - bwalkowi
 
 time_estimation: "15m"
 level: Introductory
@@ -23,18 +24,15 @@ questions:
 - How to configure Onedata as a data source in Galaxy?
 - What are the different ways to configure Onedata in Galaxy?
 objectives:
-- Learn how to configure Onedata as a data source in Galaxy
-- Understand the difference between configuring your own and generic Onedata source
-- Learn how to import data from Onedata to Galaxy
+- Learn how to configure Onedata as a data source in Galaxy.
+- Understand the difference between configuring your own and generic Onedata source.
+- Learn how to import data from Onedata to Galaxy.
 key_points:
-- Onedata can be configured as a data source in two ways - as your own or generic remote source
-- Onezone domain and access token are required for Onedata configuration
-- Data from Onedata can be easily imported to Galaxy through the remote files selection interface
-- Onedata provides access to shared GTN training data
+- Onedata can be configured as a data source in two ways - as your own or generic remote source.
+- Onezone domain and access token are required for Onedata configuration.
+- Data from Onedata can be easily imported to Galaxy through the remote files selection interface.
+- Onedata provides access to shared GTN training data.
 ---
-
-<!-- FIXME consider using {: .hands-on} sections -->
-<!-- FIXME image showing the Onedata/Galaxy UIs -->
 
 
 > <agenda-title></agenda-title>
@@ -120,7 +118,7 @@ Uploading data to Galaxy from Onedata:
 1. Navigate to the **Upload** menu, use the **Choose remote files** action, and find the 
    **Onedata** remote. There may be more than one if you configured it so: 
    ![Choose remote source](../../images/onedata-remote-import/upload-choose-rfs.png)
-2. At the top level of the file browser, you will see all the Onedata spaces that are
+2. At the top level of the file browser, you will see all the Onedata Spaces that are
    accessible with the access token that was put down in preferences. You can browse
    through them and select the files that should be imported to Galaxy.
    ![Browse Onedata remote](../../images/onedata-remote-import/upload-browse-rfs.png)
@@ -143,6 +141,13 @@ it as your own or generic Remote File Source. Use the following credentials:
 * **Access token**: `MDAxY2xvY2F00aW9uIGRhdGFodWIuZWdpLmV1CjAwNmJpZGVudGlmaWVyIDIvbm1kL3Vzci00yNmI4ZTZiMDlkNDdjNGFkN2E3NTU00YzgzOGE3MjgyY2NoNTNhNS9hY3QvMGJiZmY1NWU4NDRiMWJjZGEwNmFlODViM2JmYmRhNjRjaDU00YjYKMDAxNmNpZCBkYXRhLnJlYWRvbmx5CjAwNDljaWQgZGF00YS5wYXRoID00gTHpaa1pUTTROMkl4WmpjMllXVmpOMlU00WWpreU5XWmtNV00ZpT1RKbU1ETXlZMmhoWTJReAowMDJmc2lnbmF00dXJlIIQvnXp01Oey02LnaNwEkFJAyArzhHN8SlXSYFsBbSkqdqCg`
 
 This token is read-only, so make sure to mark the remote as not writable.
+
+
+# Troubleshooting
+
+If you experience any problems, take a look at the 
+[troubleshooting]({% link topics/galaxy-interface/tutorials/onedata-getting-started/tutorial.html#troubleshooting %}) 
+guide.
 
 
 # Related topics

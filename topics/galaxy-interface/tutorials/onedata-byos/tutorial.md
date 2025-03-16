@@ -7,6 +7,7 @@ tags:
   - storage
 contributors:
   - lopiola
+  - bwalkowi
 
 time_estimation: "10m"
 level: Introductory
@@ -18,18 +19,18 @@ requirements:
      - onedata-getting-started
 
 questions:
-- How to use Onedata as a storage location for Galaxy datasets?
+- How to use Onedata as a Storage Location for Galaxy datasets?
 - What is the difference between Remote File Source and Storage Location?
 - What permissions are required for Onedata Storage Location?
 objectives:
-- Configure Onedata as a Storage Location for Galaxy datasets
-- Learn how to manage Storage Location preferences
-- Understand the requirements and implications of using Onedata storage
+- Configure Onedata as a Storage Location for Galaxy datasets.
+- Learn how to manage Storage Location preferences.
+- Understand the requirements and implications of using Onedata storage.
 key_points:
-- Storage Location stores Galaxy datasets directly in your Onedata space
-- Write access to the Onedata space is required
-- Storage Location is different from Remote File Source - it acts as an Object Store
-- You can use multiple Storage Locations and set preferences between them
+- Storage Location stores Galaxy datasets directly in your Onedata Space.
+- Write access to the Onedata Space is required.
+- Storage Location is different from Remote File Source - it acts as an Object Store.
+- You can use multiple Storage Locations and set preferences between them.
 ---
 
 FIXME Is there a better location for this tutorial than data upload?
@@ -70,7 +71,7 @@ will help you configure and use a Onedata Storage Location.
 > While Onedata can be used for both, a **Storage Location** is not the same as
 > a **Remote File Source**. In this tutorial, you will be setting up a
 > Onedata-based **Storage Location**, which allows storing your Galaxy datasets
-> directly in a Onedata space in a transparent way. If you are looking to use a
+> directly in a Onedata Space in a transparent way. If you are looking to use a
 > Remote File Source, refer to 
 > [this tutorial]({% link topics/galaxy-interface/tutorials/onedata-remote-import/tutorial.html %}).
 {: .tip}
@@ -104,6 +105,13 @@ options:
 Upload some new data to Galaxy, or run a workflow to produce results. Then
 navigate to your Onedata account (e.g. [https://datahub.egi.eu](https://datahub.egi.eu))
 and open the Space (and the path) that you have put down in the config. You
-should see the newly created Galaxy datasets:
+should see the Galaxy data:
 
-FIXME screenshot with a populated space (Onedata UI).
+![Data in Onedata](../../images/onedata-byos/data-in-onedata.png)
+
+
+# Troubleshooting
+
+If you experience any problems, take a look at the 
+[troubleshooting]({% link topics/galaxy-interface/tutorials/onedata-getting-started/tutorial.html#troubleshooting %}) 
+guide.
