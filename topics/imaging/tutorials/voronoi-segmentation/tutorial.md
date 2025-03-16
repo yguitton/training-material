@@ -114,7 +114,7 @@ The images are saved in the BioImage archive and can be uploaded to the Galaxy s
 
 ## Earth Observation (EO) data
 
-![Datasets of SH's AI4ER MRes Project](https://edsbook.org/_images/7d3b3ce159046d8da12d413a00c69137e4a073dcf1ee27d7cd4e33af6d93d526.png "a top-down RGB image of forest, captured by drone, aircraft or satellite.")
+![Datasets of SH's AI4ER MRes Project](../../images/voronoi-segmentation/tree_crown.png "a top-down RGB image of forest, captured by drone, aircraft or satellite.")
 
 > <hands-on-title> EO Data Upload </hands-on-title>
 >
@@ -130,16 +130,16 @@ The images are saved in the BioImage archive and can be uploaded to the Galaxy s
 >    - **Important:** If setting the type to 'Auto-detect', make sure that after upload, the datatype is set to tiff.
 >
 >    ```
->    https://zenodo.org/records/5494629/files/Sep_2014_RGB_602500_646500.tif
->    https://zenodo.org/records/5494629/files/Sep_2014_seed.tif
+>    https://zenodo.org/records/5494629/files/tree_crown.tif
+>    https://zenodo.org/records/5494629/files/tree_seed.tif
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
 >    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
 >
-> 3. Rename {% icon galaxy-pencil %} the file `Sep_2014_RGB_602500_646500.tif` to `input_image.tif`, and 
-> .  `Sep_2014_seed.tif` to `seed_image.tif`.
+> 3. Rename {% icon galaxy-pencil %} the file `tree_crown.tif` to `input_image.tif`, and 
+> .  `tree_seed.tif` to `seed_image.tif`.
 > 4. Check that the datatype
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
