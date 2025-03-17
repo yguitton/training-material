@@ -2,7 +2,6 @@
 layout: tutorial_hands_on
 
 title: "Getting started with Onedata distributed storage"
-subtopic: st_other
 tags:
   - storage
 contributors:

@@ -67,7 +67,7 @@ connectors:
    similar to the Generic Remote File Source, but uses templates and vault for secure
    credential storage, allowing users to configure multiple Onedata connections.
 
-3. [Object Store - global Storage Location](#object-store-global-storage-location) - 
+3. [Object Store - global Storage Location](#object-store---global-storage-location) - 
    configures Onedata as Galaxy's global storage backend (common for all users),
    where all datasets are stored in a specified Onedata Space.
 

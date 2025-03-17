@@ -37,7 +37,7 @@ sandbox (demo) environment. If you like it and want more,
 organize a fully-fledged Onedata ecosystem for your use cases.
 
 If your organization is already a part of a Onedata ecosystem or you have access to
-Onedata services for science, like the [EGI DataHub](https:/datahub.egi.eu),
+Onedata services for science, like the [EGI DataHub](https://datahub.egi.eu),
 then it's definitely worth looking into.
 
 
