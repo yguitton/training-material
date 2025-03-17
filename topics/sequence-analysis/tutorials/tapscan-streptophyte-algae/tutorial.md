@@ -344,9 +344,9 @@ A nicer way to look at this output, is in the MSA viewer that is built into Gala
 > 1. Click on the MAFFT output to expand it in your history
 > 2. Click on the {% icon galaxy-visualise %} **Visualize** button
 > 3. In the main window, pick the "Multiple Sequence Alignment" option
->    ![button to click to select the MSA visualisation option]({% link ./images/visualize-msa-galaxy.png %})
+>    ![button to click to select the MSA visualisation option]({% link topics/sequence-analysis/tutorials/tapscan-streptophyte-algae/images/visualize-msa-galaxy.png %})
 > 4. You should see a visual representation of you MSA
->    ![screenshot of the multiple sequence alignment]({% link ./images/visualize-msa-screenshot.png %})
+>    ![screenshot of the multiple sequence alignment]({% link topics/sequence-analysis/tutorials/tapscan-streptophyte-algae/images/visualize-msa-screenshot.png %})
 {: .hands_on}
 
 
@@ -392,7 +392,7 @@ Next, we would like to clean up this alignment by e.g. removing spurious sequenc
 
 Examine {% icon galaxy-eye %} the **HTML report output from Trimal** (you may have to click "Show All" at the top of the box first)
 
-![screenshot of TrimAl output](./images/trimal-screenshot.png)
+![screenshot of TrimAl output]({% link topics/sequence-analysis/tutorials/tapscan-streptophyte-algae/images/trimal-screenshot.png %})
 
 
 
