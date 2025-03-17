@@ -1,0 +1,44 @@
+---
+title: How do I manage my Galaxy storage?
+area: features
+layout: faq
+box_type: tip
+contributors: [dadrasarmin]
+---
+
+This is about how to add text for computing.
+
+This is about how to add import and export files.
+
+{% include _includes/cyoa-choices.html option1="Onedata Storage" option2="Amazon Web Services S3 Storage" option3="Azure Blob Storage" option4="Google Cloud Storage" option5="Any S3 Compatible Storage" default="Onedata Storage" text="Select the repository you like to add to your Galaxy account." disambiguation="BYOS" %}
+
+<div class="Onedata-Storage" markdown="1">
+- Add Onedata-Storage
+- Text
+- Here
+- Please!
+</div>
+<div class="Amazon-Web-Services-S3-Storage" markdown="1">
+- Add Amazon-Web-Services-S3-Storage
+- Text
+- Here
+- Please!
+</div>
+<div class="Azure-Blob-Storage" markdown="1">
+- Add Azure-Blob-Storage
+- Text
+- Here
+- Please!
+</div>
+<div class="Google-Cloud-Storage" markdown="1">
+- Add Google-Cloud-Storage
+- Text
+- Here
+- Please!
+</div>
+<div class="Any-S3-Compatible-Storage" markdown="1">
+- Add Any-S3-Compatible-Storage
+- Text
+- Here
+- Please!
+</div>
