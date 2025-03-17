@@ -71,7 +71,7 @@ Cyfronet Computing Center in Krakow (Poland), since 2013.
 Onedata creates a POSIX-compatible, virtual file system layer spanning
 geographically distributed data providers hosting heterogeneous storage
 resources. The virtualized data can be access using multiple interfaces: Web
-GUI, fuse-based POSIX mount, REST API, CDMI API, Pythonic libraries, or S3.
+GUI, fuse-based POSIX mount, REST API, CDMI API, Python libraries, or S3.
 Regardless of the interface, the user gets the same, unified view of all his
 data.
 

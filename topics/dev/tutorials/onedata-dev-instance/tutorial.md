@@ -19,7 +19,7 @@ requirements:
 
 questions:
 - How to set up a minimal Onedata dev instance?
-- How can I test the Galaxy & Onedata integration in a sanbox environment?
+- How can I test the Galaxy & Onedata integration in a sandbox environment?
 objectives:
 - Quickly set up a zero-config dockerized Onedata deployment.
 - Run Onedata locally for Galaxy development and testing purposes.

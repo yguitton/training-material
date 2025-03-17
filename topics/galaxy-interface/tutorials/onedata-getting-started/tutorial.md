@@ -46,7 +46,7 @@ Onedata creates a virtual file system layer spanning geographically dispersed co
 centers and data providers that host heterogeneous storage resources. The virtual file
 system is POSIX-compatible and based on a classic structure of directories and files. The
 virtualized data can be access using multiple interfaces: Web GUI, REST API, CDMI API,
-fuse-based POSIX mount, Pythonic libraries, or S3. Regardless of the interface, the user
+fuse-based POSIX mount, Python libraries, or S3. Regardless of the interface, the user
 gets the same, unified view of all his data.
 
 ![Onedata virtual FS](../../images/onedata-getting-started/onedata-virtual-fs.png)

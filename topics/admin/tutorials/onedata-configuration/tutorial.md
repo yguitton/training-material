@@ -234,7 +234,7 @@ galaxy:
 > See an example [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/group_vars/gxconfig.yml).
 {: .tip}
 
-For required dependencies, see the [Dependencies section](#common-configuration-dependencies) in Common Configuration.
+For required dependencies, see the [Dependencies section](#dependencies) in Common Configuration.
 
 
 ## Testing
@@ -324,7 +324,7 @@ users can create multiple File Sources with different configurations.
    > <tip-title>Using Ansible</tip-title>
    > Use the group vars file at `group_vars/gxconfig.yml`. 
    > See an example
-   > [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/roup_vars/gxconfig.yml).
+   > [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/group_vars/gxconfig.yml).
    {: .tip}
 
 This template defines a form that users will see when creating their own Onedata File Source. 
@@ -332,7 +332,7 @@ It collects the same configuration parameters that administrators specify when s
 a [Generic Remote File Source](#generic-remote-file-source) (like Onezone domain, access token, 
 etc.), but allows users to provide their own values.
 
-For required dependencies, see the [Dependencies section](#common-configuration-dependencies) in Common Configuration.
+For required dependencies, see the [Dependencies section](#dependencies) in Common Configuration.
 
 
 ## Testing
@@ -354,8 +354,6 @@ To use Onedata as an object store:
    section. The relevant snippet can be found in config
    [samples](https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/config/sample/object_store_conf.sample.yml).
    At the time of writing this tutorial, the config looks like the following:
-1. Create the object store configuration in `config/object_store_conf.yml`, e.g.:
-
    ```yaml
    type: onedata
    auth:
@@ -396,17 +394,18 @@ To use Onedata as an object store:
    > <tip-title>Using Ansible</tip-title>
    > Use the group vars file at `group_vars/gxconfig.yml`. 
    > See an example
-   > [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/roup_vars/gxconfig.yml).
+   > [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/group_vars/gxconfig.yml).
    {: .tip}
 
 > <warning-title>Switching object store types</warning-title>
 > If you're switching from another object store type, you'll need to handle the migration of existing datasets. This process is not covered in this tutorial and should be carefully planned for production instances.
 {: .warning}
 
-For required dependencies, see the [Dependencies section](#common-configuration-dependencies) 
+For required dependencies, see the [Dependencies section](#dependencies) 
 in Common Configuration.
 
-For more details about object store configuration options and best practices, see the [Object Store tutorial]({% link topics/admin/tutorials/object-store/tutorial.md %}).
+For more details about object store configuration options and best practices, see the 
+[Object Store tutorial]({% link topics/admin/tutorials/object-store/tutorial.md %}).
 
 
 ## Testing
@@ -448,7 +447,7 @@ BYOS (Bring Your Own Storage) allows users to configure their own Onedata Storag
    > <tip-title>Using Ansible</tip-title>
    > Use the group vars file at `group_vars/gxconfig.yml`. 
    > See an example
-   > [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/roup_vars/gxconfig.yml).
+   > [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/group_vars/gxconfig.yml).
    {: .tip}
 
 This template provides users with a form to configure their Onedata Storage Location, collecting information such as:
@@ -456,7 +455,7 @@ This template provides users with a form to configure their Onedata Storage Loca
 - Space name and path for storing datasets
 - Cache and performance settings
 
-For required dependencies, see the [Dependencies section](#common-configuration-dependencies) 
+For required dependencies, see the [Dependencies section](#dependencies) 
 in Common Configuration.
 
 
