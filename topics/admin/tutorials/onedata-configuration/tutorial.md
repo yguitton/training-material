@@ -383,7 +383,7 @@ To use Onedata as an object store:
    > Put the config in `templates/galaxy/config/object_store_conf.yml.j2`.
    {: .tip}
    
-2. Ensure there is the main galaxy config file (`config/galaxy.yml`) and it includes the config:
+2. Ensure there is the main Galaxy config file (`config/galaxy.yml`) and it includes the config:
 
    ```yaml
    galaxy:
