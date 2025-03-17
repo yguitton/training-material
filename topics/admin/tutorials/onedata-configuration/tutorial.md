@@ -346,7 +346,7 @@ guides.
 
 # Object Store - global Storage Location
 
-Galaxy supports various object store backends for storing datasets. While the [Object Store tutorial]({% link topics/admin/tutorials/object-store/tutorial.md %}) provides a comprehensive overview of the feature, this section focuses specifically on configuring Onedata as a global object store.
+Galaxy supports various object store backends for storing datasets. While the [Object Store tutorial]({% link topics/admin/tutorials/object-store/tutorial.md %}) provides a comprehensive overview of the feature, this section focuses specifically on configuring Onedata as a global object store, available to all users.
 
 To use Onedata as an object store:
 
