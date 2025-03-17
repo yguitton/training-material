@@ -387,7 +387,7 @@ Next, we would like to clean up this alignment by e.g. removing spurious sequenc
 > > > 1. 126 sequences. Recall that we had 667 sequences at the start. Expanding the Trimmed Alignment output from TrimAl, we see that we now have 541 sequences. 667-541=126.
 > > {: .solution}
 > {: .question}
-
+>
 {: .hands_on}
 
 Examine {% icon galaxy-eye %} the **HTML report output from Trimal** (you may have to click "Show All" at the top of the box first)
