@@ -9,7 +9,7 @@ contributors:
   - lopiola
   - bwalkowi
 
-time_estimation: "15m"
+time_estimation: "20m"
 level: Introductory
 
 questions:
@@ -60,6 +60,14 @@ data together in a unified namespace, while it is physically distributed.
 
 ![Onedata Spaces](../../images/onedata-getting-started/onedata-spaces.png)
 
+The [Oneclient](https://onedata.org/#/home/documentation/topic/stable/oneclient) 
+software, based on the [fuse](https://github.com/libfuse/libfuse) library, 
+allows mounting the Onedata file system locally, either on a personal computer,
+or on a worker node in a computing cluster for 
+[HPC purposes](https://onedata.org/#/home/documentation/topic/stable/oneclient-direct-io). 
+
+![Oneclient mount](../../images/onedata-getting-started/onedata-oneclient.png)
+
 Similarly to the Galaxy project, The Onedata software can be used to build different
 ecosystems. Each Onedata ecosystem constitutes an independent data management platform, 
 made up of multiple data centers. One of the flagship examples is 
@@ -88,7 +96,49 @@ Minimal requirements:
 It is possible to connect multiple Onedata accounts in different Onedata
 ecosystems to the same Galaxy account.
 
-![Onedata & Galaxy interfaces](../../images/onedata-remote-import/galaxy-onedata-side-by-side.png)
+The below image shows the Onedata file browser UI and the Galaxy **Upload** tool
+making it possible to import data stored in Onedata Spaces.
+![Onedata & Galaxy interfaces](../../images/onedata-getting-started/galaxy-onedata-side-by-side.png)
+
+
+## What's the point?
+
+There are many ways you (or your organization) can leverage the Onedata's
+distributed data management capabilities in Galaxy:
+
+* Onedata is all about unifying access to geographically distributed datasets.
+  It may be your solution to integrate data from multiple data centers and
+  bring them to Galaxy for processing.
+
+* One of the crucial features of Onedata is seamless collaboration on data
+  across different organizations. It supports groups that bring together users
+  of different affiliations to work on datasets that are integrated from pieces
+  coming from different data sources.
+
+* Onedata offers powerful data sharing & publishing mechanisms and tools for
+  long-term data archiving and replication, which you may find useful to improve
+  your Galaxy data management.
+
+* While Galaxy supports a plethora of different data sources and storage
+  options, Onedata offers some additional storage drivers, like Ceph, WebDAV or
+  XRootD. What can't currently be done directly via Galaxy, can be integrated
+  into Galaxy through Onedata.
+
+* If your data management and processing pipelines include other software
+  besides Galaxy, the Onedata unified storage layer can help to better organize
+  your environment, providing a common storage abstraction for different
+  applications and pieces of middleware.
+
+* Galaxy Pulsar and data distribution — the ongoing efforts in Galaxy to build a
+  distributed network of Pulsar nodes is aligning well with the Onedata
+  distributed storage model. By understanding the locality of the data, Galaxy
+  will be able to schedule jobs in a smart way, assigning them to Pulsar nodes
+  that are as close to the data as possible. This is where the Onedata Virtual
+  Filesystem comes to play, allowing the management of data replication and
+  distribution in a geographically aware manner. The synergy of distributed
+  compute power and storage resources can greatly boost the scientific process,
+  especially in projects that bring together people and datasets from different
+  cooperating organizations.
 
 
 # Accessing Onedata services
@@ -98,7 +148,7 @@ already part of a Onedata ecosystem, you have access to Onedata services, or you
 are entirely new to this software. 
 
 Follow the Onedata
-[user quickstart](https://onedata.org/#/home/documentation/topic/stable/tokens-rest-api)
+[user quickstart](https://onedata.org/#/home/documentation/topic/stable/user-quickstart)
 tutorial to access the Onedata services. Newcomers can use the sandbox environment
 to get familiar with the system.
 
@@ -120,7 +170,8 @@ unless you wish to create a non-writable or publicly accessible Remote File
 Source. In such a case, add a **Read-only** caveat to the token, as shown in the
 [detailed guide](https://onedata.org/#/home/documentation/topic/stable/tokens-gui-guide).
 
-Tokens can also limit the accessible spaces and providers by means of other caveats.
+Tokens can also limit the accessible spaces and providers by means of other 
+[caveats](https://onedata.org/#/home/documentation/topic/stable/tokens-caveats).
 
 
 ## Choosing a Onedata Space
@@ -129,7 +180,7 @@ For the purposes of Remote File Sources, you do not have to designate a specific
 **Space** — all of them will be available in the data import/export tools
 (unless you have provided a restricted [access token](#access-tokens)). If 
 you have followed the 
-[user quickstart](https://onedata.org/#/home/documentation/topic/stable/tokens-rest-api) 
+[user quickstart](https://onedata.org/#/home/documentation/topic/stable/user-quickstart) 
 tutorial, you will be able to import from and export to the **Sandbox** Space.
 
 In case of Storage Locations, you have to choose a specific Onedata **Space**
@@ -141,7 +192,7 @@ where the Galaxy data will be stored:
 * Your private Space — if you have access to a Onedata space for your
   own purposes, you can connect it as a Storage Location to Galaxy.
 * The **Sandbox** Space — after following the Onedata
-  [user quickstart](https://onedata.org/#/home/documentation/topic/stable/tokens-rest-api) 
+  [user quickstart](https://onedata.org/#/home/documentation/topic/stable/user-quickstart) 
   tutorial, you should have a personal, ACL-secured folder in the **Sandbox** Space.
   You may use it to as your Onedata Storage Location (possibly creating some nested
   directory structure inside, if needed).

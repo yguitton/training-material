@@ -9,7 +9,7 @@ contributors:
   - lopiola
   - bwalkowi
 
-time_estimation: "10m"
+time_estimation: "15m"
 level: Introductory
 
 requirements:
@@ -64,7 +64,8 @@ FIXME Is there a better location for this tutorial than data upload?
 Your account in Onedata can be used to store your Galaxy datasets, effectively
 extending your quota. Onedata then serves as a so-called **Storage Location**,
 acting as an **Object Store** for the Galaxy server. Below hands-on tutorial
-will help you configure and use a Onedata Storage Location.
+will help you configure and use a Onedata Storage Location using the so-called
+Bring Your Own Storage (BYOS) approach.
 
 
 > <tip-title>Disambiguation</tip-title>

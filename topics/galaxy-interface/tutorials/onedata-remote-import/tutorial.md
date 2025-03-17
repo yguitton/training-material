@@ -62,9 +62,9 @@ key_points:
 
 You may import the data stored in Onedata into Galaxy (also referred to as data
 upload). There are two ways how to do that; either use the Bring Your Own Data
-feature to configure your own **Remote File Sources** (recommended), or use the
-ones configured by Galaxy admins (if applicable). Below hands-on tutorials cover
-both scenarios.
+(BYOD) feature to configure your own **Remote File Sources** (recommended), or
+use the ones configured by Galaxy admins (if applicable). Below hands-on
+tutorials cover both scenarios.
 
 
 > <tip-title>Disambiguation</tip-title>
@@ -81,7 +81,8 @@ both scenarios.
 
 ## Configure your own Onedata Remote File Source
 
-Follow these steps:
+To configure a Onedata remote using the Bring Your Own Data (BYOD) approach,
+follow these steps:
 
 1. Log in to your Galaxy account.
 2. Go to the **Manage Your Remote File Sources** section of the **Preferences** menu.
@@ -99,7 +100,7 @@ Follow these steps:
 
 This option may be viable if it's not possible to configure your own 
 [Onedata Remote File Source](#configure-your-own-onedata-remote-file-source),
-but requires that a generic remote is available on your Galaxy server.
+but requires that a generic remote is preconfigured on your Galaxy server.
 
 Follow these steps:
 1. Log in to your Galaxy account.
