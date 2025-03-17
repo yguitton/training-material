@@ -28,7 +28,7 @@ questions:
 - What are the differences between various Onedata connectors?
 - How to enable users to bring their own data and storage from Onedata?
 objectives:
-- Configure Generic and Specific Remote File Sources
+- Configure predefined Remote File Sources
 - Set up Onedata as an Object Store
 - Enable BYOD and BYOS templates for users
 key_points:
@@ -56,26 +56,22 @@ first!
 
 # Introduction
 
-This tutorial will walk you through the configuration of five different types of Onedata 
+This tutorial will walk you through the configuration of four different types of Onedata 
 connectors:
 
-1. [Generic Remote File Source](#generic-remote-file-source) - allows users to
-   configure their own Onedata connection through user preferences, enabling them
-   to import data from and export data to their Onedata Spaces.
-
-2. [Specific Remote File Source](#specific-remote-file-source) - provides all
+1. [Predefined Remote File Source](#predefined-remote-file-source) - provides all
    users with access to a predefined Onedata Space (e.g., for shared training
    datasets) without requiring individual configuration.
 
-3. [BYOD (Remote File Source) templates](#byod-remote-file-source-templates) -
+2. [BYOD (Remote File Source) templates](#byod-remote-file-source-templates) -
    similar to the Generic Remote File Source, but uses templates and vault for secure
    credential storage, allowing users to configure multiple Onedata connections.
 
-4. [Object Store - global Storage Location](#object-store-global-storage-location) - 
+3. [Object Store - global Storage Location](#object-store-global-storage-location) - 
    configures Onedata as Galaxy's global storage backend (common for all users),
    where all datasets are stored in a specified Onedata Space.
 
-5. [BYOS (Storage Location) templates](#byos-storage-location-templates) -
+4. [BYOS (Storage Location) templates](#byos-storage-location-templates) -
    enables users to configure their own Onedata Spaces as storage locations for
    their Galaxy datasets.
 
@@ -94,13 +90,15 @@ the `galaxy_config_templates` section for group_vars of each of the hosts.
 
 # Common Configuration
 
-Before configuring specific Onedata integrations, there are a few common elements that need to be set up:
+Before configuring Onedata connectors, there are a few common elements that need
+to be set up:
 
 ## Dependencies
 
-For Remote File Sources (Generic, Specific, and templates), add `fs.onedatarestfs` 
-to `lib/galaxy/dependencies/pinned-requirements.txt`. Copy the relevant line from 
-`lib/galaxy/dependencies/conditional-requirements.txt` for the newest version:
+For Remote File Sources (predefined and BYOD templates), install the
+`fs.onedatarestfs` library (preferably adding it to the Python's requirements
+file). Take a look at `lib/galaxy/dependencies/conditional-requirements.txt` for
+the newest version:
 ```
 fs.onedatarestfs>=21.2.5.2  # type: onedata, depends on onedatafilerestclient
 ```
@@ -163,95 +161,12 @@ galaxy:
 For more details about vault configuration, see the [Galaxy Vault documentation](https://docs.galaxyproject.org/en/latest/admin/special_topics/vault.html).
 
 
-# Generic Remote File Source
+# Predefined Remote File Source
 
-Make sure there is a `config/file_sources_conf.yml` configuration file with Onedata
-section. The relevant snippet can be found in config
-[samples](https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/config/sample/file_sources_conf.yml.sample).
-At the time of writing this tutorial, the config looks like the following:
-```yaml
-- type: onedata
-  id: onedata1
-  label: Onedata
-  doc: Your Onedata files - configure an access token via user preferences
-  access_token: ${user.preferences['onedata|access_token']}
-  onezone_domain: ${user.preferences['onedata|onezone_domain']}
-  disable_tls_certificate_validation: ${user.preferences['onedata|disable_tls_certificate_validation']}
-  writable: true
-```
-
-> <tip-title>Using Ansible</tip-title>
-> Put the config in `templates/galaxy/config/file_sources_conf.yml.j2`, 
-> like it has been done [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/templates/galaxy/config/file_sources_conf.yml.j2).
-{: .tip}
-
-
-Do the same for the user preferences config: `config/user_preferences_extra_conf.yml`. A
-sample can be found
-[here](https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/config/sample/user_preferences_extra_conf.yml.sample).
-```yaml
-preferences:
-    ...
-
-    # Used in file_sources_conf.yml
-    onedata:
-        description: Your Onedata account
-        inputs:
-            - name: onezone_domain
-              label: Domain of the Onezone service (e.g. datahub.egi.eu). The minimal supported Onezone version is 21.02.4.
-              type: text
-              required: False
-            - name: access_token
-              label: Your access token, suitable for REST API access in a Oneprovider service
-              type: password
-              required: False
-            - name: disable_tls_certificate_validation
-              label: Allow connection to Onedata servers that do not present trusted SSL certificates. SHOULD NOT be used unless you really know what you are doing.
-              type: boolean
-              required: False
-              value: False
-```
-
-> <tip-title>Using Ansible</tip-title>
-> Use the config file at `files/galaxy/config/user_preferences_extra_conf.yml`. 
-> See an example [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/files/galaxy/config/user_preferences_extra_conf.yml).
-{: .tip}
-
-
-Ensure there is the main galaxy config file (`config/galaxy.yml`) and it includes the two
-config files above:
-```yaml
-galaxy:
-  ...
-  file_sources_config_file: file_sources_conf.yml
-  ...
-  user_preferences_extra_conf_path: user_preferences_extra_conf.yml
-  ...
-```
-
-> <tip-title>Using Ansible</tip-title>
-> Use the group vars file at `group_vars/gxconfig.yml`. 
-> See an example [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/group_vars/gxconfig.yml).
-{: .tip}
-
-For required dependencies, see the [Dependencies section](#dependencies) in Common Configuration.
-
-
-## Testing
-
-Follow the Onedata 
-[import]({% link topics/galaxy-interface/tutorials/onedata-remote-import/tutorial.html %})
-and
-[export]({% link topics/galaxy-interface/tutorials/onedata-remote-export/tutorial.html %})
-guides.
-
-
-# Specific Remote File Source
-
-While the [Generic Remote File Source](#generic-remote-file-source) allows users
-to configure their own Onedata access credentials through user preferences, you
-can also set up a specific Onedata File Source that will be available to all
-users with predefined configuration.
+While the [BYOD (Remote File Source) templates](#byod-remote-file-source-templates) 
+allow users to configure their own Onedata access credentials, you can also set
+up a predefined Onedata File Source that will be available to all users with
+common configuration.
 
 This approach is particularly useful when you want to provide access to shared
 resources, such as public training datasets, without requiring user's access to
@@ -313,7 +228,7 @@ users can create multiple File Sources with different configurations.
    > [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/templates/galaxy/config/file_source_templates.yml.j2).
    {: .tip}
 
-3. Ensure there is the main galaxy config file (`config/galaxy.yml`) and it includes the
+3. Ensure there is the main Galaxy config file (`config/galaxy.yml`) and it includes the
    config file above:
    ```yaml
    galaxy:
@@ -354,6 +269,7 @@ To use Onedata as an object store:
    section. The relevant snippet can be found in config
    [samples](https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/config/sample/object_store_conf.sample.yml).
    At the time of writing this tutorial, the config looks like the following:
+
    ```yaml
    type: onedata
    auth:
@@ -374,10 +290,10 @@ To use Onedata as an object store:
    ```
    
    Overwrite the following parameters with your values:
-   - `access_token`: an access token suitable for data access (**write-enabled** and allowing calls to the Oneprovider REST API).
-   - `onezone_domain`: the domain of the Onezone service (e.g., datahub.egi.eu).
-   - `name`: the name of the Onedata Space where the Galaxy data will be stored.
-   - `path`: the relative directory path in the Space under which the Galaxy data will be stored (optional, defaults to Space root).
+   - **access_token**: an access token suitable for data access (**write-enabled** and allowing calls to the Oneprovider REST API).
+   - **onezone_domain**: the domain of the Onezone service (e.g., datahub.egi.eu).
+   - **name**: the name of the Onedata Space where the Galaxy data will be stored.
+   - **path**: the relative directory path in the Space under which the Galaxy data will be stored (optional, defaults to Space root).
 
    > <tip-title>Using Ansible</tip-title>
    > Put the config in `templates/galaxy/config/object_store_conf.yml.j2`.
@@ -436,7 +352,7 @@ BYOS (Bring Your Own Storage) allows users to configure their own Onedata Storag
    > [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/templates/galaxy/config/object_store_templates.yml.j2).
    {: .tip}
 
-3. Ensure there is the main galaxy config file (`config/galaxy.yml`) and it includes the
+3. Ensure there is the main Galaxy config file (`config/galaxy.yml`) and it includes the
    config file above:
    ```yaml
    galaxy:

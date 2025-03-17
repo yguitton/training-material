@@ -120,9 +120,9 @@ distributed data management capabilities in Galaxy:
   your Galaxy data management.
 
 * While Galaxy supports a plethora of different data sources and storage
-  options, Onedata offers some additional storage drivers, like Ceph, WebDAV or
-  XRootD. What can't currently be done directly via Galaxy, can be integrated
-  into Galaxy through Onedata.
+  options, Onedata offers some additional storage drivers, like Ceph or XRootD.
+  What can't currently be done directly via Galaxy, can be integrated into
+  Galaxy through Onedata.
 
 * If your data management and processing pipelines include other software
   besides Galaxy, the Onedata unified storage layer can help to better organize
@@ -210,54 +210,65 @@ remote source or storage location, go through the below checklist:
 
 1. Avoid whitespace characters (spaces, tabs) in the Space names and
    file paths, as they are known to cause problems.
+
 2. Make sure the Onezone domain is correct — open it in your Web browser to double-check.
+
 3. Log in to the Onezone service and check if there is any service outage or 
    disrupted data providers — if so, you must wait for these problems to be solved. If not,
    you should assume the problem lies in the configuration of the Galaxy server or your
    user preferences.
+
 4. Make sure the token you provided is suitable for REST API access in a
    Oneprovider service. Some setups require the token to be write-enabled.
    Consult the [access tokens](#access-tokens) section for a guide. 
+
 5. Make sure the token allows access to at least one Onedata Space in at least
    one provider (Remote File Source), or the the Space designated as a Storage
    Location. Caveats (contextual confinements) may be limiting the access token
    scope.
+
 6. Make sure there is at least one data provider backing up (supporting) the
    relevant Space(s).
+
 7. If you are familiar with command-line, you may perform basic diagnostics on the
    token like this:
+
    ```bash
    curl -d '{"token": "'$TOKEN'"}' -H 'Content-type: application/json' \                                                                              130 ↵
         https://$ONEZONE_DOMAIN/api/v3/onezone/tokens/infer_access_token_scope | jq
    ```
+
    ```json
    {
-     "validUntil": null,
-     "dataAccessScope": {
-       "spaces": {
-         "d67622d2a0999be9b9b1e6e18c14c697chbfa6": {
-           "supports": {
-             "42a2fb7993b8331aa107ff819101b0f1chb73a": {
-               "readonly": false
+     "validUntil":null,
+     "dataAccessScope":{
+       "spaces":{
+         "d67622d2a0999be9b9b1e6e18c14c697chbfa6":{
+           "supports":{
+             "42a2fb7993b8331aa107ff819101b0f1chb73a":{
+               "readonly":false
              }
            },
-           "name": "space-alpha"
+           "name":"space-alpha"
          },
-       "readonly": false,
-       "providers": {
-         "42a2fb7993b8331aa107ff819101b0f1chb73a": {
-           "version": "21.02.8",
-           "online": true,
-           "name": "My provider",
-           "domain": "my-provider.example.com"
+         "readonly":false,
+         "providers":{
+           "42a2fb7993b8331aa107ff819101b0f1chb73a":{
+             "version":"21.02.8",
+             "online":true,
+             "name":"My provider",
+             "domain":"my-provider.example.com"
+           }
          }
        }
      }
    }
    ```
+   
    If there is at least one entry both in `spaces` and `providers`, and at least one of
    the providers is online, the token is viable. If not, you should see point 2) or
    consider creating a token with fewer confinements.
+
 8. If you are a Dev/Admin, check the Galaxy logs for hints.
 
 
