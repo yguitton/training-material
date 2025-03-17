@@ -43,16 +43,15 @@ then it's definitely worth looking into.
 
 ## What's the point?
 
-Good question! It's all explained 
-[here]({% link topics/galaxy-interface/tutorials/onedata-getting-started/tutorial.html#whats-the-point %}).
+Good question! It's 
+[all explained in this tutorial]({% link topics/galaxy-interface/tutorials/onedata-getting-started/tutorial.html#whats-the-point %}).
 
 
 ## Getting started
 
 There is a range of tutorials concerning Onedata on the 
-[Galaxy training portal](https://training.galaxyproject.org/training-material/search2?query=onedata).
-We recommend to start with
-[this one]({% link topics/galaxy-interface/tutorials/onedata-getting-started/tutorial.html %}),
+[Galaxy training portal]({% link search2?query=onedata %}). We recommend to 
+[start with this one]({% link topics/galaxy-interface/tutorials/onedata-getting-started/tutorial.html %}),
 which will give you a basic understanding about Galaxy & Onedata integration and
 guide you through the next steps.
 
@@ -77,8 +76,8 @@ data.
 
 ![Onedata virtual FS](../../../../topics/galaxy-interface/images/onedata-getting-started/onedata-virtual-fs.png)
 
-The data management capabilities of Onedata and it's ability to facilitate
+The data management capabilities of Onedata and its ability to facilitate
 cross-organizational collaborative data sharing may be a great asset for your
 data processing pipelines in Galaxy. 
 
-Read on [here]({% link topics/galaxy-interface/tutorials/onedata-getting-started/tutorial.html %})!
+Read on [in the tutorial]({% link topics/galaxy-interface/tutorials/onedata-getting-started/tutorial.html %})!

@@ -50,12 +50,12 @@ key_points:
    [this tutorial]({% link topics/galaxy-interface/tutorials/onedata-getting-started/tutorial.html %})
    first!
 2. To use Onedata as a remote file source for data import, you need the
-   **domain** of the **Onezone service** and a suitable **access token**. The
-   relevant guide on how to get them can be found 
-   [here]({% link topics/galaxy-interface/tutorials/onedata-getting-started/tutorial.html#accessing-onedata-services %}). 
+   **domain** of the **Onezone service** and a suitable **access token**. Here
+   is the relevant 
+   [guide on how to get them]({% link topics/galaxy-interface/tutorials/onedata-getting-started/tutorial.html#accessing-onedata-services %}). 
 3. The Galaxy server must be properly configured by the admins for the Onedata
-   remote and/or Onedata BYOD templates to be available. 
-   [Here]({% link topics/admin/tutorials/onedata-configuration/tutorial.html %}) is the corresponding tutorial.
+   remote and/or Onedata BYOD templates to be available. Here is the 
+   [corresponding tutorial]({% link topics/admin/tutorials/onedata-configuration/tutorial.html %}).
 
 
 # Introduction

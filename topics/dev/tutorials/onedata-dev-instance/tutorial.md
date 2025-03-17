@@ -24,7 +24,7 @@ objectives:
 - Quickly set up a zero-config dockerized Onedata deployment.
 - Run Onedata locally for Galaxy development and testing purposes.
 key_points:
-- A local Onedata deployment can be easily set up using the dockerized "demo-mode".
+- A local Onedata deployment can be easily set up using the dockerized "demo mode".
 - You may set up Onedata and use the sandbox credentials to connect it to Galaxy.
 - A local Onedata deployment may be useful to test your changes to the data-related logic of Galaxy.
 ---
@@ -75,6 +75,6 @@ to acquire an access token, or use the convenience scripts of the demo mode
 # Related materials
 
 The demo mode is used for setting up Onedata in Galaxy's Object Store
-integration tests. Take a look at the code 
-[here](https://github.com/galaxyproject/galaxy/blob/dev/test/integration/objectstore/_base.py)
+integration tests. 
+[Take a look at the code](https://github.com/galaxyproject/galaxy/blob/dev/test/integration/objectstore/_base.py)
 (search for "onedata").

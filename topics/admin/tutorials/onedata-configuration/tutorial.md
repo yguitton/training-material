@@ -59,19 +59,20 @@ first!
 This tutorial will walk you through the configuration of four different types of Onedata 
 connectors:
 
-1. [Predefined Remote File Source](#predefined-remote-file-source) - provides all
+1. [Predefined Remote File Source](#predefined-remote-file-source) — provides all
    users with access to a predefined Onedata Space (e.g., for shared training
    datasets) without requiring individual configuration.
 
-2. [BYOD (Remote File Source) templates](#byod-remote-file-source-templates) -
-   similar to the Generic Remote File Source, but uses templates and vault for secure
-   credential storage, allowing users to configure multiple Onedata connections.
+2. [BYOD (Remote File Source) templates](#byod-remote-file-source-templates) —
+   similar to the Predefined Remote File Source, but uses templates and vault for secure
+   credential storage, allowing users to configure multiple Onedata connections
+   with their own credentials.
 
-3. [Object Store - global Storage Location](#object-store---global-storage-location) - 
+3. [Object Store — global Storage Location](#object-store---global-storage-location) — 
    configures Onedata as Galaxy's global storage backend (common for all users),
    where all datasets are stored in a specified Onedata Space.
 
-4. [BYOS (Storage Location) templates](#byos-storage-location-templates) -
+4. [BYOS (Storage Location) templates](#byos-storage-location-templates) —
    enables users to configure their own Onedata Spaces as storage locations for
    their Galaxy datasets.
 
@@ -140,7 +141,7 @@ The first key is used for encryption, while additional keys allow for key rotati
 > <tip-title>Using Ansible</tip-title>
 > Put the config in `templates/galaxy/config/vault_conf.yml.j2`, 
 > like it has been done 
-> [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/templates/galaxy/config/vault_conf.yml.j2).
+> [in this example](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/templates/galaxy/config/vault_conf.yml.j2).
 >
 > A `galaxy_vault_encryption_keys` var must be defined for the proper host in
 > your playbook. For obvious reasons, it cannot be committed to your repository.
@@ -155,7 +156,7 @@ galaxy:
 
 > <tip-title>Using Ansible</tip-title>
 > Use the group vars file at `group_vars/gxconfig.yml`. 
-> See an example [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/group_vars/gxconfig.yml).
+> See [an example](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/group_vars/gxconfig.yml).
 {: .tip}
 
 For more details about vault configuration, see the [Galaxy Vault documentation](https://docs.galaxyproject.org/en/latest/admin/special_topics/vault.html).
@@ -194,7 +195,8 @@ Example configuration in `config/file_sources_conf.yml`:
 
 > <tip-title>Using Ansible</tip-title>
 > Put the config in `templates/galaxy/config/file_sources_conf.yml.j2`, 
-> like it has been done [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/templates/galaxy/config/file_sources_conf.yml.j2).
+> like it has been done 
+> [in this example](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/templates/galaxy/config/file_sources_conf.yml.j2).
 {: .tip}
 
 Note that you don't need to configure `user_preferences_extra_conf.yml` in this case, as all access parameters are specified directly in the File Sources configuration.
@@ -209,10 +211,10 @@ guide.
 
 # BYOD (Remote File Source) templates
 
-BYOD (Bring Your Own Data) allows users to configure their own Onedata File Sources using templates. 
-This feature requires a vault for secure credential storage, but instead of configuring File Sources 
-through user preferences (as in [Generic Remote File Source](#generic-remote-file-source)), 
-users can create multiple File Sources with different configurations.
+BYOD (Bring Your Own Data) allows users to configure their own Onedata File
+Sources using templates. This feature requires a vault for secure credential
+storage, but users can create multiple File Sources with different
+configurations, possibly connecting to different Onedata ecosystems.
 
 1. Configure the vault as described in the [Vault Configuration section](#vault-configuration).
 
@@ -225,7 +227,7 @@ users can create multiple File Sources with different configurations.
    > <tip-title>Using Ansible</tip-title>
    > Put the config in `templates/galaxy/config/file_source_templates.yml.j2`, 
    > like it has been done 
-   > [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/templates/galaxy/config/file_source_templates.yml.j2).
+   > [in this example](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/templates/galaxy/config/file_source_templates.yml.j2).
    {: .tip}
 
 3. Ensure there is the main Galaxy config file (`config/galaxy.yml`) and it includes the
@@ -238,13 +240,13 @@ users can create multiple File Sources with different configurations.
 
    > <tip-title>Using Ansible</tip-title>
    > Use the group vars file at `group_vars/gxconfig.yml`. 
-   > See an example
-   > [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/group_vars/gxconfig.yml).
+   > See 
+   > [an example](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/group_vars/gxconfig.yml).
    {: .tip}
 
 This template defines a form that users will see when creating their own Onedata File Source. 
 It collects the same configuration parameters that administrators specify when setting up 
-a [Generic Remote File Source](#generic-remote-file-source) (like Onezone domain, access token, 
+a [Predefined Remote File Source](#predefined-remote-file-source) (like Onezone domain, access token, 
 etc.), but allows users to provide their own values.
 
 For required dependencies, see the [Dependencies section](#dependencies) in Common Configuration.
@@ -309,8 +311,8 @@ To use Onedata as an object store:
    
    > <tip-title>Using Ansible</tip-title>
    > Use the group vars file at `group_vars/gxconfig.yml`. 
-   > See an example
-   > [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/group_vars/gxconfig.yml).
+   > See 
+   > [an example](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/group_vars/gxconfig.yml).
    {: .tip}
 
 > <warning-title>Switching object store types</warning-title>
@@ -349,7 +351,7 @@ BYOS (Bring Your Own Storage) allows users to configure their own Onedata Storag
    > <tip-title>Using Ansible</tip-title>
    > Put the config in `templates/galaxy/config/object_store_templates.yml.j2`, 
    > like it has been done 
-   > [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/templates/galaxy/config/object_store_templates.yml.j2).
+   > [in this example](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/templates/galaxy/config/object_store_templates.yml.j2).
    {: .tip}
 
 3. Ensure there is the main Galaxy config file (`config/galaxy.yml`) and it includes the
@@ -362,8 +364,8 @@ BYOS (Bring Your Own Storage) allows users to configure their own Onedata Storag
 
    > <tip-title>Using Ansible</tip-title>
    > Use the group vars file at `group_vars/gxconfig.yml`. 
-   > See an example
-   > [here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/group_vars/gxconfig.yml).
+   > See 
+   > [an example](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/group_vars/gxconfig.yml).
    {: .tip}
 
 This template provides users with a form to configure their Onedata Storage Location, collecting information such as:
