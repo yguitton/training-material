@@ -273,6 +273,14 @@ First, we will perform a multiple sequence alignment in order to determine the s
 >            - {% icon param-repeat %} *"Insert Input batch"*
 >                - {% icon param-collection %} *"Sequences to align"*: the collection of FASTA files from our TAP families (output of **Filter FASTA** {% icon tool %})
 >    - *"MAFFT flavour"*: `Auto`
+>    - *"Support unusual characters?"*: Yes
+>
+> > <question-title></question-title>
+> > 1. How many sequences do we have in total?
+> > > <solution-title></solution-title>
+> > > 1. 667 sequences. You can find this number by expanding the Galaxy dataset output from MAFFT.
+> > {: .solution}
+> {: .question}
 >
 {: .hands_on}
 
@@ -317,7 +325,7 @@ RKEFFHLHAQGT--HSAE----MEEA----------------------------------
 
 > <question-title> What's in an alignment? </question-title>
 >
-> 1. What is in the file?
+> 1. What is in the this file?
 > 2. What do the dashes signify?
 >
 > > <solution-title></solution-title>
@@ -331,17 +339,27 @@ RKEFFHLHAQGT--HSAE----MEEA----------------------------------
 
 A nicer way to look at this output, is in the MSA viewer that is built into Galaxy.
 
+> <hands-on-title> Visualise our Multiple Sequence Alignment </hands-on-title>
+>
+> 1. Click on the MAFFT output to expand it in your history
+> 2. Click on the {% icon galaxy-visualise %} **Visualize** button
+> 3. In the main window, pick the "Multiple Sequence Alignment" option
+>    ![button to click to select the MSA visualisation option]({% link ./images/visualize-msa-galaxy.png %})
+> 4. You should see a visual representation of you MSA
+>    ![screenshot of the multiple sequence alignment]({% link ./images/visualize-msa-screenshot.png %})
+{: .hands_on}
 
-TODO: MSA visualisation
 
 
 > <question-title> Alignment visualisation </question-title>
 >
-> 1. How long is this alignment?
+> 1. What do you see?
+> 2. How long is the total alignment?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. If you scroll all the way right in the aligment viewer, you will see a total length of 8182 amino acids
+> > 1. You see every sequence in your dataset aligned together. On the left you see the read IDs. You can scroll down here to see more. On the top you see the position in the alignment. You can scroll left and right here to view different parts of the alignment. Where amino acids align, you will see a colored square and the letter indicating the amino acid. Where there is a gap, you will see a dash (`-`). At the top, you will also see a histogram indicating how many sequences align at that position.
+> > 2. If you scroll all the way right in the aligment viewer, you will see a total length of 8182 amino acids
 > {: .solution}
 >
 {: .question}
@@ -354,20 +372,30 @@ TODO: is there a region in alignment viewer that we can highlight that shows the
 ## Alignment trimming
 
 
-TrimAl is a tool for the automated removal of spurious sequences or poorly aligned regions from a multiple sequence alignment.
+Next, we would like to clean up this alignment by e.g. removing spurious sequences or poorly aligned regions from our multiple sequence alignment. {% icon tool %} **TrimAl** is a tool that can do this
 
 
 > <hands-on-title> Clean up our alignment </hands-on-title>
 >
 > 1. {% tool [trimAl](toolshed.g2.bx.psu.edu/repos/iuc/trimal/trimal/1.5.0+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Alignment file (clustal, fasta, NBRF/PIR, nexus, phylip3.2, phylip)"*: `outputAlignment` (output of **MAFFT** {% icon tool %})
->    - *"Select trimming mode from the list"*: `custom mode - define trimming parameters yourself.`
->        - *"Gap threshold"*: `0.5`
->        - *"Similarity threshold"*: `0.001`
->        - *"Minimum conservance percentage"*: `0`
+>    - {% icon param-file %} *"Alignment file"*: output of **MAFFT** {% icon tool %})
+>    - *"Select trimming mode from the list"*: `automated1`
 >
->
+> > <question-title></question-title>
+> > 1. How many sequences were removed in this trimming step?
+> > > <solution-title></solution-title>
+> > > 1. 126 sequences. Recall that we had 667 sequences at the start. Expanding the Trimmed Alignment output from TrimAl, we see that we now have 541 sequences. 667-541=126.
+> > {: .solution}
+> {: .question}
+
 {: .hands_on}
+
+Examine {% icon galaxy-eye %} the **HTML report output from Trimal** (you may have to click "Show All" at the top of the box first)
+
+![screenshot of TrimAl output](./images/trimal-screenshot.png)
+
+
+
 
 
 ## Tree Generation
