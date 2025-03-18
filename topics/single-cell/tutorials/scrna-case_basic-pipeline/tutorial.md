@@ -627,6 +627,28 @@ We next need to look at reducing our gene dimensions. We have loads of genes, bu
 >
 {: .hands_on}
 
+> <details-title>More details on the Highly Variable Genes</details-title>
+>
+> Would you like to know how *many* genes were flagged as **Highly variable genes**?
+>
+> <hands-on-title>Find the number of variable genes</hands-on-title>
+> >
+> > 1. Select {% icon galaxy-refresh %} **Run Job Again** on the `anndata_out` (output of **Scanpy filter** {% icon tool %}) in your {% icon galaxy-history %} history
+> >
+> > 2. {% tool [Scanpy filter](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_filter/scanpy_filter/1.10.2+galaxy3) %} with the following parameters:
+> >   - {% icon param-file %} *"Annotated data matrix"*: `anndata` (output of **Manipulate AnnData** {% icon tool %})
+> >   - *"Method used for filtering"*: `Annotate (and filter) highly variable genes, using 'pp.highly_variable_genes'`
+> >       - *"Choose the flavor for identifying highly variable genes"*: `Seurat`
+> >       - *"Inplace subset to highly-variable genes?"*: {% icon galaxy-toggle %} **Yes**
+> >
+> {: .hands_on}
+>
+> If you peek at the output, you will see that the number of *genes* in your AnnData object has drastically reduced - this dataset has *only* the highly variable genes! Some people prefer to only perform analysis on this dataset, however I have found that sometimes (for various reasons) important biological marker genes get excluded. For this reason, I personally will flag highly variable genes for use in the next analytical steps, however I keep all the genes in my AnnData object so that I can check for key ones in the future.
+>
+> - {% icon warning %} For this tutorial, you **must** keep all genes in your AnnData object. Therefore, delete the output that contains *only* the highly variable genes from your {% icon galaxy-history %} history now.
+>
+{: .details}
+
 Next up, we're going to scale our data so that all genes have the same variance and a zero mean. This is important to set up our data for further dimensionality reduction. It also helps negate sequencing depth differences between samples, since the gene levels across the cells become comparable. Note, that the differences from scaling etc. are not the values you have at the end - i.e. if your cell has average GAPDH levels, it will not appear as a '0' when you calculate gene differences between clusters.
 
 > <hands-on-title>Scale data</hands-on-title>
@@ -1020,8 +1042,6 @@ Ultimately, there are quite a lot ways to analyse the data, both within the conf
 # Interactive visualisations
 
 Before we leave you to explore the unknown, you might have noticed that the above interpretations are only a few of the possible options. Plus you might have had fun trying to figure out which sample is which genotype is which sex and flicking back and forth between plots repeatedly. Figuring out which plots will be your *final publishable* plots takes a lot of time and testing. Luckily, there is a helpful interactive viewer {% cite Cakir2020 %} export tool {% cite Moreno2020.04.08.032698 %} that can help you explore without having to produce new plots over and over!
-
-
 
 > <hands-on-title>Cellxgene</hands-on-title>
 >
