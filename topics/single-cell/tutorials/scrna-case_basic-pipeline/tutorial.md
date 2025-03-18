@@ -639,9 +639,13 @@ Next up, we're going to scale our data so that all genes have the same variance 
 
 {% icon congratulations %} Congratulations! You have processed your object!
 
-> <comment-title></comment-title>
-> At this point, we might want to remove or regress out the effects of unwanted variation on our data. A common example of this is the cell cycle, which can affect which genes are expressed and how much material is present in our cells. If you’re interested in learning how to do this, then you can move over to the {% icon level %} [Removing the Effects of the Cell Cycle]({% link topics/single-cell/tutorials/scrna-case_cell-cycle/tutorial.md %}) tutorial now – then return here to complete your analysis.
-{: .comment}
+> <details-title>More details on batch correction and removing unwanted variation</details-title>
+>
+> At this point, you might want to remove or regress out the effects of unwanted variation on our data. A common example of this is the cell cycle, which can affect which genes are expressed and how much material is present in our cells. If you’re interested in learning how to do this, then you can move over to the {% icon level %} [Removing the Effects of the Cell Cycle]({% link topics/single-cell/tutorials/scrna-case_cell-cycle/tutorial.md %}) tutorial now and return here to complete your analysis.
+>
+> - {% icon warning %} If you are in a *live course*, the time to do this *bonus tutorial* will not be factored in. Please instead return to this *after* your course is finished, or if you finish early!
+>
+{: .details}
 
 # Preparing coordinates
 
