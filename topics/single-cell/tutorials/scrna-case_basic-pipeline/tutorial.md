@@ -63,6 +63,9 @@ contributions:
     - nomadscientist
   testing:
     - wee-snufkin
+  infrastructure:
+    - pavanvidem
+    - Nilchia
 
 
 follow_up_training:
