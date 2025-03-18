@@ -90,7 +90,7 @@ and selected the 10th z-stack for analysis.
 
 Your image should look something like this:
 
-![2025_pre_clahe.png](../../images/2d_spot_detection/2025_pre_clahe.png)
+![2025_pre_clahe.png](../../images/2d_spot_detection/2025_pre_clahe.png){: width="75%"}
 
 Not the best quality for a first visual inspection!
 
@@ -112,7 +112,7 @@ We do this using a [Contrast Limited Adaptive Histogram Equalization (CLAHE)](ht
 
 Your image should now look a bit brighter:
 
-![2025_post_clahe.png](../../images/2d_spot_detection/2025_post_clahe.png)
+![2025_post_clahe.png](../../images/2d_spot_detection/2025_post_clahe.png){: width="75%"}
 
 We can now clearly make out the presence of many RNA spots!
 
@@ -169,7 +169,7 @@ This can be nicely done by converting the point coordinates to a label map and w
 A label image will be created... If you want to visualize the labels, you can run again the normalize histogram
 step:
 
-![2025_visual_labels.png](../../images/2d_spot_detection/2025_visual_labels.png)
+![2025_visual_labels.png](../../images/2d_spot_detection/2025_visual_labels.png){: width="75%"}
 
 but this is not necessary for the next and final step: overlay the label to the original image!
 
@@ -191,7 +191,7 @@ Results can be over layed with the original image.
 
 Final result should look like this:
 
-![2025_overlay.png](../../images/2d_spot_detection/2025_overlay.png)
+![2025_overlay.png](../../images/2d_spot_detection/2025_overlay.png){: width="75%"}
 
 # Create 2D spot detection workflow
 
