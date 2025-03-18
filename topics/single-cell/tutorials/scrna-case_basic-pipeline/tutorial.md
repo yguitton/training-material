@@ -806,7 +806,7 @@ Finally, let's identify clusters! Unfortunately, it's not as majestic as biologi
 >
 {: .hands_on}
 
-Nearly plotting time! But one final piece is to add in SOME gene information. Let's focus on genes driving the clusters.
+Nearly plotting time! But one final piece is to add in SOME gene information. Let's focus on genes that distinguish the clusters.
 
 ## Find Gene Markers
 
@@ -1091,7 +1091,7 @@ You might find the {% icon galaxy-history-answer %} Answer Key Histories helpful
 You can also run this entire tutorial via a workflow:
  - [Tutorial Workflow]({% link topics/single-cell/tutorials/scrna-case_basic-pipeline/workflows/ %})
 
-<iframe title="Galaxy Workflow Embed" style="width: 100%; height: 700px; border: none;" src="https://singlecell.usegalaxy.eu/published/workflow?id=fe814cc88b4e0ea3&embed=true&buttons=true&about=false&heading=false&minimap=true&zoom_controls=true&initialX=-20&initialY=-20&zoom=1"></iframe>
+<iframe title="Galaxy Workflow Embed" style="width: 100%; height: 700px; border: none;" src="https://singlecell.usegalaxy.eu/published/workflow?id=fe814cc88b4e0ea3&embed=true&buttons=true&about=false&heading=false&minimap=true&zoom_controls=true&initialX=0&initialY=0&zoom=0.25"></iframe>
 
 In this tutorial, you moved from technical processing to biological exploration. By analysing real data - both the exciting and the messy! - you have, hopefully, experienced what it's like to analyse and question a dataset, potentially without clear cut-offs or clear answers. If you were working in a group, you each analysed the data in different ways, and most likely found similar insights. One of the biggest problems in analysing scRNA-seq is the lack of a clearly defined pathway or parameters. You have to make the best call you can as you move through your analysis, and ultimately, when in doubt, try it multiple ways and see what happens!
 
