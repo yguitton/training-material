@@ -11,8 +11,8 @@ redirect_from:
 - /topics/transcriptomics/tutorials/scrna-case_basic-pipeline/tutorial
 
 answer_histories:
-  - label: "UseGalaxy.eu"
-    history: (TO ADD)
+  - label: "UseGalaxy.eu_Answer_Key_History"
+    history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/filter-plot-and-explore-single-cell-rna-seq-data-answer-key
   - label: "UseGalaxy.eu-ARCHIVEDv2"
     history: https://usegalaxy.eu/u/j.jakiela/h/filter-plot-and-explore-single-cell-rna-seq-data-updated
     date: 2023-10-10
@@ -24,7 +24,7 @@ answer_histories:
     date: 2024-02-28
 
 input_histories:
-  - label: "UseGalaxy.eu"
+  - label: "UseGalaxy.eu_Input_History"
     history:  https://usegalaxy.eu/u/wendi.bacon.training/h/filter-plot-and-explore-single-cell-rna-seq-data-input
 
 questions:
@@ -108,7 +108,7 @@ We've provided you with experimental data to analyse from a mouse dataset of fet
 > <details-title>Fun facts about the dataset</details-title>
 >
 > We are particularly keen for learners to be able to go from raw FASTQ files all the way through analysis. We aren't handing you a curated dataset that we did special modification to in order for this tutorial to work. Instead, this tutorial's input dataset is the full dataset generated from the {% icon level %} [previous tutorial in this case study]({% link topics/single-cell/tutorials/scrna-case_alevin-combine-datasets/tutorial.md %}).
-> - However, we downsampled the datasets in that previous tutorial so it would run faster, whereas this tutorial uses the full dataset from the manuscript. The exact same analysis works.
+> - However, we *downsampled* the datasets in that previous tutorial so it would run faster, whereas this tutorial uses the *full dataset* from the manuscript. The exact same analysis works.
 > - You can also find this dataset in the [study in Single Cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/experiments/E-MTAB-6945/results/tsne) and the [project submission](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6945/).
 >
 {: .details}
@@ -210,7 +210,7 @@ You have generated an annotated AnnData object from your raw scRNA-seq fastq fil
 > >
 > > 2. There are `31178 cells` and `35734 genes` in the matrix.
 > > - You can *peek* at your  {% icon param-file %} Anndata Object in your {% icon galaxy-history %} history by selecting it to reveal a drop-down window that has this same information in it.
-> > - The matrix is `31178 x 35734`. This is `obs x vars`, or rather, `cells x genes`.
+> > - The matrix is `31178 x 35734`. This is `n_obs x n_vars`, or rather, `cells x genes`.
 > >
 > {: .solution}
 >
@@ -287,7 +287,7 @@ We want to filter our cells, but first we need to know what our data looks like.
 
 ## Analysing the plots
 
-That's a lot of information! Let's attack this in sections and see what questions these plots can help us answer. The *scratchbook* {% icon galaxy-scratchbook %} may help here to look at the different plots at the same time!
+That's a lot of information! Let's attack this in sections and see what questions these plots can help us answer.
 
 {% snippet faqs/galaxy/features_scratchbook.md %}
 
@@ -299,8 +299,8 @@ That's a lot of information! Let's attack this in sections and see what question
 >
 > > <solution-title></solution-title>
 > >
-> > 1. The plot `violin - batch - log` will have what you're looking for!
-> >     ![Violin - batch - log](../../images/scrna-casestudy/wab-violin-batch-log.png "Violin - batch - log (Raw)")
+> > 1. The plot `Violin_Log_Batch` will have what you're looking for!
+> >     ![Violin_log_batch](../../images/scrna-casestudy/CS3-Violin_log_batch.png "Violin_Log_Batch (Raw)")
 > > 2. Keeping in mind that this is a log scale - which means that small differences can mean large differences - the violin plots probably look pretty similar.
 > >    - `N703` and `N707` might be a bit lower on genes and counts (or UMIs), but the differences aren't catastrophic.
 > >    - The `pct_counts_mito` looks pretty similar across the batches, so this also looks good.
@@ -320,8 +320,8 @@ That's a lot of information! Let's attack this in sections and see what question
 > > <solution-title></solution-title>
 > >
 > > 1. Similar to above, the plots `violin - sex - log` and `violin - genotype - log` will have what you're looking for!
-> >      ![Violin - sex - log](../../images/scrna-casestudy/wab-violin-sex-log.png "Violin - sex - log (Raw)")
-> >      ![Violin - genotype - log](../../images/scrna-casestudy/wab-violin-genotype-log.png "Violin - genotype - log (Raw)")
+> >      ![Violin_Log_Sex](../../images/scrna-casestudy/CS3-Violin_log_sex.png "Violin_Log_Sex (Raw)")
+> >      ![Violin_Log_Genotype](../../images/scrna-casestudy/CS3-Violin_log_genotype.png "Violin_Log_Genotype (Raw)")
 > > 2. There isn’t a major difference in sequencing depth across sex, I would say - though you are welcome to disagree!
 > >    - It is clear there are far fewer female cells, which makes sense given that only one sample was female. *Note - that was an unfortunate discovery made long after generating libraries. It's quite hard to identify the sex of a neonate in the lab! In practice, try hard to not let such a confounding factor into your data! You could consider re-running all the following analysis without that female sample, if you wish.*
 > > 3. In `Violin - genotype - log`, however, we can see there is a difference. The `knockout` samples clearly have fewer genes and counts. From an experimental point of view, we can consider, does this make sense?
@@ -346,7 +346,7 @@ Now that we've assessed the differences in our samples, we will look at the libr
 > > <solution-title></solution-title>
 > >
 > > 1. Any plot with `log1p_n_genes_by_counts` would do here, actually! Some people prefer scatterplots to violins.
-> > ![Scatter-genesxmito](../../images/scrna-casestudy/wab-scatter-genesxmito.png "Scatter - mito x genes (Raw)")
+> > ![Scatter_GenesxMito](../../images/scrna-casestudy/CS3-Scatter_GenesxMito.png "Scatter_GenesxMito (Raw)")
 > >
 > > 2. In `Scatter - mito x genes` you can see how cells with `log1p_n_genes_by_counts` up to around, perhaps, `5.7` (around 300 genes) often have high `pct_counts_mito`.
 > >   - You can plot this as just `n_counts` and see this same trend at around 300 genes, but with this data the log format is clearer so that's how we're presenting it.
@@ -365,7 +365,7 @@ Now that we've assessed the differences in our samples, we will look at the libr
 > > <solution-title></solution-title>
 > >
 > > 1. As before, any plot with `log1p_total_counts` will do! Again, we'll use a scatterplot here, but you can use a violin plot if you wish!
-> > ![Scatter-countsxmito](../../images/scrna-casestudy/wab-scatter-countsxmito.png "Scatterplot - mito x UMIs (Raw)")
+> > ![Scatter_UMIxMito](../../images/scrna-casestudy/CS3-Scatter_UMIxMito.png "Scatter_UMIxMito (Raw)")
 > >
 > > 2. We can see that we will need to set a higher threshold (which makes sense, as you'd expect more UMI's per cell rather than unique genes!). Again, perhaps being a bit aggressive in our threshold, we might choose `6.3`, for instance (which amounts to around 500 counts/cell).
 > >   - In an ideal world, you'll see a clear population of real cells separated from a clear population of debris. Many samples, like this one, are under-sequenced, and such separation would likely be seen after deeper sequencing!
@@ -382,7 +382,7 @@ Now that we've assessed the differences in our samples, we will look at the libr
 > > <solution-title></solution-title>
 > >
 > > 1. Any plot with `pct_counts_mito` would do here, however the scatterplots are likely the easiest to interpret. We'll use the same as last time.
-> > ![Scatter-countsxmito](../../images/scrna-casestudy/wab-scatter-countsxmito.png "Scatterplot - mito x UMIs (Raw)")
+> > ![Scatter_UMIxMito](../../images/scrna-casestudy/CS3-Scatter_UMIxMito.png "Scatter_UMIxMito (Raw)")
 > >
 > > 2. We can see a clear trend wherein cells that have around 5% mito counts or higher also have far fewer total counts. These cells are low quality, will muddy our data, and are likely stressed or ruptured prior to encapsulation in a droplet. While 5% is quite a common cut-off, this is quite messy data, so just for kicks we'll go more aggressive with a `4.5%`.
 > >    - In general, you must adapt all cut-offs to your data - metabolically active cells might have higher mitochondrial RNA in general, and you don't want to lose a cell population because of a cut-off.
@@ -447,7 +447,8 @@ It's now time to apply these thresholds to our data! First, a reminder of how ma
 >
 > > <solution-title></solution-title>
 > >
-> > ![Violinplot-filteronce](../../images/scrna-casestudy/wab-violin-raw-filteredgenes.png "Raw vs 1st filter - genes/cell")
+> > ![Violin_Log_Genotype](../../images/scrna-casestudy/CS3-Violin_log_genotype.png "Raw")
+> > ![Violinplot-filteronce](../../images/scrna-casestudy/CS3-Violin_log_genotype-Genes.png "1st filter - genes/cell")
 > > 1. The only part that seems to change is the `log1p_n_genes_by_counts`.  You can see a flatter bottom to the violin plot - this is the lower threshold set. Ideally, this would create a beautiful violin plot because there would be a clear population of low-gene number cells. Sadly not the case here, but still a reasonable filter.
 > > 2. If you *peek* at the AnnData object in your {% icon galaxy-history %}, you will find that you now have `17,040 cells x 35,734 genes`.
 > >
@@ -892,6 +893,13 @@ But first, let's pick some marker genes from the `Ranked_Genes-by_Cluster` list 
 
 Now it's the fun bit! We can see where genes are expressed, and start considering and interpreting the biology of it. At this point, it's really about what information you want to get from your data - the following is only the tip of the iceberg. However, a brief exploration is good, because it may help give you ideas going forward with for your own data. Let us start interrogating our data!
 
+> <warning-title>Your results may look different!</warning-title>
+> These tools rely on machine learning, which involves randomisation. While we have used the options to 'set random seed' to 1 where we can, it's not perfect at ensuring every analysis is identical.
+> - Your results may look different
+> - Your clusters may be in different orders
+> You will have to adjust your annotation and interpretation accordingly...which is exactly what scientists have to do!
+{: .warning}
+
 ## Biological Interpretation
 
 > <question-title>Appearance is everything</question-title>
@@ -917,7 +925,11 @@ Note that the cluster numbering is based on size alone - clusters 0 and 1 are no
 | 3 | Itm2a    | Mature T-cell
 | 7 | Aif1    | Macrophages    |
 
+Remember, **your clusters may be in a different order!** Look for the expression of the marker genes in order to annotate your clusters.
+
 ![Marker Gene UMAPs](../../images/scrna-casestudy/wab-markergeneumaps.png "Known marker gene locations")
+
+<Put here another one to show the difference! Maybe even a question?>
 
 The authors weren't interested in further annotation of the DP cells, so neither are we. Sometimes that just happens. The maths tries to call similar (ish) sized clusters, whether it is biologically relevant or not. Or, the question being asked doesn't really require such granularity of clusters.
 
