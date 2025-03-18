@@ -155,18 +155,11 @@ You can also pull the data from publicly available [Single Cell Expression Atlas
 > 1. {% tool [EBI SCXA Data Retrieval](toolshed.g2.bx.psu.edu/repos/ebi-gxa/retrieve_scxa/retrieve_scxa/v0.0.2+galaxy2) %} with the following parameters:
 >    - **SC-Atlas experiment accession**: `
 >    ``` E-MTAB-6945 ```
->    - *"Method used for plotting"*: `Generic: Violin plot, using 'pl.violin'`
->        - *"Keys for accessing variables"*: `Subset of variables in 'adata.var_names' or fields of '.obs'`
->            - *"Keys for accessing variables"*: `log1p_total_counts,log1p_n_genes_by_counts,pct_counts_mito`
->        - *"The key of the observation grouping to consider"*: `sex`
 >
+> 2. {% icon level %}**Follow tutorial to reformat dataset**: This [short tutorial]({% link topics/single-cell/tutorials/EBI-retrieval/tutorial.md %}) will show you how to use this tool and modify the output so that it's compatible with this tutorial and its workflow.
 >
-> This [short tutorial]({% link topics/single-cell/tutorials/EBI-retrieval/tutorial.md %}) will show you how to use this tool and modify the output so that it's compatible with this tutorial and its workflow.
-
-
-
- You can simply access the dataset we are working on by using the tool *EBI SCXA Data Retrieval* with experiment id of [E-MTAB-6945](https://www.ebi.ac.uk/gxa/sc/experiments/E-MTAB-6945/downloads).
-
+{: .hands_on}
+</div>
 
 
 # Important tips for easier analysis
