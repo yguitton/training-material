@@ -1127,11 +1127,9 @@ Before we leave you to explore the unknown, you might have noticed that the abov
 >
 > Sometimes this link can aggravate a firewall or something similar. It should be fine to go to the site.
 >
-> 3. You will be asked to `name your annotation`, so do so to start playing around!
+> 3. You will be asked to `name your annotation`. Do so, then you can start playing around!
 >
-> 4. You can also access it by going to `User` in the top menu of Galaxy, then selecting `Active Interactive Tools`
->
-> 5. You will need to `STOP` this active environment in Galaxy by going to `User`, `Interactive Tools`, selecting the environment, and selecting `Stop`. You may also want to delete the dataset in the history, because otherwise it continues appearing as if it's processing.
+> 4. You will need to `STOP` this active environment in Galaxy by going to `User`, `Interactive Tools`, selecting the environment, and selecting `Stop`. You may also want to delete the dataset in the history, because otherwise it continues appearing as if it's processing.
 >
 {: .hands_on}
 
@@ -1154,12 +1152,13 @@ Be warned - this visualisation tool is a powerful option for exploring your data
 
 {% icon congratulations %} Congratulations! You've made it to the end!
 
-You might find the {% icon galaxy-history-answer %} Answer Key Histories helpful to check or compare with:
- -    {% for h in page.answer_histories %}
-        [ {{h.label}} ]( {{h.history}} )
-      {% endfor %}
+You might find the {% icon galaxy-history-answer %} *Answer Key Histories* helpful to check or compare with:
 
-You can also run this entire tutorial via a {% icon galaxy-workflows-activity %} Workflow:
+    {% for h in page.answer_histories %}
+      [ {{h.label}} ]( {{h.history}} )
+    {% endfor %}
+
+You can also run this entire tutorial via a {% icon galaxy-workflows-activity %} *Workflow*, after performing the **Get data** step initially.
  - [Tutorial Workflow]({% link topics/single-cell/tutorials/scrna-case_basic-pipeline/workflows/ %})
 
 <iframe title="Galaxy Workflow Embed" style="width: 100%; height: 700px; border: none;" src="https://singlecell.usegalaxy.eu/published/workflow?id=fe814cc88b4e0ea3&embed=true&buttons=true&about=false&heading=false&minimap=true&zoom_controls=true&initialX=0&initialY=0&zoom=0.25"></iframe>
