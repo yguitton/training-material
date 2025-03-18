@@ -208,9 +208,6 @@ setting of the IDR Download tool by downloading imaging in a tar ball:
 >   input of {% icon tool %} **5: Unzip**.
 >    - Connect the output of {% icon param-file %} **4: Unzip** to the "Input Image"
 >   input of {% icon tool %} **6: Perform histogram equalization**.
->
->    {% snippet faqs/galaxy/workflows_extract_from_history.md %}
->
 > 1. Edit the workflow you just created:
 >    - Select "Input dataset" from the list of tools. The step {% icon param-file %} **1: Input Dataset** appears.
 >    - Select "Text Input" from the list of tools. The step {% icon param-file %} **2: Text Input** appears.
