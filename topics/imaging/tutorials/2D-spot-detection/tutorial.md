@@ -19,7 +19,7 @@ requirements:
     topic_name: imaging
     tutorials:
       - imaging-introduction
-time_estimation: "30min"
+time_estimation: 30m
 contributions:
   authorship:
     - rmassei
