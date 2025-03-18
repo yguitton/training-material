@@ -400,6 +400,8 @@ It's now time to apply these thresholds to our data! First, a reminder of how ma
 > - Everyone else: Choose your own thresholds and compare results!
 {: .details}
 
+### Genes/cell
+
 > <hands-on-title>Filter cells by log1p_n_genes_by_counts</hands-on-title>
 >
 > 1. {% tool [Scanpy FilterCells](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_filter_cells/scanpy_filter_cells/1.8.1+galaxy0) %} with the following parameters:
@@ -445,6 +447,8 @@ Note that the {% icon tool %} **Scanpy Filtercells** allows you to put {% icon p
 >
 {: .question}
 
+### UMIs/cell
+
 > <hands-on-title>Filter cells by log1p_total_counts</hands-on-title>
 >
 > 1. {% tool [Scanpy FilterCells](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_filter_cells/scanpy_filter_cells/1.8.1+galaxy0) %} with the following parameters:
@@ -487,6 +491,8 @@ Note that the {% icon tool %} **Scanpy Filtercells** allows you to put {% icon p
 > {: .solution}
 >
 {: .question}
+
+### % Mito/cell
 
 > <hands-on-title>Filter cells by pct_counts_mito</hands-on-title>
 >
@@ -547,6 +553,7 @@ Fantastic work! However, you've now removed a whole heap of cells, and since the
 > - Everyone else: Choose your own thresholds and compare results! Note if you go less than 3 (or even remove this step entirely), future tools are likely to fail due to empty gene data.
 {: .details}
 
+### Cells/gene
 
 > <hands-on-title>Filter genes</hands-on-title>
 >
