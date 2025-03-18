@@ -692,7 +692,7 @@ We still have too many dimensions. Transcript changes are not usually singular -
 ## Principal components
 Principal components are calculated from highly dimensional data to find the most spread in the dataset. Given that our object has around `3213` highly variable genes, that's 3213 dimensions. There will, however, be one line/axis/dimension that yields the most spread and variation across the cells. That will be our first principal component. We can calculate the first `x` principal components in our data to drastically reduce the number of dimensions.
 
-> <warning-title>Check your AnnData object!</warning-title>
+> <warning-title>Check the size of your AnnData object!</warning-title>
 > Your AnnData object should have far more than 3213 genes in it (if you followed our settings and tool versions, you'll have a matrix around 8605 × 15941 (cells x genes). If you followed the *More details on the Highly Variable Genes above, you may have created an object with *only* the highly variable genes. Please delete this object and do not use it! Carry forward the object with around 8605 × 15941 (cells x genes)!
 {: .warning}
 
@@ -903,8 +903,9 @@ Now it's the fun bit! We can see where genes are expressed, and start considerin
 
 > <warning-title>Your results may look different!</warning-title>
 > These tools rely on machine learning, which involves randomisation. While we have used the options to 'set random seed' to 1 where we can, it's not perfect at ensuring every analysis is identical.
-> - Your results may look different
-> - Your clusters may be in different orders
+> - Your results may look different.
+> - Your clusters may be in different orders.
+>
 > You will have to adjust your annotation and interpretation accordingly...which is exactly what scientists have to do!
 {: .warning}
 
