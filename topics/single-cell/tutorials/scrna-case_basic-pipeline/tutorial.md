@@ -107,8 +107,8 @@ We've provided you with experimental data to analyse from a mouse dataset of fet
 
 > <details-title>Fun facts about the dataset</details-title>
 >
-> We are particularly keen for learners to be able to go from raw FASTQ files all the way through analysis. We aren't handing you a curated dataset that we did special modification to in order for this tutorial to work. Instead, this tutorial's input dataset is the full dataset generated from the {% icon level %} [previous tutorial in this case study]({% link topics/single-cell/tutorials/scrna-case_alevin-combine-datasets/tutorial.md %}).
-> - However, we *downsampled* the datasets in that previous tutorial so it would run faster, whereas this tutorial uses the *full dataset* from the manuscript. The exact same analysis works.
+> We are particularly keen for learners to be able to go from raw FASTQ files all the way through analysis. We aren't handing you a curated dataset that we specially modified in order for this tutorial to work. Instead, this tutorial's input dataset is the full dataset generated from the {% icon level %} [previous tutorial in this case study]({% link topics/single-cell/tutorials/scrna-case_alevin-combine-datasets/tutorial.md %}).
+> - The only difference is that in that previous tutorial, we *downsampled* the datasets in so the tutorial would run faster. Our input data, however, now uses the *full dataset*, analysed exactly the same was as in the tutorial.
 > - You can also find this dataset in the [study in Single Cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/experiments/E-MTAB-6945/results/tsne) and the [project submission](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6945/).
 >
 {: .details}
@@ -120,7 +120,7 @@ We've provided you with experimental data to analyse from a mouse dataset of fet
 
 > <hands-on-title>Import History from EU server</hands-on-title>
 >
-> 1. Import {% icon galaxy-history-input %} *Input history* by following the link below
+> 1. Import the {% icon galaxy-history-input %} *Input history* by following the link below
 >
 >     {% for h in page.input_histories %}
 >       [ {{h.label}} ]( {{h.history}} )
