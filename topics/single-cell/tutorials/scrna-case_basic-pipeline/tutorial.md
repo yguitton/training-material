@@ -196,19 +196,18 @@ You have generated an annotated AnnData object from your raw scRNA-seq fastq fil
 > > <solution-title></solution-title>
 > >
 > > 1. If you examine your AnnData object, you'll find a number of different quality control metrics for:
-> >   - cells, found in the {% icon param-file %} **obs** output dataset
+> >   - cells, found in the {% icon param-file %} **Key-index observations annotation (obs)** output dataset
 > > >  - For example, you can find both discrete and log-based metrics for `n_genes` (how many genes are counted in a given cell), and `n_counts` (how many UMIs are counted in a given cell). This distinction between counts/UMIs or genes is because you might count multiple GAPDHs in a single cell. This would be 1 gene but multiple counts, therefore your `n_counts` should be higher than `n_genes` for an individual cell.
 > > >  - But what about the mitochondria?? You can also find `total_counts_mito`,  `log1p_total_counts_mito`, and `pct_counts_mito`, which has been calculated for each cell.
-> >   - and genes, found in the {% icon param-file %} **var** output dataset.
+> >   - and genes, found in the {% icon param-file %} **Key-index observations variables/features (var)** output dataset.
 > > >  - For example, you can find `n_cells` (number of cells that gene appears in).
 > >
-> > 2. You can find in the {% icon param-file %} **General information about the object** output that the matrix is `31178 x 35734`. This is `obs x vars`, or rather, `cells x genes`, so there are `31178 cells` and `35734 genes` in the matrix. However, you can also find this information by *peeking* at your dataset in the {% icon galaxy-history %} history, by selecting it to reveal a drop-down window that has this same information in it.
+> > 2. You can *peek* at your dataset in your {% icon galaxy-history %} history by selecting it to reveal a drop-down window that has this same information in it. {% icon param-file %}
+> > - The matrix is `31178 x 35734`. This is `obs x vars`, or rather, `cells x genes`, so there are `31178 cells` and `35734 genes` in the matrix. 
 > >
 > {: .solution}
 >
 {: .question}
-
-{% snippet faqs/galaxy/workflows_extract_from_history.md %}
 
 ## Generate QC Plots
 
