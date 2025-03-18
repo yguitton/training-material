@@ -640,7 +640,9 @@ We next need to look at reducing our gene dimensions. We have loads of genes, bu
 >
 > Would you like to know how *many* genes were flagged as **Highly variable genes**?
 >
+>
 > <hands-on-title>Find the number of variable genes</hands-on-title>
+> >
 > >
 > > 1. Select {% icon galaxy-refresh %} **Run Job Again** on the `anndata_out` (output of **Scanpy filter** {% icon tool %}) in your {% icon galaxy-history %} history
 > >
@@ -652,9 +654,11 @@ We next need to look at reducing our gene dimensions. We have loads of genes, bu
 > >
 > {: .hands_on}
 >
+>
 > If you peek at the output, you will see that the number of *genes* in your AnnData object has drastically reduced to around `3213` - this dataset has *only* the highly variable genes! Some people prefer to only perform analysis on this dataset, however I have found that sometimes (for various reasons) important biological marker genes get excluded. For this reason, I personally will flag highly variable genes for use in the next analytical steps, however I keep all the genes in my AnnData object so that I can check for key ones in the future.
 >
 > - {% icon warning %} For this tutorial, you **must** keep all genes in your AnnData object. Therefore, delete the output that contains *only* the highly variable genes from your {% icon galaxy-history %} history now.
+>
 >
 {: .details}
 
