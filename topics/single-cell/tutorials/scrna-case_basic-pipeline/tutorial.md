@@ -664,16 +664,21 @@ Principal components are calculated from highly dimensional data to find the mos
 
 > <hands-on-title>Calculate Principal Components</hands-on-title>
 >
-> 1. {% tool [Scanpy RunPCA](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_run_pca/scanpy_run_pca/1.8.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input object in AnnData/Loom format"*: `Use_me_Scaled` (output of **Scanpy ScaleData** {% icon tool %})
->    - *"Number of PCs to produce"*: `50`
+> 1. {% tool [Scanpy cluster, embed](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_cluster_reduce_dimension/scanpy_cluster_reduce_dimension/1.10.2+galaxy2) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `Scaled_Object`
+>    - *"Method used"*: `Computes PCA (principal component analysis) coordinates, loadings and variance decomposition, using 'pp.pca'`
+>        - *"Type of PCA?"*: `Full PCA`
+>            - *"Change to use different initial states for the optimization"*: `1`
 >
-> 2.  {% tool [Plot with scanpy](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.7.1+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `output_h5ad` (output of **Scanpy RunPCA** {% icon tool %})
+> 2. **Rename** {% icon galaxy-pencil %} output `PCA_Object`
+>
+> 3. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `PCA_Object`
 >    - *"Method used for plotting"*: `PCA: Scatter plot in PCA coordinates, using 'pl.pca_variance_ratio'`
 >        - *"Number of PCs to show"*: `50`
 >
-> 3. **Rename** {% icon galaxy-pencil %} plot output `PCA Variance`
+> 3. **Rename** {% icon galaxy-pencil %} plot output `PCA_Variance_Plot`
+>
 {: .hands_on}
 
 Why 50 principal components you ask? Well, we're pretty confident 50 is an over-estimate. Examine `PCA Variance`.
@@ -696,12 +701,15 @@ We're still looking at around 20 dimensions at this point. We need to identify h
 
 > <hands-on-title>ComputeGraph</hands-on-title>
 >
-> 1. {% tool [Scanpy ComputeGraph](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_compute_graph/scanpy_compute_graph/1.8.1+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Input object in AnnData/Loom format"*: `output_h5ad` (output of **Scanpy RunPCA** {% icon tool %})
->    - *"Use programme defaults"*: {% icon param-toggle %} `No`
->    - *"Maximum number of neighbours used"*: `15`
->    - *"Use the indicated representation"*: `X_pca`
->    - *"Number of PCs to use"*: `20`
+> 1. {% tool [Scanpy Inspect and manipulate](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_inspect/scanpy_inspect/1.10.2+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `PCA_Object`
+>    - *"Method used for inspecting"*: `Compute a neighborhood graph of observations, using 'pp.neighbors'`
+>        - *"Number of PCs to use"*: `20`
+>        - *"Use the indicated representation"*: `X_pca`
+>        - *"Numpy random seed"*: `1`
+>
+> 2. **Rename** {% icon galaxy-pencil %} output `Neighbours_Object`
+>
 {: .hands_on}
 
 ## Dimensionality reduction for visualisation
@@ -717,15 +725,20 @@ Two major visualisations for this data are tSNE and UMAP. We must calculate the 
 
 > <hands-on-title>Calculating tSNE & UMAP</hands-on-title>
 >
-> 1. {% tool [Scanpy RunTSNE](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_run_tsne/scanpy_run_tsne/1.8.1+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Input object in AnnData/Loom format"*: `output_h5ad` (output of **Scanpy ComputeGraph** {% icon tool %})
->    - *"Use the indicated representation"*: `X_pca`
->    - *"Use programme defaults"*: {% icon param-toggle %} `No`
->    - *"The perplexity is related to the number of nearest neighbours, select a value between 5 and 50"*: `30`
+> 1. {% tool [Scanpy cluster, embed](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_cluster_reduce_dimension/scanpy_cluster_reduce_dimension/1.10.2+galaxy2) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `Neighbours_Object`
+>    - *"Method used"*: `t-distributed stochastic neighborhood embedding (tSNE), using 'tl.tsne'`
+>        - *"Number of PCs to use"*: `20`
+>        - *"Use the indicated representation"*: `X_pca`
+>        - *"Random state"*: `1`
 >
-> 2. {% tool [Scanpy RunUMAP](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_run_umap/scanpy_run_umap/1.8.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input object in AnnData/Loom format"*: `output_h5ad` (output of **Scanpy RunTSNE** {% icon tool %})
->    - *"Use programme defaults"*: {% icon param-toggle %} `Yes`
+> 2. {% tool [Scanpy cluster, embed](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_cluster_reduce_dimension/scanpy_cluster_reduce_dimension/1.10.2+galaxy2) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `anndata_out` (output of **Scanpy cluster, embed** {% icon tool %})
+>    - *"Method used"*: `Embed the neighborhood graph using UMAP, using 'tl.umap'`
+>        - *"Seed used by the random number generator"*: `1`
+>
+> 2. **Rename** {% icon galaxy-pencil %} output `UMAP_Object`
+>
 {: .hands_on}
 
 {% icon congratulations %} Congratulations! You have prepared your object and created neighborhood coordinates. We can now use those to call some clusters!
@@ -757,37 +770,69 @@ Finally, let's identify clusters! Unfortunately, it's not as majestic as biologi
 
 > <hands-on-title>FindClusters</hands-on-title>
 >
-> 1. {% tool [Scanpy FindCluster](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_find_cluster/scanpy_find_cluster/1.8.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input object in AnnData/Loom format"*: `output_h5ad` (output of **Scanpy RunUMAP** {% icon tool %})
->    - *"Use programme defaults"*: {% icon param-toggle %} `No`
->    - *"Resolution, high value for more and smaller clusters"*: `0.6`
+> 1. {% tool [Scanpy cluster, embed](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_cluster_reduce_dimension/scanpy_cluster_reduce_dimension/1.10.2+galaxy2) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `UMAP_Object`
+>    - *"Method used"*: `Cluster cells into subgroups, using 'tl.louvain'`
+>        - *"Flavor for the clustering"*: `vtraag (much more powerful than igraph)`
+>            - *"Resolution"*: `0.6`
+>        - *"Random state"*: `1`
+>
+> 2. **Rename** {% icon galaxy-pencil %} output `Clustered_Object`
+>
 {: .hands_on}
 
 Nearly plotting time! But one final piece is to add in SOME gene information. Let's focus on genes driving the clusters.
 
-## FindMarkers
+## Find Gene Markers
 
-> <hands-on-title>FindMarkers</hands-on-title>
+> <hands-on-title>Find Gene markers for each cluster</hands-on-title>
 >
-> 1. {% tool [Scanpy FindMarkers](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_find_markers/scanpy_find_markers/1.8.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input object in AnnData/Loom format"*: `output_h5ad` (output of **Scanpy FindClusters** {% icon tool %})
+> 1. {% tool [Scanpy Inspect and manipulate](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_inspect/scanpy_inspect/1.10.2+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `Clustered_Object`
+>    - *"Method used for inspecting"*: `Rank genes for characterizing groups, using 'tl.rank_genes_groups'`
+>        - *"Get ranked genes as a Tabular file?"*: `True`
+>            - *"Column name in [.var] DataFrame that stores gene symbols."*: `Symbol`
+>        - *"The key of the observations grouping to consider"*: `louvain`
+>        - *"Use 'raw' attribute of input if present"*: `Yes`
+>        - *"Comparison"*: `Compare each group to the union of the rest of the group`
+>        - *"The number of genes that appear in the returned tables"*: `100`
+>        - *"Method"*: `t-test with overestimate of variance of each group`
 >
-> 2. **Rename** {% icon galaxy-pencil %} output table (not h5ad) `Markers - cluster`
+> 2. **Rename** {% icon galaxy-pencil %} output table (not h5ad) `Ranked_Genes-by_cluster`
 >
-> 3. **Rename**  {% icon galaxy-pencil %} output h5ad file `Final object`
->
-> But we are also interested in differences across genotype, so let's also check that (note that in this case, it's turning it almost into bulk RNA-seq, because you're comparing all cells of a certain genotype against all cells of the other)
->
-> 3. {% tool [Scanpy FindMarkers](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_find_markers/scanpy_find_markers/1.8.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input object in AnnData/Loom format"*: `Final object`
->    - *"The sample grouping/clustering to use"*: `genotype`
->    - *"Use programme defaults"*: {% icon param-toggle %} `Yes`
->
-> 4. **Rename** {% icon galaxy-pencil %} output table (not h5ad) `Markers - genotype`
->
-> 5. Do not **Rename** the output AnnData object (in fact, you can delete it!). You have the genotype marker table to enjoy, but we want to keep the cluster comparisons, rather than gene comparisons, stored in the AnnData object for later.
->
+> 3. **Rename**  {% icon galaxy-pencil %} output h5ad file `DEG_Object`
 {: .hands_on}
+
+> <details-title>What about comparing across genotypes?</details-title>
+>
+> Given that we are also interested in differences across genotype, we can also use the find markers function to check that (or any other **Obs** metadata)... roughly.
+>
+> > <hands-on-title>Comparing across genotypes</hands-on-title>
+> >
+> > 1. {% tool [Scanpy Inspect and manipulate](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_inspect/scanpy_inspect/1.10.2+galaxy1) %} with the following parameters:  
+> >    - {% icon param-file %} *"Annotated data matrix"*: `Clustered_Object`
+> >    - *"Method used for inspecting"*: `Rank genes for characterizing groups, using 'tl.rank_genes_groups'`  
+> >       - *"Get ranked genes as a Tabular file?"*: `True`  
+> >           - *"Column name in [.var] DataFrame that stores gene symbols."*: `Symbol`  
+> >       - *"The key of the observations grouping to consider"*: `genotype`  
+> >       - *"Use 'raw' attribute of input if present"*: `Yes`  
+> >       - *"Comparison"*: `Compare each group to the union of the rest of the group`  
+> >       - *"The number of genes that appear in the returned tables"*: `100`  
+> >       - *"Method"*: `t-test with overestimate of variance of each group`  
+> >
+> > 2. **Rename** {% icon galaxy-pencil %} output table (not h5ad) `Ranked_Genes-by_Genotype`
+> >
+> > Do not **Rename** the output AnnData object (in fact, you can delete it!). You have the genotype marker table to enjoy, but we want to keep the cluster comparisons, rather than gene comparisons, stored in the AnnData object for later.
+> >
+> {: .hands_on}
+>
+> However, this analysis only give you a rough idea. It is more statistically accurate to convert each cluster into a *pseudobulk* sample, and analyse those. You can find more details about that in our {% icon level %} [pseudobulk tutorial]({% link topics/single-cell/tutorials/pseudobulk-analysis/tutorial.md %})
+>
+> - {% icon warning %} If you are in a *live course*, the time to do this *bonus tutorial* will not be factored in. Please instead return to this *after* your course is finished, or if you finish early!
+>
+{: .details}
+
+
 
 Now, there's a small problem here, which is that if you {% icon galaxy-eye %} inspect the output marker tables, you won't see gene names, you'll see Ensembl IDs. While this is a more bioinformatically accurate way of doing this (not every ID has a gene name!), we might want to look at more well-recognised gene names, so let's pop some of that information in!
 
