@@ -914,7 +914,7 @@ Now it's the fun bit! We can see where genes are expressed, and start considerin
 > >
 > > ![PCA Plot](../../images/scrna-casestudy/CS3-PCA_Plot.png "PCA Plots")
 > > ![tSNE Plot](../../images/scrna-casestudy/CS3-tSNE_Plot.png "tSNE Plots")
-> > ![UMAP Plot](../../images/scrna-casestudy/CS3-PCA_Plot.png "UMAP Plots")
+> > ![UMAP Plot](../../images/scrna-casestudy/CS3-UMAP_Plot.png "UMAP Plots")
 > >
 > > You can see why a PCA is generally not enough to see clusters in samples - keep in mind, you're only seeing components 1 and 2! - and therefore why the tSNE and UMAP visualisation dimensionality reductions are so useful. But there is not necessarily a clear winner between tSNE and UMAP, but I think UMAP is slightly clearer with its clusters, so we'll stick with that for the rest of the analysis.
 > >
@@ -926,26 +926,73 @@ Note that the cluster numbering is based on size alone - clusters 0 and 1 are no
 
 | Clusters | Marker | Cell type |
 |------ |--------------------|
-| 4 | Il2ra    | Double negative (early T-cell)    |
-| 0,1,2,6 | Cd8b1, Cd8a, Cd4    | Double positive (middle T-cell)|
-| 5 | Cd8b1, Cd8a, Cd4 - high | Double positive (late middle T-cell)
+| 2 | Il2ra    | Double negative (early T-cell)    |
+| 0,1,5 | Cd8b1, Cd8a, Cd4    | Double positive (middle T-cell)|
+| 4 | Cd8b1, Cd8a, Cd4 - high | Double positive (late middle T-cell)
 | 3 | Itm2a    | Mature T-cell
-| 7 | Aif1    | Macrophages    |
+| 6 | Aif1    | Macrophages    |
 
-Remember, **your clusters may be in a different order!** Look for the expression of the marker genes in order to annotate your clusters.
+![UMAP Plot](../../images/scrna-casestudy/CS3-UMAP_Plot.png "UMAP Plots")
 
-![Marker Gene UMAPs](../../images/scrna-casestudy/wab-markergeneumaps.png "Known marker gene locations")
+{% icon warning %} Remember, **your clusters may be in a different order!** Look for the expression of the marker genes in order to annotate your clusters.
 
-<Put here another one to show the difference! Maybe even a question?>
+> <question-title></question-title>
+>
+> Let's consider how you might handle a different output. I personally re-ran the same workflow from this tutorial five times and got two different results. Here's one of the other outputs I got.
+> ![UMAP Plot Version 2](../../images/scrna-casestudy/CS3-UMAP_Plotv2.png "Another UMAP")
+>
+> 1. What is different about that plot?
+> 2. How would you adjust your annotation?
+>
+> > <solution-title></solution-title>
+> >
+> > 1. While the cells are in the same places (which may not always be the case!), the clustering is different. The large Double positive (middle T-cell) cluster has more evenly divided into three clusters, which has therefore changed the ordering of cluster size.
+> >
+> > 2. The cluster annotation would be different:
+> > | Clusters | Marker | Cell type |
+> > |------ |--------------------|
+> > | 3 | Il2ra    | Double negative (early T-cell)    |
+> > | 0,1,4 | Cd8b1, Cd8a, Cd4    | Double positive (middle T-cell)|
+> > | 5 | Cd8b1, Cd8a, Cd4 - high | Double positive (late middle T-cell)
+> > | 2 | Itm2a    | Mature T-cell
+> > | 6 | Aif1    | Macrophages    |
+> >
+> {: .solution}
+{: .question}
 
 The authors weren't interested in further annotation of the DP cells, so neither are we. Sometimes that just happens. The maths tries to call similar (ish) sized clusters, whether it is biologically relevant or not. Or, the question being asked doesn't really require such granularity of clusters.
 
 > <details-title>Working in a group? Important!</details-title>
-> If you have deviated from any of the original parameters in this tutorial, you will likely have a different number of clusters. You will, therefore, need to change the 'Annotating clusters' *"Comma-separated list of new categories"* accordingly. Best of luck!
+> If you have deviated from any of the original parameters in this tutorial, you will likely have a different number of clusters. You will, therefore, need to change the upcoming 'Annotating clusters' *"Comma-separated list of new categories"* accordingly. Best of luck!
 >
 {: .details}
 
 ### Annotating Clusters
+
+To annotate the clusters, we write a list of new cluster names in order from Cluster 0 onwards. In this case, that list is: `DP-M3,DP-M1,DN,T-mat,DP-L,DP-M2,Macrophages`
+
+> <question-title></question-title>
+>
+> Imagine you had that second version of an analysis shared above.
+> The cluster annotation was different:
+> | Clusters | Marker | Cell type |
+> |------ |--------------------|
+> | 3 | Il2ra    | Double negative (early T-cell)    |
+> | 0,1,4 | Cd8b1, Cd8a, Cd4    | Double positive (middle T-cell)|
+> | 5 | Cd8b1, Cd8a, Cd4 - high | Double positive (late middle T-cell)
+> | 2 | Itm2a    | Mature T-cell
+> | 6 | Aif1    | Macrophages    |
+>
+> 1. What would your cluster names list look like?
+>
+> > <solution-title></solution-title>
+> >
+> > 1. Given this new order, your list would be: `DP-M3,DP-M2,T-mat,DN,DP-M1,DP-L,Macrophages`
+> >
+> {: .solution}
+{: .question}
+
+Adjust your list according to the expression of the gene markers.
 
 > <hands-on-title>Annotating clusters</hands-on-title>
 >
@@ -953,7 +1000,7 @@ The authors weren't interested in further annotation of the DP cells, so neither
 >    - {% icon param-file %} *"Annotated data matrix"*: `DEG_Object`
 >    - *"Function to manipulate the object"*: `Rename categories of annotation`
 >        - *"Key for observations or variables annotation"*: `louvain`
->        - *"Comma-separated list of new categories"*: `DP-M3,DP-M2,T-mat,DN,DP-M1,DP-L,Macrophages`
+>        - *"Comma-separated list of new categories"*: `DP-M3,DP-M1,DN,T-mat,DP-L,DP-M2,Macrophages`
 >        - *"Add categories to a new key?"*: `Yes`
 >            - *"Key name"*: `cell_type`
 >
@@ -971,7 +1018,7 @@ The authors weren't interested in further annotation of the DP cells, so neither
 >
 {: .hands_on}
 
-![Annotated cell types](../../images/scrna-casestudy/wab-annotatedcells.png "Our annotated UMAP")
+![Annotated cell types](../../images/scrna-casestudy/CS3-Annotated_Cell_Types.png "Our annotated UMAP")
 
 Now that we know what we're dealing with, let's examine the effect of our variable, proper science!
 
@@ -979,7 +1026,7 @@ Now that we know what we're dealing with, let's examine the effect of our variab
 >
 > Are there any differences in genotype? Or in biological terms, is there an impact of growth restriction on T-cell development in the thymus?
 >
-> ![Genotype Images](../../images/scrna-casestudy/wab-genotypedifferences.png "Genotype differences")
+> ![Genotype Images](../../images/scrna-casestudy/CS3-Genotype_Differences.png "Genotype differences")
 >
 > > <solution-title></solution-title>
 > >
@@ -997,14 +1044,14 @@ Is our analysis real? Is it right? Well, we can assess that a little bit.
 >
 > Is there a batch effect?
 >
-> ![Batch effect](../../images/scrna-casestudy/wab-batcheffect.png "Batch effect?")
+> ![Batch effect](../../images/scrna-casestudy/CS3-Batch_Differences.png "Batch effect?")
 >
 > > <solution-title></solution-title>
 > >
 > > While some shifts are expected and nothing to be concerned about, DP-L looks to be mainly comprised of N705. There might be a bit of batch effect, so you could consider using batch correction on this dataset. However, if we focus our attention on the other cluster - mature T-cells -  where there is batch mixing, we can still assess this biologically even without batch correction.
 > > Additionally, we will also look at the confounding effect of sex.
 > >
-> > ![Sex effect](../../images/scrna-casestudy/wab-sex-batch.png "Sex differences")
+> > ![Sex effect](../../images/scrna-casestudy/CS3-Sex_Differences.png "Sex differences")
 > >
 > > We note that the one female sample - unfortunately one of the mere three knockout samples - seems to be distributed in the same areas as the knockout samples at large, so luckily, this doesn't seem to be a confounding factor and we can still learn from our data. Ideally, this experiment would be re-run with either more female samples all around or swapping out this female from the male sample.
 > >
@@ -1016,7 +1063,7 @@ Is our analysis real? Is it right? Well, we can assess that a little bit.
 >
 > Are there any clusters or differences being driven by sequencing depth, a technical and random factor?
 >
-> ![Sequencing depth](../../images/scrna-casestudy/wab-umap-totalcounts.png "Counts across clusters")
+> ![Sequencing depth](../../images/scrna-casestudy/CS3-Depth_Differences.png "Sequencing depth differences")
 >
 > > <solution-title></solution-title>
 > >
@@ -1030,7 +1077,7 @@ Is our analysis real? Is it right? Well, we can assess that a little bit.
 >
 > Do you think we processed these samples well enough?
 >
-> ![Sequencing depth](../../images/scrna-casestudy/wab-hba.png "Hemoglobin across clusters")
+> ![Hemoglobin expression](../../images/scrna-casestudy/CS3-Hemoglobin.png "Hemoglobin across clusters")
 >
 > > <solution-title></solution-title>
 > >
@@ -1044,7 +1091,7 @@ Is our analysis real? Is it right? Well, we can assess that a little bit.
 >
 > Do you think the clustering is appropriate? i.e. are there single clusters that you think should be separate, and multiple clusters that could be combined?
 >
-> ![Itm2a Expression](../../images/scrna-casestudy/wab-umap-itm2a.png "Itm2a across clusters")
+> ![Itm2a Expression](../../images/scrna-casestudy/CS3-Itm2a.png "Itm2a across clusters")
 >
 > > <solution-title></solution-title>
 > >
@@ -1060,7 +1107,7 @@ Ultimately, there are quite a lot ways to analyse the data, both within the conf
 
 # Interactive visualisations
 
-Before we leave you to explore the unknown, you might have noticed that the above interpretations are only a few of the possible options. Plus you might have had fun trying to figure out which sample is which genotype is which sex and flicking back and forth between plots repeatedly. Figuring out which plots will be your *final publishable* plots takes a lot of time and testing. Luckily, there is a helpful interactive viewer {% cite Cakir2020 %} export tool {% cite Moreno2020.04.08.032698 %} that can help you explore without having to produce new plots over and over!
+Before we leave you to explore the unknown, you might have noticed that the above interpretations are only a few of the possible options. Plus you might have had fun trying to figure out which sample is which genotype is which sex and flicking back and forth between plots repeatedly. Figuring out which plots will be your *final publishable* plots takes a lot of time and testing. Luckily, there is a helpful interactive viewer {% cite Cakir2020 %} export tool that can help you explore without having to produce new plots over and over!
 
 > <hands-on-title>Cellxgene</hands-on-title>
 >
