@@ -12,9 +12,11 @@ redirect_from:
 
 answer_histories:
   - label: "UseGalaxy.eu"
+    history: (TO ADD)
+  - label: "UseGalaxy.eu - ARCHIVEDv2"
     history: https://usegalaxy.eu/u/j.jakiela/h/filter-plot-and-explore-single-cell-rna-seq-data-updated
     date: 2023-10-10
-  - label: "UseGalaxy.eu - ARCHIVED"
+  - label: "UseGalaxy.eu - ARCHIVEDv1"
     history: https://usegalaxy.eu/u/wendi.bacon.training/h/filter-plot-and-explore-single-cell-rna-seq-data
     date: 2024-12-10
   - label: "Older version"
@@ -23,22 +25,22 @@ answer_histories:
 
 input_histories:
   - label: "UseGalaxy.eu"
-    history:  https://usegalaxy.eu/published/history?id=67ff4cea2adc574d
+    history:  https://usegalaxy.eu/u/wendi.bacon.training/h/filter-plot-and-explore-single-cell-rna-seq-data-input
 
 questions:
-- Is my single cell dataset a quality dataset?
-- How do I generate and annotate cell clusters?
+- How can I assess my dataset quality?
 - How do I pick thresholds and parameters in my analysis? What's a "reasonable" number, and will the world collapse if I pick the wrong one?
+- How do I generate and annotate cell clusters?
 objectives:
-- Interpret quality control plots to direct parameter decisions
+- Interpret quality control plots to inform parameter-decision making
 - Repeat analysis from matrix to clustering
 - Identify decision-making points
-- Appraise data outputs and decisions
+- Appraise data outputs and make informed decisions
 - Explain why single cell analysis is an iterative (i.e. the first plots you generate are not final, but rather you go back and re-analyse your data repeatedly) process
 time_estimation: 3H
 key_points:
-- Single cell data is huge, and must have its many (# genes) dimensions reduced for analysis
-- Analysis is more subjective than we think, and biological understanding of the samples as well as many iterations of analysis are important to give us our best change of attaining real biological insights
+- Single-cell data is huge. To analyse single-cell data, you must reduce its many dimensions (cells x genes) via numerous methods
+- Analysis is more subjective than we think. We need both prior, biological knowledge of the samples as well as many iterations of analysis, in order to derive novel, real biological insights
 
 requirements:
 -
@@ -58,6 +60,7 @@ contributions:
   editing:
     - hexylena
     - wee-snufkin
+    - nomadscientist
   testing:
     - wee-snufkin
 
