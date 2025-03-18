@@ -100,21 +100,33 @@ You've done all the work to make a single cell matrix, with gene counts and mito
 
 ## Get data
 
-We've provided you with experimental data to analyse from a mouse dataset of fetal growth restriction {% cite Bacon2018 %}. This is the full dataset generated from [this tutorial]({% link topics/single-cell/tutorials/scrna-case_alevin-combine-datasets/tutorial.md %}) if you used the full FASTQ files rather than the subsampled ones (see the [study in Single Cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/experiments/E-MTAB-6945/results/tsne) and the [project submission](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6945/)). You can find this dataset in this [input history](https://usegalaxy.eu/u/j.jakiela/h/filter-plot-explore-tutorial-input) or download from Zenodo below.
+We've provided you with experimental data to analyse from a mouse dataset of fetal growth restriction {% cite Bacon2018 %}.
 
-You can access the data for this tutorial in multiple ways:
+> <details-title>Fun facts about the dataset</details-title>
+>
+> We are particularly keen for learners to be able to go from raw FASTQ files all the way through analysis. We aren't handing you a curated dataset that we did special modification to in order for this tutorial to work. Instead, this tutorial's input dataset is the full dataset generated from [the previous tutorial in this case study]({% link topics/single-cell/tutorials/scrna-case_alevin-combine-datasets/tutorial.md %}). > > - However, we downsampled the datasets in that previous tutorial so it would run faster, whereas this tutorial uses the full dataset from the manuscript. The exact same analysis works.
+> - You can also find this dataset in the [study in Single Cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/experiments/E-MTAB-6945/results/tsne) and the [project submission](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6945/)).
+>
+{: .details}
 
-1. **Your own history** - If you're feeling confident that you successfully ran a workflow on all 7 samples from the previous tutorial, and that your resulting 7 AnnData objects look right (you can compare with the [answer key history](https://usegalaxy.eu/u/j.jakiela/h/all-total-samples-processed-after-alevin-into-single-object)), then you can use those! Be careful, in the previous tutorials we worked on downsampled datasets, but here we start with the object containing total data from all the samples! To avoid a million-line history, I recommend dragging the resultant datasets into a fresh history:
+{% include _includes/cyoa-choices.html option1="Import History on EU server" option2="Zenodo" option3="SCXA" default="Import History on EU server"
+       text="If you're on the EU server (if your usegalaxy has an **EU** anywhere in the URL), then the quickest way to Get the Data for this tutorial is via importing a history. Otherwise, you can also import from Zenodo - it just might take a moment longer if you're in a live course and everyone is importing the same dataset at the same time! The SCXA is specifically for learners who are focusing on *Reusing public data*, so are not beginners. %}
 
-   {% snippet faqs/galaxy/histories_copy_dataset.md %}
+<div class="Import-History-on-EU-server" markdown="1">
 
-2. **Importing from a history** - You can import [this history](https://usegalaxy.eu/published/history?id=67ff4cea2adc574d)
+> <hands-on-title>Import History from EU server</hands-on-title>
+>
+> 1. Import [this history](https://usegalaxy.eu/published/history?id=67ff4cea2adc574d)
+>
+>   {% snippet faqs/galaxy/histories_import.md %}
+>
+{: .hands_on}
 
-   {% snippet faqs/galaxy/histories_import.md %}
+</div>
 
-3. **Uploading from Zenodo** (see below)
+<div class="Zenodo" markdown="1">
 
-> <hands-on-title>Option 3: Uploading from Zenodo</hands-on-title>
+> <hands-on-title>Import from Zenodo</hands-on-title>
 >
 > 1. Create a new history for this tutorial
 > 2. Import the AnnData object from [Zenodo]({{ page.zenodo_link }})
@@ -132,9 +144,28 @@ You can access the data for this tutorial in multiple ways:
 >
 {: .hands_on}
 
-4. **Importing data from EBI Single Cell Expression Atlas**
+</div>
 
-You can also pull the data from publicly available [Single Cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/home). You can simply access the dataset we are working on by using the tool *EBI SCXA Data Retrieval* with experiment id of [E-MTAB-6945](https://www.ebi.ac.uk/gxa/sc/experiments/E-MTAB-6945/downloads). This [short tutorial]({% link topics/single-cell/tutorials/EBI-retrieval/tutorial.md %}) will show you how to use this tool and modify the output so that it's compatible with this tutorial and its workflow.
+<div class="SCXA" markdown="1">
+
+You can also pull the data from publicly available [Single Cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/home).
+
+> <hands-on-title>Import from the EBI Single Cell Expression Atlas</hands-on-title>
+>
+> 1. {% tool [EBI SCXA Data Retrieval](toolshed.g2.bx.psu.edu/repos/ebi-gxa/retrieve_scxa/retrieve_scxa/v0.0.2+galaxy2) %} with the following parameters:
+>    - **SC-Atlas experiment accession**: `
+>    ``` E-MTAB-6945 ```
+>    - *"Method used for plotting"*: `Generic: Violin plot, using 'pl.violin'`
+>        - *"Keys for accessing variables"*: `Subset of variables in 'adata.var_names' or fields of '.obs'`
+>            - *"Keys for accessing variables"*: `log1p_total_counts,log1p_n_genes_by_counts,pct_counts_mito`
+>        - *"The key of the observation grouping to consider"*: `sex`
+>
+>
+> This [short tutorial]({% link topics/single-cell/tutorials/EBI-retrieval/tutorial.md %}) will show you how to use this tool and modify the output so that it's compatible with this tutorial and its workflow.
+
+
+
+ You can simply access the dataset we are working on by using the tool *EBI SCXA Data Retrieval* with experiment id of [E-MTAB-6945](https://www.ebi.ac.uk/gxa/sc/experiments/E-MTAB-6945/downloads).
 
 
 
