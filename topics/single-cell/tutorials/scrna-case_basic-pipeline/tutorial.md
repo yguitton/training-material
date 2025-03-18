@@ -181,34 +181,32 @@ You have generated an annotated AnnData object from your raw scRNA-seq fastq fil
 > 2. While you are figuring that out, how many genes and cells are in your object?
 >
 >   > <tip-title>Hint</tip-title>
->   > You want to use the same tool you used in the previous tutorial to examine your AnnData, since it's not necessarily as simple as examining the Anndata dataset in the history!
+>   > You want to use the same tool you used in the previous tutorial to examine your AnnData. Sometimes you can get the answers from selecting your AnnData object in the history, but sometimes it's not quite that simple!
 >   >
 >   >   > <hands-on-title>Inspecting AnnData Objects</hands-on-title>
 >   >   >
 >   >   > 1. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1) %} with the following parameters:
 >   >   >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
->   >   >    - *"What to inspect?"*: `General information about the object`
->   >   > 2. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1) %} with the following parameters:
->   >   >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
 >   >   >    - *"What to inspect?"*: `Key-indexed observations annotation (obs)`
->   >   > 3. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1) %} with the following parameters:
+>   >   > 2. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1) %} with the following parameters:
 >   >   >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
 >   >   >    - *"What to inspect?"*: `Key-indexed annotation of variables/features (var)`
 >   >   {: .hands_on}
 >   {: .tip}
 > > <solution-title></solution-title>
 > >
-> > 1. If you examine your AnnData object, you'll find a number of different quality control metrics for both cells {% icon tool %} **obs** and {% icon tool %} genes **var**.
-> >   - For instance, you can see a `n_cells` under **var**, which counts the number of cells that gene appears in.
-> >   - In the **obs**, you have both discrete and log-based metrics for `n_genes`, how many genes are counted in a cell, and `n_counts`, how many UMIs are counted per cell. So, for instance, you might count multiple GAPDHs in a cell. Your `n_counts` should thus be higher than `n_genes`.
-> >   - But what about the mitochondria?? Within the cells information **obs**, the `total_counts_mito`,  `log1p_total_counts_mito`, and `pct_counts_mito` has been calculated for each cell.
-> > 2. You can see in the {% icon tool %} **General information about the object** output that the matrix is `31178 x 35734`. This is `obs x vars`, or rather, `cells x genes`, so there are `31178 cells` and `35734 genes` in the matrix.
+> > 1. If you examine your AnnData object, you'll find a number of different quality control metrics for:
+> >   - cells, found in the {% icon param-file %} **obs** output dataset
+> > >  - For example, you can find both discrete and log-based metrics for `n_genes` (how many genes are counted in a given cell), and `n_counts` (how many UMIs are counted in a given cell). This distinction between counts/UMIs or genes is because you might count multiple GAPDHs in a single cell. This would be 1 gene but multiple counts, therefore your `n_counts` should be higher than `n_genes` for an individual cell.
+> > >  - But what about the mitochondria?? You can also find `total_counts_mito`,  `log1p_total_counts_mito`, and `pct_counts_mito`, which has been calculated for each cell.
+> >   - and genes, found in the {% icon param-file %} **var** output dataset.
+> > >  - For example, you can find `n_cells` (number of cells that gene appears in).
+> >
+> > 2. You can find in the {% icon param-file %} **General information about the object** output that the matrix is `31178 x 35734`. This is `obs x vars`, or rather, `cells x genes`, so there are `31178 cells` and `35734 genes` in the matrix. However, you can also find this information by *peeking* at your dataset in the {% icon galaxy-history %} history, by selecting it to reveal a drop-down window that has this same information in it.
 > >
 > {: .solution}
 >
 {: .question}
-
-{% icon time %} **Top time-saving advice** - turn the 3 **Inspect AnnData** outputs above into a workflow for quick access!
 
 {% snippet faqs/galaxy/workflows_extract_from_history.md %}
 
