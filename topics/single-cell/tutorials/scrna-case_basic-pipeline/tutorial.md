@@ -955,7 +955,7 @@ Note that the cluster numbering is based on size alone - clusters 0 and 1 are no
 > >
 > > 2. The cluster annotation would be different:
 > > | Clusters | Marker | Cell type |
-> > |------ |--------------------|
+> > |----------|------------------------------|----------------------------------|
 > > | 3 | Il2ra    | Double negative (early T-cell)    |
 > > | 0,1,4 | Cd8b1, Cd8a, Cd4    | Double positive (middle T-cell)|
 > > | 5 | Cd8b1, Cd8a, Cd4 - high | Double positive (late middle T-cell)
