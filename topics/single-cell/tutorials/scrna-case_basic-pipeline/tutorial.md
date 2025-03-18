@@ -158,9 +158,7 @@ You can also pull the data from publicly available [Single Cell Expression Atlas
 > <hands-on-title>Import from the EBI Single Cell Expression Atlas</hands-on-title>
 >
 > 1. {% tool [EBI SCXA Data Retrieval](toolshed.g2.bx.psu.edu/repos/ebi-gxa/retrieve_scxa/retrieve_scxa/v0.0.2+galaxy2) %} with the following parameters:
->    - **SC-Atlas experiment accession**:
->
->    ``` E-MTAB-6945 ```
+>    - **SC-Atlas experiment accession**: `E-MTAB-6945`
 >
 > 2. {% icon level %}**Follow tutorial to reformat dataset**: This [short tutorial]({% link topics/single-cell/tutorials/EBI-retrieval/tutorial.md %}) will show you how to use this tool and modify the output so that it's compatible with this tutorial and its workflow.
 >
@@ -221,63 +219,66 @@ We want to filter our cells, but first we need to know what our data looks like.
 
 ### Creating the plots
 
-> <hands-on-title>Making QC plots</hands-on-title>
+> <hands-on-title>Making QC visualisations - Violin Plots</hands-on-title>
 >
 > 1. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
 >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
 >    - *"Method used for plotting"*: `Generic: Violin plot, using 'pl.violin'`
 >        - *"Keys for accessing variables"*: `Subset of variables in 'adata.var_names' or fields of '.obs'`
->            - *"Keys for accessing variables"*:
->  ```log1p_total_counts,log1p_n_genes_by_counts,pct_counts_mito`
+>            - *"Keys for accessing variables"*: `log1p_total_counts,log1p_n_genes_by_counts,pct_counts_mito`
 >        - *"The key of the observation grouping to consider"*: `genotype`
 >
-> 2. **Rename** {% icon galaxy-pencil %} output `Violin-genotype -log`
+> 2. **Rename** {% icon galaxy-pencil %} output `Violin_log_genotype`
 >
-> 3. {% tool [Plot with scanpy](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.7.1+galaxy1) %} with the following parameters:
+> 3. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
 >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
 >    - *"Method used for plotting"*: `Generic: Violin plot, using 'pl.violin'`
 >        - *"Keys for accessing variables"*: `Subset of variables in 'adata.var_names' or fields of '.obs'`
 >            - *"Keys for accessing variables"*: `log1p_total_counts,log1p_n_genes_by_counts,pct_counts_mito`
 >        - *"The key of the observation grouping to consider"*: `sex`
 >
-> 4. **Rename** {% icon galaxy-pencil %} output `Violin - sex - log`
+> 4. **Rename** {% icon galaxy-pencil %} output `Violin_log_sex`
 >
-> 5. {% tool [Plot with scanpy](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.7.1+galaxy1) %} with the following parameters:
+> 5. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
 >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
 >    - *"Method used for plotting"*: `Generic: Violin plot, using 'pl.violin'`
 >        - *"Keys for accessing variables"*: `Subset of variables in 'adata.var_names' or fields of '.obs'`
 >            - *"Keys for accessing variables"*: `log1p_total_counts,log1p_n_genes_by_counts,pct_counts_mito`
 >        - *"The key of the observation grouping to consider"*: `batch`
 >
-> 6. **Rename** {% icon galaxy-pencil %} output `Violin - batch - log`
+> 6. **Rename** {% icon galaxy-pencil %} output `Violin_log_batch`
 >
-> 7. {% tool [Plot with scanpy](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.7.1+galaxy1) %} with the following parameters:
+{: .hands_on}
+
+> <hands-on-title>Making QC visualisations - Scatterplots</hands-on-title>
+>
+> 1. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
 >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
 >    - *"Method used for plotting"*: `Generic: Scatter plot along observations or variables axes, using 'pl.scatter'`
 >        - *"Plotting tool that computed coordinates"*: `Using coordinates`
 >            - *"x coordinate"*: `log1p_total_counts`
 >            - *"y coordinate"*: `pct_counts_mito`
 >
-> 6. **Rename** {% icon galaxy-pencil %} output `Scatter - mito x UMIs`
+> 2. **Rename** {% icon galaxy-pencil %} output `Scatter_UMIxMito`
 >
-> 7. {% tool [Plot with scanpy](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.7.1+galaxy1) %} with the following parameters:
+> 3. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
 >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
 >    - *"Method used for plotting"*: `Generic: Scatter plot along observations or variables axes, using 'pl.scatter'`
 >        - *"Plotting tool that computed coordinates"*: `Using coordinates`
 >            - *"x coordinate"*: `log1p_n_genes_by_counts`
 >            - *"y coordinate"*: `pct_counts_mito`
 >
-> 8. **Rename** {% icon galaxy-pencil %} output `Scatter - mito x genes`
+> 4. **Rename** {% icon galaxy-pencil %} output `Scatter_GenesxMito`
 >
-> 9. {% tool [Plot with scanpy](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.7.1+galaxy1) %} with the following parameters:
+> 5. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
 >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
 >    - *"Method used for plotting"*: `Generic: Scatter plot along observations or variables axes, using 'pl.scatter'`
 >        - *"Plotting tool that computed coordinates"*: `Using coordinates`
->            - *"x coordinate"*: `log1p_total_counts`
->            - *"y coordinate"*: `log1p_n_genes_by_counts`
+>            - *"x coordinate"*: `log1p_n_genes_by_counts`
+>            - *"y coordinate"*: `log1p_total_counts`
 >            - *"Color by"*: `pct_counts_mito`
 >
-> 10. **Rename** {% icon galaxy-pencil %} output `Scatter - genes x UMIs`
+> 6. **Rename** {% icon galaxy-pencil %} output `Scatter_GenesxUMI`
 >
 {: .hands_on}
 
