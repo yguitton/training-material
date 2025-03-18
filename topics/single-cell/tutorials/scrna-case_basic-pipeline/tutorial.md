@@ -404,33 +404,38 @@ It's now time to apply these thresholds to our data! First, a reminder of how ma
 
 > <hands-on-title>Filter cells by log1p_n_genes_by_counts</hands-on-title>
 >
-> 1. {% tool [Scanpy FilterCells](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_filter_cells/scanpy_filter_cells/1.8.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input object in AnnData/Loom format"*: `Mito-counted AnnData`
->    - In *"Parameters to select cells to keep"*:
->        - {% icon param-repeat %} *"Insert Parameters to select cells to keep"*
->            - *"Name of parameter to filter on"*: `log1p_n_genes_by_counts`
->            - *"Min value"*: `5.7`
->            - *"Max value"*: `20.0`
+> 1. {% tool [Scanpy filter](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_filter/scanpy_filter/1.10.2+galaxy3) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
+>    - *"Method used for filtering"*: `Filter on any column of observations or variables`
+>        - *"What to filter?"*: `Observations (obs)`
+>        - *"Type of filtering?"*: `By key (column) values`
+>            - *"Key to filter"*: `log1p_n_genes_by_counts`
+>            - *"Type of value to filter"*: `Number`
+>                - *"Filter"*: `greater than`
+>                - *"Value"*: `5.7`
 >
-> 2. **Rename** {% icon galaxy-pencil %} output as `Genes-filtered Object`
+> 1. {% tool [Scanpy filter](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_filter/scanpy_filter/1.10.2+galaxy3) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `anndata_out` (output of **Scanpy filter** {% icon tool %})
+>    - *"Method used for filtering"*: `Filter on any column of observations or variables`
+>        - *"What to filter?"*: `Observations (obs)`
+>        - *"Type of filtering?"*: `By key (column) values`
+>            - *"Key to filter"*: `log1p_n_genes_by_counts`
+>            - *"Type of value to filter"*: `Number`
+>                - *"Filter"*: `less than`
+>                - *"Value"*: `20.0`
 >
-> 3. {% tool [Plot with scanpy](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.7.1+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Genes-filtered Object`
+> 2. **Rename** {% icon galaxy-pencil %} output as `Genes_Filtered_Object`
+>
+> 3. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `Genes_Filtered_Object`
 >    - *"Method used for plotting"*: `Generic: Violin plot, using 'pl.violin'`
 >        - *"Keys for accessing variables"*: `Subset of variables in 'adata.var_names' or fields of '.obs'`
 >            - *"Keys for accessing variables"*: `log1p_total_counts,log1p_n_genes_by_counts,pct_counts_mito`
 >        - *"The key of the observation grouping to consider"*: `genotype`
 >
-> 4. **Rename** {% icon galaxy-pencil %} output `Violin - Filterbygenes`
+> 4. **Rename** {% icon galaxy-pencil %} output `Violin_log_genotype-Genes`
 >
-> 5. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Genes-filtered Object`
->    - *"What to inspect?"*: `General information about the object`
->
-> 6. **Rename** {% icon galaxy-pencil %} output `General - Filterbygenes`
 {: .hands_on}
-
-Note that the {% icon tool %} **Scanpy Filtercells** allows you to put {% icon param-repeat %} multiple parameters at the same time (i.e. filter `log1p_total_counts`, `log1p_n_genes_by_counts`,and `pct_counts_mito`) in the same step. The only reason we aren't doing that here is so you can see what each filter accomplishes. As such, examine your plot and general information.
 
 > <question-title></question-title>
 >
@@ -441,7 +446,7 @@ Note that the {% icon tool %} **Scanpy Filtercells** allows you to put {% icon p
 > >
 > > ![Violinplot-filteronce](../../images/scrna-casestudy/wab-violin-raw-filteredgenes.png "Raw vs 1st filter - genes/cell")
 > > 1. The only part that seems to change is the `log1p_n_genes_by_counts`.  You can see a flatter bottom to the violin plot - this is the lower threshold set. Ideally, this would create a beautiful violin plot because there would be a clear population of low-gene number cells. Sadly not the case here, but still a reasonable filter.
-> > 2. In `General - Filterbygenes`, you can see you now have `17,040 cells x 35,734 genes`.
+> > 2. If you *peek* at the AnnData object in your {% icon galaxy-history %}, you will find that you now have `17,040 cells x 35,734 genes`.
 > >
 > {: .solution}
 >
@@ -451,30 +456,37 @@ Note that the {% icon tool %} **Scanpy Filtercells** allows you to put {% icon p
 
 > <hands-on-title>Filter cells by log1p_total_counts</hands-on-title>
 >
-> 1. {% tool [Scanpy FilterCells](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_filter_cells/scanpy_filter_cells/1.8.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input object in AnnData/Loom format"*: `Genes-filtered Object`
->    - In *"Parameters to select cells to keep"*:
->        - {% icon param-repeat %} *"Insert Parameters to select cells to keep"*
->            - *"Name of parameter to filter on"*: `log1p_total_counts`
->            - *"Min value"*: `6.3`
->            - *"Max value"*: `20.0`
+> 1. {% tool [Scanpy filter](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_filter/scanpy_filter/1.10.2+galaxy3) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `Genes_Filtered_Object`
+>    - *"Method used for filtering"*: `Filter on any column of observations or variables`
+>        - *"What to filter?"*: `Observations (obs)`
+>        - *"Type of filtering?"*: `By key (column) values`
+>            - *"Key to filter"*: `log1p_total_counts`
+>            - *"Type of value to filter"*: `Number`
+>                - *"Filter"*: `greater than`
+>                - *"Value"*: `6.3`
 >
-> 2. **Rename** {% icon galaxy-pencil %} output as `Counts-filtered Object`
+> 1. {% tool [Scanpy filter](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_filter/scanpy_filter/1.10.2+galaxy3) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `anndata_out` (output of **Scanpy filter** {% icon tool %})
+>    - *"Method used for filtering"*: `Filter on any column of observations or variables`
+>        - *"What to filter?"*: `Observations (obs)`
+>        - *"Type of filtering?"*: `By key (column) values`
+>            - *"Key to filter"*: `log1p_total_counts`
+>            - *"Type of value to filter"*: `Number`
+>                - *"Filter"*: `less than`
+>                - *"Value"*: `20.0`
 >
-> 3. {% tool [Plot with scanpy](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.7.1+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Counts-filtered Object`
+> 2. **Rename** {% icon galaxy-pencil %} output as `UMIs_Filtered_Object`
+>
+> 3. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `UMIs_Filtered_Object`
 >    - *"Method used for plotting"*: `Generic: Violin plot, using 'pl.violin'`
 >        - *"Keys for accessing variables"*: `Subset of variables in 'adata.var_names' or fields of '.obs'`
 >            - *"Keys for accessing variables"*: `log1p_total_counts,log1p_n_genes_by_counts,pct_counts_mito`
 >        - *"The key of the observation grouping to consider"*: `genotype`
 >
-> 4. **Rename** {% icon galaxy-pencil %} output `Violin - Filterbycounts`
+> 4. **Rename** {% icon galaxy-pencil %} output `Violin_log_genotype-UMIs`
 >
-> 5. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Counts-filtered Object`
->    - *"What to inspect?"*: `General information about the object`
->
-> 6. **Rename** {% icon galaxy-pencil %} output `General - Filterbycounts`
 {: .hands_on}
 
 > <question-title></question-title>
@@ -486,7 +498,7 @@ Note that the {% icon tool %} **Scanpy Filtercells** allows you to put {% icon p
 > >
 > > ![Violinplot-filtertwice](../../images/scrna-casestudy/wab-violin-filteredgenesxfilteredcounts.png "1st filter vs 2nd filter - counts/cell")
 > > 1. We will focus on the `log1p_total_counts` as that shows the biggest change. Similar to above, the bottom of the violin shape has flattered due to the threshold.
-> > 2. In `General - Filterbycounts`, you can see you now have `8,678 cells x 35,734 genes`.
+> > 2. You now have `8,678 cells x 35,734 genes` in the AnnData object.
 > >
 > {: .solution}
 >
@@ -496,34 +508,27 @@ Note that the {% icon tool %} **Scanpy Filtercells** allows you to put {% icon p
 
 > <hands-on-title>Filter cells by pct_counts_mito</hands-on-title>
 >
-> 1. {% tool [Scanpy FilterCells](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_filter_cells/scanpy_filter_cells/1.8.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input object in AnnData/Loom format"*: `Counts-filtered Object`
->    - In *"Parameters to select cells to keep"*:
->        - {% icon param-repeat %} *"Insert Parameters to select cells to keep"*
->            - *"Name of parameter to filter on"*: `pct_counts_mito`
->            - *"Min value"*: `0`
->            - *"Max value"*: `4.5`
+> 1. {% tool [Scanpy filter](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_filter/scanpy_filter/1.10.2+galaxy3) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `UMIs_Filtered_Object`
+>    - *"Method used for filtering"*: `Filter on any column of observations or variables`
+>        - *"What to filter?"*: `Observations (obs)`
+>        - *"Type of filtering?"*: `By key (column) values`
+>            - *"Key to filter"*: `pct_counts_mito`
+>            - *"Type of value to filter"*: `Number`
+>                - *"Filter"*: `less than`
+>                - *"Value"*: `4.5`
 >
-> 2. **Rename** {% icon galaxy-pencil %} output as `Mito-filtered Object`
+> 2. **Rename** {% icon galaxy-pencil %} output as `Mito_Filtered_Object`
 >
-> 3. {% tool [Plot with scanpy](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.7.1+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Mito-filtered Object`
+> 3. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `Mito_Filtered_Object`
 >    - *"Method used for plotting"*: `Generic: Violin plot, using 'pl.violin'`
 >        - *"Keys for accessing variables"*: `Subset of variables in 'adata.var_names' or fields of '.obs'`
 >            - *"Keys for accessing variables"*: `log1p_total_counts,log1p_n_genes_by_counts,pct_counts_mito`
 >        - *"The key of the observation grouping to consider"*: `genotype`
->        - In *"Violin plot attributes"*:
->            - *"Add a stripplot on top of the violin plot"*: `Yes`
->                - *"Add a jitter to the stripplot"*: `Yes`
->            - *"Display keys in multiple panels"*: `No`
 >
-> 4. **Rename** {% icon galaxy-pencil %} output `Violin - Filterbymito`
+> 4. **Rename** {% icon galaxy-pencil %} output `Violin_log_genotype-Mito`
 >
-> 5. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Mito-filtered Object`
->    - *"What to inspect?"*: `General information about the object`
->
-> 6. **Rename** {% icon galaxy-pencil %} output `General - Filterbymito`
 {: .hands_on}
 
 > <question-title></question-title>
@@ -535,7 +540,7 @@ Note that the {% icon tool %} **Scanpy Filtercells** allows you to put {% icon p
 > >
 > > ![Violinplot-filtermito](../../images/scrna-casestudy/wab-violin-mitofilter.png "Violin plots after filtering genes, counts, and mito content/cell")
 > > 1. If we carefully check the axes, we can see that the `pct_counts_mito` has shrunk.
-> > 2. In `General - Filterbymito`, you can see you now have `8,605 cells x 35,734 genes`.
+> > 2. Your object now has `8,605 cells x 35,734 genes`.
 > >
 > {: .solution}
 >
@@ -557,36 +562,32 @@ Fantastic work! However, you've now removed a whole heap of cells, and since the
 
 > <hands-on-title>Filter genes</hands-on-title>
 >
-> 1. {% tool [Scanpy FilterGenes](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_filter_genes/scanpy_filter_genes/1.8.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input object in AnnData/Loom format"*: `Mito-filtered Object`
->    - In *"Parameters to select genes to keep"*:
->        - {% icon param-repeat %} *"Insert Parameters to select genes to keep"*
->            - *"Name of parameter to filter on"*: `n_cells`
->            - *"Min value"*: `3`
->            - *"Max value"*: `1000000000`
+> 1. {% tool [Scanpy filter](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_filter/scanpy_filter/1.10.2+galaxy3) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `Mito-filtered Object`
+>    - *"Method used for filtering"*: `Filter on any column of observations or variables`
+>        - *"Type of filtering?"*: `By key (column) values`
+>            - *"Key to filter"*: `n_cells`
+>            - *"Type of value to filter"*: `Number`
+>                - *"Filter"*: `greater than`
+>                - *"Value"*: `3.0`
 >
-> 2. **Rename** {% icon galaxy-pencil %} output as `Filtered Object`
+> 2. **Rename** {% icon galaxy-pencil %} output as `Cells_Filtered_Object`
 >
-> 3. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Filtered Object`
->    - *"What to inspect?"*: `General information about the object`
->
-> 4. **Rename** {% icon galaxy-pencil %} output `General - Filtered object`
 {: .hands_on}
 
 In practice, you'll likely choose your thresholds then set up all these filters to run without checking plots in between each one. But it's nice to see how they work!
 
-Using the final `General - Filtered object`, we can summarise the results of our filtering:
+We can summarise the results of our filtering:
 
 |       | Cells | Genes |
 |------ |--------------------|
 | Raw | 31178    | 35734    |
 | Filter genes/cell | 17040    | 35734    |
-| Filter counts/cell | 8678    | 35734    |
+| Filter UMIs/cell | 8678    | 35734    |
 | Filter mito/cell | 8605   | 35734    |
 | Filter cells/gene | 8605    | 15395    |
 
-{% icon congratulations %} Congratulations! You have filtered your object! Now it should be a lot easier to analyse.
+{% icon congratulations %} Congratulations! You have filtered your object! Now it should be a lot faster to analyse and easier to interpret.
 
 # Processing
 
@@ -594,38 +595,52 @@ So currently, you have a matrix that is 8605 cells by 15395 genes. This is still
 
 > <hands-on-title>Normalisation</hands-on-title>
 >
-> 1. {% tool [Scanpy NormaliseData](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_normalise_data/scanpy_normalise_data/1.8.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input object in AnnData/Loom format"*: `Filtered Object`
+> 1. {% tool [Scanpy normalize](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_normalize/scanpy_normalize/1.10.2+galaxy0) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `Cells_Filtered_Object`
+>    - *"Method used for normalization"*: `Normalize counts per cell, using 'pp.normalize_total'`
+>        - *"Target sum"*: `10000.0`
+>        - *"Exclude (very) highly expressed genes for the computation of the normalization factor (size factor) for each cell"*: `No`
+>        - *"Name of the field in 'adata.obs' where the normalization factor is stored"*: `norm`
+>
+> 2. {% tool [Scanpy Inspect and manipulate](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_inspect/scanpy_inspect/1.10.2+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `anndata_out` (output of **Scanpy normalize** {% icon tool %})
+>    - *"Method used for inspecting"*: `Logarithmize the data matrix, using 'pp.log1p'`
+>
+> 3. {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `anndata_out` (output of **Scanpy Inspect and manipulate** {% icon tool %})
+>    - *"Function to manipulate the object"*: `Freeze the current state into the 'raw' attribute`
 {: .hands_on}
 
-Normalisation helps reduce the differences between gene and UMI counts by fitting total counts to 10,000 per cell. The inherent log-transform (by log(count+1)) aligns the gene expression level better with a normal distribution. This is fairly standard to prepare for any future dimensionality reduction.
+Normalisation helps reduce the differences between gene and UMI counts by fitting total counts to 10,000 per cell. The subsequent log-transform (by log(count+1)) aligns the gene expression level better with a normal distribution. This is fairly standard to prepare for any future dimensionality reduction. Finally, we freeze this information in the 'raw' attribute before we further manipulate the values.
 
-Now we need to look at reducing our gene dimensions. We have loads of genes, but not all of them are different from cell to cell. For instance, housekeeping genes are defined as not changing much from cell to cell, so we could remove these from our data to simplify the dataset. We will flag genes that vary across the cells for future analysis.
+We next need to look at reducing our gene dimensions. We have loads of genes, but not all of them are different from cell to cell. For instance, housekeeping genes are defined as not changing much from cell to cell, so we could remove these from our data to simplify the dataset. We will flag genes that vary across the cells for future analysis.
 
 > <hands-on-title>Find variable genes</hands-on-title>
 >
-> 1. {% tool [Scanpy FindVariableGenes](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_find_variable_genes/scanpy_find_variable_genes/1.8.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input object in AnnData/Loom format"*: `output_h5ad` (output of **Scanpy NormaliseData** {% icon tool %})
->    - *"Flavor of computing normalised dispersion"*: `Seurat`
->    - *"Number of top variable genes to keep, mandatory if flavor='seurat_v3'"*: `` (remove the automated 2000 here and leave the space blank)
+> 1. {% tool [Scanpy filter](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_filter/scanpy_filter/1.10.2+galaxy3) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `anndata` (output of **Manipulate AnnData** {% icon tool %})
+>    - *"Method used for filtering"*: `Annotate (and filter) highly variable genes, using 'pp.highly_variable_genes'`
+>        - *"Choose the flavor for identifying highly variable genes"*: `Seurat`
 >
-> 2. **Rename** {% icon galaxy-pencil %} plot output `Use_me_FVG`
 {: .hands_on}
 
 Next up, we're going to scale our data so that all genes have the same variance and a zero mean. This is important to set up our data for further dimensionality reduction. It also helps negate sequencing depth differences between samples, since the gene levels across the cells become comparable. Note, that the differences from scaling etc. are not the values you have at the end - i.e. if your cell has average GAPDH levels, it will not appear as a '0' when you calculate gene differences between clusters.
 
-> <hands-on-title>Scaling data</hands-on-title>
+> <hands-on-title>Scale data</hands-on-title>
 >
-> 1. {% tool [Scanpy ScaleData](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_scale_data/scanpy_scale_data/1.8.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input object in AnnData/Loom format"*: `Use_me_FVG` (output of **Scanpy FindVariableGenes** {% icon tool %})
->    - *"Truncate to this value after scaling"*: `10.0`
-> 2. **Rename** {% icon galaxy-pencil %} plot output `Use_me_Scaled`
+> 1. {% tool [Scanpy Inspect and manipulate](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_inspect/scanpy_inspect/1.10.2+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `anndata_out` (output of **Scanpy filter** {% icon tool %})
+>    - *"Method used for inspecting"*: `Scale data to unit variance and zero mean, using 'pp.scale'`
+>        - *"Maximum value"*: `10.0`
+>
+> 3. **Rename** {% icon galaxy-pencil %} output `Scaled_Object`
+>
 {: .hands_on}
 
 {% icon congratulations %} Congratulations! You have processed your object!
 
 > <comment-title></comment-title>
-> At this point, we might want to remove or regress out the effects of unwanted variation on our data. A common example of this is the cell cycle, which can affect which genes are expressed and how much material is present in our cells. If you’re interested in learning how to do this, then you can move over to the [Removing the Effects of the Cell Cycle]({% link topics/single-cell/tutorials/scrna-case_cell-cycle/tutorial.md %}) tutorial now – then return here to complete your analysis.
+> At this point, we might want to remove or regress out the effects of unwanted variation on our data. A common example of this is the cell cycle, which can affect which genes are expressed and how much material is present in our cells. If you’re interested in learning how to do this, then you can move over to the {% icon level %} [Removing the Effects of the Cell Cycle]({% link topics/single-cell/tutorials/scrna-case_cell-cycle/tutorial.md %}) tutorial now – then return here to complete your analysis.
 {: .comment}
 
 # Preparing coordinates
