@@ -1088,7 +1088,7 @@ You might find the {% icon galaxy-history-answer %} Answer Key Histories helpful
         [ {{h.label}} ]( {{h.history}} )
       {% endfor %}
 
-You can also run this entire tutorial via a workflow:
+You can also run this entire tutorial via a {% icon galaxy-workflows-activity %} Workflow:
  - [Tutorial Workflow]({% link topics/single-cell/tutorials/scrna-case_basic-pipeline/workflows/ %})
 
 <iframe title="Galaxy Workflow Embed" style="width: 100%; height: 700px; border: none;" src="https://singlecell.usegalaxy.eu/published/workflow?id=fe814cc88b4e0ea3&embed=true&buttons=true&about=false&heading=false&minimap=true&zoom_controls=true&initialX=0&initialY=0&zoom=0.25"></iframe>
