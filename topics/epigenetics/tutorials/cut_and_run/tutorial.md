@@ -20,6 +20,7 @@ key_points:
 contributions:
   authorship:
     - heylf
+    - pavanvidem
   editing:
     - hexylena
     - lldelisle
@@ -128,7 +129,7 @@ We first have to check if our data contains adapter sequences that we have to re
 > 1. {% tool [Flatten collection](__FLATTEN__) %} with the following parameters convert the list of pairs into a simple list:
 >     - *"Input Collection"*: `2 PE fastqs`
 >
-> 2. {% tool [Falco](toolshedtoolshed.g2.bx.psu.edu/repos/iuc/falco/falco/1.2.4+galaxy0) %} with the following parameters:
+> 2. {% tool [Falco](toolshed.g2.bx.psu.edu/repos/iuc/falco/falco/1.2.4+galaxy0) %} with the following parameters:
 >       - {% icon param-collection %} *"Raw read data from your current history"*: Choose the output of **Flatten collection** {% icon tool %} selected as **Dataset collection**.
 > 3. Inspect the web page output of **Falco** {% icon tool %} for the `Rep1_forward` sample. Check what adapters are found at the end of the reads.
 >
@@ -262,6 +263,38 @@ repetitive regions but keep reads falling into regions present in alternate loci
 
 # Step 3: Filtering Mapped Reads and second level Quality Control
 
+## Plot Enrichment signal
+
+Before we apply any filters on our mapped data, let us check the cumulative enrichment of signal using **plotFingerprint** {% icon tool %}.
+
+> <hands-on-title>Assess Signal CUT&RUN Enrichment using plotFingerprint</hands-on-title>
+>
+> 1. {% tool [plotFingerprint](toolshed.g2.bx.psu.edu/repos/bgruening/deeptools_plot_fingerprint/deeptools_plot_fingerprint/3.5.4+galaxy0) %} with the following parameters:
+>    - *"Sample order matters"*: `No`
+>    - {% icon param-collection %} *"BAM/CRAM file"*: Select the output of  **Bowtie2** {% icon tool %} *"alignments"*
+>
+>
+> 2. Check the plot.
+>
+{: .hands_on}
+
+> <question-title></question-title>
+>
+> 1. Do you see a high or low enrichment?
+> 2. Do you expect such enrichment signal?
+>
+> > <solution-title></solution-title>
+> >
+> > 1. Both the replicates have almost identical enrichment profile indicating reproducibility. The sharp peak at the end indicates that only a few genomic regions (putative binding sites) were covered with most of the reads which is a very strong enrichment.
+> >
+> > 2. There are mainly two reasons to expect such a high enrichment:
+> > > - Unlike ChIP-seq, CUT&RUN has low background noise.
+> > > - Our protein of interest (GATA1) in this data set is a transcription factor (TF). TFs usually show high binding specificity.
+> >
+> {: .solution}
+>
+{: .question}
+
 ## Filter Uninformative Reads
 
 We apply some filters to the reads after the mapping. CUT&RUN datasets can have many reads that map to the mitochondrial genome because it is nucleosome-free and thus very accessible
@@ -332,7 +365,7 @@ Because of the PCR amplification, there might be read duplicates (different read
 > <tip-title>Formatting the MarkDuplicate metrics for readability</tip-title>
 >
 > 1. {% tool [Select lines that match an expression](Grep1) %} with the following parameters:
->    - {% icon param-collection %} *"Select lines from"*: Select the output of  **MarkDuplicates** {% icon tool %} tabular
+>    - {% icon param-collection %} *"Select lines from"*: Select The *tabular* output of  **MarkDuplicates** {% icon tool %}
 >    - *"that*: `Matching`
 >    - *"the pattern*: `(Library|LIBRARY)`
 > 2. Check that the datatype is tabular. If not, change it.
