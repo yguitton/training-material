@@ -176,7 +176,7 @@ but this is not necessary for the next and final step: overlay the label to the 
 Results can be over layed with the original image.
 
 > <hands-on-title>Segment image</hands-on-title>
-
+>
 > 1. {% tool [Overlay images](toolshed.g2.bx.psu.edu/repos/imgteam/overlay_images/ip_overlay_images/0.0.4+galaxy4) %} with the following parameters to convert the image to PNG:
 >    - *"Type of the overlay"*: `Segmentation contours over image`
 >    - {% icon param-file %} *"Intensity image"*: `RNA_input_normalized.tif` file
