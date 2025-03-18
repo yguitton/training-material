@@ -117,7 +117,7 @@ We've provided you with experimental data to analyse from a mouse dataset of fet
 
 > <hands-on-title>Import History from EU server</hands-on-title>
 >
-> 1. Import Input history
+> 1. Import {% icon galaxy-history-input %} *Input history* by following the link below
 >
 >     {% for h in page.input_histories %}
 >       [ {{h.label}} ]( {{h.history}} )
@@ -158,7 +158,8 @@ You can also pull the data from publicly available [Single Cell Expression Atlas
 > <hands-on-title>Import from the EBI Single Cell Expression Atlas</hands-on-title>
 >
 > 1. {% tool [EBI SCXA Data Retrieval](toolshed.g2.bx.psu.edu/repos/ebi-gxa/retrieve_scxa/retrieve_scxa/v0.0.2+galaxy2) %} with the following parameters:
->    - **SC-Atlas experiment accession**: `
+>    - **SC-Atlas experiment accession**:
+>
 >    ``` E-MTAB-6945 ```
 >
 > 2. {% icon level %}**Follow tutorial to reformat dataset**: This [short tutorial]({% link topics/single-cell/tutorials/EBI-retrieval/tutorial.md %}) will show you how to use this tool and modify the output so that it's compatible with this tutorial and its workflow.
@@ -207,7 +208,7 @@ You have generated an annotated AnnData object from your raw scRNA-seq fastq fil
 > > >  - For example, you can find `n_cells` (number of cells that gene appears in).
 > >
 > > 2. There are `31178 cells` and `35734 genes` in the matrix.
-> > - You can *peek* at your dataset in your {% icon galaxy-history %} history by selecting it to reveal a drop-down window that has this same information in it. {% icon param-file %}
+> > - You can *peek* at your  {% icon param-file %} Anndata Object in your {% icon galaxy-history %} history by selecting it to reveal a drop-down window that has this same information in it.
 > > - The matrix is `31178 x 35734`. This is `obs x vars`, or rather, `cells x genes`.
 > >
 > {: .solution}
@@ -218,20 +219,19 @@ You have generated an annotated AnnData object from your raw scRNA-seq fastq fil
 
 We want to filter our cells, but first we need to know what our data looks like. There are a number of subjective choices to make within scRNA-seq analysis, for instance we now need to make our best informed decisions about where to set our thresholds (more on that soon!). We're going to plot our data a few different ways. Different bioinformaticians might prefer to see the data in different ways, and here we are only generating some of the myriad of plots you can use. Ultimately you need to go with what makes the most sense to you.
 
-{% icon time %} **Top time-saving advice** - turn the following QC plots into a workflow so you can re-run it easily throughout analysing your own data!.
-
 ### Creating the plots
 
 > <hands-on-title>Making QC plots</hands-on-title>
 >
-> 1. {% tool [Plot with scanpy](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.7.1+galaxy1) %} with the following parameters:
+> 1. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
 >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
 >    - *"Method used for plotting"*: `Generic: Violin plot, using 'pl.violin'`
 >        - *"Keys for accessing variables"*: `Subset of variables in 'adata.var_names' or fields of '.obs'`
->            - *"Keys for accessing variables"*: `log1p_total_counts,log1p_n_genes_by_counts,pct_counts_mito`
+>            - *"Keys for accessing variables"*:
+>  ```log1p_total_counts,log1p_n_genes_by_counts,pct_counts_mito`
 >        - *"The key of the observation grouping to consider"*: `genotype`
 >
-> 2. **Rename** {% icon galaxy-pencil %} output `Violin - genotype - log`
+> 2. **Rename** {% icon galaxy-pencil %} output `Violin-genotype -log`
 >
 > 3. {% tool [Plot with scanpy](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.7.1+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
