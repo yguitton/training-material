@@ -646,7 +646,7 @@ Next up, we're going to scale our data so that all genes have the same variance 
 >
 > At this point, you might want to remove or regress out the effects of unwanted variation on our data. A common example of this is the cell cycle, which can affect which genes are expressed and how much material is present in our cells. If you’re interested in learning how to do this, then you can move over to the {% icon level %} [Removing the Effects of the Cell Cycle]({% link topics/single-cell/tutorials/scrna-case_cell-cycle/tutorial.md %}) tutorial now and return here to complete your analysis.
 >
-> - {% icon warning %} If you are in a *live course*, the time to do this *bonus tutorial* will not be factored in. Please instead return to this *after* your course is finished, or if you finish early!
+> - {% icon warning %} If you are in a *live course*, the time to do this *bonus tutorial* will not be factored into the schedule. Please instead return to this *after* your course is finished, or if you finish early!
 >
 {: .details}
 
@@ -831,7 +831,7 @@ Nearly plotting time! But one final piece is to add in SOME gene information. Le
 >
 > However, this analysis only give you a rough idea. It is more statistically accurate to convert each cluster into a *pseudobulk* sample, and analyse those. You can find more details about that in our {% icon level %} [pseudobulk tutorial]({% link topics/single-cell/tutorials/pseudobulk-analysis/tutorial.md %})
 >
-> - {% icon warning %} If you are in a *live course*, the time to do this *bonus tutorial* will not be factored in. Please instead return to this *after* your course is finished, or if you finish early!
+> - {% icon warning %} If you are in a *live course*, the time to do this *bonus tutorial* will not be factored into the schedule. Please instead return to this *after* your course is finished, or if you finish early!
 >
 {: .details}
 
@@ -1017,30 +1017,35 @@ Ultimately, there are quite a lot ways to analyse the data, both within the conf
 
 {% icon congratulations %} Congratulations! You have interpreted your plots in several important ways!
 
-<!--
-
 # Interactive visualisations
 
 Before we leave you to explore the unknown, you might have noticed that the above interpretations are only a few of the possible options. Plus you might have had fun trying to figure out which sample is which genotype is which sex and flicking back and forth between plots repeatedly. Figuring out which plots will be your *final publishable* plots takes a lot of time and testing. Luckily, there is a helpful interactive viewer {% cite Cakir2020 %} export tool {% cite Moreno2020.04.08.032698 %} that can help you explore without having to produce new plots over and over!
 
+
+
 > <hands-on-title>Cellxgene</hands-on-title>
 >
-> 1. {% tool [Interactive CellXgene Environment](interactive_tool_cellxgene) %} with the following parameters:
->    - {% icon param-file %} *"Concatenate dataset"*: `Final cell annotated object`
+> 1. {% tool [Interactive CELLxGENE VIP Environment
+](interactive_tool_cellxgene_vip) %} with the following parameters:
+>    - {% icon param-file %} *"Concatenate dataset"*: `Annotated_Object`
+>    - *"Var field for gene symbols"*: `Symbol`
+>    - *"Make specified var field unique"*: {% icon galaxy-toggle %} **Yes**
 >
 > 2. When ready, you will see a message
 >    - {% icon details %} *There is an InteractiveTool result view available, click here to display* <---- Click there!
 >
-> Sometimes this link can aggravate a firewall or something similar. It should be fine to go to the site. You will be asked to `name your annotation`, so do so to start playing around!
+> Sometimes this link can aggravate a firewall or something similar. It should be fine to go to the site.
 >
-> 3. You can also access it by going to `User` in the top menu of Galaxy, then selecting `Active Interactive Tools`
+> 3. You will be asked to `name your annotation`, so do so to start playing around!
 >
-> 4. You will need to `STOP` this active environment in Galaxy by going to `User`, `Interactive Tools`, selecting the environment, and selecting `Stop`. You may also want to delete the dataset in the history, because otherwise it continues appearing as if it's processing.
+> 4. You can also access it by going to `User` in the top menu of Galaxy, then selecting `Active Interactive Tools`
+>
+> 5. You will need to `STOP` this active environment in Galaxy by going to `User`, `Interactive Tools`, selecting the environment, and selecting `Stop`. You may also want to delete the dataset in the history, because otherwise it continues appearing as if it's processing.
+>
 {: .hands_on}
 
 Be warned - this visualisation tool is a powerful option for exploring your data, but it takes some time to get used to. Consider exploring it as your own tutorial for another day!
 
- -->
 
 # Conclusion
 
