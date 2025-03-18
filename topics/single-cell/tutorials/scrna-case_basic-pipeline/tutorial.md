@@ -832,67 +832,33 @@ Nearly plotting time! But one final piece is to add in SOME gene information. Le
 >
 {: .details}
 
-
-
-Now, there's a small problem here, which is that if you {% icon galaxy-eye %} inspect the output marker tables, you won't see gene names, you'll see Ensembl IDs. While this is a more bioinformatically accurate way of doing this (not every ID has a gene name!), we might want to look at more well-recognised gene names, so let's pop some of that information in!
-
-> <hands-on-title>Adding in Gene Names</hands-on-title>
->
-> 1. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Final object`
->    - *"What to inspect?"*: `Key-indexed annotation of variables/features (var)`
->
-> This gives us our table of all the possible genes with their names.
->
-> 2. {% tool [Join two Datasets side by side on a specified field](join1) %} with the following parameters:
->    - {% icon param-file %} *"Join"*: {% icon param-files %} Select multiple files: `Markers - cluster` and `Markers - genotype`
->    - *"using column"*: `Column: 4`
->    - {% icon param-file %} *"with"*: `var` (output of **Inspect AnnData** {% icon tool %})
->    - *"and column"*: `Column: 2`
->    - *"Keep lines of first input that do not join with second input"*: `Yes`
->    - *"Keep lines of first input that are incomplete"*: `Yes`
->    - *"Fill empty columns"*: `No`
->    - *"Keep the header lines"*: `Yes`
->
-> We have lots of extra information we don't need in our marker gene tables, so...
->
-> 3. {% tool [Cut columns from a table](Cut1) %} with the following parameters:
->    - *"Cut columns"*: `c1,c2,c3,c4,c11,c5,c6,c7,c8`
->    - {% icon param-file %} *"From"*: {% icon param-files %} Select multiple files: `out_file1` and `output_file2` (outputs of **Join two Datasets** {% icon tool %})
->
-> 4. **Rename** {% icon galaxy-pencil %} output tables `Markers - cluster - named` and `Markers - genotype - named`
-{: .hands_on}
-
-{% icon congratulations %} Well done! It's time for the best bit, the plotting!
+{% icon congratulations %} Well done! You have cool tables of genes. It's now time for the best bit, the plotting!
 
 # Plotting!
 
 It's time! Let's plot it all!
-But first, let's pick some marker genes from the `Markers-cluster` list that you made as well. I'll be honest, in practice, you'd now be spending a lot of time looking up what each gene does (thank you google!). There are burgeoning automated-annotation tools, however, so long as you have a good reference (a well annotated dataset that you'll use as the ideal). In the mean time, let's do this the old-fashioned way, and just copy a bunch of the markers in the original paper.
+But first, let's pick some marker genes from the `Ranked_Genes-by_Cluster` list that you generated. I'll be honest, in practice, you'd now be spending a lot of time looking up what each gene does (thank you google!). There are burgeoning automated-annotation tools, however, so long as you have a good reference (a well annotated dataset that you'll use as the ideal). In the mean time, let's do this the old-fashioned way, and just copy a bunch of the markers in the original paper.
 
 > <hands-on-title>Plot the cells!</hands-on-title>
 >
-> 1. {% tool [Scanpy PlotEmbed](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_plot_embed/scanpy_plot_embed/1.8.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input object in AnnData/Loom format"*: `Final object`
->    - *"name of the embedding to plot"*: `pca`
->    - *"color by attributes, comma separated texts"*: `louvain,sex,batch,genotype,Il2ra,Cd8b1,Cd8a,Cd4,Itm2a,Aif1,log1p_total_counts`
->    - *"Field for gene symbols"*: `Symbol`
->    - *"Use raw attributes if present"*: `No`
->    - {% icon time %} *You can re-run {% icon galaxy-refresh %} the same tool again, but change `pca` to `tsne` and then finally to `umap` in order to skip the following two steps.*
+> 1. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `DEG_Object`
+>    - *"Method used for plotting"*: `Embeddings: Scatter plot in tSNE basis, using 'pl.tsne'`
+>        - *"Keys for annotations of observations/cells or variables/genes"*: `louvain,sex,batch,genotype,Il2ra,Cd8b1,Cd8a,Cd4,Itm2a,Aif1,log1p_total_counts`
+>        - *"Key for field in '.var' that stores gene symbols"*: `Symbol`
 >
-> 2. {% tool [Scanpy PlotEmbed](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_plot_embed/scanpy_plot_embed/1.8.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input object in AnnData/Loom format"*: `Final object`
->    - *"name of the embedding to plot"*: `tsne`
->    - *"color by attributes, comma separated texts"*: `louvain,sex,batch,genotype,Il2ra,Cd8b1,Cd8a,Cd4,Itm2a,Aif1,log1p_total_counts`
->    - *"Field for gene symbols"*: `Symbol`
->    - *"Use raw attributes if present"*: `No`
+> 2. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data atrix"*:  `DEG_Object`
+>    - *"Method used for plotting"*: `PCA: Scatter plot in PCA coordinates, using 'pl.pca'`
+>        - *"Keys for annotations of observations/cells or variables/genes"*: `louvain,sex,batch,genotype,Il2ra,Cd8b1,Cd8a,Cd4,Itm2a,Aif1,log1p_total_counts`
+>        - *"Key for field in '.var' that stores gene symbols"*: `Symbol`
 >
-> 3. {% tool [Scanpy PlotEmbed](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_plot_embed/scanpy_plot_embed/1.8.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input object in AnnData/Loom format"*: `Final object`
->    - *"name of the embedding to plot"*: `umap`
->    - *"color by attributes, comma separated texts"*: `louvain,sex,batch,genotype,Il2ra,Cd8b1,Cd8a,Cd4,Itm2a,Aif1,log1p_total_counts`
->    - *"Field for gene symbols"*: `Symbol`
->    - *"Use raw attributes if present"*: `No`
+> 3. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `DEG_Object`
+>    - *"Method used for plotting"*: `Embeddings: Scatter plot in UMAP basis, using 'pl.umap'`
+>        - *"Keys for annotations of observations/cells or variables/genes"*: `louvain,sex,batch,genotype,Il2ra,Cd8b1,Cd8a,Cd4,Itm2a,Aif1,log1p_total_counts`
+>        - *"Key for field in '.var' that stores gene symbols"*: `Symbol`
+>
 {: .hands_on}
 
 {% icon congratulations %} Congratulations! You now have plots galore!
@@ -939,39 +905,25 @@ The authors weren't interested in further annotation of the DP cells, so neither
 
 > <hands-on-title>Annotating clusters</hands-on-title>
 >
-> 1. {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.7.5+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Final object`
+> 1. {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `DEG_Object`
 >    - *"Function to manipulate the object"*: `Rename categories of annotation`
->    - *"Key for observations or variables annotation"*: `louvain`
->    - *"Comma-separated list of new categories"*: `DP-M4,DP-M3,DP-M1,T-mat,DN,DP-L,DP-M2,Macrophages`
->    - Hang on here, though. This unfortunately deletes the original cluster numbering. Just in case you might want this back, we can add that annotation back in.
+>        - *"Key for observations or variables annotation"*: `louvain`
+>        - *"Comma-separated list of new categories"*: `DP-M3,DP-M2,T-mat,DN,DP-M1,DP-L,Macrophages`
+>        - *"Add categories to a new key?"*: `Yes`
+>            - *"Key name"*: `cell_type`
 >
-> 2. {% tool [AnnData Operations](toolshed.g2.bx.psu.edu/repos/ebi-gxa/anndata_ops/anndata_ops/1.8.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input object in hdf5 AnnData format"*: `Final object`
->    - *"Copy observations (such as clusters)"*: {% icon param-toggle %} *Yes*
->    - **Keys from obs to copy**
->    - *"+ Insert Keys from obs to copy"*
->    - *"Key contains"*: `louvain`
->    - {% icon param-file %} *"AnnData objects with obs to copy"*: (output of **Manipulate AnnData** {% icon tool %})
+> 2. **Rename** {% icon galaxy-pencil %} output h5ad `Annotated_Object`
 >
->    - You've added the new cell annotations in, now titled `louvain_0`. What, that's not good enough? You want to change the title as well? So be it.
+> Now, it's time to re-plot with these annotations!
 >
-> 3. {% tool [AnnData Operations](toolshed.g2.bx.psu.edu/repos/ebi-gxa/anndata_ops/anndata_ops/1.8.1+galaxy0) %} {% icon tool %} with the following parameters:
->    - {% icon param-file %} *"Input object in hdf5 AnnData format"*: (output of **AnnData Operations** {% icon tool %})
->    - **Change field names in AnnData observations**
->    - {% icon galaxy-wf-new %} *"+ Insert Change field names in AnnData observations"*
->    - **1: Change field names in AnnData observations**
->    - *"Original name"*: `louvain_0`
->    - *"New name"*: `cell_type`
+> 3. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `Annotated_Object`
+>    - *"Method used for plotting"*: `Embeddings: Scatter plot in UMAP basis, using 'pl.umap'`
+>        - *"Keys for annotations of observations/cells or variables/genes"*: `batch,Il2ra,Itm2a,sex,Cd8b1,Cd8a,Cd4,genotype,Aif1,Hba-a1,log1p_total_counts,cell_type`
+>        - *"Key for field in '.var' that stores gene symbols"*: `Symbol`
 >
-> 4. **Rename** {% icon galaxy-pencil %} output h5ad `Final cell annotated object`
->   -  Time to re-plot! {% icon time %} Feel free to re-run {% icon galaxy-refresh %} the **Scanpy PlotEmbed** tool {% icon tool %} on the new object plotting `cell_type` to speed this up. Otherwise...
-> 5. {% tool [Scanpy PlotEmbed](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_plot_embed/scanpy_plot_embed/1.8.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input object in AnnData/Loom format"*: `Final cell annotated object`
->    - *"name of the embedding to plot"*: `umap`
->    - *"color by attributes, comma separated texts"*: `sex,batch,genotype,Il2ra,Cd8b1,Cd8a,Cd4,Itm2a,Aif1,Hba-a1,log1p_total_counts,cell_type`
->    - *"Field for gene symbols"*: `Symbol`
->    - *"Use raw attributes if present"*: `No`
+> 4. **Rename** {% icon galaxy-pencil %} output plot `Annotated_Plots`
 >
 {: .hands_on}
 
@@ -1097,7 +1049,17 @@ Be warned - this visualisation tool is a powerful option for exploring your data
 > 3. Feel free to explore any other similar histories
 {: .details}
 
-{% icon congratulations %} Congratulations! You've made it to the end! You might find this [example control history](https://usegalaxy.eu/u/wendi.bacon.training/h/cs3filter-plot-and-explore-single-cell-rna-seq-data---answer-key-2) ([updated version](https://usegalaxy.eu/u/j.jakiela/h/filter-plot-and-explore-single-cell-rna-seq-data-updated)) helpful to compare with, or this [workflow](https://usegalaxy.eu/u/j.jakiela/w/copy-of-filter-plot-and-explore-single-cell-rna-seq-data-imported-from-uploaded-file-3).
+{% icon congratulations %} Congratulations! You've made it to the end!
+
+You might find the {% icon galaxy-history-answer %} Answer Key Histories helpful to check or compare with:
+ -    {% for h in page.answer_histories %}
+        [ {{h.label}} ]( {{h.history}} )
+      {% endfor %}
+
+You can also run this entire tutorial via a workflow:
+ - [Tutorial Workflow]({% link topics/single-cell/tutorials/scrna-case_basic-pipeline/workflows/ %})
+
+<iframe title="Galaxy Workflow Embed" style="width: 100%; height: 700px; border: none;" src="https://singlecell.usegalaxy.eu/published/workflow?id=fe814cc88b4e0ea3&embed=true&buttons=true&about=false&heading=false&minimap=true&zoom_controls=true&initialX=-20&initialY=-20&zoom=1"></iframe>
 
 In this tutorial, you moved from technical processing to biological exploration. By analysing real data - both the exciting and the messy! - you have, hopefully, experienced what it's like to analyse and question a dataset, potentially without clear cut-offs or clear answers. If you were working in a group, you each analysed the data in different ways, and most likely found similar insights. One of the biggest problems in analysing scRNA-seq is the lack of a clearly defined pathway or parameters. You have to make the best call you can as you move through your analysis, and ultimately, when in doubt, try it multiple ways and see what happens!
 
