@@ -40,6 +40,7 @@ What is classification in machine learning?
 # Classification
 
 
+.pull-left[
 - Class is a category
     - Represented as an integer (0, 1, 2, 3 ...)
     - Known as categorical variables
@@ -48,59 +49,111 @@ What is classification in machine learning?
     - Cancer or no cancer, spam or no spam
 - Multi-class classification
     - Handwritten digit recognition
+]
 
-.center[ ![Classification boundary and shift in classification boundary due to outliers]({{site.baseurl}}/topics/statistics/tutorials/classification_machinelearning/images/c1.png)] <!-- https://pixy.org/3013900/ CC0 license-->
----
-
-
-# 
-
-- 
+.pull-right[ ![Classification boundary and shift in classification boundary due to outliers]({{site.baseurl}}/topics/statistics/tutorials/classification_machinelearning/images/c1.png)] <!-- https://pixy.org/3013900/ CC0 license-->
 
 ---
 
-# 
+# Linear model
 
-- 
+.pull-left[
+- Input data point x (x1, x2)
+- Weights w (w0, w1, w2)
+- w0 is intercept
+- w1, w2 are feature coefficients
+- Function “y” is learned by a linear model
+- Decision boundary: y(x) = 0
+- If y(x) > 0, x is assigned to class C1
+- If y(x) < 0, x is assigned to class C2 
+]
 
----
-
-# 
-
-- 
-
-
----
-
-
-# 
-
-- 
+.pull-right[ ![Linear model]({{site.baseurl}}/topics/statistics/tutorials/classification_machinelearning/images/c2.png)]
 
 ---
 
-# 
+# Support vector machines
 
-- 
+.pull-left[
+- Linear and non-linear variants
+- Learn decision boundary with maximum margin
+- Support vectors are data points that lie closest to the decision boundary
+- Need only support vectors for classifying new samples
+- Other data points can be thrown away
+]
 
----
-
-# 
-
--
-
----
-
-# 
+.pull-right[ ![Linear model]({{site.baseurl}}/topics/statistics/tutorials/classification_machinelearning/images/c3.png)]
 
 ---
 
-# 
+# Nearest neighbour
 
-- 
+.pull-left[
+- Find a certain number of neighbours
+- Neighbours are closest based on a distance metric
+- Distance metrics - Euclidean distance, Manhattan distance, ...
+- Class of a new sample is the class of the maximum number of its neighbours
+- Example
+    - K-nearest neighbours - K is the predefined number of neighbours
+    - Stores training data
+    - Unsuitable for large datasets
+    - Learn even irregular boundaries
+]
+
+.pull-right[ ![Linear model]({{site.baseurl}}/topics/statistics/tutorials/classification_machinelearning/images/c4.png)]
+
+
 ---
 
-# For references, please see tutorial's References section
+# Decision tree
+
+.pull-left[
+- Learn decision rules from features
+- Split at each node (non-leaf) using feature values
+- Contain labels at leaf nodes
+- Advantages:
+    - Easy to understand
+    - Can be used with categorical and numerical data
+    - Prediction is logarithmic in the number of data points
+- Disadvantages
+    - Overfitting
+    - High variance
+]
+
+.pull-right[ ![Linear model]({{site.baseurl}}/topics/statistics/tutorials/classification_machinelearning/images/c5.png)]
+
+
+---
+
+# Ensemble method
+
+.pull-left[
+- Combine multiple tree estimators
+- Approaches - Bagging and boosting
+- Bagging
+    - Average prediction of several estimators trained independent of each other
+    - Parallel execution
+    - Examples - Bagging, Random forest
+- Boosting
+	- Improve estimators sequentially
+	- No parallel execution
+	- Examples - Adaboost, Gradient tree boosting
+]
+
+.pull-right[ ![Linear model]({{site.baseurl}}/topics/statistics/tutorials/classification_machinelearning/images/c6.png)]
+ 
+---
+
+# References
+
+- Book: Pattern Recognition and Machine Learning, Author: Christopher Bishop, 2006, Springer
+- Nearest neighbours - https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm
+- Decision tree - https://scikit-learn.org/stable/modules/tree.html#tree
+- Ensemble - https://scikit-learn.org/stable/modules/ensemble.html)
+
+---
+
+# For additional references, please see tutorial's References section
 
 ---
 
