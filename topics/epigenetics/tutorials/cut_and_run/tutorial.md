@@ -285,6 +285,8 @@ Before we apply any filters on our mapped data, let us check the cumulative enri
 >
 > > <solution-title></solution-title>
 > >
+> > > ![plotFingerprint](../../images/cut_and_run/fingerprint.png "Signal Enrichment")
+> >
 > > 1. Both the replicates have almost identical enrichment profile indicating reproducibility. The sharp peak at the end indicates that only a few genomic regions (putative binding sites) were covered with most of the reads which is a very strong enrichment.
 > >
 > > 2. There are mainly two reasons to expect such a high enrichment:
