@@ -202,8 +202,9 @@ You have generated an annotated AnnData object from your raw scRNA-seq fastq fil
 > >   - and genes, found in the {% icon param-file %} **Key-index observations variables/features (var)** output dataset.
 > > >  - For example, you can find `n_cells` (number of cells that gene appears in).
 > >
-> > 2. You can *peek* at your dataset in your {% icon galaxy-history %} history by selecting it to reveal a drop-down window that has this same information in it. {% icon param-file %}
-> > - The matrix is `31178 x 35734`. This is `obs x vars`, or rather, `cells x genes`, so there are `31178 cells` and `35734 genes` in the matrix. 
+> > 2. There are `31178 cells` and `35734 genes` in the matrix.
+> > - You can *peek* at your dataset in your {% icon galaxy-history %} history by selecting it to reveal a drop-down window that has this same information in it. {% icon param-file %}
+> > - The matrix is `31178 x 35734`. This is `obs x vars`, or rather, `cells x genes`.
 > >
 > {: .solution}
 >
