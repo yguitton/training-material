@@ -981,7 +981,7 @@ To annotate the clusters, we write a list of new cluster names in order from Clu
 > Imagine you had that second version of an analysis shared above.
 > The cluster annotation was different:
 > | Clusters | Marker | Cell type |
-> |------ |--------------------|
+> |----------|------------------------------|----------------------------------|
 > | 3 | Il2ra    | Double negative (early T-cell)    |
 > | 0,1,4 | Cd8b1, Cd8a, Cd4    | Double positive (middle T-cell)|
 > | 5 | Cd8b1, Cd8a, Cd4 - high | Double positive (late middle T-cell)
