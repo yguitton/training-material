@@ -95,7 +95,7 @@ Your image should look something like this:
 Not the best quality for a first visual inspection!
 
 
-As describe in [a previous Galaxy Tutorial](https://training.galaxyproject.org/training-material/topics/imaging/tutorials/imaging-introduction/tutorial.html), the original image is 16-bit and the intensity values are spread over a larger range than the display can render. 
+As describe in [a previous Galaxy Tutorial](topics/imaging/tutorials/imaging-introduction/tutorial.md), the original image is 16-bit and the intensity values are spread over a larger range than the display can render. 
 Therefore, for improved visibility the intensity histogram of the image can be normalized first.
 
 We will normalize the histogram to improve the contrast. 
