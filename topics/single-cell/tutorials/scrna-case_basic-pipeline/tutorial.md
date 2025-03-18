@@ -117,7 +117,11 @@ We've provided you with experimental data to analyse from a mouse dataset of fet
 
 > <hands-on-title>Import History from EU server</hands-on-title>
 >
-> 1. Import [this history]({{ page.input_histories }})
+> 1. Import Input history
+>
+>     {% for h in page.input_histories %}
+>       [ {{h.label}} ]( {{h.history}} )
+>     {% endfor %}
 >
 >    {% snippet faqs/galaxy/histories_import.md %}
 >
@@ -185,10 +189,10 @@ You have generated an annotated AnnData object from your raw scRNA-seq fastq fil
 >   >
 >   >   > <hands-on-title>Inspecting AnnData Objects</hands-on-title>
 >   >   >
->   >   > 1. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1) %} with the following parameters:
+>   >   > 1. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy1) %} with the following parameters:
 >   >   >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
 >   >   >    - *"What to inspect?"*: `Key-indexed observations annotation (obs)`
->   >   > 2. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1) %} with the following parameters:
+>   >   > 2. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy1) %} with the following parameters:
 >   >   >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
 >   >   >    - *"What to inspect?"*: `Key-indexed annotation of variables/features (var)`
 >   >   {: .hands_on}
