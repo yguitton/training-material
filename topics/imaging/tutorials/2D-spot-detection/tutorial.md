@@ -83,7 +83,7 @@ and selected the 10th z-stack for analysis.
 >    -  *"Limit the download to a selected region of the image?"*: `No, download the entire image plane`
 >    -  *"Skip failed retrievals?"*: `No`
 >    -  *"Download images in a tarball?"*: `No`
-> 2. Rename {% icon galaxy-pencil %} the generated file to `RNA_input`.
+> 3. Rename {% icon galaxy-pencil %} the generated file to `RNA_input`.
 {: .hands_on}
 
 # Improve image contrast 
@@ -161,7 +161,6 @@ This can be nicely done by converting the point coordinates to a label map and w
 >    - *"Tabular list of points has header"*: `Yes`
 >    - *"Swap X and Y coordinates"*: `No`
 >    - *"Produce binary image"*: `No`
-
 > 2. Rename {% icon galaxy-pencil %} the generated file to `RNA_labels`.
 > 3. Click on the **visualise icon** {% icon galaxy-visualise %} of the file to visually inspect the image using the **Tiff Viewer** visualization plugin.
 {: .hands_on}
@@ -178,8 +177,7 @@ Results can be over layed with the original image.
 
 > <hands-on-title>Segment image</hands-on-title>
 
-
-> 7. {% tool [Overlay images](toolshed.g2.bx.psu.edu/repos/imgteam/overlay_images/ip_overlay_images/0.0.4+galaxy4) %} with the following parameters to convert the image to PNG:
+> 1. {% tool [Overlay images](toolshed.g2.bx.psu.edu/repos/imgteam/overlay_images/ip_overlay_images/0.0.4+galaxy4) %} with the following parameters to convert the image to PNG:
 >    - *"Type of the overlay"*: `Segmentation contours over image`
 >    - {% icon param-file %} *"Intensity image"*: `RNA_input_normalized.tif` file
 >    - {% icon param-file %} *"Label map"*: `RNA_labels.tif` file (output of {% tool [Convert binary image to label map](toolshed.g2.bx.psu.edu/repos/imgteam/binary2labelimage/ip_binary_to_labelimage/0.5+galaxy0) %})
@@ -187,7 +185,7 @@ Results can be over layed with the original image.
 >    - *"Contour color"*: `red`
 >    - *"Show labels"*: `No`
 >    - *"Label color"*: `yellow`
-> {: .hands_on}
+{: .hands_on}
 
 Final result should look like this:
 
@@ -213,7 +211,7 @@ setting of the IDR Download tool by downloading imaging in a tar ball:
 >
 >    {% snippet faqs/galaxy/workflows_extract_from_history.md %}
 >
-> 8. Edit the workflow you just created:
+> 1. Edit the workflow you just created:
 >    - Select "Input dataset" from the list of tools. The step {% icon param-file %} **1: Input Dataset** appears.
 >    - Select "Text Input" from the list of tools. The step {% icon param-file %} **2: Text Input** appears.
 >    - Select "Integer Input" from the list of tools. The step {% icon param-file %} **3: Integer Input** appears.
@@ -224,7 +222,6 @@ setting of the IDR Download tool by downloading imaging in a tar ball:
 >    - Connect the output of {% icon param-file %} **2: Text Input** to the "Name of the channel to download" input of {% icon tool %} **4: Download IDR/OMERO**.
 >    - Connect the output of {% icon param-file %} **3: Integer Input** to the "z-plane of images to download" input of {% icon tool %} **4: Download IDR/OMERO**.
 >    - Mark the results of {% icon tool %} **7: Perform 2-D spot detection** and {% icon tool %} **9: Overlay images** as the primary outputs of the workflow (by clicking on the checkboxes of the outputs).
->
 {: .hands_on}
 
 Final workflow should look like this:
