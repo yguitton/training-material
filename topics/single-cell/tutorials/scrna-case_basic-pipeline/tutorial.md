@@ -500,7 +500,8 @@ It's now time to apply these thresholds to our data! First, a reminder of how ma
 >
 > > <solution-title></solution-title>
 > >
-> > ![Violinplot-filtertwice](../../images/scrna-casestudy/wab-violin-filteredgenesxfilteredcounts.png "1st filter vs 2nd filter - counts/cell")
+> > ![Violinplot-filteronce](../../images/scrna-casestudy/CS3-Violin_log_genotype-Genes.png "1st filter - genes/cell")
+> > ![Violinplot-filtertwice](../../images/scrna-casestudy/CS3-Violin_log_genotype-UMIs.png "2nd filter - UMIs/cell")
 > > 1. We will focus on the `log1p_total_counts` as that shows the biggest change. Similar to above, the bottom of the violin shape has flattered due to the threshold.
 > > 2. You now have `8,678 cells x 35,734 genes` in the AnnData object.
 > >
@@ -542,7 +543,8 @@ It's now time to apply these thresholds to our data! First, a reminder of how ma
 >
 > > <solution-title></solution-title>
 > >
-> > ![Violinplot-filtermito](../../images/scrna-casestudy/wab-violin-mitofilter.png "Violin plots after filtering genes, counts, and mito content/cell")
+> > ![Violinplot-filtertwice](../../images/scrna-casestudy/CS3-Violin_log_genotype-UMIs.png "2nd filter - UMIs/cell")
+> > ![Violinplot-filterthrice](../../images/scrna-casestudy/CS3-Violin_log_genotype-Mito.png "3rd filter - % count Mito/cell")
 > > 1. If we carefully check the axes, we can see that the `pct_counts_mito` has shrunk.
 > > 2. Your object now has `8,605 cells x 35,734 genes`.
 > >
@@ -550,8 +552,14 @@ It's now time to apply these thresholds to our data! First, a reminder of how ma
 >
 {: .question}
 
-Here's a quick overall summary for easy visualisation if you fancy it.
-![Violinplot-Summary](../../images/scrna-casestudy/wab-violins2gether.png "Filtering summary")
+> <details-title>See every step of filtering together</details-title>
+>
+> > ![Violin_Log_Genotype](../../images/scrna-casestudy/CS3-Violin_log_genotype.png "Raw")
+> > ![Violinplot-filteronce](../../images/scrna-casestudy/CS3-Violin_log_genotype-Genes.png "1st filter - genes/cell")
+> > ![Violinplot-filtertwice](../../images/scrna-casestudy/CS3-Violin_log_genotype-UMIs.png "2nd filter - UMIs/cell")
+> > ![Violinplot-filterthrice](../../images/scrna-casestudy/CS3-Violin_log_genotype-Mito.png "3rd filter - % count Mito/cell")
+>
+{: .details}
 
 Fantastic work! However, you've now removed a whole heap of cells, and since the captured genes are sporadic (i.e. a small percentage of the overall transcriptome per cell) this means there are a number of genes in your matrix that are currently not in any of the remaining cells. Genes that do not appear in any cell, or even in only 1 or 2 cells, will make some analytical tools break and overall will not be biologically informative. So let's remove them! Note that `3` is not necessarily the best number, rather it is a fairly conservative threshold. You could go as high as 10 or more.
 
@@ -589,13 +597,13 @@ We can summarise the results of our filtering:
 | Filter genes/cell | 17040    | 35734    |
 | Filter UMIs/cell | 8678    | 35734    |
 | Filter mito/cell | 8605   | 35734    |
-| Filter cells/gene | 8605    | 15395    |
+| Filter cells/gene | 8605    | 15941    |
 
 {% icon congratulations %} Congratulations! You have filtered your object! Now it should be a lot faster to analyse and easier to interpret.
 
 # Processing
 
-So currently, you have a matrix that is 8605 cells by 15395 genes. This is still quite big data. We have two issues here - firstly, you already know there are differences in how many transcripts and genes have been counted per cell. This technical variable can obscure biological differences. Secondly, we like to plot things on x/y plots, so for instance *Gapdh* could be on one axis, and *Actin* can be on another, and you plot cells on that 2-dimensional axis based on how many of each transcript they possess. While that would be fine, adding in a 3rd dimension (or, indeed, in this case, 15393 more dimensions), is a bit trickier! So our next steps are to transform our big data object into something that is easy to analyse and easy to visualise.
+So currently, you have a matrix that is 8605 cells by 15941 genes. This is still quite big data. We have two issues here - firstly, you already know there are differences in how many transcripts and genes have been counted per cell. This technical variable can obscure biological differences. Secondly, we like to plot things on x/y plots, so for instance *Gapdh* could be on one axis, and *Actin* can be on another, and you plot cells on that 2-dimensional axis based on how many of each transcript they possess. While that would be fine, adding in a 3rd dimension (or, indeed, in this case, 15941 more dimensions), is a bit trickier! So our next steps are to transform our big data object into something that is easy to analyse and easy to visualise.
 
 > <hands-on-title>Normalisation</hands-on-title>
 >
@@ -644,7 +652,7 @@ We next need to look at reducing our gene dimensions. We have loads of genes, bu
 > >
 > {: .hands_on}
 >
-> If you peek at the output, you will see that the number of *genes* in your AnnData object has drastically reduced - this dataset has *only* the highly variable genes! Some people prefer to only perform analysis on this dataset, however I have found that sometimes (for various reasons) important biological marker genes get excluded. For this reason, I personally will flag highly variable genes for use in the next analytical steps, however I keep all the genes in my AnnData object so that I can check for key ones in the future.
+> If you peek at the output, you will see that the number of *genes* in your AnnData object has drastically reduced to around `3213` - this dataset has *only* the highly variable genes! Some people prefer to only perform analysis on this dataset, however I have found that sometimes (for various reasons) important biological marker genes get excluded. For this reason, I personally will flag highly variable genes for use in the next analytical steps, however I keep all the genes in my AnnData object so that I can check for key ones in the future.
 >
 > - {% icon warning %} For this tutorial, you **must** keep all genes in your AnnData object. Therefore, delete the output that contains *only* the highly variable genes from your {% icon galaxy-history %} history now.
 >
@@ -678,14 +686,10 @@ Next up, we're going to scale our data so that all genes have the same variance 
 We still have too many dimensions. Transcript changes are not usually singular - which is to say, genes were in pathways and in groups. It would be easier to analyse our data if we could more easily group these changes.
 
 ## Principal components
-Principal components are calculated from highly dimensional data to find the most spread in the dataset. So in our, `3248` highly variable gene dimensions, there will be one line (axis) that yields the most spread and variation across the cells. That will be our first principal component. We can calculate the first `x` principal components in our data to drastically reduce the number of dimensions.
-
-> <comment-title>3248???</comment-title>
-> Where did the `3248` come from? The quickest way to figure out how many highly variable genes you have, in my opinion, is to re-run {% icon galaxy-refresh %} the **Scanpy FindVariableGenes** tool and select the parameter to *Remove genes not marked as highly variable*. Then you can Inspect your resulting object and you'll see only 3248 genes. The following processing steps will use only the highly variable genes for their calculations, but I strongly suggest you keep even the nonvariable genes in (i.e., use the original output of your FindVariableGenes tool with way more than 3248 genes!), as a general rule. This tutorial will not work at the end plotting stage if you only take forward the 3248 or 2000 (if you set a limit on it) highly variable genes.
-{: .comment}
+Principal components are calculated from highly dimensional data to find the most spread in the dataset. Given that our object has around `3213` highly variable genes, that's 3213 dimensions. There will, however, be one line/axis/dimension that yields the most spread and variation across the cells. That will be our first principal component. We can calculate the first `x` principal components in our data to drastically reduce the number of dimensions.
 
 > <warning-title>Check your AnnData object!</warning-title>
-> Your AnnData object should have far more than 3248 genes in it (if you followed our settings and tool versions, you'd have a matrix 8605 × 15395 (cells x genes). Make sure to use that AnnData object output from FindVariableGenes, rather than the 3248 or 2000 output from your testing in the section above labelled '3248'.
+> Your AnnData object should have far more than 3213 genes in it (if you followed our settings and tool versions, you'll have a matrix around 8605 × 15941 (cells x genes). If you followed the *More details on the Highly Variable Genes above, you may have created an object with *only* the highly variable genes. Please delete this object and do not use it! Carry forward the object with around 8605 × 15941 (cells x genes)!
 {: .warning}
 
 > <hands-on-title>Calculate Principal Components</hands-on-title>
@@ -709,13 +713,13 @@ Principal components are calculated from highly dimensional data to find the mos
 
 Why 50 principal components you ask? Well, we're pretty confident 50 is an over-estimate. Examine `PCA Variance`.
 
-![PCA-variance](../../images/scrna-casestudy/wab-pcavariance.png "Variability explained per PC")
+![PCA-variance](../../images/scrna-casestudy/CS3-PCA_Variance_Plot.png "Variability explained per PC")
 
-We can see that there is really not much variation explained past component 19. So we might save ourselves a great deal of time and muddied data by focusing on the top `20` PCs.
+We can see that there is really not much variation explained past component 19. So we might save ourselves a great deal of time and muddied data by focusing on the top `20` PCs. (You could probably even go as low as 10!)
 
 ## Neighborhood graph
 
-We're still looking at around 20 dimensions at this point. We need to identify how similar a cell is to another cell, across every cell across these dimensions. For this, we will use the k-nearest neighbor (kNN) graph, to identify which cells are close together and which are not. The kNN graph plots connections between cells if their distance (when plotted in this 20 dimensional space!) is amonst the k-th smallest distances from that cell to other cells. This will be crucial for identifying clusters, and is necessary for plotting a UMAP. From [UMAP developers](https://github.com/lmcinnes/umap): "Larger neighbor values will result in more global structure being preserved at the loss of detailed local structure. In general this parameter should often be in the range 5 to 50, with a choice of 10 to 15 being a sensible default".
+We're still looking at around 20 dimensions at this point in our analysis. We need to identify how similar a cell is to another cell, across every cell across these dimensions. For this, we will use the k-nearest neighbor (kNN) graph, to identify which cells are close together and which are not. The kNN graph plots connections between cells if their distance (when plotted in this 20 dimensional space!) is amongst the k-th smallest distances from that cell to other cells. This will be crucial for identifying clusters, and is necessary for plotting a UMAP. From [UMAP developers](https://github.com/lmcinnes/umap): "Larger neighbor values will result in more global structure being preserved at the loss of detailed local structure. In general this parameter should often be in the range 5 to 50, with a choice of 10 to 15 being a sensible default".
 
 > <details-title>Working in a group? Decision-time!</details-title>
 > If you are working in a group, you can now divide up a decision here with one *control* and the rest varied numbers so that you can compare results throughout the tutorials.
@@ -863,7 +867,7 @@ Nearly plotting time! But one final piece is to add in SOME gene information. Le
 # Plotting!
 
 It's time! Let's plot it all!
-But first, let's pick some marker genes from the `Ranked_Genes-by_Cluster` list that you generated. I'll be honest, in practice, you'd now be spending a lot of time looking up what each gene does (thank you google!). There are burgeoning automated-annotation tools, however, so long as you have a good reference (a well annotated dataset that you'll use as the ideal). In the mean time, let's do this the old-fashioned way, and just copy a bunch of the markers in the original paper.
+But first, let's pick some known marker genes that can distinguish different cell types. I'll be honest, in practice, you'd now be spending a lot of time looking up what each gene does (thank you google!). There are burgeoning automated-annotation tools, however, so long as you have a good reference (a well annotated dataset that you'll use as the ideal). In the mean time, let's do this the old-fashioned way, and just copy a bunch of the markers in the original paper.
 
 > <hands-on-title>Plot the cells!</hands-on-title>
 >
@@ -905,9 +909,12 @@ Now it's the fun bit! We can see where genes are expressed, and start considerin
 > <question-title>Appearance is everything</question-title>
 >
 > Which visualisation is the most useful for getting an overview of our data, *pca*, *tsne*, or *umap*?
-> ![PCA-tSNE-UMAP](../../images/scrna-casestudy/wab-3visualisations.png "Louvain clustering by dimension reduction")
 >
 > > <solution-title></solution-title>
+> >
+> > ![PCA Plot](../../images/scrna-casestudy/CS3-PCA_Plot.png "PCA Plots")
+> > ![tSNE Plot](../../images/scrna-casestudy/CS3-tSNE_Plot.png "tSNE Plots")
+> > ![UMAP Plot](../../images/scrna-casestudy/CS3-PCA_Plot.png "UMAP Plots")
 > >
 > > You can see why a PCA is generally not enough to see clusters in samples - keep in mind, you're only seeing components 1 and 2! - and therefore why the tSNE and UMAP visualisation dimensionality reductions are so useful. But there is not necessarily a clear winner between tSNE and UMAP, but I think UMAP is slightly clearer with its clusters, so we'll stick with that for the rest of the analysis.
 > >
