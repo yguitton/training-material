@@ -787,7 +787,7 @@ Finally, let's identify clusters! Unfortunately, it's not as majestic as biologi
 > <details-title>Working in a group? Decision-time!</details-title>
 > Oh yes, yet another decision! Single cell analysis is sadly not straight forward.
 > - Control
->      - **Resolution, high value for more and smaller clusters** = `0.6`
+>      - **Resolution, high value for more and smaller clusters** = `0.5`
 >      - **Clustering algorithm** = `Louvain`
 > - Everyone else: Pick your own number. If it helps, this sample should have a lot of very similar cells in it. It contains developing T-cells, so you aren't expecting massive differences between cells, like you would in, say, an entire embryo, with all sorts of unrelated cell types.
 > - Everyone else: Consider the newer **Leiden** clustering method. Note that in future parameters, you will likely need to specify 'leiden' rather than 'louvain', which is the default, if you choose this clustering method.
@@ -799,7 +799,7 @@ Finally, let's identify clusters! Unfortunately, it's not as majestic as biologi
 >    - {% icon param-file %} *"Annotated data matrix"*: `UMAP_Object`
 >    - *"Method used"*: `Cluster cells into subgroups, using 'tl.louvain'`
 >        - *"Flavor for the clustering"*: `vtraag (much more powerful than igraph)`
->            - *"Resolution"*: `0.6`
+>            - *"Resolution"*: `0.5`
 >        - *"Random state"*: `1`
 >
 > 2. **Rename** {% icon galaxy-pencil %} output `Clustered_Object`
