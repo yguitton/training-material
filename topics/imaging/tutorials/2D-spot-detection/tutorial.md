@@ -27,8 +27,9 @@ contributions:
     - nfdi4bioimage
     - dfg
 tags:
-  - zebrafish
-  - OMERO
+  - RNA
+  - smFISH
+  - bioimaging
 ---
 
 
@@ -167,7 +168,9 @@ This can be nicely done by converting the point coordinates to a label map and w
 
 A label image will be created... If you want to visualize the labels, you can run again the normalize histogram
 step:
+
 ![2025_visual_labels.png](../../images/2d_spot_detection/2025_visual_labels.png)
+
 but this is not necessary for the next and final step: overlay the label to the original image!
 
 # Overlay labels to original image
@@ -187,6 +190,7 @@ Results can be over layed with the original image.
 > {: .hands_on}
 
 Final result should look like this:
+
 ![2025_overlay.png](../../images/2d_spot_detection/2025_overlay.png)
 
 # Create 2D spot detection workflow
