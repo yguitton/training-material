@@ -13,13 +13,13 @@ redirect_from:
 answer_histories:
   - label: "UseGalaxy.eu"
     history: (TO ADD)
-  - label: "UseGalaxy.eu - ARCHIVEDv2"
+  - label: "UseGalaxy.eu-ARCHIVEDv2"
     history: https://usegalaxy.eu/u/j.jakiela/h/filter-plot-and-explore-single-cell-rna-seq-data-updated
     date: 2023-10-10
-  - label: "UseGalaxy.eu - ARCHIVEDv1"
+  - label: "UseGalaxy.eu-ARCHIVEDv1"
     history: https://usegalaxy.eu/u/wendi.bacon.training/h/filter-plot-and-explore-single-cell-rna-seq-data
     date: 2024-12-10
-  - label: "Older version"
+  - label: "Older_version"
     history: https://usegalaxy.eu/u/wendi.bacon.training/h/cs3filter-plot-and-explore-single-cell-rna-seq-data---answer-key-2
     date: 2024-02-28
 
