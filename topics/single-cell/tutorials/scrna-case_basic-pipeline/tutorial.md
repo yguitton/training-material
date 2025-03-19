@@ -197,8 +197,8 @@ You have generated an annotated AnnData object from your raw scRNA-seq fastq fil
 >   >   > 2. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy1) %} with the following parameters:
 >   >   >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
 >   >   >    - *"What to inspect?"*: `Key-indexed annotation of variables/features (var)`
->   >   {: .hands_on}
->   {: .tip}
+>   >   > {: .hands_on}
+>   > {: .tip}
 > > <solution-title></solution-title>
 > >
 > > 1. If you examine your AnnData object, you'll find a number of different quality control metrics for:
@@ -553,11 +553,10 @@ It's now time to apply these thresholds to our data! First, a reminder of how ma
 {: .question}
 
 > <details-title>See every step of filtering together</details-title>
->
-> > ![Violin_Log_Genotype](../../images/scrna-casestudy/CS3-Violin_log_genotype.png "Raw")
-> > ![Violinplot-filteronce](../../images/scrna-casestudy/CS3-Violin_log_genotype-Genes.png "1st filter - genes/cell")
-> > ![Violinplot-filtertwice](../../images/scrna-casestudy/CS3-Violin_log_genotype-UMIs.png "2nd filter - UMIs/cell")
-> > ![Violinplot-filterthrice](../../images/scrna-casestudy/CS3-Violin_log_genotype-Mito.png "3rd filter - % count Mito/cell")
+> ![Violin_Log_Genotype](../../images/scrna-casestudy/CS3-Violin_log_genotype.png "Raw")
+> ![Violinplot-filteronce](../../images/scrna-casestudy/CS3-Violin_log_genotype-Genes.png "1st filter - genes/cell")
+> ![Violinplot-filtertwice](../../images/scrna-casestudy/CS3-Violin_log_genotype-UMIs.png "2nd filter - UMIs/cell")
+> ![Violinplot-filterthrice](../../images/scrna-casestudy/CS3-Violin_log_genotype-Mito.png "3rd filter - % count Mito/cell")
 >
 {: .details}
 
@@ -641,7 +640,7 @@ We next need to look at reducing our gene dimensions. We have loads of genes, bu
 > Would you like to know how *many* genes were flagged as **Highly variable genes**?
 >
 >
-> <hands-on-title>Find the number of variable genes</hands-on-title>
+> > <hands-on-title>Find the number of variable genes</hands-on-title>
 > >
 > >
 > > 1. Select {% icon galaxy-refresh %} **Run Job Again** on the `anndata_out` (output of **Scanpy filter** {% icon tool %}) in your {% icon galaxy-history %} history
@@ -1116,8 +1115,7 @@ Before we leave you to explore the unknown, you might have noticed that the abov
 
 > <hands-on-title>Cellxgene</hands-on-title>
 >
-> 1. {% tool [Interactive CELLxGENE VIP Environment
-](interactive_tool_cellxgene_vip) %} with the following parameters:
+> 1. {% tool [Interactive CELLxGENE VIP Environment](interactive_tool_cellxgene_vip) %} with the following parameters:
 >    - {% icon param-file %} *"Concatenate dataset"*: `Annotated_Object`
 >    - *"Var field for gene symbols"*: `Symbol`
 >    - *"Make specified var field unique"*: {% icon galaxy-toggle %} **Yes**
