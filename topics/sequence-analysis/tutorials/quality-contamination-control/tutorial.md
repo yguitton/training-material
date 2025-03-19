@@ -34,6 +34,8 @@ contributions:
   authorship:
   - bebatut
   - clsiguret
+  editing:
+  - VerenaMoo
   funding:
   - abromics
 recordings:

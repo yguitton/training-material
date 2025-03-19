@@ -37,6 +37,7 @@ contributions:
   - bazante1
   - shiltemann
   - miaomiaozhou88
+  - VerenaMoo
   funding:
   - avans-atgm
   - abromics
