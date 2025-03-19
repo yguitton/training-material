@@ -16,7 +16,7 @@
       asserts:
         - that: "has_text"
           text: "AMPLICON_ambiguous_consensus	124	146	AMPLICON_0_LEFT	1	+	AGTACCACCACGAACAAGCACT"
-        has_n_lines:
+        - that: "has_n_lines"
           n: 12
     primer_seqs:
       asserts:
