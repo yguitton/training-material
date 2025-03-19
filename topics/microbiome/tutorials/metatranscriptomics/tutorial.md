@@ -13,6 +13,7 @@ objectives:
 - Understand where metatranscriptomics fits in 'multi-omic' analysis of microbiomes
 - Visualise a community structure
 level: Introductory
+subtopic: metatranscriptomics
 tags:
 - metatranscriptomics
 - microgalaxy
@@ -36,6 +37,36 @@ contributors:
 - EngyNasr
 redirect_from:
 - /topics/metagenomics/tutorials/metatranscriptomics/tutorial
+edam_ontology:
+- topic_3941 # Metatranscriptomics
+- topic_3697 # Microbial ecology
+- topic_0637 # Taxonomy
+- topic_1775 # Function analysis
+- topic_0080 # Sequence analysis
+
+recordings:
+- youtube_id: HNYop3vLpoM
+  date: '2023-05-17'
+  speakers:
+  - paulzierep
+  captioners:
+  - paulzierep
+  length: 1H5M
+  galaxy_version: '23.01'
+- captioners:
+  - EngyNasr
+  - shiltemann
+  date: '2021-02-15'
+  galaxy_version: '21.01'
+  length: 1H30M
+  youtube_id: EMaos5u1_a8
+  speakers:
+  - pratikdjagtap
+  - timothygriffin
+  - subinamehta
+  - shiltemann
+
+
 ---
 
 {% include topics/microbiome/tutorials/metatranscriptomics/content.md short=false %}

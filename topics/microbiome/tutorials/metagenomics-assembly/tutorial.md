@@ -26,18 +26,34 @@ key_points:
   - "De Brujin Graphs use k-mers to assembly reads"
   - "MetaSPAdes and MEGAHIT are assemblers"
   - "Quast is the tool to assess the assembly quality"
+edam_ontology:
+  - topic_3174 # Metagenomics
+  - topic_0196 # Sequence assembly
 contributions:
   authorship:
     - plushz
     - bebatut
   funding:
     - gallantries
+subtopic: metagenomics
 tags:
   - assembly
   - metagenomics
   - microgalaxy
 redirect_from:
   - /topics/metagenomics/tutorials/metagenomics-assembly/tutorial
+
+recordings:
+- youtube_id: 1ZYGy85Im7w
+  date: '2023-05-02'
+  speakers:
+  - bebatut
+  galaxy_version: '23.01'
+  length: 1H
+  captioners:
+  - bebatut
+  - sophia120199
+
 ---
 
 
@@ -335,7 +351,7 @@ On the top of each report is a table with in rows statistics for contigs larger 
       > > <solution-title></solution-title>
       > >
       > > 1. The genome fraction is 30.22% for ERR2231568 and 58.73% for ERR2231572
-      > > 2. The highest genome fraction was found for *Leuconostoc pseudomesenteroides* for ERR2231568 (844%) and for *Lactobacillus* for ERR2231572 (91%). The genomes of *Leuconostoc pseudomesenteroides* and *Lactobacillus* could be then almost completely recovered from the assemblies of ERR2231568 and ERR2231572 respectively.
+      > > 2. The highest genome fraction was found for *Leuconostoc pseudomesenteroides* for ERR2231568 (84.4%) and for *Lactobacillus* for ERR2231572 (91%). The genomes of *Leuconostoc pseudomesenteroides* and *Lactobacillus* could be then almost completely recovered from the assemblies of ERR2231568 and ERR2231572 respectively.
       > >
       > {: .solution}
       >

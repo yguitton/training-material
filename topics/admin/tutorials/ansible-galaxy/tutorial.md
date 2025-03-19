@@ -50,9 +50,42 @@ edam_ontology:
 - topic_3489 # Database Management
 - topic_0605 # Informatics
 - topic_3071 # Data Management
+
+recordings:
+- captioners:
+  - natefoo
+  - hexylena
+  date: '2022-03-01'
+  galaxy_version: '21.05'
+  length: 2H50M
+  youtube_id: LPK8rP_qUiA
+  speakers:
+  - natefoo
+  - hexylena
+- captioners:
+  - natefoo
+  - hexylena
+  date: '2021-06-28'
+  galaxy_version: '21.05'
+  length: 2H47M
+  youtube_id: zT70luZqPOU
+  speakers:
+  - natefoo
+- captioners:
+  - shiltemann
+  - hexylena
+  date: '2021-02-15'
+  galaxy_version: '21.01'
+  length: 53M
+  youtube_id: il83uApg7Hc
+  speakers:
+  - hexylena
+
 ---
 
-This tutorial assumes you have some familiarity with [Ansible](https://www.ansible.com/resources/get-started) and are comfortable with writing and running playbooks. Here we'll see how to install a Galaxy server using an Ansible playbook. The Galaxy Project has decided on Ansible for all of its deployment recipes. For our project, Ansible is even more fitting due to its name:
+This tutorial assumes you have some familiarity with [Ansible](https://www.ansible.com/resources/get-started) and are comfortable with writing and running playbooks.  If not, please consider following our [Ansible Tutorial]({% link topics/admin/tutorials/ansible/tutorial.md %}) first.
+
+Here we'll see how to install a Galaxy server using an Ansible playbook. The Galaxy Project has decided on Ansible for all of its deployment recipes. For our project, Ansible is even more fitting due to its name:
 
 > An ansible is a category of fictional device or technology capable of instantaneous or faster-than-light communication. It can send and receive messages to and from a corresponding device over any distance or obstacle whatsoever with no delay, even between star systems
 {: .quote cite="https://en.wikipedia.org/wiki/Ansible"}
@@ -887,19 +920,19 @@ The configuration is quite simple thanks to the many sensible defaults that are 
 >
 >    We need to set the following variables at the top level:
 >
->    Variable                        | Value                                                            | Purpose
->    ---                             | -----                                                            | ---
->    `galaxy_create_user`            | `true`                                                           | Instruct the role to create a Galaxy user
->    `galaxy_separate_privileges`    | `true`                                                           | Enable separation mode to install the Galaxy code as `root` but run the Galaxy server as `galaxy`
->    `galaxy_manage_paths`           | `true`                                                           | Instruct the role to create the needed directories.
->    `galaxy_layout`                 | `root-dir`                                                       | This enables the `galaxy_root` Galaxy deployment layout: all of the code, configuration, tools, and mutable-data (like caches, location files, etc.) folders will live by default beneath `galaxy_root`. User data is stored under `file_path`, a variable we will set later.
->    `galaxy_root`                   | `/srv/galaxy`                                                    | This is the root of the Galaxy deployment.
->    `galaxy_user`                   | `{name: "{{ galaxy_user_name }}", shell: /bin/bash}`             | The user that Galaxy will run as.
->    `galaxy_commit_id`              | `release_23.0`                                                   | The git reference to check out, which in this case is the branch for Galaxy Release 23.0
->    `galaxy_force_checkout`         | `true`                                                           | If we make any modifications to the Galaxy codebase, they will be removed. This way we know we're getting an unmodified Galaxy and no one has made any unexpected changes to the codebase.
->    `miniconda_prefix`              | {% raw %}`"{{ galaxy_tool_dependency_dir }}/_conda"`{% endraw %} | We will manually install conda as well. Normally Galaxy will attempt to auto-install this, but since we will set up a production-ready instance with multiple handlers, there is the chance that they can become deadlocked.
->    `miniconda_version`             | `23.9`                                                           | Install a specific miniconda version, the latest one at the time of writing that was tested and working.
->    `miniconda_channels`          ` | `['conda-forge', 'defaults']`                                    | Use the community-maintained conda-forge channel in addition to the standard defaults channel of Conda.
+>    Variable                        | Value                                                                     | Purpose
+>    ---                             | -----                                                                     | ---
+>    `galaxy_create_user`            | `true`                                                                    | Instruct the role to create a Galaxy user
+>    `galaxy_separate_privileges`    | `true`                                                                    | Enable separation mode to install the Galaxy code as `root` but run the Galaxy server as `galaxy`
+>    `galaxy_manage_paths`           | `true`                                                                    | Instruct the role to create the needed directories.
+>    `galaxy_layout`                 | `root-dir`                                                                | This enables the `galaxy_root` Galaxy deployment layout: all of the code, configuration, tools, and mutable-data (like caches, location files, etc.) folders will live by default beneath `galaxy_root`. User data is stored under `file_path`, a variable we will set later.
+>    `galaxy_root`                   | `/srv/galaxy`                                                             | This is the root of the Galaxy deployment.
+>    `galaxy_user`                   | {% raw %}`{name: "{{ galaxy_user_name }}", shell: /bin/bash}`{% endraw %} | The user that Galaxy will run as.
+>    `galaxy_commit_id`              | `release_23.0`                                                            | The git reference to check out, which in this case is the branch for Galaxy Release 23.0
+>    `galaxy_force_checkout`         | `true`                                                                    | If we make any modifications to the Galaxy codebase, they will be removed. This way we know we're getting an unmodified Galaxy and no one has made any unexpected changes to the codebase.
+>    `miniconda_prefix`              | {% raw %}`"{{ galaxy_tool_dependency_dir }}/_conda"`{% endraw %}          | We will manually install conda as well. Normally Galaxy will attempt to auto-install this, but since we will set up a production-ready instance with multiple handlers, there is the chance that they can become deadlocked.
+>    `miniconda_version`             | `23.9`                                                                    | Install a specific miniconda version, the latest one at the time of writing that was tested and working.
+>    `miniconda_channels`          ` | `['conda-forge', 'defaults']`                                             | Use the community-maintained conda-forge channel in addition to the standard defaults channel of Conda.
 >
 >    > <tip-title>Different Galaxy Releases!</tip-title>
 >    > In the time between this tutorial was last updated ({{ page.last_modified_at | date: "%Y-%m-%d" }}), and when you are now reading it, one or more new releases of Galaxy may have occured.

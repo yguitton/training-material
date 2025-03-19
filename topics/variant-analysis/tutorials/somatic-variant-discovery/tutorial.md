@@ -17,7 +17,7 @@ key_points:
 - Follow best practices for read mapping, quality control and mapped reads postprocessing
   to minimize false-positive hCNVs.
 contributors:
-- Khaled196
+- khaled196
 - kkamieniecka
 - wm75
 - d-salgado
@@ -502,7 +502,7 @@ The data are now ready to detect hCNV. Control-FREEC detects copy-number alterat
 
 
 > <hands-on-title>Detection of copy-number changes</hands-on-title>
-> 1. Import the DED file for the captured reagions from [Zenodo](https://doi.org/10.5281/zenodo.5697358):
+> 1. Import the BED file for the captured reagions from [Zenodo](https://doi.org/10.5281/zenodo.5697358):
 >
 >    ```
 >    https://zenodo.org/record/5697358/files/capture_targets_chr5_12_17.bed

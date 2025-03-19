@@ -4,8 +4,11 @@ layout: tutorial_hands_on
 title: Refining Genome Annotations with Apollo (prokaryotes)
 zenodo_link: https://zenodo.org/record/4889110
 tags:
+  - gmod
   - prokaryote
   - microgalaxy
+  - jbrowse1
+  - apollo2
 questions:
   - How to visualize your genome after automated annotations have been performed?
   - How to manually annotate genome after automated annotations have been performed?
@@ -45,8 +48,24 @@ requirements:
       - annotation-with-prokka
 
 subtopic: prokaryote
+edam_ontology:
+- topic_0622 # Genomics
+- topic_3301 # Microbiology
+- topic_0623 # Gene and protein families
+- topic_0080 # Sequence analysis
 abbreviations:
   OGS: Official Gene Set
+
+recordings:
+- captioners:
+  - abretaud
+  date: '2021-02-15'
+  galaxy_version: '21.01'
+  length: 1H
+  youtube_id: ywK1fhM-QFU
+  speakers:
+  - abretaud
+
 ---
 
 
@@ -85,11 +104,6 @@ In this tutorial we have obtained some data from NCBI related to [*Escherichia c
 {: .comment}
 
 ## Get data
-
-<!-- Data for E.coli from https://usegalaxy.eu/u/helena-rasche/h/e-coli-k-12-apollo -->
-<!-- other datasets available: -->
-<!-- Apis mellifera: https://zenodo.org/record/3270822 (based on https://hymenoptera.elsiklab.missouri.edu/beebase/download_sequences probably) -->
-<!-- Schizosaccharomyces pombe: https://usegalaxy.eu/u/abretaud/h/apollo-eukaryote-data -->
 
 > <hands-on-title>Data upload</hands-on-title>
 >

@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 
-title: 'Inferring single cell trajectories (Monocle3, R)'
+title: 'Inferring single cell trajectories with Monocle3 (R)'
 subtopic: single-cell-CS-code
 priority: 4
 zenodo_link: 'https://zenodo.org/record/7455590'
@@ -36,11 +36,17 @@ requirements:
         - scrna-case_alevin-combine-datasets
         - scrna-case_basic-pipeline
 
+follow_up_training:
+-
+    type: "internal"
+    topic_name: single-cell
+    tutorials:
+        - EBI-retrieval
+        - GO-enrichment
 
 tags:
-- 10x
 - paper-replication
-- R
+- MIGHTS
 
 contributions:
   authorship:

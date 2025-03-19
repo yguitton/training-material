@@ -21,10 +21,17 @@ key_points:
 contributors:
   - shiltemann
   - bebatut
+subtopic: intro
 tags:
   - microgalaxy
 redirect_from:
   - /topics/metagenomics/tutorials/general-tutorial/tutorial
+edam_ontology:
+- topic_3174 # Metagenomics
+- topic_3697 # Microbial ecology
+- topic_0637 # Taxonomy
+- topic_0080 # Sequence analysis
+- topic_4038 # Metabarcoding
 ---
 
 
@@ -104,7 +111,7 @@ has been sequenced using 454 GS FLX Titanium. For the tutorial, the original fas
 >
 >    > <tip-title>Importing data from a data library</tip-title>
 >    >
->    > * Go into "Shared data" (top panel) then "Data libraries"
+>    > * Go into "Data" (top panel) then "Data libraries"
 >    > * Click on "Training data" and then "Analyses of metagenomics data"
 >    > * Select interesting file
 >    > * Click on "Import selected datasets into history"

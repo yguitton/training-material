@@ -35,8 +35,10 @@ follow_up_training:
     topic_name: single-cell
     tutorials:
       - scrna-scanpy-pbmc3k
+      - scatac-standard-processing-snapatac2
 
-contributors:
+contributions:
+  authorship:
   - pavanvidem
 
 gitter: Galaxy-Training-Network/galaxy-single-cell

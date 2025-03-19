@@ -4,10 +4,11 @@ title: Detection of AMR genes in bacterial genomes
 description: |
   This learning path aims to teach you the basic steps to detect and check Antimicrobial resistance (AMR) genes in bacterial genomes using Galaxy.
 type: use
-tags: [amr, bacteria, microgalaxy, one-health]
+tags: [amr, bacteria, microgalaxy, one-health, microbiome]
 
 editorial_board:
 - bebatut
+- clsiguret
 funding:
 - abromics
 
@@ -19,12 +20,12 @@ pathway:
 #    #  - name: introduction
 #    #    topic: genome-annotation
 
-#  - section: "Module: Taxonomy assignation"
-#    description: |
-#      Taxonomic assignation is useful in AMR detection to check contamination and confirm species
-#    tutorials:
-#      - name: taxonomy
-#        topic: ecology
+  - section: "Module: Species and contamination checking"
+    description: |
+      Quality control and taxonomic assignation is useful in AMR detection to verify the quality of the data but also to check contamination and confirm species
+    tutorials:
+      - name: quality-contamination-control
+        topic: sequence-analysis
 
   - section: "Module: Assembly"
     description: |
@@ -32,10 +33,8 @@ pathway:
     tutorials:
       - name: mrsa-illumina
         topic: assembly
-#      - name: mrsa-nanopore
-#        topic: assembly
-#      - name: hybrid-assembly
-#        topic: assembly
+      - name: mrsa-nanopore
+        topic: assembly
 
   - section: "Module: Genome annotation"
     description: |

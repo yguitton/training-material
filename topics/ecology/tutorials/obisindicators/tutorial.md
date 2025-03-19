@@ -25,6 +25,8 @@ contributions:
         - fairease
         - eurosciencegateway
         - pndb
+
+subtopic: ecologyanalysis
 ---
 
 
@@ -81,8 +83,8 @@ This first step consist of downloading and uploading obis data onto galaxy.
 > 1. {% tool [Advanced Cut](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/1.1.0) %} with the following parameters:
 >    -*"File to cut"*: `Species occurences`
 >    - *"Cut by"*: `fields`
->        - *"List of Fields"*: `c['1', '9', '10', '61', '113']`
-> You should have the 5 folowing columns : basisOfRecord, decimalLatitude, decimalLongitude, species and individualCount
+>        - *"List of Fields"*: `basisOfRecord` `decimalLatitude` `decimalLongitude` `species` `individualCount`
+> You should always have at least the 4 folowing columns: decimalLatitude, decimalLongitude, species and individualCount
 {: .hands_on}
 </div>
 
@@ -137,11 +139,13 @@ In the downloaded folder you should have your data either csv format (Occurence.
 
 > <hands-on-title>Clean your data</hands-on-title>
 > 
-> 1. {% tool [Advanced Cut](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/1.1.0) %} with the following parameters:
+> 1. {% tool [Advanced Cut](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/9.3+galaxy0) %} with the following parameters:
 >    -*"File to cut"*: `obis data`
 >    - *"Cut by"*: `fields`
->        - *"List of Fields"*: `c['1', '3', '4', '9', '95']`
-> You should have the 5 folowing columns: basisOfRecord, decimalLatitude, decimalLongitude, species and individualCount
+>      - *"Delimited by"*: `Tab`
+>      -*"Is there a header for the data's columns ?"*: `Yes`
+>        - *"List of Fields"*: `basisOfRecord` `decimalLatitude` `decimalLongitude` `species` `individualCount`
+> You should always have at least the 4 folowing columns: decimalLatitude, decimalLongitude, species and individualCount
 {: .hands_on}
 </div>
 

@@ -1,8 +1,8 @@
 ---
 layout: tutorial_hands_on
-
-title: Genome Assembly of a bacterial genome (MRSA) sequenced using Illumina MiSeq Data
-zenodo_link: 'https://zenodo.org/record/4534098'
+title: Genome Assembly of a bacterial genome (MRSA) sequenced using Illumina MiSeq
+  Data
+zenodo_link: https://zenodo.org/record/10669812
 questions:
 - How to check the quality of the MiSeq data?
 - How to perform an assembly of a bacterial genome with MiSeq data?
@@ -22,7 +22,12 @@ tags:
 - illumina
 - assembly
 - microgalaxy
-
+edam_ontology:
+- topic_0196
+- topic_3673
+- topic_3305
+- topic_0622
+- topic_3301
 contributions:
   authorship:
   - bazante1
@@ -35,17 +40,29 @@ contributions:
   funding:
   - avans-atgm
   - abromics
-
 follow_up_training:
-- type: "internal"
+- type: internal
   topic_name: genome-annotation
   tutorials:
   - amr-gene-detection
-- type: "internal"
+- type: internal
   topic_name: galaxy-interface
   tutorials:
   - history-to-workflow
+recordings:
+- youtube_id: rRHH77qtZHg
+  length: 39M
+  galaxy_version: 24.1.2.dev0
+  date: '2024-09-04'
+  speakers:
+  - meltemktn
+  captioners:
+  - meltemktn
+  bot-timestamp: 1725486412
+
+
 ---
+
 
 Sequencing (determining of DNA/RNA nucleotide sequence) is used all over
 the world for all kinds of analysis. The product of these sequencers are

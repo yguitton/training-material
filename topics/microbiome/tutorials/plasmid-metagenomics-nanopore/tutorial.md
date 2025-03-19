@@ -22,6 +22,7 @@ key_points:
 contributors:
   - willemdek11
   - shiltemann
+subtopic: metabarcoding
 tags:
   - nanopore
   - plasmids
@@ -30,6 +31,25 @@ tags:
   - microgalaxy
 redirect_from:
 - /topics/metagenomics/tutorials/plasmid-metagenomics-nanopore/tutorial
+edam_ontology:
+- topic_3837 # Metagenomic sequencing
+- topic_3305 # Public health and epidemiology
+- topic_3174 # Metagenomics
+- topic_3301 # Microbiology
+- topic_3324 # Infectious disease
+- topic_0080 # Sequence analysis
+- topic_4013 # Antimicrobial resistance
+
+recordings:
+- captioners:
+  - bebatut
+  date: '2021-02-15'
+  galaxy_version: '21.01'
+  length: 45M
+  youtube_id: ECIl8ZU1Wko
+  speakers:
+  - willemdek11
+
 ---
 
 # Overview
