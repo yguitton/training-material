@@ -5,8 +5,8 @@
         {
             "child_steps": [
                 1,
-                0,
-                2
+                2,
+                0
             ],
             "color": "yellow",
             "data": {
@@ -14,8 +14,8 @@
             },
             "id": 0,
             "position": [
-                0.0,
-                0.0
+                0,
+                0
             ],
             "size": [
                 310.1,
@@ -28,6 +28,7 @@
         {
             "class": "Person",
             "familyName": "Massei",
+            "identifier": "0000-0003-2104-9519",
             "name": "Riccardo"
         }
     ],
@@ -404,6 +405,6 @@
         "smFISH",
         "IDR"
     ],
-    "uuid": "801550ca-96dc-45f1-bba7-90022748b2d6",
-    "version": 1
+    "uuid": "6b3bc75e-ef2a-4211-9f6b-8696bdd6f530",
+    "version": 2
 }

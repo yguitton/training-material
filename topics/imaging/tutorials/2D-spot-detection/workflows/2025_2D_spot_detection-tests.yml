@@ -8,7 +8,5 @@
       element_tests:
         Exp1_rep1_10min_im1__4496770__0__0__2048__2048:
           path: test-data/out_png_Exp1_rep1_10min_im1__4496770__0__0__2048__2048.png
-          compare: image_diff
         Exp1_rep1_15min_im2__4496781__0__0__2048__2048:
           path: test-data/out_png_Exp1_rep1_15min_im2__4496781__0__0__2048__2048.png
-          compare: image_diff
