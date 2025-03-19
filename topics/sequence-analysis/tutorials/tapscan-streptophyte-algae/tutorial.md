@@ -254,7 +254,7 @@ TAPscan provides the user with three different output files. Each output file is
 Now that we have identified TAP families of interest across multiple species, let's perform an evolutionary analysis.
 
 
-TODO: include pairwise alignment? --> the parsing step after is not very easy to understand, maybe too confusing.
+TODO: CYOA for full workflows (with pairwise step) or individual steps?
 
 
 
@@ -412,7 +412,7 @@ Examine {% icon galaxy-eye %} the **HTML report output from Trimal** (you may ha
 ## Tree Generation
 
 
-
+TODO: some background about NJ vs ML trees
 
 > <hands-on-title> Task description </hands-on-title>
 >
@@ -421,9 +421,15 @@ Examine {% icon galaxy-eye %} the **HTML report output from Trimal** (you may ha
 >        - {% icon param-file %} *"Alignment file"*: `trimmed_output` (output of **trimAl** {% icon tool %})
 >    - *"Calcuate bootstrap values with n iterations"*: `100`
 >
+> 2. Expand the output of Quicktree, and click on the {% icon galaxy-visualize %} visualise button
+>    - click on "Phylogenetic Tree Visualization"
+>
+>    - You should see a tree like
+>      ![tree visualized with built-in tree viewer](./images/tree-viz-galaxy.png)
 {: .hands_on}
 
 
+TODO: see how long IQ-tree takes and decide whether to keep it, since it is much slower
 
 > <hands-on-title> Task description </hands-on-title>
 >
@@ -452,6 +458,9 @@ Examine {% icon galaxy-eye %} the **HTML report output from Trimal** (you may ha
 
 ## Tree Visualisation
 
+We already had a look at the tree using Galaxy's built-in tree viewer, but sometimes it is nicer to look at with other tools.
+For example, the [Phylogenetic Tree Viewer from ETE Toolkit](https://etetoolkit.org/treeview/). You could download your tree
+to your machine, and upload it to ETE toolkit, but you can also do this directly within Galaxy!
 
 > <hands-on-title> Task description </hands-on-title>
 >
@@ -459,12 +468,41 @@ Examine {% icon galaxy-eye %} the **HTML report output from Trimal** (you may ha
 >    - {% icon param-file %} *"Newick Tree to visualise"*: `output` (output of **Text transformation** {% icon tool %})
 >    - *"Add alignment information to image?"*: `yes`
 >        - {% icon param-file %} *"Multiple Alignment FASTA file"*: `output` (output of **Text transformation** {% icon tool %})
+>    - *"Resolve Taxonomic IDs?"*: Yes
 >    - *"Format of the output image."*: `PNG`
+>
+> 2. *Examine* {% icon galaxy-eye %} the output image
 >
 {: .hands_on}
 
+You should see a tree image like this:
 
-TODO: exercise to repeat on other trees?
+![tree visualisation by ETE toolkit](./images/tree-viz-ete.png)
+
+
+As you can see, in addition to the tree itself, this also contains a visualisation of the alignments, and the taxonomy.
+
+> <details-title>Where did the taxonomy information come from?</details-title>
+> Note that ETE toolkit will display this taxonomy based on your FASTA headers.
+> If your sequence names start with the NCBI TaxID followed by a period, ETE
+> TreeViewer will display them.
+>
+> For example, here are the headers in our file:
+>
+> ```
+> >88036.SELMO_e_gw1.105.41.1
+> -----------MNELLRLMPRDASIIGAIFVKLELLQL-V
+> >88036.SELMO_fgenesh2_pg.C_scaffold_136000057
+> GPS-KERRRKQMNELLRLMPRDASIIGAIFVKLELLQLSI
+> ```
+> where `88036` is the NCBI TaxID for Selaginella moellendortffii
+>
+{: .details}
+
+
+
+
+TODO: exercise to repeat on other trees? anything we can see from the differences between the different trees?
 
 
 ## Repeating analysis on your own data
