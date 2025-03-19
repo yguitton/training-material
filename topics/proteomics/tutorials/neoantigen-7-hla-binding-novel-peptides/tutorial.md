@@ -106,7 +106,7 @@ The IEDB tool is integral in neoantigen discovery because it allows researchers 
 >        - *"prediction method"*: `netmhcpan_el`
 >        - *"Alleles"*: `From history`
 >            - {% icon param-file %} *"Alleles file"*: `IEDB-Optitype-seq2HLA-alleles.tabular` (Input dataset)
->        - *"peptide lengths for prediction"*: ``
+>        - *"peptide lengths for prediction"*: `8` `9` `10` `11` `12`
 >    - *"Peptide sequences"*: `Fasta file`
 >        - {% icon param-file %} *"Peptide Sequence Fasta"*: `FASTA-IEDB.fasta` (Input dataset)
 >
