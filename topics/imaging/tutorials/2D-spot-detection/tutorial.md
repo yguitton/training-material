@@ -233,7 +233,3 @@ In this exercise, you imported images into Galaxy from IDR,
 detect RNA single molecules using the 2D spot detection tool 
 and visualize them on the original intensity image.
 Finally, you created a reusable workflow which can be used on a tarball of IDR images.
-
-# References
-- Li, Guoliang, and Gregor Neuert. "Multiplex RNA single molecule FISH of inducible mRNAs in single yeast cells." Scientific data 6.1 (2019): 94.
-- Thomas Wollmann, Saskia Hiltemann, Leonid Kostrykin, Introduction to Image Analysis using Galaxy (Galaxy Training Materials). https://training.galaxyproject.org/training-material/topics/imaging/tutorials/imaging-introduction/tutorial.html Online; accessed Tue Mar 18 2025
