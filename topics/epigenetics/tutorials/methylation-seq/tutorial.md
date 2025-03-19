@@ -19,6 +19,7 @@ key_points:
 contributors:
   - joachimwolff
   - dpryan79
+  - VerenaMoo
 ---
 
 We will use a small subset of the original data. If we would do the computation on the orginal data the computation time for a tutorial is too long. To show you all necessary steps for Methyl-Seq we decided to use a subset of the data set. In a second step we use precomputed data from the study to show you different levels of methylation. We will consider samples from normal breast cells (NB), fibroadenoma (noncancerous breast tumor, BT089), two invasive ductal carcinomas (BT126, BT198) and a breast adenocarcinoma cell line (MCF7).
@@ -64,18 +65,18 @@ We will start by loading the example dataset which will be used for the tutorial
 
 # Quality Control
 
-The first step in any analysis should always be quality control. We will use the FastQC tool to asses the quality of our reads and determine if we need to perform any data cleaning before proceeding with our analysis.
+The first step in any analysis should always be quality control. We will use the [Falco](https://falco.readthedocs.io/en/latest/) tool to asses the quality of our reads and determine if we need to perform any data cleaning before proceeding with our analysis. Falco is an efficiency optimized rewrite of [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
 
 > <hands-on-title>Quality Control</hands-on-title>
 >
-> 2. **FastQC** {% icon tool %} with the following parameters:
+> 2. **Falco** {% icon tool %} with the following parameters:
 >    - {% icon param-files %} *"Raw read data from your current history"*:  `subset_1.fastq.gz` and `subset_2.fastq.gz`
 >
 >    {% snippet faqs/galaxy/tools_select_multiple_datasets.md %}
 >
 > 3. Go to the web page result page and have a closer look at 'Per base sequence content'
 >
->    ![FastQC webpage results](../../images/fastqc.png)
+>    ![Falco webpage results](../../images/falco.png)
 >
 >    > <question-title></question-title>
 >    >
@@ -85,7 +86,7 @@ The first step in any analysis should always be quality control. We will use the
 >    >
 >    > > <solution-title></solution-title>
 >    > > 1. The attentive audience of the theory part knows: Every C-meth stays a C and every normal C becomes a T during the bisulfite conversion.
->    > > 2. Yes it is. Always be careful and have the specific characteristics of your data in mind during the interpretation of FastQC results.
+>    > > 2. Yes it is. Always be careful and have the specific characteristics of your data in mind during the interpretation of Falco results.
 >    > {: .solution }
 >    {: .question}
 >
