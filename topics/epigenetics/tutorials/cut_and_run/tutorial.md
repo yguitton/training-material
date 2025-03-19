@@ -3,6 +3,9 @@ layout: tutorial_hands_on
 
 title: CUT&RUN data analysis
 zenodo_link: https://zenodo.org/record/6823059
+answer_histories:
+  - label: "Using Separate Preprocessing Tools"
+    history: https://usegalaxy.eu/u/videmp/h/cut-run-gtn-answer-key
 questions:
 - Which binding motif has the transcription factor GATA1?
 - What kind of quality control do I have to do?
@@ -24,6 +27,7 @@ contributions:
   editing:
     - hexylena
     - lldelisle
+    - wm75
 abbreviations:
   CUT&RUN: Cleavage Under Targets and Release Using Nuclease
   POI: protein of interest
@@ -288,11 +292,9 @@ Before we apply any filters on our mapped data, let us check the cumulative enri
 > > ![plotFingerprint](../../images/cut_and_run/fingerprint.png "Signal Enrichment")
 > >
 > > 1. Both the replicates have almost identical enrichment profile indicating reproducibility. The sharp peak at the end indicates that only a few genomic regions (putative binding sites) were covered with most of the reads which is a very strong enrichment.
-> >
 > > 2. There are mainly two reasons to expect such a high enrichment:
-> >
-> > > - Unlike ChIP-seq, CUT&RUN has low background noise.
-> > > - Our protein of interest (GATA1) in this data set is a transcription factor (TF). TFs usually show high binding specificity.
+> >     1. Unlike ChIP-seq, CUT&RUN has low background noise.
+> >     2. Our protein of interest (GATA1) in this data set is a transcription factor (TF). TFs usually show high binding specificity.
 > >
 > {: .solution}
 >
