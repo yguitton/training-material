@@ -58,9 +58,6 @@ In this tutorial, we will use representative protein sequences obtained from the
 
 **Streptophyte Algae:**
 - Chara braunii (CHABR)
-- Klebsormidium nitens (KLEFL)
-- Chlorokybus atmophyticus (CHLAT)
-- Mesotaenium endlicherianum (MESEN)
 - Penium margaritaceum (PENMA)
 
 **Bryophytes:**
@@ -69,6 +66,7 @@ In this tutorial, we will use representative protein sequences obtained from the
 
 **Vascular Plants:**
 - Oryza sativa (spp. japonica) (ORYSAJA)
+- Selaginella moellendorffii (SALMO)
 - Arabidopsis thaliana (ARATH)
 
 
@@ -116,7 +114,7 @@ In order to detect TAPs from the given proteome(s), each sequence out of a speci
 Afterwards, by running [TAPScan Classify](https://github.com/Rensing-Lab/TAPscan-classify), specialized rules are applied to finally assign the protein sequences to TAP families based on the detected domains in the previous step. With the latest TAPscan v4 ({% cite Petroll2024 %}), a protein set can be scanned for 137 different TAP families with high accuracy through applying GA-thresholds and coverage values.
 
 
-## **TAPScan Classify**
+## TAPScan Classify
 
 Now that our dataset collection is ready, we can proceed to run [TAPScan Classify](https://github.com/Rensing-Lab/TAPscan-classify) to identify TAPs.
 
@@ -141,8 +139,6 @@ TAPscan provides the user with three different output files. Each output file is
 - **Output 3: "Detected TAPs Extra"** - is similar to output 1 but contains additional information about subfamilies.
 
 
-## **Filter TAPScan output**
-
 > <hands-on-title> Filter the TAPScan output Based on the Column  </hands-on-title>
 >
 > 1. {% tool [Filter](Filter1) %} with the following parameters:
@@ -156,8 +152,6 @@ TAPscan provides the user with three different output files. Each output file is
 >    {: .comment}
 >
 {: .hands_on}
-
-## **Fetch the Column for IDs list**
 
 > <hands-on-title> Cut the column </hands-on-title>
 >
@@ -175,8 +169,6 @@ TAPscan provides the user with three different output files. Each output file is
 >    {: .comment}
 >
 {: .hands_on}
-
-## **Remove header from the IDs list**
 
 > <hands-on-title> Remove header line </hands-on-title>
 >
@@ -210,7 +202,7 @@ TAPscan provides the user with three different output files. Each output file is
 >
 {: .question}
 
-## **Extract the sequences for TAP families**
+## Extract the sequences for TAP families
 
 > <hands-on-title> Extract the FASTA sequences </hands-on-title>
 >
