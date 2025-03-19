@@ -37,20 +37,20 @@ contributors:
 - Masked language modeling
 - Next word/sentence prediction
 - Can we train such language models on protein/DNA/RNA sequences?
-- LM for life sciences - DNABert, ProtBert, ProtT5, CodonBert, RNA-FM, ESM/2, BioGPT, …
+- LM for life sciences - DNABert, ProtBert, **ProtT5**, CodonBert, RNA-FM, ESM/2, BioGPT, …
 - Many are available on HuggingFace
 
 ---
 
 # Bidirectional Encoder Representations from Transformers (BERT)
 
-![BERT]({{site.baseurl}}/topics/statistics/tutorials/fine_tuning_protTrans/images/ft0.png)]
+![BERT]({{site.baseurl}}/topics/statistics/tutorials/fine_tuning_protTrans/images/ft0.png)
 
 ---
 
 # Language Models (LMs)
 
-![Rise of language models and their sizes]({{site.baseurl}}/topics/statistics/tutorials/fine_tuning_protTrans/images/ft1.png)]
+![Rise of language models and their sizes]({{site.baseurl}}/topics/statistics/tutorials/fine_tuning_protTrans/images/ft1.png)
 
 ---
 
@@ -63,20 +63,20 @@ contributors:
     - Large number of GPUs needed for training: (Prot)TXL needs > 5000 GPUs
     - Expertise needed in large scale AI training
 - Most labs and researchers don't have access such resources
-- Solution: Fine-tune pre-trained models on downstream tasks such as protein family classification
-- Benefits: requires smaller data, less expertise, training time and compute resources
+- **Solution**: fine-tune pre-trained models on downstream tasks such as protein family classification
+- **Benefits**: requires smaller data, less expertise, training time and compute resources
 
 ---
 
 # Architecture: Protein Language Model (pLM)
 
-![Architecture of protein language model]({{site.baseurl}}/topics/statistics/tutorials/fine_tuning_protTrans/images/ft3.png)]
+![Architecture of protein language model]({{site.baseurl}}/topics/statistics/tutorials/fine_tuning_protTrans/images/ft3.png)
 
 ---
 
 # T-SNE embedding projections
 
-![TSNE embeddings of proteins and amino acids]({{site.baseurl}}/topics/statistics/tutorials/fine_tuning_protTrans/images/ft4.png)]
+![TSNE embeddings of proteins and amino acids]({{site.baseurl}}/topics/statistics/tutorials/fine_tuning_protTrans/images/ft4.png)
 
 ---
 
@@ -86,7 +86,7 @@ contributors:
     - Fine tuning
     - Embedding extraction
 - Training challenges
-    - ProtT5: 1.2 Billion
+    - ProtT5: **1.2 Billion**
     - Longer training time
     - Training or fine-tuning cannot fit on GPU with 15 GB memory (~26 GB)
 
@@ -95,10 +95,10 @@ contributors:
 # Low-ranking adaption (LoRA)
 
 - Reduce model size
-    - 1.2 Billion   to    3.5 Million parameters
+    - 1.2 Billion to **3.5 Million** parameters
 - Fits on GPUs with < 15 GB memory
 
-![TSNE embeddings of proteins and amino acids]({{site.baseurl}}/topics/statistics/tutorials/fine_tuning_protTrans/images/ft5.png)]
+![TSNE embeddings of proteins and amino acids]({{site.baseurl}}/topics/statistics/tutorials/fine_tuning_protTrans/images/ft5.png)
 
 ---
 
