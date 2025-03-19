@@ -109,26 +109,40 @@ This tutorial will take you from the multiple AnnData outputs of the [previous t
 
 
 ## Get Data
-The sample data is a subset of the reads in a mouse dataset of fetal growth restriction {% cite Bacon2018 %} (see the [study in Single Cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/experiments/E-MTAB-6945/results/tsne) and the [project submission](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6945/)). Each of the 7 samples (N701 --> N707) has been run through the workflow from the [Alevin tutorial](https://humancellatlas.usegalaxy.eu/training-material/topics/transcriptomics/tutorials/scrna-case_alevin/tutorial.html).
+The sample data is a subset of the reads from each of the seven samples in a mouse dataset of fetal growth restriction {% cite Bacon2018 %} (see the [study in Single Cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/experiments/E-MTAB-6945/results/tsne) and the [project submission](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6945/)).
 
-You can access the data for this tutorial in multiple ways:
+> <details-title>Fun facts about the dataset</details-title>
+>
+> We are particularly keen for learners to be able to go from raw FASTQ files all the way through analysis. We aren't handing you a curated dataset that we specially modified in order for this tutorial to work.
+> - This tutorial's input dataset is the full dataset generated from the {% icon level %} [previous tutorial in this case study]({% link topics/single-cell/tutorials/scrna-case_alevin/tutorial.md %}).
+> - The only difference is that in that previous tutorial, we only analysed one dataset. Our input data, however, is the result of applying that workflow to all seven datasets.
+> - You can find this dataset in the [study in Single Cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/experiments/E-MTAB-6945/results/tsne) and the [project submission](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6945/).
+>
+{: .details}
 
-1. **Your own history** - If you're feeling confident that you successfully ran a workflow on all 7 samples from the previous tutorial, and that your resulting 7 AnnData objects look right (you can compare with the [answer key history](https://usegalaxy.eu/u/j.jakiela/h/combining-datasets-input)), then you can use those! To avoid a million-line history, I recommend dragging the resultant datasets into a fresh history
+{% include _includes/cyoa-choices.html option1="Import History" option2="Zenodo" default="Import-History"
+       text="If you're on the EU or ORG/USA server, then the quickest way to Get the Data for this tutorial is via importing a history. Otherwise, you can also import from Zenodo - it just might take a moment longer if you're in a live course and everyone is importing the same dataset at the same time!" %}
+<div class="Import-History" markdown="1">
 
-   {% snippet faqs/galaxy/histories_copy_dataset.md %}
+> <hands-on-title>Import History</hands-on-title>
+>
+> 1. Import the {% icon galaxy-history-input %} *Input history* by following the link below
+>
+>     {% for h in page.input_histories %}
+>       [ {{h.label}} Input History]( {{h.history}} )
+>     {% endfor %}
+>
+>    {% snippet faqs/galaxy/histories_import.md %}
+>
+> If you want to import the history to another Galaxy server, check how to do it below!
+>
+>   {% snippet faqs/galaxy/histories_transfer_entire_histories_from_one_galaxy_server_to_another.md %}
+>
+{: .hands_on}
 
-2. **Importing from a history**
-    - You can import [this history for usegalaxy.eu](https://usegalaxy.eu/u/j.jakiela/h/combining-datasets-input)
-    - You can import [this history for usegalaxy.org](https://usegalaxy.org/u/juliajot/h/combining-datasets-input)
+</div>
 
-   {% snippet faqs/galaxy/histories_import.md %}
-
-   - If you want to import the history to another Galaxy server, check how to do it below!
-
-   {% snippet faqs/galaxy/histories_transfer_entire_histories_from_one_galaxy_server_to_another.md %}
-
-
-3. **Uploading from Zenodo** (see below)
+<div class="Zenodo" markdown="1">
 
 > <hands-on-title>Data upload for 7 files</hands-on-title>
 >
@@ -155,6 +169,7 @@ You can access the data for this tutorial in multiple ways:
 >
 {: .hands_on}
 
+</div>
 
 {% icon galaxy-eye %} Inspect the {% icon param-file %} `Experimental Design` text file. This shows you how each `N70X` corresponds to a sample, and whether that sample was from a male or female. This will be important metadata to add to our sample, which we will add very similarly to how you added the `gene_name` and `mito` metadata previously!
 
