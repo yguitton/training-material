@@ -377,31 +377,7 @@ Do you remember when we mentioned mitochondria early on in this tutorial? And ho
 > 2. Rename {% icon galaxy-pencil %} output `Annotated Object`
 {: .hands_on}
 
-{% icon congratulations %}Well done!  I strongly suggest have a play with the **Inspect AnnData** {% icon tool %} on your final `Pre-processed object` to see the wealth of information that has been added. You are now ready to move along to further filtering! There is a cheat that may save you time in the future though...
-
-# Pulling single cell data from public resources
-
-If you happen to be interested in analysing publicly available data, particularly from the [Single Cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/home), you may be interested in the following tool {% cite Moreno2020.04.08.032698 %} which combines all these steps into one! For this tutorial, the dataset can be seen [at the EBI](https://www.ebi.ac.uk/gxa/sc/experiments/E-MTAB-6945/downloads) with experiment id of `E-MTAB-6945`. It's important to note that this matrix is processed somewhat through the SCXA pipeline, which is quite similar to this tutorial, and it contains any and all metadata provided by their pipeline as well as the authors (for instance, more cell or gene annotations).
-
-If you wish, you can have a closer look how to pull this dataset from the Single Cell Expression Atlas by following another tutorial: [Importing files from public atlases]({% link topics/single-cell/tutorials/EBI-retrieval/tutorial.md %}).
-
-
-<!---
-> <hands-on-title>Retrieving data from Single Cell Expression Atlas</hands-on-title>
->
-> 1. {% tool [EBI SCXA Data Retrieval](toolshed.g2.bx.psu.edu/repos/ebi-gxa/retrieve_scxa/retrieve_scxa/v0.0.2+galaxy2) %} with the following parameters:
->      - *"SC-Atlas experiment accession"*: `E-MTAB-6945`
->      - *"Choose the type of matrix to download"*: `Raw filtered counts`
->
->    Now we need to transform this into an AnnData objects
->
-> 2. {% tool [Scanpy Read10x](toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_read_10x/scanpy_read_10x/1.8.1+galaxy9) %} with the following parameters:
->    - *"Expression matrix in sparse matrix format (.mtx)"*: `EBI SCXA Data Retrieval on E-MTAB-6945 matrix.mtx (Raw filtered counts)`
->    - *"Gene table"*:  `EBI SCXA Data Retrieval on E-MTAB-6945 genes.tsv (Raw filtered counts)`
->    - *"Barcode/cell table"*: `EBI SCXA Data Retrieval on E-MTAB-6945 barcodes.tsv (Raw filtered counts)`
->    - *"Cell metadata table"*: `EBI SCXA Data Retrieval on E-MTAB-6945 exp_design.tsv`
-{: .hands_on}
--->
+{% icon congratulations %} Well done! *Peek* at your final `Pre-processed_object` to see the wealth of information that has been added. You are now ready to move along to further filtering!
 
 # Conclusion
 
