@@ -204,7 +204,7 @@ The sample data is a subset of the reads from each of the seven samples in a mou
 > 2. Rename {% icon galaxy-pencil %} output `Combined Object`
 {: .hands_on}
 
-Now let's look at what we've done! Unfortunately, AnnData objects are quite complicated, so the {% icon galaxy-eye %} won't help us too much here. Instead, we're going to use a tool to look into our object from now on.
+Now let's look at what we've done! You can *peek* at the AnnData object in your {% icon galaxy-history %} history. You can also inspect the dataset for further details using a tool.
 
 > <hands-on-title>Inspecting AnnData Objects</hands-on-title>
 >
@@ -228,8 +228,8 @@ Now have a look at the three {% icon tool %} **Inspect AnnData** outputs.
 >
 > > <solution-title></solution-title>
 > >
-> > 1. If you look at the **General information** {% icon tool %} output, you can see there are now `331 cells`, as the matrix is now 331 cells x 35734 genes. You can see this as well in the **obs** {% icon tool %} (cells) and **var** {% icon tool %} (genes) file sizes.
-> > 2. Under **Key-indexed observations annotation (obs)**. Different versions of the Manipulate tool might put the `batch` columns in different locations. The tool version in this course puts `batch` in the `8th` column. Batch refers to the order in which the matrices were added. The files are added from the bottom of the history upwards, so be careful how you set up your histories when running this (i.e. if your first dataset is N703 and the second is N701, the `batch` will call N703 `0` and N701 `1`!)
+> > 1. If you peek at your dataset, or look at the **General information** {% icon tool %} output, you will find there are `331 cells`, as the matrix is now 331 cells (n_obs) x 35734 genes (n_var). You will also find these numbers in the **obs** {% icon tool %} (cells) and **var** {% icon tool %} (genes) file sizes.
+> > 2. Batch information is stored under **Key-indexed observations annotation (obs)**. Different versions of the Manipulate tool might put the `batch` columns in different locations. The tool version in this tutorial puts `batch` in the `8th` column. Batch refers to the order in which the matrices were added. The files are added from the bottom of the history upwards, so be careful how you set up your histories when running this (i.e. if your first dataset is N703 and the second is N701, the `batch` will call N703 `0` and N701 `1`!)
 > {: .solution}
 >
 {: .question}
@@ -238,7 +238,7 @@ Now have a look at the three {% icon tool %} **Inspect AnnData** outputs.
 
 I set up the example history with the earliest indices at the bottom.
 
-![The files are numbered such that dataset #1 is N701, dataset #2 is N702, etc., up through #7 as N707. This puts N707 at the top and N701 at the bottom in the Galaxy history.](../../images/scrna-casestudy/wab-history-files-ascending.png "Correct history ordering for combining datasets in order")
+![The files are numbered such that dataset #1 is N701, dataset #2 is N702, etc., up through #7 as N707. This puts N707 at the top and N701 at the bottom in the Galaxy history.](../../images/scrna-casestudy/wab-history-files-ascending.png "Correct history ordering for combining datasets in order"){ width=400px }
 
 Therefore, when it is all concatenated together, the `batch` appears as follows:
 
