@@ -6,13 +6,13 @@ level: Introductory
 questions:
   - "How do I analyze fluorescence markers in a 2D image?"
   - "How do I create labels from the detected bright spots?"
-  - "How can I count the number of detect spots automatically?"
+  - "How can I count the number of detected spots automatically?"
 objectives:
   - Perform a 2D spots/blobs detection in an image fetched from IDR
   - Count the detected spots and blo
 key_points:
 - Fluorescent markers can be detected using Galaxy
-- Object can be automatically count and intensity range plotted
+- Objects can be automatically counted and the intensity range can be plotted
 requirements:
   -
     type: "internal"
@@ -38,14 +38,14 @@ technique used to identify and localize regions
 of high intensity within an image. 
 These spots often correspond to features of interest, such as fluorescent markers 
 in biological imaging.
-Such approach can be particularly useful in 
-single-cell/single-molecule imaging experiments, such as RNA single molecule
+Such an approach can be beneficial in 
+single-cell/single-molecule imaging experiments, such as RNA single-molecule
 fluorescence in situ hybridization (smFISH), as these experiments can resolve the 
 spatial and temporal distribution of individual RNA molecules with high resolution. 
 
 
-In this tutorial we will try to identify RNA molecules in yeast cell lines. However,
-such approach can be re-used for the identification of any fluorescence spots in biological 
+In this tutorial, we will try to identify RNA molecules in yeast cell lines. However,
+such an approach can be re-used for the identification of any fluorescence spots in biological 
 images!
 
 > <agenda-title></agenda-title>
@@ -92,10 +92,11 @@ Your image should look something like this:
 
 ![2025_pre_clahe.png](../../images/2d_spot_detection/2025_pre_clahe.png){: width="75%"}
 
-Not the best quality for a first visual inspection!
+It's not the best quality for a first visual inspection!
 
 
-As describe in [a previous Galaxy Tutorial]{% link topics/imaging/tutorials/imaging-introduction/tutorial.md %}, the original image is 16-bit and the intensity values are spread over a larger range than the display can render. 
+As described in [a previous Galaxy Tutorial]{% link topics/imaging/tutorials/imaging-introduction/tutorial.md %}, the original image is 16-bit and the intensity values are spread
+over a larger range than the display can render. 
 Therefore, for improved visibility the intensity histogram of the image can be normalized first.
 
 We will normalize the histogram to improve the contrast. 
@@ -118,7 +119,7 @@ We can now clearly make out the presence of many RNA spots!
 
 # RNA spots detection
 
-We can now try to detect blobs and measures their intensity... Let's run a specific tool for this!
+We can now try to detect blobs and measure their intensity... Let's run a specific tool for this!
 
 > <hands-on-title>Perform 2-D spot detection</hands-on-title>
 >
@@ -149,7 +150,7 @@ The TSV output will have 1649 lines, meaning 1649 spots detected!
 ![TSV_output.png](../../images/2d_spot_detection/TSV_output.png)
 
 # Convert spots coordinates to labels
- Let's try now to visualize our results! First step is to create a label map from the TSV file...
+ Let's try now to visualize our results! The first step is to create a label map from the TSV file...
 This can be nicely done by converting the point coordinates to a label map and we have a tool for it!
 
 > <hands-on-title>Segment image</hands-on-title>
@@ -172,8 +173,9 @@ step:
 
 but this is not necessary for the next and final step: overlay the label to the original image!
 
-# Overlay labels to original image
-Results can be over layed with the original image.
+# Overlay labels to the original image
+
+Results can be overlayed with the original image.
 
 > <hands-on-title>Segment image</hands-on-title>
 >
@@ -196,8 +198,8 @@ Final result should look like this:
 The full workflow can now be created! 
 
 Since you are probably going to
-run it on several images fetched from IDR we suggest to change the 
-setting of the IDR Download tool by downloading imaging in a tar ball:
+run it on several images fetched from IDR we suggest changing the 
+setting of the IDR Download tool by downloading imaging in a tarball:
 
 > <hands-on-title>Create the workflow for 2D spot detection</hands-on-title>
 >
@@ -221,16 +223,16 @@ setting of the IDR Download tool by downloading imaging in a tar ball:
 >    - Mark the results of {% icon tool %} **7: Perform 2-D spot detection** and {% icon tool %} **9: Overlay images** as the primary outputs of the workflow (by clicking on the checkboxes of the outputs).
 {: .hands_on}
 
-Final workflow should look like this:
+The final workflow should look like this:
 
 ![2025_workflow.png](../../images/2d_spot_detection/2025_workflow.png)
 
 # Conclusion
 
-In this exercise you imported images into Galaxy from IDR, 
+In this exercise, you imported images into Galaxy from IDR, 
 detect RNA single molecules using the 2D spot detection tool 
 and visualize them on the original intensity image.
-Finally, you created a re-usable workflow which can be used on a tar ball of IDR images.
+Finally, you created a reusable workflow which can be used on a tarball of IDR images.
 
 # References
 - Li, Guoliang, and Gregor Neuert. "Multiplex RNA single molecule FISH of inducible mRNAs in single yeast cells." Scientific data 6.1 (2019): 94.
