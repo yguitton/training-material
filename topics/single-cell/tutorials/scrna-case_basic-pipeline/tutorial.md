@@ -24,7 +24,7 @@ answer_histories:
     date: 2024-02-28
 
 input_histories:
-  - label: "UseGalaxy.eu_Input_History"
+  - label: "UseGalaxy.eu"
     history:  https://usegalaxy.eu/u/wendi.bacon.training/h/filter-plot-and-explore-single-cell-rna-seq-data-input
 
 questions:
@@ -123,7 +123,7 @@ We've provided you with experimental data to analyse from a mouse dataset of fet
 > 1. Import the {% icon galaxy-history-input %} *Input history* by following the link below
 >
 >     {% for h in page.input_histories %}
->       [ {{h.label}} ]( {{h.history}} )
+>       [ {{h.label}} Input History]( {{h.history}} )
 >     {% endfor %}
 >
 >    {% snippet faqs/galaxy/histories_import.md %}
@@ -1154,7 +1154,7 @@ Be warned - this visualisation tool is a powerful option for exploring your data
 
 You might find the {% icon galaxy-history-answer %} *Answer Key Histories* helpful to check or compare with:
 
-    {% for h in page.answer_histories %}
+  - {% for h in page.answer_histories %}
       [ {{h.label}} ]( {{h.history}} )
     {% endfor %}
 
