@@ -272,15 +272,22 @@ First, we will perform a multiple sequence alignment in order to determine the s
 >        - In *"Input batch"*:
 >            - {% icon param-repeat %} *"Insert Input batch"*
 >                - {% icon param-collection %} *"Sequences to align"*: the collection of FASTA files from our TAP families (output of **Filter FASTA** {% icon tool %})
+>    - *"Type of Sequences"*: Amino Acides
+>    - *"Configure Gap Costs"*: Set values
+>      - *"Gap extension penalty for group-to-group alignment "*: `0.0`
+>    - *"Support unusual characters?"*: `Yes`
 >    - *"MAFFT flavour"*: `Auto`
->    - *"Support unusual characters?"*: Yes
+>    - *"Reorder output"*: `Yes`
 >
-> > <question-title></question-title>
-> > 1. How many sequences do we have in total?
-> > > <solution-title></solution-title>
-> > > 1. 667 sequences. You can find this number by expanding the Galaxy dataset output from MAFFT.
-> > {: .solution}
-> {: .question}
+>    > <question-title></question-title>
+>    >
+>    > 1. How many sequences do we have in total?
+>    >
+>    > > <solution-title></solution-title>
+>    > > 1. 667 sequences. You can find this number by expanding the Galaxy dataset output from MAFFT.
+>    > {: .solution}
+>    >
+>    {: .question}
 >
 {: .hands_on}
 
@@ -379,13 +386,17 @@ Next, we would like to clean up this alignment by e.g. removing spurious sequenc
 >
 > 1. {% tool [trimAl](toolshed.g2.bx.psu.edu/repos/iuc/trimal/trimal/1.5.0+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"Alignment file"*: output of **MAFFT** {% icon tool %})
->    - *"Select trimming mode from the list"*: `automated1`
+>    - *"Select trimming mode from the list"*: `custom mode`
+>      - *"Gap threshold"*: 0.5
+>      - *"Similarity Threshold"* 0.001
 >
 > > <question-title></question-title>
 > > 1. How many sequences were removed in this trimming step?
+> >
 > > > <solution-title></solution-title>
 > > > 1. 126 sequences. Recall that we had 667 sequences at the start. Expanding the Trimmed Alignment output from TrimAl, we see that we now have 541 sequences. 667-541=126.
 > > {: .solution}
+> >
 > {: .question}
 >
 {: .hands_on}
@@ -408,7 +419,7 @@ Examine {% icon galaxy-eye %} the **HTML report output from Trimal** (you may ha
 > 1. {% tool [Quicktree](toolshed.g2.bx.psu.edu/repos/iuc/quicktree/quicktree/2.5+galaxy0) %} with the following parameters:
 >    - *"Provide an alignment file or a distance matrix?"*: `Alignment File`
 >        - {% icon param-file %} *"Alignment file"*: `trimmed_output` (output of **trimAl** {% icon tool %})
->    - *"Calcuate bootstrap values with n iterations"*: `1000`
+>    - *"Calcuate bootstrap values with n iterations"*: `100`
 >
 {: .hands_on}
 
