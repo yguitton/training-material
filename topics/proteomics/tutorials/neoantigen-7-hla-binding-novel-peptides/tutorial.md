@@ -114,7 +114,6 @@ The IEDB tool is integral in neoantigen discovery because it allows researchers 
 >
 {: .hands_on}
 
-
 > <question-title></question-title>
 >
 > 1. Why do I need to specify the netmhcpan_el method for peptide-MHC binding prediction?
