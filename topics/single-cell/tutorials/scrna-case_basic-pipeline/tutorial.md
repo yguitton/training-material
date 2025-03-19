@@ -186,19 +186,20 @@ You have generated an annotated AnnData object from your raw scRNA-seq fastq fil
 > 1. What information is stored in your AnnData object? The last tool to generate this object counted the mitochondrial associated genes in your matrix. Where is that data stored?
 > 2. While you are figuring that out, how many genes and cells are in your object?
 >
->   > <tip-title>Hint</tip-title>
->   > You want to use the same tool you used in the previous tutorial to examine your AnnData. Sometimes you can get the answers from selecting your AnnData object in the history, but sometimes it's not quite that simple!
->   >
->   >   > <hands-on-title>Inspecting AnnData Objects</hands-on-title>
->   >   >
->   >   > 1. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy1) %} with the following parameters:
->   >   >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
->   >   >    - *"What to inspect?"*: `Key-indexed observations annotation (obs)`
->   >   > 2. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy1) %} with the following parameters:
->   >   >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
->   >   >    - *"What to inspect?"*: `Key-indexed annotation of variables/features (var)`
->   >   > {: .hands_on}
->   > {: .tip}
+>    > <tip-title>Hint</tip-title>
+>    > You want to use the same tool you used in the previous tutorial to examine your AnnData. Sometimes you can get the answers from selecting your AnnData object in the history, but sometimes it's not quite that simple!
+>    >
+>    >    > <hands-on-title>Inspecting AnnData Objects</hands-on-title>
+>    >    >
+>    >    > 1. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy1) %} with the following parameters:
+>    >    >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
+>    >    >    - *"What to inspect?"*: `Key-indexed observations annotation (obs)`
+>    >    > 2. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy1) %} with the following parameters:
+>    >    >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
+>    >    >    - *"What to inspect?"*: `Key-indexed annotation of variables/features (var)`
+>    >    {: .hands_on}
+>    {: .tip}
+>
 > > <solution-title></solution-title>
 > >
 > > 1. If you examine your AnnData object, you'll find a number of different quality control metrics for:
