@@ -517,7 +517,6 @@ Fantastic! Now that our matrix is combined into an object, specifically the Sing
 >
 > 2. Rename {% icon galaxy-pencil %} `serialised SingleCellExperiment` output as `Emptied_Object`
 >
-> 3. Rename {% icon galaxy-pencil %} `tabular output` as `Emptied_Tabular Output`
 {: .hands_on}
 
 > <question-title></question-title>
@@ -525,21 +524,20 @@ Fantastic! Now that our matrix is combined into an object, specifically the Sing
 > How many cell barcodes remain after the emptyDrops treatment? Why might that be?
 >
 >   > <tip-title>Hint</tip-title>
->   > If you click on the `Emptied-Object` in the {% icon galaxy-history %} history, the text in that window says `38 barcodes` or something similar to that - there is an element of random in the algorithm, so yours might differ slightly. Why is this so low?? And why might the number be different?
+>   > If you *peek* at the `Emptied_Object` in your {% icon galaxy-history %} history, the text in that window says `38 barcodes` or something similar to that - there is an element of random in the algorithm, so yours might differ slightly. Why is this so low?? And why might the number be different?
 >   > Consider...is this a complete set of data?
 >   {: .tip}
 >
 >
 > > <solution-title></solution-title>
 > >
-> > Remember this is a subsampled dataset. If you look carefully at the parameters of emptyDrops, you'll see it set a minimum threshold at 100 UMI. If you look at the barcode plots above for the 400k read sample, you'll see this is far too stringent for this subsampled data! To satisfy your curiosity, this minimum threshold would yield `4332` barcodes for the total sample. Also, the number may vary slightly as the output depends on a large number of random iterations.
+> > Remember this is a subsampled dataset. If you look carefully at the parameters of emptyDrops, you'll see it set a minimum threshold at 100 UMI. If you look at the barcode plots above for the 400k read sample, you'll see this is far too stringent for this subsampled data! To satisfy your curiosity, this minimum threshold would yield around `4332` barcodes for the total sample. Again, the number may vary slightly as the output depends on a large number of random iterations.
 > >
 > {: .solution}
 >
 {: .question}
 
-We will nevertheless proceed with your majestic annotated expression matrix of 38 cells, ready to go for further processing and analysis!
-
+We will nevertheless proceed with your majestic annotated expression matrix of ~38 cells, ready to go for further processing and analysis!
 
 {% include _includes/cyoa-choices.html option1="Scanpy" option2="Seurat" default="Scanpy" text="Which toolsuite do you intend to use to analyse your data? Both Scanpy and Seurat are supported in Galaxy. We probably have slightly more tools for Scanpy in Galaxy at the time of writing, so we will default to that, but pick what works for you!" disambiguation="toolsuite" %}
 
