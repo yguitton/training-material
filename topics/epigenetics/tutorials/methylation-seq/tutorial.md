@@ -16,9 +16,6 @@ key_points:
   - "The output of a methylation NGS is having a different distribution of the four bases. This is caused by the bisulfite treatment of the DNA."
   - "If there is a different level of methylation in the loci of a gene this can be a hint that something is wrong."
   - "To get useful results you need -- data, data and data!"
-contributors:
-  - joachimwolff
-  - dpryan79
 contributions:
   authorship:
    - joachimwolff
