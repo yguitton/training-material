@@ -42,7 +42,7 @@ objectives:
   this information into the metadata of the data matrix
 time_estimation: 2H
 key_points:
-- Create a scanpy-accessible AnnData object from FASTQ files, including relevant gene metadata
+- You can create a ready-to-analyse object from FASTQ files, including relevant gene metadata
 tags:
 - paper-replication
 - MIGHTS
@@ -513,11 +513,11 @@ Fantastic! Now that our matrix is combined into an object, specifically the Sing
 >
 > 1. {% tool [DropletUtils emptyDrops](toolshed.g2.bx.psu.edu/repos/ebi-gxa/dropletutils_empty_drops/dropletutils_empty_drops/1.0.4+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"SingleCellExperiment rdata object"*: `SCE_Object`
->    - *"Should barcodes estimated to have no cells be removed from the output object?"*: `Yes`
+>    - *"Should barcodes estimated to have no cells be removed from the output object?"*: {% icon galaxy-toggle %} `Yes`
 >
-> 2. Rename {% icon galaxy-pencil %} `serialised SingleCellExperiment` output as `Emptied-Object`
+> 2. Rename {% icon galaxy-pencil %} `serialised SingleCellExperiment` output as `Emptied_Object`
 >
-> 3. Rename {% icon galaxy-pencil %} `tabular output` as `Emptied-Tabular Output`
+> 3. Rename {% icon galaxy-pencil %} `tabular output` as `Emptied_Tabular Output`
 {: .hands_on}
 
 > <question-title></question-title>
@@ -538,7 +538,14 @@ Fantastic! Now that our matrix is combined into an object, specifically the Sing
 >
 {: .question}
 
-We will nevertheless proceed with your majestic annotated expression matrix of 38 cells, ready to go for further processing and analysis! However, the next tutorials we will link to use a tool suite called Scanpy {% cite Wolf2018 %}. You need to convert this SingleCellExperiment object into a format called `annData`, which is a variant of a file format called `hdf5`.
+We will nevertheless proceed with your majestic annotated expression matrix of 38 cells, ready to go for further processing and analysis!
+
+
+{% include _includes/cyoa-choices.html option1="Scanpy" option2="Seurat" default="Scanpy" text="Which toolsuite do you intend to use to analyse your data? Both Scanpy and Seurat are supported in Galaxy. We probably have slightly more tools for Scanpy in Galaxy at the time of writing, so we will default to that, but pick what works for you!" disambiguation="toolsuite" %}
+
+<div class="Scanpy" markdown="1">
+
+The tool suite called Scanpy ({% cite Wolf2018 %}) uses a format called `AnnData`, which is a variant of a file format called `hdf5`. You will now convert your SCE object to an AnnData one!
 
 # Convert to AnnData object
 
@@ -591,7 +598,24 @@ If you {% icon galaxy-eye %} examine the output {% icon param-file %}, you will 
 >
 {: .hands_on}
 
-{% icon congratulations %} Congrats! Your object is ready to for the scanpy pipeline!
+Your object is ready to for the scanpy pipeline!
+
+</div>
+
+<div class="Seurat" markdown="1">
+<!-- intentionally empty. This comment itself isn't necessary, but we recommend adding the div. -->
+</div>
+
+# Conclusion
+
+{% icon congratulations %} Congrats! You have finished the tutorial!
+
+We have:
+
+ * Examined raw read data, annotations and necessary input files for quantification.
+ * Run Alevin and applied emptyDrops instead of Alevin's inbuilt thresholds.
+ * Deployed barcode rank plots as a way of quickly assessing the signal present in droplet datasets.
+ * Converted these datasets to enable downstream analysis.
 
 You might find the {% icon galaxy-history-answer %} *Answer Key Histories* helpful to check or compare with:
   - {% for h in page.answer_histories %}
@@ -610,13 +634,7 @@ It may be that you want to combine this object with others like it, for instance
   {% endfor %}
 
 
-# Conclusion
 
-We have:
 
- * Examined raw read data, annotations and necessary input files for quantification.
- * Run Alevin and applied emptyDrops instead of Alevin's inbuilt thresholds.
- * Deployed barcode rank plots as a way of quickly assessing the signal present in droplet datasets.
- * Converted these datasets to enable downstream analysis.
 
 {% snippet topics/single-cell/faqs/user_community_join.md %}
