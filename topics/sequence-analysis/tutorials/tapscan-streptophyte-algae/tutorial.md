@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 
 title: Identification and Evolutionary Analysis of Transcription-Associated Proteins
-  in Streptophyte Algae
+  in Streptophyte algae and Land plants
 zenodo_link: ''
 questions:
 - What are transcription-associated proteins (TAPs)?
@@ -14,9 +14,9 @@ objectives:
 - Extract FASTA sequences using sequence ID/header
 - Perform sequence alignment and construct phylogenetic tree for TAPs
 - Interpret evolutionary relatationship among TAPs
-time_estimation: 3H
+time_estimation: 2H
 key_points:
-- TAPscan v4 is a comprehensive and highly reliable tool for genome-wide TAP annotation via domain profiles
+- TAPScan v4 is a comprehensive and highly reliable tool for genome-wide TAP annotation via domain profiles
 contributions:
   authorship:
     - deeptivarshney
@@ -38,7 +38,7 @@ The regulated expression of genes is essential for defining morphology, function
 
 Transcription‐associated proteins (TAPs) are essential players in gene regulatory networks (GRNs) as they involved in transcriptional regulation. TAPs are broadly classified into transcription factors (TFs) and transcriptional regulators (TRs). TFs bind sequence‐specifically to regulatory elements, resulting in enhancing or repressing of transcription ({% cite Richardt2007 %}; {% cite Wilhelmsson2017 %}). TRs, on the other hand, are involved in protein–protein interactions, may serve as regulators at the transcriptional core complex, as co‐activators and co‐repressors, chromatin modification or methylation. Additionally, there are proteins referred to as putative TAPs (PTs) that are thought to be involved in the regulation of transcription, but their exact function is undefined ({% cite Richardt2007 %}).
 
-[TAPScan Classify](https://github.com/Rensing-Lab/TAPscan-classify) is a comprehensive tool for annotating TAPs with a special focus on species belonging to the Archaeplastida. In general, the detection of TAPs is based on the detection of highly conserved protein domains.
+TAPScan v4 ({% cite Petroll2024 %}) is a comprehensive tool for annotating TAPs with a special focus on species belonging to the Archaeplastida. In general, the detection of TAPs is based on the detection of highly conserved protein domains.
 
 In this tutorial, we will illustrate the identification of TAPs in Streptophyte algae and land plants using [TAPScan Classify](https://github.com/Rensing-Lab/TAPscan-classify), followed by construction of the phylogenetic tree.
 
@@ -54,20 +54,18 @@ In this tutorial, we will illustrate the identification of TAPs in Streptophyte 
 
 ## Get data
 
-In this tutorial, we will use representative protein sequences obtained from the [Genome Zoo database](https://github.com/Rensing-Lab/Genome-Zoo). The selected sequences represent different plant lineages:
+In this tutorial, we will use representative protein sequences obtained from the [Genome Zoo database](https://github.com/Rensing-Lab/Genome-Zoo). The selected sequences represent different lineages:
 
 **Streptophyte Algae:**
-- Chara braunii (CHABR)
-- Penium margaritaceum (PENMA)
+- *Chara braunii* (CHABR)
+- *Penium margaritaceum* (PENMA)
 
-**Bryophytes:**
-- Marchantia polymorpha (MARPO)
-- Physcomitrium patens (PHYPAV6)
-
-**Vascular Plants:**
-- Oryza sativa (spp. japonica) (ORYSAJA)
-- Selaginella moellendorffii (SALMO)
-- Arabidopsis thaliana (ARATH)
+**Bryophytes & Land Plants**
+- *Marchantia polymorpha* (MARPO)
+- *Physcomitrium patens* (PHYPAV6)
+- *Oryza sativa (spp. japonica)* (ORYSAJA)
+- *Selaginella moellendorffii* (SALMO)
+- *Arabidopsis thaliana* (ARATH)
 
 
 > <hands-on-title> Data Upload </hands-on-title>
@@ -88,12 +86,17 @@ Now, we need to import the data
 > <hands-on-title>Import datasets</hands-on-title>
 >
 > 1. Import the following from [Zenodo]({{ page.zenodo_link }}) or from
->    the shared data library (`GTN - Material` -> `{{ page.topic_name }}`
->     -> `{{ page.title }}`):
+>    the shared data library:
 >
 >    ```
->
->    ```
+>   https://zenodo.org/records/15056031/files/ARATH.fa
+>   https://zenodo.org/records/15056031/files/CHABR.fa
+>   https://zenodo.org/records/15056031/files/MARPO.fa
+>   https://zenodo.org/records/15056031/files/PENMA.fa
+>   https://zenodo.org/records/15056031/files/SALMO.fa
+>   https://zenodo.org/records/15056031/files/PHYPAV6.fa
+>   https://zenodo.org/records/15056031/files/ORYSAJA.fa
+>  ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
@@ -109,10 +112,9 @@ If you were successful, all the input files should now be available as dataset c
 
 # Identification of TAPs
 
-In order to detect TAPs from the given proteome(s), each sequence out of a species protein set is first scanned for protein domains (stored as profile Hidden Markov Models) using hmmsearch. The domains list consists of 154 profile HMMs and functions as the domain reference during the hmmsearch command.
+In order to detect TAPs from the given proteome(s), each sequence out of a species protein set is first scanned for protein domains (stored as profile Hidden Markov Models) using hmmsearch. The domains list consists of 154 profile HMMs and functions as the domain reference during the hmmsearch in background.
 
-Afterwards, by running [TAPScan Classify](https://github.com/Rensing-Lab/TAPscan-classify), specialized rules are applied to finally assign the protein sequences to TAP families based on the detected domains in the previous step. With the latest TAPscan v4 ({% cite Petroll2024 %}), a protein set can be scanned for 137 different TAP families with high accuracy through applying GA-thresholds and coverage values.
-
+Afterwards, [TAPScan Classify](https://github.com/Rensing-Lab/TAPscan-classify) applies specialized rules to assign the protein sequences, scanned for 137 different TAP families, ensuring accurate family assignment using GA-thresholds and coverage values.
 
 ## TAPScan Classify
 
@@ -132,23 +134,38 @@ Now that our dataset collection is ready, we can proceed to run [TAPScan Classif
 >
 {: .hands_on}
 
-TAPscan provides the user with three different output files. Each output file is tab-separated.
+TAPScan provides the user with three different output files. Each output file is tab-separated.
 
-- **Output 1: "Detected TAPs"** - contains the detected domains and finally assigned TAP family for each gene ID. If domains are assigned to a sequence but not all rules are fulfilled, the sequence is assigned to *“0_no_family_found”*.
+- **Output 1: "Detected TAPs"** - contains the detected domains and finally assigned TAP family for each gene ID. If domains are assigned to a sequence but not all rules are fulfilled, the sequence is assigned to “0_no_family_found”.
 - **Output 2: "Family Counts"** - is a summary of the number of members for each TAP family.
-- **Output 3: "Detected TAPs Extra"** - is similar to output 1 but contains additional information about subfamilies.
+- **Output 3: "Detected TAPs Extra"** - is similar to output 1 but contains additional information.
 
+
+> <question-title></question-title>
+>
+> 1. How many sequences belong to the “*0_no_family_found*” in Arabidopsis thaliana (ARATH) ?
+> 2. What extra information does Output 3 include compared to Output 1?
+>
+> > <solution-title></solution-title>
+> >
+> > 1. 675, You can find this number by expanding the Galaxy dataset output 2 for ARATH.
+> > 2. Output 3 contains information about subfamilies with an additional column that provides more details beyond what is included in Output 1.
+> > 
+> >
+> {: .solution}
+>
+{: .question}
 
 > <hands-on-title> Filter the TAPScan output Based on the Column  </hands-on-title>
 >
 > 1. {% tool [Filter](Filter1) %} with the following parameters:
 >    - {% icon param-file %} *"Filter"*: `taps_detected` (output of **TAPScan Classify** {% icon tool %})
->    - *"With following condition"*: `c2=='bHLH'`
+>    - *"With following condition"*: `c2=='Aux/IAA'`
 >    - *"Number of header lines to skip"*: `1`
 >
 >    > <comment-title> What's happening in this section? </comment-title>
 >    >
->    > This step filters the TAPScan results to retain only sequences classified as belonging to the our desired TAP family. This allows us to focus on a specific group of TAPs for further analysis.
+>    > This step filters the TAPScan results to retain only sequences classified as belonging to the our desired TAP family.
 >    {: .comment}
 >
 {: .hands_on}
@@ -186,17 +203,13 @@ TAPscan provides the user with three different output files. Each output file is
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
 > <question-title></question-title>
 >
-> 1. Question1?
-> 2. Question2?
->
+> 1. How many sequences IDs are in Arabidopsis thaliana (ARATH) ?
+> 
 > > <solution-title></solution-title>
 > >
-> > 1. Answer for question1
-> > 2. Answer for question2
+> > 1. 29, You can find this number by expanding the Galaxy dataset output for ARATH.
 > >
 > {: .solution}
 >
