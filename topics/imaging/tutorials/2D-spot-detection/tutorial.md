@@ -158,8 +158,7 @@ This can be nicely done by converting the point coordinates to a label map and w
 
 Please notice that the width and height of the image are necessary inputs to corretly overlay
 the label map in the next step! 
-You can get these info by running the [Show image info](toolshed.g2.bx.psu.edu/repos/imgteam/image_info/ip_imageinfo/5.7.1+galaxy1)
-tool on the original image!
+You can get these info by running the "Show image info" tool on the original image!
 
 
 > <hands-on-title>Create the label map from the points coordinates</hands-on-title>
