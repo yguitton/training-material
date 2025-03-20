@@ -19,6 +19,14 @@ key_points:
 contributors:
   - joachimwolff
   - dpryan79
+contributions:
+  authorship:
+   - joachimwolff
+   - dpryan79
+   - VerenaMoo
+  editing:
+   - pavanvidem
+   - wm75
 ---
 
 We will use a small subset of the original data. If we would do the computation on the orginal data the computation time for a tutorial is too long. To show you all necessary steps for Methyl-Seq we decided to use a subset of the data set. In a second step we use precomputed data from the study to show you different levels of methylation. We will consider samples from normal breast cells (NB), fibroadenoma (noncancerous breast tumor, BT089), two invasive ductal carcinomas (BT126, BT198) and a breast adenocarcinoma cell line (MCF7).
@@ -241,7 +249,7 @@ The first step in any analysis should always be quality control. We will use the
 >    >    - *"Delimited by"*: `Tab`
 >    {: .comment}
 >
-> 4. To save compute time we prepared the converted files for you. Import the following files:
+> 4. To save compute time we prepared the converted files for you. Import the following files. Create a collection list and label it `all_coverage_files`. Strip the file extension from the name. For example, rename from `NB1_CpG.meth_ucsc.bedGraph`to `NB1_CpG`.
 >
 >    ```
 >    https://zenodo.org/records/557099/files/NB1_CpG.meth_ucsc.bedGraph
@@ -252,11 +260,31 @@ The first step in any analysis should always be quality control. We will use the
 >    https://zenodo.org/records/557099/files/MCF7_CpG.meth_ucsc.bedgraph
 >    ```
 >
-> 5. Convert the imported files into bigwigs using **Wig/BedGraph-to-bigWig**, then run **computeMatrix** {% icon tool %} by selecting all of them. Finally plot the coverage profile using **plotProfile** {% icon tool %} as before. The plot should look like the following.
+>    {% snippet faqs/galaxy/collections_build_list.md %}
+>
+> 5. Change the datatype to `bedgraph` and set the database to `hg38`
+>
+>    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
+>
+>    {% snippet faqs/galaxy/datasets_change_dbkey.md dbkey="hg38" %}
+>
+> 6. {% tool [Wig/BedGraph-to-bigWig](wig_to_bigWig) %} with the following parameters:
+>    - {% icon param-collection %} *"Convert"*: `all_coverage_files`
+>
+> 7. {% tool [computeMatrix](toolshed.g2.bx.psu.edu/repos/bgruening/deeptools_compute_matrix/deeptools_compute_matrix/3.5.4+galaxy0) %} with the following parameters:
+>    - *"Regions to plot"*: `CpGIslands.bed`
+>    - *"Sample order matters"*: `No`
+>    - *"Score file"*: Output of previous **Wig/BedGraph-to-bigWig** {% icon tool %}
+>    - *"computeMatrix has two main output options"*: `reference-point`
+>
+> 8. {% tool [plotProfile](toolshed.g2.bx.psu.edu/repos/bgruening/deeptools_plot_profile/deeptools_plot_profile/3.5.4+galaxy0) %} with the following parameters:
+>    - *"Matrix file from the computeMatrix tool"*: `Matrix` (output of previous **computeMatrix** {% icon tool %})
+>    - in *"Show advanced options"*
+>       - *"Make one plot per group of regions"*: {% icon param-toggle %} `Yes`
+>
+> The output should look like this:
 >
 > ![Methylation level around TSS](../../images/methyl_level.png)
->
-> More information about deepTools can be found here: https://deeptools.readthedocs.io
 >
 {: .hands_on}
 
