@@ -19,7 +19,7 @@ tags:
   - Species populations EBV class
   - EBV dataset
   - EBV workflow
-contributors:
+contributions:
   authorship:
   - yvanlebras
   editing:
