@@ -28,14 +28,13 @@ input_histories:
   history: https://humancellatlas.usegalaxy.eu/u/wendi.bacon.training/h/cs1pre-processing-with-alevin---input-1
 
 objectives:
-- Generate a cellxgene matrix for droplet-based single cell sequencing data
+- Generate a cellxgene matrix for droplet-based single-cell RNA sequencing data
 - Interpret quality control (QC) plots to make informed decisions on cell thresholds
-- Find relevant information in GTF files for the particulars of their study, and include
-  this in data matrix metadata
+- Find relevant information in GTF files for the experiment, and add
+  this information into the metadata of the data matrix
 time_estimation: 2H
 key_points:
-- Create a scanpy-accessible AnnData object from FASTQ files, including relevant gene
-  metadata
+- Create a scanpy-accessible AnnData object from FASTQ files, including relevant gene metadata
 tags:
 - paper-replication
 - MIGHTS
@@ -88,11 +87,14 @@ This tutorial will take you from raw FASTQ files to a cell x gene data matrix in
 > <warning-title>For the bench scientists and biologists!</warning-title>
 > If you're not used to computing, this tutorial will *not* feel intuitive. It's lots of heavy (and necessary) computational steps with little visible reward. You will still absolutely be able to complete it, but it won't make that much sense.
 > - **That is ok!**
+>
 > Conceptually, the [Filter, plot & explore](% link /single-cell/tutorials/scrna-case_basic-pipeline/tutorial.md %}) tutorial (which comes later) is when you really get to generate fun plots and interpret them scientifically. However, you can't do that until you have pre-processed your data. Some learners like doing that tutorial first, them coming back to learn how to build their input dataset here. So:
+>
 > - If you're in a *Live course*, follow the path of training materials
 > - If you're learning on your own, either get through these pre-processing steps with the belief that plots will get more fun later, or:
 > - Try out the Filter, plot & explore tutorial *first*, then swing back and do this one.
 > It's up to you!
+>
 {: .warning}
 
 > <agenda-title></agenda-title>
@@ -130,7 +132,7 @@ Down-sampled reads and some associated annotation will be imported in your first
 
 > <details-title>Downsampling?</details-title>
 >
-> The datasets take a while to run in their original size, so we've pre-selected 400,000 reads from the file to make it run faster. How did we do this?
+> The datasets take a while to run in their original size, so we've pre-selected 400,000 lines from the original file to make it run faster. How did we do this?
 > - How did I downsample these FASTQ files? You can see out [this history](https://humancellatlas.usegalaxy.eu/u/wendi.bacon.training/h/pre-processing-with-alevin---part-1---how-to-downsample) to find out!
 >
 > > - {% icon warning %} If you are in a *live course*, the time to explore this **downsampling history** is not be factored into the schedule. Please instead check it out *after* your course is finished, or if you finish early!
@@ -146,7 +148,7 @@ Additionally, to map your reads, we have given you a transcriptome to align agai
 {: .details}
 
 {% include _includes/cyoa-choices.html option1="Import History on EU server" option2="Zenodo" default="Import-History-on-EU-server"
-       text="If you're on the EU server, (if your usegalaxy has an **EU** anywhere in the URL), then the quickest way to Get the Data for this tutorial is via importing a history. Otherwise, you can also import from Zenodo - it just might take a moment longer if you're in a live course and everyone is importing the same dataset at the same time!" %}
+       text="If you're on the EU server, (if your usegalaxy has an **EU** anywhere in the URL), then the quickest way to Get the Data for this tutorial is via importing a history. Otherwise, you can import from Zenodo." %}
 
 <div class="Import-History-on-EU-server" markdown="1">
 
@@ -242,14 +244,14 @@ It's now time to *parse* (computing term for separating out important informatio
 >    - {% icon param-file %} *"Ensembl GTF file"*: `GTF file in the history` {% icon galaxy-history %}
 >    - *"Feature type for which to derive annotation"*: `transcript` (Your sequences are transcript sequencing, so this is your starting point)
 >    - *"Field to place first in output table"*: `transcript_id` (This is accessing the column you identified above!)
->    - *"Suppress header line in output?"*: `Yes` (The next tool (Alevin) does not expect a header)
+>    - *"Suppress header line in output?"*: {% icon galaxy-toggle %} `Yes` (The next tool (Alevin) does not expect a header)
 >    - *"Comma-separated list of field names to extract from the GTF (default: use all fields)"*: `transcript_id,gene_id` (This calls the first column to be the transcript_id, and the second the gene_id. Thus, your key can turn transcripts into genes)
->    - *"Append version to transcript identifiers?"*: `Yes` (The Ensembl FASTA files usually have these, and since we need the FASTA transcriptome and the GTF gene information to work together, we need to append these!)
->    - *"Flag mitochondrial features?"*: `No`
->    - *"Provide a cDNA file for extracting annotations and/ or possible filtering?"*: `Yes`
->    - {% icon param-file %} *"FASTA-format cDNA/transcript file"*: `FASTA file in your history` {% icon galaxy-history %}
+>    - *"Append version to transcript identifiers?"*: {% icon galaxy-toggle %} `Yes` (The Ensembl FASTA files usually have these, and since we need the FASTA transcriptome and the GTF gene information to work together, we need to append these!)
+>    - *"Flag mitochondrial features?"*: {% icon galaxy-toggle %} `No`
+>    - *"Provide a cDNA file for extracting annotations and/ or possible filtering?"*:  {% icon galaxy-toggle %} `Yes`
+>    - {% icon param-file %} *"FASTA-format cDNA/transcript file"*: `Mus_musculus.GRCm38cdna.all.fa` (you may have renamed your differently in your {% icon galaxy-history %} history)
 >    - *"Annotation field to match with sequences"*: `transcript_id`
->    - *"Filter the cDNA file to match the annotations?"*: `Yes`
+>    - *"Filter the cDNA file to match the annotations?"*: {% icon galaxy-toggle %} `Yes`
 >
 > 2. Rename {% icon galaxy-pencil %} the annotation table to `Map`
 >
