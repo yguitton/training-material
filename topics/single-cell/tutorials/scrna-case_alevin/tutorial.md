@@ -11,18 +11,22 @@ questions:
 - I have some single cell FASTQ files I want to analyse. Where do I start?
 answer_histories:
 - label: UseGalaxy.eu
+  history:
+  date: 2025-03-20
+- label: UseGalaxy.eu-ARCHIVED3
   history: https://usegalaxy.eu/u/j.jakiela/h/generating-a-single-cell-matrix-alevin
   date: 2024-03-22
-- label: UseGalaxy.eu - ARCHIVED
+- label: UseGalaxy.eu-ARCHIVED2
   history: https://usegalaxy.eu/u/wendi.bacon.training/h/generating-a-single-cell-matrix-using-alevin
   date: 2024-12-10
-- label: Older Alevin version
+- label: UseGalaxy.eu-ARCHIVED1
   history: https://humancellatlas.usegalaxy.eu/u/wendi.bacon.training/h/cs1pre-processing-with-alevin---answer-key
   date: 2024-01-01
 
 input_histories:
 - label: UseGalaxy.eu
   history: https://humancellatlas.usegalaxy.eu/u/wendi.bacon.training/h/cs1pre-processing-with-alevin---input-1
+
 objectives:
 - Generate a cellxgene matrix for droplet-based single cell sequencing data
 - Interpret quality control (QC) plots to make informed decisions on cell thresholds
@@ -81,6 +85,16 @@ recordings:
 
 This tutorial will take you from raw FASTQ files to a cell x gene data matrix in AnnData format. What's a data matrix, and what's AnnData format? Well you'll find out! Importantly, this is the first step in processing single cell data in order to start analysing it. Currently you have a bunch of strings of `ATGGGCTT` etc. in your sequencing files, and what you need to know is how many cells you have and what genes appear in those cells. These steps are the most computationally heavy in the single cell world, as you're starting with 100s of millions of reads, each with 4 lines of text. Later on in analysis, this data becomes simple gene counts such as 'Cell A has 4 GAPDHs', which is a lot easier to store! Because of this data overload, we have downsampled the FASTQ files to speed up the analysis a bit. Saying that, you're still having to map loads of reads to the massive murine genome, so get yourself a cup of coffee and prepare to analyse!
 
+> <warning-title>For the bench scientists and biologists!</warning-title>
+> If you're not used to computing, this tutorial will *not* feel intuitive. It's lots of heavy (and necessary) computational steps with little visible reward. You will still absolutely be able to complete it, but it won't make that much sense.
+> - **That is ok!**
+> Conceptually, the [Filter, plot & explore](% link /single-cell/tutorials/scrna-case_basic-pipeline/tutorial.md %}) tutorial (which comes later) is when you really get to generate fun plots and interpret them scientifically. However, you can't do that until you have pre-processed your data. Some learners like doing that tutorial first, them coming back to learn how to build their input dataset here. So:
+> - If you're in a *Live course*, follow the path of training materials
+> - If you're learning on your own, either get through these pre-processing steps with the belief that plots will get more fun later, or:
+> - Try out the Filter, plot & explore tutorial *first*, then swing back and do this one.
+> It's up to you!
+{: .warning}
+
 > <agenda-title></agenda-title>
 >
 > In this tutorial, we will cover:
@@ -112,22 +126,47 @@ We're going to use Alevin {% cite article-Alevin %} for demonstration purposes, 
 
 We've provided you with some example data to play with, a small subset of the reads in a mouse dataset of fetal growth restriction {% cite Bacon2018 %} (see the [study in Single Cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/experiments/E-MTAB-6945/results/tsne) and the [project submission](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6945/)). This is a study using the Drop-seq chemistry, however this tutorial is almost identical to a 10x chemistry. We will point out the one tool parameter change you will need to run 10x samples. This data is not carefully curated, standard tutorial data - it's real, it's messy, it desperately needs filtering, it has background RNA running around, and most of all it will give you a chance to practice your analysis as if this data were yours.
 
-Down-sampled reads and some associated annotation can be imported below. How did I downsample these FASTQ files? Check out [this history](https://humancellatlas.usegalaxy.eu/u/wendi.bacon.training/h/pre-processing-with-alevin---part-1---how-to-downsample) to find out!
+Down-sampled reads and some associated annotation will be imported in your first step.
 
-Additionally, to map your reads, you will need a transcriptome to align against (a FASTA) as well as the gene information for each transcript (a gtf) file. You can download these for your species of interest [from Ensembl](https://www.ensembl.org/info/data/ftp/index.html). These files are included in the data import step below. Keep in mind, these are big files, so the fastest way to get these into your Galaxy account is through importing them by history.
+> <details-title>Downsampling?</details-title>
+>
+> The datasets take a while to run in their original size, so we've pre-selected 400,000 reads from the file to make it run faster. How did we do this?
+> - How did I downsample these FASTQ files? You can see out [this history](https://humancellatlas.usegalaxy.eu/u/wendi.bacon.training/h/pre-processing-with-alevin---part-1---how-to-downsample) to find out!
+>
+> > - {% icon warning %} If you are in a *live course*, the time to explore this **downsampling history** is not be factored into the schedule. Please instead check it out *after* your course is finished, or if you finish early!
+>
+{: .details}
 
-> <hands-on-title>Option 1: Data upload - Import history</hands-on-title>
+Additionally, to map your reads, we have given you a transcriptome to align against (a FASTA) as well as the gene information for each transcript (a gtf) file.
+
+> <details-title>Where did the FASTA and gtf come from?</details-title>
 >
-> 1. Import history from: [example input history](https://humancellatlas.usegalaxy.eu/u/wendi.bacon.training/h/cs1pre-processing-with-alevin---input-1)
+> In practice, you can download the latest, most accurate files for your species of interest [from Ensembl](https://www.ensembl.org/info/data/ftp/index.html).
 >
+{: .details}
+
+{% include _includes/cyoa-choices.html option1="Import History on EU server" option2="Zenodo" default="Import-History-on-EU-server"
+       text="If you're on the EU server, (if your usegalaxy has an **EU** anywhere in the URL), then the quickest way to Get the Data for this tutorial is via importing a history. Otherwise, you can also import from Zenodo - it just might take a moment longer if you're in a live course and everyone is importing the same dataset at the same time!" %}
+
+<div class="Import-History-on-EU-server" markdown="1">
+
+> <hands-on-title>Import History from EU server</hands-on-title>
+>
+> 1. Import the {% icon galaxy-history-input %} *Input history* by following the link below
+>
+>     {% for h in page.input_histories %}
+>       [ {{h.label}} Input History]( {{h.history}} )
+>     {% endfor %}
 >
 >    {% snippet faqs/galaxy/histories_import.md %}
 >
-> 2. **Rename** {% icon galaxy-pencil %} the the history to your name of choice.
->
 {: .hands_on}
 
-> <hands-on-title>Option 2: Data upload - Add to history</hands-on-title>
+</div>
+
+<div class="Zenodo" markdown="1">
+
+> <hands-on-title>Option 2: Import data from Zenodo</hands-on-title>
 >
 > 1. Create a new history for this tutorial
 > 2. Import the Experimental Design table, sequencing reads 1 & 2, the GTF and fasta files from [Zenodo]({{ page.zenodo_link }})
@@ -145,6 +184,9 @@ Additionally, to map your reads, you will need a transcriptome to align against 
 > 3. Rename {% icon galaxy-pencil %} the datasets: Change `SLX-7632.TAAGGCGA.N701.s_1.r_1.fq-400k` to `N701-Read1` and `SLX-7632.TAAGGCGA.N701.s_1.r_2.fq-400k.fastq` to `N701-Read2`.
 >
 {: .hands_on}
+</div>
+
+
 
 > <question-title></question-title>
 >
@@ -192,7 +234,7 @@ In your example data you will see the murine reference annotation as retrieved f
 > {: .solution}
 {: .question}
 
-It's now time to parse the GTF file using the [rtracklayer](https://bioconductor.org/packages/release/bioc/html/rtracklayer.html) package in R. This parsing will give us a conversion table with a list of transcript identifiers and their corresponding gene identifiers for counting. Additionally, because we will be generating our own binary index (more later!), we also need to input our FASTA so that it can be filtered to only contain transcriptome information found in the GTF.
+It's now time to *parse* (computing term for separating out important information from a larger file) the GTF file using the [rtracklayer](https://bioconductor.org/packages/release/bioc/html/rtracklayer.html) package in R. This parsing will give us a conversion table with a list of transcript identifiers and their corresponding gene identifiers for counting. Additionally, because we will be generating our own binary index (more later!), we also need to input our FASTA so that it can be filtered to only contain transcriptome information found in the GTF.
 
 > <hands-on-title>Generate a filtered FASTA and transcript-gene map</hands-on-title>
 >
@@ -211,7 +253,7 @@ It's now time to parse the GTF file using the [rtracklayer](https://bioconductor
 >
 > 2. Rename {% icon galaxy-pencil %} the annotation table to `Map`
 >
-> 3. Rename {% icon galaxy-pencil %} the uncompressed filtered FASTA file to `Filtered FASTA`
+> 3. Rename {% icon galaxy-pencil %} the uncompressed filtered FASTA file to `Filtered_FASTA`
 {: .hands_on}
 
 ## Generate a transcriptome index & quantify!
@@ -231,47 +273,44 @@ We now have:
 * transcript/ gene mapping
 * filtered FASTA
 
-We can now run Alevin. In some public instances, Alevin won't show up if you search for it. Instead, you may have to click the Single Cell tab at the left and scroll down to the Alevin tool. Alternatively, use Tutorial Mode as described above and you'll easily navigate to all the tools, and their versions will all be the tried and tested ones of this tutorial. It's often a good idea to check your tool versions. To identify which version of a tool you are using, select {% icon tool-versions %} 'Versions' and choose the appropriate version. In this case the tutorial was built with Alevin Galaxy Version 1.9.0+galaxy2, but will also work with the versions named in the Hands-on sections.
-
+We can now run Alevin! However, Alevin will inherently do some of its own filtering and thresholding. We will actually use a better tool later (*emptyDrops*) that needs to work on raw outputs. Therefore, we are going to select options to limit Alevin from filtering the outputs.
 
 > <hands-on-title>Running Alevin</hands-on-title>
 >
-> 1. {% tool [Alevin](toolshed.g2.bx.psu.edu/repos/bgruening/alevin/alevin/1.10.1+galaxy0) %}
+> 1. {% tool [Alevin](toolshed.g2.bx.psu.edu/repos/bgruening/alevin/alevin/1.10.1+galaxy2) %}
 >
->     > <question-title></question-title>
->     >
->     > Try to fill in the parameters of Alevin using what you know!
->     >
->     >   > <tip-title>Strandedness?</tip-title>
->     >   >
->     >   > The Salmon documentation on 'Fragment Library Types' and running the Alevin command is here: [salmon.readthedocs.io/en/latest/library_type.html](https://salmon.readthedocs.io/en/latest/library_type.html) and [salmon.readthedocs.io/en/latest/alevin.html](https://salmon.readthedocs.io/en/latest/alevin.html). These links will help here, although keep in mind the image there is drawn with the RNA 5' on top, whereas in this scRNA-seq protocol, the polyA is captured by its 3' tail and thus effectively the bottom or reverse strand...)
->     >   {: .tip}
->     >
->     >   > <solution-title></solution-title>
->     >   >    - *"Select a reference transcriptome from your history or use a built-in index?"*: `Use one from the history`
->     >   >       - You are going to generate the binary index using your filtered FASTA!
->     >   >    - {% icon param-file %} *"Transcripts FASTA file"*: `Filtered FASTA`
->     >   >    - *"Single or paired-end reads?"*: `Paired-end`
->     >   >    - {% icon param-file %} *"Mate pair 1"*: `N701-Read1`
->     >   >    - {% icon param-file %} *"Mate pair 2"*: `N701-Read2`
->     >   >    - *"Specify the strandedness of the reads"*: `Infer automatically (A)`
->     >   >    - *"Type of single-cell protocol"*: `DropSeq Single Cell protocol`
->     >   >    - {% icon param-file %} *"Transcript to gene map file"*: `Map`
->     >   >    - In *"Extra output files"*:
->     >   >        - {% icon param-check %} `Salmon Quant log file`
->     >   >        - {% icon param-check %} `Features used by the CB classification and their counts at each cell level (--dumpFeatures)`
->     >   >
->     >   >        - Of course you are welcome to select more options and explore the output files ({% icon warning %} warning: *"Per cell level parsimonious Umi graph (--dumpUmiGraph)"* will generate over 2 thousand single files), but for this tutorial you will only need to select those specified.
->     >   >    - In *"Advanced options"*:
->     >   >        - *"Dump cell v transcripts count matrix in MTX format"*: {% icon galaxy-toggle%} `Yes`
->     >   {: .solution}
->     {: .question}
+>    - *"Select a reference transcriptome from your history or use a built-in index?"*: `Use one from the history`
+>       - You are going to generate the binary index using your filtered FASTA!
+>    - {% icon param-file %} *"Transcripts FASTA file"*: `Filtered_FASTA`
+>    - *"Single or paired-end reads?"*: `Paired-end`
+>    - {% icon param-file %} *"Mate pair 1"*: `N701-Read1`
+>    - {% icon param-file %} *"Mate pair 2"*: `N701-Read2`
+>    - *"Specify the strandedness of the reads"*: `Infer automatically (A)`
+>    - *"Type of single-cell protocol"*: `DropSeq Single Cell protocol`
+>    - {% icon param-file %} *"Transcript to gene map file"*: `Map`
+>    - In *"Extra output files"*:
+>        - {% icon param-check %} `Salmon Quant log file`
+>        - {% icon param-check %} `Features used by the CB classification and their counts at each cell level (--dumpFeatures)`
+>
+>        - Of course you are welcome to select more options and explore the output files ({% icon warning %} warning: *"Per cell level parsimonious Umi graph (--dumpUmiGraph)"* will generate over 2 thousand single files), but for this tutorial you will only need to select those specified.
+>    - In *"Advanced options"*:
+>        - *"Dump cell v transcripts count matrix in MTX format"*: {% icon galaxy-toggle%} `Yes`
+>    - In *"Advanced options"*:
+>        - *" Dump cell v transcripts count matrix in MTX format"*: `Yes`
+>        - *"Fraction of cellular barcodes to keep"*: `1.0` (this prevents Alevin from adding extra thresholds!)
+>        - *"Minimum frequency for a barcode to be considered"*: `3`
 {: .hands_on}
 
-> <comment-title>What if I'm running a 10x sample?</comment-title>
+> <tip-title>What if I'm running a 10x sample?</tip-title>
 >
 > The main parameter that needs changing for a 10X Chromium sample is the 'Protocol' parameter of Alevin. Just select the correct 10x Chemistry there instead.
-{: .comment}
+{: .tip}
+
+> <details-title>Strandedness?</details-title>
+>
+> The Salmon documentation on 'Fragment Library Types' and running the Alevin command is here: [salmon.readthedocs.io/en/latest/library_type.html](https://salmon.readthedocs.io/en/latest/library_type.html) and [salmon.readthedocs.io/en/latest/alevin.html](https://salmon.readthedocs.io/en/latest/alevin.html). These links will help here, although keep in mind the image there is drawn with the RNA 5' on top, whereas in this scRNA-seq protocol, the polyA is captured by its 3' tail and thus effectively the bottom or reverse strand...)
+>
+{: .details}
 
 > <comment-title>Alevin file names</comment-title>
 >
