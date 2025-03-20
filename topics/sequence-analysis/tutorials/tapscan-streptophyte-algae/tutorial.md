@@ -34,13 +34,11 @@ tags:
 # Introduction
 
 <!-- This is a comment. -->
-The regulated expression of genes is essential for defining morphology, functional capacity, and developmental fate of both solitary living cells as well as cells inhabiting the social environment of a multicellular organism. In this regard, the regulation of transcription, that is, the synthesis of messenger RNA from a genomic DNA template, plays a crucial role. It contributes to the control of temporal and spatial RNA and protein levels in a cell and therefore has an essential function in all living organisms.
-
-Transcription‐associated proteins (TAPs) are essential players in gene regulatory networks (GRNs) as they involved in transcriptional regulation. TAPs are broadly classified into transcription factors (TFs) and transcriptional regulators (TRs). TFs bind sequence‐specifically to regulatory elements, resulting in enhancing or repressing of transcription ({% cite Richardt2007 %}; {% cite Wilhelmsson2017 %}). TRs, on the other hand, are involved in protein–protein interactions, may serve as regulators at the transcriptional core complex, as co‐activators and co‐repressors, chromatin modification or methylation. Additionally, there are proteins referred to as putative TAPs (PTs) that are thought to be involved in the regulation of transcription, but their exact function is undefined ({% cite Richardt2007 %}).
+The regulated expression of genes is essential for defining morphology, functional capacity, and developmental fate of both solitary living cells as well as cells inhabiting the social environment of a multicellular organism. In this regard, the regulation of transcription, that is, the synthesis of messenger RNA from a genomic DNA template, plays a crucial role. It contributes to the control of temporal and spatial RNA and protein levels in a cell and therefore has an essential function in all living organisms. Transcription‐associated proteins (TAPs) are essential players in gene regulatory networks (GRNs) as they involved in transcriptional regulation. TAPs are broadly classified into transcription factors (TFs) and transcriptional regulators (TRs). TFs bind sequence‐specifically to regulatory elements, resulting in enhancing or repressing of transcription ({% cite Richardt2007 %}; {% cite Wilhelmsson2017 %}). TRs, on the other hand, are involved in protein–protein interactions, may serve as regulators at the transcriptional core complex, as co‐activators and co‐repressors, chromatin modification or methylation. Additionally, there are proteins referred to as putative TAPs (PTs) that are thought to be involved in the regulation of transcription, but their exact function is undefined ({% cite Richardt2007 %}).
 
 TAPScan v4 ({% cite Petroll2024 %}) is a comprehensive tool for annotating TAPs with a special focus on species belonging to the Archaeplastida. In general, the detection of TAPs is based on the detection of highly conserved protein domains.
 
-In this tutorial, we will illustrate the identification of TAPs in Streptophyte algae and land plants using [TAPScan Classify](https://github.com/Rensing-Lab/TAPscan-classify), followed by construction of the phylogenetic tree.
+In this tutorial, we will illustrate the identification of TAPs in streptophyte algae and land plants using [TAPScan Classify](https://github.com/Rensing-Lab/TAPscan-classify), followed by construction of the phylogenetic tree.
 
 
 > <agenda-title></agenda-title>
@@ -118,7 +116,7 @@ Afterwards, [TAPScan Classify](https://github.com/Rensing-Lab/TAPscan-classify) 
 
 ## TAPScan Classify
 
-Now that our dataset collection is ready, we can proceed to run [TAPScan Classify](https://github.com/Rensing-Lab/TAPscan-classify) to identify TAPs.
+Now that our dataset collection is ready, we can run [TAPScan Classify](https://github.com/Rensing-Lab/TAPscan-classify) to detect TAPs in all species.
 
 > <hands-on-title> Detect TAPs </hands-on-title>
 >
@@ -134,22 +132,24 @@ Now that our dataset collection is ready, we can proceed to run [TAPScan Classif
 >
 {: .hands_on}
 
-TAPScan provides the user with three different output files. Each output file is tab-separated.
+TAPScan Classify provides the user with three different output files. Each output file is tab-separated.
 
-- **Output 1: "Detected TAPs"** - contains the detected domains and finally assigned TAP family for each gene ID. If domains are assigned to a sequence but not all rules are fulfilled, the sequence is assigned to “0_no_family_found”.
+- **Output 1: "Detected TAPs"** - contains the detected domains and finally assigned TAP family for each gene ID. If domains are assigned to a sequence but not all rules are fulfilled, the sequence is assigned to *“0_no_family_found”*.
 - **Output 2: "Family Counts"** - is a summary of the number of members for each TAP family.
 - **Output 3: "Detected TAPs Extra"** - is similar to output 1 but contains additional information.
 
 
 > <question-title></question-title>
 >
-> 1. How many sequences belong to the “*0_no_family_found*” in Arabidopsis thaliana (ARATH) ?
-> 2. What extra information does Output 3 include compared to Output 1?
+> 1. What is the output format of TAPScan Classify?
+> 2. How many sequences belong to the “0_no_family_found” in *Arabidopsis thaliana* (ARATH) ?
+> 3. What extra information does Output 3 include compared to Output 1?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. 675, You can find this number by expanding the Galaxy dataset output 2 for ARATH.
-> > 2. Output 3 contains information about subfamilies with an additional column that provides more details beyond what is included in Output 1.
+> > 1. Tabular
+>   2. 675, You can find this number by clicking on the eye button for Galaxy dataset output 2 for ARATH.
+> > 3. Output 3 contains information about subfamilies with an additional column that provides more details beyond what is included in Output 1.
 > > 
 > >
 > {: .solution}
@@ -165,10 +165,20 @@ TAPScan provides the user with three different output files. Each output file is
 >
 >    > <comment-title> What's happening in this section? </comment-title>
 >    >
->    > This step filters the TAPScan results to retain only sequences classified as belonging to the our desired TAP family.
+>    > This step filters the TAPScan results to retain only sequences classified as belonging to the our desired (Aux/IAA) TAP family.
 >    {: .comment}
+>    > <question-title></question-title>
+>    >
+>    > How many sequences belong to the 'Aux/IAA' TAP family in *Arabidopsis thaliana* (ARATH), excluding the header line?
+>    >
+>    > > <solution-title></solution-title>
+>    > > 29, You can find this number by expanding the Galaxy dataset output for ARATH.
+>    > {: .solution}
+>    >
+>    {: .question}
 >
 {: .hands_on}
+
 
 > <hands-on-title> Cut the column </hands-on-title>
 >
@@ -176,44 +186,26 @@ TAPScan provides the user with three different output files. Each output file is
 >    - *"Cut columns"*: `c1`
 >    - {% icon param-file %} *"From"*: `out_file1` (output of **Filter** {% icon tool %})
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
 >    > <comment-title> short description </comment-title>
 >    >
->    > A comment about the tool or something else. This box can also be in the main text
+>    > We need to extract the column that contains the sequence ID, which will be used to extract the FASTA sequences in further analysis
 >    {: .comment}
 >
 {: .hands_on}
+
+Before moving to the step for extracting the FASTA sequences, we need to remove the header line.
 
 > <hands-on-title> Remove header line </hands-on-title>
 >
 > 1. {% tool [Remove beginning](Remove beginning1) %} with the following parameters:
+>
+>    - *"Remove first\*"*: `1`
 >    - {% icon param-file %} *"from"*: `out_file1` (output of **Cut** {% icon tool %})
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
 >
 {: .hands_on}
 
-> <question-title></question-title>
->
-> 1. How many sequences IDs are in Arabidopsis thaliana (ARATH) ?
-> 
-> > <solution-title></solution-title>
-> >
-> > 1. 29, You can find this number by expanding the Galaxy dataset output for ARATH.
-> >
-> {: .solution}
->
-{: .question}
+
 
 ## Extract the sequences for TAP families
 
@@ -225,33 +217,19 @@ TAPScan provides the user with three different output files. Each output file is
 >        - {% icon param-file %} *"List of IDs to extract sequences for"*: `out_file1` (output of **Remove beginning** {% icon tool %})
 >        - *"Match IDs by"*: `Default: ID is expected at the beginning: >ID `
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
+> 
+>    > <question-title></question-title>
 >    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
+>    > 1. What if my IDs don't match?
+>    >
+>    > > <solution-title></solution-title>
+>    > > 1. If your FASTA file includes additional annotations in the headers, you may need to preprocess your ID list or modify the matching criteria.
+>    > {: .solution}
+>    >
+>    {: .question}
 >
+
 {: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. What if my IDs don't match?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. If your FASTA file includes additional annotations in the headers, you may need to preprocess your ID list or modify the matching criteria.
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
 
 
 # Evolutionary Analysis
@@ -260,7 +238,6 @@ Now that we have identified TAP families of interest across multiple species, le
 
 
 TODO: CYOA for full workflows (with pairwise step) or individual steps?
-
 
 
 
@@ -277,7 +254,7 @@ First, we will perform a multiple sequence alignment in order to determine the s
 >        - In *"Input batch"*:
 >            - {% icon param-repeat %} *"Insert Input batch"*
 >                - {% icon param-collection %} *"Sequences to align"*: the collection of FASTA files from our TAP families (output of **Filter FASTA** {% icon tool %})
->    - *"Type of Sequences"*: Amino Acides
+>    - *"Type of Sequences"*: Amino Acids
 >    - *"Configure Gap Costs"*: Set values
 >      - *"Gap extension penalty for group-to-group alignment "*: `0.0`
 >    - *"Support unusual characters?"*: `Yes`
@@ -289,7 +266,7 @@ First, we will perform a multiple sequence alignment in order to determine the s
 >    > 1. How many sequences do we have in total?
 >    >
 >    > > <solution-title></solution-title>
->    > > 1. 667 sequences. You can find this number by expanding the Galaxy dataset output from MAFFT.
+>    > > 1. 85 sequences. You can find this number by expanding the Galaxy dataset output from MAFFT.
 >    > {: .solution}
 >    >
 >    {: .question}
@@ -302,35 +279,34 @@ Let's have a look at the output file generated by MAFFT
 you will see something like:
 
 ```
->88036.SELMO_e_gw1.105.41.1
---------------------------------ADSSSKFVNDNFYD-------CKQIVAE
-AKSEV-------------------------------------------------------
->88036.SELMO_fgenesh2_pg.C_scaffold_136000057
----------------------MMMMV--------------I-------------------
---------------------------------------------------------MILG
-------------------------------------SFTRTLREG---------------
-----KKKELVVSLPCCKAPLYYYNNA-------MHTSLQEAFK-----------------
--------------------------------------------------VAIELSF----
-----KEQELIS--GDFFV------------------------------------------
----L-----------GLSPEK--------PPDFCSL------------------------
-----------------------------------RDCFN---------------------
+>3702.ARATH_AT2G46990.1
+----------------------MGRG-------------------------RSSSSSSIE
+S-----------------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
 [..]
->88036.SELMO_fgenesh2_pg.C_scaffold_136000057
----------------------MMMMV--------------I-------------------
---------------------------------------------------------MILG
-G-----------------------------------------------------------
-------------------------------------SFTRTLREG---------------
-----KKKELVVSLPCCKAPLYYYNNA-------MHTSLQEAFK-----------------
--------------------------------------------------VAIELSF----
+>3702.ARATH_AT3G62100.1
+----------------------MGRG-------------------------RSSSSSSIE
+S-----------------------------------------------------------
 ------------------------------------------------------------
-----KEQELIS--GDFFV------------------------------------------
----L-----------GLSPEK--------PPDFCSL------------------------
-----------------------------------RDCFN---------------------
--------------------------------------------VGGAQALNAGGVQQQIP
-RKEFFHLHAQGT--HSAE----MEEA----------------------------------
-------------------------------------ATTCVMPRFM------ASTSSS--
 ------------------------------------------------------------
--------------------------------VEYQNHSL--------------------
+------------------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+--------------------------SCKSN-----------------------------
+----------------------------------------PFGVSSSNTRNL--------
+--------------------STD-------------------------------------
+[..]
+>3702.ARATH_AT3G17600.1
+----------------------------------------------------MEVSNSCS
+SFS---------------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
 [..]
 ```
 
