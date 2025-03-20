@@ -447,13 +447,13 @@ We're now going to re-run {% icon galaxy-refresh %} the tool that extracts infor
 >    - *"Flag mitochondrial features?"*: {% icon galaxy-toggle %} `Yes` - note, this will auto-fill a bunch of acronyms for searching in the GTF for mitochondrial associated genes. This is good!
 >    - *"Filter the cDNA file to match the annotations?"*: {% icon galaxy-toggle %} `No` - we don't need to, we're done with the FASTA!
 >
-> 2. Check that the output file type is `tabular`. If not, change the file type by clicking the 'Edit attributes'{% icon galaxy-pencil %} on the dataset in the history (as if you were renaming the file.) Then click `Datatypes` and type in `tabular`. Click `Change datatype`.)
+>    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
 >
 > 3. Rename {% icon galaxy-pencil %} the annotation table to `Gene_Information`
 >
 {: .hands_on}
 
-Inspect {% icon galaxy-eye %} the **Gene Information** object in the history. Now you have made a new key for gene_id, with gene name and a column of mitochondrial information (false = not mitochondrial, true = mitochondrial). We need to add this information into the salmonKallistoMtxTo10x output 'Gene table'. But we need to keep 'Gene table' in the same order, since it is referenced in the 'Matrix table' by row.
+Inspect {% icon galaxy-eye %} the {% icon param-file %} `Gene_Information` object in the history. You have made a new key for gene_id, with gene name and a column of mitochondrial information (false = not mitochondrial, true = mitochondrial). We need to add this information into the {% icon param-file %} salmonKallistoMtxTo10x output `Gene_table`. But we need to keep `Gene_table` in the same order, since it is referenced in the `Matrix_table` by row.
 
 > <hands-on-title>Combine MTX Gene Table with Gene Information</hands-on-title>
 >
@@ -529,6 +529,8 @@ Fantastic! Now that our matrix is combined into an object, specifically the Sing
 
 We will nevertheless proceed with your majestic annotated expression matrix of 38 cells, ready to go for further processing and analysis! However, the next tutorials we will link to use a tool suite called Scanpy {% cite Wolf2018 %}. You need to convert this SingleCellExperiment object into a format called `annData`, which is a variant of a file format called `hdf5`.
 
+## Convert to AnnData object
+
 > <hands-on-title>Converting to AnnData format</hands-on-title>
 >
 > 1. {% tool [SCEasy Converter](toolshed.g2.bx.psu.edu/repos/iuc/sceasy_convert/sceasy_convert/0.0.7+galaxy2) %} with the following parameters:
@@ -539,26 +541,58 @@ We will nevertheless proceed with your majestic annotated expression matrix of 3
 >
 > {% snippet faqs/galaxy/datasets_change_datatype.md %}
 >
+{: .hands_on}
+
+Last but not least, after all these data conversions, your AnnData object is missing some labelling. If you *peek* at our latest output {% icon param-file %} in your {% icon galaxy-history %} history, and check the *vars* categories, you will find one category labelled `NA.` What is this? To find out, you can use a handy tool.
+
+> <hands-on-title>Inspecting AnnData Objects</hands-on-title>
+>
+> 1. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
+>    - *"What to inspect?"*: `Key-indexed annotation of variables/features (var)`
+{: .hands_on}
+
+If you {% icon galaxy-eye %} examine the output {% icon param-file %}, you will find that this `NA.` column is a bunch of True/False outputs.
+
+> <question-title></question-title>
+>
+> What is this 'True/False' referring to? (Hint: Consider what gene information you have added!)
+>
+> > <solution-title></solution-title>
+> >
+> > The second time you ran the GTF2GeneList, you extracted `gene_id,gene_name,mito` information and then added that information to your datasets. The `mito` flagging outputs a True if the gene has any mitochondrial information in its GTF listing, or False if it does not. Therefore, this `NA.` should be labelled `mito`!
+> >
+> {: .solution}
+>
+{: .question}
+
+> <hands-on-title> Label Mito Metadata</hands-on-title>
+>
+> 1. {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `output_anndata` (output of **SCEasy Converter** {% icon tool %})
+>    - *"Function to manipulate the object"*: `Rename fileds in AnnData variables`
+>        - *"Name of the variables field that you want to change"*: `NA.`
+>        - *"New name of the filed in the variables"*: `mito`
+>
 > 2. Rename {% icon galaxy-pencil %} output `N701-400k-AnnData`
 >
 {: .hands_on}
 
-{% icon congratulations %} Congrats! Your object is ready to for the scanpy pipeline! You can can check your work against the [example history](https://usegalaxy.eu/u/j.jakiela/h/generating-a-single-cell-matrix-alevin). You can also compare how the subsampled datasets you've generated compare with the [total sample](https://singlecell.usegalaxy.eu/u/j.jakiela/h/generating-a-single-cell-matrix-using-alevin---n701-total-sample).
+{% icon congratulations %} Congrats! Your object is ready to for the scanpy pipeline!
 
-However, it may be that you want to combine this object with others like it, for instance, maybe you ran 5 samples, and you are starting with 10 FASTQ files...
+You might find the {% icon galaxy-history-answer %} *Answer Key Histories* helpful to check or compare with:
+  - {% for h in page.answer_histories %}
+      [ {{h.label}} ]( {{h.history}} )
+    {% endfor %}
 
-# Analysing multiple FASTQ files
+You can also run this entire tutorial via a {% icon galaxy-workflows-activity %} *Workflow*, after performing the **Get data** step initially.
+ - [Tutorial Workflow]({% link /workflows/ %})
 
-This sample was originally one of seven. So to run the other [12 downsampled FASTQ files](https://humancellatlas.usegalaxy.eu/u/wendi.bacon.training/h/alevin-tutorial---all-samples---400k), you can use a [workflow](https://usegalaxy.eu/u/j.jakiela/w/alevin-sc-matrix) and run them all at once! All these samples are going to take a while, so go and have several cups of tea... Or, better yet, I have [run them myself](https://usegalaxy.eu/u/j.jakiela/h/alevin-workflow---all-samples-downsampled-fastq). To combine the resultant files into a single matrix, you can look at the next tutorial in this case study: [Combining datasets after pre-processing]({% link topics/single-cell/tutorials/scrna-case_alevin-combine-datasets/tutorial.md %})
+<iframe title="Galaxy Workflow Embed" style="width: 100%; height: 700px; border: none;" src="https://singlecell.usegalaxy.eu/published/workflow?id=9a9bbd8046da7b19&embed=true&buttons=true&about=false&heading=false&minimap=true&zoom_controls=true&initialX=0&initialY=0&zoom=0.33"></iframe>
 
-# Mitochondrial flagging
-
-We have assumed you will be combining multiple files - but if that's not the case, you'll need to perform this step to turn your column of `true` and `false` labelling the mitochondrial genes into some metrics telling you the % of mitochondrial genes in each cell. You can follow that step here: [Mitochondrial calculations]({% link topics/single-cell/tutorials/scrna-case_alevin-combine-datasets/tutorial.md %}#mitochondrial-reads).
+It may be that you want to combine this object with others like it, for instance, maybe you ran 5 samples, and you are starting with 10 FASTQ files... To do this, you can run that same Workflow on all your files! In fact, that's what we do to set up the datasets for the next tutorial!
 
 # Conclusion
-
-
-![Workflow Part 1](../../images/scrna-casestudy/wab-alevin-part1workflow.png "Workflow  - Steps 1-3")
 
 We have:
 
