@@ -215,13 +215,13 @@ Now let's look at what we've done! You can *peek* at the AnnData object in your 
 > <hands-on-title>Inspecting AnnData Objects</hands-on-title>
 >
 > 1. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Combined object`
+>    - {% icon param-file %} *"Annotated data matrix"*: `Combined_object`
 >    - *"What to inspect?"*: `General information about the object`
 > 2. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Combined object`
+>    - {% icon param-file %} *"Annotated data matrix"*: `Combined_object`
 >    - *"What to inspect?"*: `Key-indexed observations annotation (obs)`
 > 3. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Combined object`
+>    - {% icon param-file %} *"Annotated data matrix"*: `Combined_object`
 >    - *"What to inspect?"*: `Key-indexed annotation of variables/features (var)`
 {: .hands_on}
 
@@ -300,7 +300,7 @@ That was so fun, let's do it all again but for genotype!
 
 > <hands-on-title>Labelling genotype</hands-on-title>
 >
-> 1. {% tool [Replace Text in a specific column](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_column/9.3+galaxy0) %} with the following parameters:
+> 1. {% tool [Replace Text in a specific column](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_column/9.5+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: output of **Inspect AnnData: Key-indexed observations annotation (obs)** {% icon tool %}
 >    - *"1. Replacement"*
 >
@@ -330,46 +330,51 @@ That was so fun, let's do it all again but for genotype!
 > 3. Rename {% icon galaxy-pencil %} output `Genotype_metadata`
 {: .hands_on}
 
-You might want to do this with all sorts of different metadata - which labs handled the samples, which days they were run, etc. Once you've added all your metadata columns, we can add them together before plugging them into the AnnData object itself.
+You might want to do this with all sorts of different metadata - which labs handled the samples, which days they were run, etc. Once you've created and cut all your metadata columns, we can paste them together before adding them into the AnnData object itself.
 
 > <hands-on-title>Combining metadata columns</hands-on-title>
 >
 > 1. {% tool [Paste two files side by side](Paste1) %} with the following parameters:
->    - {% icon param-file %} *"Paste"*: `Genotype metadata`
->    - {% icon param-file %} *"and"*: `Sex metadata`
+>    - {% icon param-file %} *"Paste"*: `Genotype_metadata`
+>    - {% icon param-file %} *"and"*: `Sex_metadata`
 >    - *"Delimit by"*: `Tab`
 > 2. Rename {% icon galaxy-pencil %} output `Cell_Metadata`
 {: .hands_on}
 
-Let's add it to the AnnData object!
+Let's add this metadata to the AnnData object!
 
 > <hands-on-title>Adding metadata to AnnData object</hands-on-title>
 >
-> 1. {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.3+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Combined object`
+> 1. {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `Combined_object`
 >    - *"Function to manipulate the object"*: `Add new annotation(s) for observations or variables`
 >    - *"What to annotate?"*: `Observations (obs)``
->    - {% icon param-file %} *"Table with new annotations"*: `Cell Metadata`
+>    - {% icon param-file %} *"Table with new annotations"*: `Cell_Metadata`
 {: .hands_on}
 
-Woohoo! We're there! You can run an {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.3+galaxy0) %} to check now, but I want to clean up this AnnData object just a bit more first. It would be a lot nicer if 'batch' meant something, rather than 'the order in which the Manipulate AnnData tool added my datasets'.
+Woohoo! We're there! You can *peek* at your new AnnData object in your history {% icon galaxy-history %} to see the additional **Obs** categories to make sure this worked. You should now find a `sex` and `genotype` in the **Obs** listing.
+
+## Add batch metadata
+
+I want to clean up this AnnData object just a bit more first. It would be a lot nicer if 'batch' meant something, rather than 'the order in which the Manipulate AnnData tool added my datasets'.
 
 > <hands-on-title>Labelling batches</hands-on-title>
 >
-> 1. {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.3+galaxy0) %} with the following parameters:
+> 1. {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"Annotated data matrix"*: output of **Manipulate AnnData - Add new annotations** {% icon tool %}
 >    - *"Function to manipulate the object"*: `Rename categories of annotation`
 >    - *"Key for observations or variables annotation"*: `batch`
 >    - *"Comma-separated list of new categories"*: `N701,N702,N703,N704,N705,N706,N707`
+>
 > 2. Rename {% icon galaxy-pencil %} output `Batched_Object`
+>
 {: .hands_on}
 
-
-Huzzah! We are JUST about there. However, while we've been focussing on our cell metadata (sample, batch, genotype, etc.) to relabel the 'observations' in our object...
+Huzzah! We are JUST about there. However, we have thus far only added cell metadata (sample, batch, genotype, etc.) to our **Obs** layer. What about gene metadata, the information about the genes?
 
 # Adding gene metadata: Mitochondrial or not?
 
-Do you remember when we mentioned mitochondria early on in this tutorial? And how often in single cell samples, mitochondrial RNA is often an indicator of stress during dissociation? We should probably do something with our column of true/false in the gene annotation that tells us information about the cells. You will need to do this whether you have combined FASTQ files or are analysing just one.
+Do you remember when we mentioned mitochondria early on in this tutorial? And how often in single cell samples, mitochondrial RNA is often an indicator of stress during dissociation? We should probably do something with our column of true/false in the gene annotation that tells us information about the genes (True = mitochondrial gene; False = Not a mitochondrial gene). You will need to do this next step whether you have combined FASTQ files in this tutorial, or are analysing just one dataset and have jumped in from the [previous tutorial]({% link /single-cell/tutorials/scrna-case_alevin/tutorial.md %})
 
 > <hands-on-title>Calculating mitochondrial RNA in cells</hands-on-title>
 >
