@@ -624,8 +624,8 @@ You might find the {% icon galaxy-history-answer %} *Answer Key Histories* helpf
 <!-- Only currently want to iterate through the first history, but might want others in the future (different servers!) -->
 
 You can also run this entire tutorial via a {% icon galaxy-workflows-activity %} *Workflow*, after performing the **Get data** step initially.
- - [Tutorial Workflow]({% link /workflows/ %})
-
+ - [Tutorial Workflow]({% link ../workflows/ %})
+ 
 <iframe title="Galaxy Workflow Embed" style="width: 100%; height: 700px; border: none;" src="https://singlecell.usegalaxy.eu/published/workflow?id=9a9bbd8046da7b19&embed=true&buttons=true&about=false&heading=false&minimap=true&zoom_controls=true&initialX=0&initialY=0&zoom=0.33"></iframe>
 
 It may be that you want to combine this object with others like it, for instance, maybe you ran 5 samples, and you are starting with 10 FASTQ files... To do this, you can run that same Workflow on all your files! In fact, that's what we do to set up the datasets for the next tutorial!
