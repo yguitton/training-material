@@ -9,6 +9,7 @@ redirect_from:
 - "/topics/transcriptomics/tutorials/scrna-case_alevin/tutorial"
 questions:
 - I have some single cell FASTQ files I want to analyse. Where do I start?
+
 answer_histories:
 - label: UseGalaxy.eu
   history:
@@ -369,17 +370,17 @@ The question we're looking to answer here, is: "do we mostly have a single cell 
 
 This is our own formulation of the barcode plot based on a [discussion](https://github.com/COMBINE-lab/salmon/issues/362#issuecomment-490160480) we had with community members. The left hand plots with the smooth lines are the main plots, showing the UMI counts for individual cell barcodes ranked from high to low. The right hand plots are density plots from the first one, and the thresholds are generated either using [dropletUtils](https://bioconductor.org/packages/release/bioc/html/DropletUtils.html) or by the method described in the discussion mentioned above.
 
-![raw droplet barcode plots-400k](../../images/scrna-casestudy/wab-raw_barcodes-400k.png "400k subsample raw")
+![raw droplet barcode plots-400k](../../images/scrna-casestudy/CS1-raw_barcodes-400k.png "400k subsample raw")
 
 Now, the image generated here (400k) isn't the most informative - but you are dealing with a fraction of the reads! If you run the total sample (so identical steps above, but with significantly more time!) you'd get the image below.
 
-![raw droplet barcode plots-total](../../images/scrna-casestudy/wab-raw_barcodes-total.png "Total sample - 32,579,453 reads - raw")
+![raw droplet barcode plots-total](../../images/scrna-casestudy/CS1-raw_barcodes-total.png "Total sample - 32,579,453 reads - raw")
 
 We expect a sharp drop-off between cell-containing droplets and ones that are empty or contain only cell debris. Then, various proposed thresholds (shown in the different coloured horizontal lines) are calculated by Alevin, to give options of where to put a cut-off line that says "Any barcodes with fewer reads per cell than this cut-off line are discarded, because these are likely background and uninformative." Ideally, this cut-off is clearly at the point where the curve bends, known as the *knee* of the curve.
 
 Now, this data is not an ideal dataset, so for perspective, in an ideal world with a very clean 10x run, data will look a bit more like the following taken from the lung atlas (see the [study in Single Cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/experiments/E-MTAB-6653/results/tsne) and the [project submission](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6653/)).
 
-![raw droplet barcode plots - lung atlas](../../images/scrna-casestudy/wab-lung-atlas-barcodes-raw.png "Pretty data - raw")
+![raw droplet barcode plots - lung atlas](../../images/scrna-casestudy/CS1-lung-atlas-barcodes-raw.png "Pretty data - raw")
 
 You can see the clearer 'knee' bend in this significantly larger and cleaner sample, showing the cut-off between empty droplets and cell-containing droplets.
 
@@ -616,9 +617,11 @@ We have:
  * Converted these datasets to enable downstream analysis.
 
 You might find the {% icon galaxy-history-answer %} *Answer Key Histories* helpful to check or compare with:
-  - {% for h in page.answer_histories %}
+  - {% for h in page.answer_histories[:1] %}
       [ {{h.label}} ]( {{h.history}} )
     {% endfor %}
+
+<!-- Only currently want to iterate through the first history, but might want others in the future (different servers!) -->
 
 You can also run this entire tutorial via a {% icon galaxy-workflows-activity %} *Workflow*, after performing the **Get data** step initially.
  - [Tutorial Workflow]({% link /workflows/ %})
@@ -630,9 +633,5 @@ It may be that you want to combine this object with others like it, for instance
 - {% for h in page.full_sample_histories %}
     [ {{h.label}} ]( {{h.history}} )
   {% endfor %}
-
-
-
-
 
 {% snippet topics/single-cell/faqs/user_community_join.md %}
