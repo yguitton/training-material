@@ -401,18 +401,18 @@ First, we need to 'transform' the matrix such that cells are in columns and gene
 >    - {% icon param-file %} *"Tab-delimited genes file"*: `column headers (gene-ids)` (output of **Alevin** {% icon tool %})
 >    - {% icon param-file %} *"Tab-delimited barcodes file"*: `row index (CB-ids)` (output of **Alevin** {% icon tool %})
 >
-> 2. Rename {% icon galaxy-pencil %} 'salmonKallistoMtxTo10x....:genes' to `Gene table`
-> 3. Rename {% icon galaxy-pencil %} 'salmonKallistoMtxTo10x....:barcodes' to `Barcode table`
-> 4. Rename {% icon galaxy-pencil %} 'salmonKallistoMtxTo10x....:matrix' to `Matrix table`
+> 2. Rename {% icon galaxy-pencil %} 'salmonKallistoMtxTo10x....:genes' to `Gene_table`
+> 3. Rename {% icon galaxy-pencil %} 'salmonKallistoMtxTo10x....:barcodes' to `Barcode_table`
+> 4. Rename {% icon galaxy-pencil %} 'salmonKallistoMtxTo10x....:matrix' to `Matrix_table`
 {: .hands_on}
 
-The output is a matrix in the correct orientation for the rest of our tools. However, our matrix is looking a bit sparse - for instance, click on `Gene table`. I don't know about you, but I'd struggle to have a good biological discussion using only Ensembl gene_ids! What I'd really like is the more understandable 'GAPDH' or other gene acronym, as well as information on mitochondrial genes so that I can assess if my cells were stressed out or not. In order to prepare our data for emptyDrops, we're going to combine this information into an object, and it's easiest to add in that information now.
+The output is a matrix in the correct orientation for the rest of our tools. However, our matrix is looking a bit sparse - for instance, click on `Gene_table`. I don't know about you, but I'd struggle to have a good biological discussion using only Ensembl gene_ids! What I'd really like is the more understandable 'GAPDH' or other gene acronym, as well as information on mitochondrial genes so that I can assess if my cells were stressed out or not. In order to prepare our data for emptyDrops, we're going to combine this information into an object, and it's easiest to add in that information now.
 
-## Adding in Gene metadata
+### Add in Gene metadata
 
 > <question-title></question-title>
 >
-> Where can we find this gene information?
+> Where can we find information about genes?
 >
 > > <solution-title></solution-title>
 > >
@@ -434,20 +434,23 @@ The output is a matrix in the correct orientation for the rest of our tools. How
 >
 {: .question}
 
-We're now going to re-run {% icon galaxy-refresh %} the tool that extracts information from our GTF file.
+We're now going to re-run {% icon galaxy-refresh %} the tool that extracts information from our GTF file, but extract gene information instead of transcript information.
 
 > <hands-on-title>Generate gene information</hands-on-title>
 >
 > 1. {% tool [GTF2GeneList](toolshed.g2.bx.psu.edu/repos/ebi-gxa/gtf2gene_list/_ensembl_gtf2gene_list/1.52.0+galaxy0) %} with the following parameters:
 >    - *"Feature type for which to derive annotation"*: `gene`
 >    - *"Field to place first in output table"*: `gene_id`
->    - *"Suppress header line in output?"*: `Yes`
+>    - *"Suppress header line in output?"*: {% icon galaxy-toggle %} `Yes`
 >    - *"Comma-separated list of field names to extract from the GTF (default: use all fields)"*: `gene_id,gene_name,mito`
->    - *"Append version to transcript identifiers?"*: `Yes`
->    - *"Flag mitochondrial features?"*: `Yes` - note, this will auto-fill a bunch of acronyms for searching in the GTF for mitochondrial associated genes. This is good!
->    - *"Filter the cDNA file to match the annotations?"*: `No` - we don't need to, we're done with the FASTA!
+>    - *"Append version to transcript identifiers?"*: {% icon galaxy-toggle %} `Yes`
+>    - *"Flag mitochondrial features?"*: {% icon galaxy-toggle %} `Yes` - note, this will auto-fill a bunch of acronyms for searching in the GTF for mitochondrial associated genes. This is good!
+>    - *"Filter the cDNA file to match the annotations?"*: {% icon galaxy-toggle %} `No` - we don't need to, we're done with the FASTA!
+>
 > 2. Check that the output file type is `tabular`. If not, change the file type by clicking the 'Edit attributes'{% icon galaxy-pencil %} on the dataset in the history (as if you were renaming the file.) Then click `Datatypes` and type in `tabular`. Click `Change datatype`.)
-> 2. Rename {% icon galaxy-pencil %} the annotation table to `Gene Information`
+>
+> 3. Rename {% icon galaxy-pencil %} the annotation table to `Gene_Information`
+>
 {: .hands_on}
 
 Inspect {% icon galaxy-eye %} the **Gene Information** object in the history. Now you have made a new key for gene_id, with gene name and a column of mitochondrial information (false = not mitochondrial, true = mitochondrial). We need to add this information into the salmonKallistoMtxTo10x output 'Gene table'. But we need to keep 'Gene table' in the same order, since it is referenced in the 'Matrix table' by row.
