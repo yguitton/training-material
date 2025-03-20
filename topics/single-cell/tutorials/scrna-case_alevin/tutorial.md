@@ -335,32 +335,32 @@ This tool will take a while to run. Alevin produces many file outputs, not all o
 >
 > > <solution-title></solution-title>
 > >
-> > 1. Inspect {% icon galaxy-eye %} the file {% icon param-file %} *Salmon log file*. You can see the mapping rate is a paltry `25.45%`. This is a terrible mapping rate. Why might this be? Remember this was downsampled, and specifically by taking only the last 400,000 reads of the FASTQ file. The overall mapping rate of the file is more like 50%, which is still quite poor, but for early Drop-Seq samples and single-cell data in general, you might expect a slightly poorer mapping rate. 10x samples are much better these days! This is real data, not test data, after all!
-> > 2. Inspect {% icon galaxy-eye %} the file {% icon param-file %} *row index (CB-ids)*, and you can see it has `2163` lines. The rows refer to the cells in the cell x gene matrix. According to this (rough) estimate, your sample has 2163 cells in it!
+> > 1. Inspect {% icon galaxy-eye %} the file {% icon param-file %} *Salmon log file*. You can see the mapping rate is a paltry `48.3268%` (This may vary slightly with tool versions). This is not a great mapping rate. Why might this be? For early Drop-Seq samples and single-cell data in general, you might expect a slightly poorer mapping rate. 10x samples are much better these days! This is real data, not test data, after all!
+> > 2. *Peek* at the file {% icon param-file %} *row index (CB-ids)* in your {% icon galaxy-history %}, and you will find it has `22,952` lines. The rows refer to the cells in the cell x gene matrix. According to this (rough) estimate, your sample has 22,952 cells in it! This entirely inaccurate, because it's currently counting background noise as cells. So we need to do some **Quality Control** (QC)!
 > >
 > {: .solution}
 >
 {: .question}
 
-> <warning-title>Choose the appropriate input going forward!</warning-title>
-> Make certain to use **per-cell gene-count matrix (MTX)** file going forward.
-{: .warning}
-
 {% icon congratulations %} Congratulations - you've made an expression matrix! We could almost stop here. But it's sensible to do some basic QC, and one of the things we can do is look at a barcode rank plot.
 
-# Basic QC
+# Generating QC Plots
 
 The question we're looking to answer here, is: "do we mostly have a single cell per droplet"? That's what experimenters are normally aiming for, but it's not entirely straightforward to get exactly one cell per droplet. Sometimes almost no cells make it into droplets, other times we have too many cells in each droplet. At a minimum, we should easily be able to distinguish droplets with cells from those without.
 
 > <hands-on-title>Generate a raw barcode QC plot</hands-on-title>
 >
 > 1. {% tool [Droplet barcode rank plot](toolshed.g2.bx.psu.edu/repos/ebi-gxa/droplet_barcode_plot/_dropletBarcodePlot/1.6.1+galaxy2) %} with the following parameters:
->    - *"Input MTX-format matrix?"*: `No`
+>    - *"Input MTX-format matrix?"*: {% icon galaxy-toggle %} `No`
 >    - {% icon param-file %} *"A two-column tab-delimited file, with barcodes in the first column and frequencies in the second"*: Output of Alevin `raw CB classification frequencies`
 >    - *"Label to place in plot title"*: `Barcode rank plot (raw barcode frequencies)`
 >
 > 2. Rename {% icon galaxy-pencil %} the image output `Barcode Plot - raw barcode frequencies`
 {: .hands_on}
+
+## Interpreting the QC plots
+
+This is our own formulation of the barcode plot based on a [discussion](https://github.com/COMBINE-lab/salmon/issues/362#issuecomment-490160480) we had with community members. The left hand plots with the smooth lines are the main plots, showing the UMI counts for individual cell barcodes ranked from high to low. The right hand plots are density plots from the first one, and the thresholds are generated either using [dropletUtils](https://bioconductor.org/packages/release/bioc/html/DropletUtils.html) or by the method described in the discussion mentioned above.
 
 ![raw droplet barcode plots-400k](../../images/scrna-casestudy/wab-raw_barcodes-400k.png "400k subsample raw")
 
@@ -368,70 +368,31 @@ Now, the image generated here (400k) isn't the most informative - but you are de
 
 ![raw droplet barcode plots-total](../../images/scrna-casestudy/wab-raw_barcodes-total.png "Total sample - 32,579,453 reads - raw")
 
-This is our own formulation of the barcode plot based on a [discussion](https://github.com/COMBINE-lab/salmon/issues/362#issuecomment-490160480) we had with community members. The left hand plots with the smooth lines are the main plots, showing the UMI counts for individual cell barcodes ranked from high to low. We expect a sharp drop-off between cell-containing droplets and ones that are empty or contain only cell debris. Now, this data is not an ideal dataset, so for perspective, in an ideal world with a very clean 10x run, data will look a bit more like the following taken from the lung atlas (see the [study in Single Cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/experiments/E-MTAB-6653/results/tsne) and the [project submission](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6653/)).
+We expect a sharp drop-off between cell-containing droplets and ones that are empty or contain only cell debris. Then, various proposed thresholds (shown in the different coloured horizontal lines) are calculated by Alevin, to give options of where to put a cut-off line that says "Any barcodes with fewer reads per cell than this cut-off line are discarded, because these are likely background and uninformative." Ideally, this cut-off is clearly at the point where the curve bends, known as the *knee* of the curve.
+
+Now, this data is not an ideal dataset, so for perspective, in an ideal world with a very clean 10x run, data will look a bit more like the following taken from the lung atlas (see the [study in Single Cell Expression Atlas](https://www.ebi.ac.uk/gxa/sc/experiments/E-MTAB-6653/results/tsne) and the [project submission](https://www.ebi.ac.uk/arrayexpress/experiments/E-MTAB-6653/)).
 
 ![raw droplet barcode plots - lung atlas](../../images/scrna-casestudy/wab-lung-atlas-barcodes-raw.png "Pretty data - raw")
 
-In that plot, you can see the clearer 'knee' bend, showing the cut-off between empty droplets and cell-containing droplets.
+You can see the clearer 'knee' bend in this significantly larger and cleaner sample, showing the cut-off between empty droplets and cell-containing droplets.
 
-The right hand plots are density plots from the first one, and the thresholds are generated either using [dropletUtils](https://bioconductor.org/packages/release/bioc/html/DropletUtils.html) or by the method described in the discussion mentioned above. We could use any of these thresholds to select cells, assuming that anything with fewer counts is not a valid cell. By default, Alevin does something similar, and we can learn something about that by plotting just the barcodes Alevin retains.
+While we could use any of these calculated thresholds to select cells, there are some more sophisticated methods also available. We will try one called *"emptyDrops"*.
 
-> <hands-on-title>Generate Alevin's barcode QC plot</hands-on-title>
->
-> 1. {% tool [Droplet barcode rank plot](toolshed.g2.bx.psu.edu/repos/ebi-gxa/droplet_barcode_plot/_dropletBarcodePlot/1.6.1+galaxy2) %} with the following parameters:
->    - *"Input MTX-format matrix?"*: `Yes`
->    - *"Matrix-market format matrix file, with cells by column (overrides --barcode-frequencies if supplied)"*: `per-cell gene-count matrix (MTX)`
->    - *"For use with --mtx-matrix: force interpretation of matrix to assume cells are by row, rather than by column (default)"*: `Yes`
->    - *"Label to place in plot title"*: `Barcode rank plot (Alevin-processed)`
->
-> 2. Rename {% icon galaxy-pencil %} the image output `Barcode Plot - Alevin processed barcodes`
-{: .hands_on}
+# emptyDrops
 
-![raw droplet barcode plots - 400k](../../images/scrna-casestudy/wab-alevin-barcodes-400k.png "400k subsample - Alevin processed")
+In experiments with relatively simple characteristics, the 'knee detection' method works relatively well. But some populations (such as our sample!) present difficulties. For instance, sub-populations of small cells may not be distinguished from empty droplets based purely on counts by barcode. Some libraries produce multiple 'knees' for multiple sub-populations. The [emptyDrops](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1662-y) method has become a popular way of dealing with this. emptyDrops still retains barcodes with high counts, but also adds in barcodes that can be statistically distinguished from the ambient profiles, even if total counts are similar.
 
-And the full sample looks like:
+## Reformatting for emptyDrops
 
-![raw droplet barcode plots - total](../../images/scrna-casestudy/wab-alevin-barcodes-total.png "Total sample - 32,579,453 reads - Alevin processed")
+Alevin outputs MTX format. However, emptyDrops runs on SingleCellExperiment (SCE) format. To get there, we will perform the following steps:
 
-And to round this off, here's the lung atlas plot.
+ 1. Swap Cells & Genes orientation
+ 2. Add in gene metadata (gene symbols, mitochondrial information)
+ 3. Convert to a SingleCellExperiment object
 
-![raw droplet barcode plots - total](../../images/scrna-casestudy/wab-alevin-barcodes-lung.png "Pretty data - Alevin processed")
+### Transform matrix
 
-You should see a completely vertical drop-off where Alevin has trunctated the distribution (after excluding any cell barcode that had <10 UMI, Alevin then chose a threshold based off the curve and removed all barcodes with fewer UMIs).
-
-In experiments with relatively simple characteristics, this 'knee detection' method works relatively well. But some populations (such as our sample!) present difficulties. For instance, sub-populations of small cells may not be distinguished from empty droplets based purely on counts by barcode. Some libraries produce multiple 'knees' for multiple sub-populations. The [emptyDrops](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1662-y) method has become a popular way of dealing with this. emptyDrops still retains barcodes with very high counts, but also adds in barcodes that can be statistically distinguished from the ambient profiles, even if total counts are similar. In order to ultimately run emptyDrops (or indeed, whatever tool you like that accomplishes biologically relevant thresholding), we first need to re-run Alevin, but prevent it from applying its own less than ideal thresholds.
-
-To use emptyDrops effectively, we need to go back and re-run Alevin, stopping it from applying it's own thresholds. Click the re-run icon {% icon galaxy-refresh %} on any Alevin output in your history, because almost every parameter is the same as before, except you need to change the following:
-
-
-## Generate an unprocessed matrix in a usable format
-
-> <hands-on-title>Stopping Alevin from thresholding</hands-on-title>
-> 1. {% tool [Alevin](toolshed.g2.bx.psu.edu/repos/bgruening/alevin/alevin/1.10.1+galaxy0) %} (Click re-run on the last Alevin output)
->    - *"Advanced options"*
->    - *"Fraction of cellular barcodes to keep"*: '1' - i.e. keep them all!
->    - *"Minimum frequency for a barcode to be considered"*: '3' - This will only remove cell barcodes with a frequency of less than 3, a low bar to pass but useful way of avoiding processing a bunch of almost certainly empty barcodes
->
-> {% snippet faqs/galaxy/tools_rerun.md %}
-{: .hands_on}
-
-> <question-title></question-title>
->
-> How many cells are in the output now?
->
-> > <solution-title></solution-title>
-> >
-> > 1. `22952` cells are in the quants_mat_rows now! Far more than the Alevin-filtered `2163`. This needs some serious filtering with EmptyDrops!
-> >
-> {: .solution}
->
-{: .question}
-
-Alevin outputs MTX format, which we can pass to the dropletUtils package and run emptyDrops. Unfortunately the matrix is in the wrong orientation for tools expecting files like those produced by 10X software (which dropletUtils does). We need to 'transform' the matrix such that cells are in columns and genes are in rows.
-
-> <warning-title>Be careful!</warning-title>
-> Don't mix up files from the different Alevin runs! Use the later run, which has higher numbers in the history!
-{: .warning}
+First, we need to 'transform' the matrix such that cells are in columns and genes are in rows.
 
 > <hands-on-title>Transform matrix</hands-on-title>
 >
@@ -517,7 +478,7 @@ Inspect {% icon galaxy-eye %} the **Gene Information** object in the history. No
 
 Inspect {% icon galaxy-eye %} your `Annotated Gene Table`. That's more like it! You now have `gene_id`, `gene_name`, and `mito`. Now let's get back to your journey to emptyDrops and sophisticated thresholding of empty droplets!
 
-# emptyDrops
+## Running emptyDrops
 
 emptyDrops {% cite article-emptyDrops %} works with a specific form of R object called a SingleCellExperiment. We need to convert our transformed MTX files into that form, using the DropletUtils Read10x tool:
 
