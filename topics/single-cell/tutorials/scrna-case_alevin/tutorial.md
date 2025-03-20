@@ -553,7 +553,7 @@ The tool suite called Scanpy ({% cite Wolf2018 %}) uses a format called `AnnData
 >    - *"Convert From / To"*: `SingleCellExperiment to AnnData`
 >    - {% icon param-file %} *"Input object in sce,rds,rdata.sce format"*: `Emptied_Object`
 >
-> If the dataset does not show up in the corresponding input field or displays as 'unavailable', don't worry - try dragging the dataset from the history panel and dropping it into the input field. If this still doesn't work, then you can change the datatype to rdata.sce.
+> If the dataset does not show up in the corresponding input field or displays as 'unavailable', don't worry - try dragging the dataset from the history panel and dropping it into the input field. If this still doesn't work, then you can change the datatype to `rdata.sce`.
 >
 > {% snippet faqs/galaxy/datasets_change_datatype.md %}
 >
@@ -563,7 +563,7 @@ Last but not least, after all these data conversions, your AnnData object is mis
 
 > <hands-on-title>Inspecting AnnData Objects</hands-on-title>
 >
-> 1. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1) %} with the following parameters:
+> 1. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"Annotated data matrix"*: `output_anndata` (output of **SCEasy Converter** {% icon tool %})
 >    - *"What to inspect?"*: `Key-indexed annotation of variables/features (var)`
 {: .hands_on}
@@ -572,7 +572,7 @@ If you {% icon galaxy-eye %} examine the output {% icon param-file %}, you will 
 
 > <question-title></question-title>
 >
-> What is this 'True/False' referring to? (Hint: Consider what gene information you have added!)
+> What are this "True/False" referring to? (Hint: Consider what gene information you have added!)
 >
 > > <solution-title></solution-title>
 > >
