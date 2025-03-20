@@ -1435,6 +1435,7 @@ kostrykin:
     elixir_node: de
     twitter: l_kostrykin
     linkedin: kostrykin
+    bluesky: kostrykin.bsky.social
     affiliations:
       - elixir-europe
       - deNBI
@@ -2834,7 +2835,7 @@ wm75:
     matrix: 'wm75:matrix.org'
     joined: 2017-09
     elixir_node: de
-    fediverse: https://scholar.social/@zerodivision
+    fediverse: https://fediscience.org/@zerodivision
     fediverse_flavor: mastodon
     affiliations:
       - by-covid
