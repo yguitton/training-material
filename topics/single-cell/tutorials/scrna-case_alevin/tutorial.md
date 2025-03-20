@@ -115,6 +115,16 @@ This tutorial will take you from raw FASTQ files to a cell x gene data matrix in
 >
 {: .agenda}
 
+# Important tips for easier analysis
+
+{% snippet faqs/galaxy/tutorial_mode.md %}
+
+{% snippet topics/single-cell/faqs/single_cell_omics.md %}
+
+{% snippet faqs/galaxy/analysis_troubleshooting.md sc=true %}
+
+{% snippet faqs/gtn/gtn_example_histories.md %}
+
 # Generating a matrix
 
 In this section, we will show you the principles of the initial phase of single-cell RNA-seq analysis: generating expression measures in a matrix. We'll concentrate on droplet-based (rather than plate-based) methodology, since this is the process with most differences with respect to conventional approaches developed for bulk RNA-seq.
@@ -214,20 +224,7 @@ Additionally, to map your reads, we have given you a transcriptome to align agai
 > {: .solution}
 {: .question}
 
-# Important tips for easier analysis
-
-{% snippet faqs/galaxy/tutorial_mode.md %}
-
-{% snippet topics/single-cell/faqs/single_cell_omics.md %}
-
-{% snippet faqs/galaxy/analysis_troubleshooting.md sc=true %}
-
-{% snippet faqs/gtn/gtn_example_histories.md %}
-
-# From transcriptomes and read files to a matrix!
-
 Gene-level, rather than transcript-level, quantification is standard in scRNA-seq, which means that the expression level of alternatively spliced RNA molecules are combined to create gene-level values. Droplet-based scRNA-seq techniques only sample one end each transcript, so lack the full-molecule coverage that would be required to accurately quantify different transcript isoforms.
-
 
 ## Generate a transcript to gene map
 
@@ -602,7 +599,7 @@ You can also run this entire tutorial via a {% icon galaxy-workflows-activity %}
 
 It may be that you want to combine this object with others like it, for instance, maybe you ran 5 samples, and you are starting with 10 FASTQ files... To do this, you can run that same Workflow on all your files! In fact, that's what we do to set up the datasets for the next tutorial!
 
-- {% for h in page.full_sample_histories: %}
+- {% for h in page.full_sample_histories %}
     [ {{h.label}} ]( {{h.history}} )
   {% endfor %}
 
