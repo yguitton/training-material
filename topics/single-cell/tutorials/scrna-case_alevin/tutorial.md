@@ -222,6 +222,8 @@ Additionally, to map your reads, we have given you a transcriptome to align agai
 
 {% snippet faqs/galaxy/analysis_troubleshooting.md sc=true %}
 
+{% snippet faqs/gtn/gtn_example_histories.md %}
+
 # From transcriptomes and read files to a matrix!
 
 Gene-level, rather than transcript-level, quantification is standard in scRNA-seq, which means that the expression level of alternatively spliced RNA molecules are combined to create gene-level values. Droplet-based scRNA-seq techniques only sample one end each transcript, so lack the full-molecule coverage that would be required to accurately quantify different transcript isoforms.
