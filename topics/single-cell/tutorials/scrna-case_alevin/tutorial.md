@@ -467,9 +467,9 @@ Inspect {% icon galaxy-eye %} the {% icon param-file %} `Gene_Information` objec
 > <hands-on-title>Combine MTX Gene Table with Gene Information</hands-on-title>
 >
 > 1. {% tool [Join two Datasets](join1) %} with the following parameters:
->    - *"Join"*: `Gene Table`
+>    - *"Join"*: `Gene_table`
 >    - *"Using column"*: `Column: 1`
->    - *"with"*: `Gene Information`
+>    - *"with"*: `Gene_Information`
 >    - *"and column"*: `Column: 1`
 >    - *"Keep lines of first input that do not join with second input"*: `Yes`
 >    - *"Keep lines of first input that are incomplete"*: `Yes`
@@ -485,32 +485,34 @@ Inspect {% icon galaxy-eye %} the {% icon param-file %} `Gene_Information` objec
 >    - *"Delimited by"*: `Tab`
 >    - *"From"*: output of **Join two Datasets** {% icon tool %}
 >
-> 3. Rename output `Annotated Gene Table`
+> 3. Rename output `Annotated_Gene_Table`
 {: .hands_on}
 
-Inspect {% icon galaxy-eye %} your `Annotated Gene Table`. That's more like it! You now have `gene_id`, `gene_name`, and `mito`. Now let's get back to your journey to emptyDrops and sophisticated thresholding of empty droplets!
+Inspect {% icon galaxy-eye %} your `Annotated_Gene_Table`. That's more like it! You now have `gene_id`, `gene_name`, and `mito` information (just without a header to label them). Now let's get back to your journey to emptyDrops and sophisticated thresholding of empty droplets!
 
-## Running emptyDrops
+## Convert to SCE format
 
-emptyDrops {% cite article-emptyDrops %} works with a specific form of R object called a SingleCellExperiment. We need to convert our transformed MTX files into that form, using the DropletUtils Read10x tool:
+The tool emptyDrops {% cite article-emptyDrops %} works with a specific form of R object called a *"SingleCellExperiment"*. We need to convert our transformed MTX files into that form, using the DropletUtils Read10x tool:
 
 > <hands-on-title>Converting to SingleCellExperiment format</hands-on-title>
 >
 > 1. {% tool [DropletUtils Read10x](toolshed.g2.bx.psu.edu/repos/ebi-gxa/dropletutils_read_10x/dropletutils_read_10x/1.0.4+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Expression matrix in sparse matrix format (.mtx)"*: `Matrix table`
->    - {% icon param-file %} *"Gene Table"*: `Annotated Gene Table`
->    - {% icon param-file %} *"Barcode/cell table"*: `Barcode table`
->    - *"Should metadata file be added?"*: `No`
+>    - {% icon param-file %} *"Expression matrix in sparse matrix format (.mtx)"*: `Matrix_table`
+>    - {% icon param-file %} *"Gene Table"*: `Annotated_Gene_Table`
+>    - {% icon param-file %} *"Barcode/cell table"*: `Barcode_table`
+>    - *"Should metadata file be added?"*: {% icon galaxy-toggle %} `No`
 >
-> 2. Rename {% icon galaxy-pencil %} output: `SCE Object`
+> 2. Rename {% icon galaxy-pencil %} output: `SCE_Object`
 {: .hands_on}
 
 Fantastic! Now that our matrix is combined into an object, specifically the SingleCellExperiment format, we can now run emptyDrops! Let's get rid of those background droplets containing no cells!
 
+## Run emptyDrops
+
 > <hands-on-title>Emptydrops</hands-on-title>
 >
 > 1. {% tool [DropletUtils emptyDrops](toolshed.g2.bx.psu.edu/repos/ebi-gxa/dropletutils_empty_drops/dropletutils_empty_drops/1.0.4+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"SingleCellExperiment rdata object"*: `SCE Object`
+>    - {% icon param-file %} *"SingleCellExperiment rdata object"*: `SCE_Object`
 >    - *"Should barcodes estimated to have no cells be removed from the output object?"*: `Yes`
 >
 > 2. Rename {% icon galaxy-pencil %} `serialised SingleCellExperiment` output as `Emptied-Object`
