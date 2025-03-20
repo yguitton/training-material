@@ -86,6 +86,7 @@ This tutorial will take you from raw FASTQ files to a cell x gene data matrix in
 
 > <warning-title>For the bench scientists and biologists!</warning-title>
 > If you're not used to computing, this tutorial will *not* feel intuitive. It's lots of heavy (and necessary) computational steps with little visible reward. You will still absolutely be able to complete it, but it won't make that much sense.
+>
 > - **That is ok!**
 >
 > Conceptually, the [Filter, plot & explore](% link /single-cell/tutorials/scrna-case_basic-pipeline/tutorial.md %}) tutorial (which comes later) is when you really get to generate fun plots and interpret them scientifically. However, you can't do that until you have pre-processed your data. Some learners like doing that tutorial first, them coming back to learn how to build their input dataset here. So:
@@ -280,27 +281,24 @@ We can now run Alevin! However, Alevin will inherently do some of its own filter
 > <hands-on-title>Running Alevin</hands-on-title>
 >
 > 1. {% tool [Alevin](toolshed.g2.bx.psu.edu/repos/bgruening/alevin/alevin/1.10.1+galaxy2) %}
->
 >    - *"Select a reference transcriptome from your history or use a built-in index?"*: `Use one from the history`
 >       - You are going to generate the binary index using your filtered FASTA!
->    - {% icon param-file %} *"Transcripts FASTA file"*: `Filtered_FASTA`
+>        - In *"Salmon index"*:
+>            - {% icon param-file %} *"Transcripts FASTA file"*: `Filtered_FASTA`
+>            - {% icon param-file %} *"Reference genome"*: `Mus_musculus.GRCm38cdna.all.fa` (Input dataset)
 >    - *"Single or paired-end reads?"*: `Paired-end`
->    - {% icon param-file %} *"Mate pair 1"*: `N701-Read1`
->    - {% icon param-file %} *"Mate pair 2"*: `N701-Read2`
+>        - {% icon param-file %} *"Mate pair 1"*: `N701-Read1`
+>        - {% icon param-file %} *"Mate pair 2"*: `N701-Read2`
 >    - *"Specify the strandedness of the reads"*: `Infer automatically (A)`
 >    - *"Type of single-cell protocol"*: `DropSeq Single Cell protocol`
 >    - {% icon param-file %} *"Transcript to gene map file"*: `Map`
 >    - In *"Extra output files"*:
 >        - {% icon param-check %} `Salmon Quant log file`
 >        - {% icon param-check %} `Features used by the CB classification and their counts at each cell level (--dumpFeatures)`
->
->        - Of course you are welcome to select more options and explore the output files ({% icon warning %} warning: *"Per cell level parsimonious Umi graph (--dumpUmiGraph)"* will generate over 2 thousand single files), but for this tutorial you will only need to select those specified.
 >    - In *"Advanced options"*:
->        - *"Dump cell v transcripts count matrix in MTX format"*: {% icon galaxy-toggle%} `Yes`
->    - In *"Advanced options"*:
->        - *" Dump cell v transcripts count matrix in MTX format"*: `Yes`
+>        - *" Dump cell v transcripts count matrix in MTX format"*: {% icon galaxy-toggle %} `Yes`
 >        - *"Fraction of cellular barcodes to keep"*: `1.0` (this prevents Alevin from adding extra thresholds!)
->        - *"Minimum frequency for a barcode to be considered"*: `3`
+>        - *"Minimum frequency for a barcode to be considered"*: `3` (This is normally set at about 10, but as we've downsampled these datasets, setting it to 10 would pretty much delete them!)
 {: .hands_on}
 
 > <tip-title>What if I'm running a 10x sample?</tip-title>
