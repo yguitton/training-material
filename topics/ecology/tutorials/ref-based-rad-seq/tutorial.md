@@ -19,7 +19,7 @@ objectives:
   - "Calculate population genomics statistics from RAD sequencing data"
 time_estimation: "8h"
 key_points:
-contributors:
+contributions:
   authorship:
   - yvanlebras
   editing:
