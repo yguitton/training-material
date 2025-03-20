@@ -25,7 +25,15 @@ answer_histories:
 
 input_histories:
 - label: UseGalaxy.eu
-  history: https://humancellatlas.usegalaxy.eu/u/wendi.bacon.training/h/cs1pre-processing-with-alevin---input-1
+  history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/cs1pre-processing-with-alevin---input-1
+
+full_sample_histories:
+- label: UseGalaxy.eu_Whole_Samples-Raw-Processed
+  history:
+  date: 2025-03-20
+- label: UseGalaxy.eu_Whole_Samples-Raw
+  history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/locked-whole-samples-generating-a-single-cell-matrix-using-alevin
+
 
 objectives:
 - Generate a cellxgene matrix for droplet-based single-cell RNA sequencing data
@@ -592,13 +600,18 @@ You can also run this entire tutorial via a {% icon galaxy-workflows-activity %}
 
 It may be that you want to combine this object with others like it, for instance, maybe you ran 5 samples, and you are starting with 10 FASTQ files... To do this, you can run that same Workflow on all your files! In fact, that's what we do to set up the datasets for the next tutorial!
 
+- {% for h in page.full_sample_histories: %}
+    [ {{h.label}} ]( {{h.history}} )
+  {% endfor %}
+
+
 # Conclusion
 
 We have:
 
  * Examined raw read data, annotations and necessary input files for quantification.
- * Run Alevin in two different parameterisations, both allowing Alevin to make its own calls on what constitutes empty droplets, and applying emptyDrops instead.
+ * Run Alevin and applied emptyDrops instead of Alevin's inbuilt thresholds.
  * Deployed barcode rank plots as a way of quickly assessing the signal present in droplet datasets.
- * Applied the necessary conversion to pass these data to downstream processes.
+ * Converted these datasets to enable downstream analysis.
 
 {% snippet topics/single-cell/faqs/user_community_join.md %}
