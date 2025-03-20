@@ -36,7 +36,7 @@ full_sample_histories:
 
 
 objectives:
-- Generate a cellxgene matrix for droplet-based single-cell RNA sequencing data
+- Generate a cell by gene matrix for droplet-based single-cell RNA sequencing data
 - Interpret quality control (QC) plots to make informed decisions on cell thresholds
 - Find relevant information in GTF files for the experiment, and add
   this information into the metadata of the data matrix
@@ -454,9 +454,11 @@ We're now going to re-run {% icon galaxy-refresh %} the tool that extracts infor
 >    - *"Flag mitochondrial features?"*: {% icon galaxy-toggle %} `Yes` - note, this will auto-fill a bunch of acronyms for searching in the GTF for mitochondrial associated genes. This is good!
 >    - *"Filter the cDNA file to match the annotations?"*: {% icon galaxy-toggle %} `No` - we don't need to, we're done with the FASTA!
 >
+> 2. Convert the {% icon param-file %} annotation table (TSV) output to `tabular`
+>
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
 >
-> 3. Rename {% icon galaxy-pencil %} the annotation table to `Gene_Information`
+> 3. Rename {% icon galaxy-pencil %} the tabular annotation table to `Gene_Information`
 >
 {: .hands_on}
 
@@ -536,13 +538,13 @@ Fantastic! Now that our matrix is combined into an object, specifically the Sing
 
 We will nevertheless proceed with your majestic annotated expression matrix of 38 cells, ready to go for further processing and analysis! However, the next tutorials we will link to use a tool suite called Scanpy {% cite Wolf2018 %}. You need to convert this SingleCellExperiment object into a format called `annData`, which is a variant of a file format called `hdf5`.
 
-## Convert to AnnData object
+# Convert to AnnData object
 
 > <hands-on-title>Converting to AnnData format</hands-on-title>
 >
 > 1. {% tool [SCEasy Converter](toolshed.g2.bx.psu.edu/repos/iuc/sceasy_convert/sceasy_convert/0.0.7+galaxy2) %} with the following parameters:
 >    - *"Convert From / To"*: `SingleCellExperiment to AnnData`
->    - {% icon param-file %} *"Input object in sce,rds,rdata.sce format"*: `Emptied-Object`
+>    - {% icon param-file %} *"Input object in sce,rds,rdata.sce format"*: `Emptied_Object`
 >
 > If the dataset does not show up in the corresponding input field or displays as 'unavailable', don't worry - try dragging the dataset from the history panel and dropping it into the input field. If this still doesn't work, then you can change the datatype to rdata.sce.
 >
@@ -555,7 +557,7 @@ Last but not least, after all these data conversions, your AnnData object is mis
 > <hands-on-title>Inspecting AnnData Objects</hands-on-title>
 >
 > 1. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
+>    - {% icon param-file %} *"Annotated data matrix"*: `output_anndata` (output of **SCEasy Converter** {% icon tool %})
 >    - *"What to inspect?"*: `Key-indexed annotation of variables/features (var)`
 {: .hands_on}
 
@@ -572,6 +574,8 @@ If you {% icon galaxy-eye %} examine the output {% icon param-file %}, you will 
 > {: .solution}
 >
 {: .question}
+
+## Flag mitochondrial genes
 
 > <hands-on-title> Label Mito Metadata</hands-on-title>
 >
