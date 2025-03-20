@@ -87,13 +87,13 @@ This tutorial will take you from raw FASTQ files to a cell x gene data matrix in
 > <warning-title>For the bench scientists and biologists!</warning-title>
 > If you're not used to computing, this tutorial will *not* feel intuitive. It's lots of heavy (and necessary) computational steps with little visible reward. You will still absolutely be able to complete it, but it won't make that much sense.
 >
-> - **That is ok!**
+> **That is ok!**
 >
-> Conceptually, the [Filter, plot & explore](% link /single-cell/tutorials/scrna-case_basic-pipeline/tutorial.md %}) tutorial (which comes later) is when you really get to generate fun plots and interpret them scientifically. However, you can't do that until you have pre-processed your data. Some learners like doing that tutorial first, them coming back to learn how to build their input dataset here. So:
+> Conceptually, the {% icon level %} [Filter, plot & explore](% link /single-cell/tutorials/scrna-case_basic-pipeline/tutorial.md %}) tutorial (which comes later) is when you really get to generate fun plots and interpret them scientifically. However, you can't do that until you have pre-processed your data. Some learners like doing that tutorial first, them coming back to learn how to build their input dataset here. So:
 >
 > - If you're in a *Live course*, follow the path of training materials
 > - If you're learning on your own, either get through these pre-processing steps with the belief that plots will get more fun later, or:
-> - Try out the Filter, plot & explore tutorial *first*, then swing back and do this one.
+> - Try out the {% icon level %} [Filter, plot & explore](% link /single-cell/tutorials/scrna-case_basic-pipeline/tutorial.md %}) tutorial *first*, then swing back and do this one.
 > It's up to you!
 >
 {: .warning}
@@ -214,9 +214,12 @@ Additionally, to map your reads, we have given you a transcriptome to align agai
 
 {% snippet faqs/galaxy/analysis_troubleshooting.md sc=true %}
 
-## Generate a transcript to gene map
+# From transcriptomes and read files to a matrix!
 
 Gene-level, rather than transcript-level, quantification is standard in scRNA-seq, which means that the expression level of alternatively spliced RNA molecules are combined to create gene-level values. Droplet-based scRNA-seq techniques only sample one end each transcript, so lack the full-molecule coverage that would be required to accurately quantify different transcript isoforms.
+
+
+## Generate a transcript to gene map
 
 To generate gene-level quantifications based on transcriptome quantification, Alevin and similar tools require a conversion between transcript and gene identifiers. We can derive a transcript-gene conversion from the gene annotations available in genome resources such as Ensembl. The transcripts in such a list need to match the ones we will use later to build a binary transcriptome index. If you were using spike-ins, you'd need to add these to the transcriptome and the transcript-gene mapping.
 
@@ -256,7 +259,7 @@ It's now time to *parse* (computing term for separating out important informatio
 >
 > 2. Rename {% icon galaxy-pencil %} the annotation table to `Map`
 >
-> 3. Rename {% icon galaxy-pencil %} the uncompressed filtered FASTA file to `Filtered_FASTA`
+> 3. Rename {% icon galaxy-pencil %} the filtered FASTA file to `Filtered_FASTA`
 {: .hands_on}
 
 ## Generate a transcriptome index & quantify!
@@ -326,7 +329,7 @@ This tool will take a while to run. Alevin produces many file outputs, not all o
 
 > <question-title></question-title>
 >
-> After you've run Alevin, {% icon galaxy-eye %} look through all the different files. Can you find:
+> After you've run Alevin, {% icon galaxy-eye %} look through all the different output files. Can you find:
 > 1. The Mapping Rate?
 > 2. How many cells are present in the matrix output?
 >
