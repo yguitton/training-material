@@ -150,7 +150,6 @@ The sample data is a subset of the reads from each of the seven samples in a mou
 > 2. Import the different AnnData files and the experimental design table from [Zenodo](https://zenodo.org/records/10852529).
 >
 >    ```
->    {{ page.zenodo_link }}/files/Experimental_Design.tabular.tabular
 >    {{ page.zenodo_link }}/files/N701-400k-AnnData.h5ad
 >    {{ page.zenodo_link }}/files/N702-400k-AnnData.h5ad
 >    {{ page.zenodo_link }}/files/N703-400k-AnnData.h5ad
@@ -158,6 +157,7 @@ The sample data is a subset of the reads from each of the seven samples in a mou
 >    {{ page.zenodo_link }}/files/N705-400k-AnnData.h5ad
 >    {{ page.zenodo_link }}/files/N706-400k-AnnData.h5ad
 >    {{ page.zenodo_link }}/files/N707-400k-AnnData.h5ad
+>    {{ page.zenodo_link }}/files/Experimental_Design.tabular.tabular
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
@@ -181,7 +181,7 @@ The sample data is a subset of the reads from each of the seven samples in a mou
 
 {% snippet faqs/galaxy/analysis_troubleshooting.md sc=true %}
 
-## Concatenating objects
+# Concatenating objects
 
 > <hands-on-title>Concatenating AnnData objects</hands-on-title>
 >
@@ -234,7 +234,7 @@ Now have a look at the three {% icon tool %} **Inspect AnnData** outputs.
 >
 {: .question}
 
-# Adding batch metadata
+# Adding cell metadata
 
 I set up the example history with the earliest indices at the bottom.
 
@@ -361,7 +361,7 @@ Woohoo! We're there! You can run an {% tool [Inspect AnnData](toolshed.g2.bx.psu
 
 Huzzah! We are JUST about there. However, while we've been focussing on our cell metadata (sample, batch, genotype, etc.) to relabel the 'observations' in our object...
 
-# Mitochondrial reads
+# Gene metadata: Mitochondrial content
 
 Do you remember when we mentioned mitochondria early on in this tutorial? And how often in single cell samples, mitochondrial RNA is often an indicator of stress during dissociation? We should probably do something with our column of true/false in the gene annotation that tells us information about the cells. You will need to do this whether you have combined FASTQ files or are analysing just one.
 
