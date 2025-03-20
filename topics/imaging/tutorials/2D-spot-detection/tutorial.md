@@ -96,8 +96,7 @@ When inspecting the image visually, we get the impression that the image is enti
 
 It's not the best quality for a first visual inspection!
 
-
-As described in the [Galaxy Imaging Introduction Tutorial](https://training.galaxyproject.org/training-material/topics/imaging/tutorials/imaging-introduction/tutorial.html), the original image is 16-bit and the intensity values are spread
+As described in the [{% link topics/imaging/tutorials/imaging-introduction/tutorial.md %} Galaxy Imaging Introduction Tutorial], the original image is 16-bit and the intensity values are spread
 over a very small fraction of the range of intensity values that can be represented using 16 bits.
 
 Therefore, for improved visibility the intensity histogram of the image can be normalized first.
