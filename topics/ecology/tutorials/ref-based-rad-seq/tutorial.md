@@ -20,7 +20,10 @@ objectives:
 time_estimation: "8h"
 key_points:
 contributors:
+  authorship:
   - yvanlebras
+  editing:
+  - VerenaMoo
 
 subtopic: ecologyanalysis
 ---
