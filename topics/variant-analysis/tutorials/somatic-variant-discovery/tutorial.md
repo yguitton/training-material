@@ -16,12 +16,15 @@ time_estimation: 3H
 key_points:
 - Follow best practices for read mapping, quality control and mapped reads postprocessing
   to minimize false-positive hCNVs.
-contributors:
-- khaled196
-- kkamieniecka
-- wm75
-- d-salgado
-- poterlowicz-lab
+contributions:
+  authorship:
+  - khaled196
+  - kkamieniecka
+  - wm75
+  - d-salgado
+  - poterlowicz-lab
+  editing:
+  - VerenaMoo
 
 ---
 
