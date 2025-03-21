@@ -69,7 +69,7 @@ We will start by loading the example dataset which will be used for the tutorial
 
 # Quality Control
 
-The first step in any analysis should always be quality control. We will use the Falco tool to asses the quality of our reads and determine if we need to perform any data cleaning before proceeding with our analysis.
+The first step in any analysis should always be quality control. We will use the [Falco](https://falco.readthedocs.io/en/latest/) tool to asses the quality of our reads and determine if we need to perform any data cleaning before proceeding with our analysis. Falco is an efficiency optimized rewrite of [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
 
 > <hands-on-title>Quality Control</hands-on-title>
 >
