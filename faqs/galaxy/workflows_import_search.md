@@ -4,6 +4,7 @@ area: workflows
 box_type: tip
 layout: faq
 contributors: [bebatut,wm75]
+redirect_from: [/faqs/galaxy/workflows_import_from_workflowhub.md]
 ---
 
 1. Click on {% icon galaxy-workflows-activity %} *Workflows* in the Galaxy activity bar (on the left side of the screen, or in the top menu bar of older Galaxy instances). You will see a list of all your workflows
