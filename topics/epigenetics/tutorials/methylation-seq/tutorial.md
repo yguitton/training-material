@@ -3,6 +3,10 @@ layout: tutorial_hands_on
 
 title: "DNA Methylation data analysis"
 zenodo_link: "https://zenodo.org/record/557099"
+answer_histories:
+  - label: "DNA Methylation data analysis"
+    history: https://usegalaxy.eu/u/videmp/h/dna-methylation-data-analysis-gtn-answer
+    date: 2025-03-21
 edam_ontology: ["topic_3173"]
 questions:
   - "What is methylation and why it cannot be recognised by a normal NGS procedure?"
@@ -276,7 +280,7 @@ The first step in any analysis should always be quality control. We will use the
 >
 > 8. {% tool [plotProfile](toolshed.g2.bx.psu.edu/repos/bgruening/deeptools_plot_profile/deeptools_plot_profile/3.5.4+galaxy0) %} with the following parameters:
 >    - *"Matrix file from the computeMatrix tool"*: `Matrix` (output of previous **computeMatrix** {% icon tool %})
->    - in *"Show advanced options"*
+>    - *"Show advanced options"*: `Yes`
 >       - *"Make one plot per group of regions"*: {% icon param-toggle %} `Yes`
 >
 > The output should look like this:
