@@ -12,7 +12,7 @@ questions:
 
 answer_histories:
 - label: UseGalaxy.eu
-  history:
+  history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/locked-generating-a-single-cell-matrix-using-alevin-answer-key
   date: 2025-03-20
 - label: UseGalaxy.eu-ARCHIVED3
   history: https://usegalaxy.eu/u/j.jakiela/h/generating-a-single-cell-matrix-alevin
@@ -28,12 +28,19 @@ input_histories:
 - label: UseGalaxy.eu
   history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/cs1pre-processing-with-alevin---input-1
 
-full_sample_histories:
-- label: UseGalaxy.eu_Whole_Samples-Raw-Processed
+example_histories:
+- label: UseGalaxy.eu_Whole_All-7-Separate_AnnData
   history:
   date: 2025-03-20
-- label: UseGalaxy.eu_Whole_Samples-Raw
+- label: UseGalaxy.eu_Whole_All-7-FASTQ
   history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/locked-whole-samples-generating-a-single-cell-matrix-using-alevin
+- label: UseGalaxy.eu_Downsampled_All-7-FASTQ
+  history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/alevin-tutorial---all-samples---400k
+  date: 2025-03-20
+- label: UseGalaxy.eu_Downsampled_All-7-FASTQ
+  history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/alevin-tutorial---all-samples---400k
+  date: 2025-03-20
+
 
 
 objectives:
@@ -296,7 +303,6 @@ We can now run Alevin! However, Alevin will inherently do some of its own filter
 >       - You are going to generate the binary index using your filtered FASTA!
 >        - In *"Salmon index"*:
 >            - {% icon param-file %} *"Transcripts FASTA file"*: `Filtered_FASTA`
->            - {% icon param-file %} *"Reference genome"*: `Mus_musculus.GRCm38cdna.all.fa` (Input dataset)
 >    - *"Single or paired-end reads?"*: `Paired-end`
 >        - {% icon param-file %} *"Mate pair 1"*: `N701-Read1`
 >        - {% icon param-file %} *"Mate pair 2"*: `N701-Read2`
@@ -624,14 +630,15 @@ You might find the {% icon galaxy-history-answer %} *Answer Key Histories* helpf
 <!-- Only currently want to iterate through the first history, but might want others in the future (different servers!) -->
 
 You can also run this entire tutorial via a {% icon galaxy-workflows-activity %} *Workflow*, after performing the **Get data** step initially.
-
- - [Tutorial Workflow]({% link workflows/index.md %})
+ - [Tutorial Workflow]({% link ../workflows/ %})
 
 <iframe title="Galaxy Workflow Embed" style="width: 100%; height: 700px; border: none;" src="https://singlecell.usegalaxy.eu/published/workflow?id=9a9bbd8046da7b19&embed=true&buttons=true&about=false&heading=false&minimap=true&zoom_controls=true&initialX=0&initialY=0&zoom=0.33"></iframe>
 
-It may be that you want to combine this object with others like it, for instance, maybe you ran 5 samples, and you are starting with 10 FASTQ files... To do this, you can run that same Workflow on all your files! In fact, that's what we do to set up the datasets for the next tutorial!
+It may be that you want to combine this object with others like it, for instance, maybe you ran 5 samples, and you are starting with 10 FASTQ files... To do this, you can run that same Workflow on all your files! In fact, that's what we do to set up the datasets for the next tutorial. You can explore applying this tutorial to all seven samples in this dataset, either in the downsampled or whole state.
 
-- {% for h in page.full_sample_histories %}
+- {% icon warning %} Remember that *if* you are in a course, time for exploring these histories will not be factored into the schedule. Explore these outside of course time!
+
+- {% for h in page.example_histories %}
     [ {{h.label}} ]( {{h.history}} )
   {% endfor %}
 
