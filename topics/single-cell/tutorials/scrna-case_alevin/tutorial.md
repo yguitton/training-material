@@ -29,16 +29,16 @@ input_histories:
   history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/cs1pre-processing-with-alevin---input-1
 
 example_histories:
-- label: UseGalaxy.eu_Whole_All-7-Separate_AnnData
-  history:
+- label: UseGalaxy.eu_Whole_All-7xAnnData
+  history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/locked-whole-samples-generating-a-single-cell-matrix-using-alevin-answer-key
   date: 2025-03-20
 - label: UseGalaxy.eu_Whole_All-7-FASTQ
-  history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/locked-whole-samples-generating-a-single-cell-matrix-using-alevin
+  history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/locked-whole-samples-generating-a-single-cell-matrix-using-alevin-input
 - label: UseGalaxy.eu_Downsampled_All-7-FASTQ
   history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/alevin-tutorial---all-samples---400k
   date: 2025-03-20
-- label: UseGalaxy.eu_Downsampled_All-7-FASTQ
-  history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/alevin-tutorial---all-samples---400k
+- label: UseGalaxy.eu_Downsampled_Allx7-AnnData
+  history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/generating-a-single-cell-matrix-using-alevin-all-downsample-fastq-processed-to-anndata
   date: 2025-03-20
 
 downsample_histories:
