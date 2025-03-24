@@ -12,8 +12,8 @@ objectives:
 - Understand the role of TAPs
 - Learn how to identify TAPs from a given proteome using TAPScan
 - Extract FASTA sequences using sequence ID/header
-- Perform sequence alignment and construct phylogenetic tree for TAPs
-- Interpret evolutionary relatationship among TAPs
+- Perform sequence alignment using MAFFT
+- Construct phylogenetic tree for TAPs
 time_estimation: 2H
 key_points:
 - TAPScan v4 is a comprehensive and highly reliable tool for genome-wide TAP annotation via domain profiles
@@ -126,7 +126,6 @@ Now that our dataset collection is ready, we can run [TAPScan Classify](https://
 >    - *"Output the HMMer domain hits table?"*: `Yes`
 >    {: .comment}
 >
->
 {: .hands_on}
 
 TAPScan Classify provides the user with three different output files. Each output file is tab-separated.
@@ -148,12 +147,11 @@ TAPScan Classify provides the user with three different output files. Each outpu
 >   2. 675, You can find this number by clicking on the eye button for Galaxy dataset output 2 for ARATH.
 > > 3. Output 3 contains information about subfamilies with an additional column that provides more details beyond what is included in Output 1.
 > >
-> >
 > {: .solution}
 >
 {: .question}
 
-Now that we have the output from TAPScan Classify, we can filter the results by selecting a TAP family so that we can run phylogenetic analysis on that. To demonstrate, we chose the Aux/IAA TAP family. Aux/IAA proteins function as transcriptional repressors (TRs) in the auxin signaling pathway. They inhibit the expression of auxin-responsive genes by dimerizing with auxin response factor (ARF) transcriptional activators. This repression prevents ARFs from activating their target genes, thereby controlling auxin-regulated processes such as cell division, elongation, and differentiation ({% cite Tiwari2004 %})
+Now that we have the output from TAPScan Classify, we can filter the results by selecting a TAP family so that we can run phylogenetic analysis on that. To demonstrate, we chose the Aux/IAA TAP family. A brief overview of this TAP family: Aux/IAA proteins function as transcriptional repressors (TRs) in the auxin signaling pathway. They inhibit the expression of auxin-responsive genes by dimerizing with auxin response factor (ARF) transcriptional activators. This repression prevents ARFs from activating their target genes, thereby controlling auxin-regulated processes such as cell division, elongation, and differentiation ({% cite Tiwari2004 %})
 
 In order to filter the TAPScan output, we need to first filter either Output 1 or Output 3 by using the Filter tool. This will allow us to select only the entries corresponding to Aux/IAA TAP family.
 
