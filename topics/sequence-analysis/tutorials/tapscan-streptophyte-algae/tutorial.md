@@ -111,7 +111,7 @@ In order to detect TAPs from the given proteome(s), each sequence out of a speci
 
 Afterwards, [TAPScan Classify](https://github.com/Rensing-Lab/TAPscan-classify) applies specialized rules to assign the protein sequences, scanned for 137 different TAP families, ensuring accurate family assignment using GA-thresholds and coverage values.
 
-## TAPScan Classify
+## Perform TAPScan Classify
 
 Now that our dataset collection is ready, we can run [TAPScan Classify](https://github.com/Rensing-Lab/TAPscan-classify) to detect TAPs in all species.
 
@@ -153,6 +153,10 @@ TAPScan Classify provides the user with three different output files. Each outpu
 >
 {: .question}
 
+Now that we have the output from TAPScan Classify, we can filter the results by selecting a TAP family so that we can run phylogenetic analysis on that. To demonstrate, we chose the Aux/IAA TAP family. Aux/IAA proteins function as transcriptional repressors (TRs) in the auxin signaling pathway. They inhibit the expression of auxin-responsive genes by dimerizing with auxin response factor (ARF) transcriptional activators. This repression prevents ARFs from activating their target genes, thereby controlling auxin-regulated processes such as cell division, elongation, and differentiation ({% cite Tiwari2004 %})
+
+In order to filter the TAPScan output, we need to first filter either Output 1 or Output 3 by using the Filter tool. This will allow us to select only the entries corresponding to Aux/IAA TAP family.
+
 > <hands-on-title> Filter the TAPScan output Based on the Column  </hands-on-title>
 >
 > 1. {% tool [Filter](Filter1) %} with the following parameters:
@@ -176,33 +180,24 @@ TAPScan Classify provides the user with three different output files. Each outpu
 >
 {: .hands_on}
 
+Next, we will cut the first column to retain only the sequence IDs. Then, we will remove the header line to ensure a clean list of sequence identifiers for further analysis.
 
-> <hands-on-title> Cut the column </hands-on-title>
+> <hands-on-title> Cut and Remove Header from Sequence IDs </hands-on-title>
 >
 > 1. {% tool [Cut](Cut1) %} with the following parameters:
 >    - *"Cut columns"*: `c1`
 >    - {% icon param-file %} *"From"*: `out_file1` (output of **Filter** {% icon tool %})
 >
->    > <comment-title> short description </comment-title>
->    >
->    > We need to extract the column that contains the sequence ID, which will be used to extract the FASTA sequences in further analysis
->    {: .comment}
 >
-{: .hands_on}
-
-Before moving to the step for extracting the FASTA sequences, we need to remove the header line.
-
-> <hands-on-title> Remove header line </hands-on-title>
->
-> 1. {% tool [Remove beginning](Remove beginning1) %} with the following parameters:
+> 2. {% tool [Remove beginning](Remove beginning1) %} with the following parameters:
 >
 >    - *"Remove first\*"*: `1`
 >    - {% icon param-file %} *"from"*: `out_file1` (output of **Cut** {% icon tool %})
 >
->
 {: .hands_on}
 
 
+Next, we will extract the FASTA sequences corresponding to the TAP family by filtering based on the list of sequence IDs generated in previous step.
 
 ## Extract the sequences for TAP families
 
@@ -319,7 +314,7 @@ A nicer way to look at this output, is in the MSA viewer that is built into Gala
 >    >
 >    > > <solution-title></solution-title>
 >    > >
->    > > 1. You see every sequence in your dataset aligned together. On the left you see the read IDs. You can scroll down here to see more. On the top you see the position in the alignment. You can scroll left and right here to view different parts of the alignment.
+>    > > 1. You see every sequence in your dataset aligned together. On the left you see the sequence IDs. You can scroll down here to see more. On the top you see the position in the alignment. You can scroll left and right here to view different parts of the alignment.
 >    > >
 >    > >    Where amino acids align, you will see a colored square and the letter indicating the amino acid. Where there is a gap, you will see a dash (`-`). At the top, you will also see a histogram indicating how many sequences align at that position.
 >    > >
@@ -354,8 +349,8 @@ Next, we would like to clean up this alignment by e.g. removing spurious sequenc
 >    > 1. How many sequences were removed in this trimming step?
 >    >
 >    > > <solution-title></solution-title>
->    > > 1. None. We still have all our 85 sequences, meaning none of them aligned so poorly that we had to remove them. However,
->    > >    TrimAl may have have removed poorly-aligned regions from our alignment.
+>    > > 1. None. We still have all 85 sequences, meaning none of them were removed based on the gap threshold (0.5) or similarity threshold (0.001). However,
+>    > >    TrimAl may have removed poorly aligned regions where gaps or similarity values did not meet the specified thresholds.
 >    > {: .solution}
 >    >
 >    {: .question}
@@ -497,3 +492,6 @@ to your machine, and upload it to ETE toolkit, but you can also do this directly
 
 # Conclusion
 
+In this tutorial, utilizing the protein sequences of streptophyte algae, bryophytes, and land plants, we detected the TAP families and explored the distribution and evolutionary history of Aux/IAA proteins. Aux/IAA proteins play a critical role in the auxin signaling pathway, regulating plant growth and development, especially in response to environmental changes. Using [TAPScan Classify](https://github.com/Rensing-Lab/TAPscan-classify), we identified the presence of Aux/IAA proteins in these species and results showed lower number of Aux/IAA proteins in streptophyte algae compared to bryophytes and land plants. This suggests that the Aux/IAA protein family expanded as plants transitioned from aquatic to terrestrial environments, where more complex signaling mechanisms were required for growth regulation.
+
+The phylogenetic tree analysis supported this finding, as genes from the same group, such as land plants or bryophytes, clustered together, indicating their close evolutionary relationships and the potential for similar roles in auxin signaling. The branching patterns suggest that certain Aux/IAA genes from land plants and bryophytes are more closely related to each other, reflecting their shared functions in regulating growth and development under land conditions. 
