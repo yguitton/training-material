@@ -286,7 +286,7 @@ First, we will perform a multiple sequence alignment in order to determine the s
 >       >
 >       > > <solution-title></solution-title>
 >       > >
->       > > 1. This file conatains a single alignment of all sequences. This format is similar to a FASTA file, but contains additional characters (e.g. dashes,`-`)
+>       > > 1. This file contains a single alignment of all sequences. This format is similar to a FASTA file, but contains additional characters (e.g. dashes,`-`)
 >       > > 2. Dashes indicate a gap in the alignment at that position for the sequence in question
 >       > {: .solution}
 >       >
