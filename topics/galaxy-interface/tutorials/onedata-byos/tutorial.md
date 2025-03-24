@@ -33,7 +33,6 @@ key_points:
 - You can use multiple Storage Locations and set preferences between them.
 ---
 
-FIXME Is there a better location for this tutorial than data upload?
 
 > <agenda-title></agenda-title>
 >
