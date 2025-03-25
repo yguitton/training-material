@@ -20,10 +20,18 @@ objectives:
 - metrics and imbalance
 time_estimation: 3H
 key_points:
-- To be added
+- using a **test set** is an important tool to report an honest estimate of models on new data
+- **cross-validation** strategies can help you to detect **overfitting** and handle **model-selection**
+- **adpted metrics** let you handle the specific of our goal and our data (handle imbalance for example).
+- We have only mentionned a handful of the numerous algorithms that can be used, both for [classification and for regression](https://scikit-learn.org/stable/supervised_learning.html) (NB: this link is not an exhaustive list, just what has been implemented in the sklearn library)
+contributors:
+  - wandrilled
+  - bebatut
 contributions:
   authorship:
   - wandrilled
+  editing:
+    - bebatut
 tags:
 - elixir
 - ai-ml
@@ -32,6 +40,8 @@ notebook:
   language: python
   pyolite: true
 ---
+
+
 
 
 # Foundational Aspects of Machine Learning using Python
@@ -388,70 +398,70 @@ print(f"mean squared error: { mean_squared_error( y , y_pred ) :.2f}")
     R-squared score: 1.00
     mean squared error: 0.00
 
-
-### ANNEX : "generic" sklearn usage 
-
-The main library we will be using for machine learning is scikit-learn.
-
-It should go without saying that if you have any questions regarding its usage and capabilities, your first stop should be their [website](https://scikit-learn.org/stable/),
-especially since it provides plenty of [examples](https://scikit-learn.org/stable/auto_examples/ensemble/plot_voting_decision_regions.html#sphx-glr-auto-examples-ensemble-plot-voting-decision-regions-py), [guides](https://scikit-learn.org/stable/user_guide.html), and [tutorials](https://scikit-learn.org/stable/tutorial/index.html#tutorial-menu).
-
-Nevertheless, we introduce here the most common behavior of sklearn object.
-
-Indeed, sklearn implement machine learning algorithms (random forest, clustering algorithm,...), as well as all kinds of preprocessers (scalin, missing value imputation,...) with a fairly consistent interface.
-
-Most methods must first be instanciated as an object from a specific class:
-
-```python
-## import the class, here RandomForestClassifier
-from sklearn.ensemble import RandomForestClassifier
-
-## instanciate the class object:
-my_clf = RandomForestClassifier()
-```
-
-As it stands, the object is just a "naive" version of the algorithm.
-
-The next step is then to feed the object data, so it can learn from it. This is done with the `.fit` method:
-
-```python
-my_clf.fit( X , y )
-```
-> In this context, `X` is the data and `y` is the objective to attain. When the object is not an ML algorithm but a preprocessor, you only give the `X`
-
-Now that the object has been trained with your data, you can use it. For instance, to:
-* `.transform` your data (typically in the case of a preprocessor)
-* `.predict` some output from data (typically in the case of an ML algorithm, like a classifier)
-
-```python
-y_predicted = clf.predict(X)  # predict classes of the training data
-
-## OR 
-
-X_scaled = myScaler.transform(X)  # apply a transformation to the data
-```
-
-Last but not least, it is common in example code to "fit and transform" a preprocesser in the same line using `.fit_transform`
-
-```python
-X_scaled = myNaiveScaler.fit_transform(X)  # equivalent to myNaiveScaler.fit(X).transform(X)
-```
-
-That's the basics. You will be able to experiment at length with this and go well beyond it.
-
-<br>
-
-
 **Wow!!** this is a perfect fit.
 
 But if you know anything about biology, or data analysis, then you likely suspect something wrong is happening.
 
 
-Indeed, at the moment, our claim is that our model can predict flesh color perfectly (RMSE=0.0) from the normalized expression of these 200 genes.
+> <details-title>ANNEX : "generic" sklearn usage </details-title>
+>
+> 
+> The main library we will be using for machine learning is scikit-learn.
+> 
+> It should go without saying that if you have any questions regarding its usage and capabilities, your first stop should be their [website](https://scikit-learn.org/stable/),
+> especially since it provides plenty of [examples](https://scikit-learn.org/stable/auto_examples/ensemble/plot_voting_decision_regions.html#sphx-glr-auto-examples-ensemble-plot-voting-decision-regions-py), [guides](https://scikit-learn.org/stable/user_guide.html), and [tutorials](https://scikit-learn.org/stable/tutorial/index.html#tutorial-menu).
+> 
+> Nevertheless, we introduce here the most common behavior of sklearn object.
+> 
+> Indeed, sklearn implement machine learning algorithms (random forest, clustering algorithm,...), as well as all kinds of preprocessers (scalin, missing value imputation,...) with a fairly consistent interface.
+> 
+> Most methods must first be instanciated as an object from a specific class:
+> 
+> ```python
+> ## import the class, here RandomForestClassifier
+> from sklearn.ensemble import RandomForestClassifier
+> 
+> ## instanciate the class object:
+> my_clf = RandomForestClassifier()
+> ```
+> 
+> As it stands, the object is just a "naive" version of the algorithm.
+> 
+> The next step is then to feed the object data, so it can learn from it. This is done with the `.fit` method:
+> 
+> ```python
+> my_clf.fit( X , y )
+> ```
+> > In this context, `X` is the data and `y` is the objective to attain. When the object is not an ML algorithm but a preprocessor, you only give the `X`
+>
+> Now that the object has been trained with your data, you can use it. For instance, to:
+> * `.transform` your data (typically in the case of a preprocessor)
+> * `.predict` some output from data (typically in the case of an ML algorithm, like a classifier)
+> 
+> ```python
+> y_predicted = clf.predict(X)  # predict classes of the training data
+> 
+> ## OR 
+> 
+> X_scaled = myScaler.transform(X)  # apply a transformation to the data
+> ```
+> 
+> Last but not least, it is common in example code to "fit and transform" a preprocesser in the same line using ` .fit_transform`
+> 
+> ```python
+> X_scaled = myNaiveScaler.fit_transform(X)  # equivalent to myNaiveScaler.fit(X).transform(X)
+> ```
+> 
+> That's the basics. You will be able to experiment at length with this and go well beyond it.
+> 
+> <br>
+>
+{: .details}
+
+
+Back to ou potato model. At the moment, our claim is that our model can predict flesh color perfectly (RMSE=0.0) from the normalized expression of these 200 genes.
 
 But, say we now have some colleagues who come to us with some new potato data:
-
-
 
 ```python
 ## now we use the leftover data points:
@@ -511,7 +521,7 @@ To that end, we typically begin by dividing our data into :
  * **train** set : find the best model
  * **test** set  : give an honest evaluation of how the model perform on completely new data.
 
-![train_test](images/train_test.png)
+![a schematic representation of splitting data in a train and test set](images/train_test.png)
 
 
 ```python
@@ -617,60 +627,64 @@ fig.suptitle("regression of potato data with an L1 regularization.")
     
 
 
-
-
-**Micro-exercise:** adapt the code above to generate this plot with an l2 penalty. How do you interpret the difference?
-
-
-
-```python
-### correction
-from sklearn.linear_model import SGDRegressor
-
-
-logalphas = []
-
-coef_dict = {'name' : [],
-             'coefficient' : [],
-             'log-alpha' : []}
-r2 = []
-
-for alpha in np.logspace(-2,2,50):
-
-    reg = SGDRegressor( penalty='l2' , alpha = alpha )
-    reg.fit( X , y )
-    
-    logalphas.append(np.log10(alpha))
-    r2.append( r2_score( y , reg.predict(X) ) )
-    
-    coef_dict['name'] += list( X.columns )
-    coef_dict['coefficient'] += list( reg.coef_ )
-    coef_dict['log-alpha'] += [np.log10(alpha)]* len(X.columns )
-
-coef_df = pd.DataFrame(coef_dict)
-
-fig,ax = plt.subplots(1,2,figsize = (14,7))
-
-ax[0].plot(logalphas , r2)
-ax[0].set_xlabel("log10( alpha )")
-ax[0].set_ylabel("R2")
-
-sns.lineplot( x = 'log-alpha' , y='coefficient' , hue = 'name' , data= coef_df , ax = ax[1] ,legend = False)
-
-fig.suptitle("regression of potato data with an L2 regularization.")
-```
-
-
-
-
-    Text(0.5, 0.98, 'regression of potato data with an L2 regularization.')
-
-
-
-
-    
-![png](images/outputs/output_23_1.png)
-    
+> <question-title></question-title>
+>
+> **Micro-exercise:** adapt the code above to generate this plot with an l2 penalty. How do you interpret the difference?
+>
+> > <solution-title></solution-title>
+> >
+> > 
+> > ```python
+> > ### correction
+> > from sklearn.linear_model import SGDRegressor
+> > 
+> > 
+> > logalphas = []
+> > 
+> > coef_dict = {'name' : [],
+> >              'coefficient' : [],
+> >              'log-alpha' : []}
+> > r2 = []
+> > 
+> > for alpha in np.logspace(-2,2,50):
+> > 
+> >     reg = SGDRegressor( penalty='l2' , alpha = alpha )
+> >     reg.fit( X , y )
+> >     
+> >     logalphas.append(np.log10(alpha))
+> >     r2.append( r2_score( y , reg.predict(X) ) )
+> >     
+> >     coef_dict['name'] += list( X.columns )
+> >     coef_dict['coefficient'] += list( reg.coef_ )
+> >     coef_dict['log-alpha'] += [np.log10(alpha)]* len(X.columns )
+> > 
+> > coef_df = pd.DataFrame(coef_dict)
+> > 
+> > fig,ax = plt.subplots(1,2,figsize = (14,7))
+> > 
+> > ax[0].plot(logalphas , r2)
+> > ax[0].set_xlabel("log10( alpha )")
+> > ax[0].set_ylabel("R2")
+> > 
+> > sns.lineplot( x = 'log-alpha' , y='coefficient' , hue = 'name' , data= coef_df , ax = ax[1] ,legend = False)
+> > 
+> > fig.suptitle("regression of potato data with an L2 regularization.")
+> > ```
+> > 
+> > 
+> > 
+> > 
+> >     Text(0.5, 0.98, 'regression of potato data with an L2 regularization.')
+> > 
+> > 
+> > 
+> > 
+> >     
+> > ![png](images/outputs/output_23_1.png)
+> >     
+> >
+> {: .solution}
+{: .question}
 
 
 This is great, but how do we choose which level of regularization we want ?
@@ -859,7 +873,7 @@ Indeed, we have seen that if we run the code above several time, we see that the
 
 **K-fold cross validation** is one of the most common strategy to try to mitigate this randomness with a limited amount of data.
 
-![k-fold validation](images/kfold.png)
+![Drawing of k-fold validation](images/kfold.png)
 
 In k-fold cross-validation, you split you data in $k$ subpart, called fold.
 
@@ -992,49 +1006,57 @@ fig.suptitle("best alpha : {:.2f} - cross-validated R2 : {:.2f}".format(10**best
 ![png](images/outputs/output_34_2.png)
     
 
+> <question-title></question-title>
+>
+> **micro-exercise**: re-fit a model with the alpha we found and check the performance with the *test* data
+>
+> > <solution-title></solution-title>
+> >
+> > 
+> > ```python
+> > ### solution
+> > reg = SGDRegressor( penalty='l1' , alpha = 10**bestLogAlpha  )
+> > reg.fit( X , y )
+> > 
+> > y_pred = reg.predict( X )
+> > print(f"train data R-squared score: { r2_score( y , y_pred ) :.2f}")
+> > print(f"train data mean squared error: { mean_squared_error(  y , y_pred ) :.2f}")
+> > 
+> > 
+> > y_test_pred = reg.predict( X_test )
+> > 
+> > print(f" test data R-squared score: { r2_score( y_test , y_test_pred ) :.2f}")
+> > print(f" test data mean squared error: { mean_squared_error(  y_test , y_test_pred ) :.2f}")
+> > 
+> > plt.scatter( y , y_pred , label = 'training data' )
+> > plt.scatter( y_test , y_test_pred , label = 'new data' )
+> > plt.xlabel('observed values')
+> > plt.ylabel('predicted values')
+> > plt.legend()
+> > ```
+> > 
+> >     train data R-squared score: 0.90
+> >     train data mean squared error: 14.99
+> >      test data R-squared score: 0.72
+> >      test data mean squared error: 69.05
+> > 
+> > 
+> > 
+> > 
+> > 
+> >     <matplotlib.legend.Legend at 0x7f98f61c0890>
+> > 
+> > 
+> > 
+> > 
+> >     
+> > ![png](images/outputs/output_36_2.png)
+> >     
+> > 
+> >
+> {: .solution}
+{: .question}
 
-**micro-exercise**: re-fit a model with the alpha we found and check the performance with the *test* data
-
-
-```python
-### solution
-reg = SGDRegressor( penalty='l1' , alpha = 10**bestLogAlpha  )
-reg.fit( X , y )
-
-y_pred = reg.predict( X )
-print(f"train data R-squared score: { r2_score( y , y_pred ) :.2f}")
-print(f"train data mean squared error: { mean_squared_error(  y , y_pred ) :.2f}")
-
-
-y_test_pred = reg.predict( X_test )
-
-print(f" test data R-squared score: { r2_score( y_test , y_test_pred ) :.2f}")
-print(f" test data mean squared error: { mean_squared_error(  y_test , y_test_pred ) :.2f}")
-
-plt.scatter( y , y_pred , label = 'training data' )
-plt.scatter( y_test , y_test_pred , label = 'new data' )
-plt.xlabel('observed values')
-plt.ylabel('predicted values')
-plt.legend()
-```
-
-    train data R-squared score: 0.90
-    train data mean squared error: 14.99
-     test data R-squared score: 0.72
-     test data mean squared error: 69.05
-
-
-
-
-
-    <matplotlib.legend.Legend at 0x7f98f61c0890>
-
-
-
-
-    
-![png](images/outputs/output_36_2.png)
-    
 
 
 There, you can realize that now, for each possible value of our hyper-parameter we fit and evaluate not 1, but $k$ models, here 4.
@@ -2012,7 +2034,7 @@ More mathematically:
 
 $$Accuracy = \frac{TP + TN}{TP+FP+FN+TN}$$
 
-![image/TPFP.png](images/TPFP.png)
+![visual representation of True Positive, True Negative, False Positive, and False Negative](images/TPFP.png)
 Image credit wikipedia user Sharpr for svg version. original work by kakau in a png. Licensed under the [Creative Commons Attribution-Share Alike 3.0 Unported license](https://creativecommons.org/licenses/by-sa/3.0/deed.en).
 
 
@@ -2184,287 +2206,306 @@ pd.crosstab( y , y_predicted , rownames = ['observed'] , colnames = ['predicted'
 </div>
 
 
-
-**Micro-exercise :** modify the threhold in the code above. 
- * in which direction should the threshold move to limit the number of False Positive ?
- * for which application could that be useful ? 
-
-
-### Exercise: Logistic regression to detect breast cancer malignancy
-
-Let's build a logistic regression model that will be able to predict if a breast tumor is malignant or not
-
-
-```python
-from sklearn.datasets import load_breast_cancer
-#loading the dataset which is comprised in scikit learn already
-data = load_breast_cancer()
-
-## we reduce the features because otherwise this problem is a bit too easy ;-)
-m = list( map( lambda x : x.startswith("mean ") , data["feature_names"] ) )
+> <question-title></question-title>
+>
+> **Micro-exercise :** modify the threhold in the code above. 
+>  * in which direction should the threshold move to limit the number of False Positive ?
+>  * for which application could that be useful ? 
+>
+> > <solution-title></solution-title>
+> >
+> > 1. To limit the number of False Positive you need to **increase** the threshold (a higher threshold means that you only predict cases where you have a higher certainty in positive prediction). 
+> >      
+> > 2. Applications where a false positive would incur a very high cost : eligibility for risky surgery for example, predicting mushroom edibility
+> >
+> {: .solution}
+{: .question}
 
 
-X_cancer=data['data'][:,m]
-y_cancer= 1-data['target']
-
-#making it into a dataframe
-breast_cancer_df=pd.DataFrame(X_cancer,
-    columns=data["feature_names"][m])
-
-breast_cancer_df["target"]=y_cancer
-
-breast_cancer_df.head()
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>mean radius</th>
-      <th>mean texture</th>
-      <th>mean perimeter</th>
-      <th>mean area</th>
-      <th>mean smoothness</th>
-      <th>mean compactness</th>
-      <th>mean concavity</th>
-      <th>mean concave points</th>
-      <th>mean symmetry</th>
-      <th>mean fractal dimension</th>
-      <th>target</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>17.99</td>
-      <td>10.38</td>
-      <td>122.80</td>
-      <td>1001.0</td>
-      <td>0.11840</td>
-      <td>0.27760</td>
-      <td>0.3001</td>
-      <td>0.14710</td>
-      <td>0.2419</td>
-      <td>0.07871</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>20.57</td>
-      <td>17.77</td>
-      <td>132.90</td>
-      <td>1326.0</td>
-      <td>0.08474</td>
-      <td>0.07864</td>
-      <td>0.0869</td>
-      <td>0.07017</td>
-      <td>0.1812</td>
-      <td>0.05667</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>19.69</td>
-      <td>21.25</td>
-      <td>130.00</td>
-      <td>1203.0</td>
-      <td>0.10960</td>
-      <td>0.15990</td>
-      <td>0.1974</td>
-      <td>0.12790</td>
-      <td>0.2069</td>
-      <td>0.05999</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>11.42</td>
-      <td>20.38</td>
-      <td>77.58</td>
-      <td>386.1</td>
-      <td>0.14250</td>
-      <td>0.28390</td>
-      <td>0.2414</td>
-      <td>0.10520</td>
-      <td>0.2597</td>
-      <td>0.09744</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>20.29</td>
-      <td>14.34</td>
-      <td>135.10</td>
-      <td>1297.0</td>
-      <td>0.10030</td>
-      <td>0.13280</td>
-      <td>0.1980</td>
-      <td>0.10430</td>
-      <td>0.1809</td>
-      <td>0.05883</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-```python
-breast_cancer_df.target.value_counts()
-```
-
-
-
-
-    target
-    0    357
-    1    212
-    Name: count, dtype: int64
-
-
-
-* 357 benign samples
-* 212 malignant samples
-
-Here, all these covariables / features are defined on very different scales, for them to be treated fairly in their comparison you need to take that into account by scaling.
-
-
-
-**task 1:** split the data into a train and a test dataset
-
-Complete the following code cell:
-
-
-```python
-#split your data
-
-# stratify is here to make sure that you split keeping the repartition of labels unaffected
-X_train_cancer, X_test_cancer, y_train_cancer, y_test_cancer = ...
-
-
-print("fraction of class malignant in train",sum(y_train_cancer)/len(y_train_cancer))
-print("fraction of class malignant in test ",sum(y_test_cancer)/len(y_test_cancer) )
-print("fraction of class malignant in full ",sum(y_cancer)/len(y_cancer))
-```
-
-**task 2:** design your pipeline and grid search
-
-Complete the following cell to perform hyper-parameter search with the following specification:
-
-* hyperparameters:
-    * scaler : no hyper-parameters for the scaler (ie, we will keep the defaults)
-    * logistic regression : test different values for `C` and `penalty` 
-* score: 'accuracy'
-* cross-validation: use 10 folds
-
-
+> <hands-on-title>Logistic regression to detect breast cancer malignancy</hands-on-title>
+>
+> Let's build a logistic regression model that will be able to predict if a breast tumor is malignant or not
+> 
+> 
+> ```python
+> from sklearn.datasets import load_breast_cancer
+> #loading the dataset which is comprised in scikit learn already
+> data = load_breast_cancer()
+> 
+> ## we reduce the features because otherwise this problem is a bit too easy ;-)
+> m = list( map( lambda x : x.startswith("mean ") , data["feature_names"] ) )
+> 
+> 
+> X_cancer=data['data'][:,m]
+> y_cancer= 1-data['target']
+> 
+> #making it into a dataframe
+> breast_cancer_df=pd.DataFrame(X_cancer,
+>     columns=data["feature_names"][m])
+> 
+> breast_cancer_df["target"]=y_cancer
+> 
+> breast_cancer_df.head()
+> ```
+> 
+> 
+> 
+> 
+> <div>
+> <style scoped>
+>     .dataframe tbody tr th:only-of-type {
+>         vertical-align: middle;
+>     }
+> 
+>     .dataframe tbody tr th {
+>         vertical-align: top;
+>     }
+> 
+>     .dataframe thead th {
+>         text-align: right;
+>     }
+> </style>
+> <table border="1" class="dataframe">
+>   <thead>
+>     <tr style="text-align: right;">
+>       <th></th>
+>       <th>mean radius</th>
+>       <th>mean texture</th>
+>       <th>mean perimeter</th>
+>       <th>mean area</th>
+>       <th>mean smoothness</th>
+>       <th>mean compactness</th>
+>       <th>mean concavity</th>
+>       <th>mean concave points</th>
+>       <th>mean symmetry</th>
+>       <th>mean fractal dimension</th>
+>       <th>target</th>
+>     </tr>
+>   </thead>
+>   <tbody>
+>     <tr>
+>       <th>0</th>
+>       <td>17.99</td>
+>       <td>10.38</td>
+>       <td>122.80</td>
+>       <td>1001.0</td>
+>       <td>0.11840</td>
+>       <td>0.27760</td>
+>       <td>0.3001</td>
+>       <td>0.14710</td>
+>       <td>0.2419</td>
+>       <td>0.07871</td>
+>       <td>1</td>
+>     </tr>
+>     <tr>
+>       <th>1</th>
+>       <td>20.57</td>
+>       <td>17.77</td>
+>       <td>132.90</td>
+>       <td>1326.0</td>
+>       <td>0.08474</td>
+>       <td>0.07864</td>
+>       <td>0.0869</td>
+>       <td>0.07017</td>
+>       <td>0.1812</td>
+>       <td>0.05667</td>
+>       <td>1</td>
+>     </tr>
+>     <tr>
+>       <th>2</th>
+>       <td>19.69</td>
+>       <td>21.25</td>
+>       <td>130.00</td>
+>       <td>1203.0</td>
+>       <td>0.10960</td>
+>       <td>0.15990</td>
+>       <td>0.1974</td>
+>       <td>0.12790</td>
+>       <td>0.2069</td>
+>       <td>0.05999</td>
+>       <td>1</td>
+>     </tr>
+>     <tr>
+>       <th>3</th>
+>       <td>11.42</td>
+>       <td>20.38</td>
+>       <td>77.58</td>
+>       <td>386.1</td>
+>       <td>0.14250</td>
+>       <td>0.28390</td>
+>       <td>0.2414</td>
+>       <td>0.10520</td>
+>       <td>0.2597</td>
+>       <td>0.09744</td>
+>       <td>1</td>
+>     </tr>
+>     <tr>
+>       <th>4</th>
+>       <td>20.29</td>
+>       <td>14.34</td>
+>       <td>135.10</td>
+>       <td>1297.0</td>
+>       <td>0.10030</td>
+>       <td>0.13280</td>
+>       <td>0.1980</td>
+>       <td>0.10430</td>
+>       <td>0.1809</td>
+>       <td>0.05883</td>
+>       <td>1</td>
+>     </tr>
+>   </tbody>
+> </table>
+> </div>
+> 
+> 
+> 
+> 
+> ```python
+> breast_cancer_df.target.value_counts()
+> ```
+> 
+> 
+> 
+> 
+>     target
+>     0    357
+>     1    212
+>     Name: count, dtype: int64
+> 
+> 
+> 
+> * 357 benign samples
+> * 212 malignant samples
+> 
+> Here, all these covariables / features are defined on very different scales, for them to be treated fairly in their comparison you need to take that into account by scaling.
+>
+>
+>
+> **task 1:** split the data into a train and a test dataset
+> 
+> Complete the following code cell:
+> 
+> 
+> ```python
+> #split your data
+> 
+> # stratify is here to make sure that you split keeping the repartition of labels unaffected
+> X_train_cancer, X_test_cancer, y_train_cancer, y_test_cancer = ...
+> 
+> 
+> print("fraction of class malignant in train",sum(y_train_cancer)/len(y_train_cancer))
+> print("fraction of class malignant in test ",sum(y_test_cancer)/len(y_test_cancer) )
+> print("fraction of class malignant in full ",sum(y_cancer)/len(y_cancer))
+> ```
+> 
+> **task 2:** design your pipeline and grid search
+> 
+> Complete the following cell to perform hyper-parameter search with the following specification:
+> 
+> * hyperparameters:
+>     * scaler : no hyper-parameters for the scaler (ie, we will keep the defaults)
+>     * logistic regression : test different values for `C` and `penalty` 
+> * score: 'accuracy'
+> * cross-validation: use 10 folds
+> 
+> 
 > If you want to test the elasticnet penalty, you will also have to adapt the `solver` parameter (cf. the [LogisticRegression documentation](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) )
+> 
+> 
+> 
+> ```python
+> %%time
+> 
+> pipeline_lr_cancer=Pipeline([('scaler',StandardScaler()),
+>                              ('model',LogisticRegression(solver = 'liblinear'))])
+> 
+> #define the hyper-parameter space to explore
+> grid_values = { ... }
+> 
+> #define the GridSearchCV object
+> grid_cancer = GridSearchCV( ... )
+> 
+> #train your pipeline
+> grid_cancer.fit( ... )
+> 
+> 
+> #get the best cross-validated score 
+> print(f'Grid best score ({grid_cancer.scoring}): {grid_cancer.best_score_:.3f}')
+> # print the best parameters
+> print('Grid best parameter :')
+> for k,v in grid_cancer.best_params_.items():
+>     print(' {:>20} : {}'.format(k,v))
+> 
+> ```
+> 
+>
+{: .hands_on}
 
 
-
-```python
-%%time
-
-pipeline_lr_cancer=Pipeline([('scaler',StandardScaler()),
-                             ('model',LogisticRegression(solver = 'liblinear'))])
-
-#define the hyper-parameter space to explore
-grid_values = { ... }
-
-#define the GridSearchCV object
-grid_cancer = GridSearchCV( ... )
-
-#train your pipeline
-grid_cancer.fit( ... )
-
-
-#get the best cross-validated score 
-print(f'Grid best score ({grid_cancer.scoring}): {grid_cancer.best_score_:.3f}')
-# print the best parameters
-print('Grid best parameter :')
-for k,v in grid_cancer.best_params_.items():
-    print(' {:>20} : {}'.format(k,v))
-
-```
-
-Correction:
-
-
-```python
-## solution
-
-X_train_cancer, X_test_cancer, y_train_cancer, y_test_cancer = train_test_split(X_cancer,
-                                                                                y_cancer,
-                                                                                random_state=0,
-                                                                                stratify=y_cancer)
-
-
-print("fraction of class malignant in train",sum(y_train_cancer)/len(y_train_cancer))
-print("fraction of class malignant in test ",sum(y_test_cancer)/len(y_test_cancer) )
-print("fraction of class malignant in full ",sum(y_cancer)/len(y_cancer))
-```
-
-    fraction of class malignant in train 0.3732394366197183
-    fraction of class malignant in test  0.3706293706293706
-    fraction of class malignant in full  0.37258347978910367
-
-
-
-```python
-%%time
-
-pipeline_lr_cancer=Pipeline([('scaler',StandardScaler()),
-                             ('model',LogisticRegression(solver = 'liblinear'))])
-
-#define the hyper-parameter space to explore
-grid_values = { 'model__C': np.logspace(-5,2,100),
-               'model__penalty':['l1','l2'] }
-
-#define the GridSearchCV object
-grid_cancer = GridSearchCV( pipeline_lr_cancer, 
-                           param_grid = grid_values,
-                           scoring='accuracy',
-                           cv=10,
-                           n_jobs=-1 )
-
-#train your pipeline
-grid_cancer.fit( X_train_cancer , y_train_cancer )
-
-
-#get the best cross-validated score 
-print(f'Grid best score ({grid_cancer.scoring}): {grid_cancer.best_score_:.3f}')
-# print the best parameters
-print('Grid best parameter :')
-for k,v in grid_cancer.best_params_.items():
-    print(' {:>20} : {}'.format(k,v))
-
-```
-
-    Grid best score (accuracy): 0.946
-    Grid best parameter :
-                 model__C : 0.0210490414451202
-           model__penalty : l2
-    CPU times: user 1.24 s, sys: 35.8 ms, total: 1.27 s
-    Wall time: 2.49 s
+> <details-title>Correction:</details-title>
+>
+> **Task 1 solution**
+> 
+> ```python
+> ## solution
+> 
+> X_train_cancer, X_test_cancer, y_train_cancer, y_test_cancer = train_test_split(X_cancer,
+>                                                                                 y_cancer,
+>                                                                                 random_state=0,
+>                                                                                 stratify=y_cancer)
+> 
+> 
+> print("fraction of class malignant in train",sum(y_train_cancer)/len(y_train_cancer))
+> print("fraction of class malignant in test ",sum(y_test_cancer)/len(y_test_cancer) )
+> print("fraction of class malignant in full ",sum(y_cancer)/len(y_cancer))
+> ```
+> 
+>     fraction of class malignant in train 0.3732394366197183
+>     fraction of class malignant in test  0.3706293706293706
+>     fraction of class malignant in full  0.37258347978910367
+> 
+> 
+> **Task 2 solution**
+> 
+> ```python
+> %%time
+> 
+> pipeline_lr_cancer=Pipeline([('scaler',StandardScaler()),
+>                              ('model',LogisticRegression(solver = 'liblinear'))])
+> 
+> #define the hyper-parameter space to explore
+> grid_values = { 'model__C': np.logspace(-5,2,100),
+>                'model__penalty':['l1','l2'] }
+> 
+> #define the GridSearchCV object
+> grid_cancer = GridSearchCV( pipeline_lr_cancer, 
+>                            param_grid = grid_values,
+>                            scoring='accuracy',
+>                            cv=10,
+>                            n_jobs=-1 )
+> 
+> #train your pipeline
+> grid_cancer.fit( X_train_cancer , y_train_cancer )
+> 
+> 
+> #get the best cross-validated score 
+> print(f'Grid best score ({grid_cancer.scoring}): {grid_cancer.best_score_:.3f}')
+> # print the best parameters
+> print('Grid best parameter :')
+> for k,v in grid_cancer.best_params_.items():
+>     print(' {:>20} : {}'.format(k,v))
+> 
+> ```
+> 
+>     Grid best score (accuracy): 0.946
+>     Grid best parameter :
+>                  model__C : 0.0210490414451202
+>            model__penalty : l2
+>     CPU times: user 1.24 s, sys: 35.8 ms, total: 1.27 s
+>     Wall time: 2.49 s
+> 
+>
+{: .details}
 
 
 From there we can explore the model a bit further:
@@ -2580,7 +2621,17 @@ plt.show()
 
 So with this ROC curve, we can see how the model would behave on different thresholds.
 
-**Question:** we have marked the 0.5 threshold on the plot. Where would a higher threshold be on the curve?
+> <question-title></question-title>
+>
+> **Question:** we have marked the 0.5 threshold on the plot. Where would a higher threshold be on the curve?
+>
+> > <solution-title></solution-title>
+> >
+> > A higher threshold means a lower False Positive Rate, so we move down and to the left in the curve.
+> >
+> {: .solution}
+{: .question}
+
 
 <br>
 
@@ -2888,7 +2939,7 @@ Among those examples of data leakage you could count :
 ### Simple decision tree for classification
 
 A simple **decision tree** reduces your problem into a **hierarchichal sequence of questions** on your features that can be answered by yes or no and which subdivides the data into 2 subgroups on which a new question is asked, and so on and so on.
-![tree_ex](images/tree_ex.png)
+![a decision tree structure: internal nodes are questions, with outgoing branches corresponding to answer until a leaf is reached.](images/tree_ex.png)
 
 Ok, but a huge number of trees can actually be built just by considering the different orders of questions asked. How does the algorithm deals with this?
 
@@ -2897,7 +2948,7 @@ Quite simply actually: it **tests all the features and chooses the most discrimi
 Imagine you have a dataset with feature color (red or blue) and feature shape (square or circle), and 2 target classes : 1 and 2.
 
 
-![tree](images/Tree.png)
+![decision tree example with two features (color and shape)](images/Tree.png)
 
 Asking `"feature color is red"` gives you the following subgroups:
  * 10 class 1, and 1 class 2 (`"feature color is red" == True`)
@@ -3726,7 +3777,7 @@ I am sure you can see intuitively how that is going to help generalization of ou
 
 So now on top of all the parameters seen before to create each individual trees of the forest, you also have a parameter controlling the number of trees in your forest.
 
-![RF](images/RF.png)
+![drawing of how a random forest is made a many trees, each one with randomized samples and features. each tree is getting a vote](images/RF.png)
 
 **In the following plots I am plotting the result for a random forest algorithm and compare it to a single decision tree sharing the same hyperparameters value than the one used in the random forest**.
 
@@ -3776,85 +3827,86 @@ contour_tree(X_3,y_3 ,
 ![png](images/outputs/output_117_0.png)
     
 
+> <question-title></question-title>
+>
+> **Exercise: Random Forest on the breast cancer dataset**
+> 
+> Train a random forest on the breast cancer dataset.
+> 
+> Use an hyper-parameter space similar to the one we used for single decision trees with the number of trees (`n_estimator`) added to it.
+> 
+> **computational considerations**: to limit the training time to around 1 minute, only test 5 values of `n_estimators`, all below 500.
+>
+> > <solution-title></solution-title>
+> >
+> > 
+> > ```python
+> > %%time
+> > 
+> > 
+> > from sklearn.ensemble import RandomForestClassifier
+> > 
+> > grid_values = {'n_estimators' : [10,50,100,150,200], 
+> >                'criterion': ['entropy','gini'],
+> >                'max_depth':np.arange(2,10), ## I reduce the search space in the interest of time too
+> >                'min_samples_split':np.arange(2,12,2)}
+> > 
+> > grid_tree = GridSearchCV(RandomForestClassifier(class_weight='balanced'), 
+> >                                 param_grid = grid_values, 
+> >                                 scoring='roc_auc',
+> >                                 cv = 5,
+> >                                 n_jobs=-1)
+> > grid_tree.fit(X_train_cancer, y_train_cancer)
+> > 
+> > print(f'Grid best score (accuracy): {grid_tree.best_score_:.3f}')
+> > print('Grid best parameter :')
+> > 
+> > for k,v in grid_tree.best_params_.items():
+> >     print('{:>25}\t{}'.format(k,v))
+> > ```
+> > 
+> >     Grid best score (accuracy): 0.986
+> >     Grid best parameter :
+> >                     criterion	entropy
+> >                     max_depth	7
+> >             min_samples_split	6
+> >                  n_estimators	100
+> >     CPU times: user 3.08 s, sys: 171 ms, total: 3.25 s
+> >     Wall time: 1min 38s
+> > 
+> > 
+> > 
+> > ```python
+> > from sklearn.metrics import roc_curve
+> > y_test_score=grid_tree.predict_proba(X_test_cancer)[:,1]
+> > 
+> > fpr, tpr, thresholds = roc_curve(y_test_cancer, y_test_score)
+> > 
+> > keep = sum( thresholds > 0.5 ) - 1 # trick to find the index of the last threshold > 0.5
+> > 
+> > y_test_roc_auc = grid_tree.score(X_test_cancer,y_test_cancer)
+> > 
+> > plt.figure()
+> > plt.xlim([-0.01, 1.01])
+> > plt.ylim([-0.01, 1.01])
+> > plt.plot(fpr, tpr, lw=3)
+> > plt.plot(fpr[keep], tpr[keep],'ro',label='threshold=0.5')
+> > plt.xlabel('False Positive Rate', fontsize=16)
+> > plt.ylabel('True Positive Rate', fontsize=16)
+> > plt.title(f'ROC AUC (Decision tree) {y_test_roc_auc:.3f}', fontsize=16)
+> > plt.legend(loc='lower right', fontsize=13)
+> > plt.plot([0, 1], [0, 1], color='navy', lw=3, linestyle='--')
+> > plt.show()
+> > ```
+> >     
+> > ![png](images/outputs/output_121_0.png)
+> >     
+> >
+> {: .solution}
+{: .question}
 
-### Exercise: Random Forest on the breast cancer dataset
-
-Train a random forest on the breast cancer dataset.
-
-Use an hyper-parameter space similar to the one we used for single decision trees with the number of trees (`n_estimator`) added to it.
-
-**computational considerations**: to limit the training time to around 1 minute, only test 5 values of `n_estimators`, all below 500.
-
-correction:
 
 
-```python
-%%time
-
-
-from sklearn.ensemble import RandomForestClassifier
-
-grid_values = {'n_estimators' : [10,50,100,150,200], 
-               'criterion': ['entropy','gini'],
-               'max_depth':np.arange(2,10), ## I reduce the search space in the interest of time too
-               'min_samples_split':np.arange(2,12,2)}
-
-grid_tree = GridSearchCV(RandomForestClassifier(class_weight='balanced'), 
-                                param_grid = grid_values, 
-                                scoring='roc_auc',
-                                cv = 5,
-                                n_jobs=-1)
-grid_tree.fit(X_train_cancer, y_train_cancer)
-
-print(f'Grid best score (accuracy): {grid_tree.best_score_:.3f}')
-print('Grid best parameter :')
-
-for k,v in grid_tree.best_params_.items():
-    print('{:>25}\t{}'.format(k,v))
-```
-
-    Grid best score (accuracy): 0.986
-    Grid best parameter :
-                    criterion	entropy
-                    max_depth	7
-            min_samples_split	6
-                 n_estimators	100
-    CPU times: user 3.08 s, sys: 171 ms, total: 3.25 s
-    Wall time: 1min 38s
-
-
-    /home/wandrille/Installed_software/anaconda3/envs/introML2024/lib/python3.11/site-packages/numpy/ma/core.py:2846: RuntimeWarning: invalid value encountered in cast
-      _data = np.array(data, dtype=dtype, copy=copy,
-
-
-
-```python
-from sklearn.metrics import roc_curve
-y_test_score=grid_tree.predict_proba(X_test_cancer)[:,1]
-
-fpr, tpr, thresholds = roc_curve(y_test_cancer, y_test_score)
-
-keep = sum( thresholds > 0.5 ) - 1 # trick to find the index of the last threshold > 0.5
-
-y_test_roc_auc = grid_tree.score(X_test_cancer,y_test_cancer)
-
-plt.figure()
-plt.xlim([-0.01, 1.01])
-plt.ylim([-0.01, 1.01])
-plt.plot(fpr, tpr, lw=3)
-plt.plot(fpr[keep], tpr[keep],'ro',label='threshold=0.5')
-plt.xlabel('False Positive Rate', fontsize=16)
-plt.ylabel('True Positive Rate', fontsize=16)
-plt.title(f'ROC AUC (Decision tree) {y_test_roc_auc:.3f}', fontsize=16)
-plt.legend(loc='lower right', fontsize=13)
-plt.plot([0, 1], [0, 1], color='navy', lw=3, linestyle='--')
-plt.show()
-```
-
-
-    
-![png](images/outputs/output_121_0.png)
-    
 
 
 Trees do not have coefficients like the logistic regression, but they still have a feature importance metric which is computed from how much each feature reduce impurity. 
@@ -3913,220 +3965,213 @@ plt.show()
 ![png](images/outputs/output_124_0.png)
     
 
-
-
-```python
-
-```
-
-#### RF annex 1: too many features
-
-Modern biological dataset using high-throughput technologies can now provide us with measurements for hundreds or even thousands of features (e.g., proteomics, RNAseq experiments).
-But it is often the case that among these thousands of features, only a handful are truly informative (the so-called biomarkers for example).
-
-While they generally are very good methods, Random Forest can sometime struggle in this context. 
-Let's try to understand why with a synthetic example:
-
-
-We start with a simple case : 2 categories, perfectly separable using 2 features:
-
-
-```python
-from sklearn.datasets import make_blobs
-    
-# 120 points, 2 blobs/clusters with some spread=3
-blob_centers = np.array([[0,0],[8,4]])
-blob_stds = [[2,2],[2,2]]
-X_2, y_2 = make_blobs(n_samples = 120, 
-                      centers = blob_centers,
-                      cluster_std = blob_stds, random_state = 42)
-
-plt.scatter(X_2[:,0],X_2[:,1],c=y_2,cmap=plt.cm.coolwarm,edgecolors='k')
-```
-
-
-
-
-    <matplotlib.collections.PathCollection at 0x7f98df8130d0>
-
-
-
-
-    
-![png](images/outputs/output_128_1.png)
-    
-
-
-Let's see how a single decision tree and a random forest do in this situation:
-
-
-```python
-dt = DecisionTreeClassifier()
-rf = RandomForestClassifier(n_estimators=100)
-```
-
-
-```python
-from sklearn.model_selection import cross_val_score
-
-print("decision tree cross-validated accuracy:" , cross_val_score( dt , X_2 , y_2 ) )
-print("random forest cross-validated accuracy:" , cross_val_score( rf , X_2 , y_2 ) )
-```
-
-    decision tree cross-validated accuracy: [1.         1.         0.95833333 1.         0.95833333]
-    random forest cross-validated accuracy: [1.         1.         1.         1.         0.95833333]
-
-
-We can see that they both perform very well, perhaps even better in the case of the random forest (it is able to find more generalizable separation rules thanks to the ensembling).
-
-Now, we are going to add many new features filled with random data (imagine they are the 99% of genes which are not biomarkers):
-
-
-```python
-nb_noise = 10**4
-X_2_noise = np.concatenate( [ X_2 , np.random.randn( X_2.shape[0],nb_noise ) ] , axis = 1)
-```
-
-
-```python
-print("decision tree cross-validated accuracy:" , cross_val_score( dt , X_2_noise , y_2 ) )
-print("random forest cross-validated accuracy:" , cross_val_score( rf , X_2_noise , y_2 ) )
-```
-
-    decision tree cross-validated accuracy: [1.         1.         0.95833333 1.         0.95833333]
-    random forest cross-validated accuracy: [0.66666667 0.45833333 0.54166667 0.70833333 0.625     ]
-
-
-The performance of the **single decision tree is unchanged**,
-
-but the **Random Forest performs way worse**!
-
-
-**Question:** how can we explain this difference?
-
-
----
-
-**Solution and discussion:**
-
-Remember that each tree in the forest only sees a random fraction of the features.
-
-As the number of "noise" features increases, the probability that any tree will get the combination of informative features  diminishes.
-
-Furthermore, the trees which see only noise also contribute some (uninformative) vote to the overall total.
-
-Thus it becomes harder to extract the signal from the noise in the data. 
-
-
-While this could be solved by increasing the number of trees. 
-It is often also advisable to perform some sort of **feature selection** to make sure you only present features of interest to the model.
-
-There are many procedures to do this, and none of these techniques are perfect however but, just to cite a few:
-
- * select the X features which show the most differences between categories
- * use PCA and limit yourself to the first few principal components
- * use a reduced set of features externally defined with experts
- * test random sets of features (but this is also very computationaly demanding)
- * see the [feature selection page of sklearn](https://scikit-learn.org/stable/modules/feature_selection.html) 
-
-
-
-
-
-
-```python
-## simple example with a selectKBest 
-##  which will select the features with the highest ANOVA F-value between feature and target.
-from sklearn.feature_selection import SelectKBest
-
-
-ppl = Pipeline([('select' , SelectKBest( k = 100 ) ) , ## we will select 100 features, which is way to much here
-                ('tree' , RandomForestClassifier(n_estimators=100))  ])
-
-print("select 100 best > RF cross-validated accuracy:" , cross_val_score( ppl , 
-                                                                         X_2_noise , 
-                                                                         y_2 , 
-                                                                         scoring='accuracy') )
-
-```
-
-    select 100 best > RF cross-validated accuracy: [0.95833333 0.95833333 1.         1.         0.95833333]
-
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-
-#### RF annex 2 : OOB metric
-
-In addition to the k-fold cross-validation that we have used so far, random forests offer the possibility of estimating generalization performance with **"Out-Of-Bag" scoring**.
-
-"out-of-bag" refers to the fact that each tree in the forest is trained with a subset of the samples which are "in-the-bag": the samples it does not train with are thus "out-of-bag".
-
-The OOB error is computed by aggregating the error for each instance when it is predicted only with the trees where is an out-of-bag sample.
-
-OOB error has been shown to converge to leave-one-out cross-validation error when the number of trees is large enough, making it an interesting metric of generalizability.
-
-It is particularly useful because it can be computed on a single random forest as it is being trained.
-
-Thus, were k-fold cross-validation would require you to train $k$ models, with OOB error you only have to train 1, and thus you save a lot of compute time.
-
-
-
-```python
-%%time
-rf1 = RandomForestClassifier(class_weight='balanced' , 
-                             n_estimators=100 , 
-                             max_depth=5,
-                             min_samples_split=10 , 
-                             oob_score= True )
-rf1.fit( X_train_cancer, y_train_cancer )
-rf1.oob_score_
-```
-
-    CPU times: user 195 ms, sys: 67 μs, total: 195 ms
-    Wall time: 194 ms
-
-
-
-
-
-    0.9225352112676056
-
-
-
-
-```python
-%%time
-from sklearn.model_selection import LeaveOneOut
-S = cross_val_score( rf1 , X_train_cancer , y_train_cancer , scoring = 'accuracy' , cv = LeaveOneOut() )
-S.mean()
-```
-
-    CPU times: user 1min 16s, sys: 366 ms, total: 1min 17s
-    Wall time: 1min 17s
-
-
-
-
-
-    np.float64(0.9295774647887324)
-
-
-
-See also this example about [plotting OOB error](https://scikit-learn.org/stable/auto_examples/ensemble/plot_ensemble_oob.html)
+<details-title>Random Forest annex 1: too many features</details-title>
+>
+>
+>
+>
+>
+> Modern biological dataset using high-throughput technologies can now provide us with measurements for hundreds or even thousands of features (e.g., proteomics, RNAseq experiments).
+> But it is often the case that among these thousands of features, only a handful are truly informative (the so-called biomarkers for example).
+>
+> While they generally are very good methods, Random Forest can sometime struggle in this context. 
+> Let's try to understand why with a synthetic example:
+> 
+> 
+> We start with a simple case : 2 categories, perfectly separable using 2 features:
+> 
+> 
+> ```python
+> from sklearn.datasets import make_blobs
+>     
+> # 120 points, 2 blobs/clusters with some spread=3
+> blob_centers = np.array([[0,0],[8,4]])
+> blob_stds = [[2,2],[2,2]]
+> X_2, y_2 = make_blobs(n_samples = 120, 
+>                       centers = blob_centers,
+>                       cluster_std = blob_stds, random_state = 42)
+> 
+> plt.scatter(X_2[:,0],X_2[:,1],c=y_2,cmap=plt.cm.coolwarm,edgecolors='k')
+> ```
+> 
+> 
+> 
+> 
+>     <matplotlib.collections.PathCollection at 0x7f98df8130d0>
+> 
+> 
+> 
+> 
+>     
+> ![png](images/outputs/output_128_1.png)
+>     
+> 
+> 
+> Let's see how a single decision tree and a random forest do in this situation:
+> 
+> 
+> ```python
+> dt = DecisionTreeClassifier()
+> rf = RandomForestClassifier(n_estimators=100)
+> ```
+> 
+> 
+> ```python
+> from sklearn.model_selection import cross_val_score
+> 
+> print("decision tree cross-validated accuracy:" , cross_val_score( dt , X_2 , y_2 ) )
+> print("random forest cross-validated accuracy:" , cross_val_score( rf , X_2 , y_2 ) )
+> ```
+> 
+>     decision tree cross-validated accuracy: [1.         1.         0.95833333 1.         0.95833333]
+>     random forest cross-validated accuracy: [1.         1.         1.         1.         0.95833333]
+> 
+> 
+> We can see that they both perform very well, perhaps even better in the case of the random forest (it is able to find more generalizable separation rules thanks to the ensembling).
+>
+> Now, we are going to add many new features filled with random data (imagine they are the 99% of genes which are not biomarkers):
+> 
+> 
+> ```python
+> nb_noise = 10**4
+> X_2_noise = np.concatenate( [ X_2 , np.random.randn( X_2.shape[0],nb_noise ) ] , axis = 1)
+> ```
+> 
+> 
+> ```python
+> print("decision tree cross-validated accuracy:" , cross_val_score( dt , X_2_noise , y_2 ) )
+> print("random forest cross-validated accuracy:" , cross_val_score( rf , X_2_noise , y_2 ) )
+> ```
+> 
+>     decision tree cross-validated accuracy: [1.         1.         0.95833333 1.         0.95833333]
+>     random forest cross-validated accuracy: [0.66666667 0.45833333 0.54166667 0.70833333 0.625     ]
+> 
+> 
+> The performance of the **single decision tree is unchanged**,
+> 
+> but the **Random Forest performs way worse**!
+> 
+> > <question-title></question-title>
+> >
+> > **Question:** how can we explain this difference?
+> >
+> > > <solution-title></solution-title>
+> > >
+> > >
+> > > Remember that each tree in the forest only sees a random fraction of the features.
+> > > 
+> > > As the number of "noise" features increases, the probability that any tree will get the combination of informative features  diminishes.
+> > > 
+> > > Furthermore, the trees which see only noise also contribute some (uninformative) vote to the overall total.
+> > > 
+> > > Thus it becomes harder to extract the signal from the noise in the data. 
+> > > 
+> > > 
+> > > While this could be solved by increasing the number of trees. 
+> > > It is often also advisable to perform some sort of **feature selection** to make sure you only present features of interest to the model.
+> > > 
+> > > There are many procedures to do this, and none of these techniques are perfect however but, just to cite a few:
+> > > 
+> > >  * select the X features which show the most differences between categories
+> > >  * use PCA and limit yourself to the first few principal components
+> > >  * use a reduced set of features externally defined with experts
+> > >  * test random sets of features (but this is also very computationaly demanding)
+> > >  * see the [feature selection page of sklearn](https://scikit-learn.org/stable/modules/feature_selection.html) 
+> > > 
+> > > 
+> > > 
+> > > 
+> > > ```python
+> > > ## simple example with a selectKBest 
+> > > ##  which will select the features with the highest ANOVA F-value between feature and target.
+> > > from sklearn.feature_selection import SelectKBest
+> > > 
+> > > 
+> > > ppl = Pipeline([('select' , SelectKBest( k = 100 ) ) , ## we will select 100 features, which is way to much here
+> > >                 ('tree' , RandomForestClassifier(n_estimators=100))  ])
+> > > 
+> > > print("select 100 best > RF cross-validated accuracy:" , cross_val_score( ppl , 
+> > >                                                                          X_2_noise , 
+> > >                                                                          y_2 , 
+> > >                                                                          scoring='accuracy') )
+> > > 
+> > > ```
+> > > 
+> > >     select 100 best > RF cross-validated accuracy: [0.95833333 0.95833333 1.         1.         0.95833333]
+> > >
+> > {: .solution}
+> {: .question}
+> 
+> 
+>
+{: .details}
+
+> <details-title>Random Forest annex 2 : OOB metric</details-title>
+>
+> In addition to the k-fold cross-validation that we have used so far, random forests offer the possibility of estimating generalization performance with **"Out-Of-Bag" scoring**.
+> 
+> "out-of-bag" refers to the fact that each tree in the forest is trained with a subset of the samples which are "in-the-bag": the samples it does not train with are thus "out-of-bag".
+>
+> The OOB error is computed by aggregating the error for each instance when it is predicted only with the trees where is an out-of-bag sample.
+> 
+> OOB error has been shown to converge to leave-one-out cross-validation error when the number of trees is large enough, making it an interesting metric of generalizability.
+> 
+> It is particularly useful because it can be computed on a single random forest as it is being trained.
+> 
+> Thus, were k-fold cross-validation would require you to train $k$ models, with OOB error you only have to train 1, and thus you save a lot of compute time.
+>
+> 
+> 
+> ```python
+> %%time
+> rf1 = RandomForestClassifier(class_weight='balanced' , 
+>                              n_estimators=100 , 
+>                              max_depth=5,
+>                              min_samples_split=10 , 
+>                              oob_score= True )
+> rf1.fit( X_train_cancer, y_train_cancer )
+> rf1.oob_score_
+> ```
+> 
+>     CPU times: user 195 ms, sys: 67 μs, total: 195 ms
+>     Wall time: 194 ms
+> 
+> 
+> 
+> 
+> 
+>     0.9225352112676056
+> 
+> 
+> 
+> 
+> ```python
+> %%time
+> from sklearn.model_selection import LeaveOneOut
+> S = cross_val_score( rf1 , X_train_cancer , y_train_cancer , scoring = 'accuracy' , cv = LeaveOneOut() )
+> S.mean()
+> ```
+> 
+>     CPU times: user 1min 16s, sys: 366 ms, total: 1min 17s
+>     Wall time: 1min 17s
+> 
+> 
+> 
+> 
+> 
+>     np.float64(0.9295774647887324)
+> 
+> 
+> 
+> See also this example about [plotting OOB error](https://scikit-learn.org/stable/auto_examples/ensemble/plot_ensemble_oob.html)
+>
+>
+{: .details}
 
 
 <br>
 
-## Random Forest in regression. <a class="anchor" id="rf-r"></a>
+## Random Forest in regression.
 
 From the standpoint of tree, the only difference is that now, instead of the entropy or Gini criterion, **the decision which variable to use at any node is made using a regression metric**, such as squared error for example.
 
@@ -4560,9 +4605,8 @@ Tree-based techniques are interesting because:
  
 However as you have seen they tend to take longer to train...
 
-[back to the ToC](#toc)
     
-# Conclusion <a id='conclusion'></a>
+# Conclusion 
 
 During this notebook we have only given a whirlwind tour of what ML is and what is it about.
 
@@ -4576,1205 +4620,1155 @@ However, more than a collection of algorithm, Machine Learning should also be se
    * [regression metrics](https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics)
 
 
-```python
 
-```
+<br>
+
+> <hands-on-title>Classification exercise : predicting heart disease on the framingham data-set</hands-on-title>
+>
+>
+> 
+> Use everything you have learned to model and predict the column `'TenYearCHD'` (dependent variable : ten year risk of coronary heart disease).
+> 
+> 
+> ```python
+> df_heart=pd.read_csv('https://raw.githubusercontent.com/sib-swiss/statistics-and-machine-learning-training/refs/heads/main/data/framingham.csv', index_col = 0)
+> 
+> df_heart.dropna(axis=0,inplace=True) # removing rows with NA values.
+> 
+> print(df_heart.shape)
+> df_heart.head()
+> ```
+> 
+>     (3658, 15)
+> 
+> 
+> 
+> 
+> 
+> <div>
+> <style scoped>
+>     .dataframe tbody tr th:only-of-type {
+>         vertical-align: middle;
+>     }
+> 
+>     .dataframe tbody tr th {
+>         vertical-align: top;
+>     }
+> 
+>     .dataframe thead th {
+>         text-align: right;
+>     }
+> </style>
+> <table border="1" class="dataframe">
+>   <thead>
+>     <tr style="text-align: right;">
+>       <th></th>
+>       <th>age</th>
+>       <th>education</th>
+>       <th>currentSmoker</th>
+>       <th>cigsPerDay</th>
+>       <th>BPMeds</th>
+>       <th>prevalentStroke</th>
+>       <th>prevalentHyp</th>
+>       <th>diabetes</th>
+>       <th>totChol</th>
+>       <th>sysBP</th>
+>       <th>diaBP</th>
+>       <th>BMI</th>
+>       <th>heartRate</th>
+>       <th>glucose</th>
+>       <th>TenYearCHD</th>
+>     </tr>
+>     <tr>
+>       <th>male</th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>     </tr>
+>   </thead>
+>   <tbody>
+>     <tr>
+>       <th>1</th>
+>       <td>39</td>
+>       <td>4.0</td>
+>       <td>0</td>
+>       <td>0.0</td>
+>       <td>0.0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>195.0</td>
+>       <td>106.0</td>
+>       <td>70.0</td>
+>       <td>26.97</td>
+>       <td>80.0</td>
+>       <td>77.0</td>
+>       <td>0</td>
+>     </tr>
+>     <tr>
+>       <th>0</th>
+>       <td>46</td>
+>       <td>2.0</td>
+>       <td>0</td>
+>       <td>0.0</td>
+>       <td>0.0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>250.0</td>
+>       <td>121.0</td>
+>       <td>81.0</td>
+>       <td>28.73</td>
+>       <td>95.0</td>
+>       <td>76.0</td>
+>       <td>0</td>
+>     </tr>
+>     <tr>
+>       <th>1</th>
+>       <td>48</td>
+>       <td>1.0</td>
+>       <td>1</td>
+>       <td>20.0</td>
+>       <td>0.0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>245.0</td>
+>       <td>127.5</td>
+>       <td>80.0</td>
+>       <td>25.34</td>
+>       <td>75.0</td>
+>       <td>70.0</td>
+>       <td>0</td>
+>     </tr>
+>     <tr>
+>       <th>0</th>
+>       <td>61</td>
+>       <td>3.0</td>
+>       <td>1</td>
+>       <td>30.0</td>
+>       <td>0.0</td>
+>       <td>0</td>
+>       <td>1</td>
+>       <td>0</td>
+>       <td>225.0</td>
+>       <td>150.0</td>
+>       <td>95.0</td>
+>       <td>28.58</td>
+>       <td>65.0</td>
+>       <td>103.0</td>
+>       <td>1</td>
+>     </tr>
+>     <tr>
+>       <th>0</th>
+>       <td>46</td>
+>       <td>3.0</td>
+>       <td>1</td>
+>       <td>23.0</td>
+>       <td>0.0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>285.0</td>
+>       <td>130.0</td>
+>       <td>84.0</td>
+>       <td>23.10</td>
+>       <td>85.0</td>
+>       <td>85.0</td>
+>       <td>0</td>
+>     </tr>
+>   </tbody>
+> </table>
+> </div>
+> 
+> 
+> 
+> 
+> ```python
+> ##separation in X and y
+> X_heart = df_heart.drop( columns = "TenYearCHD" )
+> y_heart = df_heart[ "TenYearCHD" ]
+> 
+> ```
+> 
+> 
+> ```python
+> X_heart.head()
+> ```
+> 
+> 
+> 
+> 
+> <div>
+> <style scoped>
+>     .dataframe tbody tr th:only-of-type {
+>         vertical-align: middle;
+>     }
+> 
+>     .dataframe tbody tr th {
+>         vertical-align: top;
+>     }
+> 
+>     .dataframe thead th {
+>         text-align: right;
+>     }
+> </style>
+> <table border="1" class="dataframe">
+>   <thead>
+>     <tr style="text-align: right;">
+>       <th></th>
+>       <th>age</th>
+>       <th>education</th>
+>       <th>currentSmoker</th>
+>       <th>cigsPerDay</th>
+>       <th>BPMeds</th>
+>       <th>prevalentStroke</th>
+>       <th>prevalentHyp</th>
+>       <th>diabetes</th>
+>       <th>totChol</th>
+>       <th>sysBP</th>
+>       <th>diaBP</th>
+>       <th>BMI</th>
+>       <th>heartRate</th>
+>       <th>glucose</th>
+>     </tr>
+>     <tr>
+>       <th>male</th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>       <th></th>
+>     </tr>
+>   </thead>
+>   <tbody>
+>     <tr>
+>       <th>1</th>
+>       <td>39</td>
+>       <td>4.0</td>
+>       <td>0</td>
+>       <td>0.0</td>
+>       <td>0.0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>195.0</td>
+>       <td>106.0</td>
+>       <td>70.0</td>
+>       <td>26.97</td>
+>       <td>80.0</td>
+>       <td>77.0</td>
+>     </tr>
+>     <tr>
+>       <th>0</th>
+>       <td>46</td>
+>       <td>2.0</td>
+>       <td>0</td>
+>       <td>0.0</td>
+>       <td>0.0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>250.0</td>
+>       <td>121.0</td>
+>       <td>81.0</td>
+>       <td>28.73</td>
+>       <td>95.0</td>
+>       <td>76.0</td>
+>     </tr>
+>     <tr>
+>       <th>1</th>
+>       <td>48</td>
+>       <td>1.0</td>
+>       <td>1</td>
+>       <td>20.0</td>
+>       <td>0.0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>245.0</td>
+>       <td>127.5</td>
+>       <td>80.0</td>
+>       <td>25.34</td>
+>       <td>75.0</td>
+>       <td>70.0</td>
+>     </tr>
+>     <tr>
+>       <th>0</th>
+>       <td>61</td>
+>       <td>3.0</td>
+>       <td>1</td>
+>       <td>30.0</td>
+>       <td>0.0</td>
+>       <td>0</td>
+>       <td>1</td>
+>       <td>0</td>
+>       <td>225.0</td>
+>       <td>150.0</td>
+>       <td>95.0</td>
+>       <td>28.58</td>
+>       <td>65.0</td>
+>       <td>103.0</td>
+>     </tr>
+>     <tr>
+>       <th>0</th>
+>       <td>46</td>
+>       <td>3.0</td>
+>       <td>1</td>
+>       <td>23.0</td>
+>       <td>0.0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>285.0</td>
+>       <td>130.0</td>
+>       <td>84.0</td>
+>       <td>23.10</td>
+>       <td>85.0</td>
+>       <td>85.0</td>
+>     </tr>
+>   </tbody>
+> </table>
+> </div>
+> 
+{: .hands_on}
+
+
+> <details-title>Correction</details-title>
+>
+
+>
+> 
+> ```python
+> from sklearn.preprocessing import PolynomialFeatures
+> 
+> X_train_heart, X_test_heart, y_train_heart, y_test_heart = train_test_split(X_heart,y_heart,
+>                                                    random_state=123456,stratify=y_heart)
+> #stratify is here to make sure that you split keeping the repartition of labels unaffected
+> 
+> print("fraction of class benign in train",sum(y_train_heart)/len(y_train_heart))
+> print("fraction of class benign in test ",sum(y_test_heart)/len(y_test_heart))
+> print("fraction of class benign in full ",sum(y_heart)/len(y_heart))
+> 
+> ### takes ~1minute to run
+> 
+> # don't forget the scaler , 
+> # I also put a polynomial there, but with a twist : I will not really go for power 2,3,4..., 
+> #  but rather use it to create the interaction terms between the different features.,
+> pipeline_lr_heart=Pipeline([('scalar',StandardScaler()),
+>                             ('poly',PolynomialFeatures(include_bias=False , interaction_only=True)),
+>                             ('model',LogisticRegression(class_weight='balanced', solver = "liblinear"))])
+> 
+> grid_values = {'poly__degree':[1,2],
+>                'model__C': np.logspace(-5,2,100),
+>                'model__penalty':['l1','l2']}
+> 
+> grid_lr_heart = GridSearchCV(pipeline_lr_heart, 
+>                                      param_grid = grid_values, 
+>                                      scoring="balanced_accuracy",
+>                                      n_jobs=-1)
+> 
+> grid_lr_heart.fit(X_train_heart, y_train_heart)#train your pipeline
+> 
+> print('Grid best score ('+grid_lr_heart.scoring+'): ', 
+>       grid_lr_heart.best_score_)
+> print('Grid best parameter (max.'+grid_lr_heart.scoring+'): ', 
+>       grid_lr_heart.best_params_)
+> 
+> ### takes ~30s to run
+> 
+> grid_values3 = {'criterion': ['entropy','gini'],
+>                'n_estimators':[100,250,500], 
+>                'max_depth':[10,15],
+>                'min_samples_split':[25,50],
+>               'min_samples_leaf':[10,25]}
+> 
+> grid_RF_heart = GridSearchCV(RandomForestClassifier(class_weight='balanced'), 
+>                               param_grid = grid_values3, 
+>                               scoring='balanced_accuracy',
+>                               n_jobs=-1)
+> 
+> grid_RF_heart.fit(X_train_heart, y_train_heart)
+> 
+> print('Grid best score ('+grid_RF_heart.scoring+'): ', grid_RF_heart.best_score_)
+> print('Grid best parameter (max. '+grid_RF_heart.scoring+'): ', grid_RF_heart.best_params_)
+> 
+> 
+> ## the best model I have found is the logistic regression with polynomial of degree 2
+> 
+> ## assess the performance of our fitted estimator on the test set
+> # calculate the score of your trained pipeline on the test
+> y_test_heart_scores = grid_lr_heart.score(X_test_heart,y_test_heart)
+> 
+> print('Grid best parameter (max.'+grid_lr_heart.scoring+') model on test: ', 
+>       y_test_heart_scores)
+> 
+> #predict y_test from X_test thanks to your trained model
+> y_test_heart_pred = grid_lr_heart.predict(X_test_heart)
+> 
+> # check the number of mistake made with the default threshold for your decision function
+> confusion_m_heart = confusion_matrix(y_test_heart, y_test_heart_pred)
+> 
+> plt.figure(figsize=(5,4))
+> sns.heatmap(confusion_m_heart, annot=True, fmt='d')
+> plt.title('LogReg degree : {}, C: {:.3f} , norm: {}\nAccuracy:{:.3f}'.format(
+>                     grid_lr_heart.best_params_['poly__degree'],
+>                     grid_lr_heart.best_params_['model__C'], 
+>                     grid_lr_heart.best_params_['model__penalty'] , 
+>                     accuracy_score(y_test_heart, y_test_heart_pred)))
+> plt.ylabel('True label')
+> plt.xlabel('Predicted label')
+> 
+> 
+> ## plotting the ROC curve of this model
+> 
+> # predict_proba gives you the proba for a point to be in both class
+> y_heart_score_lr = grid_lr_heart.predict_proba(X_test_heart)[:,1]
+> # compute the ROC curve:
+> fpr_heart, tpr_heart, threshold_heart = roc_curve(y_test_heart, 
+>                                                   y_heart_score_lr)
+> #finally this calculates the area under the curve
+> roc_auc_heart = auc(fpr_heart , tpr_heart )
+> 
+> #proba=sc.special.expit(thre_heart_roc_auc)
+> keep = np.argmin( abs(threshold_heart-0.5) ) # getting the theshold which is the closest to 0.5        
+> 
+> fig,ax = plt.subplots()
+> ax.set_xlim([-0.01, 1.00])
+> ax.set_ylim([-0.01, 1.01])
+> ax.plot(fpr_heart, tpr_heart, lw=3, label='LogRegr ROC curve\n (area = {:0.2f})'.format(roc_auc_heart))
+> ax.plot(fpr_heart[keep], tpr_heart[keep],'ro',label='threshold=0.5')
+> ax.plot([0, 1], [0, 1], color='navy', lw=3, linestyle='--')
+> ax.set_xlabel('False Positive Rate', fontsize=16)
+> ax.set_ylabel('True Positive Rate', fontsize=16)
+> ax.set_title('ROC curve (logistic classifier)', fontsize=16)
+> ax.legend(loc='lower right', fontsize=13)
+> ax.set_aspect('equal')
+> 
+> 
+> best_reg = grid_lr_heart.best_estimator_['model']
+> poly     = grid_lr_heart.best_estimator_['poly']
+> 
+> # each coefficient is a composite of the different columns, at different degree
+> # represented by a vector of powers
+> # exemple, with 4 features : X[:,0] ** 1 * X[:,3] ** 2
+> #                     --> [1,0,0,2]
+> coef_names = []
+> for i, row in enumerate( poly.powers_ ):
+>     n = []
+>     for j,p in enumerate(row):
+>         if p > 0:
+>             n.append(X_heart.columns[j])
+>             if p>1:
+>                 n[-1] += "^"+str(p)
+>     coef_names.append("_x_".join(n) )
+> 
+> sorted_features=sorted( [(coef_names[i],abs(best_reg.coef_[0,i])) for i in range(len(poly.powers_))] ,
+>                        key=lambda x : x[1],
+>                        reverse=True)
+> 
+> print('Important features')
+> 
+> for feature, weight in sorted_features:
+>     if weight == 0: # ignore weight which are at 0
+>         continue
+>     print('\t{:>30}\t{:.3f}'.format(feature,weight) )
+>     
+> 
+> ## finally, one little diagnostic plot which can sometimes be useful : 
+> ## plot prediction probabilities of the correctly classified versus wrongly classified cases
+> 
+> ## so we can see how much some positive case still get a very low probability, and vice version 
+> 
+> df = pd.DataFrame( {'y_true' : y_test_heart,
+>                'y_predicted' : y_test_heart_pred,
+>                'proba_class1' : y_heart_score_lr })
+> 
+> 
+> fig,ax = plt.subplots(figsize=(10,5))
+> sns.violinplot( x='y_true',
+>                y='proba_class1', 
+>                hue = 'y_predicted',
+>                data=df, ax=ax , cut=0, scale = 'count', dodge=False)
+>     
+> 
+> ```
+> 
+>     fraction of class benign in train 0.15238789646372586
+>     fraction of class benign in test  0.15191256830601094
+>     fraction of class benign in full  0.15226899945325315
+>     Grid best score (balanced_accuracy):  0.6629812336905225
+>     Grid best parameter (max.balanced_accuracy):  {'model__C': np.float64(0.05590810182512223), 'model__penalty': 'l1', 'poly__degree': 1}
+>     Grid best score (balanced_accuracy):  0.6324393426239521
+>     Grid best parameter (max. balanced_accuracy):  {'criterion': 'entropy', 'max_depth': 15, 'min_samples_leaf': 25, 'min_samples_split': 25, 'n_estimators': 100}
+>     Grid best parameter (max.balanced_accuracy) model on test:  0.6787111547875102
+>     Important features
+>     	                           age	0.502
+>     	                         sysBP	0.305
+>     	                    cigsPerDay	0.243
+>     	                       glucose	0.169
+>     	                  prevalentHyp	0.086
+>     	                     heartRate	0.065
+>     	                 currentSmoker	0.058
+>     	               prevalentStroke	0.048
+>     	                           BMI	0.042
+>     	                         diaBP	0.041
+>     	                        BPMeds	0.031
+>     	                       totChol	0.025
+>     	                      diabetes	0.017
+> 
+> 
+> 
+>     
+> ![png](images/outputs/output_166_3.png)
+>     
+> 
+> 
+> 
+>     
+> ![png](images/outputs/output_166_4.png)
+>     
+> 
+> 
+> 
+>     
+> ![png](images/outputs/output_166_5.png)
+>     
+> 
+{: .details}
 
 
 <br>
 
-# Classification exercise : predicting heart disease on the framingham data-set
-
-Use everything you have learned to model and predict the column `'TenYearCHD'` (dependent variable : ten year risk of coronary heart disease).
-
-
-```python
-df_heart=pd.read_csv('https://raw.githubusercontent.com/sib-swiss/statistics-and-machine-learning-training/refs/heads/main/data/framingham.csv', index_col = 0)
-
-df_heart.dropna(axis=0,inplace=True) # removing rows with NA values.
-
-print(df_heart.shape)
-df_heart.head()
-```
-
-    (3658, 15)
-
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
+> <hands-on-title>Additionnal Regression exercise : predicting daily maximal temperature</hands-on-title>
+>
+> ```python
+> features = pd.read_csv('https://raw.githubusercontent.com/sib-swiss/statistics-and-machine-learning-training/refs/heads/main/data/One_hot_temp.csv',index_col=0)
+> features.head(5)
+> ```
+> 
+> 
+> 
+> 
+> <div>
+> <style scoped>
+>     .dataframe tbody tr th:only-of-type {
+>         vertical-align: middle;
+>     }
+> 
+>     .dataframe tbody tr th {
+>         vertical-align: top;
+>     }
+> 
+>     .dataframe thead th {
+>         text-align: right;
+>     }
+> </style>
+> <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th></th>
-      <th>age</th>
-      <th>education</th>
-      <th>currentSmoker</th>
-      <th>cigsPerDay</th>
-      <th>BPMeds</th>
-      <th>prevalentStroke</th>
-      <th>prevalentHyp</th>
-      <th>diabetes</th>
-      <th>totChol</th>
-      <th>sysBP</th>
-      <th>diaBP</th>
-      <th>BMI</th>
-      <th>heartRate</th>
-      <th>glucose</th>
-      <th>TenYearCHD</th>
-    </tr>
-    <tr>
-      <th>male</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>39</td>
-      <td>4.0</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>195.0</td>
-      <td>106.0</td>
-      <td>70.0</td>
-      <td>26.97</td>
-      <td>80.0</td>
-      <td>77.0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>46</td>
-      <td>2.0</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>250.0</td>
-      <td>121.0</td>
-      <td>81.0</td>
-      <td>28.73</td>
-      <td>95.0</td>
-      <td>76.0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>48</td>
-      <td>1.0</td>
-      <td>1</td>
-      <td>20.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>245.0</td>
-      <td>127.5</td>
-      <td>80.0</td>
-      <td>25.34</td>
-      <td>75.0</td>
-      <td>70.0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>61</td>
-      <td>3.0</td>
-      <td>1</td>
-      <td>30.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>225.0</td>
-      <td>150.0</td>
-      <td>95.0</td>
-      <td>28.58</td>
-      <td>65.0</td>
-      <td>103.0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>46</td>
-      <td>3.0</td>
-      <td>1</td>
-      <td>23.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>285.0</td>
-      <td>130.0</td>
-      <td>84.0</td>
-      <td>23.10</td>
-      <td>85.0</td>
-      <td>85.0</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-```python
-##separation in X and y
-X_heart = df_heart.drop( columns = "TenYearCHD" )
-y_heart = df_heart[ "TenYearCHD" ]
-
-```
-
-
-```python
-X_heart.head()
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>age</th>
-      <th>education</th>
-      <th>currentSmoker</th>
-      <th>cigsPerDay</th>
-      <th>BPMeds</th>
-      <th>prevalentStroke</th>
-      <th>prevalentHyp</th>
-      <th>diabetes</th>
-      <th>totChol</th>
-      <th>sysBP</th>
-      <th>diaBP</th>
-      <th>BMI</th>
-      <th>heartRate</th>
-      <th>glucose</th>
-    </tr>
-    <tr>
-      <th>male</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>39</td>
-      <td>4.0</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>195.0</td>
-      <td>106.0</td>
-      <td>70.0</td>
-      <td>26.97</td>
-      <td>80.0</td>
-      <td>77.0</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>46</td>
-      <td>2.0</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>250.0</td>
-      <td>121.0</td>
-      <td>81.0</td>
-      <td>28.73</td>
-      <td>95.0</td>
-      <td>76.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>48</td>
-      <td>1.0</td>
-      <td>1</td>
-      <td>20.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>245.0</td>
-      <td>127.5</td>
-      <td>80.0</td>
-      <td>25.34</td>
-      <td>75.0</td>
-      <td>70.0</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>61</td>
-      <td>3.0</td>
-      <td>1</td>
-      <td>30.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>225.0</td>
-      <td>150.0</td>
-      <td>95.0</td>
-      <td>28.58</td>
-      <td>65.0</td>
-      <td>103.0</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>46</td>
-      <td>3.0</td>
-      <td>1</td>
-      <td>23.0</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>285.0</td>
-      <td>130.0</td>
-      <td>84.0</td>
-      <td>23.10</td>
-      <td>85.0</td>
-      <td>85.0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-Correction
-
-
-```python
-from sklearn.preprocessing import PolynomialFeatures
-
-X_train_heart, X_test_heart, y_train_heart, y_test_heart = train_test_split(X_heart,y_heart,
-                                                   random_state=123456,stratify=y_heart)
-#stratify is here to make sure that you split keeping the repartition of labels unaffected
-
-print("fraction of class benign in train",sum(y_train_heart)/len(y_train_heart))
-print("fraction of class benign in test ",sum(y_test_heart)/len(y_test_heart))
-print("fraction of class benign in full ",sum(y_heart)/len(y_heart))
-
-### takes ~1minute to run
-
-# don't forget the scaler , 
-# I also put a polynomial there, but with a twist : I will not really go for power 2,3,4..., 
-#  but rather use it to create the interaction terms between the different features.,
-pipeline_lr_heart=Pipeline([('scalar',StandardScaler()),
-                            ('poly',PolynomialFeatures(include_bias=False , interaction_only=True)),
-                            ('model',LogisticRegression(class_weight='balanced', solver = "liblinear"))])
-
-grid_values = {'poly__degree':[1,2],
-               'model__C': np.logspace(-5,2,100),
-               'model__penalty':['l1','l2']}
-
-grid_lr_heart = GridSearchCV(pipeline_lr_heart, 
-                                     param_grid = grid_values, 
-                                     scoring="balanced_accuracy",
-                                     n_jobs=-1)
-
-grid_lr_heart.fit(X_train_heart, y_train_heart)#train your pipeline
-
-print('Grid best score ('+grid_lr_heart.scoring+'): ', 
-      grid_lr_heart.best_score_)
-print('Grid best parameter (max.'+grid_lr_heart.scoring+'): ', 
-      grid_lr_heart.best_params_)
-
-### takes ~30s to run
-
-grid_values3 = {'criterion': ['entropy','gini'],
-               'n_estimators':[100,250,500], 
-               'max_depth':[10,15],
-               'min_samples_split':[25,50],
-              'min_samples_leaf':[10,25]}
-
-grid_RF_heart = GridSearchCV(RandomForestClassifier(class_weight='balanced'), 
-                              param_grid = grid_values3, 
-                              scoring='balanced_accuracy',
-                              n_jobs=-1)
-
-grid_RF_heart.fit(X_train_heart, y_train_heart)
-
-print('Grid best score ('+grid_RF_heart.scoring+'): ', grid_RF_heart.best_score_)
-print('Grid best parameter (max. '+grid_RF_heart.scoring+'): ', grid_RF_heart.best_params_)
-
-
-## the best model I have found is the logistic regression with polynomial of degree 2
-
-## assess the performance of our fitted estimator on the test set
-# calculate the score of your trained pipeline on the test
-y_test_heart_scores = grid_lr_heart.score(X_test_heart,y_test_heart)
-
-print('Grid best parameter (max.'+grid_lr_heart.scoring+') model on test: ', 
-      y_test_heart_scores)
-
-#predict y_test from X_test thanks to your trained model
-y_test_heart_pred = grid_lr_heart.predict(X_test_heart)
-
-# check the number of mistake made with the default threshold for your decision function
-confusion_m_heart = confusion_matrix(y_test_heart, y_test_heart_pred)
-
-plt.figure(figsize=(5,4))
-sns.heatmap(confusion_m_heart, annot=True, fmt='d')
-plt.title('LogReg degree : {}, C: {:.3f} , norm: {}\nAccuracy:{:.3f}'.format(
-                    grid_lr_heart.best_params_['poly__degree'],
-                    grid_lr_heart.best_params_['model__C'], 
-                    grid_lr_heart.best_params_['model__penalty'] , 
-                    accuracy_score(y_test_heart, y_test_heart_pred)))
-plt.ylabel('True label')
-plt.xlabel('Predicted label')
-
-
-## plotting the ROC curve of this model
-
-# predict_proba gives you the proba for a point to be in both class
-y_heart_score_lr = grid_lr_heart.predict_proba(X_test_heart)[:,1]
-# compute the ROC curve:
-fpr_heart, tpr_heart, threshold_heart = roc_curve(y_test_heart, 
-                                                  y_heart_score_lr)
-#finally this calculates the area under the curve
-roc_auc_heart = auc(fpr_heart , tpr_heart )
-
-#proba=sc.special.expit(thre_heart_roc_auc)
-keep = np.argmin( abs(threshold_heart-0.5) ) # getting the theshold which is the closest to 0.5        
-
-fig,ax = plt.subplots()
-ax.set_xlim([-0.01, 1.00])
-ax.set_ylim([-0.01, 1.01])
-ax.plot(fpr_heart, tpr_heart, lw=3, label='LogRegr ROC curve\n (area = {:0.2f})'.format(roc_auc_heart))
-ax.plot(fpr_heart[keep], tpr_heart[keep],'ro',label='threshold=0.5')
-ax.plot([0, 1], [0, 1], color='navy', lw=3, linestyle='--')
-ax.set_xlabel('False Positive Rate', fontsize=16)
-ax.set_ylabel('True Positive Rate', fontsize=16)
-ax.set_title('ROC curve (logistic classifier)', fontsize=16)
-ax.legend(loc='lower right', fontsize=13)
-ax.set_aspect('equal')
-
-
-best_reg = grid_lr_heart.best_estimator_['model']
-poly     = grid_lr_heart.best_estimator_['poly']
-
-# each coefficient is a composite of the different columns, at different degree
-# represented by a vector of powers
-# exemple, with 4 features : X[:,0] ** 1 * X[:,3] ** 2
-#                     --> [1,0,0,2]
-coef_names = []
-for i, row in enumerate( poly.powers_ ):
-    n = []
-    for j,p in enumerate(row):
-        if p > 0:
-            n.append(X_heart.columns[j])
-            if p>1:
-                n[-1] += "^"+str(p)
-    coef_names.append("_x_".join(n) )
-
-sorted_features=sorted( [(coef_names[i],abs(best_reg.coef_[0,i])) for i in range(len(poly.powers_))] ,
-                       key=lambda x : x[1],
-                       reverse=True)
-
-print('Important features')
-
-for feature, weight in sorted_features:
-    if weight == 0: # ignore weight which are at 0
-        continue
-    print('\t{:>30}\t{:.3f}'.format(feature,weight) )
-    
-
-## finally, one little diagnostic plot which can sometimes be useful : 
-## plot prediction probabilities of the correctly classified versus wrongly classified cases
-
-## so we can see how much some positive case still get a very low probability, and vice version 
-
-df = pd.DataFrame( {'y_true' : y_test_heart,
-               'y_predicted' : y_test_heart_pred,
-               'proba_class1' : y_heart_score_lr })
-
-
-fig,ax = plt.subplots(figsize=(10,5))
-sns.violinplot( x='y_true',
-               y='proba_class1', 
-               hue = 'y_predicted',
-               data=df, ax=ax , cut=0, scale = 'count', dodge=False)
-    
-
-```
-
-    fraction of class benign in train 0.15238789646372586
-    fraction of class benign in test  0.15191256830601094
-    fraction of class benign in full  0.15226899945325315
-    Grid best score (balanced_accuracy):  0.6629812336905225
-    Grid best parameter (max.balanced_accuracy):  {'model__C': np.float64(0.05590810182512223), 'model__penalty': 'l1', 'poly__degree': 1}
-    Grid best score (balanced_accuracy):  0.6324393426239521
-    Grid best parameter (max. balanced_accuracy):  {'criterion': 'entropy', 'max_depth': 15, 'min_samples_leaf': 25, 'min_samples_split': 25, 'n_estimators': 100}
-    Grid best parameter (max.balanced_accuracy) model on test:  0.6787111547875102
-    Important features
-    	                           age	0.502
-    	                         sysBP	0.305
-    	                    cigsPerDay	0.243
-    	                       glucose	0.169
-    	                  prevalentHyp	0.086
-    	                     heartRate	0.065
-    	                 currentSmoker	0.058
-    	               prevalentStroke	0.048
-    	                           BMI	0.042
-    	                         diaBP	0.041
-    	                        BPMeds	0.031
-    	                       totChol	0.025
-    	                      diabetes	0.017
-
-
-    /tmp/ipykernel_650127/166564413.py:147: FutureWarning: 
-    
-    The `scale` parameter has been renamed and will be removed in v0.15.0. Pass `density_norm='count'` for the same effect.
-      sns.violinplot( x='y_true',
-
-
-
-
-
-    <Axes: xlabel='y_true', ylabel='proba_class1'>
-
-
-
-
-    
-![png](images/outputs/output_166_3.png)
-    
-
-
-
-    
-![png](images/outputs/output_166_4.png)
-    
-
-
-
-    
-![png](images/outputs/output_166_5.png)
-    
-
-
-<br>
-
-# Additionnal Regression exercise : predicting daily maximal temperature
-
-
-
-```python
-features = pd.read_csv('https://raw.githubusercontent.com/sib-swiss/statistics-and-machine-learning-training/refs/heads/main/data/One_hot_temp.csv',index_col=0)
-features.head(5)
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>year</th>
-      <th>month</th>
-      <th>day</th>
-      <th>temp_2</th>
-      <th>temp_1</th>
-      <th>average</th>
-      <th>actual</th>
-      <th>forecast_noaa</th>
-      <th>forecast_acc</th>
-      <th>forecast_under</th>
-      <th>friend</th>
-      <th>week_Fri</th>
-      <th>week_Mon</th>
-      <th>week_Sat</th>
-      <th>week_Sun</th>
-      <th>week_Thurs</th>
-      <th>week_Tues</th>
-      <th>week_Wed</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2016</td>
-      <td>1</td>
-      <td>1</td>
-      <td>45</td>
-      <td>45</td>
-      <td>45.6</td>
-      <td>45</td>
-      <td>43</td>
-      <td>50</td>
-      <td>44</td>
-      <td>29</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2016</td>
-      <td>1</td>
-      <td>2</td>
-      <td>44</td>
-      <td>45</td>
-      <td>45.7</td>
-      <td>44</td>
-      <td>41</td>
-      <td>50</td>
-      <td>44</td>
-      <td>61</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2016</td>
-      <td>1</td>
-      <td>3</td>
-      <td>45</td>
-      <td>44</td>
-      <td>45.8</td>
-      <td>41</td>
-      <td>43</td>
-      <td>46</td>
-      <td>47</td>
-      <td>56</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2016</td>
-      <td>1</td>
-      <td>4</td>
-      <td>44</td>
-      <td>41</td>
-      <td>45.9</td>
-      <td>40</td>
-      <td>44</td>
-      <td>48</td>
-      <td>46</td>
-      <td>53</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2016</td>
-      <td>1</td>
-      <td>5</td>
-      <td>41</td>
-      <td>40</td>
-      <td>46.0</td>
-      <td>44</td>
-      <td>46</td>
-      <td>46</td>
-      <td>46</td>
-      <td>41</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
- * year: 2016 for all data points
- * month: number for month of the year
- * day: number for day of the year
- * week: day of the week as a character string
- * temp_2: max temperature 2 days prior
- * temp_1: max temperature 1 day prior
- * average: historical average max temperature
- * actual: max temperature measurement
- * friend: your friend’s prediction, a random number between 20 below the average and 20 above the average
- 
-
-Additionally, all the features noted forecast are weather forecast given by some organisation for that day.
-
-
-We want to predict `actual`, th actual max temperature of a day.
-
-Use a random forest to do so. You can inspire yourself from the examples of code above.
-
-Here are a couple of plots to get you started with the data exploration:
-
-
-```python
-import datetime
-feature_list=list(features.columns)
-labels=features["actual"]
-# Dates of training values
-months = np.array(features)[:, feature_list.index('month')]
-days = np.array(features)[:, feature_list.index('day')]
-years = np.array(features)[:, feature_list.index('year')]
-
-# List and then convert to datetime object
-dates = [str(int(year)) + '-' + str(int(month)) + '-' + str(int(day)) for year, month, day in zip(years, months, days)]
-dates = [datetime.datetime.strptime(date, '%Y-%m-%d') for date in dates]
-
-# Dataframe with true values and dates
-true_data = pd.DataFrame(data = {'date': dates, 'actual': labels})
-
-
-plt.xlabel('Date'); 
-plt.ylabel('Maximum Temperature (F)')
-
-# Plot the actual values
-plt.plot(true_data['date'], true_data['actual'], 'b-', label = 'actual')
-plt.xticks(rotation = 60)
-plt.show()
-```
-
-
-    
-![png](images/outputs/output_171_0.png)
-    
-
-
-
-```python
-import datetime
-feature_list=list(features.columns)
-labels=features["average"]
-# Dates of training values
-months = np.array(features)[:, feature_list.index('month')]
-days = np.array(features)[:, feature_list.index('day')]
-years = np.array(features)[:, feature_list.index('year')]
-
-# List and then convert to datetime object
-dates = [str(int(year)) + '-' + str(int(month)) + '-' + str(int(day)) for year, month, day in zip(years, months, days)]
-dates = [datetime.datetime.strptime(date, '%Y-%m-%d') for date in dates]
-
-# Dataframe with true values and dates
-true_data = pd.DataFrame(data = {'date': dates, 'average': labels})
-
-
-plt.xlabel('Date'); 
-plt.ylabel('Maximum Temperature (F)')
-
-# Plot the average values
-plt.plot(true_data['date'], true_data['average'], 'b-', label = 'average')
-plt.xticks(rotation = 60)
-plt.show()
-```
-
-
-    
-![png](images/outputs/output_172_0.png)
-    
-
-
-correction
-
-
-```python
-from sklearn.ensemble import RandomForestRegressor
-
-
-## train/test split
-y = np.array(features['actual'])
-# Remove the labels from the features
-# axis 1 refers to the columns
-X= features.drop([ 'year', 'month', 'day',
-       'actual', 'week_Fri', 'week_Mon', 'week_Sat', 'week_Sun', 'week_Thurs',
-       'week_Tues', 'week_Wed'], axis = 1)
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25,random_state = 42)
-
-
-## setup and fit pipeline
-grid_values = {'criterion': ['squared_error'],
-               'n_estimators':[300,600,900], 
-               'max_depth':[2,5,7],
-               'min_samples_split':[4],
-              'min_samples_leaf':[2]}# define the hyperparameters you want to test
-#with the range over which you want it to be tested.
-
-grid_tree_acc = GridSearchCV(RandomForestRegressor(), param_grid = grid_values, scoring='r2',n_jobs=-1)#Feed it to the GridSearchCV with the right
-#score over which the decision should be taken
-
-grid_tree_acc.fit(X_train, y_train)
-
-print('Grid best parameter (max. r2): ', grid_tree_acc.best_params_)#get the best parameters
-print('Grid best score (r2): ', grid_tree_acc.best_score_)#get the best score calculated from the train/validation
-#dataset
-
-## evaluate the model on the test set
-# get the equivalent score on the test dataset : again this is the important metric
-y_decision_fn_scores_acc=grid_tree_acc.score(X_test,y_test)
-print('Grid best parameter (max. r2) model on test: ', y_decision_fn_scores_acc)
-
-## get the feature importances 
-w=grid_tree_acc.best_estimator_.feature_importances_#get the weights
-
-sorted_features=sorted([[list(X.columns)[i],abs(w[i])] for i in range(len(w))],key=lambda X : X[1],reverse=True)
-
-print('Features sorted per importance in discriminative process')
-for f,w in sorted_features:
-    print('{:>20}\t{:.3f}'.format(f,w))
-
-## using permutation to get the importances
-from sklearn.inspection import permutation_importance
-feature_importance = grid_tree_acc.best_estimator_.feature_importances_
-std = np.std([tree.feature_importances_ for tree in grid_tree_acc.best_estimator_.estimators_], axis=0)
-
-sorted_idx = np.argsort(feature_importance)
-pos = np.arange(sorted_idx.shape[0]) + .5
-fig = plt.figure(figsize=(12, 6))
-plt.subplot(1, 2, 1)
-plt.barh(pos, feature_importance[sorted_idx],xerr=std[sorted_idx][::-1], align='center')
-plt.yticks(pos, np.array(list(X.columns))[sorted_idx])
-plt.title('Feature Importance (MDI)',fontsize=10)
-
-result = permutation_importance(grid_tree_acc.best_estimator_, 
-                                X_test, y_test, n_repeats=10,
-                                random_state=42, n_jobs=2)
-
-sorted_idx = result.importances_mean.argsort()
-plt.subplot(1, 2, 2)
-plt.boxplot(result.importances[sorted_idx].T,
-            vert=False, labels=np.array(list(X.columns))[sorted_idx])
-plt.title("Permutation Importance (test set)",fontsize=10)
-fig.tight_layout()
-plt.show()
-
-
-
-```
-
-    Grid best parameter (max. r2):  {'criterion': 'squared_error', 'max_depth': 5, 'min_samples_leaf': 2, 'min_samples_split': 4, 'n_estimators': 300}
-    Grid best score (r2):  0.8144279667482424
-    Grid best parameter (max. r2) model on test:  0.8296173830060765
-    Features sorted per importance in discriminative process
-                  temp_1	0.701
-                 average	0.166
-           forecast_noaa	0.044
-            forecast_acc	0.035
-          forecast_under	0.022
-                  temp_2	0.017
-                  friend	0.015
-
-
-    /tmp/ipykernel_650127/1170507330.py:65: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
-      plt.boxplot(result.importances[sorted_idx].T,
-
-
-
-    
-![png](images/outputs/output_174_2.png)
-    
-
-
-Solution - BONUS - re-thinking the splitting strategy
-
-![RF](images/TimeSeriesSplit.png)
-
-
-```python
-## Our splitting strategy doesn't seem to represent the reality of the process....
-## inspired from https://hub.packtpub.com/cross-validation-strategies-for-time-series-forecasting-tutorial/
-
-import scipy as sc
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import TimeSeriesSplit
-y = np.array(features['actual'])
-
-# Remove the labels from the features
-# axis 1 refers to the columns
-X= features.drop([ 'year', 'month', 'day',
-       'actual', 'forecast_noaa', 'forecast_acc', 'forecast_under',
-       'week_Fri', 'week_Mon', 'week_Sat', 'week_Sun', 'week_Thurs',
-       'week_Tues', 'week_Wed'], axis = 1)
-
-## the train data is the 75% most ancient data, the test is the 25% most recent
-X_train=np.array(X)[:int(len(X.index)*0.75),:]                                                                           
-X_test=np.array(X)[int(len(X.index)*0.75):,:]
-y_train=np.array(y)[:int(len(X.index)*0.75)]
-y_test=np.array(y)[int(len(X.index)*0.75):]
-
-grid_values = {'criterion': ['squared_error'],
-               'n_estimators':[300,600,900], 
-               'max_depth':[2,5,7],
-               'min_samples_split':[4],
-              'min_samples_leaf':[2]}# define the hyperparameters you want to test
-
-#with the range over which you want it to be tested.
-tscv = TimeSeriesSplit()
-    
-#Feed it to the GridSearchCV with the right
-#score over which the decision should be taken    
-grid_tree_acc = GridSearchCV(RandomForestRegressor(), 
-                            param_grid = grid_values, 
-                            scoring='r2',
-                            cv=tscv,
-                            n_jobs=-1)
-
-
-grid_tree_acc.fit(X_train, y_train)
-
-
-
-print('Grid best parameter (max. r2): ', grid_tree_acc.best_params_)#get the best parameters
-print('Grid best score (r2): ', grid_tree_acc.best_score_)#get the best score calculated from the train/validation
-#dataset
-
-
-
-y_decision_fn_scores_acc=grid_tree_acc.score(X_test,y_test)
-print('Grid best parameter (max. r2) model on test: ', y_decision_fn_scores_acc)# get the equivalent score on the test
-#dataset : again this is the important metric
-
-
-## feature importances
-RF = grid_tree_acc.best_estimator_
-W=RF.feature_importances_#get the weights
-
-sorted_features=sorted([[list(X.columns)[i],abs(W[i])] for i in range(len(W))],key=lambda x : x[1],reverse=True)
-
-print('Features sorted per importance in discriminative process')
-for f,w in sorted_features:
-    print('{:>20}\t{:.3f}'.format(f,w))
-    
-from sklearn.inspection import permutation_importance
-
-feature_importance = RF.feature_importances_#get the weights
-std = np.std([tree.feature_importances_ for tree in grid_tree_acc.best_estimator_.estimators_], axis=0)
-
-sorted_idx = np.argsort(feature_importance)
-pos = np.arange(sorted_idx.shape[0]) + .5
-fig = plt.figure(figsize=(12, 6))
-plt.subplot(1, 2, 1)
-plt.barh(pos, feature_importance[sorted_idx],xerr=std[sorted_idx][::-1], align='center')
-plt.yticks(pos, np.array(list(X.columns))[sorted_idx])
-plt.title('Feature Importance (MDI)',fontsize=10)
-
-result = permutation_importance(RF, X_test, y_test, n_repeats=10,
-                                random_state=42, n_jobs=2)
-sorted_idx = result.importances_mean.argsort()
-plt.subplot(1, 2, 2)
-plt.boxplot(result.importances[sorted_idx].T,
-            vert=False, labels=np.array(list(X.columns))[sorted_idx])
-plt.title("Permutation Importance (test set)",fontsize=10)
-fig.tight_layout()
-plt.show()
-
-
-## plotting the fit
-plt.plot(y,RF.predict(X),'ro')
-plt.xlabel('True values')
-plt.ylabel('Predicted values')
-plt.title(str(sc.stats.pearsonr(y,RF.predict(X))[0]))
-
-```
-
-    Grid best parameter (max. r2):  {'criterion': 'squared_error', 'max_depth': 2, 'min_samples_leaf': 2, 'min_samples_split': 4, 'n_estimators': 900}
-    Grid best score (r2):  0.16457210986633683
-    Grid best parameter (max. r2) model on test:  0.45442183876065745
-    Features sorted per importance in discriminative process
-                  temp_1	0.665
-                 average	0.334
-                  temp_2	0.001
-                  friend	0.000
-
-
-    /tmp/ipykernel_650127/1431063729.py:82: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
-      plt.boxplot(result.importances[sorted_idx].T,
-
-
-
-    
-![png](images/outputs/output_177_2.png)
-    
-
-
-    /home/wandrille/Installed_software/anaconda3/envs/introML2024/lib/python3.11/site-packages/sklearn/base.py:486: UserWarning: X has feature names, but RandomForestRegressor was fitted without feature names
-      warnings.warn(
-    /home/wandrille/Installed_software/anaconda3/envs/introML2024/lib/python3.11/site-packages/sklearn/base.py:486: UserWarning: X has feature names, but RandomForestRegressor was fitted without feature names
-      warnings.warn(
-
-
-
-
-
-    Text(0.5, 1.0, '0.8981473578315659')
-
-
-
-
-    
-![png](images/outputs/output_177_5.png)
-    
-
-
-Solution - BONUS - an even better splitting strategy
-
-![RF](images/BlockedTimeSeriesSplit.png)
-
-
-```python
-## Even better splitting strategy
-
-
-# we define our own splitter class
-class BlockingTimeSeriesSplit():
-    def __init__(self, n_splits):
-        self.n_splits = n_splits
-    
-    def get_n_splits(self, X, y, groups):
-        return self.n_splits
-    
-    def split(self, X, y=None, groups=None):
-        n_samples = len(X)
-        k_fold_size = n_samples // self.n_splits
-        indices = np.arange(n_samples)
-
-        margin = 0
-        for i in range(self.n_splits):
-            start = i * k_fold_size
-            stop = start + k_fold_size
-            mid = int(0.8 * (stop - start)) + start
-            yield indices[start: mid], indices[mid + margin: stop]
-            
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import TimeSeriesSplit
-y = np.array(features['actual'])
-
-# Remove the labels from the features
-# axis 1 refers to the columns
-X= features.drop([ 'year', 'month', 'day',
-       'actual', 'forecast_noaa', 'forecast_acc', 'forecast_under',
-       'week_Fri', 'week_Mon', 'week_Sat', 'week_Sun', 'week_Thurs',
-       'week_Tues', 'week_Wed'], axis = 1)
-
-
-X_train=np.array(X)[:int(len(X.index)*0.75),:]                                                                           
-X_test=np.array(X)[int(len(X.index)*0.75):,:]
-y_train=np.array(y)[:int(len(X.index)*0.75)]
-y_test=np.array(y)[int(len(X.index)*0.75):]
-grid_values = {'criterion': ['squared_error'],
-                'max_depth':[2,5,7],
-               'min_samples_split':[4],
-              'min_samples_leaf':[2]}
-#with the range over which you want it to be tested.
-tscv = BlockingTimeSeriesSplit(n_splits=5)
-
-
-    
-#Feed it to the GridSearchCV with the right
-#score over which the decision should be taken    
-grid_tree_acc = GridSearchCV(RandomForestRegressor(), 
-                            param_grid = grid_values, 
-                             scoring='r2',
-                             cv=tscv, 
-                             n_jobs=-1)
-
-grid_tree_acc.fit(X_train, y_train)
-
-
-
-print('Grid best parameter (max. r2): ', grid_tree_acc.best_params_)#get the best parameters
-print('Grid best score (r2): ', grid_tree_acc.best_score_)#get the best score calculated from the train/validation
-#dataset
-
-y_decision_fn_scores_acc=grid_tree_acc.score(X_test,y_test)
-print('Grid best parameter (max. r2) model on test: ', y_decision_fn_scores_acc)# get the equivalent score on the test
-#dataset : again this is the important metric
-
-## looking at feature importance 
-RF = grid_tree_acc.best_estimator_
-W=RF.feature_importances_#get the weights
-
-sorted_features=sorted([[list(X.columns)[i],abs(W[i])] for i in range(len(W))],key=lambda x : x[1],reverse=True)
-
-print('Features sorted per importance in discriminative process')
-print(sorted_features)
-
-
-from sklearn.inspection import permutation_importance
-
-feature_importance = RF.feature_importances_
-std = np.std([tree.feature_importances_ for tree in grid_tree_acc.best_estimator_.estimators_], axis=0)
-
-sorted_idx = np.argsort(feature_importance)
-pos = np.arange(sorted_idx.shape[0]) + .5
-fig = plt.figure(figsize=(12, 6))
-plt.subplot(1, 2, 1)
-plt.barh(pos, feature_importance[sorted_idx],xerr=std[sorted_idx][::-1], align='center')
-plt.yticks(pos, np.array(list(X.columns))[sorted_idx])
-plt.title('Feature Importance (MDI)',fontsize=10)
-
-result = permutation_importance(RF, X_test, y_test, n_repeats=10,
-                                random_state=42, n_jobs=2)
-sorted_idx = result.importances_mean.argsort()
-plt.subplot(1, 2, 2)
-plt.boxplot(result.importances[sorted_idx].T,
-            vert=False, labels=np.array(list(X.columns))[sorted_idx])
-plt.title("Permutation Importance (test set)",fontsize=10)
-fig.tight_layout()
-plt.show()
-
-
-## plotting the fit
-plt.plot(y,RF.predict(X),'ro')
-plt.xlabel('True values')
-plt.ylabel('Predicted values')
-plt.title(str(sc.stats.pearsonr(y,RF.predict(X))[0]))
-```
-
-    Grid best parameter (max. r2):  {'criterion': 'squared_error', 'max_depth': 2, 'min_samples_leaf': 2, 'min_samples_split': 4}
-    Grid best score (r2):  -0.19281483458208248
-    Grid best parameter (max. r2) model on test:  0.4358468371037175
-    Features sorted per importance in discriminative process
-    [['temp_1', np.float64(0.6923327698349346)], ['average', np.float64(0.3071439719658726)], ['temp_2', np.float64(0.0005232581991927613)], ['friend', np.float64(0.0)]]
-
-
-    /tmp/ipykernel_650127/2903738990.py:96: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
-      plt.boxplot(result.importances[sorted_idx].T,
-
-
-
-    
-![png](images/outputs/output_180_2.png)
-    
-
-
-    /home/wandrille/Installed_software/anaconda3/envs/introML2024/lib/python3.11/site-packages/sklearn/base.py:486: UserWarning: X has feature names, but RandomForestRegressor was fitted without feature names
-      warnings.warn(
-    /home/wandrille/Installed_software/anaconda3/envs/introML2024/lib/python3.11/site-packages/sklearn/base.py:486: UserWarning: X has feature names, but RandomForestRegressor was fitted without feature names
-      warnings.warn(
-
-
-
-
-
-    Text(0.5, 1.0, '0.8964458857998946')
-
-
-
-
-    
-![png](images/outputs/output_180_5.png)
-    
-
-
-
-```python
-
-```
-
-
-```python
-
-```
+>       <th></th>
+>       <th>year</th>
+>       <th>month</th>
+>       <th>day</th>
+>       <th>temp_2</th>
+>       <th>temp_1</th>
+>       <th>average</th>
+>       <th>actual</th>
+>       <th>forecast_noaa</th>
+>       <th>forecast_acc</th>
+>       <th>forecast_under</th>
+>       <th>friend</th>
+>       <th>week_Fri</th>
+>       <th>week_Mon</th>
+>       <th>week_Sat</th>
+>       <th>week_Sun</th>
+>       <th>week_Thurs</th>
+>       <th>week_Tues</th>
+>       <th>week_Wed</th>
+>     </tr>
+>   </thead>
+>   <tbody>
+>     <tr>
+>       <th>0</th>
+>       <td>2016</td>
+>       <td>1</td>
+>       <td>1</td>
+>       <td>45</td>
+>       <td>45</td>
+>       <td>45.6</td>
+>       <td>45</td>
+>       <td>43</td>
+>       <td>50</td>
+>       <td>44</td>
+>       <td>29</td>
+>       <td>1</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>     </tr>
+>     <tr>
+>       <th>1</th>
+>       <td>2016</td>
+>       <td>1</td>
+>       <td>2</td>
+>       <td>44</td>
+>       <td>45</td>
+>       <td>45.7</td>
+>       <td>44</td>
+>       <td>41</td>
+>       <td>50</td>
+>       <td>44</td>
+>       <td>61</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>1</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>     </tr>
+>     <tr>
+>       <th>2</th>
+>       <td>2016</td>
+>       <td>1</td>
+>       <td>3</td>
+>       <td>45</td>
+>       <td>44</td>
+>       <td>45.8</td>
+>       <td>41</td>
+>       <td>43</td>
+>       <td>46</td>
+>       <td>47</td>
+>       <td>56</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>1</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>     </tr>
+>     <tr>
+>       <th>3</th>
+>       <td>2016</td>
+>       <td>1</td>
+>       <td>4</td>
+>       <td>44</td>
+>       <td>41</td>
+>       <td>45.9</td>
+>       <td>40</td>
+>       <td>44</td>
+>       <td>48</td>
+>       <td>46</td>
+>       <td>53</td>
+>       <td>0</td>
+>       <td>1</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>     </tr>
+>     <tr>
+>       <th>4</th>
+>       <td>2016</td>
+>       <td>1</td>
+>       <td>5</td>
+>       <td>41</td>
+>       <td>40</td>
+>       <td>46.0</td>
+>       <td>44</td>
+>       <td>46</td>
+>       <td>46</td>
+>       <td>46</td>
+>       <td>41</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>0</td>
+>       <td>1</td>
+>       <td>0</td>
+>     </tr>
+>   </tbody>
+> </table>
+> </div>
+> 
+> 
+> 
+> 
+>  * year: 2016 for all data points
+>  * month: number for month of the year
+>  * day: number for day of the year
+>  * week: day of the week as a character string
+>  * temp_2: max temperature 2 days prior
+>  * temp_1: max temperature 1 day prior
+>  * average: historical average max temperature
+>  * actual: max temperature measurement
+>  * friend: your friend’s prediction, a random number between 20 below the average and 20 above the average
+>  
+> 
+> Additionally, all the features noted forecast are weather forecast given by some organisation for that day.
+> 
+> 
+> We want to predict `actual`, th actual max temperature of a day.
+> 
+> Use a random forest to do so. You can inspire yourself from the examples of code above.
+> 
+> Here are a couple of plots to get you started with the data exploration:
+> 
+> 
+> ```python
+> import datetime
+> feature_list=list(features.columns)
+> labels=features["actual"]
+> # Dates of training values
+> months = np.array(features)[:, feature_list.index('month')]
+> days = np.array(features)[:, feature_list.index('day')]
+> years = np.array(features)[:, feature_list.index('year')]
+> 
+> # List and then convert to datetime object
+> dates = [str(int(year)) + '-' + str(int(month)) + '-' + str(int(day)) for year, month, day in zip(years, months, days)]
+> dates = [datetime.datetime.strptime(date, '%Y-%m-%d') for date in dates]
+> 
+> # Dataframe with true values and dates
+> true_data = pd.DataFrame(data = {'date': dates, 'actual': labels})
+> 
+> 
+> plt.xlabel('Date'); 
+> plt.ylabel('Maximum Temperature (F)')
+> 
+> # Plot the actual values
+> plt.plot(true_data['date'], true_data['actual'], 'b-', label = 'actual')
+> plt.xticks(rotation = 60)
+> plt.show()
+> ```
+> 
+> 
+>     
+> ![png](images/outputs/output_171_0.png)
+>     
+> 
+> 
+> 
+> ```python
+> import datetime
+> feature_list=list(features.columns)
+> labels=features["average"]
+> # Dates of training values
+> months = np.array(features)[:, feature_list.index('month')]
+> days = np.array(features)[:, feature_list.index('day')]
+> years = np.array(features)[:, feature_list.index('year')]
+> 
+> # List and then convert to datetime object
+> dates = [str(int(year)) + '-' + str(int(month)) + '-' + str(int(day)) for year, month, day in zip(years, months, days)]
+> dates = [datetime.datetime.strptime(date, '%Y-%m-%d') for date in dates]
+> 
+> # Dataframe with true values and dates
+> true_data = pd.DataFrame(data = {'date': dates, 'average': labels})
+> 
+> 
+> plt.xlabel('Date'); 
+> plt.ylabel('Maximum Temperature (F)')
+> 
+> # Plot the average values
+> plt.plot(true_data['date'], true_data['average'], 'b-', label = 'average')
+> plt.xticks(rotation = 60)
+> plt.show()
+> ```
+> 
+> 
+>     
+> ![png](images/outputs/output_172_0.png)
+>     
+> 
+>
+{: .hands_on}
+
+
+> <details-title>Correction</details-title>
+>
+> 
+> ```python
+> from sklearn.ensemble import RandomForestRegressor
+> 
+> 
+> ## train/test split
+> y = np.array(features['actual'])
+> # Remove the labels from the features
+> # axis 1 refers to the columns
+> X= features.drop([ 'year', 'month', 'day',
+>        'actual', 'week_Fri', 'week_Mon', 'week_Sat', 'week_Sun', 'week_Thurs',
+>        'week_Tues', 'week_Wed'], axis = 1)
+> 
+> X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25,random_state = 42)
+> 
+> 
+> ## setup and fit pipeline
+> grid_values = {'criterion': ['squared_error'],
+>                'n_estimators':[300,600,900], 
+>                'max_depth':[2,5,7],
+>                'min_samples_split':[4],
+>               'min_samples_leaf':[2]}# define the hyperparameters you want to test
+> #with the range over which you want it to be tested.
+> 
+> grid_tree_acc = GridSearchCV(RandomForestRegressor(), param_grid = grid_values, scoring='r2',n_jobs=-1)#Feed it to the GridSearchCV with the right
+> #score over which the decision should be taken
+> 
+> grid_tree_acc.fit(X_train, y_train)
+> 
+> print('Grid best parameter (max. r2): ', grid_tree_acc.best_params_)#get the best parameters
+> print('Grid best score (r2): ', grid_tree_acc.best_score_)#get the best score calculated from the train/validation
+> #dataset
+> 
+> ## evaluate the model on the test set
+> # get the equivalent score on the test dataset : again this is the important metric
+> y_decision_fn_scores_acc=grid_tree_acc.score(X_test,y_test)
+> print('Grid best parameter (max. r2) model on test: ', y_decision_fn_scores_acc)
+> 
+> ## get the feature importances 
+> w=grid_tree_acc.best_estimator_.feature_importances_#get the weights
+> 
+> sorted_features=sorted([[list(X.columns)[i],abs(w[i])] for i in range(len(w))],key=lambda X : X[1],reverse=True)
+> 
+> print('Features sorted per importance in discriminative process')
+> for f,w in sorted_features:
+>     print('{:>20}\t{:.3f}'.format(f,w))
+> 
+> ## using permutation to get the importances
+> from sklearn.inspection import permutation_importance
+> feature_importance = grid_tree_acc.best_estimator_.feature_importances_
+> std = np.std([tree.feature_importances_ for tree in grid_tree_acc.best_estimator_.estimators_], axis=0)
+> 
+> sorted_idx = np.argsort(feature_importance)
+> pos = np.arange(sorted_idx.shape[0]) + .5
+> fig = plt.figure(figsize=(12, 6))
+> plt.subplot(1, 2, 1)
+> plt.barh(pos, feature_importance[sorted_idx],xerr=std[sorted_idx][::-1], align='center')
+> plt.yticks(pos, np.array(list(X.columns))[sorted_idx])
+> plt.title('Feature Importance (MDI)',fontsize=10)
+> 
+> result = permutation_importance(grid_tree_acc.best_estimator_, 
+>                                 X_test, y_test, n_repeats=10,
+>                                 random_state=42, n_jobs=2)
+> 
+> sorted_idx = result.importances_mean.argsort()
+> plt.subplot(1, 2, 2)
+> plt.boxplot(result.importances[sorted_idx].T,
+>             vert=False, labels=np.array(list(X.columns))[sorted_idx])
+> plt.title("Permutation Importance (test set)",fontsize=10)
+> fig.tight_layout()
+> plt.show()
+> 
+> ```
+> 
+>     Grid best parameter (max. r2):  {'criterion': 'squared_error', 'max_depth': 5, 'min_samples_leaf': 2, 'min_samples_split': 4, 'n_estimators': 300}
+>     Grid best score (r2):  0.8144279667482424
+>     Grid best parameter (max. r2) model on test:  0.8296173830060765
+>     Features sorted per importance in discriminative process
+>                   temp_1	0.701
+>                  average	0.166
+>            forecast_noaa	0.044
+>             forecast_acc	0.035
+>           forecast_under	0.022
+>                   temp_2	0.017
+>                   friend	0.015
+> 
+> 
+> 
+> 
+>     
+> ![png](images/outputs/output_174_2.png)
+>     
+>
+{: .details}
+
+
+> <details-title>Solution - BONUS - re-thinking the splitting strategy</details-title>
+>
+> ![A splitting strategy for time series: ensure the oldest samples are used to train and the newest to validate.](images/TimeSeriesSplit.png)
+> 
+> 
+> ```python
+> ## Our splitting strategy doesn't seem to represent the reality of the process....
+> ## inspired from https://hub.packtpub.com/cross-validation-strategies-for-time-series-forecasting-tutorial/
+> 
+> import scipy as sc
+> from sklearn.ensemble import RandomForestRegressor
+> from sklearn.model_selection import TimeSeriesSplit
+> y = np.array(features['actual'])
+> 
+> # Remove the labels from the features
+> # axis 1 refers to the columns
+> X= features.drop([ 'year', 'month', 'day',
+>        'actual', 'forecast_noaa', 'forecast_acc', 'forecast_under',
+>        'week_Fri', 'week_Mon', 'week_Sat', 'week_Sun', 'week_Thurs',
+>        'week_Tues', 'week_Wed'], axis = 1)
+> 
+> ## the train data is the 75% most ancient data, the test is the 25% most recent
+> X_train=np.array(X)[:int(len(X.index)*0.75),:]                                                                           
+> X_test=np.array(X)[int(len(X.index)*0.75):,:]
+> y_train=np.array(y)[:int(len(X.index)*0.75)]
+> y_test=np.array(y)[int(len(X.index)*0.75):]
+> 
+> grid_values = {'criterion': ['squared_error'],
+>                'n_estimators':[300,600,900], 
+>                'max_depth':[2,5,7],
+>                'min_samples_split':[4],
+>               'min_samples_leaf':[2]}# define the hyperparameters you want to test
+> 
+> #with the range over which you want it to be tested.
+> tscv = TimeSeriesSplit()
+>     
+> #Feed it to the GridSearchCV with the right
+> #score over which the decision should be taken    
+> grid_tree_acc = GridSearchCV(RandomForestRegressor(), 
+>                             param_grid = grid_values, 
+>                             scoring='r2',
+>                             cv=tscv,
+>                             n_jobs=-1)
+> 
+> 
+> grid_tree_acc.fit(X_train, y_train)
+> 
+> 
+> 
+> print('Grid best parameter (max. r2): ', grid_tree_acc.best_params_)#get the best parameters
+> print('Grid best score (r2): ', grid_tree_acc.best_score_)#get the best score calculated from the train/validation
+> #dataset
+> 
+> 
+> 
+> y_decision_fn_scores_acc=grid_tree_acc.score(X_test,y_test)
+> print('Grid best parameter (max. r2) model on test: ', y_decision_fn_scores_acc)# get the equivalent score on the test
+> #dataset : again this is the important metric
+> 
+> 
+> ## feature importances
+> RF = grid_tree_acc.best_estimator_
+> W=RF.feature_importances_#get the weights
+> 
+> sorted_features=sorted([[list(X.columns)[i],abs(W[i])] for i in range(len(W))],key=lambda x : x[1],reverse=True)
+> 
+> print('Features sorted per importance in discriminative process')
+> for f,w in sorted_features:
+>     print('{:>20}\t{:.3f}'.format(f,w))
+>     
+> from sklearn.inspection import permutation_importance
+> 
+> feature_importance = RF.feature_importances_#get the weights
+> std = np.std([tree.feature_importances_ for tree in grid_tree_acc.best_estimator_.estimators_], axis=0)
+> 
+> sorted_idx = np.argsort(feature_importance)
+> pos = np.arange(sorted_idx.shape[0]) + .5
+> fig = plt.figure(figsize=(12, 6))
+> plt.subplot(1, 2, 1)
+> plt.barh(pos, feature_importance[sorted_idx],xerr=std[sorted_idx][::-1], align='center')
+> plt.yticks(pos, np.array(list(X.columns))[sorted_idx])
+> plt.title('Feature Importance (MDI)',fontsize=10)
+> 
+> result = permutation_importance(RF, X_test, y_test, n_repeats=10,
+>                                 random_state=42, n_jobs=2)
+> sorted_idx = result.importances_mean.argsort()
+> plt.subplot(1, 2, 2)
+> plt.boxplot(result.importances[sorted_idx].T,
+>             vert=False, labels=np.array(list(X.columns))[sorted_idx])
+> plt.title("Permutation Importance (test set)",fontsize=10)
+> fig.tight_layout()
+> plt.show()
+> 
+> 
+> ## plotting the fit
+> plt.plot(y,RF.predict(X),'ro')
+> plt.xlabel('True values')
+> plt.ylabel('Predicted values')
+> plt.title(str(sc.stats.pearsonr(y,RF.predict(X))[0]))
+> 
+> ```
+> 
+>     Grid best parameter (max. r2):  {'criterion': 'squared_error', 'max_depth': 2, 'min_samples_leaf': 2, 'min_samples_split': 4, 'n_estimators': 900}
+>     Grid best score (r2):  0.16457210986633683
+>     Grid best parameter (max. r2) model on test:  0.45442183876065745
+>     Features sorted per importance in discriminative process
+>                   temp_1	0.665
+>                  average	0.334
+>                   temp_2	0.001
+>                   friend	0.000
+> 
+> 
+> 
+>     
+> ![png](images/outputs/output_177_2.png)
+>     
+> 
+>     
+> ![png](images/outputs/output_177_5.png)
+>     
+> 
+>
+{: .details}
+
+> <details-title>Solution - BONUS - an even better splitting strategy</details-title>
+>
+> 
+> ![A splitting strategy for time series: create time blocks and ensure the oldest samples are used to train and the newest to validate.](images/BlockedTimeSeriesSplit.png)
+> 
+> 
+> ```python
+> ## Even better splitting strategy
+> 
+> 
+> # we define our own splitter class
+> class BlockingTimeSeriesSplit():
+>     def __init__(self, n_splits):
+>         self.n_splits = n_splits
+>     
+>     def get_n_splits(self, X, y, groups):
+>         return self.n_splits
+>     
+>     def split(self, X, y=None, groups=None):
+>         n_samples = len(X)
+>         k_fold_size = n_samples // self.n_splits
+>         indices = np.arange(n_samples)
+> 
+>         margin = 0
+>         for i in range(self.n_splits):
+>             start = i * k_fold_size
+>             stop = start + k_fold_size
+>             mid = int(0.8 * (stop - start)) + start
+>             yield indices[start: mid], indices[mid + margin: stop]
+>             
+> from sklearn.ensemble import RandomForestRegressor
+> from sklearn.model_selection import TimeSeriesSplit
+> y = np.array(features['actual'])
+> 
+> # Remove the labels from the features
+> # axis 1 refers to the columns
+> X= features.drop([ 'year', 'month', 'day',
+>        'actual', 'forecast_noaa', 'forecast_acc', 'forecast_under',
+>        'week_Fri', 'week_Mon', 'week_Sat', 'week_Sun', 'week_Thurs',
+>        'week_Tues', 'week_Wed'], axis = 1)
+> 
+> 
+> X_train=np.array(X)[:int(len(X.index)*0.75),:]                                                                           
+> X_test=np.array(X)[int(len(X.index)*0.75):,:]
+> y_train=np.array(y)[:int(len(X.index)*0.75)]
+> y_test=np.array(y)[int(len(X.index)*0.75):]
+> grid_values = {'criterion': ['squared_error'],
+>                 'max_depth':[2,5,7],
+>                'min_samples_split':[4],
+>               'min_samples_leaf':[2]}
+> #with the range over which you want it to be tested.
+> tscv = BlockingTimeSeriesSplit(n_splits=5)
+> 
+> 
+>     
+> #Feed it to the GridSearchCV with the right
+> #score over which the decision should be taken    
+> grid_tree_acc = GridSearchCV(RandomForestRegressor(), 
+>                             param_grid = grid_values, 
+>                              scoring='r2',
+>                              cv=tscv, 
+>                              n_jobs=-1)
+> 
+> grid_tree_acc.fit(X_train, y_train)
+> 
+> 
+> 
+> print('Grid best parameter (max. r2): ', grid_tree_acc.best_params_)#get the best parameters
+> print('Grid best score (r2): ', grid_tree_acc.best_score_)#get the best score calculated from the train/validation
+> #dataset
+> 
+> y_decision_fn_scores_acc=grid_tree_acc.score(X_test,y_test)
+> print('Grid best parameter (max. r2) model on test: ', y_decision_fn_scores_acc)# get the equivalent score on the test
+> #dataset : again this is the important metric
+> 
+> ## looking at feature importance 
+> RF = grid_tree_acc.best_estimator_
+> W=RF.feature_importances_#get the weights
+> 
+> sorted_features=sorted([[list(X.columns)[i],abs(W[i])] for i in range(len(W))],key=lambda x : x[1],reverse=True)
+> 
+> print('Features sorted per importance in discriminative process')
+> print(sorted_features)
+> 
+> 
+> from sklearn.inspection import permutation_importance
+> 
+> feature_importance = RF.feature_importances_
+> std = np.std([tree.feature_importances_ for tree in grid_tree_acc.best_estimator_.estimators_], axis=0)
+> 
+> sorted_idx = np.argsort(feature_importance)
+> pos = np.arange(sorted_idx.shape[0]) + .5
+> fig = plt.figure(figsize=(12, 6))
+> plt.subplot(1, 2, 1)
+> plt.barh(pos, feature_importance[sorted_idx],xerr=std[sorted_idx][::-1], align='center')
+> plt.yticks(pos, np.array(list(X.columns))[sorted_idx])
+> plt.title('Feature Importance (MDI)',fontsize=10)
+> 
+> result = permutation_importance(RF, X_test, y_test, n_repeats=10,
+>                                 random_state=42, n_jobs=2)
+> sorted_idx = result.importances_mean.argsort()
+> plt.subplot(1, 2, 2)
+> plt.boxplot(result.importances[sorted_idx].T,
+>             vert=False, labels=np.array(list(X.columns))[sorted_idx])
+> plt.title("Permutation Importance (test set)",fontsize=10)
+> fig.tight_layout()
+> plt.show()
+> 
+> 
+> ## plotting the fit
+> plt.plot(y,RF.predict(X),'ro')
+> plt.xlabel('True values')
+> plt.ylabel('Predicted values')
+> plt.title(str(sc.stats.pearsonr(y,RF.predict(X))[0]))
+> ```
+> 
+>     Grid best parameter (max. r2):  {'criterion': 'squared_error', 'max_depth': 2, 'min_samples_leaf': 2, 'min_samples_split': 4}
+>     Grid best score (r2):  -0.19281483458208248
+>     Grid best parameter (max. r2) model on test:  0.4358468371037175
+>     Features sorted per importance in discriminative process
+>     [['temp_1', np.float64(0.6923327698349346)], ['average', np.float64(0.3071439719658726)], ['temp_2', np.float64(0.0005232581991927613)], ['friend', np.float64(0.0)]]
+> 
+> 
+> 
+> 
+>     
+> ![png](images/outputs/output_180_2.png)
+>     
+> 
+> 
+> 
+> 
+>     
+> ![png](images/outputs/output_180_5.png)
+>     
+> 
+> 
+>
+{: .details}
