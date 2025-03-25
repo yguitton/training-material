@@ -73,7 +73,7 @@ program:
         time: "09:15-17:00"
 
   - section: "Wednesday: Single-Cell Sequencing"
-    description: We will do at least one coffee break in the morning, one in the afternoon, and 1h lunch break around noon.
+    description: We will do at least one coffee break in the morning, one in the afternoon, and a one-hour lunch break around noon.
     tutorials:
       - name: scrna-scanpy-pbmc3k
         topic: single-cell
