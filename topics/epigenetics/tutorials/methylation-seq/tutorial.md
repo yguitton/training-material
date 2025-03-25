@@ -265,7 +265,7 @@ The first step in any analysis should always be quality control. We will use the
 >
 > 5. Change the datatype to `bedgraph` and set the database to `hg38`
 >
->    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
+>    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="bedgraph" %}
 >
 >    {% snippet faqs/galaxy/datasets_change_dbkey.md dbkey="hg38" %}
 >
