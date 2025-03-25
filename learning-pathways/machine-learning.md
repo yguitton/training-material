@@ -6,9 +6,9 @@ type: use
 editorial_board:
 - anuprulez
 
-title: Machine learning, Deep learning, Fine-tuning protein language models
+title: Machine learning
 description: |
-  This learning path teaches machine learning from simple concepts to complex ones. You start with a basic introduction to Machine leanring. Then you move to different aspects of supervised machine learning such as classification and regression. Further topics introduce you to deep learning concepts such as convolutional and recurrent neural networks and conclue with fine-tuning a large language like model trained on protein sequences.
+  This learning path teaches machine learning from simple concepts to complex ones. You start with a basic introduction to Machine learning. Then you move to different aspects of supervised machine learning such as classification and regression. Further topics introduce you to deep learning concepts such as convolutional and recurrent neural networks and conclue with fine-tuning a large language like model trained on protein sequences.
 
 pathway:
   - section: "Module 1: Introduction to Machine learning"
@@ -18,7 +18,7 @@ pathway:
       - topic: statistics
         name: machinelearning
 
-  - section: "Module 2: Regression and Classification"
+  - section: "Module 2: Classification and Regression"
     description:  |
       Regression and classification 
     tutorials:
