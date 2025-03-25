@@ -92,7 +92,7 @@ program:
         topic: microbiome
       - type: custom
         name: "End"
-        time: "17:00"
+        time: "16:00"
 
   - section: "Friday: Metagenomics"
     description:  We will do at least one coffee break in the morning, one in the afternoon, and 1h lunch break around noon.
