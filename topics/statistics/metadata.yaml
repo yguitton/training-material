@@ -16,3 +16,14 @@ editorial_board:
   - marziacremona
   - cumbof
   - anuprulez
+
+subtopics:
+#  - id: machine-learning
+#    title: "Machine Learning"
+#    description: "Taxonomic characterisation of mixed samples using a single gene region."
+#  - id: deep-learning
+#    title: "Deep Learning"
+#    description: "Taxonomic characterisation of mixed samples using a single gene region."
+  - id: gai-llm
+    title: "Generative Artificial Intelligence and Large Langage Model"
+#    description: "Taxonomic and functional characterisation and assembly of mixed samples using whole genome data."
