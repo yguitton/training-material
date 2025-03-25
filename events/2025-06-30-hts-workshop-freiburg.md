@@ -66,7 +66,7 @@ program:
         time: "16:00"
 
   - section: "Tuesday: RNA Sequencing"
-    description: We will do at least one coffee break in the morning, one in the afternoon, and 1h lunch break around noon.
+    description: We will do at least one coffee break in the morning, one in the afternoon, and a one-hour lunch break around noon.
     tutorials:
       - name: ref-based
         topic: transcriptomics
