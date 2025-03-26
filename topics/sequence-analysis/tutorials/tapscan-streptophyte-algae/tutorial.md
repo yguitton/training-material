@@ -222,9 +222,16 @@ to create a list of Sequnce IDs. This information is already in the first column
 > > <question-title></question-title>
 > >
 > > 1. How many sequences belonged to our TAP family for *Marchantia polymorpha* (MARPO)?
+> > 2. What is the average number of sequences in the Aux/IAA TAP family for the Streptophyte Algae? [ Chara braunii (CHABR) and Penium margaritaceum (PENMA)]?
+> > 3. And for Bryophytes & Land Plants?
+> > 4. What does this suggest?
 > >
 > > > <solution-title></solution-title>
-> > > 1. MARPO output has 3 lines, so that means 3 sequences in Marchantia polymorpha belonged to the Aux/IAA TAP family.
+> > > 1. MARPO output has 3 lines, so that means 3 of the gene sequence in Marchantia polymorpha belonged to the Aux/IAA TAP family.
+> > > 2. CHABR has 2 sequences, PENMA has 3, so the average is **2.5**
+> > > 3. For the Bryohpytes & Land plants we have ARATH(29) + MARPO(3) + SELMO (10) + PHYPAV6 (5) + ORYSAJA (33)  = 80, divided by 5 is average of **16 genes**
+> > > 4. While our dataset is quite small, we observe a lower number of Aux/IAA proteins in streptophyte algae compared to bryophytes and land plants.
+> > >    This suggests that the Aux/IAA protein family expanded as plants transitioned from aquatic to terrestrial environments, where more complex signaling mechanisms were required for growth regulation.
 > > {: .solution}
 > {: .question}
 >
@@ -508,6 +515,15 @@ to your machine, and upload it to ETE toolkit, but you can also do this directly
 >      ![tree visualisation by ETE toolkit](./images/tree-viz-ete.png)
 >
 >    - As you can see, in addition to the tree itself, this also contains a visualisation of the alignments, and the taxonomy.
+>
+> > <question-title></question-title>
+> > What do we see in this tree?
+> >
+> > > <solution-title></solution-title>
+> > > We see that genes from the same group, such as land plants or bryophytes, cluster together, indicating their close evolutionary relationships and the potential for similar roles in auxin signaling.
+>   > The branching patterns suggest that certain Aux/IAA genes from land plants and bryophytes are more closely related to each other, reflecting their shared functions in regulating growth and development under land conditions.
+> > {: .solution}
+> {: .question}
 >
 {: .hands_on}
 
