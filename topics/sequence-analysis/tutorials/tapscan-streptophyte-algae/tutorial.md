@@ -521,7 +521,7 @@ to your machine, and upload it to ETE toolkit, but you can also do this directly
 > >
 > > > <solution-title></solution-title>
 > > > We see that genes from the same group, such as land plants or bryophytes, cluster together, indicating their close evolutionary relationships and the potential for similar roles in auxin signaling.
->   > The branching patterns suggest that certain Aux/IAA genes from land plants and bryophytes are more closely related to each other, reflecting their shared functions in regulating growth and development under land conditions.
+> > > The branching patterns suggest that certain Aux/IAA genes from land plants and bryophytes are more closely related to each other, reflecting their shared functions in regulating growth and development under land conditions.
 > > {: .solution}
 > {: .question}
 >
