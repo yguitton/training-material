@@ -84,14 +84,14 @@ Now, we need to import the data
 >    the shared data library:
 >
 >    ```
->   https://zenodo.org/records/15056031/files/ARATH.fa
->   https://zenodo.org/records/15056031/files/CHABR.fa
->   https://zenodo.org/records/15056031/files/MARPO.fa
->   https://zenodo.org/records/15056031/files/PENMA.fa
->   https://zenodo.org/records/15056031/files/SALMO.fa
->   https://zenodo.org/records/15056031/files/PHYPAV6.fa
->   https://zenodo.org/records/15056031/files/ORYSAJA.fa
->  ```
+>    https://zenodo.org/records/15056031/files/ARATH.fa
+>    https://zenodo.org/records/15056031/files/CHABR.fa
+>    https://zenodo.org/records/15056031/files/MARPO.fa
+>    https://zenodo.org/records/15056031/files/PENMA.fa
+>    https://zenodo.org/records/15056031/files/SALMO.fa
+>    https://zenodo.org/records/15056031/files/PHYPAV6.fa
+>    https://zenodo.org/records/15056031/files/ORYSAJA.fa
+>    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
