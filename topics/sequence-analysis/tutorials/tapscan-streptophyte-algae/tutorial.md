@@ -59,11 +59,11 @@ In this tutorial, we will use representative protein sequences obtained from the
 - *Marchantia polymorpha* (MARPO)
 - *Physcomitrium patens* (PHYPAV6)
 - *Oryza sativa (spp. japonica)* (ORYSAJA)
-- *Selaginella moellendorffii* (SALMO)
+- *Selaginella moellendorffii* (SELMO)
 - *Arabidopsis thaliana* (ARATH)
 
 
-> <hands-on-title> Data Upload </hands-on-title>
+> <hands-on-title> Prepare your Analysis History </hands-on-title>
 >
 > 1. Create a new history for this tutorial and give it a proper name
 >
@@ -88,7 +88,7 @@ Now, we need to import the data
 >    https://zenodo.org/records/15056031/files/CHABR.fa
 >    https://zenodo.org/records/15056031/files/MARPO.fa
 >    https://zenodo.org/records/15056031/files/PENMA.fa
->    https://zenodo.org/records/15056031/files/SALMO.fa
+>    https://zenodo.org/records/15056031/files/SELMO.fa
 >    https://zenodo.org/records/15056031/files/PHYPAV6.fa
 >    https://zenodo.org/records/15056031/files/ORYSAJA.fa
 >    ```
