@@ -20,9 +20,9 @@ objectives:
 - metrics and imbalance
 time_estimation: 3H
 key_points:
-- using a **test set** is an important tool to report an honest estimate of models on new data
-- **cross-validation** strategies can help you to detect **overfitting** and handle **model-selection**
-- **adpted metrics** let you handle the specific of our goal and our data (handle imbalance for example).
+- using a test set is an important tool to report an honest estimate of models on new data
+- Cross-validation strategies can help you to detect overfitting and handle model-selection
+- Adapted metrics let you handle the specific of our goal and our data (handle imbalance for example).
 - We have only mentionned a handful of the numerous algorithms that can be used, both for [classification and for regression](https://scikit-learn.org/stable/supervised_learning.html) (NB: this link is not an exhaustive list, just what has been implemented in the sklearn library)
 contributors:
   - wandrilled
