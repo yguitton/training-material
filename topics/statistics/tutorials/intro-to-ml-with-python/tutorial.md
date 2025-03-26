@@ -4156,8 +4156,6 @@ However, more than a collection of algorithm, Machine Learning should also be se
 
 > <details-title>Correction</details-title>
 >
-
->
 > 
 > ```python
 > from sklearn.preprocessing import PolynomialFeatures
@@ -4385,8 +4383,8 @@ However, more than a collection of algorithm, Machine Learning should also be se
 >     }
 > </style>
 > <table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
+>  <thead>
+>    <tr style="text-align: right;">
 >       <th></th>
 >       <th>year</th>
 >       <th>month</th>
