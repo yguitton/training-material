@@ -5,7 +5,7 @@ title: "Combining single cell datasets after pre-processing"
 subtopic: single-cell-CS
 priority: 2
 
-zenodo_link: 'https://zenodo.org/records/10852529'
+zenodo_link: 'https://zenodo.org/records/15090813'
 
 questions:
   - I have some AnnData files from different samples that I want to combine into a single file. How can I combine these and label them within the object?
@@ -163,7 +163,7 @@ The sample data is a subset of the reads from each of the seven samples in a mou
 >    {{ page.zenodo_link }}/files/N705-400k-AnnData.h5ad
 >    {{ page.zenodo_link }}/files/N706-400k-AnnData.h5ad
 >    {{ page.zenodo_link }}/files/N707-400k-AnnData.h5ad
->    {{ page.zenodo_link }}/files/Experimental_Design.tabular.tabular
+>    {{ page.zenodo_link }}/files/Experimental_Design.tabular
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
