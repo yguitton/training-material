@@ -349,7 +349,7 @@ y_test = ynew
 
 In the case of a Least Square fit, the function you are minimizing looks like:
 
-$$ \sum_i (y_i-f(\pmb X_i,\pmb{\beta}))^2 $$
+\\( \sum_i (y_i-f(\pmb X_i,\pmb{\beta}))^2 \\)
 
 , so the sum of squared difference between the observation and the predictions of your model.
 
@@ -365,11 +365,11 @@ In brief, the stronger the coefficient, the higher the penalization. So only coe
 
 
 
-$$\frac{1}{2n}\sum_i (y_i-f(\pmb X_i,\pmb{\beta}))^2 + \alpha\sum_{j}\lvert\beta_{j}\rvert$$ , **l1 regularization** (Lasso) $$\alpha$$ being the weight that you put on that regularization 
+\\(\frac{1}{2n}\sum_i (y_i-f(\pmb X_i,\pmb{\beta}))^2 + \alpha\sum_{j}\lvert\beta_{j}\rvert\\) , **l1 regularization** (Lasso) $$\alpha$$ being the weight that you put on that regularization 
 
-$$\sum_i (y_i-f(\pmb X_i,\pmb{\beta}))^2 + \alpha\sum_{j}\beta_{j}^{2}$$ , **l2 regularization** (Ridge) 
+\\(\sum_i (y_i-f(\pmb X_i,\pmb{\beta}))^2 + \alpha\sum_{j}\beta_{j}^{2}\\) , **l2 regularization** (Ridge) 
 
-$$\frac{1}{2n}\sum_i (y_i-f(\pmb X_i,\pmb{\beta}))^2 + \alpha\sum_{j}(\rho\lvert\beta_{j}\rvert+\frac{(1-\rho)}{2}\beta_{j}^{2})$$ , **elasticnet**
+\\(\frac{1}{2n}\sum_i (y_i-f(\pmb X_i,\pmb{\beta}))^2 + \alpha\sum_{j}(\rho\lvert\beta_{j}\rvert+\frac{(1-\rho)}{2}\beta_{j}^{2})\\) , **elasticnet**
 
 
 For a deeper understanding of those notions, you may look at :
@@ -1888,14 +1888,14 @@ The **impurity is related to how much your feature splitting is still having mix
 
 #### Shannon Entropy
 
-$$Entropy = - \sum_{j} . p_j . log_2(p_j)$$
+\\(Entropy = - \sum_{j} p_j log_2(p_j)\\)
 
 This measure is linked to information theory, where the information of an event occuring is the $$log_2$$ of this event's probability of occuring.
 For purity, **0 is the best possible score, and 1 the worst**.
 
 #### Gini coefficient
 
-$$Gini = 1- \sum_{j} . p_j^2$$
+\\(Gini = 1- \sum_{j} p_j^2\\)
 
 The idea is to measure the **probability that a dummy classifier mislabels your data**.
 **0 is best, 1 is worst.**
