@@ -69,7 +69,8 @@ In this tutorial, we will use representative protein sequences obtained from the
 >
 >    {% snippet faqs/galaxy/histories_create_new.md %}
 >
-> 2. Rename the history
+> 2. Rename the history to something descriptive.
+>    - for example "TAP analysis in Streptophyte algae and Land plants"
 >
 >    {% snippet faqs/galaxy/histories_rename.md %}
 >
@@ -137,6 +138,9 @@ TAPScan Classify provides the user with three different output files. Each outpu
 - **Output 2: "Family Counts"** - is a summary of the number of members for each TAP family.
 - **Output 3: "Detected TAPs Extra"** - is similar to output 1 but contains additional information.
 
+Below is an example of the "Detected TAPs Extra" output. It has 5 columns, the Sequence IDs, followed by the classification into a TAP family, subfamily, the number of classifications, and domains.
+
+![example output](./images/tapscan-extra-output.png)
 
 > <question-title></question-title>
 >
@@ -215,14 +219,14 @@ to create a list of Sequnce IDs. This information is already in the first column
 >    - You should have a list of only sequence IDs
 >      ![screenshot of output file for ARASH](./images/sequence-ids.png)
 >
->    > <question-title></question-title>
->    >
->    > 1. How many sequences belonged to our TAP family for *Marchantia polymorpha* (MARPO)?
->    >
->    > > <solution-title></solution-title>
->    > > 1. MARPO output has 3 lines, so that means 3 sequences in Marchantia polymorpha belonged to the Aux/IAA TAP family.
->    > {: .solution}
->    {: hands_on}
+> > <question-title></question-title>
+> >
+> > 1. How many sequences belonged to our TAP family for *Marchantia polymorpha* (MARPO)?
+> >
+> > > <solution-title></solution-title>
+> > > 1. MARPO output has 3 lines, so that means 3 sequences in Marchantia polymorpha belonged to the Aux/IAA TAP family.
+> > {: .solution}
+> {: .question}
 >
 {: .hands_on}
 
@@ -420,7 +424,7 @@ We can now analyse this multiple sequence alignment and determine the evolutiona
 >
 > 1. {% tool [Quicktree](toolshed.g2.bx.psu.edu/repos/iuc/quicktree/quicktree/2.5+galaxy0) %} with the following parameters:
 >    - *"Provide an alignment file or a distance matrix?"*: `Alignment File`
->        - {% icon param-file %} *"Alignment file"*: `trimmed_output` (output of **trimAl** {% icon tool %})
+>        - {% icon param-file %} *"Alignment file"*: `Trimmed alignment` (output of **trimAl** {% icon tool %})
 >    - *"Calcuate bootstrap values with n iterations"*: `100`
 >
 > 2. **Examine** {% icon galaxy-eye %} the output from Quicktree
@@ -492,9 +496,9 @@ to your machine, and upload it to ETE toolkit, but you can also do this directly
 > <hands-on-title> Task description </hands-on-title>
 >
 > 1. {% tool [ETE tree viewer](toolshed.g2.bx.psu.edu/repos/iuc/ete_treeviewer/ete_treeviewer/3.1.3+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Newick Tree to visualise"*: `output` (output of **Text transformation** {% icon tool %})
+>    - {% icon param-file %} *"Newick Tree to visualise"*: output of **Quicktree** {% icon tool %}
 >    - *"Add alignment information to image?"*: `yes`
->        - {% icon param-file %} *"Multiple Alignment FASTA file"*: `output` (output of **Text transformation** {% icon tool %})
+>        - {% icon param-file %} *"Multiple Alignment FASTA file"*: `Trimmed alignment` (output form **TrimAl** {% icon tool %} )
 >    - *"Resolve Taxonomic IDs?"*: Yes
 >    - *"Format of the output image."*: `PNG`
 >
