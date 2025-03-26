@@ -97,7 +97,8 @@ Now, we need to import the data
 >
 >    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
 >
-> 3. Create a dataset collection
+> 3. Create a dataset collection with all the input files
+>    - name your collection `input sequences`
 >
 >    {% snippet faqs/galaxy/collections_build_list.md %}
 >
@@ -118,7 +119,7 @@ Now that our dataset collection is ready, we can run [TAPScan Classify](https://
 > <hands-on-title> Detect TAPs </hands-on-title>
 >
 > 1. {% tool [TAPScan Classify](toolshed.g2.bx.psu.edu/repos/bgruening/tapscan/tapscan_classify/4.76+galaxy0) %} with the following parameters:
->    - {% icon param-collection %} *"Proteins in FASTA format"*: `output` (Input dataset collection)
+>    - {% icon param-collection %} *"Proteins in FASTA format"*: `input sequences` (the dataset collection you just made)
 >
 >    > <comment-title> on parameter </comment-title>
 >    >
