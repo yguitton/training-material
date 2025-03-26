@@ -1821,6 +1821,16 @@ millen2223:
     matrix: 'millen2223:matrix.org'
     joined: 2021-10
 
+Minamehr:
+    name: Mina Hojat Ansari
+    email: mina.hojat.ansari@biologie.uni-freiburg.de
+    joined: 2025-03
+    elixir_node: de
+    affiliations:
+      - uni-freiburg
+      - elixir-europe
+      - deNBI
+
 mira-miracoli:
     name: Mira Kuntz
     orcid: 0000-0003-4302-5091
@@ -2649,9 +2659,15 @@ tealiie:
 teresa-m:
     name: Teresa Müller
     joined: 2022-09
+    email: muellert@informatik.uni-freibrug.de
+    matrix: 'teresa-m:matrix.org'
+    orcid: 0000-0003-1252-9684
+    linkedin: teresamueller87
+    elixir_node: de
     affiliations:
       - uni-freiburg
       - elixir-europe
+      - deNBI
 
 TanguyGen:
     name: Tanguy Genthon

@@ -1,7 +1,6 @@
 ---
 layout: event
-title: "Workshop on high-throughput sequencing data analysis with Galaxy"
-# or: From Data to Discovery: Metagenomics, RNA-Seq - NGS Bioinformatics with Galaxy
+title: "From Data to Discovery: Metagenomics, RNA-Seq - NGS Bioinformatics with Galaxy"
 
 description: |
     This course introduces scientists to the data analysis platform Galaxy. The course is a beginner course; no programming skills are required.
@@ -21,7 +20,7 @@ registration:
 
 contributions:
   organisers: [Sch-Da, teresa-m]
-  instructors: [pavanvidem, teresa-m, dianichj, EngyNasr, paulzierep]
+  instructors: [pavanvidem, teresa-m, dianichj, EngyNasr, paulzierep, Minamehr]
   funding: [eurosciencegateway, deNBI, nfdi4plants]
 
 location:
@@ -111,14 +110,14 @@ this workshop offers valuable insights and hands-on experiences.
 This comprehensive workshop will increase your proficiency in using Galaxy and enhance your ability to conduct sophisticated analyses in various fields of biological research.
 Connect with experts and peers, gain practical skills, and take your research capabilities to the next level.
 
-## Topics:
+## Topics
 
 - Galaxy Introduction and Quality Control
 - RNA-seq Analysis
 - Single-Cell sequencing
 - Microbiome Analysis
 
-## Learning Objectives:
+## Learning Objectives
 
 - To get introduced to Galaxy as a data analysis platform and the GTN training material
 - To learn how to use tools and databases in Galaxy
@@ -128,7 +127,7 @@ Connect with experts and peers, gain practical skills, and take your research ca
 
 Please see the Program tab.
 
-## Registaion
+## Registration
 
 The number of places in this workshop is limited. The course takes place only in person (not online, not hybrid). There are no fees for the workshop but you need to care for your accommodation, travel costs and catering by yourself.
 
