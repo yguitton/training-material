@@ -424,7 +424,7 @@ Now that we've assessed the differences in our samples, we will look at the libr
 
 ## Apply the thresholds
 
-It's now time to apply these thresholds to our data! First, a reminder of how many cells and genes are in your object: `31178 cells` and `35734 genes`. Let's see how that changes each time!
+It's now time to apply these thresholds to our data! First, a reminder of how many cells and genes are in your object: `31670 cells` and `35734 genes`. Let's see how that changes each time!
 
 > <details-title>Working in a group? Decision-time!</details-title>
 > If you are working in a group, you can now divide up a decision here with one *control* and the rest varied numbers so that you can compare results throughout the tutorials.
@@ -482,7 +482,7 @@ It's now time to apply these thresholds to our data! First, a reminder of how ma
 > > ![Violin_Log_Genotype](../../images/scrna-casestudy/CS3-Violin_log_genotype.png "Raw")
 > > ![Violinplot-filteronce](../../images/scrna-casestudy/CS3-Violin_log_genotype-Genes.png "1st filter - genes/cell")
 > > 1. The only part that seems to change is the `log1p_n_genes_by_counts`.  You can see a flatter bottom to the violin plot - this is the lower threshold set. Ideally, this would create a beautiful violin plot because there would be a clear population of low-gene number cells. Sadly not the case here, but still a reasonable filter.
-> > 2. If you *peek* at the AnnData object in your {% icon galaxy-history %}, you will find that you now have `17,040 cells x 35,734 genes`.
+> > 2. If you *peek* at the AnnData object in your {% icon galaxy-history %}, you will find that you now have `17,104 cells x 35,734 genes`.
 > >
 > {: .solution}
 >
@@ -535,7 +535,7 @@ It's now time to apply these thresholds to our data! First, a reminder of how ma
 > > ![Violinplot-filteronce](../../images/scrna-casestudy/CS3-Violin_log_genotype-Genes.png "1st filter - genes/cell")
 > > ![Violinplot-filtertwice](../../images/scrna-casestudy/CS3-Violin_log_genotype-UMIs.png "2nd filter - UMIs/cell")
 > > 1. We will focus on the `log1p_total_counts` as that shows the biggest change. Similar to above, the bottom of the violin shape has flattered due to the threshold.
-> > 2. You now have `8,678 cells x 35,734 genes` in the AnnData object.
+> > 2. You now have `8,677 cells x 35,734 genes` in the AnnData object.
 > >
 > {: .solution}
 >
@@ -578,7 +578,7 @@ It's now time to apply these thresholds to our data! First, a reminder of how ma
 > > ![Violinplot-filtertwice](../../images/scrna-casestudy/CS3-Violin_log_genotype-UMIs.png "2nd filter - UMIs/cell")
 > > ![Violinplot-filterthrice](../../images/scrna-casestudy/CS3-Violin_log_genotype-Mito.png "3rd filter - % count Mito/cell")
 > > 1. If we carefully check the axes, we can see that the `pct_counts_mito` has shrunk.
-> > 2. Your object now has `8,605 cells x 35,734 genes`.
+> > 2. Your object now has `8,604 cells x 35,734 genes`.
 > >
 > {: .solution}
 >
@@ -624,17 +624,17 @@ We can summarise the results of our filtering:
 
 |       | Cells | Genes |
 |------ |--------------------|
-| Raw | 31178    | 35734    |
-| Filter genes/cell | 17040    | 35734    |
-| Filter UMIs/cell | 8678    | 35734    |
-| Filter mito/cell | 8605   | 35734    |
-| Filter cells/gene | 8605    | 15941    |
+| Raw | 31670    | 35734    |
+| Filter genes/cell | 17104    | 35734    |
+| Filter UMIs/cell | 8677    | 35734    |
+| Filter mito/cell | 8604   | 35734    |
+| Filter cells/gene | 8604    | 15950    |
 
 {% icon congratulations %} Congratulations! You have filtered your object! Now it should be a lot faster to analyse and easier to interpret.
 
 # Processing
 
-So currently, you have a matrix that is 8605 cells by 15941 genes. This is still quite big data. We have two issues here - firstly, you already know there are differences in how many transcripts and genes have been counted per cell. This technical variable can obscure biological differences. Secondly, we like to plot things on x/y plots, so for instance *Gapdh* could be on one axis, and *Actin* can be on another, and you plot cells on that 2-dimensional axis based on how many of each transcript they possess. While that would be fine, adding in a 3rd dimension (or, indeed, in this case, 15941 more dimensions), is a bit trickier! So our next steps are to transform our big data object into something that is easy to analyse and easy to visualise.
+So currently, you have a matrix that is 8604 cells by 15950 genes. This is still quite big data. We have two issues here - firstly, you already know there are differences in how many transcripts and genes have been counted per cell. This technical variable can obscure biological differences. Secondly, we like to plot things on x/y plots, so for instance *Gapdh* could be on one axis, and *Actin* can be on another, and you plot cells on that 2-dimensional axis based on how many of each transcript they possess. While that would be fine, adding in a 3rd dimension (or, indeed, in this case, 15950 more dimensions), is a bit trickier! So our next steps are to transform our big data object into something that is easy to analyse and easy to visualise.
 
 > <hands-on-title>Normalisation</hands-on-title>
 >
@@ -686,7 +686,7 @@ We next need to look at reducing our gene dimensions. We have loads of genes, bu
 > {: .hands_on}
 >
 >
-> If you peek at the output, you will see that the number of *genes* in your AnnData object has drastically reduced to around `3213` - this dataset has *only* the highly variable genes! Some people prefer to only perform analysis on this dataset, however I have found that sometimes (for various reasons) important biological marker genes get excluded. For this reason, I personally will flag highly variable genes for use in the next analytical steps, however I keep all the genes in my AnnData object so that I can check for key ones in the future.
+> If you peek at the output, you will see that the number of *genes* in your AnnData object has drastically reduced to around `3216` - this dataset has *only* the highly variable genes! Some people prefer to only perform analysis on this dataset, however I have found that sometimes (for various reasons) important biological marker genes get excluded. For this reason, I personally will flag highly variable genes for use in the next analytical steps, however I keep all the genes in my AnnData object so that I can check for key ones in the future.
 >
 > - {% icon warning %} For this tutorial, you **must** keep all genes in your AnnData object. Therefore, delete the output that contains *only* the highly variable genes from your {% icon galaxy-history %} history now.
 >
@@ -721,10 +721,10 @@ Next up, we're going to scale our data so that all genes have the same variance 
 We still have too many dimensions. Transcript changes are not usually singular - which is to say, genes were in pathways and in groups. It would be easier to analyse our data if we could more easily group these changes.
 
 ## Principal components
-Principal components are calculated from highly dimensional data to find the most spread in the dataset. Given that our object has around `3213` highly variable genes, that's 3213 dimensions. There will, however, be one line/axis/dimension that yields the most spread and variation across the cells. That will be our first principal component. We can calculate the first `x` principal components in our data to drastically reduce the number of dimensions.
+Principal components are calculated from highly dimensional data to find the most spread in the dataset. Given that our object has around `3216` highly variable genes, that's 3216 dimensions. There will, however, be one line/axis/dimension that yields the most spread and variation across the cells. That will be our first principal component. We can calculate the first `x` principal components in our data to drastically reduce the number of dimensions.
 
 > <warning-title>Check the size of your AnnData object!</warning-title>
-> Your AnnData object should have far more than 3213 genes in it (if you followed our settings and tool versions, you'll have a matrix around 8605 × 15941 (cells x genes). If you followed the *More details on the Highly Variable Genes above, you may have created an object with *only* the highly variable genes. Please delete this object and do not use it! Carry forward the object with around 8605 × 15941 (cells x genes)!
+> Your AnnData object should have far more than 3216 genes in it (if you followed our settings and tool versions, you'll have a matrix around 8604 × 15950 (cells x genes). If you followed the *More details on the Highly Variable Genes above, you may have created an object with *only* the highly variable genes. Please delete this object and do not use it! Carry forward the object with around 8604 × 15950 (cells x genes)!
 {: .warning}
 
 > <hands-on-title>Calculate Principal Components</hands-on-title>
@@ -962,10 +962,10 @@ Note that the cluster numbering is based on size alone - clusters 0 and 1 are no
 
 | Clusters | Marker | Cell type |
 |------ |--------------------|
-| 2 | Il2ra    | Double negative (early T-cell)    |
-| 0,1,5 | Cd8b1, Cd8a, Cd4    | Double positive (middle T-cell)|
-| 4 | Cd8b1, Cd8a, Cd4 - high | Double positive (late middle T-cell)
-| 3 | Itm2a    | Mature T-cell
+| 3 | Il2ra    | Double negative (early T-cell)    |
+| 0,1,4 | Cd8b1, Cd8a, Cd4    | Double positive (middle T-cell)|
+| 5 | Cd8b1, Cd8a, Cd4 - high | Double positive (late middle T-cell)
+| 2 | Itm2a    | Mature T-cell
 | 6 | Aif1    | Macrophages    |
 
 ![UMAP Plot](../../images/scrna-casestudy/CS3-UMAP_Plot.png "UMAP Plots")
@@ -987,10 +987,10 @@ Note that the cluster numbering is based on size alone - clusters 0 and 1 are no
 > > 2. The cluster annotation would be different:
 > > | Clusters | Marker | Cell type |
 > > |----------|------------------------------|----------------------------------|
-> > | 3 | Il2ra    | Double negative (early T-cell)    |
-> > | 0,1,4 | Cd8b1, Cd8a, Cd4    | Double positive (middle T-cell)|
-> > | 5 | Cd8b1, Cd8a, Cd4 - high | Double positive (late middle T-cell)
-> > | 2 | Itm2a    | Mature T-cell
+> > | 2 | Il2ra    | Double negative (early T-cell)    |
+> > | 0,1,5 | Cd8b1, Cd8a, Cd4    | Double positive (middle T-cell)|
+> > | 4 | Cd8b1, Cd8a, Cd4 - high | Double positive (late middle T-cell)
+> > | 3 | Itm2a    | Mature T-cell
 > > | 6 | Aif1    | Macrophages    |
 > >
 > {: .solution}
@@ -1014,16 +1014,16 @@ To annotate the clusters, we write a list of new cluster names in order from Clu
 > | Clusters | Marker | Cell type |
 > |----------|------------------------------|----------------------------------|
 > | 3 | Il2ra    | Double negative (early T-cell)    |
-> | 0,1,4 | Cd8b1, Cd8a, Cd4    | Double positive (middle T-cell)|
-> | 5 | Cd8b1, Cd8a, Cd4 - high | Double positive (late middle T-cell)
-> | 2 | Itm2a    | Mature T-cell
+> | 0,1,5 | Cd8b1, Cd8a, Cd4    | Double positive (middle T-cell)|
+> | 4 | Cd8b1, Cd8a, Cd4 - high | Double positive (late middle T-cell)
+> | 3 | Itm2a    | Mature T-cell
 > | 6 | Aif1    | Macrophages    |
 >
 > 1. What would your cluster names list look like?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. Given this new order, your list would be: `DP-M3,DP-M2,T-mat,DN,DP-M1,DP-L,Macrophages`
+> > 1. Given this new order, your list would be: `DP-M3,DP-M1,DN,T-mat,DP-L,DP-M2,Macrophages`
 > >
 > {: .solution}
 {: .question}
@@ -1036,7 +1036,7 @@ Adjust your list according to the expression of the gene markers.
 >    - {% icon param-file %} *"Annotated data matrix"*: `DEG_Object`
 >    - *"Function to manipulate the object"*: `Rename categories of annotation`
 >        - *"Key for observations or variables annotation"*: `louvain`
->        - *"Comma-separated list of new categories"*: `DP-M3,DP-M1,DN,T-mat,DP-L,DP-M2,Macrophages`
+>        - *"Comma-separated list of new categories"*: `DP-M3,DP-M1,T-mat,DN,DP-M2,DP-L,Macrophages`
 >        - *"Add categories to a new key?"*: `Yes`
 >            - *"Key name"*: `cell_type`
 >
