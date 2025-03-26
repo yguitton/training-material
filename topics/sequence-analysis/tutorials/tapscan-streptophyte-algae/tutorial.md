@@ -169,8 +169,8 @@ In order to filter the TAPScan output, we need to first filter either Output 1 o
 
 > <hands-on-title> Filter the TAPScan output Based on the Column  </hands-on-title>
 >
-> 1. {% tool [Filter](Filter1) %} with the following parameters:
->    - {% icon param-file %} *"Filter"*: `taps_detected` (output of **TAPScan Classify** {% icon tool %})
+> 1. {% tool [Filter - data on any column using simple expressions](Filter1) %} with the following parameters:
+>    - {% icon param-file %} *"Filter"*: `Detected TAPs` (Output 1 of **TAPScan Classify** {% icon tool %})
 >    - *"With following condition"*: `c2=='Aux/IAA'`
 >    - *"Number of header lines to skip"*: `1`
 >
@@ -184,39 +184,60 @@ In order to filter the TAPScan output, we need to first filter either Output 1 o
 >    >
 >    > > <solution-title></solution-title>
 >    > > 29, You can find this number by expanding the Galaxy dataset output for ARATH.
+>    > >
+>    > > ![screenshot of expanded arath output](./images/arath-filtered-expanded.png)
+>    > >
+>    > > you can see "30 lines, 4 columns", but one line is the header line, so 29 sequences in total
 >    > {: .solution}
 >    >
 >    {: .question}
 >
 {: .hands_on}
 
-Next, we will cut the first column to retain only the sequence IDs. Then, we will remove the header line to ensure a clean list of sequence identifiers for further analysis.
+
+Next, we would like to create FASTA files containing only those sequences belonging to this TAP family. In order to do that, we first need
+to create a list of Sequnce IDs. This information is already in the first column of our output, so we will cut the first column to retain only the sequence IDs. Then, we will remove the header line to ensure a clean list of sequence identifiers for further analysis.
+
 
 > <hands-on-title> Cut and Remove Header from Sequence IDs </hands-on-title>
 >
-> 1. {% tool [Cut](Cut1) %} with the following parameters:
+> 1. {% tool [Cut - columns from a table](Cut1) %} with the following parameters:
 >    - *"Cut columns"*: `c1`
->    - {% icon param-file %} *"From"*: `out_file1` (output of **Filter** {% icon tool %})
+>    - {% icon param-collection %} *"From"*: output of **Filter** {% icon tool %}
 >
 >
-> 2. {% tool [Remove beginning](Remove beginning1) %} with the following parameters:
+> 2. {% tool [Remove beginning - of a file](Remove beginning1) %} with the following parameters:
 >
 >    - *"Remove first\*"*: `1`
->    - {% icon param-file %} *"from"*: `out_file1` (output of **Cut** {% icon tool %})
+>    - {% icon param-collection %} *"from"*: output of **Cut** {% icon tool %}
+>
+> 3. **Examine** {% icon galaxy-eye %} the output
+>    - You should have a list of only sequence IDs
+>      ![screenshot of output file for ARASH](./images/sequence-ids.png)
+>
+>    > <question-title></question-title>
+>    >
+>    > 1. How many sequences belonged to our TAP family for *Marchantia polymorpha* (MARPO)?
+>    >
+>    > > <solution-title></solution-title>
+>    > > 1. MARPO output has 3 lines, so that means 3 sequences in Marchantia polymorpha belonged to the Aux/IAA TAP family.
+>    > {: .solution}
+>    {: hands_on}
 >
 {: .hands_on}
 
 
-Next, we will extract the FASTA sequences corresponding to the TAP family by filtering based on the list of sequence IDs generated in previous step.
+Now that we have our list of sequence IDs belonging to the Aux/IAA TAP family, we will now extract the corresponding FASTA sequences from our input dataset. We will use these FASTA sequences to create our evolutionary tree.
+
 
 ## Extract the sequences for TAP families
 
 > <hands-on-title> Extract the FASTA sequences </hands-on-title>
 >
-> 1. {% tool [Filter FASTA](toolshed.g2.bx.psu.edu/repos/galaxyp/filter_by_fasta_ids/filter_by_fasta_ids/2.3) %} with the following parameters:
->    - {% icon param-collection %} *"FASTA sequences"*: `output` (Input dataset collection)
+> 1. {% tool [Filter FASTA - on the headers and/or the sequences](toolshed.g2.bx.psu.edu/repos/galaxyp/filter_by_fasta_ids/filter_by_fasta_ids/2.3) %} with the following parameters:
+>    - {% icon param-collection %} *"FASTA sequences"*: `input sequences` (our original input dataset collection)
 >    - *"Criteria for filtering on the headers"*: `List of IDs`
->        - {% icon param-file %} *"List of IDs to extract sequences for"*: `out_file1` (output of **Remove beginning** {% icon tool %})
+>        - {% icon param-file %} *"List of IDs to extract sequences for"*: output of **Remove beginning** {% icon tool %}
 >        - *"Match IDs by"*: `Default: ID is expected at the beginning: >ID `
 >
 >
@@ -230,12 +251,16 @@ Next, we will extract the FASTA sequences corresponding to the TAP family by fil
 >    >
 >    {: .question}
 >
+> 2. **Examine** {% icon galaxy-eye %} the output files
+>    - does everything look as expected?
+>    - remember, we are expecting 29 sequences for Arabidopsis thaliana (ARATH) and 3 for Marchantia polymorpha (MARPO)
+>    - it is always a good idea to check the outputs of an analysis step before continuing.
 {: .hands_on}
 
 
 # Evolutionary Analysis
 
-Now that we have identified TAP families of interest across multiple species, let's perform an evolutionary analysis.
+We have now identified all sequences belonging to the Aux/IAA TAP family, across multiple species. Let's perform an evolutionary analysis on this data.
 
 
 ## Multiple Sequence Alignment (MSA)
@@ -247,9 +272,9 @@ First, we will perform a multiple sequence alignment in order to determine the s
 >
 > 1. {% tool [MAFFT](toolshed.g2.bx.psu.edu/repos/rnateam/mafft/rbc_mafft/7.526+galaxy1) %} with the following parameters:
 >    - *"For multiple inputs generate"*: `a single MSA of all sequences from all inputs`
->        - In *"Input batch"*:
->            - {% icon param-repeat %} *"Insert Input batch"*
->                - {% icon param-collection %} *"Sequences to align"*: the collection of FASTA files from our TAP families (output of **Filter FASTA** {% icon tool %})
+>      - In *"Input batch"*:
+>        - {% icon param-repeat %} *"Insert Input batch"*
+>          - {% icon param-collection %} *"Sequences to align"*: the collection of FASTA files from our TAP families (output of **Filter FASTA** {% icon tool %})
 >    - *"Type of Sequences"*: Amino Acids
 >    - *"Support unusual characters?"*: `Yes`
 >    - *"MAFFT flavour"*: `Auto`
@@ -350,7 +375,7 @@ Next, we would like to clean up this alignment by e.g. removing spurious sequenc
 > <hands-on-title> Clean up our alignment </hands-on-title>
 >
 > 1. {% tool [trimAl](toolshed.g2.bx.psu.edu/repos/iuc/trimal/trimal/1.5.0+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Alignment file"*: output of **MAFFT** {% icon tool %})
+>    - {% icon param-file %} *"Alignment file"*: output of **MAFFT** {% icon tool %}
 >    - *"Select trimming mode from the list"*: `custom mode`
 >      - *"Gap threshold"*: 0.5
 >      - *"Similarity Threshold"* 0.001
