@@ -4,6 +4,28 @@
     "comments": [
         {
             "child_steps": [
+                12,
+                13,
+                14,
+                15
+            ],
+            "color": "lime",
+            "data": {
+                "title": "EmptyDrops, Converting &amp; Reformatting"
+            },
+            "id": 5,
+            "position": [
+                1276.2,
+                755.8000000000001
+            ],
+            "size": [
+                787,
+                391
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
                 8
             ],
             "color": "yellow",
@@ -18,67 +40,6 @@
             "size": [
                 296,
                 303
-            ],
-            "type": "frame"
-        },
-        {
-            "child_steps": [
-                1,
-                0
-            ],
-            "color": "yellow",
-            "data": {
-                "title": "Raw Reads"
-            },
-            "id": 0,
-            "position": [
-                307.1,
-                181
-            ],
-            "size": [
-                265.5,
-                283
-            ],
-            "type": "frame"
-        },
-        {
-            "child_steps": [
-                2,
-                4,
-                5,
-                3
-            ],
-            "color": "pink",
-            "data": {
-                "title": "Getting gene information"
-            },
-            "id": 1,
-            "position": [
-                0,
-                517.5
-            ],
-            "size": [
-                580,
-                515
-            ],
-            "type": "frame"
-        },
-        {
-            "child_steps": [
-                6
-            ],
-            "color": "blue",
-            "data": {
-                "title": "Alevin - No processing"
-            },
-            "id": 2,
-            "position": [
-                617.8,
-                175.79999999999995
-            ],
-            "size": [
-                286,
-                721
             ],
             "type": "frame"
         },
@@ -106,23 +67,62 @@
         },
         {
             "child_steps": [
-                12,
-                13,
-                14,
-                15
+                6
             ],
-            "color": "lime",
+            "color": "blue",
             "data": {
-                "title": "EmptyDrops, Converting &amp; Reformatting"
+                "title": "Alevin - No processing"
             },
-            "id": 5,
+            "id": 2,
             "position": [
-                1276.2,
-                755.8000000000001
+                617.8,
+                175.79999999999995
             ],
             "size": [
-                787,
-                391
+                286,
+                721
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
+                4,
+                5,
+                3,
+                2
+            ],
+            "color": "pink",
+            "data": {
+                "title": "Getting gene information"
+            },
+            "id": 1,
+            "position": [
+                0,
+                517.5
+            ],
+            "size": [
+                580,
+                515
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
+                1,
+                0
+            ],
+            "color": "yellow",
+            "data": {
+                "title": "Raw Reads"
+            },
+            "id": 0,
+            "position": [
+                307.1,
+                181
+            ],
+            "size": [
+                265.5,
+                283
             ],
             "type": "frame"
         }
@@ -141,7 +141,7 @@
     ],
     "format-version": "0.1",
     "license": "CC-BY-4.0",
-    "name": "Generating a single cell matrix using Alevin",
+    "name": "LOCKED | Generating a single cell matrix using Alevin",
     "report": {
         "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
     },
@@ -395,14 +395,14 @@
             "when": null,
             "workflow_outputs": [
                 {
-                    "label": "Gene_Information",
-                    "output_name": "feature_annotation",
-                    "uuid": "2d37017a-4de8-4bfb-b55d-bd68e84dbca9"
-                },
-                {
                     "label": "fasta_output2",
                     "output_name": "fasta_output",
                     "uuid": "b0a930ed-e61e-4f81-ac71-33454156535d"
+                },
+                {
+                    "label": "Gene_Information",
+                    "output_name": "feature_annotation",
+                    "uuid": "2d37017a-4de8-4bfb-b55d-bd68e84dbca9"
                 }
             ]
         },
@@ -509,11 +509,6 @@
             "when": null,
             "workflow_outputs": [
                 {
-                    "label": "salmon_quant_log",
-                    "output_name": "salmon_quant_log",
-                    "uuid": "0250f882-c681-408d-9b85-ee2f0db9f943"
-                },
-                {
                     "label": "quants_mat_mtx_1",
                     "output_name": "quants_mat_mtx",
                     "uuid": "d9ed1457-792b-4eaf-a9fc-2407bcd90da7"
@@ -532,6 +527,11 @@
                     "label": "raw_cb_frequency_txt",
                     "output_name": "raw_cb_frequency_txt",
                     "uuid": "50a32d87-f9a6-4725-b9d6-8f120be54f12"
+                },
+                {
+                    "label": "salmon_quant_log",
+                    "output_name": "salmon_quant_log",
+                    "uuid": "0250f882-c681-408d-9b85-ee2f0db9f943"
                 }
             ]
         },
@@ -612,6 +612,11 @@
             "when": null,
             "workflow_outputs": [
                 {
+                    "label": "barcodes_out",
+                    "output_name": "barcodes_out",
+                    "uuid": "a5933f5d-7132-4778-b071-4402cc7149c5"
+                },
+                {
                     "label": "matrix_out",
                     "output_name": "matrix_out",
                     "uuid": "701ae85b-e70a-4600-a61c-060c604e490f"
@@ -620,11 +625,6 @@
                     "label": "genes_out",
                     "output_name": "genes_out",
                     "uuid": "7e1c350b-4ca8-43b8-b9e8-73c0b157bd70"
-                },
-                {
-                    "label": "barcodes_out",
-                    "output_name": "barcodes_out",
-                    "uuid": "a5933f5d-7132-4778-b071-4402cc7149c5"
                 }
             ]
         },
@@ -1065,6 +1065,6 @@
         "name:training",
         "name:single-cell"
     ],
-    "uuid": "853572f5-96d4-4f73-9879-6923ce08bc8e",
-    "version": 16
+    "uuid": "fc1ff3f1-234e-4fa9-bb99-acb78dce7602",
+    "version": 17
 }
