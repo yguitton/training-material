@@ -129,6 +129,6 @@ Please see the Program tab.
 
 ## Registration
 
-The number of places in this workshop is limited. The course takes place only in person (not online, not hybrid). There are no fees for the workshop but you need to care for your accommodation, travel costs and catering by yourself.
+The number of places in this workshop is limited. The course takes place only in person (not online, not hybrid). There are no fees for the workshop but you need to care for your accommodation, travel costs and catering yourself.
 
 
