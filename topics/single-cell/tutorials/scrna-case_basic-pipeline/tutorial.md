@@ -4,7 +4,7 @@ layout: tutorial_hands_on
 title: Filter, plot and explore single-cell RNA-seq data with Scanpy
 subtopic: single-cell-CS
 priority: 3
-zenodo_link: 'https://zenodo.org/record/7053673'
+zenodo_link: 'https://zenodo.org/record/15092468'
 
 redirect_from:
 - /topics/transcriptomics/tutorials/scrna-seq-basic-pipeline/tutorial
@@ -12,7 +12,8 @@ redirect_from:
 
 answer_histories:
   - label: "UseGalaxy.eu_Answer_Key_History"
-    history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/filter-plot-and-explore-single-cell-rna-seq-data-answer-key
+    history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/locked-filter-plot-and-explore-single-cell-rna-seq-data-answer-key
+    date: 2024-03-26
   - label: "UseGalaxy.eu-ARCHIVEDv2"
     history: https://usegalaxy.eu/u/j.jakiela/h/filter-plot-and-explore-single-cell-rna-seq-data-updated
     date: 2023-10-10
@@ -25,7 +26,7 @@ answer_histories:
 
 input_histories:
   - label: "UseGalaxy.eu"
-    history:  https://usegalaxy.eu/u/wendi.bacon.training/h/filter-plot-and-explore-single-cell-rna-seq-data-input
+    history:  https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/locked-filter-plot-and-explore-single-cell-rna-seq-data-input
 
 questions:
 - How can I assess my dataset quality?
@@ -90,7 +91,15 @@ recordings:
 
 
 
-You've done all the work to make a single cell matrix, with gene counts and mitochondrial counts and buckets of cell metadata from all your variables of interest. Now it's time to fully process our data, to remove low quality cells, to reduce the many dimensions of data that make it difficult to work with, and ultimately to try to define our clusters and to find our biological meaning and insights! There are many packages for analysing single cell data - Seurat {% cite Satija2015 %}, Scanpy {% cite Wolf2018 %}, Monocle {% cite Trapnell2014 %}, Scater {% cite McCarthy2017 %}, and so forth. We're working with Scanpy, because currently Galaxy hosts the most Scanpy tools of all of those options.
+You've done all the work to make a single cell matrix, with mitochondrial genes flagge and buckets of cell metadata from all your variables of interest. Now it's time to fully process our data, to remove low quality cells, to reduce the many dimensions of the data that make it difficult to work with, and ultimately to try to define our clusters and to find our biological meaning and insights! There are many packages for analysing single cell data - Seurat {% cite Satija2015 %}, Scanpy {% cite Wolf2018 %}, Monocle {% cite Trapnell2014 %}, Scater {% cite McCarthy2017 %}, and so forth. We're working with Scanpy, although Galaxy has training using other packages, which you can explore on our {% icon level %} [Single-cell training topic]({% link topics/single-cell %}).
+
+> <details-title>Where am I?</details-title>
+>
+> You are in one of the four tutorials associated with a Case Study, which replicates and expands on the analysis performed in a manuscript {% cite Bacon2018 %}.
+>
+> ![case study overview](../../images/scrna-casestudy/CS3-case_study_overview_3.png "Overview of the four parts of the case study, represented by boxes connected with noodles. There is a signpost specifying that you are currently in the first part.")
+>
+{: .details}
 
 > <agenda-title></agenda-title>
 >
