@@ -3,35 +3,6 @@
     "annotation": "Workflow associated with this training: https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scrna-case_alevin-combine-datasets/tutorial.html",
     "comments": [
         {
-            "child_comments": [
-                1
-            ],
-            "child_steps": [
-                2,
-                3,
-                4,
-                5,
-                6,
-                0,
-                1,
-                7
-            ],
-            "color": "green",
-            "data": {
-                "title": "Concatenating Objects"
-            },
-            "id": 0,
-            "position": [
-                0,
-                0
-            ],
-            "size": [
-                733,
-                872
-            ],
-            "type": "frame"
-        },
-        {
             "child_steps": [
                 11,
                 12,
@@ -55,6 +26,9 @@
             "type": "frame"
         },
         {
+            "child_comments": [
+                4
+            ],
             "child_steps": [
                 16,
                 17
@@ -70,51 +44,26 @@
             ],
             "size": [
                 514,
-                226
+                246
             ],
             "type": "frame"
         },
         {
             "child_steps": [
-                21,
-                20
+                18
             ],
             "color": "orange",
             "data": {
                 "title": "Inspecting Object"
             },
-            "id": 6,
+            "id": 5,
             "position": [
-                1695.6999999999998,
-                493
+                1331,
+                497.7
             ],
             "size": [
-                335.3,
-                308.5
-            ],
-            "type": "frame"
-        },
-        {
-            "child_comments": [
-                5,
-                6
-            ],
-            "child_steps": [
-                18,
-                19
-            ],
-            "color": "turquoise",
-            "data": {
-                "title": "Gene Metadata: Mitochondrial content"
-            },
-            "id": 4,
-            "position": [
-                1341.1999999999998,
-                437.8
-            ],
-            "size": [
-                731,
-                411
+                255,
+                212
             ],
             "type": "frame"
         },
@@ -144,16 +93,45 @@
             "data": {
                 "text": "Final Object"
             },
-            "id": 5,
+            "id": 4,
             "position": [
-                1455.6999999999998,
-                793.7
+                1119.5,
+                673.5
             ],
             "size": [
-                139,
+                118,
                 41
             ],
             "type": "markdown"
+        },
+        {
+            "child_comments": [
+                1
+            ],
+            "child_steps": [
+                5,
+                6,
+                0,
+                1,
+                2,
+                3,
+                4,
+                7
+            ],
+            "color": "green",
+            "data": {
+                "title": "Concatenating Objects"
+            },
+            "id": 0,
+            "position": [
+                0,
+                0
+            ],
+            "size": [
+                733,
+                872
+            ],
+            "type": "frame"
         }
     ],
     "creator": [
@@ -924,111 +902,13 @@
         },
         "18": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy1",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy1",
             "errors": null,
             "id": 18,
             "input_connections": {
                 "input": {
                     "id": 17,
                     "output_name": "anndata"
-                }
-            },
-            "inputs": [],
-            "label": null,
-            "name": "Manipulate AnnData",
-            "outputs": [
-                {
-                    "name": "anndata",
-                    "type": "h5ad"
-                }
-            ],
-            "position": {
-                "left": 1415.3608846506984,
-                "top": 488.6878345297061
-            },
-            "post_job_actions": {},
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy1",
-            "tool_shed_repository": {
-                "changeset_revision": "d1e49c3c0aa2",
-                "name": "anndata_manipulate",
-                "owner": "iuc",
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            },
-            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"manipulate\": {\"function\": \"flag_genes\", \"__current_case__\": 5, \"gene_flags\": [{\"__index__\": 0, \"startswith\": \"True\", \"col_in\": \"NA.\", \"col_out\": \"mito\"}]}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "0.10.9+galaxy1",
-            "type": "tool",
-            "uuid": "35e33fee-2ed7-4c7e-90dd-130b3a247cb9",
-            "when": null,
-            "workflow_outputs": [
-                {
-                    "label": "anndata-flagged",
-                    "output_name": "anndata",
-                    "uuid": "899dd63e-203c-47aa-82b2-993278f54a56"
-                }
-            ]
-        },
-        "19": {
-            "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/scanpy_inspect/scanpy_inspect/1.10.2+galaxy1",
-            "errors": null,
-            "id": 19,
-            "input_connections": {
-                "adata": {
-                    "id": 18,
-                    "output_name": "anndata"
-                }
-            },
-            "inputs": [],
-            "label": "Annotated_Object",
-            "name": "Scanpy Inspect and manipulate",
-            "outputs": [
-                {
-                    "name": "anndata_out",
-                    "type": "h5ad"
-                }
-            ],
-            "position": {
-                "left": 1416.0070190429688,
-                "top": 631.9203491210938
-            },
-            "post_job_actions": {
-                "RenameDatasetActionanndata_out": {
-                    "action_arguments": {
-                        "newname": "Annotated_Object"
-                    },
-                    "action_type": "RenameDatasetAction",
-                    "output_name": "anndata_out"
-                }
-            },
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/scanpy_inspect/scanpy_inspect/1.10.2+galaxy1",
-            "tool_shed_repository": {
-                "changeset_revision": "d86cb2ce311b",
-                "name": "scanpy_inspect",
-                "owner": "iuc",
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            },
-            "tool_state": "{\"__input_ext\": \"input\", \"adata\": {\"__class__\": \"ConnectedValue\"}, \"advanced_common\": {\"show_log\": false}, \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"method\": {\"method\": \"pp.calculate_qc_metrics\", \"__current_case__\": 0, \"expr_type\": \"counts\", \"var_type\": \"genes\", \"qc_vars\": \"mito\", \"percent_top\": \"\", \"layer\": \"\", \"use_raw\": false, \"log1p\": true}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "1.10.2+galaxy1",
-            "type": "tool",
-            "uuid": "84d6ebfc-4d09-4b93-8725-40c683c98abd",
-            "when": null,
-            "workflow_outputs": [
-                {
-                    "label": "Annotated_Object",
-                    "output_name": "anndata_out",
-                    "uuid": "76600728-c369-4f6f-941e-bbe08d34a819"
-                }
-            ]
-        },
-        "20": {
-            "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy1",
-            "errors": null,
-            "id": 20,
-            "input_connections": {
-                "input": {
-                    "id": 19,
-                    "output_name": "anndata_out"
                 }
             },
             "inputs": [],
@@ -1041,8 +921,8 @@
                 }
             ],
             "position": {
-                "left": 1762.5957419958518,
-                "top": 546.1068005863116
+                "left": 1354.026965332031,
+                "top": 563.3626434326171
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy1",
@@ -1064,57 +944,12 @@
                     "uuid": "70b56d09-986f-4fa7-837a-54ebabc48117"
                 }
             ]
-        },
-        "21": {
-            "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy1",
-            "errors": null,
-            "id": 21,
-            "input_connections": {
-                "input": {
-                    "id": 19,
-                    "output_name": "anndata_out"
-                }
-            },
-            "inputs": [],
-            "label": null,
-            "name": "Inspect AnnData",
-            "outputs": [
-                {
-                    "name": "var",
-                    "type": "tabular"
-                }
-            ],
-            "position": {
-                "left": 1768.0370483398438,
-                "top": 677.15283203125
-            },
-            "post_job_actions": {},
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy1",
-            "tool_shed_repository": {
-                "changeset_revision": "33c0081e16c6",
-                "name": "anndata_inspect",
-                "owner": "iuc",
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            },
-            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"input\": {\"__class__\": \"ConnectedValue\"}, \"inspect\": {\"info\": \"var\", \"__current_case__\": 4}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "0.10.9+galaxy1",
-            "type": "tool",
-            "uuid": "3885cf78-aba1-4276-a870-6b82f4254cfc",
-            "when": null,
-            "workflow_outputs": [
-                {
-                    "label": "var-final",
-                    "output_name": "var",
-                    "uuid": "6321df44-d350-4601-9f9b-83baa1e75f0a"
-                }
-            ]
         }
     },
     "tags": [
         "name:training",
         "name:single-cell"
     ],
-    "uuid": "ecc824f0-d382-46fc-bbe1-3597b3c79f37",
-    "version": 10
+    "uuid": "a5138ff2-c6cd-4c9a-86aa-935bdc9cf5c5",
+    "version": 3
 }

@@ -15,7 +15,7 @@ redirect_from:
 
 answer_histories:
   - label: "UseGalaxy.eu"
-    history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/combining-single-cell-datasets-after-pre-processing-answer-key-history
+    history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/locked-combining-single-cell-datasets-after-pre-processing-answer-key
     date: 2025-03-20
   - label: "UseGalaxy.eu-ARCHIVE2"
     history: https://usegalaxy.eu/u/j.jakiela/h/combining-datasets-key-history
@@ -29,7 +29,7 @@ answer_histories:
 
 input_histories:
   - label: "UseGalaxy.eu"
-    label: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/combining-single-cell-datasets-after-pre-processing-input-history
+    history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/locked-combining-single-cell-datasets-after-pre-processing-input
     date: 2025-03-20
   - label: "UseGalaxy.eu-ARCHIVE2"
     history: https://usegalaxy.eu/u/j.jakiela/h/combining-datasets-input
@@ -38,6 +38,14 @@ input_histories:
     date: 2024-12-10
   - label: "UseGalaxy.org"
     history: https://usegalaxy.org/u/juliajot/h/combining-datasets-input
+
+example_histories:
+  - label: "UseGalaxy.eu_Whole_Separate-AnnData"
+    history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/locked-combining-single-cell-datasets-after-pre-processing-input-history-whole-samples
+    date: 2025-03-26
+  - label: "UseGalaxy.eu_Whole_Combined-AnnData"
+    history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/locked-whole-samples-combining-single-cell-datasets-after-pre-processing-answer-key
+    date: 2025-03-26
 
 objectives:
   - Combine data matrices from different samples in the same experiment
@@ -56,10 +64,11 @@ tags:
 contributions:
   authorship:
     - nomadscientist
-    - pinin4fjords
+
 
   editing:
     - hexylena
+    - pinin4fjords
 
   testing:
     - wee-snufkin
@@ -103,6 +112,14 @@ recordings:
 
 
 This tutorial will take you from the multiple AnnData outputs of the [previous tutorial](https://humancellatlas.usegalaxy.eu/training-material/topics/transcriptomics/tutorials/scrna-case_alevin/tutorial.html) to a single, combined  AnnData object, ready for all the fun downstream processing. We will also look at how to add in metadata (for instance, SEX or GENOTYPE) for analysis later on.
+
+> <details-title>Where am I?</details-title>
+>
+> You are in one of the four tutorials associated with a Case Study, which replicates and expands on the analysis performed in a manuscript {% cite Bacon2018 %}.
+>
+> ![case study overview](../../images/scrna-casestudy/CS2-case_study_overview_2.png "Overview of the four parts of the case study, represented by boxes connected with noodles. There is a signpost specifying that you are currently in the second part.")
+>
+{: .details}
 
 > <agenda-title></agenda-title>
 >
@@ -186,6 +203,8 @@ The sample data is a subset of the reads from each of the seven samples in a mou
 {% snippet topics/single-cell/faqs/single_cell_omics.md %}
 
 {% snippet faqs/galaxy/analysis_troubleshooting.md sc=true %}
+
+{% snippet faqs/gtn/gtn_example_histories.md %}
 
 # Concatenating objects
 
@@ -370,31 +389,25 @@ I want to clean up this AnnData object just a bit more first. It would be a lot 
 >
 {: .hands_on}
 
-Huzzah! We are JUST about there. However, we have thus far only added cell metadata (sample, batch, genotype, etc.) to our **Obs** layer. What about gene metadata, the information about the genes?
-
-# Adding gene metadata: Mitochondrial or not?
-
-Do you remember when we mentioned mitochondria early on in this tutorial? And how often in single cell samples, mitochondrial RNA is often an indicator of stress during dissociation? We should probably do something with our column of true/false in the gene annotation that tells us information about the genes (True = mitochondrial gene; False = Not a mitochondrial gene). You will need to do this next step whether you have combined FASTQ files in this tutorial, or are analysing just one dataset and have jumped in from the [previous tutorial]({% link /single-cell/tutorials/scrna-case_alevin/tutorial.md %})
-
-> <hands-on-title>Calculating mitochondrial RNA in cells</hands-on-title>
->
-> 1. {% tool [AnnData Operations](toolshed.g2.bx.psu.edu/repos/ebi-gxa/anndata_ops/anndata_ops/1.9.3+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input object in hdf5 AnnData format"*: `Batched Object`
->    - *"Format of output object"*: `AnnData format`
->    - *"Gene symbols field in AnnData"*: `NA.`
->    - *"Flag genes that start with these names"*: `Insert Flag genes that start with these names`
->    - *"Starts with"*: `True`
->    - *"Var name"*: `mito`
-> 2. Rename {% icon galaxy-pencil %} output `Annotated_Object`
-{: .hands_on}
-
-{% icon congratulations %} Well done! *Peek* at your final `Pre-processed_object` to see the wealth of information that has been added. You are now ready to move along to further filtering!
+{% icon congratulations %} Well done! *Peek* at your final {% icon param-file %} `Batched_Object` to see the wealth of information that has been added. You are now ready to move along to further filtering!
 
 # Conclusion
 
-![Combining data files](../../images/scrna-casestudy/wab-combining_datasets_alevin.png "Workflow  - Combining datasets")
+You might find the {% icon galaxy-history-answer %} *Answer Key Histories* helpful to check or compare with:
+  - {% for h in page.answer_histories[:1] %}
+      [ {{h.label}} ]( {{h.history}} )
+    {% endfor %}
+<!-- Only currently want to iterate through the first history, but might want others in the future (different servers!) -->
 
-You've reached the end of this session!
-You may be interested in seeing an [example history](https://usegalaxy.eu/u/j.jakiela/h/combining-datasets-key-history) and [workflow](https://usegalaxy.eu/u/j.jakiela/w/combining-datasets-after-pre-processing). Note that the workflow might require changing of the `column` containing the batch metadata depending on how you are running it and checking the order of the combined datasets. The final object containing the total the reads can be found in [this Galaxy History on UseGalaxy EU](https://usegalaxy.eu/u/j.jakiela/h/all-total-samples-processed-after-alevin-into-single-object).
+You can also run this entire tutorial via a {% icon galaxy-workflows-activity %} *Workflow*, after performing the **Get data** step initially.
+ - [Tutorial Workflow]({% link ../workflows/ %})
+
+<iframe title="Galaxy Workflow Embed" style="width: 100%; height: 700px; border: none;" src="https://singlecell.usegalaxy.eu/published/workflow?id=d1a1e6070c0a36ca&embed=true&buttons=true&about=false&heading=false&minimap=true&zoom_controls=true&initialX=0&initialY=-20&zoom=0.5"></iframe>
+
+Finally, you may remember that the datasets you analysed in this tutorial were downsampled. The idential analysis can be performed on whole samples, which you can find in the example histories below.
+- {% icon warning %} Remember that *if* you are in a course, time for exploring these histories will not be factored into the schedule. Explore these outside of course time!
+- {% for h in page.example_histories %}
+    [ {{h.label}} ]( {{h.history}} )
+  {% endfor %}
 
 {% snippet topics/single-cell/faqs/user_community_join.md %}
