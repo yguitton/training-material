@@ -3,7 +3,7 @@ layout: tutorial_hands_on
 
 title: Identification and Evolutionary Analysis of Transcription-Associated Proteins
   in Streptophyte algae and Land plants
-zenodo_link: ''
+zenodo_link: 'https://zenodo.org/records/15056031/'
 questions:
 - What are transcription-associated proteins (TAPs)?
 - How can we identify TAPs from a given proteome dataset?
@@ -492,4 +492,4 @@ to your machine, and upload it to ETE toolkit, but you can also do this directly
 
 In this tutorial, utilizing the protein sequences of streptophyte algae, bryophytes, and land plants, we detected the TAP families and explored the distribution and evolutionary history of Aux/IAA proteins. Aux/IAA proteins play a critical role in the auxin signaling pathway, regulating plant growth and development, especially in response to environmental changes. Using [TAPScan Classify](https://github.com/Rensing-Lab/TAPscan-classify), we identified the presence of Aux/IAA proteins in these species and results showed lower number of Aux/IAA proteins in streptophyte algae compared to bryophytes and land plants. This suggests that the Aux/IAA protein family expanded as plants transitioned from aquatic to terrestrial environments, where more complex signaling mechanisms were required for growth regulation.
 
-The phylogenetic tree analysis supported this finding, as genes from the same group, such as land plants or bryophytes, clustered together, indicating their close evolutionary relationships and the potential for similar roles in auxin signaling. The branching patterns suggest that certain Aux/IAA genes from land plants and bryophytes are more closely related to each other, reflecting their shared functions in regulating growth and development under land conditions. 
+The phylogenetic tree analysis supported this finding, as genes from the same group, such as land plants or bryophytes, clustered together, indicating their close evolutionary relationships and the potential for similar roles in auxin signaling. The branching patterns suggest that certain Aux/IAA genes from land plants and bryophytes are more closely related to each other, reflecting their shared functions in regulating growth and development under land conditions.
