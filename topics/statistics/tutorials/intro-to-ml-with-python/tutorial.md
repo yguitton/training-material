@@ -246,7 +246,9 @@ But if you know anything about biology, or data analysis, then you likely suspec
 > ```python
 > my_clf.fit( X , y )
 > ```
+> > <comment-title></comment-title>
 > > In this context, `X` is the data and `y` is the objective to attain. When the object is not an ML algorithm but a preprocessor, you only give the `X`
+> {: .comment}
 >
 > Now that the object has been trained with your data, you can use it. For instance, to:
 > * `.transform` your data (typically in the case of a preprocessor)
@@ -1144,7 +1146,10 @@ ax.legend()
 
 We can see that **when $$\alpha$$ grows the probabilities evolve more smoothly** ie. we have more regularization.
 
+> <comment-title></comment-title>
 > However, note that all the curves meet at the same point, corresponding to the 0.5 probability.
+{: .comment}
+
 
 This is nice, but **our end-goal is to actually be able to predict the classes**, and not just the probabilities.
 
@@ -1739,7 +1744,10 @@ Here we will introduce the **[balanced accuracy](https://scikit-learn.org/stable
 
 $$balanced_accuracy = 0.5*( \frac{TP}{TP+FN} + \frac{TN}{TN+FP} )$$
 
+> <comment-title></comment-title>
 > Other scores you may want to look-up : [average-precision score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html#sklearn.metrics.average_precision_score), and [f1-score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score), which are both linked to the precision/recall curve
+{: .comment}
+
 
 
 
