@@ -11,7 +11,7 @@ requirements:
   - python-basics
   - python-warmup-stat-ml
 questions:
-- to do
+- how can we use Machine-Learning to make more generalizable models?
 objectives:
 - general sklearn syntax intro
 - overfit/underfit
@@ -43,9 +43,6 @@ notebook:
 
 
 
-
-# Foundational Aspects of Machine Learning using Python
-
 The objective of this tutorial is to introduce you to some foundational aspects of Machine Learning which are key to delve in other topics such as Deep Learning.
 
 We will not go in the details of many algorithms and models, but rather stay at a high-level where we will focus on the strategic choices that we can make around our data and objectives.
@@ -58,7 +55,10 @@ Typically, the target can be :
 
 These use different models and metrics, but many strategies are the same
 
+
+> <comment-title></comment-title>
 > NB: these are only the most common aspects, but other exists.
+{: .comment}
 
 
 > <agenda-title></agenda-title>
@@ -92,7 +92,7 @@ plt.rc('ytick.major', size=8, pad=12)
 plt.rc('ytick.minor', size=8, pad=12)
 ```
 
-## motivating example
+## Motivating example
 
 [Acharjee et al.2016](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-016-1043-4) propose several -omic dataset which they used to predict and gain knowledge on various phenotypic traits in potatos.
 
@@ -136,199 +136,13 @@ X.head()
 
 
 
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-      <th>5</th>
-      <th>6</th>
-      <th>7</th>
-      <th>8</th>
-      <th>9</th>
-      <th>...</th>
-      <th>190</th>
-      <th>191</th>
-      <th>192</th>
-      <th>193</th>
-      <th>194</th>
-      <th>195</th>
-      <th>196</th>
-      <th>197</th>
-      <th>198</th>
-      <th>199</th>
-    </tr>
-    <tr>
-      <th>Genotype</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>CE017</th>
-      <td>0.086271</td>
-      <td>-0.790631</td>
-      <td>-0.445972</td>
-      <td>0.788895</td>
-      <td>0.510650</td>
-      <td>0.626438</td>
-      <td>0.829346</td>
-      <td>0.432200</td>
-      <td>-1.344748</td>
-      <td>1.794652</td>
-      <td>...</td>
-      <td>-0.754008</td>
-      <td>-0.013125</td>
-      <td>0.852473</td>
-      <td>1.067286</td>
-      <td>0.877670</td>
-      <td>0.537247</td>
-      <td>1.251427</td>
-      <td>1.052070</td>
-      <td>-0.135479</td>
-      <td>-0.526788</td>
-    </tr>
-    <tr>
-      <th>CE069</th>
-      <td>-0.540687</td>
-      <td>0.169014</td>
-      <td>0.282120</td>
-      <td>-1.107200</td>
-      <td>-1.200370</td>
-      <td>0.518986</td>
-      <td>1.027663</td>
-      <td>-0.374142</td>
-      <td>-0.937715</td>
-      <td>1.488139</td>
-      <td>...</td>
-      <td>-0.237367</td>
-      <td>0.684905</td>
-      <td>1.460319</td>
-      <td>-1.570253</td>
-      <td>0.547969</td>
-      <td>0.635307</td>
-      <td>0.257955</td>
-      <td>1.043724</td>
-      <td>0.733218</td>
-      <td>-1.768250</td>
-    </tr>
-    <tr>
-      <th>CE072</th>
-      <td>-1.713273</td>
-      <td>-1.400956</td>
-      <td>-1.543058</td>
-      <td>-0.930367</td>
-      <td>-1.058800</td>
-      <td>-0.455020</td>
-      <td>-1.302403</td>
-      <td>-0.110293</td>
-      <td>-0.332380</td>
-      <td>-0.232460</td>
-      <td>...</td>
-      <td>-0.131733</td>
-      <td>-0.070336</td>
-      <td>0.821996</td>
-      <td>-1.566652</td>
-      <td>0.914053</td>
-      <td>-1.707726</td>
-      <td>0.498226</td>
-      <td>-1.500588</td>
-      <td>0.361168</td>
-      <td>-1.020456</td>
-    </tr>
-    <tr>
-      <th>CE084</th>
-      <td>-0.096239</td>
-      <td>-0.599251</td>
-      <td>-1.499636</td>
-      <td>-0.847275</td>
-      <td>-1.171365</td>
-      <td>-0.952574</td>
-      <td>-1.347691</td>
-      <td>0.561542</td>
-      <td>-0.335009</td>
-      <td>-0.702851</td>
-      <td>...</td>
-      <td>-0.729461</td>
-      <td>0.135614</td>
-      <td>1.074398</td>
-      <td>0.629679</td>
-      <td>-0.691100</td>
-      <td>-1.247779</td>
-      <td>0.167965</td>
-      <td>-1.525064</td>
-      <td>0.150271</td>
-      <td>0.105746</td>
-    </tr>
-    <tr>
-      <th>CE110</th>
-      <td>-0.712374</td>
-      <td>-1.081618</td>
-      <td>-1.530316</td>
-      <td>-1.259747</td>
-      <td>-1.109999</td>
-      <td>-0.582357</td>
-      <td>-1.233085</td>
-      <td>0.008014</td>
-      <td>-0.915632</td>
-      <td>-0.746339</td>
-      <td>...</td>
-      <td>-0.054882</td>
-      <td>0.363344</td>
-      <td>0.720155</td>
-      <td>0.465315</td>
-      <td>1.450199</td>
-      <td>-1.706606</td>
-      <td>0.602451</td>
-      <td>-1.507727</td>
-      <td>-2.207455</td>
-      <td>-0.139036</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 200 columns</p>
-</div>
-
-
+| Genotype  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | ... | 190 | 191 | 192 | 193 | 194 | 195 | 196 | 197 | 198 | 199 |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| CE017 | 0.086271 | -0.790631 | -0.445972 | 0.788895 | 0.510650 | 0.626438 | 0.829346 | 0.432200 | -1.344748 | 1.794652 | ... | -0.754008 | -0.013125 | 0.852473 | 1.067286 | 0.877670 | 0.537247 | 1.251427 | 1.052070 | -0.135479 | -0.526788 |
+| CE069 | -0.540687 | 0.169014 | 0.282120 | -1.107200 | -1.200370 | 0.518986 | 1.027663 | -0.374142 | -0.937715 | 1.488139 | ... | -0.237367 | 0.684905 | 1.460319 | -1.570253 | 0.547969 | 0.635307 | 0.257955 | 1.043724 | 0.733218 | -1.768250 |
+| CE072 | -1.713273 | -1.400956 | -1.543058 | -0.930367 | -1.058800 | -0.455020 | -1.302403 | -0.110293 | -0.332380 | -0.232460 | ... | -0.131733 | -0.070336 | 0.821996 | -1.566652 | 0.914053 | -1.707726 | 0.498226 | -1.500588 | 0.361168 | -1.020456 |
+| CE084 | -0.096239 | -0.599251 | -1.499636 | -0.847275 | -1.171365 | -0.952574 | -1.347691 | 0.561542 | -0.335009 | -0.702851 | ... | -0.729461 | 0.135614 | 1.074398 | 0.629679 | -0.691100 | -1.247779 | 0.167965 | -1.525064 | 0.150271 | 0.105746 |
+| CE110 | -0.712374 | -1.081618 | -1.530316 | -1.259747 | -1.109999 | -0.582357 | -1.233085 | 0.008014 | -0.915632 | -0.746339 | ... | -0.054882 | 0.363344 | 0.720155 | 0.465315 | 1.450199 | -1.706606 | 0.602451 | -1.507727 | -2.207455 | -0.139036 |
 
 
 ```python
@@ -371,7 +185,7 @@ sns.histplot(y)
 
 ## Linear regression
 
-### approach 1: a simple linear regression
+### Approach 1: a simple linear regression
 
 Let's fit a simple linear model with our gene expression values, and see what happens
 
@@ -529,11 +343,11 @@ X_test = Xnew
 y_test = ynew
 ```
 
-### approach 2: adding regularization and validation set
+### Approach 2: adding regularization and validation set
 
 In the case of a Least Square fit, the function you are minimizing looks like:
 
-$\sum_i (y_i-f(\pmb X_i,\pmb{\beta}))^2$
+$$ \sum_i (y_i-f(\pmb X_i,\pmb{\beta}))^2 $$
 
 , so the sum of squared difference between the observation and the predictions of your model.
 
@@ -543,25 +357,29 @@ we do so by adding to this function a **penalization term which depends on coeff
 
 In brief, the stronger the coefficient, the higher the penalization. So only coefficients which bring more fit than penalization will be kept.
 
+> <comment-title></comment-title>
+> We report here the formulas used in `scikit-learn` functions. Other libraries may have a different parameterization, but the concepts stay the same.
+{: .comment}
 
-> Note : we report here the formulas used in `scikit-learn` functions. Other libraries may have a different parameterization, but the concepts stay the same
 
-$\frac{1}{2n}\sum_i (y_i-f(\pmb X_i,\pmb{\beta}))^2 + \alpha\sum_{j}|\beta_{j}|$ , **l1 regularization** (Lasso) $\alpha$ being the weight that you put on that regularization 
 
-$\sum_i (y_i-f(\pmb X_i,\pmb{\beta}))^2 + \alpha\sum_{j}\beta_{j}^{2}$ , **l2 regularization** (Ridge) 
+$$\frac{1}{2n}\sum_i (y_i-f(\pmb X_i,\pmb{\beta}))^2 + \alpha\sum_{j}\lvert\beta_{j}\rvert$$ , **l1 regularization** (Lasso) $$\alpha$$ being the weight that you put on that regularization 
 
-$\frac{1}{2n}\sum_i (y_i-f(\pmb X_i,\pmb{\beta}))^2 + \alpha\sum_{j}(\rho|\beta_{j}|+\frac{(1-\rho)}{2}\beta_{j}^{2})$ , **elasticnet**
+$$\sum_i (y_i-f(\pmb X_i,\pmb{\beta}))^2 + \alpha\sum_{j}\beta_{j}^{2}$$ , **l2 regularization** (Ridge) 
+
+$$\frac{1}{2n}\sum_i (y_i-f(\pmb X_i,\pmb{\beta}))^2 + \alpha\sum_{j}(\rho\lvert\beta_{j}\rvert+\frac{(1-\rho)}{2}\beta_{j}^{2})$$ , **elasticnet**
 
 
 For a deeper understanding of those notions, you may look at :
 
- * https://www.datacamp.com/community/tutorials/tutorial-ridge-lasso-elastic-net
+ * [datacamp's ridge-lasso-elastic-net tutorial](https://www.datacamp.com/community/tutorials/tutorial-ridge-lasso-elastic-net)
 
- * https://towardsdatascience.com/regularization-in-machine-learning-76441ddcf99a
+ * [towardsdatascience's regularization in machine learning post](https://towardsdatascience.com/regularization-in-machine-learning-76441ddcf99a)
 
 
-
+> <comment-title></comment-title>
 > NB: Regularization generalize to maximum likelihood contexts as well)
+{: .comment}
 
 
 
@@ -689,7 +507,7 @@ fig.suptitle("regression of potato data with an L1 regularization.")
 
 This is great, but how do we choose which level of regularization we want ?
 
-It is a general rule that **as you decrease $\alpha$, the $R^2$ on the data used for the fit increase**, i.e. you risk overfitting.
+It is a general rule that **as you decrease $$\alpha$$, the $$R^2$$ on the data used for the fit increase**, i.e. you risk overfitting.
 
 Consequently, we cannot choose the value of $\alpha$ parameter from the data used to fit alone; we call such a parameter an **hyper-parameter**.
 
@@ -711,7 +529,7 @@ Consequently, we cannot choose the value of $\alpha$ parameter from the data use
 
 
 
----
+
 
 <br>
 
@@ -787,23 +605,14 @@ ax.legend()
     CPU times: user 12.2 s, sys: 244 ms, total: 12.5 s
     Wall time: 3.15 s
 
-
-
-
-
-    <matplotlib.legend.Legend at 0x7f98f6468f50>
-
-
-
-
     
 ![png](images/outputs/output_26_2.png)
     
 
 
 So now, with the help of a validation set, we can clearly see the phases :
- * **underfitting** : for high $\alpha$, the performance is low for both the train and the validation set
- * **overfitting** : for low $\alpha$, the performance is high for the train set, and low for the validation set
+ * **underfitting** : for high $$\alpha$$, the performance is low for both the train and the validation set
+ * **overfitting** : for low $$\alpha$$, the performance is high for the train set, and low for the validation set
  
 We want the equilibrium point between the two where performance is ideal for the validation set.
 
@@ -812,15 +621,13 @@ We want the equilibrium point between the two where performance is ideal for the
 There exists a myriad of possible strategies to deal with that problem, such as repeating the above many times and taking the average of the results for instance.
 Note also that this problem gets less important as the validation set size increases.
 
-<br>
 
----
 
 <br>
 
 Anyhow, on top of our earlier regression model, we have added :
 
- * an **hyper-parameter** : $\alpha$, the strength of the regularization term
+ * an **hyper-parameter** : $$\alpha$$, the strength of the regularization term
  * a **validation strategy** for our model in order to avoid overfitting
 
 <br>
@@ -858,15 +665,6 @@ plt.legend()
      test data R-squared score: 0.73
      test data mean squared error: 65.83
 
-
-
-
-
-    <matplotlib.legend.Legend at 0x7f98f6258890>
-
-
-
-
     
 ![png](images/outputs/output_29_2.png)
     
@@ -876,7 +674,7 @@ Two things to observe:
  * we still see better performance on the train data than on the test data (generally always the case)
  * the performance on the test set has improved: our model is less overfit and more generalizable
 
-###  approach 3 : k-fold cross-validation
+###  Approach 3 : k-fold cross-validation
 
 In the previous approach, we have split our training data into a train set and a validation set.
 
@@ -891,13 +689,13 @@ Indeed, we have seen that if we run the code above several time, we see that the
 
 ![Drawing of k-fold validation](images/kfold.png)
 
-In k-fold cross-validation, you split you data in $k$ subpart, called fold.
+In k-fold cross-validation, you split you data in $$k$$ subpart, called fold.
 
-Then, for a given hyper-parameter values combination, you actually train $k$ model: each time you use a different fold for validation (and the remaining $k-1$ folds for training).
+Then, for a given hyper-parameter values combination, you actually train $$k$$ model: each time you use a different fold for validation (and the remaining $$k-1$$ folds for training).
 
 You then compute the average performance across all fold : this is the **cross-validated performance**.
 
---- 
+<br>
 
 We are going to do a simple k-fold manually once, to explore a bit how it works, but in practice you will discover that it is mostly automatized with some of scikit-learn's recipes and objects.
 
@@ -1009,15 +807,6 @@ fig.suptitle("best alpha : {:.2f} - cross-validated R2 : {:.2f}".format(10**best
     CPU times: user 13.6 s, sys: 0 ns, total: 13.6 s
     Wall time: 13.6 s
 
-
-
-
-
-    Text(0.5, 0.98, 'best alpha : 0.52 - cross-validated R2 : 0.54')
-
-
-
-
     
 ![png](images/outputs/output_34_2.png)
     
@@ -1056,15 +845,6 @@ fig.suptitle("best alpha : {:.2f} - cross-validated R2 : {:.2f}".format(10**best
 > >      test data R-squared score: 0.72
 > >      test data mean squared error: 69.05
 > > 
-> > 
-> > 
-> > 
-> > 
-> >     <matplotlib.legend.Legend at 0x7f98f61c0890>
-> > 
-> > 
-> > 
-> > 
 > >     
 > > ![png](images/outputs/output_36_2.png)
 > >     
@@ -1077,15 +857,15 @@ fig.suptitle("best alpha : {:.2f} - cross-validated R2 : {:.2f}".format(10**best
 
 There, you can realize that now, for each possible value of our hyper-parameter we fit and evaluate not 1, but $k$ models, here 4.
 
-So, for 200 values of $\alpha$, that means 200x5 = 1000 models to fit and evaluate.
+So, for 200 values of $$\alpha$$, that means 200x5 = 1000 models to fit and evaluate.
 
 Now, consider that we have other hyper-parameters, such as the type of regularization (L1 or L2),
 or how we perform scaling, or whether we consider interactions, and now you understand why Machine Learning can quickly become  computationnaly intensive. 
 
----
 
 
-### approach 4 : a "classical" ML pipeline
+
+### Approach 4 : a "classical" ML pipeline
 
 We will start back frmo scratch to recapitulate what we've seen and use scikit-learn to solve the potato problem.
 
@@ -1215,15 +995,6 @@ plt.legend()
      test data R-squared score: 0.59
      test data mean squared error: 74.11
 
-
-
-
-
-    <matplotlib.legend.Legend at 0x7f98f60b8110>
-
-
-
-
     
 ![png](images/outputs/output_45_2.png)
     
@@ -1237,261 +1008,19 @@ pd.DataFrame(grid_reg.cv_results_)
 ```
 
 
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>mean_fit_time</th>
-      <th>std_fit_time</th>
-      <th>mean_score_time</th>
-      <th>std_score_time</th>
-      <th>param_model__alpha</th>
-      <th>param_model__penalty</th>
-      <th>param_scaler__with_std</th>
-      <th>params</th>
-      <th>split0_test_score</th>
-      <th>split1_test_score</th>
-      <th>split2_test_score</th>
-      <th>split3_test_score</th>
-      <th>split4_test_score</th>
-      <th>mean_test_score</th>
-      <th>std_test_score</th>
-      <th>rank_test_score</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.032404</td>
-      <td>0.003947</td>
-      <td>0.007624</td>
-      <td>0.003920</td>
-      <td>0.010000</td>
-      <td>l1</td>
-      <td>True</td>
-      <td>{'model__alpha': 0.01, 'model__penalty': 'l1',...</td>
-      <td>0.458166</td>
-      <td>0.426002</td>
-      <td>0.598553</td>
-      <td>0.090676</td>
-      <td>-0.436497</td>
-      <td>0.227380</td>
-      <td>0.371457</td>
-      <td>674</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.037641</td>
-      <td>0.002405</td>
-      <td>0.009909</td>
-      <td>0.007381</td>
-      <td>0.010000</td>
-      <td>l1</td>
-      <td>False</td>
-      <td>{'model__alpha': 0.01, 'model__penalty': 'l1',...</td>
-      <td>0.489853</td>
-      <td>0.463623</td>
-      <td>0.608050</td>
-      <td>0.140120</td>
-      <td>-0.382414</td>
-      <td>0.263847</td>
-      <td>0.358448</td>
-      <td>603</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.020803</td>
-      <td>0.001697</td>
-      <td>0.006123</td>
-      <td>0.000453</td>
-      <td>0.010000</td>
-      <td>l2</td>
-      <td>True</td>
-      <td>{'model__alpha': 0.01, 'model__penalty': 'l2',...</td>
-      <td>0.464953</td>
-      <td>0.451351</td>
-      <td>0.597122</td>
-      <td>0.102295</td>
-      <td>-0.413050</td>
-      <td>0.240534</td>
-      <td>0.365580</td>
-      <td>644</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.021677</td>
-      <td>0.001587</td>
-      <td>0.006235</td>
-      <td>0.000385</td>
-      <td>0.010000</td>
-      <td>l2</td>
-      <td>False</td>
-      <td>{'model__alpha': 0.01, 'model__penalty': 'l2',...</td>
-      <td>0.491105</td>
-      <td>0.472125</td>
-      <td>0.606778</td>
-      <td>0.147489</td>
-      <td>-0.362163</td>
-      <td>0.271067</td>
-      <td>0.351509</td>
-      <td>579</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.035426</td>
-      <td>0.003058</td>
-      <td>0.006576</td>
-      <td>0.001052</td>
-      <td>0.010474</td>
-      <td>l1</td>
-      <td>True</td>
-      <td>{'model__alpha': 0.010473708979594498, 'model_...</td>
-      <td>0.456685</td>
-      <td>0.432716</td>
-      <td>0.601580</td>
-      <td>0.102170</td>
-      <td>-0.437758</td>
-      <td>0.231079</td>
-      <td>0.372233</td>
-      <td>663</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>795</th>
-      <td>0.009917</td>
-      <td>0.000802</td>
-      <td>0.004006</td>
-      <td>0.000370</td>
-      <td>95.477161</td>
-      <td>l2</td>
-      <td>False</td>
-      <td>{'model__alpha': 95.47716114208056, 'model__pe...</td>
-      <td>0.447653</td>
-      <td>0.376443</td>
-      <td>0.497583</td>
-      <td>0.281709</td>
-      <td>0.374550</td>
-      <td>0.395588</td>
-      <td>0.073337</td>
-      <td>389</td>
-    </tr>
-    <tr>
-      <th>796</th>
-      <td>0.020417</td>
-      <td>0.001838</td>
-      <td>0.005503</td>
-      <td>0.002358</td>
-      <td>100.000000</td>
-      <td>l1</td>
-      <td>True</td>
-      <td>{'model__alpha': 100.0, 'model__penalty': 'l1'...</td>
-      <td>-0.011842</td>
-      <td>-0.015431</td>
-      <td>-0.072717</td>
-      <td>-0.000012</td>
-      <td>-0.305135</td>
-      <td>-0.081028</td>
-      <td>0.114845</td>
-      <td>767</td>
-    </tr>
-    <tr>
-      <th>797</th>
-      <td>0.019441</td>
-      <td>0.001637</td>
-      <td>0.004185</td>
-      <td>0.000180</td>
-      <td>100.000000</td>
-      <td>l1</td>
-      <td>False</td>
-      <td>{'model__alpha': 100.0, 'model__penalty': 'l1'...</td>
-      <td>-0.011947</td>
-      <td>-0.015128</td>
-      <td>-0.071826</td>
-      <td>-0.000032</td>
-      <td>-0.303618</td>
-      <td>-0.080510</td>
-      <td>0.114284</td>
-      <td>712</td>
-    </tr>
-    <tr>
-      <th>798</th>
-      <td>0.010385</td>
-      <td>0.001114</td>
-      <td>0.004745</td>
-      <td>0.000793</td>
-      <td>100.000000</td>
-      <td>l2</td>
-      <td>True</td>
-      <td>{'model__alpha': 100.0, 'model__penalty': 'l2'...</td>
-      <td>0.284024</td>
-      <td>0.397677</td>
-      <td>0.350576</td>
-      <td>0.233945</td>
-      <td>-0.024301</td>
-      <td>0.248384</td>
-      <td>0.147355</td>
-      <td>625</td>
-    </tr>
-    <tr>
-      <th>799</th>
-      <td>0.008413</td>
-      <td>0.000895</td>
-      <td>0.002982</td>
-      <td>0.000690</td>
-      <td>100.000000</td>
-      <td>l2</td>
-      <td>False</td>
-      <td>{'model__alpha': 100.0, 'model__penalty': 'l2'...</td>
-      <td>0.159616</td>
-      <td>0.416827</td>
-      <td>0.200832</td>
-      <td>0.211811</td>
-      <td>0.054615</td>
-      <td>0.208740</td>
-      <td>0.117932</td>
-      <td>678</td>
-    </tr>
-  </tbody>
-</table>
-<p>800 rows × 16 columns</p>
-</div>
-
-
-
+|  | mean_fit_time | std_fit_time | mean_score_time | std_score_time | param_model__alpha | param_model__penalty | param_scaler__with_std | params | split0_test_score | split1_test_score | split2_test_score | split3_test_score | split4_test_score | mean_test_score | std_test_score | rank_test_score |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 0 | 0.032404 | 0.003947 | 0.007624 | 0.003920 | 0.010000 | l1 | True | {'model__alpha': 0.01, 'model__penalty': 'l1',... | 0.458166 | 0.426002 | 0.598553 | 0.090676 | -0.436497 | 0.227380 | 0.371457 | 674 |
+| 1 | 0.037641 | 0.002405 | 0.009909 | 0.007381 | 0.010000 | l1 | False | {'model__alpha': 0.01, 'model__penalty': 'l1',... | 0.489853 | 0.463623 | 0.608050 | 0.140120 | -0.382414 | 0.263847 | 0.358448 | 603 |
+| 2 | 0.020803 | 0.001697 | 0.006123 | 0.000453 | 0.010000 | l2 | True | {'model__alpha': 0.01, 'model__penalty': 'l2',... | 0.464953 | 0.451351 | 0.597122 | 0.102295 | -0.413050 | 0.240534 | 0.365580 | 644 |
+| 3 | 0.021677 | 0.001587 | 0.006235 | 0.000385 | 0.010000 | l2 | False | {'model__alpha': 0.01, 'model__penalty': 'l2',... | 0.491105 | 0.472125 | 0.606778 | 0.147489 | -0.362163 | 0.271067 | 0.351509 | 579 |
+| 4 | 0.035426 | 0.003058 | 0.006576 | 0.001052 | 0.010474 | l1 | True | {'model__alpha': 0.010473708979594498, 'model_... | 0.456685 | 0.432716 | 0.601580 | 0.102170 | -0.437758 | 0.231079 | 0.372233 | 663 |
+| ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| 795 | 0.009917 | 0.000802 | 0.004006 | 0.000370 | 95.477161 | l2 | False | {'model__alpha': 95.47716114208056, 'model__pe... | 0.447653 | 0.376443 | 0.497583 | 0.281709 | 0.374550 | 0.395588 | 0.073337 | 389 |
+| 796 | 0.020417 | 0.001838 | 0.005503 | 0.002358 | 100.000000 | l1 | True | {'model__alpha': 100.0, 'model__penalty': 'l1'... | -0.011842 | -0.015431 | -0.072717 | -0.000012 | -0.305135 | -0.081028 | 0.114845 | 767 |
+| 797 | 0.019441 | 0.001637 | 0.004185 | 0.000180 | 100.000000 | l1 | False | {'model__alpha': 100.0, 'model__penalty': 'l1'... | -0.011947 | -0.015128 | -0.071826 | -0.000032 | -0.303618 | -0.080510 | 0.114284 | 712 |
+| 798 | 0.010385 | 0.001114 | 0.004745 | 0.000793 | 100.000000 | l2 | True | {'model__alpha': 100.0, 'model__penalty': 'l2'... | 0.284024 | 0.397677 | 0.350576 | 0.233945 | -0.024301 | 0.248384 | 0.147355 | 625 |
+| 799 | 0.008413 | 0.000895 | 0.002982 | 0.000690 | 100.000000 | l2 | False | {'model__alpha': 100.0, 'model__penalty': 'l2'... | 0.159616 | 0.416827 | 0.200832 | 0.211811 | 0.054615 | 0.208740 | 0.117932 | 678 |
 
 ```python
 grid_reg.best_estimator_
@@ -1608,20 +1137,12 @@ for alpha in [0.01,0.1,1,10]:
 ax.legend()
 ```
 
-
-
-
-    <matplotlib.legend.Legend at 0x7f98f4e368d0>
-
-
-
-
     
 ![png](images/outputs/output_53_1.png)
     
 
 
-We can see that **when $\alpha$ grows the probabilities evolve more smoothly** ie. we have more regularization.
+We can see that **when $$\alpha$$ grows the probabilities evolve more smoothly** ie. we have more regularization.
 
 > However, note that all the curves meet at the same point, corresponding to the 0.5 probability.
 
@@ -1629,7 +1150,7 @@ This is nice, but **our end-goal is to actually be able to predict the classes**
 
 Our task is not regression anymore, but rather **classification**.
 
-So here, we do not evaluate the model using $R^2$ or log-likelihood, but a classification metric.
+So here, we do not evaluate the model using $$R^2$$ or log-likelihood, but a classification metric.
 
 we will discuss a few of these metrics, and we will begin by the most common: **Accuracy**
 
@@ -1670,47 +1191,12 @@ pd.crosstab( y , y_predicted , rownames = ['observed'] , colnames = ['predicted'
 
 
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+| predicted | 0 | 1 |
+| ---: | ---: | ---: |
+| observed |  |  |
+| 0 | 292 | 8 |
+| 1 | 5 | 295 |
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>predicted</th>
-      <th>0</th>
-      <th>1</th>
-    </tr>
-    <tr>
-      <th>observed</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>292</td>
-      <td>8</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>5</td>
-      <td>295</td>
-    </tr>
-  </tbody>
-</table>
-</div>
 
 
 
@@ -1768,48 +1254,11 @@ pd.crosstab( y , y_predicted , rownames = ['observed'] , colnames = ['predicted'
 
 
 
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>predicted</th>
-      <th>False</th>
-      <th>True</th>
-    </tr>
-    <tr>
-      <th>observed</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>254</td>
-      <td>46</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0</td>
-      <td>300</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+| predicted | 0 | 1 |
+| ---: | ---: | ---: |
+| observed |  |  |
+| 0 | 254 | 46 |
+| 1 | 0 | 300 |
 
 
 > <question-title></question-title>
@@ -1855,114 +1304,13 @@ pd.crosstab( y , y_predicted , rownames = ['observed'] , colnames = ['predicted'
 > ```
 > 
 > 
-> 
-> 
-> <div>
-> <style scoped>
->     .dataframe tbody tr th:only-of-type {
->         vertical-align: middle;
->     }
-> 
->     .dataframe tbody tr th {
->         vertical-align: top;
->     }
-> 
->     .dataframe thead th {
->         text-align: right;
->     }
-> </style>
-> <table border="1" class="dataframe">
->   <thead>
->     <tr style="text-align: right;">
->       <th></th>
->       <th>mean radius</th>
->       <th>mean texture</th>
->       <th>mean perimeter</th>
->       <th>mean area</th>
->       <th>mean smoothness</th>
->       <th>mean compactness</th>
->       <th>mean concavity</th>
->       <th>mean concave points</th>
->       <th>mean symmetry</th>
->       <th>mean fractal dimension</th>
->       <th>target</th>
->     </tr>
->   </thead>
->   <tbody>
->     <tr>
->       <th>0</th>
->       <td>17.99</td>
->       <td>10.38</td>
->       <td>122.80</td>
->       <td>1001.0</td>
->       <td>0.11840</td>
->       <td>0.27760</td>
->       <td>0.3001</td>
->       <td>0.14710</td>
->       <td>0.2419</td>
->       <td>0.07871</td>
->       <td>1</td>
->     </tr>
->     <tr>
->       <th>1</th>
->       <td>20.57</td>
->       <td>17.77</td>
->       <td>132.90</td>
->       <td>1326.0</td>
->       <td>0.08474</td>
->       <td>0.07864</td>
->       <td>0.0869</td>
->       <td>0.07017</td>
->       <td>0.1812</td>
->       <td>0.05667</td>
->       <td>1</td>
->     </tr>
->     <tr>
->       <th>2</th>
->       <td>19.69</td>
->       <td>21.25</td>
->       <td>130.00</td>
->       <td>1203.0</td>
->       <td>0.10960</td>
->       <td>0.15990</td>
->       <td>0.1974</td>
->       <td>0.12790</td>
->       <td>0.2069</td>
->       <td>0.05999</td>
->       <td>1</td>
->     </tr>
->     <tr>
->       <th>3</th>
->       <td>11.42</td>
->       <td>20.38</td>
->       <td>77.58</td>
->       <td>386.1</td>
->       <td>0.14250</td>
->       <td>0.28390</td>
->       <td>0.2414</td>
->       <td>0.10520</td>
->       <td>0.2597</td>
->       <td>0.09744</td>
->       <td>1</td>
->     </tr>
->     <tr>
->       <th>4</th>
->       <td>20.29</td>
->       <td>14.34</td>
->       <td>135.10</td>
->       <td>1297.0</td>
->       <td>0.10030</td>
->       <td>0.13280</td>
->       <td>0.1980</td>
->       <td>0.10430</td>
->       <td>0.1809</td>
->       <td>0.05883</td>
->       <td>1</td>
->     </tr>
->   </tbody>
-> </table>
-> </div>
-> 
+> |  | mean radius | mean texture | mean perimeter | mean area | mean smoothness | mean compactness | mean concavity | mean concave points | mean symmetry | mean fractal dimension | target |
+> | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+> | 0 | 17.99 | 10.38 | 122.80 | 1001.0 | 0.11840 | 0.27760 | 0.3001 | 0.14710 | 0.2419 | 0.07871 | 1 |
+> | 1 | 20.57 | 17.77 | 132.90 | 1326.0 | 0.08474 | 0.07864 | 0.0869 | 0.07017 | 0.1812 | 0.05667 | 1 |
+> | 2 | 19.69 | 21.25 | 130.00 | 1203.0 | 0.10960 | 0.15990 | 0.1974 | 0.12790 | 0.2069 | 0.05999 | 1 |
+> | 3 | 11.42 | 20.38 | 77.58 | 386.1 | 0.14250 | 0.28390 | 0.2414 | 0.10520 | 0.2597 | 0.09744 | 1 |
+> | 4 | 20.29 | 14.34 | 135.10 | 1297.0 | 0.10030 | 0.13280 | 0.1980 | 0.10430 | 0.1809 | 0.05883 | 1 |
 > 
 > 
 > 
@@ -2164,13 +1512,6 @@ plt.xlabel('Predicted label')
 ```
 
 
-
-
-    Text(0.5, 7.777777777777773, 'Predicted label')
-
-
-
-
     
 ![png](images/outputs/output_73_1.png)
     
@@ -2241,7 +1582,6 @@ So with this ROC curve, we can see how the model would behave on different thres
 
 <br>
 
----
 
 You can see that when plotting the ROC curve, I have also computed its "Area Under the Curve" : 
 indeed ROC AUC is another common metric when doing classification.
@@ -2312,49 +1652,11 @@ pd.crosstab( y , y_predicted )
 
 
 
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>col_0</th>
-      <th>0</th>
-      <th>1</th>
-    </tr>
-    <tr>
-      <th>row_0</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>299</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>24</td>
-      <td>6</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
+| col_0 | 0 | 1 |
+| ---: | ---: | ---: |
+| row_0 | | |
+| 0 | 299 | 1 |
+| 1 | 24 | 6 |
 
 
 So, most of the class 1 samples are miss-classified (22/30), but we still get a very high accuracy...
@@ -2435,7 +1737,7 @@ Consequently, the solutions will have to come both from the model, and from the 
 **For the metric**, there exists several metrics which are sensitive to imbalance problems. 
 Here we will introduce the **[balanced accuracy](https://scikit-learn.org/stable/modules/model_evaluation.html#balanced-accuracy-score)**:
 
-$$balanced\_accuracy = 0.5*( \frac{TP}{TP+FN} + \frac{TN}{TN+FP} )$$
+$$balanced_accuracy = 0.5*( \frac{TP}{TP+FN} + \frac{TN}{TN+FP} )$$
 
 > Other scores you may want to look-up : [average-precision score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html#sklearn.metrics.average_precision_score), and [f1-score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score), which are both linked to the precision/recall curve
 
@@ -2573,25 +1875,25 @@ The **threshold is, again, chosen to minimize impurity**. And in turn the best t
 
 Of course, you will have to compute this threshold at each step of your tree since at each step you are considering different subdatasets.
 
----
+
 The **impurity is related to how much your feature splitting is still having mixed classes**. So the impurity ends up giving a score: either it is a simple [Shannon entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) or it is a [Gini coefficient](https://en.wikipedia.org/wiki/Gini_coefficient).
 
 #### Shannon Entropy
 
-$$Entropy = - \sum_{j} p_j log_2(p_j)$$
+$$Entropy = - \sum_{j} . p_j . log_2(p_j)$$
 
-This measure is linked to information theory, where the information of an event occuring is the $log_2$ of this event's probability of occuring.
+This measure is linked to information theory, where the information of an event occuring is the $$log_2$$ of this event's probability of occuring.
 For purity, **0 is the best possible score, and 1 the worst**.
 
 #### Gini coefficient
 
-$$Gini = 1- \sum_{j} p_j^2$$
+$$Gini = 1- \sum_{j} . p_j^2$$
 
 The idea is to measure the **probability that a dummy classifier mislabels your data**.
 **0 is best, 1 is worst.**
 
 
---- 
+ 
 
 We will generate some toy data to see how they work in practice:
 
@@ -2641,59 +1943,12 @@ pd.crosstab( tree.predict( X_3 ) , y_3 , rownames=['truth'] , colnames=['predict
 
 
 
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>prediction</th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-    </tr>
-    <tr>
-      <th>truth</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>84</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0</td>
-      <td>73</td>
-      <td>32</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0</td>
-      <td>10</td>
-      <td>51</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
+| prediction | 0 | 1 | 2 |
+| ---: | ---: | ---: | ---: |
+| truth | | |
+| 0 | 84 | 0 | 0 |
+| 1 | 0 | 73 | 32 |
+| 2 | 0 | 10 | 51 |
 
 
 
@@ -2938,22 +2193,10 @@ ax.set_title('best single decision tree')
 ```
 
 
-
-
-    Text(0.5, 1.0, 'best single decision tree')
-
-
-
-
     
 ![png](images/outputs/output_111_1.png)
     
 
-
-
-```python
-
-```
 
 <br>
 
@@ -3164,10 +2407,7 @@ plt.show()
 ![png](images/outputs/output_124_0.png)
     
 
-<details-title>Random Forest annex 1: too many features</details-title>
->
->
->
+> <details-title>Random Forest annex 1: too many features</details-title>
 >
 >
 > Modern biological dataset using high-throughput technologies can now provide us with measurements for hundreds or even thousands of features (e.g., proteomics, RNAseq experiments).
@@ -3317,7 +2557,7 @@ plt.show()
 > 
 > It is particularly useful because it can be computed on a single random forest as it is being trained.
 > 
-> Thus, were k-fold cross-validation would require you to train $k$ models, with OOB error you only have to train 1, and thus you save a lot of compute time.
+> Thus, were k-fold cross-validation would require you to train $$k$$ models, with OOB error you only have to train 1, and thus you save a lot of compute time.
 >
 > 
 > 
@@ -3422,14 +2662,6 @@ plot_tree( regr_1 ,
           ax=ax , fontsize=10 , filled=True , impurity=False , precision=3)
 ax.set_title('best single decision tree')
 ```
-
-
-
-
-    Text(0.5, 1.0, 'best single decision tree')
-
-
-
 
     
 ![png](images/outputs/output_148_1.png)
@@ -3558,10 +2790,6 @@ print('Grid best parameter (max. r2): ')
 for k , v in grid_RF.best_params_.items():
     print(f'{k:>20} : {v}')
 ```
-
-    /home/wandrille/Installed_software/anaconda3/envs/introML2024/lib/python3.11/site-packages/numpy/ma/core.py:2846: RuntimeWarning: invalid value encountered in cast
-      _data = np.array(data, dtype=dtype, copy=copy,
-
 
     Grid best score (r2): 0.528490
     Grid best parameter (max. r2): 
@@ -3830,7 +3058,7 @@ However, more than a collection of algorithm, Machine Learning should also be se
 > 
 > 
 > ```python
-> df_heart=pd.read_csv('https://raw.githubusercontent.com/sib-swiss/statistics-and-machine-learning-training/refs/heads/main/data/framingham.csv', index_col = 0)
+> df_heart=pd.read_csv('https://raw.githubusercontent.com/sib-swiss/statistics-and-machine-learning-training/refs/heads/main/data/framingham.csv')
 > 
 > df_heart.dropna(axis=0,inplace=True) # removing rows with NA values.
 > 
@@ -3842,155 +3070,14 @@ However, more than a collection of algorithm, Machine Learning should also be se
 > 
 > 
 > 
+> | male | age | education | currentSmoker | cigsPerDay | BPMeds | prevalentStroke | prevalentHyp | diabetes | totChol | sysBP | diaBP | BMI | heartRate | glucose | TenYearCHD |
+> | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+> | 1 | 39 | 4.0 | 0 | 0.0 | 0.0 | 0 | 0 | 0 | 195.0 | 106.0 | 70.0 | 26.97 | 80.0 | 77.0 | 0 |
+> | 0 | 46 | 2.0 | 0 | 0.0 | 0.0 | 0 | 0 | 0 | 250.0 | 121.0 | 81.0 | 28.73 | 95.0 | 76.0 | 0 |
+> | 1 | 48 | 1.0 | 1 | 20.0 | 0.0 | 0 | 0 | 0 | 245.0 | 127.5 | 80.0 | 25.34 | 75.0 | 70.0 | 0 |
+> | 0 | 61 | 3.0 | 1 | 30.0 | 0.0 | 0 | 1 | 0 | 225.0 | 150.0 | 95.0 | 28.58 | 65.0 | 103.0 | 1 |
+> | 0 | 46 | 3.0 | 1 | 23.0 | 0.0 | 0 | 0 | 0 | 285.0 | 130.0 | 84.0 | 23.10 | 85.0 | 85.0 | 0 |
 > 
-> 
-> <div>
-> <style scoped>
->     .dataframe tbody tr th:only-of-type {
->         vertical-align: middle;
->     }
-> 
->     .dataframe tbody tr th {
->         vertical-align: top;
->     }
-> 
->     .dataframe thead th {
->         text-align: right;
->     }
-> </style>
-> <table border="1" class="dataframe">
->   <thead>
->     <tr style="text-align: right;">
->       <th></th>
->       <th>age</th>
->       <th>education</th>
->       <th>currentSmoker</th>
->       <th>cigsPerDay</th>
->       <th>BPMeds</th>
->       <th>prevalentStroke</th>
->       <th>prevalentHyp</th>
->       <th>diabetes</th>
->       <th>totChol</th>
->       <th>sysBP</th>
->       <th>diaBP</th>
->       <th>BMI</th>
->       <th>heartRate</th>
->       <th>glucose</th>
->       <th>TenYearCHD</th>
->     </tr>
->     <tr>
->       <th>male</th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->     </tr>
->   </thead>
->   <tbody>
->     <tr>
->       <th>1</th>
->       <td>39</td>
->       <td>4.0</td>
->       <td>0</td>
->       <td>0.0</td>
->       <td>0.0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>195.0</td>
->       <td>106.0</td>
->       <td>70.0</td>
->       <td>26.97</td>
->       <td>80.0</td>
->       <td>77.0</td>
->       <td>0</td>
->     </tr>
->     <tr>
->       <th>0</th>
->       <td>46</td>
->       <td>2.0</td>
->       <td>0</td>
->       <td>0.0</td>
->       <td>0.0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>250.0</td>
->       <td>121.0</td>
->       <td>81.0</td>
->       <td>28.73</td>
->       <td>95.0</td>
->       <td>76.0</td>
->       <td>0</td>
->     </tr>
->     <tr>
->       <th>1</th>
->       <td>48</td>
->       <td>1.0</td>
->       <td>1</td>
->       <td>20.0</td>
->       <td>0.0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>245.0</td>
->       <td>127.5</td>
->       <td>80.0</td>
->       <td>25.34</td>
->       <td>75.0</td>
->       <td>70.0</td>
->       <td>0</td>
->     </tr>
->     <tr>
->       <th>0</th>
->       <td>61</td>
->       <td>3.0</td>
->       <td>1</td>
->       <td>30.0</td>
->       <td>0.0</td>
->       <td>0</td>
->       <td>1</td>
->       <td>0</td>
->       <td>225.0</td>
->       <td>150.0</td>
->       <td>95.0</td>
->       <td>28.58</td>
->       <td>65.0</td>
->       <td>103.0</td>
->       <td>1</td>
->     </tr>
->     <tr>
->       <th>0</th>
->       <td>46</td>
->       <td>3.0</td>
->       <td>1</td>
->       <td>23.0</td>
->       <td>0.0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>285.0</td>
->       <td>130.0</td>
->       <td>84.0</td>
->       <td>23.10</td>
->       <td>85.0</td>
->       <td>85.0</td>
->       <td>0</td>
->     </tr>
->   </tbody>
-> </table>
-> </div>
 > 
 > 
 > 
@@ -4009,147 +3096,13 @@ However, more than a collection of algorithm, Machine Learning should also be se
 > 
 > 
 > 
-> 
-> <div>
-> <style scoped>
->     .dataframe tbody tr th:only-of-type {
->         vertical-align: middle;
->     }
-> 
->     .dataframe tbody tr th {
->         vertical-align: top;
->     }
-> 
->     .dataframe thead th {
->         text-align: right;
->     }
-> </style>
-> <table border="1" class="dataframe">
->   <thead>
->     <tr style="text-align: right;">
->       <th></th>
->       <th>age</th>
->       <th>education</th>
->       <th>currentSmoker</th>
->       <th>cigsPerDay</th>
->       <th>BPMeds</th>
->       <th>prevalentStroke</th>
->       <th>prevalentHyp</th>
->       <th>diabetes</th>
->       <th>totChol</th>
->       <th>sysBP</th>
->       <th>diaBP</th>
->       <th>BMI</th>
->       <th>heartRate</th>
->       <th>glucose</th>
->     </tr>
->     <tr>
->       <th>male</th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->       <th></th>
->     </tr>
->   </thead>
->   <tbody>
->     <tr>
->       <th>1</th>
->       <td>39</td>
->       <td>4.0</td>
->       <td>0</td>
->       <td>0.0</td>
->       <td>0.0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>195.0</td>
->       <td>106.0</td>
->       <td>70.0</td>
->       <td>26.97</td>
->       <td>80.0</td>
->       <td>77.0</td>
->     </tr>
->     <tr>
->       <th>0</th>
->       <td>46</td>
->       <td>2.0</td>
->       <td>0</td>
->       <td>0.0</td>
->       <td>0.0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>250.0</td>
->       <td>121.0</td>
->       <td>81.0</td>
->       <td>28.73</td>
->       <td>95.0</td>
->       <td>76.0</td>
->     </tr>
->     <tr>
->       <th>1</th>
->       <td>48</td>
->       <td>1.0</td>
->       <td>1</td>
->       <td>20.0</td>
->       <td>0.0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>245.0</td>
->       <td>127.5</td>
->       <td>80.0</td>
->       <td>25.34</td>
->       <td>75.0</td>
->       <td>70.0</td>
->     </tr>
->     <tr>
->       <th>0</th>
->       <td>61</td>
->       <td>3.0</td>
->       <td>1</td>
->       <td>30.0</td>
->       <td>0.0</td>
->       <td>0</td>
->       <td>1</td>
->       <td>0</td>
->       <td>225.0</td>
->       <td>150.0</td>
->       <td>95.0</td>
->       <td>28.58</td>
->       <td>65.0</td>
->       <td>103.0</td>
->     </tr>
->     <tr>
->       <th>0</th>
->       <td>46</td>
->       <td>3.0</td>
->       <td>1</td>
->       <td>23.0</td>
->       <td>0.0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>285.0</td>
->       <td>130.0</td>
->       <td>84.0</td>
->       <td>23.10</td>
->       <td>85.0</td>
->       <td>85.0</td>
->     </tr>
->   </tbody>
-> </table>
-> </div>
+> | male | age | education | currentSmoker | cigsPerDay | BPMeds | prevalentStroke | prevalentHyp | diabetes | totChol | sysBP | diaBP | BMI | heartRate | glucose |
+> | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+> | 1 | 39 | 4.0 | 0 | 0.0 | 0.0 | 0 | 0 | 0 | 195.0 | 106.0 | 70.0 | 26.97 | 80.0 | 77.0 |
+> | 0 | 46 | 2.0 | 0 | 0.0 | 0.0 | 0 | 0 | 0 | 250.0 | 121.0 | 81.0 | 28.73 | 95.0 | 76.0 |
+> | 1 | 48 | 1.0 | 1 | 20.0 | 0.0 | 0 | 0 | 0 | 245.0 | 127.5 | 80.0 | 25.34 | 75.0 | 70.0 |
+> | 0 | 61 | 3.0 | 1 | 30.0 | 0.0 | 0 | 1 | 0 | 225.0 | 150.0 | 95.0 | 28.58 | 65.0 | 103.0 |
+> | 0 | 46 | 3.0 | 1 | 23.0 | 0.0 | 0 | 0 | 0 | 285.0 | 130.0 | 84.0 | 23.10 | 85.0 | 85.0 |
 > 
 {: .hands_on}
 
@@ -4368,155 +3321,13 @@ However, more than a collection of algorithm, Machine Learning should also be se
 > 
 > 
 > 
-> <div>
-> <style scoped>
->     .dataframe tbody tr th:only-of-type {
->         vertical-align: middle;
->     }
-> 
->     .dataframe tbody tr th {
->         vertical-align: top;
->     }
-> 
->     .dataframe thead th {
->         text-align: right;
->     }
-> </style>
-> <table border="1" class="dataframe">
->  <thead>
->    <tr style="text-align: right;">
->       <th></th>
->       <th>year</th>
->       <th>month</th>
->       <th>day</th>
->       <th>temp_2</th>
->       <th>temp_1</th>
->       <th>average</th>
->       <th>actual</th>
->       <th>forecast_noaa</th>
->       <th>forecast_acc</th>
->       <th>forecast_under</th>
->       <th>friend</th>
->       <th>week_Fri</th>
->       <th>week_Mon</th>
->       <th>week_Sat</th>
->       <th>week_Sun</th>
->       <th>week_Thurs</th>
->       <th>week_Tues</th>
->       <th>week_Wed</th>
->     </tr>
->   </thead>
->   <tbody>
->     <tr>
->       <th>0</th>
->       <td>2016</td>
->       <td>1</td>
->       <td>1</td>
->       <td>45</td>
->       <td>45</td>
->       <td>45.6</td>
->       <td>45</td>
->       <td>43</td>
->       <td>50</td>
->       <td>44</td>
->       <td>29</td>
->       <td>1</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->     </tr>
->     <tr>
->       <th>1</th>
->       <td>2016</td>
->       <td>1</td>
->       <td>2</td>
->       <td>44</td>
->       <td>45</td>
->       <td>45.7</td>
->       <td>44</td>
->       <td>41</td>
->       <td>50</td>
->       <td>44</td>
->       <td>61</td>
->       <td>0</td>
->       <td>0</td>
->       <td>1</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->     </tr>
->     <tr>
->       <th>2</th>
->       <td>2016</td>
->       <td>1</td>
->       <td>3</td>
->       <td>45</td>
->       <td>44</td>
->       <td>45.8</td>
->       <td>41</td>
->       <td>43</td>
->       <td>46</td>
->       <td>47</td>
->       <td>56</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>1</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->     </tr>
->     <tr>
->       <th>3</th>
->       <td>2016</td>
->       <td>1</td>
->       <td>4</td>
->       <td>44</td>
->       <td>41</td>
->       <td>45.9</td>
->       <td>40</td>
->       <td>44</td>
->       <td>48</td>
->       <td>46</td>
->       <td>53</td>
->       <td>0</td>
->       <td>1</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->     </tr>
->     <tr>
->       <th>4</th>
->       <td>2016</td>
->       <td>1</td>
->       <td>5</td>
->       <td>41</td>
->       <td>40</td>
->       <td>46.0</td>
->       <td>44</td>
->       <td>46</td>
->       <td>46</td>
->       <td>46</td>
->       <td>41</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>0</td>
->       <td>1</td>
->       <td>0</td>
->     </tr>
->   </tbody>
-> </table>
-> </div>
-> 
-> 
+> |  | year | month | day | temp_2 | temp_1 | average | actual | forecast_noaa | forecast_acc | forecast_under | friend | week_Fri | week_Mon | week_Sat | week_Sun | week_Thurs | week_Tues | week_Wed |
+> | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+> | 0 | 2016 | 1 | 1 | 45 | 45 | 45.6 | 45 | 43 | 50 | 44 | 29 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+> | 1 | 2016 | 1 | 2 | 44 | 45 | 45.7 | 44 | 41 | 50 | 44 | 61 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
+> | 2 | 2016 | 1 | 3 | 45 | 44 | 45.8 | 41 | 43 | 46 | 47 | 56 | 0 | 0 | 0 | 1 | 0 | 0 | 0 |
+> | 3 | 2016 | 1 | 4 | 44 | 41 | 45.9 | 40 | 44 | 48 | 46 | 53 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
+> | 4 | 2016 | 1 | 5 | 41 | 40 | 46.0 | 44 | 46 | 46 | 46 | 41 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
 > 
 > 
 >  * year: 2016 for all data points
