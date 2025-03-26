@@ -39,11 +39,6 @@ The goal of this tutorial is to **prepare**, **integrate**, and **FAIRify Galaxy
 This tutorial will focus on applying FAIR principles to the **GTN Sequence Analysis - Mapping Workflow** to ensure it is well-documented, properly annotated, and easily shareable.
 
 
-> <tip-title>Creating, Editing and Importing Galaxy Workflows</tip-title>
->  [Read about creating, editing and importing  a workflow in this tutorial]({% link topics/galaxy-interface/tutorials/workflow-editor/tutorial.md %}).
->
-{: .tip}
-
 > <agenda-title></agenda-title>
 >
 > In this tutorial, we will cover:
@@ -160,5 +155,15 @@ Now that the test data has been uploaded and prepared, the next step is to ensur
 # Submit the workflow to IWC
 
 # Conclusion
+
+By following this tutorial, you have ensured that your Galaxy workflow is **FAIR** and adheres to **best practices**. From importing and refining the workflow to creating test data and submitting it to the **IWC**, each step contributes to making workflows more **reliable, shareable, and reusable**.  
+
+For further workflow optimization and maintenance, the **Galaxy community** provides a [comprehensive guide on best practices](https://planemo.readthedocs.io/en/latest/best_practices_workflows.html). This guide extends beyond the **best practices panel in Galaxy** and includes additional recommendations, such as:  
+
+- **Adding automated tests** to validate workflow functionality.  
+- **Publishing workflows** on platforms like GitHub, GitLab, or other public version-controlled repositories.  
+- **Registering workflows** in well-known registries like [WorkflowHub](https://workflowhub.eu/workflows/) and [Dockstore](https://dockstore.org/workflows/github.com/iwc-workflows/), ensuring wider accessibility and discoverability.  
+
+By continuously following these practices, you contribute to a **stronger, more open, and collaborative** bioinformatics community, where workflows are easily shared, improved, and adapted to new challenges.
 
 
