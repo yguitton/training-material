@@ -1,4 +1,4 @@
----
+QC_Object---
 layout: tutorial_hands_on
 
 title: Filter, plot and explore single-cell RNA-seq data with Scanpy
@@ -149,12 +149,12 @@ We've provided you with experimental data to analyse from a mouse dataset of fet
 > 2. Import the AnnData object from [Zenodo]({{ page.zenodo_link }})
 >
 >    ```
->    {{ page.zenodo_link }}/files/Mito-counted_AnnData
+>    {{ page.zenodo_link }}/files/Batched_Object
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
-> 3. **Rename** {% icon galaxy-pencil %} the datasets `Mito-counted AnnData`
+> 3. **Rename** {% icon galaxy-pencil %} the datasets `QC_Object`
 > 4. Check that the datatype is `h5ad`
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="h5ad" %}
@@ -186,25 +186,49 @@ You can also pull the data from publicly available [Single Cell Expression Atlas
 
 {% snippet faqs/galaxy/analysis_troubleshooting.md sc=true %}
 
-# Filtering
+{% snippet faqs/gtn/gtn_example_histories.md %}
+
+
+# Quality control
 
 You have generated an annotated AnnData object from your raw scRNA-seq fastq files. However, you have only completed a 'rough' filter of your dataset - there will still be a number of 'cells' that are actually just background from empty droplets or simply low-quality. There will also be genes that could be sequencing artifacts or that appear with such low frequency that statistical tools will fail to analyse them. This background garbage of both cells and genes not only makes it harder to distinguish real biological information from the noise, but also makes it computationally heavy to analyse. These spurious reads take a lot of computational power to analyse! First on our agenda is to filter this matrix to give us cleaner data to extract meaningful insight from, and to allow faster analysis.
 
+## Calculate QC Metrics
+
+To filter the object, we need to calculate some metrics for each cell and gene.
+
+> <hands-on-title>Compute QC metrics</hands-on-title>
+>
+> 1. {% tool [Scanpy Inspect and manipulate](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_inspect/scanpy_inspect/1.10.2+galaxy2) %} with the following parameters:
+>    - {% icon param-file %} *"Annotated data matrix"*: `Batched_Object`
+>    - *"Method used for inspecting"*: `Calculate quality control metrics, using 'pp.calculate_qc_metrics'`
+>      - *"Name of kind of values in X"*: `counts`
+>      - *"The kind of thing the variables are"*: `genes`
+>      - *"Keys for boolean columns of `.var` which identify variables you could want to control for"*: `mito`
+>
+> 2. Rename the generated file `QC_Object`
+>
+{: .hands_on}
+
+## Inspect the AnnData Object
+
+What has this tool calculated?
+
 > <question-title></question-title>
 >
-> 1. What information is stored in your AnnData object? The last tool to generate this object counted the mitochondrial associated genes in your matrix. Where is that data stored?
+> 1. What information is stored in your AnnData object? For example, the last tool to generate this object counted the mitochondrial associated genes in your matrix. Where is that data stored?
 > 2. While you are figuring that out, how many genes and cells are in your object?
 >
 >    > <tip-title>Hint</tip-title>
->    > You want to use the same tool you used in the previous tutorial to examine your AnnData. Sometimes you can get the answers from selecting your AnnData object in the history, but sometimes it's not quite that simple!
+>    > You want to use the same tool you used in the previous tutorial to examine your AnnData. Sometimes you can get the answers from *peeking* at your {% icon param-file %} AnnData object in your {% icon galaxy-history %} history, but sometimes it's not quite that simple!
 >    >
 >    >    > <hands-on-title>Inspecting AnnData Objects</hands-on-title>
 >    >    >
 >    >    > 1. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy1) %} with the following parameters:
->    >    >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
+>    >    >    - {% icon param-file %} *"Annotated data matrix"*: `QC_Object`
 >    >    >    - *"What to inspect?"*: `Key-indexed observations annotation (obs)`
 >    >    > 2. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy1) %} with the following parameters:
->    >    >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
+>    >    >    - {% icon param-file %} *"Annotated data matrix"*: `QC_Object`
 >    >    >    - *"What to inspect?"*: `Key-indexed annotation of variables/features (var)`
 >    >    {: .hands_on}
 >    {: .tip}
@@ -216,11 +240,11 @@ You have generated an annotated AnnData object from your raw scRNA-seq fastq fil
 > >     - For example, you can find both discrete and log-based metrics for `n_genes` (how many genes are counted in a given cell), and `n_counts` (how many UMIs are counted in a given cell). This distinction between counts/UMIs or genes is because you might count multiple GAPDHs in a single cell. This would be 1 gene but multiple counts, therefore your `n_counts` should be higher than `n_genes` for an individual cell.
 > >     - But what about the mitochondria?? You can also find `total_counts_mito`,  `log1p_total_counts_mito`, and `pct_counts_mito`, which has been calculated for each cell.
 > >  - and *genes*, found in the {% icon param-file %} **Key-index observations variables/features (var)** output dataset.
-> >     - For example, you can find `n_cells` (number of cells that gene appears in).
+> >     - For example, you can find `n_cells_by_counts` (number of cells that gene appears in).
 > >
-> > 2. There are `31178 cells` and `35734 genes` in the matrix.
+> > 2. There are `31670 cells` and `35734 genes` in the matrix.
 > > - You can *peek* at your  {% icon param-file %} Anndata Object in your {% icon galaxy-history %} history by selecting it to reveal a drop-down window that has this same information in it.
-> > - The matrix is `31178 x 35734`. This is `n_obs x n_vars`, or rather, `cells x genes`.
+> > - The matrix is `31670 x 35734`. This is `n_obs x n_vars`, or rather, `cells x genes`.
 > >
 > {: .solution}
 >
@@ -230,12 +254,10 @@ You have generated an annotated AnnData object from your raw scRNA-seq fastq fil
 
 We want to filter our cells, but first we need to know what our data looks like. There are a number of subjective choices to make within scRNA-seq analysis, for instance we now need to make our best informed decisions about where to set our thresholds (more on that soon!). We're going to plot our data a few different ways. Different bioinformaticians might prefer to see the data in different ways, and here we are only generating some of the myriad of plots you can use. Ultimately you need to go with what makes the most sense to you.
 
-### Creating the plots
-
 > <hands-on-title>Making QC visualisations - Violin Plots</hands-on-title>
 >
 > 1. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
+>    - {% icon param-file %} *"Annotated data matrix"*: `QC_Object`
 >    - *"Method used for plotting"*: `Generic: Violin plot, using 'pl.violin'`
 >        - *"Keys for accessing variables"*: `Subset of variables in 'adata.var_names' or fields of '.obs'`
 >            - *"Keys for accessing variables"*: `log1p_total_counts,log1p_n_genes_by_counts,pct_counts_mito`
@@ -244,7 +266,7 @@ We want to filter our cells, but first we need to know what our data looks like.
 > 2. **Rename** {% icon galaxy-pencil %} output `Violin_log_genotype`
 >
 > 3. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
+>    - {% icon param-file %} *"Annotated data matrix"*: `QC_Object`
 >    - *"Method used for plotting"*: `Generic: Violin plot, using 'pl.violin'`
 >        - *"Keys for accessing variables"*: `Subset of variables in 'adata.var_names' or fields of '.obs'`
 >            - *"Keys for accessing variables"*: `log1p_total_counts,log1p_n_genes_by_counts,pct_counts_mito`
@@ -253,7 +275,7 @@ We want to filter our cells, but first we need to know what our data looks like.
 > 4. **Rename** {% icon galaxy-pencil %} output `Violin_log_sex`
 >
 > 5. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
+>    - {% icon param-file %} *"Annotated data matrix"*: `QC_Object`
 >    - *"Method used for plotting"*: `Generic: Violin plot, using 'pl.violin'`
 >        - *"Keys for accessing variables"*: `Subset of variables in 'adata.var_names' or fields of '.obs'`
 >            - *"Keys for accessing variables"*: `log1p_total_counts,log1p_n_genes_by_counts,pct_counts_mito`
@@ -266,7 +288,7 @@ We want to filter our cells, but first we need to know what our data looks like.
 > <hands-on-title>Making QC visualisations - Scatterplots</hands-on-title>
 >
 > 1. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
+>    - {% icon param-file %} *"Annotated data matrix"*: `QC_Object`
 >    - *"Method used for plotting"*: `Generic: Scatter plot along observations or variables axes, using 'pl.scatter'`
 >        - *"Plotting tool that computed coordinates"*: `Using coordinates`
 >            - *"x coordinate"*: `log1p_total_counts`
@@ -275,7 +297,7 @@ We want to filter our cells, but first we need to know what our data looks like.
 > 2. **Rename** {% icon galaxy-pencil %} output `Scatter_UMIxMito`
 >
 > 3. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
+>    - {% icon param-file %} *"Annotated data matrix"*: `QC_Object`
 >    - *"Method used for plotting"*: `Generic: Scatter plot along observations or variables axes, using 'pl.scatter'`
 >        - *"Plotting tool that computed coordinates"*: `Using coordinates`
 >            - *"x coordinate"*: `log1p_n_genes_by_counts`
@@ -284,7 +306,7 @@ We want to filter our cells, but first we need to know what our data looks like.
 > 4. **Rename** {% icon galaxy-pencil %} output `Scatter_GenesxMito`
 >
 > 5. {% tool [Scanpy plot](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_plot/scanpy_plot/1.10.2+galaxy2) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
+>    - {% icon param-file %} *"Annotated data matrix"*: `QC_Object`
 >    - *"Method used for plotting"*: `Generic: Scatter plot along observations or variables axes, using 'pl.scatter'`
 >        - *"Plotting tool that computed coordinates"*: `Using coordinates`
 >            - *"x coordinate"*: `log1p_n_genes_by_counts`
@@ -295,7 +317,7 @@ We want to filter our cells, but first we need to know what our data looks like.
 >
 {: .hands_on}
 
-## Analysing the plots
+## Interpret the plots
 
 That's a lot of information! Let's attack this in sections and see what questions these plots can help us answer.
 
@@ -418,7 +440,7 @@ It's now time to apply these thresholds to our data! First, a reminder of how ma
 > <hands-on-title>Filter cells by log1p_n_genes_by_counts</hands-on-title>
 >
 > 1. {% tool [Scanpy filter](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_filter/scanpy_filter/1.10.2+galaxy3) %} with the following parameters:
->    - {% icon param-file %} *"Annotated data matrix"*: `Mito-counted AnnData`
+>    - {% icon param-file %} *"Annotated data matrix"*: `QC_Object`
 >    - *"Method used for filtering"*: `Filter on any column of observations or variables`
 >        - *"What to filter?"*: `Observations (obs)`
 >        - *"Type of filtering?"*: `By key (column) values`
@@ -587,7 +609,7 @@ Fantastic work! However, you've now removed a whole heap of cells, and since the
 >    - {% icon param-file %} *"Annotated data matrix"*: `Mito-filtered Object`
 >    - *"Method used for filtering"*: `Filter on any column of observations or variables`
 >        - *"Type of filtering?"*: `By key (column) values`
->            - *"Key to filter"*: `n_cells`
+>            - *"Key to filter"*: `n_cells_by_counts`
 >            - *"Type of value to filter"*: `Number`
 >                - *"Filter"*: `greater than`
 >                - *"Value"*: `3.0`
@@ -1167,9 +1189,9 @@ You might find the {% icon galaxy-history-answer %} *Answer Key Histories* helpf
     {% endfor %}
 
 You can also run this entire tutorial via a {% icon galaxy-workflows-activity %} *Workflow*, after performing the **Get data** step initially.
- - [Tutorial Workflow]({% link topics/single-cell/tutorials/scrna-case_basic-pipeline/workflows/ %})
+ - [Tutorial Workflow]({% link ../workflows/ %})
 
-<iframe title="Galaxy Workflow Embed" style="width: 100%; height: 700px; border: none;" src="https://singlecell.usegalaxy.eu/published/workflow?id=fe814cc88b4e0ea3&embed=true&buttons=true&about=false&heading=false&minimap=true&zoom_controls=true&initialX=0&initialY=0&zoom=0.25"></iframe>
+<iframe title="Galaxy Workflow Embed" style="width: 100%; height: 700px; border: none;" src="https://singlecell.usegalaxy.eu/published/workflow?id=4756053b2596b6cf&embed=true&buttons=true&about=false&heading=false&minimap=true&zoom_controls=true&initialX=0&initialY=-20&zoom=0.33"></iframe>
 
 In this tutorial, you moved from technical processing to biological exploration. By analysing real data - both the exciting and the messy! - you have, hopefully, experienced what it's like to analyse and question a dataset, potentially without clear cut-offs or clear answers. If you were working in a group, you each analysed the data in different ways, and most likely found similar insights. One of the biggest problems in analysing scRNA-seq is the lack of a clearly defined pathway or parameters. You have to make the best call you can as you move through your analysis, and ultimately, when in doubt, try it multiple ways and see what happens!
 
