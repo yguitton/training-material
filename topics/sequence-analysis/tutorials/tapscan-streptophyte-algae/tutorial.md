@@ -121,10 +121,12 @@ Now that our dataset collection is ready, we can run [TAPScan Classify](https://
 > 1. {% tool [TAPScan Classify](toolshed.g2.bx.psu.edu/repos/bgruening/tapscan/tapscan_classify/4.76+galaxy0) %} with the following parameters:
 >    - {% icon param-collection %} *"Proteins in FASTA format"*: `input sequences` (the dataset collection you just made)
 >
+>    {% snippet faqs/galaxy/tools_select_collection.md %}
+>
 >    > <comment-title> on parameter </comment-title>
 >    >
 >    > If you would like to have Output table from the HMMer Search, Please Check on the box like below:
->    - *"Output the HMMer domain hits table?"*: `Yes`
+>    > - *"Output the HMMer domain hits table?"*: `Yes`
 >    {: .comment}
 >
 {: .hands_on}
