@@ -25,7 +25,7 @@ We're hosting an asynchronous, online, self-paced training event, supported by t
 
 You can choose your own learning path from a variety of scientific tracks - Galaxy Introduction, Proteomics, Assembly, Transcriptomics, Single Cell, Microbiome, Machine Learning, or "From Zero to Hero with Python".
 
-To learn more about the [program](https://training.galaxyproject.org/training-material/events/2025-05-12-galaxy-academy-2025.html#monday-introduction) and review the event outline, visit the [event page](https://training.galaxyproject.org/training-material/events/2025-05-12-galaxy-academy-2025.html).
+To learn more about the [program]({% link events/2025-05-12-galaxy-academy-2025.md %}#monday-introduction) and review the event outline, visit the [event page]({% link events/2025-05-12-galaxy-academy-2025.md %}).
 
 
 
