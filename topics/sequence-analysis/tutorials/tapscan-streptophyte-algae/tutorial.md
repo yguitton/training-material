@@ -142,10 +142,19 @@ TAPScan Classify provides the user with three different output files. Each outpu
 > 2. How many sequences belong to the “0_no_family_found” in *Arabidopsis thaliana* (ARATH) ?
 > 3. What extra information does Output 3 include compared to Output 1?
 >
+> > <solution-title>Hints</solution-title>
+> >
+> > 1. This is written on the history outputs in Galaxy
+> > 2. Output 2, "Counts", contains this information
+> > 3. Open one of the files in output 1 (Detected TAPs) and output 3 (Detected TAPs Extra), and compare the column headers
+> >
+> {: .solution}
+>
+>
 > > <solution-title></solution-title>
 > >
 > > 1. Tabular
->   2. 675, You can find this number by clicking on the eye button for Galaxy dataset output 2 for ARATH.
+> > 2. 675, You can find this number by clicking on the eye button for Galaxy dataset output 2 for ARATH.
 > > 3. Output 3 contains information about subfamilies with an additional column that provides more details beyond what is included in Output 1.
 > >
 > {: .solution}
