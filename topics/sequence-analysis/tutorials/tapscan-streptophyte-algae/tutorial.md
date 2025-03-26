@@ -51,16 +51,16 @@ In this tutorial, we will illustrate the identification of TAPs in streptophyte 
 
 In this tutorial, we will use representative protein sequences obtained from the [Genome Zoo database](https://github.com/Rensing-Lab/Genome-Zoo). The selected sequences represent different lineages:
 
-**Streptophyte Algae:**
-- *Chara braunii* (CHABR)
-- *Penium margaritaceum* (PENMA)
+- **Streptophyte Algae:**
+  - *Chara braunii* (CHABR)
+  - *Penium margaritaceum* (PENMA)
 
-**Bryophytes & Land Plants**
-- *Marchantia polymorpha* (MARPO)
-- *Physcomitrium patens* (PHYPAV6)
-- *Oryza sativa (spp. japonica)* (ORYSAJA)
-- *Selaginella moellendorffii* (SELMO)
-- *Arabidopsis thaliana* (ARATH)
+- **Bryophytes & Land Plants**
+  - *Marchantia polymorpha* (MARPO)
+  - *Physcomitrium patens* (PHYPAV6)
+  - *Oryza sativa (spp. japonica)* (ORYSAJA)
+  - *Selaginella moellendorffii* (SELMO)
+  - *Arabidopsis thaliana* (ARATH)
 
 
 > <hands-on-title> Prepare your Analysis History </hands-on-title>
