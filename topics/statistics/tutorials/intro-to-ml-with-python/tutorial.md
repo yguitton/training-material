@@ -50,7 +50,7 @@ The objective of this tutorial is to introduce you to some foundational aspects 
 
 We will not go in the details of many algorithms and models, but rather stay at a high-level where we will focus on the strategic choices that we can make around our data and objectives.
 
-More specifically, we will only cover supervised learning: the case where we have "*target*" variable which we are trying to predict.
+More specifically, we will only cover supervised learning: the case where we have a "*target*" variable which we are trying to predict.
 
 Typically, the target can be :
 * **categorical** in which case we are doing **classification**
