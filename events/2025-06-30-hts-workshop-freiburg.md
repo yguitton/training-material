@@ -51,7 +51,7 @@ tags:
 # Add GTN tutorials by supplying the topic and tutorial name
 program:
   - section: "Monday: Introduction and Quality Control"  # section title is optional
-    description: We will do at least one coffee break in the morning, one in the afternoon, and 1h lunch break around noon.
+    description: We will do at least one coffee break in the morning, one in the afternoon, and a one-hour lunch break around noon.
     tutorials:
       - type: custom
         name: "Welcome"
