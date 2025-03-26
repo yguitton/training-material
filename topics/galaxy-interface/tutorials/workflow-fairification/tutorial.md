@@ -14,7 +14,7 @@ requirements:
   topic_name: galaxy-interface
   tutorials:
       - workflow-editor
-time_estimation: 30M
+time_estimation: 2H
 key_points:
 - to do
 edam_ontology:
@@ -51,7 +51,7 @@ This tutorial will focus on applying FAIR principles to the **GTN Sequence Analy
 
 # Apply best practices to a workflow
 
-To ensure that a workflow adheres to **best practices** and is **FAIR**, follow the different steps. You can apply them to **any workflow** of your choice or use the [**GTN Sequence Analysis - Mapping**](https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html) workflow as an example. 
+To ensure that a workflow adheres to **best practices** and is **FAIR**, follow the different steps. You can apply them to **any workflow** of your choice or use the [**GTN Sequence Analysis - Mapping**]({% link topics/sequence-analysis/tutorials/mapping/tutorial.md %}) workflow as an example. 
 
 > <hands-on-title>Import the workflow into Galaxy</hands-on-title>
 >
@@ -126,7 +126,7 @@ For example, trim the FASTQ file to keep only a few sequences that will interact
 > 1. {% icon galaxy-upload %} **Upload** test data to the newly created history. 
 >    
 >    - From your computer with a **local file**
->    - From a URL with {% icon galaxy-wf-edit %} **Paste/Fetch data**: For the workflow ["GTN - Sequence Analyses - Mapping (imported from uploaded file)"](https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/workflows/mapping.ga), you can import `wt_H3K4me3_read1.fastq.gz` and `wt_H3K4me3_read2.fastq.gz` from [Zenodo](https://zenodo.org/record/1324070)
+>    - From a URL with {% icon galaxy-wf-edit %} **Paste/Fetch data**: For the workflow "**GTN - Sequence Analyses - Mapping (imported from uploaded file)**", you can import `wt_H3K4me3_read1.fastq.gz` and `wt_H3K4me3_read2.fastq.gz` from [Zenodo](https://zenodo.org/record/1324070)
 >
 >    ```
 >    https://zenodo.org/record/1324070/files/wt_H3K4me3_read1.fastq.gz
@@ -150,9 +150,120 @@ For example, trim the FASTQ file to keep only a few sequences that will interact
 Now that the test data has been uploaded and prepared, the next step is to ensure its accessibility by uploading it to [**Zenodo**](https://zenodo.org/) (if not already done). This will allow others to **easily retrieve and reuse the data** when running or validating the workflow.
 
 
-# Upload test data to Zenodo
+# Make test data publicly available on Zenodo
+
+This step is to ensuring that the data is **publicly accessible** and can be referenced in workflow documentation and tests.  
+
+> <hands-on-title>Upload test data to Zenodo</hands-on-title>  
+>
+> 1. **Create an account** on [Zenodo](https://zenodo.org/) or **log in** using your **GitHub** account.  
+> 2. Click on the **"+"** button at the top of the page and select **"New upload"**.  
+> 3. **Drag and drop** the test dataset files into the upload area.  
+> 4. **Fill in the metadata**:  
+>    - **Resource type**: `Dataset`.  
+>    - **Title**: `Dataset for "..." workflow ` 
+>    - **Creator**: Add the relevant author(s).  
+>    - **Description**: `This dataset is associated with the Galaxy workflow "..."`  
+>    - **License**: Choose `GNU General Public License v3.0 or later`
+> 5. Click **"Publish"** to make the dataset publicly available.  
+>
+{: .hands_on}  
+
+Uploading test data to Zenodo ensures that it has a **permanent DOI**, making it easy to reference in workflow documentation, publications, and testing pipelines.  
+
 
 # Submit the workflow to IWC
+
+Once the workflow has been created, tested, and documented, it should be **submitted to IWC**. This ensures that the workflow is **publicly available, version-controlled, and indexed in workflow registries** like [WorkflowHub](https://workflowhub.eu/workflows/) and [Dockstore](https://dockstore.org/workflows/github.com/iwc-workflows/).  
+
+> <hands-on-title>Submit the workflow to IWC</hands-on-title>  
+>
+> 1. **Install Planemo** (if not already installed) by following the [Planemo installation guide](https://planemo.readthedocs.io/en/stable/installation.html).  
+>    - Open a terminal and run the first three command lines from the guide.  
+>
+> 2. **Fork the IWC GitHub repository**: Go to [IWC GitHub repo](https://github.com/galaxyproject/iwc) and fork it to your GitHub account.  
+>
+> 3. **Clone your fork locally**:  
+>    ```bash
+>    git clone https://github.com/yourusername/iwc.git
+>    cd iwc
+>    ```
+>
+> 4. **Create a new branch** for adding the workflow:  
+>    ```bash
+>    git checkout -b add-new-workflow
+>    ```
+>
+> 5. **Create a new folder** inside the cloned repository for your workflow.  
+>
+> 6. **Run the workflow** in Galaxy.
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+> 7. **Extract the workflow invocation** using Planemo:  
+>    - Get the workflow invocation given the [guidelines](https://github.com/galaxyproject/iwc/blob/main/workflows/README.md#generate-test-from-a-workflow-invocation).  
+>    - Get your **Galaxy API key** from Galaxy.
+>
+>      {% snippet faqs/galaxy/preferences_admin_api_key.md %} 
+>
+>    - Extract the workflow with test data using:  
+>      ```bash
+>      planemo workflow_test_init --from_invocation WorkflowInvocation \
+>         --galaxy_url GalaxyServerURL \
+>         --galaxy_user_key yourGalaxyUserKey
+>      ```
+>
+> 8. Edit the generated `tests.yml` file:  
+>    - Add the **Zenodo path** from the test data upload step to each test input:  
+>      ```yaml
+>      https://zenodo.org/records/[zenodo_id]/files/[filename]
+>      ```
+>    - Ensure all test **output names** are included.  
+>    - Use **assert commands** to to test the outputs (as in [XML file](https://docs.galaxyproject.org/en/latest/dev/schema.html#tool-tests-test-assert-command)).  
+>
+> 9. Create a `docker.yml` file:  
+>    - Run:  
+>      ```bash
+>      planemo dockstore_init
+>      ```
+>    - Open the generated `docker.yml` and verify that author names and details are correct.  
+>
+> 10. Edit the `workflow.ga` file to include the **release number**. 
+>      ```bash
+>      ],
+>      "format-version": "0.1",
+>      "license": "GPL-3.0-or-later",
+>      "release": "0.1",
+>      "name": "NameOfTheWorkflow",
+>      "steps": {
+>      "0": {
+>      ```
+>
+> 11. Create a `README.md` file inside the workflow folder (example: [README](https://github.com/galaxyproject/iwc/blob/main/workflows/microbiome/pathogen-identification/nanopore-pre-processing/README.md)).  
+>
+> 12. Create a `CHANGELOG.md` file inside the workflow folder:  
+>     - If not auto-generated, create it manually with a date:  
+>       ```md
+>       # Changelog
+>       
+>       ## [0.1] yyyy-mm-dd
+>       
+>       First release.  
+>       ```
+>
+> 13. **Test** the extracted workflow:  
+>     ```bash
+>     planemo test --galaxy_url GalaxyServerURL --galaxy_user_key yourGalaxyUserKey NameOfTheWorkflow.ga
+>     ```
+>
+> 14. **Open a Pull Request (PR)** on the IWC GitHub repository to submit your workflow.  
+>
+{: .hands_on}  
+
+The [**Best practices for workflows in GitHub repositories**]({% link topics/fair/tutorials/ro-crate-galaxy-best-practices/tutorial.md %}) GTN provides additional recommendations for structuring and maintaining workflows in Github.
+
+Once the PR is reviewed and merged, the workflow will be available in **Galaxy's IWC collection** and indexed in registries like [**WorkflowHub**](https://workflowhub.eu/workflows/) and [**Dockstore**](https://dockstore.org/workflows/github.com/iwc-workflows/), making it **discoverable and reusable** by the community.
+
 
 # Conclusion
 
