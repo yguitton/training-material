@@ -22,7 +22,7 @@ notebook:
   language: python
   pyolite: true
 ---
-<!--- From Docs: Introduction -->
+[//]: # (From Docs: Introduction)
 ## The need for standardization
 
 With the significant drop in the cost of many high-throughput technologies, vast amounts of biological data are being generated and made available to researchers. 
@@ -63,7 +63,7 @@ In the following chapters the publication from [@MobiDB] is going to be used as 
 
 
 
-<!--- From Docs: Chapter 01 -->
+[//]: # (From Docs: Chapter 01)
 
 
 ML models analyze experimental biological data by identifying patterns, which can then be used to generate biological insights from similar, previously unseen data. 
@@ -173,7 +173,7 @@ Availability of data refers to the accessibility and readiness of data for use i
 
 <br> 
 
-<!--- From Docs: Chapter 02 -->
+[//]: # (From Docs: Chapter 02)
 
 Optimization, or model training, refers to the process of adjusting the values that make up the model (including both parameters and hyperparameters) to enhance the model's performance in solving a given problem. In this section, we will focus on challenges that arise from selecting suboptimal optimization strategies.
 
@@ -331,7 +331,7 @@ Ensuring that the configuration is available, flexible, and easy to modify is im
 
 <br> 
 
-<!--- From Docs: Chapter 03 -->
+[//]: # (From Docs: Chapter 03)
 
 Good overall performance and the model's ability to generalize well to unseen data are crucial factors that significantly impact the applicability of any proposed ML research. However, several other important aspects related to ML models must also be considered.
 
@@ -421,7 +421,7 @@ This includes both open-source and proprietary software, and it is critical for 
 
 <br> 
 
-<!--- From Docs: Chapter 04 -->
+[//]: # (From Docs: Chapter 04)
  
 In implementing a robust and trustworthy ML method, providing a comprehensive data description, adhering to a correct optimization protocol, and ensuring that the model is clearly defined and openly accessible are critical first steps. Equally important is employing a valid assessment methodology to evaluate the final model.
   
@@ -525,7 +525,7 @@ This encompasses various aspects, from the datasets used for evaluation to the m
 
 <br> 
 
-<!--- From Docs: Bring Your Data -->
+[//]: # (From Docs: Bring Your Data)
  
 Time to practice on your work or a publication of your choice!
   
