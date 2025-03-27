@@ -464,7 +464,7 @@ The choice of evaluation metrics depends on the type of problem (regression or c
 | Mean Absolute Error (MAE)  | Accuracy|
 | Mean Squared Error (MSE)|  Precision |
 | Root Mean Squared Error (RMSE)| Recall (Sensitivity)  |
-| R-squared (R<sup>2</sup>) |  F1 Score |
+| R-squared (R2) |  F1 Score |
 
 
 **Key Questions**
