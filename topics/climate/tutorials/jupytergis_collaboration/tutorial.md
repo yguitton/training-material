@@ -64,12 +64,6 @@ First, let's create a GIS file and invite collaborators to the session.
 ## Generate a Shareable Link
 You can invite collaborators to your session by sharing a link. Click on the **Share** button in your interface in the upper right corner, then click on the **Copy Link** button.
 
-> <tip-title>A note about local installations</tip-title>
-> If you are using a local installation, your JupyterLab instance is not open to the Internet by default and collaborators will not be able to join your session.
-> In this case, we recommend [using VSCode's LiveShare functionality to share a local server](https://learn.microsoft.com/en-us/visualstudio/liveshare/use/share-server-visual-studio-code#share-a-server) with a collaborator.
-> You can also open a new browser window and paste the share link to simulate a different user for this tutorial.
-{: .tip}
-
 ![Share](../../images/jupytergis_collaboration/share.png)
 
 ## Confirm Collaborator Access
@@ -175,10 +169,10 @@ As you write or execute code, every change is visible to your team instantly. Mu
 > > <solution-title></solution-title>
 > > - Create a new notebook from the JupyterLab launcher (select Python kernel).
 > > - Load your GIS document using the following Python code:
-> > ```python
-> > from jupytergis import GISDocument
-> > doc = GISDocument("your_project_name.jGIS")
-> > ```
+> >   ```python
+> >   from jupytergis import GISDocument
+> >   doc = GISDocument("your_project_name.jGIS")
+> >   ```
 > > - Your colleague can add and execute the following code to list all layers:
 > > ```python
 > > doc.layers
