@@ -6,9 +6,13 @@ tags:
 - workflows
 - FAIR
 questions:
-- to do
+- How can a Galaxy workflow be annotated to improve reusability?
+- What are the best practices for testing a Galaxy workflow?
+- How can a Galaxy workflow be submitted to the Intergalactic Workflow Commission (IWC)?
 objectives:
-- to do
+- Annotate and apply best practices to data analysis Galaxy workflows for consistency and reusability
+- Implement robust tests to ensure workflow reliability and accuracy
+- Successfully integrate key data analysis Galaxy workflows into IWC, improving accessibility and usability
 requirements:
 - type: internal
   topic_name: galaxy-interface
@@ -16,9 +20,10 @@ requirements:
       - workflow-editor
 time_estimation: 2H
 key_points:
-- to do
-edam_ontology:
-- to do
+- Workflow annotation and best practices improve clarity and reusability
+- Standardized metadata enhances workflow documentation
+- Testing ensures workflow reliability and accuracy
+- IWC submission enables version control and usability by the Galaxy community
 contributions:
   authorship:
   - clsiguret
