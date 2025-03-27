@@ -31,11 +31,9 @@ This trend is evident in the growing number of ML publications, showcasing a wid
 However, although ML methods should ideally be experimentally validated, this occurs in only a small portion of the studies. 
 We believe the time is right for the ML community to establish standards for reporting ML-based analyses to facilitate critical evaluation and enhance reproducibility.[@DOME]
 
+![Bar plots showing the trend of usage of ML in Biology.](https://github.com/BiodataAnalysisGroup/training-material/blob/dome-training/topics/statistics/images/dome/ML_Biology.png)
 
-<figure>
-<img src="https://github.com/BiodataAnalysisGroup/training-material/blob/dome-training/topics/statistics/images/dome/ML_Biology.png" width="600" alt="Bar plots showing the trend of usage of ML in Biology."/>
-<figcaption> <p style='text-align: justify;'>The number of ML publications per year is based on Web of Science from 1996 onwards using the topic category for “machine learning” in combination with each of the following terms: “biolog*”, “medicine”, “genom*”, “prote*”, “cell*”, “post translational”, “metabolic” and “clinical”.</p></figcaption>
-</figure>
+> The number of ML publications per year is based on Web of Science from 1996 onwards using the topic category for “machine learning” in combination with each of the following terms: “biolog*”, “medicine”, “genom*”, “prote*”, “cell*”, “post translational”, “metabolic” and “clinical”.
 
 
 Guidelines or recommendations on the proper construction of machine learning (ML) algorithms can help ensure accurate results and predictions. 
