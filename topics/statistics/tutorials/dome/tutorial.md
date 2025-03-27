@@ -99,9 +99,11 @@ Provenance of data refers to the origin, history, and lineage of data—essentia
 - If __regression__, how many real value points are there? 
 - Has the dataset been __previously used__ by other papers and/or is it recognized by the community?
 
-!!! example "From Example Publication"
-	
-	Protein Data Bank (PDB). X-ray structures missing residues. <br>  *Npos* = 339,603 residues. <br>  *Nneg* = 6,168,717 residues. <br> Previously used in (Walsh et al., Bioinformatics 2015) as an independent benchmark set.
+> **From Example Publication**  
+> Protein Data Bank (PDB). X-ray structures missing residues.  
+> *Npos* = 339,603 residues.  
+> *Nneg* = 6,168,717 residues.  
+> Previously used in (Walsh et al., Bioinformatics 2015) as an independent benchmark set.
 
 
 ## 1.2 Dataset Splits
@@ -133,8 +135,8 @@ In addition to these, there are some variations in dataset splitting strategies:
 - Was a __separate validation__ set used, and if yes, how large was it? 
 - Are the __distributions__ of data types (*N<sub>pos</sub>* and *N<sub>neg</sub>*) in the training and test sets different? Are the distributions of data types in both training and test sets plotted?
 
-!!! example "From Example Publication"
-	Protein Data Bank (PDB). X-ray structures missing residues. <br>  *Npos* = 339,603 residues. <br>  *Nneg* = 6,168,717 residues. <br> Previously used in (Walsh et al., Bioinformatics 2015) as an independent benchmark set.
+> **From Example Publication**  
+> Protein Data Bank (PDB). X-ray structures missing residues. <br>  *Npos* = 339,603 residues. <br>  *Nneg* = 6,168,717 residues. <br> Previously used in (Walsh et al., Bioinformatics 2015) as an independent benchmark set.
 
 
 ## 1.3 Redundancy between data splits
@@ -151,8 +153,8 @@ This may effect the mfodel by introcuding an overfitting risk, unreliable perfor
  - How was this __enforced__ (for example, redundancy reduction to less than X% pairwise identity)? 
  - How does the distribution compare to __previously published__ ML datasets?
 
-!!! example "From Example Publication"
-	Not applicable.  
+> **From Example Publication**  
+> Not applicable.  
 
 ## 1.4 Availability of data
 
@@ -166,8 +168,8 @@ Availability of data refers to the accessibility and readiness of data for use i
 - Are the data, including the data splits used, __released__ in a public forum? 
 - If yes, __where__ (for example, supporting material, URL) and __how__ (license)?
 
-!!! example "From Example Publication"
-	Yes, URL: http://protein.bio.unipd.it/mobidblite/. <br> Free use license.
+> **From Example Publication**  
+> Yes, URL: http://protein.bio.unipd.it/mobidblite/. <br> Free use license.
 
 <br> 
 
@@ -204,8 +206,8 @@ Regarding ML class there are three major categories:
 - Is the ML algorithm __new__? 
 - If yes, why was it __chosen__ over better known alternatives?
 
-!!! example "From Example Publication"
-	Majority-based consensus classification based on 8 primary ML methods and post-processing.
+> **From Example Publication**  
+> Majority-based consensus classification based on 8 primary ML methods and post-processing.
 
 
 ## 2.2 Meta-predictions
@@ -221,8 +223,8 @@ Meta-predictions refer to predictions made by models that aggregate or utilize t
 - If yes, which ones? 
 - Is it clear that training data of initial predictors and meta-predictor are __independent__ of test data for the meta-predictor?
 
-!!! example "From Example Publication"
-	Yes, predictor output is a binary prediction computed from the consensus of other methods; Independence of training sets of other methods with test set of meta-predictor was not tested since datasets from other methods were not available.
+> **From Example Publication**  
+> Yes, predictor output is a binary prediction computed from the consensus of other methods; Independence of training sets of other methods with test set of meta-predictor was not tested since datasets from other methods were not available.
 
 
 ## 2.3 Data encoding
@@ -236,8 +238,8 @@ In ML, data often needs to be encoded to ensure that it can be effectively inter
 
 - How were the data __encoded__ and __preprocessed__ for the ML algorithm?
 
-!!! example "From Example Publication"
-	Label-wise average of 8 binary predictions.
+> **From Example Publication**  
+> Label-wise average of 8 binary predictions.
 
 ## 2.4 Parameters
 
@@ -252,8 +254,8 @@ The values of these parameters are adjusted during the training process through 
 - How many __parameters__ (*p*) are used in the model? 
 - How were *p* selected?
 
-!!! example "From Example Publication"
-	p = 3 (Consensus score threshold, expansion-erosion window, length threshold). <br> No optimization.
+> **From Example Publication**  
+> p = 3 (Consensus score threshold, expansion-erosion window, length threshold). <br> No optimization.
 
 ## 2.5 Features
 
@@ -269,8 +271,8 @@ Feature Engineering is the process of creating, modifying, or selecting the most
 - Was __feature selection__ performed? 
 - If yes, was it performed using the __training set only__?
 
-!!! example "From Example Publication"
-	Not applicable.
+> **From Example Publication**  
+> Not applicable.
 
 ## 2.6 Fitting
 
@@ -286,8 +288,8 @@ Proper evaluation, regularization, and tuning of the model during the fitting pr
 - If yes, how was __overfitting__ ruled out? 
 - Conversely, if the number of training points is much larger than *p* and/or *f* is small (for example, *(N<sub>pos</sub> + N<sub>neg</sub>) >> p*  and/or *f < 5*), how was __underfitting__ ruled out?
 
-!!! example "From Example Publication"
-	Single input ML methods are used with default parameters. <br> Optimization is a simple majority.
+> **From Example Publication**  
+> Single input ML methods are used with default parameters. <br> Optimization is a simple majority.
 
 ## 2.7 Regularization
 
@@ -306,8 +308,8 @@ Regularization is a technique used to prevent overfitting by adding a penalty to
 
 - If yes, __which__ ones?
 
-!!! example "From Example Publication"
-	No. 
+> **From Example Publication**  
+> No. 
 
 
 ## 2.8 Availability of configuration
@@ -324,8 +326,8 @@ Ensuring that the configuration is available, flexible, and easy to modify is im
 - Are the hyperparameter configurations, optimization schedule, model files and optimization parameters __reported__? 
 - If yes, __where__ (for example, URL) and __how__ (license)?
 
-!!! example "From Example Publication"
-	Not applicable.
+> **From Example Publication**  
+> Not applicable.
 
 <br> 
 
@@ -358,8 +360,8 @@ There are generally two types of interpretability:
 - Is the model __black box__ or __interpretable__? 
 - If the model is interpretable, can you give clear __examples__ of this?
 
-!!! example "From Example Publication"
-	Transparent, in so far as meta-prediction is concerned. Consensus and post processing over other methods predictions (which are mostly black boxes). No attempt was made to make the meta-prediction a black box.
+> **From Example Publication**  
+> Transparent, in so far as meta-prediction is concerned. Consensus and post processing over other methods predictions (which are mostly black boxes). No attempt was made to make the meta-prediction a black box.
 
 
 ## 3.2 Output
@@ -382,8 +384,8 @@ Here’s a breakdown of some different types of outputs:
 
 - Is the model __classification__ or __regression__?
 
-!!! example "From Example Publication"
-	Classification, i.e. residues thought to be disordered.
+> **From Example Publication**  
+> Classification, i.e. residues thought to be disordered.
 
 ## 3.3 Execution time
 
@@ -398,8 +400,8 @@ CPU time of single representative execution on standard hardware (e.g. seconds o
 
 -  How much __time__ does a single representative prediction require on a standard machine (for example, seconds on a desktop PC or high-performance computing cluster)?
 
-!!! example "From Example Publication"
-	ca. 1 second per representative on a desktop PC.
+> **From Example Publication**  
+> ca. 1 second per representative on a desktop PC.
 
 ## 3.4 Availability of software
 
@@ -414,8 +416,8 @@ This includes both open-source and proprietary software, and it is critical for 
 - Is a __method to run__ the algorithm (executable, web server, virtual machine or container instance) released? 
 - If yes, __where__ (for example github, zenodo or other repository URL) and __how__ (for example MIT license)?
 
-!!! example "From Example Publication"
-	Yes, URL: http://protein.bio.unipd.it/mobidblite/. <br>  Bespoke license free for academic use
+> **From Example Publication**  
+> Yes, URL: http://protein.bio.unipd.it/mobidblite/. <br>  Bespoke license free for academic use
 
 <br> 
 
@@ -449,8 +451,8 @@ Proper evaluation is crucial to ensure that the model generalizes well and perfo
 
 - How was the method __evaluated__ (for example cross-validation, independent dataset, novel experiments)?
 
-!!! example "From Example Publication"
-	Independent dataset
+> **From Example Publication**  
+> Independent dataset
 
 ## 4.2 Performance measures
 
@@ -471,8 +473,8 @@ The choice of evaluation metrics depends on the type of problem (regression or c
 - Which __performance metrics__ are reported (Accuracy, sensitivity, specificity, etc.)? 
 - Is this set __representative__ (for example, compared to the literature)?
 
-!!! example "From Example Publication"
-	Balanced Accuracy, Precision, Sensitivity, Specificity, F1, MCC.
+> **From Example Publication**  
+> Balanced Accuracy, Precision, Sensitivity, Specificity, F1, MCC.
 
 ## 4.3 Comparison
 
@@ -486,8 +488,8 @@ This process is essential for selecting the most suitable approach for a given p
 - Was a comparison to __publicly available__ methods performed on benchmark datasets? 
 - Was a comparison to __simpler baselines__ performed?
 
-!!! example "From Example Publication"
-	DisEmbl-465, DisEmbl-HL, ESpritz Disprot, ESpritz NMR, ESpritz Xray, Globplot, IUPred long, IUPred short, VSL2b. Chosen methods are the methods from which the meta prediction is obtained.
+> **From Example Publication**  
+> DisEmbl-465, DisEmbl-HL, ESpritz Disprot, ESpritz NMR, ESpritz Xray, Globplot, IUPred long, IUPred short, VSL2b. Chosen methods are the methods from which the meta prediction is obtained.
 
 ## 4.4 Confidence
 
@@ -502,8 +504,8 @@ This can be supported with medthods such as confidence intervals and statistical
 - Do the performance metrics have __confidence intervals__? 
 - Are the results __statistically significant__ to claim that the method is superior to others and baselines?
 
-!!! example "From Example Publication"
-	Not calculated.
+> **From Example Publication**  
+> Not calculated.
 
 ## 4.5 Availability of evaluation
 
@@ -517,8 +519,8 @@ This encompasses various aspects, from the datasets used for evaluation to the m
 - Are the __raw evaluation files__ (for example, assignments for comparison and baselines, statistical code, confusion matrices) available? 
 - If yes, __where__ (for example, URL) and __how__ (license)?
 
-!!! example "From Example Publication"
-	Not.
+> **From Example Publication**  
+> Not.
 
 
 <br> 
