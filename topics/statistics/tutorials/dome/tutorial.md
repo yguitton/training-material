@@ -93,7 +93,7 @@ Properly preprocessing data and using it in an informed way are essential steps 
 Provenance of data refers to the origin, history, and lineage of data—essentially, tracking where the data came from, how it has been processed, and how it has moved through various systems. It’s like a detailed record that traces the data's life cycle from creation to its current state. Understanding data provenance helps ensure transparency, trustworthiness, and reliability in data usage.
 
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 - What is the __source__ of the data (database, publication, direct experiment)? 
 - If data are in __classes__, how many data points are available in each class—for example, total for the positive (*Npos*) and negative (*Nneg*) cases? 
@@ -128,7 +128,7 @@ In addition to these, there are some variations in dataset splitting strategies:
 - Cross-validation: In this technique, the dataset is split multiple times into training and validation sets, ensuring each data point is used for validation at least once (e.g., 5-fold cross-validation). This provides a more robust evaluation of the model’s performance.
 
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 - How __many data points__ are in the training and test sets? 
 - Was a __separate validation__ set used, and if yes, how large was it? 
@@ -145,7 +145,7 @@ In addition to these, there are some variations in dataset splitting strategies:
 This may effect the mfodel by introcuding an overfitting risk, unreliable performance metrics and/or lack of generalization.
 
 
-<ins>Key Questions</ins>
+**Key Questions**
 
  - How were the sets __split__? 
  - Are the training and test sets __independent__? 
@@ -162,7 +162,7 @@ Availability of data refers to the accessibility and readiness of data for use i
 
 
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 - Are the data, including the data splits used, __released__ in a public forum? 
 - If yes, __where__ (for example, supporting material, URL) and __how__ (license)?
@@ -199,7 +199,7 @@ Regarding ML class there are three major categories:
 - Reinforcement Learning (i.e. Q-Learning, Deep Q-Networks (DQN) and others). 
 
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 - __What__ is the ML algorithm class used? 
 - Is the ML algorithm __new__? 
@@ -216,7 +216,7 @@ Meta-predictions refer to predictions made by models that aggregate or utilize t
 
 
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 - Does the model use data from __other__ ML algorithms as input? 
 - If yes, which ones? 
@@ -233,7 +233,7 @@ Data encoding is the process of transforming data from one format or structure i
 In ML, data often needs to be encoded to ensure that it can be effectively interpreted by algorithms, especially for algorithms that require numerical input (e.g., neural networks, SVMs).
 
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 - How were the data __encoded__ and __preprocessed__ for the ML algorithm?
 
@@ -248,7 +248,7 @@ These parameters determine how the model makes predictions and how well it fits 
 The values of these parameters are adjusted during the training process through algorithms like gradient descent or optimization procedures. 
 
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 - How many __parameters__ (*p*) are used in the model? 
 - How were *p* selected?
@@ -264,7 +264,7 @@ They play a crucial role in determining the performance of ML models, as they pr
 Feature Engineering is the process of creating, modifying, or selecting the most relevant features from the raw data to improve model performance by reducing model complexity, improving training time and avoiding overfitting. 
 
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 - How many __features__ (*f*) are used as input? 
 - Was __feature selection__ performed? 
@@ -281,7 +281,7 @@ The goal is to find a balance between underfitting and overfitting, ensuring tha
 Proper evaluation, regularization, and tuning of the model during the fitting process are crucial to achieving a good fit.
 
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 - Is *p* much larger than the number of training points and/or is *f* large (for example, in classification is *p >> (N<sub>pos</sub> + N<sub>neg</sub>)* and/or *f > 100*)? 
 - If yes, how was __overfitting__ ruled out? 
@@ -301,7 +301,7 @@ Regularization is a technique used to prevent overfitting by adding a penalty to
 - Dropout (in neural networks): Randomly drops a percentage of neurons during training, which helps prevent overfitting by forcing the network to generalize.
 
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 - Were any __overfitting prevention techniques__ used (for example, early stopping using a validation set)?
 
@@ -320,7 +320,7 @@ These configurations control how the model is trained, how it makes predictions,
 Ensuring that the configuration is available, flexible, and easy to modify is important for reproducibility, fine-tuning, and deployment of models.
 
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 - Are the hyperparameter configurations, optimization schedule, model files and optimization parameters __reported__? 
 - If yes, __where__ (for example, URL) and __how__ (license)?
@@ -354,7 +354,7 @@ There are generally two types of interpretability:
 
 - Local interpretability focuses on understanding individual predictions made by the model. It aims to explain why a specific input led to a particular output.
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 - Is the model __black box__ or __interpretable__? 
 - If the model is interpretable, can you give clear __examples__ of this?
@@ -379,7 +379,7 @@ Here’s a breakdown of some different types of outputs:
 
 -   __Multi-label classification__ includes the assignment of multiple classes to a single input.  
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 - Is the model __classification__ or __regression__?
 
@@ -395,7 +395,7 @@ Understanding and measuring execution time is crucial for various reasons, inclu
 
 CPU time of single representative execution on standard hardware (e.g. seconds on desktop PC).
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 -  How much __time__ does a single representative prediction require on a standard machine (for example, seconds on a desktop PC or high-performance computing cluster)?
 
@@ -409,7 +409,7 @@ Availability of software refers to the accessibility, reliability, and usability
 This includes both open-source and proprietary software, and it is critical for researchers and practitioners to have the right tools at their disposal to effectively work on tasks.
   
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 - Is the __source code__ released? 
 - Is a __method to run__ the algorithm (executable, web server, virtual machine or container instance) released? 
@@ -446,7 +446,7 @@ Evaluation of a ML model is the process of assessing its performance and effecti
 Proper evaluation is crucial to ensure that the model generalizes well and performs as expected in real-world applications.
   
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 - How was the method __evaluated__ (for example cross-validation, independent dataset, novel experiments)?
 
@@ -467,7 +467,7 @@ The choice of evaluation metrics depends on the type of problem (regression or c
 | R-squared (R<sup>2</sup>) |  F1 Score |
 
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 - Which __performance metrics__ are reported (Accuracy, sensitivity, specificity, etc.)? 
 - Is this set __representative__ (for example, compared to the literature)?
@@ -482,7 +482,7 @@ Comparison typically refers to the evaluation of different models, algorithms, o
 This process is essential for selecting the most suitable approach for a given problem, optimizing performance, and understanding the strengths and weaknesses of various methods. 
   
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 - Was a comparison to __publicly available__ methods performed on benchmark datasets? 
 - Was a comparison to __simpler baselines__ performed?
@@ -498,7 +498,7 @@ It quantifies the model's certainty regarding its output, which is particularly 
 This can be supported with medthods such as confidence intervals and statistical significance.
   
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 - Do the performance metrics have __confidence intervals__? 
 - Are the results __statistically significant__ to claim that the method is superior to others and baselines?
@@ -513,7 +513,7 @@ Availability of evaluation in ML refers to the accessibility and readiness of to
 This encompasses various aspects, from the datasets used for evaluation to the metrics and software tools that facilitate the evaluation process. 
   
 
-<ins>Key Questions</ins>
+**Key Questions**
 
 - Are the __raw evaluation files__ (for example, assignments for comparison and baselines, statistical code, confusion matrices) available? 
 - If yes, __where__ (for example, URL) and __how__ (license)?
