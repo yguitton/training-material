@@ -122,7 +122,7 @@ We've provided you with experimental data to analyse from a mouse dataset of fet
 >
 {: .details}
 
-{% include _includes/cyoa-choices.html option1="Import History on EU server" option2="Zenodo" option3="SCXA" default="Import-History-on-EU-server"
+{% include _includes/cyoa-choices.html option1="Import History on EU server" option2="Zenodo" option3="SCXA" default="Import History on EU server"
        text="If you're on the EU server, (if your usegalaxy has an **EU** anywhere in the URL), then the quickest way to Get the Data for this tutorial is via importing a history. Otherwise, you can also import from Zenodo - it just might take a moment longer if you're in a live course and everyone is importing the same dataset at the same time! The SCXA is specifically for learners who are focusing on *Reusing public data*, so are not beginners." %}
 
 <div class="Import-History-on-EU-server" markdown="1">
