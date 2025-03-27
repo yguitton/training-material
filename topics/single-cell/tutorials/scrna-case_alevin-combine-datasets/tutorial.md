@@ -400,7 +400,7 @@ You might find the {% icon galaxy-history-answer %} *Answer Key Histories* helpf
 <!-- Only currently want to iterate through the first history, but might want others in the future (different servers!) -->
 
 You can also run this entire tutorial via a {% icon galaxy-workflows-activity %} *Workflow*, after performing the **Get data** step initially.
- - [Tutorial Workflow]({% link ../workflows/ %})
+ - [Tutorial Workflow]({% link topics/single-cell/tutorials/scrna-case_alevin-combine-datasets/workflows/index.md %})
 
 <iframe title="Galaxy Workflow Embed" style="width: 100%; height: 700px; border: none;" src="https://singlecell.usegalaxy.eu/published/workflow?id=d1a1e6070c0a36ca&embed=true&buttons=true&about=false&heading=false&minimap=true&zoom_controls=true&initialX=0&initialY=-20&zoom=0.5"></iframe>
 
