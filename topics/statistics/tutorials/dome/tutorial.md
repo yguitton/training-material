@@ -13,6 +13,7 @@ key_points:
 contributions:
   authorship:
   - fpsom
+  - sfragkoul
 tags:
 - elixir
 - ai-ml
