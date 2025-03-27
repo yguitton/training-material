@@ -1,4 +1,4 @@
-QC_Object---
+---
 layout: tutorial_hands_on
 
 title: Filter, plot and explore single-cell RNA-seq data with Scanpy
