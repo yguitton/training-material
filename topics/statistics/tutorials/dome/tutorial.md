@@ -136,7 +136,7 @@ In addition to these, there are some variations in dataset splitting strategies:
 - Are the __distributions__ of data types (*N<sub>pos</sub>* and *N<sub>neg</sub>*) in the training and test sets different? Are the distributions of data types in both training and test sets plotted?
 
 > **From Example Publication**  
-> Protein Data Bank (PDB). X-ray structures missing residues. <br>  *Npos* = 339,603 residues. <br>  *Nneg* = 6,168,717 residues. <br> Previously used in (Walsh et al., Bioinformatics 2015) as an independent benchmark set.
+> Protein Data Bank (PDB). X-ray structures missing residues.     *Npos* = 339,603 residues.     *Nneg* = 6,168,717 residues.    Previously used in (Walsh et al., Bioinformatics 2015) as an independent benchmark set.
 
 
 ## 1.3 Redundancy between data splits
@@ -169,9 +169,9 @@ Availability of data refers to the accessibility and readiness of data for use i
 - If yes, __where__ (for example, supporting material, URL) and __how__ (license)?
 
 > **From Example Publication**  
-> Yes, URL: http://protein.bio.unipd.it/mobidblite/. <br> Free use license.
+> Yes, URL: http://protein.bio.unipd.it/mobidblite/.    Free use license.
 
-<br> 
+   
 
 [//]: # (From Docs: Chapter 02)
 
@@ -255,7 +255,7 @@ The values of these parameters are adjusted during the training process through 
 - How were *p* selected?
 
 > **From Example Publication**  
-> p = 3 (Consensus score threshold, expansion-erosion window, length threshold). <br> No optimization.
+> p = 3 (Consensus score threshold, expansion-erosion window, length threshold).    No optimization.
 
 ## 2.5 Features
 
@@ -289,7 +289,7 @@ Proper evaluation, regularization, and tuning of the model during the fitting pr
 - Conversely, if the number of training points is much larger than *p* and/or *f* is small (for example, *(N<sub>pos</sub> + N<sub>neg</sub>) >> p*  and/or *f < 5*), how was __underfitting__ ruled out?
 
 > **From Example Publication**  
-> Single input ML methods are used with default parameters. <br> Optimization is a simple majority.
+> Single input ML methods are used with default parameters.    Optimization is a simple majority.
 
 ## 2.7 Regularization
 
@@ -329,7 +329,7 @@ Ensuring that the configuration is available, flexible, and easy to modify is im
 > **From Example Publication**  
 > Not applicable.
 
-<br> 
+   
 
 [//]: # (From Docs: Chapter 03)
 
@@ -417,9 +417,9 @@ This includes both open-source and proprietary software, and it is critical for 
 - If yes, __where__ (for example github, zenodo or other repository URL) and __how__ (for example MIT license)?
 
 > **From Example Publication**  
-> Yes, URL: http://protein.bio.unipd.it/mobidblite/. <br>  Bespoke license free for academic use
+> Yes, URL: http://protein.bio.unipd.it/mobidblite/.     Bespoke license free for academic use
 
-<br> 
+   
 
 [//]: # (From Docs: Chapter 04)
  
@@ -523,7 +523,7 @@ This encompasses various aspects, from the datasets used for evaluation to the m
 > Not.
 
 
-<br> 
+   
 
 [//]: # (From Docs: Bring Your Data)
  
