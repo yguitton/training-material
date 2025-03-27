@@ -39,13 +39,14 @@ input_histories:
   - label: "UseGalaxy.org"
     history: https://usegalaxy.org/u/juliajot/h/combining-datasets-input
 
-example_histories:
-  - label: "UseGalaxy.eu_Whole_Separate-AnnData"
-    history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/locked-combining-single-cell-datasets-after-pre-processing-input-history-whole-samples
-    date: 2025-03-26
-  - label: "UseGalaxy.eu_Whole_Combined-AnnData"
-    history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/locked-whole-samples-combining-single-cell-datasets-after-pre-processing-answer-key
-    date: 2025-03-26
+extra:
+  example_histories:
+    - label: "UseGalaxy.eu_Whole_Separate-AnnData"
+      history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/locked-combining-single-cell-datasets-after-pre-processing-input-history-whole-samples
+      date: 2025-03-26
+    - label: "UseGalaxy.eu_Whole_Combined-AnnData"
+      history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/locked-whole-samples-combining-single-cell-datasets-after-pre-processing-answer-key
+      date: 2025-03-26
 
 objectives:
   - Combine data matrices from different samples in the same experiment
