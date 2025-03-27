@@ -65,12 +65,12 @@ In the following chapters the publication from [@MobiDB] is going to be used as 
 
 <!--- From Docs: Chapter 01 -->
 
-<p style='text-align: justify;'>
+
 ML models analyze experimental biological data by identifying patterns, which can then be used to generate biological insights from similar, previously unseen data. 
 The ability of a model to maintain its performance on new data is referred to as its generalization power. 
 Achieving strong generalization is a key challenge in developing ML models; without it, trained models cannot be effectively reused. 
 Properly preprocessing data and using it in an informed way are essential steps to ensure good generalization.
-</p>
+
 
 
 
@@ -89,9 +89,9 @@ Properly preprocessing data and using it in an informed way are essential steps 
 
 ## 1.1 Provenance 
 
-<p style='text-align: justify;'>
+
 Provenance of data refers to the origin, history, and lineage of data—essentially, tracking where the data came from, how it has been processed, and how it has moved through various systems. It’s like a detailed record that traces the data's life cycle from creation to its current state. Understanding data provenance helps ensure transparency, trustworthiness, and reliability in data usage.
-</p>
+
 
 <ins>Key Questions</ins>
 
@@ -107,9 +107,9 @@ Provenance of data refers to the origin, history, and lineage of data—essentia
 
 ## 1.2 Dataset Splits
 
-<p style='text-align: justify;'>
+
 Dataset splits refer to the process of dividing a dataset into distinct subsets for different purposes, mainly in machine learning or data science tasks. The most common splits are:
-</p>
+
 
 - Training Set: This is the largest subset, used to train the machine learning model. The model "learns" from this data by adjusting its internal parameters to minimize prediction errors.
 
@@ -118,9 +118,9 @@ Dataset splits refer to the process of dividing a dataset into distinct subsets 
 - Test Set: This is the final subset, used to evaluate the model's performance. The test set remains unseen by the model until after training and validation are complete, providing an unbiased estimate of how well the model generalizes to new, unseen data.
 
 
-<p style='text-align: justify;'>
+
 In addition to these, there are some variations in dataset splitting strategies:
-</p>
+
 
 
 - Holdout Split: A simple division where a fixed percentage of data is reserved for testing (e.g., 80% training, 20% test).
@@ -140,10 +140,10 @@ In addition to these, there are some variations in dataset splitting strategies:
 
 ## 1.3 Redundancy between data splits
 
-<p style='text-align: justify;'>
+
  Redundancy between data splits occurs when the same data points are present in more than one of the training, validation, or test sets. This is undesirable because it can distort model evaluation and lead to overoptimistic performance metrics (e.g. eliminating data points more similar than X%). 
 This may effect the mfodel by introcuding an overfitting risk, unreliable performance metrics and/or lack of generalization.
-</p>
+
 
 <ins>Key Questions</ins>
 
@@ -157,9 +157,9 @@ This may effect the mfodel by introcuding an overfitting risk, unreliable perfor
 
 ## 1.4 Availability of data
 
-<p style='text-align: justify;'>
+
 Availability of data refers to the accessibility and readiness of data for use in various applications, such as analysis, machine learning, decision-making, or reporting. It ensures that data can be retrieved and utilized when needed by users or systems.
-</p>
+
 
 
 <ins>Key Questions</ins>
@@ -173,9 +173,9 @@ Availability of data refers to the accessibility and readiness of data for use i
 <br> 
 
 <!--- From Docs: Chapter 02 -->
-<p style='text-align: justify;'>
+
 Optimization, or model training, refers to the process of adjusting the values that make up the model (including both parameters and hyperparameters) to enhance the model's performance in solving a given problem. In this section, we will focus on challenges that arise from selecting suboptimal optimization strategies.
-</p>
+
 
 ??? Note "Further Reading"
 	Optimization, or training, involves adjusting the values that define a model (such as parameters and hyperparameters), as well as preprocessing steps, to enhance the model’s ability to solve a given problem. Choosing an inappropriate optimization strategy can lead to issues like overfitting or underfitting.
@@ -189,10 +189,10 @@ Optimization, or model training, refers to the process of adjusting the values t
 
 ## 2.1 Algorithm
 
-<p style='text-align: justify;'>
+
 Since algorithms take input data and produce output, typically solving a particular problem or achieving a specific objective, it is essential to know which one is implemented in a study. In this way we can have better insights for the results of learning patterns, relationships, or rules that can then be applied to new, unseen data.
 Regarding ML class there are three major categories:
-</p>
+
 
 - Supervised (i.e. Linear Regression, Logistic Regression, Decision Trees, Support Vector Machines (SVM) and others), 
 - Unsupervised Learning (i.e. K-Means Clustering, Principal Component Analysis (PCA) and Hierarchical Clustering and others),  
@@ -211,9 +211,9 @@ Regarding ML class there are three major categories:
 
 ## 2.2 Meta-predictions
 
-<p style='text-align: justify;'>
+
 Meta-predictions refer to predictions made by models that aggregate or utilize the outputs (predictions) of other models. Essentially, meta-prediction systems combine predictions from multiple models to produce a more robust or accurate final prediction. Meta-predictions are often used in ensemble learning techniques, where the goal is to leverage the strengths of several models to enhance overall performance.
-</p>
+
 
 
 <ins>Key Questions</ins>
@@ -228,10 +228,10 @@ Meta-predictions refer to predictions made by models that aggregate or utilize t
 
 ## 2.3 Data encoding
 
-<p style='text-align: justify;'>
+
 Data encoding is the process of transforming data from one format or structure into another, often to make it easier for ML models or computational systems to process. 
 In ML, data often needs to be encoded to ensure that it can be effectively interpreted by algorithms, especially for algorithms that require numerical input (e.g., neural networks, SVMs).
-</p>
+
 
 <ins>Key Questions</ins>
 
@@ -242,11 +242,11 @@ In ML, data often needs to be encoded to ensure that it can be effectively inter
 
 ## 2.4 Parameters
 
-<p style='text-align: justify;'>
+
 Model parameters are the internal configurations or variables that a model learns from the training data. 
 These parameters determine how the model makes predictions and how well it fits the training data. 
 The values of these parameters are adjusted during the training process through algorithms like gradient descent or optimization procedures. 
-</p>
+
 
 <ins>Key Questions</ins>
 
@@ -258,11 +258,11 @@ The values of these parameters are adjusted during the training process through 
 
 ## 2.5 Features
 
-<p style='text-align: justify;'>
+
 In the context of ML, features refer to the individual measurable properties or characteristics of the data being used for training a model. 
 They play a crucial role in determining the performance of ML models, as they provide the information that the model needs to make predictions or classifications.
 Feature Engineering is the process of creating, modifying, or selecting the most relevant features from the raw data to improve model performance by reducing model complexity, improving training time and avoiding overfitting. 
-</p>
+
 
 <ins>Key Questions</ins>
 
@@ -275,11 +275,11 @@ Feature Engineering is the process of creating, modifying, or selecting the most
 
 ## 2.6 Fitting
 
-<p style='text-align: justify;'>
+
 Fitting refers to the process of training a ML model on a dataset by adjusting its parameters to minimize prediction error. 
 The goal is to find a balance between underfitting and overfitting, ensuring that the model captures the underlying patterns in the data while still generalizing well to unseen data. 
 Proper evaluation, regularization, and tuning of the model during the fitting process are crucial to achieving a good fit.
-</p>
+
 
 <ins>Key Questions</ins>
 
@@ -292,9 +292,9 @@ Proper evaluation, regularization, and tuning of the model during the fitting pr
 
 ## 2.7 Regularization
 
-<p style='text-align: justify;'>
+
 Regularization is a technique used to prevent overfitting by adding a penalty to the loss function, which discourages the model from becoming too complex. Common regularization techniques include:
-</p>
+
 
 - L1 Regularization (Lasso): Adds a penalty proportional to the absolute value of the coefficients. It encourages sparsity, setting some coefficients to zero.
 - L2 Regularization (Ridge): Adds a penalty proportional to the square of the coefficients, discouraging large coefficients and thus reducing model complexity.
@@ -313,12 +313,12 @@ Regularization is a technique used to prevent overfitting by adding a penalty to
 
 ## 2.8 Availability of configuration
 
-<p style='text-align: justify;'>
+
 
 Availability of configuration refers to the accessibility and transparency of the settings, parameters, and options that can be adjusted or customized in a ML model or system. 
 These configurations control how the model is trained, how it makes predictions, and how it operates in different environments. 
 Ensuring that the configuration is available, flexible, and easy to modify is important for reproducibility, fine-tuning, and deployment of models.
-</p>
+
 
 <ins>Key Questions</ins>
 
@@ -331,9 +331,9 @@ Ensuring that the configuration is available, flexible, and easy to modify is im
 <br> 
 
 <!--- From Docs: Chapter 03 -->
-<p style='text-align: justify;'>
+
 Good overall performance and the model's ability to generalize well to unseen data are crucial factors that significantly impact the applicability of any proposed ML research. However, several other important aspects related to ML models must also be considered.
-</p>
+
 
 ??? Note "Further Reading"
 	Equally important aspects of ML models include their interpretability and reproducibility. Interpretable models can identify causal relationships in the data and provide logical explanations for their predictions, which is especially valuable in fields like drug design and diagnostics. In contrast, black box models, while often accurate, may not offer understandable insights into the reasons behind their predictions. Both types of models are discussed in more detail elsewhere, and choosing between them involves weighing their respective benefits. The key recommendation is to clearly state whether the model is a black box or interpretable, and if it is interpretable, to provide clear examples of its outputs.
@@ -343,16 +343,16 @@ Good overall performance and the model's ability to generalize well to unseen da
 
 ## 3.1 Interpretability
 
-<p style='text-align: justify;'>
+
 Model interpretability refers to the extent to which a human can understand the decisions and predictions made by a ML model. 
 Interpretability is crucial for building trust in model outcomes, especially in high-stakes domains such as healthcare and finance, where understanding the rationale behind a model's predictions can have significant implications.
 For example neural networks are often criticized for being "black boxes," as their internal workings (like hidden layers) are less transparent, making them more difficult to trust.
 There are generally two types of interpretability:
-</p>
 
-- <p style='text-align: justify;'> Global Interpretability refers to the ability to understand the overall behavior of the model across all predictions. It involves explaining how the model works as a whole and what features are important in determining predictions. </p>
 
-- <p style='text-align: justify;'> Local interpretability focuses on understanding individual predictions made by the model. It aims to explain why a specific input led to a particular output. </p>
+- Global Interpretability refers to the ability to understand the overall behavior of the model across all predictions. It involves explaining how the model works as a whole and what features are important in determining predictions. 
+
+- Local interpretability focuses on understanding individual predictions made by the model. It aims to explain why a specific input led to a particular output.
 
 <ins>Key Questions</ins>
 
@@ -365,19 +365,19 @@ There are generally two types of interpretability:
 
 ## 3.2 Output
 
-<p style='text-align: justify;'>
+
 The output of a machine learning model refers to the predictions or classifications made by the model after processing input data. 
 Depending on the type of model and the nature of the problem, the output can vary widely. 
 Here’s a breakdown of some different types of outputs: 
-</p>
 
-- <p style='text-align: justify;'> __Regression__ includes continuous values that estimates a quantity based on the input features </p>
 
-- <p style='text-align: justify;'> In __classification__ tasks the output is a category or class label that indicates which class the input belongs to. </p>
+-   __Regression__ includes continuous values that estimates a quantity based on the input features   
 
-- <p style='text-align: justify;'> In __multi-class classification__ the model predicts one class from multiple possible classes. </p>
+-   In __classification__ tasks the output is a category or class label that indicates which class the input belongs to.   
 
-- <p style='text-align: justify;'> __Multi-label classification__ includes the assignment of multiple classes to a single input.</p>
+-   In __multi-class classification__ the model predicts one class from multiple possible classes.   
+
+-   __Multi-label classification__ includes the assignment of multiple classes to a single input.  
 
 <ins>Key Questions</ins>
 
@@ -388,10 +388,10 @@ Here’s a breakdown of some different types of outputs:
 
 ## 3.3 Execution time
 
-<p style='text-align: justify;'>
+ 
 Execution time in the context of ML refers to the duration it takes for a model to perform a specific task, such as training, predicting, or evaluating performance. 
 Understanding and measuring execution time is crucial for various reasons, including optimizing model performance, resource management, and user experience. 
-</p>
+  
 
 CPU time of single representative execution on standard hardware (e.g. seconds on desktop PC).
 
@@ -404,10 +404,10 @@ CPU time of single representative execution on standard hardware (e.g. seconds o
 
 ## 3.4 Availability of software
 
-<p style='text-align: justify;'>
+ 
 Availability of software refers to the accessibility, reliability, and usability of various software tools and libraries that facilitate the development, training, deployment, and evaluation of ML models. 
 This includes both open-source and proprietary software, and it is critical for researchers and practitioners to have the right tools at their disposal to effectively work on tasks.
-</p>
+  
 
 <ins>Key Questions</ins>
 
@@ -421,9 +421,9 @@ This includes both open-source and proprietary software, and it is critical for 
 <br> 
 
 <!--- From Docs: Chapter 04 -->
-<p style='text-align: justify;'>
+ 
 In implementing a robust and trustworthy ML method, providing a comprehensive data description, adhering to a correct optimization protocol, and ensuring that the model is clearly defined and openly accessible are critical first steps. Equally important is employing a valid assessment methodology to evaluate the final model.
-</p>
+  
 
 ??? Note "Further Reading"
 	In biological research, there are two main types of evaluation scenarios for ML models: 
@@ -441,10 +441,10 @@ In implementing a robust and trustworthy ML method, providing a comprehensive da
 
 ## 4.1 Evaluation method
 
-<p style='text-align: justify;'>
+ 
 Evaluation of a ML model is the process of assessing its performance and effectiveness in making predictions or classifications based on new, unseen data. 
 Proper evaluation is crucial to ensure that the model generalizes well and performs as expected in real-world applications.
-</p>
+  
 
 <ins>Key Questions</ins>
 
@@ -455,9 +455,9 @@ Proper evaluation is crucial to ensure that the model generalizes well and perfo
 
 ## 4.2 Performance measures
 
-<p style='text-align: justify;'>
+ 
 The choice of evaluation metrics depends on the type of problem (regression or classification) and the specific goals of the analysis.
-</p>
+  
 
 | Regression Metrics   | Classification Metrics	|
 |-------|---------|
@@ -477,10 +477,10 @@ The choice of evaluation metrics depends on the type of problem (regression or c
 
 ## 4.3 Comparison
 
-<p style='text-align: justify;'>
+ 
 Comparison typically refers to the evaluation of different models, algorithms, or configurations to identify which one performs best for a specific task. 
 This process is essential for selecting the most suitable approach for a given problem, optimizing performance, and understanding the strengths and weaknesses of various methods. 
-</p>
+  
 
 <ins>Key Questions</ins>
 
@@ -492,11 +492,11 @@ This process is essential for selecting the most suitable approach for a given p
 
 ## 4.4 Confidence
 
-<p style='text-align: justify;'>
+ 
 Confidence in the context of ML refers to the measure of certainty or belief that a model's prediction is accurate. 
 It quantifies the model's certainty regarding its output, which is particularly important in classification tasks, where decisions need to be made based on predicted class probabilities.
 This can be supported with medthods such as confidence intervals and statistical significance.
-</p>
+  
 
 <ins>Key Questions</ins>
 
@@ -508,10 +508,10 @@ This can be supported with medthods such as confidence intervals and statistical
 
 ## 4.5 Availability of evaluation
 
-<p style='text-align: justify;'>
+ 
 Availability of evaluation in ML refers to the accessibility and readiness of tools, frameworks, datasets, and methodologies used to assess the performance of ML models. 
 This encompasses various aspects, from the datasets used for evaluation to the metrics and software tools that facilitate the evaluation process. 
-</p>
+  
 
 <ins>Key Questions</ins>
 
@@ -525,9 +525,9 @@ This encompasses various aspects, from the datasets used for evaluation to the m
 <br> 
 
 <!--- From Docs: Bring Your Data -->
-<p style='text-align: justify;'>
+ 
 Time to practice on your work or a publication of your choice!
-</p>
+  
 
 
 Steps:
@@ -538,4 +538,4 @@ Steps:
 4. Discuss your results with the rest of the group. (do you see any common trends?)
 5. Grab a beverage ☕ or a snack 🍩 to celebrate!
 
-</p>
+  
