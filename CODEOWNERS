@@ -33,6 +33,7 @@ topics/single-cell/                @galaxyproject/training-single-cell
 topics/statistics/                 @galaxyproject/training-statistics
 topics/transcriptomics/            @galaxyproject/training-transcriptomics
 topics/variant-analysis/           @galaxyproject/training-variant-analysis
+topics/imaging/                    @kostrykin
 
 
 # Spanish tutorials
