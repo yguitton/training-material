@@ -136,7 +136,7 @@ In addition to these, there are some variations in dataset splitting strategies:
 >
 > > <solution-title></solution-title>
 > >**From Example Publication**  
-> > Protein Data Bank (PDB). X-ray structures missing residues. *Npos* = 339,603 residues.  *Nneg* = 6,168,717 residues. Previously used in (Walsh et al., Bioinformatics 2015) as an independent benchmark set.
+> > training set: N/A. Npos,test = 339,603 residues. Nneg,test = 6,168,717 residues. No validation set. 5.22% positives on the test set.
 > {: .solution}
 {: .question}
       
@@ -148,16 +148,19 @@ In addition to these, there are some variations in dataset splitting strategies:
  Redundancy between data splits occurs when the same data points are present in more than one of the training, validation, or test sets. This is undesirable because it can distort model evaluation and lead to overoptimistic performance metrics (e.g. eliminating data points more similar than X%). 
 This may effect the mfodel by introcuding an overfitting risk, unreliable performance metrics and/or lack of generalization.
 
+> <question-title> Key Questions </question-title>
+>
+>  How were the sets __split__? 
+> Are the training and test sets __independent__? 
+> How was this __enforced__ (for example, redundancy reduction to less than X% pairwise identity)?
+> How does the distribution compare to __previously published__ ML datasets?
+>
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > Not applicable.  
+> {: .solution}
+{: .question}
 
-**Key Questions**
-
- - How were the sets __split__? 
- - Are the training and test sets __independent__? 
- - How was this __enforced__ (for example, redundancy reduction to less than X% pairwise identity)? 
- - How does the distribution compare to __previously published__ ML datasets?
-
-> **From Example Publication**  
-> Not applicable.  
 
 ## 1.4 Availability of data
 
