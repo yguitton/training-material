@@ -3023,3 +3023,14 @@ rmassei:
     joined: 2024-11
     affiliations:
       - nfdi4bioimage
+
+sfragkoul:
+    name: Stella Fragkouli
+    email: sfragkoul@certh.gr
+    twitter: scfragkoul
+    linkedin: sfragkoul
+    orcid: 0000-0003-4067-7123
+    joined: 2025-03
+    elixir_node: gr
+    affiliations:
+      - elixir-europe
