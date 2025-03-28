@@ -88,19 +88,21 @@ Properly preprocessing data and using it in an informed way are essential steps 
 
 Provenance of data refers to the origin, history, and lineage of data—essentially, tracking where the data came from, how it has been processed, and how it has moved through various systems. It’s like a detailed record that traces the data's life cycle from creation to its current state. Understanding data provenance helps ensure transparency, trustworthiness, and reliability in data usage.
 
-
-**Key Questions**
-
-- What is the __source__ of the data (database, publication, direct experiment)? 
-- If data are in __classes__, how many data points are available in each class—for example, total for the positive (*Npos*) and negative (*Nneg*) cases? 
-- If __regression__, how many real value points are there? 
-- Has the dataset been __previously used__ by other papers and/or is it recognized by the community?
-
-> **From Example Publication**  
-> Protein Data Bank (PDB). X-ray structures missing residues.  
-> *Npos* = 339,603 residues.  
-> *Nneg* = 6,168,717 residues.  
-> Previously used in (Walsh et al., Bioinformatics 2015) as an independent benchmark set.
+> <question-title> Key Questions </question-title>
+>
+>  What is the __source__ of the data (database, publication, direct experiment)? 
+> If data are in __classes__, how many data points are available in each class—for example, total for the positive (*Npos*) and negative (*Nneg*) cases?
+> If __regression__, how many real value points are there? 
+> Has the dataset been __previously used__ by other papers and/or is it recognized by the community?
+>
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > Protein Data Bank (PDB). X-ray structures missing residues.
+> > *Npos* = 339,603 residues.
+> > *Nneg* = 6,168,717 residues.
+> > Previously used in (Walsh et al., Bioinformatics 2015) as an independent benchmark set.
+> {: .solution}
+{: .question}
 
 
 ## 1.2 Dataset Splits
@@ -126,14 +128,18 @@ In addition to these, there are some variations in dataset splitting strategies:
 - Cross-validation: In this technique, the dataset is split multiple times into training and validation sets, ensuring each data point is used for validation at least once (e.g., 5-fold cross-validation). This provides a more robust evaluation of the model’s performance.
 
 
-**Key Questions**
-
-- How __many data points__ are in the training and test sets? 
-- Was a __separate validation__ set used, and if yes, how large was it? 
-- Are the __distributions__ of data types (*N<sub>pos</sub>* and *N<sub>neg</sub>*) in the training and test sets different? Are the distributions of data types in both training and test sets plotted?
-
-> **From Example Publication**  
-> Protein Data Bank (PDB). X-ray structures missing residues.     *Npos* = 339,603 residues.     *Nneg* = 6,168,717 residues.    Previously used in (Walsh et al., Bioinformatics 2015) as an independent benchmark set.
+> <question-title> Key Questions </question-title>
+>
+> How __many data points__ are in the training and test sets?  
+> Was a __separate validation__ set used, and if yes, how large was it?  
+> Are the __distributions__ of data types (*N<sub>pos</sub>* and *N<sub>neg</sub>*) in the training and test sets different? Are the distributions of data types in both training and test sets plotted?
+>
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > Protein Data Bank (PDB). X-ray structures missing residues. *Npos* = 339,603 residues.  *Nneg* = 6,168,717 residues. Previously used in (Walsh et al., Bioinformatics 2015) as an independent benchmark set.
+> {: .solution}
+{: .question}
+      
 
 
 ## 1.3 Redundancy between data splits
@@ -227,13 +233,15 @@ Meta-predictions refer to predictions made by models that aggregate or utilize t
 Data encoding is the process of transforming data from one format or structure into another, often to make it easier for ML models or computational systems to process. 
 In ML, data often needs to be encoded to ensure that it can be effectively interpreted by algorithms, especially for algorithms that require numerical input (e.g., neural networks, SVMs).
 
-
-**Key Questions**
-
-- How were the data __encoded__ and __preprocessed__ for the ML algorithm?
-
-> **From Example Publication**  
-> Label-wise average of 8 binary predictions.
+> <question-title> Key Questions </question-title>
+> 1. How were the data __encoded__ and __preprocessed__ for the ML algorithm?
+>
+> > <solution-title></solution-title>
+> > 1. **From Example Publication**  
+> >    Label-wise average of 8 binary predictions.
+> >
+> {: .solution}
+{: .question}
 
 ## 2.4 Parameters
 
