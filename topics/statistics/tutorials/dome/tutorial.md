@@ -430,7 +430,7 @@ CPU time of single representative execution on standard hardware (e.g. seconds o
 >
 > > <solution-title></solution-title>
 > >**From Example Publication**  
-> > ca. 1 second per representative on a desktop PC.
+> > Approximately 1 second per representative on a desktop PC.
 > {: .solution}
 {: .question}
 
