@@ -174,7 +174,7 @@ Down-sampled reads and some associated annotation will be imported in your first
 > The datasets take a while to run in their original size, so we've pre-selected 400,000 lines from the original file to make it run faster. How did we do this?
 > - How did I downsample these FASTQ files? You can check out the {% icon galaxy-history %} [ {{ page.downsample_histories[0].label }} ] ( {{ page.input_histories[0].history }}  ) to find out!
 >
-> > - {% icon warning %} If you are in a *live course*, the time to explore this **downsampling history** is not be factored into the schedule. Please instead check it out *after* your course is finished, or if you finish early!
+> - {% icon warning %} If you are in a *live course*, the time to explore this **downsampling history** is not be factored into the schedule. Please instead check it out *after* your course is finished, or if you finish early!
 >
 {: .details}
 
