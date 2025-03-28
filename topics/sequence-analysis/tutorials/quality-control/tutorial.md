@@ -163,7 +163,7 @@ It means that the fragment named `@M00970` corresponds to the DNA sequence `GTGC
 > >    - Formula to find the probability of error: \\(P = 10^{-Q/10}\\)
 > >    - Probability of error = \\(10^{-14/10}\\) = 0.03981 = 3.981 %
 > >    - Therefore Accuracy = 100 - 3.981 = 96.019%
-> > 4. The corresponding nucleotide `G` has an accuracy of almost 96.02%
+> > 4. The corresponding nucleotide `G` has an accuracy of approximately 96%
 > >
 > {: .solution }
 {: .question}
