@@ -167,17 +167,17 @@ This may effect the mfodel by introcuding an overfitting risk, unreliable perfor
 
 Availability of data refers to the accessibility and readiness of data for use in various applications, such as analysis, machine learning, decision-making, or reporting. It ensures that data can be retrieved and utilized when needed by users or systems.
 
-
-
-**Key Questions**
-
-- Are the data, including the data splits used, __released__ in a public forum? 
-- If yes, __where__ (for example, supporting material, URL) and __how__ (license)?
-
-> **From Example Publication**  
-> Yes, URL: http://protein.bio.unipd.it/mobidblite/.    Free use license.
-
-   
+> <question-title> Key Questions </question-title>
+>
+>  Are the data, including the data splits used, __released__ in a public forum? 
+> If yes, __where__ (for example, supporting material, URL) and __how__ (license)?
+> 
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > Yes, URL: http://protein.bio.unipd.it/mobidblite/.    Free use license.
+> {: .solution}
+{: .question}
+ 
 
 [//]: # (From Docs: Chapter 02)
 
@@ -202,15 +202,17 @@ Regarding ML class there are three major categories:
 - Unsupervised Learning (i.e. K-Means Clustering, Principal Component Analysis (PCA) and Hierarchical Clustering and others),  
 - Reinforcement Learning (i.e. Q-Learning, Deep Q-Networks (DQN) and others). 
 
-
-**Key Questions**
-
-- __What__ is the ML algorithm class used? 
-- Is the ML algorithm __new__? 
-- If yes, why was it __chosen__ over better known alternatives?
-
-> **From Example Publication**  
-> Majority-based consensus classification based on 8 primary ML methods and post-processing.
+> <question-title> Key Questions </question-title>
+> 
+> __What__ is the ML algorithm class used? 
+> Is the ML algorithm __new__?
+> If yes, why was it __chosen__ over better known alternatives?
+>
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > Majority-based consensus classification based on 8 primary ML methods and post-processing.
+> {: .solution}
+{: .question}
 
 
 ## 2.2 Meta-predictions
@@ -218,17 +220,17 @@ Regarding ML class there are three major categories:
 
 Meta-predictions refer to predictions made by models that aggregate or utilize the outputs (predictions) of other models. Essentially, meta-prediction systems combine predictions from multiple models to produce a more robust or accurate final prediction. Meta-predictions are often used in ensemble learning techniques, where the goal is to leverage the strengths of several models to enhance overall performance.
 
-
-
-**Key Questions**
-
-- Does the model use data from __other__ ML algorithms as input? 
-- If yes, which ones? 
-- Is it clear that training data of initial predictors and meta-predictor are __independent__ of test data for the meta-predictor?
-
-> **From Example Publication**  
-> Yes, predictor output is a binary prediction computed from the consensus of other methods; Independence of training sets of other methods with test set of meta-predictor was not tested since datasets from other methods were not available.
-
+> <question-title> Key Questions </question-title>
+>
+>  Does the model use data from __other__ ML algorithms as input? 
+> If yes, which ones?
+> Is it clear that training data of initial predictors and meta-predictor are __independent__ of test data for the meta-predictor?
+>
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > Yes, predictor output is a binary prediction computed from the consensus of other methods; Independence of training sets of other methods with test set of meta-predictor was not tested since datasets from other methods were not available.
+> {: .solution}
+{: .question}
 
 ## 2.3 Data encoding
 
@@ -254,13 +256,17 @@ These parameters determine how the model makes predictions and how well it fits 
 The values of these parameters are adjusted during the training process through algorithms like gradient descent or optimization procedures. 
 
 
-**Key Questions**
+> <question-title> Key Questions </question-title>
+>
+>  How many __parameters__ (*p*) are used in the model? 
+> How were *p* selected?
+>
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > p = 3 (Consensus score threshold, expansion-erosion window, length threshold).    No optimization.
+> {: .solution}
+{: .question}
 
-- How many __parameters__ (*p*) are used in the model? 
-- How were *p* selected?
-
-> **From Example Publication**  
-> p = 3 (Consensus score threshold, expansion-erosion window, length threshold).    No optimization.
 
 ## 2.5 Features
 
@@ -269,15 +275,18 @@ In the context of ML, features refer to the individual measurable properties or 
 They play a crucial role in determining the performance of ML models, as they provide the information that the model needs to make predictions or classifications.
 Feature Engineering is the process of creating, modifying, or selecting the most relevant features from the raw data to improve model performance by reducing model complexity, improving training time and avoiding overfitting. 
 
+> <question-title> Key Questions </question-title>
+>
+>  How many __features__ (*f*) are used as input? 
+> Was __feature selection__ performed? 
+> If yes, was it performed using the __training set only__?
+>
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > Not applicable.
+> {: .solution}
+{: .question}
 
-**Key Questions**
-
-- How many __features__ (*f*) are used as input? 
-- Was __feature selection__ performed? 
-- If yes, was it performed using the __training set only__?
-
-> **From Example Publication**  
-> Not applicable.
 
 ## 2.6 Fitting
 
@@ -286,15 +295,19 @@ Fitting refers to the process of training a ML model on a dataset by adjusting i
 The goal is to find a balance between underfitting and overfitting, ensuring that the model captures the underlying patterns in the data while still generalizing well to unseen data. 
 Proper evaluation, regularization, and tuning of the model during the fitting process are crucial to achieving a good fit.
 
+> <question-title> Key Questions </question-title>
+>
+> Is *p* much larger than the number of training points and/or is *f* large (for example, in classification is *p >> (N<sub>pos</sub> + N<sub>neg</sub>)* and/or *f > 100*)? 
+> If yes, how was __overfitting__ ruled out? 
+> Conversely, if the number of training points is much larger than *p* and/or *f* is small (for example, *(N<sub>pos</sub> + N<sub>neg</sub>) >> p*  and/or *f < 5*), how was __underfitting__ ruled out?
+>
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > Single input ML methods are used with default parameters. Optimization is a simple majority.
+> {: .solution}
+{: .question}
 
-**Key Questions**
 
-- Is *p* much larger than the number of training points and/or is *f* large (for example, in classification is *p >> (N<sub>pos</sub> + N<sub>neg</sub>)* and/or *f > 100*)? 
-- If yes, how was __overfitting__ ruled out? 
-- Conversely, if the number of training points is much larger than *p* and/or *f* is small (for example, *(N<sub>pos</sub> + N<sub>neg</sub>) >> p*  and/or *f < 5*), how was __underfitting__ ruled out?
-
-> **From Example Publication**  
-> Single input ML methods are used with default parameters.    Optimization is a simple majority.
 
 ## 2.7 Regularization
 
@@ -306,15 +319,16 @@ Regularization is a technique used to prevent overfitting by adding a penalty to
 - L2 Regularization (Ridge): Adds a penalty proportional to the square of the coefficients, discouraging large coefficients and thus reducing model complexity.
 - Dropout (in neural networks): Randomly drops a percentage of neurons during training, which helps prevent overfitting by forcing the network to generalize.
 
-
-**Key Questions**
-
-- Were any __overfitting prevention techniques__ used (for example, early stopping using a validation set)?
-
-- If yes, __which__ ones?
-
-> **From Example Publication**  
-> No. 
+> <question-title> Key Questions </question-title>
+>
+>  Were any __overfitting prevention techniques__ used (for example, early stopping using a validation set)?
+> If yes, __which__ ones?
+>
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > No. 
+> {: .solution}
+{: .question}
 
 
 ## 2.8 Availability of configuration
@@ -325,15 +339,17 @@ Availability of configuration refers to the accessibility and transparency of th
 These configurations control how the model is trained, how it makes predictions, and how it operates in different environments. 
 Ensuring that the configuration is available, flexible, and easy to modify is important for reproducibility, fine-tuning, and deployment of models.
 
-
-**Key Questions**
-
-- Are the hyperparameter configurations, optimization schedule, model files and optimization parameters __reported__? 
-- If yes, __where__ (for example, URL) and __how__ (license)?
-
-> **From Example Publication**  
-> Not applicable.
-
+> <question-title> Key Questions </question-title>
+>
+>  Are the hyperparameter configurations, optimization schedule, model files and optimization parameters __reported__?  
+> If yes, __where__ (for example, URL) and __how__ (license)?
+> 
+>
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > Not applicable.
+> {: .solution}
+{: .question}
    
 
 [//]: # (From Docs: Chapter 03)
@@ -359,13 +375,16 @@ There are generally two types of interpretability:
 
 - Local interpretability focuses on understanding individual predictions made by the model. It aims to explain why a specific input led to a particular output.
 
-**Key Questions**
-
-- Is the model __black box__ or __interpretable__? 
-- If the model is interpretable, can you give clear __examples__ of this?
-
-> **From Example Publication**  
-> Transparent, in so far as meta-prediction is concerned. Consensus and post processing over other methods predictions (which are mostly black boxes). No attempt was made to make the meta-prediction a black box.
+> <question-title> Key Questions </question-title>
+>
+>  Is the model __black box__ or __interpretable__? 
+> If the model is interpretable, can you give clear __examples__ of this?
+>
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > Transparent, in so far as meta-prediction is concerned. Consensus and post processing over other methods predictions (which are mostly black boxes). No attempt was made to make the meta-prediction a black box.
+> {: .solution}
+{: .question}
 
 
 ## 3.2 Output
@@ -384,12 +403,17 @@ Here’s a breakdown of some different types of outputs:
 
 -   __Multi-label classification__ includes the assignment of multiple classes to a single input.  
 
-**Key Questions**
 
-- Is the model __classification__ or __regression__?
+> <question-title> Key Questions </question-title>
+>
+>  Is the model __classification__ or __regression__?
+>
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > Classification, i.e. residues thought to be disordered.
+> {: .solution}
+{: .question}
 
-> **From Example Publication**  
-> Classification, i.e. residues thought to be disordered.
 
 ## 3.3 Execution time
 
@@ -400,29 +424,34 @@ Understanding and measuring execution time is crucial for various reasons, inclu
 
 CPU time of single representative execution on standard hardware (e.g. seconds on desktop PC).
 
-**Key Questions**
+> <question-title> Key Questions </question-title>
+>
+> How much __time__ does a single representative prediction require on a standard machine (for example, seconds on a desktop PC or high-performance computing cluster)?
+>
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > ca. 1 second per representative on a desktop PC.
+> {: .solution}
+{: .question}
 
--  How much __time__ does a single representative prediction require on a standard machine (for example, seconds on a desktop PC or high-performance computing cluster)?
-
-> **From Example Publication**  
-> ca. 1 second per representative on a desktop PC.
 
 ## 3.4 Availability of software
 
  
 Availability of software refers to the accessibility, reliability, and usability of various software tools and libraries that facilitate the development, training, deployment, and evaluation of ML models. 
 This includes both open-source and proprietary software, and it is critical for researchers and practitioners to have the right tools at their disposal to effectively work on tasks.
-  
 
-**Key Questions**
-
-- Is the __source code__ released? 
-- Is a __method to run__ the algorithm (executable, web server, virtual machine or container instance) released? 
-- If yes, __where__ (for example github, zenodo or other repository URL) and __how__ (for example MIT license)?
-
-> **From Example Publication**  
-> Yes, URL: http://protein.bio.unipd.it/mobidblite/.     Bespoke license free for academic use
-
+> <question-title> Key Questions </question-title>
+>
+> Is the __source code__ released?
+> Is a __method to run__ the algorithm (executable, web server, virtual machine or container instance) released? 
+> If yes, __where__ (for example github, zenodo or other repository URL) and __how__ (for example MIT license)?
+>
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > Yes, URL: http://protein.bio.unipd.it/mobidblite/. Bespoke license free for academic use
+> {: .solution}
+{: .question}  
    
 
 [//]: # (From Docs: Chapter 04)
@@ -445,13 +474,16 @@ In implementing a robust and trustworthy ML method, providing a comprehensive da
 Evaluation of a ML model is the process of assessing its performance and effectiveness in making predictions or classifications based on new, unseen data. 
 Proper evaluation is crucial to ensure that the model generalizes well and performs as expected in real-world applications.
   
+> <question-title> Key Questions </question-title>
+>
+>  How was the method __evaluated__ (for example cross-validation, independent dataset, novel experiments)?
+>
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > Independent dataset
+> {: .solution}
+{: .question}
 
-**Key Questions**
-
-- How was the method __evaluated__ (for example cross-validation, independent dataset, novel experiments)?
-
-> **From Example Publication**  
-> Independent dataset
 
 ## 4.2 Performance measures
 
@@ -467,13 +499,20 @@ The choice of evaluation metrics depends on the type of problem (regression or c
 | R-squared (R2) |  F1 Score |
 
 
-**Key Questions**
 
-- Which __performance metrics__ are reported (Accuracy, sensitivity, specificity, etc.)? 
-- Is this set __representative__ (for example, compared to the literature)?
 
-> **From Example Publication**  
-> Balanced Accuracy, Precision, Sensitivity, Specificity, F1, MCC.
+> <question-title> Key Questions </question-title>
+>
+>  Which __performance metrics__ are reported (Accuracy, sensitivity, specificity, etc.)? 
+> Is this set __representative__ (for example, compared to the literature)?
+> 
+>
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > Balanced Accuracy, Precision, Sensitivity, Specificity, F1, MCC.
+> {: .solution}
+{: .question}
+
 
 ## 4.3 Comparison
 
@@ -481,14 +520,17 @@ The choice of evaluation metrics depends on the type of problem (regression or c
 Comparison typically refers to the evaluation of different models, algorithms, or configurations to identify which one performs best for a specific task. 
 This process is essential for selecting the most suitable approach for a given problem, optimizing performance, and understanding the strengths and weaknesses of various methods. 
   
+> <question-title> Key Questions </question-title>
+>
+>  Was a comparison to __publicly available__ methods performed on benchmark datasets? 
+> Was a comparison to __simpler baselines__ performed?
+> 
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > DisEmbl-465, DisEmbl-HL, ESpritz Disprot, ESpritz NMR, ESpritz Xray, Globplot, IUPred long, IUPred short, VSL2b. Chosen methods are the methods from which the meta prediction is obtained.
+> {: .solution}
+{: .question}
 
-**Key Questions**
-
-- Was a comparison to __publicly available__ methods performed on benchmark datasets? 
-- Was a comparison to __simpler baselines__ performed?
-
-> **From Example Publication**  
-> DisEmbl-465, DisEmbl-HL, ESpritz Disprot, ESpritz NMR, ESpritz Xray, Globplot, IUPred long, IUPred short, VSL2b. Chosen methods are the methods from which the meta prediction is obtained.
 
 ## 4.4 Confidence
 
@@ -497,14 +539,17 @@ Confidence in the context of ML refers to the measure of certainty or belief tha
 It quantifies the model's certainty regarding its output, which is particularly important in classification tasks, where decisions need to be made based on predicted class probabilities.
 This can be supported with medthods such as confidence intervals and statistical significance.
   
+> <question-title> Key Questions </question-title>
+>
+>  Do the performance metrics have __confidence intervals__? 
+> Are the results __statistically significant__ to claim that the method is superior to others and baselines?
+>
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > Not calculated.
+> {: .solution}
+{: .question}
 
-**Key Questions**
-
-- Do the performance metrics have __confidence intervals__? 
-- Are the results __statistically significant__ to claim that the method is superior to others and baselines?
-
-> **From Example Publication**  
-> Not calculated.
 
 ## 4.5 Availability of evaluation
 
@@ -512,16 +557,16 @@ This can be supported with medthods such as confidence intervals and statistical
 Availability of evaluation in ML refers to the accessibility and readiness of tools, frameworks, datasets, and methodologies used to assess the performance of ML models. 
 This encompasses various aspects, from the datasets used for evaluation to the metrics and software tools that facilitate the evaluation process. 
   
-
-**Key Questions**
-
-- Are the __raw evaluation files__ (for example, assignments for comparison and baselines, statistical code, confusion matrices) available? 
-- If yes, __where__ (for example, URL) and __how__ (license)?
-
-> **From Example Publication**  
-> Not.
-
-
+> <question-title> Key Questions </question-title>
+>
+>  Are the __raw evaluation files__ (for example, assignments for comparison and baselines, statistical code, confusion matrices) available? 
+> If yes, __where__ (for example, URL) and __how__ (license)?
+>
+> > <solution-title></solution-title>
+> >**From Example Publication**  
+> > Not.
+> {: .solution}
+{: .question}
    
 
 [//]: # (From Docs: Bring Your Data)
