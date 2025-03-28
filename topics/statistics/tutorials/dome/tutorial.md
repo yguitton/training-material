@@ -537,7 +537,7 @@ This process is essential for selecting the most suitable approach for a given p
  
 Confidence in the context of ML refers to the measure of certainty or belief that a model's prediction is accurate. 
 It quantifies the model's certainty regarding its output, which is particularly important in classification tasks, where decisions need to be made based on predicted class probabilities.
-This can be supported with medthods such as confidence intervals and statistical significance.
+This can be supported by methods such as confidence intervals and statistical significance.
   
 > <question-title> Key Questions </question-title>
 >
