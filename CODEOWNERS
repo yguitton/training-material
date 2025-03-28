@@ -23,20 +23,20 @@ topics/computational-chemistry/    @chrisbarnettster  @tsenapathi  @simonbray  @
 topics/contributing/               @bebatut  @bgruening
 topics/covid19/                    @wm75
 topics/data-science/               @hexylena  @shiltemann  @fpsom  @bebatut  @yvanlebras
-topics/dev/                        @lecorguille  @bebatut  @hexylena
+topics/dev/                        @lecorguille  @bebatut
 topics/ecology/                    @yvanlebras
 topics/elixir/                     @bebatut  @fpsom
 topics/epigenetics/                @lldelisle  @heylf  @joachimwolff
 topics/evolution/                  @cstritt  @pvanheus
 topics/fair/                       @simleo  @ilveroluca  @stain  @pauldg  @kkamieniecka  @poterlowicz-lab
-topics/galaxy-interface/           @jennaj  @hexylena
+topics/galaxy-interface/           @jennaj
 topics/genome-annotation/          @hexylena  @abretaud
 topics/gmod/                       @hexylena  @abretaud
 topics/imaging/                    @kostrykin  @beatrizserrano
 topics/materials-science/          @patrick-austin  @leandro-liborio
 topics/metabolomics/               @lecorguille  @melpetera  @foellmelanie
 topics/microbiome/                 @bebatut  @shiltemann  @paulzierep
-topics/one-health/                 @wm75  @pvanheus  @TKlingstrom  @hexylena
+topics/one-health/                 @wm75  @pvanheus  @TKlingstrom
 topics/plants/                     @deeptivarshney  @shiltemann
 topics/proteomics/                 @foellmelanie  @subinamehta  @pratikdjagtap  @bgruening
 topics/sequence-analysis/          @yvanlebras  @bebatut  @joachimwolff
