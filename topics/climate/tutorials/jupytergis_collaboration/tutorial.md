@@ -3,7 +3,7 @@ layout: tutorial_hands_on
 
 title: Collaboration with JupyterGIS
 questions:
-- What features does JupyterGIS have to help me collaborate with others on GIS projects in real-time?
+- What features does JupyterGIS have to help me collaborate with others on GIS projects in real time?
 objectives:
 - Launch a collaborative session in JupyterGIS.
 - Generate shareable links to invite collaborators.
@@ -16,15 +16,19 @@ contributors:
 - annefou
 ---
 
-Welcome to the JupyterGIS collaborative features tutorial. JupyterGIS enables seamless sharing of notebooks and GIS files, allowing teams—including GIS specialists, data analysts, and other experts—to work together on spatial projects in a shared environment. This guide will provide you with the tools and steps needed to collaborate effectively, using features like real-time editing, cursor tracking, follow mode, and annotations.
+Welcome to the JupyterGIS collaborative features tutorial. JupyterGIS enables the seamless sharing of notebooks and GIS files, allowing teams—including GIS specialists, data analysts,
+and other experts—to collaborate on spatial projects in a shared environment. This guide will provide the tools and steps needed to collaborate effectively,
+using features like real-time editing, cursor tracking, follow mode, and annotations.
 
 ### Motivation
-Collaboration is at the heart of effective GIS projects. Teams often include members with diverse backgrounds, skills, and areas of expertise. Without robust collaborative tools, it can become challenging to share insights, make real-time decisions, and maintain consistency across project workflows. JupyterGIS simplifies collaboration by providing real-time editing, annotations, and interactive features that allow teams to seamlessly integrate their work.
+Collaboration is at the heart of effective GIS projects. Teams often include members with diverse backgrounds, skills, and areas of expertise. Without robust collaborative tools,
+it can become challenging to share insights, make real-time decisions, and maintain consistency across project workflows. JupyterGIS simplifies collaboration by providing
+real-time editing, annotations, and interactive features that allow teams to seamlessly integrate their work.
 
 
 > <agenda-title></agenda-title>
 >
-> In this tutorial we will learn about:
+> In this tutorial, we will learn about:
 >
 > 1. Launching Your Collaborative Session
 > 2. Sharing Your Document
@@ -38,7 +42,8 @@ Collaboration is at the heart of effective GIS projects. Teams often include mem
 # Launching Your Collaborative Session
 
 ## Access the Platform
-In order to access the JupyterGIS platform, you can open your browser and navigate to [https://climate.usegalaxy.eu/](https://climate.usegalaxy.eu/), then log in or register for an account if you haven't already.
+In order to access the JupyterGIS platform, you can open your browser and navigate to [https://climate.usegalaxy.eu/](https://climate.usegalaxy.eu/),
+then log in or register for an account if you haven't already.
 
 ## Start JupyterGIS
 1. On the left sidebar, click **Tools**.
@@ -52,7 +57,7 @@ In order to access the JupyterGIS platform, you can open your browser and naviga
     ![Start JGIS](../../images/jupytergis_collaboration/start_jgis.png)
 
 ## Create Your GIS File
-To create a GIS file from the JupyterLab launcher, you can scroll down to the **Other** section, and click **GIS File** to open a blank canvas for your project.
+To create a GIS file from the JupyterLab launcher, you can scroll down to the **Other** section and click **GIS File** to open a blank canvas for your project.
 ![New GIS File](../../images/jupytergis_collaboration/new_gis_file.png)
 
 Notice that you are given an anonymous username, which you can see in the upper right corner. Every user in the project will be assigned an anonymous username.
@@ -67,7 +72,8 @@ You can invite collaborators to your session by sharing a link. Click on the **S
 ![Share](../../images/jupytergis_collaboration/share.png)
 
 ## Confirm Collaborator Access
-When your colleagues join using the link, their usernames appear in the top right corner. This lets you know exactly who is working on the document. There are two more collaborators in the session in the example below.
+When your colleagues join using the link, their usernames appear in the top right corner. This lets you know exactly who is working on the document.
+There are two more collaborators in the session in the example below.
 
 ![Shared Users](../../images/jupytergis_collaboration/shared_users.png)
 
@@ -80,7 +86,8 @@ When you add a new layer to your GIS file, the new layer appears immediately for
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3FbvYg3G9Gk?si=CsppZltaUIoSWFeH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 ## Tracking Collaborators with Cursors
-Each user's cursor appears on the document in the same color as their icon. This feature makes it easy to see where your teammates are focused on. You can click on a cursor to display the location (latitude and longitude) where collaborators are working.
+Each user's cursor appears on the document in the same color as their icon. This feature makes it easy to see what your teammates are focused on.
+You can click on a cursor to display the location (latitude and longitude) where collaborators are working.
 
 ![Cursor](../../images/jupytergis_collaboration/cursor.png)
 
@@ -106,7 +113,7 @@ To activate the follow mode, click on a collaborator's user icon in the upper ri
 > ```
 > 
 > - Locate your colleague's cursor on the document.
-> - Enable follow mode to track your colleague's actions.
+> - Enable follow mode to track your colleagues' actions.
 >
 > > <solution-title></solution-title>
 > >
@@ -114,7 +121,7 @@ To activate the follow mode, click on a collaborator's user icon in the upper ri
 > > - In the layer browser, select **OpenStreetMap.Mapnik**.
 > > - Your colleague can add the GeoJSON URL by clicking **+** → **New Vector Layer** → **Add GeoJSON Layer** → pasting the provided URL.
 > > - You can find their cursor on the map.
-> > - Click on your colleague's icon in the top right corner to activate **Follow Mode**. Your screen will follow their movements and edits in real-time.
+> > - Click on your colleague's icon in the top right corner to activate **Follow Mode**. Your screen will follow their movements and edits in real time.
 > >
 > {: .solution}
 {: .question}
@@ -127,18 +134,18 @@ Annotations and comments let you add notes directly on your GIS file, which make
 In order to create annotations, you can right-click anywhere on your GIS file to open the context menu, then select **Add Annotation** from the menu. Observe that all collaborators can see the new annotation in real time.
 
 ## Adding and Viewing Comments
-Once you add an annotation, you can click on it to type your comment. You can open the right sidebar to view all annotations and comments in the document, and click on the middle button to locate the annotation.
+Once you add an annotation, you can click on it to type your comment. You can open the right sidebar to view all annotations and comments in the document and click on the middle button to locate the annotation.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QqscEokpWIA?si=ZUEU4k6gPkVgqRuN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 > <question-title></question-title>
 >
-> - Add an annotation to your GIS file. Then add a comment to the annotation.
+> - Add an annotation to your GIS file. Then, add a comment to the annotation.
 > - Ask your colleague to locate the annotation and add a reply.
 > - Locate your colleague's reply from the right sidebar.
 >
 > > <solution-title></solution-title>
 > >
-> > - Right click on the desired location on your map.
+> > - Right-click on the desired location on your map.
 > > - Choose **Add Annotation**, click on the annotation and enter your comment.
 > > - Your colleague can see your annotation instantly; they can click it and reply.
 > > - Open the annotations panel on the right sidebar to view their reply.
@@ -159,7 +166,7 @@ Once a notebook is created, it is automatically accessible to all collaborators�
 ![Notebook](../../images/jupytergis_collaboration/open_notebook.png)
 
 ## Real-Time Code Collaboration
-As you write or execute code, every change is visible to your team instantly. Multiple users can write, edit, and run code in the same notebook at the same time for a dynamic, interactive coding experience.
+As you write or execute code, every change is visible to your team instantly. Multiple users can write, edit, and run code in the same notebook at the same time for a dynamic,interactive coding experience.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/H5Pkg5zOSwA?si=DK9nSSMpV5nRK-BZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 > <question-title></question-title>
 >
