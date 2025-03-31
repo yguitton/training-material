@@ -61,7 +61,8 @@ recordings:
   date: '2025-03-18'
   speakers: 
   - tflowers15
-  captioners: tflowers15
+  captioners: 
+  - tflowers15
   bot-timestamp: 1742268940
 
 
