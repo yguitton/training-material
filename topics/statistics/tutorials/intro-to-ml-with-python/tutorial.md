@@ -1897,8 +1897,7 @@ For purity, **0 is the best possible score, and 1 the worst**.
 
 \\(Gini = 1- \sum_{j} p_j^2\\)
 
-The idea is to measure the **probability that a dummy classifier mislabels your data**.
-**0 is best, 1 is worst.**
+The idea is to measure the **probability that a dummy classifier mislabels your data**. **0 is best, 1 is worst.**
 
 
  
@@ -2091,7 +2090,7 @@ There are 3 main advantages to this kind of methods:
 * you don't need to rescale
 * it already includes non linear fitting
 
-**Moreover it is 'easy' to interpret.**
+Moreover **it is 'easy' to interpret.**
 
 But....(yes there is a but, there is no free lunch)
 
