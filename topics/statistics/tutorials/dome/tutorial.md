@@ -146,7 +146,7 @@ In addition to these, there are some variations in dataset splitting strategies:
 
 
  Redundancy between data splits occurs when the same data points are present in more than one of the training, validation, or test sets. This is undesirable because it can distort model evaluation and lead to overoptimistic performance metrics (e.g. eliminating data points more similar than X%). 
-This may effect the mfodel by introcuding an overfitting risk, unreliable performance metrics and/or lack of generalization.
+This may impact the model by introducing the risk of overfitting and poor generalization rendering the performance metrics as unreliable.
 
 > <question-title> Key Questions </question-title>
 >
