@@ -46,7 +46,7 @@ contributions:
   - elixir-europe
   - uni-freiburg
 recordings:
-- youtube_id: https://youtu.be/2IyYYmjcgLg
+- youtube_id: 2IyYYmjcgLg
   length: 27M
   galaxy_version: 24.2.3.dev0
   date: '2025-03-18'
