@@ -121,7 +121,7 @@ Currently you have a bunch of strings of `ATGGGCTT` etc. in your sequencing file
 >
 > - If you're in a *Live course*, follow the path of training materials
 > - If you're learning on your own, either get through these pre-processing steps with the belief that plots will get more fun later, or:
-> - Try out the {% icon level %} [Filter, plot & explore](% link /single-cell/tutorials/scrna-case_basic-pipeline/tutorial.md %}) tutorial *first*, then swing back and do this one.
+> - Try out the {% icon level %} [Filter, plot & explore](% link ../scrna-case_basic-pipeline/tutorial.md %}) tutorial *first*, then swing back and do this one.
 > It's up to you!
 >
 {: .warning}
@@ -642,7 +642,7 @@ You might find the {% icon galaxy-history-answer %} *Answer Key Histories* helpf
 <!-- Only currently want to iterate through the first history, but might want others in the future (different servers!) -->
 
 You can also run this entire tutorial via a {% icon galaxy-workflows-activity %} *Workflow*, after performing the **Get data** step initially.
- - [Tutorial Workflow]({% link ../workflows/ %})
+ - [Tutorial Workflow]({% link ../workflows/index.md %})
 
 <iframe title="Galaxy Workflow Embed" style="width: 100%; height: 700px; border: none;" src="https://singlecell.usegalaxy.eu/published/workflow?id=9a9bbd8046da7b19&embed=true&buttons=true&about=false&heading=false&minimap=true&zoom_controls=true&initialX=0&initialY=0&zoom=0.33"></iframe>
 
