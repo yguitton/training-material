@@ -59,8 +59,7 @@ We do not address the use of ML in clinical settings, and it remains to be seen 
 The recommendations mentioned above were initially developed by the [ELIXIR Machine Learning Focus Group](https://elixir-europe.org/focus-groups/machine-learning) in response to a published Comment advocating for the establishment of standards in ML for biology. 
 This focus group, comprising over 50 experts in the field of ML, held meetings to collaboratively develop and refine the recommendations through broad consensus.
 
-In the following chapters the publication from [@MobiDB] is going to be used as an example.
-
+In the following chapters the publication from [@MobiDB] is going to be used as an example. ​This article introduces MobiDB-lite, a consensus-based tool designed for the rapid and precise prediction of intrinsically disordered regions in proteins. MobiDB-lite combines multiple disorder prediction methods to achieve high specificity, minimizing false positives, particularly for long disordered regions. This tool is integrated into the MobiDB database, enhancing the annotation of protein disorder and facilitating large-scale studies in structural bioinformatics.​
 
 
 [//]: # (From Docs: Chapter 01)
