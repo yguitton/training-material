@@ -59,7 +59,7 @@ recordings:
   length: 37M
   galaxy_version: 24.2.3.dev0
   date: '2025-03-18'
-  speakers: 
+  speakers: tflowers15
   captioners: 
   bot-timestamp: 1742268940
 
