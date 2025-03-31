@@ -16,7 +16,7 @@ coveralt: "GTA logo including the GTN star and beams behind it in the GTN colors
 
 Are you looking for a user-friendly approach to data analysis that aligns with FAIR principles? Do you want to master the Galaxy platform? Are you eager to explore data analysis techniques across diverse scientific domains?
 
-🎉 Join the Galaxy Training Academy in May 2025! 🎉
+🎉 Join the Galaxy Training Academy in May 2025 and [register now](https://forms.gle/xqZMd4gduwJ6XyKU6)! 🎉
 
 - 📆 **Dates**:  May 12-16, 2025
 - 📍 **Location**:  Global online
