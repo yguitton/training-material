@@ -48,7 +48,7 @@ Amazon's Simple Storage Service (S3) is Amazon's primary cloud storage service. 
 <div class="Azure-Blob-Storage" markdown="1">
 To setup access to your [Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction) within the Galaxy, follow the steps:
 - Provide the name of your Azure Blob Storage account in the `Container Name` field. More information about container's name could be found on [the Microsoft documentation here](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction#containers).
-- Fill the `Storage Account Name` based on your account. More information is available [here](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+- Fill the `Storage Account Name` based on your account. More information is available [on Microsoft website](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
 - Please provide the account access key to your Azur Blob Storage account, using `Account Key` field. This is the documentation on [Managing storage account access keys](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage?tabs=azure-portal).
 - Click on `Create`.
 </div>

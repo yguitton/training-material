@@ -33,7 +33,7 @@ In short, you can connect your Galaxy account to an Onedata repository as follow
 
 - In the `Onezone domain` field, please fill in the address to your `Onezone` domain. It could be something like "datahub.egi.eu".
 - Using the `Writable?` slider you can decide whether to grant access to Galaxy to export (write) to your Onedata or not.
-- You should provide an `Access Token` to Galaxy so it can read (import) and write (export) data to your OneData. Read more on access tokens [here](https://onedata.org/#/home/documentation/21.02/user-guide/tokens.html). You can limit the access to read-only data access, unless you wish to export data to your repository (write permissions are needed then).
+- You should provide an `Access Token` to Galaxy so it can read (import) and write (export) data to your OneData. Read more on [access tokens here](https://onedata.org/#/home/documentation/21.02/user-guide/tokens.html). You can limit the access to read-only data access, unless you wish to export data to your repository (write permissions are needed then).
 - In case you want to disable validation of SSL certificates, you can use `Disable tls certificate validation?` slider. However, we strongly recommend you to not use this option unless you know what your are doing.
 - Click on `Create`.
 </div>
@@ -50,7 +50,7 @@ To connect anonymously to an AWS public bucket using your Galaxy account, you ne
 <div class="Azure-Blob" markdown="1">
 To setup access to your [Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction) within the Galaxy, follow the steps:
 - Provide the name of your Azure Blob Storage account in the `Container Name` field. More information about container's name could be found on [the Microsoft documentation here](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction#containers).
-- Fill the `Storage Account Name` based on your account. More information is available [here](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+- Fill the `Storage Account Name` based on your account. More information is available [on the Microsoft website](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
 - Using the `Hierarchical?` slider you can determine whether your storage is hierarchical or not. More information on Data Lake Storage namespaces can be found in the [Azure Blob Storage documentation](https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-namespace).
 - Please provide the account access key to your Azur Blob Storage account, using `Account Key` field. This is the documentation on [Managing storage account access keys](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage?tabs=azure-portal).
 - If you want to be able to export data to your Azure Blob Storage container, please set `Writable?` slider to "Yes".
