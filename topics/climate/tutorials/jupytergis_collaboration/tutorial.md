@@ -31,55 +31,53 @@ real-time editing, annotations, and interactive features that allow teams to sea
 > In this tutorial, we will learn about:
 >
 > 1. Launching Your Collaborative Session
-> 2. Sharing Your Document
-> 3. Real-Time Collaboration on a GIS File
-> 4. Using Follow Mode
-> 5. Adding Annotations and Comments
-> 6. Collaborating on Notebooks
+> 2. Real-Time Collaboration on a GIS File
+> 3. Using Follow Mode
+> 4. Adding Annotations and Comments
+> 5. Collaborating on Notebooks
 > {:toc}
 {: .agenda}
 
+
+> <tip-title>Simulating Multi-User Environments</tip-title>
+>
+> The JupyterGIS collaborative training material is designed to help users explore geospatial workflows in a collaborative Jupyter environment. This training is intended to be used in
+> pairs or small teams, even when following a self-paced approach. To simulate real-time collaboration, we recommend using an additional browser window or an anonymous session to represent
+> another user. This setup allows participants to better understand multi-user interactions, shared geospatial analysis, and version control within Jupyter-based environments.
+{: .tip}
+
+
+
 # Launching Your Collaborative Session
 
-## Access the Platform
-In order to access the JupyterGIS platform, you can open your browser and navigate to [https://climate.usegalaxy.eu/](https://climate.usegalaxy.eu/),
-then log in or register for an account if you haven't already.
+In this section, we will learn how to launch a collaborative session in JupyterGIS and invite collaborators to join. This section of the tutorial is required to be completed by only one user (the hosting user) in the session.
 
-## Start JupyterGIS
-1. On the left sidebar, click **Tools**.
-2. In the search box, type **JupyterGIS**.
-3. Click **Interactive JupyterGIS Notebook** and then click the **Run Tool** button.
-    ![Run Tool](../../images/jupytergis_collaboration/run_tool.png)
-
-4. Click on **Interactive Tools** on the left sidebar.
-5. Wait a few minutes until the job status changes to “running.”
-6. Click on the **Jupyter Interactive GIS Tool** link that appears to open JupyterLab.
-    ![Start JGIS](../../images/jupytergis_collaboration/start_jgis.png)
-
-## Create Your GIS File
-To create a GIS file from the JupyterLab launcher, you can scroll down to the **Other** section and click **GIS File** to open a blank canvas for your project.
-![New GIS File](../../images/jupytergis_collaboration/new_gis_file.png)
-
-Notice that you are given an anonymous username, which you can see in the upper right corner. Every user in the project will be assigned an anonymous username.
-![Username](../../images/jupytergis_collaboration/username.png)
-
-# Sharing Your Document
-First, let's create a GIS file and invite collaborators to the session.
-
-## Generate a Shareable Link
-You can invite collaborators to your session by sharing a link. Click on the **Share** button in your interface in the upper right corner, then click on the **Copy Link** button.
-
-![Share](../../images/jupytergis_collaboration/share.png)
-
-## Confirm Collaborator Access
-When your colleagues join using the link, their usernames appear in the top right corner. This lets you know exactly who is working on the document.
-There are two more collaborators in the session in the example below.
-
-![Shared Users](../../images/jupytergis_collaboration/shared_users.png)
+> <hands-on-title>Starting a Collaborative Session</hands-on-title>
+>
+> 1. Open your browser and navigate to [https://climate.usegalaxy.eu/](https://climate.usegalaxy.eu/), then log in or register for an account if you haven't already, to access the JupyterGIS platform.
+> 2. On the left sidebar, click **Tools**.
+> 3. In the search box, type **JupyterGIS**.
+> 4. Click **Interactive JupyterGIS Notebook** and then click the **Run Tool** button.
+>     ![Run Tool](../../images/jupytergis_collaboration/run_tool.png)
+> 5. Click on **Interactive Tools** on the left sidebar.
+> 6. Wait a few minutes until the job status changes to “running.”
+> 7. Click on the **Jupyter Interactive GIS Tool** link that appears to open JupyterLab.
+>     ![Start JGIS](../../images/jupytergis_collaboration/start_jgis.png)
+> 8. Scroll down to the **Other** section and click **GIS File** to open a blank canvas for your project
+>     ![New GIS File](../../images/jupytergis_collaboration/new_gis_file.png)
+> 9. Notice that you are given an anonymous username, which you can see in the upper right corner. Every user in the project will be assigned an anonymous username.
+>     ![Username](../../images/jupytergis_collaboration/username.png)
+> 10. Click on the **Share** button in your interface in the upper right corner, then click on the **Copy Link** button to invite collaborators to your session.
+>     ![Share](../../images/jupytergis_collaboration/share.png)
+> 11. When your colleagues join using the link, their usernames appear in the top right corner. This lets you know exactly who is working on the document. There are two more collaborators in the session in the example below.
+>     ![Shared Users](../../images/jupytergis_collaboration/shared_users.png)
+{: .hands_on}
 
 ---
 
 # Real-Time Collaboration on a GIS File
+
+In this section, we will explore how to collaborate on a GIS file in real time. This section of the tutorial is required to be completed by both the hosting and the collaborating users in the session.
 
 ## Adding and Editing Layers
 When you add a new layer to your GIS file, the new layer appears immediately for all collaborators in your session. You can experiment by adding a layer from the layer browser or from the add layer menu, and customizing its symbology, such as changing the opacity or color. Observe that each change is instantly visible to your collaborators. You can check the [Getting Started with JupyterGIS](../01-intro/index.md) tutorial for more details on how to customize the layer appearance.
