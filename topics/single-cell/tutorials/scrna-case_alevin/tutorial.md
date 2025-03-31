@@ -117,7 +117,7 @@ Currently you have a bunch of strings of `ATGGGCTT` etc. in your sequencing file
 >
 > **That is ok!**
 >
-> Conceptually, the {% icon level %} [Filter, plot & explore](% link /single-cell/tutorials/scrna-case_basic-pipeline/tutorial.md %}) tutorial (which comes later) is when you really get to generate fun plots and interpret them scientifically. However, you can't do that until you have pre-processed your data. Some learners like doing that tutorial first, them coming back to learn how to build their input dataset here. So:
+> Conceptually, the {% icon level %} [Filter, plot & explore](% link ../scrna-case_basic-pipeline/tutorial.md %}) tutorial (which comes later) is when you really get to generate fun plots and interpret them scientifically. However, you can't do that until you have pre-processed your data. Some learners like doing that tutorial first, them coming back to learn how to build their input dataset here. So:
 >
 > - If you're in a *Live course*, follow the path of training materials
 > - If you're learning on your own, either get through these pre-processing steps with the belief that plots will get more fun later, or:
