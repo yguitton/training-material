@@ -43,7 +43,7 @@ recordings:
   captioners:
   - anuprulez
   bot-timestamp: 1724930690
-- youtube_id: TODO
+- youtube_id: zAeFcgB8ZeU
   length: 1h25M
   galaxy_version: '24.1'
   date: '2025-03-24'
