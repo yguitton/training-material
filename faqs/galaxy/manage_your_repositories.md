@@ -9,89 +9,100 @@ contributors: [dadrasarmin]
 Here, we are going to briefly explain how you can Bring-Your-Own-Data to Galaxy or export your dataset, results, history, or workflows to 3rd party repositories. In order to add a new repository to your account follow these steps:
 
 - Click on your Username on top right part of the website and then click on `Preferences`.
-- From the middle panel, click on the `Manage your repositories` (previously `Manage your remote file sources`).
+- From the middle panel, click on the `Manage Your Repositories` (previously called `Manage your remote file sources`).
 - Click on the `+ Create` button on top of the page. Here, you get multiple options to connect various repositories to your account.
 
-{% include _includes/cyoa-choices.html option1="Onedata" option2="Amazon Web Services Private Bucket" option3="Amazon Web Services Public Bucket" option4="Azure Blob" option5="Dropbox" option6="eLabFTW" option7="An FTP Server" option8="Export to Google Drive" option9="InvenioRDM" option10="S3 Compatible Storage with Credentials" option11="WebDAV" option12="Zenodo" default="WebDAV" text="Select the repository you like to add to your Galaxy account." disambiguation="BYOD" %}
+For all of the possible repositories, you should fill the following fields:
+
+- In the `Name` section, give a name to your repository. This name will be used to choose the repository on Galaxy for importing or exporting datasets.
+- Optionally, you can provide a `Description` for this repository. This is a note for yourself.
+
+{% include _includes/cyoa-choices.html option1="Onedata" option2="Amazon Web Services Private Bucket" option3="Amazon Web Services Public Bucket" option4="Azure Blob" option5="Dropbox" option6="eLabFTW" option7="An FTP Server" option8="Export to Google Drive" option9="InvenioRDM" option10="S3 Compatible Storage with Credentials" option11="WebDAV" option12="Zenodo" default="Onedata" text="Select the repository you like to add to your Galaxy account." disambiguation="BYOD" %}
 
 <div class="Onedata" markdown="1">
-- Add Onedata
-- Text
-- Here
-- Please!
+If you have an [Onedata](https://onedata.org/) account, you can use this repository to import and/or export your data directly from and to Onedata. The minimal supported Onezone version is 21.02.4. More information on Onedata can be found on [Onedata's website](https://onedata.org/#/home).
+
+There are extensive tutorials for setting up and utilizing of OneData on Galaxy Training Network (GTN). At the moment, we have the following tutorials for Onedata on GTN:
+1. [Getting started with Onedata distributed storage]( {% link topics/galaxy-interface/tutorials/onedata-getting-started/tutorial.md %} )
+2. [Onedata user-owned storage]( {% link topics/galaxy-interface/tutorials/onedata-byos/tutorial.md %} )
+3. [Importing (uploading) data from Onedata]( {% link topics/galaxy-interface/tutorials/onedata-remote-import/tutorial.md %} )
+4. [Exporting to Onedata remote]( {% link topics/galaxy-interface/tutorials/onedata-remote-export/tutorial.md %} )
+5. [Setting up a dev Onedata instance]( {% link topics/dev/tutorials/onedata-dev-instance/tutorial.md %} )
+6. [Configuring the Onedata connectors (remotes, Object Store, BYOS, BYOD)]( {% link topics/admin/tutorials/onedata-configuration/tutorial.md %} )
+
+In short, you can connect your Galaxy account to an Onedata account as follows:
+
+- In the `Onezone domain` field, please fill in the address to your `Onezone` domain. It could be something like "datahub.egi.eu".
+- Using the `Writable?` slider you can decide whether to grant access to Galaxy to export (write) to your Onedata or not.
+- You should provide an `Access Token` to Galaxy so it can read (import) and write (export) data to your OneData. Read more on access tokens [here](https://onedata.org/#/home/documentation/21.02/user-guide/tokens.html). You can limit the access to read-only data access, unless you wish to export data to your repository (write permissions are needed then).
+- In case you want to disable validation of SSL certificates, you can use `Disable tls certificate validation?` slider. However, we strongly recommend you to not use this option unless you know what your are doing.
 </div>
 <div class="Amazon-Web-Services-Private-Bucket" markdown="1">
-- Add Amazon-Web-Services-Private-Bucket
-- Text
-- Here
-- Please!
+To connect an AWS private bucket to your Galaxy account, you need to submit the following information on the form:
+- First, read the [Manage access keys for IAM (Identity and Access Management) users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) documentation of AWS. Also, you should be familiar with Buckets ([Buckets overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html)). 
+- Please fill in the `Access Key ID` (something like `AKIAIOSFODNN7EXAMPLE`) and `Secret Access Key` (similar to `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`) in the corresponding fields on the Galaxy interface.
+- Please enter the URL to your Bucket (for example, `https://amzn-s3-demo-bucket.s3.us-west-2.amazonaws.com`) in the `Bucket` section.
 </div>
 <div class="Amazon-Web-Services-Public-Bucket" markdown="1">
-- Add Amazon-Web-Services-Public-Bucket
-- Text
-- Here
-- Please!
+To connect anonymously to an AWS public bucket using your Galaxy account, you need to enter the Bucket address in the `Bucket` section. For more information about AWS Bucket, please read [AWS documentaion](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html).
 </div>
 <div class="Azure-Blob" markdown="1">
-- Add Azure-Blob
-- Text
-- Here
-- Please!
+To setup access to your [Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction) within the Galaxy, follow the steps:
+- Provide the name of your Azure Blob Storage account in the `Container Name` field. More information about container's name could be found on [the Microsoft documentation here](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction#containers).
+- Fill the `Storage Account Name` based on your account. More information is available [here](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+- Using the `Hierarchical?` slider you can determine whether your storage is hierarchical or not. More information on Data Lake Storage namespaces can be found in the [Azure Blob Storage documentation](https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-namespace).
+- Please provide the account access key to your Azur Blob Storage account, using `Account Key` field. This is the documentation on [Managing storage account access keys](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage?tabs=azure-portal).
+- If you want to be able to export data to your Azure Blob Storage container, please set `Writable?` slider to "Yes".
 </div>
 <div class="Dropbox" markdown="1">
-- Click on the `Select` button in the `Dropbox` section.
-- You will be redirected to the Dropbox website for authentication. You have to login there and grant access for the Galaxy.
-- When you grant the access, you will be back on the Galaxy website. Here, you should give a "name" to your repository.
-- Optionally, you can give this repository a description as well.
+- We recommend to first login to your Dropbox account.
+- On the Galaxy website, click on the `Create` button of the `Dropbox` section. You will be redirected to the Dropbox website for authentication.
+- You have to login there and grant access for the Galaxy.
 </div>
 <div class="eLabFTW" markdown="1">
-- Add eLabFTW
-- Text
-- Here
-- Please!
+[eLabFTW](https://www.elabftw.net/) is a free and open source electronic lab notebook from [Deltablot](https://www.deltablot.com/). Each lab can either host their own installation or go for Deltablot's hosted solution. Using Galaxy, you can connect to an eLabFTW instance of your choice.
+- Provide a URL with the protocol (http or https) and the domain name in the `eLabFTW instance endpoint (e.g. https://demo.elabftw.net)` field.
+- If you want to let Galaxy to export data to your eLabFTW, please set the `Allow Galaxy to export data to eLabFTW?` to "Yes" to grant required access to Galaxy. **Keep in mind that your API key must have matching permissions.**
+- You should provide an `API Key` to your eLabFTW as well. To do so, navigate to the Settings page on your eLabFTW server and go to the API Keys tab to generate a new key. Choose "Read/Write" permissions to enable both importing and exporting data. "Read Only" API keys still work for importing data to Galaxy, but they will cause Galaxy to error out when exporting data to eLabFTW. You will receive a string (similar to `2-50dd721027f56a2e119b3bdbf64f4b8518b3f82b97e7876d56dad74109c8be73d8919b88097d3c9eb8952`) and you should enter this in the `API Key` field of Galaxy interface.
 </div>
 <div class="An-FTP-Server" markdown="1">
-- Add An-FTP-Server
-- Text
-- Here
-- Please!
+You can setup connections to FTP and FTPS servers to import and export files as follows:
+- Provide the address to your FTP server using the `FTP Host` field.
+- If you want to login with a specific user, provide the username in the `FTP User` field. Leave this blank to connect to the server anonymously (if allowed by the server).
+- If you want to export data to this FTP, you should set the `Writable?` slider to "Yes".
+- Please specify the port that Galaxy should use to connect to your FTP server using the `FTP Port` field.
+- In the `FTP Password` field provide the password to connect to the FTP server. Leave this blank to connect to the server anonymously (if allowed by the server).
 </div>
 <div class="Export-to-Google-Drive" markdown="1">
-- Add Export-to-Google-Drive
-- Text
-- Here
-- Please!
+- We recommend to login to your Google account first.
+- On the Galaxy website, click on `Select` button of `Export to Google Drive`. You will be redirected to the Google.
+- Pick the account that you want to connect to Galaxy for import and export. Grant the required permissions.
+- You will be back on the Galaxy portal and you can access your Google Drive for import and export (depending on your how you set up your accuont).
 </div>
 <div class="InvenioRDM" markdown="1">
-- Add InvenioRDM
-- Text
-- Here
-- Please!
+[InvenioRDM](https://inveniosoftware.org/) is a research data management platform that allows you to store, share, and publish research data. You can connect to an InvenioRDM instance of your choice by following these steps:
+- Please fill the address to your InvenioRDM in the following field: `InvenioRDM instance endpoint` (for example, https://inveniordm.web.cern.ch/). This should include the protocol (http or https).
+- Use the `Allow Galaxy to export data to InvenioRDM?` slider to give permission to Galaxy to export data to your repository or not.
 </div>
 <div class="S3-Compatible-Storage-with-Credentials" markdown="1">
-- Add S3-Compatible-Storage-with-Credentials
-- Text
-- Here
-- Please!
+- You should fill `Publication Name` with a name as the "creator" metadata of the records. This could be a person or an organization. You can later modify this. If left blank, an anonymous user will be used as the creator.
+- You should also enter your `Personal Access Token`. You can get this information in your InvenioRDM instance. Navigate to Account Settings. Then, go to Applications to generate a new token. This will allow Galaxy to display your draft records and upload files to them.
 </div>
 <div class="WebDAV" markdown="1">
-
-> Using WebDAV you can connect various services that supports WebDAV protocol such as OwnCloud and NextCloud among others. The configuration of WebDAV is slightly variable from service to service but the general principles apply everywhere.
-
-- Click on the `Select` button in the `WebDAV` section.
-- Give a `Name` to this repository. Optionally, you can also provide a `Description` for it.    
+Using WebDAV you can connect various services that supports WebDAV protocol such as OwnCloud and NextCloud among others. The configuration of WebDAV is slightly variable from service to service but the general principles apply everywhere.
+  
 - Provide the server address to this repository in the `Server Domain` field.
 - In the `WebDAV server Path`, you have to provide the path on this server to WebDAV.
 - In the `Username` field, you should write the username you use to login to this server.
-- You can grant write access for this repository using the `Writable?` (set to `yes`) and therefore make it possible to export datasets, histories, or workflows to your connected repository.
+- You can grant write access for this repository using the `Writable?` (set to `Yes`) and therefore make it possible to export datasets, histories, or workflows to your connected repository.
 
-> As an example, if I want to connect my nextCloud repository to my Galaxy account, I should login to my nextCloud server and find the information from `File settings` (bottom left of the page) under the WebDAV section to fill this template. It could be something like: `https://server_address.com/remote.php/dav/files/username_or_text`. Then, `Server Domain` is `https://server_address.com` and `WebDAV server Path` is `remote.php/dav/files/username_or_text`.
+> As an example, if I want to connect my nextCloud repository to my Galaxy account, I should login to my nextCloud server and find the information from `File settings` (bottom left of the page) under the WebDAV section to fill this template. It could be something like: `https://server_address.com/remote.php/dav/files/username_or_text`. Here, the `Server Domain` is `https://server_address.com` and `WebDAV server Path` is `remote.php/dav/files/username_or_text`.
 
 In some cases, you may need to activate some features on your ownCloud or nextCloud to allow this integration. For example, some nextCloud servers require the user to use "App Passwords". This can be done using the `Settings > Security > Devices & sessions > Create new app password`.
 </div>
 <div class="Zenodo" markdown="1">
-- Add Zenodo
-- Text
-- Here
-- Please!
+[Zenodo](https://zenodo.org/) is an open-access repository for research data, software, publications, and other digital artifacts. It is developed and maintained by [CERN](https://home.cern/) and funded by the European Commission as part of the [OpenAIRE](https://www.openaire.eu/) project. Zenodo provides a free platform for researchers to share and preserve their work, ensuring long-term access and reproducibility. Zenodo is widely used by researchers, institutions, and organizations to share scientific knowledge and comply with open-access mandates from funding agencies.
+- Using the `Allow Galaxy to export data to Zenodo?`, you can decide whether you like to give write access to Galaxy or not. Set it to "Yes" if you want to export data from Galaxy to Zenodo, set it to "No" if you only need to import data from Zenodo to Galaxy.
+- Provide a name for the "creator" metadata of your records on Zenodo using the `Publication Name` field.  You can always change this value later by editing the records in Zenodo. If left blank, an anonymous user will be used as the creator.
+- You have to provide a `Personal Access Token` from your Zenodo account to Galaxy. To do so, you need to log into your account. Then, visit this site: https://zenodo.org/account/settings/applications/. Alternatively, you can click on your username on top right and then click on "Applications". Here, you need to create a "Personal Access Token". This will allow Galaxy to display your draft records and upload files to them. If you enabled the option to export data from Galaxy to Zenodo, make sure to enable the **deposit:write** scope when creating the token.
 </div>
