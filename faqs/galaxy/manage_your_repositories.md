@@ -119,11 +119,24 @@ In some cases, you may need to activate some features on your ownCloud or nextCl
 
 > <tip-title>What can you do after you connected a repository</tip-title>
 >
+> #### Importing data to your Galaxy account
+>
 > When you connect a repository to your Galaxy account, you can use it to import data to Galaxy. To do so, you can click on the `Upload` Icon on the left panel. In the poped up window, you can click on `Choose from repository` to select a repository that you have added to your account. Navigate to a file that you want to upload to your Galaxy account, check the box of the file, and click on `Select`. You can determine the format of the file, give it a name, and then click on `Start` to upload the file to your Galaxy account.
 > 
-> If you have given Galaxy the permission to write to your repository, you can export your histories and datasets and reulsts in the history to that repository.
+> #### Exporting histories, datasets, and results to connected repositories
+>
+> If you have given Galaxy the permission to write to your repository, you can export your histories, datasets and reulsts in the history to that repository.
+>
+> ##### Histories
 > 
 > If you want to export a history, you should click on the History Options icon ({% icon galaxy-history-options %}) on the right panel. Then, you can click on `Export History to File`. Next, you can click on `to repository` on the middle panel. If you click on the `Click to select directory`, there will be a pop up window. Here, you can pick a repository that you have added to your account and when you are in that repository, click on `Select`. You can give a `Name` to your exported history, so you can find it easier in your connected repository. Finally, click on `Export` to write the history to your repository. Similarly, you can use `to RDM repository` or `to Zenodo` instead of the `to repository` option in the middle panel to export your history to connected RDM repositories or Zenodo.
 >
 > To have more options on exporting your history, you can click on `Show advanced export options` on top of the middle panel. This provides further control over the format and datasets that will be included in your exported history.
+>
+> ##### Datasets
+>
+> If you are interested to export a single dataset or results to a connected repository, you can use a tool called {% tool [Export datasets](https://usegalaxy.eu/root?tool_id=export_remote) %}.
+> 1. Select the desired option from `What would you like to export?`.
+> 2. Using the `Directory URI` option, you can `Select` a connected repository. You can also give it a directory name here.
+> 3. We recommend to export the metadata with your datasets and results using the `Include metadata files in export?`.
 {: .tip}
