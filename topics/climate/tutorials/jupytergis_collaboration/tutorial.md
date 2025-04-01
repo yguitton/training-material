@@ -89,21 +89,21 @@ When you make changes to your GIS file such as adding a new layer, or updating t
 > 1. As the lead user, open the layer browser and select **OpenStreetMap.Mapnik**. Notice that all users in the session can see the new layer in real time.
 > 2. Ask one of the collaborators to add the World Administrative Boundaries layer using the add shapefile layer menu.
 >     ```https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/world-administrative-boundaries/exports/shp```
-> 3. Change the fill color to red. You can check the [Getting Started with JupyterGIS](https://jupytergis.readthedocs.io/en/latest/user_guide/tutorials/01-intro/index.html) tutorial for more details on how to customize the layer appearance.
-> 4. Ask one of the collaborators to set the opacity to 0.5.
+> 3. Change the fill color to yellow. You can check the [Getting Started with JupyterGIS](https://jupytergis.readthedocs.io/en/latest/user_guide/tutorials/01-intro/index.html) tutorial for more details on how to customize the layer appearance.
+> 4. Ask one of the collaborators to set the opacity to 0.2.
 {: .hands_on}
-> 5. 
+
 > <question-title>Adding a New Layer</question-title>
 > 
-> As the lead user, add the World Air Quality GeoJSON layer:
+> As the lead user, add the Libraries in France shapefile layer:
 > ```
-> https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/openaq/exports/geojson
+> https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/osm-france-library/exports/shp
 > ```
 > 
 >
 > > <solution-title></solution-title>
 > >
-> > - You can add the GeoJSON URL by clicking **+** → **New Vector Layer** → **Add GeoJSON Layer** → pasting the provided URL.
+> > - You can add the layer by clicking **+** → **New Vector Layer** → **Add Shapefile Layer** → pasting the provided URL.
 > {: .solution}
 {: .question}
 
@@ -167,9 +167,8 @@ Real-time collaboration in notebooks is a powerful tool for teams working on cod
 >    doc = GISDocument('untitled.jGIS')
 >    doc
 >    ```
-> 4. Add the following shapefile layer of the libraries in France in your GIS document, and rename the layer to "libraries":
->    ```https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/osm-france-library/exports/shp```
-> 5. Find the layer ID of the added layer by listing all layers in the GIS document.
+> 4. Rename the "Custom Shapefile Layer" to "libraries" in the GIS file. 
+> 5. Find the layer ID of the libraries layer.
 >    ```python
 >    layers = doc.layers
 >    libraries_layer_id = None
@@ -188,6 +187,8 @@ Real-time collaboration in notebooks is a powerful tool for teams working on cod
 > <question-title></question-title>
 >
 > - Create a new notebook and load your GIS document.
+> - In the GIS file, add a new layer with the following URL:
+>    ```https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/openaq/exports/geojson```
 > - Ask your colleague to open the notebook, write the code to remove the air quality layer of the GIS file and run the code cell.
 > 
 > > <solution-title></solution-title>
@@ -197,15 +198,16 @@ Real-time collaboration in notebooks is a powerful tool for teams working on cod
 > >   from jupytergis import GISDocument
 > >   doc = GISDocument("untitled.jGIS")
 > >   ```
+> > - Add the air quality layer by clicking **+** → **New Vector Layer** → **Add GeoJSON Layer** → pasting the provided URL.
 > > - Your colleague can add and execute the following code to list all layers:
-> > ```python
-> > doc.layers
-> > ```
+> >   ```python
+> >   doc.layers
+> >   ```
 > > - Then they can find the air quality layer ID (the layer with the name Custom GeoJSON Layer) and remove it using:
-> > ```python
-> > air_quality_layer_id = "your_layer_id"
-> > doc.remove_layer(air_quality_layer_id)
-> > ````
+> >   ```python
+> >   air_quality_layer_id = "your_layer_id"
+> >   doc.remove_layer(air_quality_layer_id)
+> >   ````
 > > 
 > {: .solution}
 {: .question}
