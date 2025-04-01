@@ -82,28 +82,27 @@ In this section, we will explore how to collaborate on a GIS file in real time. 
 
 When you make changes to your GIS file such as adding a new layer, or updating the layer appearance, the changes are reflected for all collaborators in your session in real time.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3FbvYg3G9Gk?si=CsppZltaUIoSWFeH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 > <hands-on-title>Adding and Editing Layers</hands-on-title>
 >
 > 1. As the lead user, open the layer browser and select **OpenStreetMap.Mapnik**. Notice that all users in the session can see the new layer in real time.
-> 2. Ask one of the collaborators to add the World Administrative Boundaries layer using the add shapefile layer menu.
->     ```https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/world-administrative-boundaries/exports/shp```
-> 3. Change the fill color to yellow. You can check the [Getting Started with JupyterGIS](https://jupytergis.readthedocs.io/en/latest/user_guide/tutorials/01-intro/index.html) tutorial for more details on how to customize the layer appearance.
-> 4. Ask one of the collaborators to set the opacity to 0.2.
+> 2. Ask one of the collaborators to add the Libraries in France shapefile layer using the add shapefile layer menu by clicking **+** → **New Vector Layer** → **New Shapefile Layer** → pasting the provided URL.
+>     ```https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/osm-france-library/exports/shp```
+>     <iframe width="560" height="315" src="https://www.youtube.com/embed/3FbvYg3G9Gk?si=CsppZltaUIoSWFeH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 {: .hands_on}
 
 > <question-title>Adding a New Layer</question-title>
 > 
-> As the lead user, add the Libraries in France shapefile layer:
-> ```
-> https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/osm-france-library/exports/shp
-> ```
-> 
+> 1. As the lead user, add the World Administrative Boundaries layer using the add shapefile layer menu.
+>     ```https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/world-administrative-boundaries/exports/shp```
+> 2. Change the fill color to yellow.
+> 3. Ask one of the collaborators to set the opacity to 0.2.
 >
 > > <solution-title></solution-title>
 > >
-> > - You can add the layer by clicking **+** → **New Vector Layer** → **Add Shapefile Layer** → pasting the provided URL.
+> > - You can add the layer by clicking **+** → **New Vector Layer** → **New Shapefile Layer** → pasting the provided URL.
+> > - To change the fill color, click on the layer in the left sidebar, then select **Edit Symbology** and choose yellow for the fill color. You can check the [Getting Started with JupyterGIS](https://jupytergis.readthedocs.io/en/latest/user_guide/tutorials/01-intro/index.html) tutorial for more details on how to customize the layer appearance.
+> > - To set the opacity to 0.2, the collaborating user can click on the layer in the left sidebar, then adjust the opacity slider to 0.2 on the right sidebar, then click **Ok**.
 > {: .solution}
 {: .question}
 
@@ -132,6 +131,16 @@ Follow mode allows you to track another user’s activity in the document in rea
 >     <iframe width="560" height="315" src="https://www.youtube.com/embed/-WzV1rcPlEw?si=usi8MbzoIBoXfHwm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 {: .hands_on}
 ---
+
+> <question-title>Using Follow Mode</question-title>
+>
+> - When you activate follow mode, what color appears around the document frame?
+> - Ask one of the collaborators to activate follow mode on you.
+> - What color do they see?
+> > > <solution-title></solution-title>
+> > > - The color of the frame is the same as the color of the user icon. This indicates the user whose activity is being followed.
+> {: .solution}
+{: .question}
 
 # Adding Annotations and Comments
 Annotations and comments let you add notes directly on your GIS file, which makes it easier for your team to track important details, provide context, ask questions, or share insights.
@@ -189,7 +198,7 @@ Real-time collaboration in notebooks is a powerful tool for teams working on cod
 > - Create a new notebook and load your GIS document.
 > - In the GIS file, add a new layer with the following URL:
 >    ```https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/openaq/exports/geojson```
-> - Ask your colleague to open the notebook, write the code to remove the air quality layer of the GIS file and run the code cell.
+> - Ask one of the collaborators to open the notebook, write the code to remove the air quality layer of the GIS file and run the code cell.
 > 
 > > <solution-title></solution-title>
 > > - Create a new notebook from the JupyterLab launcher (select Python kernel).
@@ -199,7 +208,7 @@ Real-time collaboration in notebooks is a powerful tool for teams working on cod
 > >   doc = GISDocument("untitled.jGIS")
 > >   ```
 > > - Add the air quality layer by clicking **+** → **New Vector Layer** → **Add GeoJSON Layer** → pasting the provided URL.
-> > - Your colleague can add and execute the following code to list all layers:
+> > - The collaborator can add and execute the following code to list all layers:
 > >   ```python
 > >   doc.layers
 > >   ```
