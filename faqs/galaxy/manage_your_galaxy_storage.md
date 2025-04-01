@@ -6,7 +6,7 @@ box_type: tip
 contributors: [dadrasarmin]
 ---
 
-Now, it is possible to bring your own Storage to Galaxy for computation and storage of your results. You can add more storage options to your account by following these steps:
+Now, it is possible to bring your own Storage to Galaxy for computation, storage, and archiving of your results. You can add more storage options to your account by following these steps:
 
 - Click on your Username on top right part of the website and then click on `Preferences`.
 - From the middle panel, click on the `Manage Your Galaxy Storage` (previously called `Storage location`).
@@ -18,7 +18,7 @@ For all of the possible storage options, you should fill the following fields:
 - Optionally, you can provide a `Description` for this Storage. This is a note for yourself.
 
 
-{% include _includes/cyoa-choices.html option1="Onedata Storage" option2="Amazon Web Services S3 Storage" option3="Azure Blob Storage" option4="Google Cloud Storage" option5="Any S3 Compatible Storage" default="Onedata Storage" text="Select the Storage you like to add to your Galaxy account." disambiguation="BYOS" %}
+{% include _includes/cyoa-choices.html option1="Onedata Storage" option2="Amazon Web Services S3 Storage" option3="Azure Blob Storage" option4="Google Cloud Storage" option5="Any S3 Compatible Storage" default="Any S3 Compatible Storage" text="Select the Storage you like to add to your Galaxy account." disambiguation="BYOS" %}
 
 <div class="Onedata-Storage" markdown="1">
 If you have an account in [Onedata](https://onedata.org/), you can use such an object store as a Storage for your Galaxy datasets; they will be stored in the Onedata space of your choice. The minimal supported Onezone version is 21.02.4. More information on Onedata can be found on [Onedata's website](https://onedata.org/#/home).
@@ -32,7 +32,7 @@ There are extensive tutorials for setting up and utilizing of OneData on Galaxy 
 In short, you can connect your Galaxy account to an Onedata Storage as follows:
 
 - In the `Onezone domain` field, please fill in the address to your `Onezone` domain. It could be something like "datahub.egi.eu".
-- In case you want to disable validation of SSL certificates, you can use `Disable tls certificate validation?` slider. However, we strongly recommend you to not use this option unless you know what your are doing.
+- In case you want to disable validation of SSL certificates, you can use `Disable tls certificate validation?` option. However, we strongly recommend you to not use this option unless you know what your are doing.
 - Provide name of a space that Galaxy data will be stored on Onedata using `Space Name`. If there is more than one space with the same name, you can explicitly specify which one to select by using the format `<space_name>@<space_id>` (for example `demo@7285220ecc636075ae5759aec7ad65d3cha8f9`).
 - If you want to provide a path to store Galaxy data, you can use the `Galaxy root directory` field. If this field is empty, the data will be stored in the space's root directory.
 - You should provide an `Access Token` to Galaxy for the Onedata space. Your [access token](https://onedata.org/#/home/documentation/topic/stable/tokens), suitable for REST API access in a Oneprovider service. **Must** allow both read and write data access.
@@ -69,3 +69,17 @@ The APIs used to connect to Amazon's S3 (Simple Storage Service) have become som
 - `Secret Access Key` compliment your `Access Key ID` to connect to the S3 compatible storage. The [Amazon documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) calls these an "secret access key" and the [CloudFlare documentation](https://developers.cloudflare.com/r2/examples/aws/boto3/) describes these as "aws_secret_access_key". Internally to Galaxy, we often just call this the "secret_key".
 - Click on `Create`.
 </div>
+
+> <tip-title>What can you do after you connected a Storage</tip-title>
+>
+> You can pick the connected Storage for your analysis as follows:
+> 1. Click on your username. Click on `Preferences`.
+> 2. Click on `Preferred Galaxy Storage`. Here, you can pick the Storage of your choice. The default option is Galaxy Storage.
+>
+> Instead of using a default storage location for your account, it is also possible to select it at different levels: per **History**, per **Tool**, and **Workflow**.
+> 
+> To set a Storage for a specific **History**, you should click on the Galaxy History Storage choice ({% icon galaxy-history-storage-choice %}) icon on the right panel. Then, select the added external storage as the preferred storage location for the **History**. If you execute a **Workflow** in this history, the all results of the workflow will be stored in the external storage (that you selected).
+> To verify it, you can click on the Dataset details icon ({% icon details %}) of a job on the right panel and you can see that the user's external storage is used as the "Dataset Storage".
+>
+> Of course, if instead of a **workflow**, you can run just one **tool** using your connected Storage. To do this, you have to set the Galaxy History Storage choice ({% icon galaxy-history-storage-choice %}) as discribed above. Then, you can run one (or more) **tool** in this history and the results will be available on your Storage.
+{: .tip}
