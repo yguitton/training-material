@@ -81,5 +81,5 @@ The APIs used to connect to Amazon's S3 (Simple Storage Service) have become som
 > To set a Storage for a specific **History**, you should click on the Galaxy History Storage choice ({% icon galaxy-history-storage-choice %}) icon on the right panel. Then, select the added external storage as the preferred storage location for the **History**. If you execute a **Workflow** in this history, the all results of the workflow will be stored in the external storage (that you selected).
 > To verify it, you can click on the Dataset details icon ({% icon details %}) of a job on the right panel and you can see that the user's external storage is used as the "Dataset Storage".
 >
-> Of course, if instead of a **workflow**, you can run just one **tool** using your connected Storage. To do this, you have to set the Galaxy History Storage choice ({% icon galaxy-history-storage-choice %}) as discribed above. Then, you can run one (or more) **tool** in this history and the results will be available on your Storage.
+> Of course, if instead of a **workflow**, you can run just one **tool** using your connected Storage. To do this, you have to set the Galaxy History Storage choice ({% icon galaxy-history-storage-choice %}) as described above. Then, you can run one (or more) **tool** in this history and the results will be available on your Storage.
 {: .tip}
