@@ -32,9 +32,10 @@ real-time editing, annotations, and interactive features that allow teams to sea
 >
 > 1. Launching Your Collaborative Session
 > 2. Real-Time Collaboration on a GIS File
-> 3. Using Follow Mode
-> 4. Adding Annotations and Comments
-> 5. Collaborating on Notebooks
+> 3. Tracking Collaborators with Cursors
+> 4. Using Follow Mode
+> 5. Adding Annotations and Comments
+> 6. Collaborating on Notebooks (Optional)
 > {:toc}
 {: .agenda}
 
@@ -50,7 +51,7 @@ real-time editing, annotations, and interactive features that allow teams to sea
 
 # Launching Your Collaborative Session
 
-In this section, we will learn how to launch a collaborative session in JupyterGIS and invite collaborators to join. This section of the tutorial is required to be completed by only one user (the hosting user) in the session.
+In this section, we will learn how to launch a collaborative session in JupyterGIS and invite collaborators to join. This section of the tutorial is required to be completed by only one user (the lead user) in the session.
 
 > <hands-on-title>Starting a Collaborative Session</hands-on-title>
 >
@@ -77,95 +78,114 @@ In this section, we will learn how to launch a collaborative session in JupyterG
 
 # Real-Time Collaboration on a GIS File
 
-In this section, we will explore how to collaborate on a GIS file in real time. This section of the tutorial is required to be completed by both the hosting and the collaborating users in the session.
+In this section, we will explore how to collaborate on a GIS file in real time. The remaining sections of the tutorial are required to be completed by both the lead and the collaborating users in the session.
 
-## Adding and Editing Layers
-When you add a new layer to your GIS file, the new layer appears immediately for all collaborators in your session. You can experiment by adding a layer from the layer browser or from the add layer menu, and customizing its symbology, such as changing the opacity or color. Observe that each change is instantly visible to your collaborators. You can check the [Getting Started with JupyterGIS](../01-intro/index.md) tutorial for more details on how to customize the layer appearance.
+When you add a new layer to your GIS file, or update the layer appearance, the changes are reflected for all collaborators in your session in real time.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3FbvYg3G9Gk?si=CsppZltaUIoSWFeH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-## Tracking Collaborators with Cursors
+
+> <hands-on-title>Adding and Editing Layers</hands-on-title>
+>
+> 1. As the lead user, open the layer browser and select **OpenStreetMap.Mapnik**. Notice that all users in the session can see the new layer in real time.
+> 2. Ask one of the collaborators to add the World Administrative Boundaries layer using the add shapefile layer menu.
+>     ```https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/world-administrative-boundaries/exports/shp```
+> 3. Change the fill color to red. You can check the [Getting Started with JupyterGIS](https://jupytergis.readthedocs.io/en/latest/user_guide/tutorials/01-intro/index.html) tutorial for more details on how to customize the layer appearance.
+> 4. Ask one of the collaborators to set the opacity to 0.5.
+{: .hands_on}
+> 5. 
+> <question-title>Adding a New Layer</question-title>
+> 
+> As the lead user, add the World Air Quality GeoJSON layer:
+> ```
+> https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/openaq/exports/geojson
+> ```
+> 
+>
+> > <solution-title></solution-title>
+> >
+> > - You can add the GeoJSON URL by clicking **+** → **New Vector Layer** → **Add GeoJSON Layer** → pasting the provided URL.
+> {: .solution}
+{: .question}
+
+# Tracking Collaborators with Cursors
 Each user's cursor appears on the document in the same color as their icon. This feature makes it easy to see what your teammates are focused on.
 You can click on a cursor to display the location (latitude and longitude) where collaborators are working.
 
 ![Cursor](../../images/jupytergis_collaboration/cursor.png)
+
+> <hands-on-title>Tracking Collaborators with Cursors</hands-on-title>
+>
+> 1. Ask one of the collaborators to move their cursor around the document.
+> 2. Spot the cursor and click on it to see the latitude and longitude their cursor is pointing.
+{: .hands_on}
 
 ---
 
 # Using Follow Mode
 Follow mode allows you to track another user’s activity in the document in real time. When enabled, you’ll see their actions as they navigate and edit. This feature is ideal for live demonstrations, interactive sessions, and collaborative meetings, as it lets you quickly align your view with a teammate’s actions and provide immediate feedback.
 
-## Activating Follow Mode
-To activate the follow mode, click on a collaborator's user icon in the upper right corner. Observe that the document will then have a frame in their assigned color. You can click on the user icon again to exit follow mode.
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/-WzV1rcPlEw?si=usi8MbzoIBoXfHwm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-> <question-title></question-title>
-> 
-> - Create a new collaborative JupyterGIS session.
-> - Share the link with a colleague. If you are using a local installation, you can open a new browser and paste the link to simulate a different user.
-> - From the layer browser, add OpenStreetMap.Mapnik to your GIS file.
-> - Ask your colleague to add the World Air Quality GeoJSON layer:
-> 
-> ```
-> https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/openaq/exports/geojson
-> ```
-> 
-> - Locate your colleague's cursor on the document.
-> - Enable follow mode to track your colleagues' actions.
+> <hands-on-title>Activating Follow Mode</hands-on-title>
 >
-> > <solution-title></solution-title>
-> >
-> > - Open a new GIS file in JupyterGIS. Click the **Share** button and copy the link. Send this to your colleague.
-> > - In the layer browser, select **OpenStreetMap.Mapnik**.
-> > - Your colleague can add the GeoJSON URL by clicking **+** → **New Vector Layer** → **Add GeoJSON Layer** → pasting the provided URL.
-> > - You can find their cursor on the map.
-> > - Click on your colleague's icon in the top right corner to activate **Follow Mode**. Your screen will follow their movements and edits in real time.
-> >
-> {: .solution}
-{: .question}
+> 1. Click on a collaborator's user icon in the upper right corner to activate the follow mode. Observe that the document will then have a frame in their assigned color.
+> 2. Ask the followed user to pan and zoom the map. Notice that your screen will follow their movements in real time.
+> 3. Click on the user icon again to exit follow mode.
+>     <iframe width="560" height="315" src="https://www.youtube.com/embed/-WzV1rcPlEw?si=usi8MbzoIBoXfHwm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+{: .hands_on}
 ---
 
 # Adding Annotations and Comments
 Annotations and comments let you add notes directly on your GIS file, which makes it easier for your team to track important details, provide context, ask questions, or share insights.
 
-## Creating Annotations
-In order to create annotations, you can right-click anywhere on your GIS file to open the context menu, then select **Add Annotation** from the menu. Observe that all collaborators can see the new annotation in real time.
-
-## Adding and Viewing Comments
-Once you add an annotation, you can click on it to type your comment. You can open the right sidebar to view all annotations and comments in the document and click on the middle button to locate the annotation.
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QqscEokpWIA?si=ZUEU4k6gPkVgqRuN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-> <question-title></question-title>
+> <hands-on-title>Adding Annotations and Comments</hands-on-title>
 >
-> - Add an annotation to your GIS file. Then, add a comment to the annotation.
-> - Ask your colleague to locate the annotation and add a reply.
-> - Locate your colleague's reply from the right sidebar.
->
-> > <solution-title></solution-title>
-> >
-> > - Right-click on the desired location on your map.
-> > - Choose **Add Annotation**, click on the annotation and enter your comment.
-> > - Your colleague can see your annotation instantly; they can click it and reply.
-> > - Open the annotations panel on the right sidebar to view their reply.
-> > 
-> {: .solution}
-{: .question}
+> 1. Right-click anywhere on your GIS file to open the context menu, then select **Add Annotation** from the menu to create an annotation. All collaborators can see the new annotation in real time.
+> 2. Click on the created annotation and type a comment.
+> 3. Ask one of the collaborators to open the right sidebar to view all annotations and comments in the document, and click on the middle button to locate the annotation.
+> 4. Click on the user icon again to exit follow mode.
+>     <iframe width="560" height="315" src="https://www.youtube.com/embed/QqscEokpWIA?si=ZUEU4k6gPkVgqRuN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+{: .hands_on}
 
 ---
 
-# Collaborating on Notebooks
+# Collaborating on Notebooks (Optional)
 Real-time collaboration in notebooks is a powerful tool for teams working on code together. It enables multiple users to write, edit, and run code simultaneously. This feature is ideal for live coding sessions, debugging, and data analysis projects.
 
-## Accessing a Shared Notebook
-To create a notebook, you can click on the **+** icon to open the Launcher, then select one of the kernels under **Notebook**.
-![Notebook](../../images/jupytergis_collaboration/create_notebook.png)
+> <tip-title>Prerequisite</tip-title>
+>
+> This section requires basic Python programming knowledge. If you are not familiar with Python, we recommend completing the [Introduction to Python](https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-basics/tutorial.html) tutorial first.
+{: .tip}
 
-Once a notebook is created, it is automatically accessible to all collaborators—no additional sharing is needed. To open a shared notebook, you can click on the explorer button in the left sidebar, then locate and click on the notebook. Anyone in the session can open, edit, and run the notebook.
-![Notebook](../../images/jupytergis_collaboration/open_notebook.png)
+> <hands-on-title>Real-Time Code Collaboration</hands-on-title>
+>
+> 1. Click on the **+** icon to open the Launcher, then select the Python kernel under **Notebook** to create a notebook. Once a notebook is created, it is automatically accessible to all collaborators—no additional sharing is needed.
+>     ![Notebook](../../images/jupytergis_collaboration/create_notebook.png)
+> 2. Ask one of the collaborators to open the newly created notebook by clicking on the explorer button in the left sidebar, then locating and clicking on the notebook. Anyone in the session can open, edit, and run the notebooks.
+>     ![Notebook](../../images/jupytergis_collaboration/open_notebook.png)
+> 3. As you write or execute code, every change is visible to your team instantly. Create a new code cell and write the following code. Notice that all collaborators can see the code in real time.
+>    ```python
+>    from jupytergis import GISDocument
+>    doc = GISDocument('untitled.jGIS')
+>    doc
+>    ```
+> 4. Add the following shapefile layer of the libraries in France in your GIS document, and rename the layer to "libraries":
+>    ```https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/osm-france-library/exports/shp```
+> 5. Find the layer ID of the added layer by listing all layers in the GIS document.
+>    ```python
+>    layers = doc.layers
+>    libraries_layer_id = None
+>    for layer_id, data in layers.items():
+>        if data.get("name", "").lower() == "libraries":
+>            libraries_layer_id = layer_id
+>            break
+>    ```
+> 6. Ask one of the collaborators to filter all libraries that have wheelchair access. They can do this by running the following code:
+>    ```python
+>    doc.add_filter(libraries_layer_id, 'all', 'wheelchair', '==', 'yes')
+>    ```
+> <iframe width="560" height="315" src="https://www.youtube.com/embed/H5Pkg5zOSwA?si=DK9nSSMpV5nRK-BZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+{: .hands_on}
 
-## Real-Time Code Collaboration
-As you write or execute code, every change is visible to your team instantly. Multiple users can write, edit, and run code in the same notebook at the same time for a dynamic,interactive coding experience.
-<iframe width="560" height="315" src="https://www.youtube.com/embed/H5Pkg5zOSwA?si=DK9nSSMpV5nRK-BZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 > <question-title></question-title>
 >
 > - Create a new notebook and load your GIS document.
@@ -176,7 +196,7 @@ As you write or execute code, every change is visible to your team instantly. Mu
 > > - Load your GIS document using the following Python code:
 > >   ```python
 > >   from jupytergis import GISDocument
-> >   doc = GISDocument("your_project_name.jGIS")
+> >   doc = GISDocument("untitled.jGIS")
 > >   ```
 > > - Your colleague can add and execute the following code to list all layers:
 > > ```python
