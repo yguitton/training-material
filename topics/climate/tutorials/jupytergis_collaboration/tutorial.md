@@ -80,7 +80,7 @@ In this section, we will learn how to launch a collaborative session in JupyterG
 
 In this section, we will explore how to collaborate on a GIS file in real time. The remaining sections of the tutorial are required to be completed by both the lead and the collaborating users in the session.
 
-When you add a new layer to your GIS file, or update the layer appearance, the changes are reflected for all collaborators in your session in real time.
+When you make changes to your GIS file such as adding a new layer, or updating the layer appearance, the changes are reflected for all collaborators in your session in real time.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3FbvYg3G9Gk?si=CsppZltaUIoSWFeH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -130,7 +130,6 @@ Follow mode allows you to track another user’s activity in the document in rea
 > 2. Ask the followed user to pan and zoom the map. Notice that your screen will follow their movements in real time.
 > 3. Click on the user icon again to exit follow mode.
 >     <iframe width="560" height="315" src="https://www.youtube.com/embed/-WzV1rcPlEw?si=usi8MbzoIBoXfHwm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
 {: .hands_on}
 ---
 
