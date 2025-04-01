@@ -6,7 +6,7 @@ box_type: tip
 contributors: [dadrasarmin]
 ---
 
-Here, we are going to briefly explain how you can Bring-Your-Own-Data to Galaxy or export your dataset, results, history, or workflows to 3rd party repositories. In order to add a new repository to your account follow these steps:
+Here, we are going to briefly explain how you can Bring-Your-Own-Data to Galaxy or export your dataset, results, or history to 3rd party repositories. In order to add a new repository to your account follow these steps:
 
 - Click on your Username on top right part of the website and then click on `Preferences`.
 - From the middle panel, click on the `Manage Your Repositories` (previously called `Manage your remote file sources`).
@@ -32,9 +32,9 @@ There are extensive tutorials for setting up and utilizing of OneData on Galaxy 
 In short, you can connect your Galaxy account to an Onedata repository as follows:
 
 - In the `Onezone domain` field, please fill in the address to your `Onezone` domain. It could be something like "datahub.egi.eu".
-- Using the `Writable?` slider you can decide whether to grant access to Galaxy to export (write) to your Onedata or not.
+- Using the `Writable?` option you can decide whether to grant access to Galaxy to export (write) to your Onedata or not.
 - You should provide an `Access Token` to Galaxy so it can read (import) and write (export) data to your OneData. Read more on [access tokens here](https://onedata.org/#/home/documentation/21.02/user-guide/tokens.html). You can limit the access to read-only data access, unless you wish to export data to your repository (write permissions are needed then).
-- In case you want to disable validation of SSL certificates, you can use `Disable tls certificate validation?` slider. However, we strongly recommend you to not use this option unless you know what your are doing.
+- In case you want to disable validation of SSL certificates, you can use `Disable tls certificate validation?` option. However, we strongly recommend you to not use this option unless you know what your are doing.
 - Click on `Create`.
 </div>
 <div class="Amazon-Web-Services-Private-Bucket" markdown="1">
@@ -51,9 +51,9 @@ To connect anonymously to an AWS public bucket using your Galaxy account, you ne
 To setup access to your [Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction) within the Galaxy, follow the steps:
 - Provide the name of your Azure Blob Storage account in the `Container Name` field. More information about container's name could be found on [the Microsoft documentation here](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction#containers).
 - Fill the `Storage Account Name` based on your account. More information is available [on the Microsoft website](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-- Using the `Hierarchical?` slider you can determine whether your storage is hierarchical or not. More information on Data Lake Storage namespaces can be found in the [Azure Blob Storage documentation](https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-namespace).
+- Using the `Hierarchical?` option you can determine whether your storage is hierarchical or not. More information on Data Lake Storage namespaces can be found in the [Azure Blob Storage documentation](https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-namespace).
 - Please provide the account access key to your Azur Blob Storage account, using `Account Key` field. This is the documentation on [Managing storage account access keys](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage?tabs=azure-portal).
-- If you want to be able to export data to your Azure Blob Storage container, please set `Writable?` slider to "Yes".
+- If you want to be able to export data to your Azure Blob Storage container, please set `Writable?` option to "Yes".
 - Click on `Create`.
 </div>
 <div class="Dropbox" markdown="1">
@@ -73,7 +73,7 @@ To setup access to your [Azure Blob Storage](https://learn.microsoft.com/en-us/a
 You can setup connections to FTP and FTPS servers to import and export files as follows:
 - Provide the address to your FTP server using the `FTP Host` field.
 - If you want to login with a specific user, provide the username in the `FTP User` field. Leave this blank to connect to the server anonymously (if allowed by the server).
-- If you want to export data to this FTP, you should set the `Writable?` slider to "Yes".
+- If you want to export data to this FTP, you should set the `Writable?` option to "Yes".
 - Please specify the port that Galaxy should use to connect to your FTP server using the `FTP Port` field.
 - In the `FTP Password` field provide the password to connect to the FTP server. Leave this blank to connect to the server anonymously (if allowed by the server).
 - Click on `Create`.
@@ -88,7 +88,7 @@ You can setup connections to FTP and FTPS servers to import and export files as 
 <div class="InvenioRDM" markdown="1">
 [InvenioRDM](https://inveniosoftware.org/) is a research data management platform that allows you to store, share, and publish research data. You can connect to an InvenioRDM instance of your choice by following these steps:
 - Please fill the address to your InvenioRDM in the following field: `InvenioRDM instance endpoint` (for example, https://inveniordm.web.cern.ch/). This should include the protocol (http or https).
-- Use the `Allow Galaxy to export data to InvenioRDM?` slider to give permission to Galaxy to export data to your repository or not.
+- Use the `Allow Galaxy to export data to InvenioRDM?` option to give permission to Galaxy to export data to your repository or not.
 - Click on `Create`.
 </div>
 <div class="S3-Compatible-Storage-with-Credentials" markdown="1">
@@ -102,7 +102,7 @@ Using WebDAV you can connect various services that supports WebDAV protocol such
 - Provide the server address to this repository in the `Server Domain` field.
 - In the `WebDAV server Path`, you have to provide the path on this server to WebDAV.
 - In the `Username` field, you should write the username you use to login to this server.
-- You can grant write access for this repository using the `Writable?` (set to `Yes`) and therefore make it possible to export datasets, histories, or workflows to your connected repository.
+- You can grant write access for this repository using the `Writable?` (set to `Yes`) and therefore make it possible to export datasets, or histories to your connected repository.
 - Click on `Create`.
 
 > As an example, if I want to connect my nextCloud repository to my Galaxy account, I should login to my nextCloud server and find the information from `File settings` (bottom left of the page) under the WebDAV section to fill this template. It could be something like: `https://server_address.com/remote.php/dav/files/username_or_text`. Here, the `Server Domain` is `https://server_address.com` and `WebDAV server Path` is `remote.php/dav/files/username_or_text`.
@@ -116,3 +116,15 @@ In some cases, you may need to activate some features on your ownCloud or nextCl
 - You have to provide a `Personal Access Token` from your Zenodo account to Galaxy. To do so, you need to log into your account. Then, visit this site: https://zenodo.org/account/settings/applications/. Alternatively, you can click on your username on top right and then click on "Applications". Here, you need to create a "Personal Access Token". This will allow Galaxy to display your draft records and upload files to them. If you enabled the option to export data from Galaxy to Zenodo, make sure to enable the **deposit:write** scope when creating the token.
 - Click on `Create`.
 </div>
+
+### Importing data to your Galaxy from a repository
+
+When you connect a repository to your Galaxy account, you can use it to import data to Galaxy. To do so, you can click on the `Upload` Icon on the left panel. In the poped up window, you can click on `Choose from repository` to select a repository that you have added to your account. Navigate to a file that you want to upload to your Galaxy account, check the box of the file, and click on `Select`. You can determine the format of the file, give it a name, and then click on `Start` to upload the file to your Galaxy account.
+
+### Exporting datasets, results, and history to a connected repository
+
+If you have given Galaxy the permission to write to your repository, you can export your histories and datasets and reulsts in the history to that repository.
+
+If you want to export a history, you should click on the History Options icon ({% icon galaxy-history-options %}) on the right panel. Then, you can click on `Export History to File`. Next, you can click on `to repository` on the middle panel. If you click on the `Click to select directory`, there will be a pop up window. Here, you can pick a repository that you have added to your account and when you are in that repository, click on `Select`. You can give a `Name` to your exported history, so you can find it easier in your connected repository. Finally, click on `Export` to write the history to your repository. Similarly, you can use `to RDM repository` or `to Zenodo` instead of the `to repository` option in the middle panel to export your history to connected RDM repositories or Zenodo.
+
+To have more options on exporting your history, you can click on `Show advanced export options` on top of the middle panel. This provides further control over the format and datasets that will be included in your exported history.
