@@ -26,16 +26,22 @@ tags:
 contributions:
   authorship:
     - hexhowells
-  reviewing:
+  testing:
     - carloscheemendonca
   funding:
-    - elixir-fair-data
+    - elixir-uk-dash
 
 follow_up_training:
   -
     type: "internal"
     topic_name: single-cell
 
+requirements:
+  -
+    type: "internal"
+    topic_name: single-cell
+    tutorials:
+      - bulk-music
 ---
 
 There are various methods to estimate the proportions of cell types in bulk RNA data. Since the actual cell proportions of the data are unknown, how do we know if our tools are producing accurate results?
@@ -100,7 +106,7 @@ Before continuing lets quickly inspect our single-cell data. We can find all of 
 >
 {: .hands_on}
 
-We can see from the output table below, there are various cell types present in the data. Note that many of the cell types have very low proportion values, this should be kept in mind later on as cell types that appear only a hand full of times (or even just once!) in the data may not be very useful and only add noise. 
+We can see from the output table below, there are various cell types present in the data. Note that many of the cell types have very low proportion values, this should be kept in mind later on as cell types that appear only a hand full of times (or even just once!) in the data may not be very useful and only add noise.
 
 | Cell Type               | Count |
 |-------------------------|-------|
@@ -182,7 +188,7 @@ We are now going to run our first workflow! This workflow will extract a subsamp
 1. Count the cell types and proportions of the data in order to be used as reference later against the predicted proportion values
 2. Remove the cell types and convert the single-cell data into pseudo-bulk data to be later inputted into the deconvolution tools.
 
-The above will be done twice to emulate multiple "subjects". Since the deconvolution tools will be expecting the bulk-RNA data to comprise of at least 2 subjects (each with their own bulk data). For this tutorial our subjects will simply be called **A** and **B**. However, in the real world these subjects could be different patients, tissue samples, diseased/healthy, etc. 
+The above will be done twice to emulate multiple "subjects". Since the deconvolution tools will be expecting the bulk-RNA data to comprise of at least 2 subjects (each with their own bulk data). For this tutorial our subjects will simply be called **A** and **B**. However, in the real world these subjects could be different patients, tissue samples, diseased/healthy, etc.
 
 > <comment-title>Different Results</comment-title>
 > Note that since we are selecting 20 samples, each containing 200 randomly selected cells. The plots and results presented in this tutorial will differ from your own. There will be some similarities such as certain cells being in higher proportion to others but the exact values with differ!
@@ -330,7 +336,7 @@ The following table shows a snippet of the `Results Table` for the MuSiC tool. A
 | delta          | 0.070000            | 0.0929840465107452     |
 | ...            | ...                 | ...                    |
 
-Already at first glance we can see some interesting results! Firstly we can see that the tool is able to make predictions close to the actual values such as with `acinar, alpha, delta`. We also see the tool failing to make any type of prediction for `co-expression` cells with a predicted proportion value of 0. This however isn't a compete surprise since `co-expression` cells are of small proportion in the bulk and reference data. 
+Already at first glance we can see some interesting results! Firstly we can see that the tool is able to make predictions close to the actual values such as with `acinar, alpha, delta`. We also see the tool failing to make any type of prediction for `co-expression` cells with a predicted proportion value of 0. This however isn't a compete surprise since `co-expression` cells are of small proportion in the bulk and reference data.
 
 But this is only a small sample of the results. Lets create some visualisations to see the whole picture!
 
