@@ -135,7 +135,7 @@ In some cases, you may need to activate some features on your ownCloud or nextCl
 >
 > ##### Datasets
 >
-> If you are interested to export a single dataset or results to a connected repository, you can use a tool called "Export datasets".
+> If you are interested to export a single dataset or results to a connected repository, you can use a tool called {% tool [Export datasets](export_remote) %}.
 > 1. Select the desired option from `What would you like to export?`.
 > 2. Using the `Directory URI` option, you can `Select` a connected repository. You can also give it a directory name here.
 > 3. We recommend to export the metadata with your datasets and results using the `Include metadata files in export?`.
