@@ -19,7 +19,13 @@ program:
     description: |
       If you are new to Variant Analysis please start with the following tutorials. If you encounter any issue please ask us on Slack.  
     tutorials:
-      - name: exome-seq
+      - name: dip
+        topic: variant-analysis
+      - name: non-dip
+        topic: variant-analysis
+      - name: dunovo
+        topic: variant-analysis
+      - name: microbial-variants
         topic: variant-analysis
   - section: "Advanced analysis" 
     description: |
