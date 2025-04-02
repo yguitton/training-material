@@ -37,6 +37,7 @@ tags:
 - galaxy-interface
 - assembly
 - statistics
+- variant-analysis
 
 contributions:
     organisers:
@@ -62,7 +63,8 @@ contributions:
         - elichad
         - EngyNasr
         - emmaustin20
-        - GarethPrice-Aus
+        - GarethPrice
+        - khaled196
         - jdavcs
         - bernt-matthias
         - foellmelanie
@@ -106,6 +108,8 @@ infrastructure:
       name: Galaxy Main
     - server: https://usegalaxy.org.au/
       name: Galaxy AU
+    - server: https://usegalaxy.fr
+      name: Galaxy FR
   support:
     platform: Slack
 
@@ -184,6 +188,8 @@ program:
         link: events/tracks/gta2025-ml.md
       - title: From Zero to Hero with Python
         link: events/tracks/gta2025-bioNT.md
+      - title: Variant Analysis
+        link: events/tracks/gta2025-variant-analysis.md
 
   - section: "Friday: Grab bag"
     description: |

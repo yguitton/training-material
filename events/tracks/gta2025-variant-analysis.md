@@ -1,0 +1,36 @@
+---
+layout: event-track
+
+title: Variant Analysis
+description: Welcome to the Variant Analysis track. Here you can learn about Variant Analysis. If you need support during the event contact us via the Slack Channel.
+
+
+contributions:
+    organisers:
+        - khaled196
+    instructors:
+        - annasyme
+        - khaled196
+        - wm75
+
+
+program:
+  - section: "Variant Analysis introduction" 
+    description: |
+      If you are new to Variant Analysis please start with the following tutorials. If you encounter any issue please ask us on Slack.  
+    tutorials:
+      - name: exome-seq
+        topic: variant-analysis
+  - section: "Advanced analysis" 
+    description: |
+      Here are some more advanced tutorials you can follow if you like. If you encounter any issue please ask us on Slack.  
+    tutorials:
+      - name: somatic-variants
+        topic: variant-analysis
+      - name: somatic-variant-discovery
+        topic: variant-analysis
+      - name: beaconise_1000hg
+        topic: variant-analysis
+      - name: beacon_cnv_query
+        topic: variant-analysis
+---
