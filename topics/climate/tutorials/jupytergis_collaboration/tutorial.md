@@ -136,7 +136,9 @@ Follow mode allows you to track another user’s activity in the document in rea
 > - When you activate follow mode, what color appears around the document frame?
 > - Ask one of the collaborators to activate follow mode on you.
 > - What color do they see?
+> 
 > > <solution-title></solution-title>
+> > 
 > > - The color of the frame is the same as the color of the user icon. This indicates the user whose activity is being followed.
 > {: .solution}
 {: .question}
@@ -200,6 +202,7 @@ Real-time collaboration in notebooks is a powerful tool for teams working on cod
 > - Ask one of the collaborators to open the notebook, write the code to remove the air quality layer of the GIS file and run the code cell.
 > 
 > > <solution-title></solution-title>
+> >
 > > - Create a new notebook from the JupyterLab launcher (select Python kernel).
 > > - Load your GIS document using the following Python code:
 > >   ```python
