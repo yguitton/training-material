@@ -108,7 +108,7 @@ First, we will install Apptainer using Ansible. Since there is a package availab
 >       version: 0.2.21
 >    +# Singularity/Apptainer
 >    +- src: usegalaxy_eu.apptainer
->    +  version: 0.0.1
+>    +  version: 0.0.3
 >    {% endraw %}
 >    ```
 >    {: data-commit="Add Apptainer ansible roles"}
