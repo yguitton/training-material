@@ -1,6 +1,6 @@
 {
     "a_galaxy_workflow": "true",
-    "annotation": "This workflow performs taxonomic profiling of metagenomic data and visualizes microbial community composition using tools like Kraken2 and MetaPhlAn.",
+    "annotation": "This workflow performs taxonomic profiling of metagenomic data and visualizes microbial community composition using Kraken2 and Bracken as well as MetaPhlAn.",
     "comments": [],
     "creator": [
         {
