@@ -90,7 +90,8 @@ When you make changes to your GIS file such as adding a new layer, or updating t
 >    ```
 >    https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/osm-france-library/exports/shp
 >    ```
->     <iframe width="560" height="315" src="https://www.youtube.com/embed/3FbvYg3G9Gk?si=CsppZltaUIoSWFeH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+>    {% include _includes/youtube.html id="3FbvYg3G9Gk" title="JupyterGIS tutorial show how to add layers" %}
+>   
 {: .hands_on}
 
 > <question-title>Adding a New Layer</question-title>
@@ -131,7 +132,7 @@ Follow mode allows you to track another user’s activity in the document in rea
 > 1. Click on a collaborator's user icon in the upper right corner to activate the follow mode. Observe that the document will then have a frame in their assigned color.
 > 2. Ask the followed user to pan and zoom the map. Notice that your screen will follow their movements in real time.
 > 3. Click on the user icon again to exit follow mode.
->     <iframe width="560" height="315" src="https://www.youtube.com/embed/-WzV1rcPlEw?si=usi8MbzoIBoXfHwm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+>    {% include _includes/youtube.html id="-WzV1rcPlEw" title="JupyterGIS Collaboration using the follow mode" %}
 {: .hands_on}
 ---
 
@@ -156,7 +157,7 @@ Annotations and comments let you add notes directly on your GIS file, which make
 > 2. Click on the created annotation and type a comment.
 > 3. Ask one of the collaborators to open the right sidebar to view all annotations and comments in the document, and click on the middle button to locate the annotation.
 > 4. Click on the user icon again to exit follow mode.
->     <iframe width="560" height="315" src="https://www.youtube.com/embed/QqscEokpWIA?si=ZUEU4k6gPkVgqRuN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+>    {% include _includes/youtube.html id="QqscEokpWIA" title="JupyterGIS annotations" %}
 {: .hands_on}
 
 ---
@@ -195,7 +196,7 @@ Real-time collaboration in notebooks is a powerful tool for teams working on cod
 >    ```python
 >    doc.add_filter(libraries_layer_id, 'all', 'wheelchair', '==', 'yes')
 >    ```
-> <iframe width="560" height="315" src="https://www.youtube.com/embed/H5Pkg5zOSwA?si=DK9nSSMpV5nRK-BZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+>     {% include _includes/youtube.html id="H5Pkg5zOSwA" title="JupyterGIS collaboration from the notebook" %}
 {: .hands_on}
 
 > <question-title></question-title>
