@@ -7,11 +7,14 @@ description: Welcome to the Variant Analysis track. Here you can learn about Var
 
 contributions:
     organisers:
+        - poterlowicz-lab
         - khaled196
     instructors:
         - annasyme
         - khaled196
         - wm75
+        - kkamieniecka
+        - Mingkai14
 
 
 program:
