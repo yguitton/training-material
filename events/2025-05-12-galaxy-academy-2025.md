@@ -63,7 +63,7 @@ contributions:
         - elichad
         - EngyNasr
         - emmaustin20
-        - GarethPrice
+        - GarethPrice-Aus
         - khaled196
         - jdavcs
         - bernt-matthias
