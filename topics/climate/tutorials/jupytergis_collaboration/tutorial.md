@@ -166,7 +166,7 @@ Real-time collaboration in notebooks is a powerful tool for teams working on cod
 
 > <tip-title>Prerequisite</tip-title>
 >
-> This section requires basic Python programming knowledge. If you are not familiar with Python, we recommend completing the [Introduction to Python](https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-basics/tutorial.html) tutorial first.
+> This section requires basic Python programming knowledge. If you are not familiar with Python, we recommend completing the [Introduction to Python]({% link topics/data-science/tutorials/python-basics/tutorial.md %}) tutorial first.
 {: .tip}
 
 > <hands-on-title>Real-Time Code Collaboration</hands-on-title>
