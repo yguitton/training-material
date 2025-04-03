@@ -108,14 +108,13 @@ When you make changes to your GIS file such as adding a new layer, or updating t
 
 # Tracking Collaborators with Cursors
 Each user's cursor appears on the document in the same color as their icon. This feature makes it easy to see what your teammates are focused on.
-You can click on a cursor to display the location (latitude and longitude) where collaborators are working.
 
 ![Cursor](../../images/jupytergis_collaboration/cursor.png)
 
 > <hands-on-title>Tracking Collaborators with Cursors</hands-on-title>
 >
 > 1. Ask one of the collaborators to move their cursor around the document.
-> 2. Spot the cursor and click on it to see the latitude and longitude their cursor is pointing.
+> 2. Spot their cursor to find out where on the map they are working.
 {: .hands_on}
 
 ---
