@@ -29,7 +29,7 @@ program:
         topic: variant-analysis
   - section: "Advanced analysis" 
     description: |
-      Here are some more advanced tutorials you can follow if you like. If you encounter any issue please ask us on Slack.  
+      Here are some more advanced tutorials you can follow if you like. They apply the previous knowledge to selected use cases and introduce Beacon for data sharing and queries. If you encounter any issues, please ask us on Slack.
     tutorials:
       - name: somatic-variants
         topic: variant-analysis
