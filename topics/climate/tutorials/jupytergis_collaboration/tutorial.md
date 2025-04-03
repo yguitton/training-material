@@ -87,16 +87,20 @@ When you make changes to your GIS file such as adding a new layer, or updating t
 >
 > 1. As the lead user, open the layer browser and select **OpenStreetMap.Mapnik**. Notice that all users in the session can see the new layer in real time.
 > 2. Ask one of the collaborators to add the Libraries in France shapefile layer using the add shapefile layer menu by clicking **+** → **New Vector Layer** → **New Shapefile Layer** → pasting the provided URL.
->     ```https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/osm-france-library/exports/shp```
+>    ```
+>    https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/osm-france-library/exports/shp
+>    ```
 >     <iframe width="560" height="315" src="https://www.youtube.com/embed/3FbvYg3G9Gk?si=CsppZltaUIoSWFeH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 {: .hands_on}
 
 > <question-title>Adding a New Layer</question-title>
 > 
 > 1. As the lead user, add the World Administrative Boundaries layer using the add shapefile layer menu.
->     ```https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/world-administrative-boundaries/exports/shp```
-> 2. Change the fill color to yellow.
-> 3. Ask one of the collaborators to set the opacity to 0.2.
+>     ```
+>    https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/world-administrative-boundaries/exports/shp
+>     ```
+> 3. Change the fill color to yellow.
+> 4. Ask one of the collaborators to set the opacity to 0.2.
 >
 > > <solution-title></solution-title>
 > >
