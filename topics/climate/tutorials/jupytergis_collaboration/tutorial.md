@@ -137,8 +137,8 @@ Follow mode allows you to track another user’s activity in the document in rea
 > - When you activate follow mode, what color appears around the document frame?
 > - Ask one of the collaborators to activate follow mode on you.
 > - What color do they see?
-> > > <solution-title></solution-title>
-> > > - The color of the frame is the same as the color of the user icon. This indicates the user whose activity is being followed.
+> > <solution-title></solution-title>
+> > - The color of the frame is the same as the color of the user icon. This indicates the user whose activity is being followed.
 > {: .solution}
 {: .question}
 
