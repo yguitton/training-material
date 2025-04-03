@@ -17,7 +17,7 @@ contributions:
 program:
   - section: "Variant Analysis introduction" 
     description: |
-      If you are new to Variant Analysis please start with the following tutorials. If you encounter any issue please ask us on Slack.  
+      If you are new to Variant Analysis, please start with the following tutorials. They cover the essential knowledge about Variant Calling in different diploid systems and organisms. If you encounter any issues, please ask us on Slack.
     tutorials:
       - name: dip
         topic: variant-analysis
