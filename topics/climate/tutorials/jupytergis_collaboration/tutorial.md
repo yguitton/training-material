@@ -20,22 +20,20 @@ Welcome to the JupyterGIS collaborative features tutorial. JupyterGIS enables th
 and other experts—to collaborate on spatial projects in a shared environment. This guide will provide the tools and steps needed to collaborate effectively,
 using features like real-time editing, cursor tracking, follow mode, and annotations.
 
-### Motivation
-Collaboration is at the heart of effective GIS projects. Teams often include members with diverse backgrounds, skills, and areas of expertise. Without robust collaborative tools,
-it can become challenging to share insights, make real-time decisions, and maintain consistency across project workflows. JupyterGIS simplifies collaboration by providing
-real-time editing, annotations, and interactive features that allow teams to seamlessly integrate their work.
-
+> <comment-title>Motivation</comment-title>
+> Collaboration is at the heart of effective GIS projects. Teams often include members with diverse backgrounds, skills, and areas of expertise. 
+> Without robust collaborative tools,
+> it can become challenging to share insights, make real-time decisions, and maintain consistency across project workflows. JupyterGIS simplifies 
+> collaboration by providing real-time editing, annotations, and interactive features that allow teams to seamlessly integrate their work.
+> 
+{: .comment}
 
 > <agenda-title></agenda-title>
 >
 > In this tutorial, we will learn about:
 >
-> 1. Launching Your Collaborative Session
-> 2. Real-Time Collaboration on a GIS File
-> 3. Tracking Collaborators with Cursors
-> 4. Using Follow Mode
-> 5. Adding Annotations and Comments
-> 6. Collaborating on Notebooks (Optional)
+>
+> 1. TOC
 > {:toc}
 {: .agenda}
 
@@ -46,8 +44,6 @@ real-time editing, annotations, and interactive features that allow teams to sea
 > pairs or small teams, even when following a self-paced approach. To simulate real-time collaboration, we recommend using an additional browser window or an anonymous session to represent
 > another user. This setup allows participants to better understand multi-user interactions, shared geospatial analysis, and version control within Jupyter-based environments.
 {: .tip}
-
-
 
 # Launching Your Collaborative Session
 
@@ -74,7 +70,6 @@ In this section, we will learn how to launch a collaborative session in JupyterG
 >     ![Shared Users](../../images/jupytergis_collaboration/shared_users.png)
 {: .hands_on}
 
----
 
 # Real-Time Collaboration on a GIS File
 
@@ -82,24 +77,30 @@ In this section, we will explore how to collaborate on a GIS file in real time. 
 
 When you make changes to your GIS file such as adding a new layer, or updating the layer appearance, the changes are reflected for all collaborators in your session in real time.
 
-
 > <hands-on-title>Adding and Editing Layers</hands-on-title>
 >
 > 1. As the lead user, open the layer browser and select **OpenStreetMap.Mapnik**. Notice that all users in the session can see the new layer in real time.
-> 2. Ask one of the collaborators to add the Libraries in France shapefile layer using the add shapefile layer menu by clicking **+** → **New Vector Layer** → **New Shapefile Layer** → pasting the provided URL.
->    ```
->    https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/osm-france-library/exports/shp
->    ```
->    {% include _includes/youtube.html id="3FbvYg3G9Gk" title="JupyterGIS tutorial show how to add layers" %}
->   
+> 2. Ask one of the collaborators to add the Libraries in France shapefile layer using the add shapefile layer menu 
+> by clicking **+** -> **New Vector Layer** → **New Shapefile Layer** -> pasting the provided URL.
+> 
+> ```
+> https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/osm-france-library/exports/shp
+> ```
+> 
+> 
+>
 {: .hands_on}
+
+
+{% include _includes/youtube.html id="3FbvYg3G9Gk" title="JupyterGIS tutorial show how to add layers" %}
+
 
 > <question-title>Adding a New Layer</question-title>
 > 
 > 1. As the lead user, add the World Administrative Boundaries layer using the add shapefile layer menu.
->     ```
+> ```
 >    https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/world-administrative-boundaries/exports/shp
->     ```
+> ```
 > 3. Change the fill color to yellow.
 > 4. Ask one of the collaborators to set the opacity to 0.2.
 >
@@ -112,17 +113,18 @@ When you make changes to your GIS file such as adding a new layer, or updating t
 {: .question}
 
 # Tracking Collaborators with Cursors
-Each user's cursor appears on the document in the same color as their icon. This feature makes it easy to see what your teammates are focused on.
 
-![Cursor](../../images/jupytergis_collaboration/cursor.png)
+Each user's cursor appears on the document in the same color as their icon. This feature makes it easy to see what your teammates are focused on.
 
 > <hands-on-title>Tracking Collaborators with Cursors</hands-on-title>
 >
 > 1. Ask one of the collaborators to move their cursor around the document.
 > 2. Spot their cursor to find out where on the map they are working.
+>
+> ![Cursor](../../images/jupytergis_collaboration/cursor.png)
+>
 {: .hands_on}
 
----
 
 # Using Follow Mode
 Follow mode allows you to track another user’s activity in the document in real time. When enabled, you’ll see their actions as they navigate and edit. This feature is ideal for live demonstrations, interactive sessions, and collaborative meetings, as it lets you quickly align your view with a teammate’s actions and provide immediate feedback.
@@ -132,9 +134,10 @@ Follow mode allows you to track another user’s activity in the document in rea
 > 1. Click on a collaborator's user icon in the upper right corner to activate the follow mode. Observe that the document will then have a frame in their assigned color.
 > 2. Ask the followed user to pan and zoom the map. Notice that your screen will follow their movements in real time.
 > 3. Click on the user icon again to exit follow mode.
->    {% include _includes/youtube.html id="-WzV1rcPlEw" title="JupyterGIS Collaboration using the follow mode" %}
+>   
 {: .hands_on}
----
+
+ {% include _includes/youtube.html id="-WzV1rcPlEw" title="JupyterGIS Collaboration using the follow mode" %}
 
 > <question-title>Using Follow Mode</question-title>
 >
@@ -157,10 +160,10 @@ Annotations and comments let you add notes directly on your GIS file, which make
 > 2. Click on the created annotation and type a comment.
 > 3. Ask one of the collaborators to open the right sidebar to view all annotations and comments in the document, and click on the middle button to locate the annotation.
 > 4. Click on the user icon again to exit follow mode.
->    {% include _includes/youtube.html id="QqscEokpWIA" title="JupyterGIS annotations" %}
+>  
 {: .hands_on}
 
----
+ {% include _includes/youtube.html id="QqscEokpWIA" title="JupyterGIS annotations" %}
 
 # Collaborating on Notebooks (Optional)
 Real-time collaboration in notebooks is a powerful tool for teams working on code together. It enables multiple users to write, edit, and run code simultaneously. This feature is ideal for live coding sessions, debugging, and data analysis projects.
@@ -173,31 +176,33 @@ Real-time collaboration in notebooks is a powerful tool for teams working on cod
 > <hands-on-title>Real-Time Code Collaboration</hands-on-title>
 >
 > 1. Click on the **+** icon to open the Launcher, then select the Python kernel under **Notebook** to create a notebook. Once a notebook is created, it is automatically accessible to all collaborators—no additional sharing is needed.
->     ![Notebook](../../images/jupytergis_collaboration/create_notebook.png)
+> ![Notebook](../../images/jupytergis_collaboration/create_notebook.png)
 > 2. Ask one of the collaborators to open the newly created notebook by clicking on the explorer button in the left sidebar, then locating and clicking on the notebook. Anyone in the session can open, edit, and run the notebooks.
->     ![Notebook](../../images/jupytergis_collaboration/open_notebook.png)
+> ![Notebook](../../images/jupytergis_collaboration/open_notebook.png)
 > 3. As you write or execute code, every change is visible to your team instantly. Create a new code cell and write the following code. Notice that all collaborators can see the code in real time.
->    ```python
+> ```python
 >    from jupytergis import GISDocument
 >    doc = GISDocument('untitled.jGIS')
 >    doc
->    ```
+> ```
 > 4. Rename the "Custom Shapefile Layer" to "libraries" in the GIS file. 
 > 5. Find the layer ID of the libraries layer.
->    ```python
+> ```python
 >    layers = doc.layers
 >    libraries_layer_id = None
 >    for layer_id, data in layers.items():
 >        if data.get("name", "").lower() == "libraries":
 >            libraries_layer_id = layer_id
 >            break
->    ```
+> ```
 > 6. Ask one of the collaborators to filter all libraries that have wheelchair access. They can do this by running the following code:
->    ```python
+> ```python
 >    doc.add_filter(libraries_layer_id, 'all', 'wheelchair', '==', 'yes')
->    ```
->     {% include _includes/youtube.html id="H5Pkg5zOSwA" title="JupyterGIS collaboration from the notebook" %}
+> ```
+>  
 {: .hands_on}
+
+ {% include _includes/youtube.html id="H5Pkg5zOSwA" title="JupyterGIS collaboration from the notebook" %}
 
 > <question-title></question-title>
 >
@@ -227,10 +232,11 @@ Real-time collaboration in notebooks is a powerful tool for teams working on cod
 > > 
 > {: .solution}
 {: .question}
----
+
 
 Congratulations! You have completed the Collaboration Features of JupyerGIS tutorial. You now have the knowledge and tools to collaborate effectively with your team on GIS files and notebooks.
 
 If you'd like to explore more of JupyterGIS' functionality, please view our
 [JupyterGIS announcement blog post](https://blog.jupyter.org/real-time-collaboration-and-collaborative-editing-for-gis-workflows-with-jupyter-and-qgis-d25dbe2832a6)
 for video demos of more features.
+
