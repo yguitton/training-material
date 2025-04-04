@@ -14,9 +14,15 @@ key_points:
 - For each machine learning algorithm, it hyperparameters should be optimised based on the dataset
 - Feature selection should be done for high-dimensional datasets
 time_estimation: 2H
-contributors:
-- polkhe
-- anuprulez
+contributions:
+  authorship:
+    - polkhe
+    - anuprulez
+  funding:
+    - elixir-europe
+    - deNBI
+    - uni-freiburg
+    - eurosciencegateway
 ---
 
 

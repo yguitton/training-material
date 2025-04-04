@@ -43,6 +43,7 @@ contributions:
     - bgruening
   funding:
     - by-covid
+    - eurosciencegateway
 ---
 
 This tutorial is a partial reproduction of {% cite Togami_2022 %} wherein they evaluated mRNA and miRNA in a selection of COVID-19 patients and healthy controls.

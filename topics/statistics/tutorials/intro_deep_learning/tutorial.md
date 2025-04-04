@@ -16,9 +16,15 @@ key_points:
 - Multiple tools to constitute a neural network architecture
 - Interpretation of predictions using visualisation tools
 time_estimation: 1H
-contributors:
-- anuprulez
-- khanteymoori
+contributions:
+  authorship:
+    - anuprulez
+    - khanteymoori
+  funding:
+    - elixir-europe
+    - deNBI
+    - uni-freiburg
+    - eurosciencegateway
 ---
 
 ## Introduction

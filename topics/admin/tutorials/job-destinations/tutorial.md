@@ -26,7 +26,7 @@ contributions:
   editing: # And reviewing
     - hexylena
     - afgane
-  funding: []
+  funding: [eurosciencegateway]
   testing:
     - cat-bro
     - edmontosaurus

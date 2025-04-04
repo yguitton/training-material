@@ -3,7 +3,11 @@ title: How do I manage my Galaxy storage?
 area: features
 layout: faq
 box_type: tip
-contributors: [dadrasarmin]
+contributions:
+  authorship:
+    - dadrasarmin
+  funding:
+    - eurosciencegateway
 ---
 
 Now, it is possible to bring your own Storage to Galaxy for computation, storage, and archiving of your results. You can add more storage options to your account by following these steps:

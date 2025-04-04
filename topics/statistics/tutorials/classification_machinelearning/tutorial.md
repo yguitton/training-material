@@ -21,10 +21,16 @@ key_points:
 - Machine learning algorithms can be applied to chemical datasets to predict important
   properties.
 time_estimation: 2H
-contributors:
-- khanteymoori
-- anuprulez
-- simonbray
+contributions:
+  authorship:
+    - khanteymoori
+    - anuprulez
+    - simonbray
+  funding:
+    - elixir-europe
+    - deNBI
+    - uni-freiburg
+    - eurosciencegateway
 recordings:
 - captioners:
   - anuprulez
