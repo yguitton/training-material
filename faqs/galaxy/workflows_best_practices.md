@@ -3,12 +3,9 @@ title: Ensuring Workflows meet Best Practices
 area: workflows
 box_type: tip
 layout: faq
-contributions:
-  authorship:
-    - hexylena
-    - elichad
-  funding:
-    - eurosciencegateway
+contributors:
+- hexylena
+- elichad
 ---
 
 When you are editing a workflow, there are a number of additional steps you can take to ensure that it is a Best Practice workflow and will be more reusable.

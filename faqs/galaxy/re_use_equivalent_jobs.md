@@ -3,12 +3,9 @@ title: How do I re-use equivalent jobs in Galaxy (aka Job Cache)?
 area: features
 layout: faq
 box_type: tip
-contributions:
-  authorship:
-    - dadrasarmin
-    - teresa-m
-  funding:
-    - eurosciencegateway
+contributors:
+  - dadrasarmin
+  - teresa-m
 ---
 
 We can reuse the reproducibility of Galaxy to detect if a tool has been run with the exact same parameters and inputs before. In this case, we can simply skip the computational step and just reuse the

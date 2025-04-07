@@ -3,12 +3,9 @@ title: Importing and Launching a WorkflowHub.eu Workflow
 area: workflows
 box_type: hands_on
 layout: faq
-contributions:
-  authorship:
-    - hexylena
-    - wm75
-  funding:
-    - eurosciencegateway
+contributors:
+- hexylena
+- wm75
 optional_parameters:
   wfhub_id: The numeric WorkflowHub ID
   title: The title of the workflow you want to import, can be any text
