@@ -22,6 +22,10 @@ contributions:
   funding:
     - nfdi4bioimage
     - dfg
+    - elixir-europe
+    - deNBI
+    - uni-freiburg
+    - eurosciencegateway
 ---
 The efficient and accurate treatment of microscopy metadata is of great importance, as it 
 provides insights that are essential for effective image management, search, organisation, 

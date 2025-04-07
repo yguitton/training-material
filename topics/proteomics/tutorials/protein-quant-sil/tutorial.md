@@ -25,10 +25,16 @@ key_points:
   - "Quantitations have to be mapped to PSMs."
   - "PSM quantitations can be used to calculate protein quantitations."
   - "Proper quantitation and mapping needs careful evaluation and optimization."
-contributors:
+contributions:
+  authorship:
   - stortebecker
   - bgruening
   - matthias313
+  funding:
+  - elixir-europe
+  - deNBI
+  - uni-freiburg
+  - eurosciencegateway
 subtopic: id-quant
 tags: [DDA, SILAC]
 ---

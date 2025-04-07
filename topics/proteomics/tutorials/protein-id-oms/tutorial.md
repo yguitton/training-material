@@ -28,9 +28,15 @@ follow_up_training:
   topic_name: proteomics
   tutorials:
     - protein-quant-sil
-contributors:
+contributions:
+  authorship:
   - stortebecker
   - bgruening
+  funding:
+  - elixir-europe
+  - deNBI
+  - uni-freiburg
+  - eurosciencegateway
 subtopic: id-quant
 tags: [DDA, HeLa]
 ---

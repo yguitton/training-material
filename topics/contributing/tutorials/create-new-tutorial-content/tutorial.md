@@ -24,6 +24,10 @@ contributions:
   - shiltemann
   funding:
   - gallantries
+  - elixir-europe
+  - deNBI
+  - uni-freiburg
+  - eurosciencegateway
 abbreviations:
   API: Application Programming Interface
   JSON: JavaScript Object Notation

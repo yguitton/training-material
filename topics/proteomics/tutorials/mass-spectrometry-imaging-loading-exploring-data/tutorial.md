@@ -18,9 +18,15 @@ key_points:
   - imzML (continuous or processed file type) and Analyze7.5 can be uploaded into Galaxy via the composite upload.
   - The MSI Qualitycontrol tool gives valuable information before starting the analysis.
   - The MSI data exporter can be used any time during the analysis when it is necessary to dig deeper into the data. Galaxy provides many text manipulation tools that can directly be applied on the exported tabular file to filter, sort, plot, ... the data.
-contributors:
+contributions:
+  authorship:
   - foellmelanie
   - bgruening
+  funding:
+  - elixir-europe
+  - deNBI
+  - uni-freiburg
+  - eurosciencegateway
 subtopic: special
 tags: [mouse, imaging]
 ---

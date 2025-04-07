@@ -15,9 +15,15 @@ time_estimation: "30m"
 key_points:
   - "The cellular secretome contains more than the classically secreted proteins."
   - "Localization predictions by multiple different algorithms can improve sensitivity and/or specificity."
-contributors:
+contributions:
+  authorship:
   - stortebecker
   - bgruening
+  funding:
+  - elixir-europe
+  - deNBI
+  - uni-freiburg
+  - eurosciencegateway
 
 subtopic: post-process
 tags: [human]

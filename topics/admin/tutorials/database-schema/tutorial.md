@@ -15,9 +15,15 @@ objectives:
 time_estimation: "2h"
 key_points:
   - "Be careful, when you interact with the Galaxy database. And make sure you always have a backup!"
-contributors:
+contributions:
+  authorship:
   - hrhotz
   - bgruening
+  funding:
+  - elixir-europe
+  - deNBI
+  - uni-freiburg
+  - eurosciencegateway
 ---
 
 

@@ -31,6 +31,8 @@ contributions:
   testing:
   - mira-miracoli
   - edmontosaurus
+  funding:
+  - eurosciencegateway
 tags:
   - ansible
   - deploying

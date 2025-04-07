@@ -19,10 +19,16 @@ time_estimation: "1h"
 key_points:
   - Galaxy supports a variety of different DRMs.
   - You should absolutely set one up, it prevents jobs from being killed during server restarts.
-contributors:
+contributions:
+  authorship:
   - natefoo
   - bgruening
   - hexylena
+  funding:
+  - elixir-europe
+  - deNBI
+  - uni-freiburg
+  - eurosciencegateway
 tags:
   - jobs
   - ansible

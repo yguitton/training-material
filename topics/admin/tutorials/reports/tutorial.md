@@ -11,11 +11,17 @@ time_estimation: "30m"
 key_points:
   - Galaxy supports pluggable monitoring extensions.
   - The Reports webapp is one option to monitor your system.
-contributors:
+contributions:
+  authorship:
   - natefoo
   - bgruening
   - slugger70
   - hexylena
+  funding:
+  - elixir-europe
+  - deNBI
+  - uni-freiburg
+  - eurosciencegateway
 subtopic: monitoring
 tags:
   - ansible

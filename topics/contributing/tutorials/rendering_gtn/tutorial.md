@@ -32,6 +32,11 @@ contributions:
   editing:
   - teresa-m
   - nomadscientist
+  funding:
+  - elixir-europe
+  - deNBI
+  - uni-freiburg
+  - eurosciencegateway
 
 redirect_from:
   - "/topics/contributing/tutorials/running-codespaces/tutorial"

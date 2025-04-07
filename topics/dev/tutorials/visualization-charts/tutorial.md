@@ -11,12 +11,18 @@ key_points:
   - "Demonstrating a pluggable extension system for JavaScript visualizations"
   - "With three primary files we can integrate any JavaScript visualization into Galaxy"
 subtopic: viz
-contributors:
+contributions:
+  authorship:
   - shiltemann
   - yhoogstrate
   - bgruening
   - guerler
   - dannon
+  funding:
+  - elixir-europe
+  - deNBI
+  - uni-freiburg
+  - eurosciencegateway
 ---
 
 In this tutorial we are going to demonstrate how to add a third party
