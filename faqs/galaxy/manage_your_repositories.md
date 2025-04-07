@@ -3,8 +3,7 @@ title: How do I manage my repositories on Galaxy?
 area: features
 layout: faq
 box_type: tip
-contributors:
-- dadrasarmin
+contributors: [dadrasarmin]
 ---
 
 Here, we are going to briefly explain how you can Bring-Your-Own-Data to Galaxy or export your dataset, results, or history to 3rd party repositories. In order to add a new repository to your account follow these steps:
