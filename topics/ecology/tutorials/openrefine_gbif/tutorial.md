@@ -95,7 +95,7 @@ This tutorial is based on the GBIF {% cite GBIFtraining2021 %} "Biodiversity dat
 >    - *"Input file in tabular format"*: `UC1-3c-open-refine-tabular`
 >    - click the button "run tool"
 > You will then be redirected. A notification "Interactive Tools" shows up on the left-hand side, indicating you have an interactive tool running.
-> Click on the notification, click on the empty box in front of the text saying "Openrfine".
+> Click on the notification, click on the empty box in front of the text saying "Openrefine".
 > Then, click on the text "Openrefine" to open the tool in a new tab.
 >
 > 2. Open the OpenRefine instance
