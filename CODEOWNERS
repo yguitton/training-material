@@ -13,7 +13,7 @@ _plugins/   @bebatut @hexylena
 
 
 # Topic Editorial Board members
-topics/introduction/               @jennaj  @delphine-l
+topics/introduction/               @jennaj  @delphine-l @teresa-m
 topics/admin/                      @hexylena  @natefoo  @bgruening  @martenson
 topics/ai4life/                    @beatrizserrano
 topics/assembly/                   @nekrut  @delphine-l
@@ -29,7 +29,7 @@ topics/elixir/                     @bebatut  @fpsom
 topics/epigenetics/                @lldelisle  @heylf  @joachimwolff
 topics/evolution/                  @cstritt  @pvanheus
 topics/fair/                       @simleo  @ilveroluca  @stain  @pauldg  @kkamieniecka  @poterlowicz-lab
-topics/galaxy-interface/           @jennaj  @delphine-l
+topics/galaxy-interface/           @jennaj  @delphine-l @teresa-m
 topics/genome-annotation/          @hexylena  @abretaud
 topics/gmod/                       @hexylena  @abretaud
 topics/imaging/                    @kostrykin  @beatrizserrano
