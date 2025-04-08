@@ -39,7 +39,6 @@ contributions:
     - elixir-europe
     - uni-freiburg
     - deNBI
-    - eurosciencegateway 
 
 recordings:
 - captioners:
