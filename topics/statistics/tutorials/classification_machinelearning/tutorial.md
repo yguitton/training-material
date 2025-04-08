@@ -30,7 +30,6 @@ contributions:
     - elixir-europe
     - deNBI
     - uni-freiburg
-    - eurosciencegateway
 recordings:
 - captioners:
   - anuprulez
