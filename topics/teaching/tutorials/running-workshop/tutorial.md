@@ -21,7 +21,6 @@ contributions:
   - elixir-europe
   - deNBI
   - uni-freiburg
-  - eurosciencegateway
 ---
 
 In this tutorial you'll learn how to run a workshop as a Galaxy Instructor
