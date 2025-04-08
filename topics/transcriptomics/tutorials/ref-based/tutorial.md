@@ -59,7 +59,7 @@ contributions:
     - hexylena
     - clsiguret
   funding:
-    - eurosciencegateway
+    - deNBI
 
 recordings:
 - youtube_id: AeiW3IItO_c
