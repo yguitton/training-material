@@ -30,7 +30,6 @@ contributions:
   - elixir-europe
   - deNBI
   - uni-freiburg
-  - eurosciencegateway
 ---
 
 # Building a Galaxy instance specifically for your training
