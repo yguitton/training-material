@@ -48,7 +48,7 @@ contributions:
     - erxleben
     - wm75
   funding:
-    - eurosciencegateway
+    - deNBI
 
 gitter: Galaxy-Training-Network/galaxy-single-cell
 
