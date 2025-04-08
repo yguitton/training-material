@@ -33,7 +33,6 @@ contributions:
     - elixir-europe
     - deNBI
     - uni-freiburg
-    - eurosciencegateway
 recordings:
 - youtube_id: QTXdcsYaLlE
   length: 35M
