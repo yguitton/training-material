@@ -34,6 +34,10 @@ contributions:
   - bgruening
   - hexylena
   - ahmedhamidawan
+  funding:
+  - elixir-europe
+  - deNBI
+  - uni-freiburg
 subtopic: histories
 recordings:
 - youtube_id: C3_HSgbbDWc

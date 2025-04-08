@@ -58,6 +58,8 @@ contributions:
   editing:
     - hexylena
     - clsiguret
+  funding:
+    - deNBI
 
 recordings:
 - youtube_id: AeiW3IItO_c
