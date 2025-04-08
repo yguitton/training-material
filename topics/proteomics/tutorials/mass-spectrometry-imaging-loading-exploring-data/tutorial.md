@@ -26,7 +26,6 @@ contributions:
   - elixir-europe
   - deNBI
   - uni-freiburg
-  - eurosciencegateway
 subtopic: special
 tags: [mouse, imaging]
 ---
