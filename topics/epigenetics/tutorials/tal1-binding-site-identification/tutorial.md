@@ -39,7 +39,7 @@ contributions:
   - joachimwolff
   - erxleben
   funding:
-  - eurosciencegateway
+  - deNBI
 ---
 
 
