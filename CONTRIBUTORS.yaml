@@ -646,6 +646,12 @@ dawnmy:
 Sch-Da:
     name: Daniela Schneider
     joined: 2024-10
+    email: schneidd@informatik.uni-freiburg.de
+    matrix: 'schn_da:matrix.org'
+    orcid: 0000-0001-9536-5587
+    bio: Researcher at Galaxy Europe
+    affiliations:
+      - uni-freiburg
 
 dadrasarmin:
     name: Armin Dadras
@@ -783,6 +789,11 @@ elichad:
     email: eli.chadwick@manchester.ac.uk
     orcid: 0000-0002-0035-6475
     joined: 2022-11
+
+elifsu-simula:
+    name: Elifsu Filiz
+    orcid: 0000-0003-3744-7781
+    joined: 2025-03
 
 elischberg:
     name: Elischa Berger
@@ -1834,6 +1845,10 @@ Minamehr:
       - elixir-europe
       - deNBI
 
+Mingkai14:
+    name: Mingkai Wang
+    joined: 2025-04
+
 mira-miracoli:
     name: Mira Kuntz
     orcid: 0000-0003-4302-5091
@@ -2634,6 +2649,11 @@ sylviamahara:
     github: false
     joined: 2022-03
 
+Tarnima-Omara:
+    name: Tarnima Omara
+    email: otarnima@gmail.com
+    joined: 2025-04
+
 tb143:
     name: Tim Beck
     joined: 2023-09
@@ -2766,6 +2786,10 @@ tseemann:
 tsenapathi:
     name: Tharindu Senapathi
     joined: 2019-05
+
+tflowers15:
+    name: Tristan Reynolds
+    joined: 2025-03
 
 trungN:
     name: Nguyen Vo Minh Trung
