@@ -30,7 +30,7 @@ contributions:
   - vivekbhr
   - fidelram
   funding:
-  - eurosciencegateway
+  - deNBI
 ---
 
 
