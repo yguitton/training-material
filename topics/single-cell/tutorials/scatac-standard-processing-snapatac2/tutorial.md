@@ -54,6 +54,11 @@ contributions:
     - bgruening
   testing:
     - pavanvidem
+  funding:
+    - elixir-europe
+    - deNBI
+    - uni-freiburg
+    - eurosciencegateway
 gitter: Galaxy-Training-Network/galaxy-single-cell
 
 
