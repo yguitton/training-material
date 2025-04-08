@@ -38,7 +38,6 @@ contributions:
   - elixir-europe
   - deNBI
   - uni-freiburg
-  - eurosciencegateway
 subtopic: histories
 recordings:
 - youtube_id: C3_HSgbbDWc
