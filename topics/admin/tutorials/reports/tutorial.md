@@ -18,10 +18,8 @@ contributions:
   - slugger70
   - hexylena
   funding:
-  - elixir-europe
   - deNBI
   - uni-freiburg
-  - eurosciencegateway
 subtopic: monitoring
 tags:
   - ansible
