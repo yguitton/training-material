@@ -34,7 +34,6 @@ contributions:
   - elixir-europe
   - deNBI
   - uni-freiburg
-  - eurosciencegateway
 subtopic: id-quant
 tags: [DDA, SILAC]
 ---
