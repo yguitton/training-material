@@ -22,7 +22,6 @@ contributions:
   - elixir-europe
   - deNBI
   - uni-freiburg
-  - eurosciencegateway
 ---
 
 In this tutorial we are going to demonstrate how to add a third party
