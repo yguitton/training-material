@@ -28,7 +28,6 @@ contributions:
     - elixir-europe
     - deNBI
     - uni-freiburg
-    - eurosciencegateway
 
 ---
 
