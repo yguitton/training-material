@@ -57,6 +57,14 @@ by-covid:
     url: https://by-covid.org/
 
 
+dekcd:
+    name: German Competence Center Cloud Technologies for Data Management and Processing (de.KCD) 
+    short_name: "de.KCD"
+    joined: 2025-03
+    funding_id: "?
+    url: https://datenkompetenz.cloud/
+
+
 CINECA-Project:
     name: Common Infrastructure for National Cohorts in Europe, Canada, and Africa
     short_name: "CINECA"
