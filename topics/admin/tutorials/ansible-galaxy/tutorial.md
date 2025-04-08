@@ -33,6 +33,7 @@ contributions:
   - edmontosaurus
   funding:
   - eurosciencegateway
+  - elixir-europe
 tags:
   - ansible
   - deploying
