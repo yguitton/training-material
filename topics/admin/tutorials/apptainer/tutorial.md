@@ -10,12 +10,15 @@ objectives:
   - Configure your Galaxy to use Apptainer and BioContainers for running jobs
 time_estimation: "1h"
 key_points:
-contributors:
+contributions:
+  authorship:
   - torfinnnome
   - mvdbeek
   - bernt-matthias
   - hexylena
   - mira-miracoli
+  funding:
+  - eurosciencegateway
 subtopic: jobs
 tags:
   - jobs
