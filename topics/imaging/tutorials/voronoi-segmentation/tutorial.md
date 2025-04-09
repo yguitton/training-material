@@ -13,18 +13,23 @@ time_estimation: 1H
 key_points:
 - The take-home messages
 - They will appear at the end of the tutorial
+requirements:
+  -
+    type: "internal"
+    topic_name: imaging
+    tutorials:
+      - imaging-introduction
 contributors:
-- evenmm
 - rmassei
 - kostrykin
 - annefou
-
+- evenmm
+tags:
+- imaging
+- segmentation
+- voronoi
 ---
 
-
-# Introduction
-
-<!-- This is a comment. -->
 
 Voronoi segmentation is a technique used to divide an image or space into regions
 based on the proximity to a set of defined points, called seeds or sites. Each 
@@ -37,7 +42,7 @@ as organizing space, studying clustering patterns, or identifying regions of
 influence around each point in various types of data.
 
 
-## Voronoi Segmentation for bioimage analysis
+### Appliucation in bioimage analysis
 
 In bioimage analysis, Voronoi segmentation is a valuable tool for studying the 
 spatial organization of cells, tissues, or other biological structures within an 
@@ -48,13 +53,9 @@ can provide insights into cellular interactions, tissue organization, and functi
 relationships within biological samples, such as identifying the proximity of immune 
 cells to tumor cells or mapping neuron distributions within brain tissue.
 
-## Voronoi Segmentation for Earth Observation
+### Appliucation in Earth Observation
 
 In Earth observation, Voronoi segmentation is used to analyze spatial patterns and distributions in satellite or aerial images. By creating regions based on proximity to specific points, such as cities, vegetation clusters, or monitoring stations, Voronoi segmentation helps in studying how features are organized across a landscape. This method is particularly useful for mapping resource distribution, analyzing urban growth, monitoring vegetation patterns, or assessing land use changes. For instance, it can help divide an area into regions of influence around weather stations or identify how different land cover types interact spatially, aiding in environmental monitoring and planning.
-
-
-**Please follow our
-[tutorial to learn how to fill the Markdown]({{ site.baseurl }}/topics/contributing/tutorials/create-new-tutorial-content/tutorial.html)**
 
 > <agenda-title></agenda-title>
 >
@@ -65,367 +66,82 @@ In Earth observation, Voronoi segmentation is used to analyze spatial patterns a
 >
 {: .agenda}
 
-# Title for your first section
-
-Give some background about what the trainees will be doing in the section.
-Remember that many people reading your materials will likely be novices,
-so make sure to explain all the relevant concepts.
-
-## Title for a subsection
-Section and subsection titles will be displayed in the tutorial index on the left side of
-the page, so try to make them informative and concise!
-
-# Hands-on Sections
-Below are a series of hand-on boxes, one for each tool in your workflow file.
-Often you may wish to combine several boxes into one or make other adjustments such
-as breaking the tutorial into sections, we encourage you to make such changes as you
-see fit, this is just a starting point :)
-
-Anywhere you find the word "***TODO***", there is something that needs to be changed
-depending on the specifics of your tutorial.
-
-have fun!
-
 ## Get data
+Depending on your interest, this tutorial can be carried out either using bioimage data or earth observation data. 
+This tutorial can in practice be followed with any type of data provided that you have an image plus a corresponding seed image showing where the objects are. 
+In the next step, you will download the bioimage data or earth observation data. 
 
 > <hands-on-title> Data Upload </hands-on-title>
 >
-> 1. Create a new history for this tutorial
-> 2. Import the files from [Zenodo]({{ page.zenodo_link }}) or from
->    the shared data library (`GTN - Material` -> `{{ page.topic_name }}`
->     -> `{{ page.title }}`):
->
+> 1. Create a new history for this tutorial. When you log in for the first time, an empty, unnamed history is created by default. You can simply rename it.
+> 
+>    {% snippet faqs/galaxy/histories_create_new.md %}
+> 
+> 2. Import {% icon galaxy-upload %} the following dataset from [Zenodo]( https://zenodo.org/records/15181061). 
+>    - **Important:** Choose the type of data as `zip`.
+> 
 >    ```
->    
+>    https://zenodo.org/records/15181061/files/images_and_seeds.zip
 >    ```
->    ***TODO***: *Add the files by the ones on Zenodo here (if not added)*
->
->    ***TODO***: *Remove the useless files (if added)*
->
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
->    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
+> 3. {% tool [Unzip](toolshed.g2.bx.psu.edu/repos/imgteam/unzip/unzip/6.0+galaxy0) %} the image with the following parameters:
+>    - {% icon param-file %} *"input_file"*: `images_and_seeds.zip`
+>    - *"Extract single file"*: `Single file`
+>    - *"Filepath"*: `HeLa_cell_image-B2--W00026--P00001--Z00000--T00000--dapi.tiff` or `tree_image_2018_SJER_3_258000_4106000.tif.tiff`, depending on your choice. 
 >
-> 3. Rename the datasets
-> 4. Check that the datatype
+> 6. Rename {% icon galaxy-pencil %} the resulting file as `image`
+>
+> 4. Check that the datatype is correct.
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
 >
-> 5. Add to each database a tag corresponding to ...
->
->    {% snippet faqs/galaxy/datasets_add_tag.md %}
->
-{: .hands_on}
-
-# Title of the section usually corresponding to a big step in the analysis
-
-It comes first a description of the step: some background and some theory.
-Some image can be added there to support the theory explanation:
-
-![Alternative text](../../images/image_name "Legend of the image")
-
-The idea is to keep the theory description before quite simple to focus more on the practical part.
-
-***TODO***: *Consider adding a detail box to expand the theory*
-
-> <details-title> More details about the theory </details-title>
->
-> But to describe more details, it is possible to use the detail boxes which are expandable
->
-{: .details}
-
-A big step can have several subsections or sub steps:
-
-
-## Sub-step with **Unzip**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Unzip](toolshed.g2.bx.psu.edu/repos/imgteam/unzip/unzip/6.0+galaxy0) %} with the following parameters:
+> 5. {% tool [Unzip](toolshed.g2.bx.psu.edu/repos/imgteam/unzip/unzip/6.0+galaxy0) %} the seed with the following parameters:
+>    - {% icon param-file %} *"input_file"*: `images_and_seeds.zip`
 >    - *"Extract single file"*: `Single file`
->        - *"Filepath"*: `B2--W00026--P00001--Z00000--T00000--dapi.tif`
+>    - *"Filepath"*: `HeLa_cell_seeds-B2--W00026--P00001--Z00000--T00000--dapi.tiff` or `tree_seeds_2018_SJER_3_258000_4106000.png`, depending on your choice. 
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
+> 6. Rename {% icon galaxy-pencil %} the resulting file as `seed`
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
 
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
+# Create Voronoi segmentation workflow
+We will build the Voronoi segmentation piece by piece, starting with image manipulation steps and building towards more complex steps, and ending with image visualization. 
 
-## Sub-step with **Filter 2-D image**
 
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Filter 2-D image](toolshed.g2.bx.psu.edu/repos/imgteam/2d_simple_filter/ip_filter_standard/1.12.0+galaxy1) %} with the following parameters:
->    - *"Filter type"*: `Gaussian`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
+## Select a channel using **Convert image format**
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Perform histogram equalization**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Perform histogram equalization](toolshed.g2.bx.psu.edu/repos/imgteam/2d_histogram_equalization/ip_histogram_equalization/0.18.1+galaxy0) %} with the following parameters:
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Threshold image**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Threshold image](toolshed.g2.bx.psu.edu/repos/imgteam/2d_auto_threshold/ip_threshold/0.18.1+galaxy3) %} with the following parameters:
->    - *"Thresholding method"*: `Globally adaptive / Otsu`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Convert image format**
+The image has three channels (red, green, blue) but the Voronoi segmentation only accepts a single channel. 
+Therefore, we have to select a channel, for instance channel `0`: 
 
 > <hands-on-title> Task description </hands-on-title>
 >
 > 1. {% tool [Convert image format](toolshed.g2.bx.psu.edu/repos/imgteam/bfconvert/ip_convertimage/6.7.0+galaxy3) %} with the following parameters:
 >    - *"Extract series"*: `All series`
 >    - *"Extract timepoint"*: `All timepoints`
->    - *"Extract channel"*: `Extract channel`
+>    - *"Extract channel"*: `Extract channel`: `0`
 >    - *"Extract z-slice"*: `All z-slices`
 >    - *"Extract range"*: `All images`
 >    - *"Extract crop"*: `Full image`
 >    - *"Tile image"*: `No tiling`
 >    - *"Pyramid image"*: `Generate Pyramid`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Convert image format**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Convert image format](toolshed.g2.bx.psu.edu/repos/imgteam/bfconvert/ip_convertimage/6.7.0+galaxy3) %} with the following parameters:
->    - *"Extract series"*: `All series`
->    - *"Extract timepoint"*: `All timepoints`
->    - *"Extract channel"*: `Extract channel`
->    - *"Extract z-slice"*: `All z-slices`
->    - *"Extract range"*: `All images`
->    - *"Extract crop"*: `Full image`
->    - *"Tile image"*: `No tiling`
->    - *"Pyramid image"*: `No Pyramid`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Convert binary image to label map**
-
-> <hands-on-title> Task description </hands-on-title>
 >
 > 1. {% tool [Convert binary image to label map](toolshed.g2.bx.psu.edu/repos/imgteam/binary2labelimage/ip_binary_to_labelimage/0.5+galaxy0) %} with the following parameters:
 >    - *"Mode"*: `Connected component analysis`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Filter 2-D image**
-
-> <hands-on-title> Task description </hands-on-title>
+>    We will assign a assign a unique label to each object in the seed image using connected component analysis.
 >
 > 1. {% tool [Filter 2-D image](toolshed.g2.bx.psu.edu/repos/imgteam/2d_simple_filter/ip_filter_standard/1.12.0+galaxy1) %} with the following parameters:
 >    - *"Filter type"*: `Gaussian`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
+>    To run Voronoi segmentation, a seed image is required, which can be prepared manually or using an automatic tool, though the preparation process is outside the scope of this discussion. We have already prepared the seed image, and this is the one we are using for the Voronoi segmentation here. We apply image filters to enhance or suppress specific features of interest, such as edges or noise.
 >
 >    > <comment-title> short description </comment-title>
 >    >
->    > A comment about the tool or something else. This box can also be in the main text
+>    > To see how the seed can be generated automatically from an image by smoothing and thresholding, see the 
+>    > [Imaging introduction tutorial](https://training.galaxyproject.org/training-material/topics/imaging/tutorials/imaging-introduction/tutorial.html). 
 >    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Convert single-channel to multi-channel image**
-
-> <hands-on-title> Task description </hands-on-title>
 >
 > 1. {% tool [Convert single-channel to multi-channel image](toolshed.g2.bx.psu.edu/repos/imgteam/repeat_channels/repeat_channels/1.26.4+galaxy0) %} with the following parameters:
 >
@@ -437,28 +153,6 @@ A big step can have several subsections or sub steps:
 >    >
 >    > A comment about the tool or something else. This box can also be in the main text
 >    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Compute Voronoi tessellation**
-
-> <hands-on-title> Task description </hands-on-title>
 >
 > 1. {% tool [Compute Voronoi tessellation](toolshed.g2.bx.psu.edu/repos/imgteam/voronoi_tesselation/voronoi_tessellation/0.22.0+galaxy3) %} with the following parameters:
 >
@@ -700,6 +394,19 @@ A big step can have several subsections or sub steps:
 >
 {: .question}
 
+> <question-title></question-title>
+>
+> 1. What is the purpose of the smoothing step when using smoothing and a value threshold to generate seeds from an image? 
+> 2. How does the size of the seeds influence the Voronoi segmentation? 
+>
+> > <solution-title></solution-title>
+> >
+> > 1. The purpose of smoothing is to reduce noise that might lead to false seeds where there is no item, and to promote connectedness within an object, which reduces the risk of birthing multiple seeds from the same object where noise disturbs the connectedness of the object. 
+> > 2. A Voronoi segmentation partition a plane into regions based on [proximity to each member of a given set of objects](https://en.wikipedia.org/wiki/Voronoi_diagram). The algorithm is the same irregardless of the size of the seeds, but shrinking or enlargening the seeds will certainly alter the segmentation. 
+> >
+> {: .solution}
+>
+{: .question}
 
 ## Re-arrange
 
