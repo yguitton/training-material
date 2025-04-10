@@ -4,15 +4,20 @@ layout: tutorial_hands_on
 title: Voronoi segmentation
 zenodo_link: https://zenodo.org/record/3362976/files/B2.zip
 questions:
-  - How to use Galaxy for Voronoi Segmentation?
-  - How should images be prepared before applying Voronoi segmentation?
+  - How do I partition an image into regions based on which object they are nearest to (Voronoi Segmentation)?
+  - How should images be preprocessed before applying Voronoi segmentation?
+  - How can I extract a single channel from an image? 
+  - How can I overlay two images?
   - How can Voronoi segmentation be used to analyze spatial relationships and divide an image into distinct regions based on proximity?
 objectives:
-  - "What Galaxy tools can I use to perform Voronoi Segmentation in Galaxy."
+  - How to perform Voronoi Segmentation in Galaxy.
+  - How to extract a single channel from an image. 
+  - How to overlay two images. 
+  - How to count objectives in a layer map. 
 time_estimation: 1H
 key_points:
-- The take-home messages
-- They will appear at the end of the tutorial
+- Voronoi segmentation is a simple algorithm, chosen to give a starting point for working with image segmentation
+- This tutorial exemplifies how a Galaxy workflow can be applied to data from entirely different domains. 
 requirements:
   -
     type: "internal"
@@ -42,7 +47,7 @@ as organizing space, studying clustering patterns, or identifying regions of
 influence around each point in various types of data.
 
 
-### Appliucation in bioimage analysis
+### Application to bioimage analysis
 
 In bioimage analysis, Voronoi segmentation is a valuable tool for studying the 
 spatial organization of cells, tissues, or other biological structures within an 
@@ -53,7 +58,7 @@ can provide insights into cellular interactions, tissue organization, and functi
 relationships within biological samples, such as identifying the proximity of immune 
 cells to tumor cells or mapping neuron distributions within brain tissue.
 
-### Appliucation in Earth Observation
+### Application to Earth Observation
 
 In Earth observation, Voronoi segmentation is used to analyze spatial patterns and distributions in satellite or aerial images. By creating regions based on proximity to specific points, such as cities, vegetation clusters, or monitoring stations, Voronoi segmentation helps in studying how features are organized across a landscape. This method is particularly useful for mapping resource distribution, analyzing urban growth, monitoring vegetation patterns, or assessing land use changes. For instance, it can help divide an area into regions of influence around weather stations or identify how different land cover types interact spatially, aiding in environmental monitoring and planning.
 
@@ -66,10 +71,10 @@ In Earth observation, Voronoi segmentation is used to analyze spatial patterns a
 >
 {: .agenda}
 
-## Get data
-Depending on your interest, this tutorial can be carried out either using bioimage data or earth observation data. 
-This tutorial can in practice be followed with any type of data provided that you have an image plus a corresponding seed image showing where the objects are. 
-In the next step, you will download the bioimage data or earth observation data. 
+## Getting data
+In the next step, you may download the data you need from a prepared dataset on Zenodo. 
+The dataset contains both bioimaging data and earth observation data, so you can choose which data you want to apply the data to. 
+This tutorial can in practice be followed with any type of data provided that you have an image and corresponding seeds.  
 
 > <hands-on-title> Data Upload </hands-on-title>
 >
@@ -90,7 +95,7 @@ In the next step, you will download the bioimage data or earth observation data.
 >    - *"Extract single file"*: `Single file`
 >    - *"Filepath"*: `HeLa_cell_image-B2--W00026--P00001--Z00000--T00000--dapi.tiff` or `tree_image_2018_SJER_3_258000_4106000.tif.tiff`, depending on your choice. 
 >
-> 6. Rename {% icon galaxy-pencil %} the resulting file as `image`
+> 6. Rename {% icon galaxy-pencil %} the resulting file as `image`.
 >
 > 4. Check that the datatype is correct.
 >
@@ -101,298 +106,15 @@ In the next step, you will download the bioimage data or earth observation data.
 >    - *"Extract single file"*: `Single file`
 >    - *"Filepath"*: `HeLa_cell_seeds-B2--W00026--P00001--Z00000--T00000--dapi.tiff` or `tree_seeds_2018_SJER_3_258000_4106000.png`, depending on your choice. 
 >
-> 6. Rename {% icon galaxy-pencil %} the resulting file as `seed`
+> 6. Rename {% icon galaxy-pencil %} the resulting file as `seed`.
 {: .hands_on}
 
 
-# Create Voronoi segmentation workflow
-We will build the Voronoi segmentation piece by piece, starting with image manipulation steps and building towards more complex steps, and ending with image visualization. 
-
-
-## Select a channel using **Convert image format**
-
-The image has three channels (red, green, blue) but the Voronoi segmentation only accepts a single channel. 
-Therefore, we have to select a channel, for instance channel `0`: 
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Convert image format](toolshed.g2.bx.psu.edu/repos/imgteam/bfconvert/ip_convertimage/6.7.0+galaxy3) %} with the following parameters:
->    - *"Extract series"*: `All series`
->    - *"Extract timepoint"*: `All timepoints`
->    - *"Extract channel"*: `Extract channel`: `0`
->    - *"Extract z-slice"*: `All z-slices`
->    - *"Extract range"*: `All images`
->    - *"Extract crop"*: `Full image`
->    - *"Tile image"*: `No tiling`
->    - *"Pyramid image"*: `Generate Pyramid`
->
->
-> 1. {% tool [Convert binary image to label map](toolshed.g2.bx.psu.edu/repos/imgteam/binary2labelimage/ip_binary_to_labelimage/0.5+galaxy0) %} with the following parameters:
->    - *"Mode"*: `Connected component analysis`
->
->    We will assign a assign a unique label to each object in the seed image using connected component analysis.
->
-> 1. {% tool [Filter 2-D image](toolshed.g2.bx.psu.edu/repos/imgteam/2d_simple_filter/ip_filter_standard/1.12.0+galaxy1) %} with the following parameters:
->    - *"Filter type"*: `Gaussian`
->
->    To run Voronoi segmentation, a seed image is required, which can be prepared manually or using an automatic tool, though the preparation process is outside the scope of this discussion. We have already prepared the seed image, and this is the one we are using for the Voronoi segmentation here. We apply image filters to enhance or suppress specific features of interest, such as edges or noise.
->
->    > <comment-title> short description </comment-title>
->    >
->    > To see how the seed can be generated automatically from an image by smoothing and thresholding, see the 
->    > [Imaging introduction tutorial](https://training.galaxyproject.org/training-material/topics/imaging/tutorials/imaging-introduction/tutorial.html). 
->    {: .comment}
->
-> 1. {% tool [Convert single-channel to multi-channel image](toolshed.g2.bx.psu.edu/repos/imgteam/repeat_channels/repeat_channels/1.26.4+galaxy0) %} with the following parameters:
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-> 1. {% tool [Compute Voronoi tessellation](toolshed.g2.bx.psu.edu/repos/imgteam/voronoi_tesselation/voronoi_tessellation/0.22.0+galaxy3) %} with the following parameters:
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Threshold image**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Threshold image](toolshed.g2.bx.psu.edu/repos/imgteam/2d_auto_threshold/ip_threshold/0.18.1+galaxy3) %} with the following parameters:
->    - *"Thresholding method"*: `Manual`
->        - *"Threshold value"*: `3.0`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Count objects in label map**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Count objects in label map](toolshed.g2.bx.psu.edu/repos/imgteam/count_objects/ip_count_objects/0.0.5-2) %} with the following parameters:
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Extract image features**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Extract image features](toolshed.g2.bx.psu.edu/repos/imgteam/2d_feature_extraction/ip_2d_feature_extraction/0.18.1+galaxy0) %} with the following parameters:
->    - *"Use the intensity image to compute additional features"*: `Use intensity image`
->    - *"Select features to compute"*: `All features`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Process images using arithmetic expressions**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Process images using arithmetic expressions](toolshed.g2.bx.psu.edu/repos/imgteam/image_math/image_math/1.26.4+galaxy2) %} with the following parameters:
->    - *"Expression"*: `tessellation * (mask / 255) * (1 - seeds / 255)`
->    - In *"Input images"*:
->        - {% icon param-repeat %} *"Insert Input images"*
->            - *"Variable for representation of the image within the expression"*: `tessellation`
->        - {% icon param-repeat %} *"Insert Input images"*
->            - *"Variable for representation of the image within the expression"*: `seeds`
->        - {% icon param-repeat %} *"Insert Input images"*
->            - *"Variable for representation of the image within the expression"*: `mask`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Colorize label map**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Colorize label map](toolshed.g2.bx.psu.edu/repos/imgteam/colorize_labels/colorize_labels/3.2.1+galaxy3) %} with the following parameters:
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Overlay images**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Overlay images](toolshed.g2.bx.psu.edu/repos/imgteam/overlay_images/ip_overlay_images/0.0.4+galaxy4) %} with the following parameters:
->    - *"Type of the overlay"*: `Linear blending`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
+> <comment-title> Extracting seeds from an image </comment-title>
+>
+> To see how the seed can be generated automatically from an image by smoothing and thresholding, see the 
+> [Imaging introduction tutorial](https://training.galaxyproject.org/training-material/topics/imaging/tutorials/imaging-introduction/tutorial.html). 
+{: .comment}
 
 > <question-title></question-title>
 >
@@ -408,12 +130,65 @@ Therefore, we have to select a channel, for instance channel `0`:
 >
 {: .question}
 
-## Re-arrange
 
-To create the template, each step of the workflow had its own subsection.
+# Create a Voronoi segmentation workflow
+We will build the Voronoi segmentation piece by piece, starting with image manipulation steps and building towards more complex steps, and ending with image visualization. 
 
-***TODO***: *Re-arrange the generated subsections into sections or other subsections.
-Consider merging some hands-on boxes to have a meaningful flow of the analyses*
+> <hands-on-title> Task description </hands-on-title>
+>
+> 1. The image has three channels (red, green, blue) but the Voronoi segmentation only accepts a single channel. 
+> Therefore, we have to select a channel, for instance channel `0`. 
+> Apply {% tool [Convert image format](toolshed.g2.bx.psu.edu/repos/imgteam/bfconvert/ip_convertimage/6.7.0+galaxy3) %} with the following parameters:
+>    - *"Extract series"*: `All series`
+>    - *"Extract timepoint"*: `All timepoints`
+>    - *"Extract channel"*: `Extract channel`: `0`
+>    - *"Extract z-slice"*: `All z-slices`
+>    - *"Extract range"*: `All images`
+>    - *"Extract crop"*: `Full image`
+>    - *"Tile image"*: `No tiling`
+>    - *"Pyramid image"*: `Generate Pyramid`
+>
+> 1. {% tool [Convert binary image to label map](toolshed.g2.bx.psu.edu/repos/imgteam/binary2labelimage/ip_binary_to_labelimage/0.5+galaxy0) %} with the following parameters to assign a unique label to each object in the seed image:
+>    - *"Mode"*: `Connected component analysis`
+>
+> 1. {% tool [Filter 2-D image](toolshed.g2.bx.psu.edu/repos/imgteam/2d_simple_filter/ip_filter_standard/1.12.0+galaxy1) %} with the following parameters:
+>    - *"Filter type"*: `Gaussian`
+>
+>    To run Voronoi segmentation, a seed image is required, which can be prepared manually or using an automatic tool, though the preparation process is outside the scope of this discussion. We have already prepared the seed image, and this is the one we are using for the Voronoi segmentation here. We apply image filters to enhance or suppress specific features of interest, such as edges or noise.
+>
+>
+> 1. {% tool [Convert single-channel to multi-channel image](toolshed.g2.bx.psu.edu/repos/imgteam/repeat_channels/repeat_channels/1.26.4+galaxy0) %} with the following parameters:
+>
+> 1. {% tool [Compute Voronoi tessellation](toolshed.g2.bx.psu.edu/repos/imgteam/voronoi_tesselation/voronoi_tessellation/0.22.0+galaxy3) %}:
+>
+> 1. {% tool [Threshold image](toolshed.g2.bx.psu.edu/repos/imgteam/2d_auto_threshold/ip_threshold/0.18.1+galaxy3) %} with the following parameters:
+>    - *"Thresholding method"*: `Manual`
+>        - *"Threshold value"*: `3.0`
+>
+> 1. {% tool [Count objects in label map](toolshed.g2.bx.psu.edu/repos/imgteam/count_objects/ip_count_objects/0.0.5-2) %} with the following parameters:
+>
+> 1. {% tool [Extract image features](toolshed.g2.bx.psu.edu/repos/imgteam/2d_feature_extraction/ip_2d_feature_extraction/0.18.1+galaxy0) %} with the following parameters:
+>
+>    - *"Use the intensity image to compute additional features"*: `Use intensity image`
+>    - *"Select features to compute"*: `All features`
+>
+> 1. {% tool [Process images using arithmetic expressions](toolshed.g2.bx.psu.edu/repos/imgteam/image_math/image_math/1.26.4+galaxy2) %} with the following parameters:
+>    - *"Expression"*: `tessellation * (mask / 255) * (1 - seeds / 255)`
+>    - In *"Input images"*:
+>        - {% icon param-repeat %} *"Insert Input images"*
+>            - *"Variable for representation of the image within the expression"*: `tessellation`
+>        - {% icon param-repeat %} *"Insert Input images"*
+>            - *"Variable for representation of the image within the expression"*: `seeds`
+>        - {% icon param-repeat %} *"Insert Input images"*
+>            - *"Variable for representation of the image within the expression"*: `mask`
+>
+> 1. {% tool [Colorize label map](toolshed.g2.bx.psu.edu/repos/imgteam/colorize_labels/colorize_labels/3.2.1+galaxy3) %} with the following parameters:
+>
+>
+> 1. {% tool [Overlay images](toolshed.g2.bx.psu.edu/repos/imgteam/overlay_images/ip_overlay_images/0.0.4+galaxy4) %} with the following parameters:
+>    - *"Type of the overlay"*: `Linear blending`
+>
+{: .hands_on}
 
 # Conclusion
 
