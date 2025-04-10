@@ -19,6 +19,8 @@ contributions:
         - yvanlebras
         - sophiepamerlon
         - laurarussell
+    reviewing:
+        - Sch-Da
     funding:
         - gbif
         - pndb
@@ -96,7 +98,7 @@ This tutorial is based on the GBIF {% cite GBIFtraining2021 %} "Biodiversity dat
 >    - click the button "run tool"
 > You will then be redirected. A notification "Interactive Tools" shows up on the left-hand side, indicating you have an interactive tool running.
 > Click on the notification, click on the empty box in front of the text saying "Openrefine".
-> Then, click on the text "Openrefine" to open the tool in a new tab.
+> Then, click on the text "Openrefine" to open the tool in a new tab. It might take a moment until your cursor changes and the text becomes a hyperlink.
 >
 > 2. Open the OpenRefine instance
 >    - go to "Open Project" space
@@ -176,7 +178,8 @@ kind of text, numbers and dates.
 >    - UWP:122471 for Vargas I
 >    - UWP:157351 for Betancur H
 >    - UWP:157339 for Betancur J
->    click `apply` after you finished each edit
+>    
+>     click `apply` after you finish each edit
 {: .hands_on}
 
 # Filtering
@@ -196,13 +199,13 @@ kind of text, numbers and dates.
 
 > <question-title></question-title>
 >
-> 1. Do you think you can use also `Edit cells > Transform` formula to apply the changes you made manually for the 2 first terms searched ("sp1" and "SP2")?
-> 2. Why you can easily edit directly these 2 first entries and not the third one?
+> 1. Do you think you can use also `Edit cells > Transform` formula to apply the changes you made manually for the two first terms searched ("sp1" and "SP2")?
+> 2. Why can you easily edit these two first entries directly but not the third one?
 >
 > > <solution-title></solution-title>
 > >
 > > 1. Yes, using respectively `value.replace(" sp1", "")` and `value.replace(" SP2", "")` formulas
-> > 2. Because the 2 first searchs only concern one entry for each when the third one return several.
+> > 2. Because the first two searches only concern one entry for each when the third one returns several.
 > >
 > {: .solution}
 >
@@ -227,7 +230,7 @@ kind of text, numbers and dates.
 
 > <question-title></question-title>
 >
-> 1. Try to find a regular expression to apply the same kind of `Text filter` operation than on the previous exercise. Which regular expression can work?
+> 1. Try to find a regular expression to apply the same kind of `Text filter` operation as in the previous exercise. Which regular expression can work?
 >
 > > <solution-title></solution-title>
 > >
@@ -249,9 +252,9 @@ kind of text, numbers and dates.
 
 # Clustering
 
-> <hands-on-title> {% icon hands_on %} Basic clustering </hands-on-title>
+> <hands-on-title> Basic clustering </hands-on-title>
 >
-> 1. Go to County and perform a `Text facet`.
+> 1. Go to "County" and perform a `Text facet`.
 >    - Keep in mind that the correct counties are: "Flores", "La Libertad", "Melchor de Mencos", "San Andres" and "San Jose".
 > 2. On the top right of the facet window click on `Cluster`, a new window will appear.
 > 3. Click on the `Cluster` button from this new window.
@@ -287,10 +290,13 @@ kind of text, numbers and dates.
 >    - A notification message as "Dataset has been exported to Galaxy, please close this tab" is displayed.
 >    - You normally have your resulting data file exported on your Galaxy history as "openrefine-Galaxt file.tsv" dataset.
 >
+>    - When you want to close OpenRefine, go back to the Galaxy window. Go to the middle window, "Active Interactive Tools". Below `Openrefine` click `stop`.
+>    - The interactive tool is then stopped and the respective task shows red in your history. This does not affect your data, which is safely stored in the "openrefine-Galaxt file.tsv" dataset.
+>    - You can continue working with it in Galaxy for the following tasks.
 >
 >    > <comment-title></comment-title>
 >    >
->    > You can also download directly file on your computer choosing `Export` and `Custom tabular exporter`, allowing you to select notably columns and rows you want to download.
+> > You can also download the file directly on your computer, choosing `Export` and `Custom tabular exporter`, allowing you to select notable columns and rows you want to download.
 >    {: .comment}
 >
 {: .hands_on}
@@ -299,15 +305,16 @@ kind of text, numbers and dates.
 # API use
 
 Reconciliation matches the information in one of your columns to an outside database. This is particularly helpful when it
-comes to name validation, as it proves the name you have exists somewhere else. This is a really useful service, but can be
-time consuming. In this case we will go through the process with only three records using the API from GBIF.
+comes to name validation, as it proves the name you have exists somewhere else. This is a really useful service but can be
+time-consuming. In this case, we will go through the process with only three records using the API from GBIF.
+To open your dataset again from Galaxy in OpenRefine, follow the earlier steps from this tutorial "Deploy an OpenRefine instance and push your data in".
 
 > <hands-on-title> {% icon hands_on %} Higher taxonomy </hands-on-title>
 >
-> 1. Go to "Collector" column, then make a `Text facet`. Select the collector "Elsa P".
+> 1. In your opened dataset in OpenRefine, go to the "Collector" column, then make a `Text facet`. Select the collector "Elsa P".
 > 2. Under "Full name", click on column menu and then `Edit column > Add column by fetching URLs…`
 >    - call the new column "Api_name"
-> 3. Change the Throttle Delay to 250 and paste the expression `http://api.gbif.org/v1/species/match?verbose=true&name="+escape(value,'url')`
+> 3. Change the Throttle Delay to 250 and paste the expression `"http://api.gbif.org/v1/species/match?verbose=true&name="+escape(value,'url')`
 > 4. Click ok and wait, this might take some time depending on internet connection and the number of taxa.
 > 5. Go to "Api_name", click on column menu and then `Edit column > Add column based on this column...`.
 >    - Call the new column "higherClassification" and paste the expression:
@@ -319,13 +326,14 @@ time consuming. In this case we will go through the process with only three reco
 >    ", "+value.parseJson().get("order")+
 >    ", "+value.parseJson().get("family")
 >    ```
->    You will see the Kingdom, Phylum, Class, Order and family of each taxon.
-> 6. Under "higherClassification" follow the route `Edit column > Split into several columns…`, leave the initial settings.
+>   click `ok`. 
+>   You will see the Kingdom, Phylum, Class, Order and family of each taxon.
+> 6. Under "higherClassification" follow the route `Edit column > Split into several columns…`, leave the initial settings and click `ok`.
 > 7. Now you know how to obtain the taxonomic categories of a given taxon if this is available in the GBIF API. Column names can be edited in `Edit column > Rename this column`.
 > 8. For the purpose of the original GBIF workshop, the columns created in this exercise (Higher taxonomy) must be deleted.
 >    -  Under All, which is the first column, go to `Edit columns > Re-order / remove columns…`.
 >    - Remove columns "Api_name", "higherClassification 1", "higherClassification 2", "higherClassification 3", "higherClassification 4" and "higherClassification 5".
-> 9. No need to export this file as it is normally come back to previous version you already exported.
+> 9. No need to export this file as it normally comes back to the previous version you already exported.
 >
 {: .hands_on}
 
@@ -333,4 +341,4 @@ time consuming. In this case we will go through the process with only three reco
 
 # Conclusion
 
-Here you learned how to use OpenRefine tool from Galaxy platform to clean Biodiversity data. This tutorial notably allowed you to apply some basic but powerfull functionnalities of OpenRefine to clean your data.
+Here you learned how to use OpenRefine tool from Galaxy platform to clean Biodiversity data. This tutorial notably allowed you to apply some basic but powerful functionalities of OpenRefine to clean your data.
