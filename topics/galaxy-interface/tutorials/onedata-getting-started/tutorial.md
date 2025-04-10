@@ -4,9 +4,12 @@ layout: tutorial_hands_on
 title: "Getting started with Onedata distributed storage"
 tags:
   - storage
-contributors:
-  - lopiola
-  - bwalkowi
+contributions:
+  authorship:
+    - lopiola
+    - bwalkowi
+  funding:
+    - eurosciencegateway
 
 time_estimation: "20m"
 level: Introductory
