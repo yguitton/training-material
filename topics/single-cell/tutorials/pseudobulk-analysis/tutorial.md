@@ -426,7 +426,7 @@ Let's take a moment to interpret the Volcano Plot:
 > 1. What is the significance of genes located at the extremes of the plot (e.g., high LogFC and low P-value)?
 > 2. How many genes meet the significance threshold in this analysis?
 > 3. What do the differentially expressed genes reveal about immune cells in bone marrow versus peripheral blood?
-> >
+> 
 > > <solution-title></solution-title>
 > >
 > > 1. Genes at the extremes of the volcano plot are highly significant and show strong differential expression. Investigating their biological roles may provide valuable insights into the underlying mechanisms.
@@ -435,7 +435,7 @@ Let's take a moment to interpret the Volcano Plot:
 > >
 > {: .solution}
 >
-> {: .question}
+{: .question}
 
 # Subsetting Samples from the Original AnnData Object
 
