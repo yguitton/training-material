@@ -345,8 +345,8 @@ Several plots can be generated to assist in understanding the data and the resul
 > >    - The table contains the results of the differential expression analysis.
 > >    - The **first column** typically lists the gene symbols from the dataset.
 > >    - The **logFC** indicates the direction and magnitude of differential expression:
-> >    - **Upregulated genes**: Genes with higher expression in the first group of the contrast (e.g., 'normal' group in a "normal-COVID_19" contrast).
-> >    - **Downregulated genes**: Genes with lower expression in the first group of the contrast (e.g., 'normal' group in a "normal-COVID_19" contrast).
+> >    - **Upregulated genes**: Genes with higher expression in the first group of the contrast (e.g., 'bone marrow' group in a "bonemarrow-pbmcs" contrast).
+> >    - **Downregulated genes**: Genes with lower expression in the first group of the contrast (e.g., 'pbmcs' group in a "bonemarrow-pbmcs" contrast).
 > >    - The **raw p-value** represents the statistical significance of the result for each gene before adjustment for multiple comparisons. Lower values indicate stronger evidence against the null hypothesis.
 > >    - The **FDR** is the adjusted p-value, calculated using the Benjamini-Hochberg method, which helps control for false positives when testing many genes. Genes with an FDR below a threshold (e.g., 0.05) are considered statistically significant.
 > >
@@ -372,7 +372,7 @@ After performing the differential expression analysis with edgeR, we will clean 
 >
 >    **Extract element identifiers** will allow us to processes the **edgeR** output, which is a collection of datasets, to extract individual elements (like the first table from our collection) for further analysis.
 >
-> 2. {% tool [Remove columns](toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0) %} tool with the following parameters:
+> 2. {% tool [Remove columns](toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0) %} with the following parameters:
 >    - {% icon param-file %} *"Tabular file"*: `outTables` (output of **edgeR** {% icon tool %})
 >    - In *"Select Columns"*:
 >        - {% icon param-repeat %} *"Insert Select Columns"*
@@ -451,7 +451,7 @@ If you would like to extract **all annotated clusters at once**, for example to 
 
 > <hands-on-title>Use Manipulate AnnData Tools to extract observations</hands-on-title>
 >
-> 1. {% tool [Scanpy filter](https://toolshed.g2.bx.psu.edu/repos/iuc/scanpy_filter/scanpy_filter/1.10.2+galaxy3) %} with the following parameters:
+> 1. {% tool [Scanpy filter](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_filter/scanpy_filter/1.10.2+galaxy3) %} with the following parameters:
 >    - *"Annotated data matrix"*: `AnnData for Pseudobulk` (your preprocessed, analysed, and annotated AnnData object)
 >    - *"Method used for filtering"*: `Filter on any column of observations or variables`
 >    - *"What to filter?"*: `Observations (obs)` (select this to filter cells)
@@ -463,7 +463,7 @@ If you would like to extract **all annotated clusters at once**, for example to 
 >
 {: .hands_on}
 
-After using the {% tool [Scanpy filter](https://toolshed.g2.bx.psu.edu/repos/iuc/scanpy_filter/scanpy_filter/1.10.2+galaxy3) %} to extract the cell type of interest, return to the **Pseudobulk with Decoupler** step at the beginning of this tutorial. You can now repeat the same steps using this smaller AnnData object, which contains only the selected cell type (e.g., pDCs). The resulting analysis will reveal differential gene expression between conditions (e.g., COVID-19 vs. healthy) for that specific cell type only.
+After using the {% tool [Scanpy filter](toolshed.g2.bx.psu.edu/repos/iuc/scanpy_filter/scanpy_filter/1.10.2+galaxy3) %} to extract the cell type of interest, return to the **Pseudobulk with Decoupler** step at the beginning of this tutorial. You can now repeat the same steps using this smaller AnnData object, which contains only the selected cell type (e.g., pDCs). The resulting analysis will reveal differential gene expression between conditions (e.g., COVID-19 vs. healthy) for that specific cell type only.
 
 > <question-title></question-title>
 >
@@ -486,7 +486,7 @@ After using the {% tool [Scanpy filter](https://toolshed.g2.bx.psu.edu/repos/iuc
 
 > <tip-title>Split AnnData object by cluster or other observation key into a collection</tip-title>
 >
-> You can split an `AnnData` object into multiple objects **at once** based on the values of a given `obs` key using the: {% tool [AnnData Manipulate](https://toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy1) %}.
+> You can split an `AnnData` object into multiple objects **at once** based on the values of a given `obs` key using the: {% tool [Manipulate AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy1) %}.
 >
 > This tool automatically creates a collection containing one `AnnData` object for each unique value in the selected observation key.
 >
