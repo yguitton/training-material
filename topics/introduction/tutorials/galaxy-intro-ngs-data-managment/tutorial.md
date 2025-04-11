@@ -26,6 +26,8 @@ contributions:
     - mvdbeek
     - tnabtaf
     - blankenberg
+  editor:
+    - dadrasarmin
 
 recordings:
 - captioners:
@@ -37,6 +39,19 @@ recordings:
   speakers:
   - nekrut
 
+answer_histories:
+- label: "usegalaxy.org"
+  history: https://usegalaxy.org/u/dadrasarmin/h/ngs-data-logistics
+  date: 2025-04-12
+- label: "usegalaxy.eu"
+  history: https://usegalaxy.eu/u/armin.dadras/h/ngs-data-logistics
+  date: 2025-04-12
+- label: "usegalaxy.fr"
+  history: https://usegalaxy.fr/u/armin.dadras/h/ngs-data-logistics
+  date: 2025-04-12
+- label: "usegalaxy.org.au"
+  history: https://usegalaxy.org.au/u/armin.dadras/h/ngs-data-logistics
+  date: 2025-04-12
 ---
 
 In this section we will look at practical aspects of manipulation of next-generation sequencing data. We will start with the FASTQ format produced by most sequencing machines and will finish with the SAM/BAM format representing mapped reads. The cover image above shows a screen dump of a SAM dataset.
@@ -484,7 +499,7 @@ Galaxy can process all 2,000+ datasets, but to make this tutorial bearable we ne
 > 1. In "*the pattern*" field enter the following expression &rarr; `SRR12733957|SRR11954102`. These are two accession we want to find separated by the pipe symbol `|`. The `|` means `or`: find lines containing `SRR12733957` **or** `SRR11954102`.
 > 1. Click the `Run Tool` button.
 > 1. This will generate a file containing two lines (well ... one line is also used as the header, so it will appear the the file has three lines. It is OK.)
-> 1. Cut the first column from the file using {% tool [Advanced Cut](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/1.1.0) %} tool, which you will find in **Text Manipulation** section of the tool pane.
+> 1. Cut the first column from the file using {% tool [Advanced Cut](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/9.5+galaxy0) %} tool, which you will find in **Text Manipulation** section of the tool pane.
 > 1. Make sure the dataset produced by the previous step is selected in the "*File to cut*" field of the tool form.
 > 1. Change "*Delimited by*" to `Comma`
 > 1. In "*List of fields*" select `Column: 1`.
@@ -502,7 +517,7 @@ Now that we have identifiers of datasets we want we need to download the actual 
 
 > <hands-on-title>Get data from SRA</hands-on-title>
 >
-> 1. Run {% tool [Faster Download and Extract Reads in FASTQ](toolshed.g2.bx.psu.edu/repos/iuc/sra_tools/fasterq_dump/2.10.9+galaxy0) %} with the following parameters:
+> 1. Run {% tool [Faster Download and Extract Reads in FASTQ](toolshed.g2.bx.psu.edu/repos/iuc/sra_tools/fasterq_dump/3.1.1+galaxy1) %} with the following parameters:
 >    - *"select input type"*: `List of SRA accession, one per line`
 >        - The parameter {% icon param-file %} *"sra accession list"* should point the output of the {% icon tool %} "**Advanced Cut**" from the previous step.
 >    - **Click** the `Run Tool` button. This will run the tool, which retrieves the sequence read datasets for the runs that were listed in the `SRA` dataset. It may take some time. So this may be a good time to take a break.
@@ -563,7 +578,7 @@ Removing sequencing adapters improves alignments and variant calling. **fastp** 
 
 > <hands-on-title>Running `fastp`</hands-on-title>
 >
-> Run {% tool [fastp](toolshed.g2.bx.psu.edu/repos/iuc/fastp/fastp/0.20.1+galaxy0) %} with the following parameters:
+> Run {% tool [fastp](toolshed.g2.bx.psu.edu/repos/iuc/fastp/fastp/0.24.0+galaxy4) %} with the following parameters:
 >    - *"Single-end or paired reads"*: `Paired Collection`
 >        - {% icon param-file %} *"Select paired collection(s)"*: `list_paired` (output of **Faster Download and Extract Reads in FASTQ** {% icon tool %})
 >    - In *"Output Options"*:
@@ -577,7 +592,7 @@ Removing sequencing adapters improves alignments and variant calling. **fastp** 
 
 > <hands-on-title>Map sequencing reads to reference genome</hands-on-title>
 >
-> Run {% tool [Map with BWA-MEM](toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.1) %} with the following parameters:
+> Run {% tool [Map with BWA-MEM](toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.19) %} with the following parameters:
 >    - *"Will you select a reference genome from your history or use a built-in index?"*: `Use a genome from history and build index`
 >        - {% icon param-file %} *"Use the following dataset as the reference sequence"*: `output` (Input dataset)
 >    - *"Single or Paired-end reads"*: `Paired Collection`
@@ -593,7 +608,7 @@ Removing sequencing adapters improves alignments and variant calling. **fastp** 
 
 > <hands-on-title>Remove duplicates</hands-on-title>
 >
-> Run {% tool [MarkDuplicates](toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MarkDuplicates/2.18.2.2)%} with the following parameters:
+> Run {% tool [MarkDuplicates](toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MarkDuplicates/3.1.1.0)%} with the following parameters:
 >    - {% icon param-file %} *"Select SAM/BAM dataset or dataset collection"*: `bam_output` (output of **Map with BWA-MEM** {% icon tool %})
 >    - *"If true do not write duplicates to the output file instead of writing them with appropriate flags set"*: `Yes`
 >
@@ -638,7 +653,7 @@ This step adds indel qualities into our alignment file. This is necessary in ord
 
 > <hands-on-title>Add indel qualities</hands-on-title>
 >
-> Run {% tool [Insert indel qualities](toolshed.g2.bx.psu.edu/repos/iuc/lofreq_indelqual/lofreq_indelqual/2.1.5+galaxy0) %} with the following parameters:
+> Run {% tool [Insert indel qualities](toolshed.g2.bx.psu.edu/repos/iuc/lofreq_indelqual/lofreq_indelqual/2.1.5+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"Reads"*: `realigned` (output of **Realign reads** {% icon tool %})
 >    - *"Indel calculation approach"*: `Dindel`
 >        - *"Choose the source for the reference genome"*: `History`
@@ -652,7 +667,7 @@ We are now ready to call variants.
 
 > <hands-on-title>Call variants</hands-on-title>
 >
-> Run {% tool [Call variants](toolshed.g2.bx.psu.edu/repos/iuc/lofreq_call/lofreq_call/2.1.5+galaxy1) %} with the following parameters:
+> Run {% tool [Call variants](toolshed.g2.bx.psu.edu/repos/iuc/lofreq_call/lofreq_call/2.1.5+galaxy3) %} with the following parameters:
 >    - {% icon param-file %} *"Input reads in BAM format"*: `output` (output of **Insert indel qualities** {% icon tool %})
 >    - *"Choose the source for the reference genome"*: `History`
 >        - {% icon param-file %} *"Reference"*: `output` (Input dataset)
@@ -714,7 +729,7 @@ We will now summarize our analysis with MultiQC, which generates a beautiful rep
 
 > <hands-on-title>Summarize data</hands-on-title>
 >
-> Run {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.8+galaxy1) %} with the following parameters:
+> Run {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.27+galaxy3) %} with the following parameters:
 >    - In *"Results"*:
 >        - {% icon param-repeat %} *"Insert Results"*
 >            - *"Which tool was used generate logs?"*: `fastp`
@@ -738,7 +753,7 @@ We now extracted meaningful fields from VCF datasets. But they still exist as a 
 
 > <hands-on-title>Collapse a collection</hands-on-title>
 >
-> Run {% tool [Collapse Collection](toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/4.0) %} with the following parameters:
+> Run {% tool [Collapse Collection](toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0) %} with the following parameters:
 >    - {% icon param-collection %} *"Collection of files to collapse into single dataset"*: `snpsift extract fields` (output of **SnpSift Extract Fields** {% icon tool %})
 >    - "*Keep one header line*": `Yes`
 >    - "*Prepend File name*": `Yes`

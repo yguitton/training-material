@@ -1,0 +1,129 @@
+- doc: Test outline for NGS_tutorial
+  job:
+    Accessions:
+      class: File
+      path: test-data/Accessions.tabular
+      filetype: tabular
+    Genome:
+      class: File
+      path: test-data/Genome.fasta.gz
+      filetype: fasta.gz
+  outputs:
+    MultiQC HTML report:
+      path: test-data/MultiQC HTML report.html
+    MultiQC Stat table:
+      path: test-data/MultiQC Stat table.tabular
+    Summarized variant analysis result dataset:
+      path: test-data/Summarized variant analysis result dataset.tabular
+    Log file:
+      path: test-data/Log file.txt
+    Paired-end datasets:
+      element_tests:
+        SRR11954102:
+          elements:
+            forward:
+              path: test-data/Paired-end datasets_forward.fastqsanger.gz
+            reverse:
+              path: test-data/Paired-end datasets_reverse.fastqsanger.gz
+        SRR12733957:
+          elements:
+            forward:
+              path: test-data/Paired-end datasets_forward.fastqsanger.gz
+            reverse:
+              path: test-data/Paired-end datasets_reverse.fastqsanger.gz
+    Single-end datasets:
+      element_tests: {}
+    Unpaired datasets:
+      element_tests: {}
+    Mapping BAM output:
+      element_tests:
+        SRR11954102:
+          path: test-data/Mapping BAM output_SRR11954102.bam
+        SRR12733957:
+          path: test-data/Mapping BAM output_SRR12733957.bam
+    Mapping SAM output:
+      element_tests:
+        SRR11954102:
+          path: test-data/Mapping SAM output_SRR11954102.bam
+        SRR12733957:
+          path: test-data/Mapping SAM output_SRR12733957.bam
+    Realigned reads BAM file:
+      element_tests:
+        SRR11954102:
+          path: test-data/Realigned reads BAM file_SRR11954102.bam
+        SRR12733957:
+          path: test-data/Realigned reads BAM file_SRR12733957.bam
+    Realigned BAM dataset with indel qualities:
+      element_tests:
+        SRR11954102:
+          path: test-data/Realigned BAM dataset with indel qualities_SRR11954102.bam
+        SRR12733957:
+          path: test-data/Realigned BAM dataset with indel qualities_SRR12733957.bam
+    'HTML summary of results ':
+      element_tests:
+        SRR11954102:
+          path: test-data/HTML summary of results _SRR11954102.html
+        SRR12733957:
+          path: test-data/HTML summary of results _SRR12733957.html
+    Variant dataset with added variant effects:
+      element_tests:
+        SRR11954102:
+          path: test-data/Variant dataset with added variant effects_SRR11954102.vcf
+        SRR12733957:
+          path: test-data/Variant dataset with added variant effects_SRR12733957.vcf
+    Report in HTML format:
+      element_tests:
+        SRR11954102:
+          path: test-data/Report in HTML format_SRR11954102.html
+        SRR12733957:
+          path: test-data/Report in HTML format_SRR12733957.html
+    Report in JSON format:
+      element_tests:
+        SRR11954102:
+          path: test-data/Report in JSON format_SRR11954102.json
+        SRR12733957:
+          path: test-data/Report in JSON format_SRR12733957.json
+    Paired-end Collection:
+      element_tests:
+        SRR11954102:
+          elements:
+            forward:
+              path: test-data/Paired-end Collection_forward.fastqsanger.gz
+            reverse:
+              path: test-data/Paired-end Collection_reverse.fastqsanger.gz
+        SRR12733957:
+          elements:
+            forward:
+              path: test-data/Paired-end Collection_forward.fastqsanger.gz
+            reverse:
+              path: test-data/Paired-end Collection_reverse.fastqsanger.gz
+    MarkDuplicates Metrics:
+      element_tests:
+        SRR11954102:
+          path: test-data/MarkDuplicates Metrics_SRR11954102.txt
+        SRR12733957:
+          path: test-data/MarkDuplicates Metrics_SRR12733957.txt
+    MarkDuplicates BAM:
+      element_tests:
+        SRR11954102:
+          path: test-data/MarkDuplicates BAM_SRR11954102.bam
+        SRR12733957:
+          path: test-data/MarkDuplicates BAM_SRR12733957.bam
+    Statistics for BAM dataset:
+      element_tests:
+        SRR11954102:
+          path: test-data/Statistics for BAM dataset_SRR11954102.tabular
+        SRR12733957:
+          path: test-data/Statistics for BAM dataset_SRR12733957.tabular
+    All called variants:
+      element_tests:
+        SRR11954102:
+          path: test-data/All called variants_SRR11954102.vcf
+        SRR12733957:
+          path: test-data/All called variants_SRR12733957.vcf
+    Variant dataset with added variant effects in tabular format:
+      element_tests:
+        SRR11954102:
+          path: test-data/Variant dataset with added variant effects in tabular format_SRR11954102.tabular
+        SRR12733957:
+          path: test-data/Variant dataset with added variant effects in tabular format_SRR12733957.tabular
