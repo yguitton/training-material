@@ -26,7 +26,7 @@ contributions:
     - mvdbeek
     - tnabtaf
     - blankenberg
-  editor:
+  editing:
     - dadrasarmin
 
 recordings:
@@ -54,11 +54,11 @@ answer_histories:
   date: 2025-04-12
 ---
 
-In this section we will look at practical aspects of manipulation of next-generation sequencing data. We will start with the FASTQ format produced by most sequencing machines and will finish with the SAM/BAM format representing mapped reads. The cover image above shows a screen dump of a SAM dataset.
+In this section, we will look at practical aspects of manipulation of next-generation sequencing data. We will start with the FASTQ format produced by most sequencing machines and will finish with the SAM/BAM format representing mapped reads.
 
 ## FASTQ manipulation and quality control
 
-[FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) is not a very well defined format. In the beginning various manufacturers of sequencing instruments were free to interpret FASTQ as they saw fit, resulting in a multitude of FASTQ flavors. This variation stemmed primarily from different ways of encoding quality values as described [on the Wikipedia article for FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) (below you will find an explanation of quality scores and their meaning). Today, the [FASTQ Sanger](https://www.ncbi.nlm.nih.gov/pubmed/20015970) version of the format is considered to be the standard form of FASTQ. Galaxy is using FASTQ Sanger as the only legitimate input for downstream processing tools and provides [a number of utilities for converting FASTQ files](https://www.ncbi.nlm.nih.gov/pubmed/20562416) into this form (see **FASTQ Quality Control** section of Galaxy tools).
+[FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) is not a very well defined format. In the beginning various manufacturers of sequencing instruments were free to interpret FASTQ as they saw fit, resulting in a multitude of FASTQ flavors. This variation stemmed primarily from different ways of encoding quality values as described [on the Wikipedia article for FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) (below you will find an explanation of quality scores and their meaning). Today, the FASTQ Sanger version ({% cite Cock2009 %}) of the format is considered to be the standard form of FASTQ. Galaxy is using FASTQ Sanger as the only legitimate input for downstream processing tools and provides a number of utilities for converting FASTQ files ({% cite Blankenberg2010 %}) into this form (see **FASTQ Quality Control** section of Galaxy tools whic is available on some usegalaxy.* instances).
 
 The FASTQ format looks like this:
 
@@ -85,11 +85,11 @@ Each sequencing read is represented by four lines:
 1. `@` followed by read ID and optional information about sequencing run
 2. sequenced bases
 3. `+` (optionally followed by the read ID and some additional info)
-4. quality scores for each base of the sequence encoded as [ASCII symbols](https://en.wikipedia.org/wiki/ASCII)
+4. Quality scores for each base of the sequence encoded as [ASCII symbols](https://en.wikipedia.org/wiki/ASCII)
 
 ## Paired end data
 
-It is common to prepare pair-end and mate-pair sequencing libraries. This is highly beneficial for a number of applications discussed in subsequent topics. For now let's just briefly discuss what these are and how they manifest themselves in FASTQ form.
+It is common to prepare pair-end and mate-pair sequencing libraries. This is highly beneficial for a number of applications discussed in subsequent topics. For now, let's just briefly discuss what these are and how they manifest themselves in FASTQ form.
 
 |   |
 |----|
@@ -152,7 +152,7 @@ CCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAAC
 HHHHHHHHHHHHHGHHHHHHGHHHHHHHHHHHFHHHFHHHHHHHHHHH
 ```
 
-Here the first and the second reads are identified with `/1` and `/2` tags.
+Here, the first and the second reads are identified with `/1` and `/2` tags.
 
 > <comment-title>FASTQ format is a loose standard</comment-title>
 > FASTQ format is not strictly defined and its variations will always cause headache for you. See [this page](https://www.ncbi.nlm.nih.gov/sra/docs/submitformats/) for more information.
@@ -165,7 +165,7 @@ As we've seen above, FASTQ datasets contain two types of information:
 - *sequence of the read*
 - *base qualities* for each nucleotide in the read.
 
-The base qualities allow us to judge how trustworthy each base in a sequencing read is. The following excerpt from an excellent [tutorial](http://chagall.med.cornell.edu/RNASEQcourse/Intro2RNAseq.pdf) by Friederike D&uuml;ndar, Luce Skrabanek, Paul Zumbo explains what base qualities are:
+The base qualities allow us to judge how trustworthy each base in a sequencing read is. The following excerpt from an excellent [tutorial](https://web.archive.org/web/20240422192254/https://chagall.med.cornell.edu/RNASEQcourse/Intro2RNAseq.pdf) by Friederike D&uuml;ndar, Luce Skrabanek, Paul Zumbo explains what base qualities are:
 
 > <comment-title>From "Introduction to differential gene expression analysis using RNA-seq"</comment-title>
 > Illumina sequencing is based on identifying the individual nucleotides by the fluorescence signal emitted upon their incorporation into the growing sequencing read. Once the fluorescence intensities are extracted and translated into the four letter code. The deduction of nucleotide sequences from the images acquired during sequencing is commonly referred to as base calling.
@@ -190,14 +190,14 @@ Sanger/Phred format that is also used by other sequencing platforms and the sequ
 
 ## Assessing data quality
 
-One of the first steps in the analysis of NGS data is seeing how good the data actually is. [FastqQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) is a fantastic tool allowing you to assess the quality of FASTQ datasets (and deciding whether to blame or not to blame whoever has done sequencing for you).
+One of the first steps in the analysis of NGS data is seeing how good the data actually is. [FastqQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) is the most famous tool allowing you to assess the quality of FASTQ datasets (and deciding whether to blame or not to blame whoever has done sequencing for you). [Falco](https://github.com/smithlabcode/falco) is an alternative tool for quality control. Falco is a improved implementation of FastQC for high throughput sequence quality control.
 
 |                                        |                                    |
 |:---------------------------------------|:-----------------------------------|
 | ![Good quality in FastQC](../../images/good_fq.png)    | ![Bad quality in FastQC](../../images/bad_fq.png) |
 |<small>**A.** Excellent quality</small> | <small>**B.** Hmmm...OK</small>    |
 
-Here you can see FastQC base quality reports (the tools gives you many other types of data) for two datasets: **A** and **B**. The **A** dataset has long reads (250 bp) and very good quality profile with no qualities dropping below [phred score](http://www.phrap.com/phred/) of 30. The **B** dataset is significantly worse with ends of the reads dipping below phred score of 20. The **B** reads may need to be trimmed for further processing.
+Here, you can see FastQC base quality reports (the tools gives you many other types of data) for two datasets: **A** and **B**. The **A** dataset has long reads (250 bp) and very good quality profile with no qualities dropping below [phred score](http://www.phrap.com/phred/) of 30. The **B** dataset is significantly worse with ends of the reads dipping below phred score of 20. The **B** reads may need to be trimmed for further processing. Falco will generate almost the same reports about the quality of the reads.
 
 <!--
 <div class="embed-responsive embed-responsive-16by9"><iframe src="https://player.vimeo.com/video/123453134?portrait=0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
@@ -207,11 +207,11 @@ Here you can see FastQC base quality reports (the tools gives you many other typ
 
 Mapping of NGS reads against reference sequences is one of the key steps of the analysis. Now it is time to see how this is done in practice. Below is a list of key publications highlighting mainstream mapping tools:
 
-- 2009 Bowtie 1 - [Langmead et al.](http://genomebiology.com/content/10/3/R25)
-- 2012 Bowtie 2 - [Langmead and Salzberg](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3322381/)
-- 2009 BWA - [Li and Durbin](https://academic.oup.com/bioinformatics/article/25/14/1754/225615/Fast-and-accurate-short-read-alignment-with)
-- 2010 BWA - [Li and Durbin](https://academic.oup.com/bioinformatics/article/26/5/589/211735/Fast-and-accurate-long-read-alignment-with-Burrows)
-- 2013 BWA-MEM - [Li](https://arxiv.org/abs/1303.3997)
+- 2009 Bowtie 1 - ({% cite Langmead2009 %})
+- 2012 Bowtie 2 - ({% cite Langmead2012 %})
+- 2009 BWA - ({% cite Li2009 %})
+- 2010 BWA - ({% cite Li2010 %})
+- 2013 BWA-MEM - ({% cite li2013aligning %})
 
 ### Mapping against a pre-computed genome index
 
