@@ -285,7 +285,7 @@ Our objective is to find which exon contains the most SNPs. Therefore we have to
 
 > <hands-on-title>Finding Exons</hands-on-title>
 >
-> To find intersection we will be using `intersect intervals` {% tool [bedtools intersect intervals](toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_intersectbed/2.31.1+galaxy0) % from [BEDTools](https://bedtools.readthedocs.io/en/latest/content/overview.html) package.
+> To find intersection we will be using `intersect intervals` {% tool [bedtools intersect intervals](toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_intersectbed/2.31.1+galaxy0) %} from [BEDTools](https://bedtools.readthedocs.io/en/latest/content/overview.html) package.
 >
 > 1. {% tool [bedtools intersect intervals](toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_intersectbed/2.31.1+galaxy0) %} find overlapping the intervals in various ways:
 >

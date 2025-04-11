@@ -1,4 +1,4 @@
-- doc: Test outline for galaxy-intro-101-workflow.ga
+- doc: Test sample data for the workflow
   job:
     Exons:
       class: File
