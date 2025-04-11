@@ -72,9 +72,8 @@ In Earth observation, Voronoi segmentation is used to analyze spatial patterns a
 {: .agenda}
 
 ## Getting data
-In the next step, you may download the data you need from a prepared dataset on Zenodo. 
-The dataset contains both bioimaging data and earth observation data, so you can choose which data you want to apply the data to. 
-This tutorial can in practice be followed with any type of data provided that you have an image and corresponding seeds.  
+In the next step, you can download the data you need from Zenodo. The dataset contains both bioimaging data and earth observation data, so you can choose which data you want to apply the data to. 
+In principle, this tutorial can be followed with any type of data provided that you have an image and another image with the corresponding seeds.  
 
 > <hands-on-title> Data Upload </hands-on-title>
 >
@@ -82,19 +81,24 @@ This tutorial can in practice be followed with any type of data provided that yo
 > 
 >    {% snippet faqs/galaxy/histories_create_new.md %}
 > 
-> 2. Import {% icon galaxy-upload %} the following dataset from [Zenodo]( https://zenodo.org/records/15181061). 
+> 2. Import {% icon galaxy-upload %} the following dataset from [Zenodo]( https://zenodo.org/records/15172302). 
 >    - **Important:** Choose the type of data as `zip`.
 > 
 >    ```
->    https://zenodo.org/records/15181061/files/images_and_seeds.zip
+>    https://zenodo.org/records/15195377/files/images_and_seeds.zip
 >    ```
+> 
+>    The uplaod might take a few minutes. 
+> 
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
 > 3. {% tool [Unzip](toolshed.g2.bx.psu.edu/repos/imgteam/unzip/unzip/6.0+galaxy0) %} the image with the following parameters:
 >    - {% icon param-file %} *"input_file"*: `images_and_seeds.zip`
 >    - *"Extract single file"*: `Single file`
->    - *"Filepath"*: `HeLa_cell_image-B2--W00026--P00001--Z00000--T00000--dapi.tiff` or `tree_image_2018_SJER_3_258000_4106000.tif.tiff`, depending on your choice. 
->
+>    - *"Filepath"*: Choose one of the following: 
+>        - `images_and_seeds/HeLa_cell_image-B2--W00026--P00001--Z00000--T00000--dapi.tiff`
+>        - `images_and_seeds/tree_image_2018_SJER_3_258000_4106000.tiff`
+>    
 > 6. Rename {% icon galaxy-pencil %} the resulting file as `image`.
 >
 > 4. Check that the datatype is correct.
@@ -104,7 +108,8 @@ This tutorial can in practice be followed with any type of data provided that yo
 > 5. {% tool [Unzip](toolshed.g2.bx.psu.edu/repos/imgteam/unzip/unzip/6.0+galaxy0) %} the seed with the following parameters:
 >    - {% icon param-file %} *"input_file"*: `images_and_seeds.zip`
 >    - *"Extract single file"*: `Single file`
->    - *"Filepath"*: `HeLa_cell_seeds-B2--W00026--P00001--Z00000--T00000--dapi.tiff` or `tree_seeds_2018_SJER_3_258000_4106000.png`, depending on your choice. 
+>        - `images_and_seeds/HeLa_cell_seeds-B2--W00026--P00001--Z00000--T00000--dapi.tiff`
+>        - `images_and_seeds/tree_seeds_2018_SJER_3_258000_4106000.png`
 >
 > 6. Rename {% icon galaxy-pencil %} the resulting file as `seed`.
 {: .hands_on}
@@ -112,7 +117,7 @@ This tutorial can in practice be followed with any type of data provided that yo
 
 > <comment-title> Extracting seeds from an image </comment-title>
 >
-> To see how the seed can be generated automatically from an image by smoothing and thresholding, see the 
+> To see how a seed image can be generated from a source image through smoothing and thresholding, see the 
 > [Imaging introduction tutorial](https://training.galaxyproject.org/training-material/topics/imaging/tutorials/imaging-introduction/tutorial.html). 
 {: .comment}
 
@@ -157,20 +162,13 @@ We will build the Voronoi segmentation piece by piece, starting with image manip
 >    To run Voronoi segmentation, a seed image is required, which can be prepared manually or using an automatic tool, though the preparation process is outside the scope of this discussion. We have already prepared the seed image, and this is the one we are using for the Voronoi segmentation here. We apply image filters to enhance or suppress specific features of interest, such as edges or noise.
 >
 >
-> 1. {% tool [Convert single-channel to multi-channel image](toolshed.g2.bx.psu.edu/repos/imgteam/repeat_channels/repeat_channels/1.26.4+galaxy0) %} with the following parameters:
+> 1. {% tool [Convert single-channel to multi-channel image](toolshed.g2.bx.psu.edu/repos/imgteam/repeat_channels/repeat_channels/1.26.4+galaxy0) %}.
 >
-> 1. {% tool [Compute Voronoi tessellation](toolshed.g2.bx.psu.edu/repos/imgteam/voronoi_tesselation/voronoi_tessellation/0.22.0+galaxy3) %}:
+> 1. {% tool [Compute Voronoi tessellation](toolshed.g2.bx.psu.edu/repos/imgteam/voronoi_tesselation/voronoi_tessellation/0.22.0+galaxy3) %}. 
 >
 > 1. {% tool [Threshold image](toolshed.g2.bx.psu.edu/repos/imgteam/2d_auto_threshold/ip_threshold/0.18.1+galaxy3) %} with the following parameters:
 >    - *"Thresholding method"*: `Manual`
 >        - *"Threshold value"*: `3.0`
->
-> 1. {% tool [Count objects in label map](toolshed.g2.bx.psu.edu/repos/imgteam/count_objects/ip_count_objects/0.0.5-2) %} with the following parameters:
->
-> 1. {% tool [Extract image features](toolshed.g2.bx.psu.edu/repos/imgteam/2d_feature_extraction/ip_2d_feature_extraction/0.18.1+galaxy0) %} with the following parameters:
->
->    - *"Use the intensity image to compute additional features"*: `Use intensity image`
->    - *"Select features to compute"*: `All features`
 >
 > 1. {% tool [Process images using arithmetic expressions](toolshed.g2.bx.psu.edu/repos/imgteam/image_math/image_math/1.26.4+galaxy2) %} with the following parameters:
 >    - *"Expression"*: `tessellation * (mask / 255) * (1 - seeds / 255)`
@@ -182,11 +180,22 @@ We will build the Voronoi segmentation piece by piece, starting with image manip
 >        - {% icon param-repeat %} *"Insert Input images"*
 >            - *"Variable for representation of the image within the expression"*: `mask`
 >
-> 1. {% tool [Colorize label map](toolshed.g2.bx.psu.edu/repos/imgteam/colorize_labels/colorize_labels/3.2.1+galaxy3) %} with the following parameters:
+> 1. {% tool [Colorize label map](toolshed.g2.bx.psu.edu/repos/imgteam/colorize_labels/colorize_labels/3.2.1+galaxy3) %}.
 >
 >
 > 1. {% tool [Overlay images](toolshed.g2.bx.psu.edu/repos/imgteam/overlay_images/ip_overlay_images/0.0.4+galaxy4) %} with the following parameters:
 >    - *"Type of the overlay"*: `Linear blending`
+>
+{: .hands_on}
+
+# Count objects and extract image features
+
+> <hands-on-title> Task description </hands-on-title>
+> 1. {% tool [Count objects in label map](toolshed.g2.bx.psu.edu/repos/imgteam/count_objects/ip_count_objects/0.0.5-2) %}. 
+>
+> 1. {% tool [Extract image features](toolshed.g2.bx.psu.edu/repos/imgteam/2d_feature_extraction/ip_2d_feature_extraction/0.18.1+galaxy0) %} with the following parameters:
+>    - *"Use the intensity image to compute additional features"*: `Use intensity image`
+>    - *"Select features to compute"*: `All features`
 >
 {: .hands_on}
 
