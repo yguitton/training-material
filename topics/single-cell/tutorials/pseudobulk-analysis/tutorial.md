@@ -367,12 +367,12 @@ After performing the differential expression analysis with edgeR, we will clean 
 > <hands-on-title></hands-on-title>
 >
 >
-> 1. Use the {% tool [Extract element identifiers](toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2) %} tool with the following parameters:
+> 1. {% tool [Extract element identifiers](toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2) %} with the following parameters:
 >    - {% icon param-file %} *"Dataset collection"*: `outTables` (output from the **edgeR** tool {% icon tool %})
 >
 >    **Extract element identifiers** will allow us to processes the **edgeR** output, which is a collection of datasets, to extract individual elements (like the first table from our collection) for further analysis.
 >
-> 2. Use the {% tool [Remove columns](toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0) %} tool with the following parameters:
+> 2. {% tool [Remove columns](toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0) %} tool with the following parameters:
 >    - {% icon param-file %} *"Tabular file"*: `outTables` (output of **edgeR** {% icon tool %})
 >    - In *"Select Columns"*:
 >        - {% icon param-repeat %} *"Insert Select Columns"*
@@ -396,7 +396,7 @@ In this step, we will use the sanitized output from the previous steps to genera
 
 > <hands-on-title> Create a Volcano Plot of the DEG </hands-on-title>
 >
-> 1. Use the {% tool [Volcano Plot](toolshed.g2.bx.psu.edu/repos/iuc/volcanoplot/volcanoplot/0.0.6) %} tool with the following parameters:
+> 1. {% tool [Volcano Plot](toolshed.g2.bx.psu.edu/repos/iuc/volcanoplot/volcanoplot/0.0.6) %} with the following parameters:
 >    - {% icon param-file %} *"Specify an input file"*: `edgeR_DEG_summary` (tabular file output from **Remove Columns** {% icon tool %})
 >    - *"File has header?"*: `Yes`
 >    - *"FDR (adjusted P value) column number"*: `c4`
@@ -451,7 +451,7 @@ If you would like to extract **all annotated clusters at once**, for example to 
 
 > <hands-on-title>Use Manipulate AnnData Tools to extract observations</hands-on-title>
 >
-> 1. Use the {% tool [Scanpy filter](https://toolshed.g2.bx.psu.edu/repos/iuc/scanpy_filter/scanpy_filter/1.10.2+galaxy3) %} tool with the following parameters:
+> 1. {% tool [Scanpy filter](https://toolshed.g2.bx.psu.edu/repos/iuc/scanpy_filter/scanpy_filter/1.10.2+galaxy3) %} with the following parameters:
 >    - *"Annotated data matrix"*: `AnnData for Pseudobulk` (your preprocessed, analysed, and annotated AnnData object)
 >    - *"Method used for filtering"*: `Filter on any column of observations or variables`
 >    - *"What to filter?"*: `Observations (obs)` (select this to filter cells)
@@ -463,7 +463,7 @@ If you would like to extract **all annotated clusters at once**, for example to 
 >
 {: .hands_on}
 
-After using the {% tool [Scanpy filter](https://toolshed.g2.bx.psu.edu/repos/iuc/scanpy_filter/scanpy_filter/1.10.2+galaxy3) %} tool to extract the cell type of interest, return to the **Pseudobulk with Decoupler** step at the beginning of this tutorial. You can now repeat the same steps using this smaller AnnData object, which contains only the selected cell type (e.g., pDCs). The resulting analysis will reveal differential gene expression between conditions (e.g., COVID-19 vs. healthy) for that specific cell type only.
+After using the {% tool [Scanpy filter](https://toolshed.g2.bx.psu.edu/repos/iuc/scanpy_filter/scanpy_filter/1.10.2+galaxy3) %} to extract the cell type of interest, return to the **Pseudobulk with Decoupler** step at the beginning of this tutorial. You can now repeat the same steps using this smaller AnnData object, which contains only the selected cell type (e.g., pDCs). The resulting analysis will reveal differential gene expression between conditions (e.g., COVID-19 vs. healthy) for that specific cell type only.
 
 > <question-title></question-title>
 >
@@ -486,7 +486,7 @@ After using the {% tool [Scanpy filter](https://toolshed.g2.bx.psu.edu/repos/iuc
 
 > <tip-title>Split AnnData object by cluster or other observation key into a collection</tip-title>
 >
-> You can split an `AnnData` object into multiple objects **at once** based on the values of a given `obs` key using the {% tool [AnnData Manipulate](https://toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy1) %} tool.
+> You can split an `AnnData` object into multiple objects **at once** based on the values of a given `obs` key using the: {% tool [AnnData Manipulate](https://toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.9+galaxy1) %}.
 >
 > This tool automatically creates a collection containing one `AnnData` object for each unique value in the selected observation key.
 >
