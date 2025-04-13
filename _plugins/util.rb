@@ -5,7 +5,6 @@ require 'yaml'
 # should go here.
 
 ALLOWED_SHORT_IDS = [
-  'Advanced Cut',
   'ChangeCase',
   'Convert characters1',
   'Count1',
