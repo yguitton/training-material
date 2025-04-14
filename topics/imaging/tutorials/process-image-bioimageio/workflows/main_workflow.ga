@@ -334,7 +334,7 @@
                 "owner": "imgteam",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"expression\": \"foreground - boundaries\", \"inputs\": [{\"__index__\": 0, \"image\": {\"__class__\": \"ConnectedValue\"}, \"name\": \"foreground\"}, {\"__index__\": 1, \"image\": {\"__class__\": \"ConnectedValue\"}, \"name\": \"background\"}], \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"expression\": \"foreground - boundaries\", \"inputs\": [{\"__index__\": 0, \"image\": {\"__class__\": \"ConnectedValue\"}, \"name\": \"foreground\"}, {\"__index__\": 1, \"image\": {\"__class__\": \"ConnectedValue\"}, \"name\": \"boundaries\"}], \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.26.4+galaxy2",
             "type": "tool",
             "uuid": "ef6e9413-f3dd-406e-849d-c820c2a08dde",
