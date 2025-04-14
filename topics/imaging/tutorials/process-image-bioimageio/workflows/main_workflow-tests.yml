@@ -10,6 +10,5 @@
       filetype: png
   outputs:
     output_predicted_image:
-      path: test-data/output_predicted_image.tiff
-    output_predicted_image_matrix:
-      path: test-data/output_predicted_image_matrix.npy
+      path: test-data/segmentation.tiff
+      compare: image_diff
