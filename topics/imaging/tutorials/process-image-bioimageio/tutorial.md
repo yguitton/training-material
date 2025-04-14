@@ -33,8 +33,6 @@ Each model in BioImage.IO is tailored for a specific biological task — for exa
 
 This tutorial will guide you through the process of applying one of these BioImage.IO models to an input image using Galaxy ({% cite Batut2024 %}). You will learn how to upload and configure the model, set the correct input parameters, and interpret the output files.
 
-+⚠️  As of the version {% tool [Process image using a BioImage.IO model](toolshed.g2.bx.psu.edu/repos/bgruening/bioimage_inference/bioimage_inference/2.4.1+galaxy2) %}, only the PyTorch-based BioImage.IO models listed in the section below are compatible with the Galaxy tool.
-
 > <agenda-title></agenda-title>
 >
 > In this tutorial, we will cover:
@@ -44,7 +42,9 @@ This tutorial will guide you through the process of applying one of these BioIma
 >
 {: .agenda}
 
-## Available BioImage.IO models in Galaxy
+# Available BioImage.IO models in Galaxy
+
+As of the version {% tool [Process image using a BioImage.IO model](toolshed.g2.bx.psu.edu/repos/bgruening/bioimage_inference/bioimage_inference/2.4.1+galaxy2) %}, only the PyTorch-based BioImage.IO models listed in the table below are compatible with the Galaxy tool:
 
 | Model name | Task | Imaging modality | Sample / species | Link |
 |------------|------|------------------|------------------|------|
@@ -60,7 +60,7 @@ This tutorial will guide you through the process of applying one of these BioIma
 | 🧫 HPACellSegmentationModel | Cell segmentation | Immunofluorescence | Human Protein Atlas | [View model](https://bioimage.io/#/?tags=hpa&id=10.5281%2Fzenodo.6200635) |
 | 🧪 MitochondriaEMSegmentationBoundaryModel | Mitochondria segmentation | Electron microscopy | Human | [View model](https://bioimage.io/#/?id=10.5281%2Fzenodo.5874841) |
 
-## Model-specific example
+# Example: Segmentation
 
 Here we illustrate the type of information that is both useful for understanding the model's biological context and necessary for using the Galaxy tool — specifically, the input axes and input size parameters.
 
@@ -187,7 +187,7 @@ The model will process the input image and generate two outputs:
 {: .question}
 
 
-# Post-processing of the model output
+## Post-processing of the model output
 
 There are two challenges when it comes to using the model output for subsequent analysis. First, the model produces a single output file with two images (boundary maps and foreground probabilities), so for subsequent analysis we need to extract the corresponding information from that file. Second, neither of the two images produced by the model directly corresponds to segmentation results. Albeit the extracted image (Predicted Image 1) looks like a binary image with intensity 0 for the image background and intensity 1 for the image foreground, it is not. For example, there are fine contours of intensity values subtly below 1 between closely clustered cell nuclei. Thus, to obtain segmentation results, we first need to threshold the foreground probabilities (values ranging between 0 and 1) to determine the image foreground (as a binary image without any values between 0 and 1).
 
@@ -248,6 +248,8 @@ However, directly thresholding the foreground probabilities is going to lose inf
 >    - {% icon param-text %} *"Threshold value"*: `0.6`
 >
 {: .hands_on}
+
+Finally, you could follow the ["Hands On: Segment image" from the "Introduction to Image Analysis using Galaxy" tutorial]({% link topics/imaging/tutorials/imaging-introduction/tutorial.md#hands-on-segment-image %}) to create a segmentation overlay.
 
 
 # Conclusion
