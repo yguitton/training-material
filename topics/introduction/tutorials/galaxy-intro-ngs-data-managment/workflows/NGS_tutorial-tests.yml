@@ -6,7 +6,7 @@
       filetype: tabular
     Genome:
       class: File
-      path: test-data/Genome.fasta.gz
+      location: https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/009/858/895/GCF_009858895.2_ASM985889v3/GCF_009858895.2_ASM985889v3_genomic.fna.gz
       filetype: fasta.gz
   outputs:
     MultiQC HTML report:
