@@ -238,7 +238,9 @@ However, directly thresholding the foreground probabilities is going to lose inf
 >
 {: .hands_on}
 
-Finally, you could follow the ["Hands On: Segment image" from the "Introduction to Image Analysis using Galaxy" tutorial]({% link topics/imaging/tutorials/imaging-introduction/tutorial.md#hands-on-segment-image %}) to create a segmentation overlay.
+Finally, you could follow the ["Hands On: Segment image" from the "Introduction to Image Analysis using Galaxy" tutorial]({% link topics/imaging/tutorials/imaging-introduction/tutorial.md#hands-on-segment-image %}) to create a segmentation overlay (e.g., see [Figure 3](#figure-3) below) or to perform cell counting.
+
+![Segmentation overlay](../../images/process-image-bioimageio/segmentation.png "Overlay of the original input image and the contours of the segmentation results obtained using the BioImage.IO model and post-processing.")
 
 
 # Conclusion
