@@ -56,7 +56,7 @@ As of the version {% tool [Process image using a BioImage.IO model](toolshed.g2.
 | 🧬 CovidIFCellSegmentationBoundaryModel | Cell segmentation | Fluorescence light microscopy | Infected human cells | [View model](https://bioimage.io/#/?tags=Covid&id=10.5281%2Fzenodo.5847355) |
 | 🧬 NucleiSegmentationBoundaryModel| Nucleus segmentation | Fluorescence light microscopy| Generic / various | [View model](https://bioimage.io/#/?id=10.5281%2Fzenodo.5764892) |
 | 🧬 HPANucleusSegmentation | Nucleus segmentation | Immunofluorescence | Human Protein Atlas | [View model](https://bioimage.io/#/?tags=HPA&id=10.5281%2Fzenodo.6200999) |
-| 🧠 NeuronSegmentationInEM | Neuron segmentation | Electron microscopy | Brain tissue | [View model](https://bioimage.io/#/?id=10.5281%2Fzenodo.5817052) |
+| 🧠 NeuronSegmentationInEM (Membrane prediction) | Neuron segmentation | Electron microscopy | Brain tissue | [View model](https://bioimage.io/#/?id=10.5281%2Fzenodo.5874741) |
 | 🧫 HPACellSegmentationModel | Cell segmentation | Immunofluorescence | Human Protein Atlas | [View model](https://bioimage.io/#/?tags=hpa&id=10.5281%2Fzenodo.6200635) |
 | 🧪 MitochondriaEMSegmentationBoundaryModel | Mitochondria segmentation | Electron microscopy | Human | [View model](https://bioimage.io/#/?id=10.5281%2Fzenodo.5874841) |
 
