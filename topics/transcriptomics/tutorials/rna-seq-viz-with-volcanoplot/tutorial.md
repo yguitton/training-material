@@ -95,7 +95,7 @@ We will use two files for this analysis:
 >
 >    {% snippet faqs/galaxy/histories_rename.md %}
 >
-> 2. Import the result table of differential expression analysis as well as a list of genes to annotate in the volcano plot in the end of this tutorial.
+> 2. Import the result table of differential gene expression analysis, as well as a list of genes that will be annotated in the volcano plot later.
 >
 >    To import the file, there are two options:
 >    - Option 1: From a shared data library if available (ask your instructor)
