@@ -44,7 +44,7 @@ This tutorial will guide you through the process of applying one of these BioIma
 
 # Available BioImage.IO models in Galaxy
 
-As of the version {% tool [Process image using a BioImage.IO model](toolshed.g2.bx.psu.edu/repos/bgruening/bioimage_inference/bioimage_inference/2.4.1+galaxy2) %}, only the PyTorch-based BioImage.IO models listed in the table below are compatible with the Galaxy tool:
+As of the version {% tool [Process image using a BioImage.IO model](toolshed.g2.bx.psu.edu/repos/bgruening/bioimage_inference/bioimage_inference/2.4.1+galaxy3) %}, only the PyTorch-based BioImage.IO models listed in the table below are compatible with the Galaxy tool:
 
 | Model name | Task | Imaging modality | Sample / species | Link |
 |------------|------|------------------|------------------|------|
@@ -66,19 +66,17 @@ Here we illustrate the type of information that is both useful for understanding
 
 As an example, we consider the following model: **🧬 NucleiSegmentationBoundaryModel**
 
-This model segments nuclei in fluorescence microscopy images. It predicts <em>boundary maps</em> and <em>foreground probabilities</em> for nucleus segmentation, primarily in images stained with DAPI. The outputs are designed to be post-processed with methods such as Multicut or Watershed to achieve instance-level segmentation (object-based segmentation).
+This model segments nuclei in fluorescence microscopy images. It predicts *boundary maps* and *foreground probabilities* for nucleus segmentation, primarily in images stained with DAPI. The outputs are designed to be post-processed with methods such as Multicut or Watershed to achieve instance-level segmentation (object-based segmentation).
 
 - **Imaging modality**: Fluorescence microscopy
 - **Task**: Nucleus segmentation (boundary-aware)
-- **Input axes**: `bcyx`
-- **Input size**: `256,256,1,1`
 - **Model link**: [View on BioImage.IO](https://bioimage.io/#/r/ilastik/stardist_dsb_training_data)
 - **Citation**: [10.5281/zenodo.5764893](https://doi.org/10.5281/zenodo.5764893)
 
 
 > <tip-title> Where to find this information on BioImage.IO </tip-title>
 >
-> You can find similar details for other models directly on [BioImage.IO](https://bioimage.io) by viewing each model’s card. Look under the “inputs” section of the RDF file to find the required `axes` and `input size` values. These parameters are essential for running the model correctly in Galaxy.
+> You can find similar details for other models directly on [BioImage.IO](https://bioimage.io) by viewing each model's card. Look under the “inputs” section of the RDF file to find the required `axes` and `input size` values. These parameters are essential for running the model correctly in Galaxy.
 >
 {: .tip}
 
@@ -127,24 +125,15 @@ This model segments nuclei in fluorescence microscopy images. It predicts <em>bo
 
 > <hands-on-title> Run BioImage.IO model </hands-on-title>
 >
-> 1. {% tool [Process image using a BioImage.IO model](toolshed.g2.bx.psu.edu/repos/bgruening/bioimage_inference/bioimage_inference/2.4.1+galaxy1) %} with the following parameters:
+> 1. {% tool [Process image using a BioImage.IO model](toolshed.g2.bx.psu.edu/repos/bgruening/bioimage_inference/bioimage_inference/2.4.1+galaxy3) %} with the following parameters:
 >    - {% icon param-file %} *"BioImage.IO model"*: `nucleisegmentationboundarymodel.pt`
 >    - {% icon param-file %} *"Input image"*: `test_image_nuclei.png`
 >    - {% icon param-text %} *"Size of the input image"*: `256,256,1,1`
->    - {% icon param-select %} *"Axes of the input image"*: `bcyx`
+>    - {% icon param-select %} *"Axes of the input image"*: `Four axes (e.g., bcyx, byxc)`
 >
 >    > <comment-title>Axes and size</comment-title>
 >    >
->    > The input **axes** define the order of image dimensions expected by the model:
->    > - `b`: batch
->    > - `c`: channel
->    > - `y`: vertical axis
->    > - `x`: horizontal axis
->    >
->    > The **input size** must match that order.
->    > For example: `256,256,1,1` = 256 px height (`y`), 256 px width (`x`), 1 channel (`c`), and 1 image (`b`).
->    >
->    > This information is provided in the model’s RDF file on [BioImage.IO](https://bioimage.io).
+>    > The {% icon param-text %} *"Size of the input image"* and the {% icon param-select %} *"Axes of the input image"* are crucial to transform the input image into the format that the BioImage.IO model requires. The correct values are provided in the RDF file that comes with the chosen model on [BioImage.IO](https://bioimage.io).
 >    {: .comment}
 >
 {: .hands_on}
