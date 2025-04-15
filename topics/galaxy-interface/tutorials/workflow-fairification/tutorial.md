@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 
-title: Workflow FAIRification
+title: Annotate, prepare tests and publish on workflow registries Galaxy workflows 
 tags:
 - workflows
 - FAIR
@@ -10,7 +10,8 @@ questions:
 - What are the best practices for testing a Galaxy workflow?
 - How can a Galaxy workflow be submitted to the Intergalactic Workflow Commission (IWC)?
 objectives:
-- Annotate and apply best practices to data analysis Galaxy workflows for consistency and reusability
+- Annotate a Galaxy workflows with essential metadata
+Annotate and apply best practices to data analysis Galaxy workflows for consistency and reusability
 - Implement robust tests to ensure workflow reliability and accuracy
 - Successfully integrate key data analysis Galaxy workflows into IWC, improving accessibility and usability
 requirements:
@@ -36,13 +37,34 @@ level: Intermediate
 subtopic: workflows
 ---
 
+Research data is accumulating at an unprecedented rate, presenting significant challenges for achieving fully reproducible science. As a result, implementing high-quality management of scientific data has become a global priority. One key aspect of this effort is the use of computational workflows, which describe the complex, multi-step methods used for data analysis. In Galaxy, workflows are a powerful feature that allows researchers to link multiple steps of complex analyses seamlessly. To maximize their impact, these workflows should adhere to best practices that make them **FAIR: Findable, Accessible, Interoperable, and Reusable**.
 
-Workflows are a powerful feature in Galaxy that allow you to link multiple steps of complex analysis. To maximize their impact, workflows should follow best practices that make them **FAIR: Findable, Accessible, Interoperable, and Reusable**.
+The FAIR principles —-Findable, Accessible, Interoperable, and Reusable—- provide practical guidelines for enhancing the value of research data:
 
-The goal of this tutorial is to **prepare**, **integrate**, and **FAIRify Galaxy workflows** within the **Intergalactic Workflow Commission (IWC)**. The IWC ensures that workflows adhere to best practices for accessibility, interoperability, and reusability across the bioinformatics community. It also acts as a central hub for Galaxy workflows, automatically listing them in major registries like **Dockstore** and **WorkflowHub**, while ensuring that workflows are rigorously reviewed, tested, and updated with each new Galaxy release. Versioning, tool updates, and essential metadata improve the findability and usability of each workflow.
+- **Findable**: Easy to locate through rich metadata and unique identifiers.
+- **Accessible**: Stored in a way that allows them to be retrieved by those who need them.
+- **Interoperable**: Usable across different systems and platforms without extensive adaptation.
+- **Reusable**: Well-documented and clearly licensed to enable reuse in different contexts.
 
-This tutorial will focus on applying FAIR principles to the **GTN Sequence Analysis - Mapping Workflow** to ensure it is well-documented, properly annotated, and easily shareable.
+Applying these principles to workflows is equally important for good data management:
 
+- **Enhanced Discoverability**: Well-annotated and documented workflows are easier to find, making them more likely to be used and cited.
+- **Improved Reproducibility**: Standardized and tested workflows ensure that analyses can be reproduced, validating research findings.
+- **Community Collaboration**: Sharing workflows through centralized registries fosters collaboration and innovation within the bioinformatics community.
+- **Sustainability**: Regular updates and versioning ensure that workflows remain compatible with the latest tools and Galaxy releases, extending their lifespan and utility.
+
+While making a workflow FAIR might seem complica ({% cite wilkinson2025applying %}), publications like "Ten quick tips for building FAIR workflows" ({% cite de2023ten %}) provide practical guidelines to simplify the process:
+
+![This image provides ten quick tips for building FAIR workflows, focusing on findability (registering the workflow and describing it with rich metadata), accessibility (making source code available in a public repository and providing example input data and results), interoperability (adhering to file format standards and making the workflow portable), and reusability (providing a reproducible computational environment, adding a configuration file with defaults, modularizing the workflow, and offering clear documentation).](./images/journal.pcbi.1011369.g001.PNG "Ten quick tips for building FAIR workflows. Source: {% cite de2023ten %}")
+
+Using Galaxy as a workflow management system, many of these tips are already fulfilled:
+- Tip 5 (**Interoperability**): "The tools integrated in a workflow should adhere to file format standards."
+- Tip 6 (**Interoperability**): "Make the workflow portable."
+- Tip 7 (**Reusability**): "Provide a reproducible computational environment to run the workflow"
+- Tip 8 (**Reusability**): "Add a configuration file with defaults."
+- Tip 9 (**Reusability**): "Modularize the workflow."
+
+In this tutorial, we will demonstrate how to fulfill the remaining tips using the **workflow from the [Mapping tutorial]({% link topics/sequence-analysis/tutorials/mapping/tutorial.md %})**.
 
 > <agenda-title></agenda-title>
 >
@@ -53,10 +75,9 @@ This tutorial will focus on applying FAIR principles to the **GTN Sequence Analy
 >
 {: .agenda}
 
+# Prepare the workflow
 
-# Apply best practices to a workflow
-
-To ensure that a workflow adheres to **best practices** and is **FAIR**, follow the different steps. You can apply them to **any workflow** of your choice or use the [**GTN Sequence Analysis - Mapping**]({% link topics/sequence-analysis/tutorials/mapping/tutorial.md %}) workflow as an example. 
+Here, we will use the **workflow from the [Mapping tutorial]({% link topics/sequence-analysis/tutorials/mapping/tutorial.md %})** but you can use your own workflow.
 
 > <hands-on-title>Import the workflow into Galaxy</hands-on-title>
 >
@@ -67,6 +88,15 @@ To ensure that a workflow adheres to **best practices** and is **FAIR**, follow 
 >    {% snippet faqs/galaxy/workflows_import.md %}
 >
 {: .hands_on}
+
+# Annotate the Galaxy workflow with essential metadata
+
+The first step to FAIRify a workflow is to annotate it with essential metadata:
+- 
+
+To ensure that a workflow adheres to **best practices** and is **FAIR**, follow the different steps. You can apply them to **any workflow** of your choice or use the [**GTN Sequence Analysis - Mapping**]({% link topics/sequence-analysis/tutorials/mapping/tutorial.md %}) workflow as an example. 
+
+
 
 When **editing a workflow**, it’s essential to follow specific steps to ensure it adheres to **best practices** and is **FAIR**. You can follow [Adding workflow best practices guidelines](https://github.com/galaxyproject/iwc/blob/main/workflows/README.md#ensure-workflows-follow-best-practices) (the GIF with the 4 steps) and use these steps.
 
@@ -107,7 +137,7 @@ When **editing a workflow**, it’s essential to follow specific steps to ensure
 By following these steps and checking the side panel, you will ensure your **workflow adheres to best practices** and is **ready for public use**.
 
 
-# Create test data for a workflow
+# Prepare tests to validate the functionality of the workflow
 
 In this step, we will **create test data** that can be used **to verify and test the workflow**. The data should be small and simple, so it can interact with the workflow and generate results without excessive processing time. 
 
@@ -155,7 +185,7 @@ For example, trim the FASTQ file to keep only a few sequences that will interact
 Now that the test data has been uploaded and prepared, the next step is to ensure its accessibility by uploading it to [**Zenodo**](https://zenodo.org/) (if not already done). This will allow others to **easily retrieve and reuse the data** when running or validating the workflow.
 
 
-# Make test data publicly available on Zenodo
+## Make test data publicly available on Zenodo
 
 This step is to ensuring that the data is **publicly accessible** and can be referenced in workflow documentation and tests.  
 
@@ -177,7 +207,7 @@ This step is to ensuring that the data is **publicly accessible** and can be ref
 Uploading test data to Zenodo ensures that it has a **permanent DOI**, making it easy to reference in workflow documentation, publications, and testing pipelines.  
 
 
-# Submit the workflow to IWC
+# Publish the workflow to workflow registries by contributing to IWC
 
 Once the workflow has been created, tested, and documented, it should be **submitted to IWC**. This ensures that the workflow is **publicly available, version-controlled, and indexed in workflow registries** like [WorkflowHub](https://workflowhub.eu/workflows/) and [Dockstore](https://dockstore.org/workflows/github.com/iwc-workflows/).  
 
@@ -283,3 +313,4 @@ For further workflow optimization and maintenance, the **Galaxy community** prov
 By continuously following these practices, you contribute to a **stronger, more open, and collaborative** bioinformatics community, where workflows are easily shared, improved, and adapted to new challenges.
 
 
+ensure your workflows are reviewed, tested, and maintained.
