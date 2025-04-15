@@ -123,7 +123,7 @@
         },
         "2": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/bioimage_inference/bioimage_inference/2.4.1+galaxy2",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/bioimage_inference/bioimage_inference/2.4.1+galaxy3",
             "errors": null,
             "id": 2,
             "input_connections": {
@@ -163,7 +163,7 @@
                 "top": 40
             },
             "post_job_actions": {},
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/bioimage_inference/bioimage_inference/2.4.1+galaxy2",
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/bioimage_inference/bioimage_inference/2.4.1+galaxy3",
             "tool_shed_repository": {
                 "changeset_revision": "4fd6e8b051e9",
                 "name": "bioimage_inference",
@@ -171,7 +171,7 @@
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
             "tool_state": "{\"input_image_file\": {\"__class__\": \"RuntimeValue\"}, \"input_image_input_axes\": \"bcyx\", \"input_image_input_size\": \"256,256,1,1\", \"input_imaging_model\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "2.4.1+galaxy2",
+            "tool_version": "2.4.1+galaxy3",
             "type": "tool",
             "uuid": "ba3c27c5-0ff4-4a90-8c52-b9e117984b8d",
             "when": null,
