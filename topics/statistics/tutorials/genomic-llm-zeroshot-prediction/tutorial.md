@@ -554,7 +554,7 @@ ax.set_xticklabels(SNPs_distL2.keys())
 
 > <question-title></question-title>
 >
-> ![](./images/boxplot.png)
+> ![Box plot comparing two categories: exonSNPs and intronSNPs. The plot displays the distribution of values for each category, with the median indicated by an orange line within each box. The boxes represent the interquartile range, while the whiskers extend to show the range of the data, excluding outliers, which are depicted as individual points above the whiskers. The exonSNPs category shows a higher median and more variability compared to the intronSNPs category.](./images/boxplot.png)
 >
 > What can we conclude from the boxplot?
 >

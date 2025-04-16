@@ -51,7 +51,7 @@ After preparing, training, and utilizing a language model for DNA sequences, we 
 >
 > Transcription factors are proteins that play a crucial role in regulating gene expression by binding to specific DNA sequences, known as enhancers or promoters, near the genes they control. These proteins act as molecular switches, turning genes on or off in response to various cellular signals and environmental cues. By binding to DNA, transcription factors either promote or inhibit the recruitment of RNA polymerase, the enzyme responsible for transcribing DNA into RNA, thereby influencing the rate of transcription.
 > 
-> ![](images/two_dna_sequences.png "Two types of DNA sequences. On the left, a DNA sequence that binds the transcription factor CTCF. On the right, a DNA sequence that does not bind CTCF.")
+> ![Diagram illustrating DNA binding with CTCF. The left panel, outlined in red, shows a DNA sequence 'CCACCAGGGGGCGC' labeled as 'DNA binding CTCF,' with an oval labeled 'CTCF' above it. The right panel, outlined in blue, shows a different DNA sequence 'GTGGCTAGTAGGTAG' labeled as 'DNA not binding CTCF,' indicating that this sequence does not interact with CTCF.](images/two_dna_sequences.png "Two types of DNA sequences. On the left, a DNA sequence that binds the transcription factor CTCF. On the right, a DNA sequence that does not bind CTCF.")
 >
 > Transcription factors are essential for numerous biological processes, including cell differentiation, development, and response to external stimuli. Their ability to recognize and bind specific DNA sequences allows them to orchestrate complex gene expression programs, ensuring that the right genes are expressed at the right time and in the right place within an organism. Understanding the function and regulation of transcription factors is vital for deciphering the molecular mechanisms underlying health and disease, and it opens avenues for developing targeted therapeutic interventions.
 >
@@ -576,7 +576,7 @@ model=transformers.AutoModelForSequenceClassification.from_pretrained(
 > > 4. `device_map="auto"`: Automatically determines the best device placement for the model's layers, optimizing for available hardware (e.g., GPUs). If it finds a GPU, it will use a GPU. If there's no GPU, it will not use the GPU
 > > 
 > > 5. `trust_remote_code=True`: Allows the model to execute custom code from the model repository, which may be necessary for certain architectures or preprocessing steps.
->
+> >
 > {: .solution}
 >
 {: .question}
@@ -650,7 +650,7 @@ Let's start the training process for our model using the trainer.train() method:
 trainer.train()
 ```
 
-After launching `trainer.train()`, we can notice that the training process is significantly faster compared to training a model from scratch seen in ["" tutorial]({% link link topics/statistics/tutorials/genomic-llm-pretraining/tutorial.md %}). This efficiency is due to the use of a pre-trained model, which has already undergone extensive training on large datasets using powerful computational resources. For example, pre-training a model on even a small portion of the human genome can take dozens of hours, but fine-tuning this model on a specific task, such as classifying DNA sequences, is much quicker. Fine-tuning leverages the pre-trained model's foundational knowledge, allowing you to adapt it to new tasks with a smaller, labeled dataset. This approach not only saves time but also reduces the need for extensive computational power. By downloading a pre-trained model from platforms like Hugging Face and fine-tuning it on a local machine with a modest GPU, we can achieve high performance with minimal overhead, making advanced modeling techniques accessible for a wide range of applications.
+After launching `trainer.train()`, we can notice that the training process is significantly faster compared to training a model from scratch seen in ["" tutorial]({% link topics/statistics/tutorials/genomic-llm-pretraining/tutorial.md %}). This efficiency is due to the use of a pre-trained model, which has already undergone extensive training on large datasets using powerful computational resources. For example, pre-training a model on even a small portion of the human genome can take dozens of hours, but fine-tuning this model on a specific task, such as classifying DNA sequences, is much quicker. Fine-tuning leverages the pre-trained model's foundational knowledge, allowing you to adapt it to new tasks with a smaller, labeled dataset. This approach not only saves time but also reduces the need for extensive computational power. By downloading a pre-trained model from platforms like Hugging Face and fine-tuning it on a local machine with a modest GPU, we can achieve high performance with minimal overhead, making advanced modeling techniques accessible for a wide range of applications.
 
 # Evaluate Model Performance
 
@@ -688,7 +688,7 @@ The evaluation results are stored in the `results` variable, which contains the 
 results
 ```
 
-<!--
+
 ```
 eval_loss                      0.424961
 eval_accuracy                  0.804000
@@ -702,9 +702,9 @@ eval_steps_per_second          9.620000
 epoch                          3.000000
 ```
 
->> <question-title></question-title>
+> <question-title></question-title>
 >
-> ?
+> 
 >
 > > <solution-title></solution-title>
 > >
@@ -712,21 +712,7 @@ epoch                          3.000000
 > >
 > {: .solution}
 >
-{: .question}-->
-
-<!-- - test with and without LORA
- - test with and without quantization
-- test with regular attention and with flash attention 2
-- test with and with bf16
-- change learning rate
-- change batch size
-
-```
-model = prepare_model_for_kbit_training(model)
-model = get_peft_model(model, peft_config)
-model = accelerator.prepare_model(model)
-```
---->
+{: .question}
 
 # Conclusion
 
