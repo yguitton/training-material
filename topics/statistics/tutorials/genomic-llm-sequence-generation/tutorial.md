@@ -150,7 +150,7 @@ Using the pre-trained language model which was trained on 1,011 *Saccharomyces c
 
 ## Build the Sequence Generator
 
-First, we need set up the sequence generation pipeline. This pipeline will enable us to generate synthetic DNA sequences that mimic natural genomic sequences. By leveraging the power of language models, we can create novel DNA sequences for various applications in synthetic biology.
+First, we need to set up the sequence generation pipeline. This pipeline will enable us to generate synthetic DNA sequences that mimic natural genomic sequences. By leveraging the power of language models, we can create novel DNA sequences for various applications in synthetic biology.
 
 We use the `pipeline` function from the `transformers` library which simplifies the process of setting up a sequence generation pipeline. It abstracts away the complexities of model loading and configuration, allowing us to focus on generating sequences.
 
