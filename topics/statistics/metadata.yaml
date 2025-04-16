@@ -20,10 +20,10 @@ editorial_board:
 subtopics:
 #  - id: machine-learning
 #    title: "Machine Learning"
-#    description: "Taxonomic characterisation of mixed samples using a single gene region."
+#    description: "Tutorials introducing fundamental concepts and techniques, guiding learners through data preprocessing, model training, evaluation, and application."
 #  - id: deep-learning
 #    title: "Deep Learning"
-#    description: "Taxonomic characterisation of mixed samples using a single gene region."
+#    description: "In-depth guidance on designing and implementing neural networks, covering topics such as architecture design, training techniques, and applications"
   - id: gai-llm
     title: "Generative Artificial Intelligence and Large Langage Model"
-#    description: "Taxonomic and functional characterisation and assembly of mixed samples using whole genome data."
+    description: "Tutorials covering the creation, pretraining, and applications of Generative Artificial Intelligence and Large Language Models."
