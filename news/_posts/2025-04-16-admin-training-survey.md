@@ -8,7 +8,7 @@ tags:
 contributions:
   authorship:
     - dadrasarmin
-    - nsoranzo
+    - martenson
     - teresa-m
   funding:
     - elixir-europe
