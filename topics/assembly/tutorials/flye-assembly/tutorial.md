@@ -100,8 +100,8 @@ Hifiasm is a fast haplotype-resolved de novo assembler initially designed for Pa
 > <hands-on-title>Assembly with Hifiasm</hands-on-title>
 >
 > 1. {% tool [Hifiasm](https://toolshed.g2.bx.psu.edu/view/bgruening/hifiasm/5d365d5cbe9d) %} with the following parameters:
->    - {% icon param-file %} *"Input reads"*: the raw data (fastq.gz)
 >    - *"Mode"*: `Standard`
+>    - {% icon param-file %} *"Input reads"*: the raw data (fastq.gz)
 >    - *"Output log file"*: Set to yes
 >
 >     The tool produces five datasets: Haplotype-resolved raw unitig graph, Haplotype-resolved processed unitig graph without small bubbles, Primary assembly contig graph, Alternate assembly contig graph, [hap1]/[hap2] contig graph.
