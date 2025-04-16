@@ -6,7 +6,7 @@ box_type: tip
 layout: faq
 contributors: [jennaj, Melkeb]
 ---
-### How to find the reference sequence identifiers inside of a BAM file
+#### How to find the reference sequence identifiers inside of a BAM file
 
 1. Run **Samtools: IdxStats** on your `bam` dataset.
 2. The reference sequence identifiers inside the "BAM header" will be listed in the result report. 
