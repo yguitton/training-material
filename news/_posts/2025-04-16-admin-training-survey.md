@@ -10,6 +10,12 @@ contributions:
     - dadrasarmin
     - nsoranzo
     - teresa-m
+  funding:
+    - elixir-europe
+    - earlham
+    - uni-freiburg
+    - deNBI
+    - eurosciencegateway
 cover: "/assets/images/gat.png"
 coveralt: "GTN logo on a spiral galaxy background with text galaxy admin training"
 ---
