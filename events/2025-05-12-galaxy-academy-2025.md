@@ -37,6 +37,7 @@ tags:
 - galaxy-interface
 - assembly
 - statistics
+- variant-analysis
 
 contributions:
     organisers:
@@ -50,6 +51,7 @@ contributions:
     instructors:
         - ahmedhamidawan
         - annasyme
+        - annefou
         - anuprulez
         - abretaud
         - bebatut
@@ -59,11 +61,15 @@ contributions:
         - dianichj
         - deeptivarshney
         - delphine-l
+        - elifsu-simula
         - elichad
         - EngyNasr
         - emmaustin20
+        - evenmm
         - GarethPrice-Aus
+        - khaled196
         - jdavcs
+        - j34ni
         - bernt-matthias
         - foellmelanie
         - meltemktn
@@ -106,6 +112,8 @@ infrastructure:
       name: Galaxy Main
     - server: https://usegalaxy.org.au/
       name: Galaxy AU
+    - server: https://usegalaxy.fr
+      name: Galaxy FR
   support:
     platform: Slack
 
@@ -176,6 +184,8 @@ program:
         link: events/tracks/gta2025-single-cell.md
       - title: Microbiome
         link: events/tracks/gta2025-microbiome.md
+      - title: Climate
+        link: events/tracks/gta2025-climate.md
       #- title: Bacterial Genomics
       #  link: events/tracks/gta2024-bacterial-genomics.md
       #- title: BY-COVID
@@ -184,6 +194,8 @@ program:
         link: events/tracks/gta2025-ml.md
       - title: From Zero to Hero with Python
         link: events/tracks/gta2025-bioNT.md
+      - title: Variant Analysis
+        link: events/tracks/gta2025-variant-analysis.md
 
   - section: "Friday: Grab bag"
     description: |

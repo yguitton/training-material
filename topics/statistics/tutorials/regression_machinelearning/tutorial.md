@@ -15,11 +15,15 @@ key_points:
   using the test set.
 - For each regression algorithm, its parameters should be optimized based on the dataset.
 time_estimation: 2H
-contributors:
-- khanteymoori
-- anuprulez
-- simonbray
-
+contributions:
+  authorship:
+    - khanteymoori
+    - anuprulez
+    - simonbray
+  funding:
+    - elixir-europe
+    - deNBI
+    - uni-freiburg
 recordings:
 - captioners:
   - anuprulez
