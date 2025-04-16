@@ -238,7 +238,7 @@ Another way to calculate metrics assembly is to use ***QUAST = QUality ASsessmen
 > **First on the generated assembly:**
 > 1. {% tool [Busco](toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/5.2.2+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Sequences to analyse"*: `primary assembly` (output of **Hifiasm** {% icon tool %}) or `consensus` (output of **Flye** {% icon tool %})
->    - *"Auto-detect or select lineage"*: `Select lineage`
+>    - *"Auto-detect or select lineage"*: `Select lineage` - Not working on April 16 2025
 >        - *"Lineage"*: `Mucorales`
 >
 > **Then, on the reference assembly:**
