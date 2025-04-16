@@ -661,6 +661,8 @@ name:
   galaxy-interface/onedata-remote-export: "/topics/galaxy-interface/tutorials/onedata-remote-export/tutorial.html"
   galaxy-interface/onedata-remote-import: "/topics/galaxy-interface/tutorials/onedata-remote-import/tutorial.html"
   sequence-analysis/tapscan-streptophyte-algae: "/topics/sequence-analysis/tutorials/tapscan-streptophyte-algae/tutorial.html"
+  climate/jupytergis_collaboration: "/topics/climate/tutorials/jupytergis_collaboration/tutorial.html"
+  imaging/process-image-bioimageio: "/topics/imaging/tutorials/process-image-bioimageio/tutorial.html"
 id:
   T00000: "/topics/admin/tutorials/ansible/tutorial.html"
   T00001: "/topics/admin/tutorials/ansible-galaxy/tutorial.html"
@@ -2213,6 +2215,9 @@ id:
   N00110: "/news/2025/03/26/gta-registration-open.html"
   P00030: "/learning-pathways/machine-learning.html"
   W00323: "/topics/sequence-analysis/tutorials/tapscan-streptophyte-algae/workflows/main_workflow.html"
+  F00455: "/faqs/galaxy/manage_your_galaxy_storage.html"
+  F00456: "/faqs/galaxy/manage_your_repositories.html"
+  W00324: "/topics/imaging/tutorials/process-image-bioimageio/workflows/main_workflow.html"
 misc:
   ansible-galaxy: "/topics/admin/tutorials/ansible-galaxy/tutorial.html"
   feeds: "/feeds/index.html"

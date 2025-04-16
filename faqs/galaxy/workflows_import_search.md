@@ -3,7 +3,7 @@ title: Importing a workflow using the Tool Registry Server (TRS) search
 area: workflows
 box_type: tip
 layout: faq
-contributors: [bebatut,wm75]
+contributors: [bebatut, wm75]
 redirect_from: [/faqs/galaxy/workflows_import_from_workflowhub]
 ---
 

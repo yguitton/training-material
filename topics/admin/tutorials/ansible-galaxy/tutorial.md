@@ -31,6 +31,9 @@ contributions:
   testing:
   - mira-miracoli
   - edmontosaurus
+  funding:
+  - eurosciencegateway
+  - elixir-europe
 tags:
   - ansible
   - deploying
@@ -978,7 +981,7 @@ The configuration is quite simple thanks to the many sensible defaults that are 
 >
 >    Now you should set:
 >    1. `admin_users` to the email address you will use with this Galaxy.
->    3. `database_connection` to point to the database you setup earlier (`postgresql:///galaxy?host=/var/run/postgresql`).
+>    3. `database_connection` to point to the database you setup earlier (`postgresql:///{{ galaxy_db_name }}?host=/var/run/postgresql`).
 >    4. `file_path` to a place to store data, `/data` is fine for this lesson which sets up a single-node Galaxy. If you have separate compute machines, this will normally need to be storage shared between the Galaxy node and compute nodes.
 >    5. `tool_data_path` to {% raw %}`{{ galaxy_mutable_data_dir }}/tool-data`{% endraw %}, so that when tools are installed, due to privilege separation, this will happen in a directory Galaxy can actually write into.
 >    6. `object_store_store_by` to `uuid`, this is a better way of storing files that will ensure better filesystem balancing than the older system.
