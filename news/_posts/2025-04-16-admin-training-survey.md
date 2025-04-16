@@ -16,8 +16,8 @@ contributions:
     - uni-freiburg
     - deNBI
     - eurosciencegateway
-cover: "/assets/images/gat.png"
-coveralt: "GTN logo on a spiral galaxy background with text galaxy admin training"
+cover: /assets/images/gat.png
+coveralt: GTN logo on a spiral galaxy background with text galaxy admin training
 ---
 
 ## 🚀 Survey about a week-long Galaxy Admin Training in Europe 🇪🇺
