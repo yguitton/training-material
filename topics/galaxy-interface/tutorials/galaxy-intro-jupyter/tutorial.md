@@ -4,12 +4,17 @@ redirect_from:
   - /topics/galaxy-ui/tutorials/galaxy-intro-jupyter/tutorial
 
 title: "Use Jupyter notebooks in Galaxy"
-zenodo_link: "https://zenodo.org/record/1185122"
+zenodo_link: ""
 questions:
-  - "How to use a Jupyter Notebook in Galaxy"
+  - "How to open a Jupyter Notebook in Galaxy?"
+  - "How to update dependencies in a Jupyter Interactive Environment?"
+  - "How to save and share results in the Galaxy History?
 objectives:
   - "Learn about the Jupyter Interactive Environment"
-time_estimation: "30m"
+  - "Load data into a Jupyter Interactive Environment"
+  - "Install library dependencies"
+  - "Save a notebook to the Galaxy history"
+time_estimation: 1H
 key_points:
   - "Start Jupyter from the Visualize tab or from a dataset"
   - "Install Libraries with pip or Conda"
@@ -17,14 +22,17 @@ key_points:
   - "Use put() to export datasets from the notebook to your history"
   - "Save your notebook into your history"
 contributors:
+  authorship:
   - delphine-l
+  editing:
+  - teresa-m
+  - 
 subtopic: analyse
 ---
 
 
-In this tutorial we are going to explore the basics of using Jupyter in Galaxy. We will use a RNA seq count file as a test set to get a hang of the Jupyter notebooks.
-The file is available in [Zenodo](https://zenodo.org/record/1185122) or in the *Tutorial* section of *Data Libraries*.
-Select a file ending with `.counts` and upload it in your history (If you want to know how to upload data in galaxy, see [Getting Data into Galaxy]({% link topics/galaxy-interface/tutorials/get-data/slides.html %}) tutorial)
+In this tutorial we are going to explore the basics of using Jupyter Lab in Galaxy. We will use a the Gapminder data as a test set to get a hang of the Jupyter notebooks.
+The [python-novice-gapminder-data.zip](https://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip) file is publicly available. This tutorial can also be used as a initial setup for the Software Carpentries training [Plotting and Programming in Python](https://swcarpentry.github.io/python-novice-gapminder/instructor/index.html).
 
 > <agenda-title></agenda-title>
 >
@@ -48,17 +56,67 @@ You can find the complete manual for Jupyter commands [on Read the Docs](http://
 
 # Use Jupyter notebook in Galaxy
 
-## Open a Notebook
-The Jupyter notebook can be started from different points. You can either open a Jupyter notebook from a dataset in your history or from the *Visualize* tab in the upper menu.
+## Import data
+To manipulate data first we uploade the  [python-novice-gapminder-data.zip](https://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip) folder into your Galaxy history. 
 
-
-> <hands-on-title>Launching a Jupyter notebook from a dataset or a saved Jupyter notebook</hands-on-title>
-> If you only need one dataset from your history to perform you analysis or want to open a Jupyter notebook that you previously saved in your history, you can launch a Jupyter from a single dataset.
-> 1. Expand the dataset in you history by clicking on its name.
-> 2. Click on the visualization icon {% icon galaxy-barchart %} of the dataset `[...].counts`.
-> 3. Select the Jupyter visualization in the list. ![Visualisation list](../../images/visu_list.png)
+> <hands-on-title>Data upload</hands-on-title>
+>
+> 1. Create a new history for this RNA-Seq exercise
+>
+>    {% snippet faqs/galaxy/histories_create_new.md %}
+>
+> 2. Import [python-novice-gapminder-data.zip](https://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip) folder. The folder contains the following tabular files:
+>    - `gapminder_all.csv` 
+>    - `gapminder_gdp_africa.csv` 
+>    - `gapminder_gdp_americas.csv`
+>    - `gapminder_gdp_asia.csv`
+>    - `gapminder_gdp_europe.csv`
+>    - `gapminder_gdp_oceania.csv`
+>
+>    ```text
+>    https://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip
+>    ```
+>
+>    {% snippet faqs/galaxy/datasets_import_via_link.md %}
+>
+>
+>
+> 3. Unzip data using the {% tool [Unzip](toolshed.g2.bx.psu.edu/repos/imgteam/unzip/unzip/6.0+galaxy0) %}
+>
+>    - 
+>
+> 4. Unhide data
+>
+>    {% snippet faqs/galaxy/collections_build_list_paired.md %}
 >
 {: .hands_on}
+
+
+## Open a Notebook in JupyterLab enviorment
+
+Opening up your {% tool [JupyterLab](interactive_tool_jupyter_notebook) %}:
+
+{% snippet faqs/galaxy/interactive_tools_jupyter_launch.md %}
+
+You should now be looking at a page with the JupyterLab interface:
+
+![Jupyterlab default session](../../images/jupyterlab_default_session.png)
+
+As shown on the figure above, JupyterLab interface is made of 3 main areas:
+- The menu bar at the top
+- The left side bar with in particular the **File Browser**
+- The main work area in the central panel
+
+# The Jupyter notebook can be started from different points. You can either open a Jupyter notebook from a dataset in your history or from the *Visualize* tab in the upper menu.
+
+
+# > <hands-on-title>Launching a Jupyter notebook from a dataset or a saved Jupyter notebook</hands-on-title>
+# > If you only need one dataset from your history to perform you analysis or want to open a Jupyter notebook that you previously saved in your history, you can launch a Jupyter from a single dataset.
+# > 1. Expand the dataset in you history by clicking on its name.
+# > 2. Click on the visualization icon {% icon galaxy-barchart %} of the dataset `[...].counts`.
+# > 3. Select the Jupyter visualization in the list. ![Visualisation list](../../images/visu_list.png)
+# >
+# {: .hands_on}
 
 
 > <hands-on-title>Lauching a Jupyter notebook from the <i>Visualize</i> tab</hands-on-title>
