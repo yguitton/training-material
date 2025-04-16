@@ -10,8 +10,8 @@ contributions:
     - dadrasarmin
     - nsoranzo
     - teresa-m
-cover-image: /assets/images/gat-small.png
-cover-image-alt: GTN logo on a spiral galaxy background with text galaxy admin training
+cover: "/assets/images/gat-small.png"
+coveralt: "GTN logo on a spiral galaxy background with text galaxy admin training"
 ---
 
 ## 🚀 Survey about a week-long Galaxy Admin Training in Europe 🇪🇺
