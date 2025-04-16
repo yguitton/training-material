@@ -7,10 +7,10 @@ summary: "Statistical Analyses for omics data and machine learning using Galaxy 
 docker_image: "quay.io/galaxy/statistics-training"
 edam_ontology: ["topic_2269"]
 
-requirements:
-  -
-    type: "internal"
-    topic_name: introduction
+#requirements:
+#  -
+#    type: "internal"
+#    topic_name: introduction
 
 editorial_board:
   - marziacremona
