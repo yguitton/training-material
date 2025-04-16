@@ -10,7 +10,7 @@ contributions:
     - dadrasarmin
     - nsoranzo
     - teresa-m
-cover: "/assets/images/gat-small.png"
+cover: "/assets/images/gat.png"
 coveralt: "GTN logo on a spiral galaxy background with text galaxy admin training"
 ---
 
