@@ -133,7 +133,7 @@ We will use *Flye*, a de novo assembler for single molecule sequencing reads, su
 >
 > 1. {% tool [Flye](toolshed.g2.bx.psu.edu/repos/bgruening/flye/flye/2.9+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input reads"*: the raw data (fastq.gz)
->    - *"Mode"*: `PacBio hifi`
+>    - *"Mode"*: `PacBio HiFi`
 >    - *"Number of polishing iterations"*: `1`
 >    - *"Reduced contig assembly coverage"*: `Disable reduced coverage for initial disjointing assembly`
 >
