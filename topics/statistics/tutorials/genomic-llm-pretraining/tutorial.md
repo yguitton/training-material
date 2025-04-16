@@ -394,7 +394,7 @@ MixtralForCausalLM(
 
 As expected, the model is a `MixtralForCausalLM` model with several key components:
 
-1. **Embedding Layer (`embed_tokens`)**: Converts input DNA sequences into dense vectors of fixed size. It maps each of the 4,096 possible DNA tokens (representing 6-mers) to a 256-dimensional vector space. This embedding layer is crucial for transforming discrete DNA sequences into a format suitable for neural network processing.
+1. **Embedding Layer (`embed_tokens`)**: Converts input DNA sequences into dense vectors of fixed size. It maps each of the 4,096 ($$4^{6}$$) possible DNA tokens (representing 6-mers) to a 256-dimensional vector space. This embedding layer is crucial for transforming discrete DNA sequences into a format suitable for neural network processing.
 
 2. **Decoder Layers (`layers`)**: Consists of eight `MixtralDecoderLayer` modules, each containing several sub-components:
     - **Self-Attention Mechanism (`self_attn`)**
@@ -938,7 +938,7 @@ This is a mixed model that was pre-trained on the entire Human Genome. It contai
 {: .question}
 
 
-# Computer the embedding of a DNA sequence 
+# Compute the embedding of a DNA sequence 
 
 With this kind of model something, we can convert the DNA sequence to a vector.
 

@@ -180,7 +180,7 @@ tokenizer = transformers.AutoTokenizer.from_pretrained(
 
 # Load and Configure the Pre-trained Model
 
-We will now load the pre-trained large language model (LLM) and configure it for our specific task of predicting the impact of DNA mutations. 
+We will now load the pre-trained DNA large language model (LLM) and configure it for our specific task of predicting the impact of DNA mutations. 
 
 ```python
 model=transformers.AutoModelForCausalLM.from_pretrained(
@@ -319,7 +319,7 @@ MixtralForCausalLM(
 
 # Compare the effect of mutations with or without amino acid modification
 
-Let's look at the portion of the Cystic fibrosis transmembrane conductance regulator (CFTСR) gene where a mutation responsible of the Cystic fibrosis appears.
+Let's look at the portion of the Cystic fibrosis transmembrane conductance regulator (CFTR) gene where a mutation responsible of the Cystic fibrosis appears.
 
 In this portion, we can observe several cases:
 
@@ -506,7 +506,7 @@ To compute the effect of SNPs, we need :
     )
     inputs_seqs = tokenized_dna["input_ids"]
     hidden_states = model(inputs_seqs)[0].detach().cpu().numpy() 
-    return torch.max(hidden_states_seqs, dim=1)
+    return torch.max(hidden_states, dim=1)
   ```
 
 2. Compute the L2 distance between reference (without SNP) and alternative (with SNP):
