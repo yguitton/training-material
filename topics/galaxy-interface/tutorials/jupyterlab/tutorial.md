@@ -215,8 +215,8 @@ This will create a new notebook `.pynb` file in your history every time you clic
 
 > <hands-on-title>Closing JupyterLab</hands-on-title>
 >
-> 1. Click **User**: **Active Interactive Tools**
+> 1. In the Galaxy interface click on  **Interactive Tools** button on the left side.
 >
-> 2. Tick {% icon galaxy-selector %} the box of your Jupyter Interactive Tool, and click **Stop**
+> 2. Tick {% icon galaxy-selector %} the box of your Jupyter Interactive Tool, and click **Stop**.
 >
 {: .hands_on}
