@@ -80,8 +80,8 @@ We will use long reads sequencing data: HiFi (High Fidelity long reads) from Pac
 
 > <hands-on-title>Data upload from ENA</hands-on-title>
 >
-> 1. Reference genome is available here: [ASM285v2 assembly for Aspergillus niger](https://www.ebi.ac.uk/ena/browser/view/GCA_000002855)
-> 2. Import fasta assembly file `GCA_000002855.2.fasta.gz` on your computer locally
+> 1. Reference genome is available here: [ASM4765177v1 assembly for Aspergillus niger](https://www.ebi.ac.uk/ena/browser/view/GCA_047651775.1)
+> 2. Import fasta assembly file `GCA_047651775.1.fasta.gz` on your computer locally
 > 3. Upload this file on Galaxy
 > 4. Check that the datatype is `fasta.gz`
 >
@@ -172,9 +172,9 @@ Then, we will merge the obtained results in one table to compare the results fro
 >
 > 1. {% tool [Fasta Statistics](toolshed.g2.bx.psu.edu/repos/iuc/fasta_stats/fasta-stats/2.0) %} with the following parameters:
 >    - {% icon param-file %} *"fasta or multifasta file"*: select 'Multiple datasets'
->    - {% icon param-file %} *"fasta or multifasta file"*: `GCA_000002855.2.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
+>    - {% icon param-file %} *"fasta or multifasta file"*: `GCA_047651775.1.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
 > 2. {% tool [Multi-Join](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_multijoin_tool/9.5+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"File to join"*: `Fasta Statistics on GCA_000002855.2.fasta.gz`
+>    - {% icon param-file %} *"File to join"*: `Fasta Statistics on GCA_047651775.1.fasta.gz`
 >    - {% icon param-file %} *"add additional file"*: `Other Fasta Statistics files`
 >    - *"Common key column"*: `1`
 >    - *"Column with values to preserve"*: `2`
@@ -210,7 +210,7 @@ Another way to calculate metrics assembly is to use ***QUAST = QUality ASsessmen
 >        - {% icon param-file %} *"Contigs/scaffolds file"*: `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
 >    - *"Type of assembly"*: `Genome`
 >        - *"Use a reference genome?"*: `Yes`
->        - {% icon param-file %} *"Reference genome"*: `GCA_000002855.2.fasta.gz`
+>        - {% icon param-file %} *"Reference genome"*: `GCA_047651775.1.fasta.gz`
 >        - *"Type of organism"*: `Fungus: use of GeneMark-ES for gene finding, ...`
 >
 {: .hands_on}
@@ -244,7 +244,7 @@ Another way to calculate metrics assembly is to use ***QUAST = QUality ASsessmen
 > 1. {% tool [Busco](toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/5.2.2+galaxy0) %} with the following parameters:
 >    - *"Tool version"*: `Galaxy Version 5.8.0+galaxy0`
 >    - {% icon param-file %} *"Sequences to analyse"*: Multiple datasets
->    - {% icon param-file %} *"Sequences to analyse"*: `GCA_000002855.2.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
+>    - {% icon param-file %} *"Sequences to analyse"*: `GCA_047651775.1.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
 >    - *"Auto-detect or select lineage"*: `Select lineage` - Not working on April 16 2025
 >        - *"Lineage"*: `Fungi`
 >        - *"Which outputs should be generated"*: `short summary text; summary image`
