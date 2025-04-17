@@ -357,7 +357,7 @@ genome_file = "sacCer3.fa"  # Path to the yeast genome FASTA file
 real_sequences = extract_random_sequences(genome_file, seq_length=100, num_seqs=1000)
 ```
 
-To compare synthetic and real DNA sequences, we utilize k-mer counts as a method to numerically describe and analyze DNA sequences. K-mers are short, overlapping subsequences of a fixed length kk within a DNA sequence. We can think of k-mers as "words" within the DNA sequence. Just as paragraphs in text share common words, similar DNA sequences will share common k-mers. By counting the occurrences of these k-mers, we can transform DNA sequences into numerical vectors, allowing us to compare them quantitatively. **Sequences that are very similar are expected to have similar k-mer counts**, much like how similar texts share common vocabulary. By comparing the k-mer counts of synthetic and real DNA sequences, we can assess their similarity. If two sequences share many k-mers, it indicates that they are likely to be similar in composition and structure.
+To compare synthetic and real DNA sequences, we utilize k-mer counts as a method to numerically describe and analyze DNA sequences. K-mers are short, overlapping subsequences of a fixed length $$k$$ within a DNA sequence. We can think of k-mers as "words" within the DNA sequence. Just as paragraphs in text share common words, similar DNA sequences will share common k-mers. By counting the occurrences of these k-mers, we can transform DNA sequences into numerical vectors, allowing us to compare them quantitatively. **Sequences that are very similar are expected to have similar k-mer counts**, much like how similar texts share common vocabulary. By comparing the k-mer counts of synthetic and real DNA sequences, we can assess their similarity. If two sequences share many k-mers, it indicates that they are likely to be similar in composition and structure.
 
 This approach leverages the power of k-mer analysis to provide insights into the similarity between synthetic and real DNA sequences, aiding in the validation and evaluation of synthetic biology techniques.
 
@@ -549,7 +549,7 @@ plot_pca_projection(real_seq_kmer_counts, artificial_seq_kmer_counts)
 
 > <question-title></question-title>
 >
-> 1. How similar look like the 5 first generated DNA sequences given the temparature?
+> 1. How similar do the 5 first generated DNA sequences look like given the temperature?
 > 2. What are the different values for the variance?
 > 3. What can we conclude?
 >
@@ -594,8 +594,8 @@ Let's start with a synthetic DNA sequence generated with a low temperature setti
 
 > <question-title></question-title>
 >
-> 1. How many significant similarity have been found?
-> 2. Have we generate new sequence?
+> 1. How many significant similarities have been found?
+> 2. Have we generated new sequence?
 >
 > > <solution-title></solution-title>
 > >
@@ -627,8 +627,8 @@ When generating sequences with low temperature, we observed limited variability 
 
 > <question-title></question-title>
 >
-> 1. How many significant similarity have been found?
-> 2. Have we generate new sequence?
+> 1. How many significant similarities have been found?
+> 2. Have we generated new sequence?
 >
 > > <solution-title></solution-title>
 > >

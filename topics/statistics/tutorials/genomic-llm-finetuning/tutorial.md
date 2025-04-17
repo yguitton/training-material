@@ -538,7 +538,7 @@ data_collator = DataCollatorForSupervisedDataset(tokenizer=tokenizer)
 
 # Load and Configure the Model for Sequence Classification
 
-Let's now load the pre-trained model, a originally trained for large language modeling tasks, not specifically for classification. To adapt it for our binary classification task, we will add a new classification head on top of the existing architecture. This head will consist of a single neuron that connects to the output of the language model, enabling it to classify whether a DNA sequence binds to a transcription factor (label `1`) or not (label `0`).
+Let's now load the pre-trained model, a model originally trained for large language modeling tasks, not specifically for classification. To adapt it for our binary classification task, we will add a new classification head on top of the existing architecture. This head will consist of a single neuron that connects to the output of the language model, enabling it to classify whether a DNA sequence binds to a transcription factor (label `1`) or not (label `0`).
 
 This additional layer, or **classification head**, is a simple neural network layer that takes the high-level features extracted by the language model and maps them to our binary classification output. It learns to weigh these features appropriately to make accurate predictions for our specific task.
 

@@ -348,7 +348,7 @@ tokenized_dna = tokenizer(
   padding=True,
 )
 inputs_seqs = tokenized_dna["input_ids"]
-model_outputs = model(inputs)
+model_outputs = model(inputs_seqs)
 hidden_states = model_outputs.detach()
 ```
 
