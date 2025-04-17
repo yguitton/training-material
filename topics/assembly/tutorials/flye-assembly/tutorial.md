@@ -242,6 +242,7 @@ Another way to calculate metrics assembly is to use ***QUAST = QUality ASsessmen
 > <hands-on-title>BUSCO on assembly</hands-on-title>
 >
 > 1. {% tool [Busco](toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/5.2.2+galaxy0) %} with the following parameters:
+>    - *"Tool version"*: `Galaxy Version 5.8.0+galaxy0`
 >    - {% icon param-file %} *"Sequences to analyse"*: Multiple datasets
 >    - {% icon param-file %} *"Sequences to analyse"*: `GCA_000002855.2.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
 >    - *"Auto-detect or select lineage"*: `Select lineage` - Not working on April 16 2025
