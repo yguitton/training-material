@@ -95,7 +95,9 @@ We will use long reads sequencing data: HiFi (High Fidelity long reads) from Pac
        text="[Hifiasm](https://github.com/chhylp123/hifiasm) and [Flye](https://github.com/mikolmogorov/Flye) are two well known assembler." %}
 <div class="Hifiasm" markdown="1">
 
-Hifiasm is a fast haplotype-resolved de novo assembler initially designed for PacBio HiFi reads. Its latest release could support the telomere-to-telomere assembly by utilizing ultralong Oxford Nanopore reads. Hifiasm produces arguably the best single-sample telomere-to-telomere assemblies combing HiFi, ultralong and Hi-C reads, and it is one of the best haplotype-resolved assemblers for the trio-binning assembly given parental short reads. For a human genome, hifiasm can produce the telomere-to-telomere assembly in one day.
+Hifiasm is a fast haplotype-resolved de novo assembler initially designed for PacBio HiFi reads. In general, hifiasm generates the assembly graphs in the GFA format, so a step of conversion to fasta is necessary. The GFA 1.0 format is a tab-delimited text format for describing a set of sequences and their overlap.
+<br>
+Hifiasm produces arguably the best single-sample telomere-to-telomere assemblies combing HiFi, ultralong and Hi-C reads, and it is one of the best haplotype-resolved assemblers for the trio-binning assembly given parental short reads. For a human genome, hifiasm can produce the telomere-to-telomere assembly in one day.
 
 > <hands-on-title>Assembly with Hifiasm</hands-on-title>
 >
@@ -105,11 +107,14 @@ Hifiasm is a fast haplotype-resolved de novo assembler initially designed for Pa
 >    - *"Output log file"*: Set to yes
 >
 >     The tool produces five datasets: Haplotype-resolved raw unitig graph, Haplotype-resolved processed unitig graph without small bubbles, Primary assembly contig graph, Alternate assembly contig graph, [hap1]/[hap2] contig graph.
+>
+> 2. {% tool [GFA to FASTA](https://toolshed.g2.bx.psu.edu/view/iuc/gfa_to_fa/e33c82b63727) %} with the following parameters:
+>    - {% icon param-file %} *"Input GFA file"*: primary assembly contig graph
 {: .hands_on}
 
 > <question-title></question-title>
 >
-> What are the different output datasets?
+> What are the different output datasets from Hifiasm?
 >
 > > <solution-title></solution-title>
 > >
