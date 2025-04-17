@@ -166,12 +166,19 @@ We will use *Flye*, a de novo assembler for single molecule sequencing reads, su
 ## Genome assembly metrics with **Fasta Statistics**
 
 ***Fasta statistics*** displays the summary statistics for a fasta file. In the case of a genome assembly, we need to calculate different metrics such as assembly size, scaffolds number or N50 value. These metrics will allow us to evaluate the quality of this assembly.
+Then, we will merge the obtained results in one table to compare the results from the different assemblies.
 
 > <hands-on-title>Fasta statistics</hands-on-title>
 >
 > 1. {% tool [Fasta Statistics](toolshed.g2.bx.psu.edu/repos/iuc/fasta_stats/fasta-stats/2.0) %} with the following parameters:
 >    - {% icon param-file %} *"fasta or multifasta file"*: select 'Multiple datasets'
 >    - {% icon param-file %} *"fasta or multifasta file"*: `GCA_000002855.2.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
+> 2. {% tool [Multi-Join](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_multijoin_tool/9.5+galaxy0) %} with the following parameters:
+>    - {% icon param-file %} *"File to join"*: `Fasta Statistics on GCA_000002855.2.fasta.gz`
+>    - {% icon param-file %} *"add additional file"*: `Other Fasta Statistics files`
+>    - *"Common key column"*: `1`
+>    - *"Column with values to preserve"*: `2`
+>    - *"Add header line to the output file"*: `True`
 >
 {: .hands_on}
 
