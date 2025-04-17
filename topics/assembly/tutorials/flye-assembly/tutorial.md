@@ -167,17 +167,11 @@ We will use *Flye*, a de novo assembler for single molecule sequencing reads, su
 
 ***Fasta statistics*** displays the summary statistics for a fasta file. In the case of a genome assembly, we need to calculate different metrics such as assembly size, scaffolds number or N50 value. These metrics will allow us to evaluate the quality of this assembly.
 
-> <hands-on-title>Fasta statistics on assembly</hands-on-title>
+> <hands-on-title>Fasta statistics</hands-on-title>
 >
 > 1. {% tool [Fasta Statistics](toolshed.g2.bx.psu.edu/repos/iuc/fasta_stats/fasta-stats/2.0) %} with the following parameters:
->    - {% icon param-file %} *"fasta or multifasta file"*: `primary assembly` (output of **Hifiasm** {% icon tool %}) or `consensus` (output of **Flye** {% icon tool %})
->
-{: .hands_on}
-
-> <hands-on-title>Fasta statistics on the reference assembly</hands-on-title>
->
-> 1. {% tool [Fasta Statistics](toolshed.g2.bx.psu.edu/repos/iuc/fasta_stats/fasta-stats/2.0) %} with the following parameters:
->    - {% icon param-file %} *"fasta or multifasta file"*: `GCA_000002855.2.fasta.gz`
+>    - {% icon param-file %} *"fasta or multifasta file"*: select 'Multiple datasets'
+>    - {% icon param-file %} *"fasta or multifasta file"*: `GCA_000002855.2.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
 >
 {: .hands_on}
 
@@ -202,11 +196,11 @@ We will use *Flye*, a de novo assembler for single molecule sequencing reads, su
 
 Another way to calculate metrics assembly is to use ***QUAST = QUality ASsessment Tool***. Quast is a tool to evaluate genome assemblies by computing various metrics and to compare genome assembly with a reference genome. The manual of Quast is here: [Quast](http://quast.sourceforge.net/docs/manual.html#sec3)
 
-> <hands-on-title>Task description</hands-on-title>
+> <hands-on-title>Quast</hands-on-title>
 >
 > 1. {% tool [Quast](toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.0.2+galaxy3) %} with the following parameters:
 >    - *"Use customized names for the input files?"*: `No, use dataset names`
->        - {% icon param-file %} *"Contigs/scaffolds file"*: `primary assembly` (output of **Hifiasm** {% icon tool %}) or `consensus` (output of **Flye** {% icon tool %})
+>        - {% icon param-file %} *"Contigs/scaffolds file"*: `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
 >    - *"Type of assembly"*: `Genome`
 >        - *"Use a reference genome?"*: `Yes`
 >        - {% icon param-file %} *"Reference genome"*: `GCA_000002855.2.fasta.gz`
@@ -238,21 +232,13 @@ Another way to calculate metrics assembly is to use ***QUAST = QUality ASsessmen
 
 ***BUSCO (Benchmarking Universal Single-Copy Orthologs)*** allows a measure for quantitative assessment of genome assembly based on evolutionarily informed expectations of gene content. Details for this tool are here: [Busco website](https://busco.ezlab.org/)
 
-> <hands-on-title>BUSCO on Flye assembly</hands-on-title>
+> <hands-on-title>BUSCO on assembly</hands-on-title>
 >
-> **First on the generated assembly:**
 > 1. {% tool [Busco](toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/5.2.2+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Sequences to analyse"*: `primary assembly` (output of **Hifiasm** {% icon tool %}) or `consensus` (output of **Flye** {% icon tool %})
+>    - {% icon param-file %} *"Sequences to analyse"*: Multiple datasets
+>    - {% icon param-file %} *"Sequences to analyse"*: `GCA_000002855.2.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
 >    - *"Auto-detect or select lineage"*: `Select lineage` - Not working on April 16 2025
 >        - *"Lineage"*: `Mucorales`
->
-> **Then, on the reference assembly:**
->
-> 1. {% tool [Busco](toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/5.2.2+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Sequences to analyse"*: `GCA_000002855.2.fasta.gz`
->    - *"Auto-detect or select lineage"*: `Select lineage`
->        - *"Lineage"*: `Mucorales`
->
 {: .hands_on}
 
 > <question-title></question-title>
