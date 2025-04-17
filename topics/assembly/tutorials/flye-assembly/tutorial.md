@@ -81,7 +81,7 @@ We will use long reads sequencing data: HiFi (High Fidelity long reads) from Pac
 > <hands-on-title>Data upload from ENA</hands-on-title>
 >
 > 1. Reference genome is available here: [ASM4765177v1 assembly for Aspergillus niger](https://www.ebi.ac.uk/ena/browser/view/GCA_047651775.1)
-> 2. Import fasta assembly file `GCA_047651775.1.fasta.gz` on your computer locally
+> 2. Download the `WGS Set FASTA (JBKZXA01.fasta.gz)` on your computer
 > 3. Upload this file on Galaxy
 > 4. Check that the datatype is `fasta.gz`
 >
@@ -163,22 +163,17 @@ We will use *Flye*, a de novo assembler for single molecule sequencing reads, su
 
 # Quality assessment
 
-## Genome assembly metrics with **Fasta Statistics**
+## Genome assemblies comparison with **Quast**
 
-***Fasta statistics*** displays the summary statistics for a fasta file. In the case of a genome assembly, we need to calculate different metrics such as assembly size, scaffolds number or N50 value. These metrics will allow us to evaluate the quality of this assembly.
-Then, we will merge the obtained results in one table to compare the results from the different assemblies.
+A way to calculate metrics assembly is to use ***QUAST = QUality ASsessment Tool***. Quast is a tool to evaluate genome assemblies by computing various metrics. The manual of Quast is here: [Quast](http://quast.sourceforge.net/docs/manual.html#sec3)
 
-> <hands-on-title>Fasta statistics</hands-on-title>
+> <hands-on-title>Quast</hands-on-title>
 >
-> 1. {% tool [Fasta Statistics](toolshed.g2.bx.psu.edu/repos/iuc/fasta_stats/fasta-stats/2.0) %} with the following parameters:
->    - {% icon param-file %} *"fasta or multifasta file"*: select 'Multiple datasets'
->    - {% icon param-file %} *"fasta or multifasta file"*: `GCA_047651775.1.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
-> 2. {% tool [Multi-Join](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_multijoin_tool/9.5+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"File to join"*: `Fasta Statistics on GCA_047651775.1.fasta.gz`
->    - {% icon param-file %} *"add additional file"*: `Other Fasta Statistics files`
->    - *"Common key column"*: `1`
->    - *"Column with values to preserve"*: `2`
->    - *"Add header line to the output file"*: `True`
+> 1. {% tool [Quast](toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.0.2+galaxy3) %} with the following parameters:
+>    - *"Use customized names for the input files?"*: `No, use dataset names`
+>        - {% icon param-file %} *"Contigs/scaffolds file"*: `JBKZXA01.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
+>    - *"Type of assembly"*: `Genome`
+>        - *"Type of organism"*: `Fungus: use of GeneMark-ES for gene finding, ...`
 >
 {: .hands_on}
 
@@ -189,47 +184,11 @@ Then, we will merge the obtained results in one table to compare the results fro
 >
 > > <solution-title></solution-title>
 > >
-> > 1. We compare the metrics of the two genome assembly:
-> > - TO DO The Flye assembly: 1461 contigs/scaffolds, N50 = 222 kb, length max = 897 kb, size = 48.6 Mb, 36.6% GC
-> > - TO DO The reference genome: 456 contigs/scaffolds, N50 = 202 kb, length max = 776 kb, size = 46.1 Mb, 36.7% GC
-> >
+> > 1. We compare the metrics of the three assemblies:
+> > - TO DO The reference genome: 24 contigs, 16 scaffolds, Contig N50 = 4.3Mb, Contig length max = 6.2 Mb, size = 106 Mb, 74.27% GC
+> > - TO DO The Hifiasm assembly: 105 contigs/scaffolds, N50 = 4.9 Mb, length max = 7.1Mb, assembly size = 42.1 Mb, 47.91% GC
+> > - TO DO The Flye assembly: 13 contigs/scaffolds, N50 = 4.9Mb, length max = 6.8Mb, size = 38.7 Mb, 49.31% GC
 > > 2. TO DO Metrics are very similar, Flye generated an assembly with a quality similar to that of the reference genome.
-> >
-> {: .solution}
->
-{: .question}
-
-## Genome assemblies comparison with **Quast**
-
-Another way to calculate metrics assembly is to use ***QUAST = QUality ASsessment Tool***. Quast is a tool to evaluate genome assemblies by computing various metrics and to compare genome assembly with a reference genome. The manual of Quast is here: [Quast](http://quast.sourceforge.net/docs/manual.html#sec3)
-
-> <hands-on-title>Quast</hands-on-title>
->
-> 1. {% tool [Quast](toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.0.2+galaxy3) %} with the following parameters:
->    - *"Use customized names for the input files?"*: `No, use dataset names`
->        - {% icon param-file %} *"Contigs/scaffolds file"*: `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
->    - *"Type of assembly"*: `Genome`
->        - *"Use a reference genome?"*: `Yes`
->        - {% icon param-file %} *"Reference genome"*: `GCA_047651775.1.fasta.gz`
->        - *"Type of organism"*: `Fungus: use of GeneMark-ES for gene finding, ...`
->
-{: .hands_on}
-
-> <question-title></question-title>
->
-> What additional informations are generated by Quast, compared to the **Fasta Statistics** outputs?
->
-> > <solution-title></solution-title>
-> >
-> > Quast allows us to compare the generated assembly to the reference genome:
-> > 1. TO DO Genome fraction (90.192 %) is the percentage of aligned bases in the reference genome.
-> > 2. TO DO Duplication ratio (1.094) is the total number of aligned bases in the assembly divided by the total number of aligned bases in the reference genome.
-> > 3. TO DO Largest alignment (698452) is the length of the largest continuous alignment in the assembly.
-> > 4. TO DO Total aligned length (45.2 Mb) is the total number of aligned bases in the assembly.
-> >
-> > Quast also generates some plots:
-> > 1. Cumulative length plot shows the growth of contig lengths. On the x-axis, contigs are ordered from the largest to smallest. The y-axis gives the size of the x largest contigs in the assembly.
-> > 2. GC content plot shows the distribution of GC content in the contigs.
 > >
 > {: .solution}
 >
@@ -244,7 +203,7 @@ Another way to calculate metrics assembly is to use ***QUAST = QUality ASsessmen
 > 1. {% tool [Busco](toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/5.2.2+galaxy0) %} with the following parameters:
 >    - *"Tool version"*: `Galaxy Version 5.8.0+galaxy0`
 >    - {% icon param-file %} *"Sequences to analyse"*: Multiple datasets
->    - {% icon param-file %} *"Sequences to analyse"*: `GCA_047651775.1.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
+>    - {% icon param-file %} *"Sequences to analyse"*: `JBKZXA01.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
 >    - *"Auto-detect or select lineage"*: `Select lineage` - Not working on April 16 2025
 >        - *"Lineage"*: `Fungi`
 >        - *"Which outputs should be generated"*: `short summary text; summary image`
@@ -252,7 +211,7 @@ Another way to calculate metrics assembly is to use ***QUAST = QUality ASsessmen
 
 > <question-title></question-title>
 >
-> Compare the number of BUSCO genes identified in the Flye assembly and the reference genome. What do you observe ?
+> Compare the number of BUSCO genes identified in the generated assembly and the reference genome. What do you observe ?
 >
 > > <solution-title></solution-title>
 > >
@@ -261,10 +220,15 @@ Another way to calculate metrics assembly is to use ***QUAST = QUality ASsessmen
 > > 2. TO DO 13 fragmented BUSCOs,
 > > 3. TO DO 109 missing BUSCOs.
 > >
+> > Short summary generated by BUSCO indicates that Hifiasm assembly contains:
+> > 1. 756 complete BUSCOs (754 single-copy and 2 duplicated),
+> > 2. 0 fragmented BUSCOs
+> > 3. 2 missing BUSCOs.
+> >
 > > Short summary generated by BUSCO indicates that Flye assembly contains:
-> > 1. TO DO 2348 complete BUSCOs (2310 single-copy and 38 duplicated),
-> > 2. TO DO 8 fragmented BUSCOs
-> > 3. TO DO 93 missing BUSCOs.
+> > 1. 755 complete BUSCOs (753 single-copy and 2 duplicated),
+> > 2. 0 fragmented BUSCOs
+> > 3. 3 missing BUSCOs.
 > >
 > > BUSCO analysis confirms that these two assemblies are of similar quality, with similar number of complete, fragmented and missing BUSCOs genes.
 > >
