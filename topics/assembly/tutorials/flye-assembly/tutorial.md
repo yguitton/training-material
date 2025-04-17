@@ -246,7 +246,7 @@ Another way to calculate metrics assembly is to use ***QUAST = QUality ASsessmen
 >    - {% icon param-file %} *"Sequences to analyse"*: Multiple datasets
 >    - {% icon param-file %} *"Sequences to analyse"*: `GCA_000002855.2.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
 >    - *"Auto-detect or select lineage"*: `Select lineage` - Not working on April 16 2025
->        - *"Lineage"*: `Mucorales`
+>        - *"Lineage"*: `Fungi`
 >        - *"Which outputs should be generated"*: `short summary text; summary image`
 {: .hands_on}
 
