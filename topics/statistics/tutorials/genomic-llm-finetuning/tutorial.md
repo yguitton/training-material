@@ -49,7 +49,7 @@ After preparing, training, and utilizing a language model for DNA sequences, we 
 
 > <comment-title>Transcription factors</comment-title>
 >
-> Transcription factors are proteins that play a crucial role in regulating gene expression by binding to specific DNA sequences, known as enhancers or promoters, near the genes they control. These proteins act as molecular switches, turning genes on or off in response to various cellular signals and environmental cues. By binding to DNA, transcription factors either promote or inhibit the recruitment of RNA polymerase, the enzyme responsible for transcribing DNA into RNA, thereby influencing the rate of transcription.
+> Transcription factors are proteins that play a crucial role in regulating gene expression by binding to specific DNA sequences, known as enhancers or promoters. These proteins act as molecular switches, turning genes on or off in response to various cellular signals and environmental cues. By binding to DNA, transcription factors either promote or inhibit the recruitment of RNA polymerase, the enzyme responsible for transcribing DNA into RNA, thereby influencing the rate of transcription.
 > 
 > ![Diagram illustrating DNA binding with CTCF. The left panel, outlined in red, shows a DNA sequence 'CCACCAGGGGGCGC' labeled as 'DNA binding CTCF,' with an oval labeled 'CTCF' above it. The right panel, outlined in blue, shows a different DNA sequence 'GTGGCTAGTAGGTAG' labeled as 'DNA not binding CTCF,' indicating that this sequence does not interact with CTCF.](images/two_dna_sequences.png "Two types of DNA sequences. On the left, a DNA sequence that binds the transcription factor CTCF. On the right, a DNA sequence that does not bind CTCF.")
 >
