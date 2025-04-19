@@ -51,6 +51,7 @@ contributions:
     instructors:
         - ahmedhamidawan
         - annasyme
+        - annefou
         - anuprulez
         - abretaud
         - bebatut
@@ -60,12 +61,15 @@ contributions:
         - dianichj
         - deeptivarshney
         - delphine-l
+        - elifsu-simula
         - elichad
         - EngyNasr
         - emmaustin20
+        - evenmm
         - GarethPrice-Aus
         - khaled196
         - jdavcs
+        - j34ni
         - bernt-matthias
         - foellmelanie
         - meltemktn
@@ -180,6 +184,8 @@ program:
         link: events/tracks/gta2025-single-cell.md
       - title: Microbiome
         link: events/tracks/gta2025-microbiome.md
+      - title: Climate
+        link: events/tracks/gta2025-climate.md
       #- title: Bacterial Genomics
       #  link: events/tracks/gta2024-bacterial-genomics.md
       #- title: BY-COVID
