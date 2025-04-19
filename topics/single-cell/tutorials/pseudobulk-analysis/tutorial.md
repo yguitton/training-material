@@ -445,7 +445,7 @@ To gain further insight, it's helpful to perform pseudobulk analysis on each cel
 
 In the following step, we’ll demonstrate how to subset the AnnData object by cell type before reapplying the pseudobulk workflow. In the hands-on example, we will filter for pDCs. To extract NCMs instead, you can follow the exact same steps, but set the *"Value"* parameter to `Non_Classical_Monocyte`, which corresponds to the annotation of that cell type.
 
-If you would like to extract **all annotated clusters at once**, for example to analyse each of them independently, refer to the tip box below titled **“Split AnnData object by cluster or other observation key into a collection”**.
+If you would like to extract all annotated clusters at once, for example to analyse each of them independently, refer to the tip box below titled **“Split AnnData object by cluster or other observation key into a collection”**.
 
 ## Extracting observations of interest as AnnData object
 
