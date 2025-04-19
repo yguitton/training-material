@@ -83,7 +83,7 @@ For this tutorial, we assume familiarity with standard single-cell data formats,
 
 If you're new to these concepts, we recommend exploring the following tutorials before performing pseudobulk analysis:
 
-- [Clustering 3K PBMCs with Scanpy]({% link topics/single-cell/tutorials/scrna-scanpy-pbmc3k/tutorial.md %}): Learn how to perform clustering and cell type annotation using Galaxy's single-cell tools.
+- [Clustering 3K PBMCs with Scanpy]({% link topics/single-cell/tutorials/scrna-scanpy-pbmc3k/tutorial.md %}): Learn how to perform clustering and cell type annotation using Galaxy's Scanpy and Anndata tool suites.
 - [Clustering 3K PBMCs with Seurat]({% link topics/single-cell/tutorials/scrna-seurat-pbmc3k/tutorial.md %}): Explore an alternative approach to clustering and annotation using Seurat within Galaxy.
 - [Combining single-cell datasets after pre-processing]({% link topics/single-cell/tutorials/scrna-case_alevin-combine-datasets/tutorial.md %}): Learn how to merge multiple single-cell datasets into one AnnData object and enrich it with experimental metadata.
 
