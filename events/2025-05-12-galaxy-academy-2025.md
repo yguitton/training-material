@@ -73,7 +73,7 @@ contributions:
         - jhahnfeld
         - Jochen_Blom
         - bernt-matthias
-        - lfenske
+        - lfenske-93
         - PfisterMaxJLU
         - foellmelanie
         - meltemktn
