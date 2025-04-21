@@ -2289,6 +2289,8 @@ id:
   E00026: "/events/2025-05-12-galaxy-academy-2025.html"
   E00027: "/events/2025-06-30-hts-workshop-freiburg.html"
   E00028: "/events/2024-06-10-mtb-ngs.html"
+  N00111: "/news/2025/04/16/admin-training-survey.html"
+  W00326: "/topics/transcriptomics/tutorials/rna-seq-viz-with-volcanoplot/workflows/Visualization-Of-RNA-Seq-Results-With-Volcano-Plot.html"
 misc:
   ansible-galaxy: "/topics/admin/tutorials/ansible-galaxy/tutorial.html"
   feeds: "/feeds/index.html"
