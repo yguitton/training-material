@@ -49,12 +49,11 @@ So, let's proceed!
 
 ## Get the image data
 
-> <hands-on-title> Data Upload </hands-on-title>
+> <hands-on-title>Data Upload</hands-on-title>
 >
 > 1. Create a new history for this tutorial.
 >
 > 2. Download the following image and import it into your Galaxy history.
->    
 >    - [`example_image.tiff`](../../images/parameter-tuning/example_image.tiff)
 >    - [`example_image_ground_truth.tiff`](../../images/parameter-tuning/example_image_ground_truth.tiff)
 >    
@@ -71,10 +70,8 @@ So, let's proceed!
 > 4. Confirm the datatypes are correct (`tiff` for both images)
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
-
->
+> 
 >    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
->
 {: .hands_on}
 
 
