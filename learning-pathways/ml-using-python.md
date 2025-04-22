@@ -46,11 +46,23 @@ pathway:
         name: deep-learning-without-gai-with-python
         topic: statistics
 - 
-    section: "Module 4: Generative Artificial Intelligence and Large Langage Model"
-    description: Generative Artificial Intelligence and Large Langage Model using Python
+    section: "Module 4: Generative Artificial Intelligence and Large Langage Model for Genomics using Python"
+    description: This tutorial series provides a comprehensive guide to leveraging large language models for genomics, covering pretraining, fine-tuning, mutation impact prediction, sequence generation, and optimization.
     tutorials:
     - 
-        name: gai-llm-with-python
+        name: genomic-llm-pretraining
+        topic: statistics
+    - 
+        name: genomic-llm-finetuning
+        topic: statistics
+    - 
+        name: genomic-llm-zeroshot-prediction
+        topic: statistics
+    - 
+        name: genomic-llm-sequence-generation
+        topic: statistics
+    - 
+        name: genomic-llm-sequence-optimization
         topic: statistics
 - 
     section: "Module 5: Regulations/standards for AI using DOME"

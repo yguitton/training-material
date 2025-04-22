@@ -26,13 +26,13 @@ program:
       - type: custom
         name: "[Day1 - First steps](http://swcarpentry.github.io/python-novice-gapminder/01-run-quit.html)"
         description: |
-          [<i class="fas fa-video" aria-hidden="true"></i> Lecture Video](https://lhumos.org/player/5/0/661d1e94e4b08465bc30cbc9/661d1e9be4b08465bc30cbcd)
+          [Lecture Hands-on](http://swcarpentry.github.io/python-novice-gapminder/01-run-quit.html); [<i class="fas fa-video" aria-hidden="true"></i> Lecture Video](https://lhumos.org/player/5/0/661d1e94e4b08465bc30cbc9/661d1e9be4b08465bc30cbcd)
       - type: custom
         name: "[Day2 - Tabular data manipulation and visualisation](http://swcarpentry.github.io/python-novice-gapminder/07-reading-tabular.html)"
         description: |
-          [<i class="fas fa-video" aria-hidden="true"></i> Lecture Video](https://lhumos.org/player/5/1/661d1e94e4b08465bc30cbc9/661d1eb2e4b08465bc30cbd6)
+          [Lecture Hands-on](http://swcarpentry.github.io/python-novice-gapminder/07-reading-tabular.html); [<i class="fas fa-video" aria-hidden="true"></i> Lecture Video](https://lhumos.org/player/5/1/661d1e94e4b08465bc30cbc9/661d1eb2e4b08465bc30cbd6)
       - type: custom
         name: "[Day3 - Advanced programming ](http://swcarpentry.github.io/python-novice-gapminder/13-conditionals.html)"
         description: |
-          [<i class="fas fa-video" aria-hidden="true"></i> Lecture Video](https://lhumos.org/player/5/2/661d1e94e4b08465bc30cbc9/661d1ec9e4b08465bc30cbdd)
+          [Lecture Hands-on](http://swcarpentry.github.io/python-novice-gapminder/13-conditionals.html); [<i class="fas fa-video" aria-hidden="true"></i> Lecture Video](https://lhumos.org/player/5/2/661d1e94e4b08465bc30cbc9/661d1ec9e4b08465bc30cbdd)
 ---
