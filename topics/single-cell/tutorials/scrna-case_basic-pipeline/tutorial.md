@@ -1189,7 +1189,7 @@ You might find the {% icon galaxy-history-answer %} *Answer Key Histories* helpf
     {% endfor %}
 
 You can also run this entire tutorial via a {% icon galaxy-workflows-activity %} *Workflow*, after performing the **Get data** step initially.
- - [Tutorial Workflow]({% link ../workflows/ %})
+ - [Tutorial Workflow]({% link topics/single-cell/tutorials/scrna-case_basic-pipeline/workflows/ %})
 
 <iframe title="Galaxy Workflow Embed" style="width: 100%; height: 700px; border: none;" src="https://singlecell.usegalaxy.eu/published/workflow?id=4756053b2596b6cf&embed=true&buttons=true&about=false&heading=false&minimap=true&zoom_controls=true&initialX=0&initialY=-20&zoom=0.33"></iframe>
 
