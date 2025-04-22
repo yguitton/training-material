@@ -31,8 +31,9 @@ pathway:
     description: |
       Make a minor correction to an existing training material. You will edit one page using GitHub, so find a typo and get ready!
     tutorials:
-      - name: gtn_minor_correction.html
-        link: /faqs/gtn
+      - name: Making a minor correction to the GTN
+        type: faq
+        link: faqs/gtn/gtn_minor_correction
 
   - section: "Module 2: Add yourself as a contributor"
     description: |
@@ -51,12 +52,14 @@ pathway:
     description: |
       You will also need to decide on a larger change to make in Galaxy! You may already have ideas on what to fix; you can reference our FAQ for ideas on what to change; or contact a [Community of Practice](https://galaxyproject.org/community/sig/) to see if they have anything that needs doing. We will show you how to visualise those changes, and see how what you do will impact the materials. Finally, we show you had to add yourself as an editor, to acknowledge your contribution!
     tutorials:
-      - name: contributors_getting_started
-        topic: ../faqs/gtn
+      - name: How can I get started with contributing?
+        type: faq
+        link: faqs/gtn/contributors_getting_started
       - name: rendering_gtn
         topic: contributing
-      - name: new-contributions
-        topic: contributing/faqs
+      - name: Using the new Contributions Annotation framework
+        type: faq
+        link: topics/contributing/faqs/new-contributions
 
 # Ideally, we have a github-Desktop option as a CYOA in the github command line contribution
 # Ideally, we then have an FAQ or tutorial on 'Reviewing GTN materials' here as the next Module.
