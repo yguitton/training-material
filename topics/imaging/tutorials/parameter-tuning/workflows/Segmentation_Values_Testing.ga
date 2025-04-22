@@ -1,12 +1,12 @@
 {
     "a_galaxy_workflow": "true",
-    "annotation": "",
+    "annotation": "Workflow to assess nuclei segmentation by applying different Gaussian filtering values during image pre-processing.",
     "comments": [
         {
             "child_steps": [
-                2,
+                1,
                 0,
-                1
+                2
             ],
             "color": "red",
             "data": {
@@ -14,7 +14,7 @@
             },
             "id": 0,
             "position": [
-                0.0,
+                0,
                 101.82566135461036
             ],
             "size": [
@@ -24,21 +24,29 @@
             "type": "frame"
         }
     ],
+    "creator": [
+        {
+            "class": "Person",
+            "identifier": "0000-0003-2104-9519",
+            "name": "Riccardo Massei"
+        }
+    ],
     "format-version": "0.1",
+    "license": "MIT",
     "name": "Segmentation_Values_Testing",
     "report": {
         "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
     },
     "steps": {
         "0": {
-            "annotation": "",
+            "annotation": "Upload an image or provide a dataset to initiate the image segmentation process.",
             "content_id": null,
             "errors": null,
             "id": 0,
             "input_connections": {},
             "inputs": [
                 {
-                    "description": "",
+                    "description": "Upload an image or provide a dataset to initiate the image segmentation process.",
                     "name": "Image to segment"
                 }
             ],
@@ -58,14 +66,14 @@
             "workflow_outputs": []
         },
         "1": {
-            "annotation": "",
+            "annotation": "Input a series of sigma values as tabular file",
             "content_id": null,
             "errors": null,
             "id": 1,
             "input_connections": {},
             "inputs": [
                 {
-                    "description": "",
+                    "description": "Input a series of sigma values as tabular file",
                     "name": "Sigma Values"
                 }
             ],
@@ -85,14 +93,14 @@
             "workflow_outputs": []
         },
         "2": {
-            "annotation": "",
+            "annotation": "Input the ground truth image",
             "content_id": null,
             "errors": null,
             "id": 2,
             "input_connections": {},
             "inputs": [
                 {
-                    "description": "",
+                    "description": "Input the ground truth image",
                     "name": "Ground Truth Image"
                 }
             ],
@@ -292,7 +300,7 @@
             ],
             "position": {
                 "left": 858.6737868628513,
-                "top": 0.0
+                "top": 0
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/imgteam/2d_auto_threshold/ip_threshold/0.18.1+galaxy3",
@@ -414,16 +422,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Paste",
-                    "name": "input1"
-                },
-                {
-                    "description": "runtime parameter for tool Paste",
-                    "name": "input2"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "Paste",
             "outputs": [
@@ -438,7 +437,7 @@
             },
             "post_job_actions": {},
             "tool_id": "Paste1",
-            "tool_state": "{\"delimiter\": \"T\", \"input1\": {\"__class__\": \"RuntimeValue\"}, \"input2\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"delimiter\": \"T\", \"input1\": {\"__class__\": \"ConnectedValue\"}, \"input2\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.0",
             "type": "tool",
             "uuid": "331b989c-6897-4dc8-a93c-e613d9ccaca5",
@@ -453,6 +452,6 @@
         }
     },
     "tags": [],
-    "uuid": "a26e0bbb-cc1f-45d9-98c8-d872079c0750",
-    "version": 11
+    "uuid": "2a40f1ec-55b8-4fad-aca9-7df3bd7ec2d8",
+    "version": 13
 }
