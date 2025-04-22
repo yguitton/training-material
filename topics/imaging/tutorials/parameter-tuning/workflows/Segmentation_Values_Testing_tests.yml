@@ -1,0 +1,17 @@
+- doc: Test outline for Segmentation_Values_Testing
+  job:
+    Sigma Values:
+      class: File
+      path: test-data/Sigma Values.tabular
+      filetype: tabular
+    Image to segment:
+      class: File
+      path: test-data/Image to segment.tiff
+      filetype: tiff
+    Ground Truth Image:
+      class: File
+      path: test-data/Ground Truth Image.tiff
+      filetype: tiff
+  outputs:
+    output:
+      path: test-data/output.tabular
