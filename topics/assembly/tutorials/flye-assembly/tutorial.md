@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 
 title: 'Genome assembly using PacBio data'
-zenodo_link: 'TO DO?'
+zenodo_link: ''
 tags:
   - assembly
   - pacbio
