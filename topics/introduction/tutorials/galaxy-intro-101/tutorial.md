@@ -492,7 +492,7 @@ You can create as many histories as you want. If you create a new history, your 
 
 ![Overview of histories with their datasets](../../images/histories_side_by_side_view.png "Histories side-by-side view: in this view you drag datasets between histories, switch between histories, create new histories etc.")
 
-You can always return to your analysis view by clicking on Galaxy name Icon in the top menu bar.
+You can always return to your analysis view by clicking on Galaxy Icon in the top menu bar.
 
 ## Convert your analysis history into a workflow
 
