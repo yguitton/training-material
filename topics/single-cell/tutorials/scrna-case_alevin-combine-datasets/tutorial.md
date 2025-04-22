@@ -395,7 +395,7 @@ I want to clean up this AnnData object just a bit more first. It would be a lot 
 # Conclusion
 
 You might find the {% icon galaxy-history-answer %} *Answer Key Histories* helpful to check or compare with:
-  - {% for h in page.answer_histories[:1] %}
+  - {% for h in page.answer_histories %}
       [ {{h.label}} ]( {{h.history}} )
     {% endfor %}
 <!-- Only currently want to iterate through the first history, but might want others in the future (different servers!) -->
