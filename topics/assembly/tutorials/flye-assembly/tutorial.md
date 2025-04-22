@@ -101,14 +101,14 @@ Hifiasm produces arguably the best single-sample telomere-to-telomere assemblies
 
 > <hands-on-title>Assembly with Hifiasm</hands-on-title>
 >
-> 1. {% tool [Hifiasm](https://toolshed.g2.bx.psu.edu/view/bgruening/hifiasm/5d365d5cbe9d) %} with the following parameters:
+> 1. {% tool [Hifiasm](https://toolshed.g2.bx.psu.edu/repos/bgruening/hifiasm) %} with the following parameters:
 >    - *"Mode"*: `Standard`
 >    - {% icon param-file %} *"Input reads"*: the raw data (fastq.gz)
 >    - *"Output log file"*: Set to yes
 >
 >     The tool produces five datasets: Haplotype-resolved raw unitig graph, Haplotype-resolved processed unitig graph without small bubbles, Primary assembly contig graph, Alternate assembly contig graph, [hap1]/[hap2] contig graph.
 >
-> 2. {% tool [GFA to FASTA](https://toolshed.g2.bx.psu.edu/view/iuc/gfa_to_fa/e33c82b63727) %} with the following parameters:
+> 2. {% tool [GFA to FASTA](https://toolshed.g2.bx.psu.edu/repos/iuc/gfa_to_fa) %} with the following parameters:
 >    - {% icon param-file %} *"Input GFA file"*: primary assembly contig graph
 {: .hands_on}
 
