@@ -152,15 +152,15 @@ The sample data is a subset of the reads from each of the seven samples in a mou
 >
 > 1. Import the {% icon galaxy-history-input %} *Input history* by following the link below
 >
->     {% for h in page.input_histories %}
->       [ {{h.label}} Input History]( {{h.history}} )
->     {% endfor %}
+>    {% for h in page.input_histories %}
+>      [ {{h.label}} Input History]( {{h.history}} )
+>    {% endfor %}
 >
 >    {% snippet faqs/galaxy/histories_import.md %}
 >
 > If you want to import the history to another Galaxy server, check how to do it below!
 >
->   {% snippet faqs/galaxy/histories_transfer_entire_histories_from_one_galaxy_server_to_another.md %}
+> {% snippet faqs/galaxy/histories_transfer_entire_histories_from_one_galaxy_server_to_another.md %}
 >
 {: .hands_on}
 
