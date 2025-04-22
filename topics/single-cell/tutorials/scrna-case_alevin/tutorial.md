@@ -117,11 +117,11 @@ Currently you have a bunch of strings of `ATGGGCTT` etc. in your sequencing file
 >
 > **That is ok!**
 >
-> Conceptually, the {% icon level %} [Filter, plot & explore](% link ../scrna-case_basic-pipeline/tutorial.md %}) tutorial (which comes later) is when you really get to generate fun plots and interpret them scientifically. However, you can't do that until you have pre-processed your data. Some learners like doing that tutorial first, them coming back to learn how to build their input dataset here. So:
+> Conceptually, the {% icon level %} [Filter, plot & explore](% link topics/single-cell/tutorials/scrna-case_basic-pipeline/tutorial.md %}) tutorial (which comes later) is when you really get to generate fun plots and interpret them scientifically. However, you can't do that until you have pre-processed your data. Some learners like doing that tutorial first, them coming back to learn how to build their input dataset here. So:
 >
 > - If you're in a *Live course*, follow the path of training materials
 > - If you're learning on your own, either get through these pre-processing steps with the belief that plots will get more fun later, or:
-> - Try out the {% icon level %} [Filter, plot & explore](% link ../scrna-case_basic-pipeline/tutorial.md %}) tutorial *first*, then swing back and do this one.
+> - Try out the {% icon level %} [Filter, plot & explore](% link topics/single-cell/tutorials/scrna-case_basic-pipeline/tutorial.md %}) tutorial *first*, then swing back and do this one.
 > It's up to you!
 >
 {: .warning}
@@ -635,14 +635,14 @@ We have:
  * Converted these datasets to enable downstream analysis.
 
 You might find the {% icon galaxy-history-answer %} *Answer Key Histories* helpful to check or compare with:
-  - {% for h in page.answer_histories[:1] %}
+  - {% for h in page.answer_histories %}
       [ {{h.label}} ]( {{h.history}} )
     {% endfor %}
 
 <!-- Only currently want to iterate through the first history, but might want others in the future (different servers!) -->
 
 You can also run this entire tutorial via a {% icon galaxy-workflows-activity %} *Workflow*, after performing the **Get data** step initially.
- - [Tutorial Workflow]({% link ../workflows/index.md %})
+ - [Tutorial Workflow]({% link topics/single-cell/tutorials/scrna-case_alevin/workflows/index.md %})
 
 <iframe title="Galaxy Workflow Embed" style="width: 100%; height: 700px; border: none;" src="https://singlecell.usegalaxy.eu/published/workflow?id=9a9bbd8046da7b19&embed=true&buttons=true&about=false&heading=false&minimap=true&zoom_controls=true&initialX=0&initialY=0&zoom=0.33"></iframe>
 
