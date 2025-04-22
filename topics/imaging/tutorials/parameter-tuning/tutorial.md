@@ -1,14 +1,14 @@
 ---
 layout: tutorial_hands_on
 
-title: "Parameter tuning and optimization - Evaluating Image Segmentation with Galaxy"
+title: "Parameter tuning and optimization - Evaluating nuclei segmentation with Galaxy"
 level: Introductory
 questions:
   - What are the challenges of using the same settings for every biological image, and how does parameter tuning address these challenges?
-  - How can the Evaluate segmentation tool be used to choose the best 2D-sigma filter values for nuclei segmentation?
+  - How can we choose the best 2D-sigma filter values for nuclei segmentation?
 objectives:
   - Understand the importance of parameter tuning in bioimage analysis for achieving accurate results
-  - Learn how to perform parameter tuning for segmentation using the Evaluate segmentation tool in Galaxy
+  - Learn how to perform parameter tuning for segmentation in Galaxy
 key_points:
   - Parameter tuning helps achieve reliable and repeatable results
 time_estimation: "1H"
@@ -37,13 +37,12 @@ So you can't just use the same settings for every image.
 
 That's where parameter tuning comes in. 
 By adjusting these settings carefully, researchers can make sure their tools are capturing the right biological info without adding noise or messing up the images. 
-This helps make sure their work is repeatable and reliable, which is key for getting accurate scientific results. 
+This helps make sure their work is repeatable and reliable, which is key getting accurate scientific results. 
 Basically, it's all about finding the perfect balance to get the most useful and accurate data possible.
 
 In this tutorial, we will show how to perform parameter tuning for segmentation. Using the same dataset from
-the introduction tutorial, we will choose the best 2D-sigma filter values to perform a nuclei segmentation by
-comparing a ground-truth segmentation with the ones processed in Galaxy. 
-This will be done using the Evaluate segmentation tool.
+the introduction tutorial, we will choose the best 2D-sigma filter values to perform nuclei segmentation by
+comparing ground-truth segmentation with the ones processed in Galaxy.
 
 So, let's proceed!
 
@@ -88,9 +87,9 @@ The dataset will appear now in your history.
 
 You now have everything you need to build the parameter tuning workflow!
 
-## Evaluate Segmentation full workflow
+## Evaluate nuclei segmentation - Full workflow
 
-> <hands-on-title>Create a workflow to Evaluate Image Segmentation</hands-on-title>
+> <hands-on-title>Create a workflow to evaluate nuclei segmentation</hands-on-title>
 >
 > 1. Create a new workflow in the workflow editor.
 >
@@ -153,7 +152,11 @@ This is how the worflow should look like!
 
 ![img.png](../../images/parameter-tuning/workflow_parameter_tuning.png)
 
-Here we can see a potential output of the analysis by running four different sigmas (0.5, 5, 10, 50)
+In this workflow, the Parse Parameter tool is passing one by one the value to the workflow downstream. In this way, a collection
+of datasets is created for each sigma value and each one is processed individually.
+Such strategy can be adapted for any parameter of the workflow and, in general, for any tool.
+
+Coming back to the results, here below we can see a potential output of the analysis by running four different sigmas (0.5, 5, 10, 50)
 
 ![img_1.png](../../images/parameter-tuning/table_results.png)
 
