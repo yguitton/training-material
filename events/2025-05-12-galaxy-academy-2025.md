@@ -70,12 +70,18 @@ contributions:
         - khaled196
         - jdavcs
         - j34ni
+        - jhahnfeld
+        - Jochen_Blom
         - bernt-matthias
+        - lfenske-93
+        - PfisterMaxJLU
         - foellmelanie
         - meltemktn
         - mschatz
         - natalie-wa
         - natefoo
+        - Oliver_Rupp
+        - oschwengers
         - paulzierep
         - pavanvidem
         - plushz
