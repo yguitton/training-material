@@ -94,6 +94,8 @@ The first step is to install the required dependencies:
 !pip install peft==0.13.2
 !pip install torch==2.5.0
 !pip install transformers -U
+!pip install progressbar
+!pip install bitsandbytes
 ```
 
 > <question-title></question-title>
@@ -336,7 +338,6 @@ training_args = transformers.TrainingArguments(
     bf16=True,
     report_to="none",
     load_best_model_at_end = True,
-    report_to="none",
 )
 ```
 
@@ -470,6 +471,9 @@ expe = "tf/0"
 data_path = f"data/GUE/{ expe }" 
 ```
 
+
+
+
 ## Prepare Datasets for Training and Validation
 
 We now need to set up the datasets required for training and validating. Properly preparing these datasets is crucial for ensuring that the model finetunes effectively and generalizes well to new data.
@@ -499,17 +503,27 @@ We will use the files `data_path` folder we just defined:
 >
 {: .question}
 
+
+Before we proceed we import some classes and functions from `scriptPython/function.py`:
+
+```python
+### LOAD FUNCTIONS MODULE
+import sys
+sys.path.append("scriptPython/")
+from functions import *
+```
+
 We use the `SupervisedDataset` class to load and prepare the datasets. This class handles the tokenization and formatting of the data, making it ready for model training and evaluation.
 
 ```python
 train_dataset = SupervisedDataset(
     tokenizer=tokenizer,
-    data_path=Path(data_path / "train.csv"),
+    data_path=os.path.join(data_path , "train.csv"),
     kmer=-1,
 )
 val_dataset = SupervisedDataset(
     tokenizer=tokenizer,
-    data_path=Path(data_path / "dev.csv"),
+    data_path=os.path.join(data_path , "dev.csv"),
     kmer=-1,
 )
 ```
@@ -591,11 +605,10 @@ model.config.pad_token_id = tokenizer.pad_token_id
 
 We can now set up the `Trainer` to manage the training and evaluation process of our model. The `Trainer` class simplifies the training loop, handling many of the complexities involved in training deep learning models.
 
-Before setting up the `Trainer`, we load custom function (`compute_metrics`) to compute metrics for `Trainer` stored in the a `scriptPython/functions.py`:
+We first need to attach the LoRA adapter to the model:
 
 ```python
-sys.path.append("scriptPython/")
-from functions import *
+model.add_adapter(peft_config , adapter_name="lora_1" )
 ```
 
 Let's now set up the `Trainer`:
@@ -667,7 +680,7 @@ The test data is stored in `data_path/test.csv`, we prepare it as for training a
 ```python
 test_dataset = SupervisedDataset(
     tokenizer=tokenizer,
-    data_path=Path(data_path / "test.csv"),
+    data_path=os.path.join(data_path , "test.csv"),
     kmer=-1,
 )
 ```
@@ -702,17 +715,6 @@ eval_steps_per_second          9.620000
 epoch                          3.000000
 ```
 
-> <question-title></question-title>
->
-> 
->
-> > <solution-title></solution-title>
-> >
-> > 
-> >
-> {: .solution}
->
-{: .question}
 
 # Conclusion
 
