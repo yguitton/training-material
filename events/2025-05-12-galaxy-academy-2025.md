@@ -49,8 +49,6 @@ contributions:
         - shiltemann
         - dianichj
         - dadrasarmin
-        - Sch-Da
-        - annefou
     instructors:
         - ahmedhamidawan
         - annasyme
