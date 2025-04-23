@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 
 title: 'Genome assembly using PacBio data'
-zenodo_link: 'https://zenodo.org/record/5702408'
+zenodo_link: ''
 tags:
   - assembly
   - pacbio
@@ -24,6 +24,7 @@ contributions:
   - r1corre
   - lleroi
   - stephanierobin
+  - scorreard
   funding:
   - gallantries
 
@@ -37,7 +38,7 @@ follow_up_training:
 
 
 
-In this tutorial, we will assemble a genome of a species of fungi in the family Mucoraceae, *Mucor mucedo*, from PacBio sequencing data. These data were obtained from NCBI ([SRR8534473](https://www.ncbi.nlm.nih.gov/sra/?term=SRR8534473), [SRR8534474](https://www.ncbi.nlm.nih.gov/sra/?term=SRR8534474) and [SRR8534475](https://www.ncbi.nlm.nih.gov/sra/?term=SRR8534475)). The quality of the assembly obtained will be analyzed, in particular by comparing it to a reference assembly, obtained with Falcon assembler, and available on the [JGI website](https://mycocosm.jgi.doe.gov/Mucmuc1/Mucmuc1.info.html).
+In this tutorial, we will assemble a genome of a species of fungi in the family Aspergillus, *Aspergillus niger*, from PacBio sequencing data. These data will be downloaded from ENA. The quality of the assembly obtained will be analyzed, in particular by comparing it to a reference assembly, available on ENA.
 
 
 > <agenda-title></agenda-title>
@@ -51,56 +52,93 @@ In this tutorial, we will assemble a genome of a species of fungi in the family 
 
 # Get data
 
-We will use long reads sequencing data: CLR (continuous long reads) from PacBio sequencing of *Mucor mucedo* genome. This data is a subset of data from NCBI. We will also use later a reference genome assembly downloaded from the [JGI website](https://mycocosm.jgi.doe.gov/Mucmuc1/Mucmuc1.info.html). This reference genome was assembled using the same PacBio data, we will use it as a comparison with our own assembly.
+We will use long reads sequencing data: HiFi (High Fidelity long reads) from PacBio sequencing of *Aspergillus niger* genome. This data is available on ENA. We will also use later a reference genome assembly downloaded from ENA.
 
-## Get data from Zenodo
+## Get data from ENA
 
-> <hands-on-title>Data upload from Zenodo</hands-on-title>
+> <hands-on-title>Data upload from ENA</hands-on-title>
 >
 > 1. Create a new history for this tutorial
-> 2. Import the files from [Zenodo]({{ page.zenodo_link }})
+> 2. Import the files from [ENA](https://www.ebi.ac.uk/ena/browser/)
 >
 >    ```
->    https://zenodo.org/records/5702408/files/SRR8534473_subreads.fastq.gz
->    https://zenodo.org/records/5702408/files/SRR8534474_subreads.fastq.gz
->    https://zenodo.org/records/5702408/files/SRR8534475_subreads.fastq.gz
+>    ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR317/012/SRR31719412/SRR31719412_subreads.fastq.gz
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
 >
 > 3. Rename the datasets
-> 4. Check that the datatype is `fastqsanger.gz`
+> 4. Check that the datatype is `fastq.gz`
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
 >
 >
 {: .hands_on}
 
-## Get data from JGI website
+## Get reference genome from ENA
 
-> <hands-on-title>Data upload from JGI website</hands-on-title>
+> <hands-on-title>Data upload from ENA</hands-on-title>
 >
-> 1. Create a JGI account in registration page of JGI: [JGI registration](https://contacts.jgi.doe.gov/registration/new)
-> 2. Sign in JGI Genome Portal [JGI Genome Portal](https://genome.jgi.doe.gov/portal/)
-> 3. Genome assembly is available here: [JGI Mucor mucedo](https://genome.jgi.doe.gov/portal/Mucmuc1/Mucmuc1.download.html)
-> 4. Import fasta assembly file `Mucmuc1_AssemblyScaffolds.fasta` on your computer locally
-> 5. Upload this file on Galaxy
-> 6. Check that the datatype is `fasta`
+> 1. Reference genome is available here: [ASM4765177v1 assembly for Aspergillus niger](https://www.ebi.ac.uk/ena/browser/view/GCA_047651775.1)
+> 2. Download the `WGS Set FASTA (JBKZXA01.fasta.gz)` on your computer
+> 3. Upload this file on Galaxy
+> 4. Check that the datatype is `fasta.gz`
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
 >
 {: .hands_on}
 
-# Genome Assembly with **Flye**
+# Genome Assembly
+
+{% include _includes/cyoa-choices.html option1="Hifiasm" option2="Flye" default="Hifiasm"
+       text="[Hifiasm](https://github.com/chhylp123/hifiasm) and [Flye](https://github.com/mikolmogorov/Flye) are two well known assembler." %}
+<div class="Hifiasm" markdown="1">
+
+Hifiasm is a fast haplotype-resolved de novo assembler initially designed for PacBio HiFi reads. In general, hifiasm generates the assembly graphs in the GFA format, so a step of conversion to fasta is necessary. The GFA 1.0 format is a tab-delimited text format for describing a set of sequences and their overlap.
+<br>
+Hifiasm produces arguably the best single-sample telomere-to-telomere assemblies combing HiFi, ultralong and Hi-C reads, and it is one of the best haplotype-resolved assemblers for the trio-binning assembly given parental short reads. For a human genome, hifiasm can produce the telomere-to-telomere assembly in one day.
+
+> <hands-on-title>Assembly with Hifiasm</hands-on-title>
+>
+> 1. {% tool [Hifiasm](toolshed.g2.bx.psu.edu/repos/bgruening/hifiasm/hifiasm/0.25.0+galaxy0) %} with the following parameters:
+>    - *"Mode"*: `Standard`
+>    - {% icon param-file %} *"Input reads"*: the raw data (fastq.gz)
+>    - *"Output log file"*: Set to yes
+>
+>     The tool produces five datasets: Haplotype-resolved raw unitig graph, Haplotype-resolved processed unitig graph without small bubbles, Primary assembly contig graph, Alternate assembly contig graph, [hap1]/[hap2] contig graph.
+>
+> 2. {% tool [GFA to FASTA](toolshed.g2.bx.psu.edu/repos/iuc/gfa_to_fa/gfa_to_fa/0.1.2) %} with the following parameters:
+>    - {% icon param-file %} *"Input GFA file"*: primary assembly contig graph
+{: .hands_on}
+
+> <question-title></question-title>
+>
+> What are the different output datasets from Hifiasm?
+>
+> > <solution-title></solution-title>
+> >
+> > - Haplotype-resolved raw unitig graph: This graph keeps all haplotype information, including somatic mutations and recurrent sequencing errors.
+> > - Haplotype-resolved processed unitig graph without small bubbles: This graph 'pops' small bubbles in the raw unitig graph; small bubbles might be caused by somatic mutations or noise in data, which are not the real haplotype information.
+> > - Primary assembly contig graph: This graph includes a complete assembly with long stretches of phased blocks, though there may be some haplotype collapse.
+> > - Alternate assembly contig graph: This graph consists of all contigs that are discarded from the primary contig graph.
+> > - [hap1]/[hap2] contig graph: Each graph consists of phased contigs (output only with Hi-C phasing enabled).
+> >
+> {: .solution}
+>
+{: .question}
+
+</div>
+
+<div class="Flye" markdown="1">
 
 We will use *Flye*, a de novo assembler for single molecule sequencing reads, such as those produced by PacBio and Oxford Nanopore Technologies. It is designed for a wide range of datasets, from small bacterial projects to large mammalian-scale assemblies. The package represents a complete pipeline: it takes raw PacBio / ONT reads as input and outputs polished contigs. Flye also has a special mode for metagenome assembly. All informations about Flye assembler are here: [Flye](https://github.com/fenderglass/Flye/).
 
-> <hands-on-title>Assembly</hands-on-title>
+> <hands-on-title>Assembly with Flye</hands-on-title>
 >
 > 1. {% tool [Flye](toolshed.g2.bx.psu.edu/repos/bgruening/flye/flye/2.9+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input reads"*: the three sequencing datasets
->    - *"Mode"*: `PacBio raw`
+>    - {% icon param-file %} *"Input reads"*: the raw data (fastq.gz)
+>    - *"Mode"*: `PacBio HiFi`
 >    - *"Number of polishing iterations"*: `1`
 >    - *"Reduced contig assembly coverage"*: `Disable reduced coverage for initial disjointing assembly`
 >
@@ -120,75 +158,35 @@ We will use *Flye*, a de novo assembler for single molecule sequencing reads, su
 > {: .solution}
 >
 {: .question}
+  
+</div>
 
 # Quality assessment
 
-## Genome assembly metrics with **Fasta Statistics**
-
-***Fasta statistics*** displays the summary statistics for a fasta file. In the case of a genome assembly, we need to calculate different metrics such as assembly size, scaffolds number or N50 value. These metrics will allow us to evaluate the quality of this assembly.
-
-> <hands-on-title>Fasta statistics on Flye assembly</hands-on-title>
->
-> 1. {% tool [Fasta Statistics](toolshed.g2.bx.psu.edu/repos/iuc/fasta_stats/fasta-stats/2.0) %} with the following parameters:
->    - {% icon param-file %} *"fasta or multifasta file"*: `consensus` (output of **Flye** {% icon tool %})
->
-{: .hands_on}
-
-> <hands-on-title>Fasta statistics on the reference assembly</hands-on-title>
->
-> 1. {% tool [Fasta Statistics](toolshed.g2.bx.psu.edu/repos/iuc/fasta_stats/fasta-stats/2.0) %} with the following parameters:
->    - {% icon param-file %} *"fasta or multifasta file"*: `Mucmuc1_AssemblyScaffolds.fasta`
->
-{: .hands_on}
-
-> <question-title></question-title>
->
-> 1. Compare the different metrics obtained for Flye assembly and reference genome.
-> 2. What can you conclude about the quality of this new assembly ?
->
-> > <solution-title></solution-title>
-> >
-> > 1. We compare the metrics of the two genome assembly:
-> > - The Flye assembly: 1461 contigs/scaffolds, N50 = 222 kb, length max = 897 kb, size = 48.6 Mb, 36.6% GC
-> > - The reference genome: 456 contigs/scaffolds, N50 = 202 kb, length max = 776 kb, size = 46.1 Mb, 36.7% GC
-> >
-> > 2. Metrics are very similar, Flye generated an assembly with a quality similar to that of the reference genome.
-> >
-> {: .solution}
->
-{: .question}
-
 ## Genome assemblies comparison with **Quast**
 
-Another way to calculate metrics assembly is to use ***QUAST = QUality ASsessment Tool***. Quast is a tool to evaluate genome assemblies by computing various metrics and to compare genome assembly with a reference genome. The manual of Quast is here: [Quast](http://quast.sourceforge.net/docs/manual.html#sec3)
+A way to calculate metrics assembly is to use ***QUAST = QUality ASsessment Tool***. Quast is a tool to evaluate genome assemblies by computing various metrics. The manual of Quast is here: [Quast](http://quast.sourceforge.net/docs/manual.html#sec3)
 
-> <hands-on-title>Task description</hands-on-title>
+> <hands-on-title>Quast</hands-on-title>
 >
 > 1. {% tool [Quast](toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.0.2+galaxy3) %} with the following parameters:
 >    - *"Use customized names for the input files?"*: `No, use dataset names`
->        - {% icon param-file %} *"Contigs/scaffolds file"*: `consensus` (output of **Flye** {% icon tool %})
+>        - {% icon param-file %} *"Contigs/scaffolds file"*: `JBKZXA01.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
 >    - *"Type of assembly"*: `Genome`
->        - *"Use a reference genome?"*: `Yes`
->        - {% icon param-file %} *"Reference genome"*: `Mucmuc1_AssemblyScaffolds.fasta`
 >        - *"Type of organism"*: `Fungus: use of GeneMark-ES for gene finding, ...`
 >
 {: .hands_on}
 
 > <question-title></question-title>
 >
-> What additional informations are generated by Quast, compared to the **Fasta Statistics** outputs?
+> Compare the different metrics obtained for the assembly you generated and the reference genome.
 >
 > > <solution-title></solution-title>
 > >
-> > Quast allows us to compare Flye assembly to the reference genome:
-> > 1. Genome fraction (90.192 %) is the percentage of aligned bases in the reference genome.
-> > 2. Duplication ratio (1.094) is the total number of aligned bases in the assembly divided by the total number of aligned bases in the reference genome.
-> > 3. Largest alignment (698452) is the length of the largest continuous alignment in the assembly.
-> > 4. Total aligned length (45.2 Mb) is the total number of aligned bases in the assembly.
-> >
-> > Quast also generates some plots:
-> > 1. Cumulative length plot shows the growth of contig lengths. On the x-axis, contigs are ordered from the largest to smallest. The y-axis gives the size of the x largest contigs in the assembly.
-> > 2. GC content plot shows the distribution of GC content in the contigs.
+> > We compare the metrics of the three assemblies:
+> > - The reference genome (JBKZXA01.fasta.gz): 8 contigs, Contig N50 = 3.5Mb, Contig length max = 6.2 Mb, size = 35.4Mb, 49.51% GC
+> > - The Hifiasm assembly: 105 contigs, N50 = 4.9 Mb, length max = 7.1Mb, assembly size = 42.1 Mb, 47.91% GC
+> > - The Flye assembly: 13 contigs, N50 = 4.9Mb, length max = 6.8Mb, size = 38.7 Mb, 49.31% GC
 > >
 > {: .solution}
 >
@@ -198,38 +196,37 @@ Another way to calculate metrics assembly is to use ***QUAST = QUality ASsessmen
 
 ***BUSCO (Benchmarking Universal Single-Copy Orthologs)*** allows a measure for quantitative assessment of genome assembly based on evolutionarily informed expectations of gene content. Details for this tool are here: [Busco website](https://busco.ezlab.org/)
 
-> <hands-on-title>BUSCO on Flye assembly</hands-on-title>
->
-> **First on the Flye assembly:**
-> 1. {% tool [Busco](toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/5.2.2+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Sequences to analyse"*: `consensus` (output of **Flye** {% icon tool %})
->    - *"Auto-detect or select lineage"*: `Select lineage`
->        - *"Lineage"*: `Mucorales`
->
-> **Then, on the reference assembly:**
+> <hands-on-title>BUSCO on assembly</hands-on-title>
 >
 > 1. {% tool [Busco](toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/5.2.2+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Sequences to analyse"*: `Mucmuc1_AssemblyScaffolds.fasta`
->    - *"Auto-detect or select lineage"*: `Select lineage`
->        - *"Lineage"*: `Mucorales`
->
+>    - *"Tool version"*: `Galaxy Version 5.8.0+galaxy0`
+>    - {% icon param-file %} *"Sequences to analyse"*: Multiple datasets
+>    - {% icon param-file %} *"Sequences to analyse"*: `JBKZXA01.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
+>    - *"Auto-detect or select lineage"*: `Select lineage` - Not working on April 16 2025
+>        - *"Lineage"*: `Fungi`
+>        - *"Which outputs should be generated"*: `short summary text; summary image`
 {: .hands_on}
 
 > <question-title></question-title>
 >
-> Compare the number of BUSCO genes identified in the Flye assembly and the reference genome. What do you observe ?
+> Compare the number of BUSCO genes identified in the generated assembly and the reference genome. What do you observe ?
 >
 > > <solution-title></solution-title>
 > >
-> > Short summary generated by BUSCO indicates that reference genome contains:
-> > 1. 2327 Complete BUSCOs (of which 2302 are single-copy and 25 are duplicated),
-> > 2. 13 fragmented BUSCOs,
-> > 3. 109 missing BUSCOs.
+> > Short summary generated by BUSCO indicates that reference genome (JBKZXA01.fasta.gz) contains:
+> > 1. 751 Complete BUSCOs (of which 749 are single-copy and 2 are duplicated),
+> > 2. 0 fragmented BUSCOs,
+> > 3. 7 missing BUSCOs.
+> >
+> > Short summary generated by BUSCO indicates that Hifiasm assembly contains:
+> > 1. 756 complete BUSCOs (754 single-copy and 2 duplicated),
+> > 2. 0 fragmented BUSCOs
+> > 3. 2 missing BUSCOs.
 > >
 > > Short summary generated by BUSCO indicates that Flye assembly contains:
-> > 1. 2348 complete BUSCOs (2310 single-copy and 38 duplicated),
-> > 2. 8 fragmented BUSCOs
-> > 3. 93 missing BUSCOs.
+> > 1. 755 complete BUSCOs (753 single-copy and 2 duplicated),
+> > 2. 0 fragmented BUSCOs
+> > 3. 3 missing BUSCOs.
 > >
 > > BUSCO analysis confirms that these two assemblies are of similar quality, with similar number of complete, fragmented and missing BUSCOs genes.
 > >

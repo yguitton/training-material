@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 
-title: "Clinical Metaproteiomics 1: Database-Generation"
+title: "Clinical Metaproteomics 1: Database-Generation"
 zenodo_link: "https://doi.org/10.5281/zenodo.10105821"
 questions:
 - Why do we need to generate a customized database for metaproteomics research?
@@ -216,9 +216,9 @@ Once generated, the Species UniProt database (~3.38 million sequences) will be m
 >    - *"Run in batch mode?"*: `Merge individual FASTAs (output collection if input is collection)`
 >        - In *"Input FASTA File(s)"*:
 >            - {% icon param-repeat %} *"Insert Input FASTA File(s)"*
->                - {% icon param-file %} *"FASTA File"*: `Species_UniProt_FASTA ` (output of **UniProt XML downloader** {% icon tool %})
 >                - {% icon param-file %} *"FASTA File"*: `Protein Database Human SwissProt` (output of **Protein Database Downloader** {% icon tool %})
 >                - {% icon param-file %} *"FASTA File"*: `Protein Database Contaminants (cRAP)` (output of **Protein Database Downloader** {% icon tool %})
+>                - {% icon param-file %} *"FASTA File"*: `Species_UniProt_FASTA ` (output of **UniProt XML downloader** {% icon tool %})
 >
 > 2. Rename out as "Human UniProt Microbial Proteins cRAP for MetaNovo".
 >

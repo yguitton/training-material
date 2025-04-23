@@ -1,6 +1,6 @@
 ---
 layout: learning-pathway
-tags: [beginner]
+tags: [beginner, introduction, sequence-analysis, assembly]
 type: use
 
 editorial_board:

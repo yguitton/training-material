@@ -31,14 +31,25 @@ requirements:
   tutorials:
   - scrna-preprocessing
   - scrna-preprocessing-tenx
+
+follow_up_training:
+-
+  type: "internal"
+  topic_name: single-cell
+  tutorials:
+        - EBI-retrieval
+
 tags:
 - 10x
-contributors:
-- bebatut
-- hrhotz
-- mtekman
-- pavanvidem
-- dianichj
+
+contributions:
+  authorship:
+  - bebatut
+  - hrhotz
+  - mtekman
+  - pavanvidem
+  - dianichj
+
 gitter: Galaxy-Training-Network/galaxy-single-cell
 recordings:
 - captioners:
@@ -62,6 +73,9 @@ answer_histories:
   - label: "Scanpy_1.10.2_Anndata_0.10.9"
     history: https://singlecell.usegalaxy.eu/u/videmp/h/clustering-of-3k-pbmcs-tutorial-from-workflow-october-2024
     date: 2024-10-04
+  - label: "UseGalaxy.eu - Archived"
+    history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/clustering-of-3k-pbmcs-tutorial-from-workflow-october-2024
+    date: 2024-12-10
 ---
 
 

@@ -31,6 +31,9 @@ contributions:
   testing:
   - mira-miracoli
   - edmontosaurus
+  funding:
+  - eurosciencegateway
+  - elixir-europe
 tags:
   - ansible
   - deploying
@@ -920,19 +923,19 @@ The configuration is quite simple thanks to the many sensible defaults that are 
 >
 >    We need to set the following variables at the top level:
 >
->    Variable                        | Value                                                            | Purpose
->    ---                             | -----                                                            | ---
->    `galaxy_create_user`            | `true`                                                           | Instruct the role to create a Galaxy user
->    `galaxy_separate_privileges`    | `true`                                                           | Enable separation mode to install the Galaxy code as `root` but run the Galaxy server as `galaxy`
->    `galaxy_manage_paths`           | `true`                                                           | Instruct the role to create the needed directories.
->    `galaxy_layout`                 | `root-dir`                                                       | This enables the `galaxy_root` Galaxy deployment layout: all of the code, configuration, tools, and mutable-data (like caches, location files, etc.) folders will live by default beneath `galaxy_root`. User data is stored under `file_path`, a variable we will set later.
->    `galaxy_root`                   | `/srv/galaxy`                                                    | This is the root of the Galaxy deployment.
->    `galaxy_user`                   | `{name: "{{ galaxy_user_name }}", shell: /bin/bash}`             | The user that Galaxy will run as.
->    `galaxy_commit_id`              | `release_23.0`                                                   | The git reference to check out, which in this case is the branch for Galaxy Release 23.0
->    `galaxy_force_checkout`         | `true`                                                           | If we make any modifications to the Galaxy codebase, they will be removed. This way we know we're getting an unmodified Galaxy and no one has made any unexpected changes to the codebase.
->    `miniconda_prefix`              | {% raw %}`"{{ galaxy_tool_dependency_dir }}/_conda"`{% endraw %} | We will manually install conda as well. Normally Galaxy will attempt to auto-install this, but since we will set up a production-ready instance with multiple handlers, there is the chance that they can become deadlocked.
->    `miniconda_version`             | `23.9`                                                           | Install a specific miniconda version, the latest one at the time of writing that was tested and working.
->    `miniconda_channels`          ` | `['conda-forge', 'defaults']`                                    | Use the community-maintained conda-forge channel in addition to the standard defaults channel of Conda.
+>    Variable                        | Value                                                                     | Purpose
+>    ---                             | -----                                                                     | ---
+>    `galaxy_create_user`            | `true`                                                                    | Instruct the role to create a Galaxy user
+>    `galaxy_separate_privileges`    | `true`                                                                    | Enable separation mode to install the Galaxy code as `root` but run the Galaxy server as `galaxy`
+>    `galaxy_manage_paths`           | `true`                                                                    | Instruct the role to create the needed directories.
+>    `galaxy_layout`                 | `root-dir`                                                                | This enables the `galaxy_root` Galaxy deployment layout: all of the code, configuration, tools, and mutable-data (like caches, location files, etc.) folders will live by default beneath `galaxy_root`. User data is stored under `file_path`, a variable we will set later.
+>    `galaxy_root`                   | `/srv/galaxy`                                                             | This is the root of the Galaxy deployment.
+>    `galaxy_user`                   | {% raw %}`{name: "{{ galaxy_user_name }}", shell: /bin/bash}`{% endraw %} | The user that Galaxy will run as.
+>    `galaxy_commit_id`              | `release_23.0`                                                            | The git reference to check out, which in this case is the branch for Galaxy Release 23.0
+>    `galaxy_force_checkout`         | `true`                                                                    | If we make any modifications to the Galaxy codebase, they will be removed. This way we know we're getting an unmodified Galaxy and no one has made any unexpected changes to the codebase.
+>    `miniconda_prefix`              | {% raw %}`"{{ galaxy_tool_dependency_dir }}/_conda"`{% endraw %}          | We will manually install conda as well. Normally Galaxy will attempt to auto-install this, but since we will set up a production-ready instance with multiple handlers, there is the chance that they can become deadlocked.
+>    `miniconda_version`             | `23.9`                                                                    | Install a specific miniconda version, the latest one at the time of writing that was tested and working.
+>    `miniconda_channels`          ` | `['conda-forge', 'defaults']`                                             | Use the community-maintained conda-forge channel in addition to the standard defaults channel of Conda.
 >
 >    > <tip-title>Different Galaxy Releases!</tip-title>
 >    > In the time between this tutorial was last updated ({{ page.last_modified_at | date: "%Y-%m-%d" }}), and when you are now reading it, one or more new releases of Galaxy may have occured.
@@ -978,7 +981,7 @@ The configuration is quite simple thanks to the many sensible defaults that are 
 >
 >    Now you should set:
 >    1. `admin_users` to the email address you will use with this Galaxy.
->    3. `database_connection` to point to the database you setup earlier (`postgresql:///galaxy?host=/var/run/postgresql`).
+>    3. `database_connection` to point to the database you setup earlier (`postgresql:///{{ galaxy_db_name }}?host=/var/run/postgresql`).
 >    4. `file_path` to a place to store data, `/data` is fine for this lesson which sets up a single-node Galaxy. If you have separate compute machines, this will normally need to be storage shared between the Galaxy node and compute nodes.
 >    5. `tool_data_path` to {% raw %}`{{ galaxy_mutable_data_dir }}/tool-data`{% endraw %}, so that when tools are installed, due to privilege separation, this will happen in a directory Galaxy can actually write into.
 >    6. `object_store_store_by` to `uuid`, this is a better way of storing files that will ensure better filesystem balancing than the older system.

@@ -2,6 +2,7 @@
 layout: tutorial_hands_on
 
 title: Make your tools available on your subdomain
+subtopic: subdomain
 questions:
 - How can a tool be added in a section ?
 - How can a section be added in a subdomain ?
@@ -43,15 +44,15 @@ This tutorial explains how to make your brand new tools, once they're published 
 >    - For Galaxy Europe, fork the [usegalaxy-eu-tools repo](https://github.com/usegalaxy-eu/usegalaxy-eu-tools)
 >    - Create a branch on your fork
 >    - Browse through the different yaml files and select the one that correspond to your subdomain for earth system everything is made under the ecology owner.  The name of the files corresponds to a toolshed owner or community and a few of those communities with a review system and CI integration gets special trust and auto-updates.
->    - Once in the yaml you can add the section for your tool (you want to know what are the existing tool sections ? Go check the [categories defined here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/templates/galaxy/config/tool_conf.xml.j2)) 
-> 
+>    - Once in the yaml you can add the section for your tool (you want to know what are the existing tool sections ? Go check the [categories defined here](https://github.com/usegalaxy-eu/infrastructure-playbook/blob/master/templates/galaxy/config/tool_conf.xml.j2))
+>
 > An example on how to fill in the yaml file
 > ```
 > - name: id_of_your_tool
 >   owner: choose_the_owner_relative_to_a_github_repo
 >   tool_panel_section_label: 'Choose the section where your tool belongs'
 > ```
-> 
+>
 > ![Image of the modification to make in the ecology.yaml file](../../images/tool_subdomain/ecology_yml_tool.png)
 >
 >   - Then commit your changes and write a nice message for the admin when you open your Pull Request.
@@ -85,7 +86,7 @@ This part is only to make batch tool visible in your subdomain.
 >   - Then, commit your changes and write a nice message for the admin when you open your Pull Request.
 {: .hands_on}
 
-If you choose to create a new section for your interactive tool don't forget add this section to your subdomain ! 
+If you choose to create a new section for your interactive tool don't forget add this section to your subdomain !
 
 # Conclusion
 

@@ -2,6 +2,7 @@
 layout: tutorial_hands_on
 priority: 1
 title: "What's a Special Interest Group?"
+subtopic: sig
 questions:
   - "What is a Special Interest Group?"
   - "What is the purpose of a Special Interest Group?"
