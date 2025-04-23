@@ -21,8 +21,13 @@ key_points:
   - "Each sample/record in the training data has a category/class/label."
   - "A machine learning algorithm learns features from the training data and do predictions on the test data."
 
-contributors:
-  - anuprulez
+contributions:
+  authorship:
+    - anuprulez
+  funding:
+    - elixir-europe
+    - deNBI
+    - uni-freiburg
 
 ---
 

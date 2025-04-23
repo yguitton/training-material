@@ -10,12 +10,15 @@ objectives:
   - Configure your Galaxy to use Apptainer and BioContainers for running jobs
 time_estimation: "1h"
 key_points:
-contributors:
+contributions:
+  authorship:
   - torfinnnome
   - mvdbeek
   - bernt-matthias
   - hexylena
   - mira-miracoli
+  funding:
+  - eurosciencegateway
 subtopic: jobs
 tags:
   - jobs
@@ -105,10 +108,10 @@ First, we will install Apptainer using Ansible. Since there is a package availab
 >    @@ -20,3 +20,6 @@
 >     # CVMFS Support
 >     - src: galaxyproject.cvmfs
->       version: 0.2.21
+>       version: 0.3.1
 >    +# Singularity/Apptainer
 >    +- src: usegalaxy_eu.apptainer
->    +  version: 0.0.1
+>    +  version: 0.0.3
 >    {% endraw %}
 >    ```
 >    {: data-commit="Add Apptainer ansible roles"}

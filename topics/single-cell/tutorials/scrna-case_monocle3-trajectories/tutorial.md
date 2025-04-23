@@ -13,10 +13,16 @@ answer_histories:
   - label: "UseGalaxy.eu (includes AnnData to CDS conversion)"
     history: https://humancellatlas.usegalaxy.eu/u/j.jakiela/h/monoce3-tutorial-workflow
     date: 2024-03-04
+  - label: "UseGalaxy.eu (includes AnnData to CDS conversion)-ARCHIVED"
+    history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/monocle3-tutorial-workflow
+    date: 2024-12-10
 
 input_histories:
   - label: "CDS file (UseGalaxy.eu)"
     history: https://usegalaxy.eu/u/j.jakiela/h/cds-input-file-for-monocle3-tutorial
+  - label: "CDS file (UseGalaxy.eu) - ARCHIVED"
+    history: https://usegalaxy.eu/u/wendi.bacon.training/h/cds-input-file-for-monocle3-tutorial
+    date: 2024-12-10
 
 questions:
 - How can I prepare input files for Monocle starting from an AnnData object?
@@ -40,13 +46,17 @@ requirements:
     type: "internal"
     topic_name: single-cell
     tutorials:
-        - scrna-case_alevin
-        - scrna-case_alevin-combine-datasets
         - scrna-case_basic-pipeline
-        - scrna-case_JUPYTER-trajectories
         - scrna-data-ingest
+follow_up_training:
+-
+    type: "internal"
+    topic_name: single-cell
+    tutorials:
+        - EBI-retrieval
+        - GO-enrichment
+
 tags:
-- 10x
 - paper-replication
 - MIGHTS
 
@@ -401,7 +411,7 @@ Here we used a priori knowledge regarding the marker genes. If we wanted to appr
 >
 > > <solution-title></solution-title>
 > >
-> > By looking at the table, you might give the 5 top gene IDs expressed in DP-M1. To save you some time and make the analysis more readable, we converted the gene IDs to gene names and they are as follows: Rps17, Rpl41, Rps26, Rps29, Rps28. They are all ribosomal! [You can do this yourself if you want by following this section of a previous tutorial that [uses the gene names in one object to add to a table of Ensembl IDs]({% link topics/single-cell/tutorials/scrna-case_basic-pipeline/tutorial.md %}#findmarkers). These ribosomal differences might be due to housekeeping background, cell cycling, or even something more bioligically interesting...or all three!
+> > By looking at the table, you might give the 5 top gene IDs expressed in DP-M1. To save you some time and make the analysis more readable, we converted the gene IDs to gene names and they are as follows: Rps17, Rpl41, Rps26, Rps29, Rps28. They are all ribosomal! [You can do this yourself if you want by following this section of a previous tutorial that [uses the gene names in one object to add to a table of Ensembl IDs]({% link topics/single-cell/tutorials/scrna-case_basic-pipeline/tutorial.md %}#find-gene-markers). These ribosomal differences might be due to housekeeping background, cell cycling, or even something more bioligically interesting...or all three!
 > > The plot also indicates other specifically expressed genes, such as Hmgb2, Pclaf, Rpl13, Rps19, Ybx1, Ncl, Hsp90ab1, Npm1.
 > >
 > > Whenever you want to explore what might be the function of a particular cluster or why it branches out from the trajectory, check the top markers for that cluster to draw biological conclusions. Thank you Maths!

@@ -1,6 +1,6 @@
 ---
 layout: learning-pathway
-tags: [beginner]
+tags: [beginner, data-science, contributing, sequence-analysis, transcriptomics]
 type: use
 
 editorial_board:
@@ -98,7 +98,7 @@ pathway:
         topic: data-science
       - name: git-cli
         topic: data-science
-      - name: github-command-line-contribution
+      - name: github-contribution
         topic: contributing
       - name: github-interface-contribution
         topic: contributing
