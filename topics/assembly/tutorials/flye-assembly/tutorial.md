@@ -82,7 +82,7 @@ We will use long reads sequencing data: HiFi (High Fidelity long reads) from Pac
 >
 > 1. Reference genome is available here: [ASM4765177v1 assembly for Aspergillus niger](https://www.ebi.ac.uk/ena/browser/view/GCA_047651775.1)
 > 2. Download the `WGS Set FASTA (JBKZXA01.fasta.gz)` on your computer
-> 3. Upload this file on Galaxy
+> 3. Upload this file on Galaxy (Upload --> Choose local file --> Select the file --> Start --> Close)
 > 4. Check that the datatype is `fasta.gz`
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
@@ -136,11 +136,12 @@ We will use *Flye*, a de novo assembler for single molecule sequencing reads, su
 
 > <hands-on-title>Assembly with Flye</hands-on-title>
 >
-> 1. {% tool [Flye](toolshed.g2.bx.psu.edu/repos/bgruening/flye/flye/2.9+galaxy0) %} with the following parameters:
+> 1. {% tool [Flye](toolshed.g2.bx.psu.edu/repos/bgruening/flye/flye/2.9.5+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"Input reads"*: the raw data (fastq.gz)
 >    - *"Mode"*: `PacBio HiFi`
 >    - *"Number of polishing iterations"*: `1`
 >    - *"Reduced contig assembly coverage"*: `Disable reduced coverage for initial disjointing assembly`
+>    - *"Generate a log file"*: Set to yes
 >
 >     The tool produces four datasets: consensus, assembly graph, graphical fragment assembly and assembly info
 {: .hands_on}
@@ -166,15 +167,28 @@ We will use *Flye*, a de novo assembler for single molecule sequencing reads, su
 ## Genome assemblies comparison with **Quast**
 
 A way to calculate metrics assembly is to use ***QUAST = QUality ASsessment Tool***. Quast is a tool to evaluate genome assemblies by computing various metrics. The manual of Quast is here: [Quast](http://quast.sourceforge.net/docs/manual.html#sec3)
+Quast allows to compare the assembly carried out with the reference genome and produces statistics such as the genome fraction.
+However, when comparing to a reference genome, Quast results do not display the assembly N50, therefore, in this tutorial, you will generate two quast reports : One specifying a reference genome and one not specifying a reference genome.
 
 > <hands-on-title>Quast</hands-on-title>
 >
-> 1. {% tool [Quast](toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.0.2+galaxy3) %} with the following parameters:
+> 1. {% tool [Quast](toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.0.2+galaxy3) %} specifying a reference genome with the following parameters:
+>    - *"Assembly mode?"*: `Individual assembly (1 contig file per sample)`
 >    - *"Use customized names for the input files?"*: `No, use dataset names`
->        - {% icon param-file %} *"Contigs/scaffolds file"*: `JBKZXA01.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
+>        - {% icon param-collection %} *"Contigs/scaffolds file"*: `JBKZXA01.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
 >    - *"Type of assembly"*: `Genome`
+>        - *"Use a reference genome?"*: `Yes`
+>          - *"Reference genome"*: `JBKZXA01.fasta.gz` (reference assembly)
 >        - *"Type of organism"*: `Fungus: use of GeneMark-ES for gene finding, ...`
 >
+> 2. {% tool [Quast](toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.0.2+galaxy3) %} without specifying a reference genome with the following parameters:
+>    - *"Assembly mode?"*: `Individual assembly (1 contig file per sample)`
+>    - *"Use customized names for the input files?"*: `No, use dataset names`
+>        - {% icon param-collection %} *"Contigs/scaffolds file"*: `JBKZXA01.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
+>    - *"Type of assembly"*: `Genome`
+>        - *"Use a reference genome?"*: `No`
+>        - *"Type of organism"*: `Fungus: use of GeneMark-ES for gene finding, ...`
+> 
 {: .hands_on}
 
 > <question-title></question-title>
@@ -198,11 +212,11 @@ A way to calculate metrics assembly is to use ***QUAST = QUality ASsessment Tool
 
 > <hands-on-title>BUSCO on assembly</hands-on-title>
 >
-> 1. {% tool [Busco](toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/5.2.2+galaxy0) %} with the following parameters:
+> 1. {% tool [Busco](toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/5.8.0+galaxy0) %} with the following parameters:
 >    - *"Tool version"*: `Galaxy Version 5.8.0+galaxy0`
 >    - {% icon param-file %} *"Sequences to analyse"*: Multiple datasets
 >    - {% icon param-file %} *"Sequences to analyse"*: `JBKZXA01.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
->    - *"Auto-detect or select lineage"*: `Select lineage` - Not working on April 16 2025
+>    - *"Auto-detect or select lineage"*: `Select lineage`
 >        - *"Lineage"*: `Fungi`
 >        - *"Which outputs should be generated"*: `short summary text; summary image`
 {: .hands_on}
