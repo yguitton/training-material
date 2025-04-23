@@ -11,7 +11,7 @@ requirements:
   - python-basics
   - python-warmup-stat-ml
 questions:
-- how can we use Machine-Learning to make more generalizable models?
+- How can we use Machine-Learning to make more generalizable models?
 objectives:
 - general sklearn syntax intro
 - overfit/underfit
