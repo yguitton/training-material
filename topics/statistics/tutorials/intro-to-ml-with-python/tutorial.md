@@ -24,9 +24,6 @@ key_points:
 - Cross-validation strategies can help you to detect overfitting and handle model-selection
 - Adapted metrics let you handle the specific of our goal and our data (handle imbalance for example).
 - We have only mentionned a handful of the numerous algorithms that can be used, both for classification and for regression.
-contributors:
-  - wandrilled
-  - bebatut
 contributions:
   authorship:
   - wandrilled
