@@ -1,0 +1,11 @@
+- doc: Test outline for Diploid
+  job:
+    GIAB-Ashkenazim-Trio-hg19.bam:
+      class: File
+      path: test-data/GIAB-Ashkenazim-Trio-hg19.bam.bam
+      filetype: bam
+    GIAB-Ashkenazim-Trio.tabular:
+      class: File
+      path: test-data/GIAB-Ashkenazim-Trio.tabular.tabular
+      filetype: tabular
+  outputs: {}
