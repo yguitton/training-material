@@ -82,8 +82,9 @@ We will use long reads sequencing data: HiFi (High Fidelity long reads) from Pac
 >
 > 1. Reference genome is available here: [ASM4765177v1 assembly for Aspergillus niger](https://www.ebi.ac.uk/ena/browser/view/GCA_047651775.1)
 > 2. Download the `WGS Set FASTA (JBKZXA01.fasta.gz)` on your computer
-> 3. Upload this file on Galaxy (Upload --> Choose local file --> Select the file --> Start --> Close)
-> 4. Check that the datatype is `fasta.gz`
+> Make sure you download `WGS Set FASTA (JBKZXA01.fasta.gz)` and *NOT*  `ALL Set FASTA`
+> 4. Upload this file on Galaxy (Upload --> Choose local file --> Select the file --> Start --> Close)
+> 5. Check that the datatype is `fasta.gz`
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
 >
@@ -215,7 +216,7 @@ However, when comparing to a reference genome, Quast results do not display the 
 > 1. {% tool [Busco](toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/5.8.0+galaxy0) %} with the following parameters:
 >    - *"Tool version"*: `Galaxy Version 5.8.0+galaxy0`
 >    - {% icon param-file %} *"Sequences to analyse"*: Multiple datasets
->    - {% icon param-file %} *"Sequences to analyse"*: `JBKZXA01.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
+>    - {% icon param-collection %} *"Sequences to analyse"*: `JBKZXA01.fasta.gz` (reference assembly), `fasta file` (output of **GFA to FASTA** {% icon tool %}) and/or `consensus` (output of **Flye** {% icon tool %})
 >    - *"Auto-detect or select lineage"*: `Select lineage`
 >        - *"Lineage"*: `Fungi`
 >        - *"Which outputs should be generated"*: `short summary text; summary image`
