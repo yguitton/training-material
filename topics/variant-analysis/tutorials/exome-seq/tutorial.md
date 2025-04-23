@@ -25,12 +25,17 @@ key_points:
     family members is key to identifying candidate disease variants. SnpEff and
     GEMINI, in particular, are powerful tools offered by Galaxy for that
     purpose."
-contributors:
+contributions:
+  authorship:
   - wm75
   - bebatut
   - torhou
   - erxleben
   - bgruening
+  funding:
+  - elixir-europe
+  - deNBI
+  - uni-freiburg
 ---
 
 
