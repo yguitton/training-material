@@ -5,7 +5,7 @@
     "creator": [
         {
             "class": "Person",
-            "identifier": "",
+            "identifier": "NA",
             "name": "Anton Nekrutenko"
         },
         {
@@ -303,12 +303,7 @@
                     "output_name": "outfile"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool GEMINI query",
-                    "name": "infile"
-                }
-            ],
+            "inputs": [],
             "label": "GEMINI_query2",
             "name": "GEMINI query",
             "outputs": [
@@ -329,7 +324,7 @@
                 "owner": "iuc",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"infile\": {\"__class__\": \"RuntimeValue\"}, \"query\": {\"interface\": \"advanced\", \"__current_case__\": 1, \"q\": \"SELECT rs_ids, aaf_esp_ea, impact, clinvar_disease_name, clinvar_sig FROM variants WHERE filter is NULL and gene = 'POLRMT'\", \"filter_by_genotype\": [], \"filter_by_sample\": [], \"oformat\": {\"report\": {\"format\": \"default\", \"__current_case__\": 0, \"header\": true, \"dgidb\": false}}}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"infile\": {\"__class__\": \"ConnectedValue\"}, \"query\": {\"interface\": \"advanced\", \"__current_case__\": 1, \"q\": \"SELECT rs_ids, aaf_esp_ea, impact, clinvar_disease_name, clinvar_sig FROM variants WHERE filter is NULL and gene = 'POLRMT'\", \"filter_by_genotype\": [], \"filter_by_sample\": [], \"oformat\": {\"report\": {\"format\": \"default\", \"__current_case__\": 0, \"header\": true, \"dgidb\": false}}}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.20.1+galaxy2",
             "type": "tool",
             "uuid": "7e13bb42-cf27-4251-85bb-9f695d711127",
@@ -386,12 +381,7 @@
                     "output_name": "outfile"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool GEMINI query",
-                    "name": "infile"
-                }
-            ],
+            "inputs": [],
             "label": "GEMINI_query1",
             "name": "GEMINI query",
             "outputs": [
@@ -412,7 +402,7 @@
                 "owner": "iuc",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"infile\": {\"__class__\": \"RuntimeValue\"}, \"query\": {\"interface\": \"advanced\", \"__current_case__\": 1, \"q\": \"SELECT count(*) FROM variants WHERE in_dbsnp == 0\", \"filter_by_genotype\": [], \"filter_by_sample\": [], \"oformat\": {\"report\": {\"format\": \"default\", \"__current_case__\": 0, \"header\": true, \"dgidb\": false}}}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"infile\": {\"__class__\": \"ConnectedValue\"}, \"query\": {\"interface\": \"advanced\", \"__current_case__\": 1, \"q\": \"SELECT count(*) FROM variants WHERE in_dbsnp == 0\", \"filter_by_genotype\": [], \"filter_by_sample\": [], \"oformat\": {\"report\": {\"format\": \"default\", \"__current_case__\": 0, \"header\": true, \"dgidb\": false}}}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.20.1+galaxy2",
             "type": "tool",
             "uuid": "00092a96-787b-444b-9b64-fe096588368b",
@@ -423,6 +413,6 @@
     "tags": [
         "variant-analysis"
     ],
-    "uuid": "3645215f-ad03-4cee-927e-311f290dc675",
-    "version": 8
+    "uuid": "621424ee-3fad-43dc-8e3b-16653ce69c1e",
+    "version": 10
 }
