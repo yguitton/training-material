@@ -5,7 +5,7 @@ title: "Parameter tuning and optimization - Evaluating nuclei segmentation with 
 level: Introductory
 questions:
   - What are the challenges of using the same settings for every biological image, and how does parameter tuning address these challenges?
-  - How can we choose the best 2D-sigma filter values for nuclei segmentation?
+  - How can we choose the best filters for preprocessing images for nuclei segmentation?
 objectives:
   - Understand the importance of parameter tuning in bioimage analysis for achieving accurate results
   - Learn how to perform parameter tuning for segmentation in Galaxy
@@ -31,8 +31,8 @@ tags:
 
 
 Parameter tuning is super important in bioimaging. 
-When you're doing image analysis—like segmentation, quantification, or feature extraction—the settings you choose make a big difference in how accurate your results are. 
-But biological images can be all over the place in terms of quality, contrast, and structure. 
+When you're doing image analysis — like segmentation, quantification, or feature extraction — the settings you choose make a big difference in how accurate your results are. 
+But biological images can vary strongly in terms of quality, contrast, and structure. 
 So you can't just use the same settings for every image. 
 
 That's where parameter tuning comes in. 
@@ -41,7 +41,7 @@ This helps make sure their work is repeatable and reliable, which is key getting
 Basically, it's all about finding the perfect balance to get the most useful and accurate data possible.
 
 In this tutorial, we will show how to perform parameter tuning for segmentation. Using the same dataset from
-the introduction tutorial, we will choose the best 2D-sigma filter values to perform nuclei segmentation by
+[the introduction tutorial]({% link topics/imaging/tutorials/imaging-introduction/tutorial.md %}), we will fine-tune a parameter of Gaussian filters for nuclei segmentation by
 comparing ground-truth segmentation with the ones processed in Galaxy.
 
 So, let's proceed!
@@ -76,12 +76,12 @@ So, let's proceed!
 
 ## Define a series of values to test
 
-You can now input a series of sigma values you want to test. Values need to be imported as a tabular file as
+The parameter of Gaussian filters that you are going to tune in this tutorial is *sigma*, that is the size of the filters. You can now input a series of sigma values you want to test. Values need to be imported as a tabular file as
 shown in the figure:
 
 ![fetch_data.jpg](../../images/parameter-tuning/fetch_data.jpg)
 
-Next, copy and paste or manually add the desired values. Additionally, change the file format to 'tabular'. Then, rename the file to 'sigma_values' and click 'Start'.
+Next, copy and paste or manually add the desired values. Additionally, change the file format to `tabular`. Then, rename the file to `sigma_values` and click `Start`.
 The dataset will appear now in your history.
 
 
@@ -98,7 +98,7 @@ You now have everything you need to build the parameter tuning workflow!
 > 
 > 2. Add three {% icon tool %} **Input dataset**:
 > - {% icon param-file %} **1: Input Dataset**, {% icon param-file %} **2: Input Dataset** and {% icon param-file %} **3: Input Dataset** will appear in your workflow. 
-> Change the "Label" of these inputs to *Dataset to perform segmentation*, *Input Ground Truth* and *Sigma values to test*
+> Change the "Label" of these inputs to *Dataset to perform segmentation*, *Input ground truth* and *Sigma values to test*
 > 2. Add {% tool [Split by group](toolshed.g2.bx.psu.edu/repos/bgruening/split_file_on_column/tp_split_on_column/0.6) %} 
 > 3. Add {% tool [Parse parameter value](param_value_from_file) %} from the list of tools with the following recommended parameters:
 >   - **Select type of parameter to parse**: ***Float***
@@ -107,7 +107,7 @@ You now have everything you need to build the parameter tuning workflow!
 >    - **Sigma**: Click the **"Add Connection to Module"** symbol
 > 5. Add {% tool [Perform histogram equalization](toolshed.g2.bx.psu.edu/repos/imgteam/2d_histogram_equalization/ip_histogram_equalization/0.18.1+galaxy0) %} from the list of tools with the following recommended parameters:
 >    - **Histogram equalization algorithm**: ***CLAHE***
-> 6. Add {% tool [Threshold image with scikit-image](toolshed.g2.bx.psu.edu/repos/imgteam/2d_auto_threshold/ip_threshold/0.18.1+galaxy3) %} from the list of tools with the following recommended parameters:
+> 6. Add {% tool [Threshold image](toolshed.g2.bx.psu.edu/repos/imgteam/2d_auto_threshold/ip_threshold/0.18.1+galaxy3) %} from the list of tools with the following recommended parameters:
 >    - **Thresholding method** : ***Globally Adaptive/Otsu***
 >    - **Offset**: 0.0
 > 7. Add {% tool [Compute image segmentation and object detection performance measures](toolshed.g2.bx.psu.edu/repos/imgteam/segmetrics/ip_segmetrics/1.4.0-2) %} from the list of tools with the following recommended parameters:
@@ -123,7 +123,7 @@ You now have everything you need to build the parameter tuning workflow!
 >    - **Where to add dataset name**: ***Same line and only once per dataset***
 > 9. Add {% tool [Collapse Collection](Paste1) %} from the list of tools
 > 9. Connect the following inputs:
->     - Connect the output of {% icon param-file %} **3: Sigma values to test** to the "File to split"
+>     - Connect the output of {% icon param-file %} **3: Sigma values to test** to the {% icon param-file %} *"File to split"*
 >     input of {% icon tool %} **4: Split by group**.
 >     - Connect the output of {% icon param-file %} **4: Split by group** to the "Object ID"
 >     input of {% icon tool %} **5: Input file containing parameter to parse out of**. 
@@ -131,8 +131,8 @@ You now have everything you need to build the parameter tuning workflow!
 >     input of {% icon tool %} **6: Filter 2-D image**. 
 >     - Connect the output of {% icon param-file %} **2: Dataset to perform segmentation** to the "Input Image"
 >     input of {% icon tool %} **6: Filter 2-D image**. 
->     - Connect the output of {% icon param-file %} *6: Filter 2-D image** to the "Input Image"
->     input of {% icon tool %} ** 7: Perform histogram equalization **. 
+>     - Connect the output of {% icon param-file %} **6: Filter 2-D image** to the "Input Image"
+>     input of {% icon tool %} **7: Perform histogram equalization**. 
 >     - Connect the output of {% icon param-file %} **7: Perform histogram equalization** to the "Input Image"
 >     input of {% icon tool %} **8: Threshold image**. 
 >     - Connect the output of {% icon param-file %} **8: Threshold image** to the "Segmented images"
@@ -152,7 +152,7 @@ This is how the worflow should look like!
 
 ![img.png](../../images/parameter-tuning/workflow_parameter_tuning.png)
 
-In this workflow, the Parse Parameter tool is passing one by one the value to the workflow downstream. In this way, a collection
+In this workflow, the {% tool [Parse parameter value](param_value_from_file) %} tool is passing *sigma* values one by one to the workflow downstream. In this way, a collection
 of datasets is created for each sigma value and each one is processed individually.
 Such strategy can be adapted for any parameter of the workflow and, in general, for any tool.
 
@@ -160,14 +160,14 @@ Coming back to the results, here below we can see a potential output of the anal
 
 ![img_1.png](../../images/parameter-tuning/table_results.png)
 
-In this example, results suggest that as the sigma value increases,
-the Dice coefficient, which measures the overlap between the predicted segmentation and
-the ground truth, decreases. Lower sigma values result in segmentations 
+In this example, results suggest that as the *sigma* value increases,
+the Dice coefficient, which measures the agreement of the predicted segmentation image foreground and
+the ground truth image foreground, decreases. Lower sigma values result in segmentations 
 that more closely match the ground truth, with the highest Dice coefficient of 
 0.91 achieved at the lowest sigma value of 0.5. 
 
 The Hausdorff 
-distance, a measure of the maximum distance between two sets, significantly 
+distance, a measure of the maximum distance between the contours of the predicted segmentation and the ground truth segmentation, significantly 
 increases with higher sigma values, from 17.8 to 203. This increase shows that higher sigma values lead to segmentations 
 that are not only less accurate but also potentially include large outliers or
 misclassifications.
@@ -178,8 +178,8 @@ that balances detail preservation and noise reduction.
 
 ## Conclusions
 
-In this tutorial, we demonstrate how to test different sigmas to 
+In this tutorial, we demonstrate how to test different *sigma* values to 
 evaluate segmentation with a ground truth image. 
 
-Overall, the 'Parse parameters' tool 
+Overall, the {% tool [Parse parameter value](param_value_from_file) %} tool 
 can be easily reused for testing other parameters and applied to different workflows.
