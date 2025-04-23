@@ -101,6 +101,7 @@ The first step is to install the required dependencies:
 !pip install datasets==3.0.1
 !pip install transformers
 !pip install torch
+!pip install flash-attn
 ```
 
 > <question-title></question-title>
@@ -119,6 +120,7 @@ The first step is to install the required dependencies:
 > > 
 > > - `transformers`: A library by Hugging Face that provides implementations of state-of-the-art transformer models for natural language processing (NLP). It includes pre-trained models and tools for fine-tuning, making it easier to apply transformers to various NLP tasks.
 > >
+> > - `flash-attn`: Implementation of FlashAttention, a Fast and Memory-Efficient Exact Attention with IO-Awareness
 > > These libraries are widely used in the machine learning and data science communities for their efficiency, flexibility, and extensive functionality.
 > {: .solution}
 >
@@ -342,7 +344,7 @@ model = AutoModelForCausalLM.from_config(config, attn_implementation="eager")
 
 > <question-title></question-title>
 >
-> What does `attn_implementation="eager"`?
+> What does `attn_implementation="eager"` do?
 >
 > > <solution-title></solution-title>
 > >
@@ -440,7 +442,7 @@ This architecture ensures that the model can capture complex patterns in DNA seq
 
 > <question-title></question-title>
 >
-> How many parameters are this model?
+> How many parameters are in this model?
 >
 > > <solution-title></solution-title>
 > >
@@ -469,7 +471,7 @@ tokenizer = AutoTokenizer.from_pretrained("zhihan1996/DNABERT-2-117M", trust_rem
 
 > <question-title></question-title>
 >
-> What does the above command?
+> What does the above command do?
 >
 > > <solution-title></solution-title>
 > >
@@ -740,7 +742,7 @@ For that, 80% of the entire data will be used for the training set and the remai
 
 ```python
 train_size = int(0.8 * len(dataset["train"]))
-val_size = len(dataset["train"]) - training_size
+val_size = len(dataset["train"]) - train
 ```
 
 > <question-title></question-title> 
@@ -802,7 +804,7 @@ Before, we specify the batch size for training and evaluation. A batch size of 3
 batchsize=32
 training_args = TrainingArguments(
   output_dir="./results/models",
-  evaluation_strategy="epoch",
+  eval_strategy="epoch",
   save_strategy="epoch",
   num_train_epochs=50,
   per_device_train_batch_size=batchsize,
@@ -811,14 +813,14 @@ training_args = TrainingArguments(
   weight_decay=0.01,
   logging_dir="./logs",
   load_best_model_at_end=True,
-  fp16=True,
+  bf16=True,
   gradient_accumulation_steps=50,
   report_to="none",
 )
 ```
 
 - `output_dir="./results/models"`: directory where the training outputs, including model checkpoints and results, will be saved.
-- `evaluation_strategy="epoch"` indicates that the model's performance will be evaluated at the end of each epoch, a complete pass through the entire training dataset. This allows for monitoring the model's progress and adjusting the training process as needed.
+- `eval_strategy="epoch"` indicates that the model's performance will be evaluated at the end of each epoch, a complete pass through the entire training dataset. This allows for monitoring the model's progress and adjusting the training process as needed.
 - `save_strategy="epoch"` specifies that the model will be saved at the end of each epoch. This ensures that checkpoints are available for each complete pass through the dataset.
 - `num_train_epochs=50` sets the total number of training epochs to 50. This means the model will iterate over the entire dataset 50 times, allowing it to learn and optimize over multiple passes.
 - `per_device_train_batch_size=batchsize` and `per_device_eval_batch_size=batchsize` set the batch size for training and evaluation on each device (e.g., GPU) to 32. This ensures consistency in batch processing across different stages of training and evaluation.
