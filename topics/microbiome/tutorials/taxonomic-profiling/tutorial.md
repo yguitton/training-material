@@ -52,7 +52,7 @@ recordings:
   date: '2023-05-16'
   length: 1H15M
   galaxy_version: '23.01'
-- youtube_id: TODO
+- youtube_id: FdtdsCdqY5U
   length: 2H4M
   galaxy_version: 24.2.4.dev0
   date: '2025-04-16'
