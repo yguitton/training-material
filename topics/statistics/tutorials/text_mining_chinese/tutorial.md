@@ -166,7 +166,7 @@ We can now compare the two cleaned texts. This will visualise the differences be
 
 > <hands-on-title> Comparing the texts using <em>diff</em> tool </hands-on-title>
 >
-> 1. {% tool [diff](toolshed.g2.bx.psu.edu/repos/bgruening/diff/diff/3.10+galaxy0) %} with the following parameters:
+> 1. {% tool [diff](toolshed.g2.bx.psu.edu/repos/bgruening/diff/diff/3.10+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"First input file"*: `outfile` (output of **Replace Text** {% icon tool %})
 >    - {% icon param-file %} *"Second input file"*: `outfile` (output of **Replace Text** {% icon tool %})
 >    - *"Choose a report format"*: `Generates an HTML report to visualize the differences`
@@ -199,7 +199,7 @@ It is less intuitive to understand at first glance. Again, clean the censored te
 
 > <hands-on-title> Run another <em>diff</em> tool </hands-on-title>
 >
-> 1. {% tool [diff](toolshed.g2.bx.psu.edu/repos/bgruening/diff/diff/3.10+galaxy0) %} with the following parameters:
+> 1. {% tool [diff](toolshed.g2.bx.psu.edu/repos/bgruening/diff/diff/3.10+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"First input file"*: `outfile` (output of **Replace Text** {% icon tool %})
 >    - {% icon param-file %} *"Second input file"*: `outfile` (output of **Replace Text** {% icon tool %})
 >    - *"Choose a report format"*: `Text file, side-by-side (-y)`
