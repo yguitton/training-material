@@ -437,7 +437,7 @@ def downloadReadFastaFile(fasta_file):
       print(f"Failed to download file. HTTP Status code: {response.status_code}")
   # Read the file
   seql_list=[]
-  with gzip.open('file.gz', "rt") as handle:
+  with gzip.open("file.gz", "rt") as handle:
       for record in SeqIO.parse(handle, "fasta"):
           seqj=str(record.seq)
           seql_list.append(seqj)
