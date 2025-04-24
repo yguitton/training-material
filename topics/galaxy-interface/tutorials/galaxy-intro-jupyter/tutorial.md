@@ -4,7 +4,7 @@ redirect_from:
   - /topics/galaxy-ui/tutorials/galaxy-intro-jupyter/tutorial
 
 title: "Use Jupyter notebooks in Galaxy"
-zenodo_link: ""
+zenodo_link: "https://zenodo.org/record/15263830"
 questions:
   - "How to open a Jupyter Notebook in Galaxy?"
   - "How to update dependencies in a Jupyter Interactive Environment?"
@@ -60,14 +60,15 @@ You can find the complete manual for Jupyter commands [on Read the Docs](http://
 
 ## Import data
 To manipulate data first we upload the  [python-novice-gapminder-data.zip](https://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip) folder into your Galaxy history. 
+To add the files you can either uploade them locally from your computer or use Zenodo.
 
-> <hands-on-title>Data upload</hands-on-title>
+> <hands-on-title>Data upload using Zenodo</hands-on-title>
 >
-> 1. Create a new history for this tutorial
+> 1. Create a new history for this RNA-Seq exercise
 >
 >    {% snippet faqs/galaxy/histories_create_new.md %}
 >
-> 2. Import [python-novice-gapminder-data.zip](https://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip) folder. The folder contains the following tabular files:
+> 2. Import the following tabular file from [Zenodo]({{ page.zenodo_link }}):
 >    - `gapminder_all.csv` 
 >    - `gapminder_gdp_africa.csv` 
 >    - `gapminder_gdp_americas.csv`
@@ -76,26 +77,24 @@ To manipulate data first we upload the  [python-novice-gapminder-data.zip](https
 >    - `gapminder_gdp_oceania.csv`
 >
 >    ```text
->    https://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip
+>    {{ page.zenodo_link }}/files/gapminder_all.csv
+>    {{ page.zenodo_link }}/files/gapminder_gdp_africa.csv
+>    {{ page.zenodo_link }}/files/gapminder_gdp_americas.csv
+>    {{ page.zenodo_link }}/files/gapminder_gdp_asia.csv
+>    {{ page.zenodo_link }}/files/gapminder_gdp_europe.csv
+>    {{ page.zenodo_link }}/files/gapminder_gdp_oceania.csv
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
 >
->
-> 3. Unzip data using the {% tool [Unzip](toolshed.g2.bx.psu.edu/repos/imgteam/unzip/unzip/6.0+galaxy0) %}
->
->    - *input_file*: `python-novice-gapminder-data.zip`
->    - *Extract single file*: `All files`
->    - Click on `Run Tool`
->
-> 4. Unhide the single tabular files from the `Include hidden` section in the history. 
->
->    - Click on the `Include hidden` icon {% icon galaxy-show-hidden %} on top of your history.
->    - Search for the 7 tabular files and unhide them by clicking on the icon {% icon galaxy-show-hidden %} (`gapminder_all.csv`, `gapminder_gdp_africa.csv`, `gapminder_gdp_americas.csv`, `gapminder_gdp_asia.csv`, `gapminder_gdp_europe.csv`, `gapminder_gdp_oceania.csv`)
->    - To go back to the `show active` click on the icon  {% icon galaxy-show-active %}
+> 3. Make sure the file is imported as `CSV` by expanding the box of each imported file in your history and check the format.
 > 
-> You do not need to perform step 4, as the individual datasets will be accessible to the Jupyter notebook even if they are in the hidden state. However, it helps you organize your data and see what datasets are available. If you want, you can also delete the collection in your history. To delete it, click on the delete icon {% icon galaxy-delete %} and select `only collection` for the output file of the `Unzip` tool run. The file should be called something like `Unzip on data 1 all files as collection`.
+> If the format is not correct change the format. 
+>    - Click on the pencil icon {% icon galaxy-pencil %}
+>    - Select the `Datatype`  {% icon galaxy-chart-select-data %} tab in the middle panel
+>    - In `Assign Datatype` section: change the data format to `csv` and click on `save`
+>
 {: .hands_on}
 
 
