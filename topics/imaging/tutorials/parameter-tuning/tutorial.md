@@ -37,7 +37,7 @@ So you can't just use the same settings for every image.
 
 That's where parameter tuning comes in. 
 By adjusting these settings carefully, researchers can make sure their tools are capturing the right biological info without adding noise or messing up the images. 
-This helps make sure their work is repeatable and reliable, which is key getting accurate scientific results. 
+This helps make sure their work is repeatable and reliable, which is key for getting accurate scientific results. 
 Basically, it's all about finding the perfect balance to get the most useful and accurate data possible.
 
 In this tutorial, we will show how to perform parameter tuning for segmentation. Using the same dataset from
@@ -156,7 +156,7 @@ In this workflow, the {% tool [Parse parameter value](param_value_from_file) %} 
 of datasets is created for each sigma value and each one is processed individually.
 Such strategy can be adapted for any parameter of the workflow and, in general, for any tool.
 
-Coming back to the results, here below we can see a potential output of the analysis by running four different sigmas (0.5, 5, 10, 50)
+Coming back to the results, below we can see a potential output of the analysis by running four different sigmas (0.5, 5, 10, 50).
 
 ![img_1.png](../../images/parameter-tuning/table_results.png)
 
