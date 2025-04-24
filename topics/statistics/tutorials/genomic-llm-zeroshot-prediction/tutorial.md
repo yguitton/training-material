@@ -531,7 +531,7 @@ intron_SNP_distL2 = computeMutationEffect(intron_wt_seqs,intron_mut_seqs)
 >
 > > <solution-title></solution-title>
 > >
-> > 10 000 each : one value per pair of wt/mutated sequence
+> > 10,000 each: one value per pair of wt/mutated sequence
 > > 
 > {: .solution}
 >
