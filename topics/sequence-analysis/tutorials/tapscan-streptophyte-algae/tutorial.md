@@ -31,9 +31,9 @@ recordings:
   galaxy_version: 24.2.4.dev0
   date: '2025-04-23'
   speakers:
-  - Deeptivarshney
+  - deeptivarshney
   captioners:
-  - Deeptivarshney
+  - deeptivarshney
   bot-timestamp: 1745430548
 
 
