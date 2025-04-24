@@ -516,7 +516,7 @@ To compute the effect of SNPs, we need :
   def computeMutationEffect(wt_seqs, mut_seqs):
     wt_embedding = computeEmbedding(wt_seqs)
     mut_embedding = computeEmbedding(mut_seqs)
-    return torch.norm(mut_embedding - wt_embedding , dim=1)
+    return torch.norm(mut_embedding - wt_embedding, dim=1)
   ```
 
 
