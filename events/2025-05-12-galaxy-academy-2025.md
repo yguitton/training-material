@@ -38,6 +38,7 @@ tags:
 - assembly
 - statistics
 - variant-analysis
+- climate
 
 contributions:
     organisers:
@@ -54,9 +55,11 @@ contributions:
         - annefou
         - anuprulez
         - abretaud
+        - annefou
         - bebatut
         - bgruening
         - clsiguret
+        - dadrasarmin
         - dannon
         - dianichj
         - deeptivarshney
@@ -82,12 +85,15 @@ contributions:
         - natefoo
         - Oliver_Rupp
         - oschwengers
+        - pauldg
         - paulzierep
         - pavanvidem
         - plushz
+        - poterlowicz-lab
         - pratikdjagtap
         - RZ9082
         - SaimMomin12
+        - Sch-Da
         - stephanierobin
         - subinamehta
         - teresa-m
