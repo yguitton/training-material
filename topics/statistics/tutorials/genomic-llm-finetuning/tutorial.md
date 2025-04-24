@@ -518,12 +518,12 @@ We use the `SupervisedDataset` class to load and prepare the datasets. This clas
 ```python
 train_dataset = SupervisedDataset(
     tokenizer=tokenizer,
-    data_path=os.path.join(data_path , "train.csv"),
+    data_path=Path(data_path) / "train.csv",
     kmer=-1,
 )
 val_dataset = SupervisedDataset(
     tokenizer=tokenizer,
-    data_path=os.path.join(data_path , "dev.csv"),
+    data_path=Path(data_path) / "dev.csv",
     kmer=-1,
 )
 ```
@@ -680,7 +680,7 @@ The test data is stored in `data_path/test.csv`, we prepare it as for training a
 ```python
 test_dataset = SupervisedDataset(
     tokenizer=tokenizer,
-    data_path=os.path.join(data_path , "test.csv"),
+    data_path=Path(data_path) / "test.csv",
     kmer=-1,
 )
 ```
