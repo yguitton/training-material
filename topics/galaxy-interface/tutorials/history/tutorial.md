@@ -158,7 +158,11 @@ A history dataset can exist by itself, as an independent entity, or as a part of
 
 {% snippet faqs/galaxy/histories_datasets_vs_collections.md box_type="none"%}
 
-You can do this, for example, by using the tool {% tool [Build list](https://usegalaxy.eu/root?tool_id=__BUILD_LIST__) %}. 
+{% snippet faqs/galaxy/collections_build_list.md box_type="none"%}
+
+{% snippet faqs/galaxy/collections_build_list_paired.md box_type="none"%}
+
+
 
 
 ## United Colors of Galaxy: Dataset states
