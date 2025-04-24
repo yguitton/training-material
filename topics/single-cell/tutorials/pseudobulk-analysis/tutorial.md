@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 title: Pseudobulk Analysis with Decoupler and EdgeR
 subtopic: exploratory
-zenodo_link: https://zenodo.org/records/15191405
+zenodo_link: https://zenodo.org/records/15275834/files/ncm_pdcs_subset.h5ad?download=1
 questions:
 - How does pseudobulk analysis help in understanding cell-type-specific gene expression changes?
 - What steps are required to prepare single-cell data (e.g., clustering, annotation, and metadata addition) for pseudobulk analysis?
@@ -73,7 +73,7 @@ In this tutorial, we will guide you through a pseudobulk analysis workflow using
 
 ## Overview of the Data
 
-The dataset used in this tutorial is an `AnnData` object containing a subset of single-cell RNA-seq data, specifically including non-classical monocytes (NCMs) and plasmacytoid dendritic cells (pDCs) from bone marrow and peripheral blood samples. This subset was selected to illustrate differential gene expression between two immune cell types across two biologically distinct tissues.
+The dataset used in this tutorial is an `AnnData` object containing a subset of single-cell RNA-seq data, specifically including non-classical monocytes (NCMs) and plasmacytoid dendritic cells (pDCs) from bone marrow and peripheral blood samples. This subset was selected to illustrate differential gene expression between two immune cell types across two biologically distinct tissues. A portion of the data corresponding to bone marrow was derived from a published study {% cite rettkowski2025modulation %}.
 
 In this tutorial, we will focus on these two cell populations and explore how their expression profiles differ between bone marrow and blood using pseudobulk analysis.
 
@@ -460,6 +460,16 @@ If you would like to extract all annotated clusters at once, for example to anal
 >    - *"Type of value to filter"*: `Text`
 >    - *"Filter"*: `equal to`
 >    - *"Value"*: `pDCs` (the cluster name for the cell type you want to extract)
+>
+>    > <comment-title>Pre-extracted clusters also available</comment-title>
+>    >
+>    > In addition to performing the filtering yourself, the `pDCs` and `Monocytes_NC` clusters have also been pre-extracted and are available for direct download.  
+>    > This allows you to jump ahead and run the downstream workflows independently for each cluster, as described later in this tutorial.  
+>    >  
+>    > Download the pre-filtered datasets from Zenodo:
+>    > - **Monocytes_NC_subset**: [Download](https://zenodo.org/records/15275834/files/Monocytes_NC_subset.h5ad?download=1)  
+>    > - **pDCs_subset**: [Download](https://zenodo.org/records/15275834/files/pDCs_subset.h5ad?download=1)
+>    {: .comment}
 >
 {: .hands_on}
 
