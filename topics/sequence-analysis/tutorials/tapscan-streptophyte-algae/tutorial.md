@@ -26,7 +26,7 @@ contributions:
 tags:
 - plants
 recordings:
-- youtube_id: TODO
+- youtube_id: 5jw2B6XU03c
   length: 37M
   galaxy_version: 24.2.4.dev0
   date: '2025-04-23'
