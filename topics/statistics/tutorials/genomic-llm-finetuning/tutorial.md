@@ -608,7 +608,7 @@ We can now set up the `Trainer` to manage the training and evaluation process of
 We first need to attach the LoRA adapter to the model:
 
 ```python
-model.add_adapter(peft_config , adapter_name="lora_1" )
+model.add_adapter(peft_config, adapter_name="lora_1")
 ```
 
 Let's now set up the `Trainer`:
