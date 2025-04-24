@@ -143,7 +143,7 @@ The lower part of the history header contains a number of buttons:
 {: .warning}
 
 - {% icon galaxy-history-size %} **History size** - shows history storage overview in the central pane of the interface.
-- {% icon galaxy-history-storage-choice %} **Preferred storage location** - allows users to specify where history datasets will be stored. This button is only available on Galaxy instances with scratch storage, such as usegalaxy.org. Scratch storage allows users to have much larger storage allocation for a limited amount of time.
+- {% icon galaxy-history-storage-choice %} **Preferred storage location** - allows users to specify where history datasets will be stored. It is an optional feature when you have multiple storage locations available. The button might therefore not be visible on all Galaxy instances.
 - {% icon galaxy-show-active %} **Show active** - shows active (non-deleted and non-hidden) datasets in the history.
 - {% icon galaxy-delete %} **Include deleted** - includes deleted datasets into the history view. If you delete a dataset, it does not disappear unless you explicitly purge it.
 - {% icon galaxy-show-hidden %} **Include hidden** - include hidden datasets into the history view. Any dataset in history can be hidden. For example, workflow executions frequently hide intermediate datasets so that they do not complicate the history view. It is a way to hide non-important datasets from view. 
