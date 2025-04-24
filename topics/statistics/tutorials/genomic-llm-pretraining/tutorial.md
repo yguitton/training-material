@@ -742,7 +742,7 @@ For that, 80% of the entire data will be used for the training set and the remai
 
 ```python
 train_size = int(0.8 * len(dataset["train"]))
-val_size = len(dataset["train"]) - train
+val_size = len(dataset["train"]) - train_size
 ```
 
 > <question-title></question-title> 
