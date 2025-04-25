@@ -48,7 +48,7 @@ In this tutorial, we are going to explore the basics of using JupyterLab in Gala
 
 # What is Jupyter ?
 
-[Jupyter](http://jupyter.org/) is an interactive environment that mixes explanatory text, command line and output display for an interactive analysis environment. Its implementation in Galaxy facilitates the performance of additional analysis if there is no tool for it.
+[Jupyter](http://jupyter.org/) is an interactive environment that mixes explanatory text, command line and output display for an interactive analysis environment. Its implementation in Galaxy facilitates the performance of additional analyses if there are no tools for it.
 
 These notebooks allow you to replace any in-house script you might need to complete your analysis. You don't need to move your data out of Galaxy. You can describe each step of your analysis in the markdown cells for an easy understanding of the processes, and save it in your history for sharing and reproducibility. In addition, thanks to [Jupyter magic commands](https://ipython.readthedocs.io/en/stable/interactive/magics.html), you can use several different languages in a single notebook.
 
