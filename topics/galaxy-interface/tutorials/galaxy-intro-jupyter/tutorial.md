@@ -82,7 +82,7 @@ To add the files you can either uploade them locally from your computer or use Z
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
 >
-> 3. Make sure the file is imported as `CSV` by expanding the box of each imported file in your history and check the format.
+> 3. Make sure the files are imported as `CSV` by expanding the box of each imported file in your history and check the format.
 > 
 > If the format is not correct change the format. 
 >    - Click on the pencil icon {% icon galaxy-pencil %}
