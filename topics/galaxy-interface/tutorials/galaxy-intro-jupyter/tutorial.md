@@ -64,7 +64,7 @@ To add the files you can either uploade them locally from your computer or use Z
 
 > <hands-on-title>Data upload using Zenodo</hands-on-title>
 >
-> 1. Create a new history for this RNA-Seq exercise
+> 1. Create a new history for this Jupyter notebook exercise
 >
 >    {% snippet faqs/galaxy/histories_create_new.md %}
 >
@@ -84,10 +84,7 @@ To add the files you can either uploade them locally from your computer or use Z
 >
 > 3. Make sure the files are imported as `CSV` by expanding the box of each imported file in your history and check the format.
 > 
-> If the format is not correct change the format. 
->    - Click on the pencil icon {% icon galaxy-pencil %}
->    - Select the `Datatype`  {% icon galaxy-chart-select-data %} tab in the middle panel
->    - In `Assign Datatype` section: change the data format to `csv` and click on `save`
+> {% snippet faqs/galaxy/datasets_change_datatype.md datatype="csv" %}
 >
 {: .hands_on}
 
@@ -107,8 +104,6 @@ As shown on the figure above, JupyterLab interface is made of 3 main areas:
 - The menu bar at the top
 - The left side bar with, in particular, the **File Browser**
 - The main work area in the central panel
-
-The Jupyter notebook can be started from different points. You can either open a Jupyter notebook from a dataset in your history or from the *Visualize* tab in the upper menu.
 
 
 ## Start your first notebook
