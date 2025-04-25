@@ -183,7 +183,7 @@ If you wish to follow the Software Carpentries training [Plotting and Programmin
 
 > <hands-on-title>Install Python libraries for a Python introduction</hands-on-title>
 >
-> 1.  Copy the following install commands and pasted them into a empty cell of your Notebook
+> 1.  Copy the following install commands and paste them into a empty cell of your Notebook
 >    ```text
 >!conda install -y math
 >!conda install -y matplotlib
