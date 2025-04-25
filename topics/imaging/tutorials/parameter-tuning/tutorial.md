@@ -29,7 +29,6 @@ contributions:
     - dfg
 tags:
   - bioimaging
-
 ---
 
 
