@@ -155,7 +155,7 @@ Some dependencies or programming libraries may not be available in the kernel yo
 >!conda install -y pandas
 >!conda install -y seaborn
 >    ```
->   - The `!` indicate you are typing a bash command line (alternatively you can use `%%bash` at the beginning of your cell )
+>   - The `!` indicate you are typing a bash command line (alternatively you can add the line `%%bash` at the beginning of your cell. In that case the whole cell will be run as bash commands.)
 >   - The `-y` option allows the installation without asking for confirmation  (The confirmation is not managed well by notebooks)
 > 3. `shift`+`return` to run the cell or click on the run cell button.
 >
