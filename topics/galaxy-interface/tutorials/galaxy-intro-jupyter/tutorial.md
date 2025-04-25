@@ -235,7 +235,7 @@ If you wish to follow the python training later you should import all of the gap
 
 ## Graph Display in Jupyter
 
-In this tutorial we are going to plot a distribution graph of our data. For this we will first need to load one of our tabular data files. You can use the `gapminder_all.csv` file.
+In this tutorial we are going to plot a distribution graph of our data. For this, we will first need to load one of our tabular data files. You can use the `gapminder_all.csv` file.
 
 > <hands-on-title>Load a file from your history</hands-on-title>
 >
