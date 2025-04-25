@@ -70,7 +70,7 @@ Now that we are ready to start exploring JupyterLab, we will want to keep a reco
 > 1. On the left side bar, in the **File Browser**, double-click on the file called **ipython_galaxy_notebook.ipynb**. 
 > Then select the default **This will open the **Python [conda env:base]** Kernel
 >  This will open a default notebook in the main work area.
-> 2. If **ipython_galaxy_notebook.ipynb** does not exist (for instance on *Try JupyterLab*) then click on **+** (top left) to start **The launcher** and then **Python** icon in the **Notebook** section to create a new blank notebook.
+> 2. If **ipython_galaxy_notebook.ipynb** does not exist (for instance on *Try JupyterLab*), click on **+** (top left) to start **The launcher**. Then click on the **Python** icon in the **Notebook** section to create a new blank notebook.
 {: .hands_on}
 
 A new notebook appears in the centre panel. Before we go any further, you should learn to save your script.
