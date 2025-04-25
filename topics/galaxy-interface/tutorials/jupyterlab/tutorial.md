@@ -67,9 +67,10 @@ Now that we are ready to start exploring JupyterLab, we will want to keep a reco
 
 > <hands-on-title>Start a notebook</hands-on-title>
 >
-> 1. On the left side bar, in the **File Browser**, double-click on the file called **ipython_galaxy_notebook.ipynb**. 
-> Then select the default **This will open the **Python [conda env:base]** Kernel
->  This will open a default notebook in the main work area.
+> 1. On the left side bar, in the **File Browser**: 
+>    - Double-click on the file called **ipython_galaxy_notebook.ipynb**. 
+>    - Then select the default **This will open the **Python [conda env:base]** Kernel
+>    - This will open a default notebook in the main work area.
 > 2. If **ipython_galaxy_notebook.ipynb** does not exist (for instance on *Try JupyterLab*), click on **+** (top left) to start **The launcher**. Then click on the **Python** icon in the **Notebook** section to create a new blank notebook.
 {: .hands_on}
 
@@ -77,7 +78,7 @@ A new notebook appears in the centre panel. Before we go any further, you should
 
 > <hands-on-title>Save a Python notebook</hands-on-title>
 >
-> 1. There are several options how to save your file:
+> 1. There are several options to save your file:
 >    - Click the **File** menu and select **Save Notebook As...**.
 >    - Click the {% icon galaxy-save %} icon (**Save the notebook contents and create checkpoint**) in the bar above the file tab line in the script editor.
 >    - Click the **File** menu and select **Save Notebook**.

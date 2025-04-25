@@ -105,7 +105,7 @@ You should now be looking at a page with the JupyterLab interface:
 
 As shown on the figure above, JupyterLab interface is made of 3 main areas:
 - The menu bar at the top
-- The left side bar with in particular the **File Browser**
+- The left side bar with, in particular, the **File Browser**
 - The main work area in the central panel
 
 The Jupyter notebook can be started from different points. You can either open a Jupyter notebook from a dataset in your history or from the *Visualize* tab in the upper menu.
@@ -298,7 +298,7 @@ This will create a new notebook `.ipynb` file in your history every time you cli
 >
 {: .hands_on}
 
-If you want to reopen your Jupyter Notebook again you will start a new **Jupyter Interactive Tool** and 
+If you want to reopen a Jupyter Notebook saved in your history, you can use the tool  **Interactive JupyterLab Notebook**, select "Load a previous Notebook", and select the notebook from your history. 
 
 
 # Conclusion
