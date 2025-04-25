@@ -21,6 +21,9 @@ follow_up_training:
 contributions:
   authorship:
     - rmassei
+  reviewing:
+    - kostrykin
+    - beatrizserrano
   funding:
     - nfdi4bioimage
     - dfg
@@ -30,7 +33,7 @@ tags:
 ---
 
 
-Parameter tuning is super important in bioimaging. 
+Parameter tuning is super important in image analysis. 
 When you're doing image analysis — like segmentation, quantification, or feature extraction — the settings you choose make a big difference in how accurate your results are. 
 But biological images can vary strongly in terms of quality, contrast, and structure. 
 So you can't just use the same settings for every image. 
@@ -40,9 +43,13 @@ By adjusting these settings carefully, researchers can make sure their tools are
 This helps make sure their work is repeatable and reliable, which is key for getting accurate scientific results. 
 Basically, it's all about finding the perfect balance to get the most useful and accurate data possible.
 
-In this tutorial, we will show how to perform parameter tuning for segmentation. Using the same dataset from
-[the introduction tutorial]({% link topics/imaging/tutorials/imaging-introduction/tutorial.md %}), we will fine-tune a parameter of Gaussian filters for nuclei segmentation by
-comparing ground-truth segmentation with the ones processed in Galaxy.
+In this tutorial, we will show how to perform parameter tuning for segmentation. In particular, we will fine-tune a parameter of Gaussian filters for nuclei segmentation by
+comparing ground-truth segmentation with the ones processed in Galaxy. As a dataset,
+we will use GFP-GOWT1 mouse stem cell images, which were acquired from Bártová et al. (2011).
+The test dataset contains a collection of images plus their ground truth. The images are
+publicly available at this [link](https://celltrackingchallenge.net/2d-datasets/).
+
+![graph_comparison.png](../../images/parameter-tuning/graph_comparison.png){: width="50%"}
 
 So, let's proceed!
 
@@ -53,8 +60,8 @@ So, let's proceed!
 > 1. Create a new history for this tutorial.
 >
 > 2. Download the following image and import it into your Galaxy history.
->    - [`example_image.tiff`](../../images/parameter-tuning/example_image.tiff)
->    - [`example_image_ground_truth.tiff`](../../images/parameter-tuning/example_image_ground_truth.tiff)
+>    - [`example_image.tiff`](../../tutorials/parameter-tuning/workflows/test-data/example_image.tiff)
+>    - [`example_image_ground_truth.tiff`](../../tutorials/parameter-tuning/workflows/test-data/example_image_ground_truth.tiff)
 >    
 >    If you are importing the image via URL:
 >
@@ -116,12 +123,11 @@ You now have everything you need to build the parameter tuning workflow!
 >    - **Ground truth is uniquely labeled**: ***No***
 >    - Performance measure(s):
 >      - ***Region-based / DICE***
->      - ***Contour based / Normalized Sum of Distances***
->      - ***Detection-based / Count Falsely Merged Objects: Mean per Image***
+>      - ***Region-based / Jaccard Coefficent***
+>      - ***Region-based / Rand Index***
 > 8. Add {% tool [Collapse Collection](toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0) %} from the list of tools with the following recommended parameters:
 >    - **Prepend File name**: ***Yes***
 >    - **Where to add dataset name**: ***Same line and only once per dataset***
-> 9. Add {% tool [Collapse Collection](Paste1) %} from the list of tools
 > 9. Connect the following inputs:
 >     - Connect the output of {% icon param-file %} **3: Sigma values to test** to the {% icon param-file %} *"File to split"*
 >     input of {% icon tool %} **4: Split by group**.
@@ -140,41 +146,37 @@ You now have everything you need to build the parameter tuning workflow!
 >     - Connect the output of {% icon param-file %} **2: Input Ground Truth** to the "Ground truth images"
 >     input of {% icon tool %} **9: Compute image segmentation and object detection performance measures**. 
 >     - Connect the output of {% icon param-file %} **9: Compute image segmentation and object detection performance measures** to the "Collection of files to collapse into single dataset"
->     input of {% icon tool %} **10: Collapse Collection**. 
->     - Connect the output of {% icon param-file %} **10: Collapse Collection** to the "and"
->     input of {% icon tool %} **11: Paste**.
->     - Connect the output of {% icon param-file %} **3: Sigma values to test** to the "Paste"
->     input of {% icon tool %} **11: Paste**.
+>     input of {% icon tool %} **10: Collapse Collection**.
 {: .hands_on}
 
 
-This is how the worflow should look like!
+This is how the workflow should look like!
 
-![img.png](../../images/parameter-tuning/workflow_parameter_tuning.png)
+![workflow_overview.png](../../images/parameter-tuning/workflow_overview.png)
 
 In this workflow, the {% tool [Parse parameter value](param_value_from_file) %} tool is passing *sigma* values one by one to the workflow downstream. In this way, a collection
 of datasets is created for each sigma value and each one is processed individually.
 Such strategy can be adapted for any parameter of the workflow and, in general, for any tool.
 
-Coming back to the results, below we can see a potential output of the analysis by running four different sigmas (0.5, 5, 10, 50).
+Coming back to the results, here the results from segmentation with four different sigmas...
 
-![img_1.png](../../images/parameter-tuning/table_results.png)
+![sigma_comparisons.png](../../images/parameter-tuning/sigma_comparisons.png){: width="50%"}
 
-In this example, results suggest that as the *sigma* value increases,
-the Dice coefficient, which measures the agreement of the predicted segmentation image foreground and
-the ground truth image foreground, decreases. Lower sigma values result in segmentations 
+
+...and below we can see the output of the analysis:
+
+![output_workflow.png](../../images/parameter-tuning/output_workflow.png)
+
+We are comparing three different performance measures region-based segmentation [Dice](https://en.wikipedia.org/wiki/Dice-S%C3%B8rensen_coefficient), 
+[Jaccard](https://en.wikipedia.org/wiki/Jaccard_index) and [Rand](https://en.wikipedia.org/wiki/Rand_index).
+All three indexes measure the agreement of the predicted segmentation image foreground and
+the ground truth image foreground
+
+
+Overall, results suggest that as the *sigma* value increases,
+the coefficient values decreases. Lower sigma values result in segmentations 
 that more closely match the ground truth, with the highest Dice coefficient of 
-0.91 achieved at the lowest sigma value of 0.5. 
-
-The Hausdorff 
-distance, a measure of the maximum distance between the contours of the predicted segmentation and the ground truth segmentation, significantly 
-increases with higher sigma values, from 17.8 to 203. This increase shows that higher sigma values lead to segmentations 
-that are not only less accurate but also potentially include large outliers or
-misclassifications.
-
-The influence of sigma on merge operations does not show a strong relationship which might indicate that 
-there's an optimal range for sigma 
-that balances detail preservation and noise reduction. 
+0.74 achieved at the lowest sigma value of 5.
 
 ## Conclusions
 

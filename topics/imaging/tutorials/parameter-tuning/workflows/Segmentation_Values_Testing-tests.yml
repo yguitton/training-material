@@ -2,7 +2,7 @@
   job:
     Image to segment:
       class: File
-      path: test-data/Image to segment.tiff
+      path: test-data/example_image_ground_truth.tiff
       filetype: tiff
     Sigma Values:
       class: File
@@ -10,8 +10,8 @@
       filetype: tabular
     Ground Truth Image:
       class: File
-      path: test-data/Ground Truth Image.tiff
+      path: test-data/example_image.tiff
       filetype: tiff
   outputs:
-    out_file1:
-      path: test-data/out_file1.tabular
+    output:
+      path: test-data/output.tabular

@@ -332,7 +332,16 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [],
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Compute image segmentation and object detection performance measures",
+                    "name": "input_gt"
+                },
+                {
+                    "description": "runtime parameter for tool Compute image segmentation and object detection performance measures",
+                    "name": "input_seg"
+                }
+            ],
             "label": null,
             "name": "Compute image segmentation and object detection performance measures",
             "outputs": [
@@ -353,7 +362,7 @@
                 "owner": "imgteam",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"input_gt\": {\"__class__\": \"ConnectedValue\"}, \"input_seg\": {\"__class__\": \"ConnectedValue\"}, \"is_gt_unique\": false, \"is_seg_unique\": false, \"measures\": [{\"__index__\": 0, \"measure_type\": {\"measure_type_selector\": \"Dice\", \"__current_case__\": 0, \"aggregation\": \"\"}}, {\"__index__\": 1, \"measure_type\": {\"measure_type_selector\": \"NSD\", \"__current_case__\": 7, \"aggregation\": \"\", \"object_based\": false}}, {\"__index__\": 2, \"measure_type\": {\"measure_type_selector\": \"FalseMerge\", \"__current_case__\": 9, \"aggregation\": \"mean\"}}], \"unzip\": false, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"input_gt\": {\"__class__\": \"RuntimeValue\"}, \"input_seg\": {\"__class__\": \"RuntimeValue\"}, \"is_gt_unique\": false, \"is_seg_unique\": false, \"measures\": [{\"__index__\": 0, \"measure_type\": {\"measure_type_selector\": \"Dice\", \"__current_case__\": 0, \"aggregation\": \"\"}}, {\"__index__\": 1, \"measure_type\": {\"measure_type_selector\": \"JaccardCoefficient\", \"__current_case__\": 2, \"aggregation\": \"\"}}, {\"__index__\": 2, \"measure_type\": {\"measure_type_selector\": \"RandIndex\", \"__current_case__\": 4, \"aggregation\": \"\"}}], \"unzip\": false, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.4.0-2",
             "type": "tool",
             "uuid": "fea122ab-7cb9-4d0d-a4cf-4464f8e58ecf",
@@ -405,53 +414,16 @@
             "type": "tool",
             "uuid": "1de3d625-bf4b-4493-9d44-29c52225d9b8",
             "when": null,
-            "workflow_outputs": []
-        },
-        "10": {
-            "annotation": "",
-            "content_id": "Paste1",
-            "errors": null,
-            "id": 10,
-            "input_connections": {
-                "input1": {
-                    "id": 1,
-                    "output_name": "output"
-                },
-                "input2": {
-                    "id": 9,
-                    "output_name": "output"
-                }
-            },
-            "inputs": [],
-            "label": null,
-            "name": "Paste",
-            "outputs": [
-                {
-                    "name": "out_file1",
-                    "type": "input"
-                }
-            ],
-            "position": {
-                "left": 1223.6905005425685,
-                "top": 109.54250181081946
-            },
-            "post_job_actions": {},
-            "tool_id": "Paste1",
-            "tool_state": "{\"delimiter\": \"T\", \"input1\": {\"__class__\": \"ConnectedValue\"}, \"input2\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "1.0.0",
-            "type": "tool",
-            "uuid": "331b989c-6897-4dc8-a93c-e613d9ccaca5",
-            "when": null,
             "workflow_outputs": [
                 {
-                    "label": "out_file1",
-                    "output_name": "out_file1",
-                    "uuid": "15bff866-4641-4f86-92bd-1e775fab34c3"
+                    "label": "output",
+                    "output_name": "output",
+                    "uuid": "54631b7f-9caa-476a-a194-1b8a862e12b6"
                 }
             ]
         }
     },
-    "tags": ["imaging"],
-    "uuid": "2a40f1ec-55b8-4fad-aca9-7df3bd7ec2d8",
-    "version": 13
+    "tags": [],
+    "uuid": "8131f259-8340-4a03-8ebf-feb4d44768e1",
+    "version": 22
 }
