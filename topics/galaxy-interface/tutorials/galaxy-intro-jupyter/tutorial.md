@@ -201,7 +201,7 @@ If you wish to follow the Software Carpentries training [Plotting and Programmin
 If you want to include datasets from your history into your  Jupyter notebook, you can import them  using the `get(12)` command, with the number of your dataset in the history (If you are working on a collection, unhide datasets to see their numbers).
 You can use the `gapminder_gdp_europe.csv` file. You can save all of the files into a path location first, to later refer to this file using the import path variable.
 
-> <hands-on-title>Import file location from your history</hands-on-title>
+> <hands-on-title>Import a file location from your history</hands-on-title>
 >
 > Save the import file location to a variable (`file_import`) name with the `get()` function.
 >    ```python
