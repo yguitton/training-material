@@ -349,7 +349,7 @@ tokenized_dna = tokenizer(
 )
 inputs_seqs = tokenized_dna["input_ids"]
 model_outputs = model(inputs_seqs)
-hidden_states = model_outputs.detach()
+hidden_states = model_outputs[0].detach()
 ```
 
 We now compute the maximum of the hidden states accross the sequence length dimension:
@@ -358,25 +358,16 @@ We now compute the maximum of the hidden states accross the sequence length dime
 embedding_max = torch.max(hidden_states, dim=1)[0]
 ```
 
-> <question-title></question-title>
->
->
-> > <solution-title></solution-title>
-> >
-> >
-> {: .solution}
->
-{: .question}
 
-To compare the effects of silent mutation and amino acid deletion, we will compute the distance between the wild-type embeddings and the mutation / deletion embedding using the L2 (Euclidian) distance
+To compare the effects of silent mutation and amino acid deletion, we will compute the distance between the wild-type embeddings and the mutation / deletion embedding using the L2 (Euclidean) distance
 
-> <details-title>L2 (Euclidian) distance</details-title>
+> <details-title>L2 (Euclidean) distance</details-title>
 >
 > The L2 distance, also known as the Euclidean distance, is a measure of the straight-line distance between two points in Euclidean space. It is commonly used to quantify the difference between two vectors, such as embeddings in machine learning.
 >
 > For two vectors $$a$$ and $$b$$ in an $$n$$-dimensional space, where $$a=[a_{1},a_{2},...,a_{n}]$$ and $$b=[b_{1},b_{2},...,b_{n}]$$, the L2 distance is calculated as:
 >
-> \\( L2 = \sqrt{\sum_{i} (a_{i}-b_{i})^{2} \\)
+> \\(L2 = \sqrt{\sum_{i} (a_{i}-b_{i})^{2}\\)
 >
 {: .details}
           
@@ -425,16 +416,17 @@ Exon | [`SNPexon_ref_201b.fasta.gz`](https://github.com/raphaelmourad/Mistral-DN
 baseurl = "https://github.com/raphaelmourad/Mistral-DNA/raw/refs/head/master/data/SNP/"
 win=201
 exon_wt_snp_fp = f"{ baseurl }/SNPexon_ref_{ win }b.fasta.gz"
-exon_mut_snp_fp = f"{ baseurl }/SNPexon_alt_ { win }b.fasta.gz"
-intron_wf_snp_fp = f"{ baseurl }/SNPintron_ref_ { win }b.fasta.gz"
-intron_mut_snp_fp = f"{ baseurl }/SNPintron_alt_ { win }b.fasta.gz"
+exon_mut_snp_fp = f"{ baseurl }/SNPexon_alt_{ win }b.fasta.gz"
+intron_wt_snp_fp = f"{ baseurl }/SNPintron_ref_{ win }b.fasta.gz"
+intron_mut_snp_fp = f"{ baseurl }/SNPintron_alt_{ win }b.fasta.gz"
 ```
 
 We need to get files and read the sequences from them:
 
 ```python
+import requests
 def downloadReadFastaFile(fasta_file):
-  response = requests.get(url)
+  response = requests.get(fasta_file)
   # Check if the request was successful
   if response.status_code == 200:
       # Open a local file in binary write mode and save the content
@@ -445,27 +437,30 @@ def downloadReadFastaFile(fasta_file):
       print(f"Failed to download file. HTTP Status code: {response.status_code}")
   # Read the file
   seql_list=[]
-  with gzip.open(fasta_file, "rt") as handle:
+  with gzip.open("file.gz", "rt") as handle:
       for record in SeqIO.parse(handle, "fasta"):
           seqj=str(record.seq)
           seql_list.append(seqj)
   return seql_list
 
-exon_wt_seqs = readRegularFastaFile(exon_wt_snp_fp)
-exon_mut_seqs = readRegularFastaFile(exon_mut_snp_fp)
-intron_wt_seqs = readRegularFastaFile(intron_wt_snp_fp)
-intron_mut_seqs = readRegularFastaFile(intron_mut_snp_fp)
+exon_wt_seqs = downloadReadFastaFile(exon_wt_snp_fp)
+exon_mut_seqs = downloadReadFastaFile(exon_mut_snp_fp)
+intron_wt_seqs = downloadReadFastaFile(intron_wt_snp_fp)
+intron_mut_seqs = downloadReadFastaFile(intron_mut_snp_fp)
 ```
 
 > <question-title></question-title>
 >
 > 1. How many sequences are in the data?
-> 2. How are the sequences?
+> 2. How long are the sequences?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. 
-> > 2. 
+> > 1. ```python 
+> > len( exon_wt_seqs ) , len(exon_mut_seqs) , len(intron_wt_seqs) , len( intron_mut_seqs ) 
+> > ```
+> >  `(10000, 10000, 10000, 10000)`
+> > 2. the sequences are 201 nucleotides long.
 > {: .solution}
 >
 {: .question}
@@ -486,6 +481,12 @@ intron_mut_seqs = intron_mut_seqs[0:kseq]
 >
 > > <solution-title></solution-title>
 > >
+> > ```python
+> > n_diff = 0
+> > for i in range( len( exon_wt_seqs[0] ) ) :
+> >     n_diff += exon_mut_seqs[0][i] == exon_wt_seqs[0][i]
+> > print(n_diff)
+> > ```
 > > 
 > {: .solution}
 >
@@ -505,8 +506,8 @@ To compute the effect of SNPs, we need :
       padding=True,
     )
     inputs_seqs = tokenized_dna["input_ids"]
-    hidden_states = model(inputs_seqs)[0].detach().cpu().numpy() 
-    return torch.max(hidden_states, dim=1)
+    hidden_states = model(inputs_seqs)[0].detach().cpu()
+    return torch.max(hidden_states, dim=1)[0]
   ```
 
 2. Compute the L2 distance between reference (without SNP) and alternative (with SNP):
@@ -515,7 +516,7 @@ To compute the effect of SNPs, we need :
   def computeMutationEffect(wt_seqs, mut_seqs):
     wt_embedding = computeEmbedding(wt_seqs)
     mut_embedding = computeEmbedding(mut_seqs)
-    return torch.norm(mut_embedding - wt_embedding)
+    return torch.norm(mut_embedding - wt_embedding, dim=1)
   ```
 
 
@@ -530,7 +531,8 @@ intron_SNP_distL2 = computeMutationEffect(intron_wt_seqs,intron_mut_seqs)
 >
 > > <solution-title></solution-title>
 > >
-> >  
+> > 10,000 each: one value per pair of wt/mutated sequence
+> > 
 > {: .solution}
 >
 {: .question}
@@ -587,7 +589,7 @@ To determine if the observed differences in L2 distances are statistically signi
 - Wilcoxon rank-sum test:
 
   ```python
-  sp.stats.wilcoxon(distL2_exonSNPs,distL2_intronSNPs)
+  sp.stats.wilcoxon(exon_SNP_distL2, intron_SNP_distL2)
   ```
 
   > <question-title></question-title>
