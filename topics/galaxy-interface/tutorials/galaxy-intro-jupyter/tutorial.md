@@ -179,7 +179,7 @@ Now you will be able to import this Python libraries and use them with your libr
 {: .hands_on}
 
 
-If you wish to follow the Software Carpentries training [Plotting and Programming in Python](https://swcarpentry.github.io/python-novice-gapminder/instructor/index.html) after finishing this Jupyter Notebook introduction you should install the following Python libraries.
+If you wish to follow the Software Carpentries training [Plotting and Programming in Python](https://swcarpentry.github.io/python-novice-gapminder/instructor/index.html) after finishing this Jupyter Notebook introduction, you should install the following Python libraries.
 
 > <hands-on-title>Install Python libraries for a Python introduction</hands-on-title>
 >
