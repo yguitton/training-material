@@ -121,7 +121,7 @@ You now have everything you need to build the parameter tuning workflow!
 >    - **Segmentation is uniquely labeled**: ***No***
 >    - **Ground truth is uniquely labeled**: ***No***
 >    - Performance measure(s):
->      - ***Region-based / DICE***
+>      - ***Region-based / Dice***
 >      - ***Region-based / Jaccard Coefficent***
 >      - ***Region-based / Rand Index***
 > 8. Add {% tool [Collapse Collection](toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0) %} from the list of tools with the following recommended parameters:
