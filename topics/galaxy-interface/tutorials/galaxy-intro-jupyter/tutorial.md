@@ -127,7 +127,7 @@ Now that we are ready to start exploring JupyterLab, let's open a python Noteboo
 >
 > 2. Change the kernel
 >
->    If the kernel `Python [conda env:python-kernel-3.12]` was chosen in the previous step it should appear in the upper right corner of the notebook file. If not this is the location where the kernel can be switched. 
+>    If the kernel `Python [conda env:python-kernel-3.12]` was chosen in the previous step, it should appear in the upper right corner of the notebook file. If not, this is the location where the kernel can be switched. 
 >  
 >    - Click on the field that displays the current kernel e.g. `Python [conda env:base]`
 >    - Now select the kernel `Python [conda env:python-kernel-3.12]` from the drop down menu
