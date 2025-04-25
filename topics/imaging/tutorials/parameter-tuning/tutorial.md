@@ -46,7 +46,7 @@ In this tutorial, we will show how to perform parameter tuning for segmentation.
 comparing ground-truth segmentation with the ones processed in Galaxy. As a dataset,
 we will use GFP-GOWT1 mouse stem cell images, which were acquired from Bártová et al. (2011).
 The test dataset contains a collection of images plus their ground truth. The images are
-publicly available at this [link](https://celltrackingchallenge.net/2d-datasets/).
+publicly available at the [Cell Tracking Challenge](https://celltrackingchallenge.net/2d-datasets/) repository.
 
 ![graph_comparison.png](../../images/parameter-tuning/graph_comparison.png){: width="50%"}
 
