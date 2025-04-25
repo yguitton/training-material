@@ -214,7 +214,7 @@ You can use the `gapminder_gdp_europe.csv` file. You can save all of the files i
 
 If you wish to follow the python training later you should import all of the gapminder datasets now. The `file_import` variables can be treated like the path with the tutorial. 
 
-> <hands-on-title>Import file location from your history</hands-on-title>
+> <hands-on-title>Import the training data locations from your history</hands-on-title>
 >
 > 1. Find the `file_numbers` of all of the gapminder datasets (`gapminder_all.csv`, `gapminder_gdp_africa.csv`, `gapminder_gdp_americas.csv`, `gapminder_gdp_asia.csv`, `gapminder_gdp_europe.csv`, `gapminder_gdp_oceania.csv`) with your galaxy history
 > 2. Load the datasets `file_import`into your Ipython notebook:
