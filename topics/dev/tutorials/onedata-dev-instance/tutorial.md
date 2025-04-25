@@ -5,8 +5,11 @@ title: "Setting up a dev Onedata instance"
 subtopic: advanced
 tags:
   - storage
-contributors:
-  - lopiola
+contributions:
+  authorship:
+    - lopiola
+  funding:
+    - eurosciencegateway
 
 time_estimation: "20m"
 level: Introductory

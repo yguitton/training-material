@@ -38,6 +38,7 @@ tags:
 - assembly
 - statistics
 - variant-analysis
+- climate
 
 contributions:
     organisers:
@@ -51,33 +52,48 @@ contributions:
     instructors:
         - ahmedhamidawan
         - annasyme
+        - annefou
         - anuprulez
         - abretaud
+        - annefou
         - bebatut
         - bgruening
         - clsiguret
+        - dadrasarmin
         - dannon
         - dianichj
         - deeptivarshney
         - delphine-l
+        - elifsu-simula
         - elichad
         - EngyNasr
         - emmaustin20
+        - evenmm
         - GarethPrice-Aus
         - khaled196
         - jdavcs
+        - j34ni
+        - jhahnfeld
+        - Jochen_Blom
         - bernt-matthias
+        - lfenske-93
+        - PfisterMaxJLU
         - foellmelanie
         - meltemktn
         - mschatz
         - natalie-wa
         - natefoo
+        - Oliver_Rupp
+        - oschwengers
+        - pauldg
         - paulzierep
         - pavanvidem
         - plushz
+        - poterlowicz-lab
         - pratikdjagtap
         - RZ9082
         - SaimMomin12
+        - Sch-Da
         - stephanierobin
         - subinamehta
         - teresa-m
@@ -180,6 +196,8 @@ program:
         link: events/tracks/gta2025-single-cell.md
       - title: Microbiome
         link: events/tracks/gta2025-microbiome.md
+      - title: Climate
+        link: events/tracks/gta2025-climate.md
       #- title: Bacterial Genomics
       #  link: events/tracks/gta2024-bacterial-genomics.md
       #- title: BY-COVID

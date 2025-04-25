@@ -5,9 +5,12 @@ title: "Configuring the Onedata connectors (remotes, Object Store, BYOS, BYOD)"
 subtopic: data
 tags:
   - storage
-contributors:
-  - lopiola
-  - bwalkowi
+contributions:
+  authorship:
+    - lopiola
+    - bwalkowi
+  funding:
+    - eurosciencegateway  
 
 time_estimation: "40m"
 level: Intermediate
