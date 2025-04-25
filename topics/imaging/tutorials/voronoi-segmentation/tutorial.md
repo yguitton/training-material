@@ -4,11 +4,10 @@ layout: tutorial_hands_on
 title: Voronoi segmentation
 zenodo_link: https://zenodo.org/record/3362976/files/B2.zip
 questions:
-  - How do I partition an image into regions based on which object they are nearest to (Voronoi Segmentation)?
-  - How can Voronoi Segmentation be used to identify e.g. cells or trees from an image and perform segmentation?
+  - How do I partition an image into regions based on which object they are nearest to (Voronoi segmentation)?
   - How should images be preprocessed before applying Voronoi segmentation?
   - How can I overlay two images?
-  - How can Voronoi segmentation be used to analyze spatial relationships and divide an image into distinct regions based on proximity?
+  - How can Voronoi segmentation be used to analyze spatial relationships?
 objectives:
   - How to perform Voronoi Segmentation in Galaxy.
   - How to extract a single channel from an image. 
@@ -16,8 +15,8 @@ objectives:
   - How to count objectives in a layer map. 
 time_estimation: 1H
 key_points:
-- Voronoi segmentation is a simple algorithm, chosen to give a starting point for working with image segmentation
-- This tutorial exemplifies how a Galaxy workflow can be applied to data from entirely different domains. 
+- Voronoi segmentation is a simple algorithm, chosen to give a starting point for working with image segmentation. 
+- This tutorial exemplifies how a Galaxy workflow can be applied to data from several different domains. 
 requirements:
   -
     type: "internal"
@@ -58,9 +57,17 @@ can provide insights into cellular interactions, tissue organization, and functi
 relationships within biological samples, such as identifying the proximity of immune 
 cells to tumor cells or mapping neuron distributions within brain tissue.
 
+![HeLa cell image.](../../images/voronoi-segmentation/cell_image-B2-W00026-P00001-Z00000-T00000-dapi.png "HeLa cell image. [https://zenodo.org/records/15172302](https://zenodo.org/records/15172302)"){: width="100%"}
+
+![Segmented HeLa cell image.](../../images/voronoi-segmentation/segmented_cell_image-B2-W00026-P00001-Z00000-T00000-dapi.png "Segmented HeLa cell image."){: width="100%"}
+
 ### Application to Earth Observation
 
 In Earth observation, Voronoi segmentation is used to analyze spatial patterns and distributions in satellite or aerial images. By creating regions based on proximity to specific points, such as cities, vegetation clusters, or monitoring stations, Voronoi segmentation helps in studying how features are organized across a landscape. This method is particularly useful for mapping resource distribution, analyzing urban growth, monitoring vegetation patterns, or assessing land use changes. For instance, it can help divide an area into regions of influence around weather stations or identify how different land cover types interact spatially, aiding in environmental monitoring and planning.
+
+![Tree crown image](../../images/voronoi-segmentation/tree_image_preview_2019_DELA_5_423000_3601000.png "Tree crown image. [https://zenodo.org/records/15172302](https://zenodo.org/records/15172302)"){: width="100%"}
+
+![Segmented tree crown image](../../images/voronoi-segmentation/segmented_tree_image_preview_2019_DELA_5_423000_3601000.png "Segmented tree crown image."){: width="100%"}
 
 > <agenda-title></agenda-title>
 >
@@ -74,11 +81,12 @@ In Earth observation, Voronoi segmentation is used to analyze spatial patterns a
 
 ## Data requirements 
 Seeds: 
-- White seeds on a black background
-- Format: .tiff, .ome.tiff or .png
+- White seeds on a black background.
+- Format: .tiff
+
 Image: 
 - Preferrably lighter objects on a darker background for the mask to work well.
-- Format: .tiff or .ome.tiff stored in [planar, not interleaved format](http://avitevet.com/uncategorized/when-to-use-it-interleaved-vs-planar-image-data-storage/). 
+- Format: .tiff stored in [planar, not interleaved format](http://avitevet.com/uncategorized/when-to-use-it-interleaved-vs-planar-image-data-storage/). 
 
 
 ## Getting data
@@ -300,7 +308,5 @@ This can be achieved with the following operation.
 This pipeline performs Voronoi segmentation and can be applied to datasets from any field as long as the input data satisfies the input data criteria. 
 <!-- Sum up the tutorial and the key takeaways here. We encourage adding an overview image of the
 pipeline used. --> 
-
-![Workflow image](../../images/voronoi-segmentation/ "Feature extraction workflow.")
-
-![feature extraction results box plot](../../images/hela-screen-analysis/result_boxplot.png){: width="100%"}
+If you need to apply this pipeline to several datasets, you can check out the associated workflow in the top panel, which contains all the steps in this tutorial. 
+![Workflow image](../../images/voronoi-segmentation/Voronoi_workflow.png "Workflow image."){: width="100%"}
