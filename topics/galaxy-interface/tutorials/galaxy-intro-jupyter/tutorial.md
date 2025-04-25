@@ -59,7 +59,7 @@ You can find the complete manual for Jupyter commands [on Read the Docs](http://
 # Use Jupyter notebook in Galaxy
 
 ## Import data
-To manipulate data first we upload the  [python-novice-gapminder-data.zip](https://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip) folder into your Galaxy history. 
+To manipulate data, we first upload the [python-novice-gapminder-data.zip](https://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip) folder into your Galaxy history. To add the files you can either upload them locally from your computer or use Zenodo.
 To add the files you can either uploade them locally from your computer or use Zenodo.
 
 > <hands-on-title>Data upload using Zenodo</hands-on-title>
