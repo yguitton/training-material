@@ -2,7 +2,7 @@
 layout: tutorial_hands_on
 
 title: Voronoi segmentation
-zenodo_link: https://zenodo.org/record/3362976/files/B2.zip
+zenodo_link: https://doi.org/10.5281/zenodo.3362976
 questions:
   - How do I partition an image into regions based on which object they are nearest to (Voronoi segmentation)?
   - How should images be preprocessed before applying Voronoi segmentation?
