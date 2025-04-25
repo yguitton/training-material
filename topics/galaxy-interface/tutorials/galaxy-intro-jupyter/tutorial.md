@@ -113,7 +113,7 @@ The Jupyter notebook can be started from different points. You can either open a
 
 ## Start your first notebook
 
-Now that we are ready to start exploring JupyterLab, and open a python Notebook. There will be one pre-opened notebook available in the file browser on the left side called **ipython_galaxy_notebook.ipynb**. But we will open a new Jupyter notebook, select a kernel and give it a name.
+Now that we are ready to start exploring JupyterLab, let's open a python Notebook. There will be one pre-opened notebook available in the file browser on the left side called **ipython_galaxy_notebook.ipynb**. For this training, however, we will open a new Jupyter notebook, select a kernel and give it a name.
 
 > <hands-on-title>Start a notebook</hands-on-title>
 > 
