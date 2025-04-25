@@ -69,12 +69,6 @@ To add the files you can either uploade them locally from your computer or use Z
 >    {% snippet faqs/galaxy/histories_create_new.md %}
 >
 > 2. Import the following tabular file from [Zenodo]({{ page.zenodo_link }}):
->    - `gapminder_all.csv` 
->    - `gapminder_gdp_africa.csv` 
->    - `gapminder_gdp_americas.csv`
->    - `gapminder_gdp_asia.csv`
->    - `gapminder_gdp_europe.csv`
->    - `gapminder_gdp_oceania.csv`
 >
 >    ```text
 >    {{ page.zenodo_link }}/files/gapminder_all.csv
