@@ -59,8 +59,8 @@ So, let's proceed!
 > 1. Create a new history for this tutorial.
 >
 > 2. Download the following image and import it into your Galaxy history.
->    - [`example_image.tiff`](../../images/parameter-tuning/example_image.tiff)
->    - [`example_image_ground_truth.tiff`](../../images/parameter-tuning/example_image_ground_truth.tiff)
+>    - [`example_image.tiff`](../../tutorials/parameter-tuning/workflows/test-data/example_image.tiff)
+>    - [`example_image_ground_truth.tiff`](../../tutorials/parameter-tuning/workflows/test-data/example_image_ground_truth.tiff)
 >    
 >    If you are importing the image via URL:
 >
