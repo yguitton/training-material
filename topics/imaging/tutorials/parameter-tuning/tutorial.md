@@ -44,8 +44,8 @@ Basically, it's all about finding the perfect balance to get the most useful and
 
 In this tutorial, we will show how to perform parameter tuning for segmentation. In particular, we will fine-tune a parameter of Gaussian filters for nuclei segmentation by
 quantitatively comparing ground-truth segmentation with the ones processed in Galaxy. As a dataset,
-we will use GFP-GOWT1 mouse stem cell images, which were acquired from Bártová et al. (2011).
-The test dataset contains a collection of images plus their ground truth. The images are
+we will use GFP-GOWT1 mouse stem cell images, which were acquired from {% Brtov2011 %}.
+The training dataset contains a collection of images plus their ground truth {% Maka2014 %}. The images are
 publicly available at the [ISBI Cell Tracking Challenge](https://celltrackingchallenge.net/2d-datasets/) repository.
 
 ![graph_comparison.png](../../images/parameter-tuning/graph_comparison.png){: width="50%"}
@@ -59,8 +59,8 @@ So, let's proceed!
 > 1. Create a new history for this tutorial.
 >
 > 2. Download the following image and import it into your Galaxy history.
->    - [`example_image.tiff`](../../tutorials/parameter-tuning/workflows/test-data/example_image.tiff)
->    - [`example_image_ground_truth.tiff`](../../tutorials/parameter-tuning/workflows/test-data/example_image_ground_truth.tiff)
+>    - [`example_image.tiff`](workflows/test-data/example_image.tiff)
+>    - [`example_image_ground_truth.tiff`](workflows/test-data/example_image_ground_truth.tiff)
 >    
 >    If you are importing the image via URL:
 >
@@ -130,21 +130,21 @@ You now have everything you need to build the parameter tuning workflow!
 > 9. Connect the following inputs:
 >     - Connect the output of {% icon param-file %} **3: Sigma values to test** to the {% icon param-file %} *"File to split"*
 >     input of {% icon tool %} **4: Split by group**.
->     - Connect the output of {% icon param-file %} **4: Split by group** to the "Object ID"
+>     - Connect the output of {% icon param-file %} **4: Split by group** to the {% icon param-file %} *"Object ID"*
 >     input of {% icon tool %} **5: Input file containing parameter to parse out of**. 
->     - Connect the output of {% icon param-file %} **5: Input file containing parameter to parse out of** to the "Sigma"
+>     - Connect the output of {% icon param-file %} **5: Input file containing parameter to parse out of** to the {% icon param-file %} *"Sigma"*
 >     input of {% icon tool %} **6: Filter 2-D image**. 
->     - Connect the output of {% icon param-file %} **2: Dataset to perform segmentation** to the "Input Image"
+>     - Connect the output of {% icon param-file %} **2: Dataset to perform segmentation** to the {% icon param-file %} *"Input Image"*
 >     input of {% icon tool %} **6: Filter 2-D image**. 
->     - Connect the output of {% icon param-file %} **6: Filter 2-D image** to the "Input Image"
+>     - Connect the output of {% icon param-file %} **6: Filter 2-D image** to the {% icon param-file %} *"Input Image"*
 >     input of {% icon tool %} **7: Perform histogram equalization**. 
->     - Connect the output of {% icon param-file %} **7: Perform histogram equalization** to the "Input Image"
+>     - Connect the output of {% icon param-file %} **7: Perform histogram equalization** to the {% icon param-file %} *"Input Image"*
 >     input of {% icon tool %} **8: Threshold image**. 
->     - Connect the output of {% icon param-file %} **8: Threshold image** to the "Segmented images"
+>     - Connect the output of {% icon param-file %} **8: Threshold image** to the {% icon param-file %} *"Segmented images"*
 >     input of {% icon tool %} **9: Compute image segmentation and object detection performance measures**. 
->     - Connect the output of {% icon param-file %} **2: Input Ground Truth** to the "Ground truth images"
+>     - Connect the output of {% icon param-file %} **2: Input Ground Truth** to the {% icon param-file %} *"Ground truth images"*
 >     input of {% icon tool %} **9: Compute image segmentation and object detection performance measures**. 
->     - Connect the output of {% icon param-file %} **9: Compute image segmentation and object detection performance measures** to the "Collection of files to collapse into single dataset"
+>     - Connect the output of {% icon param-file %} **9: Compute image segmentation and object detection performance measures** to the {% icon param-file %} *"Collection of files to collapse into single dataset"*
 >     input of {% icon tool %} **10: Collapse Collection**.
 {: .hands_on}
 
