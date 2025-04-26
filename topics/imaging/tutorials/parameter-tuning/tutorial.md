@@ -43,10 +43,10 @@ This helps make sure their work is repeatable and reliable, which is key for get
 Basically, it's all about finding the perfect balance to get the most useful and accurate data possible.
 
 In this tutorial, we will show how to perform parameter tuning for segmentation. In particular, we will fine-tune a parameter of Gaussian filters for nuclei segmentation by
-comparing ground-truth segmentation with the ones processed in Galaxy. As a dataset,
+quantitatively comparing ground-truth segmentation with the ones processed in Galaxy. As a dataset,
 we will use GFP-GOWT1 mouse stem cell images, which were acquired from Bártová et al. (2011).
 The test dataset contains a collection of images plus their ground truth. The images are
-publicly available at the [Cell Tracking Challenge](https://celltrackingchallenge.net/2d-datasets/) repository.
+publicly available at the [ISBI Cell Tracking Challenge](https://celltrackingchallenge.net/2d-datasets/) repository.
 
 ![graph_comparison.png](../../images/parameter-tuning/graph_comparison.png){: width="50%"}
 
@@ -157,7 +157,7 @@ In this workflow, the {% tool [Parse parameter value](param_value_from_file) %} 
 of datasets is created for each sigma value and each one is processed individually.
 Such strategy can be adapted for any parameter of the workflow and, in general, for any tool.
 
-Coming back to the results, here the results from segmentation with four different sigmas...
+Coming back to the results, here are the results from segmentation with four different sigmas...
 
 ![sigma_comparisons.png](../../images/parameter-tuning/sigma_comparisons.png){: width="50%"}
 
@@ -172,10 +172,10 @@ All three indexes measure the agreement of the predicted segmentation image fore
 the ground truth image foreground
 
 
-Overall, results suggest that as the *sigma* value increases,
-the coefficient values decreases. Lower sigma values result in segmentations 
+Overall, the results suggest that as the *sigma* value increases too much,
+the coefficient values decrease. Lower *sigma* values result in segmentations 
 that more closely match the ground truth, with the highest Dice coefficient of 
-0.74 achieved at the lowest sigma value of 5.
+0.74 achieved at a *sigma* value of 5.
 
 ## Conclusions
 
