@@ -169,7 +169,7 @@ Therefore, we first smooth the image to reduce the influence of noise, and then 
 > 2. Rename the output to `single channel image`
 > 
 > 
-> 3. {% tool [Filter 2-D image with Scipy](toolshed.g2.bx.psu.edu/repos/imgteam/2d_simple_filter/ip_filter_standard/1.12.0+galaxy1) %} with the following parameters:
+> 3. {% tool [Filter 2-D image](toolshed.g2.bx.psu.edu/repos/imgteam/2d_simple_filter/ip_filter_standard/1.12.0+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"Input Image"*: `single channel image`
 >    - *"Filter type"*: `Gaussian`
 >        - *"Sigma"*: `3`
