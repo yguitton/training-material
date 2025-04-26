@@ -95,7 +95,7 @@ To run Voronoi segmentation, a seed image is required, which can be prepared man
 > <comment-title> Extracting seeds from an image </comment-title>
 >
 > To see how a seed image can be generated from a source image through smoothing and thresholding, see the 
-> [Imaging introduction tutorial](https://training.galaxyproject.org/training-material/topics/imaging/tutorials/imaging-introduction/tutorial.html). 
+> [Imaging introduction tutorial]({% link topics/imaging/tutorials/imaging-introduction/tutorial.md %}). 
 {: .comment}
 
 In the next step, you can download the data you need from Zenodo. The dataset contains both bioimaging data and earth observation data, so you can choose which data you want to apply the data to. 
