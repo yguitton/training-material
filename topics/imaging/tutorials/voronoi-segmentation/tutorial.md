@@ -290,10 +290,10 @@ This can be achieved with the following operation.
 ## Count objects and extract image features
 > <hands-on-title> Task description </hands-on-title>
 > 1. {% tool [Count objects in label map](toolshed.g2.bx.psu.edu/repos/imgteam/count_objects/ip_count_objects/0.0.5-2) %}. 
->    - {% icon param-file %} *"Input Image"*: `tesselation`
+>    - {% icon param-file %} *"Input Image"*: `tessellation`
 >
 > 1. {% tool [Extract image features with scikit-image](toolshed.g2.bx.psu.edu/repos/imgteam/2d_feature_extraction/ip_2d_feature_extraction/0.18.1+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Label map"*: `tesselation`
+>    - {% icon param-file %} *"Label map"*: `tessellation`
 >    - *"Use the intensity image to compute additional features"*: `Use intensity image`
 >        - {% icon param-file %} *"Intensity Image"*: `single channel image`
 >    - *"Select features to compute"*: `All features`
