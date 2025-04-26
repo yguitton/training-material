@@ -187,8 +187,8 @@ Therefore, we first smooth the image to reduce the influence of noise, and then 
 {: .hands_on}
 
 > <comment-title> How many channels does my image have? </comment-title>
-> Note: If providing your own image, you can check how many channels your image has with the tool `Show image info with Bioformats`. 
-> The number of channels is listed as e.g. `SizeC = 3` for the HeLa cell image or `SizeC = 3 (effectively 1)` for the tree image.
+> Note: If providing your own image, you can check how many channels your image has with the {% tool [Show image info](toolshed.g2.bx.psu.edu/repos/imgteam/image_info/ip_imageinfo/5.7.1+galaxy1) %} tool.
+> The number of channels is listed as, e.g., `SizeC = 3` for the HeLa cell image or `SizeC = 3 (effectively 1)` for the tree image.
 {: .comment}
 
 > <comment-title> The value of Sigma and the Threshold value </comment-title>
