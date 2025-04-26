@@ -193,8 +193,8 @@ Therefore, we first smooth the image to reduce the influence of noise, and then 
 
 > <comment-title> The value of Sigma and the Threshold value </comment-title>
 > Note: Generating a robust mask is harder for images with more noise. 
-> Since the tree image has more noise than the cell image, you may have to adjust the Sigma to achieve better results. 
-> You may also have to adjust the Threshold value in the last step. 
+> Since the tree image has more noise than the cell image, you may have to adjust the value of *"Sigma"* to achieve better results.
+> You may also have to adjust the *"Threshold value"* in the last step.
 {: .comment}
 
 
