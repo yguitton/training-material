@@ -243,9 +243,6 @@ Therefore, we first smooth the image to reduce the influence of noise, and then 
 {: .question}
 
 ## Apply the mask and visualize the segmentation
-<!-- Combine the tesselation with the seeds and the mask to generate a better segmentation
-# Combine the tesselation with the mask to reduce the size of the Voronoi segments
-# Visualize the Voronoi segmentation by overlaying it on the original image -->
 A Voronoi tesselation segments an image into non-overlapping segments that cover the entire image. 
 This makes sure that segments do not overlap, but empty spaces between objects will be counted as part of the segment belonging to the nearest item. 
 A more accurate segmentation can be achieved by using the mask to reduce the size of the Voronoi segments. 
