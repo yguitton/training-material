@@ -223,7 +223,7 @@ Therefore, we first smooth the image to reduce the influence of noise, and then 
 > 
 > 2. Rename the output to `label map`.
 >
-> 1. {% tool [Compute Voronoi tessellation with scikit-image](toolshed.g2.bx.psu.edu/repos/imgteam/voronoi_tesselation/voronoi_tessellation/0.22.0+galaxy3) %}. We use the label map to perform Voronoi segmentation. 
+> 1. {% tool [Compute Voronoi tessellation](toolshed.g2.bx.psu.edu/repos/imgteam/voronoi_tesselation/voronoi_tessellation/0.22.0+galaxy3) %}. We use the label map to perform Voronoi segmentation. 
 >    - {% icon param-file %} *"Input Image"*: `label map`
 > 
 > 2. Rename the output to `tesselation`.
