@@ -44,8 +44,8 @@ Basically, it's all about finding the perfect balance to get the most useful and
 
 In this tutorial, we will show how to perform parameter tuning for segmentation. In particular, we will fine-tune a parameter of Gaussian filters for nuclei segmentation by
 quantitatively comparing ground-truth segmentation with the ones processed in Galaxy. As a dataset,
-we will use GFP-GOWT1 mouse stem cell images, which were acquired from {% Brtov2011 %}.
-The training dataset contains a collection of images plus their ground truth {% Maka2014 %}. The images are
+we will use GFP-GOWT1 mouse stem cell images, which were acquired from {% cite Brtov2011 %}.
+The training dataset contains a collection of images plus their ground truth ({% cite Maka2014 %}). The images are
 publicly available at the [ISBI Cell Tracking Challenge](https://celltrackingchallenge.net/2d-datasets/) repository.
 
 ![graph_comparison.png](../../images/parameter-tuning/graph_comparison.png){: width="50%"}
