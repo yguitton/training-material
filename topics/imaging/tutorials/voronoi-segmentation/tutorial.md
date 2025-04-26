@@ -249,7 +249,7 @@ A more accurate segmentation can be achieved by using the mask to reduce the siz
 This can be achieved with the following operation. 
 > <hands-on-title> Task description </hands-on-title>
 > Combine the tesselation with the seeds and the mask to generate a segmentation that limits the expanse of each segment: 
-> 1. {% tool [Process images using arithmetic expressions with numpy](toolshed.g2.bx.psu.edu/repos/imgteam/image_math/image_math/1.26.4+galaxy2) %} with the following parameters:
+> 1. {% tool [Process images using arithmetic expressions](toolshed.g2.bx.psu.edu/repos/imgteam/image_math/image_math/1.26.4+galaxy2) %} with the following parameters:
 >    - *"Expression"*: `tessellation * (mask / 255) * (1 - seeds / 255)`
 >    - In *"Input images"*:
 >        - {% icon param-repeat %} *"Insert Input images"*
