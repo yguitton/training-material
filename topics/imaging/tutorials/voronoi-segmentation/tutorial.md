@@ -57,7 +57,7 @@ can provide insights into cellular interactions, tissue organization, and functi
 relationships within biological samples, such as identifying the proximity of immune 
 cells to tumor cells or mapping neuron distributions within brain tissue.
 
-![HeLa cell image.](../../images/voronoi-segmentation/cell_image-B2-W00026-P00001-Z00000-T00000-dapi.png "HeLa cell image. [https://zenodo.org/records/15172302](https://zenodo.org/records/15172302)"){: width="100%"}
+![HeLa cell image.](../../images/voronoi-segmentation/cell_image-B2-W00026-P00001-Z00000-T00000-dapi.png "HeLa cell image. <a href="https://zenodo.org/records/15172302">https://zenodo.org/records/15172302</a>)"){: width="100%"}
 
 ![Segmented HeLa cell image.](../../images/voronoi-segmentation/segmented_cell_image-B2-W00026-P00001-Z00000-T00000-dapi.png "Segmented HeLa cell image."){: width="100%"}
 
