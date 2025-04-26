@@ -254,7 +254,7 @@ This can be achieved with the following operation.
 >    - In *"Input images"*:
 >        - {% icon param-repeat %} *"Insert Input images"*
 >            - {% icon param-file %} *"Input Image"*: `tesselation`
->            - *"Variable for representation of the image within the expression"*: `tesselation`
+>            - *"Variable for representation of the image within the expression"*: `tessellation`
 >        - {% icon param-repeat %} *"Insert Input images"*
 >            - {% icon param-file %} *"Input Image"*: `seeds`
 >            - *"Variable for representation of the image within the expression"*: `seeds`
