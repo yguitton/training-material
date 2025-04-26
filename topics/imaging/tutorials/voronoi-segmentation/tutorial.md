@@ -152,7 +152,7 @@ Therefore, we first smooth the image to reduce the influence of noise, and then 
 
 > <hands-on-title> Task description </hands-on-title>
 > The image has three channels (red, green, blue). To generate a mask, we have to select a channel, for instance channel `0`. 
-> 1. {% tool [Convert image format with Bioformats](toolshed.g2.bx.psu.edu/repos/imgteam/bfconvert/ip_convertimage/6.7.0+galaxy3) %} with the following parameters:
+> 1. {% tool [Convert image format](toolshed.g2.bx.psu.edu/repos/imgteam/bfconvert/ip_convertimage/6.7.0+galaxy3) %} with the following parameters:
 >    - {% icon param-file %} *"Input Image"*: `image`
 >    - *"Extract series"*: `All series`
 >    - *"Extract timepoint"*: `All timepoints`
