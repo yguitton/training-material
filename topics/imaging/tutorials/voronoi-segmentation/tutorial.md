@@ -200,11 +200,11 @@ Therefore, we first smooth the image to reduce the influence of noise, and then 
 
 > <question-title></question-title>
 >
-> 1. What is the purpose of the smoothing step? 
+> What is the purpose of the smoothing step? 
 >
 > > <solution-title></solution-title>
 > >
-> > 1. The purpose of smoothing is to reduce noise. 
+> > The purpose of smoothing is to reduce noise. 
 > > For seed generation, noise might lead to false seeds where there is no object. 
 > > Smoothing also promotes connectedness within an object, where noise might make an object appear as two separate objects. 
 > > For mask generation, the same principles apply.
