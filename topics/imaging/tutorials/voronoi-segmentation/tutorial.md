@@ -232,11 +232,11 @@ Therefore, we first smooth the image to reduce the influence of noise, and then 
 
 > <question-title></question-title>
 >
-> 2. How does the size of the seeds influence the Voronoi segmentation? 
+> How does the size of the seeds influence the Voronoi segmentation? 
 >
 > > <solution-title></solution-title>
 > >
-> > 2. A Voronoi segmentation partition a plane into regions based on [proximity to each member of a given set of objects](https://en.wikipedia.org/wiki/Voronoi_diagram). The algorithm is the same irregardless of whether the seeds are single points or objects with a spatial extension, but the size of the seeds will certainly alter the segmentation in some way. 
+> > A Voronoi segmentation partition a plane into regions based on [proximity to each member of a given set of objects](https://en.wikipedia.org/wiki/Voronoi_diagram). The algorithm is the same irregardless of whether the seeds are single points or objects with a spatial extent, but the size of the seeds will certainly alter the segmentation in some way. 
 > >
 > {: .solution}
 >
