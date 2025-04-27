@@ -2,8 +2,9 @@
 layout: event-track
 
 title: Climate
-description: Learn all about Climate on Galaxy. Start with the tutorial at your own pace. If you need support contact us during the event via the  gta_single-cell Slack Channel.
+description: Learn all about Climate on Galaxy. Start with the tutorial at your own pace. If you need support contact us during the event via the  gta_ Slack Channel.
 
+slack_channel: gta_climate
 
 contributions:
     organisers:

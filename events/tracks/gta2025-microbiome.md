@@ -6,7 +6,7 @@ description: This track explains the capability to analyze microbiome data using
 
 # [#gta_microbiome](https://gtnsmrgsbord.slack.com/archives/C07NA7FSGR4). Please note that the tutorials of this track where all tested successfully on useGalaxy.eu, therefore it is recommended to run all tools on this server !
 
-# slack_channel: gta_microbiome
+slack_channel: gta_microbiome
 
 contributions:
     organisers:

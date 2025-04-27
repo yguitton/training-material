@@ -4,6 +4,7 @@ layout: event-track
 title: Variant Analysis
 description: Welcome to the Variant Analysis track. Here you can learn about Variant Analysis. If you need support during the event contact us via the Slack Channel.
 
+slack_channel: gta_variant_analysis
 
 contributions:
     organisers:

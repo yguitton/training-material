@@ -4,6 +4,9 @@ layout: event-track
 title: "From Zero To Hero with Python"
 description: Data analysis and programming are high-demand fields, making them particularly attractive to job seekers and employees across various industries and academic institutions. Are you eager to acquire the foundational skills of coding using the Python programming language? The [BioNT consortium](https://biont-training.eu/index.html) is offering a training curriculum for job seekers, SME employers, and everyone who would like to gain new skills in the field of life sciences. At GTA2025, we are offering our self-paced learning Python introduction course using Galaxy as a programming environment, the learning materials of the [Carpentries](https://carpentries.org/), and the additional self-paced learning BioNT materials.
 
+slack_channel: gta_python
+
+
 contributions:
     organisers:
         - teresa-m

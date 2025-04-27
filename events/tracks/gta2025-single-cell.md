@@ -4,7 +4,7 @@ layout: event-track
 title: Single Cell
 description: Learn all about Single Cell on Galaxy. Start with the tutorial at your own pace. If you need support contact us during the event via the  gta_single-cell Slack Channel. # [gta_single-cell](https://gtnsmrgsbord.slack.com/archives/C07NE0B4ZEZ).
 
-#slack_channel: gta_single-cell
+slack_channel: gta_single-cell
 
 contributions:
     organisers:

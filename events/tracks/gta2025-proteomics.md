@@ -4,7 +4,7 @@ layout: event-track
 title: Proteomics
 description: Learn all about proteomics and how to analyze data in Galaxy. Start with the tutorial at your own pace. If you need support contact us during the event via the gta_proteomics Slack Channel. # [gta_proteomics](https://gtnsmrgsbord.slack.com/archives/C07P5KETZGQ).
 
-#slack_channel: gta_proteomics
+slack_channel: gta_proteomics
 
 contributions:
     organisers:

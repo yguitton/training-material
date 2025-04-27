@@ -138,10 +138,7 @@ program:
   - section: "Galaxy introduction"
     subsection: true
     description: |
-      Kick off the week with a hands-on introduction to Galaxy, covering everything from basic navigation and data manipulation to reproducing published analyses, quality control, and mapping sequences to a reference genome. Whether you're new to Galaxy or looking to strengthen your skills, today's sessions will equip you with the foundational knowledge needed for more advanced topics.
-# In the morning you can take part in the Icebreaker by joining us in the [Slack introduction channel](https://gtnsmrgsbord.slack.com/archives/C07NKAJ8THA). Or you can directly start with the tutorials.
-
-# **Need help with these tutorials?** Ask your questions via the [Slack introduction channel](https://gtnsmrgsbord.slack.com/archives/C07NKAJ8THA).
+      Kick off the week with a hands-on introduction to Galaxy, covering everything from basic navigation and data manipulation to reproducing published analyses, quality control, and mapping sequences to a reference genome. Whether you're new to Galaxy or looking to strengthen your skills, today's sessions will equip you with the foundational knowledge needed for more advanced topics. In the morning you can take part in the Icebreaker by joining us in the [Slack introduction channel](https://gtnsmrgsbord.slack.com/archives/C07NKAJ8THA).  Or you can directly start with the tutorials. **Need help with these tutorials?** Ask your questions via the [Slack introduction channel](https://gtnsmrgsbord.slack.com/archives/C07NKAJ8THA).
   - section: Start to get to know Galaxy
     subsection: true
     tutorials:
@@ -168,23 +165,23 @@ program:
       - name: mapping
         topic: sequence-analysis
 
-  #- section: "Tuesday to Thursday: Choose your own Adventure!"
-  #  tutorials:
-  #    - type: custom
-  #      name: Daily Icebreakers
-  #      description: |
-  #        **Tuesday:** For today's icebreaker, we would love to know one weird fact #that you know for no reason.
-   #       **Wednesday:** We would love to hear where you find inspiration. Maybe you find inspiration through nature or maybe you have a prominent role model in your life—we'd love to learn more about you!
-   #       **Thursday:** If you could take any one movie prop from a movie set, what would it be?
+  - section: "Tuesday to Thursday: Choose your own Adventure!"
+    tutorials:
+      - type: custom
+        name: Daily Icebreakers
+        description: |
+          **Tuesday:** For today's icebreaker, we would love to know one weird fact #that you know for no reason.
+          **Wednesday:** We would love to hear where you find inspiration. Maybe you find inspiration through nature or maybe you have a prominent role model in your life—we'd love to learn more about you!
+          **Thursday:** If you could take any one movie prop from a movie set, what would it be?
 
-    #      Post your answers each day to Slack [#social](https://gtnsmrgsbord.slack.com/channels/social) channel.
+          Post your answers each day to Slack [#social](https://gtnsmrgsbord.slack.com/channels/social) channel.
 
   - section: "Tuesday to Thursday: Pick a track"
     subsection: true
     description: |
       Over the course of these three days, you can choose your preferred track and learn how to use Galaxy for data analysis in this research field. If you find multiple topics interesting, feel free to explore more than one track. Each track will guide you through the process, from basic to more advanced analyses, to accommodate learners of all levels.
 
-# For assistance, you can access support through the Slack channel associated with each track module. Please note that while we strive to accommodate all time zones, responses to specific questions may take a bit longer depending on the availability of experts in your time zone.
+      For assistance, you can access support through the Slack channel associated with each track module. Please note that while we strive to accommodate all time zones, responses to specific questions may take a bit longer depending on the availability of experts in your time zone.
     tracks:  # Instead of tutorials, you can also define tracks, this will create a button per track that will lead to a different page
       - title: Proteomics
         link: events/tracks/gta2025-proteomics.md
@@ -198,10 +195,6 @@ program:
         link: events/tracks/gta2025-microbiome.md
       - title: Climate
         link: events/tracks/gta2025-climate.md
-      #- title: Bacterial Genomics
-      #  link: events/tracks/gta2024-bacterial-genomics.md
-      #- title: BY-COVID
-      #  link: events/tracks/gta2024-bycovid.md
       - title: Machine Learning
         link: events/tracks/gta2025-ml.md
       - title: From Zero to Hero with Python
@@ -215,16 +208,18 @@ program:
       if you have a problem and answer questions, but they may not be experts in the topic you selected.
       You can directly start with your preferred tutorial.
 
-#**Need help with these tutorials?** Ask your questions via the Slack Channel [#gta_friday-grab-bag](https://gtnsmrgsbord.slack.com/archives/C07N2A4HQ15).
+      **Need help with these tutorials?** Ask your questions via the Slack Channel [#gta_friday-grab-bag](https://gtnsmrgsbord.slack.com/archives/C07N2A4HQ15).
+    tutorials:
+      - type: custom
+        name: Daily Icebreaker
+        description: |
+          **For the last icebreaker, we would love to know what the most interesting or exciting thing you learned this week is!!**
+
+          Post your answer on Slack [#social](https://gtnsmrgsbord.slack.com/channels/social) channel
+
   - section: Fair training
     subsection: true
     tutorials:
-      #- type: custom
-      #  name: Daily Icebreaker
-      #  description: |
-      #    **For the last icebreaker, we would love to know what the most interesting or exciting thing you learned this week is!!**
-
-      #    Post your answer on Slack [#social](https://gtnsmrgsbord.slack.com/channels/social) channel
       - type: custom
         name: "[An overview of the RO-Crate concept and its implementations](https://gallantries.github.io/video-library/videos/ro-crates/intro/slides/)"
         description: |
@@ -241,10 +236,8 @@ program:
   - section: Plant Galaxy
     subsection: true
     tutorials:
-      - type: custom
-        name: "Identification of Transcription associated proteins (TAPs)"
-        description: |
-          Comming soon
+      - name: tapscan-streptophyte-algae
+        topic: sequence-analysis
 
 
 
