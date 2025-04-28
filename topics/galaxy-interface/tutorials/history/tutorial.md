@@ -158,6 +158,9 @@ A history dataset can exist by itself, as an independent entity, or as a part of
 
 {% snippet faqs/galaxy/histories_datasets_vs_collections.md box_type="none"%}
 
+### Creating a dataset collection
+
+
 {% snippet faqs/galaxy/collections_build_list.md box_type="none"%}
 
 {% snippet faqs/galaxy/collections_build_list_paired.md box_type="none"%}
