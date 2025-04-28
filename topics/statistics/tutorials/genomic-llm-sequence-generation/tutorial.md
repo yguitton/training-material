@@ -267,7 +267,7 @@ for seq in synthetic_dna:
 > > <solution-title></solution-title>
 > >
 > > ```python
-> > for i in range(4):
+> > for i in range(5):
 > >   print(len(artificial_sequences[i]))
 > > ```
 > >
@@ -557,13 +557,13 @@ plot_pca_projection(real_seq_kmer_counts, artificial_seq_kmer_counts)
 > >
 > > 1. Lower the temperature, more similar the sequences.
 > > 2. The variance for the different temperatures are:
-> >    - Variance $$= $$ for temperature $$= 0.001$$
-> >    - Variance $$= $$ for temperature $$= 0.01$$
-> >    - Variance $$= $$ for temperature $$= 0.1$$
-> >    - Variance $$= $$ for temperature $$= 0.5$$
-> >    - Variance $$= $$ for temperature $$= 1$$
-> >    - Variance $$= $$ for temperature $$= 1.5$$
-> > 3. Higher the temperature, higher the variance, higher the variability.
+> >    - Variance $$=0.039 $$ for temperature $$= 0.001$$
+> >    - Variance $$=0.219 $$ for temperature $$= 0.01$$
+> >    - Variance $$=0.367 $$ for temperature $$= 0.1$$
+> >    - Variance $$=0.404 $$ for temperature $$= 0.5$$
+> >    - Variance $$=0.376 $$ for temperature $$= 1$$
+> >    - Variance $$=0.377 $$ for temperature $$= 1.5$$
+> > 3. The higher the temperature, higher the variance, higher the variability.
 > >
 > {: .solution}
 >
@@ -657,7 +657,9 @@ synthetic_dna = generate_synthetic_dna(model_name, 400, 10, 1)
 >
 > > <solution-title></solution-title>
 > >
-> > 
+> > ```python
+> > [len(s) for s in synthetic_dna[:10] ]
+> > ```
 > >
 > {: .solution}
 >
@@ -708,7 +710,7 @@ orfs = detect_orfs(seq)
 >
 > > <solution-title></solution-title>
 > >
-> >
+> > `len(orfs)`
 > >
 > {: .solution}
 >
@@ -745,7 +747,7 @@ def extract_and_translate_orf(
     orf_sequence = sequence[start:stop]
 
     # Translate the ORF sequence into a protein sequence
-    protein_sequence = str(Seq(orf_sequence).translate())
+    protein_sequence = str(Seq.Seq(orf_sequence).translate())
 
     return protein_sequence
 ```
