@@ -38,6 +38,8 @@ program:
         topic: variant-analysis
       - name: somatic-variant-discovery
         topic: variant-analysis
+      - name: tb-variant-analysis
+        topic: variant-analysis
       - name: beaconise_1000hg
         topic: variant-analysis
       - name: beacon_cnv_query
