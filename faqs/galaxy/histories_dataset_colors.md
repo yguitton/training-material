@@ -17,7 +17,7 @@ There are several different "states" a dataset can be in. These states are indic
 - **running**: job generating this dataset is running;
 - **setting metadata**: when a new dataset is uploaded Galaxy examines it to understand what kind of data it is (e.g., BAM, FASTQ, fasta, BED, etc.). This is called "setting metadata";
 - **deferred**: sometimes it does not make sense to upload the dataset until it is needed for an analysis. Galaxy will download deferred datasets later during the job execution. Those datasets do not count toward your quota;
-- **paused**: in some cases, workflow executions or upstream errors can prevent subsequent jobs from starting to create datasets in "paused" state; 
+- **paused**: in some cases, workflow executions or upstream errors can prevent subsequent jobs from starting to create datasets in "paused" state. Rerun the errored tool with the option ***Resume dependencies from this job?*** to resume paused jobs; 
 - **discarded**: something went wrong. For example, a job producing this dataset might have been cancelled;
 - **error**: everything is not fine; life is bad! Click on the information **i** button to know more about what happened;
 - **placeholder**: similar to "new"; we know something will be there, but are not yet sure what;
