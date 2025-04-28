@@ -119,7 +119,7 @@ All of the panels in RStudio have configuration options. For example, you can mi
 >
 > For example, once you have written an RScript, you can run it at any Linux or Windows terminal without the need to start up RStudio. We don't want you to get confused - RStudio runs R, but R is not RStudio.
 >
-> For more on running an R Script at the terminal see the dedicated [Software Carpentry lesson](https://bham-carpentries.github.io/r-novice-inflammation/05-cmdline/index.html).
+> For more on running an R Script at the terminal see the dedicated [Software Carpentry lesson](https://swcarpentry.github.io/r-novice-inflammation/05-cmdline.html).
 {: .comment}
 
 ## How to call functions in R, without needing to master them?
