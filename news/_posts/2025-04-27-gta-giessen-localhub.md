@@ -15,7 +15,7 @@ coveralt: "GTA logo including the GTN star and beams behind it in the GTN colors
 
 ## 🌠 Giessen joins the Galaxy Training Academy 2025 with on site support 🎉
 
-We are very excited that the Galaxy Training Academy (GTA) will start in about two week! 🚀. We are happy to announce that Giessen, Germany, will be hosting the first on-site location. They will offer a dedicated room for participants during the GTA, along with office hours for discussing questions and providing support. 
+We are very excited that the Galaxy Training Academy (GTA) will start in about two weeks! 🚀. We are happy to announce that Giessen, Germany, will be hosting the first on-site location. They will offer a dedicated room for participants during the GTA, along with office hours for discussing questions and providing support. 
 
 - 📆 **Dates**:  May 12-16, 2025
 - 📍 **Location** 🌍:  Global online
