@@ -26,7 +26,7 @@ program:
         topic: variant-analysis
       - name: non-dip
         topic: variant-analysis
-      - name: dunovo
+      - name: exome-seq
         topic: variant-analysis
       - name: sars-cov-2-variant-discovery
         topic: variant-analysis
