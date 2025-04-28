@@ -68,16 +68,16 @@ recordings:
 
 answer_histories:
   - label: "UseGalaxy.org"
-    history: https://usegalaxy.org/u/videmp/h/gtn-preprocessing-of-10x-scrna-seq-data
+    history: https://usegalaxy.org/u/videmp/h/gtn-preprocessing-of-10x-scrna-seq-data-april-2025
     date: 2025-04-28
   - label: "UseGalaxy.eu"
-    history: https://usegalaxy.eu/u/videmp/h/gtn-preprocessing-of-10x-scrna-seq-data
+    history: https://usegalaxy.eu/u/videmp/h/gtn-preprocessing-of-10x-scrna-seq-data-april-2025
     date: 2025-04-28
   - label: "UseGalaxy.org.au"
-    history: https://usegalaxy.org.au/u/videmp/h/gtn-preprocessing-of-10x-scrna-seq-data
+    history: https://usegalaxy.org.au/u/videmp/h/gtn-preprocessing-of-10x-scrna-seq-data-april-2025
     date: 2025-04-28
   - label: "UseGalaxy.fr"
-    history: https://usegalaxy.fr/u/videmp/h/gtn-preprocessing-of-10x-scrna-seq-data
+    history: https://usegalaxy.fr/u/videmp/h/gtn-preprocessing-of-10x-scrna-seq-data-april-2025
     date: 2025-04-28
   - label: "UseGalaxy.org"
     history: https://usegalaxy.org/u/wendi_bacon/h/pre-processing-of-10x-single-cell-rna-datasets
