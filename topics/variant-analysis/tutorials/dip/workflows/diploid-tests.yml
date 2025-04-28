@@ -1,4 +1,4 @@
-- doc: Test outline for Diploid
+- doc: Test outline for diploid
   job:
     GIAB-Ashkenazim-Trio-hg19.bam:
       class: File
