@@ -75,7 +75,7 @@ In this tutorial, we will guide you through a pseudobulk analysis workflow using
 
 The dataset used in this tutorial is an `AnnData` object containing a subset of single-cell RNA-seq data, specifically including non-classical monocytes (NCMs) and plasmacytoid dendritic cells (pDCs) from bone marrow and peripheral blood samples. This subset was selected to illustrate differential gene expression between two immune cell types across two biologically distinct tissues. A portion of the data corresponding to bone marrow was derived from a published study {% cite rettkowski2025modulation %}.
 
-In this tutorial, we will focus on these two cell populations and explore how their expression profiles differ between bone marrow and blood using pseudobulk analysis.
+In this tutorial, we will focus on these two cell populations and explore how their expression profiles differ between bone marrow and blood using pseudobulk analysis. The dataset includes three bone marrow samples and seven blood samples.
 
 Pseudobulk analysis is an advanced approach in single-cell data analysis. It involves aggregating single-cell expression data by group (e.g., by cell type and condition) to perform bulk-style analyses while preserving single-cell resolution through metadata.
 
@@ -115,6 +115,31 @@ The data object, which you will import from Zenodo into Galaxy via the provided 
 >
 {: .hands_on}
 
+Before we dive into the analysis, lets inspect our `AnnData file` with tools in galaxy to get familiar with the structure of the data.
+
+> <hands-on-title> Inspect AnnData Object </hands-on-title>
+>
+> 1. {% tool [Inspect AnnData](toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.9+galaxy1) %} tool with the following parameters:
+>     - {% icon param-file %} **Annotated data matrix**: `AnnData for Pseudobulk` (Input dataset obtained > from Zenodo)`
+>     - *"What to inspect?"*: `General information about the object`
+>       
+>    > <question-title></question-title>
+>    > 1. How many cells and genes are there in the `AnnData`? 
+>    > 2. What other information can be retrive by the `Inspect AnnData` tool? 
+>    >
+>    > > <solution-title></solution-title>
+>    > > 1. There are 9,118 observations, representing cells, and 18,926 variables, representing genes expressed in total.
+>    > >     ```
+>    > >     [n_obs x n_vars]
+>    > >     -    9118 × 18926
+>    > >     ```
+>    > > 2. When selecting **General Inspection**, you can view the labels for all entries in `[obs]`, `[var]`, `[obsm]`, `[varm]`, and `[uns]`. This includes the labels described above within the observation field, such as `annotated`, `condition`, `batch`, and `tissue`, which will be needed as inputs for the pseudobulk tool.
+>    > > To view more specific details in the AnnData object, select a different parameter under *"What to inspect?"*.
+>    > {: .solution}
+>    > 
+>    {: .question}
+>
+{: .hands_on}
 
 # Generation of the Pseudobulk Count Matrix with Decoupler
 
