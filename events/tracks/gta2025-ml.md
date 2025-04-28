@@ -2,7 +2,7 @@
 layout: event-track
 
 title: Machine Learning
-description: This module will introduce you to the world of machine learning using Galaxy. Start with the tutorial at your own pace. If you need support during the event contact us via the gta_machine-learning Slack Channel. # [#gta_machine-learning](https://gtnsmrgsbord.slack.com/archives/C07NKBAU05A).
+description: This module will introduce you to the world of machine learning using Galaxy. Start with the tutorial at your own pace. If you need support contact us via the Slack Channel [gta_machine-learning](https://gtnsmrgsbord.slack.com/archives/C07NKBAU05A).
 
 slack_channel: gta_machine-learning
 
