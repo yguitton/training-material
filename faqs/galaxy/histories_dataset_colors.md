@@ -19,7 +19,7 @@ There are several different "states" a dataset can be in. These states are indic
 - **deferred**: sometimes it does not make sense to upload the dataset until it is needed for an analysis. Galaxy will download deferred datasets later during the job execution. Those datasets do not count toward your quota;
 - **paused**: in some cases, workflow executions or upstream errors can prevent subsequent jobs from starting to create datasets in "paused" state; 
 - **discarded**: something went wrong. For example, a job producing this dataset might have been cancelled;
-- **error**: everything is not fine; life is bad!
+- **error**: everything is not fine; life is bad! Click on the information **i** button to know more about what happened;
 - **placeholder**: similar to "new"; we know something will be there, but are not yet sure what;
 - **failed populated state**: this refers to collections (not individual datasets). Here, a collection has failed to be populated with datasets;
 - **new populated state**: this refers to collections (not individual datasets). A collection was created but not populated yet.
