@@ -2,7 +2,7 @@
 layout: event-track
 
 title: "From Zero To Hero with Python"
-description: Data analysis and programming are high-demand fields, making them particularly attractive to job seekers and employees across various industries and academic institutions. Are you eager to acquire the foundational skills of coding using the Python programming language? The [BioNT consortium](https://biont-training.eu/index.html) is offering a training curriculum for job seekers, SME employers, and everyone who would like to gain new skills in the field of life sciences. At GTA2025, we are offering our self-paced learning Python introduction course using Galaxy as a programming environment, the learning materials of the [Carpentries](https://carpentries.org/), and the additional self-paced learning BioNT materials. If you need support contact us via the Slack Channel [gta_python](https://gtnsmrgsbord.slack.com/archives/C08PUQV2EJX).
+description: Data analysis and programming are high-demand fields, making them particularly attractive to job seekers and employees across various industries and academic institutions. Are you eager to acquire the foundational skills of coding using the Python programming language? The [BioNT consortium](https://biont-training.eu/index.html) is offering a training curriculum for job seekers, SME employers, and everyone who would like to gain new skills in the field of life sciences. At GTA2025, we are offering our self-paced learning Python introduction course using Galaxy as a programming environment, the learning materials of the [Carpentries](https://carpentries.org/), and the additional self-paced learning BioNT materials. If you need support contact us via the Slack Channel [gta_python](https://gtnsmrgsbord.slack.com/channels/{{page.slack_channel}}).
 
 slack_channel: gta_python
 
@@ -16,15 +16,15 @@ contributions:
 
 
 program:
-  - section: "Set up your compute environment" 
+  - section: "Set up your compute environment"
     description: |
       Get started by setting up your IPython notebook within Galaxy and installing the needed dependencies. You can follow the tutorial below. Please let us know if you need support via the Slack channel.
     tutorials:
-      - name: galaxy-intro-jupyter 
+      - name: galaxy-intro-jupyter
         topic: galaxy-interface
-  - section: "Python course form Zero to Hero" 
+  - section: "Python course form Zero to Hero"
     description: |
-      Below you will find the three half-days of the BioNT Python introduction course. Please follow the self-paced learning materials and ask any questions or report any issues you may encounter in the Slack channel.  
+      Below you will find the three half-days of the BioNT Python introduction course. Please follow the self-paced learning materials and ask any questions or report any issues you may encounter in the Slack channel.
     tutorials:
       - type: custom
         name: "[Day1 - First steps](http://swcarpentry.github.io/python-novice-gapminder/01-run-quit.html)"

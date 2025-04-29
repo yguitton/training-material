@@ -2,7 +2,7 @@
 layout: event-track
 
 title: Single Cell
-description: Learn all about Single Cell on Galaxy. Start with the tutorial at your own pace. If you need support contact us via the Slack Channel [gta_single-cell](https://gtnsmrgsbord.slack.com/archives/C07NE0B4ZEZ).
+description: Learn all about Single Cell on Galaxy. Start with the tutorial at your own pace. If you need support contact us via the Slack Channel [gta_single-cell](https://gtnsmrgsbord.slack.com/channels/{{page.slack_channel}}).
 
 slack_channel: gta_single-cell
 
@@ -20,9 +20,9 @@ contributions:
 
 
 program:
-  - section: "Single Cell" 
+  - section: "Single Cell"
     description: |
-      If you encounter any issue please ask us in this Slack channel. 
+      If you encounter any issue please ask us in this Slack channel.
     tutorials:
       - name: scrna-intro
         topic: single-cell

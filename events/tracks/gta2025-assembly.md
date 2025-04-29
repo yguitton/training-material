@@ -2,7 +2,7 @@
 layout: event-track
 
 title: Assembly
-description: Learn all about Genome assembly. Start with the tutorial at your own pace. If you need support contact us via the Slack Channel [gta_assembly](https://gtnsmrgsbord.slack.com/archives/C07NGNT0DB5).
+description: Learn all about Genome assembly. Start with the tutorial at your own pace. If you need support contact us via the Slack Channel [gta_assembly](https://gtnsmrgsbord.slack.com/channels/{{page.slack_channel}}).
 
 slack_channel: gta_assembly
 
