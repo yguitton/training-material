@@ -27,9 +27,9 @@ program:
         topic: variant-analysis
       - name: non-dip
         topic: variant-analysis
-      - name: dunovo
+      - name: exome-seq
         topic: variant-analysis
-      - name: microbial-variants
+      - name: sars-cov-2-variant-discovery
         topic: variant-analysis
   - section: "Advanced analysis"
     description: |
@@ -39,11 +39,6 @@ program:
         topic: variant-analysis
       - name: somatic-variant-discovery
         topic: variant-analysis
-      - name: sars-cov-2-variant-discovery
+      - name: tb-variant-analysis
         topic: variant-analysis
 
-      - name: beaconise_1000hg
-        topic: variant-analysis
-      - name: beacon_cnv_query
-        topic: variant-analysis
----
