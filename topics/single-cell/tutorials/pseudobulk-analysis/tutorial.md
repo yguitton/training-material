@@ -396,7 +396,7 @@ After performing the differential expression analysis with edgeR, we will clean 
 > <hands-on-title></hands-on-title>
 >
 >
-> 1. {% tool [Extract dataset](https://usegalaxy.eu/root?tool_id=__EXTRACT_DATASET__) %} with the following parameters:
+> 1. {% tool [Extract dataset](__EXTRACT_DATASET__) %} with the following parameters:
 >    - {% icon param-file %} *"Input list"*: `Tables from edgeR data` (output from the **edgeR** tool {% icon tool %})
 >
 >    **Extract dataset** will allow us extract the table output from **edgeR** which was retrived as a collection.  
