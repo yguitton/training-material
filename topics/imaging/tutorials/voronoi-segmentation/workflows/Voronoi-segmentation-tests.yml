@@ -1,0 +1,36 @@
+- doc: Test for Voronoi-segmentation tutorial
+  job:
+    Image:
+      class: File
+      path: test-data/Image.tiff
+      filetype: tiff
+    Seeds:
+      class: File
+      path: test-data/Seeds.tiff
+      filetype: tiff
+  outputs:
+    Single channel image:
+      path: test-data/Single channel image.tiff
+    label map:
+      path: test-data/label map.tiff
+    multi-channel image:
+      path: test-data/multi-channel image.tiff
+    Smoothed image:
+      path: test-data/Smoothed image.tiff
+    tesselation:
+      path: test-data/tesselation.tiff
+    mask:
+      path: test-data/mask.tiff
+    object count:
+      path: test-data/object count.tabular
+      asserts:
+        - has_text:
+            text: "425"
+    image features:
+      path: test-data/image features.tabular
+    segmentation:
+      path: test-data/segmentation.tiff
+    colorized label map:
+      path: test-data/colorized label map.png
+    segmented image:
+      path: test-data/segmented image.tiff

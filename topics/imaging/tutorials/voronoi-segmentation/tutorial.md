@@ -2,12 +2,13 @@
 layout: tutorial_hands_on
 
 title: Voronoi segmentation
-zenodo_link: https://doi.org/10.5281/zenodo.3362976
+zenodo_link: https://zenodo.org/records/15172302
 questions:
   - How do I partition an image into regions based on which object they are nearest to (Voronoi segmentation)?
   - How should images be preprocessed before applying Voronoi segmentation?
   - How can I overlay two images?
   - How can Voronoi segmentation be used to analyze spatial relationships?
+  - How can extracted image properties be used to categorize identified objects? 
 objectives:
   - How to perform Voronoi Segmentation in Galaxy.
   - How to extract a single channel from an image. 
@@ -57,17 +58,22 @@ can provide insights into cellular interactions, tissue organization, and functi
 relationships within biological samples, such as identifying the proximity of immune 
 cells to tumor cells or mapping neuron distributions within brain tissue.
 
-![HeLa cell image.](../../images/voronoi-segmentation/cell_image-B2-W00026-P00001-Z00000-T00000-dapi.png "HeLa cell image. <a href="https://zenodo.org/records/15172302">https://zenodo.org/records/15172302</a>)"){: width="100%"}
+![cell image.](../../images/voronoi-segmentation/cell_image-B2-W00026-P00001-Z00000-T00000-dapi.png "cell image.")
 
-![Segmented HeLa cell image.](../../images/voronoi-segmentation/segmented_cell_image-B2-W00026-P00001-Z00000-T00000-dapi.png "Segmented HeLa cell image."){: width="100%"}
+![Segmented cell image.](../../images/voronoi-segmentation/segmented_cell_image-B2-W00026-P00001-Z00000-T00000-dapi.png "Segmented cell image.")
+
+These images are from Gunkel, M. (2019). Microscope Image Analysis Course Sept 2109 -- Images siRNA Screen [Data set]. Zenodo. https://doi.org/10.5281/zenodo.3362976
+
 
 ### Application to Earth Observation
 
 In Earth observation, Voronoi segmentation is used to analyze spatial patterns and distributions in satellite or aerial images. By creating regions based on proximity to specific points, such as cities, vegetation clusters, or monitoring stations, Voronoi segmentation helps in studying how features are organized across a landscape. This method is particularly useful for mapping resource distribution, analyzing urban growth, monitoring vegetation patterns, or assessing land use changes. For instance, it can help divide an area into regions of influence around weather stations or identify how different land cover types interact spatially, aiding in environmental monitoring and planning.
 
-![Tree crown image](../../images/voronoi-segmentation/tree_image_preview_2019_DELA_5_423000_3601000.png "Tree crown image. [https://zenodo.org/records/15172302](https://zenodo.org/records/15172302)"){: width="100%"}
+![Tree crown image](../../images/voronoi-segmentation/tree_image_preview_2019_DELA_5_423000_3601000.png "Tree crown image.")
 
-![Segmented tree crown image](../../images/voronoi-segmentation/segmented_tree_image_preview_2019_DELA_5_423000_3601000.png "Segmented tree crown image."){: width="100%"}
+![Segmented tree crown image](../../images/voronoi-segmentation/segmented_tree_image_preview_2019_DELA_5_423000_3601000.png "Segmented tree crown image.")
+
+These images are from Weinstein, B., Marconi, S., & White, E. (2022, January). Data for the NeonTreeEvaluation Benchmark (Version 0.2.2) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.5914554
 
 > <agenda-title></agenda-title>
 >
@@ -80,6 +86,14 @@ In Earth observation, Voronoi segmentation is used to analyze spatial patterns a
 
 
 ## Data requirements 
+Two images are required for Voronoi segmentation: A source image and a matching seed image containing objects from the source image annotated as white spots on a black background. 
+The seed image can be prepared manually or using an automatic tool. 
+To see how a seed image can be generated from a source image through smoothing and thresholding, see the [Imaging introduction tutorial]({% link topics/imaging/tutorials/imaging-introduction/tutorial.md %}).
+For this tutorial, we have already prepared a seed image, which you can download from Zenodo in the next step. 
+The Zenodo dataset contains two different pairs of seed and image: one image of cells from the field of bioimaging and one image of tree crowns from the field of earth observation. 
+Depending on your interest, you may choose which dataset to follow the tutorial with. 
+
+In principle, this tutorial can be followed with any type of data provided that you have an (image, seeds) pair that satisfies the following requirements: 
 Seeds: 
 - White seeds on a black background.
 - Format: .tiff
@@ -89,18 +103,8 @@ Image:
 - Format: .tiff stored in [planar, not interleaved format](http://avitevet.com/uncategorized/when-to-use-it-interleaved-vs-planar-image-data-storage/). 
 
 
-## Getting data
-To run Voronoi segmentation, a seed image is required, which can be prepared manually or using an automatic tool, though the preparation process is outside the scope of this discussion. We have already prepared the seed image, and this is the one we are using for the Voronoi segmentation here. We apply image filters to enhance or suppress specific features of interest, such as edges or noise.
-
-> <comment-title> Extracting seeds from an image </comment-title>
->
-> To see how a seed image can be generated from a source image through smoothing and thresholding, see the 
-> [Imaging introduction tutorial]({% link topics/imaging/tutorials/imaging-introduction/tutorial.md %}). 
-{: .comment}
-
-In the next step, you can download the data you need from Zenodo. The dataset contains both bioimaging data and earth observation data, so you can choose which data you want to apply the data to. 
-In principle, this tutorial can be followed with any type of data provided that you have an image and another image with the corresponding seeds.  
-
+## Getting data from Zenodo
+The data 
 > <hands-on-title> Data Upload </hands-on-title>
 >
 > 1. Create a new history for this tutorial. When you log in for the first time, an empty, unnamed history is created by default. You can simply rename it.
@@ -110,7 +114,7 @@ In principle, this tutorial can be followed with any type of data provided that 
 > 2. Import {% icon galaxy-upload %} the following dataset from [Zenodo](https://zenodo.org/records/15172302). 
 > 
 >    ```
->    https://zenodo.org/records/15195377/files/images_and_seeds.zip
+>    https://zenodo.org/records/15281843/files/images_and_seeds.zip
 >    ```
 > 
 >    - **Important:** Choose the type of data as `zip`.
@@ -122,9 +126,9 @@ In principle, this tutorial can be followed with any type of data provided that 
 > 3. {% tool [Unzip](toolshed.g2.bx.psu.edu/repos/imgteam/unzip/unzip/6.0+galaxy0) %} the image with the following parameters:
 >    - {% icon param-file %} *"input_file"*: `images_and_seeds.zip`
 >    - *"Extract single file"*: `Single file`
->    - *"Filepath"*: Choose one of the following: 
->        - HeLa cells: `images_and_seeds/HeLa_cell_image-B2--W00026--P00001--Z00000--T00000--dapi.tiff`
->        - Trees: `images_and_seeds/tree_image_2018_SJER_3_258000_4106000.tiff`
+>    - *"Filepath"*: Choose which data you want to use: 
+>        - Cells: `images_and_seeds/cell_image-B2--W00026--P00001--Z00000--T00000--dapi.tiff`
+>        - Trees: `images_and_seeds/tree_image_2019_DELA_5_423000_3601000.tiff`
 >    
 > 4. Rename {% icon galaxy-pencil %} the resulting file as `image`.
 >
@@ -135,8 +139,9 @@ In principle, this tutorial can be followed with any type of data provided that 
 > 6. {% tool [Unzip](toolshed.g2.bx.psu.edu/repos/imgteam/unzip/unzip/6.0+galaxy0) %} the seed with the following parameters:
 >    - {% icon param-file %} *"input_file"*: `images_and_seeds.zip`
 >    - *"Extract single file"*: `Single file`
->        - HeLa cells: `images_and_seeds/HeLa_cell_seeds-B2--W00026--P00001--Z00000--T00000--dapi.tiff`
->        - Trees: `images_and_seeds/tree_seeds_2018_SJER_3_258000_4106000.png`
+>    - *"Filepath"*: Choose the seed image corresponding to the image you chose in the last step. 
+>        - Cells: `images_and_seeds/cell_seeds-B2--W00026--P00001--Z00000--T00000--dapi.tiff`
+>        - Trees: `images_and_seeds/tree_seeds_2019_DELA_5_423000_3601000.tiff`
 >
 > 7. Rename {% icon galaxy-pencil %} the resulting file as `seeds`.
 {: .hands_on}
@@ -147,7 +152,7 @@ In case there should be empty regions without cells in the image, we wish to con
 Therefore, we first smooth the image to reduce the influence of noise, and then apply a threshold on the smoothed image to get a binary mask. 
 > <comment-title> Mask vs seeds </comment-title>
 > The process used to create a mask can also be used to make seeds, as in the 
-> [Imaging introduction tutorial](https://training.galaxyproject.org/training-material/topics/imaging/tutorials/imaging-introduction/tutorial.html). 
+> [Imaging introduction tutorial]({% link topics/imaging/tutorials/imaging-introduction/tutorial.md %}). 
 {: .comment}
 
 > <hands-on-title> Task description </hands-on-title>
@@ -180,7 +185,7 @@ Therefore, we first smooth the image to reduce the influence of noise, and then 
 > 5. {% tool [Threshold image](toolshed.g2.bx.psu.edu/repos/imgteam/2d_auto_threshold/ip_threshold/0.18.1+galaxy3) %} with the following parameters:
 >    - {% icon param-file %} *"Input Image"*: `smoothed image`
 >    - *"Thresholding method"*: `Manual`
->        - *"Threshold value"*: `3.0`
+>        - *"Threshold value"*: `3.0`. Note: This threshold value works well for the cell image, where the background has a very low intensity. For images with a brighter background, the threshold value will need to be adjusted.
 > 
 > 6. Rename the output to `mask`.
 > 
@@ -188,7 +193,7 @@ Therefore, we first smooth the image to reduce the influence of noise, and then 
 
 > <comment-title> How many channels does my image have? </comment-title>
 > Note: If providing your own image, you can check how many channels your image has with the {% tool [Show image info](toolshed.g2.bx.psu.edu/repos/imgteam/image_info/ip_imageinfo/5.7.1+galaxy1) %} tool.
-> The number of channels is listed as, e.g., `SizeC = 3` for the HeLa cell image or `SizeC = 3 (effectively 1)` for the tree image.
+> The number of channels is listed as, e.g., `SizeC = 3` for the cell image or `SizeC = 3 (effectively 1)` for the tree image.
 {: .comment}
 
 > <comment-title> The value of Sigma and the Threshold value </comment-title>
@@ -266,7 +271,7 @@ This can be achieved with the following operation.
 >
 > 3. {% tool [Colorize label map](toolshed.g2.bx.psu.edu/repos/imgteam/colorize_labels/colorize_labels/3.2.1+galaxy3) %}. 
 >    - {% icon param-file %} *"Input Image"*: `masked segmentation`
->    - *"Radius of the neighborhood"*: `10` (works well for the HeLa cell image; may need adjustment for the tree image)
+>    - *"Radius of the neighborhood"*: `10` (works well for the cell image; may need adjustment for the tree image)
 >    - *"Background label"*: `0`
 > 
 > 4. Rename the output to `colorized label map`
@@ -296,14 +301,48 @@ This can be achieved with the following operation.
 >    - {% icon param-file %} *"Label map"*: `tessellation`
 >    - *"Use the intensity image to compute additional features"*: `Use intensity image`
 >        - {% icon param-file %} *"Intensity Image"*: `single channel image`
->    - *"Select features to compute"*: `All features`
+>    - *"Select features to compute"*: `Select features`
+>    - *"Available features"*:
+>        - {% icon param-check %} `Label from the label map`
+>        - {% icon param-check %} `Max Intensity`
+>        - {% icon param-check %} `Mean Intensity`
+>        - {% icon param-check %} `Minimum Intensity`
+>        - {% icon param-check %} `Area`
+>        - {% icon param-check %} `Major axis length`
+>        - {% icon param-check %} `Minor axis length`
 >
+{: .hands_on}
+
+
+In this last step, we compute the max, min and mean intensity for each image segment, as well as the area and the major and minor axis lengths. 
+Depending on the use case, the distribution of these extracted features could reveal different subgroups in the data. 
+In this way, the features could be used in to categorize different types of trees, cells, or other items. 
+We will now use a scatter plot to explore the data. 
+
+
+## Visualize segment features with a scatter plot 
+> <hands-on-title>Plot feature extraction results</hands-on-title>
+> 1. Click on the **Visualize** {% icon galaxy-barchart %} icon of the {% icon tool %} **Extract image features** output.
+> 2. Run **Scatter plot (NVD3)** with the following parameters:
+>    - *"Provide a title"*: `Segment features`
+>    - *"X-Axis label"*: `Major axis length`
+>    - *"Y-Axis label"*: `Minor axis length`
+>    - *"Column of data point labels"*: `Column 1`
+>    - *"Values for x-axis"*: `Column 6`
+>    - *"Values for y-axis"*: `Column 7`
+>
+>    > <question-title></question-title>
+>    >
+>    > Plot the major axis lengths together with the minor axis lengths. What do you observe?
+>    >
+>    > > <solution-title></solution-title>
+>    > > The major and minor axis lengths appear to be positively correlated, which is not surprising. It means that segments with a major axis that is longer than others typically have a longer minor axis too. 
+>    > {: .solution }
+>    {: .question}
 {: .hands_on}
 
 
 # Conclusion
 This pipeline performs Voronoi segmentation and can be applied to datasets from any field as long as the input data satisfies the input data criteria. 
-<!-- Sum up the tutorial and the key takeaways here. We encourage adding an overview image of the
-pipeline used. --> 
-If you need to apply this pipeline to several datasets, you can check out the associated workflow in the top panel, which contains all the steps in this tutorial. 
-![Workflow image](../../images/voronoi-segmentation/Voronoi_workflow.png "Workflow image."){: width="100%"}
+If you want to use this tutorial as a Galaxy workflow, you can check out associated workflows in the top panel for a workflow containing all the steps in this tutorial. 
+![Workflow image](../../images/voronoi-segmentation/Voronoi_workflow.png "Workflow image.")
