@@ -3,19 +3,19 @@ layout: event
 
 title: Galaxy Training Academy 2025
 description: |
-  The Galaxy Training Academy is a self-paced online training event for beginners and advanced learners who want to improve their Galaxy data analysis skills. 
+  The Galaxy Training Academy is a self-paced online training event for beginners and advanced learners who want to improve their Galaxy data analysis skills.
   Over the course of one week, we offer a diverse selection of learning track for you.
 
 # <button id="program-button" class="btn btn-info" onclick="$('#program-tab').tab('show');">Start the Course!</button>
 
-#cover-image: <div style="background:white"> 
+#cover-image: <div style="background:white">
 #              <img src="./events/images/Galaxy_GTA2025_Transparent.png">
-#              </div> 
+#              </div>
 cover-image: events/images/Galaxy_GTA2025.png
 cover-image-alt: logo for the Galaxy Training Academy Event 2025
 
 registration:
-  link: https://forms.gle/xqZMd4gduwJ6XyKU6 
+  link: https://forms.gle/xqZMd4gduwJ6XyKU6
   deadline: 2025-05-08
   open: true
 
@@ -119,7 +119,7 @@ infrastructure:
   servers:
     - server: https://usegalaxy.eu
       name: Galaxy EU
-      # tiaas_link: 
+      # tiaas_link:
     - server: https://usegalaxy.org
       name: Galaxy Main
     - server: https://usegalaxy.org.au/
@@ -138,7 +138,7 @@ program:
   - section: "Galaxy introduction"
     subsection: true
     description: |
-      Kick off the week with a hands-on introduction to Galaxy, covering everything from basic navigation and data manipulation to reproducing published analyses, quality control, and mapping sequences to a reference genome. Whether you're new to Galaxy or looking to strengthen your skills, today's sessions will equip you with the foundational knowledge needed for more advanced topics. In the morning you can take part in the Icebreaker by joining us in the [Slack introduction channel](https://gtnsmrgsbord.slack.com/archives/C07NKAJ8THA).  Or you can directly start with the tutorials. **Need help with these tutorials?** Ask your questions via the [Slack introduction channel](https://gtnsmrgsbord.slack.com/archives/C07NKAJ8THA).
+      Kick off the week with a hands-on introduction to Galaxy, covering everything from basic navigation and data manipulation to reproducing published analyses, quality control, and mapping sequences to a reference genome. Whether you're new to Galaxy or looking to strengthen your skills, today's sessions will equip you with the foundational knowledge needed for more advanced topics. In the morning you can take part in the Icebreaker by joining us in the [Slack introduction channel](https://gtnsmrgsbord.slack.com/channels/gta_introduction).  Or you can directly start with the tutorials. **Need help with these tutorials?** Ask your questions via the [Slack introduction channel](https://gtnsmrgsbord.slack.com/channels/gta_introduction).
   - section: Start to get to know Galaxy
     subsection: true
     tutorials:
@@ -208,7 +208,7 @@ program:
       if you have a problem and answer questions, but they may not be experts in the topic you selected.
       You can directly start with your preferred tutorial.
 
-      **Need help with these tutorials?** Ask your questions via the Slack Channel [#gta_friday-grab-bag](https://gtnsmrgsbord.slack.com/archives/C07N2A4HQ15).
+      **Need help with these tutorials?** Ask your questions via the Slack Channel [#gta_friday-grab-bag](https://gtnsmrgsbord.slack.com/channels/gta_friday-grab-bag).
     tutorials:
       - type: custom
         name: Daily Icebreaker
@@ -232,7 +232,7 @@ program:
           [<i class="fas fa-video" aria-hidden="true"></i> Lecture Video](https://gallantries.github.io/video-library/videos/ro-crates/workflowhub/tutorial/)
       - name: ro-crate-galaxy-best-practices
         topic: fair
-  
+
   - section: Plant Galaxy
     subsection: true
     tutorials:
@@ -247,7 +247,7 @@ Do you want to learn how to use Galaxy, an open source data analysis platform? T
 
 **Content of the event**
 
-We provide you with training materials which you can study at your own pace and on your own time throughout the week. Have a look at our [program](https://training.galaxyproject.org/training-material/events/2025-05-12-galaxy-academy-2025.html#program). 
+We provide you with training materials which you can study at your own pace and on your own time throughout the week. Have a look at our [program](https://training.galaxyproject.org/training-material/events/2025-05-12-galaxy-academy-2025.html#program).
 
 <button id="program-button" class="btn btn-info" onclick="$('#program-tab').tab('show');">Program</button>
 
@@ -260,14 +260,14 @@ Don't worry, asynchronous does not mean that you are alone! If you ever need hel
 
 **How to participate**
 
-First, you will need to register. **We will open registrations on the 3rd of March.** 
+First, you will need to register. **We will open registrations on the 3rd of March.**
 You only need a browser and an account on one of the Galaxy instances registered for this event. Please have a look at the [setup page](https://training.galaxyproject.org/training-material/events/2025-05-12-galaxy-academy-2025.html#setup).
 
 <button id="program-button" class="btn btn-info" onclick="$('#setup-tab').tab('show');">Setup</button>
 
 
 
-**How to get help** 
+**How to get help**
 
 You will not be alone! If you ever need help, you can contact one of our many trainers worldwide via **Slack chat**. Next to the program, you will find Slack channels you can join to exchange with the trainers and other participants during the event. Here you will also find help if you have questions or run into an issue during the training. We try to cover all time zones with helpers for each topic, but please be patient if you do not get an immediate response.
 
@@ -279,5 +279,5 @@ You will be able to obtain a certificate by the end of the event. More informati
 
 
 ## Do you want to join the GTA as a trainer?
-Please fill out our [form](https://forms.gle/V9QqSDNg2UmQaDHy8) to indicate in what capacity you would like to help. 
+Please fill out our [form](https://forms.gle/V9QqSDNg2UmQaDHy8) to indicate in what capacity you would like to help.
 
