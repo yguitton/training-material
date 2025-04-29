@@ -391,7 +391,7 @@ Several plots can be generated to assist in understanding the data and the resul
 
 ## Sanitation Steps - Part 2
 
-After performing the differential expression analysis with edgeR, we will clean the data to prepare it for visualization. This involves extracting dataset from a collection, removing unnecessary columns, standardizing text, and splitting the file if needed. We will use the [Extract dataset](https://usegalaxy.eu/root?tool_id=__EXTRACT_DATASET__), [Remove columns](https://toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0).
+After performing the differential expression analysis with edgeR, we will clean the data to prepare it for visualization. This involves extracting dataset from a collection, removing unnecessary columns, standardizing text, and splitting the file if needed. We will use the {% tool [Extract dataset](__EXTRACT_DATASET__) %}, {% tool [Remove columns](toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0) %}.
 
 > <hands-on-title></hands-on-title>
 >
