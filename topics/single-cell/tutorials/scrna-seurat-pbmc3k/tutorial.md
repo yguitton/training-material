@@ -47,7 +47,7 @@ contributions:
   - shiltemann
 recordings:
 - youtube_id: -tIOSBXeXPs
-  length: 2H 11M
+  length: 2H11M
   galaxy_version: 24.2.4.dev0
   date: '2025-04-15'
   speakers:
