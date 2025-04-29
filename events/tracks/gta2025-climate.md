@@ -2,8 +2,9 @@
 layout: event-track
 
 title: Climate
-description: Learn all about Climate on Galaxy. Start with the tutorial at your own pace. If you need support contact us during the event via the  gta_single-cell Slack Channel.
+description: Learn all about Climate on Galaxy. Start with the tutorial at your own pace. If you need support contact us via the Slack Channel [gta_climate](https://gtnsmrgsbord.slack.com/channels/{{page.slack_channel}}).
 
+slack_channel: gta_climate
 
 contributions:
     organisers:
@@ -17,15 +18,15 @@ contributions:
 
 
 program:
-  - section: "Climate Introduction" 
+  - section: "Climate Introduction"
     description: |
-      If you encounter any issue please ask us in this Slack channel. 
+      If you encounter any issue please ask us in this Slack channel.
     tutorials:
       - name: climate-101
         topic: climate
-  - section: "Pangeo ecosystem" 
+  - section: "Pangeo ecosystem"
     description: |
-      If you encounter any issue please ask us in this Slack channel. 
+      If you encounter any issue please ask us in this Slack channel.
     tutorials:
       - name: pangeo
         topic: climate
