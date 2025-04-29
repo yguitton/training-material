@@ -262,14 +262,15 @@ The next steps will help you refine your data for easier handling. We will use s
 >
 > In the previous steps, the following modifications were made to the files:
 >
-> 1. **Replace Text**: Replaces special characters (`[ --+*^]+`) with underscores (`_`) in the `count_matrix` file.
-> 2. **Remove Columns**: Removes the `start`, `end`, and `width` columns from the `genes_metadata` file.
+> 1. **Replace Text**: Replaces special characters (`[ --+*^]+`) with underscores (`_`) in the `count_matrix` file. Rename output to **Count matrix**.
+> 2. **Remove Columns**: Removes the `start`, `end`, and `width` columns from the `genes_metadata` file. Rename output to **Genes Metadata**.
 > 3. **Replace Text**: Replaces special characters (`[ --+*^]+`) with underscores (`_`) in the `samples_metadata` file.
-> 4. **Replace Text in Column**: Modifies values in column `c2` of `outfile from step 3` by prefixing `GG_` to numbers at the beginning of the string.
+> 4. **Replace Text in Column**: Modifies values in column `c2` of `outfile from step 3` by prefixing `GG_` to numbers at the beginning of the string. Rename output to **Samples Metadata**
 >
 >    {% snippet faqs/galaxy/analysis_regular_expressions.md %}
 >
 {: .hands_on}
+
 
 ## Generating the Contrast File
 
@@ -278,7 +279,7 @@ This file will be used as the contrast input file in the edgeR tool.
 > <hands-on-title> Creating a Contrast File for edgeR </hands-on-title>
 >
 > 1. {% tool [Text Reformatting](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/9.3+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"File to process"*: `outfile` (output generated from the **Replace Text** {% icon tool %} step).
+>    - {% icon param-file %} *"File to process"*: `Samples Metadata` (output generated from the **Replace Text** {% icon tool %} step).
 >    - *"AWK Program"*:
 >      ```awk
 >      BEGIN { print header }
@@ -287,6 +288,8 @@ This file will be used as the contrast input file in the edgeR tool.
 >               for (j=i+1; j<=count; j++)
 >                  print words[i]-words[j] }
 >      ```
+>
+> Rename to **Contrast File** 
 >
 >    > <comment-title> Explanation of the AWK Program </comment-title>
 >    >
@@ -328,15 +331,15 @@ Several plots can be generated to assist in understanding the data and the resul
 >
 > 1. {% tool [edgeR](toolshed.g2.bx.psu.edu/repos/iuc/edger/edger/3.36.0+galaxy5) %} with the following parameters:
 >    - *"Count Files or Matrix?"*: `Single Count Matrix`
->        - {% icon param-file %} *"Count Matrix"*: `matrix` (output of **Replace Text: Count Matrix** {% icon tool %})
+>        - {% icon param-file %} *"Count Matrix"*: `Count Matrix` (output of **Replace Text: Count Matrix** {% icon tool %})
 >        - *"Input factor information from file?"*: `Yes`
->            - {% icon param-file %} *"Factor File"*: `Replace Text on data 9` (output of **Replace Text: Creating Factor File** {% icon tool %})
+>            - {% icon param-file %} *"Factor File"*: `Samples Metadata` (output of **Replace Text: Creating Factor File** {% icon tool %})
 >    - *"Use Gene Annotations?"*: `Yes`
->        - {% icon param-file %} *"Gene Annotations"*: `genes_metadata.tsv` (output of **Remove Columns: Gene Metadata** {% icon tool %})
->    - *"Formula for linear model"*: `~ 0 + factor_A` or `~ 0 + factor_A + factor_B:factor_C`
->        *(Customize this formula based on your data's contrast names and factor file. Ensure the formula matches EdgeR's syntax and uses only elements from the factor file.)*
+>        - {% icon param-file %} *"Gene Annotations"*: `Genes Metadata` (output of **Remove Columns: Gene Metadata** {% icon tool %})
+>    - *"Formula for linear model"*: `~ 0 + tissue`
+>        *(Customize this formula based on your data's contrast names and factor file. Ensure the formula matches EdgeR's syntax and uses only elements from the factor file.~ 0 + factor_A` or `~ 0 + factor_A + factor_B:factor_C)*
 >    - *"Input contrasts manually or through a file?"*: `file`
->        - {% icon param-file %} *"Contrasts File"*: `Text reformatting on data 11` (output of **Text Reformatting: Creating a Contrast File for edgeR** {% icon tool %})
+>        - {% icon param-file %} *"Contrasts File"*: `Contrast File` (output of **Text Reformatting: Creating a Contrast File for edgeR** {% icon tool %})
 >    - In *"Filter Low Counts"*:
 >        - *"Filter lowly expressed genes?"*: `No`
 >
@@ -388,21 +391,21 @@ Several plots can be generated to assist in understanding the data and the resul
 
 ## Sanitation Steps - Part 2
 
-After performing the differential expression analysis with edgeR, we will clean the data to prepare it for visualization. This involves extracting collection elements, removing unnecessary columns, standardizing text, and splitting the file if needed. We will use the [Extract element identifiers](https://toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2), [Remove columns](https://toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0).
+After performing the differential expression analysis with edgeR, we will clean the data to prepare it for visualization. This involves extracting dataset from a collection, removing unnecessary columns, standardizing text, and splitting the file if needed. We will use the {% tool [Extract dataset](__EXTRACT_DATASET__) %}, {% tool [Remove columns](toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0) %}.
 
 > <hands-on-title></hands-on-title>
 >
 >
-> 1. {% tool [Extract element identifiers](toolshed.g2.bx.psu.edu/repos/iuc/collection_element_identifiers/collection_element_identifiers/0.0.2) %} with the following parameters:
->    - {% icon param-file %} *"Dataset collection"*: `outTables` (output from the **edgeR** tool {% icon tool %})
+> 1. {% tool [Extract dataset](__EXTRACT_DATASET__) %} with the following parameters:
+>    - {% icon param-file %} *"Input list"*: `Tables from edgeR data` (output from the **edgeR** tool {% icon tool %})
 >
->    **Extract element identifiers** will allow us to processes the **edgeR** output, which is a collection of datasets, to extract individual elements (like the first table from our collection) for further analysis.
+>    **Extract dataset** will allow us extract the table output from **edgeR** which was retrived as a collection.  
 >
 > 2. {% tool [Remove columns](toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0) %} with the following parameters:
 >    - {% icon param-file %} *"Tabular file"*: `outTables` (output of **edgeR** {% icon tool %})
 >    - In *"Select Columns"*:
 >        - {% icon param-repeat %} *"Insert Select Columns"*
->            - *"Header name"*: `{'id': 7, 'output_name': 'output'}`
+>            - *"Header name"*: `X` (In other datasets, the header of the _GeneID_ columns may look different)
 >        - {% icon param-repeat %} *"Insert Select Columns"*
 >            - *"Header name"*: `logFC`
 >        - {% icon param-repeat %} *"Insert Select Columns"*
@@ -485,7 +488,7 @@ If you would like to extract all annotated clusters at once, for example to anal
 >    - *"Key to filter"*: `annotated` (the column that contains the cell type annotations)
 >    - *"Type of value to filter"*: `Text`
 >    - *"Filter"*: `equal to`
->    - *"Value"*: `pDCs` (the cluster name for the cell type you want to extract)
+>    - *"Value"*: `pDC` (the cluster name for the cell type you want to extract)
 >
 >    > <comment-title>Pre-extracted clusters also available</comment-title>
 >    >
