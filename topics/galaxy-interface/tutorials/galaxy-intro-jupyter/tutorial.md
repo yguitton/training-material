@@ -15,6 +15,16 @@ objectives:
   - "Install library dependencies"
   - "Save a notebook to the Galaxy history"
 time_estimation: 1H
+level: "Introductory"
+requirements:
+- type: internal
+  topic_name: galaxy-interface
+  tutorials:
+      - history
+follow_up_training:
+- type: external
+  title: Plotting and Programming in Python
+  link: "https://swcarpentry.github.io/python-novice-gapminder/instructor/index.html"
 key_points:
   - "Start Jupyter from the Visualize tab or from a dataset"
   - "Install Libraries with pip or Conda"
@@ -26,6 +36,8 @@ contributions:
     - delphine-l
   editing:
     - teresa-m
+  testing:
+    - lisanna
   funding:
     - deNBI
     - biont
@@ -156,24 +168,6 @@ Some dependencies or programming libraries may not be available in the kernel yo
 >
 {: .hands_on}
 
-Now you will be able to import this Python libraries and use them with your library code. 
-
-> <hands-on-title>Install Python libraries using Conda</hands-on-title>
->
-> 1. Click on a cell of your notebook to edit it (verify that it is defined as a `Code` cell)
->
-> 2. Enter the following lines : 
->    ```python
->import pandas as pd
->import seaborn as sns
->from IPython.display import display
->import matplotlib.pyplot as plt
->    ```
-> 3. `shift`+`return` to run the cell or click on the run cell button.
->
-{: .hands_on}
-
-
 If you wish to follow the Software Carpentries training [Plotting and Programming in Python](https://swcarpentry.github.io/python-novice-gapminder/instructor/index.html) after finishing this Jupyter Notebook introduction, you should install the following Python libraries.
 
 > <hands-on-title>Install Python libraries for a Python introduction</hands-on-title>
@@ -190,11 +184,32 @@ If you wish to follow the Software Carpentries training [Plotting and Programmin
 >
 {: .hands_on}
 
+Now you will be able to import this Python libraries and use them with your library code. 
+
+> <hands-on-title>Import Python libraries</hands-on-title>
+>
+> 1. Click on a cell of your notebook to edit it (verify that it is defined as a `Code` cell)
+>
+> 2. Enter the following lines : 
+>    ```python
+>import pandas as pd
+>import seaborn as sns
+>from IPython.display import display
+>import matplotlib.pyplot as plt
+>    ```
+> 3. `shift`+`return` to run the cell or click on the run cell button.
+>
+{: .hands_on}
+
 
 
 ## Import data 
-If you want to include datasets from your history into your  Jupyter notebook, you can import them  using the `get(12)` command, with the number of your dataset in the history (If you are working on a collection, unhide datasets to see their numbers).
-You can use the `gapminder_gdp_europe.csv` file. You can save all of the files into a path location first, to later refer to this file using the import path variable.
+If you want to include datasets from your history into your  Jupyter notebook, you can import them  using the `get("[file_number]")` command, with the number of your dataset in the history (If you are working on a collection, unhide datasets to see their numbers).
+You can use the `gapminder_gdp_europe.csv` file.  Using the `get("[file_number]")` you will get file path location first, this location can later be refer to import the file.
+
+![History with dataset to import](../../images/jupyterlab_history.png)
+
+Looking at the history in the image you would need to call `get("7")` to get the file path of the `gapminder_gdp_europe.csv` file.
 
 > <hands-on-title>Import a file location from your history</hands-on-title>
 >
