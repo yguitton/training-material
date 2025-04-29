@@ -13,6 +13,7 @@ contributions:
     instructors:
         - annasyme
         - anuprulez
+        - emmaustin20
         - hujambo-dunia
         - paulocilasjr
 
