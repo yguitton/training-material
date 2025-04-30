@@ -62,7 +62,7 @@ cells to tumor cells or mapping neuron distributions within brain tissue.
 
 ![Segmented cell image.](../../images/voronoi-segmentation/segmented_cell_image-B2-W00026-P00001-Z00000-T00000-dapi.png "Segmented cell image.")
 
-These images are from Gunkel, M. (2019). Microscope Image Analysis Course Sept 2109 -- Images siRNA Screen [Data set]. Zenodo. https://doi.org/10.5281/zenodo.3362976
+These images are from {% cite gunkel2019microscope %}. 
 
 
 ### Application to Earth Observation
@@ -73,7 +73,7 @@ In Earth observation, Voronoi segmentation is used to analyze spatial patterns a
 
 ![Segmented tree crown image](../../images/voronoi-segmentation/segmented_tree_image_preview_2019_DELA_5_423000_3601000.png "Segmented tree crown image.")
 
-These images are from Weinstein, B., Marconi, S., & White, E. (2022, January). Data for the NeonTreeEvaluation Benchmark (Version 0.2.2) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.5914554
+These images are from {% cite weinstein2022neontree %}.
 
 > <agenda-title></agenda-title>
 >
