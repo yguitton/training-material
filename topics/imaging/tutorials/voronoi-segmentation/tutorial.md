@@ -102,6 +102,10 @@ Image:
 - Preferrably lighter objects on a darker background for the mask to work well.
 - Format: .tiff stored in [planar, not interleaved format](http://avitevet.com/uncategorized/when-to-use-it-interleaved-vs-planar-image-data-storage/). 
 
+> <comment-title> Checking the metadata of an image </comment-title>
+> Tip: You can use the tool {% tool [Show image info](toolshed.g2.bx.psu.edu/repos/imgteam/image_info/ip_imageinfo/5.7.1+galaxy1) %} to extract metadata from your image. The image metadata should have "SizeC = 3". It should not say "SizeC = 3 (effectively 1)", because that means that your image is stored in interleaved, not planar format.
+{: .comment}
+
 
 ## Getting data from Zenodo
 The data 
