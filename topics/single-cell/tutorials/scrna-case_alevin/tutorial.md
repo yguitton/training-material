@@ -14,6 +14,11 @@ answer_histories:
 - label: UseGalaxy.eu
   history: https://singlecell.usegalaxy.eu/u/wendi.bacon.training/h/locked-generating-a-single-cell-matrix-using-alevin-answer-key
   date: 2025-03-20
+- label: UseGalaxy.org
+  history: https://usegalaxy.org/u/videmp/h/gtn-generating-a-single-cell-matrix-using-alevin-april-2025
+- label: UseGalaxy.org.au
+  history: https://usegalaxy.org.au/u/videmp/h/gtn-generating-a-single-cell-matrix-using-alevin-april-2025
+  date: 2025-04-29
 - label: UseGalaxy.eu-ARCHIVED3
   history: https://usegalaxy.eu/u/j.jakiela/h/generating-a-single-cell-matrix-alevin
   date: 2024-03-22
