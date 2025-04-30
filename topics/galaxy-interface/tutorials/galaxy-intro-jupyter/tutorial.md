@@ -205,7 +205,7 @@ Now you will be able to import this Python libraries and use them with your libr
 
 ## Import data 
 If you want to include datasets from your history into your  Jupyter notebook, you can import them  using the `get("[file_number]")` command, with the number of your dataset in the history (If you are working on a collection, unhide datasets to see their numbers).
-You can use the `gapminder_gdp_europe.csv` file.  Using the `get("[file_number]")` you will get file path location first, this location can later be refer to import the file.
+You can use the `gapminder_gdp_europe.csv` file.  Using the `get("[file_number]")` function will retrieve or get the location where the dataset from your galaxy history (with the `file_number`) is stored. This location can later be refer to to import the file in your Jupyter notebook.
 
 ![History with dataset to import](../../images/jupyterlab_history.png)
 
