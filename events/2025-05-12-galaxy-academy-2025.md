@@ -115,7 +115,7 @@ location:
   name: online
 
 infrastructure:
-  tiaas: false
+  tiaas: true
   servers:
     - server: https://usegalaxy.eu
       name: Galaxy EU
@@ -126,6 +126,7 @@ infrastructure:
       name: Galaxy AU
     - server: https://usegalaxy.fr
       name: Galaxy FR
+      tiaas_link: https://usegalaxy.fr/join-training/gta2025
   support:
     platform: Slack
 
