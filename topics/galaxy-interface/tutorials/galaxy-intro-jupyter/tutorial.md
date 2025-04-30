@@ -130,9 +130,9 @@ Now that we are ready to start exploring JupyterLab, let's open a python Noteboo
 >  
 >    - Click on **File** in the top menu bar
 >    - Select **New** -> **Notebook**
->    - Choose the kernel `Python [conda env:python-kernel-3.12]` from the dropdown menu and click **select**
+>    - Choose the kernel `Python 3 (ipykernel)]` from the dropdown menu and click **select**
 >
-> 2. Change the kernel
+> 2. Change the kernel (only if you run `JupyterLab` with Galaxy Version 1.0.1)
 >
 >    If the kernel `Python [conda env:python-kernel-3.12]` was chosen in the previous step, it should appear in the upper right corner of the notebook file. If not, this is the location where the kernel can be switched. 
 >  
