@@ -58,7 +58,7 @@ can provide insights into cellular interactions, tissue organization, and functi
 relationships within biological samples, such as identifying the proximity of immune 
 cells to tumor cells or mapping neuron distributions within brain tissue.
 
-![cell image.](../../images/voronoi-segmentation/cell_image-B2-W00026-P00001-Z00000-T00000-dapi.png "cell image.")
+![Cell image.](../../images/voronoi-segmentation/cell_image-B2-W00026-P00001-Z00000-T00000-dapi.png "Cell image.")
 
 ![Segmented cell image.](../../images/voronoi-segmentation/segmented_cell_image-B2-W00026-P00001-Z00000-T00000-dapi.png "Segmented cell image.")
 
@@ -90,15 +90,16 @@ Two images are required for Voronoi segmentation: A source image and a matching 
 The seed image can be prepared manually or using an automatic tool. 
 To see how a seed image can be generated from a source image through smoothing and thresholding, see the [Imaging introduction tutorial]({% link topics/imaging/tutorials/imaging-introduction/tutorial.md %}).
 For this tutorial, we have already prepared a seed image, which you can download from Zenodo in the next step. 
-The Zenodo dataset contains two different pairs of seed and image: one image of cells from the field of bioimaging and one image of tree crowns from the field of earth observation. 
+The Zenodo dataset contains two different pairs of seeds and images: one image of cells from the field of bioimaging and one image of tree crowns from the field of earth observation. 
 Depending on your interest, you may choose which dataset to follow the tutorial with. 
 
 In principle, this tutorial can be followed with any type of data provided that you have an (image, seeds) pair that satisfies the following requirements: 
-Seeds: 
+
+**Seeds:** 
 - White seeds on a black background.
 - Format: .tiff
 
-Image: 
+**Image:** 
 - Preferrably lighter objects on a darker background for the mask to work well.
 - Format: .tiff stored in [planar, not interleaved format](http://avitevet.com/uncategorized/when-to-use-it-interleaved-vs-planar-image-data-storage/). 
 
@@ -108,7 +109,6 @@ Image:
 
 
 ## Getting data from Zenodo
-The data 
 > <hands-on-title> Data Upload </hands-on-title>
 >
 > 1. Create a new history for this tutorial. When you log in for the first time, an empty, unnamed history is created by default. You can simply rename it.
@@ -173,8 +173,6 @@ Therefore, we first smooth the image to reduce the influence of noise, and then 
 >    - *"Tile image"*: `No tiling`
 >    - *"Pyramid image"*: `No Pyramid`
 > 
->    <!-- - **Important:** If using the tree image, choose the type of data as `zip`. --> 
-> 
 > 2. Rename the output to `single channel image`
 > 
 > 
@@ -200,7 +198,7 @@ Therefore, we first smooth the image to reduce the influence of noise, and then 
 > The number of channels is listed as, e.g., `SizeC = 3` for the cell image or `SizeC = 3 (effectively 1)` for the tree image.
 {: .comment}
 
-> <comment-title> The value of Sigma and the Threshold value </comment-title>
+> <comment-title> The value of "Sigma" and the "Threshold value" </comment-title>
 > Note: Generating a robust mask is harder for images with more noise. 
 > Since the tree image has more noise than the cell image, you may have to adjust the value of *"Sigma"* to achieve better results.
 > You may also have to adjust the *"Threshold value"* in the last step.
@@ -252,17 +250,17 @@ Therefore, we first smooth the image to reduce the influence of noise, and then 
 {: .question}
 
 ## Apply the mask and visualize the segmentation
-A Voronoi tesselation segments an image into non-overlapping segments that cover the entire image. 
+A Voronoi tessellation segments an image into non-overlapping segments that cover the entire image. 
 This makes sure that segments do not overlap, but empty spaces between objects will be counted as part of the segment belonging to the nearest item. 
 A more accurate segmentation can be achieved by using the mask to reduce the size of the Voronoi segments. 
 This can be achieved with the following operation. 
 > <hands-on-title> Task description </hands-on-title>
-> Combine the tesselation with the seeds and the mask to generate a segmentation that limits the expanse of each segment: 
+> Combine the tessellation with the seeds and the mask to generate a segmentation that limits the expanse of each segment: 
 > 1. {% tool [Process images using arithmetic expressions](toolshed.g2.bx.psu.edu/repos/imgteam/image_math/image_math/1.26.4+galaxy2) %} with the following parameters:
 >    - *"Expression"*: `tessellation * (mask / 255) * (1 - seeds / 255)`
 >    - In *"Input images"*:
 >        - {% icon param-repeat %} *"Insert Input images"*
->            - {% icon param-file %} *"Input Image"*: `tesselation`
+>            - {% icon param-file %} *"Input Image"*: `tessellation`
 >            - *"Variable for representation of the image within the expression"*: `tessellation`
 >        - {% icon param-repeat %} *"Insert Input images"*
 >            - {% icon param-file %} *"Input Image"*: `seeds`
@@ -285,7 +283,6 @@ This can be achieved with the following operation.
 >    - *"Number of channels"*: `3`
 > 
 > 6. Rename the output to `multi channel image`
-> <!-- channel wrangling end -->
 > 
 > 7. {% tool [Overlay images](toolshed.g2.bx.psu.edu/repos/imgteam/overlay_images/ip_overlay_images/0.0.4+galaxy4) %} with the following parameters to overlay the Voronoi segmentation on the original image:  
 >    - *"Type of the overlay"*: `Linear blending`
