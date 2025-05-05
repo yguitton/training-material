@@ -58,7 +58,7 @@ follow_up_training:
   - EBI-retrieval
   - GO-enrichment
 recordings:
-- youtube_id: TODO
+- youtube_id: h76T5ZLfVgw
   length: 50M
   galaxy_version: 24.2.4.dev0
   date: '2025-05-02'
