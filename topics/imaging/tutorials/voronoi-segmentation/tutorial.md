@@ -345,5 +345,4 @@ We will now use a scatter plot to explore the data.
 
 # Conclusion
 This pipeline performs Voronoi segmentation and can be applied to datasets from any field as long as the input data satisfies the input data criteria. 
-If you want to use this tutorial as a Galaxy workflow, you can check out associated workflows in the top panel for a workflow containing all the steps in this tutorial. 
-![Workflow image](../../images/voronoi-segmentation/Voronoi_workflow.png "Workflow image.")
+The steps in this tutorial are also available on Galaxy as a published workflow called [Voronoi segmentation](https://usegalaxy.eu/published/workflow?id=23030421cd9fcfb2). 
