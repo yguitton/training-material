@@ -80,7 +80,6 @@ The annotation file, group comparison file and FASTA file for this training is d
 >    {% snippet faqs/galaxy/datasets_rename.md %}
 >
 > 4. You can save time and storage capacity when running this tutorial by skipping the first step and not running MaxQuant. In that case, upload the MaxQuant results listed in the MaxQuant analysis section. If you want to run MaxQuant, import the raw data from [PRIDE](https://www.ebi.ac.uk/pride/archive/projects/PXD006914) in a collection:
->
 >    > 1. Open the upload menu and slect the "Rule Based" tab.
 >    > 2. Paste the data urls: 
 >    >    >  ```
