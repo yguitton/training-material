@@ -21,12 +21,10 @@ contributions:
 program:
   - section: "Machine Learning"
     description: |
-      If you encounter any issue please ask us in this Slack channel.
+      If you encounter any issue please ask us in the above Slack channel.
     tutorials:
-      - type: custom
-        name: "[Introduction to machine learning](https://training.galaxyproject.org/training-material/topics/statistics/tutorials/machinelearning/slides.html)"
-        description: |
-          [Lecture Slides](https://training.galaxyproject.org/training-material/topics/statistics/tutorials/machinelearning/slides.html); [Lecture Video](https://training.galaxyproject.org/training-material/topics/statistics/tutorials/machinelearning/recordings/)
+      - name: machinelearning
+        topic: statistics
       - name: regression_machinelearning
         topic: statistics
       - name: classification_machinelearning
