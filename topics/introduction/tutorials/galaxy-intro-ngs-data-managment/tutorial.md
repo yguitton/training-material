@@ -414,88 +414,59 @@ Finally, datasets can be uploaded directly from NCBI's Short Read Archive (SRA):
 
 In primary analysis we start with raw sequencing data (e.g., fastq reads) and convert them into a dataset for secondary analysis. Such secomdary analysis dataset can be a list of sequence variants, a collection of ChIP-seq peaks, a list of differentially expressed genes and so on.
 
-In this tutorial we will use data from four infected indifiduals from 
+In this tutorial we will use data from four infected indifiduals:
 
-## Find necessary data in SRA
+| Accession | Location |
+|------------|------------|
+| ERR636434 | Ivory coast |
+| ERR636028 | Ivory coast |
+| ERR042232 | Colombia |
+| ERR042228 | Colombia |
 
-First, we need to find a good dataset to play with. The [Sequence Read Archive (SRA)](https://www.ncbi.nlm.nih.gov/sra) is the primary archive of *unassembled (or raw) reads*  operated by the [US National Institutes of Health (NIH)](https://www.ncbi.nlm.nih.gov/).  SRA is a great place to get the sequencing data that underlie publications and studies. There are other alternative databases such as [European Nucleotide Archive (ENA)](https://www.ebi.ac.uk/ena/browser/home) as well. Let's use SRA to find the necessary data:
+The accessions correspond to datasets stores in the [Sequence Read Archive](https://www.ncbi.nlm.nih.gov/sra) at NCBI. Our goal to test whether malaria poarasdite infecting these individual is resistant to pyrimethamine drug treatment or not. In ordrr to reach this conclusion we need:
 
-> <hands-on-title>Get Metadata from NCBI SRA</hands-on-title>
+1. Upload the data
+2. Assess the quality of the reads
+3. Map reads against a suitable reference genome for *Plasmodium falsiparum*
+4. Filter mapped reads and remove duplicates
+5. Call variants
+6. Find variants falling within a gene conferring the resistance against pyrimethamine.
+
+Let's do that 🚀
+
+## Upload data into Galaxy
+
+First, let's create a list of accession to be downloaded as a dataset in Galaxy's history:
+
+> <hands-on-title>Upload accessions into Galaxy</hands-on-title>
 >
-> 1. Go to [NCBI's SRA page](https://www.ncbi.nlm.nih.gov/sra)
-> 2. In the search box enter on the top part of the website search for `SARS-CoV-2 Patient Sequencing From Partners / MGH`:
->    ![Find data](../../images/find_mgh_data.png) (Alternatively, you simply click on this [link directly to the data](https://www.ncbi.nlm.nih.gov/sra/?term=SARS-CoV-2+Patient+Sequencing+From+Partners+%2F+MGH))
-> 3. The web page will show a large number of SRA datasets (at the time of writing there were 1,166). There is data from a study by {% cite Lemieux2021 %} describing analysis of SARS-CoV-2 in Boston area.
-> 4. Download metadata describing these datasets by:
->   - clicking on **Send to:** dropdown
->   - Selecting `File`
->   - Changing **Format** to `RunInfo`
->   - Clicking **Create file**
-> Here is how it should look like:
-> ![Getting RunInfo from SRA](../../images/get_runinfo.png)
-> 5. This would save a file called `SraRunInfo.csv` to your computer.
-{: .hands_on}
-
-Now that we have downloaded this file we can go to a Galaxy instance and start processing it.
-
-> <comment-title></comment-title>
->
-> Note that the file we just downloaded is **not** sequencing data itself. Rather, it is *metadata* describing properties of sequencing reads. We will filter this list down to just a few accessions that will be used in the remainder of this tutorial.
->
-{: .comment}
-
-## Process and filter `SraRunInfo.csv` file in Galaxy
-
-> <hands-on-title>Upload `SraRunInfo.csv` file into Galaxy</hands-on-title>
->
-> 1. Go to your Galaxy instance of choice such as one of the [UseGalaxy.* instances](https://galaxyproject.org/usegalaxy/) or any other. (This tutorial uses usegalaxy.org).
+> 1. Go to your Galaxy instance of choice such as one of the [UseGalaxy.* instances](https://galaxyproject.org/usegalaxy/) or any other.
 > 1. Click *Upload Data* button:
 > ![Data upload button](../../images/upload_button.png)
-> 1. In the dialog box that would appear click "*Choose local files*" button:
-> ![Choose local files button](../../images/choose_local_files_button.png)
-> 1. Find and select `SraRunInfo.csv` file from your computer
+> 1. In the dialog box that would appear click "*Paste/Fetch*" button
+> ![Choose local files button](../../images/paste.png)
+> 1. Paste the following accessions into the box (you can use "copy" button in the upper-right corned of the black box below):
+> ```
+> ERR636434
+> ERR636028
+> ERR042232
+> ERR042228
+> ```
+> 1. Name dataset `accessions` (red box in the image below) and change datatype to `tabular` (green box in the image below) 
+> ![Name dataset and change datatype](../../images/upload_name_datatype.svg)
 > 1. Click *Start* button
 > 1. Close dialog by pressing **Close** button
-> 1. You can now look at the content of this file by clicking {% icon galaxy-eye %} (eye) icon. You will see that this file contains a lot of information about individual SRA accessions. In this study, every accession corresponds to an individual patient whose samples were sequenced.
+> 1. You can now look at the content of this file by clicking {% icon galaxy-eye %} (eye) icon.
 {: .hands_on}
 
-Galaxy can process all 2,000+ datasets, but to make this tutorial bearable we need to selected a smaller subset. In particular, our previous experience with this data shows two interesting datasets `SRR11954102` and `SRR12733957`. So, let's filter the file for these accessoins.
 
-{% snippet faqs/galaxy/analysis_cut.md %}
-
-> <hands-on-title>Creating a subset of data</hands-on-title>
->
-> 1. Find {% tool [Select lines that match an expression](Grep1) %} tool in **Filter and Sort** section of the tool panel.
->    > <tip-title>Finding tools</tip-title>
->    > Galaxy may have an overwhelming amount of tools installed. To find a specific tool type the tool name in the tool panel search box to find the tool.
->    {: .tip}
-> 1. Make sure the `SraRunInfo.csv` dataset we just uploaded is listed in the {% icon param-file %} "*Select lines from*" field of the tool form.
-> 1. In "*the pattern*" field enter the following expression &rarr; `SRR12733957|SRR11954102`. These are two accessions we want to find separated by the pipe symbol `|`. The `|` means `or`: find lines containing `SRR12733957` **or** `SRR11954102`.
-> 1. Click the `Run Tool` button.
-> 1. This will generate a file containing two lines (well ... one line is also used as the header, so it will appear the the file has three lines. It is OK.)
-> 1. Cut the first column from the file using {% tool [Advanced Cut](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/9.5+galaxy0) %} tool, which you will find in **Text Manipulation** section of the tool pane.
-> 1. Make sure the dataset produced by the previous step is selected in the "*File to cut*" field of the tool form.
-> 1. Change "*Delimited by*" to `Comma`
-> 1. In "*List of fields*" select `Column: 1`.
-> 1. Hit `Run Tool`
-> This will produce a text file with just two lines:
-> ```
-> SRR12733957
-> SRR11954102
->```
-{: .hands_on}
-
-Now that we have identifiers of datasets we want we need to download the actual sequencing data. You can also watch the following YouTube video:
-
-{% include _includes/youtube.html id="Q4t-beYZ-do" title="Uploading from SRA" %}
-
-## Download sequencing data
+You can think of the dataset we just uploaded as "manifest". You can upload any number of dataset from four, as is here, to thousands. However in you upload large numbers of datasets from SRA it is better to use a dedicated [accession download workflow](https://iwc.galaxyproject.org/workflow/parallel-accession-download-main/). It is more robust when dealing with large number of samples. Now let's tell Galaxy to upload actual data corresponding to these uploads:
 
 > <hands-on-title>Get data from SRA</hands-on-title>
 >
 > 1. Run {% tool [Faster Download and Extract Reads in FASTQ](toolshed.g2.bx.psu.edu/repos/iuc/sra_tools/fasterq_dump/3.1.1+galaxy1) %} with the following parameters:
 >    - *"select input type"*: `List of SRA accession, one per line`
->        - The parameter {% icon param-file %} *"sra accession list"* should point the output of the {% tool [Advanced Cut](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/9.5+galaxy0) %} tool from the previous step.
+>        - The parameter {% icon param-file %} *"sra accession list"* should point the output of the `accessions` datasets we just craeted above.
 >    - **Click** the `Run Tool` button. This will run the tool, which retrieves the sequence read datasets for the runs that were listed in the `SRA` dataset. It may take some time. So this may be a good time to take a break.
 >
 > 2. Several entries are created in your history panel when you submit this job:
@@ -505,52 +476,13 @@ Now that we have identifiers of datasets we want we need to download the actual 
 >    - **`fasterq-dump log`** Contains Information about the tool execution
 {: .hands_on}
 
-The first three items are actually *collections* of datasets. *Collections* in Galaxy are logical groupings of datasets that reflect the semantic relationships between them in the experiment / analysis. In this case, the tool creates separate collections for paired-end reads, single reads, and *other*. See the [Collections tutorial]({% link topics/galaxy-interface/tutorials/collections/tutorial.md %}) and watch the following YouTube video:
-
-{% include _includes/youtube.html id="6ZU9hFjnRDo" title="Dataset Collections: A simple list" %}
+The first three items are actually *collections* of datasets. *Collections* in Galaxy are logical groupings of datasets that reflect the semantic relationships between them in the experiment / analysis. In this case, the tool creates separate collections for paired-end reads, single reads, and *other*. (For more information on Collections see the [Collections tutorial]({% link topics/galaxy-interface/tutorials/collections/tutorial.md %}).
 
 Explore the collections by first **clicking** on the collection name in the history panel. This takes you inside the collection and shows you the datasets in it.  You can then navigate back to the outer level of your history.
 
 Once {% tool [Faster Download and Extract Reads in FASTQ](toolshed.g2.bx.psu.edu/repos/iuc/sra_tools/fasterq_dump/3.1.1+galaxy1) %} finishes transferring data (all boxes are green / done), we are ready to analyze it.
 
-
-## Now what?
-
-You can now analyze the retrieved data using any sequence analysis tools and workflows in Galaxy.  SRA holds backing data for every imaginable type of *-seq experiment.
-
-If you ran this tutorial, but retrieved datasets that you were interested in, then see the rest of the GTN library for ideas on how to analyze in Galaxy.
-
-However, if you retrieved the datasets used in this tutorial's examples above, then you are ready to run the SARS-CoV-2 variant analysis below.
-
-In this part of the tutorial, we will perform variant calling and basic analysis of the datasets downloaded above. We will start by downloading the Wuhan-Hu-1 SARS-CoV-2 reference sequence, then run adapter trimming, alignment and variant calling.
-
-> <comment-title>The usegalaxy.* COVID-19 analysis project</comment-title>
-> This tutorial uses a subset of the data and runs through the
-> [Variation Analysis](https://web.archive.org/web/20210301035338/https://covid19.galaxyproject.org/genomics/4-variation/).
-> section of [GalaxyProject SARS-CoV-2 analysis effort](https://galaxyproject.org/projects/covid19/).
-> The data for [GalaxyProject SARS-CoV-2 analysis effort](https://galaxyproject.org/projects/covid19/) is
-> being updated continuously as new datasets are made public.
-{: .comment}
-
-## Get the reference genome data
-
-The reference genome data for today is for SARS-CoV-2, "Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1, complete genome", having the accession ID of NC_045512.2.
-
-This data is [available from directly from GenBank](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/009/858/895/GCF_009858895.2_ASM985889v3/GCF_009858895.2_ASM985889v3_genomic.fna.gz).
-
-> <hands-on-title>Get the reference genome data</hands-on-title>
->
-> 1. Import the following file into your history:
->
->    ```
->    https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/009/858/895/GCF_009858895.2_ASM985889v3/GCF_009858895.2_ASM985889v3_genomic.fna.gz
->    ```
->
->    {% snippet faqs/galaxy/datasets_import_via_link.md %}
->
-{: .hands_on}
-
-## Adapter trimming with **fastp**
+## Assessing the quality of the data with `fastp`
 
 Removing sequencing adapters improves alignments and variant calling. {% tool [fastp](toolshed.g2.bx.psu.edu/repos/iuc/fastp/fastp/0.24.0+galaxy4) %} can automatically detect widely used sequencing adapters.
 
@@ -558,9 +490,25 @@ Removing sequencing adapters improves alignments and variant calling. {% tool [f
 >
 > Run {% tool [fastp](toolshed.g2.bx.psu.edu/repos/iuc/fastp/fastp/0.24.0+galaxy4) %} with the following parameters:
 >    - *"Single-end or paired reads"*: `Paired Collection`
->        - {% icon param-file %} *"Select paired collection(s)"*: `list_paired` (output of {% tool [Faster Download and Extract Reads in FASTQ](toolshed.g2.bx.psu.edu/repos/iuc/sra_tools/fasterq_dump/3.1.1+galaxy1) %})
->    - In *"Output Options"*:
->        - *"Output JSON report"*: `Yes`
+>        - {% icon param-file %} *"Select paired collection(s)"*: `list_paired` (output of {% tool [Faster Download and Extract 
+>    - **Click** the `Run Tool` button.
+{: .hands_on}
+
+`Fastp` modifies fiels by removing standard Illumina adapters and applies a number of quality filters. Before proceeding we want to look at the quality report produced by `fastp`. Unfortunately it produces it in not-so-nice-to-look-at [JSON](https://en.wikipedia.org/wiki/JSON) format. Fortunately, there is a tool that would convert this into a graphical summary. This tool is called `multiqc`
+
+> <hands-on-title> Task description </hands-on-title>
+>
+> 1. Run {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy0) %} with the following parameters:
+>    - In *"Results"*:
+>        - {% icon param-repeat %} *"Insert Results"*
+>            - *"Which tool was used generate logs?"*: `fastp`
+>                - {% icon param-file %} *"Output of fastp"*: `NNN: fastp on collection NNN: JSON report` (output of **fastp** {% icon tool %} from the previous step
+>
+>    > <comment-title> short description </comment-title>
+>    >
+>    > A comment about the tool or something else. This box can also be in the main text
+>    {: .comment}
+>
 {: .hands_on}
 
 
