@@ -4,9 +4,14 @@
     "comments": [],
     "creator": [
         {
-            "class": "Organization",
+            "class": "Person",
             "identifier": "0000-0002-5857-1477",
             "name": "Diana Chiang Jurado"
+        },
+        {
+            "class": "Person",
+            "identifier": "0000-0002-5192-126X",
+            "name": "Pavankumar Videm"
         }
     ],
     "format-version": "0.1",
@@ -637,7 +642,7 @@
             ]
         }
     },
-    "tags": [singlecell],
-    "uuid": "7eca9461-a8fc-432f-b708-f83fa30488e7",
-    "version": 9
+    "tags": [],
+    "uuid": "ceb15cc9-f32c-4ade-a7da-ddf59ab9ccdb",
+    "version": 10
 }
