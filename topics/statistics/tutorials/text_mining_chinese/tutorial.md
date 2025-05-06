@@ -9,14 +9,14 @@ questions:
   - What characters were censored in a Chinese newspaper published in Hong Kong in the 1930s?
 objectives:
   - Learn to clean and compare two texts.
-  - Extract specific information out of texts.
+  - Extract specific information from texts.
   - Visualise your results in a word cloud.
 time_estimation: 1H
 key_points:
   - The *diff* tool allows comparing two similar texts automatically
-  - The word cloud shows redactions from the texts at one glance
+  - The word cloud shows redactions from the texts at a glance
 tags:
-- Humanities
+- Digital_Humanities
 - Text_mining
 contributions:
   authorship:
@@ -66,7 +66,7 @@ The machine-readable versions of the Chinese newspaper articles I originally use
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
-> 3. Rename the datasets
+> 3. Rename the datasets, if necessary
 > 4. Check that the datatype is `txt`.
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
@@ -105,12 +105,12 @@ We pre-process and clean both texts to make the comparison easier and more appar
 
 ## Clean up both texts
 
-We will use Regular Expressions in a tool called "Replace text". It contains four different sub-steps. Those will vary if you upload different texts. Apply this step first to the censored and then to the uncensored text to get two cleaned ones.
+We will use Regular Expressions in a tool called "Replace text". It contains four different sub-steps. Those will vary if you upload different texts. Apply this step first to the censored and then to the uncensored text to get two cleaned texts.
 
 > <hands-on-title> Cleaning the Text with Regular Expressions </hands-on-title>
 >
 > 1. {% tool [Replace Text](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/9.5+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"File to process"*: `output` (Input dataset)
+>    - {% icon param-file %} *"File to process"*: `output` (uncensored text)
 >    - In *"Replacement"*:
 >        - {% icon param-repeat %} *"Insert Replacement"*
 >            - *"Find pattern"*: `\r`
@@ -122,12 +122,14 @@ We will use Regular Expressions in a tool called "Replace text". It contains fou
 >        - {% icon param-repeat %} *"Insert Replacement"*
 >            - *"Find pattern"*: `(.)`
 >            - *"Replace with:"*: `\1\n`
->
+>    - Click *"Run Tool"*
+>    Now repeat those steps with the censored text.
+>    
 >    > <comment-title>Explaining the above Regular Expressions</comment-title>
 >    > Regular expressions can not only find particular words, as you might be familiar with from regular text editors.
 >    > It is more powerful and can find particular patterns, for example, only capitalised words or all numbers.
 >    > In this step, we mostly delete unnecessary placeholders.
->    > The first pattern we want to find is `\r`. It catches a specific form of invisible linebreaks that would create unwanted gaps in the comparison later.
+>    > The first pattern we want to find is `\r`. It catches a specific form of invisible line breaks that would create unwanted gaps in the comparison later.
 >    > We delete those by leaving the optional "Replace with" field blank.
 >    > The additional sed commands before replacement `:a;N;$!ba;` catch all blank spaces with this tool.
 >    > It is necessary only once to ensure that particular end-of-line characters are removed consistently.
@@ -158,28 +160,30 @@ Remember to apply those steps to both the censored and the uncensored text. Rena
 
 
 
-## Comparing the censored and uncensored text
+# Comparing the censored and uncensored text
 
 We can now compare the two cleaned texts. This will visualise the differences between the two texts and mark them by colour. Make sure to upload the cleaned censored text with the replacement characters like ‘×’ first. As text two, upload the cleaned uncensored text without the replacement characters.  This version (HTML version) creates an HTML file, which colour codes differences as additions (green) or extractions (red) when comparing the texts.
 
-### Create a _diff_ file for researchers
+## Create a _diff_ file for researchers
 
 > <hands-on-title> Comparing the texts using <em>diff</em> tool </hands-on-title>
 >
 > 1. {% tool [diff](toolshed.g2.bx.psu.edu/repos/bgruening/diff/diff/3.10+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"First input file"*: `outfile` (output of **Replace Text** {% icon tool %})
->    - {% icon param-file %} *"Second input file"*: `outfile` (output of **Replace Text** {% icon tool %})
+>    - {% icon param-file %} *"Cleaned Censored Text"*: `outfile` (output of **Replace Text** {% icon tool %})
+>    - {% icon param-file %} *"Cleaned Uncensored Text"*: `outfile` (output of **Replace Text** {% icon tool %})
 >    - *"Choose a report format"*: `Generates an HTML report to visualize the differences`
->
+>    - Click *"Run Tool"*
 {: .hands_on}
 
-> <question-title> Take a look at the HTML file</question-title>
+The result is two files: an HTML file and a raw output as a by-product.
+
+> <question-title> Take a look at the HTML report</question-title>
 >
-> 1. What can you see in line 20 / 23?
+> 1. What can you see in lines 19 / 21?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. Line 20  on the left shows a red comma on the left side of the table. It corresponds with line 23 on the right, which contains a colon in green. This means the punctuation in the file differs. The censored version contains a comma, while the uncensored one includes a colon.
+> > 1. Line 19  on the left shows a red comma on the left side of the table. It corresponds with line 21 on the right, which contains a colon in green. This means the punctuation in the file differs. The censored version contains a comma, while the uncensored one includes a colon.
 > >
 > {: .solution}
 >
@@ -189,20 +193,21 @@ The HTML file could look like this:
 
 ![Screenshot of the diff tool comparing the censored and uncensored text]({% link topics/statistics/tutorials/text_mining_chinese/images/Diff_WF_HTML.jpg %} "Example of the HTML file comparing the censored and uncensored text")
 
-It shows what passages differ in the two texts. Red parts show deletions and green-coloured areas are additions.
+It shows what passages differ in the two texts. Red parts show deletions, and green-coloured areas are additions.
 This output is very convenient for researchers, as it shows differences quickly. However, it is not helpful for further processing with Galaxy. For this, we run this tool a second time with slightly changed parameters. The output is the basis for our further analysis.
 
 
-### Create a _diff_ file for further processing
-This step runs the text comparison line by line again to create a raw file that the computer can work with.
+## Create a _diff_ file for further processing
+This step runs the text comparison line by line again to create another raw file that the computer can work with.
 It is less intuitive to understand at first glance. Again, clean the censored text with the replacement characters like ‘×’ first and the uncensored text second.
 
 > <hands-on-title> Run another <em>diff</em> tool </hands-on-title>
 >
 > 1. {% tool [diff](toolshed.g2.bx.psu.edu/repos/bgruening/diff/diff/3.10+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"First input file"*: `outfile` (output of **Replace Text** {% icon tool %})
->    - {% icon param-file %} *"Second input file"*: `outfile` (output of **Replace Text** {% icon tool %})
+>    - {% icon param-file %} *"Cleaned Censored Text"*: `outfile` (output of **Replace Text** {% icon tool %})
+>    - {% icon param-file %} *"Cleaned Uncensored Text"*: `outfile` (output of **Replace Text** {% icon tool %})
 >    - *"Choose a report format"*: `Text file, side-by-side (-y)`
+>    - Click *"Run Tool"*
 >
 >    > <comment-title> The output format </comment-title>
 >    > As you can see above, the output of this file is a text file, compared to the HTML in the last step.
@@ -217,32 +222,35 @@ It is less intuitive to understand at first glance. Again, clean the censored te
 >
 > > <solution-title>Answer</solution-title>
 > >
-> > 1. This output is a raw file and shows several columns. Changes between the two texts are not coloured.
-> > Instead, they are marked by various symbols in column 8.
+> > 1. This output is a text file. Changes between the two texts are not coloured.
+> > Instead, they are marked by additional symbols like '>' or '<'.
 > >
 > {: .solution}
 >
 {: .question}
 
+For the further steps, this text format needs to be converted to a tabular format. Click on this last item in your history and select the pen icon. 
+Click on the tab *"Databases"*. Under *"Assign Datatype"*, enter 'tabular' instead of 'txt' from the dropdown menu and click 'save'. You have successfully changed the file's format to tabular, which helps for the next steps.
+Now you can see that the additional symbols like '>' or '<' all appear in Column 8.
 
 # Select only censored lines
 In the next step, we want to extract specific lines only. To determine what content was redacted in the first text, we filter the last step's raw output for lines containing the censorship symbol ×.
-
 
 > <hands-on-title> Filter text </hands-on-title>
 >
 > 1. {% tool [Filter](Filter1) %} with the following parameters:
 >    - {% icon param-file %} *"Filter"*: `diff_file` (output of **diff** {% icon tool %})
 >    - *"With following condition"*: `ord(c1) == 215`
->
+>    - Click *"Run Tool"*
 >
 >
 >    > <details-title> How to select the correct characters here (optional) </details-title>
 >    >
 >    > The condition "ord(c1) == 215" means that column c1's lines, which contain the censored text, are selected if they match ×. The symbol × is unspecific. Therefore, the Unicode identifier of the character (215) is used for clarity in this condition.
 >    {: .details}
->
->
+
+Remember to rename your file "Censored lines". 
+
 >    > <comment-title> Filter for other characters </comment-title>
 >    > Add another Unicode here if you want to select a different character, for example, '□' or '△'.
 >    > For example, you can get the respective code on [Character Code Finder](https://www.mauvecloud.net/charsets/CharCodeFinder.html).
@@ -274,13 +282,12 @@ After filtering for the censored lines, we insert a sub-step to ensure smooth co
 >    - {% icon param-file %} *"Input file"*: `out_file1` (output of **Filter** {% icon tool %})
 >    - *"Input has a header line with column names?"*: `No`
 >        - In *"Expressions"*:
->            - {% icon param-repeat %} *"Insert Expressions"*
 >                - *"Add expression"*: `c9`
 >                - *"Mode of the operation"*: `Replace`
 >                    - *"Use new column to replace column number"*: `9`
 >    - In *"Error handling"*:
 >        - *"If an expression cannot be computed for a row"*: `Produce an empty column value for the row`
->
+>    - Click *"Run Tool"*
 {: .hands_on}
 
 
@@ -296,8 +303,9 @@ This step sums up how often each character appeared in the table before.
 >    - *"Sort input"*: `Yes`
 >    - In *"Operation to perform on each group"*:
 >        - {% icon param-repeat %} *"Insert Operation to perform on each group"*
->            - *"On column"*: `c9`
->
+>            - *"Type"*: `count` 
+>            - *"On column"*: `column 9`
+>   - Click *"Run Tool"*
 {: .hands_on}
 
 > <question-title></question-title>
@@ -322,7 +330,8 @@ If you are only interested in the quantitative results, this can be your final o
 > 1. {% tool [Sort](sort1) %} with the following parameters:
 >    - {% icon param-file %} *"Sort Dataset"*: `out_file` (output of **Datamash** {% icon tool %})
 >    - *"on column"*: `c2`
->
+>    - Click *"Run Tool"*
+> 
 >    > <comment-title> How to sort? </comment-title>
 >    >
 >    > Select column `c2` because it contains the character frequency.
@@ -346,7 +355,9 @@ Why would the British Hong Kong Government consistently censor this character? J
 
 # Cut out the censored characters only
 
-If you want to visualise your results, this step gets you there. We select only the uncensored characters from text two. The result is only one column with different rows of Chinese characters.
+If you want to visualise your results, this step gets you there. 
+#todo continue - how to select the correct input
+We select only the uncensored characters from text two. The result is only one column with different rows of Chinese characters.
 It allows scaling words by frequency in the word cloud in the next step. As a result, characters that appear more often appear bigger, making the results evident at first sight.
 
 > <hands-on-title> Select the censored characters </hands-on-title>
@@ -399,4 +410,4 @@ The uploaded dummy texts contained several differences. They used slightly diffe
 
 Within this workflow, we first unified the layout of both texts, showing one character per line for an easier comparison with *diff* tool. The tool marked the differences between both texts in colour. Afterwards, we extracted only lines censored with ×. The extraction of the results ran in two strands: One was counting and sorting the results. This will answer what characters the British Hong Kong Government censored in their Chinese newspapers in the 1930s: Based on the (simplified) dummy texts, the characters were 敵 (enemy), 寇 (brave) and 日 (Japan). The character for *enemy* dominates and was censored five times more often than the character for *brave*.
 
-What do those findings tell us? The British Hong Kong Government avoided publishing newspapers with a strong stand against Japan. Why? Because the British colony Hong Kong, with a large Chinese population, is located very close to the Chinese mainland. Especially after the Japanese army invaded China in the summer of 1937, the British had to walk a tightrope. They tried to support the Chinese efforts without offending Japan. As a British outpost, Hong Kong had little military power and would not withstand a Japanese attack for long. Therefore, the British tried to appease the Japanese Government and avoid an attack. Calling them brave or enemy openly would have been dangerous. The one redaction of 日 (Japan) is very uncommon. This shows that the censorship practices were adaptable and not always unified. Censoring Hong Kong's newspapers to avoid anti-Japanese content is, therefore, a practical example of how appeasement policies from the British Government were implemented locally. This newspaper comparison is consistent with the findings in archival sources that I also researched for my dissertation ({% cite Schneider2024 %}) and lays the censored characters open for the first time.
+What do those findings tell us? The British Hong Kong Government avoided publishing newspapers with a strong stand against Japan. Why? Because the British colony of Hong Kong, with a large Chinese population, is located very close to the Chinese mainland. Especially after the Japanese army invaded China in the summer of 1937, the British had to walk a tightrope. They tried to support the Chinese efforts without offending Japan. As a British outpost, Hong Kong had little military power and would not withstand a Japanese attack for long. Therefore, the British tried to appease the Japanese Government and avoid an attack. Calling them brave or enemies openly would have been dangerous. The one redaction of 日 (Japan) is very uncommon. This shows that the censorship practices were adaptable and not always unified. Censoring Hong Kong's newspapers to avoid anti-Japanese content is, therefore, a practical example of how appeasement policies from the British Government were implemented locally. This newspaper comparison is consistent with the findings in archival sources that I also researched for my dissertation ({% cite Schneider2024 %}) and lays the censored characters open for the first time.
