@@ -4,21 +4,30 @@ title: Pseudobulk Analysis with Decoupler and EdgeR
 subtopic: exploratory
 zenodo_link: https://zenodo.org/records/15275834
 questions:
-- How does pseudobulk analysis help in understanding cell-type-specific gene expression changes?
-- What steps are required to prepare single-cell data (e.g., clustering, annotation, and metadata addition) for pseudobulk analysis?
-- How can we use pseudobulk data prepared with Decoupler to perform differential expression analysis using edgeR in Galaxy?
+- How does pseudobulk analysis help in understanding cell-type-specific gene expression
+  changes?
+- What steps are required to prepare single-cell data (e.g., clustering, annotation,
+  and metadata addition) for pseudobulk analysis?
+- How can we use pseudobulk data prepared with Decoupler to perform differential expression
+  analysis using edgeR in Galaxy?
 objectives:
 - Understand the principles of pseudobulk analysis in single-cell data
 - Understand and generate the pseudobulk expression matrix with Decoupler
 - Perform differential expression analysis using edgeR
 time_estimation: 4H
 key_points:
-- The advantage of pseudobulk analysis is that it bridges single-cell and bulk RNA-seq approaches, combining high resolution with statistical robustness.
-- Metadata is important because proper annotation and metadata, such as cell types and conditions, are needed for generating pseudobulk matrices.
-- Decoupler plays a key role by generating pseudobulk matrices with flexibility in filtering and visualization.
-- edgeR provides robust differential expression analysis, taking into account biological and technical variability.
-- Visualization and interpretation are essential, with tools like Volcano Plots highlighting significant genes and trends in differential expression.
-- Before starting this tutorial, prior knowledge of PBMC analysis and combining single-cell datasets is recommended.
+- The advantage of pseudobulk analysis is that it bridges single-cell and bulk RNA-seq
+  approaches, combining high resolution with statistical robustness.
+- Metadata is important because proper annotation and metadata, such as cell types
+  and conditions, are needed for generating pseudobulk matrices.
+- Decoupler plays a key role by generating pseudobulk matrices with flexibility in
+  filtering and visualization.
+- edgeR provides robust differential expression analysis, taking into account biological
+  and technical variability.
+- Visualization and interpretation are essential, with tools like Volcano Plots highlighting
+  significant genes and trends in differential expression.
+- Before starting this tutorial, prior knowledge of PBMC analysis and combining single-cell
+  datasets is recommended.
 requirements:
 - type: internal
   topic_name: single-cell
@@ -26,31 +35,42 @@ requirements:
   - scrna-scanpy-pbmc3k
 contributions:
   authorship:
-    - dianichj
+  - dianichj
   editing:
-    - pavanvidem
+  - pavanvidem
 tags:
 - transcriptomics
 - pseudobulk
-
 answer_histories:
-  - label: "UseGalaxy.eu"
-    history: https://usegalaxy.eu/u/dianitachj24/h/pseudo-bulk-edger-11-04-2025
-    date: 2025-04-11
-  - label: "UseGalaxy.eu"
-    history: https://usegalaxy.eu/u/dianitachj24/h/pseudo-bulk-edger-pdcs-11-04-2025
-    date: 2025-04-11
-  - label: "UseGalaxy.eu"
-    history: https://usegalaxy.eu/u/dianitachj24/h/pseudo-bulk-edger-ncms-11-04-2025
-    date: 2025-04-11
+- label: UseGalaxy.eu
+  history: https://usegalaxy.eu/u/dianitachj24/h/pseudo-bulk-edger-11-04-2025
+  date: 2025-04-11
+- label: UseGalaxy.eu
+  history: https://usegalaxy.eu/u/dianitachj24/h/pseudo-bulk-edger-pdcs-11-04-2025
+  date: 2025-04-11
+- label: UseGalaxy.eu
+  history: https://usegalaxy.eu/u/dianitachj24/h/pseudo-bulk-edger-ncms-11-04-2025
+  date: 2025-04-11
 follow_up_training:
--
-    type: "internal"
-    topic_name: single-cell
-    tutorials:
-        - EBI-retrieval
-        - GO-enrichment
+- type: internal
+  topic_name: single-cell
+  tutorials:
+  - EBI-retrieval
+  - GO-enrichment
+recordings:
+- youtube_id: h76T5ZLfVgw
+  length: 50M
+  galaxy_version: 24.2.4.dev0
+  date: '2025-05-02'
+  speakers:
+  - dianichj
+  captioners:
+  - dianichj
+  bot-timestamp: 1746186506
+
+
 ---
+
 
 Pseudobulk analysis is a powerful technique that bridges the gap between single-cell and bulk RNA-seq data. It involves aggregating gene expression data from groups of cells within the same biological replicate, such as a mouse or patient, typically based on clustering or cell type annotations ({% cite Murphy2022 %}).
 
