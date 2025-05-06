@@ -9,6 +9,7 @@ objectives:
   - "Understand most common types of NGS-related datatypes"
   - "Learn about how Galaxy handles NGS data using Illumina data derived from patients infected with SARS-CoV-2"
 time_estimation: "1H30M"
+level: Introductory
 key_points:
   - "FASTQ Sanger version of the format is considered to be the standard form of FASTQ."
   - "Paired end data can be provided as two files or as an interleaved one."
@@ -55,6 +56,14 @@ answer_histories:
 ---
 
 In this section, we will look at practical aspects of manipulation of next-generation sequencing data. We will start with the FASTQ format produced by most sequencing machines and will finish with the SAM/BAM format representing mapped reads.
+
+## The Story
+
+To make this tutorial as realistic as possible we wanted to use an example from real world. We will start with four sequencing datasets (fastq files) representing four individuals positive for malaria---a life-threatening disease caused by *Plasmodium* parasites, transmitted to humans through the bites of infected female *Anopheles* mosquitoes. 
+
+Our goal is to understand whether the malaria parasite ([*Plasmodium falciparum*](https://brc-analytics.dev.clevercanary.com/data/organisms/5833)) infecting these individuals is resistant to [Pyrimethamine](https://en.wikipedia.org/wiki/Pyrimethamine)---an antimalaria drug. Resistance to Pyrimethamine is conferred by a mutation in `PF3D7_0417200` (*dhfr*) gene {% cite Cowman1988-fy %}. An outline of our analysis looks like this:
+
+![analysis_outline](../../../galaxy-interface/images/collections/collection_lifecycle.svg "This figure represents a \"typical\" analysis of NGS. Here analysis is progressing from raw fastq files (colored arrows), to mapping (converting them to BAM format), and downstream processing such as variant calling (which proiduces VCF datasets). Finally data is aggregated and merged to create the final result")
 
 ## FASTQ manipulation and quality control
 
