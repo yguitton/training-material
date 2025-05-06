@@ -1462,7 +1462,7 @@
             ]
         }
     },
-    "tags": [],
+    "tags": ["proteomics"],
     "uuid": "aa9a1087-989c-4f5e-8651-937b668f3f3f",
     "version": 8
 }
