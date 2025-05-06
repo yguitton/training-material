@@ -642,7 +642,10 @@
             ]
         }
     },
-    "tags": [],
+     "tags": [
+        "single-cell",
+        "pseudobulk"
+    ],
     "uuid": "ceb15cc9-f32c-4ade-a7da-ddf59ab9ccdb",
     "version": 10
 }
