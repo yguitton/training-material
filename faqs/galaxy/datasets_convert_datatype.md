@@ -12,7 +12,7 @@ examples:
     conversion: BAM
 ---
 
-* Click on the {% icon galaxy-pencil %} **pencil icon** for the dataset to edit its attributes
-* In the central panel, click on the {% icon galaxy-gear %} **Convert** tab on the top
-* In the upper part {% icon galaxy-gear %} **Convert**, select {% if include.conversion %}`{{ include.conversion }}`{% else %}the appropriate datatype from the list {% endif %}
+* Click on the {% icon galaxy-pencil %} pencil icon for the dataset to edit its attributes.
+* In the central panel, click {% icon galaxy-chart-select-data %} Datatypes tab on the top.
+* In the {% icon galaxy-gear %} Convert to Datatype section, select {% if include.datatype %}`{{ include.datatype }}`{% else %} your desired           datatype {% endif %} from "Target datatype" dropdown.
 * Click the **Create dataset** button to start the conversion.
