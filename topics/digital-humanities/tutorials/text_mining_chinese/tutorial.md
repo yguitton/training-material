@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 redirect_from:
-  - /topics/statistics/tutorials/text-mining_chinese/tutorial
+  - /topics/statistics/tutorials/text_mining_chinese/tutorial
 
 title: Text-Mining Differences in Chinese Newspaper Articles
 level: Introductory
