@@ -233,7 +233,7 @@ The tools we use in the next steps need tabular files. Therefore, we will change
 
 > <hands-on-title>Change Datatype</hands-on-title>
 >
-> 1. **Set the datatype** {% icon pencil %} to `tabular`
+> 1. **Set the datatype** {% icon galaxy-pencil %} to `tabular`
 > 
 >    {% snippet faqs/datasets_change_datatype.md datatype="tabular" %}
 
