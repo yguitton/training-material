@@ -124,7 +124,7 @@ We will use Regular Expressions in a tool called "Replace text". It contains fou
 >            - *"Replace with:"*: `\1\n`
 >    - Click *"Run Tool"*
 >    Now repeat those steps with the censored text.
->    
+>
 >    > <comment-title>Explaining the above Regular Expressions</comment-title>
 >    > Regular expressions can not only find particular words, as you might be familiar with from regular text editors.
 >    > It is more powerful and can find particular patterns, for example, only capitalised words or all numbers.
@@ -234,9 +234,8 @@ The tools we use in the next steps need tabular files. Therefore, we will change
 > <hands-on-title>Change Datatype</hands-on-title>
 >
 > 1. **Set the datatype** {% icon galaxy-pencil %} to `tabular`
-> 
->    {% snippet faqs/datasets_change_datatype.md datatype="tabular" %}
-
+>
+>    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
 >
 {: .hands_on}
 
@@ -258,15 +257,15 @@ In the next step, we want to extract specific lines only. To determine what cont
 >    >
 >    > The condition "ord(c1) == 215" means that column c1's lines, which contain the censored text, are selected if they match ×. The symbol × is unspecific. Therefore, the Unicode identifier of the character (215) is used for clarity in this condition.
 >    {: .details}
-{: .hands_on}
-
-Remember to rename your file "Censored lines". 
-
+>
+> Remember to rename your file "Censored lines".
+>
 >    > <comment-title> Filter for other characters </comment-title>
 >    > Add another Unicode here if you want to select a different character, for example, '□' or '△'.
 >    > For example, you can get the respective code on [Character Code Finder](https://www.mauvecloud.net/charsets/CharCodeFinder.html).
 >    > Copy the character you want to filter for in the "input" window and select "Decimal Character Codes" as an output. If you do this for symbol ×, you get 215.
 >    {: .comment}
+>
 {: .hands_on}
 
 
@@ -315,7 +314,7 @@ This step sums up how often each character appeared in the table before.
 >    - *"Sort input"*: `Yes`
 >    - In *"Operation to perform on each group"*:
 >        - {% icon param-repeat %} *"Insert Operation to perform on each group"*
->            - *"Type"*: `count` 
+>            - *"Type"*: `count`
 >            - *"On column"*: `column 9`
 >   - Click *"Run Tool"*
 {: .hands_on}
@@ -343,7 +342,7 @@ If you are only interested in the quantitative results, this can be your final o
 >    - {% icon param-file %} *"Sort Dataset"*: `out_file` (output of **Datamash** {% icon tool %})
 >    - *"on column"*: `c2`
 >    - Click *"Run Tool"*
-> 
+>
 >    > <comment-title> How to sort? </comment-title>
 >    >
 >    > Select column `c2` because it contains the character frequency.
@@ -367,7 +366,7 @@ Why would the British Hong Kong Government consistently censor this character? J
 
 # Cut out the censored characters only
 
-If you want to visualise your results, this step gets you there. We use the file "Censored lines final", which we created in the step "Ensure consistent file format". 
+If you want to visualise your results, this step gets you there. We use the file "Censored lines final", which we created in the step "Ensure consistent file format".
 Unlike the last step, this tabular file contains all 13 lines in 9 columns.
 From this file, we cut out all uncensored characters. The result is only one column with different rows of Chinese characters.
 It allows scaling words by frequency in the word cloud in the next step. As a result, characters that appear more often appear bigger, making the results evident at first sight.
@@ -378,7 +377,7 @@ It allows scaling words by frequency in the word cloud in the next step. As a re
 >    - *"Cut columns"*: `c9`
 >    - {% icon param-file %} *"From"*: `out_file1` (output of **Compute** {% icon tool %})
 >    - Click *"Run Tool"*
-> 
+>
 >    > <details-title> What do I select here? (optional) </details-title>
 >    >
 >    > `c9` means column 9. It contains the uncensored characters from text two and is, therefore, cut out in this step.
