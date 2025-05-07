@@ -230,8 +230,7 @@ Galaxy can convert these two formats into each other.
 >    >
 >    > > <solution-title></solution-title>
 >    > >
->    > > 1. Galaxy does not display the table as nicely as before.
->    > >    This is because Galaxy is optimized to work with `tsv` files. For most rows you now see commas separating the different columns.
+>    > > 1. The display in the center panel should be indistinguishable from before the conversion; however, if you look at the "quick view" of the data in the history step, you will see the commas separating columns.
 >    > > 2. If the data in a column contains a comma (e.g. in this file we have events such as `swimming 5,000 meters`), we put the value in quotes to signify that that comma is part of the data, not a column delimiter.
 >    > >
 >    > {: .solution}
