@@ -29,7 +29,7 @@ program:
       - name: scrna-data-formats
         topic: single-cell
 
-- section: "Raw sequencing data to count matrix"
+  - section: "Raw sequencing data to count matrix"
     description: |
       Generate a cell-by-gene matrix from droplet-based single-cell RNA sequencing data.
       - name: scrna-preprocessing-tenx
@@ -37,7 +37,7 @@ program:
       - name: scrna-case_alevin
         topic: single-cell
 
- - section: "Your first analysis based on Scanpy toolkit"
+  - section: "Your first analysis based on Scanpy toolkit"
     description: |
       This section includes creation a count matrix from 10x data; standard single-cell data analysis, including preprocessing, clustering and the identification of cell types via known marker genes; and pseudobulk analysis to help in understanding cell-type-specific gene expression changes. The whole analysis uses Anndata objects, Scanpy toolkit and decoupler.
     tutorials:
@@ -46,7 +46,7 @@ program:
       - name: pseudobulk-analysis
         topic: single-cell
 
-- section: "Your first analysis based on Seurat tools"
+  - section: "Your first analysis based on Seurat tools"
     description: |
       This section includes single-cell data analysis including preprocessing, clustering and the identification of cell types via known marker genes. The whole analysis uses Seurat objects and Seurat R package.
       - name: scrna-seurat-pbmc3k
