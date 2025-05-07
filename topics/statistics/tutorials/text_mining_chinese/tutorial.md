@@ -229,8 +229,18 @@ It is less intuitive to understand at first glance. Again, clean the censored te
 >
 {: .question}
 
-For the further steps, this text format needs to be converted to a tabular format. Click on this last item in your history and select the pen icon. 
-Click on the tab *"Databases"*. Under *"Assign Datatype"*, enter 'tabular' instead of 'txt' from the dropdown menu and click 'save'. You have successfully changed the file's format to tabular, which helps for the next steps.
+The tools we use in the next steps need tabular files. Therefore, we will change the datatype of this last text file to a tabular file to enable the next steps:
+
+> <hands-on-title>Change Datatype</hands-on-title>
+>
+> 1. **Set the datatype** {% icon pencil %} to `tabular`
+> 
+>    {% snippet faqs/datasets_change_datatype.md datatype="tabular" %}
+
+>
+{: .hands_on}
+
+You have successfully changed the file's format to tabular, which helps for the next steps.
 Now you can see that the additional symbols like '>' or '<' all appear in Column 8.
 
 # Select only censored lines
