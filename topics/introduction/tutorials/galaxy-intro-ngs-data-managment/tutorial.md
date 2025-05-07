@@ -387,6 +387,20 @@ However, one has to be careful when removing duplicates in cases when the sequen
 ![Sampling bias](../../images/sampling-bias.png "The Variant Allele Frequency (VAF) bias determined by coverage and insert size variance. Reads are paired-end and read length is 76. The insert size distribution is modeled as a Gaussian distribution with mean at 200 and standard deviation shown on the X-axis. The true VAF is 0.05. The darkness at each position indicates the magnitude of the bias in the VAF ({% cite Zhou2014 %}).")
 
 
+```
+
+https://zenodo.org/records/15354240/files/ERR042228_F.fq.gz
+https://zenodo.org/records/15354240/files/ERR042228_R.fq.gz
+https://zenodo.org/records/15354240/files/ERR042232_F.fq.gz
+https://zenodo.org/records/15354240/files/ERR042232_R.fq.gz
+https://zenodo.org/records/15354240/files/ERR636028_F.fq.gz
+https://zenodo.org/records/15354240/files/ERR636028_R.fq.gz
+https://zenodo.org/records/15354240/files/ERR636434_F.fq.gz
+https://zenodo.org/records/15354240/files/ERR636434_R.fq.gz
+
+```
+
+
 # Getting NGS data to Galaxy
 
 You can upload data in Galaxy using one of these ways:
@@ -412,7 +426,7 @@ Finally, datasets can be uploaded directly from NCBI's Short Read Archive (SRA):
 
 # Let's do it: From reads to variants
 
-In primary analysis we start with raw sequencing data (e.g., fastq reads) and convert them into a dataset for secondary analysis. Such secomdary analysis dataset can be a list of sequence variants, a collection of ChIP-seq peaks, a list of differentially expressed genes and so on.
+In primary analysis we start with raw sequencing data (e.g., fastq reads) and convert them into a dataset for secondary analysis. Such secondary analysis dataset can be a list of sequence variants, a collection of ChIP-seq peaks, a list of deferentially expressed genes and so on.
 
 In this tutorial we will use data from four infected indifiduals:
 
@@ -423,7 +437,7 @@ In this tutorial we will use data from four infected indifiduals:
 | ERR042232 | Colombia |
 | ERR042228 | Colombia |
 
-The accessions correspond to datasets stores in the [Sequence Read Archive](https://www.ncbi.nlm.nih.gov/sra) at NCBI. Our goal to test whether malaria poarasdite infecting these individual is resistant to pyrimethamine drug treatment or not. In ordrr to reach this conclusion we need:
+The accessions correspond to datasets stores in the [Sequence Read Archive](https://www.ncbi.nlm.nih.gov/sra) at NCBI. Our goal to test whether malaria parasite infecting these individual is resistant to pyrimethamine drug treatment or not. In ordrr to reach this conclusion we need:
 
 1. Upload the data
 2. Assess the quality of the reads
@@ -464,52 +478,69 @@ You can think of the dataset we just uploaded as "manifest". You can upload any 
 
 > <hands-on-title>Get data from SRA</hands-on-title>
 >
-> 1. Run {% tool [Faster Download and Extract Reads in FASTQ](toolshed.g2.bx.psu.edu/repos/iuc/sra_tools/fasterq_dump/3.1.1+galaxy1) %} with the following parameters:
->    - *"select input type"*: `List of SRA accession, one per line`
->        - The parameter {% icon param-file %} *"sra accession list"* should point the output of the `accessions` datasets we just craeted above.
->    - **Click** the `Run Tool` button. This will run the tool, which retrieves the sequence read datasets for the runs that were listed in the `SRA` dataset. It may take some time. So this may be a good time to take a break.
+> Run {% tool [Faster Download and Extract Reads in FASTQ](toolshed.g2.bx.psu.edu/repos/iuc/sra_tools/fasterq_dump/3.1.1+galaxy1) %} with the following parameters:
 >
-> 2. Several entries are created in your history panel when you submit this job:
->    - **`Pair-end data (fasterq-dump)`**: Contains Paired-end datasets (if available)
->    - **`Single-end data (fasterq-dump)`** Contains Single-end datasets (if available)
->    - **`Other data (fasterq-dump)`** Contains Unpaired datasets (if available)
->    - **`fasterq-dump log`** Contains Information about the tool execution
+> ![fasterq_download interface](../../images/fastq_download.png)
+>  
 {: .hands_on}
+
+This step will generate four history items:
+
+1. Pair-end data
+1. Single-end data
+1. Other data
+1. Fasterq-dump
 
 The first three items are actually *collections* of datasets. *Collections* in Galaxy are logical groupings of datasets that reflect the semantic relationships between them in the experiment / analysis. In this case, the tool creates separate collections for paired-end reads, single reads, and *other*. (For more information on Collections see the [Collections tutorial]({% link topics/galaxy-interface/tutorials/collections/tutorial.md %}).
 
 Explore the collections by first **clicking** on the collection name in the history panel. This takes you inside the collection and shows you the datasets in it.  You can then navigate back to the outer level of your history.
 
-Once {% tool [Faster Download and Extract Reads in FASTQ](toolshed.g2.bx.psu.edu/repos/iuc/sra_tools/fasterq_dump/3.1.1+galaxy1) %} finishes transferring data (all boxes are green / done), we are ready to analyze it.
+Once {% tool [Faster Download and Extract Reads in FASTQ](toolshed.g2.bx.psu.edu/repos/iuc/sra_tools/fasterq_dump/3.1.1+galaxy1) %} finishes transferring data (all boxes are green), we are ready to analyze it.
 
-## Assessing the quality of the data with `fastp`
+## Assessing the quality of the data with `fastp` and `multiqc`
 
 Removing sequencing adapters improves alignments and variant calling. {% tool [fastp](toolshed.g2.bx.psu.edu/repos/iuc/fastp/fastp/0.24.0+galaxy4) %} can automatically detect widely used sequencing adapters.
 
 > <hands-on-title>Running `fastp`</hands-on-title>
 >
 > Run {% tool [fastp](toolshed.g2.bx.psu.edu/repos/iuc/fastp/fastp/0.24.0+galaxy4) %} with the following parameters:
->    - *"Single-end or paired reads"*: `Paired Collection`
->        - {% icon param-file %} *"Select paired collection(s)"*: `list_paired` (output of {% tool [Faster Download and Extract 
->    - **Click** the `Run Tool` button.
-{: .hands_on}
-
-`Fastp` modifies fiels by removing standard Illumina adapters and applies a number of quality filters. Before proceeding we want to look at the quality report produced by `fastp`. Unfortunately it produces it in not-so-nice-to-look-at [JSON](https://en.wikipedia.org/wiki/JSON) format. Fortunately, there is a tool that would convert this into a graphical summary. This tool is called `multiqc`
-
-> <hands-on-title> Task description </hands-on-title>
+> 
+> ![fastp interface](../../images/fastp.svg) 
 >
-> 1. Run {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy0) %} with the following parameters:
->    - In *"Results"*:
->        - {% icon param-repeat %} *"Insert Results"*
->            - *"Which tool was used generate logs?"*: `fastp`
->                - {% icon param-file %} *"Output of fastp"*: `NNN: fastp on collection NNN: JSON report` (output of **fastp** {% icon tool %} from the previous step
+> Fastp modifies files by removing standard Illumina adapters and applies a number of quality filters generating "Cleaned up data" shown above) as well as HTML and JSON reports as three collections: 
 >
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
+> ![fastp history items](../../images/fastp_history.svg) 
 >
 {: .hands_on}
+
+<!-- 
+Original editable versions of the above images are here:
+
+https://docs.google.com/drawings/d/1l4qF5NKITpJVJKL8mzoLpnvRWaeZpgLyM5Ygi_j-GFc/edit?usp=sharing and
+https://docs.google.com/drawings/d/1cKDe3i5pPXyGoLXkVsTxVyKz_BF-8ETVDzU5qVe6g1s/edit?usp=sharing
+
+-->
+
+You can click on individual HTML reports to get an idea about the quality of the data and degree of "cleanup". However, clicking on each dataset individually can become problematic if the number of datasets is large (you don't want to click on hundred datasets, for example). We can visualize the QC data provided by `fastp` by feeding its JSON output to `multiqc`.
+
+> <hands-on-title>Running `multiqc` on `fastp` JSON data</hands-on-title>
+>
+> Run {% tool [multiqc](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.27+galaxy3) %} with the following parameters:
+> 
+> ![multiqc interface](../../images/multiqc.svg) 
+>
+> `multiqc` will produce two outputs, but the one you care about has a work "Webpage" in it:
+>
+> ![multiqc history item](../../images/multiqc_history.svg) 
+>
+> Click on the {% icon galaxy-eye %} (eye) icon and you will the QC report.
+>
+{: .hands_on}
+
+
+
+ffff
+
 
 
 ## Alignment with  **Map with BWA-MEM**
