@@ -300,8 +300,11 @@ This file will be used as the contrast input file in the edgeR tool.
 > 1. {% tool [Text Reformatting](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/9.3+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `Samples Metadata` (output generated from the **Replace Text** {% icon tool %} step).
 >    - *"AWK Program"*:
->      ```awk
->      BEGIN { print "header" } NR > 1 { if (!seen[$2]++) words[++count]=$2 } END { for (i=1; i<=count; i++) for (j=i+1; j<=count; j++) print words[i]"-"words[j] }
+>      ```BEGIN { print "header" }
+>         NR > 1 { if (!seen[$2]++) words[++count]=$2 }
+>         END { for (i=1; i<=count; i++)
+>             for (j=i+1; j<=count; j++)
+>               print words[i]"-"words[j] }
 >      ```
 >
 > Rename to **Contrast File** 
