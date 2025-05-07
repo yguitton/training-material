@@ -1,11 +1,7 @@
-- doc: Test outline for Workflow-constructed-from-history-'Develoment-GTN-test'
+- doc: Test outline for main_workflow
   job:
-    JBKZXA01.fasta.gz:
-      class: File
-      path: test-data/JBKZXA01.fasta.gz.fasta
-      filetype: fasta
-    reads:
-      class: File
-      path: test-data/reads.fastqsanger.gz
-      filetype: fastqsanger.gz
-  outputs: {}
+  outputs: 
+    quast_report_html:
+      asserts:
+        has_text:
+          text: '<html'
