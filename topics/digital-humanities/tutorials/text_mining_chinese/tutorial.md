@@ -18,8 +18,7 @@ key_points:
   - The *diff* tool allows comparing two similar texts automatically
   - The word cloud shows redactions from the texts at a glance
 tags:
-- Digital_Humanities
-- Text_mining
+- text mining
 contributions:
   authorship:
   - Sch-Da
