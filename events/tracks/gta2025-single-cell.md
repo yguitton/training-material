@@ -40,7 +40,7 @@ program:
 
   - section: "Your first analysis based on Scanpy toolkit"
     description: |
-      This section includes creation a count matrix from 10x data; standard single-cell data analysis, including preprocessing, clustering and the identification of cell types via known marker genes; and pseudobulk analysis to help in understanding cell-type-specific gene expression changes. The whole analysis uses Anndata objects, Scanpy toolkit and decoupler.
+      This section includes standard single-cell data analysis, including preprocessing, clustering and the identification of cell types via known marker genes; and pseudobulk analysis to help in understanding cell-type-specific gene expression changes. The whole analysis uses Anndata objects, Scanpy toolkit and decoupler.
     tutorials:
       - name: scrna-scanpy-pbmc3k
         topic: single-cell
