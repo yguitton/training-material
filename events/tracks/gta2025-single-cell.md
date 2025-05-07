@@ -20,19 +20,36 @@ contributions:
 
 
 program:
-  - section: "Single Cell"
+  - section: "Introduction"
     description: |
-      If you encounter any issue please ask us in this Slack channel.
+      Introduction lecture to single-cell data analysis and data formats.
     tutorials:
       - name: scrna-intro
         topic: single-cell
       - name: scrna-data-formats
         topic: single-cell
+
+- section: "Raw sequencing data to count matrix"
+    description: |
+      Generate a cell-by-gene matrix from droplet-based single-cell RNA sequencing data.
       - name: scrna-preprocessing-tenx
         topic: single-cell
+      - name: scrna-case_alevin
+        topic: single-cell
+
+ - section: "Your first analysis based on Scanpy toolkit"
+    description: |
+      This section includes creation a count matrix from 10x data; standard single-cell data analysis, including preprocessing, clustering and the identification of cell types via known marker genes; and pseudobulk analysis to help in understanding cell-type-specific gene expression changes. The whole analysis uses Anndata objects, Scanpy toolkit and decoupler.
+    tutorials:
       - name: scrna-scanpy-pbmc3k
         topic: single-cell
-      - name: scrna-case_alevin
+      - name: pseudobulk-analysis
+        topic: single-cell
+
+- section: "Your first analysis based on Seurat tools"
+    description: |
+      This section includes single-cell data analysis including preprocessing, clustering and the identification of cell types via known marker genes. The whole analysis uses Seurat objects and Seurat R package.
+      - name: scrna-seurat-pbmc3k
         topic: single-cell
 
 ---
