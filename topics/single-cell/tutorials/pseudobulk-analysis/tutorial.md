@@ -513,10 +513,14 @@ If you would like to extract all annotated clusters at once, for example to anal
 >    >
 >    > In addition to performing the filtering yourself, the `pDCs` and `Monocytes_NC` clusters have also been pre-extracted and are available for direct download.  
 >    > This allows you to jump ahead and run the downstream workflows independently for each cluster, as described later in this tutorial.  
->    >  
->    > Download the pre-filtered datasets from Zenodo:
->    > - **Monocytes_NC_subset**: [Download](https://zenodo.org/records/15275834/files/Monocytes_NC_subset.h5ad?download=1)  
->    > - **pDCs_subset**: [Download](https://zenodo.org/records/15275834/files/pDCs_subset.h5ad?download=1)
+>    >
+>    > Import the pre-filtered datasets from Zenodo:
+>    >
+>    > ```
+>    > {{ page.zenodo_link }}/files/Monocytes_NC_subset.h5ad
+>    > {{ page.zenodo_link }}/files/pDCs_subset.h5ad
+>    > ```
+>    >
 >    {: .comment}
 >
 {: .hands_on}
