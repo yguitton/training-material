@@ -290,6 +290,7 @@ After filtering for the censored lines, we insert a sub-step to ensure smooth co
 >    - Click *"Run Tool"*
 {: .hands_on}
 
+Rename the result to "Censored lines final".
 
 # Summarise your findings
 
@@ -355,9 +356,9 @@ Why would the British Hong Kong Government consistently censor this character? J
 
 # Cut out the censored characters only
 
-If you want to visualise your results, this step gets you there. 
-#todo continue - how to select the correct input
-We select only the uncensored characters from text two. The result is only one column with different rows of Chinese characters.
+If you want to visualise your results, this step gets you there. We use the file "Censored lines final", which we created in the step "Ensure consistent file format". 
+Unlike the last step, this tabular file contains all 13 lines in 9 columns.
+From this file, we cut out all uncensored characters. The result is only one column with different rows of Chinese characters.
 It allows scaling words by frequency in the word cloud in the next step. As a result, characters that appear more often appear bigger, making the results evident at first sight.
 
 > <hands-on-title> Select the censored characters </hands-on-title>
@@ -365,7 +366,8 @@ It allows scaling words by frequency in the word cloud in the next step. As a re
 > 1. {% tool [Cut](Cut1) %} with the following parameters:
 >    - *"Cut columns"*: `c9`
 >    - {% icon param-file %} *"From"*: `out_file1` (output of **Compute** {% icon tool %})
->
+>    - Click *"Run Tool"*
+> 
 >    > <details-title> What do I select here? (optional) </details-title>
 >    >
 >    > `c9` means column 9. It contains the uncensored characters from text two and is, therefore, cut out in this step.
@@ -375,7 +377,7 @@ It allows scaling words by frequency in the word cloud in the next step. As a re
 
 # Generate a word cloud
 
-The last step is to visualise the results within a word cloud. It shows, which characters were censored in the first text. The bigger the word, the more often it appeared in the text.
+The last step is to visualise the results within a word cloud. It shows which characters were censored in the first text. The bigger the word, the more often it appeared in the text.
 
 > <hands-on-title> Task description </hands-on-title>
 >
@@ -390,7 +392,7 @@ The last step is to visualise the results within a word cloud. It shows, which c
 >    > <details-title> Optimise your word cloud (optional) </details-title>
 >    >
 >    > You can choose different colours to suit your needs. The higher the "Ratio of times to try horizontal fitting as opposed to vertical" is towards "1", the more likely the character or word will appear horizontally.
->    > "Scaling of words by frequency (0 - 1)" allows you to scale the words according to their amount. The smaller this number, the more equal-sized the characters in your word cloud will be, no matter their amount.
+>    > "Scaling of words by frequency (0 - 1)" allows you to scale the words according to their frequency. The smaller this number, the more equal-sized the characters in your word cloud will be, no matter their amount.
 >    {: .details}
 >
 {: .hands_on}
