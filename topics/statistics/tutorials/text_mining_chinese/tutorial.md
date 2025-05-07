@@ -248,6 +248,7 @@ In the next step, we want to extract specific lines only. To determine what cont
 >    >
 >    > The condition "ord(c1) == 215" means that column c1's lines, which contain the censored text, are selected if they match ×. The symbol × is unspecific. Therefore, the Unicode identifier of the character (215) is used for clarity in this condition.
 >    {: .details}
+{: .hands_on}
 
 Remember to rename your file "Censored lines". 
 
