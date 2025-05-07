@@ -12,7 +12,7 @@ contributions:
         - khaled196
     instructors:
         - annasyme
-        - Delphine-L
+        - delphine-l
         - igormakunin
         - khaled196
         - wm75

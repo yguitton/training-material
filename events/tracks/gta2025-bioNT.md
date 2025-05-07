@@ -13,7 +13,7 @@ contributions:
     instructors:
         - annasyme
         - bgruening
-        - Delphine-L
+        - delphine-l
         - helena_vela
         - lisanna
         - igormakunin

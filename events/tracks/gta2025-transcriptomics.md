@@ -16,7 +16,7 @@ contributions:
         - bgruening
         - dianichj
         - deeptivarshney
-        - Delphine-L
+        - delphine-l
         - hrhotz
         - igormakunin
         - MarisaJL
