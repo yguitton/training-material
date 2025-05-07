@@ -1,5 +1,7 @@
 ---
 layout: tutorial_hands_on
+redirect_from:
+  - /topics/statistics/tutorials/text_mining_chinese/tutorial
 
 title: Text-Mining Differences in Chinese Newspaper Articles
 level: Introductory
@@ -27,7 +29,7 @@ contributions:
 The British Hong Kong Government censored Chinese newspapers before their publication in the colony in the 1930s ({% cite Ng2022 %}).
 Replacement characters like × visibly marked those redactions, making them visible even to those who did not read any Chinese.
 
-![Example of a Chinese article with symbol × marking censored characters]({% link topics/statistics/tutorials/text_mining_chinese/images/Example_x_censored_Chinese_article.svg %} "Example of a Chinese article with symbol × marking censored characters")
+![Example of a Chinese article with symbol × marking censored characters]({% link topics/digital-humanities/tutorials/text_mining_chinese/images/Example_x_censored_Chinese_article.svg %} "Example of a Chinese article with symbol × marking censored characters")
 
 The schematic example, adapted from {% cite Schneider2024 %}, shows what such a censored Chinese article looked like. It is read from right to left and top to bottom. The two more prominent lines on the right are the article title, and the following text is the article's main body. It contains the character × several times, indicating various instances where it was censored.
 
@@ -187,7 +189,7 @@ We can now compare the two cleaned texts. This will visualise the differences be
 
 The HTML file could look like this:
 
-![Screenshot of the diff tool comparing the censored and uncensored text]({% link topics/statistics/tutorials/text_mining_chinese/images/Diff_WF_HTML.jpg %} "Example of the HTML file comparing the censored and uncensored text")
+![Screenshot of the diff tool comparing the censored and uncensored text]({% link topics/digital-humanities/tutorials/text_mining_chinese/images/Diff_WF_HTML.jpg %} "Example of the HTML file comparing the censored and uncensored text")
 
 It shows what passages differ in the two texts. Red parts show deletions and green-coloured areas are additions.
 This output is very convenient for researchers, as it shows differences quickly. However, it is not helpful for further processing with Galaxy. For this, we run this tool a second time with slightly changed parameters. The output is the basis for our further analysis.
@@ -386,14 +388,14 @@ The last step is to visualise the results within a word cloud. It shows, which c
 
 Your word cloud should look similar to this:
 
-![Screenshot of the above Workflow in Galaxy]({% link topics/statistics/tutorials/text_mining_chinese/images/Wordcloud_censored_characters.png %})
+![Screenshot of the above Workflow in Galaxy]({% link topics/digital-humanities/tutorials/text_mining_chinese/images/Wordcloud_censored_characters.png %})
 
 
 # Conclusion
 
 This tutorial used text mining to extract censored characters from a Chinese newspaper.
 
-![Screenshot of the above Workflow in Galaxy]({% link topics/statistics/tutorials/text_mining_chinese/images/Workflow_Screenshot.jpg %} "Screenshot of the above workflow showing each of the steps explained above")
+![Screenshot of the above Workflow in Galaxy]({% link topics/digital-humanities/tutorials/text_mining_chinese/images/Workflow_Screenshot.jpg %} "Screenshot of the above workflow showing each of the steps explained above")
 
 The uploaded dummy texts contained several differences. They used slightly different punctuation, and some sentences and characters differed. The most obvious difference is that the second text was published uncensored in China, while the original text, published in Hong Kong, contained censorship symbols. This allowed us to extract what characters were censored in the text from Hong Kong.
 
