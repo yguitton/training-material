@@ -2,7 +2,7 @@
   job:
     ncm_pdcs_subset.h5ad:
       class: File
-      path: test-data/ncm_pdcs_subset.h5ad.h5ad
+      location: https://zenodo.org/records/15275834/files/ncm_pdcs_subset.h5ad
       filetype: h5ad
   outputs:
     General AnnData Information:
