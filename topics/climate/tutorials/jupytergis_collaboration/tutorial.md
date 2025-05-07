@@ -15,7 +15,7 @@ contributors:
 - elifsu-simula
 - annefou
 recordings:
-- youtube_id: TODO
+- youtube_id: J-tfu2P1ydw
   length: 7M
   galaxy_version: 24.2.4.dev0
   date: '2025-05-05'
