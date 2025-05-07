@@ -57,13 +57,15 @@ answer_histories:
 
 In this section, we will look at practical aspects of manipulation of next-generation sequencing data. We will start with the FASTQ format produced by most sequencing machines and will finish with the SAM/BAM format representing mapped reads.
 
-## The Story
+# The Story
 
 To make this tutorial as realistic as possible we wanted to use an example from real world. We will start with four sequencing datasets (fastq files) representing four individuals positive for malaria---a life-threatening disease caused by *Plasmodium* parasites, transmitted to humans through the bites of infected female *Anopheles* mosquitoes. 
 
 Our goal is to understand whether the malaria parasite ([*Plasmodium falciparum*](https://brc-analytics.dev.clevercanary.com/data/organisms/5833)) infecting these individuals is resistant to [Pyrimethamine](https://en.wikipedia.org/wiki/Pyrimethamine)---an antimalaria drug. Resistance to Pyrimethamine is conferred by a mutation in `PF3D7_0417200` (*dhfr*) gene ({% cite Cowman1988 %}). An outline of our analysis looks like this:
 
 ![analysis_outline](../../../galaxy-interface/images/collections/collection_lifecycle.svg "This figure represents a 'typical' analysis of NGS. Itr is progressing from raw fastq files (colored arrows), to mapping (converting them to BAM format), and downstream processing such as variant calling (which proiduces VCF datasets). Finally data is aggregated and merged to create the final result").
+
+<!--
 
 ## Introduction: Data and Methods
 
@@ -199,9 +201,8 @@ One of the first steps in the analysis of NGS data is seeing how good the data a
 
 ![Good quality in FastQC](../../images/qc_plot.svg "Here, you can see <tt>FastQC</tt> base quality reports (the tools gives you many other types of data) for two datasets: <b>A</b> and <b>B</b>. The A dataset has long reads (250 bp) and very good quality profile with no qualities dropping below phred score of 30. The B dataset is significantly worse with ends of the reads dipping below phred score of 20. The B reads may need to be trimmed for further processing. <tt>Falco</tt> will generate almost the same reports about the quality of the reads.")
 
-<!--
+
 The image above can be found at https://docs.google.com/drawings/d/1OPkHZQ7flhmHeE6RCO2ZQTQY3GfnJfr7flbeU5Mx-Po/edit?usp=sharing
--->
 
 ## Mapping your data
 
@@ -215,7 +216,6 @@ Mapping of NGS reads against reference sequences is one of the key steps of the 
 
 For a more recent review, please read ({% cite Liu2023 %}).
 
-<!--
 
 ### Mapping against a pre-computed genome index
 
@@ -236,7 +236,7 @@ If Galaxy does not have a genome you need to map against, you can upload your ge
 
 In this case tutorial, will first create an index from this dataset and then run mapping analysis against it.
 
--->
+
 
 ### SAM/BAM data
 
@@ -424,20 +424,20 @@ Finally, datasets can be uploaded directly from NCBI's Short Read Archive (SRA):
 >
 {: .comment}
 
-# Let's do it: From reads to variants
+-->
 
-In primary analysis we start with raw sequencing data (e.g., fastq reads) and convert them into a dataset for secondary analysis. Such secondary analysis dataset can be a list of sequence variants, a collection of ChIP-seq peaks, a list of deferentially expressed genes and so on.
+# From reads to variants
 
-In this tutorial we will use data from four infected indifiduals:
+In this tutorial we will use data from four infected individuals sequenced within the [MalariaGen](https://www.malariagen.net/data_package/open-dataset-plasmodium-falciparum-v70/) effort. These correspond to the following samples:
 
 | Accession | Location |
 |------------|------------|
-| ERR636434 | Ivory coast |
-| ERR636028 | Ivory coast |
-| ERR042232 | Colombia |
-| ERR042228 | Colombia |
+| [ERR636434](https://www.ncbi.nlm.nih.gov/sra/?term=ERR636434) | Ivory coast |
+| [ERR636028](https://www.ncbi.nlm.nih.gov/sra/?term=ERR636028) | Ivory coast |
+| [ERR042232](https://www.ncbi.nlm.nih.gov/sra/?term=ERR042232) | Colombia |
+| [ERR042228](https://www.ncbi.nlm.nih.gov/sra/?term=ERR042228) | Colombia |
 
-The accessions correspond to datasets stores in the [Sequence Read Archive](https://www.ncbi.nlm.nih.gov/sra) at NCBI. Our goal to test whether malaria parasite infecting these individual is resistant to pyrimethamine drug treatment or not. In ordrr to reach this conclusion we need:
+The accessions correspond to datasets stored in the [Sequence Read Archive](https://www.ncbi.nlm.nih.gov/sra) at NCBI. Our goal to test whether malaria parasite infecting these individual is resistant to pyrimethamine drug treatment or not. In order to reach this conclusion we need:
 
 1. Upload the data
 2. Assess the quality of the reads
@@ -450,6 +450,8 @@ Let's do that 🚀
 
 ## Upload data into Galaxy
 
+For this tutorial we downsampled the data (made datasets smaller) to make sure that you can go through it quickly. To upload the data in Galaxy follow these steps:
+
 First, let's create a list of accession to be downloaded as a dataset in Galaxy's history:
 
 > <hands-on-title>Upload accessions into Galaxy</hands-on-title>
@@ -459,19 +461,29 @@ First, let's create a list of accession to be downloaded as a dataset in Galaxy'
 > ![Data upload button](../../images/upload_button.png)
 > 1. In the dialog box that would appear click "*Paste/Fetch*" button
 > ![Choose local files button](../../images/paste.png)
-> 1. Paste the following accessions into the box (you can use "copy" button in the upper-right corned of the black box below):
+> 1. Paste the following accessions into the box (red box in the image below):
 > ```
-> ERR636434
-> ERR636028
-> ERR042232
-> ERR042228
+> https://zenodo.org/records/15354240/files/ERR042228_F.fq.gz
+> https://zenodo.org/records/15354240/files/ERR042228_R.fq.gz
+> https://zenodo.org/records/15354240/files/ERR042232_F.fq.gz
+> https://zenodo.org/records/15354240/files/ERR042232_R.fq.gz
+> https://zenodo.org/records/15354240/files/ERR636028_F.fq.gz
+> https://zenodo.org/records/15354240/files/ERR636028_R.fq.gz
+> https://zenodo.org/records/15354240/files/ERR636434_F.fq.gz
+> https://zenodo.org/records/15354240/files/ERR636434_R.fq.gz
 > ```
-> 1. Name dataset `accessions` (red box in the image below) and change datatype to `tabular` (green box in the image below) 
+> 1. Change datatype to `fastqsanger.gz` (green box in the image below) 
 > ![Name dataset and change datatype](../../images/upload_name_datatype.svg)
 > 1. Click *Start* button
 > 1. Close dialog by pressing **Close** button
-> 1. You can now look at the content of this file by clicking {% icon galaxy-eye %} (eye) icon.
+> This will create eight datasets in your history on the right side of the interface:
+> ![Four samples and eight files](../../images/f_and_r.svg)
+> 
 {: .hands_on}
+
+## Bundle data into *Collection*
+
+We are going to perform exatly the same analysis on all eight datasets. So it does not make sence to repeat the same operation eight times (imagine if you had a hundred or a thousand datasets). So before we go any further we will 
 
 
 You can think of the dataset we just uploaded as "manifest". You can upload any number of dataset from four, as is here, to thousands. However in you upload large numbers of datasets from SRA it is better to use a dedicated [accession download workflow](https://iwc.galaxyproject.org/workflow/parallel-accession-download-main/). It is more robust when dealing with large number of samples. Now let's tell Galaxy to upload actual data corresponding to these uploads:
