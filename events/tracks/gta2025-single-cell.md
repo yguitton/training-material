@@ -32,6 +32,7 @@ program:
   - section: "Raw sequencing data to count matrix"
     description: |
       Generate a cell-by-gene matrix from droplet-based single-cell RNA sequencing data.
+    tutorials:
       - name: scrna-preprocessing-tenx
         topic: single-cell
       - name: scrna-case_alevin
@@ -49,6 +50,7 @@ program:
   - section: "Your first analysis based on Seurat tools"
     description: |
       This section includes single-cell data analysis including preprocessing, clustering and the identification of cell types via known marker genes. The whole analysis uses Seurat objects and Seurat R package.
+    tutorials:
       - name: scrna-seurat-pbmc3k
         topic: single-cell
 
