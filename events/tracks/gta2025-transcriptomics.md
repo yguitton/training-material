@@ -13,11 +13,18 @@ contributions:
     instructors:
         - annasyme
         - Nilchia
+        - bgruening
         - dianichj
         - deeptivarshney
+        - Delphine-L
+        - hrhotz
+        - igormakunin
         - MarisaJL
+        - bernt-matthias
         - meltemktn
         - pavanvidem
+        - rlibouba
+        - reytakop
         - SaimMomin12
         - stephanierobin
         - teresa-m

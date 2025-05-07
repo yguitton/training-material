@@ -14,8 +14,11 @@ contributions:
         - annasyme
         - anuprulez
         - emmaustin20
+        - igormakunin
+        - meltemktn
         - hujambo-dunia
         - paulocilasjr
+        - reytakop
 
 
 program:
@@ -34,6 +37,8 @@ program:
       - name: RNN
         topic: statistics
       - name: fine_tuning_protTrans
+        topic: statistics
+      - name: loris_model
         topic: statistics
 
 ---

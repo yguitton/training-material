@@ -14,7 +14,9 @@ contributions:
         - timothygriffin
     instructors:
         - annasyme
+        - Delphine-L
         - foellmelanie
+        - bernt-matthias
         - pratikdjagtap
         - subinamehta
         - timothygriffin
