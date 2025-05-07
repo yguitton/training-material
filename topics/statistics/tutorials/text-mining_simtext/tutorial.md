@@ -1,9 +1,5 @@
 ---
 layout: tutorial_hands_on
-redirect_from:
-  - /topics/statistics/tutorials/text-mining_simtext/tutorial
-
-
 title: Text-mining with the SimText toolset
 zenodo_link: https://doi.org/10.5281/zenodo.4638516
 questions:
