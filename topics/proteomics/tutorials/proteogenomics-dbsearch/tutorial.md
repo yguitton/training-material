@@ -31,6 +31,7 @@ contributors:
   - jraysajulga
   - jj-umn
   - pravs3683
+  - Delphine-L
 subtopic: multi-omics
 tags: [proteogenomics]
 
@@ -73,7 +74,7 @@ In this tutorial, we perform proteogenomic database searching using the Mass Spe
 >    https://zenodo.org/record/1489208/files/Mo_Tai_Trimmed_mgfs__Mo_Tai_iTRAQ_f5.mgf
 >    https://zenodo.org/record/1489208/files/Mo_Tai_Trimmed_mgfs__Mo_Tai_iTRAQ_f8.mgf
 >    https://zenodo.org/record/1489208/files/Mo_Tai_Trimmed_mgfs__Mo_Tai_iTRAQ_f9.mgf
->    https://zenodo.org/records/13270741/files/Uniprot_cRAP_SAV_indel_translatedbed.FASTA
+>    https://zenodo.org/records/15359565/files/Uniprot_cRAP_SAV_indel_translatedbed.fasta
 >    https://zenodo.org/records/13270741/files/Reference_Protein_Accessions.tabular
 >
 >    ```
@@ -81,7 +82,11 @@ In this tutorial, we perform proteogenomic database searching using the Mass Spe
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
 > 3. Rename the datasets to something more recognizable (strip the URL prefix)
-> 4. Build a **Dataset list** for the four MGF files, name it as `Mo_Tai_MGFs`
+> 4. Verify that the `Reference_Protein_Accessions.tabular` format is `tabular`.
+> 
+>    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
+> 
+> 5. Build a **Dataset list** for the four MGF files, name it as `Mo_Tai_MGFs`
 >
 >    {% snippet faqs/galaxy/collections_build_list.md %}
 >
@@ -102,7 +107,7 @@ For this, the sequence database-searching program called [SearchGUI](https://com
 > <hands-on-title>SearchGUI</hands-on-title>
 >
 > 1. {% tool [Identification Parameters](toolshed.g2.bx.psu.edu/repos/galaxyp/peptideshaker/ident_params/4.0.41+galaxy1) %} with the following parameters:
->    - *"Fixed Modifications"*: `Carbamidomethylation of C, ITRAQ-4Plex of K, ITRAQ-4Plex of peptid N-term`
+>    - *"Fixed Modifications"*: `Carbamidomethylation of C, ITRAQ-4Plex of K, ITRAQ-4Plex of peptide N-term`
 >    - *"Variable modifications"*: `Oxidation of M, ITRAQ-4Plex of Y`
 >    - *"Fragment Tolerance (Daltons)"*: `0.05` (this is high resolution MS/MS data)
 >    - *"Minimum charge"*:`2`
@@ -121,7 +126,7 @@ For this, the sequence database-searching program called [SearchGUI](https://com
 >    - {% icon param-file %} *"Protein Database"*: `Uniprot_cRAP_SAV_indel_translatedbed.FASTA` (Or however you named the `FASTA` file)
 >
 >        > <comment-title></comment-title>
->        >    The "Uniprot_cRAP_SAV_indel_translatedbed" FASTA database is obtained when you run the first proteogenomics workflow.
+>        >    The "Uniprot_cRAP_SAV_indel_translatedbed" FASTA database is obtained when you run the first proteogenomics workflow *"Proteogenomics 1: Database Creation"*.
 >        >    Please make sure to run the 1st workflow.
 >        {: .comment}
 >
@@ -207,7 +212,7 @@ A number of new items will appear in your History, each corresponding to the out
 
 # Create a SQLite database for peptide, protein and genomic annotation visualization
 
-The mzidentml output from the Peptide shaker is converted into an sqlite database file by using the mz to sqlite tool. This sqlite output is used to open the Multi-omics visualization platform, wherein you can view the spectra of the peptides using Lorikeet parameters. To open the MVP viewer, click on the “Visualize in MVP Application” icon ( this will pop-open the interactive multi-omics viewer in a new window/tab)
+The mzidentml output from the Peptide shaker is converted into an sqlite database file by using the mz to sqlite tool. This sqlite output is used to open the Multi-omics visualization platform, wherein you can view the spectra of the peptides using Lorikeet parameters. To open the MVP viewer, click on the “Visualize" {% icon galaxy-visualise %}  icon and select "MVP Application" ( this will open the interactive multi-omics viewer)
 
 
 > <hands-on-title>mz to sqlite</hands-on-title>
@@ -230,7 +235,7 @@ The next step is to remove known peptides from the list of PSMs that we acquired
 
 > <hands-on-title>Remove Reference proteins</hands-on-title>
 >
->  1. **Query Tabular** {% icon tool %} with the following parameters:
+>  1. {% tool [Query Tabular](toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.3.2) %} with the following parameters:
 >
 >  - {% icon param-repeat %} **Insert Database Table** (b): `PSM report`
 >    - Section **Filter Dataset Input**:
@@ -244,7 +249,7 @@ The next step is to remove known peptides from the list of PSMs that we acquired
 >      - *"Specify Column Names (comma-separated list)"*:`id,Proteins,Sequence`
 >      - *"Only load the columns you have named into database"*: `Yes`
 >      - {% icon param-repeat %} **Table Index**
->        - *"Table Index"*: `No`
+>        - *"This is a unique index"*: `No`
 >        - *"Index on Columns"*: `id`
 >
 > - {% icon param-repeat %} **Insert Database Table** (c):`PSM report`
@@ -267,16 +272,16 @@ The next step is to remove known peptides from the list of PSMs that we acquired
 >      - *"Specify Column Names (comma-separated list)"*:`id,prot`
 >      - *"Only load the columns you have named into database"*: `Yes`
 >      - {% icon param-repeat %} **Insert Table Index**:
->        - *"Table Index"*: `No`
+>        - *"This is a unique index"*: `No`
 >        - *"Index on Columns"*: `prot,id`
 >
->  - {% icon param-repeat %} **Insert Database Table** (a): `Reference_Protein_Acessions`
+>  - {% icon param-repeat %} **Insert Database Table** (a): `Reference_Protein_Accessions`
 >    - Section **Table Options**:
 >      - *"Tabular Dataset for Table"*: `Uniprot`
 >      - *"Use first line as column names"* : `No`
 >      - *"Specify Column Names (comma-separated list)"*:`prot`
 >      - {% icon param-repeat %} **Insert Table Index**:
->        - *"Table Index"*: `No`
+>        - *"This is a unique index"*: `No`
 >        - *"Index on Columns"*: `prot`
 >
 >
@@ -312,6 +317,7 @@ The next step is to remove known peptides from the list of PSMs that we acquired
 >
 >  - Click **Run Tool** and inspect the query results file after it turns green.
 >
+>
 {: .hands_on}
 
 The output from this step is that the resultant peptides would be those which doesn't belong in the Uniprot or cRAP database. The query tabular tool is used again to create a tabular output containing peptides ready for Blast P analysis.
@@ -319,12 +325,14 @@ The output from this step is that the resultant peptides would be those which do
 
 > <hands-on-title>Query Tabular</hands-on-title>
 >
->  **Query Tabular** {% icon tool %}: with the following parameters:
+>  1. {% tool [Query Tabular](toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.3.2) %} with the following parameters:
 >
->  - Section **Filter Dataset Input**
->    - {% icon param-repeat %} *"Insert Filter Tabular Input Lines"*
+>  - {% icon param-repeat %} **Insert Database Table** (b): `Query results`
+>    - Section **Filter Dataset Input**:
+>      - {% icon param-repeat %} **Insert Filter Tabular Input Lines**
 >        - *"Filter by"*:  `skip leading lines`
 >        - *"Skip lines"*: `1`
+> 
 >
 >  - Section **Table Options**:
 >    - *"Specify Name for Table"*: `psm`
@@ -346,6 +354,8 @@ The output from this step is that the resultant peptides would be those which do
 >
 >  - Click **Run Tool** and inspect the query results file after it turns green.
 >
+> - Rename the output as `Peptides_for_Blast-P_analysis`
+> 
 > ![QT](../../images/QT_output.png)
 >
 {: .hands_on}
@@ -358,11 +368,14 @@ BlastP search is carried out with the PSM report (output from PeptideShaker). Be
 The short BlastP uses parameters for short peptide sequences (8-30 aas). Please use the rerun option to look at the parameters used.
 
 > <hands-on-title>Tabular to FASTA (version 1.1.1)</hands-on-title>
-> 1. **Tabular-to-FASTA** {% icon tool %}: with the following parameters:
+> 1. {% tool [Tabular-to-FASTA](toolshed.g2.bx.psu.edu/repos/devteam/tabular_to_fasta/tab2fasta/1.1.1) %} with the following parameters:
+>    - *"Tab-delimited file"*: `Peptides_for_Blast-P_analysis`
 >    - *"Title column"*: `1`
 >    - *"Sequence Column"*:`2`
 >
 {: .hands_on}
+
+
 
 The output FASTA file is going to be subjected to BLAST-P analysis.
 
