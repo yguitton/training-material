@@ -81,7 +81,7 @@ In this tutorial, we perform proteogenomic database searching using the Mass Spe
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
 > 3. Rename the datasets to something more recognizable (strip the URL prefix)
-> 4. Build a **Dataset list** for the three MGF files, name it as "**Mo_Tai_MGFs**"
+> 4. Build a **Dataset list** for the four MGF files, name it as `Mo_Tai_MGFs`
 >
 >    {% snippet faqs/galaxy/collections_build_list.md %}
 >
@@ -95,19 +95,29 @@ will be used to match MS/MS to peptide sequences via a sequence database search.
 
 For this, the sequence database-searching program called [SearchGUI](https://compomics.github.io/projects/searchgui.html) will be used.The generated dataset collection of the three *MGF files* in the history is used as the MS/MS input. We will walk through a number of these settings in order to utilize SearchGUI on these example MGF files.
 
-> <comment-title>Tool Versions</comment-title>
->
-> The tools are subjected to changes while being upgraded. Here we have used an older version of SearchGUI (v3.3.10.1)-Peptide Shaker (v1.16.36.3).
-> The new versions are available in Galaxy.
->
-{: .comment}
 
 
 ## SearchGUI
 
 > <hands-on-title>SearchGUI</hands-on-title>
 >
-> 1. {% tool [Search GUI](toolshed.g2.bx.psu.edu/repos/galaxyp/peptideshaker/search_gui/3.3.10.1) %} with the following parameters:
+> 1. {% tool [Identification Parameters](toolshed.g2.bx.psu.edu/repos/galaxyp/peptideshaker/ident_params/4.0.41+galaxy1) %} with the following parameters:
+>    - *"Fixed Modifications"*: `Carbamidomethylation of C, ITRAQ-4Plex of K, ITRAQ-4Plex of peptid N-term`
+>    - *"Variable modifications"*: `Oxidation of M, ITRAQ-4Plex of Y`
+>    - *"Fragment Tolerance (Daltons)"*: `0.05` (this is high resolution MS/MS data)
+>    - *"Minimum charge"*:`2`
+>    - *"Maximum charge"*:`6`
+>    - Section **Search Engine Options**:
+>      - *"X!Tandem Options"*: `Advanced`
+>      - *"X!Tandem: Advanced Search Related"*: `Set Advanced Search Parameters`
+>        - *"X!Tandem: Quick Acetyl"*: `No`
+>        - *"X!Tandem: Quick Pyrolidone"*: `No`
+>      - Section **X!Tandem peptide model refinement**
+>        - *"X!Tandem: Maximum Valid Expectation Value, refinement"* : `100`
+>    
+>
+> 1. {% tool [Search GUI](toolshed.g2.bx.psu.edu/repos/galaxyp/peptideshaker/search_gui/4.0.41+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"Identification Parameters file"*: `Identification Parameters: PAR file`
 >    - {% icon param-file %} *"Protein Database"*: `Uniprot_cRAP_SAV_indel_translatedbed.FASTA` (Or however you named the `FASTA` file)
 >
 >        > <comment-title></comment-title>
@@ -115,7 +125,7 @@ For this, the sequence database-searching program called [SearchGUI](https://com
 >        >    Please make sure to run the 1st workflow.
 >        {: .comment}
 >
->    - {% icon param-files %} *"Input Peak lists (mgf)"*: `MGF files` dataset collection.
+>    - {% icon param-collection %} *"Input Peak lists (mgf)"*: `Mo_Tai_MGFs` dataset collection.
 >
 >      > <tip-title>Select dataset collections as input</tip-title>
 >      >
@@ -134,36 +144,6 @@ For this, the sequence database-searching program called [SearchGUI](https://com
 >        >    used.
 >        {: .comment}
 >
->    -  Section **Protein Digestion Options**:
->       - {% icon param-select %} *"Enzyme"*: `Trypsin`
->       - {% icon param-text %} *"Maximum Missed Cleavages"*: `2`
->
->    - Section **Precursor options**:
->       - {% icon param-select %} *"Precursor Ion Tolerance Units"*: `Parts per million (ppm)`
->       - {% icon param-text %} *"Precursor Ion Tolerance"*:` 10`
->       - {% icon param-text %} *"Fragment Tolerance (Daltons)"*: `0.05` (this is high resolution MS/MS data)
->       - {% icon param-text %} *"Minimum charge"*:`2`
->       - {% icon param-text %} *"Maximum charge"*:`6`
->       - {% icon param-select %} *"Forward Ion"*: `b`
->       - {% icon param-select %} *"Reverse Ion"*:` y`
->       - {% icon param-text %} *"Minimum Precursor Isotope"* :`0`
->       - {% icon param-text %} *"Maximum Precursor Isotope"* :`1`
->
->    - Section **Protein Modification Options**:
->      - {% icon param-select %} *"Fixed Modifications"*: `Carbamidomethylation of C, ITRAQ-4Plex of K, ITRAQ-4Plex of Ntermini`
->      - {% icon param-select %} *"Variable modifications"*: `Oxidation of M, ITRAQ-4Plex of Y`
->
->        > <tip-title>Search for options</tip-title>
->        > For selection lists, typing the first few letters in the window will filter the
->        > available options.
->        {: .tip}
->
->    - Section **Advanced Options**:
->      - {% icon param-select %} *"X!Tandem Options"*: `Advanced`
->        - {% icon param-check %} *"X!Tandem: Quick Acetyl"*: `No`
->        - {% icon param-check %} *"X!Tandem: Quick Pyrolidone"*: `No`
->        - {% icon param-check %} *"X!Tandem: Protein stP Bias"*: `No`
->        - {% icon param-text %} *"X!Tandem: Maximum Valid Expectation Value"*: `100`
 >
 > Once the database search is completed, the SearchGUI tool will output a file (called a
 > SearchGUI archive file) that will serve as an input for the next section, PeptideShaker.
@@ -204,12 +184,12 @@ outputs.
 
 > <hands-on-title>PeptideShaker</hands-on-title>
 >
-> 1. {% tool [Peptide Shaker](toolshed.g2.bx.psu.edu/repos/galaxyp/peptideshaker/peptide_shaker/1.16.36.3) %} with the following parameters:
->   - {% icon param-file %} *"Compressed SearchGUI results"*: The SearchGUI archive file
->   - {% icon param-select %} *"Specify Advanced PeptideShaker Processing Options"*: `Default Processing Options`
->   - {% icon param-select %} *"Specify Advanced Filtering Options"*: `Default Filtering Options`
->   - {% icon param-check %} *"Include the protein sequences in mzIdentML"*: `No`
->   - {% icon param-check %} *"Output options"*: Select the `PSM Report` (Peptide-Spectral Match) and the `Certificate of Analysis`
+> 1. {% tool [Peptide Shaker](toolshed.g2.bx.psu.edu/repos/galaxyp/peptideshaker/peptide_shaker/2.0.33+galaxy1) %} with the following parameters:
+>    - {% icon param-file %} *"Compressed SearchGUI results"*: The `Search GUI` archive file
+>    - *"Include the protein sequences in mzIdentML"*: `No`
+>    - *"Contact Information"*: `Specify Contact Information`
+>      - Enter your own informations
+>    - *"Output options"*: Select the `PSM Report` (Peptide-Spectral Match) and the `Certificate of Analysis`
 >
 >     > <comment-title>Certificate of Analysis</comment-title>
 >     >
@@ -234,9 +214,9 @@ The mzidentml output from the Peptide shaker is converted into an sqlite databas
 >
 > This tool extracts mzidentml and its associated proteomics datasets into a sqlite db
 >
-> 1. {% tool [mz to sqlite](toolshed.g2.bx.psu.edu/repos/galaxyp/mz_to_sqlite/mz_to_sqlite/2.0.4+galaxy1) %} with the following parameters:
+> 1. {% tool [mz to sqlite](toolshed.g2.bx.psu.edu/repos/galaxyp/mz_to_sqlite/mz_to_sqlite/2.1.1+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Proteomics identification files"*: `PeptideShaker_mzidentml`
->    - {% icon param-file %} *"Proteomics Spectrum files"*: `Mo_Tai_MGFs`
+>    - {% icon param-collection %} *"Proteomics Spectrum files"*: `Mo_Tai_MGFs`
 >    - {% icon param-file %} *"Proteomics Search Database Fasta"*: `Uniprot_cRAP_SAV_indel_translatedbed.FASTA`
 >
 >    ![mz2sqlite](../../images/mz2sqlite.png){:width="20%"}
