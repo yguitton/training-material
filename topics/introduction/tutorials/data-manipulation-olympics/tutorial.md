@@ -27,6 +27,7 @@ contributions:
     - lybCNU
   editing:
     - hexylena
+    - scottcain
   funding:
     - gallantries
 level: Introductory
