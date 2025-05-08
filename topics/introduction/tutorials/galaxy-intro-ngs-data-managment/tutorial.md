@@ -386,21 +386,6 @@ However, one has to be careful when removing duplicates in cases when the sequen
 
 ![Sampling bias](../../images/sampling-bias.png "The Variant Allele Frequency (VAF) bias determined by coverage and insert size variance. Reads are paired-end and read length is 76. The insert size distribution is modeled as a Gaussian distribution with mean at 200 and standard deviation shown on the X-axis. The true VAF is 0.05. The darkness at each position indicates the magnitude of the bias in the VAF ({% cite Zhou2014 %}).")
 
-
-```
-
-https://zenodo.org/records/15354240/files/ERR042228_F.fq.gz
-https://zenodo.org/records/15354240/files/ERR042228_R.fq.gz
-https://zenodo.org/records/15354240/files/ERR042232_F.fq.gz
-https://zenodo.org/records/15354240/files/ERR042232_R.fq.gz
-https://zenodo.org/records/15354240/files/ERR636028_F.fq.gz
-https://zenodo.org/records/15354240/files/ERR636028_R.fq.gz
-https://zenodo.org/records/15354240/files/ERR636434_F.fq.gz
-https://zenodo.org/records/15354240/files/ERR636434_R.fq.gz
-
-```
-
-
 # Getting NGS data to Galaxy
 
 You can upload data in Galaxy using one of these ways:
@@ -550,121 +535,143 @@ We can now processed to mapping the reads.
 
 Galaxy has a number of mappers including `bowtie`, `bwa-mem`, and `bwa-mem2`. For this analysis we will use `bwa-mem2`---the latest version of this popular and "battle-tested" tool. 
 
-The key question when mapping reads against a genome is whether the index for this genome---a datastructure `bwa-mem2` uses to quickly find matches---is already installed on Galaxy or not.  
+The key question when mapping reads against a genome is whether the index for this genome---a datastructure `bwa-mem2` uses to quickly find matches---is already installed on Galaxy or not. Let's assume that it is **NOT** present in Galaxy. In this case you will need to upload the genome.
 
+### Upload reference genome
 
-<!-- BYOP goes here -->
-
-
-> <hands-on-title>Map sequencing reads to reference genome</hands-on-title>
+> <hands-on-title>Uploading the genome for <i>P. falciparum</i></hands-on-title>
+> 
+> To download the genome paste the following URL into the {% tool Upload %} tool as was shown previously in [this tutorial](#hands-on-upload-accessions-into-galaxy-1).
 >
-> Run {% tool [Map with BWA-MEM2](toolshed.g2.bx.psu.edu/repos/iuc/bwa_mem2/bwa_mem2/2.2.1+galaxy4) %} with the parameters shown in the image below. In this case the index for genome we want to map against is pre-cached on Galaxy site (red outline). Don't forget to set "*Single or Paired-end reads*" to `Paired collection` (green outline). **Note** the modification of *"Set read groups information?"* toggle (blue outlines)
->
-> ![BWA-MEM2 interface](../../images/bwamem2.svg)
+> ```
+>  https://zenodo.org/records/15354240/files/GCF_000002765.6.fa.gz
+> ```
+> The only difference is that here with example we've see above is that you need to set datatype (green box) to `fasta.gz`:
+> ![Genome upload](../../images/upload_genome.svg) 
 >
 {: .hands_on}
 
-## Post processing of mapped reads
+### Map the reads
 
-### Remove duplicates with **MarkDuplicates**
+> <hands-on-title>Map sequencing reads to reference genome</hands-on-title>
+>
+> Run {% tool [Map with BWA-MEM2](toolshed.g2.bx.psu.edu/repos/iuc/bwa_mem2/bwa_mem2/2.2.1+galaxy4) %} with the parameters shown in the image below. In this case the index for genome we want to map against is <b>not</b> in Galaxy. As a result we need to tell the tool to use genome from the history (red outline and red arrow). Don't forget to set "*Single or Paired-end reads*" to `Paired collection` (green outline and arrow). **Note** the modification of *"Set read groups information?"* toggle (blue outline and arrows):
+>
+> ![BWA-MEM2 interface](../../images/bwamem2.svg)
+>
+{: .hands_on} 
 
-{% tool [MarkDuplicates](toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MarkDuplicates/3.1.1.0)%} removes duplicate sequences originating from library preparation artifacts and sequencing artifacts. It is important to remove these artefactual sequences to avoid artificial overrepresentation of single molecule.
+### Remove duplicates
+
+{% tool [MarkDuplicates](toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MarkDuplicates/3.1.1.0)%} removes duplicate reads originating from library preparation and/or sequencing artifacts. It is important to remove these reads.
 
 > <hands-on-title>Remove duplicates</hands-on-title>
 >
 > Run {% tool [MarkDuplicates](toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MarkDuplicates/3.1.1.0)%} with the following parameters:
->    - {% icon param-file %} *"Select SAM/BAM dataset or dataset collection"*: `bam_output` (output of {% tool [Map with BWA-MEM](toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.19) %})
->    - *"If true do not write duplicates to the output file instead of writing them with appropriate flags set"*: `Yes`
->
+>    - {% icon param-file %} *"Select SAM/BAM dataset or dataset collection"*: `bam_output` (output of {% tool [Map with BWA-MEM](toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.19) %}) as shown with the <font color="red">red arrow</font>.
+>    - *"If true do not write duplicates to the output file instead of writing them with appropriate flags set"*: `Yes` as shown with <font color="green">green arrow</font>.
+> ![Mark Duplicates](../../images/markdups.svg)
 {: .hands_on}
 
-## Generate alignment statistics with **Samtools stats**
+## Calling variants
 
-After the duplicate marking step above we can generate statistic about the alignment we have generated.
+Now we are ready to proceed with variant calling. For this purpose we will a versatile called `freebayes`. One thing to keep in mind in our case is that the samples are from human blood. In humans *Plasmodium* parasites exist in **haploid** state (only zygote is diploid and this stage happens in mosquito). Thus we will need to adjust parameters accordingly. 
 
-> <hands-on-title>Generate alignment statistics</hands-on-title>
->
-> 1. {% tool [ Samtools stats](toolshed.g2.bx.psu.edu/repos/devteam/samtools_stats/samtools_stats/2.0.5) %} with the following parameters:
->    - {% icon param-file %} *"BAM file"*: output of {% tool [MarkDuplicates](toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MarkDuplicates/3.1.1.0)%}
->    - *"Set coverage distribution"*: `No`
->    - *"Output"*: `One single summary file`
->    - *"Filter by SAM flags"*: `Do not filter`
->    - *"Use a reference sequence"*: `No`
->    - *"Filter by regions"*: `No`
-{: .hands_on}
-
-## **Realign reads** with lofreq viterbi
+### **Realign reads** with lofreq viterbi
 
 {% tool [Realign reads](toolshed.g2.bx.psu.edu/repos/iuc/lofreq_viterbi/lofreq_viterbi/2.1.5+galaxy0) %} corrects misalignments around insertions and deletions. This is required in order to accurately detect variants.
 
 > <hands-on-title>Realign reads around indels</hands-on-title>
 >
 > Run {% tool [Realign reads](toolshed.g2.bx.psu.edu/repos/iuc/lofreq_viterbi/lofreq_viterbi/2.1.5+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Reads to realign"*: output of {% tool [MarkDuplicates](toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MarkDuplicates/3.1.1.0)%}
+>    - {% icon param-file %} *"Reads to realign"*: output of {% tool MarkDuplicates %} as shown with the <font color="red">red arrow</font>.
 >    - *"Choose the source for the reference genome"*: `History`
->        - {% icon param-file %} *"Reference"*: `SARS-CoV-2 Genome`
->    - In *"Advanced options"*:
->        - *"How to handle base qualities of 2?"*: `Keep unchanged`
+>        - {% icon param-file %} *"Reference"*: set this to the [previously uploaded reference genome](#hands-on-uploading-the-genome-for-i-p-falciparum-i-10) (<font color="green">green outline and arrow</font>).
+> ![Realign reads](../../images/realign_lofreq.svg)
+>    
 {: .hands_on}
 
-## Add indel qualities with lofreq **Insert indel qualities**
+### Add indel qualities with lofreq **Insert indel qualities**
 
 This step adds indel qualities into our alignment file. This is necessary in order to call variants using **Call variants** with l{% tool [Insert indel qualities](toolshed.g2.bx.psu.edu/repos/iuc/lofreq_indelqual/lofreq_indelqual/2.1.5+galaxy1) %}.
 
 > <hands-on-title>Add indel qualities</hands-on-title>
 >
 > Run {% tool [Insert indel qualities](toolshed.g2.bx.psu.edu/repos/iuc/lofreq_indelqual/lofreq_indelqual/2.1.5+galaxy1) %} with the following parameters:
->    - {% icon param-file %} *"Reads"*: Output of {% tool [Realign reads](toolshed.g2.bx.psu.edu/repos/iuc/lofreq_viterbi/lofreq_viterbi/2.1.5+galaxy0) %}
->    - *"Indel calculation approach"*: `Dindel`
+>    - {% icon param-file %} *"Reads"*: Output of {% tool Realign reads %} (<font color="red">red arrow</font>)
+>    - *"Indel calculation approach"*: `Dindel` (<font color="green">green outline</font>)
 >        - *"Choose the source for the reference genome"*: `History`
->            - {% icon param-file %} *"Reference"*: `SARS-CoV-2 Genome`
+>            - {% icon param-file %} *"Reference"*: set this to the [previously uploaded reference genome](#hands-on-uploading-the-genome-for-i-p-falciparum-i-10) (<font color="blue">blue outline and arrow</font>).
+> ![Add index qualities](../../images/indel_qual_lofreq.svg)
 >
 {: .hands_on}
 
-## Call Variants using lofreq **Call variants**
+### Call Variants using lofreq **Call variants**
 
 We are now ready to call variants.
 
 > <hands-on-title>Call variants</hands-on-title>
 >
 > Run {% tool [Call variants](toolshed.g2.bx.psu.edu/repos/iuc/lofreq_call/lofreq_call/2.1.5+galaxy3) %} with the following parameters:
->    - {% icon param-file %} *"Input reads in BAM format"*: Output of {% tool [Insert indel qualities](toolshed.g2.bx.psu.edu/repos/iuc/lofreq_indelqual/lofreq_indelqual/2.1.5+galaxy1) %}
->    - *"Choose the source for the reference genome"*: `History`
->        - {% icon param-file %} *"Reference"*: `SARS-CoV-2 Genome`
->    - *"Call variants across"*: `Whole reference`
->    - *"Types of variants to call"*: `SNVs and indels`
->    - *"Variant calling parameters"*: `Configure settings`
+>    - {% icon param-file %} *"Input reads in BAM format"*: Output of {% tool Insert indel qualities %} (<font color="red">red arrow</font>)
+>    - *"Choose the source for the reference genome"*: `History` (<font color="green">green outline</font>).
+>        - {% icon param-file %} *"Reference"*: set this to the [previously uploaded reference genome](#hands-on-uploading-the-genome-for-i-p-falciparum-i-10) (<font color="green">green outline and arrow</font>).
+>    - *"Types of variants to call"*: `SNVs and indels` (<font color="blue">blue outline and arrow</font>).
+>    - *"Variant calling parameters"*: `Configure settings` (<font color="orange">orange outline</font>).
 >        - In *"Coverage"*:
->            - *"Minimal coverage"*: `10`
+>            - *"Minimal coverage"*: `10` (<font color="orange">orange arrow</font>).
 >        - In *"Base-calling quality"*:
->            - *"Minimum baseQ"*: `20`
->            - *"Minimum baseQ for alternate bases"*: `20`
->        - In *"Mapping quality"*:
->            - *"Minimum mapping quality"*: `20`
->    - *"Variant filter parameters"*: `Preset filtering on QUAL score + coverage + strand bias (lofreq call default)`
+>            - *"Minimum baseQ"*: `20` (<font color="orange">orange arrow</font>).
+>            - *"Minimum baseQ for alternate bases"*: `20`  (<font color="orange">orange arrow</font>).
+>
+> ![Call variants with lofreq](../../images/lofreq.svg)
 {: .hands_on}
 
-The output of this step is a collection of VCF files that can be visualized in a genome browser.
+The output of this step is a collection of VCF files containing information on all variants found between the reads and the reference genome.
 
-## Annotate variant effects with **SnpEff eff: annotate variants for SARS-CoV-2**
+## Annotating variants
 
-We will now annotate the variants we called in the previous step with the effect they have on the SARS-CoV-2 genome.
+We will now annotate the variants we called in the previous step with the effect they have on the *Plasmodium* genome. In order to do this we need to create a database that can be used by {% tool SnpEff %}. This process requires a reference genome (which we [already uploaded](#hands-on-uploading-the-genome-for-i-p-falciparum-i-10) into Galaxy) and a list of genes present in this genome---a file we have not uploaded yet. 
+
+> <hands-on-title>Uploading gene annotations for <i>P. falciparum</i></hands-on-title>
+> 
+> To download gene annotations paste the following URL into the {% tool Upload %} tool as was shown previously in [this tutorial](#hands-on-upload-accessions-into-galaxy-1).
+>
+> ```
+>  https://zenodo.org/records/15354240/files/GCF_000002765.6_GCA_000002765.ncbiRefSeq.gtf.gz
+> ```
+> Set datatype (<font color="green">green</font> box) to `fasta.gz`:
+> ![Genome upload](../../images/gtf_upload.svg) 
+>
+{: .hands_on}
+
+### Preparing {% tool SnpEff %} database
+
+> <hands-on-title>Prepare snpEff database with {% tool SnpEff Build %}</hands-on-title>
+> 
+> Run {% tool [SnpEff Build](toolshed.g2.bx.psu.edu/repos/iuc/snpeff/snpEff_build_gb/5.2+galaxy0) %} with the following parameters:
+>
+> ![SnpEff Build](../../images/snpeff_build.svg) 
+>
+> Here "*GTF dataset to build database from*" is set to the gtf file we [just uploaded](#hands-on-uploading-gene-annotations-for-i-p-falciparum-i-4) (<font color="blue">blue arrow</font>) and "*Genome in FASTA format*" is set to the [previously uploaded reference genome](#hands-on-uploading-the-genome-for-i-p-falciparum-i-10) (<font color="orange">orange outline and arrow</font>).
+{: .hands_on}
+
+### Annotate variant effects with **SnpEff eff**
 
 > <hands-on-title>Annotate variant effects</hands-on-title>
 >
-> Run {% tool [SnpEff eff: annotate variants for SARS-CoV-2](toolshed.g2.bx.psu.edu/repos/iuc/snpeff_sars_cov_2/snpeff_sars_cov_2/4.5covid19) %} with the following parameters:
->    - {% icon param-file %} *"Sequence changes (SNPs, MNPs, InDels)"*: Output of {% tool [Call variants](toolshed.g2.bx.psu.edu/repos/iuc/lofreq_call/lofreq_call/2.1.5+galaxy3) %}
->    - *"Output format"*: `VCF` (only if input is VCF)
->    - *"Create CSV report, useful for downstream analysis (-csvStats)"*: `Yes`
->    - *"Annotation options"*: ``
->    - *"Filter output"*: ``
->    - *"Filter out specific Effects"*: `No`
+> Run {% tool [SnpEff eff](toolshed.g2.bx.psu.edu/repos/iuc/snpeff/snpEff/5.2+galaxy0) %} with the following parameters:
+>    - {% icon param-file %} *"Sequence changes (SNPs, MNPs, InDels)"*: Output of {% tool lofreq %} we've run previously <font color="red">red arrow</font>)
+>    - *"Genome source"*: `Custom snpEff database in your history`
+>      - "*SnpEff5.2 Genome Data*": set to the SnpEff database we built in the previous step <font color="green">green outline and arrow</font>)
+>   
+> ![snpEff eff](../../images/snpeff.svg)
 >
 {: .hands_on}
 
-The output of this step is a VCF file with added variant effects.
+Now let's convert data into tab-delimited format, which will be easier for us to process.
 
-## Create table of variants using **SnpSift Extract Fields**
+### Create table of variants using **SnpSift Extract Fields**
 
 We will now select various effects from the VCF and create a tabular file that is easier to understand for humans.
 
@@ -672,7 +679,7 @@ We will now select various effects from the VCF and create a tabular file that i
 >
 > Run {% tool [SnpSift Extract Fields](toolshed.g2.bx.psu.edu/repos/iuc/snpsift/snpSift_extractFields/4.3+t.galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Variant input file in VCF format"*: Output of {% tool [SnpEff eff: annotate variants for SARS-CoV-2](toolshed.g2.bx.psu.edu/repos/iuc/snpeff_sars_cov_2/snpeff_sars_cov_2/4.5covid19) %}
->    - *"Fields to extract"*: `CHROM POS REF ALT QUAL DP AF SB DP4 EFF[*].IMPACT EFF[*].FUNCLASS EFF[*].EFFECT EFF[*].GENE EFF[*].CODON`
+>    - *"Fields to extract"*: `CHROM POS REF ALT QUAL DP AF SB DP4 ANN[*].EFFECT ANN[*].IMPACT ANN[*].GENE ANN[*].AA_POS ANN[*].HGVS_C`
 >    - *"One effect per line"*: `Yes`
 >    - *"empty field text"*: `.`
 >
