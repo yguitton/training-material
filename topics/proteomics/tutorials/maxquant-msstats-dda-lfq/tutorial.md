@@ -80,37 +80,37 @@ The annotation file, group comparison file and FASTA file for this training is d
 >    {% snippet faqs/galaxy/datasets_rename.md %}
 >
 > 4. You can save time and storage capacity when running this tutorial by skipping the first step and not running MaxQuant. In that case, upload the MaxQuant results listed in the MaxQuant analysis section. If you want to run MaxQuant, import the raw data from [PRIDE](https://www.ebi.ac.uk/pride/archive/projects/PXD006914) in a collection:
->    > 1. Open the upload menu and slect the "Rule Based" tab.
->    > 2. Paste the data urls: 
->    >    >  ```
->    >    >  https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment105_metast_cSCC1.raw
->    >    >  https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment106_metast_cSCC2.raw
->    >    >  https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment107_metast_cSCC3.raw
->    >    >  https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment109_metast_cSCC4.raw
->    >    >  https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment116_metast_cSCC5.raw
->    >    >  https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment117_metast_cSCC6.raw
->    >    >  https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment118_metast_cSCC7.raw
->    >    >  https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment119_metast_cSCC8.raw
->    >    >  https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment120_metast_cSCC9.raw
->    >    >  https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment121_metast_cSCC10.raw
->    >    >  https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment122_metast_cSCC11.raw
->    >    >  https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment123_metast_cSCC12.raw
->    >    >  https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment124_metast_cSCC13.raw
->    >    >  https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment110_RDEB_cSCC1.raw
->    >    >  https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment111_RDEB_cSCC2.raw
->    >    >  https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment112_RDEB_cSCC3.raw
->    >    >  https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment113_RDEB_cSCC4.raw
->    >    >  https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment114_RDEB_cSCC5.raw
->    >    >  https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment115_RDEB_cSCC6.raw
->    >    >  ```
->    > 3. Upload Type `Collections`
->    > 4. Click on `Build` 
->    > 5. We need our datasets to be named 'metast_cSCC1.raw', 'metast_cSCC2.raw', etc.. The naming for the raw files have to be exactly this way to later match the file names provided in the MSstats annotation file. 
->    > 6. Select Add column from regular expression then "Create columns matching expression groups". Use the expression `Experiment[0-9]+_(.+).raw` . This will extract the file names from the url.
->    > 7. Add column with the fixed value `thermo.raw` to specify the format of the files
->    > 8. Add column with the fixed value `raw_files`. This will be the collection name. 
->    > 9. We will now  add columns definitions: Select "Add rules", then "Add/Modify Column definitions". Set the URL as column `A`, List Identifiers as column `B`, Collection Name as column `D`, and Type as column `C`. Apply.
->    > 10. Click on Upload to start the upload.  
+>    1. Open the upload menu and slect the "Rule Based" tab.
+>    2. Paste the data urls:
+>       ```
+>       https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment105_metast_cSCC1.raw
+>       https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment106_metast_cSCC2.raw
+>       https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment107_metast_cSCC3.raw
+>       https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment109_metast_cSCC4.raw
+>       https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment116_metast_cSCC5.raw
+>       https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment117_metast_cSCC6.raw
+>       https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment118_metast_cSCC7.raw
+>       https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment119_metast_cSCC8.raw
+>       https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment120_metast_cSCC9.raw
+>       https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment121_metast_cSCC10.raw
+>       https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment122_metast_cSCC11.raw
+>       https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment123_metast_cSCC12.raw
+>       https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment124_metast_cSCC13.raw
+>       https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment110_RDEB_cSCC1.raw
+>       https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment111_RDEB_cSCC2.raw
+>       https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment112_RDEB_cSCC3.raw
+>       https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment113_RDEB_cSCC4.raw
+>       https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment114_RDEB_cSCC5.raw
+>       https://ftp.pride.ebi.ac.uk/pride-archive/2017/11/PXD006914/Experiment115_RDEB_cSCC6.raw
+>        ```
+>    3. Upload Type `Collections`
+>    4. Click on `Build`
+>    5. We need our datasets to be named 'metast_cSCC1.raw', 'metast_cSCC2.raw', etc.. The naming for the raw files have to be exactly this way to later match the file names provided in the MSstats annotation file.
+>    6. Select Add column from regular expression then "Create columns matching expression groups". Use the expression `Experiment[0-9]+_(.+).raw`. This will extract the file names from the url.
+>    7. Add column with the fixed value `thermo.raw` to specify the format of the files
+>    8. Add column with the fixed value `raw_files`. This will be the collection name.
+>    9. We will now  add columns definitions: Select "Add rules", then "Add/Modify Column definitions". Set the URL as column `A`, List Identifiers as column `B`, Collection Name as column `D`, and Type as column `C`. Apply.
+>    10. Click on Upload to start the upload.
 >
 {: .hands_on}
 
@@ -134,7 +134,7 @@ The run time of **MaxQuant** {% icon tool %} depends on the number and size of t
 >
 {: .hands_on}
 
-Because the MaxQuant run takes really long, we recommend to download the MaxQuant results from Zenodo and continue with the tutorial. 
+Because the MaxQuant run takes really long, we recommend to download the MaxQuant results from Zenodo and continue with the tutorial.
 
 > <hands-on-title>Load MaxQuant results from Zenodo</hands-on-title>
 >
@@ -145,15 +145,15 @@ Because the MaxQuant run takes really long, we recommend to download the MaxQuan
 >    https://zenodo.org/record/4896554/files/MaxQuant_proteingroups.tabular
 >    https://zenodo.org/record/4896554/files/PTXQC_report.pdf
 >    ```
-> 2. Rename the files `Evidence`, `Protein Groups`, and `PTXQC report` respectively. 
-> 
+> 2. Rename the files `Evidence`, `Protein Groups`, and `PTXQC report` respectively.
+>
 {: .hands_on}
 
 
 > <question-title></question-title>
 >
 > 1. How many proteins and features were identified in total?
-> 2. In which columns (number) are the potential contaminants in the protein group and evidence file respectively? 
+> 2. In which columns (number) are the potential contaminants in the protein group and evidence file respectively?
 > 3. How large is the proportion of potential contaminants?
 >
 > > <solution-title></solution-title>
@@ -204,7 +204,7 @@ We use the modified MaxQuant protein groups and evidence files as input in MSsta
 >        - In *"MaxQtoMSstatsFormat Options"*:
 >            - *"Remove the proteins which have only 1 peptide and charge"*: `Yes`
 >    - In *"dataProcess Options"*:
->        - *"Select outputs"*: `MSstats log` `MSstats FeatureLevelData` `MSstats ProteinLevelData` `Sample Quantification Matrix Table` `Group Quantification Matrix Table` 
+>        - *"Select outputs"*: `MSstats log` `MSstats FeatureLevelData` `MSstats ProteinLevelData` `Sample Quantification Matrix Table` `Group Quantification Matrix Table`
 >        - In *"dataProcess Plot Options"*:
 >            - *"Select visualization outputs"*: `MSstats QCPlot`
 >            - *"Select protein IDs to draw plots"*: `Option for QC plot: "allonly" will generate one QC plot with all proteins`
@@ -244,15 +244,15 @@ We use the modified MaxQuant protein groups and evidence files as input in MSsta
 MSstats  is designed for statistical modelling of mass spectrometry based proteomic data {% cite Choi2014 %}.
 Proteomic data analysis requires statistical approaches that reduce bias and inefficiencies and distinguish systematic variation from random artifacts {% cite Kll2011 %}.
 
-MSstats is directly compatible with the output of several quantitative proteomics software. In addition to the results of the proteomics software an annotation file is needed as input. The annotation file describes the experimental design such as the conditions, biological and technical replicates. To be compatible with MaxQuant results, an additional column with the label type is needed, which only contains L (light) in DDA experiments. A wrong setup of the annotation file is the most common source of errors in MSstats, thus we collected more information in the box below to allow you to adjust the annotation file when analyzing your own experiments. 
+MSstats is directly compatible with the output of several quantitative proteomics software. In addition to the results of the proteomics software an annotation file is needed as input. The annotation file describes the experimental design such as the conditions, biological and technical replicates. To be compatible with MaxQuant results, an additional column with the label type is needed, which only contains L (light) in DDA experiments. A wrong setup of the annotation file is the most common source of errors in MSstats, thus we collected more information in the box below to allow you to adjust the annotation file when analyzing your own experiments.
 
 > <tip-title>Generating the MSstats annotation file</tip-title>
 >
 > For label-free MaxQuant data, the annotation file should have 5 columns with exactly these headers: Raw.file, Condition, BioReplicate, Run; IsotopeLabelType
-> 1. Raw.file: The names must match exactly to the file names in the MaxQuant evidence.txt "Raw file" column. (e.g. "file1.raw.thermo"). 
+> 1. Raw.file: The names must match exactly to the file names in the MaxQuant evidence.txt "Raw file" column. (e.g. "file1.raw.thermo").
 > 2. Condition: The conditions which will be compared in the statistical modelling. They are not allowed to start with a number or contain any special characters except for '_'.
 > 3. BioReplicate: This column should contain a unique identifier for each biological replicate in the experiment. For example, in a clinical proteomic investigation this should be a unique patient id. If technical replicates are present, all samples from the same biological replicate should have the same id but different run ids. MSstats automatically detects the presence of technical replicates and accounts for them in the model-based analysis.
-> 4. Run: This column contains the identifier of a mass spectrometry run. Each mass spectrometry run should have a unique identifier (number or name), regardless of the origin of the biological sample. 
+> 4. Run: This column contains the identifier of a mass spectrometry run. Each mass spectrometry run should have a unique identifier (number or name), regardless of the origin of the biological sample.
 > 5. IsotopeLabelType: This is L (light) for all MaxQuant DDA experiments.
 >
 {: .tip}
@@ -262,9 +262,9 @@ MSstats will compare all conditions that are indicated in the comparison matrix.
 > <tip-title>Generating the MSstats comparison matrix</tip-title>
 >
 > 1. The first column of the comparison matrix contains the names of the comparisons and should have 'names' as header. These names will be used in all MSstats output files, therefore it is important that the names are meaningful and reflect the actual comparison (see below)
-> 2. An additional column for each condition that is present in the data. This means each condition present in the annotation file has to be a separate column even when the condition will not be used for any comparison. The header should contain the condition name exactly as written in the annotation file. 
-> 3. Fill the matrix: Use 1 and -1 to indicate the conditions to compare and 0 for conditions that are not compared. Multiple groups can be combined by using 0.5. 
-> 4. Example: to compare condition1 with condition2: write 1 into the column of condition1 and write -1 in the column of condition2. In the first column of the matrix name this comparison condition1-condition2. The naming of the comparison should reflect the direction of the comparison and thus always have the condition that is set to 1 first and the condition that is set to -1 second (condition1-condition2 and NOT condition2-condition1). 
+> 2. An additional column for each condition that is present in the data. This means each condition present in the annotation file has to be a separate column even when the condition will not be used for any comparison. The header should contain the condition name exactly as written in the annotation file.
+> 3. Fill the matrix: Use 1 and -1 to indicate the conditions to compare and 0 for conditions that are not compared. Multiple groups can be combined by using 0.5.
+> 4. Example: to compare condition1 with condition2: write 1 into the column of condition1 and write -1 in the column of condition2. In the first column of the matrix name this comparison condition1-condition2. The naming of the comparison should reflect the direction of the comparison and thus always have the condition that is set to 1 first and the condition that is set to -1 second (condition1-condition2 and NOT condition2-condition1).
 >
 {: .tip}
 
@@ -311,7 +311,7 @@ We’ll count and visualize the number of features per run and calculate the dis
 >        - *"On column"*: `Column: 1`
 > 3. Click on {% icon galaxy-barchart %} “Visualize this data” on the **Datamash** {% icon tool %} result.
 >   - Select `Bar diagram (NVD3)`
->   - Click  `Show` {% icon galaxy-vis-config %} at the top right of the chart. 
+>   - Click  `Show` {% icon galaxy-vis-config %} at the top right of the chart.
 >   - *"Provide a title"*: `Number of features per sample`
 >   - Click `Select data` {% icon galaxy-chart-select-data %}
 >   - *"Data point labels"*: `Column: 1`
@@ -327,9 +327,9 @@ We’ll count and visualize the number of features per run and calculate the dis
 >
 > > <solution-title></solution-title>
 > >
-> > 1. RDEB cSCC4 
+> > 1. RDEB cSCC4
 > > ![Number of proteins per sample](../../images/maxquant-msstats-lfq/features_sample.png "Number of proteins per sample (run)")
-> > 2. Around 6 features per protein (mean in summary statistics). 
+> > 2. Around 6 features per protein (mean in summary statistics).
 > >
 > {: .solution}
 >
@@ -338,7 +338,7 @@ We’ll count and visualize the number of features per run and calculate the dis
 
 # Filtering MSstats results
 
-The comparison result table summarizes the statistical results per protein and comparison. First, we keep only the Uniprot ID in column 1 to make the ID less cluttered. This is done by deleting everything before the first pipe '|' and everything after the second pipe '|'. 
+The comparison result table summarizes the statistical results per protein and comparison. First, we keep only the Uniprot ID in column 1 to make the ID less cluttered. This is done by deleting everything before the first pipe '|' and everything after the second pipe '|'.
 Then we keep only statistically significant proteins that means they have an adjusted p-value below 0.05.
 Next, we separate up- and down-regulated proteins by filtering for a positive and negative log2FC.
 The Sample Quantification Matrix Table contains the summarized intensities per protein and sample.
@@ -394,7 +394,7 @@ In order to make its IDs compatible with the ones from the comparison result at 
 
 # Finding differentially abundant proteins
 
-For each condition we select only the significant proteins, which are proteins with a p-value above 0 and below 0.05. Proteins with a p-value of 0 are missing in one condition and are therfore discarded in the next steps. We'll keep only the column with the Uniprot ID and extract the average protein intensities per sample from the sample quantification matrix file and vizualize them at heatmap. We do the exact same steps for both conditions, therefore, each time you start a tool (except for the replace step) you can use the multiple input file to start the step for the metastasized and rdeb files at the same time. 
+For each condition we select only the significant proteins, which are proteins with a p-value above 0 and below 0.05. Proteins with a p-value of 0 are missing in one condition and are therfore discarded in the next steps. We'll keep only the column with the Uniprot ID and extract the average protein intensities per sample from the sample quantification matrix file and vizualize them at heatmap. We do the exact same steps for both conditions, therefore, each time you start a tool (except for the replace step) you can use the multiple input file to start the step for the metastasized and rdeb files at the same time.
 
 > <hands-on-title>filter differentially abundant proteins</hands-on-title>
 >
@@ -491,6 +491,6 @@ In addition we retrieve for each Uniprot ID the corresponding protein names from
 >
 {: .hands_on}
 
-Three of the differentially abundant proteins found here were also found and stained with antibodies in the original publication: Collagen XIV which is higher in RDEB cSCC than in metastasizing cSCC and Serum amyloid P-component as well as X-ray repair cross-complementing protein 6, which are both higher in metastasizing cSCC than in RDEB cSCC. Collagen XIV is a fibril associated collagen which may have tissue stabilizing function in the dermis. The upregulation of collagen XIV as well as other collagens in RDEB cSCC could be a compensation effort for the impaired collagen VII in RDEB tissues. Collagen VII is indeed only found in some RDEB samples and with such low intensities that it appears as upregulated in metastasized cSCC. 
+Three of the differentially abundant proteins found here were also found and stained with antibodies in the original publication: Collagen XIV which is higher in RDEB cSCC than in metastasizing cSCC and Serum amyloid P-component as well as X-ray repair cross-complementing protein 6, which are both higher in metastasizing cSCC than in RDEB cSCC. Collagen XIV is a fibril associated collagen which may have tissue stabilizing function in the dermis. The upregulation of collagen XIV as well as other collagens in RDEB cSCC could be a compensation effort for the impaired collagen VII in RDEB tissues. Collagen VII is indeed only found in some RDEB samples and with such low intensities that it appears as upregulated in metastasized cSCC.
 
 ![col14 staining](../../images/maxquant-msstats-lfq/col14_ihc.png "Immunoflourescence staining of collagen XIV in RDEB and metastasizing cSCC skin tissues")
