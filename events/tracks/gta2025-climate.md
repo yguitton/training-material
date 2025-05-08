@@ -15,21 +15,18 @@ contributions:
         - elifsu-simula
         - j34ni
         - evenmm
+        - igormakunin
 
 
 program:
-  - section: "Climate Introduction"
+  - section: "Climate and Pangeo ecosystem"
     description: |
       If you encounter any issue please ask us in this Slack channel.
     tutorials:
-      - name: climate-101
-        topic: climate
-  - section: "Pangeo ecosystem"
-    description: |
-      If you encounter any issue please ask us in this Slack channel.
-    tutorials:
-      - name: pangeo
-        topic: climate
+#      - name: climate-101
+#        topic: climate
+#      - name: pangeo
+#        topic: climate
       - name: pangeo-notebook
         topic: climate
       - name: jupytergis_collaboration

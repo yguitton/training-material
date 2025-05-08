@@ -55,11 +55,12 @@ contributions:
         - annefou
         - anuprulez
         - abretaud
+        - dadrasarmin
         - annefou
         - bebatut
         - bgruening
         - clsiguret
-        - dadrasarmin
+        - Sch-Da
         - dannon
         - dianichj
         - deeptivarshney
@@ -70,17 +71,23 @@ contributions:
         - emmaustin20
         - evenmm
         - GarethPrice-Aus
+        - hrhotz
+        - helena_vela
+        - igormakunin
         - khaled196
         - jdavcs
         - j34ni
         - jhahnfeld
         - jochenblom
-        - bernt-matthias
+        - lisanna
         - lfenske-93
+        - bernt-matthias
         - PfisterMaxJLU
         - foellmelanie
         - meltemktn
         - mschatz
+        - hujambo-dunia
+        - mirandaembl
         - natalie-wa
         - natefoo
         - Oliver_Rupp
@@ -92,8 +99,11 @@ contributions:
         - poterlowicz-lab
         - pratikdjagtap
         - RZ9082
+        - rlibouba
+        - reytakop
         - SaimMomin12
-        - Sch-Da
+        - sanjaysrikakulam
+        - silviadg87
         - stephanierobin
         - subinamehta
         - teresa-m
@@ -132,9 +142,20 @@ infrastructure:
 
 program:
   - section: "Monday: Introduction"
-    description: |
-        You will start the week on your local time by watching videos and/or following the text-based tutorials in the program below. There are no live sessions, so you can determine your schedule.
-        A large team of instructors is available on Slack to answer your questions 24/7! Enjoy!
+    description: When you are ready to start, just work your way through the program below by watching videos and/or following the text-based tutorials. There are no live sessions, so you can determine your own schedule. A large team of instructors is available on Slack to answer your questions 24/7! Enjoy!
+  - section: Course introduction
+    subsection: true
+    tutorials:
+#      - name: Welcome & Course logistics
+#        type: custom
+#        description: |
+#          [<i class="fas fa-video" aria-hidden="true"></i> Video: Welcome to the course!](https://youtu.be/OyMpSNEDyEA)
+      - type: custom
+        name: Daily Icebreaker
+        description: |
+          **Please take a moment to introduce yourself and tell us one fun fact about yourself!**
+
+          Post your answer to Slack [#social](https://gtnsmrgsbord.slack.com/channels/social) channel. *(See the setup tab for instructions for joining Slack)*.
 
   - section: "Galaxy introduction"
     subsection: true

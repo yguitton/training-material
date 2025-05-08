@@ -11,7 +11,16 @@ contributions:
     organisers:
         - teresa-m
     instructors:
+        - annasyme
+        - bgruening
+        - delphine-l
+        - helena_vela
         - lisanna
+        - igormakunin
+        - mirandaembl
+        - reytakop
+        - SaimMomin12
+        - silviadg87
         - teresa-m
 
 

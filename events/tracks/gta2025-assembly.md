@@ -14,6 +14,8 @@ contributions:
         - annasyme
         - bgruening
         - delphine-l
+        - igormakunin
+        - bernt-matthias
         - mschatz
         - SaimMomin12
         - trungN

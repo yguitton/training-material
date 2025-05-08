@@ -1072,6 +1072,11 @@ guillaume-gricourt:
     linkedin: guillaume-gricourt
     joined: 2022-03
 
+helena_vela:
+    name: Helena Vela
+    github: false
+    joined: 2024-09
+
 hannahkimincompbio:
     name: Hannah Kim
     joined: 2024-09
@@ -1321,7 +1326,6 @@ jkreplak:
 
 jochenblom:
     name: Jochen Blom
-    github: false
     joined: 2025-04
 
 joelvdavies:
@@ -1897,6 +1901,10 @@ mira-miracoli:
       - deNBI
       - eurosciencegateway
 
+mirandaembl :
+    name: Miranda Ackerman Eduardo Jacobo
+    joined: 2025-05
+
 miRlyKayleigh:
     name: Kayleigh Smith
     twitter: miRlyKayleigh
@@ -2374,6 +2382,10 @@ reid-wagner:
     email: wagnerr@umn.edu
     joined: 2024-11
 
+reytakop:
+    name: Reyhaneh Tavakoli
+    joined: 2025-05
+
 rikeshi:
     name: Erik Schill
     joined: 2021-05
@@ -2554,6 +2566,10 @@ shiltemann:
       country: NL
       lat: 51.912
       lon: 4.462
+
+silviadg87:
+    name: Silvia Di Giorgio
+    joined: 2025-05
 
 Shorla:
     name: Olushola Ogunkelu

@@ -14,6 +14,8 @@ contributions:
         - annasyme
         - Nilchia
         - dianichj
+        - hrhotz
+        - igormakunin
         - MarisaJL
         - pavanvidem
         - nomadscientist
