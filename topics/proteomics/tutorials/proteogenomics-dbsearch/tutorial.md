@@ -24,14 +24,16 @@ follow_up_training:
     tutorials:
       - proteogenomics-novel-peptide-analysis
 
-contributors:
+contributions:
+  authorship:
   - subinamehta
   - timothygriffin
   - pratikdjagtap
   - jraysajulga
   - jj-umn
   - pravs3683
-  - Delphine-L
+  - delphine-l
+
 subtopic: multi-omics
 tags: [proteogenomics]
 
@@ -83,9 +85,9 @@ In this tutorial, we perform proteogenomic database searching using the Mass Spe
 >
 > 3. Rename the datasets to something more recognizable (strip the URL prefix)
 > 4. Verify that the `Reference_Protein_Accessions.tabular` format is `tabular`.
-> 
+>
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
-> 
+>
 > 5. Build a **Dataset list** for the four MGF files, name it as `Mo_Tai_MGFs`
 >
 >    {% snippet faqs/galaxy/collections_build_list.md %}
@@ -119,7 +121,7 @@ For this, the sequence database-searching program called [SearchGUI](https://com
 >        - *"X!Tandem: Quick Pyrolidone"*: `No`
 >      - Section **X!Tandem peptide model refinement**
 >        - *"X!Tandem: Maximum Valid Expectation Value, refinement"* : `100`
->    
+>
 >
 > 1. {% tool [Search GUI](toolshed.g2.bx.psu.edu/repos/galaxyp/peptideshaker/search_gui/4.0.41+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"Identification Parameters file"*: `Identification Parameters: PAR file`
@@ -332,7 +334,7 @@ The output from this step is that the resultant peptides would be those which do
 >      - {% icon param-repeat %} **Insert Filter Tabular Input Lines**
 >        - *"Filter by"*:  `skip leading lines`
 >        - *"Skip lines"*: `1`
-> 
+>
 >
 >  - Section **Table Options**:
 >    - *"Specify Name for Table"*: `psm`
@@ -355,7 +357,7 @@ The output from this step is that the resultant peptides would be those which do
 >  - Click **Run Tool** and inspect the query results file after it turns green.
 >
 > 2. Rename {% icon galaxy-pencil %} the output as `Peptides_for_Blast-P_analysis`
-> 
+>
 > ![QT](../../images/QT_output.png)
 >
 {: .hands_on}
