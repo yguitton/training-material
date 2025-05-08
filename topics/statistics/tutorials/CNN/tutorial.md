@@ -421,7 +421,7 @@ $$ Recall = \frac{\text{True positives}}{\text{True positives + False negatives}
 
 $$ F score = \frac{2 * \text{Precision * Recall}}{\text{Precision + Recall}} $$
 
-![Confusion matrix for MNIST image classification problem](../../images/Conv_confusion_matrix.png "Image classification confusion matrix")
+![Confusion matrix for MNIST image classification problem](../../images/Conv_confusion_matrix_new_model.png "Image classification confusion matrix")
 
 Figure 11 is the resultant confusion matrix for our image problem. The first row in the table represents the *true* digit 0 class labels (we have
 967 + 2 + 1 + 8 + 2 = 980 digit 0 images). The second row represents the *true* digit 1 class labels (Again, we have 1,132 + 1 + 2 = 1,135 digit 1
