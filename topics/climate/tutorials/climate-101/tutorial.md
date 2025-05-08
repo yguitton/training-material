@@ -371,7 +371,7 @@ At the moment, there are [55 ECVs](https://gcos.wmo.int/en/essential-climate-var
 > We will look at the [Water Vapor Essential Climate Variable ](https://gcos.wmo.int/en/essential-climate-variables/surface-vapour/):
 > *The humidity of air near the surface of the Earth affects the comfort and health of humans, livestock and wildlife, the swarming behaviour of insects and the occurrence of plant disease. The humidity of air near the surface affects evaporation and the strength of the hydrological and energy cycles. Evaporation from the surface of the earth is the source of water in the atmosphere and so is responsible for important feedbacks in the climate system due to clouds and radiation.*
 >
->    1. Import the file from [Zenodo](https://zenodo.org/record/15349982/rh_mean_july_1980_2018.nc) or from the shared data library
+> 1. Import the file from [Zenodo](https://zenodo.org/record/15349982/rh_mean_july_1980_2018.nc) or from the shared data library
 >
 >    ```
 >    https://zenodo.org/record/15349982/rh_mean_july_1980_2018.nc
@@ -381,31 +381,32 @@ At the moment, there are [55 ECVs](https://gcos.wmo.int/en/essential-climate-var
 >
 >    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
 >
->    3. Ensure the data type is set to **netcdf**; if not, change it accordingly.
+> 2. Ensure the data type is set to **netcdf**; if not, change it accordingly.
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
 >
 >    If it is not `netcdf` make sure to convert it using the Galaxy built-in format converters.
 >
->    2. Start Panoply interactive tool to generate (lat/lon) geographical maps 
->        - *"Tool Parameters netCDF format"*: `rh_mean_july_1980_2018.nc`
+> 3. Start Panoply interactive tool to generate (lat/lon) geographical maps
+>    - *"Tool Parameters netCDF format"*: `rh_mean_july_1980_2018.nc`
 >
-> > <tip-title>Launch Panoply in Galaxy</tip-title>
-> > Currently Panoply in Galaxy is available on useGalaxy.eu instance, on the "Interactive tools" tool panel section or, as all interactive tools, from the dedicated usGalaxy.eu subdomain: [Live.useGalaxy.eu](https://live.usegalaxy.eu)
-> >
-> > 1. Open the {% tool [Panoply](interactive_tool_panoply) %} [on UseGalaxy.eu](https://live.usegalaxy.eu/?tool_id=interactive_tool_panoply)
-> > 2. Check **ecv_1979.nc** dataset selected in the netcdf input field
-> > 3. Click Run Tool
-> > 4. The tool will start running and will stay running permanently
-> > 5. Click on the "User" menu at the top and go to "Active Interactive Tools" and locate the Panoply instance you started.
-> > 6. Click on your Panoply instance
-> >    ![Panoply dataset selection](../../images/select_dataset.png "Select dataset")
-> > 7. Click on **ecv_1979.nc** dataset
-> {: .tip}
->    3. **Create** a georeferenced Longitude-Latitude plot:
->        - Change the Color Table (Scale Tab) to "tokyo.cpt", and
->        - Change the Projection (Map Tab) to "Equirectangular (Regional) and the center latitude to "45" North to zoom over France.
->        - Switch between 1980 and 2018 in the 'Array(s)' tab to observe the changes between these two years.
+>    > <tip-title>Launch Panoply in Galaxy</tip-title>
+>    > Currently Panoply in Galaxy is available on useGalaxy.eu instance, on the "Interactive tools" tool panel section or, as all interactive tools, from the dedicated usGalaxy.eu subdomain: [Live.useGalaxy.eu](https://live.usegalaxy.eu)
+>    >
+>    > 1. Open the {% tool [Panoply](interactive_tool_panoply) %} [on UseGalaxy.eu](https://live.usegalaxy.eu/?tool_id=interactive_tool_panoply)
+>    > 2. Check **ecv_1979.nc** dataset selected in the netcdf input field
+>    > 3. Click Run Tool
+>    > 4. The tool will start running and will stay running permanently
+>    > 5. Click on the "User" menu at the top and go to "Active Interactive Tools" and locate the Panoply instance you started.
+>    > 6. Click on your Panoply instance
+>    >    ![Panoply dataset selection](../../images/select_dataset.png "Select dataset")
+>    > 7. Click on **ecv_1979.nc** dataset
+>    {: .tip}
+>
+> 4. **Create** a georeferenced Longitude-Latitude plot:
+>    - Change the Color Table (Scale Tab) to "tokyo.cpt", and
+>    - Change the Projection (Map Tab) to "Equirectangular (Regional) and the center latitude to "45" North to zoom over France.
+>    - Switch between 1980 and 2018 in the 'Array(s)' tab to observe the changes between these two years.
 >
 >    ![Resulting plot showing Relative humidity in July 1980 and July 2018](../../images/rh_ecv_july_1980_2018.png)
 >
