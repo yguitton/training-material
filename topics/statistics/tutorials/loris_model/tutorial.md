@@ -29,21 +29,15 @@ tags:
 - Machine Learning
 - PyCaret
 recordings:
-- youtube_id: TODO
+- youtube_id: DKM19WIDNzk
   length: 24M
   galaxy_version: 24.2.4.dev0
   date: '2025-05-07'
   speakers:
   - paulocilasjr
-  - " qchiujunhao"
-  - " jgoecks"
   captioners:
   - paulocilasjr
-  - " qchiujunhao"
-  - " jgoecks"
   bot-timestamp: 1746588908
-
-
 ---
 
 
