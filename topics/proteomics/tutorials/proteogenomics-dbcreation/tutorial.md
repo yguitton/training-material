@@ -406,7 +406,7 @@ along with the UniProt and cRAP databases.
 >       3.HISAT2_Output.indel
 >       ```
 >     - *"How are sequences judged to be unique?"*: `Accession and Sequence`
->     - *"Accession Parsing Regular Expression"*: `^>([^ |]+).*$`
+>     - *"Accession Parsing Regular Expression"*: `^>([^ ]+).*$`
 >
 > 2. Rename the output `Merged and Filtered FASTA from CustomProDB`
 >
@@ -594,7 +594,7 @@ To do so:
 >    - {% icon param-files %} *"Input FASTA File(s)"* : `Translate BED transcripts Fasta output`
 >    - {% icon param-files %} *"Input FASTA File(s)"* : `Reference_5000_uniprot_cRAP.fasta`
 >    - *"How are sequences judged to be unique?"*: `Accession and Sequence`
->    - *"Accession Parsing Regular Expression"*: `^>([^ |]+).*$`
+>    - *"Accession Parsing Regular Expression"*: `^>([^ ]+).*$`
 >
 {: .hands_on}
 
