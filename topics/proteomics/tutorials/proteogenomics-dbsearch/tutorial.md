@@ -24,13 +24,17 @@ follow_up_training:
     tutorials:
       - proteogenomics-novel-peptide-analysis
 
-contributors:
+contributions:
+  authorship:
   - subinamehta
   - timothygriffin
   - pratikdjagtap
   - jraysajulga
   - jj-umn
   - pravs3683
+  editing:
+  - Delphine-L
+
 subtopic: multi-omics
 tags: [proteogenomics]
 
@@ -252,119 +256,119 @@ The next step is to remove known peptides from the list of PSMs that we acquired
 >
 >  1. **Query Tabular** {% icon tool %} with the following parameters:
 >
->  - {% icon param-repeat %} **Insert Database Table** (b): `PSM report`
->    - Section **Filter Dataset Input**:
->      - {% icon param-repeat %} **Insert Filter Tabular Input Lines**
->        - *"Filter by"*:  `skip leading lines`
->        - *"Skip lines"*: `1`
+>     - {% icon param-repeat %} **Insert Database Table** (b): `PSM report`
+>       - Section **Filter Dataset Input**:
+>         - {% icon param-repeat %} **Insert Filter Tabular Input Lines**
+>           - *"Filter by"*:  `skip leading lines`
+>           - *"Skip lines"*: `1`
 >
->    - Section **Table Options**:
->      - *"Specify Name for Table"*: `psms`
->      - *"Use first line as column names"* : `No`
->      - *"Specify Column Names (comma-separated list)"*:`id,Proteins,Sequence`
->      - *"Only load the columns you have named into database"*: `Yes`
->      - {% icon param-repeat %} **Table Index**
->        - *"Table Index"*: `No`
->        - *"Index on Columns"*: `id`
+>       - Section **Table Options**:
+>         - *"Specify Name for Table"*: `psms`
+>         - *"Use first line as column names"* : `No`
+>         - *"Specify Column Names (comma-separated list)"*:`id,Proteins,Sequence`
+>         - *"Only load the columns you have named into database"*: `Yes`
+>         - {% icon param-repeat %} **Table Index**
+>           - *"Table Index"*: `No`
+>           - *"Index on Columns"*: `id`
 >
-> - {% icon param-repeat %} **Insert Database Table** (c):`PSM report`
+>     - {% icon param-repeat %} **Insert Database Table** (c):`PSM report`
 >
->    - Section **Filter Dataset Input**
->      - {% icon param-repeat %} **Insert Filter Tabular Input Lines**
->        - *"Filter by"*:  `skip leading lines`
->        - *"Skip lines"*: `1`
->      - {% icon param-repeat %} **Insert Filter Tabular Input Lines**
->        - *"Filter by"*:  `select columns`
->        - *"Enter column numbers to keep"*: `1,2`
->      - {% icon param-repeat %} **Insert Filter Tabular Input Lines**
->        - *"Filter by"*:  `normalize list columns,replicate rows for each item in the list`
->        - *"Enter column numbers to normalize"*: `2`
->        - *"List item delimiter in column"*: `,`
+>       - Section **Filter Dataset Input**
+>         - {% icon param-repeat %} **Insert Filter Tabular Input Lines**
+>           - *"Filter by"*:  `skip leading lines`
+>           - *"Skip lines"*: `1`
+>         - {% icon param-repeat %} **Insert Filter Tabular Input Lines**
+>           - *"Filter by"*:  `select columns`
+>           - *"Enter column numbers to keep"*: `1,2`
+>         - {% icon param-repeat %} **Insert Filter Tabular Input Lines**
+>           - *"Filter by"*:  `normalize list columns,replicate rows for each item in the list`
+>           - *"Enter column numbers to normalize"*: `2`
+>           - *"List item delimiter in column"*: `,`
 >
->    - Section **Table Options**:
->      - *"Specify Name for Table"*: `prots`
->      - *"Use first line as column names"* : `No`
->      - *"Specify Column Names (comma-separated list)"*:`id,prot`
->      - *"Only load the columns you have named into database"*: `Yes`
->      - {% icon param-repeat %} **Insert Table Index**:
->        - *"Table Index"*: `No`
->        - *"Index on Columns"*: `prot,id`
+>       - Section **Table Options**:
+>         - *"Specify Name for Table"*: `prots`
+>         - *"Use first line as column names"* : `No`
+>         - *"Specify Column Names (comma-separated list)"*:`id,prot`
+>         - *"Only load the columns you have named into database"*: `Yes`
+>         - {% icon param-repeat %} **Insert Table Index**:
+>           - *"Table Index"*: `No`
+>           - *"Index on Columns"*: `prot,id`
 >
->  - {% icon param-repeat %} **Insert Database Table** (a): `Reference_Protein_Acessions`
->    - Section **Table Options**:
->      - *"Tabular Dataset for Table"*: `Uniprot`
->      - *"Use first line as column names"* : `No`
->      - *"Specify Column Names (comma-separated list)"*:`prot`
->      - {% icon param-repeat %} **Insert Table Index**:
->        - *"Table Index"*: `No`
->        - *"Index on Columns"*: `prot`
->
->
->      > <comment-title></comment-title>
->      >
->      > By default, table columns will be named: c1,c2,c3,...,cn (column names for a table must be unique).
->      > You can override the default names by entering a comma separated list of names, e.g. `,name1,,,name2`
->      > would rename the second and fifth columns.
->      > Check your input file to find the settings which best fits your needs.
->      >
->      {: .comment}
+>     - {% icon param-repeat %} **Insert Database Table** (a): `Reference_Protein_Acessions`
+>       - Section **Table Options**:
+>         - *"Tabular Dataset for Table"*: `Uniprot`
+>         - *"Use first line as column names"* : `No`
+>         - *"Specify Column Names (comma-separated list)"*:`prot`
+>         - {% icon param-repeat %} **Insert Table Index**:
+>           - *"Table Index"*: `No`
+>           - *"Index on Columns"*: `prot`
 >
 >
->    - *"Save the sqlite database in your history"*: `No`
+>         > <comment-title></comment-title>
+>         >
+>         > By default, table columns will be named: c1,c2,c3,...,cn (column names for a table must be unique).
+>         > You can override the default names by entering a comma separated list of names, e.g. `,name1,,,name2`
+>         > would rename the second and fifth columns.
+>         > Check your input file to find the settings which best fits your needs.
+>         >
+>         {: .comment}
 >
->      > <comment-title>Querying an SQLite Database</comment-title>
->      > **Query Tabular** can also use an existing SQLite database.
->      > Activating `Save the sqlite database in your history`
->      > will store the generated database in the history, allowing to reuse it directly.
->      {: .comment}
 >
->    - *"SQL Query to generate tabular output"*:
->      ```
->      SELECT psms.*
->      FROM psms
->      WHERE psms.id NOT IN
->      (SELECT distinct prots.id
->      FROM prots JOIN uniprot ON prots.prot = uniprot.prot)
->      ORDER BY psms.id
->      ```
+>       - *"Save the sqlite database in your history"*: `No`
 >
->    - *"include query result column headers"*: `Yes`
+>         > <comment-title>Querying an SQLite Database</comment-title>
+>         > **Query Tabular** can also use an existing SQLite database.
+>         > Activating `Save the sqlite database in your history`
+>         > will store the generated database in the history, allowing to reuse it directly.
+>         {: .comment}
 >
->  - Click **Run Tool** and inspect the query results file after it turns green.
+>       - *"SQL Query to generate tabular output"*:
+>         ```
+>         SELECT psms.*
+>         FROM psms
+>         WHERE psms.id NOT IN
+>         (SELECT distinct prots.id
+>         FROM prots JOIN uniprot ON prots.prot = uniprot.prot)
+>         ORDER BY psms.id
+>         ```
 >
-{: .hands_on}
+>       - *"include query result column headers"*: `Yes`
+>
+>     - Click **Run Tool** and inspect the query results file after it turns green.
+>
+{:    .hands_on}
 
 The output from this step is that the resultant peptides would be those which doesn't belong in the Uniprot or cRAP database. The query tabular tool is used again to create a tabular output containing peptides ready for Blast P analysis.
 
 
 > <hands-on-title>Query Tabular</hands-on-title>
 >
->  **Query Tabular** {% icon tool %}: with the following parameters:
+>  1. **Query Tabular** {% icon tool %}: with the following parameters:
 >
->  - Section **Filter Dataset Input**
->    - {% icon param-repeat %} *"Insert Filter Tabular Input Lines"*
->        - *"Filter by"*:  `skip leading lines`
->        - *"Skip lines"*: `1`
+>     - Section **Filter Dataset Input**
+>       - {% icon param-repeat %} *"Insert Filter Tabular Input Lines"*
+>           - *"Filter by"*:  `skip leading lines`
+>           - *"Skip lines"*: `1`
 >
->  - Section **Table Options**:
->    - *"Specify Name for Table"*: `psm`
->    - *"Use first line as column names"* : `No`
->    - *"Specify Column Names (comma-separated list)"*:`id,Proteins,Sequence`
->    - *"Only load the columns you have named into database"*: `Yes`
+>     - Section **Table Options**:
+>       - *"Specify Name for Table"*: `psm`
+>       - *"Use first line as column names"* : `No`
+>       - *"Specify Column Names (comma-separated list)"*:`id,Proteins,Sequence`
+>       - *"Only load the columns you have named into database"*: `Yes`
 >
->  - *"SQL Query to generate tabular output"*:
->    ```
->    SELECT Sequence || ' PSM=' || group_concat(id,',') || ' length='
->    || length(Sequence) as "ID",Sequence
->    FROM  psm
->    WHERE length(Sequence) >6
->    AND length(Sequence) <= 30
->    GROUP BY Sequence
->    ORDER BY length(Sequence),Sequence
->    ```
->  - *"include query result column headers"*: `Yes`
+>     - *"SQL Query to generate tabular output"*:
+>       ```
+>       SELECT Sequence || ' PSM=' || group_concat(id,',') || ' length='
+>       || length(Sequence) as "ID",Sequence
+>       FROM  psm
+>       WHERE length(Sequence) >6
+>       AND length(Sequence) <= 30
+>       GROUP BY Sequence
+>       ORDER BY length(Sequence),Sequence
+>       ```
+>     - *"include query result column headers"*: `Yes`
 >
->  - Click **Run Tool** and inspect the query results file after it turns green.
+>     - Click **Run Tool** and inspect the query results file after it turns green.
 >
 > ![QT](../../images/QT_output.png)
 >
