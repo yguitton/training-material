@@ -450,7 +450,7 @@ Let's do that 🚀
 
 ## Upload data into Galaxy
 
-For this tutorial we downsampled the data (made datasets smaller) to make sure that you can go through it quickly. To upload the data in Galaxy follow these steps:
+For this tutorial we down-sampled the data (made datasets smaller) to make sure that you can go through it quickly. To upload the data in Galaxy follow these steps:
 
 First, let's create a list of accession to be downloaded as a dataset in Galaxy's history:
 
@@ -478,40 +478,31 @@ First, let's create a list of accession to be downloaded as a dataset in Galaxy'
 > 1. Close dialog by pressing **Close** button
 > This will create eight datasets in your history on the right side of the interface:
 > ![Four samples and eight files](../../images/f_and_r.svg)
+> There are eight datasets because each sample has *forward* and *reverse* read files associated with it, so 4 &#215; 2 = 8
 > 
 {: .hands_on}
 
 ## Bundle data into *Collection*
 
-We are going to perform exatly the same analysis on all eight datasets. So it does not make sence to repeat the same operation eight times (imagine if you had a hundred or a thousand datasets). So before we go any further we will 
+We are going to perform exactly the same analysis on all four samples. So it does not make sense to repeat the same operation eight times (imagine if you had a hundred or a thousand datasets). So before we go any further we will bundle the datasets we have in the history into a *Collection*. *Collections* in Galaxy are logical groupings of datasets that reflect the semantic relationships between them in the experiment / analysis. In this case, we will create a *paired collection* that will have two "levels"  (For more information on Collections see the [Collections tutorial]({% link topics/galaxy-interface/tutorials/collections/tutorial.md %}):
 
+![Paired collection](../../images/paired_collection.svg "A paired collection is nested: the first level contains samples and the second contains individual forward and reverse reads associated with each sample")
 
-You can think of the dataset we just uploaded as "manifest". You can upload any number of dataset from four, as is here, to thousands. However in you upload large numbers of datasets from SRA it is better to use a dedicated [accession download workflow](https://iwc.galaxyproject.org/workflow/parallel-accession-download-main/). It is more robust when dealing with large number of samples. Now let's tell Galaxy to upload actual data corresponding to these uploads:
-
-> <hands-on-title>Get data from SRA</hands-on-title>
+> <hands-on-title>Creating a paired-collection</hands-on-title>
 >
-> Run {% tool [Faster Download and Extract Reads in FASTQ](toolshed.g2.bx.psu.edu/repos/iuc/sra_tools/fasterq_dump/3.1.1+galaxy1) %} with the following parameters:
+> To create a paired collection follow the steps shown in the video below (the video is 52 seconds long 😁):
 >
-> ![fasterq_download interface](../../images/fastq_download.png)
->  
+> <iframe width="560" height="315" src="https://www.youtube.com/embed/An4e7wr-FbU?si=iFN9BoNYy2p34LD9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+>
+> Explore the collections by first **clicking** on the collection name in the history panel. This takes you inside the collection and shows you the datasets in it.  You can then navigate back to the outer level of your history.
+>
 {: .hands_on}
 
-This step will generate four history items:
-
-1. Pair-end data
-1. Single-end data
-1. Other data
-1. Fasterq-dump
-
-The first three items are actually *collections* of datasets. *Collections* in Galaxy are logical groupings of datasets that reflect the semantic relationships between them in the experiment / analysis. In this case, the tool creates separate collections for paired-end reads, single reads, and *other*. (For more information on Collections see the [Collections tutorial]({% link topics/galaxy-interface/tutorials/collections/tutorial.md %}).
-
-Explore the collections by first **clicking** on the collection name in the history panel. This takes you inside the collection and shows you the datasets in it.  You can then navigate back to the outer level of your history.
-
-Once {% tool [Faster Download and Extract Reads in FASTQ](toolshed.g2.bx.psu.edu/repos/iuc/sra_tools/fasterq_dump/3.1.1+galaxy1) %} finishes transferring data (all boxes are green), we are ready to analyze it.
+<!-- The above embedding uses iframe because include _includes/youtube.html does not work from within hands-on section -->
 
 ## Assessing the quality of the data with `fastp` and `multiqc`
 
-Removing sequencing adapters improves alignments and variant calling. {% tool [fastp](toolshed.g2.bx.psu.edu/repos/iuc/fastp/fastp/0.24.0+galaxy4) %} can automatically detect widely used sequencing adapters.
+Removing sequencing adapters improves alignments and variant calling. `fastp` can automatically detect widely used sequencing adapters.
 
 > <hands-on-title>Running `fastp`</hands-on-title>
 >
@@ -530,7 +521,6 @@ Original editable versions of the above images are here:
 
 https://docs.google.com/drawings/d/1l4qF5NKITpJVJKL8mzoLpnvRWaeZpgLyM5Ygi_j-GFc/edit?usp=sharing and
 https://docs.google.com/drawings/d/1cKDe3i5pPXyGoLXkVsTxVyKz_BF-8ETVDzU5qVe6g1s/edit?usp=sharing
-
 -->
 
 You can click on individual HTML reports to get an idea about the quality of the data and degree of "cleanup". However, clicking on each dataset individually can become problematic if the number of datasets is large (you don't want to click on hundred datasets, for example). We can visualize the QC data provided by `fastp` by feeding its JSON output to `multiqc`.
@@ -549,29 +539,34 @@ You can click on individual HTML reports to get an idea about the quality of the
 >
 {: .hands_on}
 
+Figure below shows one of the plots produced by `multiqc` --- distribution of quality values across positions for forward reads after processing.
+
+![distribution of quality values across positions for forward reads after processing](../../images/multiqc_f.png "Quality score distribution after filtering. Here you can see that two samples have very high quality values and 100 bp reads. Two other samples have somewhat lower but still acceptable values and shorter, 80bp, reads.") 
+
+We can now processed to mapping the reads.
 
 
-ffff
+## Mapping reads
+
+Galaxy has a number of mappers including `bowtie`, `bwa-mem`, and `bwa-mem2`. For this analysis we will use `bwa-mem2`---the latest version of this popular and "battle-tested" tool. 
+
+The key question when mapping reads against a genome is whether the index for this genome---a datastructure `bwa-mem2` uses to quickly find matches---is already installed on Galaxy or not.  
 
 
+<!-- BYOP goes here -->
 
-## Alignment with  **Map with BWA-MEM**
-
-{% tool [Map with BWA-MEM](toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.19) %} is a widely used sequence aligner for short-read sequencing datasets such as those we are analysing in this tutorial.
 
 > <hands-on-title>Map sequencing reads to reference genome</hands-on-title>
 >
-> Run {% tool [Map with BWA-MEM](toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.19) %} with the following parameters:
->    - *"Will you select a reference genome from your history or use a built-in index?"*: `Use a genome from history and build index`
->        - {% icon param-file %} *"Use the following dataset as the reference sequence"*: `output` (SARS-CoV-2 Genome)
->    - *"Single or Paired-end reads"*: `Paired Collection`
->        - *"Select a paired collection"*: `output_paired_collection` (output of {% tool [fastp](toolshed.g2.bx.psu.edu/repos/iuc/fastp/fastp/0.24.0+galaxy4) %})
->    - *"Set read groups information?"*: `Do not set`
->    - *"Select analysis mode"*: `1.Simple Illumina mode`
+> Run {% tool [Map with BWA-MEM2](toolshed.g2.bx.psu.edu/repos/iuc/bwa_mem2/bwa_mem2/2.2.1+galaxy4) %} with the parameters shown in the image below. In this case the index for genome we want to map against is pre-cached on Galaxy site (red outline). Don't forget to set "*Single or Paired-end reads*" to `Paired collection` (green outline). **Note** the modification of *"Set read groups information?"* toggle (blue outlines)
+>
+> ![BWA-MEM2 interface](../../images/bwamem2.svg)
 >
 {: .hands_on}
 
-## Remove duplicates with **MarkDuplicates**
+## Post processing of mapped reads
+
+### Remove duplicates with **MarkDuplicates**
 
 {% tool [MarkDuplicates](toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MarkDuplicates/3.1.1.0)%} removes duplicate sequences originating from library preparation artifacts and sequencing artifacts. It is important to remove these artefactual sequences to avoid artificial overrepresentation of single molecule.
 
