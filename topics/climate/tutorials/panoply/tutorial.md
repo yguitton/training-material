@@ -10,7 +10,7 @@ questions:
 - How to customize plots in Panoply?
 - How to generate animation in Panoply?
 objectives:
-- Learn to use Panoply in Galaxy to visuallize netCDF geo-referenced data
+- Learn to use Panoply in Galaxy to visualize netCDF geo-referenced data
 - Learn how Panoply plots are exported to Galaxy
 time_estimation: 1H
 key_points:
