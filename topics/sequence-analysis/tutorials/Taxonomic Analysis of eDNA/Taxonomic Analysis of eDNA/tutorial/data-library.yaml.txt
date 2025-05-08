@@ -1,0 +1,6 @@
+- name: "eDNA Analysis Sample Data"
+  files:
+    - name: HP3_S9_L001_R1_001.fastq.gz
+    - name: HP3_S9_L001_R2_001.fastq.gz
+      url: https://zenodo.org/records/15367390
+      info: Environmental DNA Sequence data retireved from Halibut Point in Gloucester, Massachusetts
