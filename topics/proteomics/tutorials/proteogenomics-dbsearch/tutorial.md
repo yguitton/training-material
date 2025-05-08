@@ -354,7 +354,7 @@ The output from this step is that the resultant peptides would be those which do
 >
 >  - Click **Run Tool** and inspect the query results file after it turns green.
 >
-> - Rename the output as `Peptides_for_Blast-P_analysis`
+> 2. Rename {% icon galaxy-pencil %} the output as `Peptides_for_Blast-P_analysis`
 > 
 > ![QT](../../images/QT_output.png)
 >
