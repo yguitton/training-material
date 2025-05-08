@@ -61,7 +61,7 @@ In this section, we will look at practical aspects of manipulation of next-gener
 
 To make this tutorial as realistic as possible we wanted to use an example from real world. We will start with four sequencing datasets (fastq files) representing four individuals positive for malaria---a life-threatening disease caused by *Plasmodium* parasites, transmitted to humans through the bites of infected female *Anopheles* mosquitoes. 
 
-Our goal is to understand whether the malaria parasite ([*Plasmodium falciparum*](https://brc-analytics.dev.clevercanary.com/data/organisms/5833)) infecting these individuals is resistant to [Pyrimethamine](https://en.wikipedia.org/wiki/Pyrimethamine)---an antimalaria drug. Resistance to Pyrimethamine is conferred by a mutation in `PF3D7_0417200` (*dhfr*) gene ({% cite Cowman1988 %}). An outline of our analysis looks like this:
+Our goal is to understand whether the malaria parasite ([*Plasmodium falciparum*](https://brc-analytics.dev.clevercanary.com/data/organisms/5833)) infecting these individuals is resistant to [Pyrimethamine](https://en.wikipedia.org/wiki/Pyrimethamine)---an antimalarial drug. Resistance to Pyrimethamine is conferred by a mutation in `PF3D7_0417200` (*dhfr*) gene ({% cite Cowman1988 %}). An outline of our analysis looks like this:
 
 ![analysis_outline](../../../galaxy-interface/images/collections/collection_lifecycle.svg "This figure represents a 'typical' analysis of NGS. Itr is progressing from raw fastq files (colored arrows), to mapping (converting them to BAM format), and downstream processing such as variant calling (which proiduces VCF datasets). Finally data is aggregated and merged to create the final result").
 
@@ -678,69 +678,57 @@ We will now select various effects from the VCF and create a tabular file that i
 > <hands-on-title>Create table of variants</hands-on-title>
 >
 > Run {% tool [SnpSift Extract Fields](toolshed.g2.bx.psu.edu/repos/iuc/snpsift/snpSift_extractFields/4.3+t.galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Variant input file in VCF format"*: Output of {% tool [SnpEff eff: annotate variants for SARS-CoV-2](toolshed.g2.bx.psu.edu/repos/iuc/snpeff_sars_cov_2/snpeff_sars_cov_2/4.5covid19) %}
->    - *"Fields to extract"*: `CHROM POS REF ALT QUAL DP AF SB DP4 ANN[*].EFFECT ANN[*].IMPACT ANN[*].GENE ANN[*].AA_POS ANN[*].HGVS_C`
->    - *"One effect per line"*: `Yes`
->    - *"empty field text"*: `.`
+>    - {% icon param-file %} *"Variant input file in VCF format"*: Output of {% tool SnpEff eff %} from previous step (<font color="red">red arrow</font>)
+>    - *"Fields to extract"*: 
+> ```
+> CHROM POS REF ALT QUAL DP AF SB DP4 ANN[*].EFFECT ANN[*].IMPACT ANN[*].GENE ANN[*].AA_POS ANN[*].HGVS_C
+> ```
+> (<font color="green">green outline</font>)
+>    - *"One effect per line"*: `Yes` (<font color="blue">blue arrow</font>)
+>    - *"empty field text"*: `.` (<font color="orange">orange arrow</font>)
+> ![snpsift extract fields](../../images/snpsift_extract_fields.svg)
 >
 {: .hands_on}
 
-Interesting variants include the C to T variant at position 14408 (14408C/T) in SRR11772204, 28144T/C in SRR11597145 and 25563G/T in SRR11667145.
+### Collapse data into a single dataset
 
-## Summarize data with **MultiQC**
+We now extracted meaningful fields from VCF datasets. But they still exist as a collection. To move towards secondary analysis we need to **collapse** this collection into a single dataset. "Collapsing" simply concatenates the content of collection elements and attaches sample IDs, so that we know which line in the concatenated file corresponds to which sample:
 
-We will now summarize our analysis with {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.27+galaxy3) %} , which generates a beautiful report for our data.
-
-> <hands-on-title>Summarize data</hands-on-title>
->
-> Run {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.27+galaxy3) %} with the following parameters:
->    - In *"Results"*:
->        - *"Insert Results"*
->            - *"Which tool was used generate logs?"*: `fastp`
->                - *"Output of fastp"*: `report_json` (output of **fastp**)
->        - *"Insert Results"*
->            - *"Which tool was used generate logs?"*: `Picard`
->                - In *"Picard output"*:
->                    - *"Insert Picard output"*
->                        - *"Type of Picard output?"*: `Markdups`
->                        - *"Picard output"*: `metrics_file` (output of **MarkDuplicates**)
-{: .hands_on}
-
-The above state allows us to judge the quality of the data. In this particular case data is not bad as quality values never drop below 30:
-
-![MultiQC plot](../../images/multiqc.png)
+![Collapsing a collection](../../images/collapse.svg "Collapsing combines a collection into a single file dataset and includes names of collection elements as a new column. Here each line in the collapsed dataset (right) is pre-pended with the element's name such as 1, 2, 3, and 4.")
 
 
-## Collapse data into a single dataset
 
-We now extracted meaningful fields from VCF datasets. But they still exist as a collection. To move towards secondary analysis we need to **collapse** this collection into a single dataset. For more information about collapsing collections, please watch the following YouTube video:
+For more information about collapsing collections, please watch the following YouTube video:
 
 {% include _includes/youtube.html id="ypuFZ1RKMIY" title="Dataset Collections: Collapsing a collection" %}
 
 > <hands-on-title>Collapse a collection</hands-on-title>
 >
 > Run {% tool [Collapse Collection](toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0) %} with the following parameters:
->    - {% icon param-collection %} *"Collection of files to collapse into single dataset"*: Output of {% tool [SnpSift Extract Fields](toolshed.g2.bx.psu.edu/repos/iuc/snpsift/snpSift_extractFields/4.3+t.galaxy0) %}
->    - "*Keep one header line*": `Yes`
->    - "*Prepend File name*": `Yes`
->    - "*Where to add dataset name*": `Same line and each line in dataset`
+>    - {% icon param-collection %} *"Collection of files to collapse into single dataset"*: Output of {% tool SnpSift Extract Fields %} from the previous step (<font color="red">red arrow</font>).
+>    - "*Keep one header line*": `Yes` (<font color="green">green arrow</font>)
+>    - "*Prepend File name*": `Yes` (<font color="blue">blue arrow</font>)
+>    - "*Where to add dataset name*": `Same line and each line in dataset` (<font color="orange">orange outline</font>)
+>
+> ![Collapse tool UI](../../images/collapse_ui.svg)
+>
 {: .hands_on}
 
 You can see that this tool takes lines from all collection elements (in this tutorial we have two), add element name as the first column, and pastes everything together. So, if we have a collection as an input:
 
 > <code-in-title>A collection with two items</code-in-title>
-> A collection element named `SRR11954102`
+> A collection element named `ERR042228.fq`
 >
 >```
->NC_045512.2  84 PASS  C T  960.0  28  1.0       0 0,0,15,13 MODIFIER  NONE  INTERGENIC
->NC_045512.2 241 PASS  C T 2394.0  69  0.971014  0 0,0,39,29 MODIFIER  NONE  INTERGENIC
+>NC_004318.2 674758 C T 111.0 47 0.12 4 8,11,1,5    missense_variant MODERATE PF3D7_0415200 1461 c.4381G>A
+>NC_004318.2 676334 T A 531.0 92 0.26 8 41,27,10,14 missense_variant MODERATE PF3D7_0415200 935  c.2805A>T
 >```
 >
->A collection element named `SRR12733957`:
+>A collection element named `ERR042232.fq`:
 >
 >```
->NC_045512.2 241 PASS  C T 1954.0  63  0.888889  0 0,0,42,21 MODIFIER  NONE  INTERGENIC
->NC_045512.2 823 PASS  C T 1199.0  50  0.76      3 5,6,13,26 LOW       LOW   LOW
+>NC_004318.2 674718 T C 713.0 69 0.40   1 18,21,12,18 missense_variant    MODERATE PF3D7_0415200 1474 c.4421A>G
+>NC_004318.2 675086 T G 110.0 50 0.12  32 17,21,12,0  synonymous_variant  LOW      PF3D7_0415200 1351 c.4053A>C
 >```
 {: .code-in}
 
@@ -751,14 +739,14 @@ We will have a single dataset as the output:
 >then the {% tool [Collapse Collection](toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0) %} will produce this:
 >
 >```
->SRR11954102 NC_045512.2  84 PASS  C T  960.0  28  1.0       0 0,0,15,13 MODIFIER  NONE  INTERGENIC
->SRR11954102 NC_045512.2 241 PASS  C T 2394.0  69  0.971014  0 0,0,39,29 MODIFIER  NONE  INTERGENIC
->SRR12733957 NC_045512.2 241 PASS  C T 1954.0  63  0.888889  0 0,0,42,21 MODIFIER  NONE  INTERGENIC
->SRR12733957 NC_045512.2 823 PASS  C T 1199.0  50  0.76      3 5,6,13,26 LOW       LOW   LOW
+>ERR042228.fq NC_004318.2 674758 C T 111.0 47 0.12  4 8,11,1,5    missense_variant    MODERATE PF3D7_0415200 1461 c.4381G>A
+>ERR042228.fq NC_004318.2 676334 T A 531.0 92 0.26  8 41,27,10,14 missense_variant    MODERATE PF3D7_0415200 935  c.2805A>T
+>ERR042232.fq NC_004318.2 674718 T C 713.0 69 0.40  1 18,21,12,18 missense_variant    MODERATE PF3D7_0415200 1474 c.4421A>G
+>ERR042232.fq NC_004318.2 675086 T G 110.0 50 0.12 32 17,21,12,0  synonymous_variant  LOW      PF3D7_0415200 1351 c.4053A>C
 >```
 {: .code-out}
 
-you can see that added a column with dataset ID taken from collection element name.
+you can see that this added the first column with dataset ID taken from collection element name!
 
 ## Anything interesting?
 
