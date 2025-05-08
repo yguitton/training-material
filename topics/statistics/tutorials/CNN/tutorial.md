@@ -353,7 +353,7 @@ A loss function measures how different the predicted output is versus the expect
 *categorical cross entropy* as loss function. Epochs is the number of times the whole training data is used to train the model. Setting *epochs* to 2
 means each training example in our dataset is used twice to train our model. If we update network weights/biases after all the training data is
 feed to the network, the training will be very slow (as we have 60000 training examples in our dataset). To speed up the training, we present
-only a subset of the training examples to the network, after which we update the weights/biases. *batch_size* decides the size of this subset.
+only a subset of the training examples to the network, after which we update the weights/biases. The *batch_size* decides the size of this subset.
 The model builder can be downloaded as a zip file.
 
 ### Deep learning training and evaluation
