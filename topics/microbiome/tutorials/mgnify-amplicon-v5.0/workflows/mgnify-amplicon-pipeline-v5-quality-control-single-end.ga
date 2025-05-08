@@ -24,7 +24,7 @@
     "format-version": "0.1",
     "license": "Apache-2.0",
     "name": "MGnify's amplicon pipeline v5.0 - Quality control SE",
-    "release": "0.3",
+    "release": "0.4",
     "report": {
         "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
     },
@@ -52,7 +52,7 @@
             "tool_state": "{\"optional\": false, \"tag\": null, \"collection_type\": \"list\"}",
             "tool_version": null,
             "type": "data_collection_input",
-            "uuid": "743430cc-e893-4211-9107-663adf3b28b4",
+            "uuid": "8cd96217-d77d-4186-b4fe-428ae8c121a3",
             "when": null,
             "workflow_outputs": []
         },
@@ -79,7 +79,7 @@
             "tool_state": "{\"default\": 15, \"validators\": [], \"parameter_type\": \"integer\", \"optional\": true}",
             "tool_version": null,
             "type": "parameter_input",
-            "uuid": "7b3ec08b-9dd4-4215-8901-c0eb6f0be3e7",
+            "uuid": "217dd339-d2b8-4b69-b5c5-9a566bcd4933",
             "when": null,
             "workflow_outputs": []
         },
@@ -106,7 +106,7 @@
             "tool_state": "{\"default\": 3, \"validators\": [], \"parameter_type\": \"integer\", \"optional\": true}",
             "tool_version": null,
             "type": "parameter_input",
-            "uuid": "2f3fe5f1-44e3-4117-9417-d68b8a90aa23",
+            "uuid": "4c8b949b-f16c-46fe-89dd-093d6bad48e9",
             "when": null,
             "workflow_outputs": []
         },
@@ -133,7 +133,7 @@
             "tool_state": "{\"default\": 4, \"validators\": [], \"parameter_type\": \"integer\", \"optional\": true}",
             "tool_version": null,
             "type": "parameter_input",
-            "uuid": "5b70e0b8-0631-4059-aa36-d1ce896e45b1",
+            "uuid": "797d82a7-ee5a-4753-a837-0cdc092ccf13",
             "when": null,
             "workflow_outputs": []
         },
@@ -160,7 +160,7 @@
             "tool_state": "{\"default\": 3, \"validators\": [], \"parameter_type\": \"integer\", \"optional\": true}",
             "tool_version": null,
             "type": "parameter_input",
-            "uuid": "eed3e996-2baf-4908-ba47-449254adc3cb",
+            "uuid": "b330825a-acca-405e-b473-6857419a1020",
             "when": null,
             "workflow_outputs": []
         },
@@ -187,7 +187,7 @@
             "tool_state": "{\"default\": 100, \"validators\": [], \"parameter_type\": \"integer\", \"optional\": true}",
             "tool_version": null,
             "type": "parameter_input",
-            "uuid": "08f7f8d1-ad75-42cf-91e0-bb549c8edd14",
+            "uuid": "fa0835f8-015d-4b2a-b46a-1fbb5524fa76",
             "when": null,
             "workflow_outputs": []
         },
@@ -214,7 +214,7 @@
             "tool_state": "{\"default\": 100, \"validators\": [], \"parameter_type\": \"integer\", \"optional\": true}",
             "tool_version": null,
             "type": "parameter_input",
-            "uuid": "5db2e477-4d58-4380-bc0d-e02a2249045c",
+            "uuid": "8f6d59ce-628b-48fd-93b9-b1e3a756fc44",
             "when": null,
             "workflow_outputs": []
         },
@@ -241,7 +241,7 @@
             "tool_state": "{\"default\": 10, \"validators\": [], \"parameter_type\": \"integer\", \"optional\": true}",
             "tool_version": null,
             "type": "parameter_input",
-            "uuid": "1d6681c7-d75f-49ce-a21b-e5779b0cadca",
+            "uuid": "13f9aa97-c4bf-45bc-8b6a-d89ac3ac8f7f",
             "when": null,
             "workflow_outputs": []
         },
@@ -308,7 +308,7 @@
             "tool_state": "{\"adapters\": {\"__class__\": \"RuntimeValue\"}, \"contaminants\": {\"__class__\": \"RuntimeValue\"}, \"input_file\": {\"__class__\": \"ConnectedValue\"}, \"kmers\": \"7\", \"limits\": {\"__class__\": \"RuntimeValue\"}, \"min_length\": null, \"nogroup\": false, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.74+galaxy1",
             "type": "tool",
-            "uuid": "0ef7f04f-c955-4909-81d0-51665f07604f",
+            "uuid": "5b593b3f-b01c-447b-b60f-a716e2c66052",
             "when": null,
             "workflow_outputs": []
         },
@@ -385,7 +385,7 @@
             "tool_state": "{\"illuminaclip\": {\"do_illuminaclip\": \"no\", \"__current_case__\": 1}, \"operations\": [{\"__index__\": 0, \"operation\": {\"name\": \"SLIDINGWINDOW\", \"__current_case__\": 0, \"window_size\": {\"__class__\": \"ConnectedValue\"}, \"required_quality\": {\"__class__\": \"ConnectedValue\"}}}, {\"__index__\": 1, \"operation\": {\"name\": \"LEADING\", \"__current_case__\": 2, \"leading\": {\"__class__\": \"ConnectedValue\"}}}, {\"__index__\": 2, \"operation\": {\"name\": \"TRAILING\", \"__current_case__\": 3, \"trailing\": {\"__class__\": \"ConnectedValue\"}}}, {\"__index__\": 3, \"operation\": {\"name\": \"MINLEN\", \"__current_case__\": 1, \"minlen\": {\"__class__\": \"ConnectedValue\"}}}], \"output_err\": false, \"output_logs\": false, \"quality_score\": \"-phred33\", \"readtype\": {\"single_or_paired\": \"se\", \"__current_case__\": 0, \"fastq_in\": {\"__class__\": \"ConnectedValue\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.39+galaxy2",
             "type": "tool",
-            "uuid": "6a258b5c-2dbd-4615-88f8-1908bf555374",
+            "uuid": "fa6b00a5-d48d-48b3-9fed-0825774d4acb",
             "when": null,
             "workflow_outputs": []
         },
@@ -422,7 +422,7 @@
             },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_find_and_replace/9.5+galaxy0",
             "tool_shed_repository": {
-                "changeset_revision": "3dc70b59608c",
+                "changeset_revision": "6073bb457ec0",
                 "name": "text_processing",
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
@@ -430,7 +430,7 @@
             "tool_state": "{\"find_and_replace\": [{\"__index__\": 0, \"find_pattern\": \"\\\\t(.*?)\\\\.gz\", \"replace_pattern\": \"\\\\t$1_initial_reads\", \"is_regex\": true, \"global\": true, \"caseinsensitive\": false, \"wholewords\": false, \"skip_first_line\": false, \"searchwhere\": {\"searchwhere_select\": \"line\", \"__current_case__\": 0}}], \"infile\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "9.5+galaxy0",
             "type": "tool",
-            "uuid": "93d70102-188c-4c9e-b0b4-fcb24acd8a28",
+            "uuid": "d16e29bc-af8e-4e00-972d-850d0fe7b8f7",
             "when": null,
             "workflow_outputs": []
         },
@@ -479,7 +479,7 @@
             "tool_state": "{\"fastq_filters\": [], \"input_file\": {\"__class__\": \"ConnectedValue\"}, \"max_num_deviants\": \"0\", \"max_quality\": \"0.0\", \"max_size\": \"0\", \"min_quality\": \"0.0\", \"min_size\": {\"__class__\": \"ConnectedValue\"}, \"paired_end\": false, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.1.5+galaxy2",
             "type": "tool",
-            "uuid": "c22e8401-0e9e-404e-8fa4-3cc5e28670b2",
+            "uuid": "3510af92-114d-4556-98d8-8be34b378099",
             "when": null,
             "workflow_outputs": []
         },
@@ -546,7 +546,7 @@
             "tool_state": "{\"adapters\": {\"__class__\": \"RuntimeValue\"}, \"contaminants\": {\"__class__\": \"RuntimeValue\"}, \"input_file\": {\"__class__\": \"ConnectedValue\"}, \"kmers\": \"7\", \"limits\": {\"__class__\": \"RuntimeValue\"}, \"min_length\": null, \"nogroup\": false, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.74+galaxy1",
             "type": "tool",
-            "uuid": "18505eb1-1b95-431e-b91f-1b73b50e2e47",
+            "uuid": "de456a83-d9b7-44c9-a9c9-c6c736ea111a",
             "when": null,
             "workflow_outputs": []
         },
@@ -609,7 +609,7 @@
             "tool_state": "{\"filter_treatments\": {\"apply_filter_treatments\": \"true\", \"__current_case__\": 0, \"length_filter_treatments\": {\"apply_length_filter_treatments\": \"false\", \"__current_case__\": 1}, \"quality_filter_treatments\": {\"apply_quality_filter_treatments\": \"false\", \"__current_case__\": 1}, \"base_content_filter_treatments\": {\"apply_base_content_filter_treatments\": \"true\", \"__current_case__\": 0, \"GC_perc_content_filter_treatments\": {\"apply_GC_perc_content_filter_treatments\": \"false\", \"__current_case__\": 1}, \"N_number_content_filter_treatments\": {\"apply_N_number_content_filter_treatments\": \"false\", \"__current_case__\": 1}, \"N_percentage_content_filter_treatments\": {\"apply_N_percentage_content_filter_treatments\": \"true\", \"__current_case__\": 0, \"N_percentage_content_filter_treatment_value\": {\"__class__\": \"ConnectedValue\"}}, \"apply_other_base_content_filter_treatments\": true}, \"complexity_filter_treatments\": {\"apply_complexity_filter_treatments\": \"false\", \"__current_case__\": 1}}, \"seq_type\": {\"seq_type_opt\": \"single\", \"__current_case__\": 0, \"input_singles\": {\"__class__\": \"ConnectedValue\"}}, \"trimming_treatments\": {\"apply_trimming_treatments\": \"false\", \"__current_case__\": 1}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.20.4+galaxy2",
             "type": "tool",
-            "uuid": "c7c4f665-6256-4693-b13f-3feec07b2bd6",
+            "uuid": "920f820e-64dd-4c65-bd57-3fae120ac5ad",
             "when": null,
             "workflow_outputs": []
         },
@@ -676,7 +676,7 @@
             "tool_state": "{\"adapters\": {\"__class__\": \"RuntimeValue\"}, \"contaminants\": {\"__class__\": \"RuntimeValue\"}, \"input_file\": {\"__class__\": \"ConnectedValue\"}, \"kmers\": \"7\", \"limits\": {\"__class__\": \"RuntimeValue\"}, \"min_length\": null, \"nogroup\": false, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.74+galaxy1",
             "type": "tool",
-            "uuid": "6fc925d9-c644-4f8d-9435-a1e94b151eca",
+            "uuid": "8ad4d3b4-5030-4396-aa67-15df81a71405",
             "when": null,
             "workflow_outputs": []
         },
@@ -713,7 +713,7 @@
             },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_find_and_replace/9.5+galaxy0",
             "tool_shed_repository": {
-                "changeset_revision": "3dc70b59608c",
+                "changeset_revision": "6073bb457ec0",
                 "name": "text_processing",
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
@@ -721,7 +721,7 @@
             "tool_state": "{\"find_and_replace\": [{\"__index__\": 0, \"find_pattern\": \"\\\\t(.*?)\\\\.gz\", \"replace_pattern\": \"\\\\t$1_trimming\", \"is_regex\": true, \"global\": true, \"caseinsensitive\": false, \"wholewords\": false, \"skip_first_line\": false, \"searchwhere\": {\"searchwhere_select\": \"line\", \"__current_case__\": 0}}], \"infile\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "9.5+galaxy0",
             "type": "tool",
-            "uuid": "687e1130-33fc-4890-8099-e2c6da98f836",
+            "uuid": "68e3be26-b38c-48b0-ba4e-5989f71a6f97",
             "when": null,
             "workflow_outputs": []
         },
@@ -766,7 +766,7 @@
             "tool_state": "{\"input_file\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.1.5+galaxy2",
             "type": "tool",
-            "uuid": "9bc910c0-f85a-474e-9a38-3c5cc2c3434c",
+            "uuid": "72290240-33ec-495f-a98d-ab2e29870f1d",
             "when": null,
             "workflow_outputs": []
         },
@@ -833,7 +833,7 @@
             "tool_state": "{\"adapters\": {\"__class__\": \"RuntimeValue\"}, \"contaminants\": {\"__class__\": \"RuntimeValue\"}, \"input_file\": {\"__class__\": \"ConnectedValue\"}, \"kmers\": \"7\", \"limits\": {\"__class__\": \"RuntimeValue\"}, \"min_length\": null, \"nogroup\": false, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.74+galaxy1",
             "type": "tool",
-            "uuid": "5082dc16-2032-46fe-a469-cf79af5da99c",
+            "uuid": "3d466e8b-9ce0-44c8-be37-266f3a0cb92e",
             "when": null,
             "workflow_outputs": []
         },
@@ -870,7 +870,7 @@
             },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_find_and_replace/9.5+galaxy0",
             "tool_shed_repository": {
-                "changeset_revision": "3dc70b59608c",
+                "changeset_revision": "6073bb457ec0",
                 "name": "text_processing",
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
@@ -878,7 +878,7 @@
             "tool_state": "{\"find_and_replace\": [{\"__index__\": 0, \"find_pattern\": \"\\\\t(.*?)\\\\.gz\", \"replace_pattern\": \"\\\\t$1_length_filtering\", \"is_regex\": true, \"global\": true, \"caseinsensitive\": false, \"wholewords\": false, \"skip_first_line\": false, \"searchwhere\": {\"searchwhere_select\": \"line\", \"__current_case__\": 0}}], \"infile\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "9.5+galaxy0",
             "type": "tool",
-            "uuid": "1650ae45-7ee2-4765-8953-48a6548b1c67",
+            "uuid": "e0fdf473-d9db-4de2-b75f-bfa40eceb81d",
             "when": null,
             "workflow_outputs": []
         },
@@ -917,7 +917,7 @@
             },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fasta_formatter/cshl_fasta_formatter/1.0.1+galaxy2",
             "tool_shed_repository": {
-                "changeset_revision": "516b97a23d7e",
+                "changeset_revision": "e773f1eb16cf",
                 "name": "fasta_formatter",
                 "owner": "devteam",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
@@ -925,13 +925,13 @@
             "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"width\": \"60\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.1+galaxy2",
             "type": "tool",
-            "uuid": "91a2a702-a2e0-49ec-9864-8d4edb56986e",
+            "uuid": "ca121b75-bb3c-4062-b1b9-1fea86166ad7",
             "when": null,
             "workflow_outputs": [
                 {
                     "label": "Single-end post quality control FASTA files",
                     "output_name": "output",
-                    "uuid": "5f19c1d8-2a5e-48ad-a962-012d20b6cac5"
+                    "uuid": "97f66112-d26f-4314-a4b4-29ed2d88e19c"
                 }
             ]
         },
@@ -968,7 +968,7 @@
             },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_find_and_replace/9.5+galaxy0",
             "tool_shed_repository": {
-                "changeset_revision": "3dc70b59608c",
+                "changeset_revision": "6073bb457ec0",
                 "name": "text_processing",
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
@@ -976,7 +976,7 @@
             "tool_state": "{\"find_and_replace\": [{\"__index__\": 0, \"find_pattern\": \"\\\\t(.*?)\\\\.gz\", \"replace_pattern\": \"\\\\t$1_ambiguous_base_filtering\", \"is_regex\": true, \"global\": true, \"caseinsensitive\": false, \"wholewords\": false, \"skip_first_line\": false, \"searchwhere\": {\"searchwhere_select\": \"line\", \"__current_case__\": 0}}], \"infile\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "9.5+galaxy0",
             "type": "tool",
-            "uuid": "284c9abf-2ebb-490c-a4d9-1fe997a1f562",
+            "uuid": "fd869c7b-953f-46f0-8afb-191e1ae08c56",
             "when": null,
             "workflow_outputs": []
         },
@@ -1051,18 +1051,18 @@
             "tool_state": "{\"comment\": \"\", \"export\": false, \"flat\": false, \"image_content_input\": {\"__class__\": \"RuntimeValue\"}, \"results\": [{\"__index__\": 0, \"software_cond\": {\"software\": \"fastqc\", \"__current_case__\": 8, \"output\": [{\"__index__\": 0, \"type\": \"data\", \"input\": {\"__class__\": \"ConnectedValue\"}}, {\"__index__\": 1, \"type\": \"data\", \"input\": {\"__class__\": \"ConnectedValue\"}}, {\"__index__\": 2, \"type\": \"data\", \"input\": {\"__class__\": \"ConnectedValue\"}}, {\"__index__\": 3, \"type\": \"data\", \"input\": {\"__class__\": \"ConnectedValue\"}}]}}], \"title\": \"\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.27+galaxy3",
             "type": "tool",
-            "uuid": "640f4f45-c12a-47e0-846b-9b150ed8beca",
+            "uuid": "7b4f8527-81c3-4dc5-a68b-c552829d1c91",
             "when": null,
             "workflow_outputs": [
                 {
-                    "label": "Single-end MultiQC statistics",
-                    "output_name": "stats",
-                    "uuid": "125cc43d-33aa-4b6f-a3fa-1c7c4ef3488f"
-                },
-                {
                     "label": "Single-end MultiQC report",
                     "output_name": "html_report",
-                    "uuid": "81732dfa-d5cb-46f5-ba34-13242ab5e3fa"
+                    "uuid": "02fe7bec-eda7-408a-9373-e5e87f67232e"
+                },
+                {
+                    "label": "Single-end MultiQC statistics",
+                    "output_name": "stats",
+                    "uuid": "3785b661-05e3-431c-96c0-e34533ac1a5f"
                 }
             ]
         }
@@ -1073,6 +1073,6 @@
         "metagenomics",
         "name:microgalaxy"
     ],
-    "uuid": "68bf2a73-d68a-4e25-ba52-5586c057df77",
-    "version": 20
+    "uuid": "2d33942c-9439-4d4c-9782-b51b917cd15f",
+    "version": 2
 }
