@@ -162,7 +162,7 @@ We need now to import the data
 >
 > 2. Create a paired collection.
 >
->    {% snippet faqs/galaxy/collections_build_list_paired.md %}
+>    {% snippet faqs/galaxy/collections_build_list.md %}
 >
 {: .hands_on}
 
