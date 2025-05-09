@@ -154,7 +154,7 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 >	>
 >	> While we are using the default settings here, it's important to remember that these might not always be optimal for all types of data, as different datasets can have varying quality issues or adapter contamination. Running it in single-end mode treats each input file independently, for simplicity of the tutorial. Depending on your datasets, or what information you are trying to gather, the Trimmomatic tool is useful for handling pair-ended sequences.
 >     > {: .comment}
-
+>
 {: .hands\_on}
 
 
