@@ -31,10 +31,6 @@ contributions:
     - eurosciencegateway
 ---
 
-
-# Introduction
-
-
 Through this tutorial you will learn here how to access, filter and import netCDF data through using ODV Galaxy interactive tool:
 
 Ocean Data View (ODV) is a software package for the interactive exploration, analysis and visualization of oceanographic and other geo-referenced profile, time-series, trajectory or sequence data. To know more about ODV go check the [official page](https://odv.awi.de/)
