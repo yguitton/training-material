@@ -23,7 +23,6 @@ contributors:
 ---
 
 
-# Introduction
 
 Environmental DNA (eDNA) analysis has emerged as a powerful tool in ecological and conservation research. It involves the extraction and analysis of DNA shed by organisms into their surrounding environment without the need to directly observe or capture the species. This non-invasive approach allows us to gain valuable insights into biodiversity, species distribution, and community composition in a wide range of ecosystems, including marine environments, from which the eDNA in this tutorial originates.
 
