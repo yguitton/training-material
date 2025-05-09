@@ -63,29 +63,19 @@ The first step in any Galaxy-based analysis is getting your data into the platfo
 
 > <hands-on-title> Data Upload </hands-on-title>
 >
-> 1.  **Create a new history** for this tutorial. Click on the "+" icon in the top menu bar (it should say "New History" as you hover over it) and give it a meaningful name, such as "eDNA Taxonomic Analysis."
-> 2.  **Import the files** for this tutorial using one of the following methodsd:
+> 1. **Create a new history** for this tutorial.
+>    - Give it a meaningful name, such as "eDNA Taxonomic Analysis."
 >
->       * **Option 1: Import from Zenodo**
->           If the data for this tutorial is available on Zenodo, you can import it directly using the provided link: `[Zenodo]({{ page.zenodo_link }})`.
+>    {% snippet faqs/galaxy/histories_create_new.md %}
 >
->           {% snippet faqs/galaxy/datasets_import_via_link.md %}
+> 2. **Import the files** for this tutorial from Zenodo:
 >
->       * **Option 2: Import from Tutorial Directory (Data Folder)**
->           If you are running this tutorial locally or have a specific "data" folder associated with the tutorial, you can upload the files from your computer.
+>    ```
+>    https://zenodo.org/records/15367390/files/HP3_S9_L001_R1_001.fastq.gz
+>    https://zenodo.org/records/15367390/files/HP3_S9_L001_R2_001.fastq.gz
+>    ```
 >
->           * Click on the "Upload Data" button in the left-hand panel (it looks like an upward-pointing arrow).
->           * In the "Upload Data" window, you'll see different options. Choose "Choose local files" or "Browse" to select the files from the `data` folder on your computer.
->           * Once you've selected the files (e.g., `HP3_S9_L001_R1_001.fastq.gz` and `HP3_S9_L001_R2_001.fastq.gz`), click "Start."
->           * Wait for the upload to complete, then click "Close."
->
->     > ```
->     > # HP3_S9_L001_R1_001.fastq.gz
->     > ```
->     >
->     > ```
->     > # HP3_S9_L001_R2_001.fastq.gz
->     > ```
+>    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
 > 3. **Rename the datasets** once they are uploaded into your history. Click on the pencil icon next to each dataset name in the history panel (on the right side of the Galaxy interface) and give them informative names.
 > 4. **Check that the datatype** For each of your renamed datasets, ensure the datatype is set to `FASTQ` or `FASTQ.GZ`. To check or change the datatype, click on the pencil icon next to the dataset name, then look for the "Datatype" field. If it's incorrect, select the appropriate datatype from the dropdown menu and click "Save."
