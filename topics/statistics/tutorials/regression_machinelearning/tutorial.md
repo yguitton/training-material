@@ -15,11 +15,15 @@ key_points:
   using the test set.
 - For each regression algorithm, its parameters should be optimized based on the dataset.
 time_estimation: 2H
-contributors:
-- khanteymoori
-- anuprulez
-- simonbray
-
+contributions:
+  authorship:
+    - khanteymoori
+    - anuprulez
+    - simonbray
+  funding:
+    - elixir-europe
+    - deNBI
+    - uni-freiburg
 recordings:
 - captioners:
   - anuprulez
@@ -320,7 +324,6 @@ In the final step, we will create a pipeline learner with the **Pipeline builder
 >        - *"Choose the module that contains target estimator"*: `sklearn.ensemble`
 >            - *"Choose estimator class"*: `GradientBoostingRegressor`
 >            - *"Type in parameter settings if different from default"*: `random_state=42`
->        - In *"Output parameters for searchCV?"*: `Yes`
 > 
 >      `random_state` could be set to any arbitrary integer number; its purpose is to ensure a determistic and therefore reproducible result.
 >

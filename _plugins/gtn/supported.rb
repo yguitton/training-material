@@ -72,20 +72,108 @@ module Gtn
       # generate a 'false' value when merging sets.
       inexact_support -= exact_support
 
-      usegalaxy_server_urls = Gtn::Usegalaxy.servers.map { |x| x[:url] }
+      usegalaxy_server_urls = Gtn::Usegalaxy.servers.map { |x| x[:url].downcase.gsub(/\/$/, '')}
 
       {
         'exact' => (exact_support || []).map do |id|
           data['servers'][id].update(
-            { 'usegalaxy' => usegalaxy_server_urls.include?(data['servers'][id]['url']) }
+            { 'usegalaxy' => usegalaxy_server_urls.include?(data['servers'][id]['url'].downcase.gsub(/\/$/, '')) }
           )
         end,
         'inexact' => (inexact_support || []).map do |id|
           data['servers'][id].update(
-            { 'usegalaxy' => usegalaxy_server_urls.include?(data['servers'][id]['url']) }
+            { 'usegalaxy' => usegalaxy_server_urls.include?(data['servers'][id]['url'].downcase.gsub(/\/$/, '')) }
           )
         end
       }
+    end
+
+    ##
+    # Identify the servers that support a given tool list
+    #
+    # Params:
+    # +data+:: The data from metadata/public-server-tools.json
+    # +tool_list+:: The list of tools to check (either 'upload1' or
+    #      'toolshed.g2.bx.psu.edu/repos/iuc/circos/circos/0.69.8+galaxy10' style tools)
+    # Returns:
+    # +supported+:: A hash of supported servers, with the following structure:
+    #  {
+    #    servers: [a, b, c]
+    #    tools: [
+    #      {
+    #        id: toolshed.g2.bx.psu.edu/repos/iuc/circos/circos/0.69.8+galaxy10,
+    #        version: 0.69.8+galaxy10,
+    #        servers: [
+    #          [0.69.8+galaxy10],
+    #          [0.69.8+galaxy11, 0.69.8+galaxy12],
+    #          nil
+    #        ]
+    #      }
+    #    ]
+    #  }
+    def self.calculate_matrix(data, tool_list)
+      structure = {
+        'servers' => [],
+        'tools' => [],
+      }
+      # p "Calculating supported servers for this tool list"
+      if data.nil? || data.empty? || tool_list.empty? || tool_list.nil?
+        return structure
+      end
+
+      structure['servers'] = data['servers']
+
+      tool_list.each do |tool|
+        tool_for_server = {
+          'id' => tool,
+          'servers' => []
+        }
+
+        if tool.count('/') > 4
+          # E.g. toolshed.g2.bx.psu.edu/repos/iuc/circos/circos/0.69.8+galaxy10
+          tool_id = tool.split('/')[0..4].join('/')
+          tool_version = tool.split('/')[5..].join('/')
+          tool_for_server['version'] = tool_version
+        else
+          tool_id = tool
+          tool_version = 'local'
+          tool_for_server['version'] = tool_version
+        end
+
+        data['servers'].each.with_index do |server, s_index|
+          # If we've never seen this tool anywhere
+          if ! data['tools'].key?(tool_id)
+            res = {'state' => 'missing'}
+          else
+            # If we've seen this exact version on the current server/index
+            if data['tools'][tool_id].key?(tool_version) && data['tools'][tool_id][tool_version].include?(s_index)
+              res = {'state' => 'exact', 'version' => tool_version}
+            elsif data['tools'][tool_id]
+              res = {
+                'state' => 'inexact', 
+                'versions' => data['tools'][tool_id].select{|k, v| v.include?(s_index)}.keys
+              }
+
+              if res['versions'].length == 1 && res['versions'][0] == '_'
+                res = {
+                  'state' => 'local'
+                }
+              elsif res['versions'].length == 0
+                res = {'state' => 'missing'}
+              end
+            end
+          end
+
+          res['server'] = server['url']
+          tool_for_server['servers'].push(res)
+
+        end
+
+        structure['tools'].push(tool_for_server)
+      end
+
+      # TODO: would be nice to re-sort the servers by the number of exact matches
+      structure
     end
   end
 end
@@ -95,7 +183,7 @@ if __FILE__ == $PROGRAM_NAME
   if ARGV.length.positive? && (ARGV[0] == 'test')
     require 'test/unit'
     # Testing for the class
-    class IntersectionTest < Test::Unit::TestCase
+    class Gtn::Test::IntersectionTest < Test::Unit::TestCase
       def test_exact
         data = {
           'servers' => { 0 => 's0', 1 => 's1', 2 => 's2' },

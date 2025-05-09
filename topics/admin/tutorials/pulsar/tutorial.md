@@ -16,13 +16,16 @@ time_estimation: "60m"
 key_points:
   - Pulsar allows you to easily add geographically distributed compute resources into your Galaxy instance
   - It also works well in situations where the compute resources cannot share storage pools.
-contributors:
-  - natefoo
-  - slugger70
-  - mvdbeek
-  - hexylena
-  - gmauro
-  - mira-miracoli
+contributions:
+  authorship:
+    - natefoo
+    - slugger70
+    - mvdbeek
+    - hexylena
+    - gmauro
+    - mira-miracoli
+  funding:
+    - eurosciencegateway
 subtopic: jobs
 tags:
   - ansible

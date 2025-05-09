@@ -1,6 +1,5 @@
 ---
 layout: tutorial_hands_on
-
 title: Deep Learning (Part 3) - Convolutional neural networks (CNN)
 zenodo_link: https://zenodo.org/record/4697906
 questions:
@@ -10,19 +9,18 @@ objectives:
 - Understand the inspiration behind CNN and learn the CNN architecture
 - Learn the convolution operation and its parameters
 - Learn how to create a CNN using Galaxy's deep learning tools
-- Solve an image classification problem on MNIST digit classification dataset using CNN in Galaxy
+- Solve an image classification problem on MNIST digit classification dataset using
+  CNN in Galaxy
 requirements:
-  -
-    type: internal
-    topic_name: statistics
-    tutorials:
-      - intro_deep_learning
-      - FNN
-      - RNN
+- type: internal
+  topic_name: statistics
+  tutorials:
+  - intro_deep_learning
+  - FNN
+  - RNN
 time_estimation: 2H
 contributors:
 - kxk302
-
 recordings:
 - captioners:
   - FilipposZ
@@ -32,8 +30,19 @@ recordings:
   youtube_id: P1NVYOJrv_4
   speakers:
   - kxk302
+- youtube_id: vp6YF2NRIZk
+  length: 45M
+  galaxy_version: 24.1.3.dev0
+  date: '2024-10-05'
+  speakers:
+  - hujambo-dunia
+  captioners:
+  - hujambo-dunia
+  bot-timestamp: 1728137291
+
 
 ---
+
 
 
 Artificial neural networks are a machine learning discipline that have been successfully applied to problems
@@ -344,7 +353,7 @@ A loss function measures how different the predicted output is versus the expect
 *categorical cross entropy* as loss function. Epochs is the number of times the whole training data is used to train the model. Setting *epochs* to 2
 means each training example in our dataset is used twice to train our model. If we update network weights/biases after all the training data is
 feed to the network, the training will be very slow (as we have 60000 training examples in our dataset). To speed up the training, we present
-only a subset of the training examples to the network, after which we update the weights/biases. *batch_size* decides the size of this subset.
+only a subset of the training examples to the network, after which we update the weights/biases. The *batch_size* decides the size of this subset.
 The model builder can be downloaded as a zip file.
 
 ### Deep learning training and evaluation
@@ -364,8 +373,7 @@ The model builder can be downloaded as a zip file.
 >
 {: .hands_on}
 
-The training step generates 3 datasets. 1) accuracy of the trained model, 2) the trained model, downloadable as a zip file, and 3) the trained
-model weights, downloadable as an hdf5 file. These files are needed for prediction in the next step.
+The training step generates 3 datasets: 1) accuracy of the trained model, 2) the trained model architecture file, downloadable as a tabular file, and 3) the trained model weights, downloadable as an hdf5 (or h5mlm) file. These files are needed for prediction in the next step.
 
 ### Model Prediction
 
@@ -373,7 +381,6 @@ model weights, downloadable as an hdf5 file. These files are needed for predicti
 >
 > - {% tool [Model Prediction](toolshed.g2.bx.psu.edu/repos/bgruening/model_prediction/model_prediction/1.0.11.0) %}
 >    - *"Choose the dataset containing pipeline/estimator object"* : Select the trained model from the previous step.
->    - *"Choose the dataset containing weights for the estimator above"* : Select the trained model weights from the previous step.
 >    - *"Select invocation method"*: `predict`
 >    - *"Select input data type for prediction"*: `tabular data`
 >    - *"Training samples dataset"*: Select `X_test` dataset
@@ -412,26 +419,26 @@ $$ Recall = \frac{\text{True positives}}{\text{True positives + False negatives}
 
 $$ F score = \frac{2 * \text{Precision * Recall}}{\text{Precision + Recall}} $$
 
-![Confusion matrix for MNIST image classification problem](../../images/Conv_confusion_matrix.png "Image classification confusion matrix")
+![Confusion matrix for MNIST image classification problem](../../images/Conv_confusion_matrix_new_model.png "Image classification confusion matrix")
 
 Figure 11 is the resultant confusion matrix for our image problem. The first row in the table represents the *true* digit 0 class labels (we have
-967 + 2 + 1 + 8 + 2 = 980 digit 0 images). The second row represents the *true* digit 1 class labels (Again, we have 1,132 + 1 + 2 = 1,135 digit 1
+541 + 1 + 2 + 1 + 1 + 5 + 9 + 1 + 3 + 4 = 568 digit 0 images). The second row represents the *true* digit 1 class labels (Again, we have 665 + 5 + 5 + 3 + 2 + 2 + 4 = 686 digit 1
 images). Similarly, you can count the true class labels for digits 2 to 9 by adding up the numbers in the coresponding row. The first column from the
-left represents the *predicted* digit 0 class labels (Our CNN predicted 967 + 4 + 2 + 8 +7 + 2 = 990 images as being digit 0). The second column from
-the left represents the *predicted* digit 1 class labels (Our CNN predicted 1,132 + 7 + 3 + 12 + 3 + 5 = 1,162 images as being digit 1). Similarly,
+left represents the *predicted* digit 0 class labels (Our CNN predicted 541 + 1 + 3 + 2 + 7 + 1 + 15 = 570 images as being digit 0). The second column from
+the left represents the *predicted* digit 1 class labels (Our CNN predicted 665 + 1 + 4 + 2 + 7 + 5 + 1 + 4 = 689 images as being digit 1). Similarly,
 you can count the predicted class labels for digits 2 to 9 by adding up the numbers in the corresponding column.
 
-For digit 0, looking at the top-left green cell, we see that our CNN has correctly predicted 967 images as digit 0 (True positives). Adding the numbers
-in the left most column besides the True positives (4 + 2 + 8 + 7 + 2 = 23), we see that our CNN has incorrectly predicted 23 images as being digit 0
-(False positives). Adding the numbers on the top row besides the True positives (2 + 1 + 8 + 2 = 13), we see that our CNN has incorrectly predicted
-13 digits 0 images as not being digit 0 (False negatives). Given these numbers we can calculate Precision, Recall, and the F score for digit 0 as
+For digit 0, looking at the top-left green cell, we see that our CNN has correctly predicted 541 images as digit 0 (True positives). Adding the numbers
+in the left most column besides the True positives (1 + 3 + 2 + 7 + 1 + 15 = 29), we see that our CNN has incorrectly predicted 29 images as being digit 0
+(False positives). Adding the numbers on the top row besides the True positives (1 + 2 + 1 + 1 + 5 + 9 + 1 + 3 + 4 = 27), we see that our CNN has incorrectly predicted
+27 digits 0 images as not being digit 0 (False negatives). Given these numbers we can calculate Precision, Recall, and the F score for digit 0 as
 follows:
 
-$$ Precision = \frac{\text{True positives}}{\text{True positives + False positives}} = \frac{967}{967 + 23} = 0.97 $$
+$$ Precision = \frac{\text{True positives}}{\text{True positives + False positives}} = \frac{541}{541 + 29} = 0.949 $$
 
-$$ Recall = \frac{\text{True positives}}{\text{True positives + False negatives}} = \frac{967}{967 + 13} = 0.98 $$
+$$ Recall = \frac{\text{True positives}}{\text{True positives + False negatives}} = \frac{541}{541 + 27} = 0.952 $$
 
-$$ F score = \frac{2 * \text{Precision * Recall}}{\text{Precision + Recall}} = \frac{2 * 0.97 * 0.98}{0.97 + 0.98} = 0.97 $$
+$$ F score = \frac{2 * \text{Precision * Recall}}{\text{Precision + Recall}} = \frac{2 * 0.949 * 0.952}{0.949 + 0.952} = 0.950 $$
 
 You can calculate the Precision, Recall, and F score for other digits in a similar manner.
 

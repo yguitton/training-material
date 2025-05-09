@@ -33,6 +33,16 @@ mapping:
         type: str
         description: cover image alt text
 
+    redirect_from:
+        type: seq
+        sequence:
+            - type: str
+        description: |
+            If a tutorial is renamed to a new location, use this field to list prior locations from which this tutorial was accessible.
+        _examples:
+        - /topics/sequence-analysis/tutorials/de-novo-rad-seq/tutorial
+
+
     priority:
         type: int
         description: priority within learning path list
@@ -54,7 +64,7 @@ mapping:
         - type: str
           enum:
           - ORGANISATIONS
-          - FUNDERS
+          - GRANTS
     tags:
         type: seq
         description: Any relevant tags that would help a user discover this LP
@@ -107,6 +117,23 @@ mapping:
                   required: true
                 description:
                   type: str
+                learning_objectives:
+                  type: seq
+                  sequence:
+                      - type: str
+                        required: true
+                  description: |
+                      List of Specific, Measurable, Achievable, Relevant, and Time-bound (SMART) learning objectives for the tutorial
+
+                      A learning objective is a single sentence describing what a learner will be able to do once they have done the tutorial. Generally it is best to follow a 2C or 3C learning objective such as:
+
+                      - Compute (Skill)
+                      - multiple whole genome assemblies (Objective)
+                      - in such a way to develop big data processing skills (Result)
+                  _examples:
+                      - Understand the basic concepts behind phylogenetic trees, as applied to *Mycobacterium tuberculosis*
+                      - Explore Biodiversity data with taxonomic, temporal and geographical informations
+                      - Generate a DotPlot emulating the original paper using a different analysis tool
                 tutorials:
                   type: seq
                   sequence:
@@ -123,6 +150,7 @@ mapping:
                           - ai4life
                           - assembly
                           - climate
+                          - community
                           - computational-chemistry
                           - contributing
                           - data-science
@@ -155,3 +183,4 @@ mapping:
                           enum:
                             - hands_on
                             - slides
+                            - faq

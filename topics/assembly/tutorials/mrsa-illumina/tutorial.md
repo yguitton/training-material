@@ -1,8 +1,8 @@
 ---
 layout: tutorial_hands_on
-
-title: Genome Assembly of a bacterial genome (MRSA) sequenced using Illumina MiSeq Data
-zenodo_link: 'https://zenodo.org/record/10669812'
+title: Genome Assembly of a bacterial genome (MRSA) sequenced using Illumina MiSeq
+  Data
+zenodo_link: https://zenodo.org/record/10669812
 questions:
 - How to check the quality of the MiSeq data?
 - How to perform an assembly of a bacterial genome with MiSeq data?
@@ -23,11 +23,11 @@ tags:
 - assembly
 - microgalaxy
 edam_ontology:
-- topic_0196 # Sequence Assembly
-- topic_3673 # Whole genome sequencing
-- topic_3305 # Public health and epidemiology
-- topic_0622 # Genomics
-- topic_3301 # Microbiology
+- topic_0196
+- topic_3673
+- topic_3305
+- topic_0622
+- topic_3301
 contributions:
   authorship:
   - bazante1
@@ -37,20 +37,33 @@ contributions:
   - bazante1
   - shiltemann
   - miaomiaozhou88
+  - VerenaMoo
   funding:
   - avans-atgm
   - abromics
-
 follow_up_training:
-- type: "internal"
+- type: internal
   topic_name: genome-annotation
   tutorials:
   - amr-gene-detection
-- type: "internal"
+- type: internal
   topic_name: galaxy-interface
   tutorials:
   - history-to-workflow
+recordings:
+- youtube_id: rRHH77qtZHg
+  length: 39M
+  galaxy_version: 24.1.2.dev0
+  date: '2024-09-04'
+  speakers:
+  - meltemktn
+  captioners:
+  - meltemktn
+  bot-timestamp: 1725486412
+
+
 ---
+
 
 Sequencing (determining of DNA/RNA nucleotide sequence) is used all over
 the world for all kinds of analysis. The product of these sequencers are
@@ -150,9 +163,9 @@ During sequencing, errors are introduced, such as incorrect nucleotides being ca
 
 Assessing the quality by hand would be too much work. That's why tools like
 [NanoPlot](https://github.com/wdecoster/NanoPlot) or
-[FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) are made, as they  generate a summary and plots of the data statistics. NanoPlot is
-mainly used for long-read data, like ONT and PACBIO and FastQC for short read,
-like Illumina and Sanger. You can read more in our dedicated [Quality Control
+[Falco](https://falco.readthedocs.io/en/latest/) are made, as they  generate a summary and plots of the data statistics. NanoPlot is
+mainly used for long-read data, like ONT and PACBIO and Falco for short read,
+like Illumina and Sanger. Falco is an efficiency-optimized rewrite of [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/). You can read more in our dedicated [Quality Control
 Tutorial]({% link topics/sequence-analysis/tutorials/quality-control/tutorial.md %}).
 
 Before doing any assembly, the first questions we should ask about the input
@@ -165,7 +178,7 @@ reads include:
 
 > <hands-on-title>Quality Control</hands-on-title>
 >
-> 1. {% tool [FastQC](toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.74+galaxy0) %} with the following parameters:
+> 1. {% tool [Falco](toolshed.g2.bx.psu.edu/repos/iuc/falco/falco/1.2.4+galaxy0) %} with the following parameters:
 >    - {% icon param-files %} *"Short read data from your current history"*: both `DRR187559_1` and `DRR187559_2`
 >
 >    {% snippet faqs/galaxy/tools_select_multiple_datasets.md %}
@@ -174,23 +187,22 @@ reads include:
 >
 {: .hands_on}
 
-FastQC combines quality statistics from all separate reads and combines them in plots. An important plot is the Per base sequence quality. 
+Falco combines quality statistics from all separate reads and combines them in plots. An important plot is the Per base sequence quality. 
 
 DRR187559_1 | DRR187559_2
 ----------- | -----------
-![FastQC plot showing reads that mostly stay in the green](../../images/mrsa/fastqc-1.png) | ![Same as previous plot, but the beginning of the reads are slightly better quality](../../images/mrsa/fastqc-2.png)
+![Falco plot showing reads that are green](../../images/mrsa/falco-1.png) | ![Same as previous plot, but the beginning of the reads are slightly better quality](../../images/mrsa/falco-2.png)
 
-Here you have the reads sequence length on the x-axes against the quality score (Phred-score) on the y-axis. The y-axis is divided in three sections: 
+Here you have the reads sequence length on the x-axes against the quality score (Phred-score) on the y-axis. The colour of the beams indicates three quality levels: 
 - Green = good quality, 
-- Orange = mediocre quality, and 
+- Yellow = mediocre quality, and 
 - Red = bad quality.
 
 For each position, a boxplot is drawn with:
 
-- the median value, represented by the central red line
-- the inter-quartile range (25-75%), represented by the yellow box
+- the median value, represented by the central intense coloured line
+- the inter-quartile range (25-75%), represented by the geen, yellow or red box
 - the 10% and 90% values in the upper and lower whiskers
-- the mean quality, represented by the blue line
 
 For Illumina data it is normal that the first few bases are of some lower quality and how longer the reads get the worse the quality becomes. This is often due to signal decay or phasing during the sequencing run.
 
@@ -235,7 +247,7 @@ is needed. In this case we are going to trim the data using **fastp** ({% cite C
 >    2. Add a new tag `#filtered`
 {: .hands_on}
 
-**fastp** generates also a report, similar to FASTQC, useful to compare the impact of the trimming and filtering.
+**fastp** generates also a report, similar to Falco, useful to compare the impact of the trimming and filtering.
 
 > <question-title></question-title>
 >

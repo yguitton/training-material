@@ -5,6 +5,7 @@ title: FAIR Data Management
 description: |
   The FAIR data management training learning pathway teaches you how to organise, describe, and store research data according to the FAIR principles (Findable, Accessible, Interoperable, Reusable).
 tags: [fair, dmp, data management, data stewardship]
+type: use
 
 editorial_board:
   - simleo
@@ -16,6 +17,7 @@ editorial_board:
 
 funding:
   - elixir-uk-dash
+  - eurosciencegateway
 
 pathway:
   - section: "Module 1: FAIR Data Management"
