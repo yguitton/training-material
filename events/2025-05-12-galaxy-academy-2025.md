@@ -15,8 +15,8 @@ cover-image: events/images/Galaxy_GTA2025.png
 cover-image-alt: logo for the Galaxy Training Academy Event 2025
 
 registration:
-  link: https://forms.gle/xqZMd4gduwJ6XyKU6
-  deadline: 2025-05-08
+  link: https://forms.gle/vSfms7xDVk4r7dhx8
+  deadline: 2025-05-16
   open: true
 
 date_start: 2025-05-12
