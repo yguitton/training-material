@@ -51,7 +51,7 @@ While this tutorial focuses on eDNA, the fundamental steps of sequence quality c
 >
 {: .agenda}
 
-# 1. Uploading the eDNA Sequence Data
+# Uploading the eDNA Sequence Data
 
 In this section, you will learn how to bring your raw sequencing data into the Galaxy platform. Galaxy is a powerful, web-based platform that provides access to a wide range of bioinformatics tools and computational resources, all within an accessible interface. Think of it as your workbench for biological data analysis.
 
