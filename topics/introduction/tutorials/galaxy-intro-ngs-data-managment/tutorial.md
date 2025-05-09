@@ -42,17 +42,14 @@ recordings:
 
 answer_histories:
 - label: "usegalaxy.org"
-  history: https://usegalaxy.org/u/dadrasarmin/h/ngs-data-logistics
-  date: 2025-04-12
+  history: https://usegalaxy.org/u/cartman/h/an-intro-into-ngs
+  date: 2025-05-09
 - label: "usegalaxy.eu"
-  history: https://usegalaxy.eu/u/armin.dadras/h/ngs-data-logistics
-  date: 2025-04-12
-- label: "usegalaxy.fr"
-  history: https://usegalaxy.fr/u/armin.dadras/h/ngs-data-logistics
-  date: 2025-04-12
+  history: https://usegalaxy.eu/u/nekrut/h/an-intro-into-ngs
+  date: 2025-05-09
 - label: "usegalaxy.org.au"
-  history: https://usegalaxy.org.au/u/armin.dadras/h/ngs-data-logistics
-  date: 2025-04-12
+  history: https://usegalaxy.org.au/u/nekrut/h/an-intro-into-ngs
+  date: 2025-05-09
 ---
 
 <!--
@@ -463,8 +460,11 @@ These data are now ready for downstream analysis. ({% cite Cowman1988 %}) showed
 >
 > Run {% tool [Filter](Filter1) %} with the following parameters:
 >    - "Filter"*: Output of {% tool Collapse Collection %} from the previous step (<font color="red">red arrow</font>).
->    - "*With following condition*": `c13=='PF3D7_0417200'` (<font color="green">green arrow</font>).
->    - "*Number of header lines to skip*": `1` (<font color="blue">blue arrow</font>).
+>    - "*With following condition*": (<font color="green">green arrow</font>):
+>```
+>c13=='PF3D7_0417200'
+>```
+>    - "*Number of header lines to skip*": `1` (<font color="blue">blue outline</font>).
 >   
 > ![Filter by gene name](../../images/filter_gene_name.svg)
 >
