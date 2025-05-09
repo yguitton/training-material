@@ -184,7 +184,7 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 >     > In this step, we are converting the quality-controlled FASTQ files into FASTA format with the following options: discarding any sequences that contain unknown ('N') bases and renaming the sequence identifiers to reduce file size. The FASTA format, which contains only the sequence information, is a required input format for **NCBI BLAST+ blastn**, which will be used in the subsequent section for sequence similarity searching and potential taxonomic identification.
 >     > {: .comment}
 >
-{: .hands\_on}
+{: .hands_on}
 
 > <question-title> Understanding FASTQ to FASTA Conversion </question-title>
 >
@@ -227,7 +227,7 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 > > In this step, we are using BLASTn to search your eDNA sequences against the **NCBI NT database as it was on August 15, 2024**. This is a comprehensive collection of nucleotide sequences. The parameters are set to find relatively similar sequences and output the results in a detailed tabular format, keeping only the top hit for each query. **Choosing a specific database is crucial because different databases contain different sets of sequences, which can significantly affect the outcome of the search.**
 > > {: .comment}
 >
-{: .hands\_on}
+{: .hands_on}
 
 > <question-title> Interpreting BLAST Database Choice </question-title>
 >
@@ -268,7 +268,7 @@ The BLAST output (in tabular format with extended 25 columns) contains a wealth 
 > > This output can be used for visualization such as a pie chart.
 > > {: .comment}
 >
-{: .hands\_on}
+{: .hands_on}
 
 > <question-title> Understanding Top Hit Counting </question-title>
 >
