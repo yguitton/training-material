@@ -533,7 +533,7 @@ One of the key issues with accurate identification of sequence variants is norma
 
 > <details-title>What is the problem with indels?</details-title>
 >
->Left aligning of indels (a variant of re-aligning) is extremely important for obtaining accurate variant calls. For illustrating how left-aligning works, we expanded on an example provided by Tan et al. [2015](https://doi.org/10.1093/bioinformatics/btv112). Suppose you have a reference sequence and a sequencing read:
+>Left aligning of indels (a variant of re-aligning) is extremely important for obtaining accurate variant calls. For illustrating how left-aligning works, we expanded on an example provided by Tan et al. [2015](https://pubmed.ncbi.nlm.nih.gov/25701572/). Suppose you have a reference sequence and a sequencing read:
 >
 >
 >```
