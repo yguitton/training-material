@@ -28,9 +28,6 @@ contributions:
 ---
 
 
-# Introduction
-
-
 Through this tutorial, you will learn in the first part how to import, visualise, and extract data from an ODV collection by using the ODV Galaxy interactive tool.
 In the second part, you will learn how to use DIVAnd using the inputs the outputs from ODV.
 
