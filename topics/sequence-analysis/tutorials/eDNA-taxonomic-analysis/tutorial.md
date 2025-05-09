@@ -111,7 +111,7 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 > where (P) is the probability of an incorrect base call.
 >
 > Adapter sequences are short, synthetic DNA molecules added to the ends of DNA fragments during library preparation. These adapters facilitate the sequencing process but are not part of the original environmental DNA. It's crucial to remove them as their presence can lead to incorrect alignments and taxonomic assignments.
-
+>
 {: .details}
 
 ## Concurrent Quality Control Steps with **fastp** 
