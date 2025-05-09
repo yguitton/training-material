@@ -545,7 +545,7 @@ def generate_event_feeds(site)
           xml.category(term: "ends:#{(page.data['date_end'] || page.data['date_start']).to_datetime.rfc3339}")
           xml.category(term: "days:#{page.data['duration']}")
           if page.data['external']
-            xml.category(term: "external_link:#{page.data['external']}")
+            xml.link(href: page.data['external'])
           end
 
           # xml.path(page.path)
