@@ -139,21 +139,20 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 >       - *"Single-end or paired reads"*: `Single-end`
 >           - {% icon param-file %} *"Input 1"*: `output` (Input dataset for HP3 R2)
 >
-> 	\<comment-title\> Running `fastp` \</comment-title\>
->
->     
->       > In this step, we are running `fastp` on both the HP3 R1 and HP3 R2 files using its default parameter settings. We are applying `fastp` to the datasets that were uploaded in the previous step:
->       > * `HP3_S9_L001_R1_001.fastq.gz`
->       > * `HP3_S9_L001_R2_001.fastq.gz`
->	>
->       > **Important:** Galaxy will provide default names for the output files. For better organization and recognition between the results for HP3 R1 and HP3 R2, **it is recommended to rename the outputs** in your Galaxy history. For example, you could rename the reports to `fastp report on HP3_R1` and `fastp report on HP3_R2`, and the filtered reads to `fastp output HP3_R1` and `fastp output HP3_R2`.
->	> **Expected Outputs (for each input dataset):**
->       > * `fastp on data X: JSON report`
->       > * `fastp on data X: HTML report`
->       > * `fastp on data X: Read 1 output` (FASTQ format containing the quality-filtered sequences from your input)
->	>
->	> While we are using the default settings here, it's important to remember that these might not always be optimal for all types of data, as different datasets can have varying quality issues or adapter contamination. Running it in single-end mode treats each input file independently, for simplicity of the tutorial. Depending on your datasets, or what information you are trying to gather, the Trimmomatic tool is useful for handling pair-ended sequences.
->     > {: .comment}
+>  > <comment-title> Running `fastp` </comment-title>
+>  >   
+>  > In this step, we are running `fastp` on both the HP3 R1 and HP3 R2 files using its default parameter settings. We are applying `fastp` to the datasets that were uploaded in the previous step:
+>  > * `HP3_S9_L001_R1_001.fastq.gz`
+>  > * `HP3_S9_L001_R2_001.fastq.gz`
+>  >	
+>  > **Important:** Galaxy will provide default names for the output files. For better organization and recognition between the results for HP3 R1 and HP3 R2, **it is recommended to rename the outputs** in your Galaxy history. For example, you could rename the reports to `fastp report on HP3_R1` and `fastp report on HP3_R2`, and the filtered reads to `fastp output HP3_R1` and `fastp output HP3_R2`.
+>  > **Expected Outputs (for each input dataset):**
+>  > * `fastp on data X: JSON report`
+>  > * `fastp on data X: HTML report`
+>  > * `fastp on data X: Read 1 output` (FASTQ format containing the quality-filtered sequences from your input)
+>  >
+>  > While we are using the default settings here, it's important to remember that these might not always be optimal for all types of data, as different datasets can have varying quality issues or adapter contamination. Running it in single-end mode treats each input file independently, for simplicity of the tutorial. Depending on your datasets, or what information you are trying to gather, the Trimmomatic tool is useful for handling pair-ended sequences.
+>  {: .comment}
 >
 {: .hands\_on}
 
