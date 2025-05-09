@@ -195,7 +195,7 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 > > 1.  The purpose of converting from FASTQ to FASTA is to obtain a file containing only the nucleotide sequences.
 >
 > {: .solution}
-
+>
 {: .question}
 
 # 4. Sequence Alignment for Taxonomic Identification using BLAST
