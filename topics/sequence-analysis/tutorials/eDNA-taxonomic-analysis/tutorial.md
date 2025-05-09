@@ -156,7 +156,7 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 > > 1.  No, default parameters might not always be optimal. Sequencing data can vary in quality, adapter contamination levels, and other characteristics depending on the library prep and platform. It is often necessary to adjust parameters to suit the specific needs of your data for appropriate levels of quality control.
 >
 > {: .solution}
-
+>
 {: .question}
 
 # 3. FASTQ to FASTA Conversion
