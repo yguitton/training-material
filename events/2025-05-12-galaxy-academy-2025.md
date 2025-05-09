@@ -72,7 +72,7 @@ contributions:
         - evenmm
         - GarethPrice-Aus
         - hrhotz
-        - helena_vela
+        - hvelab
         - igormakunin
         - khaled196
         - jdavcs

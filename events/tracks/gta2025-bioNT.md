@@ -14,7 +14,7 @@ contributions:
         - annasyme
         - bgruening
         - delphine-l
-        - helena_vela
+        - hvelab
         - lisanna
         - igormakunin
         - mirandaembl
@@ -27,7 +27,7 @@ contributions:
 program:
   - section: "Set up your compute environment"
     description: |
-      Get started by setting up your IPython notebook within Galaxy and installing the needed dependencies. You can follow the tutorial below. Please let us know if you need support via the Slack channel.
+      Get started by setting up your IPython notebook within Galaxy and installing the needed dependencies. You can follow the tutorial below. Unfortunately the French Galaxy server is not supporting the interactive Jupyter Notebook at the moment. Please choose one of the other Galaxy instances (US, EU, AU) to follow this training.  Please let us know if you need support via the Slack channel.
     tutorials:
       - name: galaxy-intro-jupyter
         topic: galaxy-interface
