@@ -324,7 +324,7 @@ The key question when mapping reads against a genome is whether the index for th
 > To download the genome paste the following URL into the {% tool Upload %} tool:
 >
 > ```
->  https://zenodo.org/records/15354240/files/GCF_000002765.6.fa.gz
+> https://zenodo.org/records/15354240/files/GCF_000002765.6.fa.gz
 > ```
 > The only difference is that here with example we've see above is that you need to set datatype (green box) to `fasta.gz`:
 > ![Genome upload](../../images/upload_genome.svg)
@@ -607,7 +607,7 @@ We will now annotate the variants we called in the previous step with the effect
 > To download gene annotations paste the following URL into the {% tool Upload %} tool as was shown previously in this tutorial already twice (for fastq files and for reference genome).
 >
 > ```
->  https://zenodo.org/records/15354240/files/GCF_000002765.6_GCA_000002765.ncbiRefSeq.gtf.gz
+> https://zenodo.org/records/15354240/files/GCF_000002765.6_GCA_000002765.ncbiRefSeq.gtf.gz
 > ```
 > Set datatype (<font color="green">green</font> box) to `gft.gz`:
 >
