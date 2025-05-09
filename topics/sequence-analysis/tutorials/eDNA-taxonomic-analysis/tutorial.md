@@ -88,7 +88,7 @@ The first step in any Galaxy-based analysis is getting your data into the platfo
 >
 {: .hands_on}
 
-# 2. Data Quality Control
+#  Data Quality Control
 
 After successfully uploading our raw eDNA sequence reads into Galaxy, the next step is to assess and improve the quality of the data. Raw sequencing data can contain errors introduced during the sequencing process, such as incorrect base calls. These errors can negatively impact analyses, including taxonomic identification, so performing quality control is essential to obtain reliable results.
 
@@ -159,7 +159,7 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 >
 {: .question}
 
-# 3. FASTQ to FASTA Conversion
+#  FASTQ to FASTA Conversion
 
 ## Converting `fastp` Outputs to FASTA Format
 
@@ -198,7 +198,7 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 >
 {: .question}
 
-# 4. Sequence Alignment for Taxonomic Identification using BLAST
+#  Sequence Alignment for Taxonomic Identification using BLAST
 
 ## Performing the BLASTn Search with **NCBI BLAST+ blastn**
 
@@ -241,7 +241,7 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 
 {: .question}
 
-# 5. Extracting Taxonomic Information from the BLAST table
+#  Extracting Taxonomic Information from the BLAST table
 
 ## Counting Potential Taxa using **Count**
 
