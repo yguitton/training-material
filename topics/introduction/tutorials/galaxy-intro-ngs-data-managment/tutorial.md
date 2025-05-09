@@ -1,13 +1,12 @@
 ---
 layout: tutorial_hands_on
-
 title: "NGS data logistics"
-zenodo_link: ""
+zenodo_link: "https://zenodo.org/records/15354240"
 questions:
   - "How to manipulate and process NGS data"
 objectives:
   - "Understand most common types of NGS-related datatypes"
-  - "Learn about how Galaxy handles NGS data using Illumina data derived from patients infected with SARS-CoV-2"
+  - "Learn about how Galaxy handles NGS data using Illumina data derived from patients infected with Plasmodium"
 time_estimation: "1H30M"
 level: Introductory
 key_points:
