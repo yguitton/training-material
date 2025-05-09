@@ -12,7 +12,7 @@ level: Introductory
 zenodo_link: "https://zenodo.org/records/13710235"
 questions:
     - What are the different subworkflows of the MGnify amplicon pipeline, and what is the function of each in the overall analysis?
-    - How are the various subworkflows of the MGnify amplicon pipeline executed on Galaxy using NCBI data?
+    - How are the various subworkflows of the MGnify amplicon pipeline executed on Galaxy using ENA data?
     - How can you adapt and run these subworkflows using your own sequence data?
     - How can the retrieved outputs be used for further downstream analysis?
 objectives:
@@ -26,6 +26,10 @@ requirements:
       topic_name: microbiome
       tutorials:
         - introduction
+    - type: "internal"
+      topic_name: sequence-analysis
+      tutorials:
+        - quality-control
 time_estimation: "2H"
 contributions:
    authorship:
@@ -41,7 +45,7 @@ edam_ontology:
 
 Amplicon sequencing is a powerful research method designed to explore and reveal the taxonomic composition of diverse microbial communities. By focusing on specific genetic regions, researchers can gain insights into the structure and function of these communities. Typically, ribosomal ribonucleic acid (rRNA) or ribosomal deoxyribonucleic acid (rDNA) is sequenced, with particular attention given to key marker genes. For bacteria and archaea, the 16S rRNA gene is commonly targeted; for eukaryotes, the 18S rRNA gene is used, while fungi are often studied through internal transcribed spacers (ITS) regions. These marker genes provide the genetic signatures necessary for identifying and categorizing the various organisms present within a sample.<br>
 
-In this tutorial, we will dive into the MGnify amplicon pipeline v5.0 on Galaxy, a sophisticated toolset for microbial analysis. This pipeline is a ported version of the same well-established amplicon pipeline used by MGnify, a leading metagenomics platform dedicated to the analysis and archiving of microbiome sequences. MGnify has seen significant adoption and growth in recent years ({%cite Richardson2022%}); as of the time of writing, over 495,889 analyses have been conducted using this pipeline for amplicon data alone ({%cite ebi_metagenomics%}).<br>
+In this tutorial, we will dive into the MGnify amplicon pipeline v5.0 on Galaxy, a sophisticated toolset for microbial analysis. This pipeline is a ported version of the same well-established amplicon pipeline used by MGnify, a leading metagenomics platform dedicated to the analysis and archiving of microbiome sequences. MGnify has seen significant adoption and growth in recent years ({%cite Richardson2022%}); as of the time of writing, over 500k analyses have been conducted using this pipeline for amplicon data alone ({%cite ebi_metagenomics%}). One of the key advantages of this workflow is that it does not require users to know their target region in advance—it automatically processes all amplicons for ITS, SSU, and LSU, and can even handle mixed amplicon datasets. This workflow does not currently generate ASVs (Amplicon Sequence Variants). If ASV-level resolution is required, we recommend reading the [DADA2 tutorial]({% link topics/microbiome/tutorials/dada-16S/tutorial.md %}) or utilizing [LotuS2](https://usegalaxy.eu/root?tool_id=toolshed.g2.bx.psu.edu/repos/earlhaminst/lotus2/lotus2/).<br>
 
 <div style="width:45%; margin: auto;">
 ![](./images/pipeline_v5.0_amplicon.png)  <strong>The workflow of the MGnify amplicon pipeline v5.0</strong> ({%cite ebi_amplicon_pipeline%}). The figure illustrates the workflow of the MGnify amplicon pipeline, beginning with quality control to filter low-quality reads. The processed reads then proceed to the rRNA-prediction step, where SSU and LSU regions are classified and their taxonomic abundance is visualized. Following this, the pipeline handles the ITS regions, classifying them and visualizing their taxonomic abundance using pie charts. Each stage is clearly outlined, showcasing how data moves through the pipeline and is analyzed to provide comprehensive insights into microbial communities.
@@ -70,14 +74,16 @@ Before diving into the tutorial, it is strongly recommended to review the Introd
 >
 {: .agenda}
 
-In this tutorial, we'll cover two different versions:
-1. Running the workflows using NCBI data (default)
-2. Running the workflows using own reads, which requires some minor adjustments
+In this tutorial, we'll cover four different versions:
+1. Executing the amplicon workflow using ENA data (default)
+2. Executing the amplicon workflow using own reads, which requires some minor adjustments
+2. Executing each subworkflow individually using ENA data
+2. Executing each subworkflow individually using own reads
 
-{% include _includes/cyoa-choices.html option1="NCBI data" option2="Own data" default="NCBI-data" %}
+{% include _includes/cyoa-choices.html option1="Executing the full workflow using ENA data" option2="Executing subworkflows using ENA data" option3="Executing the full workflow using own data" option4="Executing subworkflows using own data" default="Executing the workflow as a whole using ENA data" %}
 
 
-# Download datasets and import workflows 
+# Download datasets 
 
 Let's begin with creating a history and giving it a suitable name.
 
@@ -93,29 +99,97 @@ Let's begin with creating a history and giving it a suitable name.
 >
 {: .hands_on}
 
-To keep things straightforward, we will be working with two small datasets throughout this tutorial. These datasets are specifically chosen to demonstrate the full range of outputs that this pipeline can generate, allowing us to explore each type of result without being overwhelmed by large-scale data.
-
+<div class="Executing-the-full-workflow-using-ENA-data" markdown="1">
 > <hands-on-title>Downloading datasets</hands-on-title>
-> 1. Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
+> Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
 >   - Select {% icon galaxy-wf-edit %} **Paste/Fetch Data** at the bottom
->   - Copy {% icon copy %} and paste the following:
+>   - Copy {% icon copy %} and paste the following URLs into the text box:
 >   - Click on **Start**
 ```
-https://zenodo.org/records/13710235/files/ribo.cm
 https://zenodo.org/records/13710235/files/ribo.claninfo
 https://zenodo.org/records/13710235/files/accessions.csv
 ```
 >   - **Close** the window
-> 2. {% tool [Faster Download and Extract Reads in FASTQ](toolshed.g2.bx.psu.edu/repos/iuc/sra_tools/fasterq_dump/3.1.1+galaxy0) %} using the parameters:
->   - {% icon param-files %} *"select input type"*: `List of SRA accession, one per line`
->   - {% icon param-files %} *"Accession"*: `accessions.csv`
->   - *"Advanced Options"*:
->        - *"Defline format specification for sequence"*: `@$ac.$si-$sn-$ri`
+>   - **Note**: The file `ribo.claninfo` is required for the workflow to run properly. `ribo.claninfo` provides classification information for the rRNA models in ribo.cm, grouping them into so called clans.
 {: .hands_on}
+</div>
+
+<div class="Executing-subworkflows-using-ENA-data" markdown="1">
+> <hands-on-title>Downloading datasets</hands-on-title>
+> 1. Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
+>   - Select {% icon galaxy-wf-edit %} **Paste/Fetch Data** at the bottom
+>   - Copy {% icon copy %} and paste the following URLs into the text box:
+>   - Click on **Start**
+```
+https://zenodo.org/records/13710235/files/ribo.claninfo
+https://zenodo.org/records/13710235/files/accessions.csv
+```
+>   - **Close** the window
+>   - **Note**: The file `ribo.claninfo` is required for the workflow to run properly. `ribo.claninfo` provides classification information for the rRNA models in ribo.cm, grouping them into so called clans.
+> 2. {% tool [fastq-dl](toolshed.g2.bx.psu.edu/repos/iuc/fastq_dl/fastq_dl/3.0.0+galaxy0) %} using the parameters:
+>   - {% icon param-files %} *"select input type"*: `A list of ENA accession IDs, one per row`
+>   - {% icon param-files %} *"Accession"*: `accessions.csv`
+{: .hands_on}
+</div>
+
+<div class="Executing-subworkflows-using-own-data" markdown="1">
+> <hands-on-title>Downloading datasets</hands-on-title>
+> Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
+>   - Select {% icon galaxy-wf-edit %} **Paste/Fetch Data** at the bottom
+>   - Copy {% icon copy %} and paste the following URLs into the text box:
+>   - Click on **Start**
+```
+https://zenodo.org/records/13710235/files/ribo.claninfo
+```
+>   - **Close** the window
+>   - **Note**: The file `ribo.claninfo` is required for the workflow to run properly. `ribo.claninfo` provides classification information for the rRNA models in ribo.cm, grouping them into so called clans.
+{: .hands_on}
+</div>
+
+<div class="Executing-the-full-workflow-using-own-data" markdown="1">
+> <hands-on-title>Downloading datasets</hands-on-title>
+> Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
+>   - Select {% icon galaxy-wf-edit %} **Paste/Fetch Data** at the bottom
+>   - Copy {% icon copy %} and paste the following URLs into the text box:
+>   - Click on **Start**
+```
+https://zenodo.org/records/13710235/files/ribo.claninfo
+```
+>   - **Close** the window
+>   - **Note**: The file `ribo.claninfo` is required for the workflow to run properly. `ribo.claninfo` provides classification information for the rRNA models in ribo.cm, grouping them into so called clans.
+{: .hands_on}
+</div>
+
+<div class="Executing-the-full-workflow-using-own-data" markdown="1">
+# Upload own data files
+
+> <hands-on-title>Upload own data file</hands-on-title>
+>
+> 1. Upload the reads in `fastqsanger` or `fastqsanger.gz` format
+>
+>    {% snippet faqs/galaxy/datasets_upload.md %}
+>
+> 2. Create a collection out of the single-end datasets
+>
+>    {% snippet faqs/galaxy/collections_build_list.md %}
+>
+> 3. Create a paired-end end collection for the paired-end datasets
+>
+>    {% snippet faqs/galaxy/collections_build_list_paired.md %}
+>
+{: .hands_on}
+</div>
+
+# Workflow Selection Guidance
+Before running the rRNA or ITS sub-workflows, it's important to know the nature of your amplicon data:
+- If your sequencing targets 16S or 18S rRNA genes, use the rRNA-prediction workflow.
+- If your sequencing targets fungal ITS regions, use the ITS workflow.
+- You do not need to run both workflows unless your dataset includes both types of sequences.
 
 # Quality control
 Quality control (QC) is a crucial first step in any metagenomic analysis pipeline. It ensures that sequencing reads are free from contaminants, low-quality bases, and adapter sequences, which can negatively impact downstream analyses. In the MGnify v5.0 pipeline, QC involves trimming, filtering, and assessing read quality using tools like Trimmomatic, SeqPrep, and FastQC. This process guarantees that only high-quality data progresses, providing reliable results for subsequent steps like taxonomic classification and diversity analysis.<br>
-The quality control phase in this amplicon pipeline is split into two sub-workflows: one dedicated to paired-end reads and another for single-end reads
+The quality control phase in this amplicon pipeline is split into two sub-workflows: one dedicated to paired-end reads and another for single-end reads.
+In addition to quality-controlled single- and paired-end reads, both subworkflows also generate a MultiQC report that summarizes quality metrics across all input files. To help you interpret the MultiQC report, we recommend reviewing the Quality Control tutorial linked in the requirements section.
 
 ## Single-end reads
 The quality control sub-workflow for single-end reads involves a series of tools that perform trimming, filtering, and quality assessment to ensure high-quality sequencing data. The workflow includes the following tools:
@@ -130,7 +204,7 @@ The quality control sub-workflow for single-end reads involves a series of tools
 - {% tool [PRINSEQ](toolshed.g2.bx.psu.edu/repos/iuc/prinseq/prinseq/0.20.4+galaxy2) %} provides advanced filtering, trimming, and data quality control, allowing for the removal of duplicate reads, low-complexity sequences, and additional quality filtering. Using the following parameters:
     - *"Is this library paired- or single-end?"*: `Single-end`
     - *"Apply filter treatments?"*: `Yes`
-    - *"Filter sequence based on their length?"*: `No`
+    - *"Filter sequences based on their length?"*: `No`
     - *"Filter sequences based on quality score?"*: `No`
     - *"Filter sequences based on their base content?"*: `Yes`
     - *"Filter sequences based on their GC percentage?"*: `No`
@@ -146,27 +220,27 @@ The quality control sub-workflow for single-end reads involves a series of tools
     - **Which tool was used generate logs?**: `FastQC`
     - **Type of FastQC output?**: `Raw data`
 
-<div class="NCBI-data" markdown="1">
-> <hands-on-title>Running the single-end quality control sub-workflow</hands-on-title>
+<div class="Executing-subworkflows-using-ENA-data" markdown="1">
+> <hands-on-title>Executing the single-end quality control sub-workflow</hands-on-title>
 > 1. **Import** the [single-end quality control sub-workflow]({{ site.baseurl }}{{ page.dir }}workflows/mgnify-amplicon-pipeline-v5-quality-control-single-end.ga)
 >
 >    {% snippet faqs/galaxy/workflows_import.md %}
 >
 > 2. **Run** {% icon workflow-run %} the single-end sub-workflow using the following input:
->   - **Single-end reads**: `Single-end data (fasterq-dump)` collection
+>   - **Single-end reads**: `Single-end data` collection
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
 {: .hands_on}
 </div>
 
-<div class="Own-data" markdown="1">
-> <hands-on-title>Running the single-end quality control sub-workflow</hands-on-title>
+<div class="Executing-subworkflows-using-own-data" markdown="1">
+> <hands-on-title>Executing the single-end quality control sub-workflow</hands-on-title>
 > 1. **Import** the [single-end quality control sub-workflow]({{ site.baseurl }}{{ page.dir }}workflows/mgnify-amplicon-pipeline-v5-quality-control-single-end.ga)
 >
 >    {% snippet faqs/galaxy/workflows_import.md %}
 > 2. Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
-> 3. Click on {% icon tutorial %} **Choose local file** and select the desired single-end files
+> 3. Click on {% icon tutorial %} **Choose local file** and select the desired single-end files in `fastqsanger` or `fastqsanger.gz` format
 > 4. Click on **Start** and **Close** the window
 > 5. When the upload is finished create a collection for all single-end reads files:
 >
@@ -221,28 +295,28 @@ The quality control sub-workflow for paired-end reads is designed to optimize th
     - *"Which tool was used generate logs?"*: `FastQC`
     - *"Type of FastQC output?"*: `Raw data`
 
-<div class="NCBI-data" markdown="1">
-> <hands-on-title>Running the paired-end quality control sub-workflow</hands-on-title>
+<div class="Executing-subworkflows-using-ENA-data" markdown="1">
+> <hands-on-title>Executing the paired-end quality control sub-workflow</hands-on-title>
 > 1. **Import** the [paired-end quality control sub-workflow]({{ site.baseurl }}{{ page.dir }}workflows/mgnify-amplicon-pipeline-v5-quality-control-paired-end.ga)
 >
 >    {% snippet faqs/galaxy/workflows_import.md %}
 >
 > 2. **Run** {% icon workflow-run %} the paired-end sub-workflow using the following input:
->      - **Paired-end reads**: `Pair-end data (fasterq-dump)` collection
+>      - **Paired-end reads**: `Pair-end data` collection
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
 {: .hands_on}
 </div>
 
-<div class="Own-data" markdown="1">
-> <hands-on-title>Running the paired-end quality control sub-workflow</hands-on-title>
+<div class="Executing-subworkflows-using-own-data" markdown="1">
+> <hands-on-title>Executing the paired-end quality control sub-workflow</hands-on-title>
 > 1. **Import** the [paired-end quality control sub-workflow]({{ site.baseurl }}{{ page.dir }}workflows/mgnify-amplicon-pipeline-v5-quality-control-paired-end.ga)
 >
 >    {% snippet faqs/galaxy/workflows_import.md %}
 >
 > 2. Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
-> 3. Click on {% icon tutorial %}**Choose local file** and select the desired paired-end files
+> 3. Click on {% icon tutorial %}**Choose local file** and select the desired paired-end files in `fastqsanger` or `fastqsanger.gz` format
 > 4. Click on **Start** and **Close** the window
 > 5. When the upload is finished create a paired collection for all paired-end reads files:
 >
@@ -259,7 +333,8 @@ The quality control sub-workflow for paired-end reads is designed to optimize th
 # rRNA-prediction
 The rRNA prediction sub-workflow focuses on identifying and classifying ribosomal RNA (rRNA) sequences, particularly small subunit (SSU) and large subunit (LSU) rRNAs. This workflow uses several tools for comparison against covariance models, filtering, classification, and visualization:
 - {% tool [CMseach](toolshed.g2.bx.psu.edu/repos/bgruening/infernal/infernal_cmsearch/1.1.4+galaxy0) %} the datasets are compared against the LSU and SSU models from Rfam (v13.0). Using the following parameters:
-    - *"Subject covariance models"*: `Covariance model from your history`
+    - *"Subject covariance models"*: `Locally installed covariance models`
+    - *"Covariance models"*: `Mgnify 5.0 RFAM Models`
     - *"Calculate E-values as if the search space size is 'x' megabases (Mb)"*: `1000`
     - *"Options controlling acceleration heuristics"*: `Use HMM only, don't use a CM at all (--hmmonly)`
     - *"Omit the alignment section from the main input"*: `Yes`
@@ -287,19 +362,35 @@ The rRNA prediction sub-workflow focuses on identifying and classifying ribosoma
         1. `JSON-formatted table(BIOM1)`
         2. `HDF5-formatted table(BIOM2)`
 
-> <hands-on-title>Running the rRNA-prediction sub-workflow</hands-on-title>
+<div class="Executing-subworkflows-using-ENA-data" markdown="1">
+> <hands-on-title>Executing the rRNA-prediction sub-workflow</hands-on-title>
 > 1. **Import** the [rRNA-prediction sub-workflow]({{ site.baseurl }}{{ page.dir }}workflows/mgnify-amplicon-pipeline-v5-rrna-prediction.ga)
 >
 >    {% snippet faqs/galaxy/workflows_import.md %}
-> 2. Using {% tool [Merge collection](__MERGE_COLLECTION__) %} merge both quality processed single- and paired-end reads collections: `SE_QC_processed_FASTA` and `PE_QC_processed_FASTA`
+> 2. Using {% tool [Merge collections](__MERGE_COLLECTION__) %} merge both quality processed single- and paired-end reads collections: `Single-end post quality control FASTA files` and `Paired-end post quality control FASTA files`
 > 3. **Run** {% icon workflow-run %} the rRNA-prediction sub-workflow using the following inputs:
 >      - **Processed sequences**: Quality processed sequences (merged collection)
 >      - **Clan information file**: `ribo.claninfo`
->      - **Covariance models**: `ribo.cm`
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
 {: .hands_on}
+</div>
+
+<div class="Executing-subworkflows-using-own-data" markdown="1">
+> <hands-on-title>Executing the rRNA-prediction sub-workflow</hands-on-title>
+> 1. **Import** the [rRNA-prediction sub-workflow]({{ site.baseurl }}{{ page.dir }}workflows/mgnify-amplicon-pipeline-v5-rrna-prediction.ga)
+>
+>    {% snippet faqs/galaxy/workflows_import.md %}
+> 2. Using {% tool [Merge collections](__MERGE_COLLECTION__) %} merge both quality processed single- and paired-end reads collections: `Single-end post quality control FASTA files` and `Paired-end post quality control FASTA files`
+> 3. **Run** {% icon workflow-run %} the rRNA-prediction sub-workflow using the following inputs:
+>      - **Processed sequences**: Quality processed sequences (merged collection)
+>      - **Clan information file**: `ribo.claninfo`
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
+</div>
 
 # ITS
 The ITS (Internal Transcribed Spacer) workflow is designed for the identification and taxonomic classification of fungal sequences, specifically focusing on ITS regions. The sub-workflow includes several tools to mask, classify, and visualize taxonomic data:
@@ -326,18 +417,35 @@ The ITS (Internal Transcribed Spacer) workflow is designed for the identificatio
         1. `JSON-formatted table(BIOM1)`
         2. `HDF5-formatted table(BIOM2)`
 
-> <hands-on-title>Running the ITS sub-workflow</hands-on-title>
+<div class="Executing-subworkflows-using-ENA-data" markdown="1">
+> <hands-on-title>Executing the ITS sub-workflow</hands-on-title>
 > 1. **Import** the [ITS sub-workflow]({{ site.baseurl }}{{ page.dir }}workflows/mgnify-amplicon-pipeline-v5-its.ga)
 >
 >    {% snippet faqs/galaxy/workflows_import.md %}
 >
 > 2. **Run** {% icon workflow-run %} the ITS sub-workflow using the following inputs:
->      - *"LSU and SSU BED"*: `LSU_SSU_BED`
+>      - *"LSU and SSU BED"*: `LSU and SSU BED regions`
 >      - *"Processed sequence"*: Quality processed sequences (merged single-end and paired-end collection)
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
 {: .hands_on}
+</div>
+
+<div class="Executing-subworkflows-using-own-data" markdown="1">
+> <hands-on-title>Executing the ITS sub-workflow</hands-on-title>
+> 1. **Import** the [ITS sub-workflow]({{ site.baseurl }}{{ page.dir }}workflows/mgnify-amplicon-pipeline-v5-its.ga)
+>
+>    {% snippet faqs/galaxy/workflows_import.md %}
+>
+> 2. **Run** {% icon workflow-run %} the ITS sub-workflow using the following inputs:
+>      - *"LSU and SSU BED"*: `LSU and SSU BED regions`
+>      - *"Processed sequence"*: Quality processed sequences (merged single-end and paired-end collection)
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
+</div>
 
 # Summary tables
 The summary tables sub-workflow takes as input the taxonomic abundance tables generated from all datasets within the pipeline. It processes these tables to create two comprehensive taxonomic summary tables:
@@ -345,40 +453,119 @@ The summary tables sub-workflow takes as input the taxonomic abundance tables ge
 
 2. Phylum-Level Summary Table: Focused specifically on the phylum level, this table aggregates data to provide a clear view of the phylum distribution within the datasets. This level-specific summary is particularly useful for high-level comparisons and identifying major trends within the microbial communities.
 
-Both summary tables serve as essential tools for downstream interpretation, helping to visualize and compare the taxonomic profiles across multiple samples (e.g. [Calculating α and β diversity]({% link topics/microbiome/tutorials/diversity/tutorial.md %})).
+Both summary tables serve as essential inputs for downstream interpretation, helping to visualize and compare the taxonomic profiles across multiple samples (for example, see our tutorial on[Calculating α and β diversity]({% link topics/microbiome/tutorials/diversity/tutorial.md %})).
 
-> <hands-on-title>Running the summary tables sub-workflow</hands-on-title>
+<div class="Executing-subworkflows-using-ENA-data" markdown="1">
+> <hands-on-title>Executing the summary tables sub-workflow</hands-on-title>
 > 1. **Import** the [summary tables sub-workflow]({{ site.baseurl }}{{ page.dir }}workflows/mgnify-amplicon-summary-tables.ga)
 >
 >    {% snippet faqs/galaxy/workflows_import.md %}
 >
 > 2. **Run** {% icon workflow-run %} the summary tables sub-workflow 4 times using the following inputs:
 >       1. First run:
->           - *"OTU tables"*: `OTU_LSU_SILVA`
->           - *"taxonomic_summary_table"*: `LSU_taxonomic_summary_table`
->           - *"phylum_taxonomic_summary_table"*: `LSU_phylum_taxonomic_summary_table`
+>           - *"OTU tables"*: `LSU OTU tables (SILVA DB)`
+>           - *"Taxonomic abundance summary table name"*: 
+```
+LSU taxonomic abundance summary table
+```
+>           - *"Phylum level taxonomic abundance summary table name"*:
+```
+LSU phylum level taxonomic abundance summary table
+```
 >       2. Second run:
->           - *"OTU tables"*: `OTU_SSU_SILVA`
->           - *"taxonomic_summary_table"*: `SSU_taxonomic_summary_table`
->           - *"phylum_taxonomic_summary_table"*: `SSU_phylum_taxonomic_summary_table`
+>           - *"OTU tables"*: `SSU OTU tables (SILVA DB)`
+>           - *"Taxonomic abundance summary table name"*: 
+```
+SSU taxonomic abundance summary table
+```
+>           - *"Phylum level taxonomic abundance summary table name"*:
+```
+SSU phylum level taxonomic abundance summary table
+```
 >       3. Third run:
->           - *"OTU tables"*: `OTU_ITS_UNITE`
->           - *"taxonomic_summary_table"*: `UNITE_taxonomic_summary_table`
->           - *"phylum_taxonomic_summary_table"*: `UNITE_phylum_taxonomic_summary_table`
+>           - *"OTU tables"*: `ITS OTU tables (UNITE DB)`
+>           - *"Taxonomic abundance summary table name"*: 
+```
+UNITE taxonomic abundance summary table
+```
+>           - *"Phylum level taxonomic abundance summary table name"*:
+```
+UNITE phylum level taxonomic abundance summary table
+```
 >       2. Second run:
->           - *"OTU tables"*: `OTU_ITSoneDB`
->           - *"taxonomic_summary_table"*: `ITSoneDB_taxonomic_summary_table`
->           - *"phylum_taxonomic_summary_table"*: `ITSoneDB_phylum_taxonomic_summary_table`
+>           - *"OTU tables"*: `ITS OTU tables (ITSoneDB)`
+>           - *"Taxonomic abundance summary table name"*: 
+```
+ITSoneDB taxonomic abundance summary table
+```
+>           - *"Phylum level taxonomic abundance summary table name"*:
+```
+ITSoneDB phylum level taxonomic abundance summary table
+```
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
 {: .hands_on}
+</div>
+
+<div class="Executing-subworkflows-using-own-data" markdown="1">
+> <hands-on-title>Executing the summary tables sub-workflow</hands-on-title>
+> 1. **Import** the [summary tables sub-workflow]({{ site.baseurl }}{{ page.dir }}workflows/mgnify-amplicon-summary-tables.ga)
+>
+>    {% snippet faqs/galaxy/workflows_import.md %}
+>
+> 2. **Run** {% icon workflow-run %} the summary tables sub-workflow 4 times using the following inputs:
+>       1. First run:
+>           - *"OTU tables"*: `LSU OTU tables (SILVA DB)`
+>           - *"Taxonomic abundance summary table name"*: 
+```
+LSU taxonomic abundance summary table
+```
+>           - *"Phylum level taxonomic abundance summary table name"*:
+```
+LSU phylum level taxonomic abundance summary table
+```
+>       2. Second run:
+>           - *"OTU tables"*: `SSU OTU tables (SILVA DB)`
+>           - *"Taxonomic abundance summary table name"*: 
+```
+SSU taxonomic abundance summary table
+```
+>           - *"Phylum level taxonomic abundance summary table name"*:
+```
+SSU phylum level taxonomic abundance summary table
+```
+>       3. Third run:
+>           - *"OTU tables"*: `ITS OTU tables (UNITE DB)`
+>           - *"Taxonomic abundance summary table name"*: 
+```
+UNITE taxonomic abundance summary table
+```
+>           - *"Phylum level taxonomic abundance summary table name"*:
+```
+UNITE phylum level taxonomic abundance summary table
+```
+>       2. Second run:
+>           - *"OTU tables"*: `ITS OTU tables (ITSoneDB)`
+>           - *"Taxonomic abundance summary table name"*: 
+```
+ITSoneDB taxonomic abundance summary table
+```
+>           - *"Phylum level taxonomic abundance summary table name"*:
+```
+ITSoneDB phylum level taxonomic abundance summary table
+```
+>
+>    {% snippet faqs/galaxy/workflows_run.md %}
+>
+{: .hands_on}
+</div>
 
 # Complete Workflow (including all sub-workflows)
-This workflow streamlines the entire process, from quality control to taxonomic classification, leading to the generation of comprehensive summary tables. By following the steps below, you’ll execute the full pipeline on your datasets, applying all the tools and techniques covered in previous sections. This is the final step, where all the preparation comes together to deliver detailed insights into your microbial communities.
+If you're working with SSU, LSU, and ITS data, it's beneficial to run the entire workflow to take full advantage of its capabilities. Even if you're unsure which of these datasets you have, executing the complete workflow ensures that all relevant analyses are applied, maximizing the insight gained from your microbial data.
 
-<div class="NCBI-data" markdown="1">
-> <hands-on-title>Running the complete MGnify amplicon pipeline</hands-on-title>
+<div class="Executing-the-full-workflow-using-ENA-data" markdown="1">
+> <hands-on-title>Executing the complete MGnify amplicon pipeline</hands-on-title>
 > 1. **Import** the [complete MGnify amplicon workflow]({{ site.baseurl }}{{ page.dir }}workflows/mgnify-amplicon-pipeline-v5-complete.ga)
 >
 >    {% snippet faqs/galaxy/workflows_import.md %}
@@ -386,15 +573,14 @@ This workflow streamlines the entire process, from quality control to taxonomic 
 > 2. **Run** {% icon workflow-run %} the workflow using the following inputs:
 >      - *"SRA accession list"*: `accessions.csv`
 >      - *"Clan information file"*: `ribo.claninfo`
->      - *"Covariance models"*: `ribo.cm`
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
 {: .hands_on}
 </div>
 
-<div class="Own-data" markdown="1">
-> <hands-on-title>Running the complete MGnify amplicon pipeline</hands-on-title>
+<div class="Executing-the-full-workflow-using-own-data" markdown="1">
+> <hands-on-title>Executing the complete MGnify amplicon pipeline</hands-on-title>
 > 1. **Import** the [complete MGnify amplicon workflow]({{ site.baseurl }}{{ page.dir }}workflows/mgnify-amplicon-pipeline-v5-complete.ga)
 >
 >    {% snippet faqs/galaxy/workflows_import.md %}
@@ -405,14 +591,20 @@ This workflow streamlines the entire process, from quality control to taxonomic 
 >      - Click on {% icon galaxy-wf-edit %} **Edit**
 >      - **Remove** the steps:
 >           - *"1: SRA accession list"*
->           - *"32: Faster Download and Extract Reads in FASTQ"*
+>           - *"22: fastq-dl"*
+>           - *"23: Convert compressed file to uncompressed"
+>           - *"24: Convert compressed file to uncompressed"
+>           - *"25: Text reformatting"
+>           - *"26: Text reformatting"
+>           - *"27: Convert uncompressed file to compressed"
+>           - *"28: Convert uncompressed file to compressed"
 >      - Click on **Inputs** in the left side-panel and add an **Input dataset collection**
 >           - Add the *"Label"*: `Single-end reads`
->           - Connect it to the *"Single-end reads"* input in step *"33: MGnify's amplicon pipeline v5.0 - Quality control SE"*
+>           - Connect it to the *"Single-end reads"* input in step *"29: MGnify's amplicon pipeline v5.0 - Quality control SE"*
 >      - Click on **Inputs** in the left side-panel and add an **Input dataset collection**
 >           - Add the *"Label"*: `Paired-end reads`
 >           - Change *"Collection type"* to `list:paired`
->           - Connect it to the *"Paired-end reads"* input in step *"34: MGnify's amplicon pipeline v5.0 - Quality control PE"*
+>           - Connect it to the *"Paired-end reads"* input in step *"30: MGnify's amplicon pipeline v5.0 - Quality control PE"*
 >      - Click on {% icon galaxy-save %} **Save** and then {% icon workflow-run %} **Run** in the right side-panel
 > 3. **Run** {% icon workflow-run %} the workflow using the following inputs:
 >      - *"Single-end reads"*: Single-end reads collection
@@ -422,11 +614,15 @@ This workflow streamlines the entire process, from quality control to taxonomic 
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
+> > <tip-title>Input reformatting</tip-title>
+> > To achieve results comparable to those from MGnify, it is recommended that your sequence headers follow this format: `@accession.spotID-$spotName-$readNumber`. For example: `@ERR2015153.1-M01170:20:000000000-AMCTR:1:1101:17071:1623-2`
+> {: .tip}
+>
 {: .hands_on}
 </div>
 
 # MAPseq-to-ampvis2
-The MAPseq to Ampvis2 workflow processes MAPseq OTU tables and associated metadata for analysis in Ampvis2. This workflow involves reformatting MAPseq output datasets to produce structured output files suitable for Ampvis2.
+The MAPseq to ampvis2 workflow transforms MAPseq OTU tables and accompanying metadata into a format compatible with ampvis2. This process restructures the MAPseq output into well-organized object files that can be directly used in ampvis2 for downstream analyses such as rank abundance plots, heatmaps, and other visualizations.
 
 > <hands-on-title>Downloading datasets</hands-on-title>
 > 1. Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
@@ -452,55 +648,52 @@ https://zenodo.org/records/13347829/files/test_metadata_formatted.tabular
 >
 {: .hands_on}
 
-> <hands-on-title>Running the MAPseq-to-ampvis2 workflow</hands-on-title>
+> <hands-on-title>Executing the MAPseq-to-ampvis2 workflow</hands-on-title>
 > 1. **Import** the [MAPseq-to-ampvis2 workflow]({{ site.baseurl }}{{ page.dir }}workflows/mapseq-to-ampvis2.ga)
 >
 >    {% snippet faqs/galaxy/workflows_import.md %}
 >
 > 2. **Run** {% icon workflow-run %} the workflow using the following inputs:
->      - *"MAPseq outputs"*: Provide the OTU tables generated by MAPseq, which need to be reformatted for Ampvis2
+>      - *"MAPseq outputs"*: Provide the OTU tables generated by MAPseq, which need to be reformatted for ampvis2
 >      - *"Metadata"*: Contextual information associated with the data from the OTU tables
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
 {: .hands_on}
 
-# Conclusion
-This tutorial provided a step-by-step guide to running the different sub-workflows of the MGnify v5.0 amplicon pipeline on Galaxy. By following these steps, you should be able to process, analyze, and visualize your amplicon sequencing data efficiently.
+With the ampvis2 object now successfully generated, users can proceed to create a variety of informative visualizations—such as heatmaps—to explore and interpret microbial community composition, identify patterns across samples, and support further ecological or statistical analysis.
 
-> <details-title>Tool/database version summary table</details-title>
-> > | **Tool**                                                |                  **Version**     |  **Galaxy version suffix**                    |
-> > |:-------------------------------------------------------:|:--------------------------------:|:---------------------------------------------:|
-> > | fastp                                                   | 0.23.2                           | 1                                             |
-> > | SeqPrep                                                 | a MGnify modified version of 1.2 | 0                                             |
-> > | Trimmomatic                                             | 0.39                             | 2                                             |
-> > | Filter FASTQ                                            | 1.1.5                            | -                                             |
-> > | PRINSEQ                                                 | 0.20.4                           | 2                                             |
-> > | FASTQ to FASTA                                          | 1.1.5                            | -                                             |
-> > | FastQC                                                  | 0.74                             | 0                                             |
-> > | FASTA Width                                             | 1.0.1                            | 2                                             |
-> > | MultiQC                                                 | 1.11                             | 1                                             |
-> > | cmsearch                                                | 1.1.4                            | 0                                             |
-> > | CMsearch deoverlap                                      | 0.08                             | 2                                             |
-> > | Query Tabular                                           | 3.3.1                            | -                                             |
-> > | Text reformatting                                       | 9.3                              | 0                                             |
-> > | Concatenate two BED files                               | 1.0.1                            | -                                             |
-> > | Filter empty datasets                                   | 1.0.0                            | -                                             |
-> > | Extract element identifiers                             | 0.0.2                            | -                                             |
-> > | Filter collection                                       | 1.0.0                            | -                                             |
-> > | bedtools getfasta                                       | 2.30.0                           | 1                                             |
-> > | MAPseq                                                  | 2.1.1                            | 0                                             |
-> > | Convert biom                                            | 2.1.15                           | 1                                             |
-> > | Krona                                                   | 2.7.1                            | 0                                             |
-> > | bedtools MaskFastaBed                                   | 2.30.0                           | -                                             |
-> > | Column join                                             | 0.0.3                            | -                                             |
-> > | Group                                                   | 2.1.4                            | -                                             |
-> > | Faster Download and Extract Reads in FastQ(faster-dump) | 3.1.1                            | 0                                             |
-> > | **Databases and Rfam models**                           | **Version**                      | -                                             |
-> > |:-------------------------------------------------------:|:--------------------------------:|:---------------------------------------------:|
-> > | SILVA (LSU and SSU)                                     | 132                              | -                                             |
-> > | UNITE                                                   | 8.0                              | -                                             |
-> > | ITSoneDB                                                | 1.138                            | -                                             |
-> > | Rfam (LSU and SSU)                                      | 13.0                             | -                                             |
-> {: .matrix}
-{: .details}
+> <hands-on-title>Utilizing the ampvis2 object to generate a heatmap</hands-on-title>
+>
+> 1. {% tool [ampvis2 heatmap](toolshed.g2.bx.psu.edu/repos/iuc/ampvis2_heatmap/ampvis2_heatmap/2.8.9+galaxy1) %}:
+> - **Ampvis2 RDS dataset**: Choose `Ampvis2 object` from your history
+> - **The taxonomic level to aggregate the OTUs**: `Order`
+> - **How to show OTUs without taxonomic information**: `Remove OTUs without taxonomic information`
+> - Select light blue for **Start color for the heatmap**
+> - Select dark red for **End color for the heatmap**
+>
+{: .hands_on}
+
+Let us now take a look at the generated heatmap.
+<div style="width:75%; margin: auto;">
+![](./images/heatmap.png)
+</div>
+
+> <question-title>i</question-title>
+>
+> 1. Which sample has the highest relative abundance of Lactobacillales?
+> 2. Which taxonomic order is most dominant in sample SRR1038213?
+>
+> > <solution-title></solution-title>
+> >
+> > 1. Sample SRR11032276 has the highest relative abundance of Lactobacillales at 97.7%, indicating it is strongly dominated by this bacterial order.
+> > 2. In sample SRR11038213, Tremellales is the most dominant order, with a relative abundance of 50%.
+> >
+> {: .solution}
+>
+{: .question}
+
+This was a brief glimpse into the capabilities of ampvis2. We encourage you to further explore the full range of features available in Ampvis2, as well as other powerful visualization tools offered on the Galaxy platform.
+
+# Conclusion
+This tutorial provided a step-by-step guide to executing the different sub-workflows of the MGnify v5.0 amplicon pipeline on Galaxy. By following these steps, you should be able to process, analyze, and visualize your amplicon sequencing data efficiently.
