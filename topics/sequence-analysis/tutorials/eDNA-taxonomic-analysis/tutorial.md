@@ -116,7 +116,7 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 
 ## Concurrent Quality Control Steps with **fastp** 
 
-> \<hands-on-title\> Quality Control with fastp \</hands-on-title\>
+> <hands-on-title> Quality Control with fastp </hands-on-title>
 >
 > 1.  {% tool [fastp](toolshed.g2.bx.psu.edu/repos/iuc/fastp/fastp/0.24.1+galaxy0) %} for HP3 R1 (Default Parameters):
 >
@@ -147,11 +147,11 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 {: .hands_on}
 
 
-> \<question-title\> Considering Default Parameters \</question-title\>
+> <question-title> Considering Default Parameters </question-title>
 >
 > 1.  Are the default parameters of a quality control tool like `fastp` always the most appropriate choice for every sequencing dataset? Why or why not?
 >
-> > \<solution-title\> Solution \</solution-title\>
+> > <solution-title> Solution </solution-title>
 >
 > > 1.  No, default parameters might not always be optimal. Sequencing data can vary in quality, adapter contamination levels, and other characteristics depending on the library prep and platform. It is often necessary to adjust parameters to suit the specific needs of your data for appropriate levels of quality control.
 >
@@ -163,7 +163,7 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 
 ## Converting `fastp` Outputs to FASTA Format
 
-> \<hands-on-title\> Task description \</hands-on-title\>
+> <hands-on-title> Task description </hands-on-title>
 >
 > 1.  {% tool [FASTQ to FASTA](toolshed.g2.bx.psu.edu/repos/devteam/fastq_to_fasta/cshl_fastq_to_fasta/1.0.2+galaxy2) %} for HP3 R1:
 >
@@ -179,18 +179,18 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 >       - *"Rename sequence names in output file (reduces file size)"*: `Yes`
 >       - *"Compress output FASTA"*: `No`
 >
->     > \<comment-title\> Converting to FASTA for NCBI BLAST+ blastn \</comment-title\>
+>     > <comment-title> Converting to FASTA for NCBI BLAST+ blastn </comment-title>
 >
 >     > In this step, we are converting the quality-controlled FASTQ files into FASTA format with the following options: discarding any sequences that contain unknown ('N') bases and renaming the sequence identifiers to reduce file size. The FASTA format, which contains only the sequence information, is a required input format for **NCBI BLAST+ blastn**, which will be used in the subsequent section for sequence similarity searching and potential taxonomic identification.
 >     > {: .comment}
 
 {: .hands\_on}
 
-> \<question-title\> Understanding FASTQ to FASTA Conversion \</question-title\>
+> <question-title> Understanding FASTQ to FASTA Conversion </question-title>
 >
 > 1.  What is the purpose of converting sequencing data from FASTQ format to FASTA format?
 >
-> > \<solution-title\> Solution \</solution-title\>
+> > <solution-title> Solution </solution-title>
 >
 > > 1.  The purpose of converting from FASTQ to FASTA is to obtain a file containing only the nucleotide sequences.
 >
@@ -202,7 +202,7 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 
 ## Performing the BLASTn Search with **NCBI BLAST+ blastn**
 
-> \<hands-on-title\> Performing the BLASTn Search \</hands-on-title\>
+> <hands-on-title> Performing the BLASTn Search </hands-on-title>
 >
 > 1.  Execute the {% tool [NCBI BLAST+ blastn](toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastn_wrapper/2.16.0+galaxy0)%} with the following parameters:
 >
@@ -222,18 +222,18 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 >
 >   - Repeat the **NCBI BLAST+ blastn** tool for your other FASTA file (e.g., HP3 R2) using the exact same parameters.
 >
-> > \<comment-title\> Understanding BLAST Parameters and Database \</comment-title\>
+> > <comment-title> Understanding BLAST Parameters and Database </comment-title>
 >
 > > In this step, we are using BLASTn to search your eDNA sequences against the **NCBI NT database as it was on August 15, 2024**. This is a comprehensive collection of nucleotide sequences. The parameters are set to find relatively similar sequences and output the results in a detailed tabular format, keeping only the top hit for each query. **Choosing a specific database is crucial because different databases contain different sets of sequences, which can significantly affect the outcome of the search.**
 > > {: .comment}
 
 {: .hands\_on}
 
-> \<question-title\> Interpreting BLAST Database Choice \</question-title\>
+> <question-title> Interpreting BLAST Database Choice </question-title>
 >
 > 1.  Why is it important to specify the database (like NCBI NT) when performing a BLAST search?
 >
-> > \<solution-title\> Answer \</solution-title\>
+> > <solution-title> Answer </solution-title>
 >
 > > 1.  Specifying the database ensures that your sequences are compared against a defined and relevant collection of sequences. Different databases have different content and scope, which can significantly impact the results and the taxonomic assignments you might obtain. Knowing the database also helps in understanding the context and limitations of your search.
 >
@@ -247,7 +247,7 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 
 The BLAST output (in tabular format with extended 25 columns) contains a wealth of information for each aligned sequence. Importantly, **column 25** of this output typically provides the **"subject scientific name"**, which often includes the genus and species identification of the top hit in the database. In this step, we will use the `Count` tool in Galaxy to extract these scientific names and determine how many times each unique name appears in our BLAST results for each of your input files (HP3 R1 and HP3 R2). This will give us a preliminary overview of the potential taxa present in your eDNA samples based on the top BLAST hits.
 
-> \<hands-on-title\> Counting Top Taxonomic Assignments \</hands-on-title\>
+> <hands-on-title> Counting Top Taxonomic Assignments </hands-on-title>
 >
 > 1.  Execute the {% tool [Count](Count1) %} with the following parameters:
 >
@@ -270,12 +270,12 @@ The BLAST output (in tabular format with extended 25 columns) contains a wealth 
 >
 {: .hands\_on}
 
-> \<question-title\> Understanding Top Hit Counting \</question-title\>
+> <question-title> Understanding Top Hit Counting </question-title>
 >
 > 1.  Why are we using the `Count` tool on the 25th column of the BLAST output? What information does this column typically contain?
 > 2.  What does the number of times a specific scientific name appears in the `Count` output roughly indicate in this analysis?
 >
-> > \<solution-title\> Answers \</solution-title\>
+> > <solution-title> Answers </solution-title>
 >
 > > 1.  We are using the `Count` tool on the 25th column because this column in the extended tabular BLAST output format typically contains the "subject scientific name" of the top hit from the database.
 > > 2.  The number of times a scientific name appears roughly indicates how many of your original eDNA sequences had that specific organism as their best match in the database.
