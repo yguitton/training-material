@@ -59,11 +59,11 @@ https://drive.google.com/drive/folders/0B7a9KfygumZFYWxIZlJqSkJwc2c?resourcekey=
 
 -->
 
-In this section, we will look at practical aspects of manipulation of next-generation sequencing data. We will start with the FASTQ format produced by most sequencing machines and will finish with a table of variants present in four human samples we will analyze.
+In this tutorial, we will look at practical aspects of manipulation of next-generation sequencing data. We will start with the FASTQ format produced by most sequencing machines and will finish with a table of variants present in four human samples we will analyze.
 
 # The Story
 
-To make this tutorial as realistic as possible we wanted to use an example from the real world. We will start with four sequencing datasets (fastq files) representing four individuals positive for malaria---a life-threatening disease caused by *Plasmodium* parasites---transmitted to humans through the bites of infected female *Anopheles* mosquitoes. 
+To make this tutorial as realistic as possible we wanted to use an example from the real world. We will start with four sequencing datasets (fastq files) representing four individuals positive for malaria---a life-threatening disease caused by *Plasmodium* parasites---transmitted to humans through the bites of infected female *Anopheles* mosquitoes.
 
 Our goal is to understand whether the malaria parasite ([*Plasmodium falciparum*](https://brc-analytics.dev.clevercanary.com/data/organisms/5833)) infecting these individuals is resistant to [Pyrimethamine](https://en.wikipedia.org/wiki/Pyrimethamine)---an antimalarial drug. Resistance to Pyrimethamine is conferred by a mutation in `PF3D7_0417200` (*dhfr*) gene ({% cite Cowman1988 %}). Given sequencing data from four individuals we will determine which one of them in infected with a *Plasmodium falciparum* carrying mutations in this gene.
 
@@ -91,11 +91,11 @@ Let's do that 🚀
 For this tutorial we down-sampled the data (made datasets smaller) to make sure that you can go through it quickly. We deposited these fastq datasets in a Zenodo library. Let's upload these datasets into Galaxy!
 
 > <details-title>What is fastq data?</details-title>
-> 
+>
 > [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) is not a very well defined format. In the beginning various manufacturers of sequencing instruments were free to interpret FASTQ as they saw fit, resulting in a multitude of FASTQ flavors. This variation stemmed primarily from different ways of encoding quality values as described [on the Wikipedia article for FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) (below you will find an explanation of quality scores and their meaning). Today, the FASTQ Sanger version ({% cite Cock2009 %}) of the format is considered to be the standard form of FASTQ. Galaxy is using FASTQ Sanger as the only legitimate input for downstream processing tools and provides a number of utilities for converting FASTQ files ({% cite Blankenberg2010 %}) into this form (see **FASTQ Quality Control** section of Galaxy tools which is available on some usegalaxy.* instances).
-> 
+>
 > The FASTQ format looks like this:
-> 
+>
 > ```
 > @M02286:19:000000000-AA549:1:1101:12677:1273 1:N:0:23
 > CCTACGGGTGGCAGCAGTGAGGAATATTGGTCAATGGACGGAAGTCTGAACCAGCCAAGTAGCGTGCAG
@@ -110,27 +110,27 @@ For this tutorial we down-sampled the data (made datasets smaller) to make sure 
 > +
 > AAC<CCF+@@>CC,C9,F9C9@9-CFFFE@7@:+CC8-C@:7,@EFE,6CF:+8F7EFEEF@EGGGEEE
 > ```
-> 
+>
 > Each sequencing read is represented by four lines:
-> 
+>
 > 1. `@` followed by read ID and optional information about sequencing run
 > 2. sequenced bases
 > 3. `+` (optionally followed by the read ID and some additional info)
 > 4. Quality scores for each base of the sequence encoded as [ASCII symbols](https://en.wikipedia.org/wiki/ASCII)
-> 
+>
 > **Paired end data**
-> 
+>
 > It is common to prepare pair-end and mate-pair sequencing libraries. This is highly beneficial for a number of applications discussed in subsequent topics. For now, let's just briefly discuss what these are and how they manifest themselves in FASTQ form.
-> 
+>
 > ![Paired-end and mate-pair reads](../../images/pe_mp.png)
 > In paired end sequencing (left) the actual ends of rather short DNA molecules (less than 1kb) are determined, while for mate pair sequencing (right) the ends of long molecules are joined and prepared in special sequencing libraries. In these mate pair protocols, the ends of long, size-selected molecules are connected with an internal adapter sequence (i.e. linker, yellow) in a circularization reaction. The circular molecule is then processed using restriction enzymes or fragmentation. Fragments are enriched for the linker and outer library adapters are added around the two combined molecule ends. The internal adapter can then be used as a second priming site for an additional sequencing reaction in the same orientation or sequencing can be performed from the second adapter, from the reverse strand (From Ph.D. dissertation by <a href="https://ul.qucosa.de/api/qucosa%3A11231/attachment/ATT-0/">Martin Kircher</a>
-> 
+>
 > Thus in both cases (paired-end and mate-pair) a single physical piece of DNA (or RNA in the case of RNA-seq) is sequenced from two ends and so generates two reads. These can be represented as separate files (two FASTQ files with first and second reads) or a single file were reads for each end are interleaved. Here are examples:
-> 
+>
 > *Two single files*
-> 
+>
 > File 1
-> 
+>
 > ```
 > @M02286:19:000000000-AA549:1:1101:12677:1273 1:N:0:23
 > CCTACGGGTGGCAGCAGTGAGGAATATTGGTCAATGGACGGAAGTCT
@@ -141,9 +141,9 @@ For this tutorial we down-sampled the data (made datasets smaller) to make sure 
 > +
 > ABC@CC77CFCEG;F9<F89<9--C,CE,--C-6C-,CE:++7:,CF
 > ```
-> 
+>
 > File 2
-> 
+>
 > ```
 > @M02286:19:000000000-AA549:1:1101:12677:1273 2:N:0:23
 > CACTACCCGTGTATCTAATCCTGTTTGATACCCGCACCTTCGAGCTTA
@@ -154,14 +154,14 @@ For this tutorial we down-sampled the data (made datasets smaller) to make sure 
 > +
 > -6AC,EE@::CF7CFF<<FFGGDFFF,@FGGGG?F7FEGGGDEFF>FF
 > ```
-> 
+>
 > > <comment-title>Read order is important</comment-title>
 > > Note that read IDs are **identical** in two files and they are listed in **the same** order. In some cases read IDs in the first and second file may be appended with `/1` and `/2` tags, respectively (however, this is not guaranteed).
 > {: .comment}
-> 
+>
 >
 > *Interleaved file*
-> 
+>
 > ```
 > @1/1
 > AGGGATGTGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTA
@@ -180,7 +180,7 @@ For this tutorial we down-sampled the data (made datasets smaller) to make sure 
 > +
 > HHHHHHHHHHHHGHHHHHHGHHHHHHHHHHHFHHHFHHHHHHHHHHH
 > ```
-> 
+>
 > In this tutorial paired-end data represented as two different files.
 >
 {: .details}
@@ -203,14 +203,14 @@ For this tutorial we down-sampled the data (made datasets smaller) to make sure 
 > https://zenodo.org/records/15354240/files/ERR636434_F.fq.gz
 > https://zenodo.org/records/15354240/files/ERR636434_R.fq.gz
 > ```
-> 1. Change datatype to `fastqsanger.gz` (green box in the image below) 
+> 1. Change datatype to `fastqsanger.gz` (green box in the image below)
 > ![Name dataset and change datatype](../../images/upload_name_datatype.svg)
 > 1. Click *Start* button
 > 1. Close dialog by pressing **Close** button
 > This will create eight datasets in your history on the right side of the interface:
 > ![Four samples and eight files](../../images/f_and_r.svg)
 > There are eight datasets because each sample has *forward* and *reverse* read files associated with it, so 4 &#215; 2 = 8
-> 
+>
 {: .hands_on}
 
 ## Bundle data into *Collection*
@@ -238,15 +238,14 @@ Raw fastq data is often contaminated with fragments of sequencing adapters used 
 > <hands-on-title>Running <b>fastp</b></hands-on-title>
 >
 > Run {% tool [fastp](toolshed.g2.bx.psu.edu/repos/iuc/fastp/fastp/0.24.0+galaxy4) %} with the following parameters:
->
 >    - "*Single-end or paired reads*": `Paired collection` (<font color="red">red outline</font>).
 >    - "*Select paired collection(s)*": Collection we created in the previous step (<font color="red">red arrow</font>).
-> 
-> ![fastp interface](../../images/fastp.svg) 
 >
-> Fastp modifies files by removing standard Illumina adapters and applies a number of quality filters generating "Cleaned up data" shown above) as well as HTML and JSON reports as three collections: 
+> ![fastp interface](../../images/fastp.svg)
 >
-> ![fastp history items](../../images/fastp_history.svg) 
+> Fastp modifies files by removing standard Illumina adapters and applies a number of quality filters generating "Cleaned up data" shown above) as well as HTML and JSON reports as three collections:
+>
+> ![fastp history items](../../images/fastp_history.svg)
 >
 {: .hands_on}
 
@@ -255,15 +254,15 @@ You can click on individual HTML reports to get an idea about the quality of the
 > <hands-on-title>Running <b>multiqc</b> on <b>fastp</b> JSON data</hands-on-title>
 >
 > Run {% tool [multiqc](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.27+galaxy3) %} with the following parameters:
-> 
+>
 >    - "*Which tool was used to generate logs?*": `fastp` (<font color="red">red outline</font>).
 >    - "*Output of fastp*": JSON output generated by **fastp** at the previous step (<font color="red">red arrow</font>).
-> 
-> ![multiqc interface](../../images/multiqc.svg) 
+>
+> ![multiqc interface](../../images/multiqc.svg)
 >
 > `multiqc` will produce two outputs, but the one you care about has a work "Webpage" in it:
 >
-> ![multiqc history item](../../images/multiqc_history.svg) 
+> ![multiqc history item](../../images/multiqc_history.svg)
 >
 > Click on the {% icon galaxy-eye %} (eye) icon and you will the QC report.
 >
@@ -271,19 +270,19 @@ You can click on individual HTML reports to get an idea about the quality of the
 
 Figure below shows one of the plots produced by `multiqc`---distribution of quality values across positions for forward reads after processing.
 
-![distribution of quality values across positions for forward reads after processing](../../images/multiqc_f.png "Quality score distribution after filtering. Here you can see that two samples have very high quality values and 100 bp reads. Two other samples have somewhat lower but still acceptable values and shorter, 80bp, reads.") 
+![distribution of quality values across positions for forward reads after processing](../../images/multiqc_f.png "Quality score distribution after filtering. Here you can see that two samples have very high quality values and 100 bp reads. Two other samples have somewhat lower but still acceptable values and shorter, 80bp, reads.")
 
 > <details-title>What are base qualities? What is good and what is bad?</details-title>
-> 
+>
 > **What are base qualities?**
-> 
+>
 > As we've seen above, FASTQ datasets contain two types of information:
-> 
+>
 > - *sequence of the read*
 > - *base qualities* for each nucleotide in the read.
-> 
+>
 > The base qualities allow us to judge how trustworthy each base in a sequencing read is. The following excerpt from an excellent [tutorial](https://web.archive.org/web/20240422192254/https://chagall.med.cornell.edu/RNASEQcourse/Intro2RNAseq.pdf) by Friederike D&uuml;ndar, Luce Skrabanek, Paul Zumbo explains what base qualities are:
-> 
+>
 > > <comment-title>From "Introduction to differential gene expression analysis using RNA-seq"</comment-title>
 > > Illumina sequencing is based on identifying the individual nucleotides by the fluorescence signal emitted upon their incorporation into the growing sequencing read. Once the fluorescence intensities are extracted and translated into the four letter code. The deduction of nucleotide sequences from the images acquired during sequencing is commonly referred to as base calling.
 > ><br><br>
@@ -293,42 +292,42 @@ Figure below shows one of the plots produced by `multiqc`---distribution of qual
 > ><br><br>
 > > For raw reads, the range of scores will depend on the sequencing technology and the base caller used (Illumina, for example, used a tool called Bustard, or, more recently, RTA). Unfortunately, Illumina has been anything but consistent in how they calculated and ASCII-encoded the Phred score (see below)! In addition, Illumina now allows Phred scores for base calls with as high as 45, while 41 used to be the maximum score until the HiSeq X. This may cause issues with downstream sapplications that expect an upper limit of 41.
 > {: .comment}
-> 
+>
 > ![Illumina quality score](../../images/illumina_qs.png)
-> 
+>
 > Base call quality scores are represented with the Phred range. Different Illumina (formerly Solexa) versions
 > used different scores and ASCII offsets. Starting with Illumina format 1.8, the score now represents the standard
 > Sanger/Phred format that is also used by other sequencing platforms and the sequencing archives.
-> 
+>
 > ![FASTQ quality score](../../images/fastq_qs.png)
 >
 >The ASCII interpretation and ranges of the different Phred score notations used by Illumina and the original Sanger interpretation. Although the Sanger format allows a theoretical score of 93, raw sequencing reads typically do not exceed a Phred score of 60. In fact, most Illumina-based sequencing will result in maximum scores of 41 to 45 (image from Wikipedia)
-> 
+>
 > **What is good and what is bad?**
-> 
+>
 > One of the first steps in the analysis of NGS data is seeing how good the data actually is. [FastqQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) is the most famous tool allowing you to assess the quality of FASTQ datasets (and deciding whether to blame or not to blame whoever has done sequencing for you). [Falco](https://github.com/smithlabcode/falco) is an alternative tool for quality control. Falco is a improved implementation of FastQC for high throughput sequence quality control.
-> 
+>
 > ![Good quality in FastQC](../../images/qc_plot.svg)
 > Here, you can see **FastQC** base quality reports (the tools gives you many other types of data) for two datasets: <b>A</b> and <b>B</b>. The A dataset has long reads (250 bp) and very good quality profile with no qualities dropping below phred score of 30. The B dataset is significantly worse with ends of the reads dipping below phred score of 20. The B reads may need to be trimmed for further processing. **Falco** will generate almost the same reports about the quality of the reads.")
 {: .details}
 
 ## Mapping reads
 
-We can proceed with mapping reads. Galaxy has a number of mappers including **bowtie**, **bwa-mem**, and **bwa-mem2**. For this analysis we will use {% tool bwa-mem2 %}---the latest version of this popular and "battle-tested" tool. 
+We can proceed with mapping reads. Galaxy has a number of mappers including **bowtie**, **bwa-mem**, and **bwa-mem2**. For this analysis we will use {% tool bwa-mem2 %}---the latest version of this popular and "battle-tested" tool.
 
 ### Upload reference genome
 
 The key question when mapping reads against a genome is whether the index for this genome---a datastructure **bwa-mem2** uses to quickly find matches---is already installed on Galaxy or not. Let's assume that it is **NOT** present in Galaxy. In this case you will need to upload the genome. In this case we will use reference genome of 3D7 strain *P. faciparum*.
 
 > <hands-on-title>Uploading the genome for <i>P. falciparum</i></hands-on-title>
-> 
+>
 > To download the genome paste the following URL into the {% tool Upload %} tool:
 >
 > ```
 >  https://zenodo.org/records/15354240/files/GCF_000002765.6.fa.gz
 > ```
 > The only difference is that here with example we've see above is that you need to set datatype (green box) to `fasta.gz`:
-> ![Genome upload](../../images/upload_genome.svg) 
+> ![Genome upload](../../images/upload_genome.svg)
 >
 {: .hands_on}
 
@@ -347,12 +346,12 @@ Now we can map the reads against the uploaded genome:
 >
 > ![BWA-MEM2 interface](../../images/bwamem2.svg)
 >
-{: .hands_on} 
+{: .hands_on}
 
 **bwa-mem2** produces four BAM outputs which we will process further and will use to call variants.
 
 > <details-title>What are BAM files?</details-title>
-> 
+>
 > **SAM/BAM data**
 >
 > The [SAM/BAM](https://samtools.github.io/hts-specs/SAMv1.pdf) format is an accepted standard for storing aligned reads (it can also store unaligned reads and some mappers such as {% tool [Map with BWA](toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa/0.7.19) %} are accepting unaligned BAM as input). The binary form of the format (BAM) is compact and can be rapidly searched (if indexed). In Galaxy, BAM datasets are always indexed (accompanies by a .bai file) and sorted in coordinate order. In the following discussion, we once again rely on [tutorial](https://web.archive.org/web/20240422192254/https://chagall.med.cornell.edu/RNASEQcourse/Intro2RNAseq.pdf) by Friederike D&uuml;ndar, Luce Skrabanek, and Paul Zumbo.
@@ -490,23 +489,23 @@ Now we can map the reads against the uploaded genome:
 
 ### Remove duplicates
 
-In many cases there could be artifacts that can be detected in mapped reads. One of such artifacts are duplicate reads. 
+In many cases there could be artifacts that can be detected in mapped reads. One of such artifacts are duplicate reads.
 
 > <details-title>What are read duplicates?</details-title>
-> 
+>
 > **PCR duplicates**
-> 
+>
 > Preparation of sequencing libraries (at least at the time of writing) for technologies such as Illumina (used in this example) involves PCR amplification. It is required to generate sufficient number of sequencing templates so that a reliable detection can be performed by base callers. Yet, PCR has its biases, which are especially profound in cases of multitemplate PCR used for construction of sequencing libraries ({% cite Kanagawa2003 %}).
-> 
+>
 > ![PCR duplicates](../../images/pcr-duplicates.png)
 > Analyzing molecules aligning with the same outer coordinates, a mapping quality of at least 30 and a length of at least 30 nucleotide, resulted in an average coverage of 12.9 per PCR duplicate and an empirical coverage distribution similar to an exponential/power law distribution (left upper panel). This indicates that many molecules are only observed for deeper sequencing while other molecules are available at higher frequencies. Analyzing length (left middle panel) and GC content (left lower panel) patterns as well as the combination (right panel) shows higher PCR duplicate counts for a GC content between 30% to 70% as well as for shorter molecules compared to longer molecules. This effect may be due to an amplification bias from the polymerase or the cluster generation process necessary for Illumina sequencing. (From Ph.D. dissertation by <a href=\"https://ul.qucosa.de/api/qucosa%3A11231/attachment/ATT-0/\">Martin Kircher</a>)."
-> 
+>
 > Duplicates can be identified based on their outer alignment coordinates or using sequence-based clustering. One of the common ways for identification of duplicate reads is the `MarkDuplicates` utility from [Picard](https://broadinstitute.github.io/picard/command-line-overview.html) package, which we will use later in this tutorial.
-> 
+>
 > **Sampling coincidence duplicates**
-> 
+>
 > However, one has to be careful when removing duplicates in cases when the sequencing targets are small (e.g., sequencing of bacterial, viral, or organellar genomes as well as amplicons). This is because when sequencing target is small reads will have the same coordinates by chance and not because of PCR amplification issues. The figure below illustrates the fine balance between estimates allele frequency, coverage, and variation in insert size (from ({% cite Zhou2014 %})):
-> 
+>
 > ![Sampling bias](../../images/sampling-bias.png)
 >The Variant Allele Frequency (VAF) bias determined by coverage and insert size variance. Reads are paired-end and read length is 76. The insert size distribution is modeled as a Gaussian distribution with mean at 200 and standard deviation shown on the X-axis. The true VAF is 0.05. The darkness at each position indicates the magnitude of the bias in the VAF ({% cite Zhou2014 %}).")
 {: .details}
@@ -524,7 +523,7 @@ Removing duplicates is particularly important for identification of sequence var
 
 ## Calling variants
 
-Now we are ready to proceed with variant calling. For this purpose we will a tool called **lofreq**. One thing to keep in mind in our case is that the samples are from human blood. In humans *Plasmodium* parasites exist in **haploid** state (only zygote is diploid and this stage happens in mosquito). **lofreq** is specifically designed for calling variants in this scenario. 
+Now we are ready to proceed with variant calling. For this purpose we will a tool called **lofreq**. One thing to keep in mind in our case is that the samples are from human blood. In humans *Plasmodium* parasites exist in **haploid** state (only zygote is diploid and this stage happens in mosquito). **lofreq** is specifically designed for calling variants in this scenario.
 
 ### Realign reads
 
@@ -566,10 +565,10 @@ One of the key issues with accurate identification of sequence variants is norma
 > Run {% tool [Realign reads](toolshed.g2.bx.psu.edu/repos/iuc/lofreq_viterbi/lofreq_viterbi/2.1.5+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Reads to realign"*: output of {% tool MarkDuplicates %} as shown with the <font color="red">red arrow</font>.
 >    - *"Choose the source for the reference genome"*: `History`
->        - {% icon param-file %} *"Reference"*: set this to the [previously uploaded reference genome](#hands-on-uploading-the-genome-for-i-p-falciparum-i-10) (<font color="green">green outline and arrow</font>).
+>        - {% icon param-file %} *"Reference"*: set this to the [previously uploaded reference genome](l#hands-on-uploading-the-genome-for-i-p-falciparum-i-1) (<font color="green">green outline and arrow</font>).
 >
 > ![Realign reads](../../images/realign_lofreq.svg)
->    
+>
 {: .hands_on}
 
 ### Call Variants using lofreq **Call variants**
@@ -581,7 +580,7 @@ We are now ready to actually call variants:
 > Run {% tool [Call variants](toolshed.g2.bx.psu.edu/repos/iuc/lofreq_call/lofreq_call/2.1.5+galaxy3) %} with the following parameters:
 >    - {% icon param-file %} *"Input reads in BAM format"*: Output of {% tool Insert indel qualities %} (<font color="red">red arrow</font>)
 >    - *"Choose the source for the reference genome"*: `History` (<font color="green">green outline</font>).
->        - {% icon param-file %} *"Reference"*: set this to the [previously uploaded reference genome](#hands-on-uploading-the-genome-for-i-p-falciparum-i-10) (<font color="green">green outline and arrow</font>).
+>        - {% icon param-file %} *"Reference"*: set this to the [previously uploaded reference genome](#hands-on-uploading-the-genome-for-i-p-falciparum-i-1) (<font color="green">green outline and arrow</font>).
 >    - *"Types of variants to call"*: `SNVs and indels` (<font color="blue">blue outline and arrow</font>).
 >    - *"Variant calling parameters"*: `Configure settings` (<font color="orange">orange outline</font>).
 >        - In *"Coverage"*:
@@ -589,7 +588,7 @@ We are now ready to actually call variants:
 >        - In *"Base-calling quality"*:
 >            - *"Minimum baseQ"*: `20` (<font color="orange">orange arrow</font>).
 >            - *"Minimum baseQ for alternate bases"*: `20`  (<font color="orange">orange arrow</font>).
->        - In *"Mapping "quality*": 
+>        - In *"Mapping "quality*":
 >            - *"Minimum mapping quality"*: `20` (<font color="orange">orange arrow</font>).
 >
 > ![Call variants with lofreq](../../images/lofreq.svg)
@@ -601,10 +600,10 @@ The output of this step is a collection of [VCF](https://en.wikipedia.org/wiki/V
 
 ### Preparing {% tool SnpEff %} database
 
-We will now annotate the variants we called in the previous step with the effect they may have on the *Plasmodium* phenotype. In order to do this we need to create a database that can be used by {% tool SnpEff %}. This process requires a reference genome (which we already uploaded and a list of genes present in this genome---a file we have not uploaded yet. 
+We will now annotate the variants we called in the previous step with the effect they may have on the *Plasmodium* phenotype. In order to do this we need to create a database that can be used by {% tool SnpEff %}. This process requires a reference genome (which we already uploaded and a list of genes present in this genome---a file we have not uploaded yet.
 
 > <hands-on-title>Uploading gene annotations for <i>P. falciparum</i></hands-on-title>
-> 
+>
 > To download gene annotations paste the following URL into the {% tool Upload %} tool as was shown previously in this tutorial already twice (for fastq files and for reference genome).
 >
 > ```
@@ -612,14 +611,14 @@ We will now annotate the variants we called in the previous step with the effect
 > ```
 > Set datatype (<font color="green">green</font> box) to `gft.gz`:
 >
-> ![Genome upload](../../images/gtf_upload.svg) 
+> ![Genome upload](../../images/gtf_upload.svg)
 >
 {: .hands_on}
 
 Now we can run {% tool SnpEff build %}:
 
 > <hands-on-title>Prepare snpEff database with <b>SnpEff Build</b></hands-on-title>
-> 
+>
 > Run {% tool [SnpEff Build](toolshed.g2.bx.psu.edu/repos/iuc/snpeff/snpEff_build_gb/5.2+galaxy0) %} with the following parameters:
 >
 >    - *"Name for the database"*: `Pf` (<font color="red">red arrow</font>).
@@ -628,7 +627,7 @@ Now we can run {% tool SnpEff build %}:
 >    - *"Choose the source for the reference genome"*: `History` (<font color="orange">orange outline</font>).
 >    - *"Genome in FASTA format"*: Choose reference genome uploaded earlier (<font color="orange">orange arrow</font>).
 >
-> ![SnpEff Build](../../images/snpeff_build.svg) 
+> ![SnpEff Build](../../images/snpeff_build.svg)
 >
 {: .hands_on}
 
@@ -642,14 +641,14 @@ We are now ready to annotate variants with {% tool SnpEff eff %} (here "eff" sta
 >    - {% icon param-file %} *"Sequence changes (SNPs, MNPs, InDels)"*: Output of {% tool lofreq %} we've run previously <font color="red">red arrow</font>)
 >    - *"Genome source"*: `Custom snpEff database in your history` <font color="green">green outline</font>)
 >      - "*SnpEff5.2 Genome Data*": set to the SnpEff database we built in the previous step <font color="green">green arrow</font>)
->   
+>
 >![snpEff eff](../../images/snpeff.svg)
 >
 {: .hands_on}
 
 ### Create table of variants using **SnpSift Extract Fields**
 
-Previous step generated a set of annotated VCF files. These can be visualized in a genome browser, but we will go a different way. We will convert them into tab-delimited files that can be easily processed. 
+Previous step generated a set of annotated VCF files. These can be visualized in a genome browser, but we will go a different way. We will convert them into tab-delimited files that can be easily processed.
 
 > <hands-on-title>Create table of variants</hands-on-title>
 >
@@ -671,7 +670,7 @@ Let's explain which fields we are extracting:
 
 | # | Field | Meaning |
 |---|----------|-------------|
-| 1 | `CHROM` | Name of the chromosome | 
+| 1 | `CHROM` | Name of the chromosome |
 | 2 | `POS` | Position within that chromosome |
 | 3 | `REF` | Reference allele (the one present in the *reference* |
 | 4 | `ALT` | Alternative allele (the one observed in the reads) |
@@ -715,15 +714,15 @@ You can see that this tool takes lines from all collection elements (in this tut
 > A collection element named `ERR042228.fq`
 >
 >```
->NC_004318.2   676399   C    T     1344.0   45   0.977778   0   0,0,23,22   missense_variant    MODERATE PF3D7_0415200   914     c.2740G>A    p.Glu914Lys   
->NC_004318.2   676631   C    T     2000.0   60   0.966667   0   0,0,32,27   synonymous_variant  LOW      PF3D7_0415200   836     c.2508G>A    p.Lys836Lys   
+>NC_004318.2   676399   C    T     1344.0   45   0.977778   0   0,0,23,22   missense_variant    MODERATE PF3D7_0415200   914     c.2740G>A    p.Glu914Lys
+>NC_004318.2   676631   C    T     2000.0   60   0.966667   0   0,0,32,27   synonymous_variant  LOW      PF3D7_0415200   836     c.2508G>A    p.Lys836Lys
 >```
 >
 >A collection element named `ERR042232.fq`:
 >
 >```
->NC_004318.2   671152   G    A     1324.0   42   0.952381   0   0,1,20,21   synonymous_variant  LOW      PF3D7_0415100   90      c.270G>A   p.Gln90Gln   
->NC_004318.2   671641   A    T     1300.0   43   0.906977   0   0,0,16,27   missense_variant    MODERATE PF3D7_0415100   253     c.759A>T   p.Glu253Asp  
+>NC_004318.2   671152   G    A     1324.0   42   0.952381   0   0,1,20,21   synonymous_variant  LOW      PF3D7_0415100   90      c.270G>A   p.Gln90Gln
+>NC_004318.2   671641   A    T     1300.0   43   0.906977   0   0,0,16,27   missense_variant    MODERATE PF3D7_0415100   253     c.759A>T   p.Glu253Asp
 >```
 {: .code-in}
 
@@ -734,10 +733,10 @@ We will have a single dataset as the output:
 >then the {% tool [Collapse Collection](toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0) %} will produce this:
 >
 >```
->ERR042228.fq NC_004318.2   676399   C    T     1344.0   45   0.977778   0   0,0,23,22   missense_variant    MODERATE PF3D7_0415200   914     c.2740G>A    p.Glu914Lys   
->ERR042228.fq NC_004318.2   676631   C    T     2000.0   60   0.966667   0   0,0,32,27   synonymous_variant  LOW      PF3D7_0415200   836     c.2508G>A    p.Lys836Lys   
->ERR042232.fq NC_004318.2   671152   G    A     1324.0   42   0.952381   0   0,1,20,21   synonymous_variant  LOW      PF3D7_0415100   90      c.270G>A   p.Gln90Gln   
->ERR042232.fq NC_004318.2   671641   A    T     1300.0   43   0.906977   0   0,0,16,27   missense_variant    MODERATE PF3D7_0415100   253     c.759A>T   p.Glu253Asp  
+>ERR042228.fq NC_004318.2   676399   C    T     1344.0   45   0.977778   0   0,0,23,22   missense_variant    MODERATE PF3D7_0415200   914     c.2740G>A    p.Glu914Lys
+>ERR042228.fq NC_004318.2   676631   C    T     2000.0   60   0.966667   0   0,0,32,27   synonymous_variant  LOW      PF3D7_0415200   836     c.2508G>A    p.Lys836Lys
+>ERR042232.fq NC_004318.2   671152   G    A     1324.0   42   0.952381   0   0,1,20,21   synonymous_variant  LOW      PF3D7_0415100   90      c.270G>A   p.Gln90Gln
+>ERR042232.fq NC_004318.2   671641   A    T     1300.0   43   0.906977   0   0,0,16,27   missense_variant    MODERATE PF3D7_0415100   253     c.759A>T   p.Glu253Asp
 >```
 {: .code-out}
 
@@ -756,7 +755,7 @@ These data are now ready for downstream analysis. ({% cite Cowman1988 %}) showed
 >c13=='PF3D7_0417200'
 >```
 >    - "*Number of header lines to skip*": `1` (<font color="blue">blue outline</font>).
->   
+>
 > ![Filter by gene name](../../images/filter_gene_name.svg)
 >
 {: .hands_on}
