@@ -172,7 +172,7 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 
 {: .question}
 
-#3. FASTQ to FASTA Conversion
+# 3. FASTQ to FASTA Conversion
 
 ## Converting `fastp` Outputs to FASTA Format
 
@@ -211,7 +211,7 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 
 {: .question}
 
-#4. Sequence Alignment for Taxonomic Identification using BLAST
+# 4. Sequence Alignment for Taxonomic Identification using BLAST
 
 ## Performing the BLASTn Search with **NCBI BLAST+ blastn**
 
@@ -254,7 +254,7 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 
 {: .question}
 
-#5. Extracting Taxonomic Information from the BLAST table
+# 5. Extracting Taxonomic Information from the BLAST table
 
 ## Counting Potential Taxa using **Count**
 
