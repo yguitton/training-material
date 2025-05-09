@@ -10,7 +10,7 @@ questions:
 - How to customize plots in Panoply?
 - How to generate animation in Panoply?
 objectives:
-- Learn to use Panoply in Galaxy to visuallize netCDF geo-referenced data
+- Learn to use Panoply in Galaxy to visualize netCDF geo-referenced data
 - Learn how Panoply plots are exported to Galaxy
 time_estimation: 1H
 key_points:
@@ -246,6 +246,7 @@ In this tutorial, we will be using data from the [Copernicus Climate Data Store]
 >    > >
 >    > > 1. The maximum temperature is about 288 K so about 15 degrees Celsius (`288 - 273.15`).
 >    > > 2. The warmest month in 1979 was July.
+>    > > 3. Note: The y-axis scale was set based on the first dataset. If you select a different location or time, you may need to manually adjust the scale under the Grid tab by modifying the Bottom and/or Top values to ensure the plot displays correctly.
 >    > > ![Panoply 1D plot](../../images/panoply_t2m_oslo.png "Plot surface temperature Oslo")
 >    > {: .solution}
 >    {: .question}

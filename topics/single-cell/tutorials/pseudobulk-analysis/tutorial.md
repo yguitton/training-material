@@ -42,15 +42,33 @@ tags:
 - transcriptomics
 - pseudobulk
 answer_histories:
-- label: UseGalaxy.eu
+- label: UseGalaxy.org-ncm_pdcs_subset
+  history: https://usegalaxy.org/u/videmp/h/gtn-pseudobulk-with-decoupler-and-edger-ncm-pdcs-subset-may-2025
+  date: 2025-05-08
+- label: UseGalaxy.eu-ncm_pdcs_subset
   history: https://usegalaxy.eu/u/dianitachj24/h/pseudobulk-tutorial-workflow
   date: 2025-04-11
-- label: UseGalaxy.eu
+- label: UseGalaxy.org.au-ncm_pdcs_subset
+  history: https://usegalaxy.org.au/u/videmp/h/gtn-pseudobulk-with-decoupler-and-edger-ncm-pdcs-subset-may-2025
+  date: 2025-05-08
+- label: UseGalaxy.org-Monocytes_NC_subset
+  history: https://usegalaxy.org/u/videmp/h/gtn-pseudobulk-with-decoupler-and-edger-monocytes-nc-subset-may-2025
+  date: 2025-05-08
+- label: UseGalaxy.eu-Monocytes_NC_subset
   history: https://usegalaxy.eu/u/dianitachj24/h/pseudo-bulk-edger-pdcs-11-04-2025
   date: 2025-04-11
-- label: UseGalaxy.eu
+- label: UseGalaxy.org.au-Monocytes_NC_subset
+  history: https://usegalaxy.org.au/u/videmp/h/gtn-pseudobulk-with-decoupler-and-edger-monocytes-nc-subset-may-2025
+  date: 2025-05-08
+- label: UseGalaxy.org-pDCs_subset
+  history: https://usegalaxy.org/u/videmp/h/gtn-pseudobulk-with-decoupler-and-edger-pdcs-subset-may-2025
+  date: 2025-05-08
+- label: UseGalaxy.eu-pDCs_subset
   history: https://usegalaxy.eu/u/dianitachj24/h/pseudo-bulk-edger-ncms-11-04-2025
   date: 2025-04-11
+- label: UseGalaxy.org.au-pDCs_subset
+  history: https://usegalaxy.org.au/u/videmp/h/gtn-pseudobulk-with-decoupler-and-edger-pdcs-subset-may-2025
+  date: 2025-05-08
 follow_up_training:
 - type: internal
   topic_name: single-cell
