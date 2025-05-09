@@ -565,7 +565,7 @@ One of the key issues with accurate identification of sequence variants is norma
 > Run {% tool [Realign reads](toolshed.g2.bx.psu.edu/repos/iuc/lofreq_viterbi/lofreq_viterbi/2.1.5+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Reads to realign"*: output of {% tool MarkDuplicates %} as shown with the <font color="red">red arrow</font>.
 >    - *"Choose the source for the reference genome"*: `History`
->        - {% icon param-file %} *"Reference"*: set this to the [previously uploaded reference genome](l#hands-on-uploading-the-genome-for-i-p-falciparum-i-1) (<font color="green">green outline and arrow</font>).
+>        - {% icon param-file %} *"Reference"*: set this to the [previously uploaded reference genome](#upload-reference-genome) (<font color="green">green outline and arrow</font>).
 >
 > ![Realign reads](../../images/realign_lofreq.svg)
 >
@@ -580,7 +580,7 @@ We are now ready to actually call variants:
 > Run {% tool [Call variants](toolshed.g2.bx.psu.edu/repos/iuc/lofreq_call/lofreq_call/2.1.5+galaxy3) %} with the following parameters:
 >    - {% icon param-file %} *"Input reads in BAM format"*: Output of {% tool Insert indel qualities %} (<font color="red">red arrow</font>)
 >    - *"Choose the source for the reference genome"*: `History` (<font color="green">green outline</font>).
->        - {% icon param-file %} *"Reference"*: set this to the [previously uploaded reference genome](#hands-on-uploading-the-genome-for-i-p-falciparum-i-1) (<font color="green">green outline and arrow</font>).
+>        - {% icon param-file %} *"Reference"*: set this to the [previously uploaded reference genome](#upload-reference-genome) (<font color="green">green outline and arrow</font>).
 >    - *"Types of variants to call"*: `SNVs and indels` (<font color="blue">blue outline and arrow</font>).
 >    - *"Variant calling parameters"*: `Configure settings` (<font color="orange">orange outline</font>).
 >        - In *"Coverage"*:
