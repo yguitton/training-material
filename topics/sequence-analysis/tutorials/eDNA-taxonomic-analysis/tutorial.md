@@ -313,7 +313,7 @@ In this tutorial, you've successfully completed a basic bioinformatics workflow 
 * **Extracting Taxonomic Information:** applying the `Count` tool to extract and quantify the top unique taxonomic assignments from the BLAST output and can be used for further analysis and visualization
 
 ![Indetified Species Piecharts](images/HP3_R1_Species.png)
-![Identified Species Piecharts](images/_HP3_R2_Species.png)
+![Identified Species Piecharts](images/HP3_R2_Species.png)
 
 By completing these steps, you have addressed the initial biological question of: **Can we assign taxonomic information to unknown DNA sequences from environmental samples?** This tutorial has demonstrated that, through the utilization of bioinformatics tools like BLAST, we can gain insights into the potential origins of DNA sequences source from non-invassive environmental samples.
 
