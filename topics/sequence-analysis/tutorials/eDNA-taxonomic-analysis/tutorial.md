@@ -12,9 +12,8 @@ objectives:
 - Convert sequence data between FASTQ and FASTA formats.
 - Perform a BLASTN search against a nucleotide database to identify potential taxonomic matches.
 - Extract and interpret taxonomic information from the BLAST output table.
-time_estimation: 1-3H
+time_estimation: 2H
 key_points:
-- key_points:
 - eDNA analysis provides a non-invasive method to gain insights into species presence and biodiversity without directly disturbing the organisms or their habitat.
 - While this tutorial focuses on eDNA, the fundamental workflow involving sequence quality control (trimming) and sequence identification (BLAST alignment) has broad applications in various biological research areas.
 - This tutorial demonstrates a basic workflow to extract potential genus and species names from BLAST output, providing a starting point for further taxonomic analysis.
