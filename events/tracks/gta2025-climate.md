@@ -2,7 +2,7 @@
 layout: event-track
 
 title: Climate
-description: Learn all about Climate on Galaxy. Start with the tutorial at your own pace. If you need support contact us via the Slack Channel [gta_climate](https://gtnsmrgsbord.slack.com/channels/{{page.slack_channel}}).
+description: Learn all about Climate on Galaxy. Start with the tutorial at your own pace. If you need support contact us via the Slack Channel [gta_climate](https://gtnsmrgsbord.slack.com/channels/{{page.slack_channel}}). 🚨 The workflows used for this track where tested thoroughly on the EU server, please follow this track by using usegalaxy.eu!
 
 slack_channel: gta_climate
 
