@@ -2,6 +2,7 @@
 layout: tutorial_hands_on
 
 title: Ocean Data View (ODV)
+subtopic: introduction
 questions:
 - How to process Argo's glider data ?
 - How to visualise the glider's stations

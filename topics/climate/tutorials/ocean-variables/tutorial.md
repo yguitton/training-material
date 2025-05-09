@@ -2,6 +2,7 @@
 layout: tutorial_hands_on
 
 title: Ocean's variables study
+subtopic: analysing
 questions:
 - How to process extract ocean's variables?
 - How to use ODV collections?
