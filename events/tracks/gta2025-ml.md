@@ -2,9 +2,9 @@
 layout: event-track
 
 title: Machine Learning
-description: This module will introduce you to the world of machine learning using Galaxy. Start with the tutorial at your own pace. If you need support during the event contact us via the gta_machine-learning Slack Channel. # [#gta_machine-learning](https://gtnsmrgsbord.slack.com/archives/C07NKBAU05A).
+description: This module will introduce you to the world of machine learning using Galaxy. Start with the tutorial at your own pace. If you need support contact us via the Slack Channel [gta_machine-learning](https://gtnsmrgsbord.slack.com/channels/{{page.slack_channel}}).
 
-# slack_channel: gta_machine-learning
+slack_channel: gta_machine-learning
 
 
 contributions:
@@ -14,19 +14,20 @@ contributions:
         - annasyme
         - anuprulez
         - emmaustin20
+        - igormakunin
+        - meltemktn
         - hujambo-dunia
         - paulocilasjr
+        - reytakop
 
 
 program:
-  - section: "Machine Learning" 
+  - section: "Machine Learning"
     description: |
-      If you encounter any issue please ask us in this Slack channel. 
+      If you encounter any issue please ask us in the above Slack channel.
     tutorials:
-      - type: custom
-        name: "[Introduction to machine learning](https://training.galaxyproject.org/training-material/topics/statistics/tutorials/machinelearning/slides.html)"
-        description: |
-          [Lecture Slides](https://training.galaxyproject.org/training-material/topics/statistics/tutorials/machinelearning/slides.html); [Lecture Video](https://training.galaxyproject.org/training-material/topics/statistics/tutorials/machinelearning/recordings/)
+      - name: machinelearning
+        topic: statistics
       - name: regression_machinelearning
         topic: statistics
       - name: classification_machinelearning
@@ -36,6 +37,8 @@ program:
       - name: RNN
         topic: statistics
       - name: fine_tuning_protTrans
+        topic: statistics
+      - name: loris_model
         topic: statistics
 
 ---
