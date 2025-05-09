@@ -23,12 +23,14 @@ program:
     description: |
       If you encounter any issue please ask us in this Slack channel.
     tutorials:
-#      - name: climate-101
-#        topic: climate
-#      - name: pangeo
-#        topic: climate
+      - name: introduction
+        topic: climate
       - name: pangeo-notebook
         topic: climate
       - name: jupytergis_collaboration
+        topic: climate
+      - name: climate-101
+        topic: climate
+      - name: panoply
         topic: climate
 ---
