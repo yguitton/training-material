@@ -262,12 +262,12 @@ The BLAST output (in tabular format with extended 25 columns) contains a wealth 
 >     - {% icon param-file %} *"from dataset"*: `output` (output of **NCBI BLAST+ blastn** {% icon tool %} for HP3 R2)
 >     - {% icon param-file %} *"Count occurrences of values in column(s)"*: `c['25']`
 >
-> > \<comment-title\> Interpreting the Count Output \</comment-title\>
->
+> > <comment-title> Interpreting the Count Output </comment-title>
+> >
 > > The output of the **Count** tool will be a table showing each unique scientific name found in the 25th column of your BLAST output and the number of times it appeared. Since we set BLAST to only report the top hit for each eDNA sequence, this count represents the frequency of the most likely taxonomic assignment for those sequences.
 > > This output can be used for visualization such as a pie chart.
 > > {: .comment}
-
+>
 {: .hands\_on}
 
 > \<question-title\> Understanding Top Hit Counting \</question-title\>
