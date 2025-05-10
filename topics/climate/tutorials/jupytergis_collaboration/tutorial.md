@@ -2,6 +2,7 @@
 layout: tutorial_hands_on
 
 title: Collaboration with JupyterGIS
+subtopic: analysing
 questions:
 - What features does JupyterGIS have to help me collaborate with others on GIS projects in real time?
 objectives:
