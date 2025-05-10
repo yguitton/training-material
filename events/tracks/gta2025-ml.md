@@ -15,6 +15,7 @@ contributions:
         - anuprulez
         - emmaustin20
         - igormakunin
+        - jennaj
         - meltemktn
         - hujambo-dunia
         - paulocilasjr

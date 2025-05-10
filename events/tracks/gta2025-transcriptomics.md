@@ -19,6 +19,7 @@ contributions:
         - delphine-l
         - hrhotz
         - igormakunin
+        - jennaj
         - MarisaJL
         - bernt-matthias
         - meltemktn
@@ -26,6 +27,7 @@ contributions:
         - rlibouba
         - reytakop
         - SaimMomin12
+        - scottcain
         - stephanierobin
         - teresa-m
         # - joshuab, ilayahari, reytakop

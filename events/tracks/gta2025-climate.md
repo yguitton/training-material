@@ -14,6 +14,7 @@ contributions:
         - annefou
         - elifsu-simula
         - j34ni
+        - jennaj
         - evenmm
         - igormakunin
 

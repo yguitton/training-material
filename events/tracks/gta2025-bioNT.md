@@ -17,9 +17,11 @@ contributions:
         - hvelab
         - lisanna
         - igormakunin
+        - jennaj
         - mirandaembl
         - reytakop
         - SaimMomin12
+        - scottcain
         - silviadg87
         - teresa-m
 
