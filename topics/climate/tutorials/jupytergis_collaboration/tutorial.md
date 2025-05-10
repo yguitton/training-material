@@ -20,7 +20,7 @@ recordings:
   galaxy_version: 24.2.4.dev0
   date: '2025-05-05'
   speakers:
-  captioners:
+  captioners: annefou
   bot-timestamp: 1746442257
 
 
