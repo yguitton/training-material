@@ -199,7 +199,7 @@ program:
 
           **Wednesday:** We would love to hear what would you do if you knew you couldn't fail?
 
-          **Thursday:** Tell us what  is the best piece of feedback you have ever received?
+          **Thursday:** Tell us what is the best piece of feedback you have ever received?
 
           Post your answers each day to Slack [#social](https://gtnsmrgsbord.slack.com/channels/social) channel.
 
