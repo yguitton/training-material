@@ -16,7 +16,7 @@ contributors:
 - annefou
 recordings:
 - youtube_id: J-tfu2P1ydw
-  length: 7M
+  length: 24M
   galaxy_version: 24.2.4.dev0
   date: '2025-05-05'
   speakers:
