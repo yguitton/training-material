@@ -15,8 +15,8 @@ contributors:
 - elifsu-simula
 - annefou
 recordings:
-- youtube_id: J-tfu2P1ydw
-  length: 24M
+- youtube_id: l3U6c_VOgnU
+  length: 7M
   galaxy_version: 24.2.4.dev0
   date: '2025-05-05'
   speakers: 
