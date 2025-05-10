@@ -72,7 +72,7 @@ contributions:
         - evenmm
         - GarethPrice-Aus
         - hrhotz
-        - helena_vela
+        - hvelab
         - igormakunin
         - khaled196
         - jdavcs
@@ -146,14 +146,14 @@ program:
   - section: Course introduction
     subsection: true
     tutorials:
-#      - name: Welcome & Course logistics
-#        type: custom
-#        description: |
-#          [<i class="fas fa-video" aria-hidden="true"></i> Video: Welcome to the course!](https://youtu.be/OyMpSNEDyEA)
+      - name: Welcome & Course logistics
+        type: custom
+        description: |
+          [<i class="fas fa-video" aria-hidden="true"></i> Video: Welcome to the course!](https://youtu.be/P80S51m6GLk)
       - type: custom
         name: Daily Icebreaker
         description: |
-          **Please take a moment to introduce yourself and tell us one fun fact about yourself!**
+          **Please take a moment to introduce yourself and tell us is your favorite season and why!**
 
           Post your answer to Slack [#social](https://gtnsmrgsbord.slack.com/channels/social) channel. *(See the setup tab for instructions for joining Slack)*.
 
@@ -192,9 +192,11 @@ program:
       - type: custom
         name: Daily Icebreakers
         description: |
-          **Tuesday:** For today's icebreaker, we would love to know one weird fact #that you know for no reason.
-          **Wednesday:** We would love to hear where you find inspiration. Maybe you find inspiration through nature or maybe you have a prominent role model in your life—we'd love to learn more about you!
-          **Thursday:** If you could take any one movie prop from a movie set, what would it be?
+          **Tuesday:** For today's icebreaker, we would love to know what is your favourite holiday in your culture and why?
+
+          **Wednesday:** We would love to hear what would you do if you knew you couldn't fail?
+
+          **Thursday:** Tell us what is your favorite travel hack??
 
           Post your answers each day to Slack [#social](https://gtnsmrgsbord.slack.com/channels/social) channel.
 
