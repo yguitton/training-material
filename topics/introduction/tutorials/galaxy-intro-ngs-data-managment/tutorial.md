@@ -41,7 +41,7 @@ recordings:
   youtube_id: 9mIL0tIfZ_o
   speakers:
   - nekrut
-- youtube_id: TODO
+- youtube_id: LkDl_M6GOKI
   length: 24M
   galaxy_version: 24.2.4.dev0
   date: '2025-05-10'
