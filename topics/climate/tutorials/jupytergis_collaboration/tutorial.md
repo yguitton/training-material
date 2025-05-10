@@ -19,7 +19,7 @@ recordings:
   length: 24M
   galaxy_version: 24.2.4.dev0
   date: '2025-05-05'
-  speakers:
+  speakers: annefou
   captioners: annefou
   bot-timestamp: 1746442257
 
