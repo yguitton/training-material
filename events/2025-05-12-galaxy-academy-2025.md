@@ -123,6 +123,7 @@ contributions:
         - mwk
         - abromics
         - ifb
+        - FAIR2Adapt
 
 location:
   name: online

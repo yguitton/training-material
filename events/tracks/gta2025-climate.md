@@ -17,7 +17,8 @@ contributions:
         - jennaj
         - evenmm
         - igormakunin
-
+    funding:
+        - FAIR2Adapt
 
 program:
   - section: "Climate and Pangeo ecosystem"
