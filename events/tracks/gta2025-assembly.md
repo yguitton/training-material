@@ -12,12 +12,15 @@ contributions:
         - SaimMomin12
     instructors:
         - annasyme
+        - nekrut
         - bgruening
         - delphine-l
         - igormakunin
+        - jennaj
         - bernt-matthias
         - mschatz
         - SaimMomin12
+        - scottcain
         - trungN
 
 

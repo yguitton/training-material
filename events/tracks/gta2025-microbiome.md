@@ -18,6 +18,7 @@ contributions:
         - EngyNasr
         - GarethPrice-Aus
         - igormakunin
+        - jennaj
         - bernt-matthias
         - paulzierep
         - plushz

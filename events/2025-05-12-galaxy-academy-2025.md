@@ -55,8 +55,9 @@ contributions:
         - annefou
         - anuprulez
         - abretaud
+        - nekrut
         - dadrasarmin
-        - annefou
+        - Nilchia
         - bebatut
         - bgruening
         - clsiguret
@@ -77,6 +78,7 @@ contributions:
         - khaled196
         - jdavcs
         - j34ni
+        - jennaj
         - jhahnfeld
         - jochenblom
         - lisanna
@@ -103,6 +105,7 @@ contributions:
         - reytakop
         - SaimMomin12
         - sanjaysrikakulam
+        - scottcain
         - silviadg87
         - stephanierobin
         - subinamehta
@@ -196,7 +199,7 @@ program:
 
           **Wednesday:** We would love to hear what would you do if you knew you couldn't fail?
 
-          **Thursday:** Tell us what is your favorite travel hack??
+          **Thursday:** Tell us what is the best piece of feedback you have ever received?
 
           Post your answers each day to Slack [#social](https://gtnsmrgsbord.slack.com/channels/social) channel.
 
