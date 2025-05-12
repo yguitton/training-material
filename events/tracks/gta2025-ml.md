@@ -33,9 +33,11 @@ program:
         topic: statistics
       - name: classification_machinelearning
         topic: statistics
-      - name: CNN
+      - name: FNN
         topic: statistics
       - name: RNN
+        topic: statistics
+      - name: CNN
         topic: statistics
       - name: fine_tuning_protTrans
         topic: statistics
