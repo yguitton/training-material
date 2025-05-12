@@ -2,35 +2,35 @@
   job:
     Image:
       class: File
-      path: test-data/Image.tiff
+      location: https://zenodo.org/records/15388809
       filetype: tiff
     Seeds:
       class: File
-      path: test-data/Seeds.tiff
+      location: https://zenodo.org/records/15388853
       filetype: tiff
   outputs:
     Single channel image:
-      path: test-data/Single channel image.tiff
+      location: https://zenodo.org/records/15389546
     label map:
-      path: test-data/label map.tiff
+      location: https://zenodo.org/records/15389556
     multi-channel image:
-      path: test-data/multi-channel image.tiff
+      location: https://zenodo.org/records/15389567
     Smoothed image:
-      path: test-data/Smoothed image.tiff
+      location: https://zenodo.org/records/15389574
     tesselation:
-      path: test-data/tesselation.tiff
+      location: https://zenodo.org/records/15389585
     mask:
-      path: test-data/mask.tiff
+      location: https://zenodo.org/records/15389590
     object count:
-      path: test-data/object count.tabular
+      location: https://zenodo.org/records/15389599
       asserts:
         - has_text:
             text: "425"
     image features:
-      path: test-data/image features.tabular
+      location: https://zenodo.org/records/15389607
     segmentation:
-      path: test-data/segmentation.tiff
+      location: https://zenodo.org/records/15389616
     colorized label map:
-      path: test-data/colorized label map.png
+      location: https://zenodo.org/records/15389622
     segmented image:
-      path: test-data/segmented image.tiff
+      location: https://zenodo.org/records/15389630
