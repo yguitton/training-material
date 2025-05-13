@@ -42,7 +42,7 @@ Over the last decade another acquisition method has been developed addressing th
 
 Therefore, all peptides which are present in the same m/z window at the same time are fragmented simultaneously and a MS2 spectra containing fragments from multiple peptides is acquired. Using the same m/z windows for all measurements, results in more reproducible fragmentation and potential identification across multiple measurements.
 However, the resulting MS2 spectra contain fragments from multiple peptides and are often more complex and do not allow to directly link a specific (m/z) mass from the MS1 to a single MS2 fragment spectra.
-![DIA_vs_DDA](../../images/DIA_analysis_MS2.png "The MS2 scans in the DIA approach contain fragment ions from multiple precursers and are therefore more complex than the precursor-specific MS2 scans in DDA.")
+![DIA_vs_DDA](../../images/DIA_analysis_MS2.png "The MS2 scans in the DIA approach contain fragment ions from multiple precursors and are therefore more complex than the precursor-specific MS2 scans in DDA.")
 
 To allow for the identification of peptides in those ambiguous MS2 spectra, a spectral library can be used. The spectral library contains experimentally measured  MS2 spectra, which are specific for one precursor (from previous DDA measurements). In more recent approaches the MS2 spectra can be predicted based on theoretical peptide sequences (e.g. from a protein database).
 ![DIA_basics](../../images/DIA_analysis_basic.png "Spectral libraries are necesseary for the identification of peptides in DIA MS2 scans. In this example the spectral library is generated based on DDA data from the same samples.")
