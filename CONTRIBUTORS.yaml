@@ -1072,6 +1072,10 @@ guillaume-gricourt:
     linkedin: guillaume-gricourt
     joined: 2022-03
 
+hvelab:
+    name: Helena Vela
+    joined: 2024-09
+
 hannahkimincompbio:
     name: Hannah Kim
     joined: 2024-09
@@ -1296,6 +1300,10 @@ jgoecks:
     affiliations:
     - moffitt
 
+jhahnfeld:
+    name: Julian Hahnfeld
+    joined: 2025-04
+
 jj-umn:
     name: James Johnson
     email: jj@umn.edu
@@ -1314,6 +1322,10 @@ jkreplak:
     email: jonathan.kreplak@inrae.fr
     joined: 2020-09
     orcid: 0000-0001-5563-1932
+
+jochenblom:
+    name: Jochen Blom
+    joined: 2025-04
 
 joelvdavies:
     name: Joel Davies
@@ -1543,6 +1555,10 @@ lecorguille:
 LeilyR:
     name: Leily Rabbani
     joined: 2018-09
+
+lfenske-93:
+    name: Linda Fenske
+    joined: 2025-04
 
 lilianarutaihwa:
     name: Liliana Rutaihwa
@@ -1884,6 +1900,10 @@ mira-miracoli:
       - deNBI
       - eurosciencegateway
 
+mirandaembl :
+    name: Miranda Ackerman Eduardo Jacobo
+    joined: 2025-05
+
 miRlyKayleigh:
     name: Kayleigh Smith
     twitter: miRlyKayleigh
@@ -2114,6 +2134,11 @@ olanag1:
     name: Olha Nahorna
     joined: 2019-07
 
+Oliver_Rupp:
+    name: Oliver Rupp
+    github: false
+    joined: 2025-04
+
 onorvez:
     name: Olivier Norvez
     email: olivier.norvez@mnhn.fr
@@ -2121,6 +2146,10 @@ onorvez:
     elixir_node: fr
     affiliations:
       - elixir-europe
+
+oschwengers:
+    name: Oliver Schwengers
+    joined: 2025-04
 
 otatadeabigail:
     name: Otatade Abigail
@@ -2220,6 +2249,10 @@ pavanvidem:
       - uni-freiburg
       - elixir-europe
       - spoc
+
+PfisterMaxJLU:
+    name: Max Pfister
+    joined: 2025-04
 
 pickettbd:
     name: Brandon Pickett
@@ -2348,6 +2381,10 @@ reid-wagner:
     email: wagnerr@umn.edu
     joined: 2024-11
 
+reytakop:
+    name: Reyhaneh Tavakoli
+    joined: 2025-05
+
 rikeshi:
     name: Erik Schill
     joined: 2021-05
@@ -2475,6 +2512,16 @@ sbenateau:
     affiliations:
       - elixir-europe
 
+scorreard:
+    name: Solenne Correard
+    email: solenne.correard@inrae.fr
+    orcid: 0000-0002-0554-5443
+    elixir_node: fr
+    affiliations:
+      - elixir-europe
+    joined: 2025-04
+    bluesky: solenne-correard.bsky.social
+
 scottcain:
     name: Scott Cain
     joined: 2025-01
@@ -2518,6 +2565,10 @@ shiltemann:
       country: NL
       lat: 51.912
       lon: 4.462
+
+silviadg87:
+    name: Silvia Di Giorgio
+    joined: 2025-05
 
 Shorla:
     name: Olushola Ogunkelu
@@ -3083,3 +3134,14 @@ rmassei:
     joined: 2024-11
     affiliations:
       - nfdi4bioimage
+
+sfragkoul:
+    name: Stella Fragkouli
+    email: sfragkoul@certh.gr
+    twitter: scfragkoul
+    linkedin: sfragkoul
+    orcid: 0000-0003-4067-7123
+    joined: 2025-03
+    elixir_node: gr
+    affiliations:
+      - elixir-europe
