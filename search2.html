@@ -11,14 +11,14 @@ We are testing a new search experience. It does not do semantic ranking of resul
 </p>
 
 <div class="row" id="search-form">
-	<div class="col-md-5">
+	<div class="col-md-3">
 	<div class="form-group">
 	<label for="title">Search</label>
 	<input type="text" class="form-control" id="title" placeholder="Search Materials" oninput="onInputDebounced()">
 	</div>
 	</div>
 
-	<div class="col-md-3">
+	<div class="col-md-2">
 	<div class="form-group">
 	<label for="type">Type</label>
 	<select class="form-control" id="type">
@@ -32,7 +32,7 @@ We are testing a new search experience. It does not do semantic ranking of resul
 	</div>
 	</div>
 	
-	<div class="col-md-3">
+	<div class="col-md-2">
 	<div class="form-group">
 	<label for="level">Level</label>
 	<select class="form-control" id="level">
@@ -43,6 +43,48 @@ We are testing a new search experience. It does not do semantic ranking of resul
 	</select>
 	</div>
 	</div>
+	
+	<div class="col-md-3">
+	<div class="form-group">
+	<label for="topic">Topic</label>
+	<select class="form-control" id="topic">
+		<option value="Any">Any</option>
+		<option value="Assembly">Assembly</option>
+		<option value="Climate">Climate</option>
+		<option value="Computational chemistry">Computational chemistry</option>
+		<option value="Contributing to the Galaxy Training Material">Contributing to the Galaxy Training Material</option>
+		<option value="Development in Galaxy">Development in Galaxy</option>
+		<option value="Digital Humanities">Digital Humanities</option>
+		<option value="Ecology">Ecology</option>
+		<option value="Epigenetics">Epigenetics</option>
+		<option value="Evolution">Evolution</option>
+		<option value="FAIR Data, Workflows, and Research">FAIR Data, Workflows, and Research</option>
+		<option value="Foundations of Data Science">Foundations of Data Science</option>
+		<option value="Galaxy Community Building">Galaxy Community Building</option>
+		<option value="Galaxy FAQ">Galaxy FAQ</option>
+		<option value="Galaxy Server administration	 Server administration	min">Galaxy Server administration</option>
+		<option value="Genome Annotation">Genome Annotation</option>
+		<option value="GTN FAQ">GTN FAQ</option>
+		<option value="Image analysis using Deep Learning">Image analysis using Deep Learning</option>
+		<option value="Imaging">Imaging</option>
+		<option value="Introduction to Galaxy Analyses">Introduction to Galaxy Analyses</option>
+		<option value="Materials Science">Materials Science</option>
+		<option value="Metabolomics">Metabolomics</option>
+		<option value="Microbiome">Microbiome</option>
+		<option value="Proteomics">Proteomics</option>
+		<option value="Sequence analysis">Sequence analysis</option>
+		<option value="Single Cell">Single Cell</option>
+		<option value="Statistics and machine learning">Statistics and machine learning</option>
+		<option value="Synthetic Biology">Synthetic Biology</option>
+		<option value="Teaching and Hosting Galaxy training">Teaching and Hosting Galaxy training</option>
+		<option value="Transcriptomics">Transcriptomics</option>
+		<option value="Using Galaxy and Managing your Data">Using Galaxy and Managing your Data</option>
+		<option value="Variant Analysis">Variant Analysis</option>
+		<option value="Visualisation">Visualisation</option>
+	</select>
+	</div>
+	</div>
+
 	<div class="col-md-1">
 		<button class="btn btn-primary" onclick="search()">Search</button>
 	</div>
@@ -119,15 +161,16 @@ function search(){
 	const textQuery = document.getElementById("title").value
 	const typeFilter = document.getElementById("type").value
 	const levelFilter = document.getElementById("level").value
+	const topicFilter = document.getElementById("topic").value
 
-	if (previousSearch == `${textQuery} ${typeFilter} ${levelFilter}`) {
+	if (previousSearch == `${textQuery} ${typeFilter} ${levelFilter} ${topicFilter}`) {
 		console.log("Skipping search for the same query")
 		return
 	}
 
 	// Include search term in page title
 	document.getElementsByTagName("title")[0].innerText = `${textQuery} | GTN Materials Search`
-	console.log(`Searching! ${textQuery} ${typeFilter} ${levelFilter}`)
+	console.log(`Searching! ${textQuery} ${typeFilter} ${levelFilter}  ${topicFilter}`)
 
 	// Which should be hidden
 
@@ -144,6 +187,9 @@ function search(){
 				return true;
 			}
 		}
+		if (topicFilter != "Any" && row.children[3].innerText != topicFilter) {
+			return true;
+		}
 		return false;
 	});
 
@@ -152,13 +198,13 @@ function search(){
 	// Hide the rest
 	to_hide.map(r => r.style.display = "none");
 
-	previousSearch = `${textQuery} ${typeFilter} ${levelFilter}`
+	previousSearch = `${textQuery} ${typeFilter} ${levelFilter} ${topicFilter}`
 
 	if(typeof plausible !== 'undefined'){
 		// Plausible may be undefined (script blocked)
 		// or it may be defined, but opted-out (select box/DNT),
 		// which means `plausible()` will work but not send data, *nor* execute the callback.
-		plausible('Search', {props: {query: textQuery, type: typeFilter, level: levelFilter}})
+		plausible('Search', {props: {query: textQuery, type: typeFilter, level: levelFilter, topic: topicFilter}})
 	}
 }
 
