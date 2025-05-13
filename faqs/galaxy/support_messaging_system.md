@@ -32,9 +32,9 @@ If you are new to messaging systems, here's how to get started with Galaxy on Ma
 
 * [**Element**](https://element.io/) – Recommended. Available on [Web](https://app.element.io), [iOS](https://apps.apple.com/app/element/id1083446067), [Android](https://play.google.com/store/apps/details?id=im.vector.app), [Windows/macOS/Linux](https://element.io/download).&#x20;
 
-* [**FluffyChat**](https://fluffychat.im/)
+* [**Cinny**](https://cinny.in/)
 
-* [**SchildiChat**](https://schildi.chat/)
+* [**Other Matrix clients...**](https://matrix.org/ecosystem/clients/)
 
 All of these apps connect to the same Galaxy channels. Choose the interface that works best for you.
 
