@@ -100,7 +100,7 @@ The dataset in this tutorial consists of two different Spike-in mixtures of huma
 
 > <hands-on-title>Converting vendor specific raw to open mzML format</hands-on-title>
 >
-> 1. {% tool [msconvert](toolshed.g2.bx.psu.edu/repos/galaxyp/msconvert/msconvert/3.0.19052.1) %} with the following parameters:
+> 1. {% tool [msconvert Convert and/or filter mass spectrometry files](toolshed.g2.bx.psu.edu/repos/galaxyp/msconvert/msconvert/3.0.20287.6) %}
 >    - {% icon param-collection %} *"Input unrefined MS data"*: `DIA_data`
 >    - *"Do you agree to the vendor licenses?"*: `Yes`
 >    - *"Output Type"*: `mzML`
@@ -126,7 +126,7 @@ The dataset in this tutorial consists of two different Spike-in mixtures of huma
 
 > <hands-on-title>DIA analysis using OpenSwathWorkflow</hands-on-title>
 >
-> 1. {% tool [OpenSwathWorkflow](toolshed.g2.bx.psu.edu/repos/galaxyp/openms_openswathworkflow/OpenSwathWorkflow/2.6+galaxy0) %} with the following parameters:
+> 1. {% tool [OpenSwathWorkflow Complete workflow to run OpenSWATH](toolshed.g2.bx.psu.edu/repos/galaxyp/openms_openswathworkflow/OpenSwathWorkflow/3.1+galaxy0) %}
 >    - {% icon param-collection %} *"Input files separated by blank"*: `DIA_data` (output of **msconvert** {% icon tool %})
 >    - {% icon param-file %} *"transition file ('TraML','tsv','pqp')"*: `HEK_Ecoli_lib`
 >    - {% icon param-file %} *"transition file ('TraML')"*: `iRTassays`
