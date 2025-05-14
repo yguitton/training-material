@@ -36,22 +36,30 @@ If you are new to messaging systems, here's how to get started with Galaxy on Ma
 
 * [**Other Matrix clients...**](https://matrix.org/ecosystem/clients/)
 
-All of these apps connect to the same Galaxy channels. Choose the interface that works best for you.
+All of these apps connect to the same Galaxy channels/rooms. Choose the interface that works best for you.
 
 #### Step 2: Create a Matrix account
 
 * Open the app and sign up. It's easiest to use the default public server at `matrix.org` for your account.
 * Choose a username. Your Matrix ID will look like: `@yourname:matrix.org`.
 
-#### Step 3: Join the Galaxy **Lobby**
+#### Step 3: Join the Galaxy **"Lobby"**
 
-* In your Matrix client, join the main Galaxy chat room.
-  * If you're using the Element client, click Explore (the compass icon) and search for "Galaxy" – look for a room named Galaxy or Galaxy Lobby (often with an address like #galaxyproject:matrix.org).
+* In your Matrix client, join the [main Galaxy chat room - The Lobby](https://matrix.to/#/#galaxyproject_Lobby:gitter.im).
+  * If you're using the Element client, click Explore (the compass icon) and search for "Galaxy" – look for a room named Galaxy or Galaxy Lobby (often with an address like `#galaxyproject:matrix.org`).
   * Alternatively, you can use a direct Matrix link if provided, which will prompt your app to join the room.
 
-* Continue to join the room.
+* In addition to the [Lobby room](https://matrix.to/#/#galaxyproject_Lobby:gitter.im), join other Matrix rooms via direct links once logged in:
 
-Say hello and ask questions: Once in the Galaxy Lobby, feel free to introduce yourself or ask your question. This Lobby room is a friendly starting point – community members will welcome you, answer basic questions, and guide you to more specific Galaxy channels if needed. You will be redirected to the right room if needed.
+<div align="center">
+
+| Galaxy Subjects on Matrix:  | Galaxy Users on Matrix:  |
+|---|---|
+| [Proteomics](https://matrix.to/#/#GalaxyProteomics_Lobby:gitter.im) <br> [Microbiology](https://matrix.to/#/#galaxyproject_microGalaxy:gitter.im) <br> [Single-Cell & Spatial Omics Users](https://matrix.to/#/#Galaxy-Training-Network_galaxy-single-cell:gitter.im) <br> **[All Galaxy Matrix rooms, 70+ rooms](https://matrix.to/#/#galaxyproject:matrix.org)** | [Tool Authors](https://matrix.to/#/#galaxyproject_tools:gitter.im) <br> [Developers](https://matrix.to/#/#galaxyproject_dev:gitter.im) <br> [Outreach](https://matrix.to/#/#galaxyproject_wg-goat:gitter.im) <br> [Admins](https://matrix.to/#/#galaxyproject_admins:gitter.im) |
+
+</div>
+
+**Say hello and ask questions:** Once in the Galaxy Lobby, feel free to introduce yourself or ask your question. This Lobby room is a friendly starting point – community members will welcome you, answer basic questions, and guide you to more specific Galaxy channels/rooms if needed. You will be redirected to the right room if needed.
 
 ---
 
