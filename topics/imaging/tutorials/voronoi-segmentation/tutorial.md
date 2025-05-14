@@ -84,6 +84,9 @@ These images are from {% cite weinstein2022neontree %}.
 >
 {: .agenda}
 
+### Application to Earth Observation
+
+In an Astronomical observation..
 
 ## Data requirements 
 Two images are required for Voronoi segmentation: A source image and a matching seed image containing objects from the source image annotated as white spots on a black background. 
