@@ -69,7 +69,7 @@ The dataset in this tutorial consists of two different Spike-in mixtures of huma
 >
 >    {% snippet faqs/galaxy/histories_create_new.md %}
 >
-> 2. Import the fasta and raw files as well as the sample annotation and the iRT Transition file from [Zenodo](https://zenodo.org/record/4307762)
+> 2. Import the fasta and raw files as well as the sample annotation and the iRT Transition file from [Zenodo](https://zenodo.org/record/4307762) iRT Transition file contains information about the transitions of the Indexed Retention Time (iRT) standard peptides. These peptides are a set of synthetic peptides with well-defined and stable retention times across different liquid chromatography-mass spectrometry (LC-MS) systems.
 >    ```
 >    https://zenodo.org/record/4307762/files/HEK_Ecoli_lib.pqp
 >    https://zenodo.org/record/4307762/files/iRTassays.tsv
