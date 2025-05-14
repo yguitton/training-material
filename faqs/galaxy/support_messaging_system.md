@@ -24,7 +24,7 @@ Matrix provides an open alternative to proprietary platforms like Slack and Micr
 
 If you are new to messaging systems, here's how to get started with Galaxy on Matrix:
 
-<img src="images/support_matrix_element.jpg" alt="Galaxy Project Matrix space using the Element client app" width="350" align="right">
+<img src="{% link faqs/galaxy/images/support_matrix_element.jpg %}" alt="Galaxy Project Matrix space using the Element client app" width="350" align="right">
 
 #### Step 1: Choose and install a Matrix app
 
