@@ -27,6 +27,7 @@ contributions:
     - lybCNU
   editing:
     - hexylena
+    - scottcain
   funding:
     - gallantries
 level: Introductory
@@ -230,8 +231,7 @@ Galaxy can convert these two formats into each other.
 >    >
 >    > > <solution-title></solution-title>
 >    > >
->    > > 1. Galaxy does not display the table as nicely as before.
->    > >    This is because Galaxy is optimized to work with `tsv` files. For most rows you now see commas separating the different columns.
+>    > > 1. The display in the center panel should be indistinguishable from before the conversion; however, if you look at the "quick view" of the data in the history step, you will see the commas separating columns.
 >    > > 2. If the data in a column contains a comma (e.g. in this file we have events such as `swimming 5,000 meters`), we put the value in quotes to signify that that comma is part of the data, not a column delimiter.
 >    > >
 >    > {: .solution}
@@ -1541,7 +1541,7 @@ To do the reverse, adding one or more columns, we can use the {% tool [Paste]({{
 >    - {% icon param-text %} *"Header name"*: `name`
 >    - {% icon param-repeat %} *"Header name"*: `sport`
 >    - {% icon param-repeat %} *"Header name"*: `games`
->    - {% icon param-repeat %} *"Header name"*: `medals`
+>    - {% icon param-repeat %} *"Header name"*: `medal`
 >    - {% icon param-toggle %} *"Keep named columns"*: `Yes`
 >
 > 3. {% icon galaxy-eye %} **View** the results.
@@ -1797,7 +1797,7 @@ Since this new dataset has the exact same structure (number and order of columns
 >    >
 >    > > <solution-title></solution-title>
 >    > >
->    > > 1. The `olympics.tsv` file had 234,523 lines, and the `olympics_2022.tsv` file had 4076 lines. Both of these numbers include a header line, which we removed for the second file, so we expect our concatenated file to contain 234,523 + 4076 - 1 = 238,598 lines (which it does).
+>    > > 1. The `olympics.tsv` file had 234,523 lines, and the `olympics_2022.tsv` file had 4076 lines. Both of these numbers include a header line, which we removed for the second file, so we expect our concatenated file to contain 234,523 + 4076 - 1 = 238,598 lines (which it does). Note that the estimated number of lines in the "quick view" (what you see when you click on the step to expand it) might be off by quite a bit (several thousand lines for example).
 >    > > 2. The new file has the entire contents of `olympics.tsv` at the beginning of the file, followed by the contents of the `olympics_2022.tsv` file at the end.
 >    > {: .solution}
 >    {: .question}
@@ -1809,7 +1809,7 @@ Now this only works so simply because our two datasets had the same structure; t
 
 # Splitting Files
 
-This dataset contains a lot of data, we might want to split the data into one file per Olympic games, or have one file for all the winter games, and another file for all the summer games. In these situtations, where we want to create new, smaller files, based on the values in a column, we can use the tool {% tool [Split file according to the values of a column]({{version_split}}) %}.
+This dataset contains a lot of data, we might want to split the data into one file per Olympic games, or have one file for all the winter games, and another file for all the summer games. In these situtations, where we want to create new, smaller files, based on the values in a column, we can use the tool {% tool [Split by group]({{version_split}}) %}.
 
 Tip: use this tool only if you want a separate file for **all values** in a column. For example, if you want a file for each Olympic games, use the split tool, but if you just want a file for one particular Olympics (say Tokyo 2020), you could simply use the [Filter](#filtering) tools to extract the data from the full dataset, without making files for all the other Olympics as well.
 
@@ -1818,10 +1818,10 @@ Tip: use this tool only if you want a separate file for **all values** in a colu
 >
 > We would like to create a separate file for each Olympic event.
 >
-> 1. Open the tool {% tool [Split file according to the values of a column]({{version_split}}) %}, and read the help text at the bottom
+> 1. Open the tool {% tool [Split by group]({{version_split}}) %}, and read the help text at the bottom
 >    - which settings do you think we need to use?
 >
-> 2. {% tool [Split file according to the values of a column]({{version_split}}) %} with the following parameters:
+> 2. {% tool [Split by group]({{version_split}}) %} with the following parameters:
 >    - {% icon param-file %} *"File to select"*: `olympics.tsv`
 >    - {% icon param-select %} *"on column"*: `Column 11` (the `games` column)
 >    - {% icon param-toggle %} *"Include the header in all splitted files?"*: `Yes`
@@ -1934,7 +1934,7 @@ This section provides a number of exercises that require you to combine two or m
 > >
 > >    {% tool [Filter - data on any column using simple expressions]({{version_filter}}) %} with the following parameters:
 > >     - {% icon param-file %} *"Filter"*:  `output from previous exercise`
-> >     - {% icon param-text %} *"With following expression"*: `c13='Winter'`
+> >     - {% icon param-text %} *"With following expression"*: `c13=='Winter'`
 > >     - {% icon param-text %} *"Number of header lines to skip"*: `1`
 > >
 > > 3. First we filter out the NA values from the weight column:
@@ -1948,7 +1948,7 @@ This section provides a number of exercises that require you to combine two or m
 > >
 > >    {% tool [Filter - data on any column using simple expressions]({{version_filter}}) %} with the following parameters:
 > >     - {% icon param-file %} *"Filter"*:  `output from previous step`
-> >     - {% icon param-text %} *"With following expression"*: `c13='Summer'`
+> >     - {% icon param-text %} *"With following expression"*: `c13=='Summer'`
 > >     - {% icon param-text %} *"Number of header lines to skip"*: `1`
 > >
 > >    Then we can sort by weigth, in ascending order to get the shortest athletes on top:
@@ -2041,7 +2041,7 @@ row a weight range is used), and then answering the question a couple of questio
 > >
 > > 2. {% tool [Column Regex Find and Replace]({{version_replace_text_column}}) %} with the following parameters:
 > >    - {% icon param-file %} *"Select cells from"*: `olympics.tsv`
-> >    - {% icon param-select %}*"using column"*: `Column 14`
+> >    - {% icon param-select %}*"using column"*: `Column 8`
 > >    - {% icon param-repeat %} *"Check"*
 > >     - *"Find Regex"*: `(\d+)(,|-).*` (one or more digits (captured), followed by a dash or comma, then zero or more of any other characters)
 > >     - *"Replacement"*: `\1` (only the first set of numbers we captured)

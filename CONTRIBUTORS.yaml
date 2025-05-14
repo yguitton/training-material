@@ -1072,9 +1072,8 @@ guillaume-gricourt:
     linkedin: guillaume-gricourt
     joined: 2022-03
 
-helena_vela:
+hvelab:
     name: Helena Vela
-    github: false
     joined: 2024-09
 
 hannahkimincompbio:
@@ -1174,7 +1173,7 @@ hrhotz:
     contact_for_training: true
     location:
       country: CH
-      lat: 47.575694 
+      lat: 47.575694
       lon: 7.578796
     affiliations:
       - elixir-europe
@@ -2512,6 +2511,13 @@ sbenateau:
     elixir_node: fr
     affiliations:
       - elixir-europe
+
+sbueker77:
+    name: Sarah Büker
+    joined: 2025-05
+    affiliations:
+      - dsc-bremen
+      - uni-bremen
 
 scorreard:
     name: Solenne Correard
