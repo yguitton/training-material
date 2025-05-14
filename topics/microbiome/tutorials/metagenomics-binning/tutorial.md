@@ -168,9 +168,9 @@ In case of a not very large dataset it's more convenient to upload data directly
 >    > In case of large dataset, we can use FTP server or the [Galaxy Rule-based Uploader]({% link topics/galaxy-interface/tutorials/upload-rules/tutorial.md %}).
 >    {: .comment}
 >
-> 3. Create a paired collection named `Raw reads`, rename your pairs with the sample name
+> 3. Create a collection named `Raw reads`, rename your pairs with the sample name
 >
->    {% snippet faqs/galaxy/collections_build_list_paired.md %}
+>    {% snippet faqs/galaxy/collections_build_list.md %}
 >
 {: .hands_on}
 
