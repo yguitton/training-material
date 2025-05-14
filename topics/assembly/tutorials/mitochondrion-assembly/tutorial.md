@@ -13,6 +13,8 @@ key_points:
   a reference sequence.
 contributors:
 - delphine-l
+tags:
+  - biodiversity
 recordings:
 - youtube_id: 0ehAZ0DZsFU
   length: 11M
