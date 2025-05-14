@@ -7,7 +7,7 @@ layout: faq
 contributors: [hujambo-dunia]
 ---
 
-## Introduction
+### Introduction
 
 The Galaxy community uses [Matrix](https://matrix.org/) – a secure, decentralized, open-source messaging protocol – as its primary chat system. Matrix enables real-time communication across Galaxy contributors, developers, trainers, and users. Common uses include:
 
@@ -20,13 +20,13 @@ Matrix provides an open alternative to proprietary platforms like Slack and Micr
 
 ---
 
-## 🔰 For Newbies: Getting Started with Matrix
+### 🔰 For Newbies: Getting Started with Matrix
 
 If you are new to messaging systems, here's how to get started with Galaxy on Matrix:
 
 <img src="images/support_matrix_element.jpg" alt="Galaxy Project Matrix space using the Element client app" width="350" align="right">
 
-### Step 1: Choose and install a Matrix app
+#### Step 1: Choose and install a Matrix app
 
 **Install a Matrix client app:** Download and install a Matrix client:
 
@@ -38,12 +38,12 @@ If you are new to messaging systems, here's how to get started with Galaxy on Ma
 
 All of these apps connect to the same Galaxy channels. Choose the interface that works best for you.
 
-### Step 2: Create a Matrix account
+#### Step 2: Create a Matrix account
 
 * Open the app and sign up. It's easiest to use the default public server at `matrix.org` for your account.
 * Choose a username. Your Matrix ID will look like: `@yourname:matrix.org`.
 
-### Step 3: Join the Galaxy **Lobby**
+#### Step 3: Join the Galaxy **Lobby**
 
 * In your Matrix client, join the main Galaxy chat room.
   * If you're using the Element client, click Explore (the compass icon) and search for "Galaxy" – look for a room named Galaxy or Galaxy Lobby (often with an address like #galaxyproject:matrix.org).
@@ -55,17 +55,17 @@ Say hello and ask questions: Once in the Galaxy Lobby, feel free to introduce yo
 
 ---
 
-## 💡 For Experienced Users (Slack/Teams/Discord Users)
+### 💡 For Experienced Users (Slack/Teams/Discord Users)
 
 If you've used tools like Slack, Microsoft Teams, or Discord, Matrix will feel familiar — with a few important differences:
 
-### ✅ Key Similarities
+#### ✅ Key Similarities
 
 * **Rooms ≈ Channels**: Rooms are topic-based, like Slack channels.
 * **DMs supported**: You can message users privately.
 * **Multiple devices**: Stay logged in on phone, tablet, laptop.
 
-### ❗ Key Differences
+#### ❗ Key Differences
 
 * **Federated, decentralized network**: There is no single “Galaxy workspace” to be invited to. Join any Matrix room directly via a public server.
 * **Flexible clients**: You can use different Matrix client apps across platforms. They all show the same chats.
@@ -80,7 +80,7 @@ If you've used tools like Slack, Microsoft Teams, or Discord, Matrix will feel f
 
 ---
 
-## 🔐 Security and Privacy
+### 🔐 Security and Privacy
 
 Matrix supports **end-to-end encryption (E2EE)** in private conversations and invite-only rooms.
 
@@ -95,7 +95,7 @@ Matrix is designed for open collaboration. When in doubt, treat public rooms lik
 
 ---
 
-## 📍 TL;DR Quickstart
+### 📍 TL;DR Quickstart
 
 * ✅ Install [Element](https://element.io) or another Matrix app
 * ✅ Create an account (Matrix ID)
