@@ -1,6 +1,23 @@
-- name: "eDNA Analysis Sample Data"
-  files:
-    - name: HP3_S9_L001_R1_001.fastq.gz
-    - name: HP3_S9_L001_R2_001.fastq.gz
-      url: https://zenodo.org/records/15367390
-      info: Environmental DNA Sequence data retireved from Halibut Point in Gloucester, Massachusetts
+---
+destination:
+  type: library
+  name: GTN - Material
+  description: Galaxy Training Network Material
+  synopsis: Galaxy Training Network Material. See https://training.galaxyproject.org
+items:
+- name: Sequence analysis
+  description: Analyses of sequences
+  items:
+  - name: Taxonomic Analysis of eDNA
+    items:
+    - name: 'DOI: 10.5281/zenodo.15367390'
+      description: latest
+      items:
+      - url: https://zenodo.org/api/records/15367390/files/HP3_S9_L001_R2_001.fastq.gz/content
+        src: url
+        ext: fastq.gz
+        info: https://zenodo.org/records/15367390
+      - url: https://zenodo.org/api/records/15367390/files/HP3_S9_L001_R1_001.fastq.gz/content
+        src: url
+        ext: fastq.gz
+        info: https://zenodo.org/records/15367390
