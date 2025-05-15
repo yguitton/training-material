@@ -16,6 +16,7 @@ contributions:
         - dianichj
         - hrhotz
         - igormakunin
+        - jennaj
         - MarisaJL
         - pavanvidem
         - nomadscientist

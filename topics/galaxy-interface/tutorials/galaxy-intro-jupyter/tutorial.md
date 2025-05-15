@@ -1,48 +1,60 @@
 ---
 layout: tutorial_hands_on
 redirect_from:
-  - /topics/galaxy-ui/tutorials/galaxy-intro-jupyter/tutorial
-
-title: "Use Jupyter notebooks in Galaxy"
-zenodo_link: "https://zenodo.org/record/15263830"
+- "/topics/galaxy-ui/tutorials/galaxy-intro-jupyter/tutorial"
+title: Use Jupyter notebooks in Galaxy
+zenodo_link: https://zenodo.org/record/15263830
 questions:
-  - "How to open a Jupyter Notebook in Galaxy?"
-  - "How to update dependencies in a Jupyter Interactive Environment?"
-  - "How to save and share results in the Galaxy History?"
+- How to open a Jupyter Notebook in Galaxy?
+- How to update dependencies in a Jupyter Interactive Environment?
+- How to save and share results in the Galaxy History?
 objectives:
-  - "Learn about the Jupyter Interactive Environment"
-  - "Load data into a Jupyter Interactive Environment"
-  - "Install library dependencies"
-  - "Save a notebook to the Galaxy history"
+- Learn about the Jupyter Interactive Environment
+- Load data into a Jupyter Interactive Environment
+- Install library dependencies
+- Save a notebook to the Galaxy history
 time_estimation: 1H
-level: "Introductory"
+level: Introductory
 requirements:
 - type: internal
   topic_name: galaxy-interface
   tutorials:
-      - history
+  - history
 follow_up_training:
 - type: external
   title: Plotting and Programming in Python
-  link: "https://swcarpentry.github.io/python-novice-gapminder/instructor/index.html"
+  link: https://swcarpentry.github.io/python-novice-gapminder/instructor/index.html
 key_points:
-  - "Start Jupyter from the Visualize tab or from a dataset"
-  - "Install Libraries with pip or Conda"
-  - "Use get() to import datasets from your history to the notebook"
-  - "Use put() to export datasets from the notebook to your history"
-  - "Save your notebook into your history"
+- Start Jupyter from the Visualize tab or from a dataset
+- Install Libraries with pip or Conda
+- Use get() to import datasets from your history to the notebook
+- Use put() to export datasets from the notebook to your history
+- Save your notebook into your history
 contributions:
   authorship:
-    - delphine-l
+  - delphine-l
   editing:
-    - teresa-m
+  - teresa-m
   testing:
-    - lisanna
+  - lisanna
   funding:
-    - deNBI
-    - biont
+  - deNBI
+  - biont
 subtopic: analyse
+recordings:
+- youtube_id: PTRhprL4Qm4
+  length: 36M
+  galaxy_version: 24.2.4.dev0
+  date: '2025-05-11'
+  speakers:
+  - teresa-m
+  captioners:
+  - teresa-m
+  bot-timestamp: 1746993242
+
+
 ---
+
 
 
 In this tutorial, we are going to explore the basics of using JupyterLab in Galaxy. We will use the Gapminder data as a test set to get the hang of Jupyter notebooks. The [python-novice-gapminder-data.zip](https://swcarpentry.github.io/python-novice-gapminder/files/python-novice-gapminder-data.zip) file is publicly available. This tutorial can also be used as an initial setup for the Software Carpentries training [Plotting and Programming in Python](https://swcarpentry.github.io/python-novice-gapminder/instructor/index.html).
