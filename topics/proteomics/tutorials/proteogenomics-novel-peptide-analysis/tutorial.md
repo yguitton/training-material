@@ -71,15 +71,15 @@ All the files to run this workflow can be obtained from the [second tutorial]({%
 >    - **Genomic mapping sqlite** From (Proteogenomics 1: Database Creation)
 >    - **Reference Annotation File**  From (Proteogenomics 1: Database Creation)
 >
->      > If you do not have these files from the previous tutorials in this series, you can import them from [Zenodo](https://doi.org/10.5281/zenodo.13270741)
->      > ```
->      > https://zenodo.org/records/15391695/files/Peptides_for_Blast-P_analysis.fasta
->      > https://zenodo.org/records/15390920/files/PeptideShaker_PSM.tabular
->      > https://zenodo.org/record/1489208/files/mz_to_sqlite.mz.sqlite
->      > https://zenodo.org/record/1489208/files/genomic_mapping_sqlite.sqlite
->      > https://zenodo.org/records/1489208/files/Mus_musculus.GRCm38.86.gtf
->      > ```
->      >
+>    If you do not have these files from the previous tutorials in this series, you can import them from [Zenodo](https://doi.org/10.5281/zenodo.13270741)
+>    ```
+>    https://zenodo.org/records/15391695/files/Peptides_for_Blast-P_analysis.fasta
+>    https://zenodo.org/records/15390920/files/PeptideShaker_PSM.tabular
+>    https://zenodo.org/record/1489208/files/mz_to_sqlite.mz.sqlite
+>    https://zenodo.org/record/1489208/files/genomic_mapping_sqlite.sqlite
+>    https://zenodo.org/records/1489208/files/Mus_musculus.GRCm38.86.gtf
+>    ```
+>
 > 2. Verify that the mz_to_sqlite file has the format `mz.sqlite`
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="mz.sqlite" %}
