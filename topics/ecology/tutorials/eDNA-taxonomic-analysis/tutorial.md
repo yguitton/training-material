@@ -153,9 +153,9 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 > 1.  Are the default parameters of a quality control tool like `fastp` always the most appropriate choice for every sequencing dataset? Why or why not?
 >
 > > <solution-title> Solution </solution-title>
->
+> >
 > > 1.  No, default parameters might not always be optimal. Sequencing data can vary in quality, adapter contamination levels, and other characteristics depending on the library prep and platform. It is often necessary to adjust parameters to suit the specific needs of your data for appropriate levels of quality control.
->
+> >
 > {: .solution}
 >
 {: .question}
@@ -192,9 +192,9 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 > 1.  What is the purpose of converting sequencing data from FASTQ format to FASTA format?
 >
 > > <solution-title> Solution </solution-title>
->
+> >
 > > 1.  The purpose of converting from FASTQ to FASTA is to obtain a file containing only the nucleotide sequences.
->
+> >
 > {: .solution}
 >
 {: .question}
@@ -235,9 +235,9 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 > 1.  Why is it important to specify the database (like NCBI NT) when performing a BLAST search?
 >
 > > <solution-title> Answer </solution-title>
->
+> >
 > > 1.  Specifying the database ensures that your sequences are compared against a defined and relevant collection of sequences. Different databases have different content and scope, which can significantly impact the results and the taxonomic assignments you might obtain. Knowing the database also helps in understanding the context and limitations of your search.
->
+> >
 > {: .solution}
 >
 {: .question}
@@ -277,10 +277,10 @@ The BLAST output (in tabular format with extended 25 columns) contains a wealth 
 > 2.  What does the number of times a specific scientific name appears in the `Count` output roughly indicate in this analysis?
 >
 > > <solution-title> Answers </solution-title>
->
+> >
 > > 1.  We are using the `Count` tool on the 25th column because this column in the extended tabular BLAST output format typically contains the "subject scientific name" of the top hit from the database.
 > > 2.  The number of times a scientific name appears roughly indicates how many of your original eDNA sequences had that specific organism as their best match in the database.
->
+> >
 > {: .solution}
 >
 {: .question}
