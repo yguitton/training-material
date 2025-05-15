@@ -84,6 +84,8 @@ In astronomy and large-scale sky surveys, a key objective is to identify individ
 
 ![Segmented sky image](../../images/voronoi-segmentation/sky_image_OVERLAY_VORONOI.png "Segmented sky image.")
 
+Thes original image is published by [Legacy Surveys / D. Lang (Perimeter Institute)](https://www.legacysurvey.org/acknowledgment/) and can be downloaded from the [official website](https://www.legacysurvey.org/viewer/jpeg-cutout?ra=53.16216667&dec=-27.79149167&layer=ls-dr10&pixscale=0.262&size=1200). The Legacy Surveys are described in {% cite legacy-survey-astronomy %}.
+
 > <agenda-title></agenda-title>
 >
 > In this tutorial, we will cover:
