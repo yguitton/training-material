@@ -30,9 +30,6 @@ recordings:
 ---
 
 
-
-# Introduction
-
 This tutorial will show you how to assemble a mitochondrial genome from PacBio HiFi data using MitoHiFi {% cite uliano2023 %}. 
 Combined with the tutorials "Using the VGP workflows to assemble a vertebrate genome with HiFi and Hi-C data" and "Decontamination of a genome assembly", this allows you to produce a reference assembly for both the nuclear and the mitochondrial DNA of a vertebrate species. 
 
