@@ -220,7 +220,7 @@ peptides provided as input. This outputs bed file for peptides.
 
 > <hands-on-title>Peptide genomic Coordinate</hands-on-title>
 >
-> 1. Run {% tool [Peptide genomic Coordinate](https://usegalaxy.eu/root?tool_id=toolshed.g2.bx.psu.edu/repos/galaxyp/peptide_genomic_coordinate/peptide_genomic_coordinate/1.0.0) %} with the following parameters:
+> 1. Run {% tool [Peptide genomic Coordinate](toolshed.g2.bx.psu.edu/repos/galaxyp/peptide_genomic_coordinate/peptide_genomic_coordinate/1.0.0) %} with the following parameters:
 >    - *"Input"*: `Novel Peptides`, `mzsqlite sqlite DB file`, and `genomic mapping sqlite DB file`
 >
 >      ![Output PGC](../../images/Output_PGC.png){:width="50%"}
