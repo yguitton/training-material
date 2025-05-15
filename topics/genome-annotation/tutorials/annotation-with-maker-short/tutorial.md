@@ -8,7 +8,6 @@ tags:
   - eukaryote
   - maker
   - jbrowse1
-  - biodiversity
 questions:
   - How to annotate an eukaryotic genome?
   - How to evaluate and visualize annotated genomic features?
