@@ -295,7 +295,7 @@ The dataset in this tutorial consists of two different Spike-in mixtures of huma
 > 2. Can you guess which Spike-in contains higher amounts of Ecoli peptides?
 >
 > > <solution-title></solution-title>
-> > 1. Over 800 Ecoli proteins were identified and quantified in the six DIA measurements.
+> > 1. Over 817 Ecoli proteins were identified and quantified in the six DIA measurements.
 > > 2. It seems that the samples in Spike_in_2 contained higher amounts of Ecoli peptides than the samples in Spike_in_1.
 > {: .solution }
 {: .question}
