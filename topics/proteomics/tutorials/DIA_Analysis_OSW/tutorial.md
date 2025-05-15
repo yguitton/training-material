@@ -269,7 +269,7 @@ The dataset in this tutorial consists of two different Spike-in mixtures of huma
 
 > <question-title></question-title>
 >
-> 1. How many different peptides and proteins were identified and quatified?
+> 1. How many different peptides and proteins were identified and quantified?
 > 2. Could you already tell from the summary which Spike-in contained higher amounts of Ecoli peptides?
 >
 > > <solution-title></solution-title>
