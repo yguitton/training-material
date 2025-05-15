@@ -12,7 +12,12 @@ contributions:
         - khaled196
     instructors:
         - annasyme
+        - nekrut
+        - delphine-l
+        - igormakunin
+        - jennaj
         - khaled196
+        - scottcain
         - wm75
         - kkamieniecka
         - Mingkai14
@@ -41,4 +46,4 @@ program:
         topic: variant-analysis
       - name: tb-variant-analysis
         topic: variant-analysis
-
+---

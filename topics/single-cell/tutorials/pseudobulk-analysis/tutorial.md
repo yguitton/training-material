@@ -42,15 +42,33 @@ tags:
 - transcriptomics
 - pseudobulk
 answer_histories:
-- label: UseGalaxy.eu
-  history: https://usegalaxy.eu/u/dianitachj24/h/pseudo-bulk-edger-11-04-2025
+- label: UseGalaxy.org-ncm_pdcs_subset
+  history: https://usegalaxy.org/u/videmp/h/gtn-pseudobulk-with-decoupler-and-edger-ncm-pdcs-subset-may-2025
+  date: 2025-05-08
+- label: UseGalaxy.eu-ncm_pdcs_subset
+  history: https://usegalaxy.eu/u/dianitachj24/h/pseudobulk-tutorial-workflow
   date: 2025-04-11
-- label: UseGalaxy.eu
+- label: UseGalaxy.org.au-ncm_pdcs_subset
+  history: https://usegalaxy.org.au/u/videmp/h/gtn-pseudobulk-with-decoupler-and-edger-ncm-pdcs-subset-may-2025
+  date: 2025-05-08
+- label: UseGalaxy.org-Monocytes_NC_subset
+  history: https://usegalaxy.org/u/videmp/h/gtn-pseudobulk-with-decoupler-and-edger-monocytes-nc-subset-may-2025
+  date: 2025-05-08
+- label: UseGalaxy.eu-Monocytes_NC_subset
   history: https://usegalaxy.eu/u/dianitachj24/h/pseudo-bulk-edger-pdcs-11-04-2025
   date: 2025-04-11
-- label: UseGalaxy.eu
+- label: UseGalaxy.org.au-Monocytes_NC_subset
+  history: https://usegalaxy.org.au/u/videmp/h/gtn-pseudobulk-with-decoupler-and-edger-monocytes-nc-subset-may-2025
+  date: 2025-05-08
+- label: UseGalaxy.org-pDCs_subset
+  history: https://usegalaxy.org/u/videmp/h/gtn-pseudobulk-with-decoupler-and-edger-pdcs-subset-may-2025
+  date: 2025-05-08
+- label: UseGalaxy.eu-pDCs_subset
   history: https://usegalaxy.eu/u/dianitachj24/h/pseudo-bulk-edger-ncms-11-04-2025
   date: 2025-04-11
+- label: UseGalaxy.org.au-pDCs_subset
+  history: https://usegalaxy.org.au/u/videmp/h/gtn-pseudobulk-with-decoupler-and-edger-pdcs-subset-may-2025
+  date: 2025-05-08
 follow_up_training:
 - type: internal
   topic_name: single-cell
@@ -67,7 +85,6 @@ recordings:
   captioners:
   - dianichj
   bot-timestamp: 1746186506
-
 
 ---
 
@@ -301,12 +318,11 @@ This file will be used as the contrast input file in the edgeR tool.
 > 1. {% tool [Text Reformatting](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_awk_tool/9.3+galaxy1) %} with the following parameters:
 >    - {% icon param-file %} *"File to process"*: `Samples Metadata` (output generated from the **Replace Text** {% icon tool %} step).
 >    - *"AWK Program"*:
->      ```awk
->      BEGIN { print header }
->      NR > 1 { if (!seen[$2]++) words[++count]=$2 }
->      END { for (i=1; i<=count; i++)
->               for (j=i+1; j<=count; j++)
->                  print words[i]-words[j] }
+>      ```BEGIN { print "header" }
+>         NR > 1 { if (!seen[$2]++) words[++count]=$2 }
+>         END { for (i=1; i<=count; i++)
+>             for (j=i+1; j<=count; j++)
+>               print words[i]"-"words[j] }
 >      ```
 >
 > Rename to **Contrast File** 
@@ -318,6 +334,7 @@ This file will be used as the contrast input file in the edgeR tool.
 >    > - Processes the input file (`NR > 1` skips the header line).
 >    > - Tracks unique elements in column 2 (`seen[$2]++`) to avoid duplicates.
 >    > - Creates pairs of unique elements and calculates their difference, outputting the contrast for downstream edgeR analysis.
+>    > - **Important!** When using the *"Text reformatting with awk"* tool, make sure the code is written all in one line, without any line breaks. Otherwise, it won’t work as expected.
 >    {: .comment}
 >
 {: .hands_on}
@@ -514,10 +531,14 @@ If you would like to extract all annotated clusters at once, for example to anal
 >    >
 >    > In addition to performing the filtering yourself, the `pDCs` and `Monocytes_NC` clusters have also been pre-extracted and are available for direct download.  
 >    > This allows you to jump ahead and run the downstream workflows independently for each cluster, as described later in this tutorial.  
->    >  
->    > Download the pre-filtered datasets from Zenodo:
->    > - **Monocytes_NC_subset**: [Download](https://zenodo.org/records/15275834/files/Monocytes_NC_subset.h5ad?download=1)  
->    > - **pDCs_subset**: [Download](https://zenodo.org/records/15275834/files/pDCs_subset.h5ad?download=1)
+>    >
+>    > Import the pre-filtered datasets from Zenodo:
+>    >
+>    > ```
+>    > {{ page.zenodo_link }}/files/Monocytes_NC_subset.h5ad
+>    > {{ page.zenodo_link }}/files/pDCs_subset.h5ad
+>    > ```
+>    >
 >    {: .comment}
 >
 {: .hands_on}

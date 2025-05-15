@@ -6,12 +6,24 @@ subtopic: firstsc
 priority: 3
 zenodo_link: https://zenodo.org/record/3581213
 answer_histories:
-- label: Using Separate Preprocessing Tools
+- label: UseGalaxy.org - Using Separate Preprocessing Tools
+  history: https://usegalaxy.org/u/videmp/h/gtn-clustering-3k-pbmcs-with-seurat-separate-preprocessing-may-2025
+  date: 2025-05-09
+- label: UseGalaxy.org - Using SCTransform
+  history: https://usegalaxy.org/u/videmp/h/gtn-cluster-3k-pbmcs-with-seurat-sctransform-may-2025
+  date: 2025-05-09
+- label: UseGalaxy.eu - Using Separate Preprocessing Tools
   history: https://usegalaxy.eu/u/marisa_jl/h/clustering-3k-pbmcs-with-seurat---separate-preprocessing---answer-key
   date: 2023-10-28
-- label: Using SCTransform
+- label: UseGalaxy.eu - Using SCTransform
   history: https://usegalaxy.eu/u/marisa_jl/h/clustering-3k-pbmcs-with-seurat---sctransform---answer-ke
   date: 2023-10-28
+- label: UseGalaxy.org.au - Using Separate Preprocessing Tools
+  history: https://usegalaxy.org.au/u/videmp/h/gtn-clustering-3k-pbmcs-with-seurat-separate-preprocessing-may-2025
+  date: 2025-05-02
+- label: UseGalaxy.org.au - Using SCTransform
+  history: https://usegalaxy.org.au/u/videmp/h/gtn-cluster-3k-pbmcs-with-seurat-sctransform-may-2025
+  date: 2025-05-02
 questions:
 - How can we identify cell types in single cell RNA-Seq data?
 - What are the steps for clustering single cell data with Seurat?

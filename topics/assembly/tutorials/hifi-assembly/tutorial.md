@@ -6,6 +6,7 @@ zenodo_link: ''
 tags:
   - assembly
   - pacbio
+  - biodiversity
 questions:
 - How to perform a genome assembly with PacBio data ?
 - How to check assembly quality ?

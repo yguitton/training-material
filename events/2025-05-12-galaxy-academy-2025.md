@@ -15,8 +15,8 @@ cover-image: events/images/Galaxy_GTA2025.png
 cover-image-alt: logo for the Galaxy Training Academy Event 2025
 
 registration:
-  link: https://forms.gle/xqZMd4gduwJ6XyKU6
-  deadline: 2025-05-08
+  link: https://forms.gle/vSfms7xDVk4r7dhx8
+  deadline: 2025-05-16
   open: true
 
 date_start: 2025-05-12
@@ -55,11 +55,13 @@ contributions:
         - annefou
         - anuprulez
         - abretaud
-        - annefou
+        - nekrut
+        - dadrasarmin
+        - Nilchia
         - bebatut
         - bgruening
         - clsiguret
-        - dadrasarmin
+        - Sch-Da
         - dannon
         - dianichj
         - deeptivarshney
@@ -70,17 +72,24 @@ contributions:
         - emmaustin20
         - evenmm
         - GarethPrice-Aus
+        - hrhotz
+        - hvelab
+        - igormakunin
         - khaled196
         - jdavcs
         - j34ni
+        - jennaj
         - jhahnfeld
         - jochenblom
-        - bernt-matthias
+        - lisanna
         - lfenske-93
+        - bernt-matthias
         - PfisterMaxJLU
         - foellmelanie
         - meltemktn
         - mschatz
+        - hujambo-dunia
+        - mirandaembl
         - natalie-wa
         - natefoo
         - Oliver_Rupp
@@ -92,8 +101,12 @@ contributions:
         - poterlowicz-lab
         - pratikdjagtap
         - RZ9082
+        - rlibouba
+        - reytakop
         - SaimMomin12
-        - Sch-Da
+        - sanjaysrikakulam
+        - scottcain
+        - silviadg87
         - stephanierobin
         - subinamehta
         - teresa-m
@@ -110,6 +123,7 @@ contributions:
         - mwk
         - abromics
         - ifb
+        - FAIR2Adapt
 
 location:
   name: online
@@ -132,9 +146,20 @@ infrastructure:
 
 program:
   - section: "Monday: Introduction"
-    description: |
-        You will start the week on your local time by watching videos and/or following the text-based tutorials in the program below. There are no live sessions, so you can determine your schedule.
-        A large team of instructors is available on Slack to answer your questions 24/7! Enjoy!
+    description: When you are ready to start, just work your way through the program below by watching videos and/or following the text-based tutorials. There are no live sessions, so you can determine your own schedule. A large team of instructors is available on Slack to answer your questions 24/7! Enjoy!
+  - section: Course introduction
+    subsection: true
+    tutorials:
+      - name: Welcome & Course logistics
+        type: custom
+        description: |
+          [<i class="fas fa-video" aria-hidden="true"></i> Video: Welcome to the course!](https://youtu.be/P80S51m6GLk)
+      - type: custom
+        name: Daily Icebreaker
+        description: |
+          **Please take a moment to introduce yourself and tell us is your favorite season and why!**
+
+          Post your answer to Slack [#social](https://gtnsmrgsbord.slack.com/channels/social) channel. *(See the setup tab for instructions for joining Slack)*.
 
   - section: "Galaxy introduction"
     subsection: true
@@ -171,9 +196,11 @@ program:
       - type: custom
         name: Daily Icebreakers
         description: |
-          **Tuesday:** For today's icebreaker, we would love to know one weird fact #that you know for no reason.
-          **Wednesday:** We would love to hear where you find inspiration. Maybe you find inspiration through nature or maybe you have a prominent role model in your life—we'd love to learn more about you!
-          **Thursday:** If you could take any one movie prop from a movie set, what would it be?
+          **Tuesday:** For today's icebreaker, we would love to know what is your favourite holiday in your culture and why?
+
+          **Wednesday:** We would love to hear what would you do if you knew you couldn't fail?
+
+          **Thursday:** Tell us what is the best piece of feedback you have ever received?
 
           Post your answers each day to Slack [#social](https://gtnsmrgsbord.slack.com/channels/social) channel.
 
