@@ -17,8 +17,9 @@ key_points:
 - eDNA analysis provides a non-invasive method to gain insights into species presence and biodiversity without directly disturbing the organisms or their habitat.
 - While this tutorial focuses on eDNA, the fundamental workflow involving sequence quality control (trimming) and sequence identification (BLAST alignment) has broad applications in various biological research areas.
 - This tutorial demonstrates a basic workflow to extract potential genus and species names from BLAST output, providing a starting point for further taxonomic analysis.
-contributors:
-- jbeli11
+contributions:
+  authorship:
+  - jbeli11
 
 ---
 
@@ -114,7 +115,7 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 >
 {: .details}
 
-## Concurrent Quality Control Steps with **fastp** 
+## Concurrent Quality Control Steps with **fastp**
 
 > <hands-on-title> Quality Control with fastp </hands-on-title>
 >
@@ -130,11 +131,11 @@ In the following hands-on step, we will use the `fastp` tool, a fast and compreh
 >           - {% icon param-file %} *"Input 1"*: `output` (Input dataset for HP3 R2)
 >
 >  > <comment-title> Running `fastp` </comment-title>
->  >   
+>  >
 >  > In this step, we are running `fastp` on both the HP3 R1 and HP3 R2 files using its default parameter settings. We are applying `fastp` to the datasets that were uploaded in the previous step:
 >  > * `HP3_S9_L001_R1_001.fastq.gz`
 >  > * `HP3_S9_L001_R2_001.fastq.gz`
->  >	
+>  >
 >  > **Important:** Galaxy will provide default names for the output files. For better organization and recognition between the results for HP3 R1 and HP3 R2, **it is recommended to rename the outputs** in your Galaxy history. For example, you could rename the reports to `fastp report on HP3_R1` and `fastp report on HP3_R2`, and the filtered reads to `fastp output HP3_R1` and `fastp output HP3_R2`.
 >  > **Expected Outputs (for each input dataset):**
 >  > * `fastp on data X: JSON report`
@@ -309,4 +310,4 @@ You have also gained experience with several key bioinformatics techniques cruci
 This tutorial can serve as a valuable starting point for further exploration into the fascinating field of environmental DNA analysis.
 
 ## Acknowledgments
-I would like to thank both Dr. Gorden Ober and Dr. Jessica Kaufman for thier assitance and guidance during the course of the project that inspired this tutorial, as well as for their asssitance in sample collection and operation of the Illumina sequencer respectively. 
+I would like to thank both Dr. Gorden Ober and Dr. Jessica Kaufman for thier assitance and guidance during the course of the project that inspired this tutorial, as well as for their asssitance in sample collection and operation of the Illumina sequencer respectively.
