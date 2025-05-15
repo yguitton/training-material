@@ -66,8 +66,8 @@ All the files to run this workflow can be obtained from the [second tutorial]({%
 >
 > 1. The inputs for this workflow are:
 >    - **Fasta file** – “**Peptides for BlastP analysis**” From (Proteogenomics 2: Database Search)
->    - **Tabular file** – “**PeptideShaker_PSM**” From (Proteogenomics 2: Database Search) 
->    - **Mz to sqlite** From (Proteogenomics 2: Database Search) 
+>    - **Tabular file** – “**PeptideShaker_PSM**” From (Proteogenomics 2: Database Search)
+>    - **Mz to sqlite** From (Proteogenomics 2: Database Search)
 >    - **Genomic mapping sqlite** From (Proteogenomics 1: Database Creation)
 >    - **Reference Annotation File**  From (Proteogenomics 1: Database Creation)
 >
@@ -79,11 +79,11 @@ All the files to run this workflow can be obtained from the [second tutorial]({%
 >      > https://zenodo.org/record/1489208/files/genomic_mapping_sqlite.sqlite
 >      > https://zenodo.org/records/1489208/files/Mus_musculus.GRCm38.86.gtf
 >      > ```
->      > 
+>      >
 > 2. Verify that the mz_to_sqlite file has the format `mz.sqlite`
-> 
+>
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="mz.sqlite" %}
-> 
+>
 {: .hands_on}
 
 
@@ -112,7 +112,7 @@ The first step in this tutorial is to perform BLAST-P analysis using the NCBI-NR
 >      - **Multiple hits window size: use 0 to specify 1-hit algorithm, leave blank for default** - `40`
 >      - **Minimum score to add a word to the BLAST lookup table** - `11`
 >      - **Composition-based statistics** - `0: no composition-based statistics`
-> 
+>
 >  2. Click **Run Tool** and inspect the query results file after it turned green.
 >
 {: .hands_on}
@@ -242,80 +242,80 @@ The Multiomics Visualization Platform is a Galaxy visualization plugin that allo
 > Here is a step-by-step guide to obtain the proteogenomic view of the "Novel peptides".
 >
 > 1. Click on the **Visualize in MVP application**, it will open up options for visualization application in the center pane, Select **MVP Application** from the options (or Right-click to open in a new window).
->      > 
->      > ![mz to sqlite](../../images/Visualize.png){:width="20%"}
->      > This will open in the Center Pane. Select the MVP application.
->      > 
->      > ![MVP](../../images/Open_MVP.png){:width="20%"}
->      > 
->      > This is how it will look.
->      > 
->      > ![Overview](../../images/Peptide_overview.png){:width="60%"}
->      > 
+>
+>    ![mz to sqlite](../../images/Visualize.png){:width="20%"}
+>    This will open in the Center Pane. Select the MVP application.
+>
+>    ![MVP](../../images/Open_MVP.png){:width="20%"}
+>
+>    This is how it will look.
+>
+>    ![Overview](../../images/Peptide_overview.png){:width="60%"}
+>
 > 2. Click on **Load from Galaxy** to open the list of peptides you would like to view.
->      > 
->      > ![load from galaxy](../../images/load_from_Galaxy.png){:width="80%"}
->      > 
->      > This will open a dropdown list. Select the novel peptides from there.
->      > 
->      > 
->      > ![dropdown](../../images/DropDown_novel.png){:width="50%"}
->      > 
+>
+>    ![load from galaxy](../../images/load_from_Galaxy.png){:width="80%"}
+>
+>    This will open a dropdown list. Select the novel peptides from there.
+>
+>
+>    ![dropdown](../../images/DropDown_novel.png){:width="50%"}
+>
 > 3. Select **Novel Peptides** from the right hand side.
->      > 
->      > ![novel peptides view](../../images/novel_peptides_view.png){:width="70%"}
->      > 
+>
+>    ![novel peptides view](../../images/novel_peptides_view.png){:width="70%"}
+>
 > 4. Select any peptide, For eg: `DGDLENPVLYSGAV`, and then click on **PSMs for Selected Peptide**.
->      > 
->      > ![select_pep](../../images/Filtering_novelpeptides.png){:width="70%"}
->      > 
+>
+>    ![select_pep](../../images/Filtering_novelpeptides.png){:width="70%"}
+>
 > 5. If you scroll down, the PSM associated with the peptide will be displayed. By clicking on the PSM, the *Lorikeet*
 > values will be shown. The Lorikeet visualization is interactive, i.e the user can change the values or select any
 > parameter and click on Update button to view these changes.
->      > 
->      > ![PSM](../../images/Peptide-Protein_Viewer.png){:width="90%"}
->      > 
->      > ![lorikeet](../../images/Lorikeet_Viewer.png){:width="70%"}
->      > 
->      > 
+>
+>    ![PSM](../../images/Peptide-Protein_Viewer.png){:width="90%"}
+>
+>    ![lorikeet](../../images/Lorikeet_Viewer.png){:width="70%"}
+>
+>
 > 6. For a Protein centric view, click on **View in Protein** , it will open up all the proteins associate with the
 > peptides. For eg: Select the `DGDLENPVLYSGAV` peptide and click on the first protein. The chromosome location
 > of the peptide will be displayed.
->      > 
->      > ![view in protein](../../images/Selecting_peptide.png){:width="70%"}
->      > 
->      > Once you click on protein it will show the list of proteins the belongs to the peptides.
->      > 
->      > ![select protein](../../images/opening_IGV.png){:width="60%"}
->      > 
->      > Once you select the protein that you want to visualize you can click on the protein view.
->      > 
->      > ![protein view](../../images/ProteinViewer.png){:width="80%"}
->      > 
+>
+>    ![view in protein](../../images/Selecting_peptide.png){:width="70%"}
+>
+>    Once you click on protein it will show the list of proteins the belongs to the peptides.
+>
+>    ![select protein](../../images/opening_IGV.png){:width="60%"}
+>
+>    Once you select the protein that you want to visualize you can click on the protein view.
+>
+>    ![protein view](../../images/ProteinViewer.png){:width="80%"}
+>
 > 7. Clicking on the arrow marks will open up the IGV(js) visualization tool, where-in the genomic localization of the
 > peptide will be displayed.
->      > 
->      > ![IGV](../../images/IGV_1.png){:width="90%"}
->      > 
->      > 
+>
+>    ![IGV](../../images/IGV_1.png){:width="90%"}
+>
+>
 > 8. To add tracks to your IGV viewer, click on **Add Track**. This will open up a list of tracks that are compatible
 > to view in your IGV viewer. For eg. Select the `Pep_gen_coordinate.bed` file and then click on **Load Track**.
 > This will open up the bed will below the nucleotide sequence.
->      > 
->      > ![tracks align](../../images/Options_for_Track.png){:width="90%"}
->      > 
+>
+>    ![tracks align](../../images/Options_for_Track.png){:width="90%"}
+>
 > 9. By clicking the wheel, you can select the **three frame translate** which will show the three frame translated
 > region of your sequence.
->      > 
->      >  ![IGV viewer](../../images/IGV_viewer.png){:width="90%"}
->      > 
+>
+>    ![IGV viewer](../../images/IGV_viewer.png){:width="90%"}
+>
 > 10. The IGV is inbuilt in the MVP viewer and is very interactive, you could also load more tracks such as the aligned
 > proBAM file (from HISAT) or the identified probam file (one of the input file).
 > MVP has many useful features beyond those covered in this workshop and is under active development.
->      > 
->      > ![IGV2](../../images/IGV_2.png){:width="60%"}
->      > 
-> 
+>
+>     ![IGV2](../../images/IGV_2.png){:width="60%"}
+>
+>
 {: .hands_on}
 
 
@@ -386,7 +386,7 @@ The final tool for this workflow generates a tabular output that summarizes the 
 > 2. Click **Run Tool** and inspect the query results file after it turns green. If everything goes well, it should look similar:
 >
 > 3. Rename output as `Final_Summary_Novel_Peptides`
-> 
+>
 >    ![Final Summary](../../images/final_summary.png){:width="100%"}
 >
 > The Final summary displays a tabular output containing the list of novel peptides and its corresponding protein. It also provides the users with the chromosomal location of the novel proteoform along with the peptide's start and end position.	The output also features the strand information, gene	annotation and the genomic coordinates in a specific format that could be used on IGV or UCSC browser. It also provides the user with a	UCSC Genome Browser link, which the user can directly copy and paste it on a web browser to learn more about the novel proteoform. Here we are demonstrating the use of proteogenomics workflow on an example trimmed mouse dataset. This study explores the possibilities for downstream biological /functional analysis of peptides corresponding to novel proteoforms.
