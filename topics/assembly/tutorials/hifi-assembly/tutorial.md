@@ -27,7 +27,8 @@ contributions:
   - scorreard
   funding:
   - gallantries
-
+redirect_from:
+  - topics/assembly/tutorials/flye-assembly/tutorial
 follow_up_training:
  - type: internal
    topic_name: genome-annotation
