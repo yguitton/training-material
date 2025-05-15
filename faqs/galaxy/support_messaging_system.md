@@ -53,9 +53,30 @@ All of these apps connect to the same Galaxy channels/rooms. Choose the interfac
 
 <div align="center">
 
-| Galaxy Subjects on Matrix:  | Galaxy Users on Matrix:  |
-|---|---|
-| [Proteomics](https://matrix.to/#/#GalaxyProteomics_Lobby:gitter.im) <br> [Microbiology](https://matrix.to/#/#galaxyproject_microGalaxy:gitter.im) <br> [Single-Cell & Spatial Omics Users](https://matrix.to/#/#Galaxy-Training-Network_galaxy-single-cell:gitter.im) <br> **[All Galaxy Matrix rooms, 70+ rooms](https://matrix.to/#/#galaxyproject:matrix.org)** | [Tool Authors](https://matrix.to/#/#galaxyproject_tools:gitter.im) <br> [Developers](https://matrix.to/#/#galaxyproject_dev:gitter.im) <br> [Outreach](https://matrix.to/#/#galaxyproject_wg-goat:gitter.im) <br> [Admins](https://matrix.to/#/#galaxyproject_admins:gitter.im) |
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Galaxy Subjects on Matrix:</th>
+        <th>Galaxy Users on Matrix:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <a href="https://matrix.to/#/#GalaxyProteomics_Lobby:gitter.im" target="_blank">Proteomics</a> <br>
+          <a href="https://matrix.to/#/#galaxyproject_microGalaxy:gitter.im" target="_blank">Microbiology</a> <br>
+          <a href="https://matrix.to/#/#Galaxy-Training-Network_galaxy-single-cell:gitter.im" target="_blank">Single-Cell & Spatial Omics Users</a> <br>
+          <strong><a href="https://matrix.to/#/#galaxyproject:matrix.org" target="_blank">All Galaxy Matrix rooms, 70+ rooms</a></strong>
+        </td>
+        <td>
+          <a href="https://matrix.to/#/#galaxyproject_tools:gitter.im" target="_blank">Tool Authors</a> <br>
+          <a href="https://matrix.to/#/#galaxyproject_dev:gitter.im" target="_blank">Developers</a> <br>
+          <a href="https://matrix.to/#/#galaxyproject_wg-goat:gitter.im" target="_blank">Outreach</a> <br>
+          <a href="https://matrix.to/#/#galaxyproject_admins:gitter.im" target="_blank">Admins</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
 </div>
 
