@@ -21,6 +21,7 @@ tags:
 - eukaryote
 - prokaryote
 - microgalaxy
+- biodiversity
 requirements:
   -
     type: "internal"
