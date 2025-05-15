@@ -48,7 +48,7 @@ The EncyclopeDIA {% cite Searle2020 %} workflow described in this tutorial conta
 
 ![EncyclopeDIA workflow](../../images/EncyclopeDIA_Workflow_LTR.png "EncyclopeDIA Workflow")
 
-**About the data:** In this tutorial, we will be analyzing the dataset provided by the iPRG.
+**About the data:** In this tutorial, we will be analyzing the dataset provided by the iPRG (Proteome Informatics Research Group).
 
 > <agenda-title></agenda-title>
 >
