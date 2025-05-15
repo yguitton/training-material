@@ -48,13 +48,20 @@ We are testing a new search experience. It does not do semantic ranking of resul
 	<div class="form-group">
 	<label for="topic">Topic</label>
 	<select class="form-control" id="topic">
+		<!-- Manually add a few options -->
 		<option value="Any">Any</option>
+		<option value="GTN FAQ">GTN FAQ</option>
+		<option value="Galaxy FAQ">Galaxy FAQ</option>
+		<!-- Automatically add other topics with exclusions -->
 		{% assign sorted_topics = site | list_topics_ids | sort %}
+		{% assign exclude_topics = "SARS-CoV-2,ELIXIR,GMOD,One Health,Plants" | split: "," %}
 		{% for topic_name in sorted_topics %}
 			{% assign topic = site.data[topic_name] %}
-			{% if topic.draft != true or jekyll.environment != "production" %}
-				<option value="{{ topic.title }}">{{ topic.title }}</option>
-			{% endif %}
+			{% unless exclude_topics contains topic.name or exclude_topics contains topic.title %}
+				{% if topic.draft != true or jekyll.environment != "production" %}
+					<option value="{{ topic.title }}">{{ topic.title }}</option>
+				{% endif %}
+			{% endunless %}
 		{% endfor %}
 	</select>
 	</div>
