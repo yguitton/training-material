@@ -9,6 +9,7 @@ tags:
   - microgalaxy
   - jbrowse1
   - apollo2
+  - biodiversity
 questions:
   - How to visualize your genome after automated annotations have been performed?
   - How to manually annotate genome after automated annotations have been performed?
