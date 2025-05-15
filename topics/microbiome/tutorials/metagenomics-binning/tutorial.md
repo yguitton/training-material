@@ -235,12 +235,12 @@ These output files can be further analyzed and used for downstream applications 
 > > 1. Import the six folders containg binning result files from [Zenodo]({{ page.extra.zenodo_link_results }}) or the Shared Data library:
 > >
 > >    ```text
-> >    {{ page.extra.zenodo_link_results }}/files/26_%20MetaBAT 2%20on%20data%20ERR2231567_%20Bins.zip
-> >    {{ page.extra.zenodo_link_results }}/files/38_%20MetaBAT 2%20on%20data%20ERR2231568_%20Bins.zip
-> >    {{ page.extra.zenodo_link_results }}/files/47_%20MetaBAT 2%20on%20data%20ERR2231569_%20Bins.zip
-> >    {{ page.extra.zenodo_link_results }}/files/57_%20MetaBAT 2%20on%20data%20ERR2231570_%20Bins.zip
-> >    {{ page.extra.zenodo_link_results }}/files/65_%20MetaBAT 2%20on%20data%20ERR2231571_%20Bins.zip
-> >    {{ page.extra.zenodo_link_results }}/files/74_%20MetaBAT 2%20on%20data%20ERR2231572_%20Bins.zip
+> >    {{ page.extra.zenodo_link_results }}/files/26_%20MetaBAT2%20on%20data%20ERR2231567_%20Bins.zip
+> >    {{ page.extra.zenodo_link_results }}/files/38_%20MetaBAT2%20on%20data%20ERR2231568_%20Bins.zip
+> >    {{ page.extra.zenodo_link_results }}/files/47_%20MetaBAT2%20on%20data%20ERR2231569_%20Bins.zip
+> >    {{ page.extra.zenodo_link_results }}/files/57_%20MetaBAT2%20on%20data%20ERR2231570_%20Bins.zip
+> >    {{ page.extra.zenodo_link_results }}/files/65_%20MetaBAT2%20on%20data%20ERR2231571_%20Bins.zip
+> >    {{ page.extra.zenodo_link_results }}/files/74_%20MetaBAT2%20on%20data%20ERR2231572_%20Bins.zip
 > >    ```
 > >
 > >
