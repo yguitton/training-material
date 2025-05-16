@@ -204,7 +204,7 @@ In this workflow, msconvert uses dataset collections. The tool will convert each
 >    - *"Output Type"*: `mzML`
 >    - In *"Data Processing Filters"*:
 >        - *"Apply peak picking?"*: `Yes`
->        - *"Apply m/z refinement with identification data?"*: `Yes`
+>        - *"Apply m/z refinement with identification data?"*: `No`
 >        - *"(Re-)calculate charge states?"*: `no`
 >        - *"Filter m/z Window"*: `Yes`
 >        - *"Filter out ETD precursor peaks?"*: `Yes`
