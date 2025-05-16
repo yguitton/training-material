@@ -752,7 +752,7 @@ For example, if we want to find athletes with three-part names by counting space
 >    > > <solution-title>Hints</solution-title>
 >    > >
 >    > > 1. None ;)
->    > > 2. You can also use greater than or less than symbols in your expression. You can filter on two lines using  logical operators e.g. and.
+>    > > 2. You can also use greater than or less than symbols in your expression. You can filter on two lines using  logical operators like `and`.
 >    > > 3. Keep increasing the count until no results are returned
 >    > > 4. The number of lines returned indicates the number of medals won by long-named athletes, to
 >    > >    find out how many different athletes have such a name, we can use the {% tool [Count - occurrences of each record](Count1) %}
