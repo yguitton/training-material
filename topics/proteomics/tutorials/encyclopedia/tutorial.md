@@ -120,13 +120,13 @@ In a typical DIA-MS experiment, the precursor scan usually ranges between 400-10
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="thermo.raw" %}
 >
-> 6. Add to each dataset a tag corresponding to file type, i.e.
+> 5. Add to each dataset a tag corresponding to file type, i.e.
 >    - GPF datasets (files containing - 395, 495, 595, 695, 795, and 895) can be labeled as `#gpf`
 >    - Experimental DIA datasets (Mix 1-4) label as `#experimental` 
 >
 >    {% snippet faqs/galaxy/datasets_add_tag.md %}
 >
-> 7. Please create a dataset collection for both the GPF files and the Experimental Design files.
+> 6. Please create a dataset collection for both the GPF files and the Experimental Design files.
 >    - Name the dataset collections as "**GPF collection**" and "**Experimental Design collection**"
 >
 >    {% snippet faqs/galaxy/collections_build_list.md %}
