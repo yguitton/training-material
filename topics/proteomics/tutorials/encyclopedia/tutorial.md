@@ -152,7 +152,7 @@ In this workflow, msconvert uses dataset collections. The tool will convert each
 
 > <hands-on-title>Conversion of GPF DIA mass spectrometry raw data to mzML data-type.</hands-on-title>
 >
-> 1. {% tool [msconvert](toolshed.g2.bx.psu.edu/repos/galaxyp/msconvert/msconvert/3.0.19052.1) %} with the following parameters:
+> 1. {% tool [msconvert Convert and/or filter mass spectrometry files](toolshed.g2.bx.psu.edu/repos/galaxyp/msconvert/msconvert/3.0.20287.6) %} with the following parameters:
 >    - {% icon param-collection %} *"Input unrefined MS data"*: `GPF collection` (Input dataset collection)
 >    - *"Do you agree to the vendor licenses?"*: `Yes`
 >    - *"Output Type"*: `mzML`
@@ -195,7 +195,7 @@ In this workflow, msconvert uses dataset collections. The tool will convert each
 
 > <hands-on-title>Conversion of Experimental DIA mass spectrometry raw data to mzML data-type.</hands-on-title>
 >
-> 1. {% tool [msconvert](toolshed.g2.bx.psu.edu/repos/galaxyp/msconvert/msconvert/3.0.19052.1) %} with the following parameters:
+> 1. {% tool [msconvert Convert and/or filter mass spectrometry files](toolshed.g2.bx.psu.edu/repos/galaxyp/msconvert/msconvert/3.0.20287.6) %} with the following parameters:
 >    - {% icon param-collection %} *"Input unrefined MS data"*: `Experimental Design collection` (Input dataset collection)
 >    - *"Do you agree to the vendor licenses?"*: `Yes`
 >    - *"Output Type"*: `mzML`
@@ -240,7 +240,7 @@ SearchToLib is the tool responsible for the generation of the Chromatogram Libra
 
 > <hands-on-title>Building a Chromatogram Library with DIA MS/MS data.</hands-on-title>
 >
-> 1. {% tool [SearchToLib](toolshed.g2.bx.psu.edu/repos/galaxyp/encyclopedia_searchtolib/encyclopedia_searchtolib/0.9.5.0) %} with the following parameters:
+> 1. {% tool [SearchToLib Build a Chromatogram Library from Data-Independent Acquisition (DIA) MS/MS Data](toolshed.g2.bx.psu.edu/repos/galaxyp/encyclopedia_searchtolib/encyclopedia_searchtolib/1.12.34) %} with the following parameters:
 >    - {% icon param-file %} *"Spectrum files in  mzML format"*: `output` (output of **msconvert** {% icon tool %})
 >    - {% icon param-file %} *"Library: Chromatagram .ELIB or Spectrum .DLIB"*: `output` (Input dataset)
 >    - {% icon param-file %} *"Background proteome protein fasta database"*: `output` (Input dataset)
@@ -311,7 +311,7 @@ DIA data analysis with EncyclopeDIA is still possible without a Spectral library
 
 > <hands-on-title>Chromatogram Library generation using WALNUT variation.</hands-on-title>
 >
-> 1. {% tool [SearchToLib](toolshed.g2.bx.psu.edu/repos/galaxyp/encyclopedia_searchtolib/encyclopedia_searchtolib/0.9.5.0) %} with the following parameters:
+> 1. {% tool [SearchToLib Build a Chromatogram Library from Data-Independent Acquisition (DIA) MS/MS Data](toolshed.g2.bx.psu.edu/repos/galaxyp/encyclopedia_searchtolib/encyclopedia_searchtolib/1.12.34) %} with the following parameters:
 >    - {% icon param-file %} *"Spectrum files in  mzML format"*: `output` (output of **msconvert** {% icon tool %})
 >    - {% icon param-file %} *"Library: Chromatagram .ELIB or Spectrum .DLIB"*: `Nothing selected`
 >    - {% icon param-file %} *"Background proteome protein fasta database"*: `output` (Input dataset)
@@ -348,7 +348,7 @@ EncyclopeDIA is the tool used for DIA data analysis through searching peptides a
 
 > <hands-on-title>Library searching directly from DIA MS/MS data.</hands-on-title>
 >
-> 1. {% tool [EncyclopeDIA Quantify](toolshed.g2.bx.psu.edu/repos/galaxyp/encyclopedia_quantify/encyclopedia_quantify/0.9.5.0) %} with the following parameters:
+> 1. {% tool [EncyclopeDIA Quantify samples from Data-Independent Acquisition (DIA) MS/MS Data](toolshed.g2.bx.psu.edu/repos/galaxyp/encyclopedia_quantify/encyclopedia_quantify/1.12.34) %} with the following parameters:
 >    - {% icon param-file %} *"Spectrum files in  mzML format"*: `output` (output of **msconvert** {% icon tool %})
 >    - {% icon param-file %} *"Library: Chromatagram .ELIB or Spectrum .DLIB"*: `elib` (output of **SearchToLib** {% icon tool %})
 >    - {% icon param-file %} *"Background proteome protein fasta database"*: `output` (Input dataset)
