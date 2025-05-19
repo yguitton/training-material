@@ -78,7 +78,7 @@ These images are from {% cite weinstein2022neontree %}.
 
 ### Application to Astronomy
 
-In astronomy and large-scale sky surveys, a key objective is to identify individual celestial bodies—such as stars and galaxies—in sky images to enable detailed scientific analysis. Image segmentation is therefore a critical first step. In our case, Voronoi segmentation is used to divide the image into regions corresponding to individual objects or clusters. This method has the potential to separate overlapping or closely spaced sources, allowing for accurate detection. Once segmented, these structures can be examined morphologically, and their luminosities can be measured with precision.
+In astronomy and large-scale sky surveys, a key objective is to identify individual celestial bodies—such as stars and galaxies—in sky images to enable detailed scientific analysis. Image segmentation is therefore a critical first step. In our case, Voronoi segmentation is used to divide the image into regions corresponding to individual objects or clusters. This method has the potential to separate overlapping or closely spaced sources, allowing for accurate analysis. Once segmented, these structures can be examined morphologically, and their luminosities can be measured with precision.
 
 ![Sky image](../../images/voronoi-segmentation/sky_image_IMAGE.png "Sky image.")
 
