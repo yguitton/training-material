@@ -3,6 +3,8 @@ layout: learning-pathway
 tags: [intermediate, immunopeptidomics, cancer, proteogenomics, label-free]
 type: use
 
+
+
 title: Prediction of potential neoantigens
 description: |
   This learning path introduces a comprehensive immunopeptidogenomics workflow for neoantigen discovery using label-free mass spectrometry data. The modules guide you through fusion and variant database generation, peptide identification with FragPipe, peptide validation using PepQuery2, and immunogenicity assessment through HLA binding predictions and IEDB screening.
