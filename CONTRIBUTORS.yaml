@@ -1173,7 +1173,7 @@ hrhotz:
     contact_for_training: true
     location:
       country: CH
-      lat: 47.575694 
+      lat: 47.575694
       lon: 7.578796
     affiliations:
       - elixir-europe
@@ -2512,6 +2512,13 @@ sbenateau:
     affiliations:
       - elixir-europe
 
+sbueker77:
+    name: Sarah Büker
+    joined: 2025-05
+    affiliations:
+      - dsc-bremen
+      - uni-bremen
+
 scorreard:
     name: Solenne Correard
     email: solenne.correard@inrae.fr
@@ -2613,6 +2620,10 @@ sitjart:
     elixir_node: uk
     affiliations:
       - elixir-europe
+
+skschum:
+    name: Simeon Schum
+    joined: 2025-02
 
 slegras:
     name: Stéphanie Legras
