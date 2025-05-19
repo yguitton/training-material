@@ -60,11 +60,11 @@ pathway:
 
   - section: "Neoantigen 7: IEDB Binding of PepQuery Validated Neopeptides"
     description: |
-      Assess immunogenic potential of neopeptides by checking their binding predictions against immune epitope databases such as IEDB.
+      Assess the immunogenic potential of neopeptides by checking their binding predictions against immune epitope databases such as IEDB.
     tutorials:
       - name: neoantigen-7-hla-binding-novel-peptides
         topic: proteomics
 
 ---
 
-New to immunopeptidogenomics or neoantigen prediction? Follow this learning path to discover how label-free mass spectrometry and proteogenomic integration can accelerate identification of clinically relevant neoantigens and help in personalized immunotherapy.
+New to immunopeptidogenomics or neoantigen prediction? Follow this learning path to discover how label-free mass spectrometry and proteogenomic integration can accelerate the identification of clinically relevant neoantigens and help in personalized immunotherapy.
