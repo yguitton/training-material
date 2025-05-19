@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 
-title: FAIRifying Galaxy Workflows with Rich Annotations, Tests, and Publication in Registries
+title: Annotate, prepare tests and publish on workflow registries Galaxy workflows 
 tags:
 - workflows
 - FAIR
@@ -10,6 +10,7 @@ questions:
 - What are the best practices for testing a Galaxy workflow?
 - How can a Galaxy workflow be submitted to the Intergalactic Workflow Commission (IWC)?
 objectives:
+- Annotate a Galaxy workflows with essential metadata
 - Annotate and apply best practices to data analysis Galaxy workflows for consistency and reusability
 - Implement robust tests to ensure workflow reliability and accuracy
 - Successfully integrate key data analysis Galaxy workflows into IWC, improving accessibility and usability
@@ -96,6 +97,15 @@ Here, we will use the **workflow from the [Mapping tutorial]({% link topics/sequ
 {: .hands_on}
 
 # Annotate the Galaxy workflow with essential metadata
+
+The first step to FAIRify a workflow is to annotate it with essential metadata:
+- 
+
+To ensure that a workflow adheres to **best practices** and is **FAIR**, follow the different steps. You can apply them to **any workflow** of your choice or use the [**GTN Sequence Analysis - Mapping**]({% link topics/sequence-analysis/tutorials/mapping/tutorial.md %}) workflow as an example. 
+
+
+
+When **editing a workflow**, it’s essential to follow specific steps to ensure it adheres to **best practices** and is **FAIR**. You can follow [Adding workflow best practices guidelines](https://github.com/galaxyproject/iwc/blob/main/workflows/README.md#ensure-workflows-follow-best-practices) (the GIF with the 4 steps) and use these steps.
 
 The first step to FAIRify a Galaxy workflow is to fulfill Tip 2 (**Findability**): *"Describe the workflow with rich metadata"*. Describing the workflow with rich metadata helps both humans and machines understand its purpose, facilitating discovery by search engines. Galaxy allows to associate workflows with metadata directly in its interface:
 
