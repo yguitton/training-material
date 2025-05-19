@@ -11,7 +11,7 @@ questions:
 - How can a Galaxy workflow be submitted to the Intergalactic Workflow Commission (IWC)?
 objectives:
 - Annotate a Galaxy workflows with essential metadata
-Annotate and apply best practices to data analysis Galaxy workflows for consistency and reusability
+- Annotate and apply best practices to data analysis Galaxy workflows for consistency and reusability
 - Implement robust tests to ensure workflow reliability and accuracy
 - Successfully integrate key data analysis Galaxy workflows into IWC, improving accessibility and usability
 requirements:
