@@ -1908,9 +1908,10 @@ mira-miracoli:
       - eurosciencegateway
 
 mirandaembl :
-    name: Miranda Ackerman Eduardo Jacobo
+    name: Eduardo Jacobo Miranda Ackerman
     joined: 2025-05
     elixir_node: de
+    orcid: '0009-0005-0673-021X'
     affiliations:
       - deKCD
       - embl-ebi
