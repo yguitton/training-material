@@ -1908,6 +1908,10 @@ mira-miracoli:
 mirandaembl :
     name: Miranda Ackerman Eduardo Jacobo
     joined: 2025-05
+    elixir_node: de
+    affiliations:
+      - deKCD
+      - embl-ebi
 
 miRlyKayleigh:
     name: Kayleigh Smith
