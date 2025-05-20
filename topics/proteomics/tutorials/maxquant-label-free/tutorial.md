@@ -96,7 +96,7 @@ The MaxQuant Galaxy implementation contains the most important MaxQuant paramete
 >        - *"missed cleavages"*: `1`
 >        - *"enzyme"*: `Trypsin/P`
 >        - *"Quantitation Methods"*: `label free quantification`
->    - *"Generate PTXQC (proteomics quality control pipeline) report?"*: `Yes`
+>    - *"Generate PTXQC (proteomics quality control pipeline) report? (experimental setting)"*: `True`
 >    - In *"Output Options"*:
 >        - *"Select the desired outputs."*: `Protein Groups` `Peptides` `mqpar.xml`
 >
