@@ -20,7 +20,7 @@ pathway:
     description: |
       Learn how to generate a personalized fusion peptide database using RNA-seq data. This step sets the foundation for identifying tumor-specific fusion peptides in downstream analyses.
     tutorials:
-      - name: neoantigen-1-fusion-db-generation
+      - name: neoantigen-1-fusion-database-generation
         topic: proteomics
 
   - section: "Module 2: Non-Reference Database Generation"
