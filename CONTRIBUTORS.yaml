@@ -1591,6 +1591,11 @@ lisanna:
     joined: 2023-09
     email: lisanna.paladin@gmail.com
     orcid: 0000-0003-0011-9397
+    affiliations:
+      - elixir-europe
+      - embl-ebi
+      - deKCD
+      - biont
 
 lleroi:
     name: Laura Leroi
@@ -2783,6 +2788,7 @@ teresa-m:
       - uni-freiburg
       - elixir-europe
       - deNBI
+      - biont
 
 TanguyGen:
     name: Tanguy Genthon
