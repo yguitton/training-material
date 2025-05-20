@@ -71,7 +71,7 @@ In this tutorial, we will demonstrate how to fulfill the remaining tips:
 - Tip 4 (**Accessibility**): *"Provide example input data and results along with the workflow."*
 - Tip 10 (**Reusability**): *"Provide clear and concise workflow documentation."*
 
-To illustrate the process, we will use the **workflow from the [Mapping tutorial]({% link topics/sequence-analysis/tutorials/mapping/tutorial.md %})** as an example.
+To illustrate the process, we will use a simple workflow with 2 steps as an example.
 
 > <agenda-title></agenda-title>
 >
@@ -84,48 +84,43 @@ To illustrate the process, we will use the **workflow from the [Mapping tutorial
 
 # Prepare the workflow
 
-Here, we will use the **workflow from the [Mapping tutorial]({% link topics/sequence-analysis/tutorials/mapping/tutorial.md %})** but you can use your own workflow.
+Here, we will use a workflow running FastQC and MultiQC but you can use your own workflow.
 
-> <hands-on-title>Import the workflow into Galaxy</hands-on-title>
+> <hands-on-title>Create the workflow into Galaxy</hands-on-title>
 >
-> 1. **Copy the URL** (e.g. via right-click) of the workflow ["GTN - Sequence Analyses - Mapping (imported from uploaded file)"](https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/workflows/mapping.ga) or **download it** to your computer.
+> 1. Go to the workflow page
+> 2. Create a new workflow
 >
-> 2. Import the workflow into Galaxy
+>    {% snippet faqs/galaxy/workflows_create_new.md %}
 >
->    {% snippet faqs/galaxy/workflows_import.md %}
+> 3. Add a single data input
 >
+> 4. Add {% tool [FastQC](toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.74+galaxy1) %} and {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.27+galaxy3) %}
+>
+> 5. Connect the input to **FastQC**
+> 6. Define **MultiQC** parameter
+>    - **Which tool was used generate logs?**: `FastQC`
+> 
+> 7. Connect `text_file` **FastQC** to **MultiQC** input
 {: .hands_on}
 
 # Annotate the Galaxy workflow with essential metadata
 
-The first step to FAIRify a workflow is to annotate it with essential metadata:
-- 
+The first step to FAIRify a Galaxy workflow is to fulfill Tip 2 (**Findability**): *"Describe the workflow with rich metadata"*. Describing the workflow with rich metadata helps both humans and machines understand its purpose, facilitating discovery by search engines. Galaxy allows to associate workflows with metadata directly in its interface.
 
-To ensure that a workflow adheres to **best practices** and is **FAIR**, follow the different steps. You can apply them to **any workflow** of your choice or use the [**GTN Sequence Analysis - Mapping**]({% link topics/sequence-analysis/tutorials/mapping/tutorial.md %}) workflow as an example. 
-
-
-
-When **editing a workflow**, it’s essential to follow specific steps to ensure it adheres to **best practices** and is **FAIR**. You can follow [Adding workflow best practices guidelines](https://github.com/galaxyproject/iwc/blob/main/workflows/README.md#ensure-workflows-follow-best-practices) (the GIF with the 4 steps) and use these steps.
-
-The first step to FAIRify a Galaxy workflow is to fulfill Tip 2 (**Findability**): *"Describe the workflow with rich metadata"*. Describing the workflow with rich metadata helps both humans and machines understand its purpose, facilitating discovery by search engines. Galaxy allows to associate workflows with metadata directly in its interface:
-
-> <hands-on-title></hands-on-title>
+> <hands-on-title>Open workflow attributes</hands-on-title>
 >
-> 1. Go to the workflow page
-> 2. Open the workflow editor for the workflow
->
+> 1. Click on **Attributes** on the left side of the workflow editor (or right side for older Galaxy version for clicking on {% icon galaxy-pencil %} **Edit Attributes**)
 {: .hands_on}
 
-On the left side of the workflow editor (or right side for older Galaxy version for clicking on {% icon galaxy-pencil %} **Edit Attributes**), some workflow metadata should appear.
+Some workflow metadata should appear.
 
 > <question-title></question-title>
 >
 > 1. What is the name of the workflow?
-> 2. What is the version?
 >
 > > <solution-title></solution-title>
-> > 1. "GTN - Sequence Analyses - Mapping (imported from uploaded file) (imported from URL)"
-> > 2. Version 1
+> > 1. "Unnamed Workflow"
 > {: .solution}
 {: .question}
 
@@ -183,10 +178,10 @@ Name | Description | Mandatory
 
 Let's annotate the workflow
 
-> <hands-on-title>Steps to Apply Best Practices</hands-on-title>
+> <hands-on-title>Add metadata to the workflow</hands-on-title>
 >
 > 1. Add a proper title in **Name**
-> 2. Add a description in **Annotation**
+> 2. Add a workflow description in **Annotation**
 > 3. Select a license in **License**
 >
 >    > <comment-title></comment-title>
@@ -194,10 +189,14 @@ Let's annotate the workflow
 >    {: .comment}
 >
 > 4. Add creators in **Creator** with their name and a unique identifier (typically an orcid.org ID)
+>
+>    > <comment-title></comment-title>
+>    > Do not forget to click on **Save**
+>    {: .comment}
+>
 > 5. Add tags in **Tags**
 > 6. Save the workflow
 {: .hands_on}
-
 
 Tip 2 is now fulfilled. We can now move toward the other left tips:
 
@@ -206,9 +205,21 @@ Tip 2 is now fulfilled. We can now move toward the other left tips:
 - Tip 4 (**Accessibility**): *"Provide example input data and results along with the workflow."*
 - Tip 10 (**Reusability**): *"Provide clear and concise workflow documentation."*
 
+   The workflow annotation provides a short and concise description of the workflow. So Tip 10 is partially fullfilled. In addition to the workflow annotation, each step could annotated so users could have an idea about the purpose of the steps
+
    > <details-title>Add step descriptions to fulfill Tip 10</details-title>
    > 
-   > Tip 10 (**Reusability**): *"Provide clear and concise workflow documentation."*
+   > Let's add label and annotation to each step.
+   >
+   > > <hands-on-title>Add FastQC label and step annotation</hands-on-title>
+   > >
+   > > 1. Click on **FastQC**
+   > > 2. Fill in **Label** with `Quality control` in the right panel
+   > > 3. Fill in **Step Annotation** with `This step uses FastQC to generate statistics of raw reads quality including basic statistics, per base sequence quality, per sequence quality scores, adapter content, etc.`
+   > > 4. Save the workflow
+   > {: .hands_on}
+   > 
+   > We can now do the same for MultiQC.
    {: .details}
 
 To achive Tip 1 and register the workflow, we will first need to fulfill Tips 3 and 4. Before, we need to be sure that the workflow adheres to best practices for Galaxy workflows.
@@ -218,98 +229,157 @@ To achive Tip 1 and register the workflow, we will first need to fulfill Tips 3 
 There are a number of things the user interface of Galaxy will allow that are not considered best practices because they make the workflow harder to test, use within subworkflows and invocation reports, and consume via the API. It is easier to use workflows in all of these contexts if they stick to the [best practices developed by the commmunity](https://planemo.readthedocs.io/en/latest/best_practices_workflows.html).
 
 > <hands-on-title>Check alignment with best practices</hands-on-title>
-
-> 2. Click on {% icon galaxy-wf-best-practices %} **Best Practices** on the right
 >
->    
+> 1. Click on {% icon galaxy-wf-best-practices %} **Best Practices** on the right
 >
 >    {% snippet faqs/galaxy/workflows_best_practices.md %}
 >
->
 {: .hands_on}
 
-A side panel will open showing any issues with the workflow and allow you to correct them.
+A side panel will open showing a review of the best practices with
+- Green checks indicating that certain elements are already correctly defined (e.g., creator information, license).
+- Orange warnings highlighting potential issues such as missing annotations, unconnected inputs, or other workflow problems.
 
-- The side panel will highlight potential issues such as missing annotations, unconnected inputs, or other workflow problems.
-- Green checks indicate that certain elements are already correctly defined (e.g., creator information, license).
+By following the steps with orange warnings and checking the side panel, we will ensure our **workflow adheres to best practices** and is **ready for public use**. 
 
-By following these steps and checking the side panel, you will ensure your **workflow adheres to best practices** and is **ready for public use**.
-
->    - **No Untyped Parameters**: Avoid using legacy **‘untyped’ parameters** (e.g., variables like `${report_name}`). All input parameters should be explicitly defined.
->    - **Labeled Outputs**: Ensure that all outputs that are being validated or checked are **properly labeled** for easier tracking and validation.
+> <question-title></question-title>
 >
+> How many orange warnings do we have?
+>
+> > <solution-title></solution-title>
+> >
+> > 2
+> >
+> {: .solution}
+{: .question}
 
+The first warning is `Some workflow inputs are missing labels and/or annotations`. To follow best practices, all inputs should be explicit (with labelled input nodes) and tool steps should not have disconnected data inputs (even though the GUI can handle this) or consume workflow parameters. Older style "runtime parameters" should only be used for post job actions and newer type workflow parameter inputs should be used to manipulate tool logic.
 
-Workflows should define explicit, labeled outputs. While Galaxy does not require this, declaring and labeling outputs offers significant advantages. A workflow with clearly defined outputs provides an explicit interface, making it easier to generate reports, test the workflow, and document them.
+> <hands-on-title>Add label to input</hands-on-title>
+>
+> 1. Click on **Input dataset: Missing a label and annotation**
+> 2. Fill in **Label** in the `1: Input dataset` side panel that opened on the right
+> 3. Save the workflow
+> 4. Check the best practices
+{: .hands_on}
+
+> <question-title></question-title>
+>
+> Is it okay for the input?
+>
+> > <solution-title></solution-title>
+> >
+> > The input is missing an annotation 
+> >
+> {: .solution}
+{: .question}
+
+Let's add annotation to input.
+
+> <hands-on-title>Add annotation to input</hands-on-title>
+>
+> 1. Click on **Input dataset: Missing a label and annotation**
+> 2. Fill in **Annotation** in the `1: Input dataset` side panel that opened on the right
+> 3. Save the workflow
+> 4. Check the best practices
+{: .hands_on}
+
+We now have a green check for the input. The second orange warning mentions `This workflow has no labeled outputs, please select and label at least one output.` 
+
+As for inputs, workflows should define explicit, labeled outputs. While Galaxy does not require this, declaring and labeling outputs offers significant advantages. A workflow with clearly defined outputs provides an explicit interface, making it easier to generate reports, test the workflow, and document them.
 
 > <hands-on-title>Add labels to outputs</hands-on-title>
 >
-> 1. Make sure that 
+> 1. Rename labels for all outputs to add tool name (e.g. FastQC `text_file` becomes `fastqc_text_file`)
+> 2. Check boxes on the left of HTML outputs of both FastQC and MultiQC in the middle pannel
+> 3. Save the workflow
+> 4. Check the best practices
 {: .hands_on}
 
-> <hands-on-title>Add labels to inputs</hands-on-title>
+> <question-title></question-title>
 >
-> 1. Make sure that 
-{: .hands_on}
+> Is the workflow following all best practices?
+>
+> > <solution-title></solution-title>
+> >
+> > Yes!
+> >
+> {: .solution}
+{: .question}
 
+After confirming that all the best practices are applied, **make the workflow public**. This allows other users to access, reuse, and share the workflow in the Galaxy community.
 
-> <hands-on-title>Add labels to inp</hands-on-title>
-> 5. **Make the Workflow Public**: After confirming that all the best practices are applied, **make the workflow public**. This allows other users to access, reuse, and share the workflow in the Galaxy community.
+> <hands-on-title> Make the workflow public</hands-on-title>
+> 1. Make the workflow public
 >
 >    {% snippet faqs/galaxy/workflows_publish.md %}
 {: .hands_on}
 
-# Prepare tests to validate the functionality of the workflow
+# Prepare example input data and results
 
-In this step, we will **create test data** that can be used **to verify and test the workflow**. The data should be small and simple, so it can interact with the workflow and generate results without excessive processing time. 
+To fulfill Tip 4 (*"Provide example input data and results along with the workflow."*), we will **create test data** that can be used **to test the workflow**. The data should be small and simple, so it can interact with the workflow and generate results without excessive processing time. 
 
-> <hands-on-title>Create a Galaxy History</hands-on-title>
+> <hands-on-title>Create an example Galaxy History</hands-on-title>
 >
 > 1. **Create a new Galaxy history** for this analysis.
 >
 >    {% snippet faqs/galaxy/histories_create_new.md %}
 >
-> 2. **Rename the history** for clarity and easy identification.
+> 2. **Rename the history**.
 >
 >    {% snippet faqs/galaxy/histories_rename.md %}
 >
-{: .hands_on}
-
-Now that we have a history set up, it's time to **upload the test data**. Ensure that the **test datasets are small in size** to optimize workflow testing.
-For example, trim the FASTQ file to keep only a few sequences that will interact with the workflow.
-
-> <hands-on-title>Upload Test Data</hands-on-title>
->
-> 1. {% icon galaxy-upload %} **Upload** test data to the newly created history. 
->    
->    - From your computer with a **local file**
->    - From a URL with {% icon galaxy-wf-edit %} **Paste/Fetch data**: For the workflow "**GTN - Sequence Analyses - Mapping (imported from uploaded file)**", you can import `wt_H3K4me3_read1.fastq.gz` and `wt_H3K4me3_read2.fastq.gz` from [Zenodo](https://zenodo.org/record/1324070)
+> 3. {% icon galaxy-upload %} **Upload** test data to the newly created history from the following link:
 >
 >    ```
->    https://zenodo.org/record/1324070/files/wt_H3K4me3_read1.fastq.gz
->    https://zenodo.org/record/1324070/files/wt_H3K4me3_read2.fastq.gz
+>    https://zenodo.org/record/3977236/files/female_oral2.fastq-4143.gz
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
-> 2. {% icon galaxy-eye %} **Preview the datasets** to verify that the uploaded data looks correct and is ready for analysis.
+> 4. {% icon galaxy-eye %} **Preview the datasets** to verify that the uploaded data looks correct and is ready for analysis.
 >
-> 3. Once the data is uploaded and prepared, you can proceed with **running the workflow** using the uploaded test data.
+> 5. Run the workflow using the uploaded test data.
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
-> 4. Make the **history public** (*Tip 2.*)
+> 4. Make the **history public**
 >
 >    {% snippet faqs/galaxy/histories_sharing.md %}
 >
 {: .hands_on}
 
-Now that the test data has been uploaded and prepared, the next step is to ensure its accessibility by uploading it to [**Zenodo**](https://zenodo.org/) (if not already done). This will allow others to **easily retrieve and reuse the data** when running or validating the workflow.
+With this example history we fulfilled Tip 4. We will now fulfill Tip 1 (*"Register the workflow."*) and Tip 3 (*"Make source code available in a public code repository."*) at the same time
 
+# Register the workflow by making the workflow available in the public IWC GitHub repository
 
-## Make test data publicly available on Zenodo
+To make your workflow FAIR (Findable, Accessible, Interoperable, and Reusable), it's essential to start by making it findable. Let's now register the workflow in a public registry that enables systematic scientific annotations and supports multiple workflow languages. We recommend using specialized workflow registries such as [WorkflowHub](https://workflowhub.eu/) ({% cite gustafsson2024workflowhub %}) or [Dockstore](https://dockstore.org/) ({% cite yuen2021dockstore %}), which cater to workflows written in different languages and provide unique features like digital object identifiers (DOIs) for easy citation and version tracking.
 
-This step is to ensuring that the data is **publicly accessible** and can be referenced in workflow documentation and tests.  
+A Galaxy workflow can be registered by anyone on the WorkflowHub and Dockstore by following their documentation. In this section, we will see how to register a workflow on both WorkflowHub and Dockstore (Tip 1 - *"Register the workflow."*) by making it available in a public GitHub repository (Tip 3 - *"Make source code available in a public code repository."*) maintained by the Intergalactic Workflow Commission (IWC), a Galaxy community effort.
+
+The IWC maintains high-quality Galaxy Workflows via a [Galaxy Workflows Library](https://iwc.galaxyproject.org/). All workflows are reviewed and tested before publication and with every new Galaxy release. Deposited workflows follow best practices and are versioned using GitHub releases. Workflows also contain important metadata. Additionally the IWC collects further best practices, tips and tricks, FAQs and assists the community in designing high-quality Galaxy workflows.
+
+IWC offer [guidelines for adding workflow](https://github.com/galaxyproject/iwc/blob/main/workflows/README.md#adding-workflows) that will go through:
+
+1. Check for workflow eligibility
+2. Ensure workflows follow best-practices (already done)
+3. Generate tests
+
+## Check for workflow eligibility
+
+IWC collects production workflows targeted at users that want to analyze their own data. As such, the workflow should be sufficiently generic that users can provide their own data.
+
+IWC encourage, but do not require, links to related Galaxy Training Network Tutorials. Importantly, each workflow should be described in a way that a user can run the workflow on their own data without modifying the workflow. If we want to deposit a workflow that accompanies a tutorial we have to make sure that the workflow does not refer to datasets that only make sense in the context of the tutorial.
+
+By fulfilling the first Tips as we did before, we guarantee for workflow eligibility.
+
+## Generate tests
+
+This is usually the most difficult part and we encourage all new contributors to IWC to propose their workflows even if they did not managed to generate tests. However, the publication of these workflow will be speed up if tests are already present. 
+
+### Find input datasets
+
+To test the workflow, we need input datasets. By fulfilling Tip 4 (*"Provide example input data and results along with the workflow."*), we generated a toy dataset. We now need to publish it to [**Zenodo**](https://zenodo.org/) to have a permanent URL, also allowing others to **easily retrieve and reuse the data** when running or validating the workflow.
 
 > <hands-on-title>Upload test data to Zenodo</hands-on-title>  
 >
@@ -324,107 +394,270 @@ This step is to ensuring that the data is **publicly accessible** and can be ref
 >    - **License**: Choose `GNU General Public License v3.0 or later`
 > 5. Click **"Publish"** to make the dataset publicly available.  
 >
-{: .hands_on}  
+{: .hands_on}
 
 Uploading test data to Zenodo ensures that it has a **permanent DOI**, making it easy to reference in workflow documentation, publications, and testing pipelines.  
 
+### Generate test from a workflow invocation
 
-# Publish the workflow to workflow registries by contributing to IWC
+To generate tests, we can either write test cases by hand, or use a workflow invocation to generate a test case. We will do the second case. Let's first prepare the folder to store the tests in the IWC git repository.
 
-Once the workflow has been created, tested, and documented, it should be **submitted to IWC**. This ensures that the workflow is **publicly available, version-controlled, and indexed in workflow registries** like [WorkflowHub](https://workflowhub.eu/workflows/) and [Dockstore](https://dockstore.org/workflows/github.com/iwc-workflows/).  
-
-> <hands-on-title>Submit the workflow to IWC</hands-on-title>  
+> <hands-on-title>Prepare the folder for the tests</hands-on-title>  
 >
-> 1. **Install Planemo** (if not already installed) by following the [Planemo installation guide](https://planemo.readthedocs.io/en/stable/installation.html).  
->    - Open a terminal and run the first three command lines from the guide.  
+> 1. **Fork** the [IWC GitHub repository](https://github.com/galaxyproject/iwc)to your GitHub account.  
 >
-> 2. **Fork the IWC GitHub repository**: Go to [IWC GitHub repo](https://github.com/galaxyproject/iwc) and fork it to your GitHub account.  
+> 2. **Clone your fork locally**:  
 >
-> 3. **Clone your fork locally**:  
 >    ```bash
 >    git clone https://github.com/yourusername/iwc.git
 >    cd iwc
 >    ```
 >
-> 4. **Create a new branch** for adding the workflow:  
+> 3. **Create a new branch** for adding the workflow:  
+>
 >    ```bash
 >    git checkout -b add-new-workflow
 >    ```
 >
-> 5. **Create a new folder** inside the cloned repository for your workflow.  
+> 4. **Create a new directory** under one of the directories that represent categories
 >
-> 6. **Run the workflow** in Galaxy.
+>    > <comment-title></comment-title>
+>    > If no category is suitable, we can create a new category directory. We should name the directory that contains our workflow(s) appropriately, as it will become the name of the repository deployed to [iwc-workflows GitHub organization](https://github.com/iwc-workflows) and only use lower-case and `-` in names of categories and repositories.
+>    {: .comment}
 >
->    {% snippet faqs/galaxy/workflows_run.md %}
+> 5. Move the newly created directory
 >
-> 7. **Extract the workflow invocation** using Planemo:  
->    - Get the workflow invocation given the [guidelines](https://github.com/galaxyproject/iwc/blob/main/workflows/README.md#generate-test-from-a-workflow-invocation).  
->    - Get your **Galaxy API key** from Galaxy.
+{: .hands-on}
+
+We have earlier executed the workflow on our example dataset. We can use this **workflow invocation** to  generate the tests.
+
+> <hands-on-title>Extract the tests from the example history workflow invocation</hands-on-title>  
 >
->      {% snippet faqs/galaxy/preferences_admin_api_key.md %} 
+> 1. **Install Planemo** (if not already installed) by following the [Planemo installation guide](https://planemo.readthedocs.io/en/stable/installation.html).  
 >
->    - Extract the workflow with test data using:  
->      ```bash
->      planemo workflow_test_init --from_invocation WorkflowInvocation \
->         --galaxy_url GalaxyServerURL \
->         --galaxy_user_key yourGalaxyUserKey
->      ```
+> 3. Get your **Galaxy API key** from the Galaxy server.
 >
-> 8. Edit the generated `tests.yml` file:  
->    - Add the **Zenodo path** from the test data upload step to each test input:  
+>    {% snippet faqs/galaxy/preferences_admin_api_key.md %} 
+>
+> 4. Get the workflow invocation.
+>
+>    {% snippet faqs/galaxy/workflows_get_invocation_id.md %} 
+>
+> 5. Extract the workflow with test data using:  
+>
+>    ```bash
+>    planemo workflow_test_init \
+>       --from_invocation <workflow_invocation_id> \
+>       --galaxy_url <galaxy_server_url> \
+>       --galaxy_user_key <your_api_key>
+>    ```
+>
+{: .hands-on}
+
+This will place in the current working directory:
+- a `<workflow_name>.ga` with the workflow
+- a `<workflow_name-test>.yml` to describe the tests
+- a `test-data` folder with input file and selected outputs
+
+> <question-title></question-title>
+>
+> In the `<workflow_name-test>.yml`,
+> 1. How is the input file provided?
+> 2. How are the workflow outputs checked for validity?
+> 3. How big are the files in the `test-data` file?
+>
+> > <solution-title></solution-title>
+> >
+> > 1. The input file is given by:
+> >
+> >    ```
+> >    job:
+> >      FastQ:
+> >        class: File
+> >        path: test-data/FastQ.fastqsanger.gz
+> >        filetype: fastqsanger.gz
+> >    ```
+> >
+> > 2. The workflow outputs are checked for validity by comparing the generated outputs to the files stored in the `test-data` folder.
+> > 
+> >    ```
+> >    outputs:
+> >      multiqc_html:
+> >        path: test-data/multiqc_html.html
+> >      fastqc_html:
+> >        path: test-data/fastqc_html.html
+> >    ```
+> >
+> > 3. The files are quite large:
+> >    - `FastQ.fastqsanger.gz`: 132 KB
+> >    - `fastqc_html.html`: 2.6 MB
+> >    - `multiqc_html.html`: 1.5 MB
+> {: .solution}
+{: .question}
+
+The HTML files in the `test-data` folder are quite large, above the 1 MB limit of IWC. To limit the size in the IWC GitHub repository, we will remove test files in `test-data` folder. To do that, we will:
+1. use the file stored on Zenodo for the input.
+2. edit the test comparisons to use assertions testing the output content, rather than comparing the entire output file with test data.
+
+   > <details-title>Assertion documentation</details-title>
+   > The description of assertion can be find in the [Galaxy XML documentation](https://docs.galaxyproject.org/en/latest/dev/schema.html#tool-tests-test-output-assert-contents).
+   >
+   > Do not hesitate to look at different test files in the [IWC GitHub](https://github.com/galaxyproject/iwc/tree/main/workflows) for examples.
+   {: .details}
+   
+> <hands-on-title>Edit the test description</hands-on-title>
+>
+> 1. Remove the `test-data` folder
+> 2. Open the `<workflow_name-test>.yml` file
+> 
+> 3. Replace the `path` of input by the **Zenodo URL**:
+>
 >      ```yaml
->      https://zenodo.org/records/[zenodo_id]/files/[filename]
->      ```
->    - Ensure all test **output names** are included.  
->    - Use **assert commands** to to test the outputs (as in [XML file](https://docs.galaxyproject.org/en/latest/dev/schema.html#tool-tests-test-assert-command)).  
->
-> 9. Create a `docker.yml` file:  
->    - Run:  
->      ```bash
->      planemo dockstore_init
->      ```
->    - Open the generated `docker.yml` and verify that author names and details are correct.  
->
-> 10. Edit the `workflow.ga` file to include the **release number**. 
->      ```bash
->      ],
->      "format-version": "0.1",
->      "license": "GPL-3.0-or-later",
->      "release": "0.1",
->      "name": "NameOfTheWorkflow",
->      "steps": {
->      "0": {
+>      https://zenodo.org/record/3977236/files/female_oral2.fastq-4143.gz
 >      ```
 >
-> 11. Create a `README.md` file inside the workflow folder (example: [README](https://github.com/galaxyproject/iwc/blob/main/workflows/microbiome/pathogen-identification/nanopore-pre-processing/README.md)).  
+> 4. Ensure all test **output names** are included.
 >
-> 12. Create a `CHANGELOG.md` file inside the workflow folder:  
->     - If not auto-generated, create it manually with a date:  
->       ```md
->       # Changelog
->       
->       ## [0.1] yyyy-mm-dd
->       
->       First release.  
+> 5. For FastQC step 
+>    
+>    1. Open the FastQC HTML output on Galaxy
+>    2. Search for a text specific to this data (e.g. `female_oral2_fastq-4143_gz.gz` here)
+>    3. Replace in the `<workflow_name-test>.yml` file the `path` line of `fastqc_html` output by:
+> 
+>       ```
+>       asserts:
+>          has_text:
+>            text: "female_oral2_fastq-4143_gz.gz"
 >       ```
 >
-> 13. **Test** the extracted workflow:  
+> 6. Do the same for MultiQC
+> 7. Save the file
+>
+{: .hands-on}
+
+> <comment-title></comment-title>
+> If the workflow is using build-in indexes, we should use the available indexes on [CernVM-FS (CVMFS)](https://datacache.galaxyproject.org/), a distributed filesystem perfectly designed for sharing readonly data across the globe. IWC continuous integration uses it for the tests.
+{: .comment}
+
+### Lint the workflow
+
+To make sure the workflow and its test are syntactically correct, we can now run `planemo workflow_lint` :
+
+> <hands-on-title>Lint the workflow</hands-on-title>  
+> 1. **Run the tests** on the extracted workflow using
+>
 >     ```bash
->     planemo test --galaxy_url GalaxyServerURL --galaxy_user_key yourGalaxyUserKey NameOfTheWorkflow.ga
+>     planemo workflow_lint <workflow_file.ga>
 >     ```
+{: .hands-on}
+
+### Test the workflow against an instance which have all tools installed.
+
+Before submitting the workflow to IWC, it might be interesting to run the tests against a Galaxy instance using Planemo so we can easily see what is failing and what are the differences between our expectations and the output we get:
+
+> <hands-on-title>Run the tests</hands-on-title>  
+> 1. **Run the tests** on the extracted workflow using
 >
-> 14. **Open a Pull Request (PR)** on the IWC GitHub repository to submit your workflow.  
+>     ```bash
+>     planemo test \
+>        --galaxy_url <galaxy_server_url> \
+>        --galaxy_user_key <your_api_key> \
+>        <workflow_file.ga>
+>     ```
+{: .hands-on}
+
+> <details-title>Using Planemo to check that the test is valid against the same workflow invocation</details-title>
 >
-{: .hands_on}  
+> If the tests are not passing because of an error into the test file, we can modify the test file and use Planemo to check that the test is valid against the same invocation.
+>
+> ```bash
+> planemo workflow_test_on_invocation \
+>    --galaxy_url <galaxy_server_url> \
+>    --galaxy_user_key <your_api_key> \
+>    <workflow-tests.yml> \
+>    <workflow_invocation_id>
+> ```
+{: .details}
 
-The [**Best practices for workflows in GitHub repositories**]({% link topics/fair/tutorials/ro-crate-galaxy-best-practices/tutorial.md %}) GTN provides additional recommendations for structuring and maintaining workflows in Github.
 
-Once the PR is reviewed and merged, the workflow will be available in **Galaxy's IWC collection** and indexed in registries like [**WorkflowHub**](https://workflowhub.eu/workflows/) and [**Dockstore**](https://dockstore.org/workflows/github.com/iwc-workflows/), making it **discoverable and reusable** by the community.
+### Add required metadata
 
+Once the workflow tests has been created and tested, we are almost ready to submit it to IWC. Few last steps are missing to add required metadata
+
+
+The first step is to generate a `.dockstore.yml` file that contains metadata needed for Dockstore.
+
+> <hands-on-title>Generate a `.dockstore.yml` file</hands-on-title>  
+>
+> 1. Run:  
+>    
+>    ```bash
+>    planemo dockstore_init
+>    ```
+> 
+> 2. Open the generated `docker.yml` and verify that author names and details are correct.  
+> 
+{: .hands-on}
+
+We now need 
+1. a `README.md` file that briefly describes the workflow
+2. a `CHANGELOG.md` file that lists changes, additions and fixed. 
+
+   For that, we need to follow the formatting and principles proposed on [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
+
+> <hands-on-title>Create README and CHANGELOG files</hands-on-title>  
+>
+> 1. Create a `README.md` file inside the workflow folder ([example README](https://github.com/galaxyproject/iwc/blob/main/workflows/microbiome/pathogen-identification/nanopore-pre-processing/README.md)).  
+>
+> 2. Create a `CHANGELOG.md` file inside the workflow folder given the following template:
+>
+>    ```md
+>    # Changelog
+>    
+>    ## [0.1] yyyy-mm-dd
+>    
+>    First release.
+>    ```
+> 
+{: .hands-on}
+
+Finally, there is currently no user interface within Galaxy to define release versions, so we have to manually set a `release: "0.1"` key value pair in the `.ga` file. 
+
+> <hands-on-title>Edit the release version in the workflow</hands-on-title>  
+>
+> 1. Edit the `workflow.ga` file to include the **release number**
+>
+>    ```bash
+>    ],
+>    "format-version": "0.1",
+>    "license": "GPL-3.0-or-later",
+>    "release": "0.1",
+>    "name": "NameOfTheWorkflow",
+>    "steps": {
+>    "0": {
+>    ```
+>
+{: .hands_on} 
+
+## Submit the workflow to IWC
+
+> <hands-on-title>Submit the workflow to IWC</hands-on-title>  
+>
+> 1. Commit the changes to the createw branch
+> 2. Push the branch to your fork
+> 3. **Open a Pull Request (PR)** on the IWC GitHub repository to submit your workflow.  
+>
+{: .hands_on}
+
+Once the PR is reviewed and merged, the workflow will be available in **Galaxy's IWC GitHub repository** (Tip 3 - *"Make source code available in a public code repository."*) and indexed in both [**WorkflowHub**](https://workflowhub.eu/workflows/) and [**Dockstore**](https://dockstore.org/workflows/github.com/iwc-workflows/) registries (Tip 1 - *"Register the workflow."*), making it **discoverable and reusable** by the community.
+
+> <comment-title></comment-title>
+> The [**Best practices for workflows in GitHub repositories**]({% link topics/fair/tutorials/ro-crate-galaxy-best-practices/tutorial.md %}) GTN provides additional recommendations for structuring and maintaining workflows in Github.
+{: .comment}
 
 # Conclusion
 
-By following this tutorial, you have ensured that your Galaxy workflow is **FAIR** and adheres to **best practices**. From importing and refining the workflow to creating test data and submitting it to the **IWC**, each step contributes to making workflows more **reliable, shareable, and reusable**.  
+By following this tutorial, you have ensured that your Galaxy workflow is following the **"Ten quick tips for building FAIR workflows"** ({% cite de2023ten %})  and adheres to **best practices**. From creating and refining the workflow to creating test data and submitting it to the **IWC**, each step contributes to making workflows more **reliable, shareable, and reusable**.  
 
 For further workflow optimization and maintenance, the **Galaxy community** provides a [comprehensive guide on best practices](https://planemo.readthedocs.io/en/latest/best_practices_workflows.html). This guide extends beyond the **best practices panel in Galaxy** and includes additional recommendations, such as:  
 
@@ -433,6 +666,3 @@ For further workflow optimization and maintenance, the **Galaxy community** prov
 - **Registering workflows** in well-known registries like [WorkflowHub](https://workflowhub.eu/workflows/) and [Dockstore](https://dockstore.org/workflows/github.com/iwc-workflows/), ensuring wider accessibility and discoverability.  
 
 By continuously following these practices, you contribute to a **stronger, more open, and collaborative** bioinformatics community, where workflows are easily shared, improved, and adapted to new challenges.
-
-
-ensure your workflows are reviewed, tested, and maintained.
