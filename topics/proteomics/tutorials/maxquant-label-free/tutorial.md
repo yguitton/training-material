@@ -23,7 +23,7 @@ tags: [DDA, label-free]
 
 
 
-The proteome refers to the entirety of proteins in a biological system (e.g cell, tissue, organism). Proteomics is the large-scale experimental analysis of proteins and proteomes, most often performed by mass spectrometry that enables great sensitivity and throughput. Especially for complex protein mixtures, bottom-up mass spectrometry is the standard approach. In bottom-up proteomics, proteins are digested with a specific protease into peptides and the measured peptides are *in silico* reassembled into the corresponding proteins. Inside the mass spectrometer, not only the peptides are measured (MS1 level), but the peptides are also fragmented into smaller peptides which are measured again (MS2 level). This is referred to as tandem-mass spectrometry (MS/MS). Identification of peptides is performed by peptide spectrum matching of the theoretical spectra generated from the input protein database (fasta file) with the measured spectra. Peptide quantification is most often performed by measuring the area under the curve of the MS1 level peptide peaks, but special techniques such as TMT allow to quantify peptides on MS2 level. Nowadays, bottom-up tandem-mass spectrometry approaches allow for the identification and quantification of several thousand proteins.
+The proteome refers to the entirety of proteins in a biological system (e.g cell, tissue, organism). Proteomics is the large-scale experimental analysis of proteins and proteomes, most often performed by mass spectrometry that enables great sensitivity and throughput. Especially for complex protein mixtures, bottom-up mass spectrometry is the standard approach. In bottom-up proteomics, proteins are digested with a specific protease into peptides and the measured peptides are *in silico* reassembled into the corresponding proteins. Inside the mass spectrometer, not only the peptides are measured (MS1 level), but the peptides are also fragmented into smaller peptides which are measured again (MS2 level). This is referred to as tandem-mass spectrometry (MS/MS). Identification of peptides is performed by peptide spectrum matching of the theoretical spectra generated from the input protein database (fasta file) with the measured spectra. Peptide quantification is most often performed by measuring the area under the curve of the MS1 level peptide peaks, but special techniques such as TMT (Tandem Mass Tag) allow to quantify peptides on MS2 level. Nowadays, bottom-up tandem-mass spectrometry approaches allow for the identification and quantification of several thousand proteins.
 
 ![MQ_lcmsms](../../images/maxquant_lfq_lcmsms.png "Proteomics using liquid chromatography tandem-mass spectrometry (LC-MS/MS). Adapted from <a href="https://en.wikipedia.org/wiki/Tandem_mass_spectrometry#/media/File:MS_MS.png">wikipedia</a>.")
 
@@ -96,7 +96,7 @@ The MaxQuant Galaxy implementation contains the most important MaxQuant paramete
 >        - *"missed cleavages"*: `1`
 >        - *"enzyme"*: `Trypsin/P`
 >        - *"Quantitation Methods"*: `label free quantification`
->    - *"Generate PTXQC (proteomics quality control pipeline) report?"*: `Yes`
+>    - *"Generate PTXQC (proteomics quality control pipeline) report? (experimental setting)"*: `True`
 >    - In *"Output Options"*:
 >        - *"Select the desired outputs."*: `Protein Groups` `Peptides` `mqpar.xml`
 >
@@ -108,6 +108,21 @@ The MaxQuant Galaxy implementation contains the most important MaxQuant paramete
 ## More details on MaxQuant Parameters
 
 The *"parse rules"* in the input section are applied to the fasta sequence headers. Regular expressions can be adjusted to keep different information from the fasta file header. Examples are given in the MaxQuant help section at the bottom of the tool. The fasta file for this training comes from Uniprot, therefore the parse rules are adjusted accordingly.
+Consider the FASTA header like this :
+
+>sp|P02768|ALBU_HUMAN Serum albumin OS=Homo sapiens GN=ALB PE=1 SV=1
+
+    1) Identifier parse rule  >.*\|(.*)\| 
+      > FASTA headers always start with this symbol. Matches with the initial >
+      .* matches sp
+      \| matches the first |
+      (.*) matches P02768
+      \| matches the second |
+
+    2) Description parse rule >(.*) OS
+       > matches with the initial >
+       (.*) matches everything it can. It matches  sp|P02768|ALBU_HUMAN Serum albumin
+       OS matches OS
 
 The *"minimum peptide length"* defines the minimum number of amino acids a peptide should have to be included for protein identification and quantification. Below 7 amino acids a peptide cannot be unique and is therefore not informative, thus typical values are in the range 7-9.
 
