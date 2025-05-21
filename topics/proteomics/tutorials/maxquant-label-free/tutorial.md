@@ -110,7 +110,7 @@ The MaxQuant Galaxy implementation contains the most important MaxQuant paramete
 The *"parse rules"* in the input section are applied to the fasta sequence headers. Regular expressions can be adjusted to keep different information from the fasta file header. Examples are given in the MaxQuant help section at the bottom of the tool. The fasta file for this training comes from Uniprot, therefore the parse rules are adjusted accordingly.
 Consider the FASTA header like this :
 
->sp|P02768|ALBU_HUMAN Serum albumin OS=Homo sapiens GN=ALB PE=1 SV=1
+```>sp|P02768|ALBU_HUMAN Serum albumin OS=Homo sapiens GN=ALB PE=1 SV=1
 
     1) Identifier parse rule  >.*\|(.*)\| 
       > FASTA headers always start with this symbol. Matches with the initial >
@@ -123,6 +123,7 @@ Consider the FASTA header like this :
        > matches with the initial >
        (.*) matches everything it can. It matches  sp|P02768|ALBU_HUMAN Serum albumin
        OS matches OS
+```
 
 The *"minimum peptide length"* defines the minimum number of amino acids a peptide should have to be included for protein identification and quantification. Below 7 amino acids a peptide cannot be unique and is therefore not informative, thus typical values are in the range 7-9.
 
