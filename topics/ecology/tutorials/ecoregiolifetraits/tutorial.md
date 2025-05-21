@@ -104,7 +104,7 @@ TODO
 ## Get life traits from WoRMS
 > <hands-on-title>Life traits acquisition</hands-on-title>
 >
-> 1. {% icon [Enrich dataset with WoRMS](TODO url toolshed de l'outil) %}: add life traits to the dataset by
+> 1. {% tool [Enrich dataset with WoRMS](TODO url toolshed de l'outil) %}: add life traits to the dataset by
 >    - *"occurrence data"*:  a `occurrence` filetabular that fills the requierments mentionned earlier
 >    - *"list of measurement types"*: a list of the life traits of interest like `Development,Fecundity`. Make they have the same spelling as on the WoRMS and with a capital letter. 
 >    - *"scientific name column name"*: look at your occurrence file, if the name of the column of scientific names is different from `scientificName` replace by the correct one.
