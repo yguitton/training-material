@@ -79,7 +79,7 @@ The first step in any Galaxy-based analysis is getting your data into the platfo
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
 > 3. **Rename the datasets** once they are uploaded into your history. Click on the pencil icon next to each dataset name in the history panel (on the right side of the Galaxy interface) and give them informative names.
-> 4. **Check that the datatype** For each of your renamed datasets, ensure the datatype is set to `FASTQ` or `FASTQ.GZ`. To check or change the datatype, click on the pencil icon next to the dataset name, then look for the "Datatype" field. If it's incorrect, select the appropriate datatype from the dropdown menu and click "Save."
+> 4. **Check that the datatype** for each of your renamed datasets, ensure the datatype is set to `fastqsanger` or `fastqsanger.gz`. To check or change the datatype, click on the pencil icon next to the dataset name, then look for the "Datatypes" field. If it's incorrect, select the appropriate datatype from the dropdown menu and click "Save".
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
 >
@@ -255,7 +255,7 @@ The BLAST output (in tabular format with extended 25 columns) contains a wealth 
 > **For HP3 R1 BLAST Results:**
 >
 >   - {% icon param-file %} *"from dataset"*: `output` (output of **NCBI BLAST+ blastn** {% icon tool %} for HP3 R1)
->   - *"Count occurrences of values in column(s)"*: `c['25']`
+>   - {% icon param-file %} *"Count occurrences of values in column(s)"*: `c['25']`
 >
 > **For HP3 R2 BLAST Results:**
 >
