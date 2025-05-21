@@ -141,7 +141,7 @@ MaxQuant supports different *"Quantitation Methods"*. The three main categories 
 
 ![MQ_quant_methods](../../images/maxquant_lfq_quant_methods.png "Overview of MaxQuant quantification methods")
 
-The PTXQC software ({% cite Below2015 %}) was built to enable direct proteomics quality control from MaxQuant result files. This quality control can be directly used in the Galaxy MaxQuant wrapper by setting *"Generate PTXQC"* to `yes`. This will generate a pdf file with multiple quality control plots. Be aware that the cutoffs set in PTXQC might not apply to your experiment and mass spectrometer type, and therefore, "underperforming" and "fail" do not necessarily mean that the quality is poor.
+The PTXQC software was built to enable direct proteomics quality control from MaxQuant result files. This quality control can be directly used in the Galaxy MaxQuant wrapper by setting *"Generate PTXQC"* to `yes`. This will generate a pdf file with multiple quality control plots. Be aware that the cutoffs set in PTXQC might not apply to your experiment and mass spectrometer type, and therefore, "underperforming" and "fail" do not necessarily mean that the quality is poor.
 
 ![PTXQC_overview](../../images/maxquant_ptxqc_overview.png "Overview of PTXQC quality measures for sample1 and sample2")
 
