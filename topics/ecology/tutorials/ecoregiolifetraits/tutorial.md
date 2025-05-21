@@ -322,10 +322,6 @@ This tool does three things:
 
 ## Determine the optimal number of cluster and build ecoregional clusters with ClaraGuess
 
-## Build a ecoregionalization map with EcoMap
-
-# Conclusion
-
 ### What it does ?
 This tool applies the CLARA clustering method to identify environmental clusters based on:
 - BRT model predictions (a collection of tabular files),
