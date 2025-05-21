@@ -595,7 +595,7 @@ Like in part 1, we can use Galaxy's rule-based uploader functionality to upload 
 
 TB-profiler reports are very useful and comprehensive, and we will use them to better investigate
 drug resistance in our dataset. However, it is always useful to summarize the data on a per-sample basis,
-on a table, so we can quickly check which strains are, for example, MDR, an which are pan-susceptible.
+on a table, so we can quickly check which strains are, for example, MDR, an which are susceptible to antibiotics.
 We would like to generate a table like the following:
 
 | Sample   | DR profile |
@@ -711,14 +711,12 @@ The two tables we have generated in the two parts of the tutorial share a sample
 > <hands-on-title>Joining tables</hands-on-title>
 >
 > 1. {% tool [Join two files](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_easyjoin_tool/1.1.2) %} with the following parameters:
->    - {% icon param-file %} *"1st file"*: transmission clusters report; output of **Rstudio** session
+>    - {% icon param-file %} *"1st file"*: transmission clusters report; output of *Distance matrix-based hierarchial clustering*
 >    - *"Column to use from 1st file"*: `Column: 1`
 >    - {% icon param-file %} *"2nd File"*: final drug-resistance report; output of **Replace Text** above
 >    - *"Column to use from 1st file"*: `Column: 1`
->    - *"Output lines appearing in"*: `Both 1st & 2nd file, plus unpairable lines from 2st file. (-a 2)`
+>    - *"Output lines appearing in"*: `Both 1st & 2nd file`
 >
->      The *transmission clusters* report only lists the subset of samples that were assigned to a cluster, while the drug-resistance table has a line for every sample. We want to keep all samples from the second table and indicate missing information from the first with `-` values (see next parameter).
->    - *"Value to put in unpaired (empty) fields"*: `-`
 >
 {: .hands_on}
 
@@ -748,11 +746,11 @@ The final combined table you generated and that we are going to base some questi
 | ERR6362653   | -          | MDR        |
 | SRR13046689  | -          | Other      |
 | SRR998584    | -          | Sensitive  |
-| ERR5987352   | 10         | Pre-MDR    |
-| ERR6362484   | 10         | Pre-MDR    |
-| ERR6362138   | 12         | MDR        |
-| ERR6362156   | 12         | Pre-XDR    |
-| ERR6362253   | 12         | MDR        |
+| ERR5987352   | 1          | Pre-MDR    |
+| ERR6362484   | 1          | Pre-MDR    |
+| ERR6362138   | 2          | MDR        |
+| ERR6362156   | 2          | Pre-XDR    |
+| ERR6362253   | 2          | MDR        |
 
 > <question-title></question-title>
 >
@@ -764,10 +762,10 @@ The final combined table you generated and that we are going to base some questi
 > > In a simplistic scenario, we could consider clustered strains as instances of transmission and
 > > unclustered strains as instances of de novo evolution of DR. Thus, we see that for example there
 > > are three MDR strains (ERR551620, ERR6362078, ERR6362653) that are unclustered and therefore may
-> > represent cases in which drug resistance evolved independently as response to treatment within the respective
+> > represent cases in which drug resistance evolved independently as a consequence of treatment within the respective
 > > patients. However you need to always bear in mind that, although **within our population** those MDR
 > > strains do not seem to be linked to transmission, this does NOT rule out the possibility that
-> > some of these patients were infected with an MDR strain somewhere else.
+> > some of these patients were infected with an MDR strain somewhere else, or that other cases from the cluster where simply not sampled.
 > >
 > > When looking at clustered strains, distinguishing between transmitted and *de-novo* may be tricky. Note
 > > that, for example, for the two RIF-monoresistant strains linked within the same transmission
@@ -789,7 +787,7 @@ The final combined table you generated and that we are going to base some questi
 > > <solution-title></solution-title>
 > > 1. Within this cluster of MDR strains, there is one tagged as Pre-XDR by TB-profiler. If we have
 > >    a look at the TB profiler report, we can see that this strain carries an additional mutation in
-> >    *gyrA* that confers resistance to fluorioquinolones. This is compatible with an scenario in which
+> >    *gyrA* that confers resistance to fluoroquinolones. This is compatible with an scenario in which
 > >    fluoroquinolone resistance evolved independently within this patient after being infected with
 > >    the MDR strain.
 > {: .solution}
@@ -804,7 +802,7 @@ The final combined table you generated and that we are going to base some questi
 > > <solution-title></solution-title>
 > > The strain is indeed PZA-resistant. And indeed this is strain is NOT linked to transmission
 > > within our population. However, if we have a look at the TB-profiler report, we observe that this
-> > is a *M. bovis* strain, which are known to be intrinsically resistant to PZA.
+> > is a *M. bovis* strain, many of which are known to be intrinsically resistant to PZA.
 > {: .solution}
 {: .question}
 
