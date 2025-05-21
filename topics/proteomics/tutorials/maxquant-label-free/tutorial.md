@@ -173,14 +173,14 @@ MaxQuant automatically generates several output files. In the *"Output Options"*
 >
 > 1. How many proteins were found in total?
 > 2. How many peptides were found in total?
-> 3. How many proteins identified and quantified? (Tipp: There is a tool called "filter data on any column", select the LFQ column for both files and remove rows containing "0")
+> 3. How many proteins identified and quantified? (Tip: There is a tool called "filter data on any column", select the LFQ (Label free quantification) column for both files and remove rows containing "0")
 >
 >
 > > <solution-title></solution-title>
 > >
 > > 1. 271 protein (groups) were found in total.
 > > 2. 2410 peptides were found in total.
-> > 3. Sample1: 237, Sample2: 123 (**filter data on any column** {% icon tool %} on the `protein groups` file *"with following condition"* `c32!=0` or `c33!=0` and *"Number of header lines" `1`)
+> > 3. Sample1: 237, Sample2: 123 (**filter data on any column** {% icon tool %} on the `protein groups` file *"with following condition"* `c32!=0` or `c33!=0` and *"Number of header lines to skip" `1`)
 > >
 > {: .solution}
 >
