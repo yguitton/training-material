@@ -17,21 +17,21 @@ key_points:
 - The take-home messages
 - They will appear at the end of the tutorial
 contributors:
-- contributor1
-- contributor2
+- jeanlecras
+- PaulineSGN
 
 ---
 
 
 # Introduction
 
-<!-- This is a comment. -->
+This tutorial is designed to guide you through the Ecoregionalization Galaxy workflow, demonstrating how to create a life traits ecoregionalization map from occurrences and environmental data using a boosted regression tree model for predictions.
 
-This tutorial is designed to guide you through the Ecoregionalization Galaxy workflow, demonstrating how to create a life traits ecoregionalization map from occurrences and environmental data using a boosted regression trees model for predictions.
+The workflow, consisting of six tools, is intended for processing occurrence data, which should include latitude, longitude, species presence or absence and scientific name or life traits (if life traits are absent they will be deduced automatically with scientific names). The tutorial will provide a detailed explanation of inputs, workflow steps, and outputs. This tutorial gives a practical example, highlighting a use case centered on the Kerguelen plateau and Echonoids species.
 
-The workflow, consisting of six tools, is intended for processing occurrence data, which should include latitude, longitude, species presence or absence and scientific name or life traits (if life traits are abscent they will be deduced automaticaly with scientific names). The tutorial will provide a detailed explanation of inputs, workflow steps, and outputs. This tutorial gives a practical example, highlighting a use case centered on the Kerguelen plateau and Echonoids species.
+The primary goal of this workflow is to generate life traits distribution maps and identify ecoregions within the study area. The project’s objective is to offer accessible, reproducible, and transparent IT solutions for processing and analyzing life traits occurrence data. 
 
-The primary goal of this workflow is to generate life traits distribution maps and identify ecoregions within the study area. The project’s objective is to offer accessible, reproducible, and transparent IT solutions for processing and analyzing life traits occurrence data.
+Note: if you're data already contains life traits, use [this tutorial](https://training.galaxyproject.org/training-material/topics/ecology/tutorials/Ecoregionalization_tutorial/tutorial.html) instead, the process is the same with taxa and life traits.
 
 This workflow is therefore composed of 6 tools:
 
@@ -85,8 +85,7 @@ Here an example of environmental file input:
 The second data file you will need to run this workflow is an occurrences data file. As defined above, occurrences data are showing the presence (1) or absence (0), or just presence of a species or life trait at a particular location. This data file also needs to be in tabular format (.tsv or tabular) and need to be construct as following:
 
     latitude and longitude columns
-    scienttific name column
-    or one columns per life trait measurement where each box corresponding to a geographical point is marked 1 if the life trait is present or 0 if the life trait is absent.
+    scientific name column
 
 Here an example of occurrences data file input:
 | lat   | long  | Planktotrophic | Lecitotrophic | Size |
@@ -99,7 +98,52 @@ For this tutorial, occurrences data from the Kerguelen plateau will be downloade
 
 ## Get data
 
-TODO
+> <hands-on-title> Data Upload </hands-on-title>
+>
+> 1. Create a new history for this tutorial and give it a name (example: “Ecoregionalization workflow”) for you to find it again later if needed.
+>
+>    {% snippet faqs/galaxy/histories_create_new.md %}
+>
+>    {% snippet faqs/galaxy/histories_rename.md %}
+>
+> 2. Import occurrence data file from [GBIF](https://api.gbif.org/v1/occurrence/download/request/0012077-250515123054153.zip), environment file from [InDoRES](https://data.indores.fr/file.xhtml?persistentId=doi:10.48579/PRO/LQMHX9/CYSKQG&version=1.0#)
+>
+>    Occurrence data file as a zip file where you will find "occurrence.txt"
+>    ```
+>    https://api.gbif.org/v1/occurrence/download/request/0030809-240506114902167.zip
+>    ```
+>    Environemental data : "ceamarc_env.tab"
+>    ```
+>    https://data.indores.fr/api/access/datafile/9777
+>    ```
+>    Jupyter notebook : "pivot_wider_jupytool_notebook.ipynb"
+>    ```
+>    https://data.indores.fr/api/access/datafile/9756
+>    ```
+>
+>    {% snippet faqs/galaxy/datasets_import_via_link.md %}
+>
+>    {% snippet faqs/galaxy/datasets_import_from_remote_files.md %}
+>
+> 3. The GBIF link allows you to download a zip file containing multiple information files about the dataset. The file that you need is the 'occurrence.txt' file that we will specifically extract on Galaxy in the following step.
+>
+> 4. Use  {% tool [Unzip a file](toolshed.g2.bx.psu.edu/repos/imgteam/unzip/unzip/6.0+galaxy0) %} to create a data collection in your history where all GBIF archive files will be unzipped
+>
+> 5. Unhide the "occurence.txt" data file then modify datatype to select the "tabular" one
+>
+>    {% snippet faqs/galaxy/datasets_unhidden.md %}
+>
+>    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
+>
+> 6. Rename the datasets if needed, notably "9756" by "pivot_wider_jupytool_notebook.ipynb" and "9777" by "ceamarc_env.tab".
+>
+>    {% snippet faqs/galaxy/datasets_rename.md %}
+>
+> 7. Check that the datatype of the environment file and occurrence file are tabular.
+>
+>    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
+>
+{: .hands_on}
 
 ## Get life traits from WoRMS
 > <hands-on-title>Life traits acquisition</hands-on-title>
@@ -127,7 +171,7 @@ The first step of this tutorial is data formatting because the GBIF species occu
 >    - *"Cut by"*: `fields`
 >    - *"Delimited by"*: `Tab`
 >        - *"Is there a header for the data's columns ?"*: `Yes`
->            - *"List of Fields"*: `c['27', '98', '99', '158', '159', '160', '162', '166', '170']`
+>            - *"List of Fields"*: `c['13', '14', '16']`
 >
 {: .hands_on}
 
@@ -137,7 +181,7 @@ The first step of this tutorial is data formatting because the GBIF species occu
 >
 > > <solution-title></solution-title>
 > >
-> > 1. The columns we kept are : indivdualCount, decimalLatitude, decimalLongitude, phylum, class, order, family, genus, specificEpithet.
+> > 1. The columns we kept are : decimalLatitude, decimalLongitude, scientificName.
 > >
 > {: .solution}
 >
@@ -194,7 +238,7 @@ This Galaxy tool allows you to merge two data tables (tabular format only) accor
 
 ## Predicting life traits with BRT tool prediction
 
-This step implements a commonly used approach in ecological studies, namely species distribution modelling (SDM). This allows to characterize the distribution of each life trait by giving an indicator of probability of life trait presence for each environmental layer pixel. Here, the boosted regression trees (BRT) method was used to adjust the relationship between the presence of a single life trait and the environmental conditions under which the life trait has been detected. BRT modelling is based on an automatic learning algorithm using iterative classification trees.
+This step implements a commonly used approach in ecological studies, namely species distribution modelling (SDM). This allows to characterize the distribution of each life traits by giving an indicator of probability of life trait presence for each environmental layer pixel. Here, the boosted regression trees (BRT) method was used to adjust the relationship between the presence of a single life trait and the environmental conditions under which the life trait has been detected. BRT modelling is based on an automatic learning algorithm using iterative classification trees.
 
 ### What it does ?
 
@@ -235,7 +279,6 @@ In the 'Prediction files' collection there must be a file containing predictions
 In the 'Validation files' collection there must be a file containing for each life traits the validation metrics of the associated model.
 
 In the 'Species distribution prediction maps' collection there must be for each life traits a map representing their probability of presence at each environmental layer pixel.
-Here is an example: TODO changer les exemples
 
 ![Species distribution map](./Images/BRT-Echinodermata_Crinoidea_Comatulida_Antedonidae_Florometra_mawsoni__pred_plot.png "Florometra mawsoni distribution from BRT")
 
@@ -247,7 +290,7 @@ Here is an example:
 
 ## Collecting the list of life traits with TaxaSeeker
 
-You may wonder "but shouldn't this tool be used only with taxon data?" it's commonly used for taxas but it works also with life traits. (TODO à vérifier)
+You may wonder "but shouldn't this tool be used only with taxon data?" it's commonly used for taxas but it works also with life traits.
 
 ### What it does ?
 
@@ -293,13 +336,12 @@ The tool enables the determination of the optimal number of clusters for partiti
 
 > <hands-on-title> Run ClaraGuess </hands-on-title>
 >
-> 1. {% tool [ClaraGuess](TODO mettre url toolshed de l'outil) %} with the following parameters:
+> 1. {% tool [ClaraGuess](https://toolshed.g2.bx.psu.edu/view/ecology/claraguess/adeb719a267f) %} with the following parameters:
 >    - {% icon param-file %} *"Environmental data (tabular)"*: `ceamarc_env.tsv` (Input dataset)
 >    - {% icon param-file %} *"BRT prediction files (collection of tabular)"*: `Prediction files` (output of **BRT tool** {% icon tool %})
 >    - {% icon param-file %} *"List of taxas (from TaxaSeeker)"*: `List of taxa` (output of **TaxaSeeker** {% icon tool %})
->    - *"k is ..."*: either the number of cluster of the model (the number of ecoregions) or you don't how many cluster/ecoregions you want and the tool will find the more optimal number of cluster. The first time, this parameter should be set to automatic so you can see the plot of silhouette scores and determine yourself what is the best number of cluster to choose. The best number of cluster according to slihouette score isn't always equal the number of ecoregions.
+>    - *"k is ..."*: either the number of clusters of the model (the number of ecoregions) or if you don't how many cluster/ecoregions you want and the tool will find the more optimal number of clusters. The first time, this parameter should be set to automatic so you can see the plot of silhouette scores and determine yourself what is the best number of clusters to choose. The best number of clusters according to silhouette score isn't always equal the number of ecoregions.
 >    - {% icon param-file %} *"Value of k (collection of tabular)"*: a number greater than 2
-
 
 >
 >    > <comment-title> Two other parameters </comment-title>
@@ -352,156 +394,3 @@ This is the output map with our seven clusters representing ecoregions that you 
 # Conclusion
 
 Congratulations! You have successfully completed the life traits ecoregionalization workflow. Here is the end of this tutorial aiming to explain the purpose of the ecoregionalization workflow and how to use it. This workflow provides a systematic and reproducible approach to ecoregionalization, allowing researchers to identify distinct ecological regions based on species occurrences and environmental data. This tutorial shows how to use this workflow, step by step, or all in one using the Dumont D'Urville sea region use case with related datasets. It allows you to understand ecoregions construction. You learned the use of the BRT algorithm for modeling species distribution as well as the cluster construction with the k-medoid clustering algorithms (CLARA/PAM). Feel free to explore and adapt this workflow for your specific research needs. If you have any questions, or encounter issues during the workflow, refer to the provided documentation or seek assistance from the Galaxy community. Don't hesitate to contact us if you have any questions.
-
-
-## Sub-step with **Filter**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Filter](Filter1) %} with the following parameters:
->    - {% icon param-file %} *"Filter"*: `output` (output of **Advanced Cut** {% icon tool %})
->    - *"With following condition"*: `c1!='' and c2!='' and c3!='' and c1!='NA' and c2!='NA' and c3!='NA'`
->    - *"Number of header lines to skip"*: `1`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **GeoNearestNeighbor**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [GeoNearestNeighbor](toolshed.g2.bx.psu.edu/repos/ecology/ecoregion_geonearestneighbor/ecoregion_GeoNearestNeighbor/0.1.0+galaxy0) %} with the following parameters:
->    - In *"Your environment file (or table 1)"*:
->        - {% icon param-file %} *"Input your environment data file (tabular format only)"*: `output` (Input dataset)
->        - *"Choose columns where your latitude is in your environment data file."*: `c2`
->        - *"Choose columns where your longitude is in your environment data file."*: `c1`
->    - In *"Your occurrence file (or table 2)"*:
->        - {% icon param-file %} *"Input your occurrence data file (tabular format only)"*: `out_file1` (output of **Filter** {% icon tool %})
->        - *"Choose columns where your latitude is in your occurrence data file."*: `c1`
->        - *"Choose columns where your longitude is in your occurrence data file."*: `c2`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **BRT tool prediction**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [BRT tool prediction](toolshed.g2.bx.psu.edu/repos/ecology/ecoregion_brt_analysis/ecoregion_brt_analysis/0.1.0+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Input your environment data file of your study area (tabular format only)"*: `output` (Input dataset)
->    - {% icon param-file %} *"Input your occurrences data file(s) containing also the environemental caracteristics where the species has been observe (tabular format only)"*: `occ_env_out` (output of **GeoNearestNeighbor** {% icon tool %})
->    - *"Choose column(s) where your abiotic parameter are in your environment data file."*: `c['3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19']`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **TaxaSeeker**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [TaxaSeeker](toolshed.g2.bx.psu.edu/repos/ecology/ecoregion_taxa_seeker/ecoregion_taxa_seeker/0.1.0+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Environement file (tabular format only)"*: `output` (Input dataset)
->    - {% icon param-file %} *"Occurences file(s) (tabular format only)"*: `occ_env_out` (output of **GeoNearestNeighbor** {% icon tool %})
->    - {% icon param-file %} *"Predictions file(s)"*: `outputpred` (output of **BRT tool prediction** {% icon tool %})
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Interactive JupyterLab Notebook**
-
