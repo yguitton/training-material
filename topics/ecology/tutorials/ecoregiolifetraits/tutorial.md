@@ -34,18 +34,16 @@ The primary goal of this workflow is to generate life traits distribution maps a
 Note: if you're data already contains life traits, use [this tutorial](https://training.galaxyproject.org/training-material/topics/ecology/tutorials/Ecoregionalization_tutorial/tutorial.html) instead, the process is the same with taxa and life traits.
 
 This workflow is therefore composed of 6 tools:
-
-    WormsMeasurments
-    GeoNearestNeighbor
-    BRT prediction tool
-    TaxaSeeker
-    ClaraGuess
-    EcoMap
+ - WormsMeasurments
+ - GeoNearestNeighbor
+ - BRT prediction tool
+ - TaxaSeeker
+ - ClaraGuess
+ - EcoMap
 
 And in this tutorial we will be using 2 more tools to format data before running the ecoregionalization workflow:
-
-    Advanced cut
-    Filter
+ - Advanced cut
+ - Filter
 
 
 Let’s delve into the tutorial, outlining each step and tool to manage the creation of ecoregionalization maps.
@@ -83,9 +81,8 @@ Here an example of environmental file input:
 ## Occurrence data
 
 The second data file you will need to run this workflow is an occurrences data file. As defined above, occurrences data are showing the presence (1) or absence (0), or just presence of a species or life trait at a particular location. This data file also needs to be in tabular format (.tsv or tabular) and need to be construct as following:
-
-    latitude and longitude columns
-    scientific name column
+ - latitude and longitude columns
+ - scientific name column
 
 Here an example of occurrences data file input:
 | lat   | long  | Planktotrophic | Lecitotrophic | Size |
@@ -94,7 +91,7 @@ Here an example of occurrences data file input:
 | -66,3 | 141,3 | 0              | 1             | 2    |
 | …     | …     | …              | …             | …    |
 
-For this tutorial, occurrences data from the Kerguelen plateau will be downloaded from the GBIF. These data were collected as part of the PROTEKER program (Protecting the biodiversity of the Kerguelen Plateau) led by the Institut Paul-Émile Victor (IPEV, program 1044) between 2013 and 2015. Prior to their publication in the PANGAEA database and archiving in scientific repositories, these data originated from standardized sampling campaigns conducted around the Kerguelen Islands. The dataset includes occurrence records and associated environmental measurements such as temperature, salinity, and substrate type. Sampling focused on benthic macrofauna in shallow coastal habitats. Only occurrences identified to at least the genus level and sampled by scuba diving or grab sampling were retained for this tutorial. The original dataset is published under open license and fully documented in Eléaume et al. (2017).
+For this tutorial, occurrences data from the Kerguelen plateau will be downloaded from the GBIF. These data were collected as part of the PROTEKER program (Protecting the biodiversity of the Kerguelen Plateau) led by the Institut Paul-Émile Victor (IPEV, program 1044) between 2013 and 2015. Prior to their publication in the PANGAEA database and archiving in scientific repositories, these data originated from standardized sampling campaigns conducted around the Kerguelen Islands. The dataset includes occurrence records and associated environmental measurements such as temperature, salinity, and substrate type. Sampling focused on benthic macrofauna in shallow coastal habitats. Only occurrences identified to at least the genus level and sampled by scuba diving or grab sampling were retained for this tutorial. The original dataset is published under open license and fully documented in Eléaume *et al.* (2017).
 
 ## Get data
 
@@ -149,7 +146,7 @@ For this tutorial, occurrences data from the Kerguelen plateau will be downloade
 > <hands-on-title>Life traits acquisition</hands-on-title>
 >
 > 1. {% tool [Enrich dataset with WoRMS](TODO url toolshed de l'outil) %}: add life traits to the dataset by
->    - *"occurrence data"*:  a `occurrence` filetabular that fills the requierments mentionned earlier
+>    - *"occurrence data"*: a `occurrence` tabular file that fills the requirements mentionned earlier
 >    - *"list of measurement types"*: a list of the life traits of interest like `Development,Fecundity`. Make they have the same spelling as on the WoRMS and with a capital letter. 
 >    - *"scientific name column name"*: look at your occurrence file, if the name of the column of scientific names is different from `scientificName` replace by the correct one.
 >    - *"include attributes inherited from parent taxon"*: WoRMS doesn't have all life traits informations and some Echinoid species have very limited informations. To avoid having too many missing values you can switch to on, if you don't know, run your workflow once, check the output of the next tool and if the size of the dataset decreased too much switch to yes. Warning, you need to have an idea of how many different life trait values you're going to have, the workflow will generate one map per life trait value, the number of life trait values will impact calculation time.
@@ -171,7 +168,7 @@ The first step of this tutorial is data formatting because the GBIF species occu
 >    - *"Cut by"*: `fields`
 >    - *"Delimited by"*: `Tab`
 >        - *"Is there a header for the data's columns ?"*: `Yes`
->            - *"List of Fields"*: `c['13', '14', '16']`
+>            - *"List of Fields"*: `c['98', '99', '149]`
 >
 {: .hands_on}
 
@@ -192,9 +189,10 @@ The first step of this tutorial is data formatting because the GBIF species occu
 > <hands-on-title> Remove lines with NAs </hands-on-title>
 >
 > 1. {% tool [Filter](TODO url toolshed de l'outil) %} with the following parameters:
->    - {% icon param-file %} *"With following condition"*: enable and paste thix expression `c1!='' and c2!='' and c3!='' and c4!='' and c1!='NA' and c2!='NA' and c3!='NA' and c4!='NA'`. It removes lines with missing value corresponding with latitude, longitude or scientificName, if your dataset has a special value for missing values like -9999, add ` and c1!='missingvalue' and c2!='missingvalue' {% icon tool %})
+>    - {% icon param-file %} *"With following condition"*: enable and paste thix expression `c1!='' and c2!='' and c3!='' and c1!='NA' and c2!='NA' and c3!='NA'`. It removes lines with missing value corresponding with latitude, longitude or scientificName, if your dataset has a special value for missing values like -9999, add ` and c1!='missingvalue' and c2!='missingvalue' {% icon tool %})
 >    - In *"Number of header lines to skip"* enter `1`
 > 2. Check your output. All the lines with missing values must have been deleted.
+> 3. Rename your file "corrected_occurence.tsv"
 >
 {: .hands_on}
 
@@ -220,19 +218,19 @@ This Galaxy tool allows you to merge two data tables (tabular format only) accor
 >        - *"Choose columns where your latitude is in your environment data file."*: `c2`
 >        - *"Choose columns where your longitude is in your environment data file."*: `c1`
 >    - In *"Your occurrence file (or table 2)"*:
->        - {% icon param-file %} *"Input your occurrence data file (tabular format only)"*: `pivot_file` (output of **Interactive JupyTool and notebook** {% icon tool %})
+>        - {% icon param-file %} *"Input your occurrence data file (tabular format only)"*: `corrected_occurence.tsv` (output of previous **Filter** step {% icon tool %})
 >        - *"Choose columns where your latitude is in your occurrence data file."*: `c1`
 >        - *"Choose columns where your longitude is in your occurrence data file."*: `c2`
 >
 >    > <comment-title> Coords precision </comment-title>
 >    >
->    > It is recommended that, for optimal precision, the latitude and longitude values in both files should be of the same precision level. And, for the sake of relevance, the geographical coordinates in both files should be as close as possible to apply the most accurate environmental parameters to the correct species occurrences
+>    > It is recommended that, for optimal precision, the latitude and longitude values in both files should be of the same precision level. And, for the sake of relevance, the geographical coordinates in both files should be as close as possible to apply the most accurate environmental parameters to the correct species occurrences.
 >    >
 >    {: .comment}
 >
 > 2. Check your outputs. You must have two files:
 >       - Information file containing the coordinates of occurrence data, the coordinates retains from environmental data and the distances between the two.
->       - Occurrence and Environment merge file containing occurrence data and environmental data cooresponding.
+>       - Occurrence and Environment merge file containing occurrence data and environmental data corresponding.
 >
 {: .hands_on}
 
