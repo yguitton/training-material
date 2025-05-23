@@ -138,18 +138,6 @@ For this tutorial, occurrences data from the Kerguelen plateau will be downloade
 >
 {: .hands_on}
 
-## Get life traits from WoRMS
-> <hands-on-title>Life traits acquisition</hands-on-title>
->
-> 1. {% tool [Enrich dataset with WoRMS](TODO url toolshed de l'outil) %}: add life traits to the dataset by
->    - *"occurrence data"*: a `occurrence` tabular file that fills the requirements mentionned earlier
->    - *"list of measurement types"*: a list of the life traits of interest like `Development,Fecundity`. Make they have the same spelling as on the WoRMS and with a capital letter. 
->    - *"scientific name column name"*: look at your occurrence file, if the name of the column of scientific names is different from `scientificName` replace by the correct one.
->    - *"include attributes inherited from parent taxon"*: WoRMS doesn't have all life traits informations and some Echinoid species have very limited informations. To avoid having too many missing values you can switch to on, if you don't know, run your workflow once, check the output of the next tool and if the size of the dataset decreased too much switch to yes. Warning, you need to have an idea of how many different life trait values you're going to have, the workflow will generate one map per life trait value, the number of life trait values will impact calculation time.
->    - *"one hot encoding on the measurement types"*: make sure it's enabled.
-{: .hands_on}
-
-
 # Data formatting
 
 The first step of this tutorial is data formatting because the GBIF species occurrence file download needs to be in a specific format to be included inside the Ecoregionalization workflow.
@@ -164,28 +152,34 @@ The first step of this tutorial is data formatting because the GBIF species occu
 >    - *"Cut by"*: `fields`
 >    - *"Delimited by"*: `Tab`
 >        - *"Is there a header for the data's columns ?"*: `Yes`
->            - *"List of Fields"*: `c['98', '99', '149]`
+>            - *"List of Fields"*: `c['98, '99', '149]`
 >
+>    > <comment-title> Issue with the column numbers </comment-title>
+>    >
+>    > It is possible the column numbers are changing in the occurence file, so don't hesitate to check the name of the column header, and if relevant, use the search functionnality to find the columns containing "latitude", "longitude" and "scientific name" informations.
+>    >
+>    {: .comment}
+> 
+> 
 {: .hands_on}
 
-> <question-title></question-title>
+## Get life traits from WoRMS
+> <hands-on-title>Life traits acquisition</hands-on-title>
 >
-> 1. What are the kept columns ?
->
-> > <solution-title></solution-title>
-> >
-> > 1. The columns we kept are : decimalLatitude, decimalLongitude, scientificName.
-> >
-> {: .solution}
->
-{: .question}
+> 1. {% tool [Enrich dataset with WoRMS](toolshed.g2.bx.psu.edu/repos/ecology/wormsmeasurements/WormsMeasurements/0.1.1) %}: add life traits to the dataset by
+>    - *"occurrence data"*: a `occurrence` tabular file that fills the requirements mentionned earlier
+>    - *"list of measurement types"*: a list of the life traits of interest like `Development,Fecundity`. Make they have the same spelling as on the WoRMS and with a capital letter. 
+>    - *"scientific name column name"*: look at your occurrence file, if the name of the column of scientific names is different from `scientificName` replace by the correct one.
+>    - *"include attributes inherited from parent taxon"*: WoRMS doesn't have all life traits informations and some Echinoid species have very limited informations. To avoid having too many missing values you can switch to on, if you don't know, run your workflow once, check the output of the next tool and if the size of the dataset decreased too much switch to yes. Warning, you need to have an idea of how many different life trait values you're going to have, the workflow will generate one map per life trait value, the number of life trait values will impact calculation time.
+>    - *"one hot encoding on the measurement types"*: make sure it's enabled.
+{: .hands_on}
 
 ## Remove lines with NAs or empty values with Filter
 
 > <hands-on-title> Remove lines with NAs </hands-on-title>
 >
-> 1. {% tool [Filter](TODO url toolshed de l'outil) %} with the following parameters:
->    - {% icon param-file %} *"With following condition"*: enable and paste thix expression `c1!='' and c2!='' and c3!='' and c1!='NA' and c2!='NA' and c3!='NA'`. It removes lines with missing value corresponding with latitude, longitude or scientificName, if your dataset has a special value for missing values like -9999, add ` and c1!='missingvalue' and c2!='missingvalue' {% icon tool %})
+> 1. {% tool [Filter](Filter1) %} with the following parameters:
+>    - {% icon param-file %} *"With following condition"*: enable and paste thix expression `c1!='' and c2!='' and c3!='' and c4!='' and c5!='' and c1!='NA' and c2!='NA' and c3!='NA' and c4!='NA' and c5!='NA'`. It removes lines with missing value corresponding with latitude, longitude, scientificName, Development_planktotrophic, Fecundity_, if your dataset has a special value for missing values like -9999, add ` and c1!='missingvalue' and c2!='missingvalue' {% icon tool %})
 >    - In *"Number of header lines to skip"* enter `1`
 > 2. Check your output. All the lines with missing values must have been deleted.
 > 3. Rename your file "corrected_occurence.tsv"
