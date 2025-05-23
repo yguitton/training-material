@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 
-title: Annotate, prepare tests and publish on workflow registries Galaxy workflows 
+title: Annotate, prepare tests and publish Galaxy workflows in workflow registries
 tags:
 - workflows
 - FAIR
@@ -45,13 +45,15 @@ The FAIR principles —-Findable, Accessible, Interoperable, and Reusable—- pr
 - **Accessible**: Stored in a way that allows them to be retrieved by those who need them.
 - **Interoperable**: Usable across different systems and platforms without extensive adaptation.
 - **Reusable**: Well-documented and clearly licensed to enable reuse in different contexts.
-
+> <comment-title></comment-title>
+> You can learn more about FAIR Data, Workflows, and Research in our [dedicated topic with numerous tutorials]({% link topics/fair/index.md %})
+{: .comment}
 Applying these principles to workflows is equally important for good data management:
 
 - **Enhanced Discoverability**: Well-annotated and documented workflows are easier to find, making them more likely to be used and cited.
 - **Improved Reproducibility**: Standardized and tested workflows ensure that analyses can be reproduced, validating research findings.
 - **Community Collaboration**: Sharing workflows through centralized registries fosters collaboration and innovation within the bioinformatics community.
-- **Sustainability**: Regular updates and versioning ensure that workflows remain compatible with the latest tools and Galaxy releases, extending their lifespan and utility.
+- **Sustainability**: Regular updates and versioning ensure that workflows remain compatible with the latest tools, extending their lifespan and utility.
 
 While making a workflow FAIR might seem complicated ({% cite wilkinson2025applying %}, {% cite goble2020fair %}), publications like "Ten quick tips for building FAIR workflows" ({% cite de2023ten %}) provide practical guidelines to simplify the process:
 
@@ -141,7 +143,7 @@ Metadata should include details about the workflow's components and clearly outl
 > {: .solution}
 {: .question}
 
-Galaxy workflow interface supports some metadata. Are they enough to fulfill Tip 2 and also Tip 1 *"Register the workflow."*. WorkflowHub, a workflow registry we will explain more later, supports the [following metadata](https://about.workflowhub.eu/docs/metadata-list/):
+Galaxy workflow interface supports some metadata, enough to fulfill Tip 2 and also Tip 1 (*"Register the workflow."*). WorkflowHub, a workflow registry we will explain more later, supports the [following metadata](https://about.workflowhub.eu/docs/metadata-list/):
 
 Name | Description | Mandatory
 --- | --- |
@@ -198,7 +200,7 @@ Let's annotate the workflow
 > 6. Save the workflow
 {: .hands_on}
 
-Tip 2 is now fulfilled. We can now move toward the other left tips:
+Tip 2 is now fulfilled. We can now move toward the other recommendations:
 
 - Tip 1 (**Findability**): *"Register the workflow."*
 - Tip 3 (**Accessibility**): *"Make source code available in a public code repository."*
@@ -222,11 +224,11 @@ Tip 2 is now fulfilled. We can now move toward the other left tips:
    > We can now do the same for MultiQC.
    {: .details}
 
-To achive Tip 1 and register the workflow, we will first need to fulfill Tips 3 and 4. Before, we need to be sure that the workflow adheres to best practices for Galaxy workflows.
+Before we care about Tip 3 and 4, lets use the build-in Galaxy Wizard to check if our workflow adheres to best practices of Galaxy workflows.
 
 # Adhere to best practices for Galaxy workflows
 
-There are a number of things the user interface of Galaxy will allow that are not considered best practices because they make the workflow harder to test, use within subworkflows and invocation reports, and consume via the API. It is easier to use workflows in all of these contexts if they stick to the [best practices developed by the commmunity](https://planemo.readthedocs.io/en/latest/best_practices_workflows.html).
+Galaxy has a build-in Wizard to check against [community developed best practice workflows](https://planemo.readthedocs.io/en/latest/best_practices_workflows.html). It will recommend to use a License, add Authors etc but also ensures that workflows are easy to test, that they are usable as subworkflows and invocation reports, and can be consumed easily via an API. The reusablility will be greatly enhanced if you stick to those recommendations.
 
 > <hands-on-title>Check alignment with best practices</hands-on-title>
 >
@@ -353,7 +355,7 @@ With this example history we fulfilled Tip 4. We will now fulfill Tip 1 (*"Regis
 
 # Register the workflow by making the workflow available in the public IWC GitHub repository
 
-To make your workflow FAIR (Findable, Accessible, Interoperable, and Reusable), it's essential to start by making it findable. Let's now register the workflow in a public registry that enables systematic scientific annotations and supports multiple workflow languages. We recommend using specialized workflow registries such as [WorkflowHub](https://workflowhub.eu/) ({% cite gustafsson2024workflowhub %}) or [Dockstore](https://dockstore.org/) ({% cite yuen2021dockstore %}), which cater to workflows written in different languages and provide unique features like digital object identifiers (DOIs) for easy citation and version tracking.
+To make your workflow FAIR, it's essential to start by making it findable. Let's now register the workflow in a public registry that enables systematic scientific annotations and supports multiple workflow languages. We recommend using specialized workflow registries such as [WorkflowHub](https://workflowhub.eu/) ({% cite gustafsson2024workflowhub %}) or [Dockstore](https://dockstore.org/) ({% cite yuen2021dockstore %}), which cater to workflows written in different languages and provide unique features like digital object identifiers (DOIs) for easy citation and version tracking.
 
 A Galaxy workflow can be registered by anyone on the WorkflowHub and Dockstore by following their documentation. In this section, we will see how to register a workflow on both WorkflowHub and Dockstore (Tip 1 - *"Register the workflow."*) by making it available in a public GitHub repository (Tip 3 - *"Make source code available in a public code repository."*) maintained by the Intergalactic Workflow Commission (IWC), a Galaxy community effort.
 
