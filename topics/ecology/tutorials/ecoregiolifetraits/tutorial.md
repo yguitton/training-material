@@ -107,15 +107,11 @@ For this tutorial, occurrences data from the Kerguelen plateau will be downloade
 >
 >    Occurrence data file as a zip file where you will find "occurrence.txt"
 >    ```
->    https://api.gbif.org/v1/occurrence/download/request/0030809-240506114902167.zip
+>    https://api.gbif.org/v1/occurrence/download/request/0012077-250515123054153.zip
 >    ```
 >    Environemental data : "ceamarc_env.tab"
 >    ```
 >    https://data.indores.fr/api/access/datafile/9777
->    ```
->    Jupyter notebook : "pivot_wider_jupytool_notebook.ipynb"
->    ```
->    https://data.indores.fr/api/access/datafile/9756
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
