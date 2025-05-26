@@ -86,7 +86,7 @@ To illustrate the process, we will use a simple workflow with 2 steps as an exam
 
 # Prepare the workflow
 
-Here, we will use a workflow running FastQC and MultiQC but you can use your own workflow.
+Here, we will use a workflow running Falco (FastQC alternative, {% cite de2021falco %}) and MultiQC ({% cite ewels2016multiqc %}) but you can use your own workflow.
 
 > <hands-on-title>Create the workflow into Galaxy</hands-on-title>
 >
@@ -97,13 +97,13 @@ Here, we will use a workflow running FastQC and MultiQC but you can use your own
 >
 > 3. Add a single data input
 >
-> 4. Add {% tool [FastQC](toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.74+galaxy1) %} and {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.27+galaxy3) %}
+> 4. Add {% tool [Falco](toolshed.g2.bx.psu.edu/repos/iuc/falco/falco/1.2.4+galaxy0) %} and {% tool [MultiQC](toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.27+galaxy3) %}
 >
-> 5. Connect the input to **FastQC**
+> 5. Connect the input to **Falco**
 > 6. Define **MultiQC** parameter
 >    - **Which tool was used generate logs?**: `FastQC`
 > 
-> 7. Connect `text_file` **FastQC** to **MultiQC** input
+> 7. Connect `text_file` **Falco** to **MultiQC** input
 {: .hands_on}
 
 # Annotate the Galaxy workflow with essential metadata
@@ -143,7 +143,7 @@ Metadata should include details about the workflow's components and clearly outl
 > {: .solution}
 {: .question}
 
-Galaxy workflow interface supports some metadata, enough to fulfill Tip 2 and also Tip 1 (*"Register the workflow."*). WorkflowHub, a workflow registry we will explain more later, supports the [following metadata](https://about.workflowhub.eu/docs/metadata-list/):
+Galaxy workflow interface supports some metadata. Are they enough to fulfill Tip 2 and also Tip 1 *"Register the workflow."*? WorkflowHub, a workflow registry we will explain more later, supports the [following metadata](https://about.workflowhub.eu/docs/metadata-list/):
 
 Name | Description | Mandatory
 --- | --- |
@@ -171,7 +171,7 @@ Name | Description | Mandatory
 > > Source | *Not supported in Galaxy workflow interface* | 
 > > Teams | *Not supported in Galaxy workflow interface* | 
 > > License | License | MIT License
-> > Sharing | *Not supported in Galaxy workflow interface* | 
+> > Sharing | *Supported in Galaxy workflow interface but not in the same way as WorkflowHub* | 
 > > Tags | Tags | `sequence-analysis`, `mapping`
 > > Creators | Creator | 
 > >
@@ -207,21 +207,23 @@ Tip 2 is now fulfilled. We can now move toward the other recommendations:
 - Tip 4 (**Accessibility**): *"Provide example input data and results along with the workflow."*
 - Tip 10 (**Reusability**): *"Provide clear and concise workflow documentation."*
 
-   The workflow annotation provides a short and concise description of the workflow. So Tip 10 is partially fullfilled. In addition to the workflow annotation, each step could annotated so users could have an idea about the purpose of the steps
+   The workflow annotation provides a short and concise description of the workflow. So Tip 10 is partially fullfilled. In addition to the workflow annotation, each step could annotated and [commented](https://galaxyproject.org/news/2024-04-26-workflows-workflows-workflows/#-workflow-comments) so users could have an idea about the purpose of the steps
 
    > <details-title>Add step descriptions to fulfill Tip 10</details-title>
    > 
-   > Let's add label and annotation to each step.
+   > Let's add label and annotation to each step and comments to the workflow.
    >
-   > > <hands-on-title>Add FastQC label and step annotation</hands-on-title>
+   > > <hands-on-title>Add tool label and annotation and comments</hands-on-title>
    > >
-   > > 1. Click on **FastQC**
-   > > 2. Fill in **Label** with `Quality control` in the right panel
-   > > 3. Fill in **Step Annotation** with `This step uses FastQC to generate statistics of raw reads quality including basic statistics, per base sequence quality, per sequence quality scores, adapter content, etc.`
-   > > 4. Save the workflow
+   > > 1. Add tool label and step annotation to **Falco**
+   > >    1. Click on **Falco**
+   > >    2. Fill in **Label** with `Quality control` in the right panel
+   > >    3. Fill in **Step Annotation** with `This step uses Falco (FastQC alternative) to generate statistics of raw reads quality including basic statistics, per base sequence quality, per sequence quality scores, adapter content, etc.`
+   > >    4. Save the workflow
+   > > 2. Add tool label and step annotation to **MultiQC**
+   > > 3. Add comments and annotations to workflow to create an high resolution image of the Galaxy Workflow by following the [dedicated tutorial]({% link topics/galaxy-interface/tutorials/workflow-posters/tutorial.md %})
    > {: .hands_on}
-   > 
-   > We can now do the same for MultiQC.
+   >
    {: .details}
 
 Before we care about Tip 3 and 4, lets use the build-in Galaxy Wizard to check if our workflow adheres to best practices of Galaxy workflows.
@@ -292,8 +294,8 @@ As for inputs, workflows should define explicit, labeled outputs. While Galaxy d
 
 > <hands-on-title>Add labels to outputs</hands-on-title>
 >
-> 1. Rename labels for all outputs to add tool name (e.g. FastQC `text_file` becomes `fastqc_text_file`)
-> 2. Check boxes on the left of HTML outputs of both FastQC and MultiQC in the middle pannel
+> 1. Rename labels for all outputs to add tool name (e.g. Falco `text_file` becomes `falco_text_file`)
+> 2. Check boxes on the left of HTML outputs of both Falco and MultiQC in the middle pannel
 > 3. Save the workflow
 > 4. Check the best practices
 {: .hands_on}
@@ -431,7 +433,7 @@ To generate tests, we can either write test cases by hand, or use a workflow inv
 >
 {: .hands-on}
 
-We have earlier executed the workflow on our example dataset. We can use this **workflow invocation** to  generate the tests.
+We have earlier executed the workflow on our example dataset. We can use this **workflow invocation** to generate the tests using Planemo, a software development kit for tools and workflows ({% cite bray2023planemo %})
 
 > <hands-on-title>Extract the tests from the example history workflow invocation</hands-on-title>  
 >
@@ -486,14 +488,14 @@ This will place in the current working directory:
 > >    outputs:
 > >      multiqc_html:
 > >        path: test-data/multiqc_html.html
-> >      fastqc_html:
-> >        path: test-data/fastqc_html.html
+> >      falco_html:
+> >        path: test-data/falco_html.html
 > >    ```
 > >
 > > 3. The files are quite large:
 > >    - `FastQ.fastqsanger.gz`: 132 KB
-> >    - `fastqc_html.html`: 2.6 MB
-> >    - `multiqc_html.html`: 1.5 MB
+> >    - `falco_html.html`: 169 KB
+> >    - `multiqc_html.html`: 5 MB
 > {: .solution}
 {: .question}
 
@@ -520,11 +522,11 @@ The HTML files in the `test-data` folder are quite large, above the 1 MB limit o
 >
 > 4. Ensure all test **output names** are included.
 >
-> 5. For FastQC step 
+> 5. For Falco step 
 >    
->    1. Open the FastQC HTML output on Galaxy
+>    1. Open the Falco HTML output on Galaxy
 >    2. Search for a text specific to this data (e.g. `female_oral2_fastq-4143_gz.gz` here)
->    3. Replace in the `<workflow_name-test>.yml` file the `path` line of `fastqc_html` output by:
+>    3. Replace in the `<workflow_name-test>.yml` file the `path` line of `falco_html` output by:
 > 
 >       ```
 >       asserts:
