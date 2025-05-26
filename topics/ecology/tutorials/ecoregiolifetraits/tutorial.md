@@ -80,9 +80,10 @@ Here an example of environmental file input:
 
 ## Occurrence data
 
-The second data file you will need to run this workflow is an occurrences data file. As defined above, occurrences data are showing the presence (1) or absence (0), or just presence of a species or life trait at a particular location. This data file also needs to be in tabular format (.tsv or tabular) and need to be construct as following:
+The second data file you will need to run this workflow is an occurrences data file. As defined above, occurrences data are showing the presence of a species or life trait at a particular location. This data file also needs to be in tabular format (.tsv or tabular) and need to be construct as following:
  - latitude and longitude columns
  - scientific name column
+You're occurrence data shouldn't contain absence of a species, if so, you have to filter the absence. If you're occurrences contain abundance data, it won't be taken into account.
 
 Here an example of occurrences data file input:
 | lat   | long  | Planktotrophic | Lecitotrophic | Size |
