@@ -50,9 +50,7 @@ We are testing a new search experience. It does not do semantic ranking of resul
 	<select class="form-control" id="topic">
 		<!-- Manually add a few options -->
 		<option value="Any">Any</option>
-		<option value="GTN FAQ">GTN FAQ</option>
-		<option value="Galaxy FAQ">Galaxy FAQ</option>
-		<!-- Automatically add other topics with exclusions -->
+		<!-- Automatically add other topics -->
 		{% assign sorted_topics = site | list_topics_ids | sort %}
 		{% for topic_name in sorted_topics %}
 			{% assign topic = site.data[topic_name] %}
