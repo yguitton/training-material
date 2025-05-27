@@ -11,14 +11,11 @@ objectives:
 - Compute endemism index
 - Create a phyloregion map
 time_estimation: ''
-key_points:
-- The take-home messages
-- They will appear at the end of the tutorial
 tags:
 - ecology
 - taxonomic data
 contributors:
-- morphy427
+- Morphy427
 
 ---
 
@@ -118,8 +115,8 @@ The first step is to be sure your data are well formated. If all your file are i
 > <hands-on-title> run PhylOccuMatcher </hands-on-title>
 >
 > 1. {% tool [PhylOccuMatcher](toolshed.g2.bx.psu.edu/repos/ecology/phylogenetic_occupancy_matcher/phylogenetic_occupancy_matcher/1.0+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Phylogeny file (Newick format)"*: `output` (Input dataset)
->    - {% icon param-file %} *"Occupancy data (Tabular format)"*: `output` (Input dataset)
+>    - {% icon param-file %} *"Phylogeny file (Newick format)"*: `phylogeny_test` (Input dataset)
+>    - {% icon param-file %} *"Occupancy data (Tabular format)"*: `grid_test.csv` (Input dataset)
 >
 >
 >    > <comment-title> short description </comment-title>
@@ -133,8 +130,8 @@ The first step is to be sure your data are well formated. If all your file are i
 
 > <hands-on-title> run CRSConverter </hands-on-title>
 >
-> 1. {% tool [CRSconverter](toolshed.g2.bx.psu.edu/repos/ecology/crsconverter/crsconverter/1.0+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"shapefile"*: `output` (Input dataset)
+> 1. {% tool [CRSconverter](toolshed.g2.bx.psu.edu/repos/ecology/crsconverter/crsconverter/1.1+galaxy0) %} with the following parameters:
+>    - {% icon param-file %} *"shapefile"*: `composite_dataset` (Input dataset)
 >
 >
 > > <warning-title>Pay attention to output format</warning-title>
