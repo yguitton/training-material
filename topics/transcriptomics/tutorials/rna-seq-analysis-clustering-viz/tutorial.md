@@ -19,7 +19,7 @@ questions:
     - What are the biological functions impacted by the differential expression of genes?
     - How to visualise high-dimensional data
     - How to cluster similar samples and genes?
-objective:
+objectives:
     - To learn the principles of the analysis and visualisation of a multidimensional data analysis. We will use RNA-seq data as an example of a multidimensional -omics dataset.
 time_estimation: 6h
 key_points:
