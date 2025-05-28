@@ -31,7 +31,7 @@ We are testing a new search experience. It does not do semantic ranking of resul
 	</select>
 	</div>
 	</div>
-	
+
 	<div class="col-md-2">
 	<div class="form-group">
 	<label for="level">Level</label>
@@ -43,13 +43,15 @@ We are testing a new search experience. It does not do semantic ranking of resul
 	</select>
 	</div>
 	</div>
-	
+
 	<div class="col-md-3">
 	<div class="form-group">
 	<label for="topic">Topic</label>
 	<select class="form-control" id="topic">
 		<!-- Manually add a few options -->
 		<option value="Any">Any</option>
+		<option value="GTN FAQ">GTN FAQ</option>
+		<option value="Galaxy FAQ">Galaxy FAQ</option>
 		<!-- Automatically add other topics -->
 		{% assign sorted_topics = site | list_topics_ids | sort %}
 		{% for topic_name in sorted_topics %}
