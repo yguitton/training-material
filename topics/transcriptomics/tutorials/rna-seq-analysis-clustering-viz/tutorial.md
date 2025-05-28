@@ -134,10 +134,6 @@ In our example, we have samples with two varying factors that can contribute to 
 The effect of Ionizing Radiation (IR) is our primary interest. Later on, we will explore the differences in IR response between wild-type and knock-out cells and which genes are dependent on p53 for their response to IR.
 We will now assign each sample to the right group
 
-{% include _includes/cyoa-choices.html option1="Basic" option2="Tag-based" option3="Collection split" default="Basic" text="Which approach would you prefer to use?" disambiguation="deseq"%}
-
-<div class="Basic" markdown="1">
-
 We can now run **DESeq2**:
 
 > <hands-on-title>Determine differentially expressed features</hands-on-title>
