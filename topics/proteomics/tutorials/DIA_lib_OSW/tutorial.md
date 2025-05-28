@@ -184,7 +184,7 @@ The PTXQC software ({% cite Bielow2015 %}) was built to enable direct proteomcs 
 {: .question}
 
 
-# **diapysef library generation**
+# diapysef library generation
 
 > <hands-on-title>Generation of a spectral library using the unique <b>MaxQuant</b> search results and indexed retention time <i>iRT</i> peptides</hands-on-title>
 >
