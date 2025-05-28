@@ -71,14 +71,15 @@ In the first part of this tutorial we will upload the count matrices to your Gal
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
->    ![Screenshot](images/upload-screenshot.png)
+>    See also [this screenshot](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/screenshots/Screenshot%202025-05-22%20115748.png)
 >
 >    *Note:* The files with null in the filename are for the p53 knockout (p53-/-) cells and the files with p53 in the filename are for the wild-type cells
 >
 >    **Alternative:** If this results in an error, you may download the zip file with all the input data from the [github site](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/data/input_data_Bcell_dataset.zip) to your local computer, unzip and import all the files using the _Choose local file_ option from the Upload menu.
 >
 > 3. **Inspect** {% icon galaxy-eye %} some of the files by hitting they eye button
-> 4. Upload also the gene annotation file and choose _gtf.gz_ as file type
+> 4. Upload also the gene annotation file:
+>
 >    ```text
 >    https://raw.githubusercontent.com/pacthoen/BMW2_RNA_clust_vis/refs/heads/main/data/Mus_musculus.NCBIM37.65.gtf.gz
 >    ```
@@ -86,7 +87,7 @@ In the first part of this tutorial we will upload the count matrices to your Gal
 >
 >    _Note:_ The numbers in the count files are the number of sequence reads to a specific gene. Only mRNAs that were detected in all samples were selected during the preprocessing of the data.
 >
-> 5. **Set the datatype** {% icon galaxy-pencil %} to `gtf.gz`
+> 5. **Set the datatype** {% icon galaxy-pencil %} of the annotation file to `gtf.gz`
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="gtf.gz" %}
 >
@@ -493,12 +494,21 @@ The tool needs a featureMetadata file with the names (and optional characteristi
 >
 > 1. Create the featureMetadata file using the **cut** tool on the `Input data for PCA and clustering` object
 >    - *"Cut columns"*: c1
-> 2. Import the count files from our [github repository](https://github.com/pacthoen/BMW2_RNA_clust_vis) using the Data Upload menu (top left) and the button _Paste/Fetch Data_. Indicate that the data files are `Tabular`.
+> 2. Import the count files from our [github repository](https://github.com/pacthoen/BMW2_RNA_clust_vis) using the Data Upload menu (top left) and the button _Paste/Fetch Data_.
+>
 >    ```text
 >    https://raw.githubusercontent.com/pacthoen/BMW2_RNA_clust_vis/refs/heads/main/data/GSE71176_sample_metadata.txt
 >    ```
->    _Note_ Make sure that the order of the sample names in the data matrix and the sampleMetadata file are the same!
-> 3. Run {% tool [Multivariate](toolshed.g2.bx.psu.edu/repos/ethevenot/multivariate/Multivariate/2.3.10) %} with the following parameters, according to this [Screenshot](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/screenshots/Screenshot%202025-05-23%20124140.png):
+>
+>    {% snippet faqs/galaxy/datasets_import_via_link.md %}
+>
+>    *Note*: Make sure that the order of the sample names in the data matrix and the sampleMetadata file are the same!
+>
+> 3. **Set the datatype** {% icon galaxy-pencil %} to `Tabular`.
+>
+>    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="Tabular" %}
+>
+> 4. Run {% tool [Multivariate](toolshed.g2.bx.psu.edu/repos/ethevenot/multivariate/Multivariate/2.3.10) %} with the following parameters, according to this [Screenshot](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/screenshots/Screenshot%202025-05-23%20124140.png):
 >    - {% icon param-file %} *"Data matrix file"*: `Input data for PCA and clustering`
 >    - {% icon param-file %} *"Sample metadata file"*: Your uploaded metadata
 >    - {% icon param-file %} *"Variable metadata file"*: `Filtered_variableMetadata` (output of the last _cut_ job)
@@ -526,16 +536,20 @@ The PCA scores plot representing the projection of samples on the two first comp
 > {: .solution}
 {: .question}
 
-> 4. Repeat the analysis but now with four principal components and plot principal component 3 at the x-axis (abscissa) and component 4 at the y-axis (ordinate)
-> 5. Optional: one can also OPLS (Orthogonal Partial Least Squares) which is a supervised form of multivariate analysis
-
+> <hands-on-title> Repeat the analysis</hands-on-title>
+>
+> 1. Repeat the analysis but now with four principal components and plot principal component 3 at the x-axis (abscissa) and component 4 at the y-axis (ordinate)
+> 2. Optional: one can also OPLS (Orthogonal Partial Least Squares) which is a supervised form of multivariate analysis
+{: .hands_on}
 
 ## Clustering
 
 We will use the **heatmap2** tool to perform the clustering of samples based on their mRNA expression patterns and evaluate the influence of different clustering algorithms (average linkage vs single linkage) and distance measures (Euclidean distance or Pearson correlation). See this [Screenshot](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/screenshots/Screenshot%202025-05-23%20152150.png)
 
 > <hands-on-title>Clustering with Heatmap2 </hands-on-title>
-> 1. Select as *"Input"* `Input data for PCA and clustering`
+>
+> 1. {% tool [heatmap2](toolshed.g2.bx.psu.edu/repos/iuc/ggplot2_heatmap2/ggplot2_heatmap2/3.2.0+galaxy1) %} with the following parameters:
+>    - *"Input"*: `Input data for PCA and clustering`
 >    - *"Plot title"*: indicate the clustering algorithm and the distance measure used
 >    - *"Data transformation"*: `Plot the data as is`. Because the data has already been VST normalized
 >    - *"Compute Z-scores prior to clustering"*: `Compute on rows`. This brings all the genes on the same scale (mean zero and standard deviation. If you do not this (you can check!) the clustering will group high expressed genes together and low expressed together, whereas it is more interesting to cluster genes based on the differences seen between samples.
