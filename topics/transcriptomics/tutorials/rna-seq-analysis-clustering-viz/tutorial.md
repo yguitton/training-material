@@ -310,12 +310,14 @@ The annotated table contains no column names, which makes it difficult to read. 
 
 ## Create Volcano plot to visualise differentially expressed genes
 
-Select the tool **Volcano Plot**
-> In a Volcano plot, the 2logFC (x-axis) is plotted against the -log10(P-value).
-> > Choose the right column numbers. See this [Screenshot](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/screenshots/Screenshot%202025-05-22%20162602.png). Change the significant threshold to 0.05 and LogFC 2 as as thresholds to colour.
-> >  Put in correct titles under _Plot options_.
-> >
-Repeat the DESeq2 analysis but now with `Genotype` as first factor (contrasting KO and WT cells). Repeat the Volcano plot.
+> <hands-on-title></hands-on-title>
+> 1. Select the tool **Volcano Plot**
+>    In a Volcano plot, the 2logFC (x-axis) is plotted against the -log10(P-value).
+>    - Choose the right column numbers. See this [Screenshot](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/screenshots/Screenshot%202025-05-22%20162602.png). Change the significant threshold to 0.05 and LogFC 2 as as thresholds to colour.
+>    - Put in correct titles under _Plot options_.
+>
+> 2. Repeat the DESeq2 analysis but now with `Genotype` as first factor (contrasting KO and WT cells). Repeat the Volcano plot.
+{: .hands_on}
 
 > <question-title></question-title>
 >
