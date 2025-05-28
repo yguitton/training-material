@@ -41,7 +41,7 @@ RNA-seq is often used to explore the function of a gene or the effect of a genet
 >
 > The original data are available at NCBI Gene Expression Omnibus (GEO) under accession number [GSE71176](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE71176). The raw RNA-Seq reads have been extracted from the Sequence Read Archive (SRA) files and converted into FASTQ files and counts.
 >
-
+{: .comment}
 
 # Data upload
 
@@ -68,19 +68,18 @@ In the first part of this tutorial we will upload the count matrices to your Gal
 >    https://raw.githubusercontent.com/pacthoen/BMW2_RNA_clust_vis/refs/heads/main/data/null_IR_1.csv
 >    https://raw.githubusercontent.com/pacthoen/BMW2_RNA_clust_vis/refs/heads/main/data/null_IR_2.csv
 >    ```
-> > **Alternative** If this results in an error, you may download the zip file with all the input data from the [github site](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/data/input_data_Bcell_dataset.zip) to your local computer, unzip and import all the files using the _Choose local file_ option from the Upload menu.
+>  **Alternative** If this results in an error, you may download the zip file with all the input data from the [github site](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/data/input_data_Bcell_dataset.zip) to your local computer, unzip and import all the files using the _Choose local file_ option from the Upload menu.
 >
 > 3. Inspect some of the files by hitting the icon with the _eye_ button.
->
 >
 > 4. Upload also the gene annotation file and choose _gtf.gz_ as file type
 >    ```text
 >    https://raw.githubusercontent.com/pacthoen/BMW2_RNA_clust_vis/refs/heads/main/data/Mus_musculus.NCBIM37.65.gtf.gz
 >    ```
-> > **Alternative** Like before, if this results in an error, you can download the gtf.gz file from the [github site](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/data/Mus_musculus.NCBIM37.65.gtf.gz) to your local computer and import the gtf.gz file (no need for unzipping) using _Choose local file_ option from the Upload menu
-
-_Note:_ The numbers in the count files are the number of sequence reads to a specific gene. Only mRNAs that were detected in all samples were selected during the preprocessing of the data.
-
+>    **Alternative** Like before, if this results in an error, you can download the gtf.gz file from the [github site](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/data/Mus_musculus.NCBIM37.65.gtf.gz) to your local computer and import the gtf.gz file (no need for unzipping) using _Choose local file_ option from the Upload menu
+>
+> _Note:_ The numbers in the count files are the number of sequence reads to a specific gene. Only mRNAs that were detected in all samples were selected during the preprocessing of the data.
+>
 >    > <question-title></question-title>
 >    >
 >    > 1. How many mRNAs were detected in all samples?
@@ -91,7 +90,7 @@ _Note:_ The numbers in the count files are the number of sequence reads to a spe
 >    > >
 >    > {: .solution}
 >    {: .question}
-
+{: .hands_on}
 
 # Analysis of the differential gene expression
 
@@ -123,7 +122,6 @@ This expression analysis is estimated from read counts and attempts are made to 
 >    > >
 >    > {: .solution}
 >    {: .question}
-
 {: .details}
 
 Multiple factors with several levels can then be incorporated in the analysis describing known sources of variation (e.g. treatment, tissue type, gender, batches), with two or more levels representing the conditions for each factor. After normalization we can compare the response of the expression of any gene to the presence of different levels of a factor in a statistically reliable way.
@@ -223,6 +221,7 @@ For more information about **DESeq2** and its outputs, you can have a look at th
 - An output file with VST-Normalized counts (VST stands for Variance Stabilization and Transformation; this is the preferred normalization method in DESeq2 and we will use these counts later on for PCA and clustering
 
 Use the **filter** tool on the DESeq2 result file to identify the genes with absolute fold-change greater than 2. Use the condition: abs(c3)>2. Number of header lines to skip: 1. See this [Screenshot](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/screenshots/Screenshot%202025-05-22%20130228.png). And use the **sort** tool to identify the genes with the largest fold-change (most upregulated). See this [Screenshot](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/screenshots/Screenshot%202025-05-22%20132050.png)
+
 > <question-title></question-title>
 >
 > 1. What does it mean when an mRNA has an absolute 2logFC greater than 2?
@@ -342,7 +341,8 @@ We have extracted genes that are differentially expressed in IR- vs. mock-treate
   - a boolean indicating whether the gene is differentially expressed or not (`True` if differentially expressed or `False` if not). We will use abs(2LogFC) > 2 as a criterion
 - A file with information about the length of a gene to correct for potential length bias in differentially expressed genes
 
-
+> <hands-on-title> Prepare input for goseq </hands-on-title>
+>
 > 1. Use the **Gene length and GC content** tool on the _Annotation file_ (gtf format). See this [screenshot](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/screenshots/Screenshot%202025-05-22%20210701.png)
 >    - *"Analysis to perform"*: `gene lengths only`
 > 2. Merge the gene length and the annotated DESeq2 ouput file **DESeq2 result file** with primary factor Treatment using the **Join two datasets side by side** tool. In *"Keep the header lines"*: `No`. See this [Screenshot](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/screenshots/Screenshot%202025-05-22%20214135.png)
@@ -439,6 +439,8 @@ In the second part of this computer assignment we will use commonly used techniq
 
 ## Filter for most variable genes
 For filtering the most variable genes, we will compute the coefficient of variation (CV). This is defined as the standard deviation divided by the mean.
+> <hands-on-title> Filter for most variable genes </hands-on-title>
+>
 > 1. Use the the **Table compute** tool to calculate the standard deviation (std)
 >    - *"Table"*: `VST normalized data`
 >    - *"Input data has"*: `Column names on the first row` and `Row names on the first column`
@@ -469,7 +471,7 @@ For filtering the most variable genes, we will compute the coefficient of variat
 > 7. Select only the columns with data (and the first column with the gene identifiers; columns 1-13) using the **Cut** tool
 > 8. Relabel the file as `Input data for PCA and clustering`
 >
->    -
+{: .hands_on}
 
 
 ## Principal Component Analysis (PCA)
@@ -481,6 +483,8 @@ The tool needs a featureMetadata file with the names (and optional characteristi
 
 ### Upload metadata
 
+> <hands-on-title> Upload metadata</hands-on-title>
+>
 > 1. Create the featureMetadata file using the **cut** tool on the `Input data for PCA and clustering` object
 >    - *"Cut columns"*: c1
 > 2. Import the count files from our [github repository](https://github.com/pacthoen/BMW2_RNA_clust_vis) using the Data Upload menu (top left) and the button _Paste/Fetch Data_. Indicate that the data files are `Tabular`.
@@ -498,24 +502,23 @@ The tool needs a featureMetadata file with the names (and optional characteristi
 >        - *"Amount by which plotting text should be magnified relative to the default"*: `0.4`
 >    - *"Advanced computational parameters"*: `Use default`
 >
->
->
+{: .hands_on}
 
 Among the four output files generated by the tool, the one we are interested in is the *Multivariate_figure.pdf* file.
 The PCA scores plot representing the projection of samples on the two first components is located at the bottom left corner. The PCA loadings plot is located at the bottom right corner.
 
-    > <question-title></question-title>
-    >
-    > 1. What is the cumulative percentage explained by the first two components.
-    > 2. Which one of the two factors in the experiment has the largest effect on the gene expression levels: the genotype (TP53-/- or wild-type) or the exposure to IR? Play with the plot colors and shapes and create a figure that nicely visualizes this.
-
-    >
-    > > <solution-title></solution-title>
-    > >
-    > > 1.  The score plots contains the percentage of variance explained in the axis titles. Principal component t1  explains 51% of total variability and t2 18% of total variability. The cumulative variance explained by the first two components is 51+18 = 69%.
-    > > 2. The t1 nicely separates the IR_treated cells from the mock-treated cells. t1 explains most of the variation thus IR treatment explains most of the variation. The t2 mainly separates the KO cells treated with IR, suggesting that KO cells respond differently to IR than WT cells, which makes sense because p53 is important for the response to IR.
-    > {: .solution}
-    {: .question}
+> <question-title></question-title>
+>
+> 1. What is the cumulative percentage explained by the first two components.
+> 2. Which one of the two factors in the experiment has the largest effect on the gene expression levels: the genotype (TP53-/- or wild-type) or the exposure to IR? Play with the plot colors and shapes and create a figure that nicely visualizes this.
+>
+>
+> > <solution-title></solution-title>
+> >
+> > 1.  The score plots contains the percentage of variance explained in the axis titles. Principal component t1  explains 51% of total variability and t2 18% of total variability. The cumulative variance explained by the first two components is 51+18 = 69%.
+> > 2. The t1 nicely separates the IR_treated cells from the mock-treated cells. t1 explains most of the variation thus IR treatment explains most of the variation. The t2 mainly separates the KO cells treated with IR, suggesting that KO cells respond differently to IR than WT cells, which makes sense because p53 is important for the response to IR.
+> {: .solution}
+{: .question}
 
 > 4. Repeat the analysis but now with four principal components and plot principal component 3 at the x-axis (abscissa) and component 4 at the y-axis (ordinate)
 > 5. Optional: one can also OPLS (Orthogonal Partial Least Squares) which is a supervised form of multivariate analysis
@@ -525,6 +528,7 @@ The PCA scores plot representing the projection of samples on the two first comp
 
 We will use the **heatmap2** tool to perform the clustering of samples based on their mRNA expression patterns and evaluate the influence of different clustering algorithms (average linkage vs single linkage) and distance measures (Euclidean distance or Pearson correlation). See this [Screenshot](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/screenshots/Screenshot%202025-05-23%20152150.png)
 
+> <hands-on-title>Clustering with Heatmap2 </hands-on-title>
 > 1. Select as *"Input"* `Input data for PCA and clustering`
 >    - *"Plot title"*: indicate the clustering algorithm and the distance measure used
 >    - *"Data transformation"*: `Plot the data as is`. Because the data has already been VST normalized
@@ -534,22 +538,21 @@ We will use the **heatmap2** tool to perform the clustering of samples based on 
 >    - *"Type of colormap to use"*: `Gradient with 3 colors`
 >
 >
-    > <question-title></question-title>
-    >
-    > 1. How does the clustering of samples relate to the PCA results?
-    > 2. Which differences do you observe between different clustering algorithms and different distance measures?
-    > 3. Indicate the cluster of genes for which their IR response is p53-dependent. Are these genes mostly up- or downregulated after IR?
-
-    >
-    > > <solution-title></solution-title>
-    > >
-    > > 1. Again, the IR-exposed cells cluster separately from the mock-exposed cells.
+> > <question-title></question-title>
+> >
+> > 1. How does the clustering of samples relate to the PCA results?
+> > 2. Which differences do you observe between different clustering algorithms and different distance measures?
+> > 3. Indicate the cluster of genes for which their IR response is p53-dependent. Are these genes mostly up- or downregulated after IR?
+> >
+> > > <solution-title></solution-title>
+> > >
+> > > 1. Again, the IR-exposed cells cluster separately from the mock-exposed cells.
 There is not much difference between the TP53-/- and wild-type mock-exposed cells, whilst the IR-exposed TP53-/- and wild-type cells cluster separately.
-    > > 2. The clustering is not very dependent on the Distance measure used. However, with single linkage, it is much more difficult to identify discrete clusters, because the single, closest feature is added each time to an already existing cluster. Average and complete linkage methods usually start with finding the closest features that make up distinct clusters.
-    > > 3. There is a cluster of genes that is only upregulated in the cells that are wild-type for p53 and not in IR-treated knockout cells. These mRNAs are dependent on p53 expression for their upregulation after exposure to IR.
-    > {: .solution}
-    {: .question}
-
+> > > 2. The clustering is not very dependent on the Distance measure used. However, with single linkage, it is much more difficult to identify discrete clusters, because the single, closest feature is added each time to an already existing cluster. Average and complete linkage methods usually start with finding the closest features that make up distinct clusters.
+> > > 3. There is a cluster of genes that is only upregulated in the cells that are wild-type for p53 and not in IR-treated knockout cells. These mRNAs are dependent on p53 expression for their upregulation after exposure to IR.
+> > {: .solution}
+> {: .question}
+{: .hands_on}
 
 # Conclusion
 
