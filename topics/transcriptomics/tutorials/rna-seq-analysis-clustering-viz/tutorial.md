@@ -579,7 +579,11 @@ We will use the **heatmap2** tool to perform the clustering of samples based on 
 
 # Conclusion
 
-In this computer assignment, we have analyzed real RNA sequencing data to extract useful information, such as which genes are up or downregulated by IR. Your complete workflow can be extracted using the _Worklows_ button. Do this according to this [Screenshot](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/screenshots/Screenshot%202025-05-23%20155239.png). You can always rerun and adapt your entire workflow. A workflow as you could have obtained it can be found [here](https://usegalaxy.eu/u/daa755a1f90f4d66ab64b0f057a08a2f/w/workflow-constructed-from-history-computer-assignment-rna-seq-analysis-and-visualisation--bmw2---attempt-3)
+In this computer assignment, we have analyzed real RNA sequencing data to extract useful information, such as which genes are up or downregulated by IR. Your complete workflow can be extracted using the _Worklows_ button. Do this according to this [Screenshot](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/screenshots/Screenshot%202025-05-23%20155239.png).
+
+{% snippet faqs/galaxy/workflows_extract_from_history.md %}
+
+You can always rerun and adapt your entire workflow. A workflow as you could have obtained it can be found [on this tutorial's workflow page](./workflows/)
 The output of this computer assignment can also be found in [this folder](https://github.com/pacthoen/BMW2_RNA_clust_vis/upload/main/results) on the github site.
 
 
