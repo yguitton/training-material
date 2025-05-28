@@ -3,7 +3,7 @@ layout: tutorial_hands_on
 
 title: "RNA-Seq data analysis,clustering and visualisation tutorial"
 subtopic: introduction
-priority: 2
+draft: true
 
 tags:
     - bulk
