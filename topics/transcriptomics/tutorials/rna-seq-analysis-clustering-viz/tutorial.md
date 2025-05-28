@@ -569,7 +569,7 @@ We will use the **heatmap2** tool to perform the clustering of samples based on 
 > > > <solution-title></solution-title>
 > > >
 > > > 1. Again, the IR-exposed cells cluster separately from the mock-exposed cells.
-There is not much difference between the TP53-/- and wild-type mock-exposed cells, whilst the IR-exposed TP53-/- and wild-type cells cluster separately.
+> > >   There is not much difference between the TP53-/- and wild-type mock-exposed cells, whilst the IR-exposed TP53-/- and wild-type cells cluster separately.
 > > > 2. The clustering is not very dependent on the Distance measure used. However, with single linkage, it is much more difficult to identify discrete clusters, because the single, closest feature is added each time to an already existing cluster. Average and complete linkage methods usually start with finding the closest features that make up distinct clusters.
 > > > 3. There is a cluster of genes that is only upregulated in the cells that are wild-type for p53 and not in IR-treated knockout cells. These mRNAs are dependent on p53 expression for their upregulation after exposure to IR.
 > > {: .solution}
