@@ -317,19 +317,19 @@ The annotated table contains no column names, which makes it difficult to read. 
 >    - Put in correct titles under _Plot options_.
 >
 > 2. Repeat the DESeq2 analysis but now with `Genotype` as first factor (contrasting KO and WT cells). Repeat the Volcano plot.
-{: .hands_on}
-
-> <question-title></question-title>
 >
-> 1. Is IR causing more up- or more downregulation of gene expression?
-> 2. Does the Treatment or the Genotype have a bigger effect on gene expression
->
-> > <solution-title></solution-title>
+> > <question-title></question-title>
 > >
-> > 1. There are more mRNA upregulated than downregulated. The upregulated genes can be found on the right side of the plot.
-> > 2. There are more mRNA with high FC and strong significance in the comparison between IR and mock-treated cells than between KO and WT cells.
-> {: .solution}
-{: .question}
+> > 1. Is IR causing more up- or more downregulation of gene expression?
+> > 2. Does the Treatment or the Genotype have a bigger effect on gene expression
+> >
+> > > <solution-title></solution-title>
+> > >
+> > > 1. There are more mRNA upregulated than downregulated. The upregulated genes can be found on the right side of the plot.
+> > > 2. There are more mRNA with high FC and strong significance in the comparison between IR and mock-treated cells than between KO and WT cells.
+> > {: .solution}
+> {: .question}
+{: .hands_on}
 
 
 
@@ -574,6 +574,7 @@ There is not much difference between the TP53-/- and wild-type mock-exposed cell
 > > > 3. There is a cluster of genes that is only upregulated in the cells that are wild-type for p53 and not in IR-treated knockout cells. These mRNAs are dependent on p53 expression for their upregulation after exposure to IR.
 > > {: .solution}
 > {: .question}
+>
 {: .hands_on}
 
 # Conclusion
