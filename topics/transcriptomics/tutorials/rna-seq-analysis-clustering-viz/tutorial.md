@@ -4,7 +4,6 @@ layout: tutorial_hands_on
 title: "RNA-Seq data analysis,clustering and visualisation tutorial"
 subtopic: introduction
 draft: true
-
 tags:
     - bulk
     - rna-seq
@@ -53,8 +52,9 @@ In the first part of this tutorial we will upload the count matrices to your Gal
 >
 >    {% snippet faqs/galaxy/histories_create_new.md %}
 >
-> 2. Import the count files from our [github repository](https://github.com/pacthoen/BMW2_RNA_clust_vis) using the Data Upload menu (top left) and the button _Paste/Fetch Data_. [Screenshot](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/screenshots/Screenshot%202025-05-22%20115748.png). _Note_ The files with null in the filename are for the p53 knockout (p53-/-) cells and the files with p53 in the filename are for the wild-type cells
->    ```text
+> 2. Import the count files from our [github repository](https://github.com/pacthoen/BMW2_RNA_clust_vis) using the Data Upload menu (top left) and the button _Paste/Fetch Data_.
+>
+>    ```
 >    https://raw.githubusercontent.com/pacthoen/BMW2_RNA_clust_vis/refs/heads/main/data/p53_mock_1.csv
 >    https://raw.githubusercontent.com/pacthoen/BMW2_RNA_clust_vis/refs/heads/main/data/p53_mock_2.csv
 >    https://raw.githubusercontent.com/pacthoen/BMW2_RNA_clust_vis/refs/heads/main/data/p53_mock_3.csv
@@ -68,17 +68,27 @@ In the first part of this tutorial we will upload the count matrices to your Gal
 >    https://raw.githubusercontent.com/pacthoen/BMW2_RNA_clust_vis/refs/heads/main/data/null_IR_1.csv
 >    https://raw.githubusercontent.com/pacthoen/BMW2_RNA_clust_vis/refs/heads/main/data/null_IR_2.csv
 >    ```
->  **Alternative** If this results in an error, you may download the zip file with all the input data from the [github site](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/data/input_data_Bcell_dataset.zip) to your local computer, unzip and import all the files using the _Choose local file_ option from the Upload menu.
 >
-> 3. Inspect some of the files by hitting the icon with the _eye_ button.
+>    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
+>    ![Screenshot](images/upload-screenshot.png)
+>
+>    *Note:* The files with null in the filename are for the p53 knockout (p53-/-) cells and the files with p53 in the filename are for the wild-type cells
+>
+>    **Alternative:** If this results in an error, you may download the zip file with all the input data from the [github site](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/data/input_data_Bcell_dataset.zip) to your local computer, unzip and import all the files using the _Choose local file_ option from the Upload menu.
+>
+> 3. **Inspect** {% icon galaxy-eye %} some of the files by hitting they eye button
 > 4. Upload also the gene annotation file and choose _gtf.gz_ as file type
 >    ```text
 >    https://raw.githubusercontent.com/pacthoen/BMW2_RNA_clust_vis/refs/heads/main/data/Mus_musculus.NCBIM37.65.gtf.gz
 >    ```
 >    **Alternative** Like before, if this results in an error, you can download the gtf.gz file from the [github site](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/data/Mus_musculus.NCBIM37.65.gtf.gz) to your local computer and import the gtf.gz file (no need for unzipping) using _Choose local file_ option from the Upload menu
 >
-> _Note:_ The numbers in the count files are the number of sequence reads to a specific gene. Only mRNAs that were detected in all samples were selected during the preprocessing of the data.
+>    _Note:_ The numbers in the count files are the number of sequence reads to a specific gene. Only mRNAs that were detected in all samples were selected during the preprocessing of the data.
+>
+> 5. **Set the datatype** {% icon galaxy-pencil %} to `gtf.gz`
+>
+>    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="gtf.gz" %}
 >
 >    > <question-title></question-title>
 >    >
