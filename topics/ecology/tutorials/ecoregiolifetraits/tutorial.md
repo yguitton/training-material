@@ -371,7 +371,6 @@ The tool enables the determination of the optimal number of clusters for partiti
 >    - {% icon param-file %} *"List of taxas (from TaxaSeeker)"*: `List of taxa` (output of **TaxaSeeker** {% icon tool %})
 >    - *"k is ..."*: either the number of clusters of the model (the number of ecoregions) or if you don't how many cluster/ecoregions you want, the tool will find the more optimal number of clusters. The first time, this parameter should be set to automatic so you can see the plot of silhouette scores and determine yourself what is the best number of clusters to choose. The best number of clusters according to silhouette score isn't always equal the number of ecoregions.
 >    - {% icon param-file %} *"Value of k (collection of tabular)"*: a number greater than 2
-
 >
 >    > <comment-title> Two other parameters </comment-title>
 >    >
