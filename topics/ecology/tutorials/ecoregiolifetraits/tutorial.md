@@ -253,6 +253,20 @@ This Galaxy tool allows you to merge two data tables (tabular format only) accor
 To use next tool, BRT, one need to have a clean merged table datafile. To do so, you can here remove the "scientificName" column, as BRT tool merged data input must only have numeric values columns.
 
 
+
+> <hands-on-title> Run the BRT tool </hands-on-title>
+>
+> 1. {% tool [Remove columns](toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0) %} with the following parameters:
+>    - {% icon param-file %} *"Tabular file"*: `Merged table` (Input dataset)
+>    - {% icon param-file %} *"Select Columns"*: `scientificName` (output of **GeoNearestNeighbor** {% icon tool %})
+>
+>
+{: .hands_on}
+
+
+
+
+
 ## Predicting life traits with BRT tool prediction
 
 This step implements a commonly used approach in ecological studies, namely species distribution modelling (SDM). This allows to characterize the distribution of each life traits by giving an indicator of probability of life trait presence for each environmental layer pixel. Here, the boosted regression trees (BRT) method was used to adjust the relationship between the presence of a single life trait and the environmental conditions under which the life trait has been detected. BRT modelling is based on an automatic learning algorithm using iterative classification trees.
