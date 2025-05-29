@@ -134,7 +134,7 @@ More details on the different **MaxQuant** parameters can be found in this [MaxQ
 
 To get a first overview of the MaxQuant results, the PTXQC report is helpful. Click on the {% icon galaxy-eye %} eye of the PTXQC pdf file to open it in Galaxy. Screening through the different plots might already give you a hint on how many peptides and proteins were identified as well as some of the data quality.
 
-The PTXQC software ({% cite Bielow2015 %}) was built to enable direct proteomcs quality control from MaxQuant result files. This quality control can be directly used in the Galaxy MaxQuant wrapper by setting *"Generate PTXQC"* to `yes`. This will generate a pdf file with multiple quality control plots. Be aware that the cutoffs set in PTXQC might not be applicable to your experiment and mass spectrometer type and therefore "under performing" and "fail" do not necessarily mean that the quality is poor.
+The PTXQC software ({% cite Bielow2015 %}) was built to enable direct proteomics quality control from MaxQuant result files. This quality control can be directly used in the Galaxy MaxQuant wrapper by setting *"Generate PTXQC"* to `True`. This will generate a pdf file with multiple quality control plots. Be aware that the cutoffs set in PTXQC might not be applicable to your experiment and mass spectrometer type and therefore "under performing" and "fail" do not necessarily mean that the quality is poor.
 
 > <question-title></question-title>
 >
@@ -159,14 +159,16 @@ The PTXQC software ({% cite Bielow2015 %}) was built to enable direct proteomcs 
 >        - {% icon param-file %} *"Infile"*: `MaxQuant_Evidence`
 >    - *"With following condition"*: `len(c9.split(';')) < 2`
 >    - *"Number of header lines to skip"*: `1`
+>    - Rename to 'Filter on MaxQuant_Evidence'
 >
 > 2. {% tool [Filter](Filter1) %} with the following parameters:
 >        - {% icon param-file %} *"Infile"*: `MaxQuant_MSMS`
 >    - *"With following condition"*: `len(c12.split(';')) < 2`
 >    - *"Number of header lines to skip"*: `1`
+>    - Rename to 'Filter on MaxQuant_MSMS'
 >
 >    > <comment-title>Unique Features / peptides</comment-title>
->    > Peptides which only occur in one protein are considered as unique for this specific protein. To avoid ambigious protein mapping later we filter the **MaxQuant** search results for unique peptides only. CAUTION: This increase in specificity (each peptide originates from only one protein) will reduce the size of the spectral library and might lead to decreased sensitivity  during the DIA analysis.
+>    > Peptides which only occur in one protein are considered as unique for this specific protein. To avoid ambigious protein mapping later, we filter the **MaxQuant** search results for unique peptides only. CAUTION: This increase in specificity (each peptide originates from only one protein) will reduce the size of the spectral library and might lead to decreased sensitivity  during the DIA analysis.
 >    {: .comment}
 >
 {: .hands_on}
@@ -188,7 +190,7 @@ The PTXQC software ({% cite Bielow2015 %}) was built to enable direct proteomcs 
 
 > <hands-on-title>Generation of a spectral library using the unique <b>MaxQuant</b> search results and indexed retention time <i>iRT</i> peptides</hands-on-title>
 >
-> 1. {% tool [diapysef library generation](toolshed.g2.bx.psu.edu/repos/galaxyp/diapysef/diapysef/0.3.5.0) %} with the following parameters:
+> 1. {% tool [**diapysef library generation** generates spectral library for DIA analysis](toolshed.g2.bx.psu.edu/repos/galaxyp/diapysef/diapysef/0.3.5.0) %}:
 >    - In *"MaxQuant output file msms.txt*:
 >        - {% icon param-file %} *"Infile"*: `Filter on MaxQuant_MSMS`
 >    - In *"MaxQuant output file evidence.txt*:
