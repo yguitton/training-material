@@ -13,7 +13,7 @@ objectives:
 - Learning about Silhouette index and select an appropriate number of cluster.
 - Learning about Clara clustering algorithm (PAM for large datasets)objectives.
 - Create an ecoregionalization map from life traits data.
-time_estimation: 2 hours
+time_estimation: 2h
 key_points:
 - You can reuse an existing ecoregionalization workflow developped for species occurences for life traits data
 contributors:
