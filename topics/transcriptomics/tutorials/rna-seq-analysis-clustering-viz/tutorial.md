@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 
-title: "RNA-Seq data analysis,clustering and visualisation tutorial"
+title: "RNA-Seq data analysis, clustering and visualisation tutorial"
 subtopic: introduction
 draft: true
 tags:
@@ -30,6 +30,8 @@ contributions:
     - pacthoen
     - casper937
     - charlotteradboud
+  editing:
+    - shiltemann
 ---
 
 
