@@ -130,7 +130,7 @@ For this tutorial, occurrences data from the Kerguelen plateau will be downloade
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
 >
-> 6. Rename the datasets if needed, notably "9756" by "pivot_wider_jupytool_notebook.ipynb" and "9777" by "ceamarc_env.tab".
+> 6. Rename the datasets if needed, notably "9777" by "ceamarc_env.tab".
 >
 >    {% snippet faqs/galaxy/datasets_rename.md %}
 >
