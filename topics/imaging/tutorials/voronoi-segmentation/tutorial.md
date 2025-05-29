@@ -145,7 +145,7 @@ In principle, this tutorial can be followed with any type of data provided that 
 >    - *"Filepath"*: Choose which data you want to use: 
 >        - Cells: `images_and_seeds/cell_image-B2--W00026--P00001--Z00000--T00000--dapi.tiff`
 >        - Trees: `images_and_seeds/tree_image_2019_DELA_5_423000_3601000.tiff`
->        - Galaxies: `image_and_seed/sky_image_IMAGE.png`
+>        - Galaxies: `sky_image_IMAGE.png`
 >    
 > 4. Rename {% icon galaxy-pencil %} the resulting file as `image`.
 >
@@ -159,7 +159,7 @@ In principle, this tutorial can be followed with any type of data provided that 
 >    - *"Filepath"*: Choose the seed image corresponding to the image you chose in the last step. 
 >        - Cells: `images_and_seeds/cell_seeds-B2--W00026--P00001--Z00000--T00000--dapi.tiff`
 >        - Trees: `images_and_seeds/tree_seeds_2019_DELA_5_423000_3601000.tiff`
->        - Galaxies: `image_and_seed/sky_image_SEED.png`
+>        - Galaxies: `sky_image_SEED.png`
 >
 > 7. Rename {% icon galaxy-pencil %} the resulting file as `seeds`.
 {: .hands_on}
