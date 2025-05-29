@@ -22,9 +22,9 @@ objectives:
     - To learn the principles of the analysis and visualisation of a multidimensional data analysis. We will use RNA-seq data as an example of a multidimensional -omics dataset.
 time_estimation: 6h
 key_points:
- -You have learned to use DESeq2 to identify differentially expressed mRNAs
- -You have used PCA to identify the most important sources of variation
- -You have compared different clustering methods to group samples and genes
+    - You have learned to use DESeq2 to identify differentially expressed mRNAs
+    - You have used PCA to identify the most important sources of variation
+    - You have compared different clustering methods to group samples and genes
 contributions:
   authorship:
     - pacthoen
