@@ -10,7 +10,7 @@ objectives:
 - Learning how to use the ecoregionalization workflow.
 - Learning how to collect life traits informations from marine species occurences.
 - Learning about boosted regression trees algorithm.
-- Learning about Silhouette index and select an appropriate number of cluster.
+- Learning about Silhouette index and select an appropriate number of clusters.
 - Learning about Clara clustering algorithm (PAM for large datasets)objectives.
 - Create an ecoregionalization map from life traits data.
 time_estimation: 2h
