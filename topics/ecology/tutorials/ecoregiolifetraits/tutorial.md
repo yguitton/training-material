@@ -248,6 +248,11 @@ This Galaxy tool allows you to merge two data tables (tabular format only) accor
 >
 {: .hands_on}
 
+## Clean merged table file
+
+To use next tool, BRT, one need to have a clean merged table datafile. To do so, you can here remove the "scientificName" column, as BRT tool merged data input must only have numeric values columns.
+
+
 ## Predicting life traits with BRT tool prediction
 
 This step implements a commonly used approach in ecological studies, namely species distribution modelling (SDM). This allows to characterize the distribution of each life traits by giving an indicator of probability of life trait presence for each environmental layer pixel. Here, the boosted regression trees (BRT) method was used to adjust the relationship between the presence of a single life trait and the environmental conditions under which the life trait has been detected. BRT modelling is based on an automatic learning algorithm using iterative classification trees.
@@ -264,7 +269,7 @@ This tool gives as output a file containing the predictions of the probability o
 >
 > 1. {% tool [BRT tool prediction](toolshed.g2.bx.psu.edu/repos/ecology/ecoregion_brt_analysis/ecoregion_brt_analysis/0.1.0+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input your environment data file of your study area (tabular format only)"*: `ceamarc_env.tsv` (Input dataset)
->    - {% icon param-file %} *"Input your occurrences data file(s) containing also the environmental characteristics where the species has been observe (tabular format only)"*: `Merge table` (output of **GeoNearestNeighbor** {% icon tool %})
+>    - {% icon param-file %} *"Input your occurrences data file(s) containing also the environmental characteristics where the species has been observe (tabular format only)"*: `Merged table` (output of **GeoNearestNeighbor** cleaned for extra column with **Remove column** tool if relevant {% icon tool %})
 >
 >      {% snippet faqs/galaxy/tools_select_multiple_datasets.md %}
 >
