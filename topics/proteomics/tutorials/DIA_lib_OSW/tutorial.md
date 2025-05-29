@@ -72,7 +72,7 @@ The dataset in this training consists of different Spike-in mixtures of stable a
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
-> 3. Once the files are green, rename the experimental design file in 'HEK_Ecoli_exp_design', the iRT transition file in 'iRTassays' and all of the the raw files in 'Sample1.raw', 'Sample2.raw', 'Sample3.raw', 'Sample4.raw' and 'Sample5.raw'
+> 3. Once the files are green, rename the experimental design file in 'HEK_Ecoli_exp_design', the iRT transition file in 'iRTassays' and all the the raw files in 'Sample1.raw', 'Sample2.raw', 'Sample3.raw', 'Sample4.raw' and 'Sample5.raw'
 >
 >    {% snippet faqs/galaxy/datasets_rename.md %}
 >
@@ -88,7 +88,7 @@ The MaxQuant Galaxy implementation contains the most important MaxQuant paramete
 
 > <hands-on-title>MaxQuant Analysis</hands-on-title>
 >
-> 1. {% tool [MaxQuant](toolshed.g2.bx.psu.edu/repos/galaxyp/maxquant/maxquant/1.6.10.43+galaxy3) %} with the following parameters:
+> 1. {% tool [MaxQuant](toolshed.g2.bx.psu.edu/repos/galaxyp/maxquant/maxquant/2.0.3.0+galaxy0) %} with the following parameters:
 >    - In *"Input Options"*:
 >        - {% icon param-collection %} *"FASTA files"*: `FASTA` collection
 >        - *"identifier parse rule"*: `>([^ ]*)`
@@ -103,7 +103,7 @@ The MaxQuant Galaxy implementation contains the most important MaxQuant paramete
 >        - {% icon param-collection %} *"Infiles"*: `DDA_data` collection
 >            - *"missed cleavages"*: `1`
 >            - *"variable modifications"*: `Oxidation (M)`
->    - *"Generate PTXQC (proteomics quality control pipeline) report? (experimental setting)"*: `Yes`
+>    - *"Generate PTXQC (proteomics quality control pipeline) report? (experimental setting)"*: `True`
 >    - In *"Output Options"*:
 >        - *"Select the desired outputs."*: `Protein Groups` `Peptides` `mqpar.xml` `Evidence` `MSMS`
 >
@@ -113,7 +113,7 @@ The MaxQuant Galaxy implementation contains the most important MaxQuant paramete
 >
 {: .hands_on}
 
-Here we used a variation of the *"identifier parse rule"* to allow for the organism label to be present in the spectral library. For investigations of single organisms and to keep only the Uniprot identifier one can adjust the *"identifier parse rule"* accordingly
+Here we used a variation of the *"identifier parse rule"* to allow for the organism label to be present in the spectral library. For investigations of single organism and to keep only the Uniprot identifier one can adjust the *"identifier parse rule"* accordingly.
 More details on the different **MaxQuant** parameters can be found in this [MaxQuant tutorial]({{site.baseurl}}/topics/proteomics/tutorials/maxquant-label-free/tutorial.html).
 
 > <tip-title>Continue with results from Zenodo</tip-title>
