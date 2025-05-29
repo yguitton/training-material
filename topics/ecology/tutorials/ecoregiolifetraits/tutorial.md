@@ -8,14 +8,14 @@ questions:
 - How to construct ecoregions from occurrences species data and environmental data?
 objectives:
 - Learning how to use the ecoregionalization workflow.
+- Learning how to collect life traits informations from marine species occurences.
 - Learning about boosted regression trees algorithm.
 - Learning about Silhouette index and select an appropriate number of cluster.
 - Learning about Clara clustering algorithm (PAM for large datasets)objectives.
-- Create an ecoregionalization map.
+- Create an ecoregionalization map from life traits data.
 time_estimation: 2 hours
 key_points:
-- The take-home messages
-- They will appear at the end of the tutorial
+- You can reuse an existing ecoregionalization workflow developped for species occurences for life traits data
 contributors:
 - jeanlecras
 - PaulineSGN
@@ -35,7 +35,7 @@ The workflow, consisting of six tools, is intended for processing occurrence dat
 
 The primary goal of this workflow is to generate life traits distribution maps and identify ecoregions within the study area. The project’s objective is to offer accessible, reproducible, and transparent IT solutions for processing and analyzing life traits occurrence data. 
 
-Note: if you're data already contains life traits, use [this tutorial](https://training.galaxyproject.org/training-material/topics/ecology/tutorials/Ecoregionalization_tutorial/tutorial.html) instead, the process is the same with taxa and life traits. You can also delete the tool WormsMeasurments and connect it's input the next tool.
+Note: if you're data already contains life traits, use [this tutorial](https://training.galaxyproject.org/training-material/topics/ecology/tutorials/Ecoregionalization_tutorial/tutorial.html) instead, the process is the same with taxa and life traits. You can also use this one skipping the two "WoRMS" dedicated steps.
 
 This workflow is therefore composed of 6 tools:
  - WormsMeasurments
