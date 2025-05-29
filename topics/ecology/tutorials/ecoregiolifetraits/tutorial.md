@@ -165,7 +165,7 @@ The first step of this tutorial is data formatting because the GBIF species occu
 > 
 {: .hands_on}
 
-## Clean scientific names for Worms API request
+## Clean scientific names for WoRMS API request
 
 This step is used tobe sure scientific names are written in the manner WoRMS API is able to manage it (only genus and species name or genus alone).
 
