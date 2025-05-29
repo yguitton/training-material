@@ -167,6 +167,25 @@ The first step of this tutorial is data formatting because the GBIF species occu
 
 ## Clean scientific names for Worms API request
 
+This step is used tobe sure scientific names are written in the manner WoRMS API is able to manage it (only genus and species name or genus alone).
+
+> <hands-on-title> Clean taxons names for WoRMS API </hands-on-title>
+>
+> 1. {% tool [Column Regex Find And Replace](toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regexColumn1/1.0.3) %} with the following parameters:
+>    - {% icon param-file %} *"Select cells from"*: `output` (output of **Advanced Cut** {% icon tool %})
+>    - *"using column"*: `c3`
+>    - In *"Check"*:
+>        - {% icon param-repeat %} *"Insert Check"*
+>            - *"Find Regex"*: `^([A-Z][^A-Z(]+)((?<!^).*)$`
+>            - *"Replacement"*: `\1`
+>    - In the second *"Check"*:
+>        - {% icon param-repeat %} *"Insert Check"*
+>            - *"Find Regex"*: ` $`
+>            - *"Replacement"*: ``
+>
+>
+{: .hands_on}
+
 
 ## Get life traits from WoRMS
 > <hands-on-title>Life traits acquisition</hands-on-title>
