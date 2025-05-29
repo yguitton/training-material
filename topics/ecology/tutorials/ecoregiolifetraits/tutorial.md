@@ -20,8 +20,9 @@ contributors:
 - jeanlecras
 - PaulineSGN
 - yvanlebras
-funding:
-- pndb
+contributions:
+  funding:
+  - pndb
 
 subtopic: ecologyanalysis
 ---
