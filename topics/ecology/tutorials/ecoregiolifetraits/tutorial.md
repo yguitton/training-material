@@ -317,7 +317,7 @@ In the 'Species distribution prediction maps' collection there must be for each 
 In the 'Partial dependence plots' collection there should be graphs showing the percentage explanation of the model for each environmental parameter.
 Here is an example:
 
-![Partial dependence plots](./Images/BRT-Echinodermata_Crinoidea_Comatulida_Antedonidae_Florometra_mawsoni.pdf "Percentage of explanation of the model for each environmental parameter")
+![Partial dependence plots](./Images/BRT_Development_direct.development.pdf "Percentage of explanation of the model for each environmental parameter")
 
 
 ## Collecting the list of life traits with TaxaSeeker
