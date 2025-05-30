@@ -312,7 +312,7 @@ In the 'Validation files' collection there must be a file containing for each li
 
 In the 'Species distribution prediction maps' collection there must be for each life traits a map representing their probability of presence at each environmental layer pixel.
 
-![Species distribution map](./Images/BRT-Echinodermata_Crinoidea_Comatulida_Antedonidae_Florometra_mawsoni__pred_plot.png "Florometra mawsoni distribution from BRT")
+![Life traits distribution map](./Images/BRT_Development_planktotrophic _pred_plot.png "Development planktotrophic distribution from BRT")
 
 In the 'Partial dependence plots' collection there should be graphs showing the percentage explanation of the model for each environmental parameter.
 Here is an example:
@@ -400,6 +400,8 @@ the bar, the better the consistency of the observation with its cluster and the 
 are well grouped and separated from other clusters, while values close to -1 indicate that objects are poorly grouped and may be closer to other clusters. A value close to 0 indicates a situation where objects are
 located at the border between two clusters. Here, in the graph below, there is a good distribution of the observations because the majority of the bars are above the average value of the silhouette index.
 
+![SIH_index_plot](./Images/SIH_index_plot.png "SIH index plot")
+
 ![SIH plot](./Images/SIH_plot.png "SIH plot")
 
 # Build a ecoregionalization map with **EcoMap**
@@ -407,9 +409,9 @@ located at the border between two clusters. Here, in the graph below, there is a
 > <hands-on-title> Run EcoMap </hands-on-title>
 >
 > 1. {% tool [EcoMap](toolshed.g2.bx.psu.edu/repos/ecology/ecoregion_eco_map/ecoregion_eco_map/0.1.0+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Source file (File 'cluster points' from previous step)"*: `cluster_points` (output of **ClaraClust** {% icon tool %})
+>    - {% icon param-file %} *"Source file (File 'cluster points' from previous step)"*: `cluster assignements` (output of **ClaraGuess** {% icon tool %})
 >
-> This tool simply need the previous step "Cluster points" output file to generate a map representing ecoregions.
+> This tool simply need the previous step "cluster assignements (lat, long, cluster)" output file to generate a map representing ecoregions.
 >
 > 2. Check output. You must have one Map representing ecoregions.
 >
