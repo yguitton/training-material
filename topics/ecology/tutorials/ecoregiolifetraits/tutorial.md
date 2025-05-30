@@ -8,18 +8,23 @@ questions:
 - How to construct ecoregions from occurrences species data and environmental data?
 objectives:
 - Learning how to use the ecoregionalization workflow.
+- Learning how to collect life traits informations from marine species occurences.
 - Learning about boosted regression trees algorithm.
-- Learning about Silhouette index and select an appropriate number of cluster.
+- Learning about Silhouette index and select an appropriate number of clusters.
 - Learning about Clara clustering algorithm (PAM for large datasets)objectives.
-- Create an ecoregionalization map.
-time_estimation: 2 hours
+- Create an ecoregionalization map from life traits data.
+time_estimation: 2h
 key_points:
-- The take-home messages
-- They will appear at the end of the tutorial
+- You can reuse an existing ecoregionalization workflow developped for species occurences for life traits data
 contributors:
 - jeanlecras
 - PaulineSGN
+- yvanlebras
+contributions:
+  funding:
+  - pndb
 
+subtopic: ecologyanalysis
 ---
 
 
@@ -27,32 +32,27 @@ contributors:
 
 This tutorial is designed to guide you through the Ecoregionalization Galaxy workflow, demonstrating how to create a life traits ecoregionalization map from occurrences and environmental data using a boosted regression tree model for predictions.
 
-The workflow, consisting of six tools, is intended for processing occurrence data, which should include latitude, longitude, species presence or absence and scientific name or life traits (if life traits are absent they will be deduced automatically with scientific names). The tutorial will provide a detailed explanation of inputs, workflow steps, and outputs. This tutorial gives a practical example, highlighting a use case centered on the Kerguelen plateau and Echonoids species.
+The workflow, consisting of six tools, is intended for processing occurrence data, which should include latitude, longitude, species presence and scientific name or life traits (if life traits are absent they will be deduced automatically with scientific names). The tutorial will provide a detailed explanation of inputs, workflow steps, and outputs. This tutorial gives a practical example, highlighting a use case centered on the Kerguelen plateau and Echonoids species.
 
 The primary goal of this workflow is to generate life traits distribution maps and identify ecoregions within the study area. The project’s objective is to offer accessible, reproducible, and transparent IT solutions for processing and analyzing life traits occurrence data. 
 
-Note: if you're data already contains life traits, use [this tutorial](https://training.galaxyproject.org/training-material/topics/ecology/tutorials/Ecoregionalization_tutorial/tutorial.html) instead, the process is the same with taxa and life traits.
+Note: if you're data already contains life traits, use [this tutorial](https://training.galaxyproject.org/training-material/topics/ecology/tutorials/Ecoregionalization_tutorial/tutorial.html) instead, the process is the same with taxa and life traits. You can also use this one skipping the two "WoRMS" dedicated steps.
 
 This workflow is therefore composed of 6 tools:
-
-    WormsMeasurments
-    GeoNearestNeighbor
-    BRT prediction tool
-    TaxaSeeker
-    ClaraGuess
-    EcoMap
+ - WormsMeasurments
+ - GeoNearestNeighbor
+ - BRT prediction tool
+ - TaxaSeeker
+ - ClaraGuess
+ - EcoMap
 
 And in this tutorial we will be using 2 more tools to format data before running the ecoregionalization workflow:
-
-    Advanced cut
-    Filter
+ - Advanced cut
+ - Filter
 
 
 Let’s delve into the tutorial, outlining each step and tool to manage the creation of ecoregionalization maps.
 
-
-**Please follow our
-[tutorial to learn how to fill the Markdown]({{ site.baseurl }}/topics/contributing/tutorials/create-new-tutorial-content/tutorial.html)**
 
 > <agenda-title>Agenda</agenda-title>
 >
@@ -82,10 +82,10 @@ Here an example of environmental file input:
 
 ## Occurrence data
 
-The second data file you will need to run this workflow is an occurrences data file. As defined above, occurrences data are showing the presence (1) or absence (0), or just presence of a species or life trait at a particular location. This data file also needs to be in tabular format (.tsv or tabular) and need to be construct as following:
-
-    latitude and longitude columns
-    scientific name column
+The second data file you will need to run this workflow is an occurrences data file. As defined above, occurrences data are showing the presence of a species or life trait at a particular location. This data file also needs to be in tabular format (.tsv or tabular) and need to be constructed as following:
+ - latitude and longitude columns
+ - scientific name column
+You're occurrence data shouldn't contain absence of a species, if so, you have to filter the absence. If you're occurrences contain abundance data, it won't be taken into account.
 
 Here an example of occurrences data file input:
 | lat   | long  | Planktotrophic | Lecitotrophic | Size |
@@ -94,7 +94,7 @@ Here an example of occurrences data file input:
 | -66,3 | 141,3 | 0              | 1             | 2    |
 | …     | …     | …              | …             | …    |
 
-For this tutorial, occurrences data from the Kerguelen plateau will be downloaded from the GBIF. These data were collected as part of the PROTEKER program (Protecting the biodiversity of the Kerguelen Plateau) led by the Institut Paul-Émile Victor (IPEV, program 1044) between 2013 and 2015. Prior to their publication in the PANGAEA database and archiving in scientific repositories, these data originated from standardized sampling campaigns conducted around the Kerguelen Islands. The dataset includes occurrence records and associated environmental measurements such as temperature, salinity, and substrate type. Sampling focused on benthic macrofauna in shallow coastal habitats. Only occurrences identified to at least the genus level and sampled by scuba diving or grab sampling were retained for this tutorial. The original dataset is published under open license and fully documented in Eléaume et al. (2017).
+For this tutorial, occurrences data from the Kerguelen plateau will be downloaded from the GBIF. These data were collected as part of the PROTEKER program (Protecting the biodiversity of the Kerguelen Plateau) led by the Institut Paul-Émile Victor (IPEV, program 1044) between 2013 and 2015. Prior to their publication in the PANGAEA database and archiving in scientific repositories, these data originated from standardized sampling campaigns conducted around the Kerguelen Islands. The dataset includes occurrence records and associated environmental measurements such as temperature, salinity, and substrate type. Sampling focused on benthic macrofauna in shallow coastal habitats. Only occurrences identified to at least the genus level and sampled by scuba diving or grab sampling were retained for this tutorial. The original dataset is published under open license and fully documented in Eléaume *et al.* (2017).
 
 ## Get data
 
@@ -110,15 +110,11 @@ For this tutorial, occurrences data from the Kerguelen plateau will be downloade
 >
 >    Occurrence data file as a zip file where you will find "occurrence.txt"
 >    ```
->    https://api.gbif.org/v1/occurrence/download/request/0030809-240506114902167.zip
+>    https://api.gbif.org/v1/occurrence/download/request/0012077-250515123054153.zip
 >    ```
 >    Environemental data : "ceamarc_env.tab"
 >    ```
 >    https://data.indores.fr/api/access/datafile/9777
->    ```
->    Jupyter notebook : "pivot_wider_jupytool_notebook.ipynb"
->    ```
->    https://data.indores.fr/api/access/datafile/9756
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
@@ -135,7 +131,7 @@ For this tutorial, occurrences data from the Kerguelen plateau will be downloade
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
 >
-> 6. Rename the datasets if needed, notably "9756" by "pivot_wider_jupytool_notebook.ipynb" and "9777" by "ceamarc_env.tab".
+> 6. Rename the datasets if needed, notably "9777" by "ceamarc_env.tab".
 >
 >    {% snippet faqs/galaxy/datasets_rename.md %}
 >
@@ -144,18 +140,6 @@ For this tutorial, occurrences data from the Kerguelen plateau will be downloade
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
 >
 {: .hands_on}
-
-## Get life traits from WoRMS
-> <hands-on-title>Life traits acquisition</hands-on-title>
->
-> 1. {% tool [Enrich dataset with WoRMS](TODO url toolshed de l'outil) %}: add life traits to the dataset by
->    - *"occurrence data"*:  a `occurrence` filetabular that fills the requierments mentionned earlier
->    - *"list of measurement types"*: a list of the life traits of interest like `Development,Fecundity`. Make they have the same spelling as on the WoRMS and with a capital letter. 
->    - *"scientific name column name"*: look at your occurrence file, if the name of the column of scientific names is different from `scientificName` replace by the correct one.
->    - *"include attributes inherited from parent taxon"*: WoRMS doesn't have all life traits informations and some Echinoid species have very limited informations. To avoid having too many missing values you can switch to on, if you don't know, run your workflow once, check the output of the next tool and if the size of the dataset decreased too much switch to yes. Warning, you need to have an idea of how many different life trait values you're going to have, the workflow will generate one map per life trait value, the number of life trait values will impact calculation time.
->    - *"one hot encoding on the measurement types"*: make sure it's enabled.
-{: .hands_on}
-
 
 # Data formatting
 
@@ -171,30 +155,59 @@ The first step of this tutorial is data formatting because the GBIF species occu
 >    - *"Cut by"*: `fields`
 >    - *"Delimited by"*: `Tab`
 >        - *"Is there a header for the data's columns ?"*: `Yes`
->            - *"List of Fields"*: `c['13', '14', '16']`
+>            - *"List of Fields"*: `c['98, '99', '149]`
+>
+>    > <comment-title> Issue with the column numbers </comment-title>
+>    >
+>    > It is possible the column numbers are changing in the occurence file, so don't hesitate to check the name of the column header, and if relevant, use the search functionnality to find the columns containing "latitude", "longitude" and "scientific name" informations.
+>    >
+>    {: .comment}
+> 
+> 
+{: .hands_on}
+
+## Clean scientific names for WoRMS API request
+
+This step is used tobe sure scientific names are written in the manner WoRMS API is able to manage it (only genus and species name or genus alone).
+
+> <hands-on-title> Clean taxons names for WoRMS API </hands-on-title>
+>
+> 1. {% tool [Column Regex Find And Replace](toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regexColumn1/1.0.3) %} with the following parameters:
+>    - {% icon param-file %} *"Select cells from"*: `output` (output of **Advanced Cut** {% icon tool %})
+>    - *"using column"*: `c3`
+>    - In *"Check"*:
+>        - {% icon param-repeat %} *"Insert Check"*
+>            - *"Find Regex"*: `^([A-Z][^A-Z(]+)((?<!^).*)$`
+>            - *"Replacement"*: `\1`
+>    - In the second *"Check"*:
+>        - {% icon param-repeat %} *"Insert Check"*
+>            - *"Find Regex"*: ` $`
+>            - *"Replacement"*: ``
+>
 >
 {: .hands_on}
 
-> <question-title></question-title>
+
+## Get life traits from WoRMS
+> <hands-on-title>Life traits acquisition</hands-on-title>
 >
-> 1. What are the kept columns ?
->
-> > <solution-title></solution-title>
-> >
-> > 1. The columns we kept are : decimalLatitude, decimalLongitude, scientificName.
-> >
-> {: .solution}
->
-{: .question}
+> 1. {% tool [Enrich dataset with WoRMS](toolshed.g2.bx.psu.edu/repos/ecology/wormsmeasurements/WormsMeasurements/0.1.1) %}: add life traits to the dataset by
+>    - *"occurrence data"*: a `occurrence` tabular file that fills the requirements mentionned earlier
+>    - *"list of measurement types"*: a list of the life traits of interest like `Development`. Make they have the same spelling as on the WoRMS and with a capital letter. 
+>    - *"scientific name column name"*: look at your occurrence file, if the name of the column of scientific names is different from `scientificName` replace by the correct one.
+>    - *"include attributes inherited from parent taxon"*: WoRMS doesn't have all life traits informations and some Echinoid species have very limited informations. To avoid having too many missing values you can switch to on, if you don't know, run your workflow once, check the output of the next tool and if the size of the dataset decreased too much switch to yes. Warning, you need to have an idea of how many different life trait values you're going to have, the workflow will generate one map per life trait value, the number of life trait values will impact calculation time.
+>    - *"one hot encoding on the measurement types"*: make sure it's enabled.
+{: .hands_on}
 
 ## Remove lines with NAs or empty values with Filter
 
 > <hands-on-title> Remove lines with NAs </hands-on-title>
 >
-> 1. {% tool [Filter](TODO url toolshed de l'outil) %} with the following parameters:
->    - {% icon param-file %} *"With following condition"*: enable and paste thix expression `c1!='' and c2!='' and c3!='' and c4!='' and c1!='NA' and c2!='NA' and c3!='NA' and c4!='NA'`. It removes lines with missing value corresponding with latitude, longitude or scientificName, if your dataset has a special value for missing values like -9999, add ` and c1!='missingvalue' and c2!='missingvalue' {% icon tool %})
+> 1. {% tool [Filter](Filter1) %} with the following parameters:
+>    - {% icon param-file %} *"With following condition"*: enable and paste thix expression `c1!='' and c2!='' and c3!='' and c4!='' and c1!='NA' and c2!='NA' and c3!='NA' and c4!='NA'`. It removes lines with missing value corresponding with latitude, longitude, scientificName, Development_planktotrophic, if your dataset has a special value for missing values like -9999, add ` and c1!='missingvalue' and c2!='missingvalue' {% icon tool %})
 >    - In *"Number of header lines to skip"* enter `1`
 > 2. Check your output. All the lines with missing values must have been deleted.
+> 3. Rename your file "corrected_occurence.tsv"
 >
 {: .hands_on}
 
@@ -220,21 +233,40 @@ This Galaxy tool allows you to merge two data tables (tabular format only) accor
 >        - *"Choose columns where your latitude is in your environment data file."*: `c2`
 >        - *"Choose columns where your longitude is in your environment data file."*: `c1`
 >    - In *"Your occurrence file (or table 2)"*:
->        - {% icon param-file %} *"Input your occurrence data file (tabular format only)"*: `pivot_file` (output of **Interactive JupyTool and notebook** {% icon tool %})
+>        - {% icon param-file %} *"Input your occurrence data file (tabular format only)"*: `corrected_occurence.tsv` (output of previous **Filter** step {% icon tool %})
 >        - *"Choose columns where your latitude is in your occurrence data file."*: `c1`
 >        - *"Choose columns where your longitude is in your occurrence data file."*: `c2`
 >
 >    > <comment-title> Coords precision </comment-title>
 >    >
->    > It is recommended that, for optimal precision, the latitude and longitude values in both files should be of the same precision level. And, for the sake of relevance, the geographical coordinates in both files should be as close as possible to apply the most accurate environmental parameters to the correct species occurrences
+>    > It is recommended that, for optimal precision, the latitude and longitude values in both files should be of the same precision level. And, for the sake of relevance, the geographical coordinates in both files should be as close as possible to apply the most accurate environmental parameters to the correct species occurrences.
 >    >
 >    {: .comment}
 >
 > 2. Check your outputs. You must have two files:
 >       - Information file containing the coordinates of occurrence data, the coordinates retains from environmental data and the distances between the two.
->       - Occurrence and Environment merge file containing occurrence data and environmental data cooresponding.
+>       - Occurrence and Environment merge file containing occurrence data and environmental data corresponding.
 >
 {: .hands_on}
+
+## Clean merged table file
+
+To use next tool, BRT, one need to have a clean merged table datafile. To do so, you can here remove the "scientificName" column, as BRT tool merged data input must only have numeric values columns.
+
+
+
+> <hands-on-title> Run the BRT tool </hands-on-title>
+>
+> 1. {% tool [Remove columns](toolshed.g2.bx.psu.edu/repos/iuc/column_remove_by_header/column_remove_by_header/1.0) %} with the following parameters:
+>    - {% icon param-file %} *"Tabular file"*: `Merged table` (Input dataset)
+>    - {% icon param-file %} *"Select Columns"*: `scientificName` (output of **GeoNearestNeighbor** {% icon tool %})
+>
+>
+{: .hands_on}
+
+
+
+
 
 ## Predicting life traits with BRT tool prediction
 
@@ -252,7 +284,7 @@ This tool gives as output a file containing the predictions of the probability o
 >
 > 1. {% tool [BRT tool prediction](toolshed.g2.bx.psu.edu/repos/ecology/ecoregion_brt_analysis/ecoregion_brt_analysis/0.1.0+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Input your environment data file of your study area (tabular format only)"*: `ceamarc_env.tsv` (Input dataset)
->    - {% icon param-file %} *"Input your occurrences data file(s) containing also the environmental characteristics where the species has been observe (tabular format only)"*: `Merge table` (output of **GeoNearestNeighbor** {% icon tool %})
+>    - {% icon param-file %} *"Input your occurrences data file(s) containing also the environmental characteristics where the species has been observe (tabular format only)"*: `Merged table` (output of **GeoNearestNeighbor** cleaned for extra column with **Remove column** tool if relevant {% icon tool %})
 >
 >      {% snippet faqs/galaxy/tools_select_multiple_datasets.md %}
 >
@@ -280,17 +312,17 @@ In the 'Validation files' collection there must be a file containing for each li
 
 In the 'Species distribution prediction maps' collection there must be for each life traits a map representing their probability of presence at each environmental layer pixel.
 
-![Species distribution map](./Images/BRT-Echinodermata_Crinoidea_Comatulida_Antedonidae_Florometra_mawsoni__pred_plot.png "Florometra mawsoni distribution from BRT")
+![Life traits distribution map](./Images/BRT_Development_planktotrophic _pred_plot.png "Development planktotrophic distribution from BRT")
 
 In the 'Partial dependence plots' collection there should be graphs showing the percentage explanation of the model for each environmental parameter.
 Here is an example:
 
-![Partial dependence plots](./Images/BRT-Echinodermata_Crinoidea_Comatulida_Antedonidae_Florometra_mawsoni.pdf "Percentage of explanation of the model for each environmental parameter")
+![Partial dependence plots](./Images/BRT_Development_direct.development.pdf "Percentage of explanation of the model for each environmental parameter")
 
 
 ## Collecting the list of life traits with TaxaSeeker
 
-You may wonder "but shouldn't this tool be used only with taxon data?" it's commonly used for taxas but it works also with life traits.
+You may wonder "but shouldn't this tool be used only with taxon data?" it's commonly used for taxa but it works also with life traits.
 
 ### What it does ?
 
@@ -301,6 +333,7 @@ This tool does three things:
 - It provides a list of taxa that obtained cleaned BRT models (without "_", "_sp", etc.) to propose the list to WoRMS (World Register of Marine Species) or another taxonomic database and obtain more information about the taxa.
 
 - It generates a list of taxa for which a BRT model was obtained, needed as input of following steps.
+
 ### How to use it ?
 
 > <hands-on-title> Run TaxaSeeker </hands-on-title>
@@ -322,10 +355,6 @@ This tool does three things:
 
 ## Determine the optimal number of cluster and build ecoregional clusters with ClaraGuess
 
-## Build a ecoregionalization map with EcoMap
-
-# Conclusion
-
 ### What it does ?
 This tool applies the CLARA clustering method to identify environmental clusters based on:
 - BRT model predictions (a collection of tabular files),
@@ -340,9 +369,8 @@ The tool enables the determination of the optimal number of clusters for partiti
 >    - {% icon param-file %} *"Environmental data (tabular)"*: `ceamarc_env.tsv` (Input dataset)
 >    - {% icon param-file %} *"BRT prediction files (collection of tabular)"*: `Prediction files` (output of **BRT tool** {% icon tool %})
 >    - {% icon param-file %} *"List of taxas (from TaxaSeeker)"*: `List of taxa` (output of **TaxaSeeker** {% icon tool %})
->    - *"k is ..."*: either the number of clusters of the model (the number of ecoregions) or if you don't how many cluster/ecoregions you want and the tool will find the more optimal number of clusters. The first time, this parameter should be set to automatic so you can see the plot of silhouette scores and determine yourself what is the best number of clusters to choose. The best number of clusters according to silhouette score isn't always equal the number of ecoregions.
+>    - *"k is ..."*: either the number of clusters of the model (the number of ecoregions) or if you don't how many cluster/ecoregions you want, the tool will find the more optimal number of clusters. The first time, this parameter should be set to automatic so you can see the plot of silhouette scores and determine yourself what is the best number of clusters to choose. The best number of clusters according to silhouette score isn't always equal the number of ecoregions.
 >    - {% icon param-file %} *"Value of k (collection of tabular)"*: a number greater than 2
-
 >
 >    > <comment-title> Two other parameters </comment-title>
 >    >
@@ -372,6 +400,8 @@ the bar, the better the consistency of the observation with its cluster and the 
 are well grouped and separated from other clusters, while values close to -1 indicate that objects are poorly grouped and may be closer to other clusters. A value close to 0 indicates a situation where objects are
 located at the border between two clusters. Here, in the graph below, there is a good distribution of the observations because the majority of the bars are above the average value of the silhouette index.
 
+![SIH_index_plot](./Images/SIH_index_plot.png "SIH index plot")
+
 ![SIH plot](./Images/SIH_plot.png "SIH plot")
 
 # Build a ecoregionalization map with **EcoMap**
@@ -379,9 +409,9 @@ located at the border between two clusters. Here, in the graph below, there is a
 > <hands-on-title> Run EcoMap </hands-on-title>
 >
 > 1. {% tool [EcoMap](toolshed.g2.bx.psu.edu/repos/ecology/ecoregion_eco_map/ecoregion_eco_map/0.1.0+galaxy0) %} with the following parameters:
->    - {% icon param-file %} *"Source file (File 'cluster points' from previous step)"*: `cluster_points` (output of **ClaraClust** {% icon tool %})
+>    - {% icon param-file %} *"Source file (File 'cluster points' from previous step)"*: `cluster assignements` (output of **ClaraGuess** {% icon tool %})
 >
-> This tool simply need the previous step "Cluster points" output file to generate a map representing ecoregions.
+> This tool simply need the previous step "cluster assignements (lat, long, cluster)" output file to generate a map representing ecoregions.
 >
 > 2. Check output. You must have one Map representing ecoregions.
 >
