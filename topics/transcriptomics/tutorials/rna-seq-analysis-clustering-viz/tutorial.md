@@ -285,7 +285,7 @@ The generated output is an extension of the previous file:
 > > <solution-title></solution-title>
 > >
 > > 1. ENSMUSG00000000308 (the top-ranked gene with the highest positive log2FC value)
-> > 2. It is located on the reverse strand of chromosome X, between 10,778,953 bp and 10,786,907 bp.
+> > 2. It is located on the reverse strand of chromosome 2, between 121183449 bp and 121189473 bp.
 > {: .solution}
 {: .question}
 
