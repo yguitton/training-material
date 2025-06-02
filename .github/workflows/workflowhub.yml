@@ -72,3 +72,5 @@ jobs:
           branch-suffix: timestamp
           commit-message: Update WorkflowHub IDs
           add-paths: metadata/
+          author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+          committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
