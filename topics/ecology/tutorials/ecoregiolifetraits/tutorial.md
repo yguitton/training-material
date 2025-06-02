@@ -28,15 +28,13 @@ subtopic: ecologyanalysis
 ---
 
 
-# Introduction
-
 This tutorial is designed to guide you through the Ecoregionalization Galaxy workflow, demonstrating how to create a life traits ecoregionalization map from occurrences and environmental data using a boosted regression tree model for predictions.
 
 The workflow, consisting of six tools, is intended for processing occurrence data, which should include latitude, longitude, species presence and scientific name or life traits (if life traits are absent they will be deduced automatically with scientific names). The tutorial will provide a detailed explanation of inputs, workflow steps, and outputs. This tutorial gives a practical example, highlighting a use case centered on the Kerguelen plateau and Echonoids species.
 
 The primary goal of this workflow is to generate life traits distribution maps and identify ecoregions within the study area. The project’s objective is to offer accessible, reproducible, and transparent IT solutions for processing and analyzing life traits occurrence data. 
 
-Note: if you're data already contains life traits, use [this tutorial](https://training.galaxyproject.org/training-material/topics/ecology/tutorials/Ecoregionalization_tutorial/tutorial.html) instead, the process is the same with taxa and life traits. You can also use this one skipping the two "WoRMS" dedicated steps.
+Note: if you're data already contains life traits, use {% link topics/ecology/tutorials/Ecoregionalization_tutorial/tutorial.md %} instead, the process is the same with taxa and life traits. You can also use this one skipping the two "WoRMS" dedicated steps.
 
 This workflow is therefore composed of 6 tools:
  - WormsMeasurments
@@ -365,7 +363,7 @@ The tool enables the determination of the optimal number of clusters for partiti
 
 > <hands-on-title> Run ClaraGuess </hands-on-title>
 >
-> 1. {% tool [ClaraGuess](https://toolshed.g2.bx.psu.edu/view/ecology/claraguess/adeb719a267f) %} with the following parameters:
+> 1. {% tool [ClaraGuess](toolshed.g2.bx.psu.edu/repos/ecology/claraguess/ClaraGuess/0.1.2) %} with the following parameters:
 >    - {% icon param-file %} *"Environmental data (tabular)"*: `ceamarc_env.tsv` (Input dataset)
 >    - {% icon param-file %} *"BRT prediction files (collection of tabular)"*: `Prediction files` (output of **BRT tool** {% icon tool %})
 >    - {% icon param-file %} *"List of taxas (from TaxaSeeker)"*: `List of taxa` (output of **TaxaSeeker** {% icon tool %})
