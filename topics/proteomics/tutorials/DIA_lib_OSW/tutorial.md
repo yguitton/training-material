@@ -159,13 +159,17 @@ The PTXQC software ({% cite Bielow2015 %}) was built to enable direct proteomics
 >        - {% icon param-file %} *"Infile"*: `MaxQuant_Evidence`
 >    - *"With following condition"*: `len(c9.split(';')) < 2`
 >    - *"Number of header lines to skip"*: `1`
->- Rename to 'Filter on MaxQuant_Evidence'
 >
-> 2. {% tool [Filter](Filter1) %} with the following parameters:
+> 2. **Rename** {% icon galaxy-pencil %} the output file to 'Filter on MaxQuant_Evidence'
+>
+>    {% snippet faqs/galaxy/datasets_rename.md %}
+>
+> 3. {% tool [Filter](Filter1) %} with the following parameters:
 >        - {% icon param-file %} *"Infile"*: `MaxQuant_MSMS`
 >    - *"With following condition"*: `len(c12.split(';')) < 2`
 >    - *"Number of header lines to skip"*: `1`
->- Rename to 'Filter on MaxQuant_MSMS'
+>
+> 4.  **Rename** {% icon galaxy-pencil %} the output file to 'Filter on MaxQuant_MSMS'
 >
 >    > <comment-title>Unique Features / peptides</comment-title>
 >    > Peptides which only occur in one protein are considered as unique for this specific protein. To avoid ambigious protein mapping later, we filter the **MaxQuant** search results for unique peptides only. CAUTION: This increase in specificity (each peptide originates from only one protein) will reduce the size of the spectral library and might lead to decreased sensitivity  during the DIA analysis.
