@@ -13,6 +13,17 @@ jobs:
     if: github.repository_owner == 'galaxyproject'
     runs-on: ubuntu-latest
     steps:
+      - uses: jlumbroso/free-disk-space@main
+        with:
+          # all of these default to true, but feel free to set to
+          # "false" if necessary for your workflow
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: false
+          docker-images: false
+          swap-storage: false
+
       - uses: actions/checkout@v4
         with:
           ref: "${{ github.event.inputs.selected_tag }}"
