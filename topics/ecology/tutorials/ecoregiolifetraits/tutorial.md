@@ -52,7 +52,7 @@ And in this tutorial we will be using 2 more tools to format data before running
 Let’s delve into the tutorial, outlining each step and tool to manage the creation of ecoregionalization maps.
 
 
-> <agenda-title>Agenda</agenda-title>
+> <agenda-title></agenda-title>
 >
 > In this tutorial, we will cover:
 >
