@@ -113,7 +113,7 @@ The MaxQuant Galaxy implementation contains the most important MaxQuant paramete
 >
 {: .hands_on}
 
-Here we used a variation of the *"identifier parse rule"* to allow for the organism label to be present in the spectral library. For investigations of single organism and to keep only the Uniprot identifier one can adjust the *"identifier parse rule"* accordingly.
+Here we used a variation of the *"identifier parse rule"* to allow for the organism label to be present in the spectral library. For investigations of single organisms and to keep only the Uniprot identifier one can adjust the *"identifier parse rule"* accordingly.
 More details on the different **MaxQuant** parameters can be found in this [MaxQuant tutorial]({{site.baseurl}}/topics/proteomics/tutorials/maxquant-label-free/tutorial.html).
 
 > <tip-title>Continue with results from Zenodo</tip-title>
