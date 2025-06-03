@@ -5,6 +5,7 @@ layout: faq
 box_type: tip
 contributors: [dadrasarmin]
 ---
+
 If you performed your data analysis in Galaxy, you can easily export a list of all the tools you used—and should cite—as follows:
 
 1. Click on the **History options** button ( {% icon galaxy-history-options %} ) in the right-hand panel.
