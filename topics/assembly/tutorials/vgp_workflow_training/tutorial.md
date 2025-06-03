@@ -60,8 +60,8 @@ recordings:
   - abueg
   bot-timestamp: 1726177737
 edam_ontology:
-  - operation_0525 #Genome assembly 
-  - EFO_0007693 #Hi-C
+  - topic_0196 #sequence assembly
+  - topic_3940 #chromosome conformation capture
     
 
 ---
