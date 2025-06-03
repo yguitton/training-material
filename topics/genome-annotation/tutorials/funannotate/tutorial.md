@@ -39,6 +39,8 @@ contributions:
     - eurosciencegateway
     - elixir-europe
 
+edam_ontology:
+  - topic_0622 # Genomics
 abbreviations:
   NMDS: Non-metric multidimensional scaling
 
