@@ -16,6 +16,9 @@ tags:
   - ocean
   - marine omics
   - biodiversity
+edam_ontology:
+- topic_3050 # Biodiversity
+- topic_3473 # Data mining
 contributions:
     authorship:
         - Marie59
