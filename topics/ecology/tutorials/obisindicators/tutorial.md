@@ -18,6 +18,7 @@ tags:
   - biodiversity
 edam_ontology:
 - topic_3050 # Biodiversity
+- topic_0610 # Ecology
 - topic_3473 # Data mining
 contributions:
     authorship:
