@@ -25,6 +25,10 @@ recordings:
   captioners:
   - delphine-l
   bot-timestamp: 1726801100
+edam_ontology:
+- topic_0622 # Genomics
+- topic_0196 # Sequence assembly
+- topic_3301 # Microbiology
 
 
 ---
