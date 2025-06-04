@@ -5,7 +5,7 @@ title: 'Genome Assembly Quality Control'
 zenodo_link: 'https://zenodo.org/record/6947782'
 tags:
   - assembly
-  - topic_3572
+  - quality control
   - biodiversity
 questions:
 - Is my genome assembly ready for annotation and/or scaffolding?
