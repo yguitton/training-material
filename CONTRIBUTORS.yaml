@@ -490,6 +490,10 @@ cansavvy:
     name: Candace Savonen
     joined: 2023-06
 
+casper937:
+    name: Casper de Visser
+    joined: 2025-05
+
 cat-bro:
     name: Catherine Bromhead
     matrix: 'cat-bro:matrix.org'
@@ -527,6 +531,10 @@ carloscheemendonca:
 charitylaw:
     name: Charity Law
     joined: 2018-09
+
+charlotteradboud:
+    name: Charlotte Adang
+    joined: 2025-05
 
 chensy96:
     name: Siyu Chen
@@ -1246,6 +1254,11 @@ jdavcs:
     joined: 2019-06
     orcid: 0000-0002-1363-1245
 
+jeanlecras:
+    name: Jean Le Cras
+    email: jean.le-cras@proton.me
+    joined: 2025-05
+
 jennaj:
     name: Jennifer Hillman-Jackson
     maintainer_contact: https://help.galaxyproject.org/
@@ -1352,6 +1365,10 @@ JasperO98:
     affiliations:
       - elixir-europe
 
+jbeli11:
+    name: John Beliveau
+    email: jbeli569@mail.endicott.edu
+    joined: 2025-05
 jmchilton:
     name: John Chilton
     email: jmchilton@gmail.com
@@ -2174,6 +2191,10 @@ otatadeabigail:
 OlegZharkov:
     name: Oleg Zharkov
     joined: 2021-06
+
+pacthoen:
+  name: "Peter-Bram 't Hoen"
+  joined: 2025-05
 
 pajanne:
     name: Anne Pajon
