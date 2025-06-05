@@ -169,10 +169,10 @@ The first step is to be sure your data are well formated. If all your file are i
 >    > <comment-title> short description </comment-title>
 >    >
 >    > This tool compute phylodiversity index, It include some randomness so, for reproducibility, you'll need to select a random seed. Moreover you'll need to select the way of modeling you want by choosing between 3 propositon:
--“tipshuffle”: shuffles tip labels multiple times.
--“rowwise”: shuffles sites (i.e., varying richness) and keeping species occurrence frequency constant.
--“colwise”: shuffles species occurrence frequency and keeping site richness constant.
-The default value is the tipshuffle method
+>    > -“tipshuffle”: shuffles tip labels multiple times.
+>    > -“rowwise”: shuffles sites (i.e., varying richness) and keeping species occurrence frequency constant.
+>    > colwise”: shuffles species occurrence frequency and keeping site richness constant.
+>    > The default value is the tipshuffle method
 >    {: .comment}
 >
 {: .hands_on}
