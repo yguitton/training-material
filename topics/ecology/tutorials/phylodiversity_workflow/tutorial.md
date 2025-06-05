@@ -112,6 +112,8 @@ This kind of file must have at least 3 file with the same name and 3 different e
 
 The first step is to be sure your data are well formated. If all your file are in good format and do have the needed column as specified before, you can move forward.
 
+![Format for occupancy datafile](../../images/phylodiversity/phylodiversity_format.png "Format for occupancy datafile"){: style="width:50%"}
+
 # Phylodiversity Workflow
 
 ## Match your phylogeny and occupancy with **PhylOccuMatcher**
