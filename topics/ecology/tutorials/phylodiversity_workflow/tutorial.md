@@ -78,18 +78,18 @@ This kind of file must have at least 3 file with the same name and 3 different e
 >    the shared data library (`GTN - Material` -> `{{ page.topic_name }}`
 >     -> `{{ page.title }}`):
 >
->    For the `csv` and `newick` datafiles
+>    For the `tabular` and `newick` datafiles
 >    ```
->    https://zenodo.org/records/15487657/files/phylogeny_test
->    https://zenodo.org/records/15487657/files/grid_test.csv
+>    https://zenodo.org/records/15601932/files/phylogeny_test
+>    https://zenodo.org/records/15601932/files/grid_test.tabular
 >    ```
 >
 >    For the composite `shp` datafile (you here need to download locally each file to upload it from the "Composite" menu of "Upload Files" tool, selecting `shp` datatype)
 >    ```
->    https://zenodo.org/records/15487657/files/shapefile.dbf
->    https://zenodo.org/records/15487657/files/shapefile.prj
->    https://zenodo.org/records/15487657/files/shapefile.shx
->    https://zenodo.org/records/15487657/files/shapefile.shp
+>    https://zenodo.org/records/15601932/files/shapefile.dbf
+>    https://zenodo.org/records/15601932/files/shapefile.prj
+>    https://zenodo.org/records/15601932/files/shapefile.shx
+>    https://zenodo.org/records/15601932/files/shapefile.shp
 >    ```
 >
 >
@@ -124,7 +124,7 @@ An example of occupancy file:
 >
 > 1. {% tool [PhylOccuMatcher](toolshed.g2.bx.psu.edu/repos/ecology/phylogenetic_occupancy_matcher/phylogenetic_occupancy_matcher/1.0+galaxy0) %} with the following parameters:
 >    - {% icon param-file %} *"Phylogeny file (Newick format)"*: `phylogeny_test` (Input dataset)
->    - {% icon param-file %} *"Occupancy data (Tabular format)"*: `grid_test.csv` (Input dataset)
+>    - {% icon param-file %} *"Occupancy data (Tabular format)"*: `grid_test.tabular` (Input dataset)
 >
 >
 >    > <comment-title> short description </comment-title>
