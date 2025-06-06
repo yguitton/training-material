@@ -10,7 +10,11 @@ objectives:
 - Learning how to use the phylodiversity workflow.
 - Compute endemism index
 - Create a phyloregion map
-time_estimation: ''
+time_estimation: '2H'
+key_points:
+- Compute Phylodiversity metrics
+- Estimate the endemism of spatial units from phylogeny and occupancy data
+- Use an Essential Biodiversity Variables workflow
 tags:
 - ecology
 - taxonomic data
@@ -19,6 +23,7 @@ contributions:
     - Morphy427
     - yvanlebras
 
+subtopic: ecologyanalysis
 ---
 
 
@@ -193,7 +198,7 @@ An example of occupancy file:
 >
 >    > <comment-title> short description </comment-title>
 >    >
->    > The output of this tool is a shapefile withe the clusterisation done in function of the endemism. You'll have to choose a number of cluster you want and the clustering method you want.
+>    > The output of this tool is a shapefile with the clusterisation done in function of the endemism. You'll have to choose a number of cluster you want and the clustering method you want.
 >    {: .comment}
 >    > <comment-title> More tips and info </comment-title>
 >    >
