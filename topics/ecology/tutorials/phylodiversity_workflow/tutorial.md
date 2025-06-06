@@ -12,9 +12,8 @@ objectives:
 - Create a phyloregion map
 time_estimation: '2H'
 key_points:
-- Compute Phylodiversity metrics
-- Estimate the endemism of spatial units from phylogeny and occupancy data
-- Use an Essential Biodiversity Variables workflow
+- The PhylOccuMatcher tool allows to match phylogeny and occupancy data.
+- The CRSconverter tool transforms geographical vector data to a specified coordinated system, WGS84 by default. This tool is usefull as a step of a workfow to force the coordinating system needed by futher steps.
 tags:
 - ecology
 - taxonomic data
