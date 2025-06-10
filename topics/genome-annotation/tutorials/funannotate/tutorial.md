@@ -40,7 +40,6 @@ contributions:
     - elixir-europe
 
 edam_ontology:
-  - topic_0622 # Genomics
   - topic_0623 # Gene and protein families
 abbreviations:
   NMDS: Non-metric multidimensional scaling
