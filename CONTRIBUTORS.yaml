@@ -2922,6 +2922,12 @@ tsenapathi:
 tflowers15:
     name: Tristan Reynolds
     joined: 2025-03
+    email: treynolds@unimelb.edu.au
+    orcid: 0000-0002-6606-5953
+    affiliations:
+      - AustralianBioCommons
+      - unimelb
+      - melbournebioinformatics
 
 trungN:
     name: Nguyen Vo Minh Trung
