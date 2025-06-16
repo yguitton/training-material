@@ -456,7 +456,7 @@ For filtering the most variable genes, we will compute the coefficient of variat
 >    - *"Input data has"*: `Column names on the first row` and `Row names on the first column`
 >    - *"Type of table operation "*: `Compute expression across rows or columns`
 >       - *"Calculate"*: `Custom`
->       - *"Custom function on vec"*: `vec.std`
+>       - *"Custom function on vec"*: `vec.std()`
 >       - *"For each"*: `row`
 >       - *"Output formatting options"*: keep everything checked. Output should have column and row headers
 >    - See this [Screenshot](https://github.com/pacthoen/BMW2_RNA_clust_vis/blob/main/screenshots/Screenshot%202025-05-23%20085500.png)
@@ -465,7 +465,7 @@ For filtering the most variable genes, we will compute the coefficient of variat
 >    - *"Input data has"*: `Column names on the first row` and `Row names on the first column`
 >    - *"Type of table operation "*: `Compute expression across rows or columns`
 >       - *"Calculate"*: `Custom`
->       - *"Custom function on vec"*: `vec.mean`
+>       - *"Custom function on vec"*: `vec.mean()`
 >       - *"For each"*: `row`
 >       - *"Output formatting options"*: keep everything checked. Output should have column and row headers
 > 3. Use the **Join two files** tool to merge the normalised count data with the standard deviation and mean datasets (two steps)
