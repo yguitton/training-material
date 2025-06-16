@@ -985,7 +985,7 @@
             "uuid": "708b9c3c-9de6-4722-9852-39c1b82310b6",
             "when": null,
             "workflow_outputs": [
-                {
+                {tarain 
                     "label": "metada_table",
                     "output_name": "out_file1",
                     "uuid": "5479d320-3e82-47a9-a92b-6ed5959459cf"
@@ -994,7 +994,7 @@
         },
         "22": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/phyloseq_from_dada2/phyloseq_from_dada2/1.46.0+galaxy0",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/phyloseq_from_dada2/phyloseq_from_dada2/1.50.0+galaxy3",
             "errors": null,
             "id": 22,
             "input_connections": {
