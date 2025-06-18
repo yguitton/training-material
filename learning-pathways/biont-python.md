@@ -11,7 +11,7 @@ type: use
 
 
 cover-image: assets/images/BioNT_Logo.png
-cover-image-alt: GTN Logo on a spiral galaxy background with text galaxy admin training
+cover-image-alt: BioNT logo a blue had with the text BioNT
 
 editorial_board:
   - teresa-m
@@ -47,3 +47,5 @@ pathway:
         description: |
           [Lecture Hands-on](http://swcarpentry.github.io/python-novice-gapminder/13-conditionals.html); [<i class="fas fa-video" aria-hidden="true"></i> Lecture Video](https://lhumos.org/player/5/2/661d1e94e4b08465bc30cbc9/661d1ec9e4b08465bc30cbdd)
 ---
+
+This learning path covers the BioNT programming course. In this 3 half day course learners get a introduction into the programming language Python.
