@@ -4,7 +4,7 @@ contributions:
   authorship: [nomadscientist]
 tags: [gtn]
 layout: news
-cover: "news/images/spoc/2024_gcc_BB.png"
+cover: "news/images/spoc_images/2024_gcc_BB.png"
 coveralt: "Four happy looking people on a stairwell wearing conference lanyards. They look nerdy and delighted, and it's not dissimilar to a family photo of awkward people who genuinely like each other. The individuals are Julia, Wendi, Marisa, and Morgan."
 
 ---
@@ -30,6 +30,10 @@ This is my ode to the Galaxy Community to say how grateful I have been for your 
 - To every course participant who sticks with through the boring pre-processing steps and makes it to the fun images at the end;
 - To every EOSC and ELIXIR travel grant I managed to get, which has had profound, long-lasting impacts on me and every intern and student we’ve managed to bring (and of course, led to a heap ton of contributions and projects!);
 - And finally, to my phenomenal, brilliant, caring, capable, interns, masters & PhD students who now champion open-source and community development.
+
+From looking back, to looking ahead, what do I see as the future focus for Galaxy?
+ - **A better mechanism for getting early career researchers and women/nonbinary members on funding ladders**: From small pots of travel funding or internships as part of wider grants - any way to get a more diverse group of colleagues onto bids as co-investigators or principal investigators will help the community develop sustainably in the future.
+ - **Stronger connection across continents & focus areas**: Our working groups are largely USA-driven, our Special Interest Groups are largely EU-driven. We are a large, diverse, sprawling Community, we have part-time, temporary, full-time, and permanent contributors. We need to connect all these groups, from domain experts and user engagement through all the way to backend development; across geographical location and economic disparities; and across levels of contributorship.
 
 There’s always plenty to fix, but I am grateful for the experience I have had with the Galaxy Community. You taught me how to think globally and openly, how to work confidently across disciplines, and how profoundly valuable the will to ‘show up and try’ is. So thank you, Galaxy Community, for the experience thus far!
 
