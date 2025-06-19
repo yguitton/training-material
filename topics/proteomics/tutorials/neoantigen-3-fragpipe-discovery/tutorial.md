@@ -238,6 +238,23 @@ In this workflow, we aim to consolidate the peptide output from FragPipe. In the
 >
 {: .hands_on}
 
+> <hands-on-title> Extracting Peptide Candidates using Query Tabular </hands-on-title>
+>
+> 1. {% tool [Query Tabular](toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.3.2) %} with the following parameters:
+>    - In *"Database Table"*:
+>        - {% icon param-repeat %} *"Insert Database Table"*
+>            - {% icon param-file %} *"Tabular Dataset for Table"*: `output` (output of **Select** {% icon tool %})
+>    - *"SQL Query to generate tabular output"*:
+> ``` sql
+> SELECT DISTINCT c1
+> FROM t1
+> ```
+>    - *"include query result column headers"*: `No`
+>
+>
+{: .hands_on}
+
+
 > <hands-on-title> Remove beginning of file </hands-on-title>
 >
 > 1. {% tool [Remove beginning](Remove beginning1) %} with the following parameters:

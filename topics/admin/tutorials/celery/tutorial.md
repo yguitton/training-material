@@ -15,9 +15,11 @@ time_estimation: "1h"
 key_points:
 contributions:
   authorship:
-  - mira-miracoli
+    - mira-miracoli
   editing:
-  - hexylena
+    - hexylena
+  funding:
+    - eurosciencegateway
 requirements:
   - type: "internal"
     topic_name: admin

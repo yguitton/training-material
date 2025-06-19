@@ -80,6 +80,8 @@ abretaud:
 abdulrahmanazab:
     name: Abdulrahman Azab
     joined: 2019-01
+    affiliations:
+      - eurosciencegateway
 
 abueg:
     name: Linelle Abueg
@@ -476,6 +478,7 @@ B0r1sD:
         lon: 3.723
     affiliations:
       - elixir-europe
+      - eurosciencegateway
 
 CameronFRWatson:
     name: Cameron Watson
@@ -486,6 +489,10 @@ CameronFRWatson:
 cansavvy:
     name: Candace Savonen
     joined: 2023-06
+
+casper937:
+    name: Casper de Visser
+    joined: 2025-05
 
 cat-bro:
     name: Catherine Bromhead
@@ -524,6 +531,10 @@ carloscheemendonca:
 charitylaw:
     name: Charity Law
     joined: 2018-09
+
+charlotteradboud:
+    name: Charlotte Adang
+    joined: 2025-05
 
 chensy96:
     name: Siyu Chen
@@ -646,6 +657,15 @@ dawnmy:
 Sch-Da:
     name: Daniela Schneider
     joined: 2024-10
+    email: schneidd@informatik.uni-freiburg.de
+    matrix: 'schn_da:matrix.org'
+    orcid: 0000-0001-9536-5587
+    bio: Researcher at Galaxy Europe
+    contact_for_training: true
+    affiliations:
+      - uni-freiburg
+      - deKCD
+      - elixir-europe
 
 dadrasarmin:
     name: Armin Dadras
@@ -682,6 +702,9 @@ davebx:
 davelopez:
     name: David López
     joined: 2021-10
+    affiliations:
+      - eurosciencegateway
+      - uni-freiburg
 
 dbrites:
     name: Daniela Brites
@@ -783,6 +806,13 @@ elichad:
     email: eli.chadwick@manchester.ac.uk
     orcid: 0000-0002-0035-6475
     joined: 2022-11
+    affiliations:
+      - eurosciencegateway
+
+elifsu-simula:
+    name: Elifsu Filiz
+    orcid: 0000-0003-3744-7781
+    joined: 2025-03
 
 elischberg:
     name: Elischa Berger
@@ -805,6 +835,7 @@ ElectronicBlueberry:
     affiliations:
       - uni-freiburg
       - elixir-europe
+      - eurosciencegateway
 
 angiolini:
     github: false
@@ -854,9 +885,10 @@ erxleben:
     joined: 2017-09
     elixir_node: de
     affiliations:
-      - eurosciencegateway
       - uni-freiburg
       - elixir-europe
+    former_affiliations:
+      - eurosciencegateway
 
 estebanpw:
     name: Esteban Perez-Wohlfeil
@@ -868,6 +900,11 @@ ethering:
     name: Graham Etherington
     orcid: 0000-0002-5003-1425
     joined: 2019-10
+
+evenmm:
+    name: Even Moa Myklebust
+    orcid: 0000-0002-8380-6370
+    joined: 2025-04
 
 Ezichi-Fav:
     name: Ofoezie Ezichi
@@ -1045,6 +1082,10 @@ guillaume-gricourt:
     linkedin: guillaume-gricourt
     joined: 2022-03
 
+hvelab:
+    name: Helena Vela
+    joined: 2024-09
+
 hannahkimincompbio:
     name: Hannah Kim
     joined: 2024-09
@@ -1142,7 +1183,7 @@ hrhotz:
     contact_for_training: true
     location:
       country: CH
-      lat: 47.575694 
+      lat: 47.575694
       lon: 7.578796
     affiliations:
       - elixir-europe
@@ -1213,6 +1254,11 @@ jdavcs:
     joined: 2019-06
     orcid: 0000-0002-1363-1245
 
+jeanlecras:
+    name: Jean Le Cras
+    email: jean.le-cras@proton.me
+    joined: 2025-05
+
 jennaj:
     name: Jennifer Hillman-Jackson
     maintainer_contact: https://help.galaxyproject.org/
@@ -1269,6 +1315,10 @@ jgoecks:
     affiliations:
     - moffitt
 
+jhahnfeld:
+    name: Julian Hahnfeld
+    joined: 2025-04
+
 jj-umn:
     name: James Johnson
     email: jj@umn.edu
@@ -1287,6 +1337,10 @@ jkreplak:
     email: jonathan.kreplak@inrae.fr
     joined: 2020-09
     orcid: 0000-0001-5563-1932
+
+jochenblom:
+    name: Jochen Blom
+    joined: 2025-04
 
 joelvdavies:
     name: Joel Davies
@@ -1311,6 +1365,10 @@ JasperO98:
     affiliations:
       - elixir-europe
 
+jbeli11:
+    name: John Beliveau
+    email: jbeli569@mail.endicott.edu
+    joined: 2025-05
 jmchilton:
     name: John Chilton
     email: jmchilton@gmail.com
@@ -1467,6 +1525,7 @@ kysrpex:
     affiliations:
       - uni-freiburg
       - elixir-europe
+      - eurosciencegateway
 
 Lain-inrae:
     name: Lain Pavot
@@ -1497,6 +1556,8 @@ leandro-liborio:
     name: Leandro Liborio
     email: leandro.liborio@stfc.ac.uk
     joined: 2022-11
+    affiliations:
+      - eurosciencegateway
 
 Laura190:
     name: Laura Cooper
@@ -1513,6 +1574,10 @@ lecorguille:
 LeilyR:
     name: Leily Rabbani
     joined: 2018-09
+
+lfenske-93:
+    name: Linda Fenske
+    joined: 2025-04
 
 lilianarutaihwa:
     name: Liliana Rutaihwa
@@ -1545,6 +1610,11 @@ lisanna:
     joined: 2023-09
     email: lisanna.paladin@gmail.com
     orcid: 0000-0003-0011-9397
+    affiliations:
+      - elixir-europe
+      - embl-ebi
+      - deKCD
+      - biont
 
 lleroi:
     name: Laura Leroi
@@ -1556,6 +1626,8 @@ lopiola:
     name: Łukasz Opioła
     joined: 2025-03
     orcid: 0000-0003-1997-932X
+    affiliations:
+      - eurosciencegateway
 
 LonsBio:
     name: Andrew Lonsdale
@@ -1668,6 +1740,7 @@ martenson:
     joined: 2017-09
     affiliations:
       - elixir-europe
+      - eurosciencegateway
 
 MarenStillger:
     name: Maren Stillger
@@ -1834,6 +1907,10 @@ Minamehr:
       - elixir-europe
       - deNBI
 
+Mingkai14:
+    name: Mingkai Wang
+    joined: 2025-04
+
 mira-miracoli:
     name: Mira Kuntz
     orcid: 0000-0003-4302-5091
@@ -1845,6 +1922,16 @@ mira-miracoli:
       - uni-freiburg
       - elixir-europe
       - deNBI
+      - eurosciencegateway
+
+mirandaembl :
+    name: Eduardo Jacobo Miranda Ackerman
+    joined: 2025-05
+    elixir_node: de
+    orcid: '0009-0005-0673-021X'
+    affiliations:
+      - deKCD
+      - embl-ebi
 
 miRlyKayleigh:
     name: Kayleigh Smith
@@ -1867,6 +1954,10 @@ moheydarian:
     email: mheydarian@gmail.com
     orcid: 0000-0001-9449-9364
     joined: 2017-09
+
+Morphy427: 
+    name: Elouan Le Mestric
+    joined: 2025-05
 
 mritchie:
     name: Matt Ritchie
@@ -2072,9 +2163,19 @@ odoppelt:
     affiliations:
       - elixir-europe
 
+ogerdfx:
+    name: Christine Oger
+    joined: 2025-06
+    elixir_node: fr
+
 olanag1:
     name: Olha Nahorna
     joined: 2019-07
+
+Oliver_Rupp:
+    name: Oliver Rupp
+    github: false
+    joined: 2025-04
 
 onorvez:
     name: Olivier Norvez
@@ -2084,6 +2185,10 @@ onorvez:
     affiliations:
       - elixir-europe
 
+oschwengers:
+    name: Oliver Schwengers
+    joined: 2025-04
+
 otatadeabigail:
     name: Otatade Abigail
     joined: 2021-10
@@ -2091,6 +2196,10 @@ otatadeabigail:
 OlegZharkov:
     name: Oleg Zharkov
     joined: 2021-06
+
+pacthoen:
+  name: "Peter-Bram 't Hoen"
+  joined: 2025-05
 
 pajanne:
     name: Anne Pajon
@@ -2131,6 +2240,8 @@ patrick-austin:
     name: Patrick Austin
     email: patrick.austin@stfc.ac.uk
     joined: 2022-11
+    affiliations:
+      - eurosciencegateway
 
 paulineauffret:
     name: Pauline Auffret
@@ -2180,6 +2291,10 @@ pavanvidem:
       - uni-freiburg
       - elixir-europe
       - spoc
+
+PfisterMaxJLU:
+    name: Max Pfister
+    joined: 2025-04
 
 pickettbd:
     name: Brandon Pickett
@@ -2308,6 +2423,10 @@ reid-wagner:
     email: wagnerr@umn.edu
     joined: 2024-11
 
+reytakop:
+    name: Reyhaneh Tavakoli
+    joined: 2025-05
+
 rikeshi:
     name: Erik Schill
     joined: 2021-05
@@ -2384,6 +2503,7 @@ SaimMomin12:
     affiliations:
       - uni-freiburg
       - elixir-europe
+      - eurosciencegateway
 
 samanthaanjei:
     name: Samantha Anjei
@@ -2404,6 +2524,7 @@ sanjaysrikakulam:
     affiliations:
       - uni-freiburg
       - elixir-europe
+      - eurosciencegateway
 
 saramorsy:
     name: Sara Morsy
@@ -2433,6 +2554,23 @@ sbenateau:
     affiliations:
       - elixir-europe
 
+sbueker77:
+    name: Sarah Büker
+    joined: 2025-05
+    affiliations:
+      - dsc-bremen
+      - uni-bremen
+
+scorreard:
+    name: Solenne Correard
+    email: solenne.correard@inrae.fr
+    orcid: 0000-0002-0554-5443
+    elixir_node: fr
+    affiliations:
+      - elixir-europe
+    joined: 2025-04
+    bluesky: solenne-correard.bsky.social
+
 scottcain:
     name: Scott Cain
     joined: 2025-01
@@ -2440,6 +2578,8 @@ scottcain:
 sebastian-schaaf:
     name: Sebastian Schaaf
     joined: 2024-05
+    former_affiliations:
+      - eurosciencegateway
 
 sonalhenson:
     name: Sonal Henson
@@ -2474,6 +2614,10 @@ shiltemann:
       country: NL
       lat: 51.912
       lon: 4.462
+
+silviadg87:
+    name: Silvia Di Giorgio
+    joined: 2025-05
 
 Shorla:
     name: Olushola Ogunkelu
@@ -2518,6 +2662,10 @@ sitjart:
     elixir_node: uk
     affiliations:
       - elixir-europe
+
+skschum:
+    name: Simeon Schum
+    joined: 2025-02
 
 slegras:
     name: Stéphanie Legras
@@ -2574,6 +2722,7 @@ stain:
     affiliations:
       - by-covid
       - elixir-europe
+      - eurosciencegateway
 
 StellaEggels:
     name: Stella Eggels
@@ -2634,6 +2783,11 @@ sylviamahara:
     github: false
     joined: 2022-03
 
+Tarnima-Omara:
+    name: Tarnima Omara
+    email: otarnima@gmail.com
+    joined: 2025-04
+
 tb143:
     name: Tim Beck
     joined: 2023-09
@@ -2667,10 +2821,12 @@ teresa-m:
     orcid: 0000-0003-1252-9684
     linkedin: teresamueller87
     elixir_node: de
+    contact_for_training: true
     affiliations:
       - uni-freiburg
       - elixir-europe
       - deNBI
+      - biont
 
 TanguyGen:
     name: Tanguy Genthon
@@ -2755,6 +2911,7 @@ torfinnnome:
     elixir_node: "no"
     affiliations:
       - elixir-europe
+      - eurosciencegateway
 
 tseemann:
     name: Torsten Seemann
@@ -2770,6 +2927,12 @@ tsenapathi:
 tflowers15:
     name: Tristan Reynolds
     joined: 2025-03
+    email: treynolds@unimelb.edu.au
+    orcid: 0000-0002-6606-5953
+    affiliations:
+      - AustralianBioCommons
+      - unimelb
+      - melbournebioinformatics
 
 trungN:
     name: Nguyen Vo Minh Trung
@@ -2873,6 +3036,7 @@ wm75:
       - by-covid
       - uni-freiburg
       - elixir-europe
+      - eurosciencegateway
 
 wverastegui:
     name: Wudmir Rojas
@@ -3027,3 +3191,14 @@ rmassei:
     joined: 2024-11
     affiliations:
       - nfdi4bioimage
+
+sfragkoul:
+    name: Stella Fragkouli
+    email: sfragkoul@certh.gr
+    twitter: scfragkoul
+    linkedin: sfragkoul
+    orcid: 0000-0003-4067-7123
+    joined: 2025-03
+    elixir_node: gr
+    affiliations:
+      - elixir-europe

@@ -10,6 +10,7 @@ ALLOWED_SHORT_IDS = [
   'Count1',
   'Cut1',
   'Extract_features1',
+  'export_remote',
   'Filter1',
   'Grep1',
   'Grouping1',
