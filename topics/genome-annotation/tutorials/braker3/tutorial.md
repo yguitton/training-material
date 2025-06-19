@@ -7,12 +7,15 @@ tags:
   - eukaryota
   - Braker3
   - jbrowse1
+  - biodiversity
 
 edam_ontology:
 - topic_0196 # Sequence Assembly
 - topic_0622 # Genomics
 - topic_0362 # Genome annotation
-
+- topic_3050 # Biodiversity
+- topic_3500 # Zoology
+- topic_0780 # Plant Biology
 
 questions:
     - How to annotate an eukaryotic genome with Braker3?

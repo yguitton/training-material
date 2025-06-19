@@ -19,10 +19,16 @@ time_estimation: "1h"
 key_points:
   - Galaxy supports a variety of different DRMs.
   - You should absolutely set one up, it prevents jobs from being killed during server restarts.
-contributors:
+contributions:
+  authorship:
   - natefoo
   - bgruening
   - hexylena
+  funding:
+  - elixir-europe
+  - deNBI
+  - uni-freiburg
+  - eurosciencegateway
 tags:
   - jobs
   - ansible
@@ -97,7 +103,7 @@ be taken into consideration when choosing where to run jobs and what parameters 
 >    @@ -23,3 +23,8 @@
 >     # Singularity/Apptainer
 >     - src: usegalaxy_eu.apptainer
->       version: 0.0.1
+>       version: 0.0.3
 >    +# SLURM as our DRM
 >    +- src: galaxyproject.repos
 >    +  version: 0.0.3

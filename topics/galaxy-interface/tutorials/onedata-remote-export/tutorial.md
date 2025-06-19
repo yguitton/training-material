@@ -5,9 +5,12 @@ title: "Exporting to Onedata remote"
 subtopic: cleanup
 tags:
   - storage
-contributors:
-  - lopiola
-  - bwalkowi
+contributions:
+  authorship:
+    - lopiola
+    - bwalkowi
+  funding:
+    - eurosciencegateway
 
 time_estimation: "5m"
 level: Introductory

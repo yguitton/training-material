@@ -26,8 +26,13 @@ tags:
 - jupyter-lab
 - fine-tuning
 - dephosphorylation-site-prediction
-contributors:
-- anuprulez
+contributions:
+  authorship:
+    - anuprulez
+  funding:
+    - elixir-europe
+    - deNBI
+    - uni-freiburg
 recordings:
 - youtube_id: QTXdcsYaLlE
   length: 35M
