@@ -680,6 +680,7 @@ name:
   ecology/eDNA-taxonomic-analysis: "/topics/ecology/tutorials/eDNA-taxonomic-analysis/tutorial.html"
   ecology/ecoregiolifetraits: "/topics/ecology/tutorials/ecoregiolifetraits/tutorial.html"
   ecology/phylodiversity_workflow: "/topics/ecology/tutorials/phylodiversity_workflow/tutorial.html"
+  genome-annotation/comparison-braker-helixer-annotation: "/topics/genome-annotation/tutorials/comparison-braker-helixer-annotation/tutorial.html"
 id:
   T00000: "/topics/admin/tutorials/ansible/tutorial.html"
   T00001: "/topics/admin/tutorials/ansible-galaxy/tutorial.html"
@@ -2333,10 +2334,13 @@ id:
   W00337: "/topics/transcriptomics/tutorials/rna-seq-analysis-clustering-viz/workflows/RNA_seq_analysis_and_visualisation.html"
   T00537: "/topics/ecology/tutorials/ecoregiolifetraits/tutorial.html"
   T00538: "/topics/ecology/tutorials/phylodiversity_workflow/tutorial.html"
-  T00539: "/topics/transcriptomics/tutorials/rna-seq-analysis-clustering-viz/tutorial.html"
+  T00539: "/topics/genome-annotation/tutorials/comparison-braker-helixer-annotation/tutorial.html"
   F00458: "/faqs/galaxy/cite-tools-used-in-a-history.html"
   E00032: "/events/2025-06-10-mtb-ngs.html"
   W00338: "/topics/ecology/tutorials/eDNA-taxonomic-analysis/workflows/main_workflow.html"
+  T00540: "/topics/transcriptomics/tutorials/rna-seq-analysis-clustering-viz/tutorial.html"
+  N00114: "/news/2025/06/19/ode_to_community.html"
+  W00339: "/topics/genome-annotation/tutorials/comparison-braker-helixer-annotation/workflows/Galaxy-Workflow-Comparison_of_two_annotation_tools__Helixer_and_Braker3.html"
 misc:
   ansible-galaxy: "/topics/admin/tutorials/ansible-galaxy/tutorial.html"
   feeds: "/feeds/index.html"
