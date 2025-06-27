@@ -180,11 +180,10 @@ Now, if you have finished with your analysis you can exit ODV. To do so you need
 >
 > You can now go back to your Galaxy instance.
 {: .hands_on}
-
-
+</div>
 
 <div class="Tools" markdown="1">
-
+# Follow the steps one by one 
 > <details-title>Short introduction on how Galaxy works</details-title>
 >
 > You can come back to where you left off the tutorial anytime by clicking {% icon level %}.
@@ -267,8 +266,6 @@ Now, if you have finished with your analysis you can exit ODV. To do so you need
 {: .hands_on}
 
 
-
-
 > <hands-on-title>Deploy your own ODV instance</hands-on-title>
 >
 > 1. Create a new history for this tutorial and give it a name (for example “Ocean's variables”) for you to find it again later if needed.
@@ -307,8 +304,6 @@ Now, if you have finished with your analysis you can exit ODV. To do so you need
 > <tip-title>ODV - Disconnected</tip-title>
 > If at one point your ODV interface becomes grey with a red panel on the top "X ODV - Disconnected", do NOT panic ;) you just need to reload your tab (circular arrow top left)
 {: .tip}
-
-
 
 </div>
 
