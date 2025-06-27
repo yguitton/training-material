@@ -183,7 +183,9 @@ Now, if you have finished with your analysis you can exit ODV. To do so you need
 </div>
 
 <div class="Tools" markdown="1">
+  
 # Follow the steps one by one 
+
 > <details-title>Short introduction on how Galaxy works</details-title>
 >
 > You can come back to where you left off the tutorial anytime by clicking {% icon level %}.
