@@ -352,7 +352,7 @@ The workflow outlined above demonstrates a systematic approach to processing bio
 
 # Rerunning on your own data
 
-To rerun this entire analysis at once, you can use our workflow. Below we show how to do this:
+To rerun this entire analysis at once, you can use our workflow. Below, we show how to do this:
 
 > <hands-on-title>Running the Workflow</hands-on-title>
 >
