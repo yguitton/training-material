@@ -14,6 +14,12 @@
 # you also need to set the GTN_PORT and GTN_RELOAD_PORT
 # in your '.env' file, so that ports do not collide.
 
+# In order to use this composition with rootless container platform
+# installations, e.g. podman or docker rootless, please review
+# user namespace settings of your installation.
+# If you have set it to 'host', you need to set GTN_UID and GTN_GID
+# to 0 in order to preserve correct file ownership.
+
 name: '${COMPOSE_PROJECT_NAME:-gtn-dev}'
 
 services:
