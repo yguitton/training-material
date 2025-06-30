@@ -1,3 +1,7 @@
+GTN_GTN:1750658159
+
+R094	metadata/git-mod-ac2da24c3d4b2ff8c1b4300d9c4fc4a3a2d9204f.txt	metadata/git-mod-3d83d545e4d7d759d0c763ff62c2410b85d6686d.txt
+R090	metadata/git-pub-ac2da24c3d4b2ff8c1b4300d9c4fc4a3a2d9204f.txt	metadata/git-pub-3d83d545e4d7d759d0c763ff62c2410b85d6686d.txt
 GTN_GTN:1750428813
 
 A	topics/genome-annotation/tutorials/comparison-braker-helixer-annotation/data-library.yaml
