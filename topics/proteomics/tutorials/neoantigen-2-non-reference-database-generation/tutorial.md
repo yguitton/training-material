@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 redirect_from:
-- /topics/proteomics/tutorials/neoantigen-1b-non-normal-database-generation/tutorial
+- /topics/proteomics/tutorials/neoantigen-1b-non-reference-database-generation/tutorial
 
 title: "Neoantigen 1b: Non-Reference-Database-Generation"
 zenodo_link: "https://zenodo.org/records/14372521"
