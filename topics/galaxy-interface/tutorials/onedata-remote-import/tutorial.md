@@ -5,9 +5,12 @@ title: "Importing (uploading) data from Onedata"
 subtopic: upload
 tags:
   - storage
-contributors:
-  - lopiola
-  - bwalkowi
+contributions:
+  authorship:
+    - lopiola
+    - bwalkowi
+  funding:
+    - eurosciencegateway
 
 time_estimation: "15m"
 level: Introductory
