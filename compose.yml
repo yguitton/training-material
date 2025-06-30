@@ -21,6 +21,7 @@ services:
     image: 'ruby:${GTN_RUBY_TAG:-3-bookworm}'
     volumes:
       - './:/src/gtn:rw'
+      - '/dev/null:/src/gtn/Gemfile.lock:rw'
     ports:
       - '127.0.0.1:${GTN_PORT:-4000}:${GTN_PORT:-4000}'
       - '127.0.0.1:${GTN_RELOAD_PORT:-4001}:${GTN_RELOAD_PORT:-4001}'
