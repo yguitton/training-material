@@ -1,6 +1,6 @@
 ---
 layout: event-external
-title: Galaxy: The Open Source Platform as an entry point to Digital Humanities and Research Data Management
+title: "Galaxy: The Open Source Platform as an entry point to Digital Humanities and Research Data Management"
 external: https://digigw.hypotheses.org/6292
 
 description: |
