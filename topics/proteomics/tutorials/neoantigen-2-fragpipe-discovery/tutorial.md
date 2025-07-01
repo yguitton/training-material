@@ -1,4 +1,6 @@
 ---
+redirect_from:
+  - /topics/proteomics/tutorials/neoantigen-2-fragpipe-discovery/tutorial.html 
 layout: tutorial_hands_on
 
 title: "Neoantigen 2: Database merge and FragPipe discovery"

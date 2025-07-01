@@ -1,4 +1,6 @@
 ---
+redirect_from:
+  - /topics/proteomics/tutorials/neoantigen-5-variant-annotation/tutorial.html 
 layout: tutorial_hands_on
 
 title: "Neoantigen 4: Variant Annotation"

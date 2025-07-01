@@ -1,4 +1,6 @@
 ---
+redirect_from:
+  - /topics/proteomics/tutorials/neoantigen-4-peptide-verification/tutorial.html 
 layout: tutorial_hands_on
 
 title: "Neoantigen 3: PepQuery2 Verification"

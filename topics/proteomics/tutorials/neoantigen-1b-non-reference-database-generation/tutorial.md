@@ -1,6 +1,6 @@
 ---
 redirect_from:
-  - /topics/proteomics/tutorials/neoantigen-1b-non-reference-database-generation/tutorial.html 
+  - /topics/proteomics/tutorials/neoantigen-2-non-reference-database-generation/tutorial.html 
 layout: tutorial_hands_on
 
 title: "Neoantigen 1b: Non-Reference-Database-Generation"
