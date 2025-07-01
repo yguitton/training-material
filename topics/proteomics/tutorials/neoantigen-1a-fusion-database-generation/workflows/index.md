@@ -1,13 +1,8 @@
 ---
 redirect_from:
-  - /training-material/topics/proteomics/tutorials/neoantigen-1-fusion-database-generation/workflows/index.html
+  - /topics/proteomics/tutorials/neoantigen-1-fusion-database-generation/workflows/
 redirect_to:
-  - /training-material/topics/proteomics/tutorials/neoantigen-1a-fusion-database-generation/workflows/index.md
+  - topics/proteomics/tutorials/neoantigen-1a-fusion-database-generation/workflows/
 
-redirect_from:
-  - /training-material/topics/proteomics/tutorials/neoantigen-1-fusion-database-generation/workflows/main_workflow.html
-redirect_to:
-  - /training-material/topics/proteomics/tutorials/neoantigen-1a-fusion-database-generation/workflows/main_workflow.ga
-
-layout: workflow
+layout: workflow-list
 ---
