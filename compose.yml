@@ -35,4 +35,4 @@ services:
     environment:
       HOME: '/src/gtn'
     working_dir: '/src/gtn'
-    command: 'bash -c "bundle install --path .bundle && bundle exec jekyll serve --strict_front_matter -d _site/training-material --incremental -P ${GTN_PORT:-4000} -H 0.0.0.0 -l --livereload-port ${GTN_RELOAD_PORT:-4000}"'
+    command: 'bash -c "bundle install --path .bundle && bundle exec jekyll serve --strict_front_matter -d _site/training-material --incremental -P ${GTN_PORT:-4000} -H 0.0.0.0 -l --livereload-port ${GTN_RELOAD_PORT:-4001}"'
