@@ -441,7 +441,7 @@ To rerun this entire analysis at once, you can use our workflow. Below we show h
 >
 > 1. **Import the workflow** into Galaxy:
 >
->    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-5-variant-annotation/workflows/main_workflow.ga" title="peppointer Annotation" %}
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-variant-annotation/workflows/main_workflow.ga" title="peppointer Annotation" %}
 >
 >
 > 2. Run **Workflow** {% icon workflow %} using the following parameters:
