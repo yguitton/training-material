@@ -37,7 +37,7 @@ follow_up_training:
         type: "internal"
         topic_name: proteomics
         tutorials:
-            - neoantigen-3-peptide-verification
+            - neoantigen-4-peptide-verification
 tags: [label-free]
 
 ---
@@ -280,7 +280,7 @@ To rerun this entire analysis at once, you can use our workflow. Below we show h
 >
 > 1. **Import the workflow** into Galaxy:
 >
->    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-2-fragpipe-discovery/workflows/main_workflow.ga" title="Fragpipe Discovery" %}
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-3-fragpipe-discovery/workflows/main_workflow.ga" title="Fragpipe Discovery" %}
 >
 >
 > 2. Run **Workflow** {% icon workflow %} using the following parameters:

@@ -38,7 +38,7 @@ follow_up_training:
         type: "internal"
         topic_name: proteomics
         tutorials:
-            - neoantigen-4-variant-annotation
+            - neoantigen-5-variant-annotation
 tags: [label-free]
 
 ---
@@ -380,7 +380,7 @@ To rerun this entire analysis at once, you can use our workflow. Below we show h
 >
 > 1. **Import the workflow** into Galaxy:
 >
->    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-3-peptide-verification/workflows/main_workflow.ga" title="PepQuery2 Verification" %}
+>    {% snippet faqs/galaxy/workflows_run_trs.md path="topics/proteomics/tutorials/neoantigen-4-peptide-verification/workflows/main_workflow.ga" title="PepQuery2 Verification" %}
 >
 >
 > 2. Run **Workflow** {% icon workflow %} using the following parameters:
