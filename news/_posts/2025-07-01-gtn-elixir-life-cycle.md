@@ -1,7 +1,7 @@
 ---
 title: "Enhancing Scientific Training: The Galaxy Training Network's Role in the ELIXIR Training Life-Cycle"
 contributions:
-  authorship: [bebatut]
+  authorship: [bebatut, lisanna]
 tags: [gtn]
 layout: news
 cover: "news/images/2025-07-01-gtn-elixir-life-cycle_training_lifecycle.png"
