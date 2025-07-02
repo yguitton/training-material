@@ -63,16 +63,16 @@ All of these apps connect to the same Galaxy channels/rooms. Choose the interfac
     <tbody>
       <tr>
         <td>
-          <a href="https://matrix.to/#/#GalaxyProteomics_Lobby:gitter.im" target="_blank">Proteomics</a> <br>
-          <a href="https://matrix.to/#/#galaxyproject_microGalaxy:gitter.im" target="_blank">Microbiology</a> <br>
-          <a href="https://matrix.to/#/#Galaxy-Training-Network_galaxy-single-cell:gitter.im" target="_blank">Single-Cell & Spatial Omics Users</a> <br>
-          <strong><a href="https://matrix.to/#/#galaxyproject:matrix.org" target="_blank">All Galaxy Matrix rooms, 70+ rooms</a></strong>
+          <a href="https://matrix.to/#/#GalaxyProteomics_Lobby:gitter.im" >Proteomics</a> <br>
+          <a href="https://matrix.to/#/#galaxyproject_microGalaxy:gitter.im" >Microbiology</a> <br>
+          <a href="https://matrix.to/#/#Galaxy-Training-Network_galaxy-single-cell:gitter.im" >Single-Cell & Spatial Omics Users</a> <br>
+          <strong><a href="https://matrix.to/#/#galaxyproject:matrix.org" >All Galaxy Matrix rooms, 70+ rooms</a></strong>
         </td>
         <td>
-          <a href="https://matrix.to/#/#galaxyproject_tools:gitter.im" target="_blank">Tool Authors</a> <br>
-          <a href="https://matrix.to/#/#galaxyproject_dev:gitter.im" target="_blank">Developers</a> <br>
-          <a href="https://matrix.to/#/#galaxyproject_wg-goat:gitter.im" target="_blank">Outreach</a> <br>
-          <a href="https://matrix.to/#/#galaxyproject_admins:gitter.im" target="_blank">Admins</a>
+          <a href="https://matrix.to/#/#galaxyproject_tools:gitter.im" >Tool Authors</a> <br>
+          <a href="https://matrix.to/#/#galaxyproject_dev:gitter.im" >Developers</a> <br>
+          <a href="https://matrix.to/#/#galaxyproject_wg-goat:gitter.im" >Outreach</a> <br>
+          <a href="https://matrix.to/#/#galaxyproject_admins:gitter.im" >Admins</a>
         </td>
       </tr>
     </tbody>
