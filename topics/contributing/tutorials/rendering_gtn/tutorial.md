@@ -762,7 +762,7 @@ Please follow the [official setup documentation](https://docs.docker.com/desktop
 
 Run a terminal and type a git command, e.g. `git --version`. If git is not installed on your system yet, MacOS will automatically prompt you to install it through Xcode. Just follow the on-screen instructions.
 
-# Preperation
+# Preparation
 
 ## Command line utilities
 
