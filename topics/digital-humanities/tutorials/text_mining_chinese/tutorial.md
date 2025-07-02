@@ -21,7 +21,9 @@ tags:
 - text mining
 contributions:
   authorship:
-  - Sch-Da
+    - Sch-Da
+  funding:
+    - deKCD
 ---
 
 
