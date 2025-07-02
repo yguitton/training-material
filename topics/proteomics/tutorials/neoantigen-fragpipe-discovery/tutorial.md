@@ -1,7 +1,8 @@
 ---
-redirect_from:
-  - /topics/proteomics/tutorials/neoantigen-3-fragpipe-discovery/tutorial.html 
 layout: tutorial_hands_on
+
+redirect_from:
+  - /topics/proteomics/tutorials/neoantigen-3-fragpipe-discovery/tutorial.html
 
 title: "Neoantigen 2: Database merge and FragPipe discovery"
 zenodo_link: 'https://zenodo.org/records/14374118'
@@ -195,7 +196,7 @@ In this workflow, FragPipe is used after FASTA database validation to ensure tha
 >            - *"Run PTM Shepherd"*: `no`
 >        - In *"Quant (Isobaric)"*:
 >            - *"Perform Isobaric Quantification"*: `no`
->   
+>
 >
 >
 {: .hands_on}

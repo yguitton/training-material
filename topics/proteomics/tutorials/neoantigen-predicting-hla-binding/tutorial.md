@@ -1,7 +1,9 @@
 ---
-redirect_from:
-  - /topics/proteomics/tutorials/neoantigen-6-predicting-hla-binding/tutorial.html 
 layout: tutorial_hands_on
+
+redirect_from:
+  - /topics/proteomics/tutorials/neoantigen-6-predicting-hla-binding/tutorial.html
+
 
 title: "Neoantigen 5a: Predicting HLA Binding"
 zenodo_link: 'https://zenodo.org/records/14375917'

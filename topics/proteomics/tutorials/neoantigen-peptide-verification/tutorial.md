@@ -1,7 +1,9 @@
 ---
-redirect_from:
-  - /topics/proteomics/tutorials/neoantigen-4-peptide-verification/tutorial.html 
 layout: tutorial_hands_on
+
+redirect_from:
+  - /topics/proteomics/tutorials/neoantigen-4-peptide-verification/tutorial.html
+
 
 title: "Neoantigen 3: PepQuery2 Verification"
 zenodo_link: 'https://zenodo.org/records/15090517'
