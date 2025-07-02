@@ -33,7 +33,7 @@ follow_up_training:
         type: "internal"
         topic_name: proteomics
         tutorials:
-            - neoantigen-2-non-reference-database-generation
+            - neoantigen-non-reference-database-generation
 tags: [label-free]
 
 ---

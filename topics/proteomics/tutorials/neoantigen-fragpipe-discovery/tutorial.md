@@ -37,7 +37,7 @@ follow_up_training:
         type: "internal"
         topic_name: proteomics
         tutorials:
-            - neoantigen-4-peptide-verification
+            - neoantigen-peptide-verification
 tags: [label-free]
 
 ---

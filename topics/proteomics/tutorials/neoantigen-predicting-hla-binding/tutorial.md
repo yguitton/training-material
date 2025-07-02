@@ -38,7 +38,7 @@ follow_up_training:
         type: "internal"
         topic_name: proteomics
         tutorials:
-            - neoantigen-7-hla-binding-novel-peptides
+            - neoantigen-hla-binding-novel-peptides
 tags: [label-free]
 
 ---

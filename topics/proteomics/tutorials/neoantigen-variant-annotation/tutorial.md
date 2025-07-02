@@ -39,7 +39,7 @@ follow_up_training:
         type: "internal"
         topic_name: proteomics
         tutorials:
-            - neoantigen-6-predicting-hla-binding
+            - neoantigen-predicting-hla-binding
 tags: [label-free]
 
 ---

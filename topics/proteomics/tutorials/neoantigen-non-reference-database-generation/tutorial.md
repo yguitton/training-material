@@ -33,7 +33,7 @@ follow_up_training:
         type: "internal"
         topic_name: proteomics
         tutorials:
-            - neoantigen-3-fragpipe-discovery
+            - neoantigen-fragpipe-discovery
 tags: [label-free]
 
 ---

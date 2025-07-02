@@ -38,7 +38,7 @@ follow_up_training:
         type: "internal"
         topic_name: proteomics
         tutorials:
-            - neoantigen-5-variant-annotation
+            - neoantigen-variant-annotation
 tags: [label-free]
 
 ---
