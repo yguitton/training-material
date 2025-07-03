@@ -139,7 +139,7 @@ ALLOWED_SHORT_IDS = [
   'translate_nucleotides',
   'trimmer',
   'ucsc_bigbedtobed',
-  'ucsc_table_direct1', # This does not work, surprisingly.
+  #'ucsc_table_direct1', # This does not work, surprisingly.
   'ucsc_table_direct_archaea1',
   'upload1',
   'vcf_to_maf_customtrack1',
