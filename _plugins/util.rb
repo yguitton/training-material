@@ -5,6 +5,7 @@ require 'yaml'
 # should go here.
 
 ALLOWED_SHORT_IDS = [
+  'barchart_gnuplot',
   'ChangeCase',
   'Convert characters1',
   'Count1',
