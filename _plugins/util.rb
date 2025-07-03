@@ -143,8 +143,8 @@ ALLOWED_SHORT_IDS = [
   'ucsc_table_direct_archaea1',
   'upload1',
   'vcf_to_maf_customtrack1',
-  'velvetg',
-  'velveth',
+  #'velvetg',  # velvet has a toolshed alternative, discourage using built-in version
+  #'velveth',  # velvet has a toolshed alternative, discourage using built-in version
   'visualize_icenet_forecast',
   'wc_gnu',
   'wiggle2simple1',
