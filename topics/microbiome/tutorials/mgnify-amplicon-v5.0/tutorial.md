@@ -34,6 +34,8 @@ time_estimation: "2H"
 contributions:
    authorship:
     - RZ9082
+   funding:
+    - deKCD
 redirect_from:
     - /topics/metagenomics/tutorials/mgnify-amplicon-v5.0/tutorial
 edam_ontology:
