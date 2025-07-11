@@ -24,13 +24,15 @@ requirements:
     topic_name: imaging
     tutorials:
       - imaging-introduction
-contributors:
-- evenmm
-- rmassei
-- kostrykin
-- annefou
+
+contributions:
+  authorship:
+    - evenmm
+    - rmassei
+    - kostrykin
+    - annefou
   funding:
-  - OSCARS-FIESTA
+    - OSCARS-FIESTA
 tags:
 - imageanalysis
 - segmentation
