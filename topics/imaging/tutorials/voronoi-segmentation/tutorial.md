@@ -32,7 +32,7 @@ contributions:
     - kostrykin
     - annefou
   funding:
-    - OSCARS-FIESTA
+    - fiesta
 tags:
 - imageanalysis
 - segmentation
