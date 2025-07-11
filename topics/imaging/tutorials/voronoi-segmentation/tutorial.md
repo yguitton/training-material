@@ -29,10 +29,13 @@ contributors:
 - rmassei
 - kostrykin
 - annefou
+  funding:
+  - OSCARS-FIESTA
 tags:
 - imageanalysis
 - segmentation
 - voronoi
+
 ---
 
 
