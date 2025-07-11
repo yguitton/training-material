@@ -17,9 +17,9 @@ title: GTN Editorial Board
  <h3> {{ topic.title }}</h3>
 
  {% include _includes/contributor-list.html contributors=topic.editorial_board badge=true %}
-
+ {% unless topic.tag_based %}
  <p>View the <a href="{{site.baseurl}}/topics/{{topic.name}}/maintainer.html" >Topic maintainer page</a> for this topic.</p>
-
+ {% endunless %}
 {% endfor %}
 
 </section>
