@@ -33,6 +33,7 @@ contributions:
     - annefou
   funding:
     - fiesta
+    - oscars
 tags:
 - imageanalysis
 - segmentation
