@@ -249,6 +249,8 @@ oscars:
     funding_id: "101129751"
     funding_database: cordis
     funder_name: Horizon Europe
+    funding_statement: |
+      The OSCARS project has received funding from the European Commission’s Horizon Europe Research and Innovation programme under grant agreement No. 101129751
     url: https://oscars-project.eu/
     github: false
     avatar: "/training-material/shared/images/logos/OSCARS-logo-EUflag.png"
