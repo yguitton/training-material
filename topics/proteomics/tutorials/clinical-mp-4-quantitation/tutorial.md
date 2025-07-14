@@ -185,13 +185,13 @@ The outputs we are most interested in consist of the `MaxQuant Evidence file`, `
 > 1. {% tool [Select](Grep1) %} with the following parameters:
 >    - {% icon param-file %} *"Select lines from"*: `proteinGroups` (output of **MaxQuant** {% icon tool %})
 >    - *"that"*: `NOT Matching`
->    - *"the pattern"*: `(_HUMAN)|(_REVERSED)|(CON)|(con)`
+>    - *"the pattern"*: `(_HUMAN)|(_REVERSED)|(REV_)|(CON)|(con)`
 >
 >
 > 2. {% tool [Select](Grep1) %} with the following parameters:
 >    - {% icon param-file %} *"Select lines from"*: `peptides` (output of **MaxQuant** {% icon tool %})
 >    - *"that"*: `NOT Matching`
->    - *"the pattern"*: `(_HUMAN)|(_REVERSED)|(CON)|(con)`
+>    - *"the pattern"*: `(_HUMAN)|(_REVERSED)|(REV_)|(CON)|(con)`
 >
 >
 > 3. {% tool [Cut](Cut1) %} with the following parameters:
