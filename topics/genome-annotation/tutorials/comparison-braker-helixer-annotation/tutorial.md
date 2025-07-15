@@ -102,7 +102,7 @@ Galaxy uses Job Cache to avoid recalculating identical analyses. If a tool has a
 >
 >    ```
 >    https://zenodo.org/records/15051665/files/genome_masked.fasta
->    https://zenodo.org/records/14770765/files/RNASeq_braker.bam
+>    https://zenodo.org/records/14770765/files/RNAseq_braker.bam
 >    https://zenodo.org/records/14770765/files/swissprot_subset.fasta
 >    ```
 >
