@@ -4,7 +4,7 @@ layout: tutorial_hands_on
 title: 'Whole transcriptome analysis of Arabidopsis thaliana'
 zenodo_link: 'https://zenodo.org/record/4710649'
 answer_histories:
-- label: UseGalaxy.org - Using Separate Preprocessing Tools
+- label: UseGalaxy.eu
   history: https://usegalaxy.eu/u/videmp/h/whole-transcriptome-analysis-of-arabidopsis-thaliana
   date: 2025-07-15
 tags:
