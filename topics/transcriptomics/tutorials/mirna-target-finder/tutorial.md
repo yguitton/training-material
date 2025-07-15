@@ -3,6 +3,10 @@ layout: tutorial_hands_on
 
 title: 'Whole transcriptome analysis of Arabidopsis thaliana'
 zenodo_link: 'https://zenodo.org/record/4710649'
+answer_histories:
+- label: UseGalaxy.org - Using Separate Preprocessing Tools
+  history: https://usegalaxy.eu/u/videmp/h/whole-transcriptome-analysis-of-arabidopsis-thaliana
+  date: 2025-07-15
 tags:
     - miRNA
     - plants
@@ -599,7 +603,7 @@ Now, let's analyze which genes show statistically significant differential expre
 >
 > > <solution-title></solution-title>
 > >
-> > From the information provided by the plot, it is possible to state that there is a high similarity between the samples belonging to the same experimental conditions, since the first dimension (x-axis) allows to explain 81% of the variability, and the samples are located at opposite ends of the x-axis.
+> > From the information provided by the plot, it is possible to state that there is a high similarity between the samples belonging to the same experimental conditions, since the first dimension (x-axis) allows to explain 79% of the variability, and the samples are located at opposite ends of the x-axis.
 > >
 > {: .solution}
 >
@@ -677,12 +681,12 @@ To predict which miRNAs target which mRNAs, first we need their transcriptomic s
 >    - *"Delimited by"*: `Tab`
 >    - {% icon param-collection %} *"From"*: `Upregulated miRNAs`
 > 2. Rename the output as `Upregulated miRNA ids`
-> 3. {% tool [Filter FASTA](toolshed.g2.bx.psu.edu/repos/galaxyp/filter_by_fasta_ids/filter_by_fasta_ids/2.1) %} with the following parameters:
+> 3. {% tool [Filter FASTA](toolshed.g2.bx.psu.edu/repos/galaxyp/filter_by_fasta_ids/filter_by_fasta_ids/2.3) %} with the following parameters:
 >    - {% icon param-file %} *"FASTA sequences"*: `mature_miRNA_AT.fasta`
 >    - *"Criteria for filtering on the headers"*: `List of IDs`
 >        - {% icon param-file %} *"List of IDs to extract sequences for"*: `Upregulated miRNA ids`
 >        - *"Match IDs by"*: `Default: ID is expected at the beginning: >ID`
-> 4. {% tool [Filter FASTA](toolshed.g2.bx.psu.edu/repos/galaxyp/filter_by_fasta_ids/filter_by_fasta_ids/2.1) %} with the following parameters:
+> 4. {% tool [Filter FASTA](toolshed.g2.bx.psu.edu/repos/galaxyp/filter_by_fasta_ids/filter_by_fasta_ids/2.3) %} with the following parameters:
 >    - {% icon param-file %} *"FASTA sequences"*: `star_miRNA_seq.fasta`
 >    - *"Criteria for filtering on the headers"*: `List of IDs`
 >        - {% icon param-file %} *"List of IDs to extract sequences for"*: `Upregulated miRNA ids`
@@ -703,7 +707,7 @@ To identify putative targets of upregulated miRNAs, it is necessary to obtain th
 >    - *"Delimited by"*: `Tab`
 >    - {% icon param-collection %} *"From"*: `Downregulated mRNAs`
 > 2. Rename the output as `Downregulated mRNA ids`
-> 3. {% tool [Filter FASTA](toolshed.g2.bx.psu.edu/repos/galaxyp/filter_by_fasta_ids/filter_by_fasta_ids/2.1) %} with the following parameters:
+> 3. {% tool [Filter FASTA](toolshed.g2.bx.psu.edu/repos/galaxyp/filter_by_fasta_ids/filter_by_fasta_ids/2.3) %} with the following parameters:
 >    - {% icon param-file %} *"FASTA sequences"*: `transcriptome.fasta` (Input dataset)
 >    - *"Criteria for filtering on the headers"*: `List of IDs`
 >        - {% icon param-file %} *"List of IDs to extract sequences for: `Downregulated mRNA ids`
