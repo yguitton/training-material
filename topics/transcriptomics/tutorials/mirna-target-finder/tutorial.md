@@ -88,12 +88,12 @@ The main objective of this training is to identify potential targets of miRNAs w
 
 The datasets to be used in this training can be classified into three groups: miRNA reads, mRNA reads and additional datasets.
 
-### miRNA reads
+## miRNA reads
 
 The miRNA datasets consist of six FASTQ files, obtained by using the Illumina GAxII sequencing platform. The plant samples were obtained from wild-type Ws-2 seedlings treated with mock or 1 μM EBR for 90 min before harvest. The original datasets are available in the NCBI SRA database, with the accession number [SRP258575](https://www.ncbi.nlm.nih.gov/sra?term=SRP258575). As in the previous case, for this tutorial, we will use a reduced version of the data.
 
 
-### mRNA reads
+## mRNA reads
 
 The mRNA datasets consist of four FASTQ files, generated through the Illumina HiSeq 2000 sequencing system. The samples were obtained from wild-type Columbia (Col-0) seedlings treated with mock or 100 nM BL for 4 hours. The original datasets are available in the NCBI SRA database, with the accession number [SRP032274](https://www.ncbi.nlm.nih.gov/sra?term=SRP032274). For this tutorial, subsets from the original data were generated in order to reduce the analysis run time.
 
