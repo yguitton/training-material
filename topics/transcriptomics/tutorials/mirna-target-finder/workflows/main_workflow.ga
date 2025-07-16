@@ -2184,7 +2184,10 @@
             ]
         }
     },
-    "tags": [],
+    "tags": [
+        "transcriptomics",
+        "plant"
+    ],
     "uuid": "b9e58fbf-81e5-4dfd-844d-78ce3ccebdca",
     "version": 8
 }
