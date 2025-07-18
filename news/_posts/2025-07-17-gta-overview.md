@@ -28,7 +28,7 @@ Over the next three days, participants could explore one or more specialized tra
 
 On Friday, participants had the opportunity to explore additional topics such as **FAIR training** or **Plant Galaxy**, or simply catch up on materials from earlier in the week. 
 
-The full [program](https://training.galaxyproject.org/training-material/events/2025-05-12-galaxy-academy-2025.html#program) and detailed event [setup](https://training.galaxyproject.org/training-material/events/2025-05-12-galaxy-academy-2025.html#setup) instruction were provided to participants in advance to ensure a smooth learning experience.
+The full [program]({% link events/2025-05-12-galaxy-academy-2025.md %}#program) and detailed event [setup]({% link events/2025-05-12-galaxy-academy-2025.md %}#setup) instruction were provided to participants in advance to ensure a smooth learning experience.
 
 ## Participants
 
