@@ -50,15 +50,15 @@ Recent advances such as **GelGenie** ({% cite Aquilina2025 %}) further highlight
 > 2. Selecting and exporting regions of interest (ROIs) using QuPath  
 > 3. Converting ROI coordinates to a label map  
 > 4. Quantifying band intensity  
-> 5. Visualizing results
+> 5. Inspecting results
 >
 {: .agenda}
 
 # Data preparation
 
-The example dataset can be downloaded from here [Electrophoresis gel dataset](https://github.com/galaxyproject/training-material/tree/main/topics/imaging/images/).
+The example dataset can be downloaded from here [Electrophoresis gel dataset](https://github.com/galaxyproject/training-material/tree/main/topics/imaging/images/electrophoresis-gel-bands-image-analysis/Image.jpg).
 
-![Electrophoresis Gel](../../images/electrophoresis-gel-bands-image-analysis/Image.png)
+![Electrophoresis Gel](../../images/electrophoresis-gel-bands-image-analysis/Image.jpg)
 
 This image was published by [Kenji Ohgane et al. (2019) on Protocols.io](https://www.protocols.io/view/quantification-of-gel-bands-by-an-image-j-macro-ba-bp2l6n4bkgqe/v1).
 
@@ -72,24 +72,23 @@ This image was published by [Kenji Ohgane et al. (2019) on Protocols.io](https:/
 >
 >    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
 >
-> 4. Rename {% icon galaxy-pencil %} the dataset to `Electrophoresis-Gel.png`.
+>    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
 >
-> {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
+> 4. Rename {% icon galaxy-pencil %} the dataset to `Electrophoresis-Gel.jpg`.
 >
 {: .hands_on}
 
-Before we dive into the quantification steps let's convert our png image file into the image format Tiff. This format is preferred for analysis and quantification as it preserves the image data and metadata. 
+Before we dive into the quantification steps let's convert our jpg image file into the image format TIFF. This format is preferred for analysis and quantification as it preserves the image data and metadata. 
 
 **Note:** Skip this step if the image is already in TIFF format.
 
 ## Convert the image format
 
-> <hands-on-title>Convert PNG to TIFF</hands-on-title>
+> <hands-on-title>Convert JPG to TIFF</hands-on-title>
 >
 > 1. {% tool [Convert image format](toolshed.g2.bx.psu.edu/repos/bgruening/graphicsmagick_image_convert/graphicsmagick_image_convert/1.3.45+galaxy0) %}  
->    - *"Image to convert"*: `Electrophoresis-Gel.png`  
+>    - *"Image to convert"*: `Electrophoresis-Gel.jpg`  
 >    - *"Output format"*: `TIFF`
-> 2. If needed, rename {% icon galaxy-pencil %} the output to `Electrophoresis-Gel.tiff`.
 >
 >   > <tip-title> Why TIFF? </tip-title>
 >   >
@@ -110,9 +109,67 @@ To convert coordinates into a label map, we first need the image dimensions (wid
 >
 {: .hands_on}
 
+The output of the tool can be visualize by clicking the {% icon galaxy-eye %} (eye) icon (**View**). See below:
+
+<div style="text-align: center;">
+  <pre style="display: inline-block; text-align: left; background: #f4f4f4; padding: 1em; border-radius: 8px; font-size: 14px; line-height: 1.4;">
+Checking file format [Tagged Image File Format]
+Initializing reader
+TiffDelegateReader initializing /data/dnb11/galaxy_db/files/0/6/6/dataset_06685fae-ac3e-48b9-a460-d0ad39ea07a6.dat
+Reading IFDs
+Populating metadata
+Checking comment style
+Populating OME metadata
+Initialization took 0.569s
+
+Reading core metadata
+filename = /data/dnb11/galaxy_db/files/0/6/6/dataset_06685fae-ac3e-48b9-a460-d0ad39ea07a6.dat
+Series count = 1
+Series #0 :
+	Image count = 1
+	RGB = true (3) 
+	Interleaved = false
+	Indexed = false (false color)
+	Width = 1278
+	Height = 250
+	SizeZ = 1
+	SizeT = 1
+	SizeC = 3 (effectively 1)
+	Thumbnail size = 128 x 25
+	Endianness = intel (little)
+	Dimension order = XYCZT (certain)
+	Pixel type = uint8
+	Valid bits per pixel = 8
+	Metadata complete = true
+	Thumbnail series = false
+	-----
+	Plane #0 <=> Z 0, C 0, T 0
+
+Reading global metadata
+BitsPerSample: 8
+Compression: JPEG
+Document Name: temp.tiff
+ImageLength: 250
+ImageWidth: 1278
+MetaDataPhotometricInterpretation: RGB
+MetaMorph: no
+NumberOfChannels: 3
+PageNumber: 0 1
+PhotometricInterpretation: YCbCr
+PlanarConfiguration: Chunky
+ReferenceBlackWhite: 0
+SampleFormat: unsigned integer
+SamplesPerPixel: 3
+Software: GraphicsMagick 1.3.45 2024-08-27 Q8 http://www.GraphicsMagick.org/
+
+Reading metadata
+  </pre>
+</div>
+
+
 ## Split image into separate channels
 
-TIFF images can store multiple channels, such as different colors or fluorescence signals—in a single file. In this step, we separate these channels by splitting the image along the channel axis (C-axis). This results in a collection of single-channel images, which are required for the next processing steps.
+TIFF images can store multiple channels—such as different colors or fluorescence signals—in a single file. In this step, we will separate these channels by splitting the image along the channel axis (C-axis). This results in a set of single-channel images, which are required for the next processing steps.
 
 > <hands-on-title>Split image into single channels</hands-on-title>
 > 1. {% tool [Split image along axes](toolshed.g2.bx.psu.edu/repos/imgteam/split_image/ip_split_image/2.2.3+galaxy1) %} with the following parameters:
@@ -121,18 +178,30 @@ TIFF images can store multiple channels, such as different colors or fluorescenc
 >
 {: .hands_on}
 
+> <comment-title>Use a split image for downstream compatibility and annotation</comment-title>
+> While QuPath can handle multi-channel images, our other tools cannot. Therefore, after splitting the image, we will use the {% tool [Extract Dataset](__EXTRACT_DATASET__) %} tool to select one of the single-channel images. This image should represent the intensity channel we want to measure, and will be used for QuPath regions of interest (ROI) annotation.
+>
+{: .comment}
+
+> <hands-on-title>Extract the TIFF file from collection</hands-on-title>
+>
+> 1. {% tool [Extract Dataset](__EXTRACT_DATASET__) %} with the following parameters:
+>    - {% icon param-collection %} *"Input Collection"*: Select the collection output from the `Split Image` tool
+>    - *"Which part of the Collection?"*: Choose the TIFF file that represent the channel of your interest. In our dataset example, we extract 1.tiff
+>
+> 2. {% icon galaxy-pencil %} **Rename** the extracted file to `Bands.geojson`.
+
 # Annotate and process regions of interest (ROIs)
 
-To identify and quantify specific regions in the image—such as electrophoresis bands—we need to define them manually. This is done using an annotation tool called **QuPath**, which allows you to draw rectangles over each band of interest and assign them a unique label. The result is a **GeoJSON** file containing the coordinates of these regions.
+To identify and quantify specific regions in the image, such as electrophoresis bands, we need to define them manually. This is done using the interactive tool **QuPath**, which allows you to draw rectangles over each band of interest and assign them a unique label to annotate the ROIs. The result is a **GeoJSON** file containing the coordinates of these regions.
 
 This GeoJSON file can then be processed in Galaxy to generate a label map for image quantification.
 
 ## Prepare the ROI file with QuPath
 
-In this step, you will open the image in QuPath, annotate the regions of interest (ROIs) using rectangles, and export the annotations as a GeoJSON file. Each band should be marked with a rectangle and given a unique name (e.g., "1", "2", etc.). 
+In this step, you will open the image in QuPath, annotate the ROIs using rectangles, and export the annotations as a GeoJSON file. Each band should be marked with a rectangle and given a unique name (e.g., "1", "2", etc.). 
 
 > <hands-on-title>Select ROIs and export GeoJSON file</hands-on-title>
-> 
 > 
 > 1. Open the image in **QuPath** using our interactive tool {% tool [QuPath](interactive_tool_qupath) %} with the following parameters:
 >    - {% icon param-collection %} *"Input file in TIFF format"*: Select the `Electrophoresis-Gel.tiff` dataset after channel splitting.
@@ -211,7 +280,7 @@ QuPath exports the annotations as a Galaxy collection. In this step, we extract 
 
 ## Convert ROIs to label map
 
-Now that we have the coordinate information in GeoJSON format, we can convert it into a label map. This label map is an image where each ROI is assigned a unique label, allowing it to be quantified or visualized in downstream steps.
+Now that we have the coordinate information in GeoJSON format, we can convert it into a label map. This label map is an image where each ROI is assigned a unique label, allowing it to be quantified or visualized in downstream steps. In this step, you will also need the information obtained earlier with the {% tool [Show image info](toolshed.g2.bx.psu.edu/repos/imgteam/image_info/ip_imageinfo/5.7.1+galaxy1) %} tool about the width and height of the image. 
 
 > <hands-on-title>Convert coordinates to label map</hands-on-title>
 >
@@ -237,9 +306,9 @@ Now that we have the coordinate information in GeoJSON format, we can convert it
 >
 {: .hands_on}
 
-## Visualize results
+## Inspecting results
 
-The output table can be inspected by clicking on the {% icon galaxy-eye %} (eye) icon (**View**) of the tool output and used for further analysis.
+The table result can be inspected by clicking on the {% icon galaxy-eye %} (eye) icon (**View**) of the tool output and used for further analysis.
 
 # Conclusion
 
