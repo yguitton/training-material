@@ -189,7 +189,7 @@ TIFF images can store multiple channels—such as different colors or fluorescen
 >    - {% icon param-collection %} *"Input Collection"*: Select the collection output from the `Split Image` tool
 >    - *"Which part of the Collection?"*: Choose the TIFF file that represent the channel of your interest. In our dataset example, we extract 1.tiff
 >
-> 2. {% icon galaxy-pencil %} **Rename** the extracted file to `Bands.geojson`.
+{: .hands_on}
 
 # Annotate and process regions of interest (ROIs)
 
