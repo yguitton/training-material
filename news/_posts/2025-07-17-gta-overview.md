@@ -34,6 +34,8 @@ The full [program]({% link events/2025-05-12-galaxy-academy-2025.md %}#program) 
 
 This year's GTA saw **3,574 registered participants** from across the globe, with particularly strong representation from India and the United States. Most participants were either **complete beginners** (42.3%) or had **limited experience** (44.2%) with **Galaxy**.
 
+![Image displayed a world map showing the numbers of applicants form each country of the world highlited by the colour (blue) intensity.]({% link /news/images/GTA2025_map.jpg %})
+
 A total of 763 participants requested certificates, and 561 certificates were issued. The most popular certificate requests was for the Introduction to Galaxy, followed by Microbiome, Assembly, Python Programming, and Transcriptomics Tracks. 
 
 While most learners requested a certificate for a single track, many pursued multiple tracks and earned multiple certificates.
