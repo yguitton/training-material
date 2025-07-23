@@ -27,7 +27,7 @@ key_points:
   - For comprehensive searches, pre-built databases like the NCBI Viral Genomes database on CVMFS can be used directly.
   - Profiling a query genome allows for rapid virus identification and an estimation of genomic novelty, which is key for tracking viral evolution.
   - The 'unassigned' fraction in a profiling report highlights the parts of your query genome that are not represented in the database.
-contributors:
+contributions:
   authorship:
     - cumbof
 tags:
