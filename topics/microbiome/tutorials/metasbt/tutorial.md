@@ -26,7 +26,7 @@ key_points:
   - The Galaxy tools for MetaSBT provide a user-friendly interface for database creation, updates, and genome profiling.
   - For comprehensive searches, pre-built databases like the NCBI Viral Genomes database on CVMFS can be used directly.
   - Profiling a query genome allows for rapid virus identification and an estimation of genomic novelty, which is key for tracking viral evolution.
-  - The 'unassigned' fraction in a profiling report highlights the parts of your query genome that are not represented in the database.
+  - The ANI distance in the profiling report quantifies the similarity of a query genome to the closest match in the database.
 contributions:
   authorship:
     - cumbof
@@ -62,44 +62,44 @@ Let's get started!
 > ### {% icon hands_on %} Hands-on: Prepare the History
 >
 > 1.  Create a new history for this tutorial and give it a name like "MetaSBT Viral Profiling".
-> 2.  Import the 29 viral reference genomes for this tutorial belonging to 5 difference viral species. Open the Galaxy {% icon galaxy-upload %} **Upload Manager** and choose {% icon fa-paste %} **Paste/Fetch data**. Paste the following URLs into the text box:
+> 2.  Import the 29 viral reference genomes for this tutorial belonging to 5 different viral species. Open the Galaxy {% icon galaxy-upload %} **Upload Manager** and choose {% icon fa-paste %} **Paste/Fetch data**. Paste the following URLs into the text box:
 >
 >     ```
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/882/815/GCA_000882815.1_ViralProj36615/GCA_000882815.1_ViralProj36615_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/882/815/GCA_000882815.1_ViralProj36615/GCA_000882815.1_ViralProj36615_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/366/285/GCA_002366285.1_ViralProj411812/GCA_002366285.1_ViralProj411812_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/366/285/GCA_002366285.1_ViralProj411812/GCA_002366285.1_ViralProj411812_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/004/787/195/GCA_004787195.1_ASM478719v1/GCA_004787195.1_ASM478719v1_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/004/787/195/GCA_004787195.1_ASM478719v1/GCA_004787195.1_ASM478719v1_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/004/787/735/GCA_004787735.1_ASM478773v1/GCA_004787735.1_ASM478773v1_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/004/787/735/GCA_004787735.1_ASM478773v1/GCA_004787735.1_ASM478773v1_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/004/788/155/GCA_004788155.1_ASM478815v1/GCA_004788155.1_ASM478815v1_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/004/788/155/GCA_004788155.1_ASM478815v1/GCA_004788155.1_ASM478815v1_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/864/885/GCA_000864885.1_ViralProj15500/GCA_000864885.1_ViralProj15500_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/864/885/GCA_000864885.1_ViralProj15500/GCA_000864885.1_ViralProj15500_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/009/858/895/GCA_009858895.3_ASM985889v3/GCA_009858895.3_ASM985889v3_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/009/858/895/GCA_009858895.3_ASM985889v3/GCA_009858895.3_ASM985889v3_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/009/937/885/GCA_009937885.1_ASM993788v1/GCA_009937885.1_ASM993788v1_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/009/937/885/GCA_009937885.1_ASM993788v1/GCA_009937885.1_ASM993788v1_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/009/937/895/GCA_009937895.1_ASM993789v1/GCA_009937895.1_ASM993789v1_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/009/937/895/GCA_009937895.1_ASM993789v1/GCA_009937895.1_ASM993789v1_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/009/937/905/GCA_009937905.1_ASM993790v1/GCA_009937905.1_ASM993790v1_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/009/937/905/GCA_009937905.1_ASM993790v1/GCA_009937905.1_ASM993790v1_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/857/045/GCA_000857045.1_ViralProj15142/GCA_000857045.1_ViralProj15142_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/857/045/GCA_000857045.1_ViralProj15142/GCA_000857045.1_ViralProj15142_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/006/458/325/GCA_006458325.1_ASM645832v1/GCA_006458325.1_ASM645832v1_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/006/458/325/GCA_006458325.1_ASM645832v1/GCA_006458325.1_ASM645832v1_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/006/458/385/GCA_006458385.1_ASM645838v1/GCA_006458385.1_ASM645838v1_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/006/458/385/GCA_006458385.1_ASM645838v1/GCA_006458385.1_ASM645838v1_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/006/458/425/GCA_006458425.1_ASM645842v1/GCA_006458425.1_ASM645842v1_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/006/458/425/GCA_006458425.1_ASM645842v1/GCA_006458425.1_ASM645842v1_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/006/458/665/GCA_006458665.1_ASM645866v1/GCA_006458665.1_ASM645866v1_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/006/458/665/GCA_006458665.1_ASM645866v1/GCA_006458665.1_ASM645866v1_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/851/145/GCA_000851145.1_ViralMultiSegProj14892/GCA_000851145.1_ViralMultiSegProj14892_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/851/145/GCA_000851145.1_ViralMultiSegProj14892/GCA_000851145.1_ViralMultiSegProj14892_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/864/105/GCA_000864105.1_ViralMultiSegProj15617/GCA_000864105.1_ViralMultiSegProj15617_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/864/105/GCA_000864105.1_ViralMultiSegProj15617/GCA_000864105.1_ViralMultiSegProj15617_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/865/085/GCA_000865085.1_ViralMultiSegProj15622/GCA_000865085.1_ViralMultiSegProj15622_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/865/085/GCA_000865085.1_ViralMultiSegProj15622/GCA_000865085.1_ViralMultiSegProj15622_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/865/725/GCA_000865725.1_ViralMultiSegProj15521/GCA_000865725.1_ViralMultiSegProj15521_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/865/725/GCA_000865725.1_ViralMultiSegProj15521/GCA_000865725.1_ViralMultiSegProj15521_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/866/645/GCA_000866645.1_ViralMultiSegProj15620/GCA_000866645.1_ViralMultiSegProj15620_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/866/645/GCA_000866645.1_ViralMultiSegProj15620/GCA_000866645.1_ViralMultiSegProj15620_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/862/125/GCA_000862125.1_ViralProj15306/GCA_000862125.1_ViralProj15306_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/862/125/GCA_000862125.1_ViralProj15306/GCA_000862125.1_ViralProj15306_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/865/065/GCA_000865065.1_ViralProj15599/GCA_000865065.1_ViralProj15599_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/865/065/GCA_000865065.1_ViralProj15599/GCA_000865065.1_ViralProj15599_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/866/625/GCA_000866625.1_ViralProj15598/GCA_000866625.1_ViralProj15598_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/866/625/GCA_000866625.1_ViralProj15598/GCA_000866625.1_ViralProj15598_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/871/845/GCA_000871845.1_ViralProj20183/GCA_000871845.1_ViralProj20183_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/871/845/GCA_000871845.1_ViralProj20183/GCA_000871845.1_ViralProj20183_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/004/786/575/GCA_004786575.1_ASM478657v1/GCA_004786575.1_ASM478657v1_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/004/786/575/GCA_004786575.1_ASM478657v1/GCA_004786575.1_ASM478657v1_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/029/745/045/GCA_029745045.1_ASM2974504v1/GCA_029745045.1_ASM2974504v1_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/029/745/045/GCA_029745045.1_ASM2974504v1/GCA_029745045.1_ASM2974504v1_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/029/745/055/GCA_029745055.1_ASM2974505v1/GCA_029745055.1_ASM2974505v1_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/029/745/055/GCA_029745055.1_ASM2974505v1/GCA_029745055.1_ASM2974505v1_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/029/745/065/GCA_029745065.1_ASM2974506v1/GCA_029745065.1_ASM2974506v1_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/029/745/065/GCA_029745065.1_ASM2974506v1/GCA_029745065.1_ASM2974506v1_genomic.fna.gz)
->     [https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/029/744/035/GCA_029744035.1_ASM2974403v1/GCA_029744035.1_ASM2974403v1_genomic.fna.gz](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/029/744/035/GCA_029744035.1_ASM2974403v1/GCA_029744035.1_ASM2974403v1_genomic.fna.gz)
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/882/815/GCA_000882815.1_ViralProj36615/GCA_000882815.1_ViralProj36615_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/366/285/GCA_002366285.1_ViralProj411812/GCA_002366285.1_ViralProj411812_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/004/787/195/GCA_004787195.1_ASM478719v1/GCA_004787195.1_ASM478719v1_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/004/787/735/GCA_004787735.1_ASM478773v1/GCA_004787735.1_ASM478773v1_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/004/788/155/GCA_004788155.1_ASM478815v1/GCA_004788155.1_ASM478815v1_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/864/885/GCA_000864885.1_ViralProj15500/GCA_000864885.1_ViralProj15500_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/009/858/895/GCA_009858895.3_ASM985889v3/GCA_009858895.3_ASM985889v3_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/009/937/885/GCA_009937885.1_ASM993788v1/GCA_009937885.1_ASM993788v1_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/009/937/895/GCA_009937895.1_ASM993789v1/GCA_009937895.1_ASM993789v1_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/009/937/905/GCA_009937905.1_ASM993790v1/GCA_009937905.1_ASM993790v1_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/857/045/GCA_000857045.1_ViralProj15142/GCA_000857045.1_ViralProj15142_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/006/458/325/GCA_006458325.1_ASM645832v1/GCA_006458325.1_ASM645832v1_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/006/458/385/GCA_006458385.1_ASM645838v1/GCA_006458385.1_ASM645838v1_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/006/458/425/GCA_006458425.1_ASM645842v1/GCA_006458425.1_ASM645842v1_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/006/458/665/GCA_006458665.1_ASM645866v1/GCA_006458665.1_ASM645866v1_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/851/145/GCA_000851145.1_ViralMultiSegProj14892/GCA_000851145.1_ViralMultiSegProj14892_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/864/105/GCA_000864105.1_ViralMultiSegProj15617/GCA_000864105.1_ViralMultiSegProj15617_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/865/085/GCA_000865085.1_ViralMultiSegProj15622/GCA_000865085.1_ViralMultiSegProj15622_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/865/725/GCA_000865725.1_ViralMultiSegProj15521/GCA_000865725.1_ViralMultiSegProj15521_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/866/645/GCA_000866645.1_ViralMultiSegProj15620/GCA_000866645.1_ViralMultiSegProj15620_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/862/125/GCA_000862125.1_ViralProj15306/GCA_000862125.1_ViralProj15306_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/865/065/GCA_000865065.1_ViralProj15599/GCA_000865065.1_ViralProj15599_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/866/625/GCA_000866625.1_ViralProj15598/GCA_000866625.1_ViralProj15598_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/871/845/GCA_000871845.1_ViralProj20183/GCA_000871845.1_ViralProj20183_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/004/786/575/GCA_004786575.1_ASM478657v1/GCA_004786575.1_ASM478657v1_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/029/745/045/GCA_029745045.1_ASM2974504v1/GCA_029745045.1_ASM2974504v1_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/029/745/055/GCA_029745055.1_ASM2974505v1/GCA_029745055.1_ASM2974505v1_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/029/745/065/GCA_029745065.1_ASM2974506v1/GCA_029745065.1_ASM2974506v1_genomic.fna.gz
+>     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/029/744/035/GCA_029744035.1_ASM2974403v1/GCA_029744035.1_ASM2974403v1_genomic.fna.gz
 >     ```
 >
 > 3.  Also import the table from the [Zenodo record](https://zenodo.org/records/15882806):
 >
 >     ```
->     [https://zenodo.org/record/15882806/files/taxonomies.tsv](https://zenodo.org/record/15882806/files/taxonomies.tsv)
+>     https://zenodo.org/record/15882806/files/taxonomies.tsv
 >     ```
 >
 > 4.  Click **Start** and then **Close** the upload manager.
@@ -138,9 +138,6 @@ Let's get started!
 > > `/cvmfs/data.galaxyproject.org/byhand/MetaSBT/`
 > >
 > > You can find more information about how Galaxy uses CVMFS for reference data [here](https://training.galaxyproject.org/training-material/topics/admin/tutorials/cvmfs/tutorial.html).
-> {: .tip}
->
-> {: .hands_on}
 
 ---
 
@@ -172,10 +169,7 @@ Our first step is to build a small, custom database using our reference viruses.
 > > >
 > > > 1. The k-mer size is the length of the short DNA/RNA sequences (k-mers) that are extracted from the genomes and stored in the Bloom filters.
 > > > 2. The MetaSBT database is actually a directory containing multiple files. Compressing it into a single `.tar.gz` file makes it much easier to manage and pass to other tools or share it with other users within Galaxy.
-> > > 3. Although we selected the whole set of genomes in our history `*.fna.gz`, the input table with the mapping between the the name of the genomes and their complete taxonomic labels does not report any information about four genomes. Thus, they are automatically excluded. This has been done on purpose specifically for this tutorial. We are now going to use these three of these missing genomes for updating the database!
-> > {: .solution }
-> {: .question}
-{: .hands_on}
+> > > 3. Although we selected the whole set of genomes in our history `*.fna.gz`, the input table with the mapping between the name of the genomes and their complete taxonomic labels does not report any information about four genomes. Thus, they are automatically excluded. This has been done on purpose specifically for this tutorial. We are now going to use these three of these missing genomes for updating the database!
 
 We now have a database containing the genomic information for a specific selection of viral species.
 
@@ -195,7 +189,7 @@ We will now add three more *Monkeypox virus* genomes to the database we just cre
 >     - *"Will you use a MetaSBT database from your history or a public database?"*: *"Use a database from the history"*.
 >     - {% icon param-file %} *"Select a MetaSBT database"*: `database`.
 >
-> 2.  Click **Execute**. This will produce a *new* MetaSBT database, thus, three new `clusters`, `genomes`, and `database` files will appear in your history. This three new genomes have been profiled against our database and assigned to the closest species cluster, i.e., *Monkeypox virus* in this specific case.
+> 2.  Click **Execute**. This will produce a *new* MetaSBT database, thus, three new `clusters`, `genomes`, and `database` files will appear in your history. These three new genomes have been profiled against our database and assigned to the closest species cluster, i.e., *Monkeypox virus* in this specific case.
 >
 > > ### {% icon question %} Questions
 > >
@@ -204,9 +198,7 @@ We will now add three more *Monkeypox virus* genomes to the database we just cre
 > >
 > > > ### {% icon solution %} Solutions
 > > > 1. When updating, MetaSBT only needs to process the new genomes and insert them into the existing tree structure. It doesn't need to re-process the genomes that are already in the index. For very large databases, this can save hours or even days of computation time.
-> > > 2. In case of an update, the way we build the Bloom filter representation of the new genomes must be consistent with how we previously built our database. Thus, these information are implicitly inherited from the selected MetaSBT database.
-> {: .details}
-{: .hands_on}
+> > > 2. In case of an update, the way we build the Bloom filter representation of the new genomes must be consistent with how we previously built our database. Thus, this information is implicitly inherited from the selected MetaSBT database.
 
 ---
 
@@ -234,9 +226,6 @@ Our query genome is `GCA_029744035.1_ASM2974403v1_genomic.fna.gz`. We will profi
 > > > ### {% icon solution %} Solution
 > > >
 > > > MetaSBT may report multiple taxonomic units under the same taxonomic level if their distance from the input query genome is below a specific threshold which is established considering the distance to the closest taxonomic unit minus its 20% (by default). This last percentage is called *uncertainty percentage* and can be changed under the *"Advanced options"* section.
-> > {: .solution }
-> {: .question}
-{: .hands_on}
 
 ### Analyzing the Results
 
@@ -254,9 +243,9 @@ This output helps you understand the genomic relatedness of your query to the ge
 ## Conclusion
 
 In this tutorial, you have learned the complete workflow for using MetaSBT in Galaxy. You have successfully:
-1.  Built a custom database from a selection of viral reference genomes.
-2.  Efficiently updated that database with new viruses.
-3.  Profiled an unknown virus against the database to determine its identity (or lack thereof).
-4.  Interpreted the results to quantify the novelty of a virus compared to the database entries.
+1.  Built a custom database from a selection of viral reference genomes;
+2.  Efficiently updated that database with new viruses;
+3.  Profiled an unknown virus against the database to determine its identity (or lack thereof);
+4.  Interpreted the similarity reports to identify a query virus.
 
 You are now equipped to use MetaSBT for your own research. You can create custom databases for curated sets of genomes, or leverage large, pre-built databases to rapidly identify and characterize newly sequenced genomes from clinical or environmental samples.
