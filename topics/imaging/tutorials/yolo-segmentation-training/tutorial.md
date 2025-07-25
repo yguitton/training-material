@@ -121,7 +121,7 @@ It's important to note that these preprocessing steps are tailored to the exampl
 
 
 # Annotating the images
-Once the input images are preprocessed and converted to JPG format, we will need to manually annotate the images using AnyLabeling. AnyLabeling is an interactive labeling tool integrated into Galaxy that allows users to draw bounding boxes or segmentation shapes around objects of interest. 
+Once the input images are preprocessed and converted to JPG format, we will need to manually annotate the images using AnyLabeling. AnyLabeling is an interactive labeling tool integrated into Galaxy that allows users to draw bounding boxes or other shapes around objects of interest. 
 
 In this tutorial, we annotate all 22 example images using the tool's `Auto labeling` function, which helps accelerate the annotation process. The labels will later be used to train the YOLO model. The annotation process is entirely human-in-the-loop, so the quality and relevance of the labels directly influence the performance of the resulting model. 
 
