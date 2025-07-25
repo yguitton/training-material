@@ -23,8 +23,6 @@ contributors:
 ---
 
 
-# Introduction
-
 Image annotations and model training are essential in bioimage analysis tasks.  In biology and related fields, researchers often deal with large volumes of microscopy images that require accurate annotation to train machine learning models.  Automate this process can save time and improve reproducibility, but high-quality training data remains critical. Human-in-the-loop workflows have emerged as a solution to bridge the gap between manual annotation and automated model training, enabling iterative improvements through user interaction.
 
 This tutorial introduces a reusable human-in-the-loop image segmentation and training workflow implemented in Galaxy, designed to streamline the creation of custom segmentation models using YOLO (You Only Look Once). The workflow integrates both interactive and headless tools. We demonstrate the workflow here with tail analysis images from growing embryo samples. The workflow can also be adapted to other datasets with minimal adjustments.
