@@ -136,7 +136,7 @@ In this tutorial, we annotate all 22 example images using the tool's `Auto label
 >    {% snippet faqs/galaxy/interactive_tools_open.md  %}
 >
 > 2. Once AnyLabeling is open.
-     - Navigate to `File` -> `Change Output Dir` and set the output directory to `working/home/output`.
+>    - Navigate to `File` -> `Change Output Dir` and set the output directory to `working/home/output`.
 > ![al change output dir](../../images/yolo-train/al_chng_dir.png){: width="75%"}
 >
 >    - To open your input images, go to `File` -> `Open Dir`, and choose `working/home/input_images` directory.
