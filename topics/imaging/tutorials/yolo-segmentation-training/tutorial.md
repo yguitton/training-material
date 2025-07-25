@@ -72,8 +72,8 @@ This tutorial introduces a reusable human-in-the-loop image segmentation and tra
 >    - Click on the title of your file to see the row of small icons for saving, linking, etc.:
 > ![Screenshot of Galaxy icons. Seven small blue icons are shown on a green background. From left to right they are: floppy disk, link, information, redo, bar chart, flow chart and a question mark.](../../images/imaging-introduction/LittleJobIcons.png)
 >    - Click on the **visualise icon** {% icon galaxy-visualise %} and then select the **Editor** visualization plugin.
-
 {: .hands_on}
+
 > <question-title></question-title>
 >  
 > 1. How many classes are there in this class file?
