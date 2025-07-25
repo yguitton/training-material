@@ -24,25 +24,18 @@ contributors:
 
 ---
 
+Traditional dimensionality reduction techniques, while useful, often fail to capture the complex non-linear relationships present in high-dimensional data. Deep learning approaches, particularly Variational Autoencoders (VAEs), have emerged as powerful tools for unsupervised analysis of single-cell transcriptomic data {% raw %} `{% cite DBLP:journals/corr/ZhaoSE17b %}` {% endraw %}. VAEs combine the representational power of neural networks with probabilistic modeling, enabling them to learn meaningful latent representations while accounting for the inherent uncertainty in biological data.
+The key advantage of VAEs lies in their ability to encode high-dimensional gene expression profiles into a lower-dimensional latent space that preserves the most informative biological variation. This latent representation can then be used for various downstream analyses, including clustering, trajectory inference, and data integration.
+
+Flexynesis represents a state-of-the-art deep learning framework specifically designed for multi-modal data integration in biological research {% raw %} `{% cite Uyar2024 %}` {% endraw %}. What sets Flexynesis apart is its comprehensive suite of deep learning architectures, including supervised and unsupervised VAEs, that can handle various data integration scenarios while providing robust feature selection and hyperparameter optimization.
+
+When an outcome variable is not available, or it is desired to do an unsupervised training, the `supervised_vae` model in flexynesis can be utilized. The supervised variational autoencoder class can be trained on the input dataset without a supervisor head. If the user passes no target variables, batch variables, or survival variables, then the class behaves as a plain variational autoencoder.
+
+This training is inspired from the original flexynesis analysis notebook: [unsupervised_analysis_single_cell.ipynb](https://github.com/BIMSBbioinfo/flexynesis/blob/main/examples/tutorials/unsupervised_analysis_single_cell.ipynb).
+
+Here, we demonstrate the capabilities of flexynesis on a Single-cell CITE-Seq dataset of Bone Marrow samples {% raw %} `{% cite Stuart2019 %}` {% endraw %}. The dataset was downloaded and processed using Seurat (v5.1.0) {% raw %} `{% cite Hao2021 %}` {% endraw %}. 5000 cells were randomly sampled for training and 5000 cells were sampled for testing.
 
 
-General introduction about the topic and then an introduction of the
-tutorial (the questions and the objectives). It is nice also to have a
-scheme to sum up the pipeline used during the tutorial. The idea is to
-give to trainees insight into the content of the tutorial and the (theoretical
-and technical) key concepts they will learn.
-
-You may want to cite some publications; this can be done by adding citations to the
-bibliography file (`tutorial.bib` file next to your `tutorial.md` file). These citations
-must be in bibtex format. If you have the DOI for the paper you wish to cite, you can
-get the corresponding bibtex entry using [doi2bib.org](https://doi2bib.org).
-
-With the example you will find in the `tutorial.bib` file, you can add a citation to
-this article here in your tutorial like this:
-{% raw %} `{% cite Batut2018 %}`{% endraw %}.
-This will be rendered like this: {% cite Batut2018 %}, and links to a
-[bibliography section](#bibliography) which will automatically be created at the end of the
-tutorial.
 
 <!-- This is a comment. -->
 
