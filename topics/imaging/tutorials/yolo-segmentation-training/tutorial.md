@@ -96,7 +96,7 @@ The example dataset used in this tutorial consists of images in TIFF format. How
 It's important to note that these preprocessing steps are tailored to the example data. When applying this workflow to other images, the specific preprocessing steps may vary. Format conversion is mandatory if the images are not already in JPG, but contrast enhancement or other adjustments may or may not be needed depending on images. Users should adapt this part of the workflow to best suit their own data.
 
 ## Perform histogram equalization
->
+
 > <hands-on-title> Normalize Histogram </hands-on-title>
 >
 > 1. {% tool [Perform histogram equalization](toolshed.g2.bx.psu.edu/repos/imgteam/2d_histogram_equalization/ip_histogram_equalization/0.18.1+galaxy0) %} with the following parameters:
