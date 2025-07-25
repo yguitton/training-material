@@ -18,7 +18,7 @@ key_points:
 - Training metrics, the output of the YOLO training tool, are essential for evaluating model performance and guiding improvements.
 contributors:
 - sunyi000 
-- Arif UI Maula Khan
+- maulakhan
 
 ---
 
