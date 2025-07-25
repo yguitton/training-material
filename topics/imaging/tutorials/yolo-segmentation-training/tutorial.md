@@ -77,7 +77,7 @@ This tutorial introduces a reusable human-in-the-loop image segmentation and tra
 > <question-title></question-title>
 >  
 > 1. How many classes are there in this class file?
-> 2. What is the class name?
+> 2. What are the class names?
 >
 > > <solution-title></solution-title>
 > >
