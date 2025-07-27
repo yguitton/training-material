@@ -15,7 +15,7 @@ objectives:
 time_estimation: ?H
 key_points:
 - Variational autoencoders can effectively capture cellular heterogeneity in single-cell data without requiring labeled training data
-- TFlexynesis provides a structured framework for multi-modal data integration with rigorous evaluation procedures
+- Flexynesis provides a structured framework for multi-modal data integration with rigorous evaluation procedures
 - Unsupervised feature learning can reveal biologically meaningful cellular populations and relationships
 - Low-dimensional embeddings from VAEs can be used for clustering, visualization, and biological interpretation
 contributors:
@@ -24,23 +24,20 @@ contributors:
 
 ---
 
-Traditional dimensionality reduction techniques, while useful, often fail to capture the complex non-linear relationships present in high-dimensional data. Deep learning approaches, particularly Variational Autoencoders (VAEs), have emerged as powerful tools for unsupervised analysis of single-cell transcriptomic data {% raw %} `{% cite DBLP:journals/corr/ZhaoSE17b %}` {% endraw %}. VAEs combine the representational power of neural networks with probabilistic modeling, enabling them to learn meaningful latent representations while accounting for the inherent uncertainty in biological data.
+Traditional dimensionality reduction techniques, while useful, often fail to capture the complex non-linear relationships present in high-dimensional data. Deep learning approaches, particularly Variational Autoencoders (VAEs), have emerged as powerful tools for unsupervised analysis of single-cell transcriptomic data ({% cite DBLP:journals/corr/ZhaoSE17b %}). VAEs combine the representational power of neural networks with probabilistic modeling, enabling them to learn meaningful latent representations while accounting for the inherent uncertainty in biological data.
 The key advantage of VAEs lies in their ability to encode high-dimensional gene expression profiles into a lower-dimensional latent space that preserves the most informative biological variation. This latent representation can then be used for various downstream analyses, including clustering, trajectory inference, and data integration.
 
-Flexynesis represents a state-of-the-art deep learning framework specifically designed for multi-modal data integration in biological research {% raw %} `{% cite Uyar2024 %}` {% endraw %}. What sets Flexynesis apart is its comprehensive suite of deep learning architectures, including supervised and unsupervised VAEs, that can handle various data integration scenarios while providing robust feature selection and hyperparameter optimization.
+Flexynesis represents a state-of-the-art deep learning framework specifically designed for multi-modal data integration in biological research ({% cite Uyar2024 %}). What sets Flexynesis apart is its comprehensive suite of deep learning architectures, including supervised and unsupervised VAEs, that can handle various data integration scenarios while providing robust feature selection and hyperparameter optimization.
 
 When an outcome variable is not available, or it is desired to do an unsupervised training, the `supervised_vae` model in flexynesis can be utilized. The supervised variational autoencoder class can be trained on the input dataset without a supervisor head. If the user passes no target variables, batch variables, or survival variables, then the class behaves as a plain variational autoencoder.
 
 This training is inspired from the original flexynesis analysis notebook: [unsupervised_analysis_single_cell.ipynb](https://github.com/BIMSBbioinfo/flexynesis/blob/main/examples/tutorials/unsupervised_analysis_single_cell.ipynb).
 
-Here, we demonstrate the capabilities of flexynesis on a Single-cell CITE-Seq dataset of Bone Marrow samples {% raw %} `{% cite Stuart2019 %}` {% endraw %}. The dataset was downloaded and processed using Seurat (v5.1.0) {% raw %} `{% cite Hao2021 %}` {% endraw %}. 5000 cells were randomly sampled for training and 5000 cells were sampled for testing.
+Here, we demonstrate the capabilities of flexynesis on a Single-cell CITE-Seq dataset of Bone Marrow samples ({% cite Stuart2019 %}). The dataset was downloaded and processed using Seurat (v5.1.0) ({% cite Hao2021 %}). 5000 cells were randomly sampled for training and 5000 cells were sampled for testing.
 
 
 
 <!-- This is a comment. -->
-
-**Please follow our
-[tutorial to learn how to fill the Markdown]({{ site.baseurl }}/topics/contributing/tutorials/create-new-tutorial-content/tutorial.html)**
 
 > <agenda-title></agenda-title>
 >
@@ -51,434 +48,254 @@ Here, we demonstrate the capabilities of flexynesis on a Single-cell CITE-Seq da
 >
 {: .agenda}
 
-# Title for your first section
+# Data upload
 
-Give some background about what the trainees will be doing in the section.
-Remember that many people reading your materials will likely be novices,
-so make sure to explain all the relevant concepts.
-
-## Title for a subsection
-Section and subsection titles will be displayed in the tutorial index on the left side of
-the page, so try to make them informative and concise!
-
-# Hands-on Sections
-Below are a series of hand-on boxes, one for each tool in your workflow file.
-Often you may wish to combine several boxes into one or make other adjustments such
-as breaking the tutorial into sections, we encourage you to make such changes as you
-see fit, this is just a starting point :)
-
-Anywhere you find the word "***TODO***", there is something that needs to be changed
-depending on the specifics of your tutorial.
-
-have fun!
+In the first part of this tutorial we will upload processed CITE-seq data from bone marrow tissue.
 
 ## Get data
 
 > <hands-on-title> Data Upload </hands-on-title>
 >
 > 1. Create a new history for this tutorial
-> 2. Import the files from [Zenodo]({{ page.zenodo_link }}) or from
->    the shared data library (`GTN - Material` -> `{{ page.topic_name }}`
->     -> `{{ page.title }}`):
 >
+>    {% snippet faqs/galaxy/histories_create_new.md %}
+>
+> 2. Import the files from [Zenodo]({{ page.zenodo_link }}):
+>
+>    ```text
+>    {{ page.zenodo_link }}/files/test-ADT_BMscRNAseq.tabular
+>    {{ page.zenodo_link }}/files/test-clin_BMscRNAseq.tabular
+>    {{ page.zenodo_link }}/files/test-RNA_BMscRNAseq.tabular
+>    {{ page.zenodo_link }}/files/train-ADT_BMscRNAseq.tabular
+>    {{ page.zenodo_link }}/files/train-clin_BMscRNAseq.tabular
+>    {{ page.zenodo_link }}/files/train-RNA_BMscRNAseq.tabular
 >    ```
->
->    ```
->    ***TODO***: *Add the files by the ones on Zenodo here (if not added)*
->
->    ***TODO***: *Remove the useless files (if added)*
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
->    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
->
 > 3. Rename the datasets
-> 4. Check that the datatype
+> 4. Check that the datatype is `tabular`
 >
->    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
+>    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
 >
-> 5. Add to each database a tag corresponding to ...
+> 5. Add to each database a tag corresponding to modality (RNA, ADT)
 >
 >    {% snippet faqs/galaxy/datasets_add_tag.md %}
 >
 {: .hands_on}
 
-# Title of the section usually corresponding to a big step in the analysis
-
-It comes first a description of the step: some background and some theory.
-Some image can be added there to support the theory explanation:
-
-![Alternative text](../../images/image_name "Legend of the image")
-
-The idea is to keep the theory description before quite simple to focus more on the practical part.
-
-***TODO***: *Consider adding a detail box to expand the theory*
-
-> <details-title> More details about the theory </details-title>
+# Unsupervised Training of Flexynesis
+> <warning-title>LICENSE</warning-title>
 >
-> But to describe more details, it is possible to use the detail boxes which are expandable
->
-{: .details}
+>Flexynesis is only available for NON-COMMERCIAL use. Permission is only granted for academic, research, and educational purposes. Before using, be sure to review, agree, and comply with the license.
+>For commercial use, please review the flexynesis license on GitHub and contact the [copyright holders](https://github.com/BIMSBbioinfo/flexynesis)
+{: .warning}
 
-A big step can have several subsections or sub steps:
-
-
-## Sub-step with **Flexynesis**
-
-> <hands-on-title> Task description </hands-on-title>
+> <hands-on-title> Train unsupervised model </hands-on-title>
 >
 > 1. {% tool [Flexynesis](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis/flexynesis/0.2.20+galaxy3) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Type of Analysis"*: `Unsupervised Training`
->        - {% icon param-file %} *"Training clinical data"*: `output` (Input dataset)
->        - {% icon param-file %} *"Test clinical data"*: `output` (Input dataset)
->        - {% icon param-file %} *"Training omics data"*: `output` (Input dataset)
->        - {% icon param-file %} *"Test omics data"*: `output` (Input dataset)
+>        - {% icon param-file %} *"Training clinical data"*: `train-clin_BMscRNAseq.tabular`
+>        - {% icon param-file %} *"Test clinical data"*: `test-clin_BMscRNAseq.tabular`
+>        - {% icon param-file %} *"Training omics data"*: `train-RNA_BMscRNAseq.tabular`
+>        - {% icon param-file %} *"Test omics data"*: `test-RNA_BMscRNAseq.tabular`
 >        - *"What type of assay is your input?"*: `RNA`
 >        - In *"Multiple omics layers?"*:
 >            - {% icon param-repeat %} *"Insert Multiple omics layers?"*
->                - {% icon param-file %} *"Training omics data"*: `output` (Input dataset)
+>                - {% icon param-file %} *"Training omics data"*: `train-ADT_BMscRNAseq.tabular`
+>                - {% icon param-file %} *"Test omics data"*: `test-ADT_BMscRNAseq.tabular`
 >                - *"What type of assay is your input?"*: `ADT`
 >        - In *"Advanced Options"*:
 >            - *"How many epochs to wait when no improvements in validation loss are observed."*: `5`
 >            - *"Number of iterations for hyperparameter optimization."*: `1`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
+>    > <comment-title> Advanced options </comment-title>
 >    >
->    > A comment about the tool or something else. This box can also be in the main text
+>    > In this tutorial, for the sake of time, we are using **1** iteration for hyperparameter optimization. In a real-life analysis you might want to increase this number according to your dataset.
 >    {: .comment}
 >
 {: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
 > <question-title></question-title>
 >
-> 1. Question1?
-> 2. Question2?
+> 1. What are the outputs from Flexynesis?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. Answer for question1
-> > 2. Answer for question2
+> > 1. There are two tabular files for the latent space embeddings and two feature log files for each of the modalities.
 > >
 > {: .solution}
 >
 {: .question}
 
-## Sub-step with **Extract dataset**
+# Clustering and visualisation
 
-> <hands-on-title> Task description </hands-on-title>
+Now, we extract the sample embeddings from the test dataset, cluster the cells using Louvain clustering, and visualize the clusters along with known cell type labels.
+
+> <hands-on-title> Extract test embeddings </hands-on-title>
 >
 > 1. {% tool [Extract dataset](__EXTRACT_DATASET__) %} with the following parameters:
 >    - {% icon param-file %} *"Input List"*: `results` (output of **Flexynesis** {% icon tool %})
 >    - *"How should a dataset be selected?"*: `The first dataset`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
 {: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
 > <question-title></question-title>
 >
-> 1. Question1?
-> 2. Question2?
+> 1. What are other options to extract datasets from a collection?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. Answer for question1
-> > 2. Answer for question2
+> > 1. It is also possible to use index (here index **0**) or data name (here **job.embeddings_test**) to extract the data. Please always check your collection before extraction.
 > >
 > {: .solution}
 >
 {: .question}
 
-## Sub-step with **Flexynesis utils**
+## Louvain clustering
 
-> <hands-on-title> Task description </hands-on-title>
+> <hands-on-title> Cluster cells by Louvain method </hands-on-title>
 >
 > 1. {% tool [Flexynesis utils](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_utils/flexynesis_utils/0.2.20+galaxy3) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Flexynesis utils"*: `Louvain Clustering`
->        - {% icon param-file %} *"Predicted labels"*: `output` (Input dataset)
+>        - {% icon param-file %} *"Matrix"*: `job.embeddings_test` (output of **Extract dataset** {% icon tool %})
+>        - {% icon param-file %} *"Predicted labels"*: `test-clin_BMscRNAseq.tabular` (Input dataset)
 >        - *"Number of nearest neighbors to connect for each node"*: `15`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
 {: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
 > <question-title></question-title>
 >
-> 1. Question1?
-> 2. Question2?
+> 1. What is the output of this tool?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. Answer for question1
-> > 2. Answer for question2
+> > 1. The output is the `test-clin_BMscRNAseq.tabular` file with a column added containing Louvain clustering values,
 > >
 > {: .solution}
 >
 {: .question}
 
-## Sub-step with **Flexynesis plot**
+## Get optimal clusters
+We can also use k-means clustering with a varying number of expected clusters and pick the best one based on silhouette scores.
 
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Flexynesis plot](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_plot/flexynesis_plot/0.2.20+galaxy3) %} with the following parameters:
->    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
->    - *"Flexynesis plot"*: `Dimensionality reduction`
->        - {% icon param-file %} *"Predicted labels"*: `output` (Input dataset)
->        - *"Column in the labels file to use for coloring the points in the plot"*: `c10`
->        - *"Transformation method"*: `UMAP`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Flexynesis utils**
-
-> <hands-on-title> Task description </hands-on-title>
+> <hands-on-title> Get optimal clusters </hands-on-title>
 >
 > 1. {% tool [Flexynesis utils](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_utils/flexynesis_utils/0.2.20+galaxy3) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Flexynesis utils"*: `Get Optimal Clusters`
->        - {% icon param-file %} *"Predicted labels"*: `util_out` (output of **Flexynesis utils** {% icon tool %})
+>        - {% icon param-file %} *"Predicted labels"*: `louvain_clustering` (output of **Flexynesis utils** {% icon tool %})
 >        - *"Minimum number of clusters to try"*: `10`
 >        - *"Maximum number of clusters to try"*: `20`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
+>    > <comment-title> Predicted labels </comment-title>
 >    >
->    > A comment about the tool or something else. This box can also be in the main text
+>    > Please make sure to use the output of Louvain clustering. We need those values in one table for next steps.
 >    {: .comment}
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
 > <question-title></question-title>
 >
-> 1. Question1?
-> 2. Question2?
+> 1. What is the output of this tool?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. Answer for question1
-> > 2. Answer for question2
+> > 1. Another column is added to the previous table for k-means clustering values.
 > >
 > {: .solution}
 >
 {: .question}
 
-## Sub-step with **Flexynesis plot**
+In the next step, we will calculate the concrdance between the known cell types and unsupervised cluster labels using AMI (Adjusted Mutual Information) and ARI (Adjusted Rand Index) indices.
 
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Flexynesis plot](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_plot/flexynesis_plot/0.2.20+galaxy3) %} with the following parameters:
->    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
->    - *"Flexynesis plot"*: `Label concordance heatmap`
->        - {% icon param-file %} *"Predicted labels"*: `util_out` (output of **Flexynesis utils** {% icon tool %})
->        - *"Column in the labels file to use for true labels"*: `c10`
->        - *"Column in the labels file to use for predicted labels"*: `c12`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
+## Compute AMI, ARI
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
+**AMI** (Adjusted Mutual Information) and **ARI** (Adjusted Rand Index) are used to compare clustering results with ground truth labels. They measure concordance (agreement) between two clusterings.
+AMI ranges from 0 (no agreement) to 1 (perfect match) and ARI ranges from -1 (complete disagreement) to 1 (perfect agreement).
 
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Flexynesis utils**
-
-> <hands-on-title> Task description </hands-on-title>
+> <hands-on-title> Louvain vs true labels </hands-on-title>
 >
 > 1. {% tool [Flexynesis utils](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_utils/flexynesis_utils/0.2.20+galaxy3) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Flexynesis utils"*: `Compute AMI and ARI`
->        - {% icon param-file %} *"Predicted labels"*: `util_out` (output of **Flexynesis utils** {% icon tool %})
->        - *"Column name in the labels file to use for the true labels"*: `c10`
->        - *"Column name in the labels file to use for the predicted labels"*: `c12`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
+>        - {% icon param-file %} *"Predicted labels"*: `get_optimal_clusters` (output of **Flexynesis utils** {% icon tool %})
+>        - *"Column name in the labels file to use for the true labels"*: `c10` (celltype_l2)
+>        - *"Column name in the labels file to use for the predicted labels"*: `c12` (louvain_cluster)
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Flexynesis utils**
-
-> <hands-on-title> Task description </hands-on-title>
+> <hands-on-title> k-means vs true labels </hands-on-title>
 >
 > 1. {% tool [Flexynesis utils](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_utils/flexynesis_utils/0.2.20+galaxy3) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Flexynesis utils"*: `Compute AMI and ARI`
->        - {% icon param-file %} *"Predicted labels"*: `util_out` (output of **Flexynesis utils** {% icon tool %})
->        - *"Column name in the labels file to use for the true labels"*: `c10`
->        - *"Column name in the labels file to use for the predicted labels"*: `c13`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
+>        - {% icon param-file %} *"Predicted labels"*: `get_optimal_clusters` (output of **Flexynesis utils** {% icon tool %})
+>        - *"Column name in the labels file to use for the true labels"*: `c10` (celltype_l2)
+>        - *"Column name in the labels file to use for the predicted labels"*: `c13` (optimal_kmeans_cluster)
 {: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
 > <question-title></question-title>
 >
-> 1. Question1?
-> 2. Question2?
+> 1. Which one of Louvain and k-means have better concordance?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. Answer for question1
-> > 2. Answer for question2
+> > 1. The Louvain has AMI = 0.66 and ARI = 0.49 and k-means has AMI = 0.55 and ARI = 0.43.
+> > Louvain Clustering seems to yield better AMI/ARI scores. So, we use them to do more visualizations.
 > >
 > {: .solution}
 >
 {: .question}
 
-## Sub-step with **Flexynesis plot**
 
-> <hands-on-title> Task description </hands-on-title>
+## UMAP visualisation of true and Louvain lables
+
+> <hands-on-title> Dimension reduction plot </hands-on-title>
 >
 > 1. {% tool [Flexynesis plot](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_plot/flexynesis_plot/0.2.20+galaxy3) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Flexynesis plot"*: `Dimensionality reduction`
->        - {% icon param-file %} *"Predicted labels"*: `util_out` (output of **Flexynesis utils** {% icon tool %})
->        - *"Column in the labels file to use for coloring the points in the plot"*: `c12`
+>        - {% icon param-file %} *"Predicted labels"*: `get_optimal_clusters` (Input dataset)
+>        - *"Column in the labels file to use for coloring the points in the plot"*: `c10` (celltype_l2)
 >        - *"Transformation method"*: `UMAP`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
+> <hands-on-title> Dimension reduction plot </hands-on-title>
+>
+> 1. {% tool [Flexynesis plot](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_plot/flexynesis_plot/0.2.20+galaxy3) %} with the following parameters:
+>    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
+>    - *"Flexynesis plot"*: `Dimensionality reduction`
+>        - {% icon param-file %} *"Predicted labels"*: `get_optimal_clusters` (output of **Flexynesis utils** {% icon tool %})
+>        - *"Column in the labels file to use for coloring the points in the plot"*: `c12` (louvain_cluster)
+>        - *"Transformation method"*: `UMAP`
+{: .hands_on}
 
 > <question-title></question-title>
 >
-> 1. Question1?
-> 2. Question2?
+> 1. Compare these two UMAP plots, Is the unsupervised clustering close to the ground truth labels?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. Answer for question1
-> > 2. Answer for question2
+> > 1. We can see that like true labels, each UMAP clusters have unique Louvain clusters assigned. This shows that this clustering based on the latent space is close to the ground truth. However, we still don't know which Louvain cluster, corresponds to which true label.
 > >
 > {: .solution}
 >
 {: .question}
 
+To see the real concordance between Louvain clusters and true values, we can bserve a tabulation of the concordance between them. (Each row sums up to 1).
 
-## Re-arrange
+> <hands-on-title> Concordance plot </hands-on-title>
+>
+> 1. {% tool [Flexynesis plot](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_plot/flexynesis_plot/0.2.20+galaxy3) %} with the following parameters:
+>    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
+>    - *"Flexynesis plot"*: `Label concordance heatmap`
+>        - {% icon param-file %} *"Predicted labels"*: `get_optimal_clusters` (output of **Flexynesis utils** {% icon tool %})
+>        - *"Column in the labels file to use for true labels"*: `c10` (celltype_l2)
+>        - *"Column in the labels file to use for predicted labels"*: `c12` (louvain_cluster)
+{: .hands_on}
 
-To create the template, each step of the workflow had its own subsection.
+Now it is easier to see which Lovain cluster corresponds to which true value.
 
-***TODO***: *Re-arrange the generated subsections into sections or other subsections.
-Consider merging some hands-on boxes to have a meaningful flow of the analyses*
 
 # Conclusion
 
-Sum up the tutorial and the key takeaways here. We encourage adding an overview image of the
-pipeline used.
+Here we demonstrated the power of Flexynesis for unsupervised analysis of multi-modal single-cell data. We explored how variational autoencoders can capture cellular heterogeneity without requiring labeled training data.
