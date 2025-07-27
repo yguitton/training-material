@@ -175,7 +175,7 @@ TIFF images can store multiple channels—such as different colors or fluorescen
 >
 {: .hands_on}
 
-> <comment-title>Use a split image for downstream compatibility and annotation</comment-title>
+> <comment-title>Use a single-channel image for downstream compatibility and annotation</comment-title>
 > While QuPath can handle multi-channel images, our other tools cannot. Therefore, after splitting the image, we will use the {% tool [Extract Dataset](__EXTRACT_DATASET__) %} tool to select one of the single-channel images. This image should represent the intensity channel we want to measure, and will be used for QuPath regions of interest (ROI) annotation.
 >
 {: .comment}
