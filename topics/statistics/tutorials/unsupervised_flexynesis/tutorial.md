@@ -19,7 +19,7 @@ key_points:
 - Unsupervised feature learning can reveal biologically meaningful cellular populations and relationships
 - Low-dimensional embeddings from VAEs can be used for clustering, visualization, and biological interpretation
 contributors:
-- nilchia
+- Nilchia
 - bgruening
 
 ---
