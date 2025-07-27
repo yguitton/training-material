@@ -57,7 +57,7 @@ The example dataset can be downloaded from here [Electrophoresis gel dataset](ht
 
 ![Electrophoresis Gel](../../images/electrophoresis-gel-bands-image-analysis/Image.jpg)
 
-This image was published by [Kenji Ohgane et al. (2019) on Protocols.io](https://www.protocols.io/view/quantification-of-gel-bands-by-an-image-j-macro-ba-bp2l6n4bkgqe/v1).
+This image is from {% cite Ohgane2019 %}.
 
 > <hands-on-title>Download and upload the image</hands-on-title>
 >
