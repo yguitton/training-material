@@ -75,7 +75,7 @@ This image was published by [Kenji Ohgane et al. (2019) on Protocols.io](https:/
 >
 {: .hands_on}
 
-Before we dive into the quantification steps let's convert our jpg image file into the image format TIFF. This format is preferred for analysis and quantification as it preserves the image data and metadata. 
+Before we dive into the quantification steps let's convert our JPG image file into the TIFF image format. This format is preferred for analysis and quantification as it preserves the image data and metadata. 
 
 **Note:** Skip this step if the image is already in TIFF format.
 
