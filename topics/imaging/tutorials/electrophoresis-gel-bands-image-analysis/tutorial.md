@@ -187,6 +187,7 @@ TIFF images can store multiple channels—such as different colors or fluorescen
 >    - *"Which part of the Collection?"*: Choose the TIFF file that represent the channel of your interest. In our dataset example, we extract 1.tiff
 >
 {: .hands_on}
+{: .hands_on }
 
 # Annotate and process regions of interest (ROIs)
 
