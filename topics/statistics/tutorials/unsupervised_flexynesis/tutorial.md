@@ -12,7 +12,7 @@ objectives:
 - Perform dimensionality reduction and feature learning using deep learning methods
 - Identify and interpret cellular clusters and patterns in high-dimensional single-cell datasets
 - Evaluate the quality of unsupervised representations through visualization and clustering metrics
-time_estimation: ?H
+time_estimation: 2H
 key_points:
 - Variational autoencoders can effectively capture cellular heterogeneity in single-cell data without requiring labeled training data
 - Flexynesis provides a structured framework for multi-modal data integration with rigorous evaluation procedures
