@@ -166,7 +166,7 @@ Reading metadata
 
 ## Split image into separate channels
 
-TIFF images can store multiple channels—such as different colors or fluorescence signals—in a single file. In this step, we will separate these channels by splitting the image along the channel axis (C-axis). This results in a set of single-channel images, which are required for the next processing steps.
+TIFF images can store multiple channels—such as different colors or fluorescence signals—in a single file. In this step, we will separate these channels by splitting the image along the channel axis (C-axis). This results in a list of single-channel images, which are required for the next processing steps.
 
 > <hands-on-title>Split image into single channels</hands-on-title>
 > 1. {% tool [Split image along axes](toolshed.g2.bx.psu.edu/repos/imgteam/split_image/ip_split_image/2.2.3+galaxy1) %} with the following parameters:
