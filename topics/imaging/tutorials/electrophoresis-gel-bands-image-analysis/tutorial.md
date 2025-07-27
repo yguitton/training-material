@@ -35,7 +35,7 @@ Electrophoresis gel images are fundamental tools in molecular biology and bioche
 
 Reliable measurement of band intensity provides quantitative insights into gene expression and other biochemical properties ({% cite Gassmann2009 %}). However, manual quantification can be labor-intensive and prone to user bias.
 
-Modern image analysis platforms such as **QuPath** ({% cite Bankhead2017 %}) provide interactive tools for defining **regions of interest (ROIs)** directly on gel images. These ROIs can be exported as **GeoJSON** files, which encode the spatial coordinates of the selected bands in a standardized, machine-readable format.
+Modern image analysis software suites such as **QuPath** ({% cite Bankhead2017 %}) provide interactive tools for defining **regions of interest (ROIs)** directly on gel images. These ROIs can be exported as **GeoJSON** files, which encode the spatial coordinates of the selected bands in a standardized, machine-readable format.
 
 Once the ROI file is generated, bioinformatics platforms like **Galaxy** ({% cite Galaxy2024 %}) enable automated processing of these coordinates, measurement of pixel intensities for each band, and generation of transparent, reproducible quantification results.
 
