@@ -44,13 +44,10 @@ Recent advances such as **GelGenie** ({% cite Aquilina2025 %}) further highlight
 
 > <agenda-title></agenda-title>
 >
-> The steps covered in this tutorial are:
+> In this tutorial, we will deal with:
 >
-> 1. Uploading and preparing the electrophoresis gel image  
-> 2. Selecting and exporting regions of interest (ROIs) using QuPath  
-> 3. Converting ROI coordinates to a label map  
-> 4. Quantifying band intensity  
-> 5. Inspecting results
+> 1. TOC
+> {:toc}
 >
 {: .agenda}
 
