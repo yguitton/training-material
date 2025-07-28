@@ -269,7 +269,17 @@
             ]
         }
     },
-    "tags": [],
+    "tags": [
+        "imaging"
+    ],
+    "license": "MIT",
+    "creator": [
+        {
+            "class":"Person",
+            "name":"Reyhaneh Tavakoli",
+            "url":"https://github.com/reytakop/"
+        }
+    ],
     "uuid": "d598a1f4-e30d-4124-aa75-0d1ddb8a7b7d",
     "version": 0
 }
