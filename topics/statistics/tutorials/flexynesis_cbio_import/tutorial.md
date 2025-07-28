@@ -33,518 +33,182 @@ In this tutorial, we will work with data from the METABRIC consortium {% cite me
 >
 {: .agenda}
 
-# Title for your first section
+# Import data from CbioPortal
 
-Give some background about what the trainees will be doing in the section.
-Remember that many people reading your materials will likely be novices,
-so make sure to explain all the relevant concepts.
-
-## Title for a subsection
-Section and subsection titles will be displayed in the tutorial index on the left side of
-the page, so try to make them informative and concise!
-
-# Hands-on Sections
-Below are a series of hand-on boxes, one for each tool in your workflow file.
-Often you may wish to combine several boxes into one or make other adjustments such
-as breaking the tutorial into sections, we encourage you to make such changes as you
-see fit, this is just a starting point :)
-
-Anywhere you find the word "***TODO***", there is something that needs to be changed
-depending on the specifics of your tutorial.
-
-have fun!
-
-## Get data
-
-> <hands-on-title> Data Upload </hands-on-title>
+> <hands-on-title> Import data from cBioPortal </hands-on-title>
 >
-> 1. Create a new history for this tutorial
-> 2. Import the files from [Zenodo]({{ page.zenodo_link }}) or from
->    the shared data library (`GTN - Material` -> `{{ page.topic_name }}`
->     -> `{{ page.title }}`):
->
->    ```
->    https://zenodo.org/api/records/16287482/files/train_mut_lgggbm.tabular/content
->    https://zenodo.org/api/records/16287482/files/test-ADT_BMscRNAseq.tabular/content
->    https://zenodo.org/api/records/16287482/files/train-clin_BMscRNAseq.tabular/content
->    https://zenodo.org/api/records/16287482/files/train-RNA_BMscRNAseq.tabular/content
->    https://zenodo.org/api/records/16287482/files/train_clin_lgggbm.tabular/content
->    https://zenodo.org/api/records/16287482/files/test_cna_lgggbm.tabular/content
->    https://zenodo.org/api/records/16287482/files/train_cna_lgggbm.tabular/content
->    https://zenodo.org/api/records/16287482/files/test_mut_lgggbm.tabular/content
->    https://zenodo.org/api/records/16287482/files/test_clin_lgggbm.tabular/content
->    https://zenodo.org/api/records/16287482/files/train_cna_brca.tabular/content
->    https://zenodo.org/api/records/16287482/files/test-clin_BMscRNAseq.tabular/content
->    https://zenodo.org/api/records/16287482/files/train-ADT_BMscRNAseq.tabular/content
->    https://zenodo.org/api/records/16287482/files/test-RNA_BMscRNAseq.tabular/content
->    https://zenodo.org/api/records/16287482/files/train_mut_brca.tabular/content
->    https://zenodo.org/api/records/16287482/files/test_mut_brca.tabular/content
->    https://zenodo.org/api/records/16287482/files/train_clin_brca.tabular/content
->    https://zenodo.org/api/records/16287482/files/test_cna_brca.tabular/content
->    https://zenodo.org/api/records/16287482/files/train_gex_brca.tabular/content
->    https://zenodo.org/api/records/16287482/files/test_gex_brca.tabular/content
->    https://zenodo.org/api/records/16287482/files/test_clin_brca.tabular/content
->    ```
->    ***TODO***: *Add the files by the ones on Zenodo here (if not added)*
->
->    ***TODO***: *Remove the useless files (if added)*
->
->    {% snippet faqs/galaxy/datasets_import_via_link.md %}
->
->    {% snippet faqs/galaxy/datasets_import_from_data_library.md %}
->
-> 3. Rename the datasets
-> 4. Check that the datatype
->
->    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="datatypes" %}
->
-> 5. Add to each database a tag corresponding to ...
->
->    {% snippet faqs/galaxy/datasets_add_tag.md %}
+> 1. {% tool [Flexynesis cBioPortal import](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_cbioportal_import/flexynesis_cbioportal_import/0.2.20+galaxy3) %} with the following parameters:
+>    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
+>    - *"cBioPortal study ID"*: `brca_metabric`
 >
 {: .hands_on}
 
-# Title of the section usually corresponding to a big step in the analysis
-
-It comes first a description of the step: some background and some theory.
-Some image can be added there to support the theory explanation:
-
-![Alternative text](../../images/image_name "Legend of the image")
-
-The idea is to keep the theory description before quite simple to focus more on the practical part.
-
-***TODO***: *Consider adding a detail box to expand the theory*
-
-> <details-title> More details about the theory </details-title>
+> <question-title></question-title>
 >
-> But to describe more details, it is possible to use the detail boxes which are expandable
+> 1. What modalities are imported to Galaxy?
 >
-{: .details}
+> > <solution-title></solution-title>
+> >
+> > 1. * Clinical data
+> >    * Copy number alteration
+> >    * Methylation
+> >    * Gene expression
+> >    * Mutation
+> >
+> {: .solution}
+>
+{: .question}
 
-A big step can have several subsections or sub steps:
 
+# Data cleanup
 
-## Sub-step with **Extract dataset**
+Now we need to clean up our data. This means removing comment lines in the matrix, removing duplicate samples and so on.
 
-> <hands-on-title> Task description </hands-on-title>
+## Clinical data
+
+> <hands-on-title> Prepare clinical data </hands-on-title>
+>
+> Here we'll First extract the clinical data from the collection, then we remove the comment lines, and finally we remove the extra index column.
+>
+> 1. {% tool [Extract dataset](__EXTRACT_DATASET__) %} with the following parameters:
+>    - {% icon param-file %} *"Input List"*: `datasets` (output of **Flexynesis cBioPortal import** {% icon tool %})
+>    - *"How should a dataset be selected?"*: `Select by element identifier`
+>        - *"Element identifier:"*: `data_clinical_patient`
+>
+>
+> 2. {% tool [Table Compute](toolshed.g2.bx.psu.edu/repos/iuc/table_compute/table_compute/1.2.4+galaxy2) %} with the following parameters:
+>    - *"Input Single or Multiple Tables"*: `Single Table`
+>        - {% icon param-file %} *"Table"*: `data_clinical_patient` (output of **Extract dataset** {% icon tool %})
+>        - In *"Advanced File Options "*:
+>            - *"Header begins at line N"*: `4`
+>        - *"Type of table operation"*: `No operation (just reformat on output)`
+>
+> 3. {% tool [Advanced Cut](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/9.5+galaxy2) %} with the following parameters:
+>    - {% icon param-file %} *"File to cut"*: `table` (output of **Table Compute** {% icon tool %})
+>    - *"Operation"*: `Discard`
+>    - *"Cut by"*: `fields`
+>        - *"Is there a header for the data's columns ?"*: `Yes`
+>            - *"List of Fields"*: `c1:`
+>
+> 4. Rename the data `clinical data - cleaned`
+>
+{: .hands_on}
+
+> <question-title></question-title>
+>
+> 1. How many samples are there in the clinical data?
+>
+> > <solution-title></solution-title>
+> >
+> > 1. Click on the data, you will see the data has **2510** lines, so **2509** samples.
+> >
+> {: .solution}
+>
+{: .question}
+
+## Omics data
+
+Time to prepare our omics data. We are interested in mutation and gene expression.
+
+> <hands-on-title> Prepare gene expression data </hands-on-title>
+>
+> Here we'll First extract the clinical data from the collection, then we remove duplicate genes from the matrix, and finally we remove the ENTREZ Ids.
 >
 > 1. {% tool [Extract dataset](__EXTRACT_DATASET__) %} with the following parameters:
 >    - {% icon param-file %} *"Input List"*: `data` (output of **Flexynesis cBioPortal import** {% icon tool %})
 >    - *"How should a dataset be selected?"*: `Select by element identifier`
 >        - *"Element identifier:"*: `data_mrna_illumina_microarray`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Extract dataset**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Extract dataset](__EXTRACT_DATASET__) %} with the following parameters:
->    - {% icon param-file %} *"Input List"*: `data` (output of **Flexynesis cBioPortal import** {% icon tool %})
->    - *"How should a dataset be selected?"*: `Select by element identifier`
->        - *"Element identifier:"*: `data_mutations`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Extract dataset**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Extract dataset](__EXTRACT_DATASET__) %} with the following parameters:
->    - {% icon param-file %} *"Input List"*: `data` (output of **Flexynesis cBioPortal import** {% icon tool %})
->    - *"How should a dataset be selected?"*: `Select by element identifier`
->        - *"Element identifier:"*: `data_clinical_patient`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Sort**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Sort](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/9.5+galaxy2) %} with the following parameters:
->    - {% icon param-file %} *"Sort Query"*: `output` (output of **Extract dataset** {% icon tool %})
+> 2. {% tool [Sort](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/9.5+galaxy2) %} with the following parameters:
+>    - {% icon param-file %} *"Sort Query"*: `data_mrna_illumina_microarray` (output of **Extract dataset** {% icon tool %})
 >    - *"Number of header lines"*: `1`
 >    - In *"Column selections"*:
 >        - {% icon param-repeat %} *"Insert Column selections"*
 >            - *"on column"*: `c1`
 >    - *"Output unique values"*: `Yes`
 >
->    ***TODO***: *Check parameter descriptions*
+> 3. {% tool [Advanced Cut](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/9.5+galaxy2) %} with the following parameters:
+>    - {% icon param-file %} *"File to cut"*: `output` (output of **Sort** {% icon tool %})
+>    - *"Operation"*: `Discard`
+>    - *"Cut by"*: `fields`
+>        - *"Is there a header for the data's columns ?"*: `Yes`
+>            - *"List of Fields"*: `c2: Entrez_Gene_Id`
 >
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
+> 4. Rename the data `expression data - cleaned`
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
 > <question-title></question-title>
 >
-> 1. Question1?
-> 2. Question2?
+> 1. How many samples and genes are there in the gene expression data?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. Answer for question1
-> > 2. Answer for question2
+> > 1. Click on the data, you will see the data has **20386** lines and 1981 columns, so **20385** genes and 1980 samples.
 > >
 > {: .solution}
 >
 {: .question}
 
-## Sub-step with **Table Compute**
-
-> <hands-on-title> Task description </hands-on-title>
+> <hands-on-title> Prepare mutation data </hands-on-title>
 >
-> 1. {% tool [Table Compute](toolshed.g2.bx.psu.edu/repos/iuc/table_compute/table_compute/1.2.4+galaxy2) %} with the following parameters:
+> Here we'll First extract the clinical data from the collection, then we remove comment lines from the matrix, and remove the extra index column, and finally, we create a binarized matrix which indicates the number of mutations per genes.
+>
+> 1. {% tool [Extract dataset](__EXTRACT_DATASET__) %} with the following parameters:
+>    - {% icon param-file %} *"Input List"*: `data` (output of **Flexynesis cBioPortal import** {% icon tool %})
+>    - *"How should a dataset be selected?"*: `Select by element identifier`
+>        - *"Element identifier:"*: `data_mutations`
+>
+> 2. {% tool [Table Compute](toolshed.g2.bx.psu.edu/repos/iuc/table_compute/table_compute/1.2.4+galaxy2) %} with the following parameters:
 >    - *"Input Single or Multiple Tables"*: `Single Table`
->        - {% icon param-file %} *"Table"*: `output` (output of **Extract dataset** {% icon tool %})
+>        - {% icon param-file %} *"Table"*: `data_mutations` (output of **Extract dataset** {% icon tool %})
 >        - In *"Advanced File Options "*:
 >            - *"Header begins at line N"*: `1`
 >        - *"Type of table operation"*: `No operation (just reformat on output)`
->    - *"Output formatting options"*: ``
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Table Compute**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Table Compute](toolshed.g2.bx.psu.edu/repos/iuc/table_compute/table_compute/1.2.4+galaxy2) %} with the following parameters:
->    - *"Input Single or Multiple Tables"*: `Single Table`
->        - {% icon param-file %} *"Table"*: `output` (output of **Extract dataset** {% icon tool %})
->        - In *"Advanced File Options "*:
->            - *"Header begins at line N"*: `4`
->        - *"Type of table operation"*: `No operation (just reformat on output)`
->    - *"Output formatting options"*: ``
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Advanced Cut**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Advanced Cut](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/9.5+galaxy2) %} with the following parameters:
->    - {% icon param-file %} *"File to cut"*: `outfile` (output of **Sort** {% icon tool %})
->    - *"Operation"*: `Discard`
->    - *"Cut by"*: `fields`
->        - *"Is there a header for the data's columns ?"*: `Yes`
->            - *"List of Fields"*: `c['2']`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Advanced Cut**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Advanced Cut](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/9.5+galaxy2) %} with the following parameters:
+> 3. {% tool [Advanced Cut](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/9.5+galaxy2) %} with the following parameters:
 >    - {% icon param-file %} *"File to cut"*: `table` (output of **Table Compute** {% icon tool %})
 >    - *"Operation"*: `Discard`
 >    - *"Cut by"*: `fields`
 >        - *"Is there a header for the data's columns ?"*: `Yes`
->            - *"List of Fields"*: `c['1']`
+>            - *"List of Fields"*: `c1:`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Advanced Cut**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Advanced Cut](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/9.5+galaxy2) %} with the following parameters:
->    - {% icon param-file %} *"File to cut"*: `table` (output of **Table Compute** {% icon tool %})
->    - *"Operation"*: `Discard`
->    - *"Cut by"*: `fields`
->        - *"Is there a header for the data's columns ?"*: `Yes`
->            - *"List of Fields"*: `c['1']`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Flexynesis utils**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Flexynesis utils](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_utils/flexynesis_utils/0.2.20+galaxy3) %} with the following parameters:
+> 4. {% tool [Flexynesis utils](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_utils/flexynesis_utils/0.2.20+galaxy3) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Flexynesis utils"*: `Binarize mutation data`
->        - {% icon param-file %} *"Mutation data"*: `output` (output of **Advanced Cut** {% icon tool %})
->        - *"Column in the mutation file with genes"*: `c1`
->        - *"Column in the mutation file with samples"*: `c17`
+>        - {% icon param-file %} *"Mutation data"*: `table` (output of **Advanced Cut** {% icon tool %})
+>        - *"Column in the mutation file with genes"*: `Column: 1`
+>        - *"Column in the mutation file with samples"*: `Column: 17`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
+> 5. Rename the data `mutation data - cleaned`
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
 > <question-title></question-title>
 >
-> 1. Question1?
-> 2. Question2?
+> 1. How many samples and genes are there in the mutation data?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. Answer for question1
-> > 2. Answer for question2
+> > 1. Click on the data, you will see the data has **174** lines and **2370** columns, so **174** genes and **2370** samples.
 > >
 > {: .solution}
 >
 {: .question}
 
-## Sub-step with **Flexynesis utils**
+# Split data to train and test
+
+In the last step we split our clinical and omics data into train and test with ratio of 0.7 (70% as training and 30% as test)
 
 > <hands-on-title> Task description </hands-on-title>
 >
 > 1. {% tool [Flexynesis utils](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_utils/flexynesis_utils/0.2.20+galaxy2) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Flexynesis utils"*: `Split data to train and test`
->        - {% icon param-file %} *"Clinical data"*: `output` (output of **Advanced Cut** {% icon tool %})
->        - {% icon param-files %} *"Omics data"*: `output` (output of **Advanced Cut** {% icon tool %}), `util_out` (output of **Flexynesis utils** {% icon tool %})
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
+>        - {% icon param-file %} *"Clinical data"*: `clinical data - cleaned` (output of **Advanced Cut** {% icon tool %})
+>        - {% icon param-files %} *"Omics data"*: `expression data - cleaned` (output of **Advanced Cut** {% icon tool %}), `mutation data - cleaned` (output of **Flexynesis utils** {% icon tool %})
 >
 {: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-
-## Re-arrange
-
-To create the template, each step of the workflow had its own subsection.
-
-***TODO***: *Re-arrange the generated subsections into sections or other subsections.
-Consider merging some hands-on boxes to have a meaningful flow of the analyses*
 
 # Conclusion
 
