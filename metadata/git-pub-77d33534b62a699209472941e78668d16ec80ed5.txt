@@ -1,3 +1,20 @@
+GTN_GTN:1753447963
+
+A	topics/imaging/images/yolo-train/al_chng_dir.png
+A	topics/imaging/images/yolo-train/al_finish.png
+A	topics/imaging/images/yolo-train/al_label.png
+A	topics/imaging/images/yolo-train/al_label_1.png
+A	topics/imaging/images/yolo-train/al_open_dir.png
+A	topics/imaging/tutorials/yolo-segmentation-training/data-library.yaml
+A	topics/imaging/tutorials/yolo-segmentation-training/faqs/index.md
+A	topics/imaging/tutorials/yolo-segmentation-training/tutorial.bib
+A	topics/imaging/tutorials/yolo-segmentation-training/tutorial.md
+A	topics/imaging/tutorials/yolo-segmentation-training/workflows/index.md
+A	topics/imaging/tutorials/yolo-segmentation-training/workflows/main_workflow.ga
+GTN_GTN:1752480114
+
+R094	metadata/git-mod-f1fbb45f2f6daea64d6eb62b0eec537f7af6b212.txt	metadata/git-mod-431f3882e62cf75db4a855ba3b766aa11f8211d6.txt
+R089	metadata/git-pub-f1fbb45f2f6daea64d6eb62b0eec537f7af6b212.txt	metadata/git-pub-431f3882e62cf75db4a855ba3b766aa11f8211d6.txt
 GTN_GTN:1752242240
 
 A	topics/galaxy-interface/images/flat_list_edit.png
