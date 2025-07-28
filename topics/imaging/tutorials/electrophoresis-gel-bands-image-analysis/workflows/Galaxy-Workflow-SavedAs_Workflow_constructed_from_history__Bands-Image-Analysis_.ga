@@ -276,9 +276,17 @@
     "creator": [
         {
             "class":"Person",
+            "identifier": "https://orcid.org/0000-0002-8964-3023",
             "name":"Reyhaneh Tavakoli",
             "url":"https://github.com/reytakop/"
         }
+        {
+            "class":"Person",
+            "identifier": "https://orcid.org/0000-0002-5857-1477",
+            "name":"Diana Chiang Jurado",
+            "url":"https://github.com/dianichj/"
+        }
+
     ],
     "uuid": "d598a1f4-e30d-4124-aa75-0d1ddb8a7b7d",
     "version": 0
