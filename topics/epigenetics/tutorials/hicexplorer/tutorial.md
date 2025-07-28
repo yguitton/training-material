@@ -27,8 +27,8 @@ contributions:
     - uni-freiburg
     - sfb992
     - unimelb
-	- melbournebioinformatics
-	- AustralianBioCommons
+    - melbournebioinformatics
+    - AustralianBioCommons
 
 ---
 
@@ -97,7 +97,7 @@ After a corrected Hi-C matrix is created other tools can be used to visualise it
 
 Mates have to be mapped individually to avoid mapper specific heuristics designed for standard paired-end libraries.
 
-We have used the HiCExplorer successfully with `bwa-mem`, `bowtie2` and `hisat2`. In this tutorial we will be using `Bowtie2` tool. It is important to remember to:
+We have used the HiCExplorer successfully with `bwa`, `bowtie2` and `hisat2`. In this tutorial we will be using `Bowtie2` tool. It is important to remember to:
 - use local mapping, in contrast to end-to-end. A fraction of Hi-C reads are chimeric and will not map end-to-end thus, local mapping is important to increase the number of mapped reads
 - tune the aligner parameters to penalize deletions and insertions. This is important to avoid aligned reads with gaps if they happen to be chimeric.
 - If bowtie2 or hisat2 are used, `--reorder` option and as a file format `bam_native` needs to be used. Regular `bam` files are sorted by Galaxy and can not be used as an input for HiCExplorer.
