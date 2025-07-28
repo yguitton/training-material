@@ -212,5 +212,4 @@ In the last step we split our clinical and omics data into train and test with r
 
 # Conclusion
 
-Sum up the tutorial and the key takeaways here. We encourage adding an overview image of the
-pipeline used.
+In this tutorial, we showed how to download and prepare multi-modal cancer genomics data from cBioPortal for integration using Flexynesis. Working with the METABRIC breast cancer dataset, we covered the complete data preparation pipeline from raw data access to analysis-ready formats.
