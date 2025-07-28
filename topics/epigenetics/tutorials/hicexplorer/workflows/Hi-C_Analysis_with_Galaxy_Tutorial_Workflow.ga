@@ -1,9 +1,289 @@
 {
     "a_galaxy_workflow": "true",
-    "annotation": "",
-    "comments": [],
+    "annotation": "Workflow for the GTN tutorial: \"Hi-C analysis of Drosophila melanogaster cells using HiCExplorer\".",
+    "comments": [
+        {
+            "child_comments": [
+                1,
+                2,
+                3,
+                8
+            ],
+            "color": "yellow",
+            "data": {
+                "title": "1st Input Datasets: Mapping and Creating Hi-C Matrix"
+            },
+            "id": 0,
+            "position": [
+                0.0,
+                0.0
+            ],
+            "size": [
+                1410,
+                673
+            ],
+            "type": "frame"
+        },
+        {
+            "child_comments": [
+                5,
+                6,
+                7
+            ],
+            "color": "yellow",
+            "data": {
+                "title": "3rd Input Dataset: Loop Detection"
+            },
+            "id": 4,
+            "position": [
+                204.70000000000005,
+                787.5999999999999
+            ],
+            "size": [
+                809,
+                390
+            ],
+            "type": "frame"
+        },
+        {
+            "child_comments": [
+                10,
+                11,
+                12
+            ],
+            "color": "yellow",
+            "data": {
+                "title": "2nd Input Datasets: Identifying TADs and Compartments"
+            },
+            "id": 9,
+            "position": [
+                1508.9,
+                4.099999999999909
+            ],
+            "size": [
+                1304,
+                1497
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
+                0,
+                1,
+                2
+            ],
+            "color": "turquoise",
+            "data": {
+                "title": "Inputs"
+            },
+            "id": 1,
+            "position": [
+                14.0,
+                42.799999999999955
+            ],
+            "size": [
+                246,
+                435
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
+                9,
+                10,
+                11
+            ],
+            "color": "green",
+            "data": {
+                "title": "Data Processing"
+            },
+            "id": 2,
+            "position": [
+                307.10000000000014,
+                42.0
+            ],
+            "size": [
+                225,
+                514
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
+                17,
+                22,
+                23
+            ],
+            "color": "blue",
+            "data": {
+                "title": "Build/Correct Matrix and Merge Matrix Bins"
+            },
+            "id": 3,
+            "position": [
+                591.9000000000001,
+                62.19999999999993
+            ],
+            "size": [
+                516,
+                546
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
+                24,
+                25,
+                26
+            ],
+            "color": "pink",
+            "data": {
+                "title": "Plotting"
+            },
+            "id": 8,
+            "position": [
+                1142.0,
+                38.0
+            ],
+            "size": [
+                239,
+                616
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
+                3
+            ],
+            "color": "turquoise",
+            "data": {
+                "title": "Input"
+            },
+            "id": 5,
+            "position": [
+                225.30000000000018,
+                880.9
+            ],
+            "size": [
+                223,
+                168
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
+                12,
+                13
+            ],
+            "color": "blue",
+            "data": {
+                "title": "Analysis"
+            },
+            "id": 6,
+            "position": [
+                492.10000000000014,
+                824.3
+            ],
+            "size": [
+                225,
+                337
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
+                18
+            ],
+            "color": "pink",
+            "data": {
+                "title": "Plotting"
+            },
+            "id": 7,
+            "position": [
+                756.2,
+                845.9
+            ],
+            "size": [
+                234.2,
+                285.4
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "color": "turquoise",
+            "data": {
+                "title": "Inputs"
+            },
+            "id": 10,
+            "position": [
+                1541.8000000000002,
+                370.9
+            ],
+            "size": [
+                241,
+                997
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
+                14,
+                15,
+                16
+            ],
+            "color": "blue",
+            "data": {
+                "title": "Analysis"
+            },
+            "id": 11,
+            "position": [
+                1854.4,
+                81.0
+            ],
+            "size": [
+                244,
+                853
+            ],
+            "type": "frame"
+        },
+        {
+            "child_steps": [
+                19,
+                20,
+                21
+            ],
+            "color": "pink",
+            "data": {
+                "title": "Plotting"
+            },
+            "id": 12,
+            "position": [
+                2281.8,
+                50.0
+            ],
+            "size": [
+                499,
+                1428
+            ],
+            "type": "frame"
+        }
+    ],
+    "creator": [
+        {
+            "class": "Person",
+            "identifier": "0000-0002-6606-5953",
+            "name": "Tristan Reynolds"
+        }
+    ],
     "format-version": "0.1",
-    "name": "Updated Workflow for Hi-C analysis Tutorial",
+    "license": "CC-BY-4.0",
+    "name": "Hi-C Analysis with Galaxy Tutorial Workflow",
     "report": {
         "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
     },
@@ -24,14 +304,14 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 1.8327932832937677,
-                "top": 12.93215317526392
+                "left": 33.98874760425815,
+                "top": 86.05438609348289
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": null}",
             "tool_version": null,
             "type": "data_input",
-            "uuid": "23f2c9f2-3743-42a1-9292-641120e7ba7d",
+            "uuid": "b227bfc6-f75c-4c19-81a1-9c215e4aecff",
             "when": null,
             "workflow_outputs": []
         },
@@ -51,14 +331,14 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 0.9705971172104455,
-                "top": 190.8498708132961
+                "left": 31.168024510303894,
+                "top": 232.860485003622
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": null}",
             "tool_version": null,
             "type": "data_input",
-            "uuid": "412726ce-f974-4fe8-bff6-c44c8ce5ae7e",
+            "uuid": "9377daf8-1840-44dc-83b6-f3a89e7fab51",
             "when": null,
             "workflow_outputs": []
         },
@@ -78,14 +358,14 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 3.5570803733291996,
-                "top": 377.41770238246374
+                "left": 37.65241061510119,
+                "top": 366.89226551765796
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": null}",
             "tool_version": null,
             "type": "data_input",
-            "uuid": "7b96f5d8-489f-40b2-b8b0-6bb2518bd67b",
+            "uuid": "f6ee9d49-08a0-4895-874f-068ae50458ce",
             "when": null,
             "workflow_outputs": []
         },
@@ -105,14 +385,14 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 31.48688095200714,
-                "top": 859.9002548644638
+                "left": 234.3454492890403,
+                "top": 921.8015777386826
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": null}",
             "tool_version": null,
             "type": "data_input",
-            "uuid": "0f2034e8-212e-47f0-8cf1-67e72f8f1fa1",
+            "uuid": "d97b734e-099a-4dab-aadf-24916285cb43",
             "when": null,
             "workflow_outputs": []
         },
@@ -132,14 +412,14 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 0,
-                "top": 1926.891867837795
+                "left": 1553.196230586869,
+                "top": 417.23747924890733
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": null}",
             "tool_version": null,
             "type": "data_input",
-            "uuid": "580717e0-0112-41f1-8eac-7a3ae321876e",
+            "uuid": "d1eb2c96-f9ba-459a-bbf9-f9ef46e97265",
             "when": null,
             "workflow_outputs": []
         },
@@ -159,14 +439,14 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 302.13525706386827,
-                "top": 2513.946697706015
+                "left": 1554.6712011835216,
+                "top": 925.1078220708707
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": null}",
             "tool_version": null,
             "type": "data_input",
-            "uuid": "c480753d-4b53-4283-bc81-2f603171c723",
+            "uuid": "6384308f-33b2-4c98-a80b-c27d5e5792c3",
             "when": null,
             "workflow_outputs": []
         },
@@ -186,14 +466,14 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 299.9827768143007,
-                "top": 2629.1043910578815
+                "left": 1557.6208246664128,
+                "top": 1042.7925250453634
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": null}",
             "tool_version": null,
             "type": "data_input",
-            "uuid": "3499e660-0f6d-4247-93c1-ea8c16b02d8e",
+            "uuid": "63152dce-1229-491a-8cf5-7847f52ed19b",
             "when": null,
             "workflow_outputs": []
         },
@@ -213,14 +493,14 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 300,
-                "top": 2746.891867837795
+                "left": 1561.1779104607313,
+                "top": 1145.7286340397786
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": null}",
             "tool_version": null,
             "type": "data_input",
-            "uuid": "f155f98c-7463-4f44-9a09-401279dd486f",
+            "uuid": "f54220cd-df0b-4896-b99e-75548b6a047d",
             "when": null,
             "workflow_outputs": []
         },
@@ -240,14 +520,14 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 300,
-                "top": 2886.891867837795
+                "left": 1561.1779104607313,
+                "top": 1260.6805508888847
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": null}",
             "tool_version": null,
             "type": "data_input",
-            "uuid": "2d749473-1d85-4c40-ad1d-3cd8e7354118",
+            "uuid": "af5aba5c-f91b-4e4b-87d2-9f957df840b4",
             "when": null,
             "workflow_outputs": []
         },
@@ -277,10 +557,18 @@
                 }
             ],
             "position": {
-                "left": 307.00282449643066,
-                "top": 0
+                "left": 316.3146019609792,
+                "top": 78.18154523596786
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "RenameDatasetActionoutput": {
+                    "action_arguments": {
+                        "newname": "R1.bam"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "output"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.5.3+galaxy1",
             "tool_shed_repository": {
                 "changeset_revision": "d5ceb9f3c25b",
@@ -291,7 +579,7 @@
             "tool_state": "{\"__input_ext\": \"input\", \"analysis_type\": {\"analysis_type_selector\": \"simple\", \"__current_case__\": 0, \"presets\": \"no_presets\"}, \"chromInfo\": \"/mnt/tools/tool-data/shared/ucsc/chrom/?.len\", \"library\": {\"type\": \"single\", \"__current_case__\": 0, \"input_1\": {\"__class__\": \"ConnectedValue\"}, \"unaligned_file\": false, \"aligned_file\": false}, \"reference_genome\": {\"source\": \"indexed\", \"__current_case__\": 0, \"index\": \"dm3\"}, \"rg\": {\"rg_selector\": \"do_not_set\", \"__current_case__\": 3}, \"sam_options\": {\"sam_options_selector\": \"yes\", \"__current_case__\": 0, \"sam_opt\": false, \"no_unal\": false, \"omit_sec_seq\": false, \"sam_no_qname_trunc\": false, \"xeq\": false, \"soft_clipped_unmapped_tlen\": false, \"reorder\": true}, \"save_mapping_stats\": false, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "2.5.3+galaxy1",
             "type": "tool",
-            "uuid": "17b41eb8-2738-4959-8e8d-80ec2a563c0c",
+            "uuid": "3720e12f-545f-4b53-bbe2-633a4fbedbf5",
             "when": null,
             "workflow_outputs": []
         },
@@ -321,10 +609,18 @@
                 }
             ],
             "position": {
-                "left": 309.58925513148336,
-                "top": 188.2634401782434
+                "left": 318.9084276422741,
+                "top": 236.3028613887982
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "RenameDatasetActionoutput": {
+                    "action_arguments": {
+                        "newname": "R2.bam"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "output"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.5.3+galaxy1",
             "tool_shed_repository": {
                 "changeset_revision": "d5ceb9f3c25b",
@@ -335,7 +631,7 @@
             "tool_state": "{\"__input_ext\": \"input\", \"analysis_type\": {\"analysis_type_selector\": \"simple\", \"__current_case__\": 0, \"presets\": \"no_presets\"}, \"chromInfo\": \"/mnt/tools/tool-data/shared/ucsc/chrom/?.len\", \"library\": {\"type\": \"single\", \"__current_case__\": 0, \"input_1\": {\"__class__\": \"ConnectedValue\"}, \"unaligned_file\": false, \"aligned_file\": false}, \"reference_genome\": {\"source\": \"indexed\", \"__current_case__\": 0, \"index\": \"dm3\"}, \"rg\": {\"rg_selector\": \"do_not_set\", \"__current_case__\": 3}, \"sam_options\": {\"sam_options_selector\": \"yes\", \"__current_case__\": 0, \"sam_opt\": false, \"no_unal\": false, \"omit_sec_seq\": false, \"sam_no_qname_trunc\": false, \"xeq\": false, \"soft_clipped_unmapped_tlen\": false, \"reorder\": true}, \"save_mapping_stats\": false, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "2.5.3+galaxy1",
             "type": "tool",
-            "uuid": "b68fc3e6-7a73-47e1-ae64-d3ced88c11a1",
+            "uuid": "33380368-0e72-4db5-ac47-c21815a7c9d5",
             "when": null,
             "workflow_outputs": []
         },
@@ -360,10 +656,18 @@
                 }
             ],
             "position": {
-                "left": 314.76211640158897,
-                "top": 360.1748314821117
+                "left": 318.2599118558037,
+                "top": 392.6408778611282
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "RenameDatasetActionrestrictionSites": {
+                    "action_arguments": {
+                        "newname": "Restriction Sites"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "restrictionSites"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicfindrestrictionsites/hicexplorer_hicfindrestrictionsites/3.7.6+galaxy1",
             "tool_shed_repository": {
                 "changeset_revision": "f0b1bd38745a",
@@ -374,7 +678,7 @@
             "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/mnt/tools/tool-data/shared/ucsc/chrom/?.len\", \"fasta\": {\"__class__\": \"ConnectedValue\"}, \"searchPattern\": \"GATC\", \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.7.6+galaxy1",
             "type": "tool",
-            "uuid": "684ed1f7-b411-4d81-88ed-1115e20ae6fa",
+            "uuid": "33306b3b-7d1a-4284-a9d6-c8af4fa379e6",
             "when": null,
             "workflow_outputs": []
         },
@@ -399,8 +703,8 @@
                 }
             ],
             "position": {
-                "left": 335.20471097508494,
-                "top": 752.5582698751149
+                "left": 505.8948770049428,
+                "top": 859.7186354828876
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicinfo/hicexplorer_hicinfo/3.7.6+galaxy1",
@@ -413,7 +717,7 @@
             "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/mnt/tools/tool-data/shared/ucsc/chrom/?.len\", \"matrix_h5_cooler\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.7.6+galaxy1",
             "type": "tool",
-            "uuid": "661566ce-be9f-4926-bae4-de00e71c3c96",
+            "uuid": "8faffd63-2734-4aaf-9130-06c072c0c21a",
             "when": null,
             "workflow_outputs": []
         },
@@ -438,8 +742,8 @@
                 }
             ],
             "position": {
-                "left": 331.4868809520069,
-                "top": 1009.9002548644638
+                "left": 508.694072434065,
+                "top": 1006.448989513447
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicdetectloops/hicexplorer_hicdetectloops/3.7.6+galaxy1",
@@ -452,7 +756,7 @@
             "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/mnt/tools/tool-data/shared/ucsc/chrom/?.len\", \"chromosomes\": \"1\", \"expected\": \"mean\", \"matrix_h5_cooler\": {\"__class__\": \"ConnectedValue\"}, \"maxLoopDistance\": \"2000000\", \"obsExpThreshold\": \"1.5\", \"pValue\": \"0.02\", \"pValuePreselection\": \"0.02\", \"peakInteractionsThreshold\": \"5\", \"peakWidth\": \"6\", \"region\": null, \"windowSize\": \"10\", \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.7.6+galaxy1",
             "type": "tool",
-            "uuid": "695236ab-2e40-479e-9a8c-1c216f9bc8fe",
+            "uuid": "0dae4d53-7442-4cf8-9d8b-af640b517965",
             "when": null,
             "workflow_outputs": []
         },
@@ -477,8 +781,8 @@
                 }
             ],
             "position": {
-                "left": 306.57413166220556,
-                "top": 1462.1618418251205
+                "left": 1871.359417519225,
+                "top": 124.7176594442866
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicinfo/hicexplorer_hicinfo/3.7.6+galaxy1",
@@ -491,7 +795,7 @@
             "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/mnt/tools/tool-data/shared/ucsc/chrom/?.len\", \"matrix_h5_cooler\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.7.6+galaxy1",
             "type": "tool",
-            "uuid": "d5daa678-5a7b-4fb2-96c0-037cf278921c",
+            "uuid": "1eda8b8b-1025-4b4f-882d-2dde87442ef3",
             "when": null,
             "workflow_outputs": []
         },
@@ -524,8 +828,8 @@
                 }
             ],
             "position": {
-                "left": 360.9085566740994,
-                "top": 1769.4598110036693
+                "left": 1874.2442538779205,
+                "top": 250.25737303209712
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicpca/hicexplorer_hicpca/3.6+galaxy1",
@@ -538,7 +842,7 @@
             "tool_state": "{\"chromosome_list\": [], \"extra_track_conditional\": {\"extra_track_selection\": \"\", \"__current_case__\": 2}, \"ignoreMaskedBins\": false, \"ligation_factor\": false, \"matrix_h5_cooler\": {\"__class__\": \"ConnectedValue\"}, \"obsexpMatrix\": false, \"outputFormat\": \"bigwig\", \"pearsonMatrix\": true, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.6+galaxy1",
             "type": "tool",
-            "uuid": "0c67e537-00a4-4e29-a61c-5aecc507525e",
+            "uuid": "a8eaefb0-d064-4550-8d22-50535a66c6f1",
             "when": null,
             "workflow_outputs": []
         },
@@ -583,10 +887,46 @@
                 }
             ],
             "position": {
-                "left": 337.34365870416167,
-                "top": 2140.24748059033
+                "left": 1882.3548933847678,
+                "top": 530.5654992140469
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "RenameDatasetActionboundaries": {
+                    "action_arguments": {
+                        "newname": "Boundary positions"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "boundaries"
+                },
+                "RenameDatasetActionboundaries_bin": {
+                    "action_arguments": {
+                        "newname": "Boundary information plus score"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "boundaries_bin"
+                },
+                "RenameDatasetActiondomains": {
+                    "action_arguments": {
+                        "newname": "TAD domains"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "domains"
+                },
+                "RenameDatasetActionscore": {
+                    "action_arguments": {
+                        "newname": "Matrix with multi-scale TAD scores"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "score"
+                },
+                "RenameDatasetActiontad_score": {
+                    "action_arguments": {
+                        "newname": "TAD information in bm file"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "tad_score"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicfindtads/hicexplorer_hicfindtads/3.7.6+galaxy1",
             "tool_shed_repository": {
                 "changeset_revision": "478aacfbaa37",
@@ -597,7 +937,7 @@
             "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/mnt/tools/tool-data/shared/ucsc/chrom/?.len\", \"chromosomes\": [], \"delta\": \"0.001\", \"matrix_h5_cooler\": {\"__class__\": \"ConnectedValue\"}, \"minBoundaryDistance\": null, \"multiple_comparison_conditional\": {\"multiple_comparison_selector\": \"fdr\", \"__current_case__\": 0, \"threshold\": \"0.05\"}, \"precomputedZscore_conditional\": {\"precomputedZscore_selector\": \"scratch\", \"__current_case__\": 0, \"minDepth\": \"30000\", \"maxDepth\": \"100000\", \"step\": \"10000\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.7.6+galaxy1",
             "type": "tool",
-            "uuid": "1a1d07a4-8f03-4001-aac5-7df355c3432c",
+            "uuid": "f299eb1e-a514-4a95-84e4-b1297864ad7c",
             "when": null,
             "workflow_outputs": []
         },
@@ -638,10 +978,18 @@
                 }
             ],
             "position": {
-                "left": 661.5221581096356,
-                "top": 49.31760091074648
+                "left": 617.4818816684426,
+                "top": 115.98559014234604
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "RenameDatasetActionoutFileName": {
+                    "action_arguments": {
+                        "newname": "10kb contact matrix"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "outFileName"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicbuildmatrix/hicexplorer_hicbuildmatrix/3.7.6+galaxy1",
             "tool_shed_repository": {
                 "changeset_revision": "d9967770de96",
@@ -652,7 +1000,7 @@
             "tool_state": "{\"__input_ext\": \"input\", \"binSizes\": [{\"__index__\": 0, \"binSize\": \"10000\"}], \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/dm3.len\", \"chromosomeSizes\": null, \"danglingSequence\": \"GATC\", \"dbKey\": null, \"keepSelfCircles\": false, \"keepSelfLigation\": false, \"maxLibraryInsertSize\": null, \"minDistance\": null, \"minMappingQuality\": null, \"outBam\": false, \"outputFormat\": \"h5\", \"region\": null, \"restrictionCutFile\": {\"__class__\": \"ConnectedValue\"}, \"restrictionSequence\": \"GATC\", \"samFiles\": [{\"__index__\": 0, \"samFile\": {\"__class__\": \"ConnectedValue\"}}, {\"__index__\": 1, \"samFile\": {\"__class__\": \"ConnectedValue\"}}], \"skipDuplicationCheck\": false, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.7.6+galaxy1",
             "type": "tool",
-            "uuid": "24fe0069-3aad-461d-91b0-a68754ae2fe9",
+            "uuid": "6cb5e467-4a8d-4186-981e-a84a5692f82e",
             "when": null,
             "workflow_outputs": []
         },
@@ -686,8 +1034,8 @@
                 }
             ],
             "position": {
-                "left": 781.486880952007,
-                "top": 809.9002548644638
+                "left": 767.8565992937397,
+                "top": 888.1656937156187
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicplotmatrix/hicexplorer_hicplotmatrix/3.7.6+galaxy1",
@@ -700,7 +1048,7 @@
             "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/mnt/tools/tool-data/shared/ucsc/chrom/?.len\", \"chromosomeOrder\": [], \"clearMaskedBins\": false, \"colormap\": \"RdYlBu_r\", \"dpi\": \"300\", \"fontSize\": null, \"image_file_format\": \"png\", \"increaseFigureHeight\": \"0.5\", \"increaseFigureWidth\": \"0.5\", \"log\": false, \"log1p\": true, \"loop_conditional\": {\"loop_selector\": \"yes\", \"__current_case__\": 0, \"loops\": {\"__class__\": \"ConnectedValue\"}, \"loops_large_selector\": \"first\"}, \"loops\": null, \"matrix_h5_cooler\": {\"__class__\": \"ConnectedValue\"}, \"pca_conditional\": {\"pca_type\": \"no_file\", \"__current_case__\": 0}, \"perChromosome\": false, \"region\": \"1:18000000-22000000\", \"region2\": null, \"rotationX\": null, \"rotationY\": null, \"scoreName\": null, \"tads\": null, \"title\": \"Loops\", \"vMax\": null, \"vMin\": null, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.7.6+galaxy1",
             "type": "tool",
-            "uuid": "7780777b-9885-4d6b-b197-6dfdf7779c7a",
+            "uuid": "ede7cd52-dad3-4318-9273-0fb99bcdd8e4",
             "when": null,
             "workflow_outputs": []
         },
@@ -734,8 +1082,8 @@
                 }
             ],
             "position": {
-                "left": 787.0256900806332,
-                "top": 1435.9698067093996
+                "left": 2324.207699919801,
+                "top": 90.01573208946195
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicplotmatrix/hicexplorer_hicplotmatrix/3.7.6+galaxy1",
@@ -748,7 +1096,7 @@
             "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/mnt/tools/tool-data/shared/ucsc/chrom/?.len\", \"chromosomeOrder\": [{\"__index__\": 0, \"chromosome\": \"chr2L\"}], \"clearMaskedBins\": false, \"colormap\": \"gist_heat\", \"dpi\": null, \"fontSize\": null, \"image_file_format\": \"png\", \"increaseFigureHeight\": \"0.5\", \"increaseFigureWidth\": \"0.5\", \"log\": false, \"log1p\": true, \"loop_conditional\": {\"loop_selector\": \"no\", \"__current_case__\": 1}, \"loops\": null, \"matrix_h5_cooler\": {\"__class__\": \"ConnectedValue\"}, \"pca_conditional\": {\"pca_type\": \"bigwig\", \"__current_case__\": 1, \"pca_bigwig\": {\"__class__\": \"ConnectedValue\"}, \"vMinBigwig\": null, \"vMaxBigwig\": null, \"flipBigwigSign\": false, \"scaleFactorBigwig\": null, \"bigwigAdditionalVerticalAxis\": false}, \"perChromosome\": false, \"region\": null, \"region2\": null, \"rotationX\": null, \"rotationY\": null, \"scoreName\": null, \"tads\": null, \"title\": null, \"vMax\": null, \"vMin\": null, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.7.6+galaxy1",
             "type": "tool",
-            "uuid": "83015121-59ce-4193-9199-d26949e75873",
+            "uuid": "bf28d188-2188-421c-a960-68e0d2ae0d0d",
             "when": null,
             "workflow_outputs": []
         },
@@ -782,8 +1130,8 @@
                 }
             ],
             "position": {
-                "left": 775.0840582098873,
-                "top": 1711.264253494505
+                "left": 2560.8941740556834,
+                "top": 278.78754043274614
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicplotmatrix/hicexplorer_hicplotmatrix/3.7.6+galaxy1",
@@ -796,7 +1144,7 @@
             "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/mnt/tools/tool-data/shared/ucsc/chrom/?.len\", \"chromosomeOrder\": [{\"__index__\": 0, \"chromosome\": \"chr2L\"}], \"clearMaskedBins\": false, \"colormap\": \"gist_heat\", \"dpi\": null, \"fontSize\": null, \"image_file_format\": \"png\", \"increaseFigureHeight\": \"0.5\", \"increaseFigureWidth\": \"0.5\", \"log\": false, \"log1p\": true, \"loop_conditional\": {\"loop_selector\": \"no\", \"__current_case__\": 1}, \"loops\": null, \"matrix_h5_cooler\": {\"__class__\": \"ConnectedValue\"}, \"pca_conditional\": {\"pca_type\": \"bigwig\", \"__current_case__\": 1, \"pca_bigwig\": {\"__class__\": \"ConnectedValue\"}, \"vMinBigwig\": \"-0.05\", \"vMaxBigwig\": \"0.05\", \"flipBigwigSign\": false, \"scaleFactorBigwig\": null, \"bigwigAdditionalVerticalAxis\": false}, \"perChromosome\": false, \"region\": null, \"region2\": null, \"rotationX\": null, \"rotationY\": null, \"scoreName\": null, \"tads\": null, \"title\": null, \"vMax\": null, \"vMin\": null, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.7.6+galaxy1",
             "type": "tool",
-            "uuid": "cdbc5da3-7fbe-4aa2-af22-db6b04c256f2",
+            "uuid": "69886740-97b3-4f3a-b2ca-e5bc6a5bdcc6",
             "when": null,
             "workflow_outputs": []
         },
@@ -857,8 +1205,8 @@
                 }
             ],
             "position": {
-                "left": 937.4902516520316,
-                "top": 1990.0217662335333
+                "left": 2340.6005861655544,
+                "top": 445.26712270014553
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/pygenometracks/pygenomeTracks/3.8+galaxy2",
@@ -871,7 +1219,7 @@
             "tool_state": "{\"global_args\": {\"title\": null, \"fontsize\": \"12\", \"dpi\": \"72\", \"width\": \"40.0\", \"plotWidth\": null, \"height\": null, \"trackLabelFraction\": \"0.05\", \"trackLabelHAlign\": \"left\", \"decreasingXAxis\": false}, \"image_file_format\": \"png\", \"region\": \"chr2L:14500000-16500000\", \"tracks\": [{\"__index__\": 0, \"track_file_style_conditional\": {\"track_file_style_selector\": \"hic_matrix_option\", \"__current_case__\": 0, \"title\": \"HiC dm3 chr2L:14500000-16500000\", \"matrix_h5_cooler_multiple\": {\"__class__\": \"ConnectedValue\"}, \"colormap\": \"RdYlBu_r\", \"min_value\": null, \"max_value\": null, \"depth\": \"750000\", \"transform\": \"log1p\", \"height_matrix\": \"4.0\", \"show_masked_bins\": false, \"boundaries_file\": {\"__class__\": \"ConnectedValue\"}, \"scale_factor\": \"1.0\", \"rasterize\": true, \"invert_orientation\": false, \"spacer_height\": null}}, {\"__index__\": 1, \"track_file_style_conditional\": {\"track_file_style_selector\": \"bedgraph_matrix_track_option\", \"__current_case__\": 8, \"title\": \"TAD separation score\", \"track_input_bedgraph_matrix\": {\"__class__\": \"ConnectedValue\"}, \"min_value\": null, \"max_value\": null, \"height_bedgraph\": \"4.0\", \"type\": {\"type_selector\": \"lines\", \"__current_case__\": 0, \"plot_horizontal_lines\": false, \"show_data\": false, \"pos_score_in_bin\": \"center\", \"individual_color\": \"grey\", \"summary_color\": \"#1f77b4\"}, \"invert_orientation\": false, \"spacer_height\": null}}, {\"__index__\": 2, \"track_file_style_conditional\": {\"track_file_style_selector\": \"bigwig_track_option\", \"__current_case__\": 7, \"title\": \"PC1\", \"track_input_bigwig\": {\"__class__\": \"ConnectedValue\"}, \"color\": \"#0096ff\", \"alpha\": \"1.0\", \"color_negative\": {\"color_negative_select\": \"false\", \"__current_case__\": 0}, \"min_value\": null, \"max_value\": null, \"height_bigwig\": \"1.5\", \"reading_bw_conditional\": {\"summary_method\": \"mean\", \"number_of_bins\": null, \"nans_to_zeros\": false}, \"type_conditional\": {\"type_selector\": \"fill_option\", \"__current_case__\": 2}, \"logScale_conditional\": {\"transform_selector\": \"no\", \"__current_case__\": 0}, \"op\": {\"operation\": \"file\", \"second_file\": {\"__class__\": \"RuntimeValue\"}}, \"show_data\": false, \"grid\": false, \"invert_orientation\": false, \"overlay_select\": \"no\", \"spacer_height\": null}}, {\"__index__\": 3, \"track_file_style_conditional\": {\"track_file_style_selector\": \"bigwig_track_option\", \"__current_case__\": 7, \"title\": \"PC2\", \"track_input_bigwig\": {\"__class__\": \"ConnectedValue\"}, \"color\": \"#ff2600\", \"alpha\": \"1.0\", \"color_negative\": {\"color_negative_select\": \"false\", \"__current_case__\": 0}, \"min_value\": null, \"max_value\": null, \"height_bigwig\": \"1.5\", \"reading_bw_conditional\": {\"summary_method\": \"mean\", \"number_of_bins\": null, \"nans_to_zeros\": false}, \"type_conditional\": {\"type_selector\": \"fill_option\", \"__current_case__\": 2}, \"logScale_conditional\": {\"transform_selector\": \"no\", \"__current_case__\": 0}, \"op\": {\"operation\": \"file\", \"second_file\": {\"__class__\": \"RuntimeValue\"}}, \"show_data\": false, \"grid\": false, \"invert_orientation\": false, \"overlay_select\": \"no\", \"spacer_height\": null}}, {\"__index__\": 4, \"track_file_style_conditional\": {\"track_file_style_selector\": \"bigwig_track_option\", \"__current_case__\": 7, \"title\": \"H3K36me3\", \"track_input_bigwig\": {\"__class__\": \"ConnectedValue\"}, \"color\": \"#009192\", \"alpha\": \"1.0\", \"color_negative\": {\"color_negative_select\": \"false\", \"__current_case__\": 0}, \"min_value\": null, \"max_value\": null, \"height_bigwig\": \"1.5\", \"reading_bw_conditional\": {\"summary_method\": \"mean\", \"number_of_bins\": null, \"nans_to_zeros\": false}, \"type_conditional\": {\"type_selector\": \"fill_option\", \"__current_case__\": 2}, \"logScale_conditional\": {\"transform_selector\": \"no\", \"__current_case__\": 0}, \"op\": {\"operation\": \"file\", \"second_file\": {\"__class__\": \"RuntimeValue\"}}, \"show_data\": false, \"grid\": false, \"invert_orientation\": false, \"overlay_select\": \"no\", \"spacer_height\": null}}, {\"__index__\": 5, \"track_file_style_conditional\": {\"track_file_style_selector\": \"bigwig_track_option\", \"__current_case__\": 7, \"title\": \"H3K27me3\", \"track_input_bigwig\": {\"__class__\": \"ConnectedValue\"}, \"color\": \"#011892\", \"alpha\": \"1.0\", \"color_negative\": {\"color_negative_select\": \"false\", \"__current_case__\": 0}, \"min_value\": null, \"max_value\": null, \"height_bigwig\": \"1.5\", \"reading_bw_conditional\": {\"summary_method\": \"mean\", \"number_of_bins\": null, \"nans_to_zeros\": false}, \"type_conditional\": {\"type_selector\": \"fill_option\", \"__current_case__\": 2}, \"logScale_conditional\": {\"transform_selector\": \"no\", \"__current_case__\": 0}, \"op\": {\"operation\": \"file\", \"second_file\": {\"__class__\": \"RuntimeValue\"}}, \"show_data\": false, \"grid\": false, \"invert_orientation\": false, \"overlay_select\": \"no\", \"spacer_height\": null}}, {\"__index__\": 6, \"track_file_style_conditional\": {\"track_file_style_selector\": \"bigwig_track_option\", \"__current_case__\": 7, \"title\": \"H4K16ac\", \"track_input_bigwig\": {\"__class__\": \"ConnectedValue\"}, \"color\": \"#941651\", \"alpha\": \"1.0\", \"color_negative\": {\"color_negative_select\": \"false\", \"__current_case__\": 0}, \"min_value\": null, \"max_value\": null, \"height_bigwig\": \"1.5\", \"reading_bw_conditional\": {\"summary_method\": \"mean\", \"number_of_bins\": null, \"nans_to_zeros\": false}, \"type_conditional\": {\"type_selector\": \"fill_option\", \"__current_case__\": 2}, \"logScale_conditional\": {\"transform_selector\": \"no\", \"__current_case__\": 0}, \"op\": {\"operation\": \"file\", \"second_file\": {\"__class__\": \"RuntimeValue\"}}, \"show_data\": false, \"grid\": false, \"invert_orientation\": false, \"overlay_select\": \"no\", \"spacer_height\": null}}, {\"__index__\": 7, \"track_file_style_conditional\": {\"track_file_style_selector\": \"gene_track_option\", \"__current_case__\": 3, \"title\": \"dm3 genes\", \"track_input_bed\": {\"__class__\": \"ConnectedValue\"}, \"color_bed\": {\"color_bed_select\": \"manually\", \"__current_case__\": 0, \"color\": \"#000000\"}, \"border_color_bed\": {\"border_color_bed_select\": \"manually\", \"__current_case__\": 0, \"color\": \"#000000\"}, \"height_bed\": \"3.0\", \"labels\": {\"plot_labels\": \"true\", \"__current_case__\": 0, \"all_labels_inside\": false, \"labels_in_margin\": false, \"fontsize\": null, \"fontstyle\": \"normal\"}, \"display\": \"stacked\", \"bed_style\": {\"bed_style_select\": \"flybase\", \"__current_case__\": 0, \"arrowhead_included\": false, \"arrowhead_fraction\": \"0.004\", \"bed_advanced\": {\"height_utr\": \"1.0\", \"color_utr\": {\"color_utr_select\": \"manually\", \"__current_case__\": 0, \"color\": \"grey\"}, \"global_max_row\": false, \"gene_rows\": \"15\", \"max_labels\": \"60\", \"line_width\": \"0.5\", \"gtf\": {\"prefered_name\": \"transcript_name\", \"merge_transcripts\": {\"merge_transcripts_select\": \"false\", \"__current_case__\": 1}}, \"backbone_color_bed\": {\"backbone_color_bed_select\": \"manually\", \"__current_case__\": 0, \"color\": \"#000000\"}}}, \"overlay_select\": \"no\", \"invert_orientation\": false, \"spacer_height\": null}}, {\"__index__\": 8, \"track_file_style_conditional\": {\"track_file_style_selector\": \"vlines_track_option\", \"__current_case__\": 9, \"track_input_bed_single\": {\"__class__\": \"ConnectedValue\"}, \"line_width\": \"0.5\", \"line_style\": \"dashed\", \"color\": \"black\", \"alpha\": \"0.7\", \"zorder\": \"100\"}}], \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.8+galaxy2",
             "type": "tool",
-            "uuid": "c799b60c-d6c9-4ef5-90ff-565d4d7962a4",
+            "uuid": "9afd2abb-73bf-408b-98cb-bb552d178cd0",
             "when": null,
             "workflow_outputs": []
         },
@@ -896,10 +1244,18 @@
                 }
             ],
             "position": {
-                "left": 984.4178020640566,
-                "top": 87.99610379584465
+                "left": 886.1988380289018,
+                "top": 120.33111377253044
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "RenameDatasetActionoutFileName": {
+                    "action_arguments": {
+                        "newname": "10kb corrected contact matrix"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "outFileName"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hiccorrectmatrix/hicexplorer_hiccorrectmatrix/3.7.6+galaxy1",
             "tool_shed_repository": {
                 "changeset_revision": "937b7b9832d0",
@@ -910,54 +1266,15 @@
             "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/dm3.len\", \"chromosomes\": [{\"__index__\": 0, \"chromosome\": \"chr2L\"}, {\"__index__\": 1, \"chromosome\": \"chr2R\"}, {\"__index__\": 2, \"chromosome\": \"chr3L\"}, {\"__index__\": 3, \"chromosome\": \"chr3R\"}, {\"__index__\": 4, \"chromosome\": \"chrX\"}], \"matrix_h5_cooler\": {\"__class__\": \"ConnectedValue\"}, \"mode\": {\"mode_selector\": \"correct\", \"__current_case__\": 1, \"correctionMethod\": {\"correctionMethod_selector\": \"ice\", \"__current_case__\": 0, \"iterNum\": \"500\", \"inflationCutoff\": null, \"transCutoff\": null, \"sequencedCountCutoff\": null, \"skipDiagonal\": false, \"perchr\": true, \"filterThreshold_low\": \"-1.6\", \"filterThreshold_large\": \"1.8\"}}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.7.6+galaxy1",
             "type": "tool",
-            "uuid": "3039ba0e-6a87-48ba-aace-4e9eaa7c2c8e",
+            "uuid": "bd283fa2-d984-415b-b8fa-e41e48f5efb4",
             "when": null,
             "workflow_outputs": []
         },
         "23": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hiccorrectmatrix/hicexplorer_hiccorrectmatrix/3.7.6+galaxy1",
-            "errors": null,
-            "id": 23,
-            "input_connections": {
-                "matrix_h5_cooler": {
-                    "id": 17,
-                    "output_name": "outFileName"
-                }
-            },
-            "inputs": [],
-            "label": null,
-            "name": "hicCorrectMatrix",
-            "outputs": [
-                {
-                    "name": "diagnostic_plot",
-                    "type": "png"
-                }
-            ],
-            "position": {
-                "left": 980.1070843389687,
-                "top": 271.11541380600784
-            },
-            "post_job_actions": {},
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hiccorrectmatrix/hicexplorer_hiccorrectmatrix/3.7.6+galaxy1",
-            "tool_shed_repository": {
-                "changeset_revision": "937b7b9832d0",
-                "name": "hicexplorer_hiccorrectmatrix",
-                "owner": "bgruening",
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            },
-            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/dm3.len\", \"chromosomes\": [{\"__index__\": 0, \"chromosome\": \"chr2L\"}, {\"__index__\": 1, \"chromosome\": \"chr2R\"}, {\"__index__\": 2, \"chromosome\": \"chr3L\"}, {\"__index__\": 3, \"chromosome\": \"chr3R\"}, {\"__index__\": 4, \"chromosome\": \"chrX\"}], \"matrix_h5_cooler\": {\"__class__\": \"ConnectedValue\"}, \"mode\": {\"mode_selector\": \"diagnostic_plot\", \"__current_case__\": 0, \"xMax\": null, \"perchr\": false}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "3.7.6+galaxy1",
-            "type": "tool",
-            "uuid": "ba0b3e08-53e4-4a68-af78-f3d2dd3f9738",
-            "when": null,
-            "workflow_outputs": []
-        },
-        "24": {
-            "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicmergematrixbins/hicexplorer_hicmergematrixbins/3.7.6+galaxy1",
             "errors": null,
-            "id": 24,
+            "id": 23,
             "input_connections": {
                 "matrix_h5_cooler": {
                     "id": 17,
@@ -974,10 +1291,18 @@
                 }
             ],
             "position": {
-                "left": 984.4178020640566,
-                "top": 435.9284864144935
+                "left": 877.9776042304063,
+                "top": 444.7958029075904
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "RenameDatasetActionoutFileName": {
+                    "action_arguments": {
+                        "newname": "1MB contact matrix"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "outFileName"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicmergematrixbins/hicexplorer_hicmergematrixbins/3.7.6+galaxy1",
             "tool_shed_repository": {
                 "changeset_revision": "9d93c8fbe0a6",
@@ -988,7 +1313,46 @@
             "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/dm3.len\", \"matrix_h5_cooler\": {\"__class__\": \"ConnectedValue\"}, \"numBins\": \"100\", \"runningWindow\": false, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.7.6+galaxy1",
             "type": "tool",
-            "uuid": "55d25d96-7ea5-4d20-8867-18f20d9ea29f",
+            "uuid": "77c45039-e2aa-45ff-af74-b393248b7fd0",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "24": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hiccorrectmatrix/hicexplorer_hiccorrectmatrix/3.7.6+galaxy1",
+            "errors": null,
+            "id": 24,
+            "input_connections": {
+                "matrix_h5_cooler": {
+                    "id": 17,
+                    "output_name": "outFileName"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "hicCorrectMatrix",
+            "outputs": [
+                {
+                    "name": "diagnostic_plot",
+                    "type": "png"
+                }
+            ],
+            "position": {
+                "left": 1152.8259842595494,
+                "top": 291.0059235778158
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hiccorrectmatrix/hicexplorer_hiccorrectmatrix/3.7.6+galaxy1",
+            "tool_shed_repository": {
+                "changeset_revision": "937b7b9832d0",
+                "name": "hicexplorer_hiccorrectmatrix",
+                "owner": "bgruening",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/dm3.len\", \"chromosomes\": [{\"__index__\": 0, \"chromosome\": \"chr2L\"}, {\"__index__\": 1, \"chromosome\": \"chr2R\"}, {\"__index__\": 2, \"chromosome\": \"chr3L\"}, {\"__index__\": 3, \"chromosome\": \"chr3R\"}, {\"__index__\": 4, \"chromosome\": \"chrX\"}], \"matrix_h5_cooler\": {\"__class__\": \"ConnectedValue\"}, \"mode\": {\"mode_selector\": \"diagnostic_plot\", \"__current_case__\": 0, \"xMax\": null, \"perchr\": false}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "3.7.6+galaxy1",
+            "type": "tool",
+            "uuid": "a1b246b3-5d4a-448d-b219-66e8abfdde8f",
             "when": null,
             "workflow_outputs": []
         },
@@ -1013,8 +1377,8 @@
                 }
             ],
             "position": {
-                "left": 1283.5816121851608,
-                "top": 56.096792630193704
+                "left": 1151.6906614629136,
+                "top": 76.50998544954336
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicplotmatrix/hicexplorer_hicplotmatrix/3.7.6+galaxy1",
@@ -1027,7 +1391,7 @@
             "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/dm3.len\", \"chromosomeOrder\": [], \"clearMaskedBins\": false, \"colormap\": \"RdYlBu_r\", \"dpi\": null, \"fontSize\": null, \"image_file_format\": \"png\", \"increaseFigureHeight\": \"0.5\", \"increaseFigureWidth\": \"0.5\", \"log\": false, \"log1p\": true, \"loop_conditional\": {\"loop_selector\": \"no\", \"__current_case__\": 1}, \"loops\": null, \"matrix_h5_cooler\": {\"__class__\": \"ConnectedValue\"}, \"pca_conditional\": {\"pca_type\": \"no_file\", \"__current_case__\": 0}, \"perChromosome\": false, \"region\": \"chr2L\", \"region2\": null, \"rotationX\": null, \"rotationY\": null, \"scoreName\": null, \"tads\": null, \"title\": null, \"vMax\": null, \"vMin\": null, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.7.6+galaxy1",
             "type": "tool",
-            "uuid": "7ebcb51c-d8e2-4a79-b5a5-72ddeadd4ba6",
+            "uuid": "c2a1a51f-ec18-47e5-bf47-e5a432906c43",
             "when": null,
             "workflow_outputs": []
         },
@@ -1038,7 +1402,7 @@
             "id": 26,
             "input_connections": {
                 "matrix_h5_cooler": {
-                    "id": 24,
+                    "id": 23,
                     "output_name": "outFileName"
                 }
             },
@@ -1052,8 +1416,8 @@
                 }
             ],
             "position": {
-                "left": 1282.7194686401433,
-                "top": 360.0598544529454
+                "left": 1155.527160773177,
+                "top": 423.9158221978473
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicplotmatrix/hicexplorer_hicplotmatrix/3.7.6+galaxy1",
@@ -1066,12 +1430,14 @@
             "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/dm3.len\", \"chromosomeOrder\": [{\"__index__\": 0, \"chromosome\": \"chr2L\"}, {\"__index__\": 1, \"chromosome\": \"chr2R\"}, {\"__index__\": 2, \"chromosome\": \"chr3L\"}, {\"__index__\": 3, \"chromosome\": \"chr3R\"}, {\"__index__\": 4, \"chromosome\": \"chrX\"}], \"clearMaskedBins\": true, \"colormap\": \"RdYlBu_r\", \"dpi\": null, \"fontSize\": null, \"image_file_format\": \"png\", \"increaseFigureHeight\": \"0.5\", \"increaseFigureWidth\": \"0.5\", \"log\": false, \"log1p\": true, \"loop_conditional\": {\"loop_selector\": \"no\", \"__current_case__\": 1}, \"loops\": null, \"matrix_h5_cooler\": {\"__class__\": \"ConnectedValue\"}, \"pca_conditional\": {\"pca_type\": \"no_file\", \"__current_case__\": 0}, \"perChromosome\": false, \"region\": null, \"region2\": null, \"rotationX\": null, \"rotationY\": null, \"scoreName\": null, \"tads\": null, \"title\": null, \"vMax\": null, \"vMin\": null, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "3.7.6+galaxy1",
             "type": "tool",
-            "uuid": "8bd5570d-c1cc-4a3e-8951-483d11879670",
+            "uuid": "ed14f7d4-fad0-4007-9bd5-fb6b29df40e0",
             "when": null,
             "workflow_outputs": []
         }
     },
-    "tags": [],
-    "uuid": "8981ba47-1048-49b2-880b-94e37cd5551f",
-    "version": 2
+    "tags": [
+        "epigenetics"
+    ],
+    "uuid": "c1434063-08f8-4428-b431-414b5488553d",
+    "version": 11
 }
