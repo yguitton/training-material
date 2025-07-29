@@ -16,6 +16,7 @@ key_points:
 - Flexynesis comprehensive tool can be used to make data ready for integration.
 contributors:
 - Nilchia
+- plushz
 - bgruening
 
 ---
