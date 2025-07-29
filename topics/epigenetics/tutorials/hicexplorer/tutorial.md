@@ -188,7 +188,7 @@ For versions `3.6` and later, `hicBuildMatrix` requires an input BED file that s
 
 # Plotting the Hi-C matrix
 
-A 10kb bin matrix is too large to plot, it's better to reduce the resolution. We usually run out of memory for a 1 kb or a 10 kb bin matrix and the time to plot it is very long (minutes instead of seconds). In order to reduce the resolution we use the tool [`hicMergeMatrixBins`](http://hicexplorer.readthedocs.io/en/latest/content/tools/hicMergeMatrixBins.html#hicmergematrixbins).
+A 10 kb bin matrix is too large to plot, it's better to reduce the resolution. We usually run out of memory for a 1 kb or a 10 kb bin matrix and the time to plot it is very long (minutes instead of seconds). In order to reduce the resolution we use the tool [`hicMergeMatrixBins`](http://hicexplorer.readthedocs.io/en/latest/content/tools/hicMergeMatrixBins.html#hicmergematrixbins).
 
 [`hicMergeMatrixBins`](http://hicexplorer.readthedocs.io/en/latest/content/tools/hicMergeMatrixBins.html#hicmergematrixbins) merges the bins into larger bins of given number (specified by –numBins). We will merge 100 bins in the original (uncorrected) matrix and then correct it. The new bin size is going to be 10.000 bp * 100 = 1.000.000 bp = 1 Mb
 
@@ -240,7 +240,9 @@ Matrix correction works in two steps: first a histogram containing the sum of co
 >
 {: .hands_on}
 
-The output of the program prints a threshold suggestion that is usually accurate but is better to revise the histogram plot. The threshold is visualised in the plot as a black vertical line.
+The output of the program prints a threshold suggestion that is usually accurate but is better to revise the histogram plot. The threshold is visualised in the plot as a blue vertical line.
+
+![Diagnostic plot](../../images/hic_diagnostic_plot.png)
 
 In our case the distribution describes the counts per bin of a genomic distance. To remove all bins with a z-score threshold less / more than X means to remove all bins which have less / more counts than X of mean of their specific distribution in units of the standard deviation. Looking at the distribution, we can select the value of -1.6 (lower end) and 1.8 (upper end) to remove. This is given by the –filterThreshold option in hicCorrectMatrix set to 'correct matrix' mode.
 
