@@ -29,6 +29,8 @@ contributions:
   authorship:
     - reytakop
     - dianichj
+  reviewing:
+    - kostrykin
 ---
 
 Electrophoresis gel images are fundamental tools in molecular biology and biochemistry for separating DNA, RNA, or protein fragments by size or charge ({% cite Green2019 %}). Quantification of these bands allow for estimating product yield, comparing amplification efficiency, verifying PCR products, calculating molecular weights, and assessing enzyme activity or protein purity ({% cite Gallagher2017 %}).
