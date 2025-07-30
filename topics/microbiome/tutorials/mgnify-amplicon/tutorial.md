@@ -36,8 +36,6 @@ contributions:
     - RZ9082
    funding:
     - deKCD
-redirect_from:
-    - /topics/metagenomics/tutorials/mgnify-amplicon-v5.0/tutorial
 edam_ontology:
 - topic_3174 # Metagenomics
 - topic_0637 # Taxonomy
@@ -85,7 +83,7 @@ In this tutorial, we'll cover four different versions:
 {% include _includes/cyoa-choices.html option1="Executing the full workflow using ENA data" option2="Executing subworkflows using ENA data" option3="Executing the full workflow using own data" option4="Executing subworkflows using own data" default="Executing the workflow as a whole using ENA data" %}
 
 
-# Download datasets 
+# Download datasets
 
 Let's begin with creating a history and giving it a suitable name.
 
@@ -466,7 +464,7 @@ Both summary tables serve as essential inputs for downstream interpretation, hel
 > 2. **Run** {% icon workflow-run %} the summary tables sub-workflow 4 times using the following inputs:
 >       1. First run:
 >           - *"OTU tables"*: `LSU OTU tables (SILVA DB)`
->           - *"Taxonomic abundance summary table name"*: 
+>           - *"Taxonomic abundance summary table name"*:
 ```
 LSU taxonomic abundance summary table
 ```
@@ -476,7 +474,7 @@ LSU phylum level taxonomic abundance summary table
 ```
 >       2. Second run:
 >           - *"OTU tables"*: `SSU OTU tables (SILVA DB)`
->           - *"Taxonomic abundance summary table name"*: 
+>           - *"Taxonomic abundance summary table name"*:
 ```
 SSU taxonomic abundance summary table
 ```
@@ -486,7 +484,7 @@ SSU phylum level taxonomic abundance summary table
 ```
 >       3. Third run:
 >           - *"OTU tables"*: `ITS OTU tables (UNITE DB)`
->           - *"Taxonomic abundance summary table name"*: 
+>           - *"Taxonomic abundance summary table name"*:
 ```
 UNITE taxonomic abundance summary table
 ```
@@ -496,7 +494,7 @@ UNITE phylum level taxonomic abundance summary table
 ```
 >       2. Second run:
 >           - *"OTU tables"*: `ITS OTU tables (ITSoneDB)`
->           - *"Taxonomic abundance summary table name"*: 
+>           - *"Taxonomic abundance summary table name"*:
 ```
 ITSoneDB taxonomic abundance summary table
 ```
@@ -519,7 +517,7 @@ ITSoneDB phylum level taxonomic abundance summary table
 > 2. **Run** {% icon workflow-run %} the summary tables sub-workflow 4 times using the following inputs:
 >       1. First run:
 >           - *"OTU tables"*: `LSU OTU tables (SILVA DB)`
->           - *"Taxonomic abundance summary table name"*: 
+>           - *"Taxonomic abundance summary table name"*:
 ```
 LSU taxonomic abundance summary table
 ```
@@ -529,7 +527,7 @@ LSU phylum level taxonomic abundance summary table
 ```
 >       2. Second run:
 >           - *"OTU tables"*: `SSU OTU tables (SILVA DB)`
->           - *"Taxonomic abundance summary table name"*: 
+>           - *"Taxonomic abundance summary table name"*:
 ```
 SSU taxonomic abundance summary table
 ```
@@ -539,7 +537,7 @@ SSU phylum level taxonomic abundance summary table
 ```
 >       3. Third run:
 >           - *"OTU tables"*: `ITS OTU tables (UNITE DB)`
->           - *"Taxonomic abundance summary table name"*: 
+>           - *"Taxonomic abundance summary table name"*:
 ```
 UNITE taxonomic abundance summary table
 ```
@@ -549,7 +547,7 @@ UNITE phylum level taxonomic abundance summary table
 ```
 >       2. Second run:
 >           - *"OTU tables"*: `ITS OTU tables (ITSoneDB)`
->           - *"Taxonomic abundance summary table name"*: 
+>           - *"Taxonomic abundance summary table name"*:
 ```
 ITSoneDB taxonomic abundance summary table
 ```
