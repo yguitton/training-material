@@ -467,6 +467,7 @@ The summary tables sub-workflow takes as input the taxonomic abundance tables ge
 Both summary tables serve as essential inputs for downstream interpretation, helping to visualize and compare the taxonomic profiles across multiple samples (for example, see our tutorial on[Calculating α and β diversity]({% link topics/microbiome/tutorials/diversity/tutorial.md %})).
 
 <div class="Executing-subworkflows-using-ENA-data" markdown="1">
+
 > <hands-on-title>Executing the summary tables sub-workflow</hands-on-title>
 > 1. **Import** the [summary tables sub-workflow]({{ site.baseurl }}{{ page.dir }}workflows/mgnify-amplicon-summary-tables.ga)
 >
@@ -476,43 +477,43 @@ Both summary tables serve as essential inputs for downstream interpretation, hel
 >       1. First run:
 >           - *"OTU tables"*: `LSU OTU tables (SILVA DB)`
 >           - *"Taxonomic abundance summary table name"*:
-```
-LSU taxonomic abundance summary table
-```
+>             ```
+>             LSU taxonomic abundance summary table
+>             ```
 >           - *"Phylum level taxonomic abundance summary table name"*:
-```
-LSU phylum level taxonomic abundance summary table
-```
+>             ```
+>             LSU phylum level taxonomic abundance summary table
+>             ```
 >       2. Second run:
 >           - *"OTU tables"*: `SSU OTU tables (SILVA DB)`
 >           - *"Taxonomic abundance summary table name"*:
-```
-SSU taxonomic abundance summary table
-```
+>             ```
+>             SSU taxonomic abundance summary table
+>             ```
 >           - *"Phylum level taxonomic abundance summary table name"*:
-```
-SSU phylum level taxonomic abundance summary table
-```
+>             ```
+>             SSU phylum level taxonomic abundance summary table
+>             ```
 >       3. Third run:
 >           - *"OTU tables"*: `ITS OTU tables (UNITE DB)`
 >           - *"Taxonomic abundance summary table name"*:
-```
-UNITE taxonomic abundance summary table
-```
+>             ```
+>             UNITE taxonomic abundance summary table
+>             ```
 >           - *"Phylum level taxonomic abundance summary table name"*:
-```
-UNITE phylum level taxonomic abundance summary table
-```
+>             ```
+>             UNITE phylum level taxonomic abundance summary table
+>             ```
 >       2. Second run:
 >           - *"OTU tables"*: `ITS OTU tables (ITSoneDB)`
 >           - *"Taxonomic abundance summary table name"*:
-```
-ITSoneDB taxonomic abundance summary table
-```
+>             ```
+>             ITSoneDB taxonomic abundance summary table
+>             ```
 >           - *"Phylum level taxonomic abundance summary table name"*:
-```
-ITSoneDB phylum level taxonomic abundance summary table
-```
+>             ```
+>             ITSoneDB phylum level taxonomic abundance summary table
+>             ```
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
@@ -529,43 +530,43 @@ ITSoneDB phylum level taxonomic abundance summary table
 >       1. First run:
 >           - *"OTU tables"*: `LSU OTU tables (SILVA DB)`
 >           - *"Taxonomic abundance summary table name"*:
-```
-LSU taxonomic abundance summary table
-```
+>             ```
+>             LSU taxonomic abundance summary table
+>             ```
 >           - *"Phylum level taxonomic abundance summary table name"*:
-```
-LSU phylum level taxonomic abundance summary table
-```
+>             ```
+>             LSU phylum level taxonomic abundance summary table
+>             ```
 >       2. Second run:
 >           - *"OTU tables"*: `SSU OTU tables (SILVA DB)`
 >           - *"Taxonomic abundance summary table name"*:
-```
-SSU taxonomic abundance summary table
-```
+>             ```
+>             SSU taxonomic abundance summary table
+>             ```
 >           - *"Phylum level taxonomic abundance summary table name"*:
-```
-SSU phylum level taxonomic abundance summary table
-```
+>             ```
+>             SSU phylum level taxonomic abundance summary table
+>             ```
 >       3. Third run:
 >           - *"OTU tables"*: `ITS OTU tables (UNITE DB)`
 >           - *"Taxonomic abundance summary table name"*:
-```
-UNITE taxonomic abundance summary table
-```
+>             ```
+>             UNITE taxonomic abundance summary table
+>             ```
 >           - *"Phylum level taxonomic abundance summary table name"*:
-```
-UNITE phylum level taxonomic abundance summary table
-```
+>             ```
+>             UNITE phylum level taxonomic abundance summary table
+>             ```
 >       2. Second run:
 >           - *"OTU tables"*: `ITS OTU tables (ITSoneDB)`
 >           - *"Taxonomic abundance summary table name"*:
-```
-ITSoneDB taxonomic abundance summary table
-```
+>             ```
+>             ITSoneDB taxonomic abundance summary table
+>             ```
 >           - *"Phylum level taxonomic abundance summary table name"*:
-```
-ITSoneDB phylum level taxonomic abundance summary table
-```
+>             ```
+>             ITSoneDB phylum level taxonomic abundance summary table
+>             ```
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
@@ -637,22 +638,22 @@ The MAPseq to ampvis2 workflow transforms MAPseq OTU tables and accompanying met
 
 > <hands-on-title>Downloading datasets</hands-on-title>
 > 1. Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
->   - Select {% icon galaxy-wf-edit %} **Paste/Fetch Data** at the bottom
->   - Copy {% icon copy %} and paste the following:
-```
-https://zenodo.org/records/13347829/files/SRR11032273.tsv
-https://zenodo.org/records/13347829/files/SRR11032274.tsv
-https://zenodo.org/records/13347829/files/SRR11032275.tsv
-https://zenodo.org/records/13347829/files/SRR11032276.tsv
-https://zenodo.org/records/13347829/files/SRR11032277.tsv
-https://zenodo.org/records/13347829/files/SRR11038211.tsv
-https://zenodo.org/records/13347829/files/SRR11038212.tsv
-https://zenodo.org/records/13347829/files/SRR11038213.tsv
-https://zenodo.org/records/13347829/files/SRR11038214.tsv
-https://zenodo.org/records/13347829/files/SRR11038215.tsv
-https://zenodo.org/records/13347829/files/test_metadata_formatted.tabular
-```
->   - Click on **Start**
+>    - Select {% icon galaxy-wf-edit %} **Paste/Fetch Data** at the bottom
+>    - Copy {% icon copy %} and paste the following:
+>      ```
+>      https://zenodo.org/records/13347829/files/SRR11032273.tsv
+>      https://zenodo.org/records/13347829/files/SRR11032274.tsv
+>      https://zenodo.org/records/13347829/files/SRR11032275.tsv
+>      https://zenodo.org/records/13347829/files/SRR11032276.tsv
+>      https://zenodo.org/records/13347829/files/SRR11032277.tsv
+>      https://zenodo.org/records/13347829/files/SRR11038211.tsv
+>      https://zenodo.org/records/13347829/files/SRR11038212.tsv
+>      https://zenodo.org/records/13347829/files/SRR11038213.tsv
+>      https://zenodo.org/records/13347829/files/SRR11038214.tsv
+>      https://zenodo.org/records/13347829/files/SRR11038215.tsv
+>      https://zenodo.org/records/13347829/files/test_metadata_formatted.tabular
+>      ```
+>    - Click on **Start**
 > 2. Create a collection out of the tsv files
 >
 >    {% snippet faqs/galaxy/collections_build_list.md %}
@@ -677,11 +678,11 @@ With the ampvis2 object now successfully generated, users can proceed to create 
 > <hands-on-title>Utilizing the ampvis2 object to generate a heatmap</hands-on-title>
 >
 > 1. {% tool [ampvis2 heatmap](toolshed.g2.bx.psu.edu/repos/iuc/ampvis2_heatmap/ampvis2_heatmap/2.8.9+galaxy1) %}:
-> - **Ampvis2 RDS dataset**: Choose `Ampvis2 object` from your history
-> - **The taxonomic level to aggregate the OTUs**: `Order`
-> - **How to show OTUs without taxonomic information**: `Remove OTUs without taxonomic information`
-> - Select light blue for **Start color for the heatmap**
-> - Select dark red for **End color for the heatmap**
+>    - **Ampvis2 RDS dataset**: Choose `Ampvis2 object` from your history
+>    - **The taxonomic level to aggregate the OTUs**: `Order`
+>    - **How to show OTUs without taxonomic information**: `Remove OTUs without taxonomic information`
+>    - Select light blue for **Start color for the heatmap**
+>    - Select dark red for **End color for the heatmap**
 >
 {: .hands_on}
 
