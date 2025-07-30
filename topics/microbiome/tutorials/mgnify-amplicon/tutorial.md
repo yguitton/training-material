@@ -75,7 +75,7 @@ In this tutorial, we'll cover four different versions:
 2. Executing each subworkflow individually using ENA data
 2. Executing each subworkflow individually using own reads
 
-{% include _includes/cyoa-choices.html option1="Executing the full workflow using ENA data" option2="Executing subworkflows using ENA data" option3="Executing the full workflow using own data" option4="Executing subworkflows using own data" default="Executing the workflow as a whole using ENA data" %}
+{% include _includes/cyoa-choices.html option1="Executing the full workflow using ENA data" option2="Executing subworkflows using ENA data" option3="Executing the full workflow using own data" option4="Executing subworkflows using own data" default="Executing the full workflow using ENA data" %}
 
 
 # Import datasets
@@ -103,10 +103,12 @@ Let's begin with creating a history and giving it a suitable name.
 >    - Select {% icon galaxy-wf-edit %} **Paste/Fetch Data** at the bottom
 >    - Copy {% icon copy %} and paste the following URLs into the text box:
 >    - Click on **Start**
+>
 >      ```
 >      https://zenodo.org/records/13710235/files/ribo.claninfo
 >      https://zenodo.org/records/13710235/files/accessions.csv
 >      ```
+>
 >    - **Close** the window
 >    - **Note**: The file `ribo.claninfo` is required for the workflow to run properly. `ribo.claninfo` provides classification information for the rRNA models in ribo.cm, grouping them into so called clans.
 {: .hands_on}
