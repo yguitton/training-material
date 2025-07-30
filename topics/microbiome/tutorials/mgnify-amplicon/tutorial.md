@@ -99,16 +99,16 @@ Let's begin with creating a history and giving it a suitable name.
 <div class="Executing-the-full-workflow-using-ENA-data" markdown="1">
 
 > <hands-on-title>Downloading datasets</hands-on-title>
-> Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
->   - Select {% icon galaxy-wf-edit %} **Paste/Fetch Data** at the bottom
->   - Copy {% icon copy %} and paste the following URLs into the text box:
->   - Click on **Start**
->     ```
->     https://zenodo.org/records/13710235/files/ribo.claninfo
->     https://zenodo.org/records/13710235/files/accessions.csv
->     ```
->   - **Close** the window
->   - **Note**: The file `ribo.claninfo` is required for the workflow to run properly. `ribo.claninfo` provides classification information for the rRNA models in ribo.cm, grouping them into so called clans.
+> 1. Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
+>    - Select {% icon galaxy-wf-edit %} **Paste/Fetch Data** at the bottom
+>    - Copy {% icon copy %} and paste the following URLs into the text box:
+>    - Click on **Start**
+>      ```
+>      https://zenodo.org/records/13710235/files/ribo.claninfo
+>      https://zenodo.org/records/13710235/files/accessions.csv
+>      ```
+>    - **Close** the window
+>    - **Note**: The file `ribo.claninfo` is required for the workflow to run properly. `ribo.claninfo` provides classification information for the rRNA models in ribo.cm, grouping them into so called clans.
 {: .hands_on}
 
 </div>
@@ -119,18 +119,21 @@ Let's begin with creating a history and giving it a suitable name.
 
 > <hands-on-title>Downloading datasets</hands-on-title>
 > 1. Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
->   - Select {% icon galaxy-wf-edit %} **Paste/Fetch Data** at the bottom
->   - Copy {% icon copy %} and paste the following URLs into the text box:
->   - Click on **Start**
->     ```
->     https://zenodo.org/records/13710235/files/ribo.claninfo
->     https://zenodo.org/records/13710235/files/accessions.csv
->     ```
->   - **Close** the window
->   - **Note**: The file `ribo.claninfo` is required for the workflow to run properly. `ribo.claninfo` provides classification information for the rRNA models in ribo.cm, grouping them into so called clans.
+>    - Select {% icon galaxy-wf-edit %} **Paste/Fetch Data** at the bottom
+>    - Copy {% icon copy %} and paste the following URLs into the text box:
+>    - Click on **Start**
+>
+>      ```
+>      https://zenodo.org/records/13710235/files/ribo.claninfo
+>      https://zenodo.org/records/13710235/files/accessions.csv
+>      ```
+>
+>    - **Close** the window
+>    - **Note**: The file `ribo.claninfo` is required for the workflow to run properly. `ribo.claninfo` provides classification information for the rRNA models in ribo.cm, grouping them into so called clans.
+>
 > 2. {% tool [fastq-dl](toolshed.g2.bx.psu.edu/repos/iuc/fastq_dl/fastq_dl/3.0.0+galaxy0) %} using the parameters:
->   - {% icon param-files %} *"select input type"*: `A list of ENA accession IDs, one per row`
->   - {% icon param-files %} *"Accession"*: `accessions.csv`
+>    - {% icon param-files %} *"select input type"*: `A list of ENA accession IDs, one per row`
+>    - {% icon param-files %} *"Accession"*: `accessions.csv`
 {: .hands_on}
 
 </div>
@@ -138,15 +141,19 @@ Let's begin with creating a history and giving it a suitable name.
 <div class="Executing-subworkflows-using-own-data" markdown="1">
 
 > <hands-on-title>Downloading datasets</hands-on-title>
-> Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
->   - Select {% icon galaxy-wf-edit %} **Paste/Fetch Data** at the bottom
->   - Copy {% icon copy %} and paste the following URLs into the text box:
->   - Click on **Start**
->     ```
->     https://zenodo.org/records/13710235/files/ribo.claninfo
->     ```
+>
+> 1. Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
+>    - Select {% icon galaxy-wf-edit %} **Paste/Fetch Data** at the bottom
+>    - Copy {% icon copy %} and paste the following URLs into the text box:
+>    - Click on **Start**
+>
+>      ```
+>      https://zenodo.org/records/13710235/files/ribo.claninfo
+>      ```
+>
 >   - **Close** the window
 >   - **Note**: The file `ribo.claninfo` is required for the workflow to run properly. `ribo.claninfo` provides classification information for the rRNA models in ribo.cm, grouping them into so called clans.
+>
 {: .hands_on}
 
 </div>
@@ -156,13 +163,15 @@ Let's begin with creating a history and giving it a suitable name.
 <div class="Executing-the-full-workflow-using-own-data" markdown="1">
 
 > <hands-on-title>Downloading datasets</hands-on-title>
-> Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
->   - Select {% icon galaxy-wf-edit %} **Paste/Fetch Data** at the bottom
->   - Copy {% icon copy %} and paste the following URLs into the text box:
->   - Click on **Start**
->     ```
->     https://zenodo.org/records/13710235/files/ribo.claninfo
->     ```
+> 1. Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
+>    - Select {% icon galaxy-wf-edit %} **Paste/Fetch Data** at the bottom
+>    - Copy {% icon copy %} and paste the following URLs into the text box:
+>    - Click on **Start**
+>
+>      ```
+>      https://zenodo.org/records/13710235/files/ribo.claninfo
+>      ```
+>
 >   - **Close** the window
 >   - **Note**: The file `ribo.claninfo` is required for the workflow to run properly. `ribo.claninfo` provides classification information for the rRNA models in ribo.cm, grouping them into so called clans.
 {: .hands_on}
@@ -238,7 +247,7 @@ The quality control sub-workflow for single-end reads involves a series of tools
 >    {% snippet faqs/galaxy/workflows_import.md %}
 >
 > 2. **Run** {% icon workflow-run %} the single-end sub-workflow using the following input:
->   - **Single-end reads**: `Single-end data` collection
+>    - **Single-end reads**: `Single-end data` collection
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
@@ -250,6 +259,7 @@ The quality control sub-workflow for single-end reads involves a series of tools
 > 1. **Import** the [single-end quality control sub-workflow]({{ site.baseurl }}{{ page.dir }}workflows/mgnify-amplicon-pipeline-v5-quality-control-single-end.ga)
 >
 >    {% snippet faqs/galaxy/workflows_import.md %}
+>
 > 2. Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
 > 3. Click on {% icon tutorial %} **Choose local file** and select the desired single-end files in `fastqsanger` or `fastqsanger.gz` format
 > 4. Click on **Start** and **Close** the window
@@ -258,7 +268,7 @@ The quality control sub-workflow for single-end reads involves a series of tools
 >    {% snippet faqs/galaxy/collections_build_list.md %}
 >
 > 5. **Run** {% icon workflow-run %} the single-end sub-workflow using the following input:
->   - **Single-end reads**: Single-end reads collection we just created
+>    - **Single-end reads**: Single-end reads collection we just created
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
@@ -313,7 +323,7 @@ The quality control sub-workflow for paired-end reads is designed to optimize th
 >    {% snippet faqs/galaxy/workflows_import.md %}
 >
 > 2. **Run** {% icon workflow-run %} the paired-end sub-workflow using the following input:
->      - **Paired-end reads**: `Pair-end data` collection
+>    - **Paired-end reads**: `Pair-end data` collection
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
@@ -334,7 +344,7 @@ The quality control sub-workflow for paired-end reads is designed to optimize th
 >    {% snippet faqs/galaxy/collections_build_list_paired.md %}
 >
 > 6. **Run** {% icon workflow-run %} the paired-end sub-workflow using the following input:
->      - **Paired-end reads**: Paired-end reads collection, which was created in the steps above
+>    - **Paired-end reads**: Paired-end reads collection, which was created in the steps above
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
@@ -374,14 +384,17 @@ The rRNA prediction sub-workflow focuses on identifying and classifying ribosoma
         2. `HDF5-formatted table(BIOM2)`
 
 <div class="Executing-subworkflows-using-ENA-data" markdown="1">
+
 > <hands-on-title>Executing the rRNA-prediction sub-workflow</hands-on-title>
+>
 > 1. **Import** the [rRNA-prediction sub-workflow]({{ site.baseurl }}{{ page.dir }}workflows/mgnify-amplicon-pipeline-v5-rrna-prediction.ga)
 >
 >    {% snippet faqs/galaxy/workflows_import.md %}
+>
 > 2. Using {% tool [Merge collections](__MERGE_COLLECTION__) %} merge both quality processed single- and paired-end reads collections: `Single-end post quality control FASTA files` and `Paired-end post quality control FASTA files`
 > 3. **Run** {% icon workflow-run %} the rRNA-prediction sub-workflow using the following inputs:
->      - **Processed sequences**: Quality processed sequences (merged collection)
->      - **Clan information file**: `ribo.claninfo`
+>    - **Processed sequences**: Quality processed sequences (merged collection)
+>    - **Clan information file**: `ribo.claninfo`
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
@@ -395,8 +408,8 @@ The rRNA prediction sub-workflow focuses on identifying and classifying ribosoma
 >    {% snippet faqs/galaxy/workflows_import.md %}
 > 2. Using {% tool [Merge collections](__MERGE_COLLECTION__) %} merge both quality processed single- and paired-end reads collections: `Single-end post quality control FASTA files` and `Paired-end post quality control FASTA files`
 > 3. **Run** {% icon workflow-run %} the rRNA-prediction sub-workflow using the following inputs:
->      - **Processed sequences**: Quality processed sequences (merged collection)
->      - **Clan information file**: `ribo.claninfo`
+>    - **Processed sequences**: Quality processed sequences (merged collection)
+>    - **Clan information file**: `ribo.claninfo`
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
@@ -435,8 +448,8 @@ The ITS (Internal Transcribed Spacer) workflow is designed for the identificatio
 >    {% snippet faqs/galaxy/workflows_import.md %}
 >
 > 2. **Run** {% icon workflow-run %} the ITS sub-workflow using the following inputs:
->      - *"LSU and SSU BED"*: `LSU and SSU BED regions`
->      - *"Processed sequence"*: Quality processed sequences (merged single-end and paired-end collection)
+>    - *"LSU and SSU BED"*: `LSU and SSU BED regions`
+>    - *"Processed sequence"*: Quality processed sequences (merged single-end and paired-end collection)
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
@@ -450,8 +463,8 @@ The ITS (Internal Transcribed Spacer) workflow is designed for the identificatio
 >    {% snippet faqs/galaxy/workflows_import.md %}
 >
 > 2. **Run** {% icon workflow-run %} the ITS sub-workflow using the following inputs:
->      - *"LSU and SSU BED"*: `LSU and SSU BED regions`
->      - *"Processed sequence"*: Quality processed sequences (merged single-end and paired-end collection)
+>    - *"LSU and SSU BED"*: `LSU and SSU BED regions`
+>    - *"Processed sequence"*: Quality processed sequences (merged single-end and paired-end collection)
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
@@ -474,46 +487,46 @@ Both summary tables serve as essential inputs for downstream interpretation, hel
 >    {% snippet faqs/galaxy/workflows_import.md %}
 >
 > 2. **Run** {% icon workflow-run %} the summary tables sub-workflow 4 times using the following inputs:
->       1. First run:
->           - *"OTU tables"*: `LSU OTU tables (SILVA DB)`
->           - *"Taxonomic abundance summary table name"*:
->             ```
->             LSU taxonomic abundance summary table
->             ```
->           - *"Phylum level taxonomic abundance summary table name"*:
->             ```
->             LSU phylum level taxonomic abundance summary table
->             ```
->       2. Second run:
->           - *"OTU tables"*: `SSU OTU tables (SILVA DB)`
->           - *"Taxonomic abundance summary table name"*:
->             ```
->             SSU taxonomic abundance summary table
->             ```
->           - *"Phylum level taxonomic abundance summary table name"*:
->             ```
->             SSU phylum level taxonomic abundance summary table
->             ```
->       3. Third run:
->           - *"OTU tables"*: `ITS OTU tables (UNITE DB)`
->           - *"Taxonomic abundance summary table name"*:
->             ```
->             UNITE taxonomic abundance summary table
->             ```
->           - *"Phylum level taxonomic abundance summary table name"*:
->             ```
->             UNITE phylum level taxonomic abundance summary table
->             ```
->       2. Second run:
->           - *"OTU tables"*: `ITS OTU tables (ITSoneDB)`
->           - *"Taxonomic abundance summary table name"*:
->             ```
->             ITSoneDB taxonomic abundance summary table
->             ```
->           - *"Phylum level taxonomic abundance summary table name"*:
->             ```
->             ITSoneDB phylum level taxonomic abundance summary table
->             ```
+>    - 1. First run:
+>         - *"OTU tables"*: `LSU OTU tables (SILVA DB)`
+>         - *"Taxonomic abundance summary table name"*:
+>           ```
+>           LSU taxonomic abundance summary table
+>           ```
+>         - *"Phylum level taxonomic abundance summary table name"*:
+>           ```
+>           LSU phylum level taxonomic abundance summary table
+>           ```
+>    - 2. Second run:
+>         - *"OTU tables"*: `SSU OTU tables (SILVA DB)`
+>         - *"Taxonomic abundance summary table name"*:
+>           ```
+>           SSU taxonomic abundance summary table
+>           ```
+>         - *"Phylum level taxonomic abundance summary table name"*:
+>           ```
+>           SSU phylum level taxonomic abundance summary table
+>           ```
+>    - 3. Third run:
+>         - *"OTU tables"*: `ITS OTU tables (UNITE DB)`
+>         - *"Taxonomic abundance summary table name"*:
+>           ```
+>           UNITE taxonomic abundance summary table
+>           ```
+>         - *"Phylum level taxonomic abundance summary table name"*:
+>           ```
+>           UNITE phylum level taxonomic abundance summary table
+>           ```
+>    - 4. Fourth run:
+>         - *"OTU tables"*: `ITS OTU tables (ITSoneDB)`
+>         - *"Taxonomic abundance summary table name"*:
+>           ```
+>           ITSoneDB taxonomic abundance summary table
+>           ```
+>         - *"Phylum level taxonomic abundance summary table name"*:
+>           ```
+>           ITSoneDB phylum level taxonomic abundance summary table
+>           ```
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
@@ -527,46 +540,46 @@ Both summary tables serve as essential inputs for downstream interpretation, hel
 >    {% snippet faqs/galaxy/workflows_import.md %}
 >
 > 2. **Run** {% icon workflow-run %} the summary tables sub-workflow 4 times using the following inputs:
->       1. First run:
->           - *"OTU tables"*: `LSU OTU tables (SILVA DB)`
->           - *"Taxonomic abundance summary table name"*:
->             ```
->             LSU taxonomic abundance summary table
->             ```
->           - *"Phylum level taxonomic abundance summary table name"*:
->             ```
->             LSU phylum level taxonomic abundance summary table
->             ```
->       2. Second run:
->           - *"OTU tables"*: `SSU OTU tables (SILVA DB)`
->           - *"Taxonomic abundance summary table name"*:
->             ```
->             SSU taxonomic abundance summary table
->             ```
->           - *"Phylum level taxonomic abundance summary table name"*:
->             ```
->             SSU phylum level taxonomic abundance summary table
->             ```
->       3. Third run:
->           - *"OTU tables"*: `ITS OTU tables (UNITE DB)`
->           - *"Taxonomic abundance summary table name"*:
->             ```
->             UNITE taxonomic abundance summary table
->             ```
->           - *"Phylum level taxonomic abundance summary table name"*:
->             ```
->             UNITE phylum level taxonomic abundance summary table
->             ```
->       2. Second run:
->           - *"OTU tables"*: `ITS OTU tables (ITSoneDB)`
->           - *"Taxonomic abundance summary table name"*:
->             ```
->             ITSoneDB taxonomic abundance summary table
->             ```
->           - *"Phylum level taxonomic abundance summary table name"*:
->             ```
->             ITSoneDB phylum level taxonomic abundance summary table
->             ```
+>    - 1. First run:
+>         - *"OTU tables"*: `LSU OTU tables (SILVA DB)`
+>         - *"Taxonomic abundance summary table name"*:
+>           ```
+>           LSU taxonomic abundance summary table
+>           ```
+>         - *"Phylum level taxonomic abundance summary table name"*:
+>           ```
+>           LSU phylum level taxonomic abundance summary table
+>           ```
+>    - 2. Second run:
+>         - *"OTU tables"*: `SSU OTU tables (SILVA DB)`
+>         - *"Taxonomic abundance summary table name"*:
+>           ```
+>           SSU taxonomic abundance summary table
+>           ```
+>         - *"Phylum level taxonomic abundance summary table name"*:
+>           ```
+>           SSU phylum level taxonomic abundance summary table
+>           ```
+>    - 3. Third run:
+>         - *"OTU tables"*: `ITS OTU tables (UNITE DB)`
+>         - *"Taxonomic abundance summary table name"*:
+>           ```
+>           UNITE taxonomic abundance summary table
+>           ```
+>         - *"Phylum level taxonomic abundance summary table name"*:
+>           ```
+>           UNITE phylum level taxonomic abundance summary table
+>           ```
+>    - 4. Fourth run:
+>         - *"OTU tables"*: `ITS OTU tables (ITSoneDB)`
+>         - *"Taxonomic abundance summary table name"*:
+>           ```
+>           ITSoneDB taxonomic abundance summary table
+>           ```
+>         - *"Phylum level taxonomic abundance summary table name"*:
+>           ```
+>           ITSoneDB phylum level taxonomic abundance summary table
+>           ```
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
@@ -583,8 +596,8 @@ If you're working with SSU, LSU, and ITS data, it's beneficial to run the entire
 >    {% snippet faqs/galaxy/workflows_import.md %}
 >
 > 2. **Run** {% icon workflow-run %} the workflow using the following inputs:
->      - *"SRA accession list"*: `accessions.csv`
->      - *"Clan information file"*: `ribo.claninfo`
+>    - *"SRA accession list"*: `accessions.csv`
+>    - *"Clan information file"*: `ribo.claninfo`
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
@@ -598,31 +611,31 @@ If you're working with SSU, LSU, and ITS data, it's beneficial to run the entire
 >    {% snippet faqs/galaxy/workflows_import.md %}
 >
 > 2. Adjust workflow:
->      - Click on {% icon galaxy-workflows-activity %} **Workflows** in the left side-bar
->      - Search for *"MGnify's amplicon pipeline v5.0 - complete"* workflow
->      - Click on {% icon galaxy-wf-edit %} **Edit**
->      - **Remove** the steps:
->           - *"1: SRA accession list"*
->           - *"22: fastq-dl"*
->           - *"23: Convert compressed file to uncompressed"
->           - *"24: Convert compressed file to uncompressed"
->           - *"25: Text reformatting"
->           - *"26: Text reformatting"
->           - *"27: Convert uncompressed file to compressed"
->           - *"28: Convert uncompressed file to compressed"
->      - Click on **Inputs** in the left side-panel and add an **Input dataset collection**
->           - Add the *"Label"*: `Single-end reads`
->           - Connect it to the *"Single-end reads"* input in step *"29: MGnify's amplicon pipeline v5.0 - Quality control SE"*
->      - Click on **Inputs** in the left side-panel and add an **Input dataset collection**
->           - Add the *"Label"*: `Paired-end reads`
->           - Change *"Collection type"* to `list:paired`
->           - Connect it to the *"Paired-end reads"* input in step *"30: MGnify's amplicon pipeline v5.0 - Quality control PE"*
->      - Click on {% icon galaxy-save %} **Save** and then {% icon workflow-run %} **Run** in the right side-panel
+>    - Click on {% icon galaxy-workflows-activity %} **Workflows** in the left side-bar
+>    - Search for *"MGnify's amplicon pipeline v5.0 - complete"* workflow
+>    - Click on {% icon galaxy-wf-edit %} **Edit**
+>    - **Remove** the steps:
+>      - *"1: SRA accession list"*
+>      - *"22: fastq-dl"*
+>      - *"23: Convert compressed file to uncompressed"
+>      - *"24: Convert compressed file to uncompressed"
+>      - *"25: Text reformatting"
+>      - *"26: Text reformatting"
+>      - *"27: Convert uncompressed file to compressed"
+>      - *"28: Convert uncompressed file to compressed"
+>    - Click on **Inputs** in the left side-panel and add an **Input dataset collection**
+>      - Add the *"Label"*: `Single-end reads`
+>      - Connect it to the *"Single-end reads"* input in step *"29: MGnify's amplicon pipeline v5.0 - Quality control SE"*
+>    - Click on **Inputs** in the left side-panel and add an **Input dataset collection**
+>      - Add the *"Label"*: `Paired-end reads`
+>      - Change *"Collection type"* to `list:paired`
+>        - Connect it to the *"Paired-end reads"* input in step *"30: MGnify's amplicon pipeline v5.0 - Quality control PE"*
+>    - Click on {% icon galaxy-save %} **Save** and then {% icon workflow-run %} **Run** in the right side-panel
 > 3. **Run** {% icon workflow-run %} the workflow using the following inputs:
->      - *"Single-end reads"*: Single-end reads collection
->      - *"Paired-end reads"*: Paired-end reads collection
->      - *"Clan information file"*: Upload the clan information file, which contains details about the sequence family assignments required for accurate taxonomic classification `ribo.claninfo`
->      - *"Covariance models"*: Provide the covariance models necessary for the rRNA prediction step, enabling accurate alignment and prediction of ribosomal RNA sequences `ribo.cm`
+>    - *"Single-end reads"*: Single-end reads collection
+>    - *"Paired-end reads"*: Paired-end reads collection
+>    - *"Clan information file"*: Upload the clan information file, which contains details about the sequence family assignments required for accurate taxonomic classification `ribo.claninfo`
+>    - *"Covariance models"*: Provide the covariance models necessary for the rRNA prediction step, enabling accurate alignment and prediction of ribosomal RNA sequences `ribo.cm`
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
