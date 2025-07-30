@@ -489,46 +489,46 @@ Both summary tables serve as essential inputs for downstream interpretation, hel
 >    {% snippet faqs/galaxy/workflows_import.md %}
 >
 > 2. **Run** {% icon workflow-run %} the summary tables sub-workflow 4 times using the following inputs:
->    - 1. First run:
->         - *"OTU tables"*: `LSU OTU tables (SILVA DB)`
->         - *"Taxonomic abundance summary table name"*:
->           ```
->           LSU taxonomic abundance summary table
->           ```
->         - *"Phylum level taxonomic abundance summary table name"*:
->           ```
->           LSU phylum level taxonomic abundance summary table
->           ```
->    - 2. Second run:
->         - *"OTU tables"*: `SSU OTU tables (SILVA DB)`
->         - *"Taxonomic abundance summary table name"*:
->           ```
->           SSU taxonomic abundance summary table
->           ```
->         - *"Phylum level taxonomic abundance summary table name"*:
->           ```
->           SSU phylum level taxonomic abundance summary table
->           ```
->    - 3. Third run:
->         - *"OTU tables"*: `ITS OTU tables (UNITE DB)`
->         - *"Taxonomic abundance summary table name"*:
->           ```
->           UNITE taxonomic abundance summary table
->           ```
->         - *"Phylum level taxonomic abundance summary table name"*:
->           ```
->           UNITE phylum level taxonomic abundance summary table
->           ```
->    - 4. Fourth run:
->         - *"OTU tables"*: `ITS OTU tables (ITSoneDB)`
->         - *"Taxonomic abundance summary table name"*:
->           ```
->           ITSoneDB taxonomic abundance summary table
->           ```
->         - *"Phylum level taxonomic abundance summary table name"*:
->           ```
->           ITSoneDB phylum level taxonomic abundance summary table
->           ```
+>    - First run:
+>      - *"OTU tables"*: `LSU OTU tables (SILVA DB)`
+>      - *"Taxonomic abundance summary table name"*:
+>        ```
+>        LSU taxonomic abundance summary table
+>        ```
+>      - *"Phylum level taxonomic abundance summary table name"*:
+>        ```
+>        LSU phylum level taxonomic abundance summary table
+>        ```
+>    - Second run:
+>      - *"OTU tables"*: `SSU OTU tables (SILVA DB)`
+>      - *"Taxonomic abundance summary table name"*:
+>        ```
+>        SSU taxonomic abundance summary table
+>        ```
+>      - *"Phylum level taxonomic abundance summary table name"*:
+>        ```
+>        SSU phylum level taxonomic abundance summary table
+>        ```
+>    - Third run:
+>      - *"OTU tables"*: `ITS OTU tables (UNITE DB)`
+>      - *"Taxonomic abundance summary table name"*:
+>        ```
+>        UNITE taxonomic abundance summary table
+>        ```
+>      - *"Phylum level taxonomic abundance summary table name"*:
+>        ```
+>        UNITE phylum level taxonomic abundance summary table
+>        ```
+>    - Fourth run:
+>      - *"OTU tables"*: `ITS OTU tables (ITSoneDB)`
+>      - *"Taxonomic abundance summary table name"*:
+>        ```
+>        ITSoneDB taxonomic abundance summary table
+>        ```
+>      - *"Phylum level taxonomic abundance summary table name"*:
+>        ```
+>        ITSoneDB phylum level taxonomic abundance summary table
+>        ```
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
@@ -542,46 +542,46 @@ Both summary tables serve as essential inputs for downstream interpretation, hel
 >    {% snippet faqs/galaxy/workflows_import.md %}
 >
 > 2. **Run** {% icon workflow-run %} the summary tables sub-workflow 4 times using the following inputs:
->    - 1. First run:
->         - *"OTU tables"*: `LSU OTU tables (SILVA DB)`
->         - *"Taxonomic abundance summary table name"*:
->           ```
->           LSU taxonomic abundance summary table
->           ```
->         - *"Phylum level taxonomic abundance summary table name"*:
->           ```
->           LSU phylum level taxonomic abundance summary table
->           ```
->    - 2. Second run:
->         - *"OTU tables"*: `SSU OTU tables (SILVA DB)`
->         - *"Taxonomic abundance summary table name"*:
->           ```
->           SSU taxonomic abundance summary table
->           ```
->         - *"Phylum level taxonomic abundance summary table name"*:
->           ```
->           SSU phylum level taxonomic abundance summary table
->           ```
->    - 3. Third run:
->         - *"OTU tables"*: `ITS OTU tables (UNITE DB)`
->         - *"Taxonomic abundance summary table name"*:
->           ```
->           UNITE taxonomic abundance summary table
->           ```
->         - *"Phylum level taxonomic abundance summary table name"*:
->           ```
->           UNITE phylum level taxonomic abundance summary table
->           ```
->    - 4. Fourth run:
->         - *"OTU tables"*: `ITS OTU tables (ITSoneDB)`
->         - *"Taxonomic abundance summary table name"*:
->           ```
->           ITSoneDB taxonomic abundance summary table
->           ```
->         - *"Phylum level taxonomic abundance summary table name"*:
->           ```
->           ITSoneDB phylum level taxonomic abundance summary table
->           ```
+>    - First run:
+>      - *"OTU tables"*: `LSU OTU tables (SILVA DB)`
+>      - *"Taxonomic abundance summary table name"*:
+>        ```
+>        LSU taxonomic abundance summary table
+>        ```
+>      - *"Phylum level taxonomic abundance summary table name"*:
+>        ```
+>        LSU phylum level taxonomic abundance summary table
+>        ```
+>    - Second run:
+>      - *"OTU tables"*: `SSU OTU tables (SILVA DB)`
+>      - *"Taxonomic abundance summary table name"*:
+>        ```
+>        SSU taxonomic abundance summary table
+>        ```
+>      - *"Phylum level taxonomic abundance summary table name"*:
+>        ```
+>        SSU phylum level taxonomic abundance summary table
+>        ```
+>    - Third run:
+>      - *"OTU tables"*: `ITS OTU tables (UNITE DB)`
+>      - *"Taxonomic abundance summary table name"*:
+>        ```
+>        UNITE taxonomic abundance summary table
+>        ```
+>      - *"Phylum level taxonomic abundance summary table name"*:
+>        ```
+>        UNITE phylum level taxonomic abundance summary table
+>        ```
+>    - Fourth run:
+>      - *"OTU tables"*: `ITS OTU tables (ITSoneDB)`
+>      - *"Taxonomic abundance summary table name"*:
+>        ```
+>        ITSoneDB taxonomic abundance summary table
+>        ```
+>      - *"Phylum level taxonomic abundance summary table name"*:
+>        ```
+>        ITSoneDB phylum level taxonomic abundance summary table
+>        ```
 >
 >    {% snippet faqs/galaxy/workflows_run.md %}
 >
