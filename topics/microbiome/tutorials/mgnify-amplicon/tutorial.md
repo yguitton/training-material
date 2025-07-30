@@ -45,9 +45,9 @@ edam_ontology:
 
 Amplicon sequencing is a powerful research method designed to explore and reveal the taxonomic composition of diverse microbial communities. By focusing on specific genetic regions, researchers can gain insights into the structure and function of these communities. Typically, ribosomal ribonucleic acid (rRNA) or ribosomal deoxyribonucleic acid (rDNA) is sequenced, with particular attention given to key marker genes. For bacteria and archaea, the 16S rRNA gene is commonly targeted; for eukaryotes, the 18S rRNA gene is used, while fungi are often studied through internal transcribed spacers (ITS) regions. These marker genes provide the genetic signatures necessary for identifying and categorizing the various organisms present within a sample.<br>
 
-In this tutorial, we will dive into the MGnify amplicon pipeline v5.0 on Galaxy, a sophisticated toolset for microbial analysis. This pipeline is a ported version of the same well-established amplicon pipeline used by MGnify, a leading metagenomics platform dedicated to the analysis and archiving of microbiome sequences. MGnify has seen significant adoption and growth in recent years ({%cite Richardson2022%}); as of the time of writing, over 500k analyses have been conducted using this pipeline for amplicon data alone ({%cite ebi_metagenomics%}). One of the key advantages of this workflow is that it does not require users to know their target region in advance—it automatically processes all amplicons for ITS, SSU, and LSU, and can even handle mixed amplicon datasets. This workflow does not currently generate ASVs (Amplicon Sequence Variants). If ASV-level resolution is required, we recommend reading the [DADA2 tutorial]({% link topics/microbiome/tutorials/dada-16S/tutorial.md %}) or utilizing [LotuS2](https://usegalaxy.eu/root?tool_id=toolshed.g2.bx.psu.edu/repos/earlhaminst/lotus2/lotus2/).
+In this tutorial, we will dive into the MGnify amplicon pipeline v5.0 on Galaxy, a sophisticated toolset for microbial analysis. This pipeline is a ported version of the same well-established amplicon pipeline used by MGnify, a leading metagenomics platform dedicated to the analysis and archiving of microbiome sequences. MGnify has seen significant adoption and growth in recent years ({%cite Richardson2022%}); as of the time of writing, over 500k analyses have been conducted using this pipeline for amplicon data alone ({%cite ebi_metagenomics%}). One of the key advantages of this workflow is that it does not require users to know their target region in advance—it automatically processes all amplicons for ITS, SSU, and LSU, and can even handle mixed amplicon datasets. This workflow does not currently generate ASVs (Amplicon Sequence Variants). If ASV-level resolution is required, we recommend reading the [DADA2 tutorial]({% link topics/microbiome/tutorials/dada-16S/tutorial.md %}) or utilizing {% tool [LotuS2](toolshed.g2.bx.psu.edu/repos/earlhaminst/lotus2/lotus2/) %}.
 
-![](./images/pipeline_v5.0_amplicon.png "<strong>The workflow of the MGnify amplicon pipeline v5.0</strong> ({%cite ebi_amplicon_pipeline%}). The figure illustrates the workflow of the MGnify amplicon pipeline, beginning with quality control to filter low-quality reads. The processed reads then proceed to the rRNA-prediction step, where SSU and LSU regions are classified and their taxonomic abundance is visualized. Following this, the pipeline handles the ITS regions, classifying them and visualizing their taxonomic abundance using pie charts. Each stage is clearly outlined, showcasing how data moves through the pipeline and is analyzed to provide comprehensive insights into microbial communities."){: style="width:45%; align-self:center"}
+![Graphical overview of the full pipeline](./images/pipeline_v5.0_amplicon.png "<strong>The workflow of the MGnify amplicon pipeline v5.0</strong> ({%cite ebi_amplicon_pipeline%}). The figure illustrates the workflow of the MGnify amplicon pipeline, beginning with quality control to filter low-quality reads. The processed reads then proceed to the rRNA-prediction step, where SSU and LSU regions are classified and their taxonomic abundance is visualized. Following this, the pipeline handles the ITS regions, classifying them and visualizing their taxonomic abundance using pie charts. Each stage is clearly outlined, showcasing how data moves through the pipeline and is analyzed to provide comprehensive insights into microbial communities."){: style="width:45%; align-self:center"}
 
 Our journey through this tutorial will provide a comprehensive understanding of the different sub-workflows that make up the pipeline and how each contributes to the overall analysis process. We will explore how these workflows are executed within the Galaxy platform. Additionally, we will explore which databases and tools are integrated into the pipeline, giving us a clearer picture of the resources that power these analyses. By the end of this tutorial you will have the knowledge to apply the MGnify amplicon pipeline effectively in your own research.<br>
 
@@ -78,7 +78,7 @@ In this tutorial, we'll cover four different versions:
 {% include _includes/cyoa-choices.html option1="Executing the full workflow using ENA data" option2="Executing subworkflows using ENA data" option3="Executing the full workflow using own data" option4="Executing subworkflows using own data" default="Executing the workflow as a whole using ENA data" %}
 
 
-# Download datasets
+# Import datasets
 
 Let's begin with creating a history and giving it a suitable name.
 
@@ -94,66 +94,81 @@ Let's begin with creating a history and giving it a suitable name.
 >
 {: .hands_on}
 
+
+
 <div class="Executing-the-full-workflow-using-ENA-data" markdown="1">
+
 > <hands-on-title>Downloading datasets</hands-on-title>
 > Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
 >   - Select {% icon galaxy-wf-edit %} **Paste/Fetch Data** at the bottom
 >   - Copy {% icon copy %} and paste the following URLs into the text box:
 >   - Click on **Start**
-```
-https://zenodo.org/records/13710235/files/ribo.claninfo
-https://zenodo.org/records/13710235/files/accessions.csv
-```
+>     ```
+>     https://zenodo.org/records/13710235/files/ribo.claninfo
+>     https://zenodo.org/records/13710235/files/accessions.csv
+>     ```
 >   - **Close** the window
 >   - **Note**: The file `ribo.claninfo` is required for the workflow to run properly. `ribo.claninfo` provides classification information for the rRNA models in ribo.cm, grouping them into so called clans.
 {: .hands_on}
+
 </div>
 
+
+
 <div class="Executing-subworkflows-using-ENA-data" markdown="1">
+
 > <hands-on-title>Downloading datasets</hands-on-title>
 > 1. Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
 >   - Select {% icon galaxy-wf-edit %} **Paste/Fetch Data** at the bottom
 >   - Copy {% icon copy %} and paste the following URLs into the text box:
 >   - Click on **Start**
-```
-https://zenodo.org/records/13710235/files/ribo.claninfo
-https://zenodo.org/records/13710235/files/accessions.csv
-```
+>     ```
+>     https://zenodo.org/records/13710235/files/ribo.claninfo
+>     https://zenodo.org/records/13710235/files/accessions.csv
+>     ```
 >   - **Close** the window
 >   - **Note**: The file `ribo.claninfo` is required for the workflow to run properly. `ribo.claninfo` provides classification information for the rRNA models in ribo.cm, grouping them into so called clans.
 > 2. {% tool [fastq-dl](toolshed.g2.bx.psu.edu/repos/iuc/fastq_dl/fastq_dl/3.0.0+galaxy0) %} using the parameters:
 >   - {% icon param-files %} *"select input type"*: `A list of ENA accession IDs, one per row`
 >   - {% icon param-files %} *"Accession"*: `accessions.csv`
 {: .hands_on}
+
 </div>
 
 <div class="Executing-subworkflows-using-own-data" markdown="1">
+
 > <hands-on-title>Downloading datasets</hands-on-title>
 > Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
 >   - Select {% icon galaxy-wf-edit %} **Paste/Fetch Data** at the bottom
 >   - Copy {% icon copy %} and paste the following URLs into the text box:
 >   - Click on **Start**
-```
-https://zenodo.org/records/13710235/files/ribo.claninfo
-```
+>     ```
+>     https://zenodo.org/records/13710235/files/ribo.claninfo
+>     ```
 >   - **Close** the window
 >   - **Note**: The file `ribo.claninfo` is required for the workflow to run properly. `ribo.claninfo` provides classification information for the rRNA models in ribo.cm, grouping them into so called clans.
 {: .hands_on}
+
 </div>
 
+
+
 <div class="Executing-the-full-workflow-using-own-data" markdown="1">
+
 > <hands-on-title>Downloading datasets</hands-on-title>
 > Click on {% icon galaxy-upload %} **Upload Data** at the top of left panel
 >   - Select {% icon galaxy-wf-edit %} **Paste/Fetch Data** at the bottom
 >   - Copy {% icon copy %} and paste the following URLs into the text box:
 >   - Click on **Start**
-```
-https://zenodo.org/records/13710235/files/ribo.claninfo
-```
+>     ```
+>     https://zenodo.org/records/13710235/files/ribo.claninfo
+>     ```
 >   - **Close** the window
 >   - **Note**: The file `ribo.claninfo` is required for the workflow to run properly. `ribo.claninfo` provides classification information for the rRNA models in ribo.cm, grouping them into so called clans.
 {: .hands_on}
+
 </div>
+
 
 <div class="Executing-the-full-workflow-using-own-data" markdown="1">
 # Upload own data files
@@ -173,6 +188,7 @@ https://zenodo.org/records/13710235/files/ribo.claninfo
 >    {% snippet faqs/galaxy/collections_build_list_paired.md %}
 >
 {: .hands_on}
+
 </div>
 
 # Workflow Selection Guidance
