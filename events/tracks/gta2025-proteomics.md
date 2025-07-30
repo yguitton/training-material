@@ -16,6 +16,7 @@ contributions:
         - annasyme
         - delphine-l
         - foellmelanie
+        - jennaj
         - bernt-matthias
         - pratikdjagtap
         - subinamehta

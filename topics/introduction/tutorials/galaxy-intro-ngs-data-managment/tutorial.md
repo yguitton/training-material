@@ -1,34 +1,37 @@
 ---
 layout: tutorial_hands_on
-title: "NGS data logistics"
-zenodo_link: "https://zenodo.org/records/15354240"
+title: NGS data logistics
+zenodo_link: https://zenodo.org/records/15354240
 questions:
-  - "How to manipulate and process NGS data"
+- How to manipulate and process NGS data
 objectives:
-  - "Understand most common types of NGS-related datatypes"
-  - "Learn about how Galaxy handles NGS data using Illumina data derived from patients infected with Plasmodium"
-time_estimation: "1H30M"
+- Understand most common types of NGS-related datatypes
+- Learn about how Galaxy handles NGS data using Illumina data derived from patients
+  infected with Plasmodium
+time_estimation: 1H30M
 level: Introductory
 key_points:
-  - "FASTQ Sanger version of the format is considered to be the standard form of FASTQ."
-  - "Paired end data can be provided as two files or as an interleaved one."
-  - "FastqQC is a tool allowing to check the quality of FASTQ datasets."
-  - "The most common tools for mapping are Bowtie, BWA, BWA-MEM. You can use in-built genome to map against or upload one if it is missing."
-  - "The standard format for storing aligned reads is SAM/BAM. The major toolsets to process these datasets are DeepTools, SAMtools, BAMtools and Picard."
-  - "Data can be uploaded directly from a computer, from EBI SRA and from NCBI SRA, also using FTP or URL."
-  - "One can retrieve NGS data from Sequence Read Archive"
-  - "Galaxy can analyze massive amounts of data and make them suitable for secondary analysis"
+- FASTQ Sanger version of the format is considered to be the standard form of FASTQ.
+- Paired end data can be provided as two files or as an interleaved one.
+- FastqQC is a tool allowing to check the quality of FASTQ datasets.
+- The most common tools for mapping are Bowtie, BWA, BWA-MEM. You can use in-built
+  genome to map against or upload one if it is missing.
+- The standard format for storing aligned reads is SAM/BAM. The major toolsets to
+  process these datasets are DeepTools, SAMtools, BAMtools and Picard.
+- Data can be uploaded directly from a computer, from EBI SRA and from NCBI SRA, also
+  using FTP or URL.
+- One can retrieve NGS data from Sequence Read Archive
+- Galaxy can analyze massive amounts of data and make them suitable for secondary
+  analysis
 subtopic: next-steps
-
 contributions:
   authorship:
-    - nekrut
-    - mvdbeek
-    - tnabtaf
-    - blankenberg
+  - nekrut
+  - mvdbeek
+  - tnabtaf
+  - blankenberg
   editing:
-    - dadrasarmin
-
+  - dadrasarmin
 recordings:
 - captioners:
   - nekrut
@@ -38,18 +41,29 @@ recordings:
   youtube_id: 9mIL0tIfZ_o
   speakers:
   - nekrut
-
+- youtube_id: LkDl_M6GOKI
+  length: 24M
+  galaxy_version: 24.2.4.dev0
+  date: '2025-05-10'
+  speakers:
+  - nekrut
+  captioners:
+  - nekrut
+  bot-timestamp: 1746869626
 answer_histories:
-- label: "usegalaxy.org"
+- label: usegalaxy.org
   history: https://usegalaxy.org/u/cartman/h/an-intro-into-ngs
   date: 2025-05-09
-- label: "usegalaxy.eu"
+- label: usegalaxy.eu
   history: https://usegalaxy.eu/u/nekrut/h/an-intro-into-ngs
   date: 2025-05-09
-- label: "usegalaxy.org.au"
+- label: usegalaxy.org.au
   history: https://usegalaxy.org.au/u/nekrut/h/an-intro-into-ngs
   date: 2025-05-09
+
+
 ---
+
 
 <!--
 
@@ -337,7 +351,7 @@ Now we can map the reads against the uploaded genome:
 
 > <hands-on-title>Map sequencing reads with <b>bwa-mem</b></hands-on-title>
 >
-> Run {% tool [Map with BWA-MEM2](toolshed.g2.bx.psu.edu/repos/iuc/bwa_mem2/bwa_mem2/2.2.1+galaxy4) %} with the parameters shown in the image below:
+> Run {% tool [BWA-MEM2](toolshed.g2.bx.psu.edu/repos/iuc/bwa_mem2/bwa_mem2/2.2.1+galaxy4) %} with the parameters shown in the image below:
 >
 >    - "*Will you select a reference genome from your history or use a built-in index?*": `Use a reference genome from history and build index if necessary` (<font color="red">red outline</font>).
 >    - "*Use the following dataset as the reference*": Choose the reference we uploaded at the previous step (<font color="red">red arrow</font>).
@@ -609,7 +623,7 @@ We will now annotate the variants we called in the previous step with the effect
 > ```
 > https://zenodo.org/records/15354240/files/GCF_000002765.6_GCA_000002765.ncbiRefSeq.gtf.gz
 > ```
-> Set datatype (<font color="green">green</font> box) to `gft.gz`:
+> Set datatype (<font color="green">green</font> box) to `gtf.gz`:
 >
 > ![Genome upload](../../images/gtf_upload.svg)
 >

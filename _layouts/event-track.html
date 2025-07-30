@@ -50,4 +50,11 @@ layout: base
     {% endif %}
   {% endfor %}
   </div>
+
+  {% if page.contributions.funding %}
+    <h3>In collaboration with</h3>
+    {% for org in page.contributions.funding %}
+        {% include _includes/funding-statement.md funders=page.contributions.funding %}
+	{% endfor %}
+  {% endif %}
 </section>

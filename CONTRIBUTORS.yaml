@@ -490,6 +490,10 @@ cansavvy:
     name: Candace Savonen
     joined: 2023-06
 
+casper937:
+    name: Casper de Visser
+    joined: 2025-05
+
 cat-bro:
     name: Catherine Bromhead
     matrix: 'cat-bro:matrix.org'
@@ -527,6 +531,10 @@ carloscheemendonca:
 charitylaw:
     name: Charity Law
     joined: 2018-09
+
+charlotteradboud:
+    name: Charlotte Adang
+    joined: 2025-05
 
 chensy96:
     name: Siyu Chen
@@ -653,9 +661,11 @@ Sch-Da:
     matrix: 'schn_da:matrix.org'
     orcid: 0000-0001-9536-5587
     bio: Researcher at Galaxy Europe
+    contact_for_training: true
     affiliations:
       - uni-freiburg
       - deKCD
+      - elixir-europe
 
 dadrasarmin:
     name: Armin Dadras
@@ -1072,10 +1082,12 @@ guillaume-gricourt:
     linkedin: guillaume-gricourt
     joined: 2022-03
 
-helena_vela:
+hvelab:
     name: Helena Vela
-    github: false
     joined: 2024-09
+    contact_for_training: true
+    affiliations:
+      - biont
 
 hannahkimincompbio:
     name: Hannah Kim
@@ -1174,7 +1186,7 @@ hrhotz:
     contact_for_training: true
     location:
       country: CH
-      lat: 47.575694 
+      lat: 47.575694
       lon: 7.578796
     affiliations:
       - elixir-europe
@@ -1244,6 +1256,11 @@ jdavcs:
     email: jdavcs@gmail.com
     joined: 2019-06
     orcid: 0000-0002-1363-1245
+
+jeanlecras:
+    name: Jean Le Cras
+    email: jean.le-cras@proton.me
+    joined: 2025-05
 
 jennaj:
     name: Jennifer Hillman-Jackson
@@ -1326,6 +1343,7 @@ jkreplak:
 
 jochenblom:
     name: Jochen Blom
+    elixir_node: de
     joined: 2025-04
 
 joelvdavies:
@@ -1351,6 +1369,10 @@ JasperO98:
     affiliations:
       - elixir-europe
 
+jbeli11:
+    name: John Beliveau
+    email: jbeli569@mail.endicott.edu
+    joined: 2025-05
 jmchilton:
     name: John Chilton
     email: jmchilton@gmail.com
@@ -1575,15 +1597,17 @@ lgallegovillar:
 
 lldelisle:
     name: Lucille Delisle
-    email: lucille.delisle@epfl.ch
+    email: lucille.delisle@unige.ch
     orcid: 0000-0002-1964-4960
     joined: 2019-08
     elixir_node: ch
+    matrix: 'lldelisle:matrix.org'
     contact_for_training: true
+    maintainer_contact: matrix
     location:
       country: CH
-      lat: 46.52
-      lon: 6.56
+      lat: 46.19
+      lon: 6.15
     affiliations:
       - elixir-europe
 
@@ -1592,6 +1616,13 @@ lisanna:
     joined: 2023-09
     email: lisanna.paladin@gmail.com
     orcid: 0000-0003-0011-9397
+    elixir_node: de
+    contact_for_training: true
+    affiliations:
+      - elixir-europe
+      - embl-ebi
+      - deKCD
+      - biont
 
 lleroi:
     name: Laura Leroi
@@ -1902,8 +1933,13 @@ mira-miracoli:
       - eurosciencegateway
 
 mirandaembl :
-    name: Miranda Ackerman Eduardo Jacobo
+    name: Eduardo Jacobo Miranda Ackerman
     joined: 2025-05
+    elixir_node: de
+    orcid: '0009-0005-0673-021X'
+    affiliations:
+      - deKCD
+      - embl-ebi
 
 miRlyKayleigh:
     name: Kayleigh Smith
@@ -1917,6 +1953,12 @@ mirelaminkova:
     affiliations:
       - surf
 
+mittler-works:
+    name: Nils Mittler
+    joined: 2025-06
+    affiliations:
+      - deKCD
+
 moffmade:
     name: Cory Maughmer
     joined: 2018-06
@@ -1926,6 +1968,10 @@ moheydarian:
     email: mheydarian@gmail.com
     orcid: 0000-0001-9449-9364
     joined: 2017-09
+
+Morphy427: 
+    name: Elouan Le Mestric
+    joined: 2025-05
 
 mritchie:
     name: Matt Ritchie
@@ -2131,6 +2177,11 @@ odoppelt:
     affiliations:
       - elixir-europe
 
+ogerdfx:
+    name: Christine Oger
+    joined: 2025-06
+    elixir_node: fr
+
 olanag1:
     name: Olha Nahorna
     joined: 2019-07
@@ -2159,6 +2210,10 @@ otatadeabigail:
 OlegZharkov:
     name: Oleg Zharkov
     joined: 2021-06
+
+pacthoen:
+  name: "Peter-Bram 't Hoen"
+  joined: 2025-05
 
 pajanne:
     name: Anne Pajon
@@ -2485,6 +2540,12 @@ sanjaysrikakulam:
       - elixir-europe
       - eurosciencegateway
 
+santamccloud:
+    name: Santino Faack
+    joined: 2025-07
+    affiliations:
+      - uni-freiburg
+
 saramorsy:
     name: Sara Morsy
     joined: 2021-10
@@ -2512,6 +2573,13 @@ sbenateau:
     elixir_node: fr
     affiliations:
       - elixir-europe
+
+sbueker77:
+    name: Sarah Büker
+    joined: 2025-05
+    affiliations:
+      - dsc-bremen
+      - uni-bremen
 
 scorreard:
     name: Solenne Correard
@@ -2570,6 +2638,9 @@ shiltemann:
 silviadg87:
     name: Silvia Di Giorgio
     joined: 2025-05
+    contact_for_training: true
+    affiliations:
+      - biont
 
 Shorla:
     name: Olushola Ogunkelu
@@ -2614,6 +2685,10 @@ sitjart:
     elixir_node: uk
     affiliations:
       - elixir-europe
+
+skschum:
+    name: Simeon Schum
+    joined: 2025-02
 
 slegras:
     name: Stéphanie Legras
@@ -2722,6 +2797,11 @@ sunyi000:
     email: yi.sun@embl.de
     joined: 2021-03
 
+maulakhan:
+    name: Arif UI Maula Khan
+    email: arif.khan@embl.de
+    joined: 2025-07
+
 Swathi266:
     name: Swathi Nataraj
     joined: 2024-12
@@ -2769,10 +2849,12 @@ teresa-m:
     orcid: 0000-0003-1252-9684
     linkedin: teresamueller87
     elixir_node: de
+    contact_for_training: true
     affiliations:
       - uni-freiburg
       - elixir-europe
       - deNBI
+      - biont
 
 TanguyGen:
     name: Tanguy Genthon
@@ -2873,6 +2955,12 @@ tsenapathi:
 tflowers15:
     name: Tristan Reynolds
     joined: 2025-03
+    email: treynolds@unimelb.edu.au
+    orcid: 0000-0002-6606-5953
+    affiliations:
+      - AustralianBioCommons
+      - unimelb
+      - melbournebioinformatics
 
 trungN:
     name: Nguyen Vo Minh Trung

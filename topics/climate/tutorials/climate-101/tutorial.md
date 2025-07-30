@@ -1,6 +1,7 @@
 ---
 layout: tutorial_hands_on
 title: Getting your hands-on climate data
+subtopic: introduction
 zenodo_link: 'https://zenodo.org/record/3776500'
 questions:
 - What is climate?
