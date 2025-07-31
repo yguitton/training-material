@@ -145,7 +145,7 @@ In this tutorial, we annotate all 22 example images using the tool's `Auto label
 >
 > ![al open dir](../../images/yolo-train/al_label.png){: width="75%"}
 >
->    **Note:** If the selected auto labeling model falsely detects background or objects that are not part of the object of interest, we can refine it by adding a negative point to indicate image background. Vice versa, if the model does not completely detect the boundaries of the objects, one can add a positive point to the areas inside the object that were missed by the model. 
+>    **Note:** If the selected auto labeling model falsely detects image background or objects that are not part of the object of interest, we can refine it by adding a *"negative point"* to indicate image background. Vice versa, if the model does not completely detect the boundaries of the objects, one can add a *"positive point"* to the area inside the object that was missed by the model. 
 >    - In the previous step, the results included some background, as shown in the picture. To refine them, click `-Point`, then click on the background area. The model will re-run the inference.
 >
 > ![al open dir](../../images/yolo-train/al_label_1.png){: width="75%"}
