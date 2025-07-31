@@ -75,7 +75,6 @@ jobs:
           set -o pipefail
           bundle exec ruby bin/lint.rb --format rdjson | reviewdog -filter-mode=file -f=rdjsonl -reporter=local  -fail-level=error
  > filtered.json
-#         bundle exec ruby bin/lint.rb --format rdjson | reviewdog -filter-mode=file -reporter=github-pr-review -f=rdjsonl -fail-level=any
 
       - uses: actions/upload-artifact@v4
         if: always()
