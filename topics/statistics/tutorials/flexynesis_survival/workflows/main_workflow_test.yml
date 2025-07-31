@@ -60,7 +60,7 @@
             - that: "has_text_matching"
               expression: "ID\tE0\tE1"
             - that: "has_text_matching"
-              expression: "TCGA-2B-5208"
+              expression: "TCGA-28-5208"
         job.embeddings_train:
           asserts:
             - that: "has_text_matching"
@@ -70,13 +70,13 @@
         job.feature_importance.GradientShap:
           asserts:
             - that: "has_text_matching"
-              expression: "target_variable \ttarget_class\ttarget_class_label \tlayer \tname \timportance \texplainer"
+              expression: "target_variable\ttarget_class\ttarget_class_label\tlayer\tname\timportance\texplainer"
             - that: "has_text_matching"
               expression: "GradientShap"
         job.feature_importance.IntegratedGradients:
           asserts:
             - that: "has_text_matching"
-              expression: "target_variable \ttarget_class\ttarget_class_label \tlayer \tname \timportance \texplainer"
+              expression: "target_variable\ttarget_class\ttarget_class_label\tlayer\tname\timportance\texplainer"
             - that: "has_text_matching"
               expression: "IntegratedGradients"
         job.feature_logs.cna:
