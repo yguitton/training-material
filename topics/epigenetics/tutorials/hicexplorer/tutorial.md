@@ -18,9 +18,9 @@ contributions:
     - fidelram
     - vivekbhr
     - polkhe
-  editing: 
+  editing:
     - tflowers15
-  testing: []
+#  testing: []
   funding:
     - elixir-europe
     - deNBI
@@ -66,25 +66,18 @@ After a corrected Hi-C matrix is created other tools can be used to visualise it
 >
 > 2. Import from [Zenodo](https://doi.org/10.5281/zenodo.16416373).
 >
->    > <tip-title>Importing data via links</tip-title>
->    >
->    > 1. Copy the link location
->    > 2. Open the Galaxy Upload Manager
->    > 3. Select **Paste/Fetch Data**
->    >
->    >    Below are the links to the read files that can be copied and pasted in the upload manager.
->    >
->    >    ```
->    >    https://zenodo.org/records/16416373/files/HiC_S2_1p_10min_lowU_R1.fastq.gz
->    >    https://zenodo.org/records/16416373/files/HiC_S2_1p_10min_lowU_R2.fastq.gz
->    >    ```
->    >
->    > 4. Paste the links into the text field
->    > 5. Press **Start**
->    {: .tip}
+>    ```
+>    https://zenodo.org/records/16416373/files/HiC_S2_1p_10min_lowU_R1.fastq.gz
+>    https://zenodo.org/records/16416373/files/HiC_S2_1p_10min_lowU_R2.fastq.gz
+>    ```
 >
-> 3. Rename the data set to something meaningful, e.g. `HiC_S2_1p_10min_lowU_R1` and `HiC_S2_1p_10min_lowU_R2`.
-> By default, when data is imported via its link, Galaxy names it with its URL.
+>    {% snippet faqs/galaxy/datasets_import_via_link.md %}
+>
+> 3. **Rename** {% icon galaxy-pencil %} the data set to something meaningful
+>    - e.g. `HiC_S2_1p_10min_lowU_R1` and `HiC_S2_1p_10min_lowU_R2`.
+>    - By default, when data is imported via its link, Galaxy names it with its URL.
+>
+>    {% snippet faqs/galaxy/datasets_rename.md %}
 >
 > > <comment-title>Get data from public sources</comment-title>
 > > HiCExplorer needs as input the forward and reverse strand of a pair end read which are mapped independently. A usual start point for a typical analysis is the given GSE number of a publication, e.g. GSE63525 for Rao 2014. To get the actual data, go to [NCBI](https://www.ncbi.nlm.nih.gov/geo/) and search for the [GSE number](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE63525). In the section 'Samples' the GSM numbers of all samples are given. Select the correct one for you, and go to the [European Nucleotide Archive](https://www.ebi.ac.uk/ena) and enter the GSM number. Select a matching result e.g. [SRX764936](https://www.ebi.ac.uk/ena/data/view/SRX764936) and download the data given in the row 'FASTQ files (FTP)' the forward and reverse strand.
@@ -113,7 +106,7 @@ We have used the HiCExplorer successfully with `bwa`, `bowtie2` and `hisat2`. In
 >    - *"Do you want to tweak SAM/BAM Options?"*: `Yes`
 >       - *"Reorder output to reflect order of the input file"*: `Yes`
 >
-> 2. Rename the output of the tool according to the corresponding files: `R1.bam` and `R2.bam`
+> 2. **Rename** {% icon galaxy-pencil %} the output of the tool according to the corresponding files: `R1.bam` and `R2.bam`
 >
 {: .hands_on}
 
@@ -121,15 +114,18 @@ We have used the HiCExplorer successfully with `bwa`, `bowtie2` and `hisat2`. In
 
 Once the reads have been mapped the Hi-C matrix can be built.
 
-For this step we will use [`hicBuildMatrix`](http://hicexplorer.readthedocs.io/en/latest/content/tools/hicBuildMatrix.html#hicbuildmatrix) tool, which builds the matrix of read counts over the bins in the genome, considering the sites around the given restriction site. 
+For this step we will use [`hicBuildMatrix`](http://hicexplorer.readthedocs.io/en/latest/content/tools/hicBuildMatrix.html#hicbuildmatrix) tool, which builds the matrix of read counts over the bins in the genome, considering the sites around the given restriction site.
 
 For versions `3.6` and later, `hicBuildMatrix` requires an input BED file that specifies the locations of all restriction cuts. We must first identify restriction enzyme sites use the tool `hicFindRestSite`, which requires a `fasta` file containing the genome of organism we are studying. We will import the `dm3_genome.fasta` genome file from Zenodo.
 
 > <hands-on-title>Import from Zenodo</hands-on-title>
 >
-> ```
-> https://zenodo.org/records/16416373/files/dm3_genome.fasta
-> ```
+> 1. Import the reference genome
+>    ```
+>    https://zenodo.org/records/16416373/files/dm3_genome.fasta
+>    ```
+>
+>    {% snippet faqs/galaxy/datasets_import_via_link.md %}
 >
 {: .hands_on}
 
@@ -141,12 +137,12 @@ For versions `3.6` and later, `hicBuildMatrix` requires an input BED file that s
 >    - *"Restriction enzyme sequence"*: `GATC`
 >
 >       > <comment-title></comment-title>
->       > 
+>       >
 >       > Our data uses the DpnII restriction enzyme, which has the *Restriction enzyme sequence*: `GATC`. The *Restriction enzyme sequence* will be specific to the restriction enzyme that your data uses (e.g. for HindIII this will be `AAGCTT`).
 >       {: .comment}
-> 
-> 2. Rename the output to `Restriction Sites`.
-> 
+>
+> 2. **Rename** {% icon galaxy-pencil %} the output to `Restriction Sites`.
+>
 > 3. {% tool [`hicBuildMatrix`](toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicbuildmatrix/hicexplorer_hicbuildmatrix/3.7.6+galaxy1) %}: Run `hicBuildMatrix` on the `R1.bam` and `R2.bam` mapping output.
 >    - *"1: Sam/Bam files to process (forward/reverse)"*: `R1.bam`
 >    - *"2: Sam/Bam files to process (forward/reverse)"*: `R2.bam`
@@ -166,14 +162,14 @@ For versions `3.6` and later, `hicBuildMatrix` requires an input BED file that s
 >       > A quality report is created in e.g. `hicMatrix/R1_10kb_QC`, have a look at the report hicQC.html.
 >       {: .comment}
 >
-> 4. Rename the output to `10kb contact matrix`.
+> 4. **Rename** {% icon galaxy-pencil %} the output to `10kb contact matrix`.
 >
 {: .hands_on}
 
 
 > <comment-title></comment-title>
 > If you do not have access to the genome for your organism (e.g. if you plan to use your Hi-C data to assist with genome assembly) then you can instead select `hicBuildMatrix` version 3.4.3.0.
-> 
+>
 >   > <hands-on-title>Build Hi-C Matrix</hands-on-title>
 >   >
 >   > 1. {% tool [`hicBuildMatrix`](toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicbuildmatrix/hicexplorer_hicbuildmatrix/3.4.3.0) %}: Run `hicBuildMatrix` on the `R1.bam` and `R2.bam` mapping output.
@@ -183,7 +179,7 @@ For versions `3.6` and later, `hicBuildMatrix` requires an input BED file that s
 >   >    - *"Bin size in bp"*: `10000`
 >   >    - *"Sequence of the restriction site"*: `GATC`
 >   {: .hands_on}
-> 
+>
 {: .comment}
 
 # Plotting the Hi-C matrix
@@ -198,7 +194,7 @@ A 10 kb bin matrix is too large to plot, it's better to reduce the resolution. W
 >    - *"Matrix to compute on"*: `10kb contact matrix`
 >    - *"Number of bins to merge"*: `100`
 >
-> 2. Rename the output to `1MB contact matrix`.
+> 2. **Rename** {% icon galaxy-pencil %} the output to `1MB contact matrix`.
 >
 > 3. {% tool [`hicPlotMatrix`](toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicplotmatrix/hicexplorer_hicplotmatrix/3.4.3.0) %}:
 >    - *"Matrix to compute on"*: `1MB contact matrix`
@@ -260,7 +256,7 @@ In our case the distribution describes the counts per bin of a genomic distance.
 >    - *"+ Insert Chromosomes to include (and order to plot in):"*: `chr3R`
 >    - *"+ Insert Chromosomes to include (and order to plot in):"*: `chrX`
 >
-> 2. Rename the corrected matrix to `10kb corrected contact matrix`.
+> 2. **Rename** {% icon galaxy-pencil %} the corrected matrix to `10kb corrected contact matrix`.
 >
 {: .hands_on}
 
@@ -296,9 +292,10 @@ The steps so far would have led to long run times if real data would have been u
 
 > <hands-on-title>Import from Zenodo</hands-on-title>
 >
-> ```
-> https://zenodo.org/records/16416373/files/corrected_contact_matrix_dm3_large.h5
-> ```
+> 1. Import the following file into your history:
+>    ```
+>    https://zenodo.org/records/16416373/files/corrected_contact_matrix_dm3_large.h5
+>    ```
 >
 {: .hands_on}
 
@@ -321,11 +318,11 @@ TAD calling works in two steps: First HiCExplorer computes a TAD-separation scor
 >    - *"q-value"*: `0.05`
 >    - *"Minimum threshold of the difference between the TAD-separation score of a putative boundary and the mean of the TAD-sep. score of surrounding bins."*: `0.001`
 >
-> 2. Rename the TAD boundary positions to `Boundary positions`.
-> 3. Rename the multi-scale TAD scores matrix to `Matrix with multi-scale TAD scores`.
-> 4. Rename the TAD domains to `TAD domains`.
-> 5. Rename the boundary information to `Boundary information plus score`.
-> 6. Rename the TAD information in bm file to `TAD information in bm file`.
+> 2. **Rename** {% icon galaxy-pencil %} the TAD boundary positions to `Boundary positions`.
+> 3. **Rename** {% icon galaxy-pencil %} the multi-scale TAD scores matrix to `Matrix with multi-scale TAD scores`.
+> 4. **Rename** {% icon galaxy-pencil %} the TAD domains to `TAD domains`.
+> 5. **Rename** {% icon galaxy-pencil %} the boundary information to `Boundary information plus score`.
+> 6. **Rename** {% icon galaxy-pencil %} the TAD information in bm file to `TAD information in bm file`.
 >
 {: .hands_on}
 
@@ -339,8 +336,8 @@ As an output we get the boundaries, domains and scores separated files. We will 
 >    - *"Matrix to compute on"*: `corrected_contact_matrix_dm3_large.h5 `
 >    - *"Output file format"*: `bigwig`
 >    - *"Return internally used Pearson matrix"*: `Yes`
-> 
-> 2. Rename the Pearson matrix to `Pearson matrix`.
+>
+> 2. **Rename** {% icon galaxy-pencil %} the Pearson matrix to `Pearson matrix`.
 >
 {: .hands_on}
 
@@ -380,12 +377,13 @@ We can plot the TADs for a given chromosomal region. For this we will use [`pyGe
 
 > <hands-on-title>Import from Zenodo</hands-on-title>
 >
-> ```
-> https://zenodo.org/records/16416373/files/dm3_genes.bed
-> https://zenodo.org/records/16416373/files/H3K27me3.bw
-> https://zenodo.org/records/16416373/files/H3K36me3.bw
-> https://zenodo.org/records/16416373/files/H4K16ac.bw
-> ```
+> 1. Import the following files into Galaxy:
+>    ```
+>    https://zenodo.org/records/16416373/files/dm3_genes.bed
+>    https://zenodo.org/records/16416373/files/H3K27me3.bw
+>    https://zenodo.org/records/16416373/files/H3K36me3.bw
+>    https://zenodo.org/records/16416373/files/H4K16ac.bw
+>    ```
 >
 {: .hands_on}
 
@@ -393,7 +391,7 @@ We can plot the TADs for a given chromosomal region. For this we will use [`pyGe
 >
 > If the database for `dm3_genes.bed` is not "dm3" (i.e. `database "?"` or a different database is listed), then the database must be updated to "dm3".
 >
->    {% snippet faqs/galaxy/datasets_change_dbkey.md %}
+> {% snippet faqs/galaxy/datasets_change_dbkey.md %}
 >
 {: .hands_on}
 
@@ -463,7 +461,7 @@ We can plot the TADs for a given chromosomal region. For this we will use [`pyGe
 >    - *"+Insert Include tracks in your plot"*
 >        - *"Choose style of the track"*: `Vlines track`
 >        - *"Track file bed format"*: `TAD domains`
-> 
+>
 {: .hands_on}
 
 The resulting image should look like this one:
@@ -483,9 +481,10 @@ We use a new file because to detect loop structures the read coverage is require
 
 > <hands-on-title>Import via URL</hands-on-title>
 >
-> ```
-> https://zenodo.org/records/16416373/files/GM12878_25kb_cooler_coarsen.cool
-> ```
+> 1. Import the following file to Galaxy
+>    ```
+>    https://zenodo.org/records/16416373/files/GM12878_25kb_cooler_coarsen.cool
+>    ```
 {: .hands_on}
 
 
@@ -495,16 +494,16 @@ We use a new file because to detect loop structures the read coverage is require
 > 1. {% tool [`hicInfo`](toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicinfo/hicexplorer_hicinfo/3.7.6+galaxy1) %}:
 >    - *"Select"* `Multiple datasets`
 >    - *"Matrix to compute on"*: `corrected_contact_matrix_dm3_large.h5 ` and `GM12878_25kb_cooler_coarsen.cool`
-> 
+>
 {: .hands_on}
 
 We can view the result of `hicInfo` and see that the new imported file has 900 million non-zero elements, while the drosophila Hi-C interaction matrix has around 12 million non-zero elements.
 
-We next run `hicDetectLoops` to find loops. In this tutorial we will only look for loops in chromosome 1 to reduce the required computational resources and computing time. 
+We next run `hicDetectLoops` to find loops. In this tutorial we will only look for loops in chromosome 1 to reduce the required computational resources and computing time.
 
 > <hands-on-title>Computing loops</hands-on-title>
 >
-> 1. {% tool [`hicDetectLoops`](toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicdetectloops/hicexplorer_hicdetectloops/3.7.6+galaxy1) %}: 
+> 1. {% tool [`hicDetectLoops`](toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicdetectloops/hicexplorer_hicdetectloops/3.7.6+galaxy1) %}:
 >    - *"Matrix to compute on"*: `GM12878_25kb_cooler_coarsen.cool`
 >    - *"Peak width"*: `6`
 >    - *"Window size"*: `10`
@@ -523,7 +522,7 @@ As an output we get a loop file containing the positions of both anchor points o
 
 > <hands-on-title>Plotting detected loops</hands-on-title>
 >
-> 1. {% tool [`hicPlotMatrix`](toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicplotmatrix/hicexplorer_hicplotmatrix/3.4.3.0) %}: 
+> 1. {% tool [`hicPlotMatrix`](toolshed.g2.bx.psu.edu/repos/bgruening/hicexplorer_hicplotmatrix/hicexplorer_hicplotmatrix/3.4.3.0) %}:
 >    - *"Matrix to compute on"*: `GM12878_25kb_cooler_coarsen.cool`
 >    - *"Plot title"*: `Loops`
 >    - *"Plot only this region"*: `1:18000000-22000000`
