@@ -149,7 +149,7 @@ In this tutorial, we annotate all 22 example images using the tool's `Auto label
 >    - In the previous step, the results included some background, as shown in the picture. To refine them, click `-Point`, then click on the background area. The model will re-run the inference.
 >
 > ![al open dir](../../images/yolo-train/al_label_1.png){: width="75%"}
->    - After the inference is complete, click `Finish Object`. In the `Enter object label` box, type `tail` then click `OK`. This will automatically create a label file in json format that contains the x,y coordinates of the polygon.
+>    - After the inference is complete, click `Finish Object`. In the `Enter object label` box, type `tail` then click `OK`. This will automatically create a label file in JSON format that contains the coordinates of the polygon.
 >
 > ![al open dir](../../images/yolo-train/al_finish.png){: width="75%"}
 >
