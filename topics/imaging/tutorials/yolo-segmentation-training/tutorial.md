@@ -23,7 +23,7 @@ contributors:
 ---
 
 
-In bioimages, challenging morphologies are often quite hard to segment using traditional computer vision/image analysis methods. Therefore, using semi-supervised machine learning or deep learning for such tasks is getting more popular. 
+In bioimages, challenging morphologies are often quite hard to segment using traditional computer vision/image analysis methods. Therefore, using semi-supervised machine learning methods like deep learning for such tasks is getting more popular. 
 
 This tutorial shows an easy-to-use and efficient workflow of training YOLO models in Galaxy. The workflow integrates both interactive and headless tools. We demonstrate the workflow here with bright field images of tails. The workflow can also be adapted to other datasets with minimal adjustments.
 
