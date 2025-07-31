@@ -1,0 +1,27 @@
+- doc: Test outline for Final---Unsupervised-Analysis-of-Bone-Marrow-Cells
+  job:
+    train clinincal data:
+      class: File
+      location: https://zenodo.org/records/16287482/files/train-clin_BMscRNAseq.tabular
+      filetype: tabular
+    test clinincal data:
+      class: File
+      location: https://zenodo.org/records/16287482/files/test-clin_BMscRNAseq.tabular
+      filetype: tabular
+    train omics 1:
+      class: File
+      location: https://zenodo.org/records/16287482/files/train-RNA_BMscRNAseq.tabular
+      filetype: tabular
+    test omics 1:
+      class: File
+      location: https://zenodo.org/records/16287482/files/test-RNA_BMscRNAseq.tabular
+      filetype: tabular
+    train omics 2:
+      class: File
+      location: https://zenodo.org/records/16287482/files/train-ADT_BMscRNAseq.tabular
+      filetype: tabular
+    test omics 2:
+      class: File
+      location: https://zenodo.org/records/16287482/files/test-ADT_BMscRNAseq.tabular
+      filetype: tabular
+  outputs: {}
