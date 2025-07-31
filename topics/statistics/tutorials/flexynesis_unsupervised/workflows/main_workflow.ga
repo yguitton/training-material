@@ -1,31 +1,31 @@
 {
     "a_galaxy_workflow": "true",
-    "annotation": "Unsupervised Classification of Bone marrow cells using Flexynesis",
+    "annotation": "Unsupervised Classification of Bone marrow cells",
     "comments": [],
-    "format-version": "0.1",
     "creator": [
         {
             "class": "Person",
-            "identifier": "https://orcid.org/0000-0003-1329-3044",
+            "identifier": "0000-0003-1329-3044",
             "name": "Amirhossein Naghsh Nilchi"
         }
     ],
+    "format-version": "0.1",
     "license": "MIT",
-    "release": "0.1",
     "name": "Final - Unsupervised Analysis of Bone Marrow Cells",
+    "readme": "This training is inspired from the original flexynesis analysis notebook: [unsupervised_analysis_single_cell.ipynb](https://github.com/BIMSBbioinfo/flexynesis/blob/main/examples/tutorials/unsupervised_analysis_single_cell.ipynb).\n",
     "report": {
         "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
     },
     "steps": {
         "0": {
-            "annotation": "",
+            "annotation": "clinical training data",
             "content_id": null,
             "errors": null,
             "id": 0,
             "input_connections": {},
             "inputs": [
                 {
-                    "description": "",
+                    "description": "clinical training data",
                     "name": "train clinincal data"
                 }
             ],
@@ -45,14 +45,14 @@
             "workflow_outputs": []
         },
         "1": {
-            "annotation": "",
+            "annotation": "clinical test data",
             "content_id": null,
             "errors": null,
             "id": 1,
             "input_connections": {},
             "inputs": [
                 {
-                    "description": "",
+                    "description": "clinical test data",
                     "name": "test clinincal data"
                 }
             ],
@@ -72,14 +72,14 @@
             "workflow_outputs": []
         },
         "2": {
-            "annotation": "",
+            "annotation": "omics 1 training data",
             "content_id": null,
             "errors": null,
             "id": 2,
             "input_connections": {},
             "inputs": [
                 {
-                    "description": "",
+                    "description": "omics 1 training data",
                     "name": "train omics 1"
                 }
             ],
@@ -99,14 +99,14 @@
             "workflow_outputs": []
         },
         "3": {
-            "annotation": "",
+            "annotation": "omics 1 test data",
             "content_id": null,
             "errors": null,
             "id": 3,
             "input_connections": {},
             "inputs": [
                 {
-                    "description": "",
+                    "description": "omics 1 test data",
                     "name": "test omics 1"
                 }
             ],
@@ -126,14 +126,14 @@
             "workflow_outputs": []
         },
         "4": {
-            "annotation": "",
+            "annotation": "omics 2 training data",
             "content_id": null,
             "errors": null,
             "id": 4,
             "input_connections": {},
             "inputs": [
                 {
-                    "description": "",
+                    "description": "omics 2 training data",
                     "name": "train omics 2"
                 }
             ],
@@ -141,7 +141,7 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 0.0,
+                "left": 0,
                 "top": 915.2889148682384
             },
             "tool_id": null,
@@ -153,14 +153,14 @@
             "workflow_outputs": []
         },
         "5": {
-            "annotation": "",
+            "annotation": "omics 2 test data",
             "content_id": null,
             "errors": null,
             "id": 5,
             "input_connections": {},
             "inputs": [
                 {
-                    "description": "",
+                    "description": "omics 2 test data",
                     "name": "test omics 2"
                 }
             ],
@@ -168,7 +168,7 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 0.0,
+                "left": 0,
                 "top": 1016.998893920085
             },
             "tool_id": null,
@@ -253,7 +253,13 @@
             "type": "tool",
             "uuid": "4f2b3b5a-dda5-4287-841a-645e2a892dc2",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": "flexynesis output",
+                    "output_name": "results",
+                    "uuid": "5791b446-d5ab-4647-a04f-d96daa9f615b"
+                }
+            ]
         },
         "7": {
             "annotation": "",
@@ -266,12 +272,7 @@
                     "output_name": "results"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Extract dataset",
-                    "name": "input"
-                }
-            ],
+            "inputs": [],
             "label": "Extract test embeddings",
             "name": "Extract dataset",
             "outputs": [
@@ -294,7 +295,7 @@
                 }
             },
             "tool_id": "__EXTRACT_DATASET__",
-            "tool_state": "{\"input\": {\"__class__\": \"RuntimeValue\"}, \"which\": {\"which_dataset\": \"first\", \"__current_case__\": 0}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"which\": {\"which_dataset\": \"first\", \"__current_case__\": 0}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.2",
             "type": "tool",
             "uuid": "fb5627ab-32d4-45fc-90ec-adf6929cf3d2",
@@ -320,6 +321,10 @@
                 {
                     "description": "runtime parameter for tool Flexynesis utils",
                     "name": "utils_conditional"
+                },
+                {
+                    "description": "runtime parameter for tool Flexynesis utils",
+                    "name": "utils_conditional"
                 }
             ],
             "label": "Louvain clustering",
@@ -342,12 +347,18 @@
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"non_commercial_use\": true, \"utils_conditional\": {\"util\": \"louvain_clustering\", \"__current_case__\": 0, \"X\": null, \"labels\": {\"__class__\": \"ConnectedValue\"}, \"threshold\": null, \"k\": \"15\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"non_commercial_use\": true, \"utils_conditional\": {\"util\": \"louvain_clustering\", \"__current_case__\": 0, \"X\": {\"__class__\": \"ConnectedValue\"}, \"labels\": {\"__class__\": \"ConnectedValue\"}, \"threshold\": null, \"k\": \"15\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.2.20+galaxy3",
             "type": "tool",
             "uuid": "51ebf771-b65a-472e-a91d-ebbe290edc3a",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": "louvain clustering",
+                    "output_name": "util_out",
+                    "uuid": "344ac387-2dfa-4629-8c03-3d5b336420da"
+                }
+            ]
         },
         "9": {
             "annotation": "",
@@ -368,6 +379,10 @@
                 {
                     "description": "runtime parameter for tool Flexynesis plot",
                     "name": "plot_conditional"
+                },
+                {
+                    "description": "runtime parameter for tool Flexynesis plot",
+                    "name": "plot_conditional"
                 }
             ],
             "label": "Dimred true value",
@@ -379,8 +394,8 @@
                 }
             ],
             "position": {
-                "left": 796.264055972423,
-                "top": 451.05551787193474
+                "left": 800.8991721220032,
+                "top": 401.52078339018635
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_plot/flexynesis_plot/0.2.20+galaxy3",
@@ -390,12 +405,18 @@
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"non_commercial_use\": true, \"plot_conditional\": {\"plot_type\": \"dimred\", \"__current_case__\": 0, \"labels\": {\"__class__\": \"ConnectedValue\"}, \"embeddings\": null, \"color\": \"10\", \"method\": \"umap\", \"format\": \"jpg\", \"dpi\": \"300\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"non_commercial_use\": true, \"plot_conditional\": {\"plot_type\": \"dimred\", \"__current_case__\": 0, \"labels\": {\"__class__\": \"ConnectedValue\"}, \"embeddings\": {\"__class__\": \"ConnectedValue\"}, \"color\": \"10\", \"method\": \"umap\", \"format\": \"jpg\", \"dpi\": \"300\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.2.20+galaxy3",
             "type": "tool",
             "uuid": "7be071fe-e732-4d11-93e7-7333391950ba",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": "umap - true_value",
+                    "output_name": "plot_out",
+                    "uuid": "9ba13d6c-2caf-4625-bde6-874da3516cf6"
+                }
+            ]
         },
         "10": {
             "annotation": "",
@@ -413,6 +434,10 @@
                 }
             },
             "inputs": [
+                {
+                    "description": "runtime parameter for tool Flexynesis utils",
+                    "name": "utils_conditional"
+                },
                 {
                     "description": "runtime parameter for tool Flexynesis utils",
                     "name": "utils_conditional"
@@ -438,12 +463,18 @@
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"non_commercial_use\": true, \"utils_conditional\": {\"util\": \"get_optimal_clusters\", \"__current_case__\": 1, \"X\": null, \"labels\": {\"__class__\": \"ConnectedValue\"}, \"min_k\": \"10\", \"max_k\": \"20\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"non_commercial_use\": true, \"utils_conditional\": {\"util\": \"get_optimal_clusters\", \"__current_case__\": 1, \"X\": {\"__class__\": \"ConnectedValue\"}, \"labels\": {\"__class__\": \"ConnectedValue\"}, \"min_k\": \"10\", \"max_k\": \"20\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.2.20+galaxy3",
             "type": "tool",
             "uuid": "8c4ce397-7e3f-40ca-8137-f5f42b57debe",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": "k-means clustering",
+                    "output_name": "util_out",
+                    "uuid": "e12faae2-19cd-478e-951d-541769ab0988"
+                }
+            ]
         },
         "11": {
             "annotation": "",
@@ -472,7 +503,7 @@
             ],
             "position": {
                 "left": 1460.5068806418356,
-                "top": 0.0
+                "top": 0
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_plot/flexynesis_plot/0.2.20+galaxy3",
@@ -487,7 +518,13 @@
             "type": "tool",
             "uuid": "af5f9774-c84c-4df8-8b6e-49a657b61ecf",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": "concordance plot",
+                    "output_name": "plot_out",
+                    "uuid": "1cd385d5-ed0b-4344-9a5c-ffebaae59349"
+                }
+            ]
         },
         "12": {
             "annotation": "",
@@ -515,8 +552,8 @@
                 }
             ],
             "position": {
-                "left": 1460.264699244368,
-                "top": 136.17835221957728
+                "left": 1460.2676214748321,
+                "top": 139.29045566428002
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_utils/flexynesis_utils/0.2.20+galaxy3",
@@ -531,7 +568,13 @@
             "type": "tool",
             "uuid": "1d830673-9099-4905-9bcf-7859bdc5eca7",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": "amir_ari true vs louvain",
+                    "output_name": "util_out",
+                    "uuid": "727d1cde-f4a5-4ddf-8e17-3aa117f61b68"
+                }
+            ]
         },
         "13": {
             "annotation": "",
@@ -559,8 +602,8 @@
                 }
             ],
             "position": {
-                "left": 1462.6863654122692,
-                "top": 271.912748320773
+                "left": 1459.5967984867525,
+                "top": 301.3397004219401
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_utils/flexynesis_utils/0.2.20+galaxy3",
@@ -575,7 +618,13 @@
             "type": "tool",
             "uuid": "ce778218-783e-4fcc-8ec5-58c96db57815",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": "amir_ari true vs k-means",
+                    "output_name": "util_out",
+                    "uuid": "7b904d9a-e082-460e-bd2e-3f18b27dc3dc"
+                }
+            ]
         },
         "14": {
             "annotation": "",
@@ -596,6 +645,10 @@
                 {
                     "description": "runtime parameter for tool Flexynesis plot",
                     "name": "plot_conditional"
+                },
+                {
+                    "description": "runtime parameter for tool Flexynesis plot",
+                    "name": "plot_conditional"
                 }
             ],
             "label": "Dimred louvain",
@@ -607,8 +660,8 @@
                 }
             ],
             "position": {
-                "left": 1467.004983704123,
-                "top": 412.0666777880496
+                "left": 1460.8093818992897,
+                "top": 466.25274520497845
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_plot/flexynesis_plot/0.2.20+galaxy3",
@@ -618,12 +671,18 @@
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"non_commercial_use\": true, \"plot_conditional\": {\"plot_type\": \"dimred\", \"__current_case__\": 0, \"labels\": {\"__class__\": \"ConnectedValue\"}, \"embeddings\": null, \"color\": \"12\", \"method\": \"umap\", \"format\": \"jpg\", \"dpi\": \"300\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"non_commercial_use\": true, \"plot_conditional\": {\"plot_type\": \"dimred\", \"__current_case__\": 0, \"labels\": {\"__class__\": \"ConnectedValue\"}, \"embeddings\": {\"__class__\": \"ConnectedValue\"}, \"color\": \"12\", \"method\": \"umap\", \"format\": \"jpg\", \"dpi\": \"300\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
             "tool_version": "0.2.20+galaxy3",
             "type": "tool",
             "uuid": "4dceab17-c8ed-46b1-b62a-e4c41e4a37bf",
             "when": null,
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": "umap - louvain",
+                    "output_name": "plot_out",
+                    "uuid": "6346a63f-fd06-44ad-93b3-42b41675d1a5"
+                }
+            ]
         }
     },
     "tags": [
@@ -631,6 +690,6 @@
         "machine_learning",
         "deep_learning"
     ],
-    "uuid": "473c4a13-5a87-4355-bd84-cf8333c6f05a",
-    "version": 3
+    "uuid": "03ca75ea-2c5b-452c-ac3d-765910392908",
+    "version": 7
 }
