@@ -35,7 +35,11 @@ This training is inspired from the original flexynesis analysis notebook: [unsup
 
 Here, we demonstrate the capabilities of flexynesis on a Single-cell CITE-Seq dataset of Bone Marrow samples ({% cite Stuart2019 %}). The dataset was downloaded and processed using Seurat (v5.1.0) ({% cite Hao2021 %}). 5000 cells were randomly sampled for training and 5000 cells were sampled for testing.
 
-
+> <warning-title>LICENSE</warning-title>
+>
+>Flexynesis is only available for NON-COMMERCIAL use. Permission is only granted for academic, research, and educational purposes. Before using, be sure to review, agree, and comply with the license.
+>For commercial use, please review the flexynesis license on GitHub and contact the [copyright holders](https://github.com/BIMSBbioinfo/flexynesis)
+{: .warning}
 
 <!-- This is a comment. -->
 
@@ -85,11 +89,6 @@ In the first part of this tutorial we will upload processed CITE-seq data from b
 {: .hands_on}
 
 # Unsupervised Training of Flexynesis
-> <warning-title>LICENSE</warning-title>
->
->Flexynesis is only available for NON-COMMERCIAL use. Permission is only granted for academic, research, and educational purposes. Before using, be sure to review, agree, and comply with the license.
->For commercial use, please review the flexynesis license on GitHub and contact the [copyright holders](https://github.com/BIMSBbioinfo/flexynesis)
-{: .warning}
 
 > <hands-on-title> Train unsupervised model </hands-on-title>
 >
