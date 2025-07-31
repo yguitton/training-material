@@ -237,4 +237,4 @@ Once training is complete, the resulting model can be used to label new images. 
 
 # Conclusion
 
-This tutorial demonstrated how to train a custom YOLO model for segmentation in bioimages using Galaxy. By combining image preprocessing, human-in-the-loop annotation, format conversion, and model training, we have built a complete workflow. We can apply the trained model to new image data and further refine our workflow as needed.
+This tutorial demonstrated how to train a custom YOLO model for segmentation of bioimages using Galaxy. By combining image preprocessing, human-in-the-loop annotation, format conversion, and model training, we have built a complete workflow. We can apply the trained model to new image data and further refine our workflow as needed.
