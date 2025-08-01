@@ -18,7 +18,10 @@ contributors:
 - Nilchia
 - plushz
 - bgruening
-
+answer_histories:
+    - label: "usegalaxy.eu"
+      history: https://usegalaxy.eu/u/nilchia/h/final-flexynesis-get-data-from-cbioportal-test-wf
+      date: 2025-08-01
 ---
 
 The cBioPortal is an open-access web platform that provides intuitive access to large-scale cancer genomics datasets {% cite Gao2013 %} {% cite cbioportal-website %}. Originally developed to make complex molecular profiling data more accessible to the broader research community, cBioPortal hosts data from thousands of cancer studies and tens of thousands of tumor samples.
