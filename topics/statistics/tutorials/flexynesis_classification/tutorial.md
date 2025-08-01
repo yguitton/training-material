@@ -30,7 +30,7 @@ This training is inspired from the original flexynesis analysis notebook: [brca_
 > <warning-title>LICENSE</warning-title>
 >
 > Flexynesis is only available for NON-COMMERCIAL use. Permission is only granted for academic, research, and educational purposes. Before using, be sure to review, agree, and comply with the license.
->For commercial use, please review the flexynesis license on GitHub and contact the [copyright holders](https://github.com/BIMSBbioinfo/flexynesis)
+> For commercial use, please review the flexynesis license on GitHub and contact the [copyright holders](https://github.com/BIMSBbioinfo/flexynesis)
 {: .warning}
 
 > <agenda-title></agenda-title>
