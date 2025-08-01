@@ -11,6 +11,7 @@ coveralt: "WorkflowHub logo."
 
 Thanks to a collaborative effort between the teams at [Galaxy Training Network (GTN)](https://training.galaxyproject.org/), [WorkflowHub](https://workflowhub.eu/), and [Australian BioCommons](https://www.biocommons.org.au/), GTN workflows are now registered automatically with WorkflowHub. The existing set of workflows can be [**viewed here**](https://workflowhub.eu/projects/12/workflows). For every new tutorial that is added to the GTN, any workflows that it contains will now also be pushed to WorkflowHub.
 
+Workflows maintained by the [Intergalactic Workflow Commission](https://iwc.galaxyproject.org) are also automatically registered with WorkflowHub thanks to an earlier integration. Those workflows can be viewed here: [**IWC on WorkflowHub**](https://workflowhub.eu/projects/33#workflows)
 
 ## Why is it important?
 
