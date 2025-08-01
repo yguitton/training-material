@@ -4,7 +4,7 @@ layout: tutorial_hands_on
 title: Modeling Breast Cancer Subtypes using Flexynesis
 zenodo_link: https://zenodo.org/records/16287482
 questions:
-- How can we model breast cancer subtypes using transcriptomic and genomic data?
+- How can we model breast cancer subtypes using transcriptomics and genomic data?
 - What are the key expression patterns that distinguish different BRCA subtypes?
 - How can we interpret the latent space learned by a variational autoencoder?
 objectives:
@@ -23,7 +23,7 @@ contributors:
 
 Flexynesis represents a state-of-the-art deep learning framework specifically designed for multi-modal data integration in biological research ({% cite Uyar2024 %}). What sets Flexynesis apart is its comprehensive suite of deep learning architectures, including supervised and unsupervised VAEs, that can handle various data integration scenarios while providing robust feature selection and hyperparameter optimization.
 
-Here, we use Flexynesis tool suite on a multi-omic dataset of Breast Cancer samples from the METABRIC consortium ({% cite metabric-website %}), one of the landmark breast cancer genomics studies available through cBioPortal ({% cite cbioportal-website %}). This dataset contains comprehensive molecular and clinical data from over 2,000 breast cancer patients, including gene expression profiles, copy number alterations, mutation data, and clinical outcomes. The data was downloaded from Cbioportal and randomly split into train (70% of the samples) and test (30% of the samples) data folders. The data files were processed to follow the same nomenclature.
+Here, we use Flexynesis tool suite on a multi-omics dataset of Breast Cancer samples from the METABRIC consortium ({% cite metabric-website %}), one of the landmark breast cancer genomics studies available through cBioPortal ({% cite cbioportal-website %}). This dataset contains comprehensive molecular and clinical data from over 2,000 breast cancer patients, including gene expression profiles, copy number alterations, mutation data, and clinical outcomes. The data was downloaded from Cbioportal and randomly split into train (70% of the samples) and test (30% of the samples) data folders. The data files were processed to follow the same nomenclature.
 
 This training is inspired from the original flexynesis analysis notebook: [brca_subtypes.ipynb](https://github.com/BIMSBbioinfo/flexynesis/blob/main/examples/tutorials/brca_subtypes.ipynb).
 
@@ -135,7 +135,7 @@ It is possible to set early stopping criteria in flexynesis, which is basically 
 >        - {% icon param-file %} *"Test clinical data"*: `test_cna_brca.tabular`
 >                - *"What type of assay is your input?"*: `cna`
 >        - *"Model class"*: `DirectPred`
->        - *"Column name in the train clinical data to use for predictions, multiple targets are allowed"*: `Column: 16`
+>        - *"Column name in the train clinical data to use for predictions, multiple targets are allowed"*: `Column: 16` (CLAUDIN_SUBTYPE)
 >        - In *"Advanced Options"*:
 >            - *"Fusion method"*: `intermediate`
 >            - *"Variance threshold (as percentile) to drop low variance features."*: `0.8`
@@ -259,7 +259,7 @@ In reality, hyperparameter optimization should run for multiple steps so that th
 >        - {% icon param-file %} *"Test clinical data"*: `test_cna_brca.tabular`
 >                - *"What type of assay is your input?"*: `cna`
 >        - *"Model class"*: `DirectPred`
->        - *"Column name in the train clinical data to use for predictions, multiple targets are allowed"*: `Column: 16`
+>        - *"Column name in the train clinical data to use for predictions, multiple targets are allowed"*: `Column: 16` (CLAUDIN_SUBTYPE)
 >        - In *"Advanced Options"*:
 >            - *"Fusion method"*: `intermediate`
 >            - *"Variance threshold (as percentile) to drop low variance features."*: `0.8`
@@ -329,10 +329,10 @@ In this tutorial, we demonstrated how Flexynesis can model breast cancer subtype
 
 By training on TCGA BRCA data, we:
 
-    Visualized meaningful subtype separation in the latent space
+  * Visualized meaningful subtype separation in the latent space
 
-    Identified subtype-specific genes
+  * Identified subtype-specific genes
 
-    Showed how learned features relate to known clinical labels
+  * Showed how learned features relate to known clinical labels
 
 Flexynesis provides an accessible way to explore complex omics datasets and uncover biological structure without extensive manual tuning.
