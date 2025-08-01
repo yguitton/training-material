@@ -21,7 +21,10 @@ key_points:
 contributors:
 - Nilchia
 - bgruening
-
+answer_histories:
+    - label: "usegalaxy.eu"
+      history: https://usegalaxy.eu/u/nilchia/h/final-unsupervised-analysis-of-bone-marrow-cells-test-wf
+      date: 2025-08-01
 ---
 
 Traditional dimensionality reduction techniques, while useful, often fail to capture the complex non-linear relationships present in high-dimensional data. Deep learning approaches, particularly Variational Autoencoders (VAEs), have emerged as powerful tools for unsupervised analysis of single-cell transcriptomic data ({% cite DBLP:journals/corr/ZhaoSE17b %}). VAEs combine the representational power of neural networks with probabilistic modeling, enabling them to learn meaningful latent representations while accounting for the inherent uncertainty in biological data.
