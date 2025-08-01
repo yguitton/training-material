@@ -20,7 +20,10 @@ key_points:
 contributors:
 - Nilchia
 - bgruening
-
+answer_histories:
+    - label: "usegalaxy.eu"
+      history: https://usegalaxy.eu/u/nilchia/h/final-survival-markers-of-lower-grade-gliomas-test-wf
+      date: 2025-08-01
 ---
 
 Here, we use Flexynesis tool suit on a multi-omics dataset of 506 Brain Lower Grade Glioma (LGG) and 288 Glioblastoma Multiforme (GBM) samples with matching mutation and copy number alteration. This data were downloaded from the cbioportal ({% cite cbioportal-website %}). The data was split into train (70% of the samples) and test (30% of the samples).
