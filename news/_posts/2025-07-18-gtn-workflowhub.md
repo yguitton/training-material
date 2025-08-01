@@ -21,7 +21,7 @@ The GTN encompasses a wide array of tutorials that guide researchers in the appl
 
 The existing set of registered GTN workflows can be [**viewed here**](https://workflowhub.eu/projects/12/workflows).
 
-Read the WorkflowHub publication to learn more about the registry: 
+Read the new WorkflowHub publication to learn more about the registry: 
 
 > Gustafsson, O.J.R., Wilkinson, S.R., Bacall, F. et al. WorkflowHub: a registry for computational workflows. Sci Data 12, 837 (2025). https://doi.org/10.1038/s41597-025-04786-3 
 
