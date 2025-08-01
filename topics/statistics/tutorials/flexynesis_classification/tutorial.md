@@ -52,12 +52,12 @@ This training is inspired from the original flexynesis analysis notebook: [brca_
 >     -> `{{ page.title }}`):
 >
 >    ```
->    https://zenodo.org/api/records/16287482/files/train_cna_brca.tabular
->    https://zenodo.org/api/records/16287482/files/train_gex_brca.tabular
->    https://zenodo.org/api/records/16287482/files/train_clin_brca.tabular
->    https://zenodo.org/api/records/16287482/files/test_cna_brca.tabular
->    https://zenodo.org/api/records/16287482/files/test_gex_brca.tabular
->    https://zenodo.org/api/records/16287482/files/test_clin_brca.tabular
+>    https://zenodo.org/records/16287482/files/train_cna_brca.tabular
+>    https://zenodo.org/records/16287482/files/train_gex_brca.tabular
+>    https://zenodo.org/records/16287482/files/train_clin_brca.tabular
+>    https://zenodo.org/records/16287482/files/test_cna_brca.tabular
+>    https://zenodo.org/records/16287482/files/test_gex_brca.tabular
+>    https://zenodo.org/records/16287482/files/test_clin_brca.tabular
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
@@ -76,7 +76,7 @@ This training is inspired from the original flexynesis analysis notebook: [brca_
 {: .hands_on}
 
 
-## Classification task with Flexynesis
+## Classification task with Flexynesis (1 iteration)
 
 Flexynesis automatically handles key preprocessing steps such as:
 
@@ -105,7 +105,21 @@ Flexynesis automatically handles key preprocessing steps such as:
 >    > Flexynesis performs all data cleaning internally as part of its pipeline.
 >    {: .comment}
 
-> <hands-on-title> Task description </hands-on-title>
+Now it's time to train model using Flexynesis:
+* We choose whether we want to concatenate the data matrices (early integration) or not (intermediate integration) before running them through the neural networks.
+* We want to apply feature selection and keep only top 10% of the features. In the end, we want to keep at least 1000 features per omics layer.
+* We apply a variance threshold (for simplicity of demonstration, we want to keep a few most variable features). Setting this to 80, will remove 80% of the features with the lowest variation from each modality.
+* We choose which model architecture to use:
+  * DirectPred: a fully connected network (standard multilayer perceptron) with supervisor heads (one MLP for each target variable)
+* `target_variables`: Column headers in clinical data.
+* `hpo_iter`: How many hyperparameter search steps to implement:
+  * This example runs 1 hyperparameter search step using DirectPred architecture and a hyperparameter configuration space defined for "DirectPred" with a supervisor head for "CLAUDIN_SUBTYPE" variable. At the end of the parameter optimization, the best model will be selected and returned.
+
+Training a model longer than needed causes the model to overfit, yield worse validation performance, and also it takes a longer time to train the models, considering if we have to run a long hyperparameter optimization routine, not just for 1 step, but say more than 100 steps.
+
+It is possible to set early stopping criteria in flexynesis, which is basically a simple callback that is handled by `Pytorch Lightning`. This is regulated using the `early_stop_patience`. When set to e.g. 10, the training will stop if the validation loss has not been improved in the last 10 epochs.
+
+> <hands-on-title> Flexynesis </hands-on-title>
 >
 > 1. {% tool [Flexynesis](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis/flexynesis/0.2.20+galaxy3) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
@@ -123,6 +137,7 @@ Flexynesis automatically handles key preprocessing steps such as:
 >        - *"Model class"*: `DirectPred`
 >        - *"Column name in the train clinical data to use for predictions, multiple targets are allowed"*: `Column: 16`
 >        - In *"Advanced Options"*:
+>            - *"Fusion method"*: `intermediate`
 >            - *"Variance threshold (as percentile) to drop low variance features."*: `0.8`
 >            - *"Minimum number of features to retain after feature selection."*: `100`
 >            - *"Top percentile features (among the features remaining after variance filtering and data cleanup) to retain after feature selection."*: `10.0`
@@ -143,8 +158,6 @@ Flexynesis automatically handles key preprocessing steps such as:
 >
 > 1. What are main outputs of Flexynesis?
 > 2. What does the generated plots show?
-> 3. What information is in `job.stats` output?
-> 4. What are top 10 features in `job.feature_importance.GradientShap`?
 >
 > > <solution-title></solution-title>
 > >
@@ -154,179 +167,165 @@ Flexynesis automatically handles key preprocessing steps such as:
 > > * job.feature_importance.GradientShap (feature importance calculated by GradientShap method)
 > > * job.feature_importance.IntegratedGradients (feature importance calculated by IntegratedGradients method)
 > > * job.feature_logs.cna
-> > * job.feature_logs.mut
+> > * job.feature_logs.gex
 > > * job.predicted_labels (Prediction of the created model)
 > > * job.stats
 > >
 > > 2. There are two figures in plot collection:
-> > * The first plot is the Kaplan Meier Curves of the risk subtypes.
-> > * The second plot is a forest plot of calculated Cox-PH model of top 5 markers.
-> >
-> > 3. It shows that we achieved a reasonable performance of Harrell's Concordance Index (C-index) on test data.
-> >
-> > 4. *IDH2*, *IDH1*, *HIVEP3*, *PIK3CA*, *EGFR*, *RELN*, *ATRX*, *INSRR*, *TP53*, *COL6A3*. *IDH1*, *TP53*, and *ATRX* are extensively studied and been shown to be relevant in gliomas ({% cite Koschmann2016 %}).
+> > * A PCA plot of the Embeddings colored by known, true subtypes
+> > * A PCA plot of the Embeddings colored by predicted subtypes
 > >
 > {: .solution}
 >
 {: .question}
 
-## Sub-step with **Extract dataset**
+## Generate UMAP plot of the embeddings
 
-> <hands-on-title> Task description </hands-on-title>
+To generate a UMAP plot, we need to extract the embeddings and predicted table.
+
+> <hands-on-title> Extract embeddings and prediction </hands-on-title>
 >
 > 1. {% tool [Extract dataset](__EXTRACT_DATASET__) %} with the following parameters:
 >    - {% icon param-file %} *"Input List"*: `results` (output of **Flexynesis** {% icon tool %})
 >    - *"How should a dataset be selected?"*: `Select by element identifier`
 >        - *"Element identifier:"*: `job.embeddings_test`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
-{: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
-
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Extract dataset**
-
-> <hands-on-title> Task description </hands-on-title>
->
-> 1. {% tool [Extract dataset](__EXTRACT_DATASET__) %} with the following parameters:
+> 2. {% tool [Extract dataset](__EXTRACT_DATASET__) %} with the following parameters:
 >    - {% icon param-file %} *"Input List"*: `results` (output of **Flexynesis** {% icon tool %})
 >    - *"How should a dataset be selected?"*: `Select by element identifier`
 >        - *"Element identifier:"*: `job.predicted_labels`
 >
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
->
 {: .hands_on}
-
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
 
 > <question-title></question-title>
 >
-> 1. Question1?
-> 2. Question2?
+> 1. What information do we have in predicted labels?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. Answer for question1
-> > 2. Answer for question2
+> > 1. It is a tabular file which contains the probability of each subtype for each sample and a final predicted label based on the probability.
 > >
 > {: .solution}
 >
 {: .question}
 
-## Sub-step with **Sort**
+As you have seen in predicted labels, each sample has a prediction value for each subtype. For UMAP plot we only need the final predicted label.
 
-> <hands-on-title> Task description </hands-on-title>
+> <hands-on-title> Remove probabilities (duplicates) </hands-on-title>
 >
 > 1. {% tool [Sort](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/9.5+galaxy2) %} with the following parameters:
 >    - *"Number of header lines"*: `1`
 >    - In *"Column selections"*:
 >        - {% icon param-repeat %} *"Insert Column selections"*
->            - *"on column"*: `c1`
+>            - *"on column"*: `Column: 1`
 >    - *"Output unique values"*: `Yes`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
+And finally the UMAP plot.
 
-> <question-title></question-title>
->
-> 1. Question1?
-> 2. Question2?
->
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
->
-{: .question}
-
-## Sub-step with **Flexynesis plot**
-
-> <hands-on-title> Task description </hands-on-title>
+> <hands-on-title> UMAP plot </hands-on-title>
 >
 > 1. {% tool [Flexynesis plot](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_plot/flexynesis_plot/0.2.20+galaxy3) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Flexynesis plot"*: `Dimensionality reduction`
->        - {% icon param-file %} *"Predicted labels"*: `outfile` (output of **Sort** {% icon tool %})
->        - *"Column in the labels file to use for coloring the points in the plot"*: `c5`
+>        - {% icon param-file %} *"Predicted labels"*: `table` (output of **Sort** {% icon tool %})
+>        - *"Column in the labels file to use for coloring the points in the plot"*: `Column: 5`
 >        - *"Transformation method"*: `UMAP`
->
->    ***TODO***: *Check parameter descriptions*
->
->    ***TODO***: *Consider adding a comment or tip box*
->
->    > <comment-title> short description </comment-title>
->    >
->    > A comment about the tool or something else. This box can also be in the main text
->    {: .comment}
 >
 {: .hands_on}
 
-***TODO***: *Consider adding a question to test the learners understanding of the previous exercise*
+## Longer training
 
-> <question-title></question-title>
+In reality, hyperparameter optimization should run for multiple steps so that the parameter search space is large enough to find a good set. However, for demonstration purposes, we only run it for 5 steps here.
+
+> <hands-on-title> Flexynesis </hands-on-title>
 >
-> 1. Question1?
-> 2. Question2?
+> 1. {% tool [Flexynesis](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis/flexynesis/0.2.20+galaxy3) %} with the following parameters:
+>    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
+>    - *"Type of Analysis"*: `Supervised training`
+>        - {% icon param-file %} *"Training clinical data"*: `train_clin_brca.tabular`
+>        - {% icon param-file %} *"Test clinical data"*: `test_clin_brca.tabular`
+>        - {% icon param-file %} *"Training omics data"*: `train_gex_brca.tabular`
+>        - {% icon param-file %} *"Test omics data"*: `test_gex_brca.tabular`
+>        - *"What type of assay is your input?"*: `gex`
+>        - In *"Multiple omics layers?"*:
+>            - {% icon param-repeat %} *"Insert Multiple omics layers?"*
+>                - {% icon param-file %} *"Training omics data"*: `train_cna_brca.tabular`
+>        - {% icon param-file %} *"Test clinical data"*: `test_cna_brca.tabular`
+>                - *"What type of assay is your input?"*: `cna`
+>        - *"Model class"*: `DirectPred`
+>        - *"Column name in the train clinical data to use for predictions, multiple targets are allowed"*: `Column: 16`
+>        - In *"Advanced Options"*:
+>            - *"Fusion method"*: `intermediate`
+>            - *"Variance threshold (as percentile) to drop low variance features."*: `0.8`
+>            - *"Minimum number of features to retain after feature selection."*: `100`
+>            - *"Top percentile features (among the features remaining after variance filtering and data cleanup) to retain after feature selection."*: `10.0`
+>            - *"Number of iterations for hyperparameter optimization."*: `5`
+>        - In *"Visualization"*:
+>            - *"Generate embeddings plot?"*: `Yes`
+>            - *"Generate kaplan meier curves plot?"*: `No`
+>            - *"Generate hazard ratio plot?"*: `No`
+>            - *"Generate scatter plot?"*: `No`
+>            - *"Generate concordance heatmap plot?"*: `No`
+>            - *"Generate precision-recall curves plot?"*: `No`
+>            - *"Generate ROC curves plot?"*: `No`
+>            - *"Generate boxplot?"*: `No`
 >
-> > <solution-title></solution-title>
-> >
-> > 1. Answer for question1
-> > 2. Answer for question2
-> >
-> {: .solution}
+{: .hands_on}
+
+## Generate UMAP plot of the embeddings
+
+To generate a UMAP plot, we need to extract the embeddings and predicted table.
+
+> <hands-on-title> Extract embeddings and prediction </hands-on-title>
 >
-{: .question}
+> 1. {% tool [Extract dataset](__EXTRACT_DATASET__) %} with the following parameters:
+>    - {% icon param-file %} *"Input List"*: `results` (output of **Flexynesis** {% icon tool %})
+>    - *"How should a dataset be selected?"*: `Select by element identifier`
+>        - *"Element identifier:"*: `job.embeddings_test`
+>
+> 2. {% tool [Extract dataset](__EXTRACT_DATASET__) %} with the following parameters:
+>    - {% icon param-file %} *"Input List"*: `results` (output of **Flexynesis** {% icon tool %})
+>    - *"How should a dataset be selected?"*: `Select by element identifier`
+>        - *"Element identifier:"*: `job.predicted_labels`
+>
+{: .hands_on}
 
+> <hands-on-title> Remove probabilities (duplicates) </hands-on-title>
+>
+> 1. {% tool [Sort](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/9.5+galaxy2) %} with the following parameters:
+>    - *"Number of header lines"*: `1`
+>    - In *"Column selections"*:
+>        - {% icon param-repeat %} *"Insert Column selections"*
+>            - *"on column"*: `Column: 1`
+>    - *"Output unique values"*: `Yes`
+>
+{: .hands_on}
 
-## Re-arrange
+And finally the UMAP plot.
 
-To create the template, each step of the workflow had its own subsection.
-
-***TODO***: *Re-arrange the generated subsections into sections or other subsections.
-Consider merging some hands-on boxes to have a meaningful flow of the analyses*
+> <hands-on-title> UMAP plot </hands-on-title>
+>
+> 1. {% tool [Flexynesis plot](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_plot/flexynesis_plot/0.2.20+galaxy3) %} with the following parameters:
+>    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
+>    - *"Flexynesis plot"*: `Dimensionality reduction`
+>        - {% icon param-file %} *"Predicted labels"*: `table` (output of **Sort** {% icon tool %})
+>        - *"Column in the labels file to use for coloring the points in the plot"*: `Column: 5`
+>        - *"Transformation method"*: `UMAP`
+>
+{: .hands_on}
 
 # Conclusion
 
-Sum up the tutorial and the key takeaways here. We encourage adding an overview image of the
-pipeline used.
+In this tutorial, we demonstrated how Flexynesis can model breast cancer subtypes from multi omics data using a deep generative framework. The tool handles preprocessing, feature selection, and latent space learning automatically, making it efficient and robust.
+
+By training on TCGA BRCA data, we:
+
+    Visualized meaningful subtype separation in the latent space
+
+    Identified subtype-specific genes
+
+    Showed how learned features relate to known clinical labels
+
+Flexynesis provides an accessible way to explore complex omics datasets and uncover biological structure without extensive manual tuning.
