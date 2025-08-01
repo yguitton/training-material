@@ -76,7 +76,7 @@ This training is inspired from the original flexynesis analysis notebook: [brca_
 {: .hands_on}
 
 
-## Classification task with Flexynesis (1 iteration)
+# Classification task with Flexynesis (1 iteration)
 
 Flexynesis automatically handles key preprocessing steps such as:
 
@@ -214,10 +214,12 @@ As you have seen in predicted labels, each sample has a prediction value for eac
 > <hands-on-title> Remove probabilities (duplicates) </hands-on-title>
 >
 > 1. {% tool [Sort](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/9.5+galaxy2) %} with the following parameters:
+>    - *"Sort Query"*: `job.predicted_labels` (output of **Extract dataset** {% icon tool %})
 >    - *"Number of header lines"*: `1`
 >    - In *"Column selections"*:
 >        - {% icon param-repeat %} *"Insert Column selections"*
 >            - *"on column"*: `Column: 1`
+>            - *"Flavor"*: `Alphabetical sort `
 >    - *"Output unique values"*: `Yes`
 >
 {: .hands_on}
@@ -230,14 +232,16 @@ And finally the UMAP plot.
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Flexynesis plot"*: `Dimensionality reduction`
 >        - {% icon param-file %} *"Predicted labels"*: `table` (output of **Sort** {% icon tool %})
+>        - {% icon param-file %} *"Embeddings"*: `job.embeddings_test` (output of **Extract dataset** {% icon tool %})
 >        - *"Column in the labels file to use for coloring the points in the plot"*: `Column: 5`
 >        - *"Transformation method"*: `UMAP`
 >
 {: .hands_on}
 
-## Longer training
+# Longer training
 
-In reality, hyperparameter optimization should run for multiple steps so that the parameter search space is large enough to find a good set. However, for demonstration purposes, we only run it for 5 steps here.
+In reality, hyperparameter optimization should run for multiple steps so that the parameter search space is large enough to find a good set. However, for demonstration purposes, we only run it for 5 steps here:
+- *"Number of iterations for hyperparameter optimization."*: `5`
 
 > <hands-on-title> Flexynesis </hands-on-title>
 >
@@ -295,10 +299,12 @@ To generate a UMAP plot, we need to extract the embeddings and predicted table.
 > <hands-on-title> Remove probabilities (duplicates) </hands-on-title>
 >
 > 1. {% tool [Sort](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/9.5+galaxy2) %} with the following parameters:
+>    - *"Sort Query"*: `job.predicted_labels` (output of **Extract dataset** {% icon tool %})
 >    - *"Number of header lines"*: `1`
 >    - In *"Column selections"*:
 >        - {% icon param-repeat %} *"Insert Column selections"*
 >            - *"on column"*: `Column: 1`
+>            - *"Flavor"*: `Alphabetical sort `
 >    - *"Output unique values"*: `Yes`
 >
 {: .hands_on}
@@ -311,6 +317,7 @@ And finally the UMAP plot.
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Flexynesis plot"*: `Dimensionality reduction`
 >        - {% icon param-file %} *"Predicted labels"*: `table` (output of **Sort** {% icon tool %})
+>        - {% icon param-file %} *"Embeddings"*: `job.embeddings_test` (output of **Extract dataset** {% icon tool %})
 >        - *"Column in the labels file to use for coloring the points in the plot"*: `Column: 5`
 >        - *"Transformation method"*: `UMAP`
 >
