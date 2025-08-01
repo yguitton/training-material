@@ -57,12 +57,12 @@ This training is inspired from the original flexynesis analysis notebook: [survi
 > 2. Import the files from [Zenodo]({{ page.zenodo_link }}):
 >
 >    ```
->    https://zenodo.org/api/records/16287482/files/train_mut_lgggbm.tabular
->    https://zenodo.org/api/records/16287482/files/train_clin_lgggbm.tabular
->    https://zenodo.org/api/records/16287482/files/test_cna_lgggbm.tabular
->    https://zenodo.org/api/records/16287482/files/test_mut_lgggbm.tabular
->    https://zenodo.org/api/records/16287482/files/test_clin_lgggbm.tabular
->    https://zenodo.org/api/records/16287482/files/train_cna_lgggbm.tabular
+>    https://zenodo.org/records/16287482/files/train_mut_lgggbm.tabular
+>    https://zenodo.org/records/16287482/files/train_clin_lgggbm.tabular
+>    https://zenodo.org/records/16287482/files/test_cna_lgggbm.tabular
+>    https://zenodo.org/records/16287482/files/test_mut_lgggbm.tabular
+>    https://zenodo.org/records/16287482/files/test_clin_lgggbm.tabular
+>    https://zenodo.org/records/16287482/files/train_cna_lgggbm.tabular
 >    ```
 >
 >    {% snippet faqs/galaxy/datasets_import_via_link.md %}
