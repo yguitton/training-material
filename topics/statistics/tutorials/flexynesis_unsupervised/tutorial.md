@@ -59,6 +59,12 @@ Here, we demonstrate the capabilities of flexynesis on a Single-cell CITE-Seq da
 
 In the first part of this tutorial we will upload processed CITE-seq data from bone marrow tissue.
 
+All data are in tabular format and they include:
+
+* ADT (Antibody-Derived Tags which indicates the quantification of cell surface proteins) data
+* RNA expression data
+* Clinical data includes some information about each cell like number of RNAs, genes, ... (In next steps we will use the clustering information "**celltype_l2**")
+
 ## Get data
 
 > <hands-on-title> Data Upload </hands-on-title>
