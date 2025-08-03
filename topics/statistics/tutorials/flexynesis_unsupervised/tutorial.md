@@ -288,6 +288,9 @@ AMI ranges from 0 (no agreement) to 1 (perfect match) and ARI ranges from -1 (co
 > >
 > > 1. We can see that like true labels, each UMAP clusters have unique Louvain clusters assigned. This shows that this clustering based on the latent space is close to the ground truth. However, we still don't know which Louvain cluster, corresponds to which true label.
 > >
+> >![UMAP plot of test Embeddings colored by true labels](../../images/flexynesis_unsupervised/true_label_umap.jpeg "UMAP plot of test Embeddings colored by true labels")
+> >![UMAP plot of test Embeddings colored by predicted labels](../../images/flexynesis_unsupervised/predicted_label_umap.jpeg "UMAP plot of test Embeddings colored by predicted labels")
+> >
 > {: .solution}
 >
 {: .question}
@@ -305,6 +308,8 @@ To see the real concordance between Louvain clusters and true values, we can bse
 {: .hands_on}
 
 Now it is easier to see which Lovain cluster corresponds to which true value.
+
+![Concordance plot of true values vs predicted values](../../images/flexynesis_unsupervised/concordance.jpeg "Concordance plot of true values vs predicted values")
 
 
 # Conclusion
