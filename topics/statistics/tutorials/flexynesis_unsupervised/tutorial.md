@@ -177,7 +177,7 @@ Now, we extract the sample embeddings from the test dataset, cluster the cells u
 >
 > > <solution-title></solution-title>
 > >
-> > 1. The output is the `test-clin_BMscRNAseq.tabular` file with a column added containing Louvain clustering values,
+> > 1. The output is the `test-clin_BMscRNAseq.tabular` file with a column added containing Louvain clustering values.
 > >
 > {: .solution}
 >
