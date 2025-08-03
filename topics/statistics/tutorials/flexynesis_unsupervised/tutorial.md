@@ -191,15 +191,17 @@ Now we will use k-means clustering with a varying number of expected clusters an
 > 1. {% tool [Flexynesis utils](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_utils/flexynesis_utils/0.2.20+galaxy3) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Flexynesis utils"*: `Get Optimal Clusters`
+>        - {% icon param-file %} *"Matrix"*: `job.embeddings_test` (output of **Extract dataset** {% icon tool %})
 >        - {% icon param-file %} *"Predicted labels"*: `louvain_clustering` (output of **Flexynesis utils** {% icon tool %})
->        - *"Minimum number of clusters to try"*: `10`
->        - *"Maximum number of clusters to try"*: `20`
+>        - *"Minimum number of clusters to try"*: `5`
+>        - *"Maximum number of clusters to try"*: `15`
 >
 >    > <comment-title> Predicted labels </comment-title>
 >    >
 >    > Please make sure to use the output of Louvain clustering. We need those values in one table for next steps.
 >    {: .comment}
 >
+> 2. Rename the output to `labels with optimal clusters`
 {: .hands_on}
 
 > <question-title></question-title>
@@ -226,7 +228,7 @@ AMI ranges from 0 (no agreement) to 1 (perfect match) and ARI ranges from -1 (co
 > 1. {% tool [Flexynesis utils](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_utils/flexynesis_utils/0.2.20+galaxy3) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Flexynesis utils"*: `Compute AMI and ARI`
->        - {% icon param-file %} *"Predicted labels"*: `get_optimal_clusters` (output of **Flexynesis utils** {% icon tool %})
+>        - {% icon param-file %} *"Predicted labels"*: `labels with optimal clusters` (output of **Flexynesis utils** {% icon tool %})
 >        - *"Column name in the labels file to use for the true labels"*: `c10` (celltype_l2)
 >        - *"Column name in the labels file to use for the predicted labels"*: `c12` (louvain_cluster)
 >
@@ -237,7 +239,7 @@ AMI ranges from 0 (no agreement) to 1 (perfect match) and ARI ranges from -1 (co
 > 1. {% tool [Flexynesis utils](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_utils/flexynesis_utils/0.2.20+galaxy3) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Flexynesis utils"*: `Compute AMI and ARI`
->        - {% icon param-file %} *"Predicted labels"*: `get_optimal_clusters` (output of **Flexynesis utils** {% icon tool %})
+>        - {% icon param-file %} *"Predicted labels"*: `labels with optimal clusters` (output of **Flexynesis utils** {% icon tool %})
 >        - *"Column name in the labels file to use for the true labels"*: `c10` (celltype_l2)
 >        - *"Column name in the labels file to use for the predicted labels"*: `c13` (optimal_kmeans_cluster)
 {: .hands_on}
@@ -262,7 +264,8 @@ AMI ranges from 0 (no agreement) to 1 (perfect match) and ARI ranges from -1 (co
 > 1. {% tool [Flexynesis plot](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_plot/flexynesis_plot/0.2.20+galaxy3) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Flexynesis plot"*: `Dimensionality reduction`
->        - {% icon param-file %} *"Predicted labels"*: `get_optimal_clusters` (Input dataset)
+>        - {% icon param-file %} *"Embeddings"*: `job.embeddings_test` (output of **Extract dataset** {% icon tool %})
+>        - {% icon param-file %} *"Predicted labels"*: `labels with optimal clusters` (output of **Flexynesis utils** {% icon tool %})
 >        - *"Column in the labels file to use for coloring the points in the plot"*: `c10` (celltype_l2)
 >        - *"Transformation method"*: `UMAP`
 {: .hands_on}
@@ -272,7 +275,7 @@ AMI ranges from 0 (no agreement) to 1 (perfect match) and ARI ranges from -1 (co
 > 1. {% tool [Flexynesis plot](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_plot/flexynesis_plot/0.2.20+galaxy3) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Flexynesis plot"*: `Dimensionality reduction`
->        - {% icon param-file %} *"Predicted labels"*: `get_optimal_clusters` (output of **Flexynesis utils** {% icon tool %})
+>        - {% icon param-file %} *"Predicted labels"*: `labels with optimal clusters` (output of **Flexynesis utils** {% icon tool %})
 >        - *"Column in the labels file to use for coloring the points in the plot"*: `c12` (louvain_cluster)
 >        - *"Transformation method"*: `UMAP`
 {: .hands_on}
@@ -296,7 +299,7 @@ To see the real concordance between Louvain clusters and true values, we can bse
 > 1. {% tool [Flexynesis plot](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis_plot/flexynesis_plot/0.2.20+galaxy3) %} with the following parameters:
 >    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
 >    - *"Flexynesis plot"*: `Label concordance heatmap`
->        - {% icon param-file %} *"Predicted labels"*: `get_optimal_clusters` (output of **Flexynesis utils** {% icon tool %})
+>        - {% icon param-file %} *"Predicted labels"*: `labels with optimal clusters` (output of **Flexynesis utils** {% icon tool %})
 >        - *"Column in the labels file to use for true labels"*: `c10` (celltype_l2)
 >        - *"Column in the labels file to use for predicted labels"*: `c12` (louvain_cluster)
 {: .hands_on}
