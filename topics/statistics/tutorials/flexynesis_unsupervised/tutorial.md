@@ -91,7 +91,7 @@ All data are in tabular format and they include:
 >
 >    {% snippet faqs/galaxy/datasets_change_datatype.md datatype="tabular" %}
 >
-> 5. Add to each database a tag corresponding to modality (RNA, ADT)
+> 5. Add to each dataset a representative tag (RNA, ADT, clin)
 >
 >    {% snippet faqs/galaxy/datasets_add_tag.md %}
 >
