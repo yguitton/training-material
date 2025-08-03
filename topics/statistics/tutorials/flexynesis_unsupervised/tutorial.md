@@ -184,7 +184,7 @@ Now, we extract the sample embeddings from the test dataset, cluster the cells u
 {: .question}
 
 ## Get optimal clusters
-We can also use k-means clustering with a varying number of expected clusters and pick the best one based on silhouette scores.
+Now we will use k-means clustering with a varying number of expected clusters and pick the best one based on silhouette scores.
 
 > <hands-on-title> Get optimal clusters </hands-on-title>
 >
