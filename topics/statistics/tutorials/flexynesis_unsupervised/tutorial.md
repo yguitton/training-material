@@ -243,7 +243,7 @@ AMI ranges from 0 (no agreement) to 1 (perfect match) and ARI ranges from -1 (co
 {: .hands_on}
 > <question-title></question-title>
 >
-> 1. Which one of Louvain and k-means have better concordance?
+> 1. Which of the clusterings has better concordance with the known cell type? Louvain and k-means?
 >
 > > <solution-title></solution-title>
 > >
