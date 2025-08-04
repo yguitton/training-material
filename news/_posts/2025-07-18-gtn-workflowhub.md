@@ -1,7 +1,9 @@
 ---
 title: "GTN is now integrated with WorkflowHub"
 contributions:
-  authorship: [supernord, shiltemann, bgruening]
+  authorship: [supernord, hexylena, fbacall, bedroesb, shiltemann, bgruening, frederikcoppens, CaroleGoble]
+  infrastructure: [hexylena, fbacall, bedroesb, uwwint, bgruening, frederikcoppens, CaroleGoble]
+  funding: []
 tags: [gtn, workflowhub, workflows, fair]
 layout: news
 cover: news/images/workflowhub.png
@@ -28,8 +30,6 @@ Each workflow entry contains rich metadata, version history, license information
 
 The existing set of registered GTN workflows can be [**viewed here**](https://workflowhub.eu/projects/12/workflows).
 
-Read the new WorkflowHub publication to learn more about the registry: 
-
-> Gustafsson, O.J.R., Wilkinson, S.R., Bacall, F. et al. WorkflowHub: a registry for computational workflows. Sci Data 12, 837 (2025). https://doi.org/10.1038/s41597-025-04786-3 
+Read the new WorkflowHub publication to learn more about the registry: {% cite gustafsson2025workflowhub %}
 
 The integration with WorkflowHub will be improved over time, enriching the metadata made discoverable through registration, and further improving the interoperability of WorkflowHub with the Galaxy ecosystem.
