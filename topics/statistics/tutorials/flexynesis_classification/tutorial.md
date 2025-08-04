@@ -326,6 +326,10 @@ And finally the UMAP plot.
 >
 {: .hands_on}
 
+{% include _includes/cyoa-choices.html option1="Let's try TABPFN!" option2="I'll try later!" default="I'll try later!" text="We have another tool for the classification task called **TABPFN** which is a foundation model for tabular data. We can repeat the classification task using TABPFN and compare it with Flexynesis. Please note that TABPFN is slow on CPU and **it will take a lot of time to finish on this dataset**. What do you say? Should we continue with TABPFN?" disambiguation="tool"%}
+
+<div class="Ill-try-later" markdown="1">
+
 # Conclusion
 
 In this tutorial, we demonstrated how Flexynesis can model breast cancer subtypes from multi omics data using a deep generative framework. The tool handles preprocessing, feature selection, and latent space learning automatically, making it efficient and robust.
@@ -339,3 +343,4 @@ By training on TCGA BRCA data, we:
   * Showed how learned features relate to known clinical labels
 
 Flexynesis provides an accessible way to explore complex omics datasets and uncover biological structure without extensive manual tuning.
+</div>
