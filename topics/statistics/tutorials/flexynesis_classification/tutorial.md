@@ -20,7 +20,7 @@ contributors:
 - bgruening
 answer_histories:
     - label: "usegalaxy.eu"
-      history: https://usegalaxy.eu/u/nilchia/h/final-modeling-breast-cancer-subtypes-test-wf
+      history: https://usegalaxy.eu/u/nilchia/h/final-modeling-breast-cancer-subtypes-tabpfn
       date: 2025-08-01
 ---
 
@@ -687,4 +687,63 @@ Now the CNA data is ready for TABPFN. Let's do the same for GEX!
 >
 > 2. Rename the output to `TABPFN ready test data - GEX`
 {: .hands_on}
+
+Now it is time to run TABPFN for CNA and GEX data.
+
+# TABPFN
+
+> <warning-title>High computation time</warning-title>
+>
+> TABPFN takes a lot of time to do the classification task on CPU (With our data it takes about 7 hours)
+> You can instead import the output (data 49-52) from this [archived history](https://usegalaxy.eu/u/nilchia/h/final-modeling-breast-cancer-subtypes-tabpfn).
+{: .warning}
+
+> <hands-on-title> TABPFN on CNA </hands-on-title>
+>
+> 1. {% tool [Tabular data prediction using TabPFN](toolshed.g2.bx.psu.edu/repos/bgruening/tabpfn/tabpfn/2.0.9+galaxy0) %} with the following parameters:
+>    - *"Select a machine learning task"*: `Classification`
+>    - {% icon param-file %} *"Train data"*: `TABPFN ready train data - CNA` (output of **Advanced Cut** {% icon tool %})
+>    - {% icon param-file %} *"test data"*: `TABPFN ready test data - CNA` (output of **Advanced Cut** {% icon tool %})
+>    - *"Does test data contain labels?"*: `Yes`
+>
+{: .hands_on}
+
+> <hands-on-title> TABPFN on GEX </hands-on-title>
+>
+> 1. {% tool [Tabular data prediction using TabPFN](toolshed.g2.bx.psu.edu/repos/bgruening/tabpfn/tabpfn/2.0.9+galaxy0) %} with the following parameters:
+>    - *"Select a machine learning task"*: `Classification`
+>    - {% icon param-file %} *"Train data"*: `TABPFN ready train data - GEX` (output of **Advanced Cut** {% icon tool %})
+>    - {% icon param-file %} *"test data"*: `TABPFN ready test data - GEX` (output of **Advanced Cut** {% icon tool %})
+>    - *"Does test data contain labels?"*: `Yes`
+>
+{: .hands_on}
+
+> <question-title></question-title>
+>
+> 1. Compare the PR-curve plots of both flexynesis and TABPFN predictions, which one is more accurate?
+>
+> > <solution-title></solution-title>
+> >
+> > 1. Looking and the plots, It is clear that Flexynesis has overall better prediction compared to TABPFN
+> >![Precision-Recall curve plot of Flexynesis](../../images/flexynesis_classification/pr_curve-flexynesis.jpeg "Precision-Recall curve plot of Flexynesis")
+> >![Precision-Recall curve plot of TABPFN on CNA](../../images/flexynesis_classification/pr_curve-tabpfn_cna.png "Precision-Recall curve plot of TABPFN on CNA")
+> >![Precision-Recall curve plot of TABPFN on GEX](../../images/flexynesis_classification/pr_curve-tabpfn_gex.png "Precision-Recall curve plot of TABPFN on GEX")
+> {: .solution}
+>
+{: .question}
+
+# Conclusion
+
+In this tutorial, we demonstrated how Flexynesis can model breast cancer subtypes from multi omics data using a deep generative framework. The tool handles preprocessing, feature selection, and latent space learning automatically, making it efficient and robust.
+
+By training on TCGA BRCA data, we:
+
+  * Visualized meaningful subtype separation in the latent space
+
+  * Identified subtype-specific genes
+
+  * Showed how learned features relate to known clinical labels
+
+Flexynesis provides a fast and accessible way to explore complex omics datasets and uncover biological structure without extensive manual tuning.
+
 </div>
