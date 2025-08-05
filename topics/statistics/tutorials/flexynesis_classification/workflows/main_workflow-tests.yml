@@ -1,4 +1,4 @@
-- doc: Test outline for Final---Modeling-Breast-Cancer-Subtypes
+- doc: Test outline for Final---Modeling-Breast-Cancer-Subtypes-+-TABPFN
   job:
     clin_train:
       class: File
@@ -8,26 +8,83 @@
       class: File
       location: https://zenodo.org/records/16287482/files/test_clin_brca.tabular
       filetype: tabular
-    omics1_train:
+    gex_train:
       class: File
       location: https://zenodo.org/records/16287482/files/train_gex_brca.tabular
       filetype: tabular
-    omics1_test:
+    gex_test:
       class: File
       location: https://zenodo.org/records/16287482/files/test_gex_brca.tabular
       filetype: tabular
-    omics2_train:
+    cna_train:
       class: File
       location: https://zenodo.org/records/16287482/files/train_cna_brca.tabular
       filetype: tabular
-    omics2_test:
+    cna_test:
       class: File
       location: https://zenodo.org/records/16287482/files/test_cna_brca.tabular
       filetype: tabular
+    number of features to keep: 500
+    Performe TABPFN?: true
   outputs:
-    embedding plot umap:
+    PR curve - TABPFN - gex:
+      asserts:
+        - that: "has_image_center_of_mass"
+          center_of_mass: "400,300"
+          eps: "30"
+        - that: "has_image_channels"
+          channels: "4"
+        - that: "has_image_height"
+          height: "600"
+          delta: "20"
+        - that: "has_image_width"
+          width: "800"
+          delta: "20"
+    TABPFN predictions - gex:
+      asserts:
+        - that: "has_text_matching"
+          expression: "AARD"
+        - that: "has_text_matching"
+          expression: "predicted_labels"
+        - that: "has_n_lines"
+          n: "561"
+    PR curve - TABPFN - cna:
+      asserts:
+        - that: "has_image_center_of_mass"
+          center_of_mass: "400,300"
+          eps: "30"
+        - that: "has_image_channels"
+          channels: "4"
+        - that: "has_image_height"
+          height: "600"
+          delta: "20"
+        - that: "has_image_width"
+          width: "800"
+          delta: "20"
+    TABPFN predictions - cna:
+      asserts:
+        - that: "has_text_matching"
+          expression: "AARD"
+        - that: "has_text_matching"
+          expression: "predicted_labels"
+        - that: "has_n_lines"
+          n: "561"
+    embedding plots pca:
       element_tests:
-        embeddings_umap_known_label:
+        job.embeddings_test_pca_CLAUDIN_SUBTYPE_known:
+          asserts:
+            - that: "has_image_center_of_mass"
+              center_of_mass: "970,730"
+              eps: "30"
+            - that: "has_image_channels"
+              channels: "3"
+            - that: "has_image_height"
+              height: "1460"
+              delta: "20"
+            - that: "has_image_width"
+              width: "1940"
+              delta: "20"
+        job.embeddings_test_pca_CLAUDIN_SUBTYPE_predicted:
           asserts:
             - that: "has_image_center_of_mass"
               center_of_mass: "970,730"
@@ -90,9 +147,9 @@
               expression: "method\tvar\tvariable_type\tmetric\tvalue"
             - that: "has_text_matching"
               expression: "balanced_acc"
-    embedding plots pca:
+    PR curve - Flexynesis:
       element_tests:
-        job.embeddings_test_pca_CLAUDIN_SUBTYPE_known:
+        labels_pr_curves_CLAUDIN_SUBTYPE:
           asserts:
             - that: "has_image_center_of_mass"
               center_of_mass: "970,730"
@@ -100,12 +157,14 @@
             - that: "has_image_channels"
               channels: "3"
             - that: "has_image_height"
-              height: "1460"
+              height: "1450"
               delta: "20"
             - that: "has_image_width"
               width: "1940"
               delta: "20"
-        job.embeddings_test_pca_CLAUDIN_SUBTYPE_predicted:
+    embedding plot umap - niter1:
+      element_tests:
+        embeddings_umap_known_label:
           asserts:
             - that: "has_image_center_of_mass"
               center_of_mass: "970,730"
@@ -113,7 +172,22 @@
             - that: "has_image_channels"
               channels: "3"
             - that: "has_image_height"
-              height: "1460"
+              height: "1450"
+              delta: "20"
+            - that: "has_image_width"
+              width: "1940"
+              delta: "20"
+    embedding plot umap - niter5:
+      element_tests:
+        embeddings_umap_known_label:
+          asserts:
+            - that: "has_image_center_of_mass"
+              center_of_mass: "970,730"
+              eps: "30"
+            - that: "has_image_channels"
+              channels: "3"
+            - that: "has_image_height"
+              height: "1450"
               delta: "20"
             - that: "has_image_width"
               width: "1940"
