@@ -108,7 +108,6 @@ This tutorial explains how to qualify and calibrate the nitrate sensor mounted o
 > 4b. Search “Argo-Glider Nitrate QCV” in the top search bar for run the workflow of one float
 > 
 > ![Image on how to get the right workflow](../../images/bgc_calib/bgc_workflow.png)
-{: .hands_on}
 > 
 > # Workflow human in the loop
 > 
@@ -123,6 +122,7 @@ This tutorial explains how to qualify and calibrate the nitrate sensor mounted o
 > > <tip-title>ODV - Disconnected</tip-title>
 > > If at one point your ODV interface becomes grey with a red panel on the top "X ODV - Disconnected", do NOT panic ;) you just need to reload your tab (circular arrow top left)
 > {: .tip}
+{: .hands_on}
 </div>
 
 <div class="Tools" markdown="1">
@@ -136,7 +136,7 @@ This tutorial explains how to qualify and calibrate the nitrate sensor mounted o
 > - 4a. Click on “Tool” just below “Upload” on the vertical panel on the left. A new vertical panel appears. 
 > - 4b. Search “QCV harmonizer” in the top search bar
 > - 4c. Select the tool. Its configuration page appears on the center
-> - {% tool [QCV harmonizer](harmonize_insitu_to_netcdf) %} with the following parameters:
+> - {% tool [QCV harmonizer](toolshed.g2.bx.psu.edu/repos/ecology/harmonize_insitu_to_netcdf/harmonize_insitu_to_netcdf/3.0+galaxy1) %} with the following parameters:
 >    - *"Input the NetCDF data files"*: 
 > 	- 4d. Select “Dataset collection” 
 > 	- 4e. Select "Switch to column select” then the `4903881` dataset collection (the collection move from the left to the the right column) OR click on “Selected value” above and add 4903881 dataset collection
@@ -150,7 +150,7 @@ This tutorial explains how to qualify and calibrate the nitrate sensor mounted o
 > - 5a. Click on “Tool” just below “Upload” on the vertical panel on the left. A new vertical panel appears. 
 > - 5b. Search “ODV collection manager” in the top search bar
 > - 5c. Select the tool. Its configuration page appears on the center
-> - {% tool [ODV collection manager](tool_odv) %} with the following parameters:
+> - {% tool [ODV collection manager](toolshed.g2.bx.psu.edu/repos/ecology/tool_odv/tool_odv/1.3+galaxy2) %} with the following parameters:
 >    - {% icon param-file %} *"Input raw data"*:
 > 	- 5d. Select “Multiple Datasets”
 > 	- 5e. If the dataset is not yet selected, select "Switch to column select” then the `4903881` dataset collection (the collection move from the left to the the right column) OR click on “Selected value” above and add `4903881` dataset harmonized collection.
@@ -165,7 +165,7 @@ This tutorial explains how to qualify and calibrate the nitrate sensor mounted o
 >       - {% icon param-select %} *"Enter QC convention for the ODV collection output (default: ARGO)"*: `QC convention  for the output file` (default : ARGO QC flag scale, https://archimer.ifremer.fr/doc/00228/33951/32470.pdf - reference table 2)
 >       - *"Enter subsetting (default: 1)"*: `1` (optionnal)
 >	- *"Enter plt (default: 0 for QV, 1 for demo)"*: `0` (optionnal)
-	These last 2 configuration inputs are here in case a reference file is added to the collection such as WOA for comparison. WOA should be harmonized with the “QCV harmonizer” tool beforehand. 
+>	These last 2 configuration inputs are here in case a reference file is added to the collection such as WOA for comparison. WOA should be harmonized with the “QCV harmonizer” tool beforehand. 
 > - 5g. Run the tool by clicking on the corresponding button below. At the end of the process, the tool delivers an ODV spreadsheet collection, named “odv_collection.txt” and an ODV view, named “qualification_startingPoint_nitrate.xview”, ready for launching the ODV interactive tool. Both files are available in the history panel under the galaxy collection “ODV tool collection”. The odv_collection.txt is available more quickly in history with the name “ODV tool output” as well. “ODV tool collection” also includes YYYY-MM-DDTHHMM_galaxy_odv-coll-manager_QV.log explaining all actions performed by this one. 
 >
 > ![Image on how to properly fill in the inputs of the QCV harmonizer tool](../../images/bgc_calib/bgc_5d.png)
@@ -255,7 +255,7 @@ This tutorial explains how to qualify and calibrate the nitrate sensor mounted o
 > - 8a. Click on “Tools” just below “Upload” on the vertical panel on the left. A new vertical panel appears. 
 > - 8b. Search “ODV history manager” in the top search bar
 > - 8c. Select the tool. Its configuration page appears on the center
-> - {% tool [ODV history manager](tool_odv_history) %} with the following parameters:
+> - {% tool [ODV history manager](toolshed.g2.bx.psu.edu/repos/ecology/tool_odv_history/tool_odv_history/1.2+galaxy2) %} with the following parameters:
 > - 8d. In “Tool Parameters” section, select for each input “Multiple Datasets” : 
 >    - {% icon param-file %} *"Input netcdf data*" : Select the harmonized NetCDF file(s) created by step 4.
 >    - {% icon param-file %} *"Input history text file"* : history txt file extracted from ODV after changes
@@ -280,7 +280,7 @@ This tutorial explains how to qualify and calibrate the nitrate sensor mounted o
 > - 10a. Click on “Tools” just below “Upload” on the vertical panel on the left. A new vertical panel appears. 
 > - 10b. Search “Biogeochemical calibration” in the top search bar
 > - 10c. Select the tool. Its configuration page appears on the center
-> - {% tool [BioGeoChemical calibration](tool_biogeochemical_calibration) %} with the following parameters:
+> - {% tool [BioGeoChemical calibration](toolshed.g2.bx.psu.edu/repos/ecology/tool_biogeochemical_calibration/tool_biogeochemical_calibration/2.1+galaxy2) %} with the following parameters:
 > - 10d. In “Tool Parameters” section, select for each input “Multiple Datasets” : 
 >       - {% icon param-file %} *"Input  harmonized netcdf data"*: `4903881 harmonized NetCDF file(s)` with QC report created by step 8, named ###_qced.nc. The selection is easier by clicking on the 3 dots “Browse or Upload datasets”
 >       - {% icon param-file %} *"Input reference data"* (optional): `WOA harmonized data` created by step 9 if you want to estimate the reference nitrate from climatology
@@ -343,3 +343,4 @@ This tutorial explains how to qualify and calibrate the nitrate sensor mounted o
 # Extra information
 
 Coming up soon even more tutorials on and other Earth-System related trainings. Keep an {% icon galaxy-eye %} open if you are interested!
+
