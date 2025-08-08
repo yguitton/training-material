@@ -47,6 +47,20 @@ This training is inspired from the original flexynesis analysis notebook: [brca_
 
 # Get data
 
+In this training we will use an multi-omics data from the METABRIC database downloaded through cBioPortal and split to 70% train and 30% test samples.
+
+The multi-omics data consists of three data types:
+
+- **Gene Expression (GEX)**: Measures the activity levels of genes by quantifying mRNA abundance. This data captures which genes are being actively transcribed in each sample.
+
+- **Copy Number Alterations (CNA)**: Detects genomic regions that have been duplicated or deleted compared to the normal genome. Cancer cells often have chromosomal instabilities leading to gene amplifications (gains) or deletions (losses), which can drive tumor development and progression.
+
+- **Clinical data (CLIN)**: Contains patient metadata including demographics, treatment history, tumor characteristics, and importantly for this tutorial, the breast cancer molecular subtypes (such as Luminal A, Luminal B, HER2-enriched, and Basal-like subtypes based on the CLAUDIN_SUBTYPE classification).
+
+These three data modalities provide complementary views of the same tumor samples - the clinical data provides the biological context and classification labels, while the molecular data (GEX and CNA) capture the underlying genomic alterations that drive these clinical phenotypes.
+
+Flexynesis tries to learn the patterns in these molecular alterations and connect them to the phenotype to predict cancer subtypes based on the genomic and transcriptomic profiles.
+
 > <hands-on-title> Data Upload </hands-on-title>
 >
 > 1. Create a new history for this tutorial
