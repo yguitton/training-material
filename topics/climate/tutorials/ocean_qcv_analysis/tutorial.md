@@ -24,6 +24,7 @@ contributions:
   funding:
     - fairease
     - eurosciencegateway
+draft: true
 ---
 
 This tutorial explains how to qualify and calibrate the nitrate sensor mounted on the argo float 4903881 by building its own Galaxy workflow. This tutorial is accompanied by screenshots to help guide you. If you have any difficulties, or suggestions for improvement, please contact us (link to the contact page). For your information, timing for running tools depends on the number of files, their size and/or the number of people working on Galaxy.
@@ -343,5 +344,6 @@ This tutorial explains how to qualify and calibrate the nitrate sensor mounted o
 # Extra information
 
 Coming up soon even more tutorials on and other Earth-System related trainings. Keep an {% icon galaxy-eye %} open if you are interested!
+
 
 
