@@ -6,10 +6,10 @@ zenodo_link: https://zenodo.org/records/16287482
 questions:
 - How can we model breast cancer subtypes using transcriptomics and genomic data?
 - What are the key expression patterns that distinguish different BRCA subtypes?
-- How can we interpret the latent space learned by a variational autoencoder?
+- How can we interpret the learned features from a deep neural network classifier?
 objectives:
 - Apply Flexynesis to model and visualize BRCA subtypes
-- Interpret the latent representations learned by the model
+- Interpret the learned representations from the DirectPred model
 - Use UMAP and clustering to explore learned features
 time_estimation: 2H
 key_points:
