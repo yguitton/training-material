@@ -28,12 +28,12 @@ Flexynesis represents a state-of-the-art deep learning framework specifically de
 
 Here, we use Flexynesis tool suite on a multi-omics dataset of Breast Cancer samples from the METABRIC consortium ({% cite metabric-website %}), one of the landmark breast cancer genomics studies available through cBioPortal ({% cite cbioportal-website %}). This dataset contains comprehensive molecular and clinical data from over 2,000 breast cancer patients, including gene expression profiles, copy number alterations, mutation data, and clinical outcomes. The data was downloaded from Cbioportal and randomly split into train (70% of the samples) and test (30% of the samples) data folders. The data files were processed to follow the same nomenclature.
 
-This training is inspired from the original flexynesis analysis notebook: [brca_subtypes.ipynb](https://github.com/BIMSBbioinfo/flexynesis/blob/main/examples/tutorials/brca_subtypes.ipynb).
+This training is inspired from the original Flexynesis analysis notebook: [brca_subtypes.ipynb](https://github.com/BIMSBbioinfo/flexynesis/blob/main/examples/tutorials/brca_subtypes.ipynb).
 
 > <warning-title>LICENSE</warning-title>
 >
 > Flexynesis is only available for NON-COMMERCIAL use. Permission is only granted for academic, research, and educational purposes. Before using, be sure to review, agree, and comply with the license.
-> For commercial use, please review the flexynesis license on GitHub and contact the [copyright holders](https://github.com/BIMSBbioinfo/flexynesis)
+> For commercial use, please review the Flexynesis license on GitHub and contact the [copyright holders](https://github.com/BIMSBbioinfo/flexynesis)
 {: .warning}
 
 > <agenda-title></agenda-title>
@@ -134,7 +134,7 @@ Now it's time to train model using Flexynesis:
 
 Training a model longer than needed causes the model to overfit, yield worse validation performance, and also it takes a longer time to train the models, considering if we have to run a long hyperparameter optimization routine, not just for 1 step, but say more than 100 steps.
 
-It is possible to set early stopping criteria in flexynesis, which is basically a simple callback that is handled by `Pytorch Lightning`. This is regulated using the `early_stop_patience`. When set to e.g. 10, the training will stop if the validation loss has not been improved in the last 10 epochs.
+It is possible to set early stopping criteria in Flexynesis, which is basically a simple callback that is handled by `Pytorch Lightning`. This is regulated using the `early_stop_patience`. When set to e.g. 10, the training will stop if the validation loss has not been improved in the last 10 epochs.
 
 > <hands-on-title> Flexynesis </hands-on-title>
 >
@@ -734,7 +734,7 @@ Now it is time to run TABPFN for CNA and GEX data.
 
 > <question-title></question-title>
 >
-> 1. Compare the PR-curve plots of both flexynesis and TABPFN predictions, which one is more accurate?
+> 1. Compare the PR-curve plots of both Flexynesis and TABPFN predictions, which one is more accurate?
 >
 > > <solution-title></solution-title>
 > >
