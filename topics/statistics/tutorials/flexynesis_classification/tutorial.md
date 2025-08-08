@@ -100,7 +100,7 @@ Flexynesis automatically handles key preprocessing steps such as:
 * Data processing:
   * removing uninformative features (e.g. features with near-zero-variation)
   * removing samples with too many NA values
-  * removing features with too many NA values and impute NA values for the rest with few NA values
+  * removing features with too many NA values and impute NA values for the rest with few NA values (using the median of the feature)
 
 * Feature selection **only on training data** for each omics layer separately:
   * Features are sorted by Laplacian score
