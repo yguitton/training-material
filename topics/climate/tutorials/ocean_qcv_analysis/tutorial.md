@@ -98,7 +98,7 @@ This tutorial explains how to qualify and calibrate the nitrate sensor mounted o
 
 
 
-{% include _includes/cyoa-choices.html option1="Tools" option2="Workflow" default="tools" disambiguation="tutorialstyle"
+{% include _includes/cyoa-choices.html option1="Tools" option2="Workflow" default="Tools" disambiguation="tutorialstyle"
        text="Do you want to run the workflow or to discover the tools one by one ?" %}
 
 <div class="Workflow" markdown="1">
@@ -343,4 +343,5 @@ This tutorial explains how to qualify and calibrate the nitrate sensor mounted o
 # Extra information
 
 Coming up soon even more tutorials on and other Earth-System related trainings. Keep an {% icon galaxy-eye %} open if you are interested!
+
 
