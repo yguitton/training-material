@@ -55,7 +55,7 @@ The multi-omics data consists of three data types:
 
 - **Copy Number Alterations (CNA)**: Detects genomic regions that have been duplicated or deleted compared to the normal genome. Cancer cells often have chromosomal instabilities leading to gene amplifications (gains) or deletions (losses), which can drive tumor development and progression.
 
-- **Clinical data (CLIN)**: Contains patient metadata including demographics, treatment history, tumor characteristics, and importantly for this tutorial, the breast cancer molecular subtypes (such as Luminal A, Luminal B, HER2-enriched, and Basal-like subtypes based on the CLAUDIN_SUBTYPE classification).
+- **Clinical data (CLIN)**: Contains patient metadata including demographics, treatment history, tumor characteristics, and importantly for this tutorial, the breast cancer molecular subtypes (such as Luminal A, Luminal B, HER2-enriched, and Basal-like) subtypes based on the expression patterns of key biomarkers including claudin proteins, which are important for cell adhesion and tumor behavior.
 
 These three data modalities provide complementary views of the same tumor samples - the clinical data provides the biological context and classification labels, while the molecular data (GEX and CNA) capture the underlying genomic alterations that drive these clinical phenotypes.
 
@@ -100,7 +100,7 @@ Flexynesis automatically handles key preprocessing steps such as:
 * Data processing:
   * removing uninformative features (e.g. features with near-zero-variation)
   * removing samples with too many NA values
-  * removing features with too many NA values and impute NA values for the rest with few NA values (using the median of the feature)
+  * removing features with too many NA values and impute remaining NA values using median imputation (replacing missing values with the median of each feature)
 
 * Feature selection **only on training data** for each omics layer separately:
   * Features are sorted by Laplacian score
