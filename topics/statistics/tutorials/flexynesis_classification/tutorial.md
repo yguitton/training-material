@@ -161,13 +161,7 @@ It is possible to set early stopping criteria in Flexynesis, which is basically 
 >            - *"Number of iterations for hyperparameter optimization."*: `1`
 >        - In *"Visualization"*:
 >            - *"Generate embeddings plot?"*: `Yes`
->            - *"Generate kaplan meier curves plot?"*: `No`
->            - *"Generate hazard ratio plot?"*: `No`
->            - *"Generate scatter plot?"*: `No`
->            - *"Generate concordance heatmap plot?"*: `No`
 >            - *"Generate precision-recall curves plot?"*: `Yes`
->            - *"Generate ROC curves plot?"*: `No`
->            - *"Generate boxplot?"*: `No`
 >
 {: .hands_on}
 
@@ -304,13 +298,7 @@ In reality, hyperparameter optimization should run for multiple steps so that th
 >            - *"Number of iterations for hyperparameter optimization."*: `5`
 >        - In *"Visualization"*:
 >            - *"Generate embeddings plot?"*: `Yes`
->            - *"Generate kaplan meier curves plot?"*: `No`
->            - *"Generate hazard ratio plot?"*: `No`
->            - *"Generate scatter plot?"*: `No`
->            - *"Generate concordance heatmap plot?"*: `No`
->            - *"Generate precision-recall curves plot?"*: `No`
->            - *"Generate ROC curves plot?"*: `No`
->            - *"Generate boxplot?"*: `No`
+>            - *"Generate precision-recall curves plot?"*: `Yes`
 >
 {: .hands_on}
 
