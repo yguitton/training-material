@@ -26,7 +26,7 @@ answer_histories:
       date: 2025-08-01
 ---
 
-Here, we use Flexynesis tool suit on a multi-omics dataset of 506 Brain Lower Grade Glioma (LGG) and 288 Glioblastoma Multiforme (GBM) samples with matching mutation and copy number alteration. This data were downloaded from the cbioportal ({% cite cbioportal-website %}). The data was split into train (70% of the samples) and test (30% of the samples).
+Here, we use Flexynesis tool suite on a multi-omics dataset of 506 Brain Lower Grade Glioma (LGG) and 288 Glioblastoma Multiforme (GBM) samples with matching mutation and copy number alteration. This data were downloaded from the cBioPortal ({% cite cbioportal-website %}). The data was split into train (70% of the samples) and test (30% of the samples).
 
 We will work on CNA (copy number alteration) and MUT (mutation data which is a binary matrix of genexsample) data.
 
