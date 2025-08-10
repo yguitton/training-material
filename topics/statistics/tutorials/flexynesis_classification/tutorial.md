@@ -20,7 +20,7 @@ contributors:
 - bgruening
 answer_histories:
     - label: "usegalaxy.eu"
-      history: https://usegalaxy.eu/u/nilchia/h/final-modeling-breast-cancer-subtypes-tabpfn-2
+      history: https://usegalaxy.eu/u/nilchia/h/final-modeling-breast-cancer-subtypes-tabpfn-3
       date: 2025-08-01
 ---
 
@@ -749,7 +749,7 @@ Now it is time to run TABPFN for CNA and GEX data.
 > <warning-title>High computation time</warning-title>
 >
 > TABPFN takes a lot of time to do the classification task on CPU (With our data it takes about 7 hours)
-> You can instead import the output (data 56-59) from this [archived history](https://usegalaxy.eu/u/nilchia/h/final-modeling-breast-cancer-subtypes-tabpfn-2).
+> You can instead import the output (data 55,56,59, and 60) from this [archived history](https://usegalaxy.eu/u/nilchia/h/final-modeling-breast-cancer-subtypes-tabpfn-3).
 {: .warning}
 
 > <hands-on-title> TABPFN on CNA </hands-on-title>
