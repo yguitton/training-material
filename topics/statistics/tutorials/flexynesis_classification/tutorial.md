@@ -547,7 +547,7 @@ First, let's filter the cna data by variance.
 >    - *"Column to use from 2nd file"*: `Column: 1`
 >    - *"First line is a header line"*: `Yes`
 >
-> 2. Rename the output to `Annotated train matrix`
+> 2. Rename the output to `Annotated train matrix cna`
 >
 > 3. {% tool [Join](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_easyjoin_tool/9.5+galaxy2) %} with the following parameters:
 >    - {% icon param-file %} *"1st file"*: `test_cna_brca_500gene_transposed.tabular` (output of **Transpose** {% icon tool %})
@@ -712,7 +712,7 @@ Now the CNA data is ready for TABPFN. Let's do the same for GEX!
 >    - *"Column to use from 2nd file"*: `Column: 1`
 >    - *"First line is a header line"*: `Yes`
 >
-> 2. Rename the output to `Annotated train matrix`
+> 2. Rename the output to `Annotated train matrix - gex`
 >
 > 3. {% tool [Join](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_easyjoin_tool/9.5+galaxy2) %} with the following parameters:
 >    - {% icon param-file %} *"1st file"*: `test_gex_brca_500gene_transposed.tabular` (output of **Transpose** {% icon tool %})
@@ -721,7 +721,7 @@ Now the CNA data is ready for TABPFN. Let's do the same for GEX!
 >    - *"Column to use from 2nd file"*: `Column: 1`
 >    - *"First line is a header line"*: `Yes`
 >
-> 2. Rename the output to `Annotated test matrix`
+> 2. Rename the output to `Annotated test matrix - gex`
 >
 > 1. {% tool [Advanced Cut](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/9.5+galaxy2) %} with the following parameters:
 >    - {% icon param-file %} *"File to cut"*: `Annotated train matrix` (output of **Join** {% icon tool %})
