@@ -165,7 +165,7 @@ It is possible to set early stopping criteria in Flexynesis, which is basically 
 >            - *"Generate hazard ratio plot?"*: `No`
 >            - *"Generate scatter plot?"*: `No`
 >            - *"Generate concordance heatmap plot?"*: `No`
->            - *"Generate precision-recall curves plot?"*: `No`
+>            - *"Generate precision-recall curves plot?"*: `Yes`
 >            - *"Generate ROC curves plot?"*: `No`
 >            - *"Generate boxplot?"*: `No`
 >
@@ -188,10 +188,15 @@ It is possible to set early stopping criteria in Flexynesis, which is basically 
 > > * job.predicted_labels (Prediction of the created model)
 > > * job.stats
 > >
-> > 2. There are two figures in plot collection:
+> > 2. There are three figures in plot collection:
 > > * A PCA plot of the Embeddings colored by known, true subtypes
+> > ![PCA plot - colored by known subtypes](../../images/flexynesis_classification/niter1_pca_known.jpeg "PCA plot - colored by known subtypes")
 > > * A PCA plot of the Embeddings colored by predicted subtypes
-> >
+> > ![PCA plot - colored by predicted subtypes](../../images/flexynesis_classification/niter1_pca_predicted.jpeg "PCA plot - colored by predicted subtypes")
+> > We can see that the subtypes were predicted by the model with a good approximation.
+> > * A precision-recall curves plot, showing the accuracy of the prediction
+> > ![PR-curve plot - showing prediction accuracy](../../images/flexynesis_classification/niter1_pr_curve.jpeg "PR-curve plot - showing prediction accuracy")
+> > This plot also conforms that most of the subtypes were classified with a good precision (except Class 4 (LumB), in the PCA plot you can see some Her2 samples were classified as LumB for example)
 > {: .solution}
 >
 {: .question}
@@ -255,6 +260,20 @@ And finally the UMAP plot.
 >
 {: .hands_on}
 
+> <question-title></question-title>
+>
+> 1. What does the generated plot show?
+>
+> > <solution-title></solution-title>
+> >
+> > ![UMAP plot - colored by known subtypes](../../images/flexynesis_classification/niter1_umap_known.jpeg "UMAP plot - colored by known subtypes")
+> >
+> > This is a UMAP representation of the embeddings which shows a better speration between subtypes
+> >
+> {: .solution}
+>
+{: .question}
+
 # Longer training
 
 In reality, hyperparameter optimization should run for multiple steps so that the parameter search space is large enough to find a good set. However, for demonstration purposes, we only run it for 5 steps here:
@@ -294,6 +313,25 @@ In reality, hyperparameter optimization should run for multiple steps so that th
 >            - *"Generate boxplot?"*: `No`
 >
 {: .hands_on}
+
+> <question-title></question-title>
+>
+> 1. What does the generated plots show?
+>
+> > <solution-title></solution-title>
+> >
+> > 1. There are three figures in plot collection:
+> > * A PCA plot of the Embeddings colored by known, true subtypes
+> > ![PCA plot - colored by known subtypes](../../images/flexynesis_classification/niter5_pca_known.jpeg "PCA plot - colored by known subtypes")
+> > * A PCA plot of the Embeddings colored by predicted subtypes
+> > ![PCA plot - colored by predicted subtypes](../../images/flexynesis_classification/niter5_pca_predicted.jpeg "PCA plot - colored by predicted subtypes")
+> > We can see that the subtypes were predicted by the model with a good approximation.
+> > * A precision-recall curves plot, showing the accuracy of the prediction
+> > ![PR-curve plot - showing prediction accuracy](../../images/flexynesis_classification/niter5_pr_curve.jpeg "PR-curve plot - showing prediction accuracy")
+> > This plot also conforms that most of the subtypes were classified with a good precision. Also the precision has incresed (compare Class4 = 0.23 with 1 iteration to Class4 = 0.41 with 5 iterations)
+> {: .solution}
+>
+{: .question}
 
 ## Generate UMAP plot of the embeddings
 
@@ -339,6 +377,20 @@ And finally the UMAP plot.
 >        - *"Transformation method"*: `UMAP`
 >
 {: .hands_on}
+
+> <question-title></question-title>
+>
+> 1. What does the generated plot show?
+>
+> > <solution-title></solution-title>
+> >
+> > ![UMAP plot - colored by known subtypes](../../images/flexynesis_classification/niter5_umap_known.jpeg "UMAP plot - colored by known subtypes")
+> >
+> > This is a UMAP representation of the embeddings which shows a better speration between subtypes
+> >
+> {: .solution}
+>
+{: .question}
 
 {% include _includes/cyoa-choices.html option1="Let's try TABPFN!" option2="I'll try later!" default="I'll try later!" text="We have another tool for the classification task called **TABPFN** which is a foundation model for tabular data. We can repeat the classification task using TABPFN and compare it with Flexynesis. Please note that TABPFN is slow on CPU and **it will take a lot of time to finish on this dataset**. What do you say? Should we continue with TABPFN?" disambiguation="tool"%}
 
