@@ -772,19 +772,77 @@ Now it is time to run TABPFN for CNA and GEX data.
 >
 {: .hands_on}
 
+To make comparison of TABPFN and Flexynesis fair, we should apply Flexynesis on the GEX and CNA with 500 features separatly.
+
+> <hands-on-title> Flexynesis on CNA </hands-on-title>
+>
+> 1. {% tool [Flexynesis](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis/flexynesis/0.2.20+galaxy3) %} with the following parameters:
+>    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
+>    - *"Type of Analysis"*: `Supervised training`
+>        - {% icon param-file %} *"Training clinical data"*: `train_clin_brca.tabular`
+>        - {% icon param-file %} *"Test clinical data"*: `test_clin_brca.tabular`
+>        - {% icon param-file %} *"Training omics data"*: `train_cna_brca_500gene.tabular` (output of **Advanced Cut** {% icon tool %})
+>        - {% icon param-file %} *"Test omics data"*: `test_cna_brca_500gene.tabular` (output of **Advanced Cut** {% icon tool %})
+>        - *"What type of assay is your input?"*: `cna`
+>        - *"Model class"*: `DirectPred`
+>        - *"Column name in the train clinical data to use for predictions, multiple targets are allowed"*: `Column: 16` (CLAUDIN_SUBTYPE)
+>        - In *"Advanced Options"*:
+>            - *"Fusion method"*: `intermediate`
+>            - *"Variance threshold (as percentile) to drop low variance features."*: `0.8`
+>            - *"Minimum number of features to retain after feature selection."*: `100`
+>            - *"Top percentile features (among the features remaining after variance filtering and data cleanup) to retain after feature selection."*: `10.0`
+>            - *"Number of iterations for hyperparameter optimization."*: `5`
+>        - In *"Visualization"*:
+>            - *"Generate embeddings plot?"*: `Yes`
+>            - *"Generate precision-recall curves plot?"*: `Yes`
+>
+{: .hands_on}
+
+> <hands-on-title> Flexynesis on GEX </hands-on-title>
+>
+> 1. {% tool [Flexynesis](toolshed.g2.bx.psu.edu/repos/bgruening/flexynesis/flexynesis/0.2.20+galaxy3) %} with the following parameters:
+>    - *"I certify that I am not using this tool for commercial purposes."*: `Yes`
+>    - *"Type of Analysis"*: `Supervised training`
+>        - {% icon param-file %} *"Training clinical data"*: `train_clin_brca.tabular`
+>        - {% icon param-file %} *"Test clinical data"*: `test_clin_brca.tabular`
+>        - {% icon param-file %} *"Training omics data"*: `train_gex_brca_500gene.tabular` (output of **Advanced Cut** {% icon tool %})
+>        - {% icon param-file %} *"Test omics data"*: `test_gex_brca_500gene.tabular` (output of **Advanced Cut** {% icon tool %})
+>        - *"What type of assay is your input?"*: `gex`
+>        - *"Model class"*: `DirectPred`
+>        - *"Column name in the train clinical data to use for predictions, multiple targets are allowed"*: `Column: 16` (CLAUDIN_SUBTYPE)
+>        - In *"Advanced Options"*:
+>            - *"Fusion method"*: `intermediate`
+>            - *"Variance threshold (as percentile) to drop low variance features."*: `0.8`
+>            - *"Minimum number of features to retain after feature selection."*: `100`
+>            - *"Top percentile features (among the features remaining after variance filtering and data cleanup) to retain after feature selection."*: `10.0`
+>            - *"Number of iterations for hyperparameter optimization."*: `5`
+>        - In *"Visualization"*:
+>            - *"Generate embeddings plot?"*: `Yes`
+>            - *"Generate precision-recall curves plot?"*: `Yes`
+>
+{: .hands_on}
+
 > <question-title></question-title>
 >
 > 1. Compare the PR-curve plots of both Flexynesis and TABPFN predictions, which one is more accurate?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. Looking and the plots, It is clear that Flexynesis has overall better prediction compared to TABPFN
-> >![Precision-Recall curve plot of Flexynesis](../../images/flexynesis_classification/pr_curve-flexynesis.jpeg "Precision-Recall curve plot of Flexynesis")
+> > 1. You can see that the prediction of TABPFN was better with the CNA data, however we have got better prediction with Flexynesis on GEX, and with the power of data integration using both CNA and GEX, the prediction is further improved!!
 > >![Precision-Recall curve plot of TABPFN on CNA](../../images/flexynesis_classification/pr_curve-tabpfn_cna.png "Precision-Recall curve plot of TABPFN on CNA")
+> >![Precision-Recall curve plot of Flexynesis on CNA](../../images/flexynesis_classification/pr_curve-flexynesis_cna.jpeg "Precision-Recall curve plot of Flexynesis on CNA")
 > >![Precision-Recall curve plot of TABPFN on GEX](../../images/flexynesis_classification/pr_curve-tabpfn_gex.png "Precision-Recall curve plot of TABPFN on GEX")
+> >![Precision-Recall curve plot of Flexynesis on GEX](../../images/flexynesis_classification/pr_curve-flexynesis_gex.jpeg "Precision-Recall curve plot of Flexynesis on GEX")
+> >![Precision-Recall curve plot of Flexynesis](../../images/flexynesis_classification/pr_curve-flexynesis.jpeg "Precision-Recall curve plot of Flexynesis")
 > {: .solution}
 >
 {: .question}
+
+> <comment-title> Try Flexynesis with more iteration </comment-title>
+>
+> In this training we only used 5 iterations to train our model. You can rerun the tool with higher number of iterations and see how the prediction improves.
+>
+ {: .comment}
 
 # Conclusion
 
@@ -799,5 +857,7 @@ By training on TCGA BRCA data, we:
   * Showed how learned features relate to known clinical labels
 
 Flexynesis provides a fast and accessible way to explore complex omics datasets and uncover biological structure without extensive manual tuning.
+
+We also compared Flexynesis with TABPFN and we saw although TABPFN predicted the subtypes with CNA data better, but it was not as good as flexynesis on GEX data. It also provides fewer outputs compared to flexynesis for example the integrated latent space embeddings, feature importance and a full information about the predictions.
 
 </div>
