@@ -20,7 +20,7 @@ intermediate: "Intermedio"
 advanced: "Avanzato"
 
 supporting-materials: "Materiali di supporto"
-slides: "Diapositive"
+slides: "slide"
 datasets: "Dataset"
 workflows: "Workflow"
 supporting-galaxies: "Disponibile su queste Galassie"
