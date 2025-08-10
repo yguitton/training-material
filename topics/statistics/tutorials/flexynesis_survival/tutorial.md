@@ -88,7 +88,7 @@ For hyperparameter optimization we use the following parameters.
 
 *`Model class`: We pick DirectPred (a fully connected network)
 * `Column name in the train clinical data to use as survival event` and `Column name in the train clinical data to use as survival time`. Survival status (consists of 0s and 1s) and time since last followup. It is **important** that the clinical data contains both variables as ***numerical*** values.
-* `Column name in the train clinical data to use for predictions, multiple targets are allowed`: We can concurrently train the same network to be able to predict other variables such as histological diagnosis, howevever, here we just focus on the survival endpoints, so we pass an empty list.
+* `Column name in the train clinical data to use for predictions, multiple targets are allowed`: We can concurrently train the same network to be able to predict other variables such as histological diagnosis, however, here we just focus on the survival endpoints, so we pass an empty list.
 * `Number of iterations for hyperparameter optimization.`: We do 5 iterations of hyperparameter optimization. This is a reasonable number of demonstration purposes, but it could be beneficial to increase this value in order to discover even better models.
 * `How many epochs to wait when no improvements in validation loss are observed. `: If a training does not show any signs of improving the performance on the validation part of the train_dataset for at least 10 epochs, we stop the training. This not only significantly decreases the amount spent on training by avoiding unnecessary continuation of unpromising training runs, but also helps avoid over-fitting the network on the training data.
 
