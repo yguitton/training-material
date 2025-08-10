@@ -295,7 +295,7 @@ AMI ranges from 0 (no agreement) to 1 (perfect match) and ARI ranges from -1 (co
 >
 {: .question}
 
-To see the real concordance between Louvain clusters and true values, we can bserve a tabulation of the concordance between them. (Each row sums up to 1).
+To see the real concordance between Louvain clusters and true values, we can observe a tabulation of the concordance between them. (Each row sums up to 1).
 
 > <hands-on-title> Concordance plot </hands-on-title>
 >
