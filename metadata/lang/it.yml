@@ -88,7 +88,7 @@ thank-you: "Grazie"
 collaborative-effort: "Questo materiale è il risultato di un lavoro collaborativo. Grazie al [Galaxy Training Network](https://training.galaxyproject.org) e a tutti i contributori!"
 edit-on-github: "Hai trovato un errore di battitura? Qualcosa non va in questo tutorial? Modificalo su GitHub"
 
-first-time-using-slides: "Usa le frecce per navigare tra le diapositive"
+first-time-using-slides: "Usa le frecce per navigare tra le slide"
 presenter-notes: "premi <kbd>P</kbd> per visualizzare le note del presentatore"
 presenter-notes-explanation: |
   Le note del presentatore contengono informazioni extra che possono essere utili se intendi usare queste diapositive per l'insegnamento.
