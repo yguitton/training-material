@@ -237,7 +237,9 @@ In this step, you will open the image in QuPath, annotate the ROIs using rectang
 >
 > 10. Set a unique label for each annotation:  
 >     - Right-click each rectangle, choose **Set parameters**, and enter a label (e.g., `"1"`, `"2"`)  
->     ![Name first annotation](../../images/electrophoresis-gel-bands-image-analysis/QuPath-protocol-10.png)  
+>     ![Name first annotation](../../images/electrophoresis-gel-bands-image-analysis/QuPath-protocol-10.png)
+>     ![Name first annotation](../../images/electrophoresis-gel-bands-image-analysis/QuPath-protocol-11.png)
+>     ![Name first annotation](../../images/electrophoresis-gel-bands-image-analysis/QuPath-protocol-12.png)
 >     ![Name second annotation](../../images/electrophoresis-gel-bands-image-analysis/QuPath-protocol-13.png)
 >
 > 11. Confirm that all rectangles are labeled:  
