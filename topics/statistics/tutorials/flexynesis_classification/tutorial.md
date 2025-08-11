@@ -858,6 +858,6 @@ By training on TCGA BRCA data, we:
 
 Flexynesis provides a fast and accessible way to explore complex omics datasets and uncover biological structure without extensive manual tuning.
 
-We also compared Flexynesis with TabPFN and we saw although TabPFN predicted the subtypes with CNA data better, but it was not as good as flexynesis on GEX data. It also provides fewer outputs compared to flexynesis for example the integrated latent space embeddings, feature importance and a full information about the predictions.
+We also compared Flexynesis with TabPFN and we saw although TabPFN predicted the subtypes with CNA data better, but it was not as good as Flexynesis on GEX data. It also provides fewer outputs compared to Flexynesis for example the integrated latent space embeddings, feature importance and a full information about the predictions.
 
 </div>
