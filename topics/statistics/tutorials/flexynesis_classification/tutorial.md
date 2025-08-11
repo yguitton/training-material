@@ -380,7 +380,7 @@ And finally the UMAP plot.
 >
 {: .question}
 
-{% include _includes/cyoa-choices.html option1="Let's try TABPFN!" option2="I'll try later!" default="I'll try later!" text="We have another tool for the classification task called **TABPFN** which is a foundation model for tabular data. We can repeat the classification task using TABPFN and compare it with Flexynesis. Please note that TABPFN is slow on CPU and **it will take a lot of time to finish on this dataset**. What do you say? Should we continue with TABPFN?" disambiguation="tool"%}
+{% include _includes/cyoa-choices.html option1="Let's try TabPFN!" option2="I'll try later!" default="I'll try later!" text="We have another tool for the classification task called **TabPFN** which is a foundation model for tabular data. We can repeat the classification task using TabPFN and compare it with Flexynesis. Please note that TabPFN is slow on CPU and **it will take a lot of time to finish on this dataset**. What do you say? Should we continue with TabPFN?" disambiguation="tool"%}
 
 <div class="Ill-try-later" markdown="1">
 
