@@ -772,7 +772,7 @@ Now it is time to run TABPFN for CNA and GEX data.
 >
 {: .hands_on}
 
-To make comparison of TABPFN and Flexynesis fair, we should apply Flexynesis on the GEX and CNA with 500 features separatly.
+To make comparison of TABPFN and Flexynesis fair, we should apply Flexynesis on the GEX and CNA with 500 features separately.
 
 > <hands-on-title> Flexynesis on CNA </hands-on-title>
 >
