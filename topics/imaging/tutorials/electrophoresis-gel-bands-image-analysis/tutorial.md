@@ -188,7 +188,6 @@ TIFF images can store multiple channels—such as different colors or fluorescen
 >    - {% icon param-collection %} *"Input Collection"*: Select the collection output from the {% tool [Split image along axes](toolshed.g2.bx.psu.edu/repos/imgteam/split_image/ip_split_image/2.2.3+galaxy1) %} tool
 >    - *"Which part of the Collection?"*: Choose the TIFF file that represent the channel of your interest. In our dataset example, we extract 1.tiff
 >
-{: .hands_on}
 {: .hands_on }
 
 # Annotate and process regions of interest (ROIs)
