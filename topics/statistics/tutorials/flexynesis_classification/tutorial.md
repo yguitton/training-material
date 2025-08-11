@@ -401,7 +401,7 @@ Flexynesis provides an accessible way to explore complex omics datasets and unco
 
 <div class="Lets-try-TabPFN" markdown="1">
 
-Alright, Let's see how TABPFN can predict the subtypes
+Alright, Let's see how TabPFN can predict the subtypes
 
 # Prepare data for TABPFN
 
