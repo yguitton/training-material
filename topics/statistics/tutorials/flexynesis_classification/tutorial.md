@@ -403,7 +403,7 @@ Flexynesis provides an accessible way to explore complex omics datasets and unco
 
 Alright, Let's see how TabPFN can predict the subtypes
 
-# Prepare data for TABPFN
+# Prepare data for TabPFN
 
 Currently, TabPFN supports up to **10,000** samples and **500** features (genes) in a tabular data.
 We will filter our data by gene variance and will use top 500 variable genes as input for TABPFN.
