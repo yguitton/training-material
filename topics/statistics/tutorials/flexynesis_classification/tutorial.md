@@ -399,7 +399,7 @@ By training on TCGA BRCA data, we:
 Flexynesis provides an accessible way to explore complex omics datasets and uncover biological structure without extensive manual tuning.
 </div>
 
-<div class="Lets-try-TABPFN" markdown="1">
+<div class="Lets-try-TabPFN" markdown="1">
 
 Alright, Let's see how TABPFN can predict the subtypes
 
