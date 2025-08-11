@@ -406,11 +406,11 @@ Alright, Let's see how TabPFN can predict the subtypes
 # Prepare data for TabPFN
 
 Currently, TabPFN supports up to **10,000** samples and **500** features (genes) in a tabular data.
-We will filter our data by gene variance and will use top 500 variable genes as input for TABPFN.
+We will filter our data by gene variance and will use top 500 variable genes as input for TabPFN.
 
-The train and test tabular data for TABPFN should be transposed so the samples are in rows and genes in columns, the last column should contain the labels and train and test data should have **same** set of features in **same** order.
+The train and test tabular data for TabPFN should be transposed so the samples are in rows and genes in columns, the last column should contain the labels and train and test data should have **same** set of features in **same** order.
 
-Since TABPFN does not support data integration, we should try gene expression and copy number alteration data separately.
+Since TabPFN does not support data integration, we should try gene expression and copy number alteration data separately.
 
 ## CNA data
 
@@ -565,7 +565,7 @@ First, let's filter the cna data by variance.
 >        - *"Is there a header for the data's columns ?"*: `Yes`
 >            - *"List of Fields"*: `Column: 1`
 >
-> 2. Rename the output to `TABPFN ready train data - CNA`
+> 2. Rename the output to `TabPFN ready train data - CNA`
 >
 > 1. {% tool [Advanced Cut](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/9.5+galaxy2) %} with the following parameters:
 >    - {% icon param-file %} *"File to cut"*: `Annotated test matrix` (output of **Join** {% icon tool %})
@@ -574,10 +574,10 @@ First, let's filter the cna data by variance.
 >        - *"Is there a header for the data's columns ?"*: `Yes`
 >            - *"List of Fields"*: `Column: 1`
 >
-> 2. Rename the output to `TABPFN ready test data - CNA`
+> 2. Rename the output to `TabPFN ready test data - CNA`
 {: .hands_on}
 
-Now the CNA data is ready for TABPFN. Let's do the same for GEX!
+Now the CNA data is ready for TabPFN. Let's do the same for GEX!
 
 ## GEX data
 
@@ -730,7 +730,7 @@ Now the CNA data is ready for TABPFN. Let's do the same for GEX!
 >        - *"Is there a header for the data's columns ?"*: `Yes`
 >            - *"List of Fields"*: `Column: 1`
 >
-> 2. Rename the output to `TABPFN ready train data - GEX`
+> 2. Rename the output to `TabPFN ready train data - GEX`
 >
 > 1. {% tool [Advanced Cut](toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/9.5+galaxy2) %} with the following parameters:
 >    - {% icon param-file %} *"File to cut"*: `Annotated test matrix` (output of **Join** {% icon tool %})
@@ -739,40 +739,40 @@ Now the CNA data is ready for TABPFN. Let's do the same for GEX!
 >        - *"Is there a header for the data's columns ?"*: `Yes`
 >            - *"List of Fields"*: `Column: 1`
 >
-> 2. Rename the output to `TABPFN ready test data - GEX`
+> 2. Rename the output to `TabPFN ready test data - GEX`
 {: .hands_on}
 
-Now it is time to run TABPFN for CNA and GEX data.
+Now it is time to run TabPFN for CNA and GEX data.
 
-# TABPFN
+# TabPFN
 
 > <warning-title>High computation time</warning-title>
 >
-> TABPFN takes a lot of time to do the classification task on CPU (With our data it takes about 7 hours)
+> TabPFN takes a lot of time to do the classification task on CPU (With our data it takes about 7 hours)
 > You can instead import the output (data 55,56,59, and 60) from this [archived history](https://usegalaxy.eu/u/nilchia/h/final-modeling-breast-cancer-subtypes-tabpfn-3).
 {: .warning}
 
-> <hands-on-title> TABPFN on CNA </hands-on-title>
+> <hands-on-title> TabPFN on CNA </hands-on-title>
 >
 > 1. {% tool [Tabular data prediction using TabPFN](toolshed.g2.bx.psu.edu/repos/bgruening/tabpfn/tabpfn/2.0.9+galaxy0) %} with the following parameters:
 >    - *"Select a machine learning task"*: `Classification`
->    - {% icon param-file %} *"Train data"*: `TABPFN ready train data - CNA` (output of **Advanced Cut** {% icon tool %})
->    - {% icon param-file %} *"test data"*: `TABPFN ready test data - CNA` (output of **Advanced Cut** {% icon tool %})
+>    - {% icon param-file %} *"Train data"*: `TabPFN ready train data - CNA` (output of **Advanced Cut** {% icon tool %})
+>    - {% icon param-file %} *"test data"*: `TabPFN ready test data - CNA` (output of **Advanced Cut** {% icon tool %})
 >    - *"Does test data contain labels?"*: `Yes`
 >
 {: .hands_on}
 
-> <hands-on-title> TABPFN on GEX </hands-on-title>
+> <hands-on-title> TabPFN on GEX </hands-on-title>
 >
 > 1. {% tool [Tabular data prediction using TabPFN](toolshed.g2.bx.psu.edu/repos/bgruening/tabpfn/tabpfn/2.0.9+galaxy0) %} with the following parameters:
 >    - *"Select a machine learning task"*: `Classification`
->    - {% icon param-file %} *"Train data"*: `TABPFN ready train data - GEX` (output of **Advanced Cut** {% icon tool %})
->    - {% icon param-file %} *"test data"*: `TABPFN ready test data - GEX` (output of **Advanced Cut** {% icon tool %})
+>    - {% icon param-file %} *"Train data"*: `TabPFN ready train data - GEX` (output of **Advanced Cut** {% icon tool %})
+>    - {% icon param-file %} *"test data"*: `TabPFN ready test data - GEX` (output of **Advanced Cut** {% icon tool %})
 >    - *"Does test data contain labels?"*: `Yes`
 >
 {: .hands_on}
 
-To make comparison of TABPFN and Flexynesis fair, we should apply Flexynesis on the GEX and CNA with 500 features separately.
+To make comparison of TabPFN and Flexynesis fair, we should apply Flexynesis on the GEX and CNA with 500 features separately.
 
 > <hands-on-title> Flexynesis on CNA </hands-on-title>
 >
@@ -824,14 +824,14 @@ To make comparison of TABPFN and Flexynesis fair, we should apply Flexynesis on 
 
 > <question-title></question-title>
 >
-> 1. Compare the PR-curve plots of both Flexynesis and TABPFN predictions, which one is more accurate?
+> 1. Compare the PR-curve plots of both Flexynesis and TabPFN predictions, which one is more accurate?
 >
 > > <solution-title></solution-title>
 > >
-> > 1. You can see that the prediction of TABPFN was better with the CNA data, however we have got better prediction with Flexynesis on GEX, and with the power of data integration using both CNA and GEX, the prediction is further improved!!
-> >![Precision-Recall curve plot of TABPFN on CNA](../../images/flexynesis_classification/pr_curve-tabpfn_cna.png "Precision-Recall curve plot of TABPFN on CNA")
+> > 1. You can see that the prediction of TabPFN was better with the CNA data, however we have got better prediction with Flexynesis on GEX, and with the power of data integration using both CNA and GEX, the prediction is further improved!!
+> >![Precision-Recall curve plot of TabPFN on CNA](../../images/flexynesis_classification/pr_curve-tabpfn_cna.png "Precision-Recall curve plot of TabPFN on CNA")
 > >![Precision-Recall curve plot of Flexynesis on CNA](../../images/flexynesis_classification/pr_curve-flexynesis_cna.jpeg "Precision-Recall curve plot of Flexynesis on CNA")
-> >![Precision-Recall curve plot of TABPFN on GEX](../../images/flexynesis_classification/pr_curve-tabpfn_gex.png "Precision-Recall curve plot of TABPFN on GEX")
+> >![Precision-Recall curve plot of TabPFN on GEX](../../images/flexynesis_classification/pr_curve-tabpfn_gex.png "Precision-Recall curve plot of TabPFN on GEX")
 > >![Precision-Recall curve plot of Flexynesis on GEX](../../images/flexynesis_classification/pr_curve-flexynesis_gex.jpeg "Precision-Recall curve plot of Flexynesis on GEX")
 > >![Precision-Recall curve plot of Flexynesis](../../images/flexynesis_classification/pr_curve-flexynesis.jpeg "Precision-Recall curve plot of Flexynesis")
 > {: .solution}
@@ -858,6 +858,6 @@ By training on TCGA BRCA data, we:
 
 Flexynesis provides a fast and accessible way to explore complex omics datasets and uncover biological structure without extensive manual tuning.
 
-We also compared Flexynesis with TABPFN and we saw although TABPFN predicted the subtypes with CNA data better, but it was not as good as flexynesis on GEX data. It also provides fewer outputs compared to flexynesis for example the integrated latent space embeddings, feature importance and a full information about the predictions.
+We also compared Flexynesis with TabPFN and we saw although TabPFN predicted the subtypes with CNA data better, but it was not as good as flexynesis on GEX data. It also provides fewer outputs compared to flexynesis for example the integrated latent space embeddings, feature importance and a full information about the predictions.
 
 </div>
