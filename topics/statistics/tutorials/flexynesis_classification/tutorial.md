@@ -154,7 +154,6 @@ It is possible to set early stopping criteria in Flexynesis, which is basically 
 >        - *"Model class"*: `DirectPred`
 >        - *"Column name in the train clinical data to use for predictions, multiple targets are allowed"*: `Column: 16` (CLAUDIN_SUBTYPE)
 >        - In *"Advanced Options"*:
->            - *"Fusion method"*: `intermediate`
 >            - *"Variance threshold (as percentile) to drop low variance features."*: `0.8`
 >            - *"Minimum number of features to retain after feature selection."*: `100`
 >            - *"Top percentile features (among the features remaining after variance filtering and data cleanup) to retain after feature selection."*: `10.0`
@@ -291,7 +290,6 @@ In reality, hyperparameter optimization should run for multiple steps so that th
 >        - *"Model class"*: `DirectPred`
 >        - *"Column name in the train clinical data to use for predictions, multiple targets are allowed"*: `Column: 16` (CLAUDIN_SUBTYPE)
 >        - In *"Advanced Options"*:
->            - *"Fusion method"*: `intermediate`
 >            - *"Variance threshold (as percentile) to drop low variance features."*: `0.8`
 >            - *"Minimum number of features to retain after feature selection."*: `100`
 >            - *"Top percentile features (among the features remaining after variance filtering and data cleanup) to retain after feature selection."*: `10.0`
@@ -787,7 +785,6 @@ To make comparison of TabPFN and Flexynesis fair, we should apply Flexynesis on 
 >        - *"Model class"*: `DirectPred`
 >        - *"Column name in the train clinical data to use for predictions, multiple targets are allowed"*: `Column: 16` (CLAUDIN_SUBTYPE)
 >        - In *"Advanced Options"*:
->            - *"Fusion method"*: `intermediate`
 >            - *"Variance threshold (as percentile) to drop low variance features."*: `0.8`
 >            - *"Minimum number of features to retain after feature selection."*: `100`
 >            - *"Top percentile features (among the features remaining after variance filtering and data cleanup) to retain after feature selection."*: `10.0`
@@ -811,7 +808,6 @@ To make comparison of TabPFN and Flexynesis fair, we should apply Flexynesis on 
 >        - *"Model class"*: `DirectPred`
 >        - *"Column name in the train clinical data to use for predictions, multiple targets are allowed"*: `Column: 16` (CLAUDIN_SUBTYPE)
 >        - In *"Advanced Options"*:
->            - *"Fusion method"*: `intermediate`
 >            - *"Variance threshold (as percentile) to drop low variance features."*: `0.8`
 >            - *"Minimum number of features to retain after feature selection."*: `100`
 >            - *"Top percentile features (among the features remaining after variance filtering and data cleanup) to retain after feature selection."*: `10.0`
