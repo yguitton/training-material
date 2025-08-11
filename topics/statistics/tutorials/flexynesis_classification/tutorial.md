@@ -47,7 +47,7 @@ This training is inspired from the original Flexynesis analysis notebook: [brca_
 
 # Get data
 
-In this training we will use an multi-omics data from the METABRIC database downloaded through cBioPortal and split to 70% train and 30% test samples.
+In this training we will use a multi-omics dataset from the METABRIC database downloaded through cBioPortal and split to 70% train and 30% test samples.
 
 The multi-omics data consists of three data types:
 
