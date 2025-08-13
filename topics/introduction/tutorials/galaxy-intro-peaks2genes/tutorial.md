@@ -205,14 +205,14 @@ we also need a list of genes in mice, which we can obtain from UCSC.
 >     - *"output format"*: `BED - browser extensible data`
 >     - *"Send output to"*: `Galaxy` (only)
 >
-> 4. Click on the **get output** button
+> 4. Click on the **get Output** button
 >
 >    You will see the next screen:
 >
 >    ![Output settings](../../images/intro_03.png)
 >
 > 5. Make sure that *"Create one BED record per"* is set to `Whole Gene`
-> 6. Click on the **Send Query to Galaxy** button
+> 6. Click on the **Send query to Galaxy** button
 > 7. Wait for the upload to finish
 > 8. Rename our dataset to something more recognizable like `Genes`
 >
@@ -481,15 +481,15 @@ Great, we are ready to plot things!
 > <hands-on-title>Draw barchart</hands-on-title>
 >
 > 1. Click on {% icon galaxy-barchart %} (visualize) icon on the output from the **Sort** tool
-> 2. Select `Bar diagram (NVD3)`
+> 2. Select `Bar, Line and Scatter` from the main panel
 > 3. Click on the **<<** in the upper right corner
-> 4. Choose a title at **Provide a title**, e.g. `Gene counts per chromosome`
-> 5. Switch to the {% icon galaxy-chart-select-data %} **Select data** tab and play around with the settings
-> 6. When you are happy, click the {% icon galaxy-save %} **Save** visualization in the top right of the *main panel*
+> 4. Choose a title below **Title**, e.g. `Gene counts per chromosome`
+> 5. Switch to the **Settings** tab and change the axis labels
+> 6. Play around with the settings in the **Tracks** tab
+> 7. When you are happy, click the {% icon pref-cloud %} to **Save** visualization in the top right of the *main panel*
 >
 >    This will store it to your saved visualisations. Later you can view,
->    download, or share it with others from **Data -> Visualizations** in the
->    top menu of Galaxy.
+>    download, or share it with others by clicking on **Visualization** -> **Saved Visualizations** on the left menu bar. In the main panel you can find your saved plot.
 >
 {: .hands_on}
 
