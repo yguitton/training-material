@@ -486,7 +486,7 @@ Great, we are ready to plot things!
 > 4. Choose a title below **Title**, e.g. `Gene counts per chromosome`
 > 5. Switch to the **Settings** tab and change the axis labels
 > 6. Play around with the settings in the **Tracks** tab
-> 7. When you are happy, click the {% icon pref-cloud %} to **Save** visualization in the top right of the *main panel*
+> 7. When you are happy, click the {% icon download-cloud %} to **Save** visualization in the top right of the *main panel*
 >
 >    This will store it to your saved visualisations. Later you can view,
 >    download, or share it with others by clicking on **Visualization** -> **Saved Visualizations** on the left menu bar. In the main panel you can find your saved plot.
@@ -498,7 +498,7 @@ Great, we are ready to plot things!
 When you look carefully at your history, you can see that it contains all the steps of our analysis, from the beginning to the end. By building this history we have actually built a complete record of our analysis with Galaxy preserving all parameter settings applied at every step.
 Wouldn't it be nice to just convert this history into a workflow that we'll be able to execute again and again?
 
-Galaxy makes this very simple with the `Extract workflow` option. This means that any time you want to build a workflow, you can just perform it manually once, and then convert it to a workflow, so that next time it will be a lot less work to do the same analysis. It also allows you to easily share or publish your analysis.
+Galaxy makes this very simple with the `Extract Workflow` option. This means that any time you want to build a workflow, you can just perform it manually once, and then convert it to a workflow, so that next time it will be a lot less work to do the same analysis. It also allows you to easily share or publish your analysis.
 
 > <hands-on-title>Extract workflow</hands-on-title>
 >
@@ -506,7 +506,7 @@ Galaxy makes this very simple with the `Extract workflow` option. This means tha
 >
 >    This will make the creation of the workflow easier.
 >
-> 2. Click on {% icon galaxy-gear %} (**History options**) at the top of your history panel and select **Extract workflow**.
+> 2. Click on {% icon galaxy-history-options %} (**History options**) at the top of your history panel and select **Extract Workflow**.
 >
 >    ![`Extract Workflow` entry in the history options menu](../../images/history_menu_extract_workflow.png)
 >
@@ -575,7 +575,7 @@ We again need our peak file, but we'd like to work in a clean history. Instead o
 >
 >    {% snippet faqs/galaxy/histories_create_new.md %}
 >
-> 2. Click on the **History options** at the top right of your history. Click on the **Show Histories Side-by-Side**
+> 2. Click on the **History options** {% icon galaxy-history-options %} at the top right of your history. Click on the **Show Histories Side-by-Side**
 >
 >       You should see both of your histories side-by-side now
 >
