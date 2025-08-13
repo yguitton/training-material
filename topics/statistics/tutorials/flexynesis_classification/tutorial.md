@@ -248,7 +248,7 @@ And finally the UMAP plot.
 >    - *"Flexynesis plot"*: `Dimensionality reduction`
 >        - {% icon param-file %} *"Predicted labels"*: `table` (output of **Sort** {% icon tool %})
 >        - {% icon param-file %} *"Embeddings"*: `job.embeddings_test` (output of **Extract dataset** {% icon tool %})
->        - *"Column in the labels file to use for coloring the points in the plot"*: `Column: 5` (known_lable)
+>        - *"Column in the labels file to use for coloring the points in the plot"*: `Column: 5` (known_label)
 >        - *"Transformation method"*: `UMAP`
 >
 {: .hands_on}
@@ -359,7 +359,7 @@ And finally the UMAP plot.
 >    - *"Flexynesis plot"*: `Dimensionality reduction`
 >        - {% icon param-file %} *"Predicted labels"*: `table` (output of **Sort** {% icon tool %})
 >        - {% icon param-file %} *"Embeddings"*: `job.embeddings_test` (output of **Extract dataset** {% icon tool %})
->        - *"Column in the labels file to use for coloring the points in the plot"*: `Column: 5` (known_lable)
+>        - *"Column in the labels file to use for coloring the points in the plot"*: `Column: 5` (known_label)
 >        - *"Transformation method"*: `UMAP`
 >
 {: .hands_on}
