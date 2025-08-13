@@ -18,6 +18,7 @@ key_points:
 contributors:
 - Nilchia
 - bgruening
+subtopic: flexynesis
 answer_histories:
     - label: "usegalaxy.eu"
       history: https://usegalaxy.eu/u/nilchia/h/final-modeling-breast-cancer-subtypes-tabpfn-3
