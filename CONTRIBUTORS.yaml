@@ -2795,7 +2795,8 @@ supernord:
     orcid: 0000-0002-2977-5032
     elixir_node: au
     affiliations:
-      - elixir-europe
+      - unimelb
+      - AustralianBioCommons
 
 sunyi000:
     name: Yi Sun
