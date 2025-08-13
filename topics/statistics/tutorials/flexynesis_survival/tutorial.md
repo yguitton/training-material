@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 
-title: Survival Markers of Brain tumor
+title: Identifing Survival Markers of Brain tumor with Flexynesis
 zenodo_link: https://zenodo.org/records/16287482
 questions:
 - How can multi-modal genomic data be integrated to identify survival markers in brain tumors?
@@ -20,6 +20,7 @@ key_points:
 contributors:
 - Nilchia
 - bgruening
+subtopic: flexynesis
 answer_histories:
     - label: "usegalaxy.eu"
       history: https://usegalaxy.eu/u/nilchia/h/final-survival-markers-of-lower-grade-gliomas-test-wf

@@ -1,7 +1,7 @@
 ---
 layout: tutorial_hands_on
 
-title: Modeling Breast Cancer Subtypes using Flexynesis
+title: Modeling Breast Cancer Subtypes with Flexynesis
 zenodo_link: https://zenodo.org/records/16287482
 questions:
 - How can we model breast cancer subtypes using transcriptomics and genomic data?
