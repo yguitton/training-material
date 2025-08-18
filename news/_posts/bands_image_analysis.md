@@ -9,7 +9,7 @@ coveralt: "Electrophoresis gel bands visualized and quantified using bioimaging 
 
 ---
 
-Electrophoresis gels are a staple of molecular biology, providing a way to separate DNA, RNA, or proteins by size and charge. While gels are usually interpreted visually, the ability to **quantify band intensities** offers much richer insights—allowing researchers to estimate product yields, verify PCR amplification, or assess protein purity.
+Gel Electrophoresis is a staple of molecular biology, providing a way to separate DNA, RNA, or proteins by size and charge. While gels are usually interpreted visually, the ability to **quantify band intensities** offers much richer insights—allowing researchers to estimate product yields, verify PCR amplification, or assess protein purity.
 
 Band quantification can be carried out using interactive tools such as **QuPath** that allow researchers to define **regions of interest (ROIs)** directly on gel images. These ROIs can be exported as **GeoJSON** files, which capture the spatial coordinates of the selected bands in a standardized, machine-readable format with other tools. To address this, we’ve developed a new **hands-on Galaxy tutorial** that shows how to combine **QuPath** and **Galaxy imaging tools** for a transparent, reproducible workflow for gel band analysis.
 
