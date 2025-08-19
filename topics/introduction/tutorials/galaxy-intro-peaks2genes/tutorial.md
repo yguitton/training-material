@@ -40,6 +40,13 @@ contributions:
   - deNBI
   - uni-freiburg
 
+answer_histories:
+- label: "usegalaxy.eu"
+  history: https://usegalaxy.eu/u/teresa-m/h/gtn-peaks-to-genes-introduction-part-1
+  date: 2025-08-19
+- label: "usegalaxy.eu"
+  history: https://usegalaxy.eu/u/teresa-m/h/gtn-peaks-to-genes-introduction-part-2
+  date: 2025-08-19
 ---
 
 We stumbled upon a paper ({% cite Li2012 %}) called *"The histone acetyltransferase MOF is a key regulator of the embryonic stem cell core transcriptional network"*. The paper contains the analysis of possible target genes of an interesting protein called Mof. The targets were obtained by ChIP-seq in mice and the raw data is available through [GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE37268).
@@ -195,14 +202,14 @@ we also need a list of genes in mice, which we can obtain from UCSC.
 >     ![UCSC table browser interface](../../images/intro_02.png)
 >
 > 3. Set the following options:
->     - *"clade"*: `Mammal`
->     - *"genome"*: `Mouse`
->     - *"assembly"*: `July 2007 (NCBI37/mm9)`
->     - *"group"*: `Genes and Gene Predictions`
->     - *"track"*: `RefSeq Genes`
->     - *"table"*: `refGene`
->     - *"region"*: `genome`
->     - *"output format"*: `BED - browser extensible data`
+>     - *"Clade"*: `Mammal`
+>     - *"Genome"*: `Mouse`
+>     - *"Assembly"*: `July 2007 (NCBI37/mm9)`
+>     - *"Group"*: `Genes and Gene Predictions`
+>     - *"Track"*: `RefSeq Genes`
+>     - *"Table"*: `refGene`
+>     - *"Region"*: `Genome`
+>     - *"Output format"*: `BED - browser extensible data`
 >     - *"Send output to"*: `Galaxy` (only)
 >
 > 4. Click on the **get Output** button
@@ -486,10 +493,10 @@ Great, we are ready to plot things!
 > 4. Choose a title below **Title**, e.g. `Gene counts per chromosome`
 > 5. Switch to the **Settings** tab and change the axis labels
 > 6. Play around with the settings in the **Tracks** tab
-> 7. When you are happy, click the {% icon download-cloud %} to **Save** visualization in the top right of the *main panel*
+> 7. When you are happy, click the {% icon cloud-upload %} icon to **Save** visualization in the top right of the *main panel*
 >
 >    This will store it to your saved visualisations. Later you can view,
->    download, or share it with others by clicking on **Visualization** -> **Saved Visualizations** on the left menu bar. In the main panel you can find your saved plot.
+>    download, or share it with others by clicking again on **Visualization** on the left menu bar. In the opened menu bar click on the blue **Saved Visualizations** button on top. In the main panel you can find your saved plot.
 >
 {: .hands_on}
 
@@ -663,7 +670,7 @@ It's time to reuse the workflow we created earlier.
 
 > <hands-on-title>Run a workflow</hands-on-title>
 > 1. Open the workflow menu (left menu bar)
-> 2. Find the workflow you made in the previous section, and select the option **Run**
+> 2. Find the workflow you made in the previous section, and select the option **Run** {% icon workflow-run %}
 > 3. Choose as inputs our `mm9.RefSeq_genes` (`#genes`) BED file and the result of the **Cut** tool (`#peaks`)
 > 4. Click **Run workflow**
 >
@@ -677,23 +684,24 @@ But wouldn't it be more interesting to know the number of peaks in each unique g
 > <hands-on-title>Run a workflow with changed settings</hands-on-title>
 > 1. Open the workflow menu (left menu bar)
 > 2. Find the workflow you made in the previous section, and select the option **Run**
-> 3. Choose as inputs our `mm9.RefSeq_genes` (`#genes`) BED file and the result of the **Cut** tool (`#peaks`)
-> 4. Click on the title of the {% icon tool %} **Group** tool to expand the options.
-> 5. Change the following settings by clicking on the {% icon galaxy-pencil %} (pencil) icon on the left:
+> 3. Click on **Workflow run settings** {% icon galaxy-wf-options %} and then on **Expanded workflow form**
+> 4. Choose as inputs our `mm9.RefSeq_genes` (`#genes`) BED file and the result of the **Cut** tool (`#peaks`)
+> 5. Click on the title of the {% icon tool %} **Group** tool to expand the options
+> 6. Change the following settings by clicking on the {% icon galaxy-pencil %} (pencil) icon on the left:
 >     - *"Group by column"*: `7`
 >     - In *"Operation"*:
 >       - *"On column"*: `7`
-> 6. Click **Run workflow**
+> 7. Click **Run workflow**
 {: .hands_on}
 
 Congratulations! You should have a file with all the unique gene names and a count on how many peaks they contained.
 
 > <question-title></question-title>
 >
-> The list of unique genes is not sorted. Try to sort it on your own!
+> The list of unique genes is not sorted or you workflow included a sorting step but for the gene names. Try to sort it on your own!
 >
 > > <solution-title></solution-title>
-> > You can use the tool "Sort data in ascending or descending order" on column 2 and "fast numeric sort".
+> > You can use the tool "Sort data in ascending or descending order" or rerun to sort tool of your workflow. Sort on column 2 and "fast numeric sort".
 > {: .solution }
 {: .question}
 
@@ -702,16 +710,16 @@ Congratulations! You should have a file with all the unique gene names and a cou
 
 One of the most important features of Galaxy comes at the end of an analysis. When you have published striking findings, it is important that other researchers are able to reproduce your in-silico experiment. Galaxy enables users to easily share their workflows and histories with others.
 
-To share a history, click on the {%  icon galaxy-history-options %} history options and select `Share or Publish`. On this page you can do 3 things:
+To share a history, click on the {%  icon galaxy-history-options %} history options and select `Share & Manage Access`. On this tab (**Share or Publish**) you can **Make History accessible** or **Share History with Individual Users**:
 
 
-1. **Make accessible via Link**
+1. **Make History accessible**
 
     This generates a link that you can give out to others. Anybody with this link will be able to view your history.
 
-2. **Make History publicly available in Published Histories**
+2. **Make History publicly available**
 
-    This will not only create a link, but will also publish your history. This means your history will be listed under `Data → Histories → Published Histories` in the top menu.
+    This will not only create a link, but will also publish your history. This means your history will be listed under `Histories → Published Histories` in the left menu and other users can access the history there.
 
 3. **Share with Individual Users**
 
@@ -725,7 +733,7 @@ To share a history, click on the {%  icon galaxy-history-options %} history opti
 > 2. See if you can do the same with your workflow!
 > 3. Find the history and/or workflow shared by your neighbour
 >
->    Histories shared with specific users can be accessed by those users under `Data → Histories → Histories shared with me`.
+>    Histories shared with specific users can be accessed by those users under `Histories → Shared with Me`.
 >
 {: .hands_on}
 
