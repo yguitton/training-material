@@ -1,10 +1,5 @@
 ---
 title: "Quantifying Electrophoresis Gel Bands with QuPath and Galaxy"
-subsites:
-  - all
-  - global
-  - esg
-  - eu
 layout: news
 contributions:
   authorship:
