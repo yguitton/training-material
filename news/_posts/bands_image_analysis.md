@@ -2,11 +2,22 @@
 title: "Quantifying Electrophoresis Gel Bands with QuPath and Galaxy"
 author: "reytakop"
 date: "2025-08-18"
-subsites: [all,global,esg,eu]
+subsites:
+  - all
+  - global
+  - esg
+  - eu
 layout: news
 contributions:
-  authorship: [reytakop, dianichj]
-tags: [GTN, imaging, electrophoresis, QuPath, Galaxy]
+  authorship:
+    - reytakop
+    - dianichj
+tags:
+  - GTN
+  - imaging
+  - electrophoresis
+  - QuPath
+  - Galaxy
 cover: "news/images/spoc_images/bands_image_analysis.png"
 coveralt: "Electrophoresis gel bands visualized and quantified using bioimaging workflows"
 ---
