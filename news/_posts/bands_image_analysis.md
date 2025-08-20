@@ -1,14 +1,14 @@
 ---
 title: "Quantifying Electrophoresis Gel Bands with QuPath and Galaxy"
 author: "reytakop"
+date: "2025-08-18"
+subsites: [all,global,esg,eu]
+layout: news
 contributions:
   authorship: [reytakop, dianichj]
 tags: [GTN, imaging, electrophoresis, QuPath, Galaxy]
-layout: news
-date: "2025-08-18"
 cover: "news/images/spoc_images/bands_image_analysis.png"
 coveralt: "Electrophoresis gel bands visualized and quantified using bioimaging workflows"
-subsites: [all,global,esg,eu]
 ---
 
 Gel Electrophoresis is a staple of molecular biology, providing a way to separate DNA, RNA, or proteins by size and charge. While gels are usually interpreted visually, the ability to **quantify band intensities** offers much richer insights—allowing researchers to estimate product yields, verify PCR amplification, or assess protein purity.
