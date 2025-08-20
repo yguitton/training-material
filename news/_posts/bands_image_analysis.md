@@ -50,7 +50,8 @@ As with all Galaxy Training Network (GTN) tutorials, this workflow is fully open
 
 We invite educators, researchers, and learners to try the tutorial, adapt it to their datasets, and integrate it into teaching or research pipelines.
 
-👉 **Explore the tutorial here:** [Quantification of electrophoresis gel bands using QuPath and Galaxy imaging too{% link /topics/imaging/tutorials/electrophoresis-gel-bands-image-analysis/tutorial.md %}tml)
+👉 **Explore the tutorial here:** [Quantification of electrophoresis gel bands using QuPath and Galaxy imaging tools]({% link topics/imaging/tutorials/electrophoresis-gel-bands-image-analysis/tutorial.md %})
+
 
 ---
 
