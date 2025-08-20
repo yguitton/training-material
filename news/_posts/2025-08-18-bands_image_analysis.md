@@ -1,7 +1,5 @@
 ---
 title: "Quantifying Electrophoresis Gel Bands with QuPath and Galaxy"
-author: "reytakop"
-date: "2025-08-18"
 subsites:
   - all
   - global
