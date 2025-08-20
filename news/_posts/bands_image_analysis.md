@@ -1,6 +1,6 @@
 ---
 title: "Quantifying Electrophoresis Gel Bands with QuPath and Galaxy"
-author: "Reyhaneh Tavakoli-Koopaei"
+author: "reytakop"
 contributions:
   authorship: [reytakop, dianichj]
 tags: [GTN, imaging, electrophoresis, QuPath, Galaxy]
