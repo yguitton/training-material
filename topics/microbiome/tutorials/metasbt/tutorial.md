@@ -137,8 +137,10 @@ Let's get started!
 > > For example, you might find pre-built MetaSBT databases at a path like:
 > > `/cvmfs/data.galaxyproject.org/byhand/MetaSBT/`
 > >
-> > You can find more information about how Galaxy uses CVMFS for reference data [here](https://training.galaxyproject.org/training-material/topics/admin/tutorials/cvmfs/tutorial.html).
+> > You can find more information about [how Galaxy uses CVMFS for reference data]({% link topics/admin/tutorials/cvmfs/tutorial.md %}).
+> >
 > {: .tip}
+>
 {: .hands_on}
 
 ---
@@ -161,19 +163,22 @@ Our first step is to build a small, custom database using our reference viruses.
 >     - A `genomes` table with the list of genomes in the MetaSBT clusters and their assigned taxonomic labels.
 >     - A `database` compressed tarball representing the actual MetaSBT database.
 >
-> > <question-title>Questions</question-title>
+> > <question-title></question-title>
 > >
 > > 1. What does the k-mer size parameter represent?
 > > 2. Why did we compress the output database tarball?
 > > 3. There are three genomes missing in my database. Why?
 > >
-> > > <solution-title>Solutions</solution-title>
+> > > <solution-title></solution-title>
 > > >
 > > > 1. The k-mer size is the length of the short DNA/RNA sequences (k-mers) that are extracted from the genomes and stored in the Bloom filters.
 > > > 2. The MetaSBT database is actually a directory containing multiple files. Compressing it into a single `.tar.gz` file makes it much easier to manage and pass to other tools or share it with other users within Galaxy.
 > > > 3. Although we selected the whole set of genomes in our history `*.fna.gz`, the input table with the mapping between the name of the genomes and their complete taxonomic labels does not report any information about four genomes. Thus, they are automatically excluded. This has been done on purpose specifically for this tutorial. We are now going to use these three of these missing genomes for updating the database!
+> > >
 > > {: .solution}
+> >
 > {: .question}
+>
 {: .hands_on}
 
 We now have a database containing the genomic information for a specific selection of viral species.
@@ -196,16 +201,19 @@ We will now add three more *Monkeypox virus* genomes to the database we just cre
 >
 > 2.  Click **Execute**. This will produce a *new* MetaSBT database, thus, three new `clusters`, `genomes`, and `database` files will appear in your history. These three new genomes have been profiled against our database and assigned to the closest species cluster, i.e., *Monkeypox virus* in this specific case.
 >
-> > <question-title>Questions</question-title>
+> > <question-title></question-title>
 > >
 > > 1. Why is updating faster?
 > > 2. Why didn't we specify the k-mer length nor the Bloom filter size?
 > >
-> > > <solution-title>Solutions</solution-title>
+> > > <solution-title></solution-title>
 > > > 1. When updating, MetaSBT only needs to process the new genomes and insert them into the existing tree structure. It doesn't need to re-process the genomes that are already in the index. For very large databases, this can save hours or even days of computation time.
 > > > 2. In case of an update, the way we build the Bloom filter representation of the new genomes must be consistent with how we previously built our database. Thus, this information is implicitly inherited from the selected MetaSBT database.
+> > >
 > > {: .solution}
+> >
 > {: .question}
+>
 {: .hands_on}
 
 ---
@@ -227,15 +235,18 @@ Our query genome is `GCA_029744035.1_ASM2974403v1_genomic.fna.gz`. We will profi
 >
 > 3.  Click the {% icon galaxy-eye %} (eye) icon on the generated report to view its contents.
 >
-> > <question-title>Question</question-title>
+> > <question-title></question-title>
 > >
 > > The output report has different rows. Why there are multiple matches under the same taxonomic level?
 > >
-> > > <solution-title>Solution</solution-title>
+> > > <solution-title></solution-title>
 > > >
 > > > MetaSBT may report multiple taxonomic units under the same taxonomic level if their distance from the input query genome is below a specific threshold which is established considering the distance to the closest taxonomic unit minus its 20% (by default). This last percentage is called *uncertainty percentage* and can be changed under the *"Advanced options"* section.
+> > >
 > > {: .solution}
+> >
 > {: .question}
+>
 {: .hands_on}
 
 ### Analyzing the Results
