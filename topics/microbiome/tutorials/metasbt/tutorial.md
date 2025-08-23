@@ -62,7 +62,7 @@ Let's get started!
 > <hands-on-title>Prepare the History</hands-on-title>
 >
 > 1.  Create a new history for this tutorial and give it a name like "MetaSBT Viral Profiling".
-> 2.  Import the 29 viral reference genomes for this tutorial belonging to 5 different viral species. Open the Galaxy {% icon galaxy-upload %} **Upload Manager** and choose {% icon fa-paste %} **Paste/Fetch data**. Paste the following URLs into the text box:
+> 2.  Import the 29 viral reference genomes for this tutorial belonging to 5 different viral species. Open the Galaxy {% icon galaxy-upload %} **Upload Manager** and choose **Paste/Fetch data**. Paste the following URLs into the text box:
 >
 >     ```
 >     https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/882/815/GCA_000882815.1_ViralProj36615/GCA_000882815.1_ViralProj36615_genomic.fna.gz
