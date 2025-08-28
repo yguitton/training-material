@@ -17,6 +17,7 @@ contributions:
     - Sch-Da
   funding:
     - deKCD
+    - dataplant
 
 location:
   city: Bonn
