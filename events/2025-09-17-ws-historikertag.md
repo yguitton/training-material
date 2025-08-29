@@ -17,7 +17,7 @@ contributions:
     - Sch-Da
   funding:
     - deKCD
-    - dataplant
+    - nfdi4plants
 
 location:
   city: Bonn
