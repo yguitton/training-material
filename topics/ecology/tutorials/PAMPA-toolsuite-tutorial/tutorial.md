@@ -52,6 +52,7 @@ recordings:
 subtopic: ecologyanalysis
 ---
 
+![PAMPA logo](../../images/PAMPA-toolsuite-tutorial/PAMPA.jpg "PAMPA logo")
 
 This tutorial aims to present the PAMPA Galaxy workflow, how to use it to compute common
 biodiversity metrics from species abundance data and analyse it through generalized
