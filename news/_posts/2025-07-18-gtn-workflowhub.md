@@ -3,7 +3,7 @@ title: "GTN is now integrated with WorkflowHub"
 contributions:
   authorship: [supernord, hexylena, fbacall, bedroesb, shiltemann, bgruening, frederikcoppens, CaroleGoble]
   infrastructure: [hexylena, fbacall, bedroesb, uwwint, bgruening, frederikcoppens, CaroleGoble]
-  funding: []
+  funding: [eurosciencegateway, AustralianBioCommons]
 tags: [gtn, workflowhub, workflows, fair]
 layout: news
 cover: news/images/workflowhub.png
@@ -25,7 +25,7 @@ The GTN encompasses a wide array of tutorials that guide researchers in the appl
 
 Each workflow entry contains rich metadata, version history, license information and ontology annotations. WorkflowHub supports citation infrastructure (such as DOIs and [ORCID](https://orcid.org/) IDs) so that authors receive scholarly credit.
 
-[Galaxy’s existing integration with WorkflowHub{% link news/2023/11/20/workflow-search.md %}ml) allows researchers to discover, import, and run workflows from WorkflowHub directly within Galaxy. Alternatively, from the WorkflowHub website, users can utilise the [“Run on Galaxy” button](https://galaxyproject.org/news/2023-11-13-run-in-galaxy-button-workflowhub/) to launch the workflow in Galaxy.
+[Galaxy’s existing integration with WorkflowHub]({% link news/2023/11/20/workflow-search.md %}) allows researchers to discover, import, and run workflows from WorkflowHub directly within Galaxy. Alternatively, from the WorkflowHub website, users can utilise the [“Run on Galaxy” button](https://galaxyproject.org/news/2023-11-13-run-in-galaxy-button-workflowhub/) to launch the workflow in Galaxy.
 ## Where can I learn more?
 
 The existing set of registered GTN workflows can be [**viewed here**](https://workflowhub.eu/projects/12/workflows).
