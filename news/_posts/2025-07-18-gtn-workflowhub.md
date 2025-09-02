@@ -1,8 +1,8 @@
 ---
 title: "GTN is now integrated with WorkflowHub"
 contributions:
-  authorship: [supernord, hexylena, fbacall, bedroesb, elichad, dadrasarmin, shiltemann, bgruening, frederikcoppens, CaroleGoble]
-  infrastructure: [hexylena, fbacall, bedroesb, uwwint, bgruening, frederikcoppens, CaroleGoble]
+  authorship: [supernord, hexylena, fbacall, bedroesb, elichad, dadrasarmin, shiltemann, bgruening, frederikcoppens, carolegoble]
+  infrastructure: [hexylena, fbacall, bedroesb, uwwint, bgruening, frederikcoppens, carolegoble]
   funding: [eurosciencegateway, AustralianBioCommons]
 tags: [gtn, workflowhub, workflows, fair]
 layout: news
