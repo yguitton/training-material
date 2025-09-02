@@ -528,6 +528,14 @@ carloscheemendonca:
     name: Carlos Chee Mendonça
     joined: 2025-01
 
+carolegoble:
+    name: Carole Goble
+    joined: 2025-08
+    elixir_node: uk
+    affiliations:
+      - elixir-europe
+      - uni-manchester
+
 charitylaw:
     name: Charity Law
     joined: 2018-09
@@ -918,6 +926,14 @@ cumbof:
     linkedin: fabiocumbo
     orcid: 0000-0003-2920-5838
     joined: 2018-02
+
+fbacall:
+    name: Finn Bacall
+    joined: 2025-08
+    elixir_node: uk
+    affiliations:
+      - elixir-europe
+      - uni-manchester
 
 felicitas215:
     name: Felicitas Kindel
