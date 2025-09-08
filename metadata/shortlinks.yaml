@@ -2405,6 +2405,7 @@ id:
   W00358: "/topics/statistics/tutorials/flexynesis_classification/workflows/main_workflow.html"
   W00359: "/topics/statistics/tutorials/flexynesis_survival/workflows/main_workflow.html"
   W00360: "/topics/statistics/tutorials/flexynesis_unsupervised/workflows/main_workflow.html"
+  E00035: "/events/2025-11-24-gat-brno.html"
 misc:
   ansible-galaxy: "/topics/admin/tutorials/ansible-galaxy/tutorial.html"
   feeds: "/feeds/index.html"
