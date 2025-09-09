@@ -250,7 +250,7 @@ metabohub:
     github: false
     joined: 2025-07
     url: https://www.metabohub.fr/
-    avatar: "/training-material/shared/images/metabohub.fr"
+    avatar: "/training-material/shared/images/metabohub.png"
 
 moffitt:
     name: Moffitt Cancer Center
@@ -359,7 +359,7 @@ rfmf:
     github: false
     joined: 2025-07
     url: https://www.rfmf.fr/
-    avatar: "/training-material/shared/images/rfmf.fr"
+    avatar: "/training-material/shared/images/rfmf.png"
 
 sanbi:
     short_name: SANBI/UWC
